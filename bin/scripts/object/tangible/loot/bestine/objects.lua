@@ -85,13 +85,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 23318879
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple, 23318879)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple, "object/tangible/loot/bestine/shared_bestine_painting_schematic_blueleaf_temple.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 392989916
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush, 392989916)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush, "object/tangible/loot/bestine/shared_bestine_painting_schematic_blumbrush.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4037872612
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa, 4037872612)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa, "object/tangible/loot/bestine/shared_bestine_painting_schematic_boffa.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 16908290
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01, 16908290)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_01.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3658852501
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02, 3658852501)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_02.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2467876632
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03, 2467876632)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_03.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_house = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_house = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1218019193
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_house, 1218019193)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_house, "object/tangible/loot/bestine/shared_bestine_painting_schematic_house.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3722135133
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton, 3722135133)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton, "object/tangible/loot/bestine/shared_bestine_painting_schematic_krayt_skeleton.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3503871911
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot, 3503871911)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot, "object/tangible/loot/bestine/shared_bestine_painting_schematic_lucky_despot.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2856187452
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry, 2856187452)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry, "object/tangible/loot/bestine/shared_bestine_painting_schematic_mattberry.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01 = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2819090865
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01, 2819090865)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01, "object/tangible/loot/bestine/shared_bestine_painting_schematic_moncal_eye_01.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02 = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1930445094
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02, 1930445094)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02, "object/tangible/loot/bestine/shared_bestine_painting_schematic_moncal_eye_02.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -709,13 +721,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bus
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1673498889
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bush, 1673498889)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bush, "object/tangible/loot/bestine/shared_bestine_painting_schematic_rainbow_berry_bush.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3594355154
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn, 3594355154)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn, "object/tangible/loot/bestine/shared_bestine_painting_schematic_raventhorn.iff")
 
 object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -813,10 +827,11 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 890845319
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka, 890845319)
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka, "object/tangible/loot/bestine/shared_bestine_painting_schematic_ronka.iff")

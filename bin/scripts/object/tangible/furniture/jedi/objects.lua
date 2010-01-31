@@ -85,13 +85,14 @@ object_tangible_furniture_jedi_shared_frn_all_banner_dark = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1233088738
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_dark, 1233088738)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_dark, "object/tangible/furniture/jedi/shared_frn_all_banner_dark.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_tapestry.apt",
@@ -137,13 +138,14 @@ object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 424725094
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_light, 424725094)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_light, "object/tangible/furniture/jedi/shared_frn_all_banner_light.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2_lit.apt",
@@ -189,13 +191,14 @@ object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 655797183
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_candlestick, 655797183)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_candlestick, "object/tangible/furniture/jedi/shared_frn_all_candlestick.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3388059075
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01, 3388059075)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s02.apt",
@@ -293,13 +297,14 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 317064532
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02, 317064532)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_dark.apt",
@@ -345,13 +350,14 @@ object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3059746437
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_throne, 3059746437)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_throne, "object/tangible/furniture/jedi/shared_frn_all_dark_throne.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s1.apt",
@@ -397,13 +403,14 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3078124404
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s01, 3078124404)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s2.apt",
@@ -449,13 +456,14 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1819270115
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s02, 1819270115)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_light.apt",
@@ -501,13 +509,14 @@ object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4291415310
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_throne, 4291415310)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_throne, "object/tangible/furniture/jedi/shared_frn_all_light_throne.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table.apt",
@@ -553,13 +562,14 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4041312926
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_01, 4041312926)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_01, "object/tangible/furniture/jedi/shared_frn_all_table_dark_01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table_s02.apt",
@@ -605,13 +615,14 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 737550857
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_02, 737550857)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_02, "object/tangible/furniture/jedi/shared_frn_all_table_dark_02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1906389046
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_01, 1906389046)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_01, "object/tangible/furniture/jedi/shared_frn_all_table_light_01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s02.apt",
@@ -709,10 +721,11 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2864093345
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_02, 2864093345)
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_02, "object/tangible/furniture/jedi/shared_frn_all_table_light_02.iff")

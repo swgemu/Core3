@@ -77,10 +77,12 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2001053430
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_double, 2001053430)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_double, "object/static/terrain/corellia/shared_rock_bowl_agrilat_double.iff")
 
 object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_agrlt_bowl_single.apt",
@@ -118,10 +120,12 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 269158049
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_single, 269158049)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_single, "object/static/terrain/corellia/shared_rock_bowl_agrilat_single.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_sm.apt",
@@ -159,10 +163,12 @@ object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedSt
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 443205623
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small, 443205623)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small, "object/static/terrain/corellia/shared_rock_crystal_agrilat_arch_small.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_half_med.apt",
@@ -200,10 +206,12 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3222394313
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium, 3222394313)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_half_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_med.apt",
@@ -241,10 +249,12 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 925475782
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium, 925475782)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_lrg.apt",
@@ -282,10 +292,12 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1782875920
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large, 1782875920)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_large.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_agrlt_geyser_main.apt",
@@ -323,10 +335,12 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 667239859
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main, 667239859)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_main.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_med.apt",
@@ -364,10 +378,12 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2360913555
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium, 2360913555)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_sm.apt",
@@ -405,10 +421,12 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1583289145
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small, 1583289145)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_small.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_mound_lrg.apt",
@@ -446,10 +464,12 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1649037373
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large, 1649037373)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_large.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_mound_med.apt",
@@ -487,10 +507,12 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2758241835
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium, 2758241835)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_main.apt",
@@ -528,10 +550,12 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 563211563
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_main, 563211563)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_main, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_main.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_med.apt",
@@ -569,10 +593,12 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2674710016
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_med, 2674710016)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_med, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_med.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_sm.apt",
@@ -610,7 +636,9 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 751683644
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm, 751683644)
+ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_sm.iff")

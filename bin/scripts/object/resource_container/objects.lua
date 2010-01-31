@@ -85,13 +85,14 @@ object_resource_container_shared_resource_container_energy_gas = SharedResourceC
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2640304325
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas, 2640304325)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas, "object/resource_container/shared_resource_container_energy_gas.iff")
 
 object_resource_container_shared_resource_container_energy_gas_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_gas_lg.apt",
@@ -137,13 +138,14 @@ object_resource_container_shared_resource_container_energy_gas_lg = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1023265709
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas_lg, 1023265709)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas_lg, "object/resource_container/shared_resource_container_energy_gas_lg.iff")
 
 object_resource_container_shared_resource_container_energy_liquid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid_sml.apt",
@@ -189,13 +191,14 @@ object_resource_container_shared_resource_container_energy_liquid = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 505491474
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid, 505491474)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid, "object/resource_container/shared_resource_container_energy_liquid.iff")
 
 object_resource_container_shared_resource_container_energy_liquid_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid_lg.apt",
@@ -241,13 +244,14 @@ object_resource_container_shared_resource_container_energy_liquid_lg = SharedRes
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4165569512
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid_lg, 4165569512)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid_lg, "object/resource_container/shared_resource_container_energy_liquid_lg.iff")
 
 object_resource_container_shared_resource_container_energy_radioactive = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_sml.apt",
@@ -293,13 +297,14 @@ object_resource_container_shared_resource_container_energy_radioactive = SharedR
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3244320243
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive, 3244320243)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive, "object/resource_container/shared_resource_container_energy_radioactive.iff")
 
 object_resource_container_shared_resource_container_energy_radioactive_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_lg.apt",
@@ -345,13 +350,14 @@ object_resource_container_shared_resource_container_energy_radioactive_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1769828233
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive_lg, 1769828233)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive_lg, "object/resource_container/shared_resource_container_energy_radioactive_lg.iff")
 
 object_resource_container_shared_resource_container_energy_solid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid_sml.apt",
@@ -397,13 +403,14 @@ object_resource_container_shared_resource_container_energy_solid = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3912559902
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid, 3912559902)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid, "object/resource_container/shared_resource_container_energy_solid.iff")
 
 object_resource_container_shared_resource_container_energy_solid_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid_lg.apt",
@@ -449,13 +456,14 @@ object_resource_container_shared_resource_container_energy_solid_lg = SharedReso
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3935977713
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid_lg, 3935977713)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid_lg, "object/resource_container/shared_resource_container_energy_solid_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_bottle_water = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
@@ -501,13 +509,14 @@ object_resource_container_shared_resource_container_inorganic_bottle_water = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 125850083
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_bottle_water, 125850083)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_bottle_water, "object/resource_container/shared_resource_container_inorganic_bottle_water.iff")
 
 object_resource_container_shared_resource_container_inorganic_chemicals = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_sml.apt",
@@ -553,13 +562,14 @@ object_resource_container_shared_resource_container_inorganic_chemicals = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 422061124
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals, 422061124)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals, "object/resource_container/shared_resource_container_inorganic_chemicals.iff")
 
 object_resource_container_shared_resource_container_inorganic_chemicals_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_lg.apt",
@@ -605,13 +615,14 @@ object_resource_container_shared_resource_container_inorganic_chemicals_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2886132575
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals_lg, 2886132575)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals_lg, "object/resource_container/shared_resource_container_inorganic_chemicals_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_gas = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas_sml.apt",
@@ -657,13 +668,14 @@ object_resource_container_shared_resource_container_inorganic_gas = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2204725480
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas, 2204725480)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas, "object/resource_container/shared_resource_container_inorganic_gas.iff")
 
 object_resource_container_shared_resource_container_inorganic_gas_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas_lg.apt",
@@ -709,13 +721,14 @@ object_resource_container_shared_resource_container_inorganic_gas_lg = SharedRes
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 73541074
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas_lg, 73541074)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas_lg, "object/resource_container/shared_resource_container_inorganic_gas_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_minerals = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_sml.apt",
@@ -761,13 +774,14 @@ object_resource_container_shared_resource_container_inorganic_minerals = SharedR
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2295225965
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals, 2295225965)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals, "object/resource_container/shared_resource_container_inorganic_minerals.iff")
 
 object_resource_container_shared_resource_container_inorganic_minerals_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_lg.apt",
@@ -813,13 +827,14 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3162714701
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, 3162714701)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, "object/resource_container/shared_resource_container_inorganic_minerals_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_petrochem_liquid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
@@ -865,13 +880,14 @@ object_resource_container_shared_resource_container_inorganic_petrochem_liquid =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3404372557
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_petrochem_liquid, 3404372557)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_petrochem_liquid, "object/resource_container/shared_resource_container_inorganic_petrochem_liquid.iff")
 
 object_resource_container_shared_resource_container_inorganic_water = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water_sml.apt",
@@ -917,13 +933,14 @@ object_resource_container_shared_resource_container_inorganic_water = SharedReso
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 759021360
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water, 759021360)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water, "object/resource_container/shared_resource_container_inorganic_water.iff")
 
 object_resource_container_shared_resource_container_inorganic_water_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water_lg.apt",
@@ -969,13 +986,14 @@ object_resource_container_shared_resource_container_inorganic_water_lg = SharedR
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1891729994
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water_lg, 1891729994)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water_lg, "object/resource_container/shared_resource_container_inorganic_water_lg.iff")
 
 object_resource_container_shared_resource_container_organic_bean = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1021,13 +1039,14 @@ object_resource_container_shared_resource_container_organic_bean = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4263974406
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bean, 4263974406)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bean, "object/resource_container/shared_resource_container_organic_bean.iff")
 
 object_resource_container_shared_resource_container_organic_bottle_milk = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
@@ -1073,13 +1092,14 @@ object_resource_container_shared_resource_container_organic_bottle_milk = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3072418635
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bottle_milk, 3072418635)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bottle_milk, "object/resource_container/shared_resource_container_organic_bottle_milk.iff")
 
 object_resource_container_shared_resource_container_organic_bristley_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_bristly.apt",
@@ -1125,13 +1145,14 @@ object_resource_container_shared_resource_container_organic_bristley_hide = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2077617394
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bristley_hide, 2077617394)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bristley_hide, "object/resource_container/shared_resource_container_organic_bristley_hide.iff")
 
 object_resource_container_shared_resource_container_organic_corn = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1177,13 +1198,14 @@ object_resource_container_shared_resource_container_organic_corn = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3542662327
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_corn, 3542662327)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_corn, "object/resource_container/shared_resource_container_organic_corn.iff")
 
 object_resource_container_shared_resource_container_organic_food = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
@@ -1229,13 +1251,14 @@ object_resource_container_shared_resource_container_organic_food = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 699752337
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food, 699752337)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food, "object/resource_container/shared_resource_container_organic_food.iff")
 
 object_resource_container_shared_resource_container_organic_food_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_lg.apt",
@@ -1281,13 +1304,14 @@ object_resource_container_shared_resource_container_organic_food_lg = SharedReso
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 466521573
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food_lg, 466521573)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food_lg, "object/resource_container/shared_resource_container_organic_food_lg.iff")
 
 object_resource_container_shared_resource_container_organic_fruit = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1333,13 +1357,14 @@ object_resource_container_shared_resource_container_organic_fruit = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1967870892
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fruit, 1967870892)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fruit, "object/resource_container/shared_resource_container_organic_fruit.iff")
 
 object_resource_container_shared_resource_container_organic_fungi = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1385,13 +1410,14 @@ object_resource_container_shared_resource_container_organic_fungi = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2670708128
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fungi, 2670708128)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fungi, "object/resource_container/shared_resource_container_organic_fungi.iff")
 
 object_resource_container_shared_resource_container_organic_green_vegetables = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1437,13 +1463,14 @@ object_resource_container_shared_resource_container_organic_green_vegetables = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2909750726
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_green_vegetables, 2909750726)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_green_vegetables, "object/resource_container/shared_resource_container_organic_green_vegetables.iff")
 
 object_resource_container_shared_resource_container_organic_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_sml.apt",
@@ -1489,13 +1516,14 @@ object_resource_container_shared_resource_container_organic_hide = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 976954288
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide, 976954288)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide, "object/resource_container/shared_resource_container_organic_hide.iff")
 
 object_resource_container_shared_resource_container_organic_hide_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -1541,13 +1569,14 @@ object_resource_container_shared_resource_container_organic_hide_lg = SharedReso
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 495391475
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide_lg, 495391475)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide_lg, "object/resource_container/shared_resource_container_organic_hide_lg.iff")
 
 object_resource_container_shared_resource_container_organic_leathery_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_leather.apt",
@@ -1593,13 +1622,14 @@ object_resource_container_shared_resource_container_organic_leathery_hide = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2514079067
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_leathery_hide, 2514079067)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_leathery_hide, "object/resource_container/shared_resource_container_organic_leathery_hide.iff")
 
 object_resource_container_shared_resource_container_organic_oats = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1645,13 +1675,14 @@ object_resource_container_shared_resource_container_organic_oats = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1222368053
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_oats, 1222368053)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_oats, "object/resource_container/shared_resource_container_organic_oats.iff")
 
 object_resource_container_shared_resource_container_organic_rice = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1697,13 +1728,14 @@ object_resource_container_shared_resource_container_organic_rice = SharedResourc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3052716729
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_rice, 3052716729)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_rice, "object/resource_container/shared_resource_container_organic_rice.iff")
 
 object_resource_container_shared_resource_container_organic_scaley_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_scaly.apt",
@@ -1749,13 +1781,14 @@ object_resource_container_shared_resource_container_organic_scaley_hide = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 355985042
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_scaley_hide, 355985042)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_scaley_hide, "object/resource_container/shared_resource_container_organic_scaley_hide.iff")
 
 object_resource_container_shared_resource_container_organic_structure = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure_sml.apt",
@@ -1801,13 +1834,14 @@ object_resource_container_shared_resource_container_organic_structure = SharedRe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1326787440
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure, 1326787440)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure, "object/resource_container/shared_resource_container_organic_structure.iff")
 
 object_resource_container_shared_resource_container_organic_structure_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure_lg.apt",
@@ -1853,13 +1887,14 @@ object_resource_container_shared_resource_container_organic_structure_lg = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3803992658
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure_lg, 3803992658)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure_lg, "object/resource_container/shared_resource_container_organic_structure_lg.iff")
 
 object_resource_container_shared_resource_container_organic_tuber = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1905,13 +1940,14 @@ object_resource_container_shared_resource_container_organic_tuber = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 41151102
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_tuber, 41151102)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_tuber, "object/resource_container/shared_resource_container_organic_tuber.iff")
 
 object_resource_container_shared_resource_container_organic_wheat = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
@@ -1957,13 +1993,14 @@ object_resource_container_shared_resource_container_organic_wheat = SharedResour
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1848360314
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wheat, 1848360314)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wheat, "object/resource_container/shared_resource_container_organic_wheat.iff")
 
 object_resource_container_shared_resource_container_organic_wooly_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_wooly.apt",
@@ -2009,13 +2046,14 @@ object_resource_container_shared_resource_container_organic_wooly_hide = SharedR
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3648978698
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wooly_hide, 3648978698)
+ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wooly_hide, "object/resource_container/shared_resource_container_organic_wooly_hide.iff")
 
 object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
@@ -2061,10 +2099,11 @@ object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4049825392
 }
 
-ObjectTemplates:addTemplate(object_resource_container_shared_simple, 4049825392)
+ObjectTemplates:addTemplate(object_resource_container_shared_simple, "object/resource_container/shared_simple.iff")

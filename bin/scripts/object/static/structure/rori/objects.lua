@@ -76,10 +76,12 @@ object_static_structure_rori_shared_rori_imprv_bannerpole_s01 = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 361465227
 }
 
-ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_bannerpole_s01, 361465227)
+ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_bannerpole_s01, "object/static/structure/rori/shared_rori_imprv_bannerpole_s01.iff")
 
 object_static_structure_rori_shared_rori_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -116,7 +118,9 @@ object_static_structure_rori_shared_rori_imprv_flagpole_s01 = SharedStaticObject
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3974035646
 }
 
-ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_flagpole_s01, 3974035646)
+ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_flagpole_s01, "object/static/structure/rori/shared_rori_imprv_flagpole_s01.iff")

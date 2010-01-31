@@ -85,13 +85,14 @@ object_installation_mining_organic_shared_mining_organic_creature_farm = SharedI
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3544083954
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, 3544083954)
+ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, "object/installation/mining_organic/shared_mining_organic_creature_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_small.apt",
@@ -137,13 +138,14 @@ object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInst
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3438944708
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, 3438944708)
+ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, "object/installation/mining_organic/shared_mining_organic_flora_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
@@ -189,13 +191,14 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = Shar
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 880917767
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, 880917767)
+ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_medium = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_farm_base_s01_u0.apt",
@@ -241,10 +244,11 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_medium = Sha
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 681856626
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, 681856626)
+ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_gurk_shared_lair_gurk = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2774815419
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk, 2774815419)
+ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk, "object/tangible/lair/gurk/shared_lair_gurk.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3262874974
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, 3262874974)
+ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, "object/tangible/lair/gurk/shared_lair_gurk_mountain.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1904490191
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, 1904490191)
+ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, "object/tangible/lair/gurk/shared_lair_gurk_wasteland.iff")

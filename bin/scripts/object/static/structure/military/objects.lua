@@ -77,10 +77,12 @@ object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2482416832
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_crate_style_01, 2482416832)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_crate_style_01, "object/static/structure/military/shared_bunker_crate_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s01.apt",
@@ -118,10 +120,12 @@ object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1580787523
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_01, 1580787523)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_01, "object/static/structure/military/shared_bunker_pillar_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s02.apt",
@@ -159,10 +163,12 @@ object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2234470356
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_02, 2234470356)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_02, "object/static/structure/military/shared_bunker_pillar_style_02.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s03.apt",
@@ -200,10 +206,12 @@ object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3424790617
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_03, 3424790617)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_03, "object/static/structure/military/shared_bunker_pillar_style_03.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s04.apt",
@@ -241,10 +249,12 @@ object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 935396173
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_04, 935396173)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_04, "object/static/structure/military/shared_bunker_pillar_style_04.iff")
 
 object_static_structure_military_shared_military_column_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
@@ -282,10 +292,12 @@ object_static_structure_military_shared_military_column_med_imperial_style_01 = 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3131562949
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_imperial_style_01, 3131562949)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_imperial_style_01, "object/static/structure/military/shared_military_column_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_med_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
@@ -323,10 +335,12 @@ object_static_structure_military_shared_military_column_med_rebel_style_01 = Sha
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2048366214
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_rebel_style_01, 2048366214)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_rebel_style_01, "object/static/structure/military/shared_military_column_med_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
@@ -364,10 +378,12 @@ object_static_structure_military_shared_military_column_strong_imperial_style_01
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2024230445
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_imperial_style_01, 2024230445)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_imperial_style_01, "object/static/structure/military/shared_military_column_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
@@ -405,10 +421,12 @@ object_static_structure_military_shared_military_column_strong_rebel_style_01 = 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3057024962
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_rebel_style_01, 3057024962)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_rebel_style_01, "object/static/structure/military/shared_military_column_strong_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
@@ -446,10 +464,12 @@ object_static_structure_military_shared_military_column_weak_imperial_style_01 =
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3932437109
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_imperial_style_01, 3932437109)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_imperial_style_01, "object/static/structure/military/shared_military_column_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
@@ -487,10 +507,12 @@ object_static_structure_military_shared_military_column_weak_rebel_style_01 = Sh
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 165391475
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_rebel_style_01, 165391475)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_rebel_style_01, "object/static/structure/military/shared_military_column_weak_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_16_s01.apt",
@@ -528,10 +550,12 @@ object_static_structure_military_shared_military_wall_med_imperial_16_style_01 =
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3143955172
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_16_style_01, 3143955172)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_16_style_01, "object/static/structure/military/shared_military_wall_med_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_32_s01.apt",
@@ -569,10 +593,12 @@ object_static_structure_military_shared_military_wall_med_imperial_32_style_01 =
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 514067204
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_32_style_01, 514067204)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_32_style_01, "object/static/structure/military/shared_military_wall_med_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
@@ -610,10 +636,12 @@ object_static_structure_military_shared_military_wall_med_imperial_style_01 = Sh
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 790640751
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_style_01, 790640751)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_style_01, "object/static/structure/military/shared_military_wall_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_16_s01.apt",
@@ -651,10 +679,12 @@ object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = Sha
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3655812348
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_16_style_01, 3655812348)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_16_style_01, "object/static/structure/military/shared_military_wall_med_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_32_s01.apt",
@@ -692,10 +722,12 @@ object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = Sha
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2082979100
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_32_style_01, 2082979100)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_32_style_01, "object/static/structure/military/shared_military_wall_med_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
@@ -733,10 +765,12 @@ object_static_structure_military_shared_military_wall_med_rebl_style_01 = Shared
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3715555896
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_style_01, 3715555896)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_style_01, "object/static/structure/military/shared_military_wall_med_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_16_s01.apt",
@@ -774,10 +808,12 @@ object_static_structure_military_shared_military_wall_strong_imperial_16_style_0
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1838610467
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_16_style_01, 1838610467)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_16_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_32_s01.apt",
@@ -815,10 +851,12 @@ object_static_structure_military_shared_military_wall_strong_imperial_32_style_0
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3361079747
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_32_style_01, 3361079747)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_32_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
@@ -856,10 +894,12 @@ object_static_structure_military_shared_military_wall_strong_imperial_style_01 =
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1483242756
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_style_01, 1483242756)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_16_s01.apt",
@@ -897,10 +937,12 @@ object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3699886546
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_16_style_01, 3699886546)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_16_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_32_s01.apt",
@@ -938,10 +980,12 @@ object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2034708530
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_32_style_01, 2034708530)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_32_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
@@ -979,10 +1023,12 @@ object_static_structure_military_shared_military_wall_strong_rebl_style_01 = Sha
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 456208313
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_style_01, 456208313)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_16_s01.apt",
@@ -1020,10 +1066,12 @@ object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1733519188
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_16_style_01, 1733519188)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_16_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_32_s01.apt",
@@ -1061,10 +1109,12 @@ object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3264454324
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_32_style_01, 3264454324)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_32_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
@@ -1102,10 +1152,12 @@ object_static_structure_military_shared_military_wall_weak_imperial_style_01 = S
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1600110720
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_style_01, 1600110720)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_16_s01.apt",
@@ -1143,10 +1195,12 @@ object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = Sh
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4029534530
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_16_style_01, 4029534530)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_16_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_32_s01.apt",
@@ -1184,10 +1238,12 @@ object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = Sh
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1441605794
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_32_style_01, 1441605794)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_32_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
@@ -1225,7 +1281,9 @@ object_static_structure_military_shared_military_wall_weak_rebl_style_01 = Share
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1462224892
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, 1462224892)
+ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff")

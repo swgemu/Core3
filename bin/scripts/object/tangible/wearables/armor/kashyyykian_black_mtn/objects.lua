@@ -85,13 +85,14 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2400154328
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, 2400154328)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_l.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_bracer_r_wke_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4292491083
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, 4292491083)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_r.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_chest_plate_wke_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2677805339
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, 2677805339)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_chest_plate.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_leggings_wke_f.sat",
@@ -241,10 +244,11 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2863047
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, 2863047)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_leggings.iff")

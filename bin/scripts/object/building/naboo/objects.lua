@@ -88,13 +88,14 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 17,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4161211751
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_association_hall_civilian_naboo, 4161211751)
+ObjectTemplates:addTemplate(object_building_naboo_shared_association_hall_civilian_naboo, "object/building/naboo/shared_association_hall_civilian_naboo.iff")
 
 object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_bank_s01.apt",
@@ -143,13 +144,14 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3658850000
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_bank_naboo, 3658850000)
+ObjectTemplates:addTemplate(object_building_naboo_shared_bank_naboo, "object/building/naboo/shared_bank_naboo.iff")
 
 object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_lrgbuba.apt",
@@ -198,13 +200,14 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4092578549
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, 4092578549)
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, "object/building/naboo/shared_bubble_naboo_large_style_1.iff")
 
 object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_meda.apt",
@@ -253,13 +256,14 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4060997575
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, 4060997575)
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, "object/building/naboo/shared_bubble_naboo_medium_style_1.iff")
 
 object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_medb.apt",
@@ -308,13 +312,14 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 689590096
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, 689590096)
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, "object/building/naboo/shared_bubble_naboo_medium_style_2.iff")
 
 object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_smalla.apt",
@@ -363,13 +368,14 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1528349113
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, 1528349113)
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, "object/building/naboo/shared_bubble_naboo_small_style_1.iff")
 
 object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -390,7 +396,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:cantina_general",
 
-	gameObjectType = 518,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_cantina_style_01.ilf",
 
@@ -418,13 +424,14 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 15,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1964795921
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_cantina_naboo, 1964795921)
+ObjectTemplates:addTemplate(object_building_naboo_shared_cantina_naboo, "object/building/naboo/shared_cantina_naboo.iff")
 
 object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -473,13 +480,14 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2574224334
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_capitol_naboo_theed, 2574224334)
+ObjectTemplates:addTemplate(object_building_naboo_shared_capitol_naboo_theed, "object/building/naboo/shared_capitol_naboo_theed.iff")
 
 object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -500,7 +508,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cloning_facility_naboo",
 
-	gameObjectType = 519,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
 
@@ -528,13 +536,14 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1114686474
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_cloning_facility_naboo, 1114686474)
+ObjectTemplates:addTemplate(object_building_naboo_shared_cloning_facility_naboo, "object/building/naboo/shared_cloning_facility_naboo.iff")
 
 object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +564,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 
 	detailedDescription = "@building_detail:palace_naboo_theed",
 
-	gameObjectType = 519,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/emperor_retreat.ilf",
 
@@ -583,13 +592,14 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 23,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 120523031
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_emperors_retreat, 120523031)
+ObjectTemplates:addTemplate(object_building_naboo_shared_emperors_retreat, "object/building/naboo/shared_emperors_retreat.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s10.apt",
@@ -638,13 +648,14 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3073450826
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_10, 3073450826)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_10, "object/building/naboo/shared_filler_building_naboo_style_10.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s11.apt",
@@ -693,13 +704,14 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4265362631
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_11, 4265362631)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_11, "object/building/naboo/shared_filler_building_naboo_style_11.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s02.apt",
@@ -748,13 +760,14 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 343147098
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_2, 343147098)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_2, "object/building/naboo/shared_filler_building_naboo_style_2.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s03.apt",
@@ -803,13 +816,14 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1568237015
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_3, 1568237015)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_3, "object/building/naboo/shared_filler_building_naboo_style_3.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s04.apt",
@@ -858,13 +872,14 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2795130563
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_4, 2795130563)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_4, "object/building/naboo/shared_filler_building_naboo_style_4.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s05.apt",
@@ -913,13 +928,14 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4019661134
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_5, 4019661134)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_5, "object/building/naboo/shared_filler_building_naboo_style_5.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s06.apt",
@@ -968,13 +984,14 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 880837081
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_6, 880837081)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_6, "object/building/naboo/shared_filler_building_naboo_style_6.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s08.apt",
@@ -1023,13 +1040,14 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3347565126
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_8, 3347565126)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_8, "object/building/naboo/shared_filler_building_naboo_style_8.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s09.apt",
@@ -1078,13 +1096,14 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2391453131
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_9, 2391453131)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_9, "object/building/naboo/shared_filler_building_naboo_style_9.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s01.apt",
@@ -1133,13 +1152,14 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1370920904
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, 1370920904)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_01.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s02.apt",
@@ -1188,13 +1208,14 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2325823327
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, 2325823327)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_02.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s02.apt",
@@ -1243,13 +1264,14 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2522453461
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, 2522453461)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, "object/building/naboo/shared_filler_nboo_bldg_64x32_s02.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s01.apt",
@@ -1298,13 +1320,14 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 166100265
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, 166100265)
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, "object/building/naboo/shared_filler_nboo_bldg_64x32_style_01.iff")
 
 object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1353,13 +1376,14 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2162092176
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, 2162092176)
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, "object/building/naboo/shared_guild_combat_naboo_style_01.iff")
 
 object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1408,13 +1432,14 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 754152794
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, 754152794)
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, "object/building/naboo/shared_guild_commerce_naboo_style_01.iff")
 
 object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1435,7 +1460,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 518,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_01.ilf",
 
@@ -1463,13 +1488,14 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2364526054
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_guild_theater_naboo_s01, 2364526054)
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_theater_naboo_s01, "object/building/naboo/shared_guild_theater_naboo_s01.iff")
 
 object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1490,7 +1516,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 
 	detailedDescription = "@building_detail:guild_university_naboo",
 
-	gameObjectType = 518,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_university_style_naboo.ilf",
 
@@ -1518,13 +1544,14 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1500355509
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_guild_university_naboo_style_01, 1500355509)
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_university_naboo_style_01, "object/building/naboo/shared_guild_university_naboo_style_01.iff")
 
 object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1573,13 +1600,14 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 5,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3224368648
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_hangar_naboo_theed, 3224368648)
+ObjectTemplates:addTemplate(object_building_naboo_shared_hangar_naboo_theed, "object/building/naboo/shared_hangar_naboo_theed.iff")
 
 object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1600,7 +1628,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 517,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_naboo.ilf",
 
@@ -1628,13 +1656,14 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 14,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3288048289
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo, 3288048289)
+ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo, "object/building/naboo/shared_hospital_naboo.iff")
 
 object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1655,7 +1684,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 517,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
 
@@ -1683,13 +1712,14 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 3,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1309649332
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo_s02, 1309649332)
+ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo_s02, "object/building/naboo/shared_hospital_naboo_s02.iff")
 
 object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1710,7 +1740,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:hotel_naboo_theed",
 
-	gameObjectType = 518,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/shared_hotel_style_naboo2.ilf",
 
@@ -1738,13 +1768,14 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2256796740
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_hotel_naboo_theed, 2256796740)
+ObjectTemplates:addTemplate(object_building_naboo_shared_hotel_naboo_theed, "object/building/naboo/shared_hotel_naboo_theed.iff")
 
 object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1793,13 +1824,14 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 7,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1207237066
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_1, 1207237066)
+ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_1, "object/building/naboo/shared_housing_naboo_style_1.iff")
 
 object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
@@ -1848,13 +1880,14 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3589158608
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_3, 3589158608)
+ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_3, "object/building/naboo/shared_housing_naboo_style_3.iff")
 
 object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1903,13 +1936,14 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 1,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3127135334
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, 3127135334)
+ObjectTemplates:addTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, "object/building/naboo/shared_merchant_tent_naboo_s01.iff")
 
 object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1958,13 +1992,14 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 35,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 243325651
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_palace_naboo_theed, 243325651)
+ObjectTemplates:addTemplate(object_building_naboo_shared_palace_naboo_theed, "object/building/naboo/shared_palace_naboo_theed.iff")
 
 object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_garage_s01_u01.apt",
@@ -2013,13 +2048,14 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4129354478
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, 4129354478)
+ObjectTemplates:addTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, "object/building/naboo/shared_parking_garage_naboo_style_1.iff")
 
 object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2068,13 +2104,14 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 14,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3110745453
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, 3110745453)
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, "object/building/naboo/shared_ply_nboo_house_lg_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2123,13 +2160,14 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 7,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2671892606
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, 2671892606)
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, "object/building/naboo/shared_ply_nboo_house_m_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
@@ -2178,13 +2216,14 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2374056803
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, 2374056803)
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, "object/building/naboo/shared_ply_nboo_house_m_s02_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2233,13 +2272,14 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 3,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 146028409
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, 146028409)
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, "object/building/naboo/shared_ply_nboo_house_s_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2288,13 +2328,14 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 4,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 443864164
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, 443864164)
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, "object/building/naboo/shared_ply_nboo_house_s_s02_fp1.iff")
 
 object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_power_generator.apt",
@@ -2343,13 +2384,14 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2419077761
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_power_generator_naboo_theed, 2419077761)
+ObjectTemplates:addTemplate(object_building_naboo_shared_power_generator_naboo_theed, "object/building/naboo/shared_power_generator_naboo_theed.iff")
 
 object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2398,13 +2440,14 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 1,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4115268904
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_salon_corellia, 4115268904)
+ObjectTemplates:addTemplate(object_building_naboo_shared_salon_corellia, "object/building/naboo/shared_salon_corellia.iff")
 
 object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2453,13 +2496,14 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 1,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 135005575
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_salon_naboo, 135005575)
+ObjectTemplates:addTemplate(object_building_naboo_shared_salon_naboo, "object/building/naboo/shared_salon_naboo.iff")
 
 object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_shuttleport_s01.apt",
@@ -2480,7 +2524,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:shuttleport_naboo",
 
-	gameObjectType = 520,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "",
 
@@ -2508,13 +2552,14 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3818763165
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_shuttleport_naboo, 3818763165)
+ObjectTemplates:addTemplate(object_building_naboo_shared_shuttleport_naboo, "object/building/naboo/shared_shuttleport_naboo.iff")
 
 object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2535,7 +2580,7 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:starport_naboo",
 
-	gameObjectType = 520,
+	gameObjectType = 512,
 
 	interiorLayoutFileName = "interiorlayout/starport_naboo_interior.ilf",
 
@@ -2563,10 +2608,11 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 16,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1265259890
 }
 
-ObjectTemplates:addTemplate(object_building_naboo_shared_starport_naboo, 1265259890)
+ObjectTemplates:addTemplate(object_building_naboo_shared_starport_naboo, "object/building/naboo/shared_starport_naboo.iff")

@@ -77,10 +77,12 @@ object_draft_schematic_space_chassis_shared_awing = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4088349067
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_awing, 4088349067)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_awing, "object/draft_schematic/space/chassis/shared_awing.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s01 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1739966126
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s01, 1739966126)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s01, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s02 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3164761657
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s02, 3164761657)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s02, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s03 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4121889204
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s03, 4121889204)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s03, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s04 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 239870624
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s04, 239870624)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s04, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s04.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s01 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2076334324
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s01, 2076334324)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s01, "object/draft_schematic/space/chassis/shared_blacksun_light_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s02 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2698375267
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s02, 2698375267)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s02, "object/draft_schematic/space/chassis/shared_blacksun_light_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s03 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3923285998
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s03, 3923285998)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s03, "object/draft_schematic/space/chassis/shared_blacksun_light_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s04 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 305904890
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s04, 305904890)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s04, "object/draft_schematic/space/chassis/shared_blacksun_light_s04.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s01 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1149181177
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s01, 1149181177)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s01, "object/draft_schematic/space/chassis/shared_blacksun_medium_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s02 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2674439278
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s02, 2674439278)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s02, "object/draft_schematic/space/chassis/shared_blacksun_medium_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s03 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3596997603
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s03, 3596997603)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s03, "object/draft_schematic/space/chassis/shared_blacksun_medium_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s04 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 763820279
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s04, 763820279)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s04, "object/draft_schematic/space/chassis/shared_blacksun_medium_s04.iff")
 
 object_draft_schematic_space_chassis_shared_bwing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_space_chassis_shared_bwing = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3782189718
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_bwing, 3782189718)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_bwing, "object/draft_schematic/space/chassis/shared_bwing.iff")
 
 object_draft_schematic_space_chassis_shared_decimator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_space_chassis_shared_decimator = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 28631849
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_decimator, 28631849)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_decimator, "object/draft_schematic/space/chassis/shared_decimator.iff")
 
 object_draft_schematic_space_chassis_shared_firespray = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_space_chassis_shared_firespray = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1220046426
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_firespray, 1220046426)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_firespray, "object/draft_schematic/space/chassis/shared_firespray.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_heavy_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s01 = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2018297747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s01, 2018297747)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s01, "object/draft_schematic/space/chassis/shared_hutt_heavy_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_heavy_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s02 = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2740678404
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s02, 2740678404)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s02, "object/draft_schematic/space/chassis/shared_hutt_heavy_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_light_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_space_chassis_shared_hutt_light_s01 = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1681611209
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s01, 1681611209)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s01, "object/draft_schematic/space/chassis/shared_hutt_light_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_light_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_space_chassis_shared_hutt_light_s02 = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3207393630
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s02, 3207393630)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s02, "object/draft_schematic/space/chassis/shared_hutt_light_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_medium_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s01 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3374335796
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s01, 3374335796)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s01, "object/draft_schematic/space/chassis/shared_hutt_medium_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_medium_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s02 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 305655715
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s02, 305655715)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s02, "object/draft_schematic/space/chassis/shared_hutt_medium_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_turret_ship = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_space_chassis_shared_hutt_turret_ship = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1789657129
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_turret_ship, 1789657129)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_turret_ship, "object/draft_schematic/space/chassis/shared_hutt_turret_ship.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s01 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3565914279
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s01, 3565914279)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s01, "object/draft_schematic/space/chassis/shared_texture_kit_s01.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s02 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 261890096
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s02, 261890096)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s02, "object/draft_schematic/space/chassis/shared_texture_kit_s02.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s03 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1183926205
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s03, 1183926205)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s03, "object/draft_schematic/space/chassis/shared_texture_kit_s03.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s04 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3178392745
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s04, 3178392745)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s04, "object/draft_schematic/space/chassis/shared_texture_kit_s04.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s05 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4101966628
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s05, 4101966628)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s05, "object/draft_schematic/space/chassis/shared_texture_kit_s05.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_space_chassis_shared_texture_kit_s06 = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 795386803
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s06, 795386803)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s06, "object/draft_schematic/space/chassis/shared_texture_kit_s06.iff")
 
 object_draft_schematic_space_chassis_shared_tie_in = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,10 +1324,12 @@ object_draft_schematic_space_chassis_shared_tie_in = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2807324799
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_in, 2807324799)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_in, "object/draft_schematic/space/chassis/shared_tie_in.iff")
 
 object_draft_schematic_space_chassis_shared_tie_light_duty = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1307,10 +1367,12 @@ object_draft_schematic_space_chassis_shared_tie_light_duty = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2042083013
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_light_duty, 2042083013)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_light_duty, "object/draft_schematic/space/chassis/shared_tie_light_duty.iff")
 
 object_draft_schematic_space_chassis_shared_tieadvanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1348,10 +1410,12 @@ object_draft_schematic_space_chassis_shared_tieadvanced = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2726853665
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieadvanced, 2726853665)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieadvanced, "object/draft_schematic/space/chassis/shared_tieadvanced.iff")
 
 object_draft_schematic_space_chassis_shared_tieaggressor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,10 +1453,12 @@ object_draft_schematic_space_chassis_shared_tieaggressor = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 675255699
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieaggressor, 675255699)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieaggressor, "object/draft_schematic/space/chassis/shared_tieaggressor.iff")
 
 object_draft_schematic_space_chassis_shared_tiebomber = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1430,10 +1496,12 @@ object_draft_schematic_space_chassis_shared_tiebomber = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3922789724
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiebomber, 3922789724)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiebomber, "object/draft_schematic/space/chassis/shared_tiebomber.iff")
 
 object_draft_schematic_space_chassis_shared_tiefighter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1471,10 +1539,12 @@ object_draft_schematic_space_chassis_shared_tiefighter = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2781545168
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter, 2781545168)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter, "object/draft_schematic/space/chassis/shared_tiefighter.iff")
 
 object_draft_schematic_space_chassis_shared_tiefighter_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1512,10 +1582,12 @@ object_draft_schematic_space_chassis_shared_tiefighter_body = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1164496814
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter_body, 1164496814)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter_body, "object/draft_schematic/space/chassis/shared_tiefighter_body.iff")
 
 object_draft_schematic_space_chassis_shared_tieinterceptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1553,10 +1625,12 @@ object_draft_schematic_space_chassis_shared_tieinterceptor = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2195192561
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieinterceptor, 2195192561)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieinterceptor, "object/draft_schematic/space/chassis/shared_tieinterceptor.iff")
 
 object_draft_schematic_space_chassis_shared_tieoppressor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1594,10 +1668,12 @@ object_draft_schematic_space_chassis_shared_tieoppressor = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 653085701
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieoppressor, 653085701)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieoppressor, "object/draft_schematic/space/chassis/shared_tieoppressor.iff")
 
 object_draft_schematic_space_chassis_shared_xwing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1635,10 +1711,12 @@ object_draft_schematic_space_chassis_shared_xwing = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2544431877
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing, 2544431877)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing, "object/draft_schematic/space/chassis/shared_xwing.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1676,10 +1754,12 @@ object_draft_schematic_space_chassis_shared_xwing_body = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4124324408
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_body, 4124324408)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_body, "object/draft_schematic/space/chassis/shared_xwing_body.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_cockpit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1717,10 +1797,12 @@ object_draft_schematic_space_chassis_shared_xwing_cockpit = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1518980580
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_cockpit, 1518980580)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_cockpit, "object/draft_schematic/space/chassis/shared_xwing_cockpit.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_customization_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1758,10 +1840,12 @@ object_draft_schematic_space_chassis_shared_xwing_customization_kit = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2412810817
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_customization_kit, 2412810817)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_customization_kit, "object/draft_schematic/space/chassis/shared_xwing_customization_kit.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_wing_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,10 +1883,12 @@ object_draft_schematic_space_chassis_shared_xwing_wing_l = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 385814820
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_l, 385814820)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_l, "object/draft_schematic/space/chassis/shared_xwing_wing_l.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_wing_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1840,10 +1926,12 @@ object_draft_schematic_space_chassis_shared_xwing_wing_r = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1714050231
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_r, 1714050231)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_r, "object/draft_schematic/space/chassis/shared_xwing_wing_r.iff")
 
 object_draft_schematic_space_chassis_shared_ykl37r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1881,10 +1969,12 @@ object_draft_schematic_space_chassis_shared_ykl37r = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1171955086
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ykl37r, 1171955086)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ykl37r, "object/draft_schematic/space/chassis/shared_ykl37r.iff")
 
 object_draft_schematic_space_chassis_shared_yt1300 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1922,10 +2012,12 @@ object_draft_schematic_space_chassis_shared_yt1300 = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 654797812
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_yt1300, 654797812)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_yt1300, "object/draft_schematic/space/chassis/shared_yt1300.iff")
 
 object_draft_schematic_space_chassis_shared_ywing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1963,10 +2055,12 @@ object_draft_schematic_space_chassis_shared_ywing = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1705531747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing, 1705531747)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing, "object/draft_schematic/space/chassis/shared_ywing.iff")
 
 object_draft_schematic_space_chassis_shared_ywing_longprobe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2004,10 +2098,12 @@ object_draft_schematic_space_chassis_shared_ywing_longprobe = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3626101042
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing_longprobe, 3626101042)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing_longprobe, "object/draft_schematic/space/chassis/shared_ywing_longprobe.iff")
 
 object_draft_schematic_space_chassis_shared_z95 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2045,10 +2141,12 @@ object_draft_schematic_space_chassis_shared_z95 = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2357203295
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95, 2357203295)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95, "object/draft_schematic/space/chassis/shared_z95.iff")
 
 object_draft_schematic_space_chassis_shared_z95_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2086,10 +2184,12 @@ object_draft_schematic_space_chassis_shared_z95_body = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 646958322
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_body, 646958322)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_body, "object/draft_schematic/space/chassis/shared_z95_body.iff")
 
 object_draft_schematic_space_chassis_shared_z95_cockpit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2127,10 +2227,12 @@ object_draft_schematic_space_chassis_shared_z95_cockpit = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 160769152
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_cockpit, 160769152)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_cockpit, "object/draft_schematic/space/chassis/shared_z95_cockpit.iff")
 
 object_draft_schematic_space_chassis_shared_z95_wing_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2168,10 +2270,12 @@ object_draft_schematic_space_chassis_shared_z95_wing_l = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 446234966
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_l, 446234966)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_l, "object/draft_schematic/space/chassis/shared_z95_wing_l.iff")
 
 object_draft_schematic_space_chassis_shared_z95_wing_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2209,7 +2313,9 @@ object_draft_schematic_space_chassis_shared_z95_wing_r = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1783383237
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_r, 1783383237)
+ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_r, "object/draft_schematic/space/chassis/shared_z95_wing_r.iff")

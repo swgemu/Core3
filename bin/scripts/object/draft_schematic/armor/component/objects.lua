@@ -77,10 +77,12 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1792719503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, 1792719503)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, "object/draft_schematic/armor/component/shared_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 180189865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, 180189865)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, "object/draft_schematic/armor/component/shared_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3769957782
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, 3769957782)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, "object/draft_schematic/armor/component/shared_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2193465881
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, 2193465881)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4258794187
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, 4258794187)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, "object/draft_schematic/armor/component/shared_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3965303725
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, 3965303725)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 408400742
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, 408400742)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, "object/draft_schematic/armor/component/shared_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4175436808
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, 4175436808)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3228456823
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, 3228456823)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1540900933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, 1540900933)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, "object/draft_schematic/armor/component/shared_armor_layer_ris.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2919500503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, 2919500503)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, "object/draft_schematic/armor/component/shared_armor_layer_stun.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3177230385
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, 3177230385)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3571137786
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, 3571137786)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_particle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3523195897
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, 3523195897)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1075484439
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, 1075484439)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 831687516
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, 831687516)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_projector_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 951632989
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, 951632989)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1874931611
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, 1874931611)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 116196802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, 116196802)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3853478018
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, 3853478018)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 127633276
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, 127633276)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2561407663
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, 2561407663)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 690401981
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, 690401981)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 491529842
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, 491529842)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 812701172
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, 812701172)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1695390575
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, 1695390575)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,7 +1195,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2870976451
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, 2870976451)
+ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff")

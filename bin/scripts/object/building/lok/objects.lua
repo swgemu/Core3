@@ -88,13 +88,14 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 29,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1658229769
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_cave_03_nym_pirates, 1658229769)
+ObjectTemplates:addTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
 
 object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -143,13 +144,14 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 223465819
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_mining_cave_01, 223465819)
+ObjectTemplates:addTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
 
 object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,10 +200,11 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2289463992
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_nym_stronghold, 2289463992)
+ObjectTemplates:addTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")

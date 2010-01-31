@@ -85,13 +85,14 @@ object_tangible_wearables_dress_shared_dress_s05 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1838065175
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s05, 1838065175)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s05, "object/tangible/wearables/dress/shared_dress_s05.iff")
 
 object_tangible_wearables_dress_shared_dress_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s06_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_dress_shared_dress_s06 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3063484032
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s06, 3063484032)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s06, "object/tangible/wearables/dress/shared_dress_s06.iff")
 
 object_tangible_wearables_dress_shared_dress_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s07_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_dress_shared_dress_s07 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4287916301
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s07, 4287916301)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s07, "object/tangible/wearables/dress/shared_dress_s07.iff")
 
 object_tangible_wearables_dress_shared_dress_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s08_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_dress_shared_dress_s08 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1168000287
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s08, 1168000287)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s08, "object/tangible/wearables/dress/shared_dress_s08.iff")
 
 object_tangible_wearables_dress_shared_dress_s08_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s08_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_dress_shared_dress_s08_quest = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 368488984
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s08_quest, 368488984)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s08_quest, "object/tangible/wearables/dress/shared_dress_s08_quest.iff")
 
 object_tangible_wearables_dress_shared_dress_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s09_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_dress_shared_dress_s09 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 210969234
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s09, 210969234)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s09, "object/tangible/wearables/dress/shared_dress_s09.iff")
 
 object_tangible_wearables_dress_shared_dress_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s10_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_dress_shared_dress_s10 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 526339937
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s10, 526339937)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s10, "object/tangible/wearables/dress/shared_dress_s10.iff")
 
 object_tangible_wearables_dress_shared_dress_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s11_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_dress_shared_dress_s11 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1448225004
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s11, 1448225004)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s11, "object/tangible/wearables/dress/shared_dress_s11.iff")
 
 object_tangible_wearables_dress_shared_dress_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s12_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_dress_shared_dress_s12 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2370142331
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s12, 2370142331)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s12, "object/tangible/wearables/dress/shared_dress_s12.iff")
 
 object_tangible_wearables_dress_shared_dress_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s13_m.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_dress_shared_dress_s13 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3293112310
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s13, 3293112310)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s13, "object/tangible/wearables/dress/shared_dress_s13.iff")
 
 object_tangible_wearables_dress_shared_dress_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s14_f.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_dress_shared_dress_s14 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1068223714
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s14, 1068223714)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s14, "object/tangible/wearables/dress/shared_dress_s14.iff")
 
 object_tangible_wearables_dress_shared_dress_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s15_f.sat",
@@ -657,13 +668,14 @@ object_tangible_wearables_dress_shared_dress_s15 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1990634351
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s15, 1990634351)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s15, "object/tangible/wearables/dress/shared_dress_s15.iff")
 
 object_tangible_wearables_dress_shared_dress_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s16_f.sat",
@@ -709,13 +721,14 @@ object_tangible_wearables_dress_shared_dress_s16 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2914059256
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s16, 2914059256)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s16, "object/tangible/wearables/dress/shared_dress_s16.iff")
 
 object_tangible_wearables_dress_shared_dress_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s18_f.sat",
@@ -761,13 +774,14 @@ object_tangible_wearables_dress_shared_dress_s18 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1589004391
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s18, 1589004391)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s18, "object/tangible/wearables/dress/shared_dress_s18.iff")
 
 object_tangible_wearables_dress_shared_dress_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s19_f.sat",
@@ -813,13 +827,14 @@ object_tangible_wearables_dress_shared_dress_s19 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 398143466
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s19, 398143466)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s19, "object/tangible/wearables/dress/shared_dress_s19.iff")
 
 object_tangible_wearables_dress_shared_dress_s23 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s23_f.sat",
@@ -865,13 +880,14 @@ object_tangible_wearables_dress_shared_dress_s23 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3912298622
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s23, 3912298622)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s23, "object/tangible/wearables/dress/shared_dress_s23.iff")
 
 object_tangible_wearables_dress_shared_dress_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s26_f.sat",
@@ -917,13 +933,14 @@ object_tangible_wearables_dress_shared_dress_s26 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2160661616
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s26, 2160661616)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s26, "object/tangible/wearables/dress/shared_dress_s26.iff")
 
 object_tangible_wearables_dress_shared_dress_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s27_f.sat",
@@ -969,13 +986,14 @@ object_tangible_wearables_dress_shared_dress_s27 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3385095165
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s27, 3385095165)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s27, "object/tangible/wearables/dress/shared_dress_s27.iff")
 
 object_tangible_wearables_dress_shared_dress_s29 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s29_f.sat",
@@ -1021,13 +1039,14 @@ object_tangible_wearables_dress_shared_dress_s29 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 985872482
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s29, 985872482)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s29, "object/tangible/wearables/dress/shared_dress_s29.iff")
 
 object_tangible_wearables_dress_shared_dress_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s30_f.sat",
@@ -1073,13 +1092,14 @@ object_tangible_wearables_dress_shared_dress_s30 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 688870801
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s30, 688870801)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s30, "object/tangible/wearables/dress/shared_dress_s30.iff")
 
 object_tangible_wearables_dress_shared_dress_s31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s31_f.sat",
@@ -1125,13 +1145,14 @@ object_tangible_wearables_dress_shared_dress_s31 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1610756636
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s31, 1610756636)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s31, "object/tangible/wearables/dress/shared_dress_s31.iff")
 
 object_tangible_wearables_dress_shared_dress_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s32_f.sat",
@@ -1177,13 +1198,14 @@ object_tangible_wearables_dress_shared_dress_s32 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3138755211
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s32, 3138755211)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s32, "object/tangible/wearables/dress/shared_dress_s32.iff")
 
 object_tangible_wearables_dress_shared_dress_s33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s33_f.sat",
@@ -1229,13 +1251,14 @@ object_tangible_wearables_dress_shared_dress_s33 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4061723910
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s33, 4061723910)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s33, "object/tangible/wearables/dress/shared_dress_s33.iff")
 
 object_tangible_wearables_dress_shared_dress_s34 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s34_f.sat",
@@ -1281,13 +1304,14 @@ object_tangible_wearables_dress_shared_dress_s34 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 167499282
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s34, 167499282)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s34, "object/tangible/wearables/dress/shared_dress_s34.iff")
 
 object_tangible_wearables_dress_shared_dress_s35 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dress_s35_f.sat",
@@ -1333,13 +1357,14 @@ object_tangible_wearables_dress_shared_dress_s35 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1089909151
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s35, 1089909151)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_dress_s35, "object/tangible/wearables/dress/shared_dress_s35.iff")
 
 object_tangible_wearables_dress_shared_nightsister_dress = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_dress_s01.sat",
@@ -1385,10 +1410,11 @@ object_tangible_wearables_dress_shared_nightsister_dress = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 586837828
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_nightsister_dress, 586837828)
+ObjectTemplates:addTemplate(object_tangible_wearables_dress_shared_nightsister_dress, "object/tangible/wearables/dress/shared_nightsister_dress.iff")

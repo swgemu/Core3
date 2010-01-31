@@ -77,10 +77,12 @@ object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1732101595
 }
 
-ObjectTemplates:addTemplate(object_static_base_shared_static_base, 1732101595)
+ObjectTemplates:addTemplate(object_static_base_shared_static_base, "object/static/base/shared_static_base.iff")
 
 object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4025184
 }
 
-ObjectTemplates:addTemplate(object_static_base_shared_static_default, 4025184)
+ObjectTemplates:addTemplate(object_static_base_shared_static_default, "object/static/base/shared_static_default.iff")

@@ -86,6 +86,7 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	clientObjectCRC = 2110842690
 }
 
-ObjectTemplates:addTemplate(object_weapon_creature_shared_creature_default_weapon, 2110842690)
+ObjectTemplates:addTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")

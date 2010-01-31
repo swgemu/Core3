@@ -77,7 +77,9 @@ object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2890795531
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_base_shared_static_terrain_base, 2890795531)
+ObjectTemplates:addTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")

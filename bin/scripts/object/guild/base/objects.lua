@@ -77,10 +77,12 @@ object_guild_base_shared_base_guild = SharedGuildObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2854935626
 }
 
-ObjectTemplates:addTemplate(object_guild_base_shared_base_guild, 2854935626)
+ObjectTemplates:addTemplate(object_guild_base_shared_base_guild, "object/guild/base/shared_base_guild.iff")
 
 object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3744093888
 }
 
-ObjectTemplates:addTemplate(object_guild_base_shared_guild_default, 3744093888)
+ObjectTemplates:addTemplate(object_guild_base_shared_guild_default, "object/guild/base/shared_guild_default.iff")

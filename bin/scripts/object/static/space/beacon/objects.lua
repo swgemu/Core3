@@ -77,10 +77,12 @@ object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTe
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2175205203
 }
 
-ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_generator_01, 2175205203)
+ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_generator_01, "object/static/space/beacon/shared_hyperspace_generator_01.iff")
 
 object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spc_beacon_transport_route.apt",
@@ -118,7 +120,9 @@ object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjec
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2042724339
 }
 
-ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_route_beacon_01, 2042724339)
+ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_route_beacon_01, "object/static/space/beacon/shared_hyperspace_route_beacon_01.iff")

@@ -85,13 +85,14 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1099269046
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, 1099269046)
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -137,13 +138,14 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3561123970
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, 3561123970)
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -189,13 +191,14 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3749452237
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, 3749452237)
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -241,10 +244,11 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3271748526
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, 3271748526)
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")

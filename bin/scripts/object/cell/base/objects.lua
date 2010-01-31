@@ -58,7 +58,7 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 0,
+	gameObjectType = 11,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
@@ -77,10 +77,12 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3381216749
 }
 
-ObjectTemplates:addTemplate(object_cell_base_shared_base_cell, 3381216749)
+ObjectTemplates:addTemplate(object_cell_base_shared_base_cell, "object/cell/base/shared_base_cell.iff")
 
 object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 632406981
 }
 
-ObjectTemplates:addTemplate(object_cell_base_shared_cell_default, 632406981)
+ObjectTemplates:addTemplate(object_cell_base_shared_cell_default, "object/cell/base/shared_cell_default.iff")

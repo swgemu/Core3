@@ -77,10 +77,12 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2786092096
 }
 
-ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, 2786092096)
+ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, "object/static/dathomir/shared_dath_mistyfalls_waterfall1.iff")
 
 object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_dath_mistyfalls_waterfall2.prt",
@@ -118,7 +120,9 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2097663191
 }
 
-ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, 2097663191)
+ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, "object/static/dathomir/shared_dath_mistyfalls_waterfall2.iff")

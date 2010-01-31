@@ -77,10 +77,12 @@ object_draft_schematic_spices_shared_spice_booster_blue = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1461060097
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_booster_blue, 1461060097)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_booster_blue, "object/draft_schematic/spices/shared_spice_booster_blue.iff")
 
 object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3344700100
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_crash_n_burn, 3344700100)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_crash_n_burn, "object/draft_schematic/spices/shared_spice_crash_n_burn.iff")
 
 object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3232550663
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_droid_lube, 3232550663)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_droid_lube, "object/draft_schematic/spices/shared_spice_droid_lube.iff")
 
 object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3392956409
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_giggledust, 3392956409)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_giggledust, "object/draft_schematic/spices/shared_spice_giggledust.iff")
 
 object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3344628504
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_grey_gabaki, 3344628504)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_grey_gabaki, "object/draft_schematic/spices/shared_spice_grey_gabaki.iff")
 
 object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1606899928
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_gunjack, 1606899928)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_gunjack, "object/draft_schematic/spices/shared_spice_gunjack.iff")
 
 object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2071554224
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_muon_gold, 2071554224)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_muon_gold, "object/draft_schematic/spices/shared_spice_muon_gold.iff")
 
 object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1790064822
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_neutron_pixey, 1790064822)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_neutron_pixey, "object/draft_schematic/spices/shared_spice_neutron_pixey.iff")
 
 object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4245288866
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_pyrepenol, 4245288866)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_pyrepenol, "object/draft_schematic/spices/shared_spice_pyrepenol.iff")
 
 object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1617885526
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_scramjet, 1617885526)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_scramjet, "object/draft_schematic/spices/shared_spice_scramjet.iff")
 
 object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 811014949
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sedative_h4b, 811014949)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sedative_h4b, "object/draft_schematic/spices/shared_spice_sedative_h4b.iff")
 
 object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1734826910
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_shadowpaw, 1734826910)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_shadowpaw, "object/draft_schematic/spices/shared_spice_shadowpaw.iff")
 
 object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2224540196
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sweetblossom, 2224540196)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sweetblossom, "object/draft_schematic/spices/shared_spice_sweetblossom.iff")
 
 object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2661232828
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_thruster_head, 2661232828)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_thruster_head, "object/draft_schematic/spices/shared_spice_thruster_head.iff")
 
 object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,7 +679,9 @@ object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3906041259
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_yarrock, 3906041259)
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_yarrock, "object/draft_schematic/spices/shared_spice_yarrock.iff")

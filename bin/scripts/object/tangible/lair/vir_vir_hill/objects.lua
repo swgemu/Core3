@@ -85,10 +85,11 @@ object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2229387137
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill, 2229387137)
+ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill, "object/tangible/lair/vir_vir_hill/shared_lair_vir_vir_hill.iff")

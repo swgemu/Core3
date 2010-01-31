@@ -85,13 +85,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 33998203
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01, 33998203)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s01.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s02.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3641798124
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02, 3641798124)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s02.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s03.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2417756769
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03, 2417756769)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s03.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s04.sat",
@@ -241,13 +244,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1811882357
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04, 1811882357)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s04.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s05.sat",
@@ -293,13 +297,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 586303224
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05, 586303224)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s05.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s06.sat",
@@ -345,13 +350,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4192595567
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06, 4192595567)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s06.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s07.sat",
@@ -397,13 +403,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2968029666
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07, 2968029666)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s07.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s08.sat",
@@ -449,13 +456,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 182625776
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08, 182625776)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s08.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s09.sat",
@@ -501,13 +509,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1139786365
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09, 1139786365)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s09.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s10.sat",
@@ -553,13 +562,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1344515982
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10, 1344515982)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s10.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s11.sat",
@@ -605,13 +615,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 422496259
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11, 422496259)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s11.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s12.sat",
@@ -657,13 +668,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3258540180
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12, 3258540180)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s12.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s13.sat",
@@ -709,13 +721,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2335442713
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13, 2335442713)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s13.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s14.sat",
@@ -761,13 +774,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1893149709
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14, 1893149709)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s14.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s01.sat",
@@ -813,13 +827,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1363440697
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01, 1363440697)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s01.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s02.sat",
@@ -865,13 +880,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2320751790
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02, 2320751790)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s02.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s03.sat",
@@ -917,13 +933,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3277765411
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03, 3277765411)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s03.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s04.sat",
@@ -969,13 +986,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 951947319
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04, 951947319)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s04.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s05.sat",
@@ -1021,13 +1039,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1907423162
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05, 1907423162)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s05.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s06.sat",
@@ -1073,13 +1092,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2863095597
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06, 2863095597)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s06.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s07.sat",
@@ -1125,13 +1145,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3819583648
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07, 3819583648)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s07.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s08.sat",
@@ -1177,13 +1198,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1503663282
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08, 1503663282)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s08.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s09.sat",
@@ -1229,13 +1251,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 279802687
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09, 279802687)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s09.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s10.sat",
@@ -1281,13 +1304,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 56696524
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10, 56696524)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s10.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s11.sat",
@@ -1333,13 +1357,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1248622913
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11, 1248622913)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s11.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s12.sat",
@@ -1385,13 +1410,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2440810966
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12, 2440810966)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s12.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s13.sat",
@@ -1437,13 +1463,14 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3631658587
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13, 3631658587)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s13.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s14.sat",
@@ -1489,10 +1516,11 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 597007695
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14, 597007695)
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s14.iff")

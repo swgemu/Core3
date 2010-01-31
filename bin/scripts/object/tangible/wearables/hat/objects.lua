@@ -85,13 +85,14 @@ object_tangible_wearables_hat_shared_hat_chef_s01 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4237787733
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s01, 4237787733)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s01, "object/tangible/wearables/hat/shared_hat_chef_s01.iff")
 
 object_tangible_wearables_hat_shared_hat_chef_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s02_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_hat_shared_hat_chef_s02 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 662710978
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s02, 662710978)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s02, "object/tangible/wearables/hat/shared_hat_chef_s02.iff")
 
 object_tangible_wearables_hat_shared_hat_imp_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_imperial_s01_m.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_hat_shared_hat_imp_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1674058111
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_imp_s01, 1674058111)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_imp_s01, "object/tangible/wearables/hat/shared_hat_imp_s01.iff")
 
 object_tangible_wearables_hat_shared_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s02_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_hat_shared_hat_s02 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 522601046
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s02, 522601046)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s02, "object/tangible/wearables/hat/shared_hat_s02.iff")
 
 object_tangible_wearables_hat_shared_hat_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s04_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_hat_shared_hat_s04 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2915569359
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s04, 2915569359)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s04, "object/tangible/wearables/hat/shared_hat_s04.iff")
 
 object_tangible_wearables_hat_shared_hat_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s10_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_hat_shared_hat_s10 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2517925940
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s10, 2517925940)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s10, "object/tangible/wearables/hat/shared_hat_s10.iff")
 
 object_tangible_wearables_hat_shared_hat_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s12_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_hat_shared_hat_s12 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 68046638
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s12, 68046638)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s12, "object/tangible/wearables/hat/shared_hat_s12.iff")
 
 object_tangible_wearables_hat_shared_hat_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s13_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_hat_shared_hat_s13 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1292052643
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s13, 1292052643)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s13, "object/tangible/wearables/hat/shared_hat_s13.iff")
 
 object_tangible_wearables_hat_shared_hat_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s14_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_hat_shared_hat_s14 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3068134327
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s14, 3068134327)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s14, "object/tangible/wearables/hat/shared_hat_s14.iff")
 
 object_tangible_wearables_hat_shared_hat_twilek_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s01_f.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_hat_shared_hat_twilek_s01 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 305393881
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s01, 305393881)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s01, "object/tangible/wearables/hat/shared_hat_twilek_s01.iff")
 
 object_tangible_wearables_hat_shared_hat_twilek_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s02_f.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_hat_shared_hat_twilek_s02 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3374602318
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s02, 3374602318)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s02, "object/tangible/wearables/hat/shared_hat_twilek_s02.iff")
 
 object_tangible_wearables_hat_shared_hat_twilek_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s03_f.sat",
@@ -657,13 +668,14 @@ object_tangible_wearables_hat_shared_hat_twilek_s03 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2150186947
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s03, 2150186947)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s03, "object/tangible/wearables/hat/shared_hat_twilek_s03.iff")
 
 object_tangible_wearables_hat_shared_hat_twilek_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s04_f.sat",
@@ -709,13 +721,14 @@ object_tangible_wearables_hat_shared_hat_twilek_s04 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2076841175
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s04, 2076841175)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s04, "object/tangible/wearables/hat/shared_hat_twilek_s04.iff")
 
 object_tangible_wearables_hat_shared_hat_twilek_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s05_f.sat",
@@ -761,13 +774,14 @@ object_tangible_wearables_hat_shared_hat_twilek_s05 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 851931994
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s05, 851931994)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s05, "object/tangible/wearables/hat/shared_hat_twilek_s05.iff")
 
 object_tangible_wearables_hat_shared_nightsister_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s01.sat",
@@ -813,13 +827,14 @@ object_tangible_wearables_hat_shared_nightsister_hat_s01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3899232766
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s01, 3899232766)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s01, "object/tangible/wearables/hat/shared_nightsister_hat_s01.iff")
 
 object_tangible_wearables_hat_shared_nightsister_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s02.sat",
@@ -865,13 +880,14 @@ object_tangible_wearables_hat_shared_nightsister_hat_s02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 863910249
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s02, 863910249)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s02, "object/tangible/wearables/hat/shared_nightsister_hat_s02.iff")
 
 object_tangible_wearables_hat_shared_nightsister_hat_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s03.sat",
@@ -917,13 +933,14 @@ object_tangible_wearables_hat_shared_nightsister_hat_s03 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2054381284
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s03, 2054381284)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s03, "object/tangible/wearables/hat/shared_nightsister_hat_s03.iff")
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hat_s01.sat",
@@ -969,13 +986,14 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01 = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3818307792
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01, 3818307792)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01, "object/tangible/wearables/hat/shared_singing_mountain_clan_hat_s01.iff")
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hat_s02.sat",
@@ -1021,13 +1039,14 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02 = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 948004935
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02, 948004935)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02, "object/tangible/wearables/hat/shared_singing_mountain_clan_hat_s02.iff")
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_mask_s01.sat",
@@ -1073,10 +1092,11 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01 = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1653166773
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01, 1653166773)
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01, "object/tangible/wearables/hat/shared_singing_mountain_clan_mask_s01.iff")

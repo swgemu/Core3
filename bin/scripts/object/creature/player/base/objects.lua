@@ -105,6 +105,7 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
@@ -115,4 +116,4 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 957124474
 }
 
-ObjectTemplates:addTemplate(object_creature_player_base_shared_base_player, 957124474)
+ObjectTemplates:addTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")

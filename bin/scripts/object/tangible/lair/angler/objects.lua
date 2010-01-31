@@ -85,13 +85,14 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1988238968
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler, 1988238968)
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
 
 object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 20648312
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, 20648312)
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
 
 object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2297908648
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, 2297908648)
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
 
 object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3099411810
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, 3099411810)
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")

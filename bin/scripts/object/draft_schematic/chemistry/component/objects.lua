@@ -77,10 +77,12 @@ object_draft_schematic_chemistry_component_shared_biologic_effect_controller = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2661748357
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller, 2661748357)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller, "object/draft_schematic/chemistry/component/shared_biologic_effect_controller.iff")
 
 object_draft_schematic_chemistry_component_shared_biologic_effect_controller_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_chemistry_component_shared_biologic_effect_controller_adv
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 800746464
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller_advanced, 800746464)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller_advanced, "object/draft_schematic/chemistry/component/shared_biologic_effect_controller_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_dispersal_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_chemistry_component_shared_dispersal_mechanism = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 478830585
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism, 478830585)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism, "object/draft_schematic/chemistry/component/shared_dispersal_mechanism.iff")
 
 object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 830646641
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced, 830646641)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced, "object/draft_schematic/chemistry/component/shared_dispersal_mechanism_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_dye_clothing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_chemistry_component_shared_dye_clothing = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1655499039
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_clothing, 1655499039)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_clothing, "object/draft_schematic/chemistry/component/shared_dye_clothing.iff")
 
 object_draft_schematic_chemistry_component_shared_dye_hair = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_chemistry_component_shared_dye_hair = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3869282426
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_hair, 3869282426)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_hair, "object/draft_schematic/chemistry/component/shared_dye_hair.iff")
 
 object_draft_schematic_chemistry_component_shared_infection_amplifier = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_chemistry_component_shared_infection_amplifier = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3761672459
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier, 3761672459)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier, "object/draft_schematic/chemistry/component/shared_infection_amplifier.iff")
 
 object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 878631490
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced, 878631490)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced, "object/draft_schematic/chemistry/component/shared_infection_amplifier_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2319984747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension, 2319984747)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension, "object/draft_schematic/chemistry/component/shared_liquid_delivery_suspension.iff")
 
 object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_adv
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3383554373
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_advanced, 3383554373)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_advanced, "object/draft_schematic/chemistry/component/shared_liquid_delivery_suspension_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_release_mechanism_duration = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_chemistry_component_shared_release_mechanism_duration = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 756180985
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration, 756180985)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration, "object/draft_schematic/chemistry/component/shared_release_mechanism_duration.iff")
 
 object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_chemistry_component_shared_release_mechanism_duration_adv
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3061218995
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced, 3061218995)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced, "object/draft_schematic/chemistry/component/shared_release_mechanism_duration_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_resilience_compound = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_chemistry_component_shared_resilience_compound = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4214515751
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound, 4214515751)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound, "object/draft_schematic/chemistry/component/shared_resilience_compound.iff")
 
 object_draft_schematic_chemistry_component_shared_resilience_compound_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_chemistry_component_shared_resilience_compound_advanced =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1897418306
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound_advanced, 1897418306)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound_advanced, "object/draft_schematic/chemistry/component/shared_resilience_compound_advanced.iff")
 
 object_draft_schematic_chemistry_component_shared_solid_delivery_shell = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_chemistry_component_shared_solid_delivery_shell = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3674074652
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell, 3674074652)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell, "object/draft_schematic/chemistry/component/shared_solid_delivery_shell.iff")
 
 object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,7 +722,9 @@ object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1535549193
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced, 1535549193)
+ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced, "object/draft_schematic/chemistry/component/shared_solid_delivery_shell_advanced.iff")

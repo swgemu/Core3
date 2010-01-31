@@ -85,13 +85,14 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2758659354
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, 2758659354)
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2456561117
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, 2456561117)
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1635796730
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, 1635796730)
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff")

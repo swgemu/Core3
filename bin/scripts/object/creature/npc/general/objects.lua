@@ -105,6 +105,7 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -115,4 +116,4 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2389040637
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_general_shared_skill_trainer, 2389040637)
+ObjectTemplates:addTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")

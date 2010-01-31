@@ -85,13 +85,14 @@ object_tangible_component_droid_shared_advanced_droid_frame = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3744416781
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_advanced_droid_frame, 3744416781)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_advanced_droid_frame, "object/tangible/component/droid/shared_advanced_droid_frame.iff")
 
 object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -137,13 +138,14 @@ object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1402137071
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_1, 1402137071)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_1, "object/tangible/component/droid/shared_armor_module_1.iff")
 
 object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -189,13 +191,14 @@ object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2290434424
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_2, 2290434424)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_2, "object/tangible/component/droid/shared_armor_module_2.iff")
 
 object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -241,13 +244,14 @@ object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3246925557
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_3, 3246925557)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_3, "object/tangible/component/droid/shared_armor_module_3.iff")
 
 object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -293,13 +297,14 @@ object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 980094433
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_4, 980094433)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_4, "object/tangible/component/droid/shared_armor_module_4.iff")
 
 object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -345,13 +350,14 @@ object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1936091756
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_5, 1936091756)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_5, "object/tangible/component/droid/shared_armor_module_5.iff")
 
 object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -397,13 +403,14 @@ object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2826027771
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_6, 2826027771)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_6, "object/tangible/component/droid/shared_armor_module_6.iff")
 
 object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -449,13 +456,14 @@ object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 832469141
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_base, 832469141)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_base, "object/tangible/component/droid/shared_armor_module_base.iff")
 
 object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -501,13 +509,14 @@ object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 262408920
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_auto_repair_module, 262408920)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_auto_repair_module, "object/tangible/component/droid/shared_auto_repair_module.iff")
 
 object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -553,13 +562,14 @@ object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3300613134
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, 3300613134)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff")
 
 object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -605,13 +615,14 @@ object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3671008634
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_module, 3671008634)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_module, "object/tangible/component/droid/shared_combat_module.iff")
 
 object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -657,13 +668,14 @@ object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 181867093
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_socket_bank, 181867093)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_socket_bank, "object/tangible/component/droid/shared_combat_socket_bank.iff")
 
 object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -709,13 +721,14 @@ object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2404931840
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_base, 2404931840)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_base, "object/tangible/component/droid/shared_crafting_module_base.iff")
 
 object_tangible_component_droid_shared_crafting_module_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -761,13 +774,14 @@ object_tangible_component_droid_shared_crafting_module_clothing = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1487860845
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_clothing, 1487860845)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_clothing, "object/tangible/component/droid/shared_crafting_module_clothing.iff")
 
 object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -813,13 +827,14 @@ object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2075775538
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_food, 2075775538)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_food, "object/tangible/component/droid/shared_crafting_module_food.iff")
 
 object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -865,13 +880,14 @@ object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1790293285
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_space, 1790293285)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_space, "object/tangible/component/droid/shared_crafting_module_space.iff")
 
 object_tangible_component_droid_shared_crafting_module_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -917,13 +933,14 @@ object_tangible_component_droid_shared_crafting_module_structure = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3924145529
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_structure, 3924145529)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_structure, "object/tangible/component/droid/shared_crafting_module_structure.iff")
 
 object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -969,13 +986,14 @@ object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 226757157
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_weapon, 226757157)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_weapon, "object/tangible/component/droid/shared_crafting_module_weapon.iff")
 
 object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1021,13 +1039,14 @@ object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1611774846
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_1, 1611774846)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_1, "object/tangible/component/droid/shared_data_storage_module_1.iff")
 
 object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1073,13 +1092,14 @@ object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3137737705
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_2, 3137737705)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_2, "object/tangible/component/droid/shared_data_storage_module_2.iff")
 
 object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1125,13 +1145,14 @@ object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4060836964
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_3, 4060836964)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_3, "object/tangible/component/droid/shared_data_storage_module_3.iff")
 
 object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1177,13 +1198,14 @@ object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 166223728
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_4, 166223728)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_4, "object/tangible/component/droid/shared_data_storage_module_4.iff")
 
 object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1229,13 +1251,14 @@ object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1088764157
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_5, 1088764157)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_5, "object/tangible/component/droid/shared_data_storage_module_5.iff")
 
 object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1281,13 +1304,14 @@ object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2616365162
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_6, 2616365162)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_6, "object/tangible/component/droid/shared_data_storage_module_6.iff")
 
 object_tangible_component_droid_shared_data_storage_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1333,13 +1357,14 @@ object_tangible_component_droid_shared_data_storage_module_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 85639854
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_base, 85639854)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_base, "object/tangible/component/droid/shared_data_storage_module_base.iff")
 
 object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1385,13 +1410,14 @@ object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2559519879
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_defensive_module_base, 2559519879)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_defensive_module_base, "object/tangible/component/droid/shared_defensive_module_base.iff")
 
 object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1275393519
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_detonation_module, 1275393519)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_detonation_module, "object/tangible/component/droid/shared_detonation_module.iff")
 
 object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1489,13 +1516,14 @@ object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4221279122
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain, 4221279122)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain, "object/tangible/component/droid/shared_droid_brain.iff")
 
 object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1541,13 +1569,14 @@ object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1341617238
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain_advanced, 1341617238)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain_advanced, "object/tangible/component/droid/shared_droid_brain_advanced.iff")
 
 object_tangible_component_droid_shared_droid_combat_service_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1593,13 +1622,14 @@ object_tangible_component_droid_shared_droid_combat_service_module_base = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3225311396
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, 3225311396)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, "object/tangible/component/droid/shared_droid_combat_service_module_base.iff")
 
 object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1645,13 +1675,14 @@ object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3837390071
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, 3837390071)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, "object/tangible/component/droid/shared_droid_interplanetary_survey.iff")
 
 object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -1697,13 +1728,14 @@ object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3558171946
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system, 3558171946)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system, "object/tangible/component/droid/shared_droid_motive_system.iff")
 
 object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -1749,13 +1781,14 @@ object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3082446118
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, 3082446118)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, "object/tangible/component/droid/shared_droid_motive_system_advanced.iff")
 
 object_tangible_component_droid_shared_droid_service_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1801,13 +1834,14 @@ object_tangible_component_droid_shared_droid_service_module_base = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2856991975
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_service_module_base, 2856991975)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_service_module_base, "object/tangible/component/droid/shared_droid_service_module_base.iff")
 
 object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1853,13 +1887,14 @@ object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3107140233
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_storage_compartment, 3107140233)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_storage_compartment, "object/tangible/component/droid/shared_droid_storage_compartment.iff")
 
 object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1905,13 +1940,14 @@ object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 55086414
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module, 55086414)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module, "object/tangible/component/droid/shared_harvest_module.iff")
 
 object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1957,13 +1993,14 @@ object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3831537892
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module_base, 3831537892)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module_base, "object/tangible/component/droid/shared_harvest_module_base.iff")
 
 object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2009,13 +2046,14 @@ object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3060963086
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_1, 3060963086)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_1, "object/tangible/component/droid/shared_item_storage_module_1.iff")
 
 object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2061,13 +2099,14 @@ object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1835351961
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_2, 1835351961)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_2, "object/tangible/component/droid/shared_item_storage_module_2.iff")
 
 object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2113,13 +2152,14 @@ object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 610818068
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_3, 610818068)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_3, "object/tangible/component/droid/shared_item_storage_module_3.iff")
 
 object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2165,13 +2205,14 @@ object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3750458112
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_4, 3750458112)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_4, "object/tangible/component/droid/shared_item_storage_module_4.iff")
 
 object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2217,13 +2258,14 @@ object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2525369485
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_5, 2525369485)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_5, "object/tangible/component/droid/shared_item_storage_module_5.iff")
 
 object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2269,13 +2311,14 @@ object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1301396506
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_6, 1301396506)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_6, "object/tangible/component/droid/shared_item_storage_module_6.iff")
 
 object_tangible_component_droid_shared_item_storage_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2321,13 +2364,14 @@ object_tangible_component_droid_shared_item_storage_module_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1210035121
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_base, 1210035121)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_base, "object/tangible/component/droid/shared_item_storage_module_base.iff")
 
 object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -2373,13 +2417,14 @@ object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1573291172
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, 1573291172)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, "object/tangible/component/droid/shared_le_repair_droid_chassis.iff")
 
 object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2425,13 +2470,14 @@ object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1333622407
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm, 1333622407)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm, "object/tangible/component/droid/shared_manipulator_arm.iff")
 
 object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2477,13 +2523,14 @@ object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 295096971
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, 295096971)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, "object/tangible/component/droid/shared_manipulator_arm_package_set.iff")
 
 object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2529,13 +2576,14 @@ object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3818431431
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_1, 3818431431)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_1, "object/tangible/component/droid/shared_medic_module_1.iff")
 
 object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2581,13 +2629,14 @@ object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 948898640
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_2, 948898640)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_2, "object/tangible/component/droid/shared_medic_module_2.iff")
 
 object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2633,13 +2682,14 @@ object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1904372957
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_3, 1904372957)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_3, "object/tangible/component/droid/shared_medic_module_3.iff")
 
 object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2685,13 +2735,14 @@ object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2321631177
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_4, 2321631177)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_4, "object/tangible/component/droid/shared_medic_module_4.iff")
 
 object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2737,13 +2788,14 @@ object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3278643268
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_5, 3278643268)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_5, "object/tangible/component/droid/shared_medic_module_5.iff")
 
 object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2789,13 +2841,14 @@ object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 410749139
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_6, 410749139)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_6, "object/tangible/component/droid/shared_medic_module_6.iff")
 
 object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2841,13 +2894,14 @@ object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3806402681
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_base, 3806402681)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_base, "object/tangible/component/droid/shared_medic_module_base.iff")
 
 object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -2893,13 +2947,14 @@ object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3094537787
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_barker, 3094537787)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_barker, "object/tangible/component/droid/shared_merchant_barker.iff")
 
 object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2945,13 +3000,14 @@ object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 246819840
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_base, 246819840)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_base, "object/tangible/component/droid/shared_merchant_base.iff")
 
 object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
@@ -2997,13 +3053,14 @@ object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2364795143
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_p0_droid_chassis, 2364795143)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_p0_droid_chassis, "object/tangible/component/droid/shared_p0_droid_chassis.iff")
 
 object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3049,13 +3106,14 @@ object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2350039140
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_a, 2350039140)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_a, "object/tangible/component/droid/shared_performer_effects_a.iff")
 
 object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3101,13 +3159,14 @@ object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 864794171
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_aa, 864794171)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_aa, "object/tangible/component/droid/shared_performer_effects_aa.iff")
 
 object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3153,13 +3212,14 @@ object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1459972339
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_b, 1459972339)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_b, "object/tangible/component/droid/shared_performer_effects_b.iff")
 
 object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3205,13 +3265,14 @@ object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 503844734
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_c, 503844734)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_c, "object/tangible/component/droid/shared_performer_effects_c.iff")
 
 object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3257,13 +3318,14 @@ object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3857392746
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_d, 3857392746)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_d, "object/tangible/component/droid/shared_performer_effects_d.iff")
 
 object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3309,13 +3371,14 @@ object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2900771815
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_e, 2900771815)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_e, "object/tangible/component/droid/shared_performer_effects_e.iff")
 
 object_tangible_component_droid_shared_personality_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -3361,13 +3424,14 @@ object_tangible_component_droid_shared_personality_module_base = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1069945063
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_base, 1069945063)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_base, "object/tangible/component/droid/shared_personality_module_base.iff")
 
 object_tangible_component_droid_shared_personality_module_geek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3413,13 +3477,14 @@ object_tangible_component_droid_shared_personality_module_geek = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 671855097
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_geek, 671855097)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_geek, "object/tangible/component/droid/shared_personality_module_geek.iff")
 
 object_tangible_component_droid_shared_personality_module_prissy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3465,13 +3530,14 @@ object_tangible_component_droid_shared_personality_module_prissy = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3491692659
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_prissy, 3491692659)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_prissy, "object/tangible/component/droid/shared_personality_module_prissy.iff")
 
 object_tangible_component_droid_shared_personality_module_sarcastic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3517,13 +3583,14 @@ object_tangible_component_droid_shared_personality_module_sarcastic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1046791817
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, 1046791817)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, "object/tangible/component/droid/shared_personality_module_sarcastic.iff")
 
 object_tangible_component_droid_shared_personality_module_slang = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3569,13 +3636,14 @@ object_tangible_component_droid_shared_personality_module_slang = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1711429491
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_slang, 1711429491)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_slang, "object/tangible/component/droid/shared_personality_module_slang.iff")
 
 object_tangible_component_droid_shared_personality_module_stupid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3621,13 +3689,14 @@ object_tangible_component_droid_shared_personality_module_stupid = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1083621645
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_stupid, 1083621645)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_stupid, "object/tangible/component/droid/shared_personality_module_stupid.iff")
 
 object_tangible_component_droid_shared_personality_module_worshipful = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3673,13 +3742,14 @@ object_tangible_component_droid_shared_personality_module_worshipful = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3187389726
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_worshipful, 3187389726)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_worshipful, "object/tangible/component/droid/shared_personality_module_worshipful.iff")
 
 object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3725,13 +3795,14 @@ object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2859558728
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_playback_module, 2859558728)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_playback_module, "object/tangible/component/droid/shared_playback_module.iff")
 
 object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
@@ -3777,13 +3848,14 @@ object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 498496861
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_probot_droid_chassis, 498496861)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_probot_droid_chassis, "object/tangible/component/droid/shared_probot_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -3829,13 +3901,14 @@ object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4039239193
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r2_droid_chassis, 4039239193)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r2_droid_chassis, "object/tangible/component/droid/shared_r2_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -3881,13 +3954,14 @@ object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4208619072
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r3_droid_chassis, 4208619072)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r3_droid_chassis, "object/tangible/component/droid/shared_r3_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -3933,13 +4007,14 @@ object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3432568783
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r4_droid_chassis, 3432568783)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r4_droid_chassis, "object/tangible/component/droid/shared_r4_droid_chassis.iff")
 
 object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -3985,13 +4060,14 @@ object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2786060955
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_repair_module, 2786060955)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_repair_module, "object/tangible/component/droid/shared_repair_module.iff")
 
 object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4037,13 +4113,14 @@ object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4157404831
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_sensor_package_droid, 4157404831)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_sensor_package_droid, "object/tangible/component/droid/shared_sensor_package_droid.iff")
 
 object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4089,13 +4166,14 @@ object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3701424953
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_socket_bank, 3701424953)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_socket_bank, "object/tangible/component/droid/shared_socket_bank.iff")
 
 object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s02.apt",
@@ -4141,13 +4219,14 @@ object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1691889339
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_stimpack_dispensor, 1691889339)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_stimpack_dispensor, "object/tangible/component/droid/shared_stimpack_dispensor.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4193,13 +4272,14 @@ object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1728777315
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_1, 1728777315)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_1, "object/tangible/component/droid/shared_struct_maint_module_1.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4245,13 +4325,14 @@ object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3155993844
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_2, 3155993844)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_2, "object/tangible/component/droid/shared_struct_maint_module_2.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4297,13 +4378,14 @@ object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4111582073
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_3, 4111582073)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_3, "object/tangible/component/droid/shared_struct_maint_module_3.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -4349,13 +4431,14 @@ object_tangible_component_droid_shared_struct_maint_module_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2223185422
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_base, 2223185422)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_base, "object/tangible/component/droid/shared_struct_maint_module_base.iff")
 
 object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -4401,13 +4484,14 @@ object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2925064047
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, 2925064047)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, "object/tangible/component/droid/shared_surgical_droid_chassis.iff")
 
 object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4453,13 +4537,14 @@ object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3443959311
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module, 3443959311)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module, "object/tangible/component/droid/shared_trap_module.iff")
 
 object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -4505,10 +4590,11 @@ object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2178596494
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module_base, 2178596494)
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module_base, "object/tangible/component/droid/shared_trap_module_base.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1819099855
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, 1819099855)
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, "object/tangible/lair/malkloc/shared_lair_malkloc.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3825333189
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, 3825333189)
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3488232768
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, 3488232768)
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 377228821
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, 377228821)
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff")

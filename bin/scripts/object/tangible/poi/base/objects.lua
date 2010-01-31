@@ -85,13 +85,14 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2572869140
 }
 
-ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base, 2572869140)
+ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base, "object/tangible/poi/base/shared_poi_base.iff")
 
 object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -137,10 +138,11 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 165055566
 }
 
-ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base_nosnap, 165055566)
+ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base_nosnap, "object/tangible/poi/base/shared_poi_base_nosnap.iff")

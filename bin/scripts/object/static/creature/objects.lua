@@ -77,10 +77,12 @@ object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2705862416
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_bageraset, 2705862416)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_bageraset, "object/static/creature/shared_corellia_bageraset.iff")
 
 object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
@@ -118,10 +120,12 @@ object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 477184105
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_carrion_spat, 477184105)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_carrion_spat, "object/static/creature/shared_corellia_carrion_spat.iff")
 
 object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake.sat",
@@ -159,10 +163,12 @@ object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2747990145
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_dalyrake, 2747990145)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_dalyrake, "object/static/creature/shared_corellia_dalyrake.iff")
 
 object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
@@ -200,10 +206,12 @@ object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3048728047
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_durni, 3048728047)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_durni, "object/static/creature/shared_corellia_durni.iff")
 
 object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gulginaw_hue.sat",
@@ -241,10 +249,12 @@ object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2954563063
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_gulingaw, 2954563063)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_gulingaw, "object/static/creature/shared_corellia_gulingaw.iff")
 
 object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
@@ -282,10 +292,12 @@ object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2683543667
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_krahbu, 2683543667)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_krahbu, "object/static/creature/shared_corellia_krahbu.iff")
 
 object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
@@ -323,10 +335,12 @@ object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2344476589
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_murra, 2344476589)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_murra, "object/static/creature/shared_corellia_murra.iff")
 
 object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
@@ -364,10 +378,12 @@ object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1375326208
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_paralope, 1375326208)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_paralope, "object/static/creature/shared_corellia_paralope.iff")
 
 object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
@@ -405,10 +421,12 @@ object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3137870482
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_slice_hound, 3137870482)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_slice_hound, "object/static/creature/shared_corellia_slice_hound.iff")
 
 object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
@@ -446,10 +464,12 @@ object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4063038895
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_corellia_wrix, 4063038895)
+ObjectTemplates:addTemplate(object_static_creature_shared_corellia_wrix, "object/static/creature/shared_corellia_wrix.iff")
 
 object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
@@ -487,10 +507,12 @@ object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 854757845
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_bol, 854757845)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_bol, "object/static/creature/shared_dantooine_bol.iff")
 
 object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/huurton.sat",
@@ -528,10 +550,12 @@ object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1931905486
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_huurton, 1931905486)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_huurton, "object/static/creature/shared_dantooine_huurton.iff")
 
 object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
@@ -569,10 +593,12 @@ object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2303273158
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_picket, 2303273158)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_picket, "object/static/creature/shared_dantooine_picket.iff")
 
 object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/quenker.sat",
@@ -610,10 +636,12 @@ object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2156453868
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_quenker, 2156453868)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_quenker, "object/static/creature/shared_dantooine_quenker.iff")
 
 object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
@@ -651,10 +679,12 @@ object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3211038446
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_thune, 3211038446)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_thune, "object/static/creature/shared_dantooine_thune.iff")
 
 object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/voritor_lizard_hue.sat",
@@ -692,10 +722,12 @@ object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2989515482
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_voritor_lizard, 2989515482)
+ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_voritor_lizard, "object/static/creature/shared_dantooine_voritor_lizard.iff")
 
 object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/baz_nitch.sat",
@@ -733,10 +765,12 @@ object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3739778750
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_baz_nitch, 3739778750)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_baz_nitch, "object/static/creature/shared_dathomir_baz_nitch.iff")
 
 object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
@@ -774,10 +808,12 @@ object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2130373686
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_bolma, 2130373686)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_bolma, "object/static/creature/shared_dathomir_bolma.iff")
 
 object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
@@ -815,10 +851,12 @@ object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 148699511
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_brackaset, 148699511)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_brackaset, "object/static/creature/shared_dathomir_brackaset.iff")
 
 object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gaping_spider.sat",
@@ -856,10 +894,12 @@ object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2407684045
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_gaping_spider, 2407684045)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_gaping_spider, "object/static/creature/shared_dathomir_gaping_spider.iff")
 
 object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
@@ -897,10 +937,12 @@ object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2475425069
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_kwi, 2475425069)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_kwi, "object/static/creature/shared_dathomir_kwi.iff")
 
 object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/purbole.sat",
@@ -938,10 +980,12 @@ object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1615874421
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_purbole, 1615874421)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_purbole, "object/static/creature/shared_dathomir_purbole.iff")
 
 object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
@@ -979,10 +1023,12 @@ object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1734426995
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_rancor, 1734426995)
+ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_rancor, "object/static/creature/shared_dathomir_rancor.iff")
 
 object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -1020,10 +1066,12 @@ object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 634197524
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_21b_medical, 634197524)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_21b_medical, "object/static/creature/shared_droids_21b_medical.iff")
 
 object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -1061,10 +1109,12 @@ object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3764580571
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_c118, 3764580571)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_c118, "object/static/creature/shared_droids_c118.iff")
 
 object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1102,10 +1152,12 @@ object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1268246832
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_dz70, 1268246832)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_dz70, "object/static/creature/shared_droids_dz70.iff")
 
 object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -1143,10 +1195,12 @@ object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3476817295
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_eg6, 3476817295)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_eg6, "object/static/creature/shared_droids_eg6.iff")
 
 object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ito.sat",
@@ -1184,10 +1238,12 @@ object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 470452239
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_imperial_it0, 470452239)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_imperial_it0, "object/static/creature/shared_droids_imperial_it0.iff")
 
 object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -1225,10 +1281,12 @@ object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1273875386
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_le_repair, 1273875386)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_le_repair, "object/static/creature/shared_droids_le_repair.iff")
 
 object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/lin_demolition.sat",
@@ -1266,10 +1324,12 @@ object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3987492608
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_lin_demolition, 3987492608)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_lin_demolition, "object/static/creature/shared_droids_lin_demolition.iff")
 
 object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
@@ -1307,10 +1367,12 @@ object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1766014260
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_mse_droid, 1766014260)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_mse_droid, "object/static/creature/shared_droids_mse_droid.iff")
 
 object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
@@ -1348,10 +1410,12 @@ object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3769609842
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_protocol_droid_gold, 3769609842)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_protocol_droid_gold, "object/static/creature/shared_droids_protocol_droid_gold.iff")
 
 object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -1389,10 +1453,12 @@ object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1386398217
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2, 1386398217)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2, "object/static/creature/shared_droids_r2.iff")
 
 object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2_waiter_s1.sat",
@@ -1430,10 +1496,12 @@ object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 74591773
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2_waiter, 74591773)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2_waiter, "object/static/creature/shared_droids_r2_waiter.iff")
 
 object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
@@ -1471,10 +1539,12 @@ object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2839669021
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_droids_r5, 2839669021)
+ObjectTemplates:addTemplate(object_static_creature_shared_droids_r5, "object/static/creature/shared_droids_r5.iff")
 
 object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
@@ -1512,10 +1582,12 @@ object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4031936600
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_arachne, 4031936600)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_arachne, "object/static/creature/shared_endor_arachne.iff")
 
 object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
@@ -1553,10 +1625,12 @@ object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2777768022
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_blurrg, 2777768022)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_blurrg, "object/static/creature/shared_endor_blurrg.iff")
 
 object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf.sat",
@@ -1594,10 +1668,12 @@ object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2997015768
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_boar_wolf, 2997015768)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_boar_wolf, "object/static/creature/shared_endor_boar_wolf.iff")
 
 object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolma.sat",
@@ -1635,10 +1711,12 @@ object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4030049897
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_bolma, 4030049897)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_bolma, "object/static/creature/shared_endor_bolma.iff")
 
 object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
@@ -1676,10 +1754,12 @@ object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 153161597
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_bordok, 153161597)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_bordok, "object/static/creature/shared_endor_bordok.iff")
 
 object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
@@ -1717,10 +1797,12 @@ object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1525067606
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_gurrek, 1525067606)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_gurrek, "object/static/creature/shared_endor_gurrek.iff")
 
 object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/roba.sat",
@@ -1758,10 +1840,12 @@ object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3844520985
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_endor_roba, 3844520985)
+ObjectTemplates:addTemplate(object_static_creature_shared_endor_roba, "object/static/creature/shared_endor_roba.iff")
 
 object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/at_st.sat",
@@ -1799,10 +1883,12 @@ object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3191722300
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_imperial_at_st, 3191722300)
+ObjectTemplates:addTemplate(object_static_creature_shared_imperial_at_st, "object/static/creature/shared_imperial_at_st.iff")
 
 object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurk_hue.sat",
@@ -1840,10 +1926,12 @@ object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 315951279
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurk, 315951279)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurk, "object/static/creature/shared_lok_gurk.iff")
 
 object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
@@ -1881,10 +1969,12 @@ object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4271066089
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurnaset, 4271066089)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurnaset, "object/static/creature/shared_lok_gurnaset.iff")
 
 object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
@@ -1922,10 +2012,12 @@ object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3580345318
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_kusak, 3580345318)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_kusak, "object/static/creature/shared_lok_kusak.iff")
 
 object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch.sat",
@@ -1963,10 +2055,12 @@ object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2773469649
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_langlatch, 2773469649)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_langlatch, "object/static/creature/shared_lok_langlatch.iff")
 
 object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pharple.sat",
@@ -2004,10 +2098,12 @@ object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 357241664
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_pharple, 357241664)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_pharple, "object/static/creature/shared_lok_pharple.iff")
 
 object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
@@ -2045,10 +2141,12 @@ object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1617735804
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_snorbal, 1617735804)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_snorbal, "object/static/creature/shared_lok_snorbal.iff")
 
 object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/vesp.sat",
@@ -2086,10 +2184,12 @@ object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 14297223
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_lok_vesp, 14297223)
+ObjectTemplates:addTemplate(object_static_creature_shared_lok_vesp, "object/static/creature/shared_lok_vesp.iff")
 
 object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
@@ -2127,10 +2227,12 @@ object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1767558298
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_bolle_bol, 1767558298)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_bolle_bol, "object/static/creature/shared_naboo_bolle_bol.iff")
 
 object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
@@ -2168,10 +2270,12 @@ object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 226349579
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_falumpaset, 226349579)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_falumpaset, "object/static/creature/shared_naboo_falumpaset.iff")
 
 object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
@@ -2209,10 +2313,12 @@ object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2354504429
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_fambaa, 2354504429)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_fambaa, "object/static/creature/shared_naboo_fambaa.iff")
 
 object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
@@ -2250,10 +2356,12 @@ object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1571631502
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_gualama, 1571631502)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_gualama, "object/static/creature/shared_naboo_gualama.iff")
 
 object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
@@ -2291,10 +2399,12 @@ object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2364724606
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_kaadu, 2364724606)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_kaadu, "object/static/creature/shared_naboo_kaadu.iff")
 
 object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shaupaut.sat",
@@ -2332,10 +2442,12 @@ object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1920843509
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_shaupaut, 1920843509)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_shaupaut, "object/static/creature/shared_naboo_shaupaut.iff")
 
 object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
@@ -2373,10 +2485,12 @@ object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3593979400
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_tusk_cat, 3593979400)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_tusk_cat, "object/static/creature/shared_naboo_tusk_cat.iff")
 
 object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/veermok.sat",
@@ -2414,10 +2528,12 @@ object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3885148339
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_naboo_veermok, 3885148339)
+ObjectTemplates:addTemplate(object_static_creature_shared_naboo_veermok, "object/static/creature/shared_naboo_veermok.iff")
 
 object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax.sat",
@@ -2455,10 +2571,12 @@ object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1608440478
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_rori_bearded_jax, 1608440478)
+ObjectTemplates:addTemplate(object_static_creature_shared_rori_bearded_jax, "object/static/creature/shared_rori_bearded_jax.iff")
 
 object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bark_mite_hue.sat",
@@ -2496,10 +2614,12 @@ object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3736933444
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_rori_forest_mite, 3736933444)
+ObjectTemplates:addTemplate(object_static_creature_shared_rori_forest_mite, "object/static/creature/shared_rori_forest_mite.iff")
 
 object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss.sat",
@@ -2537,10 +2657,12 @@ object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 115117462
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_rori_pugoriss, 115117462)
+ObjectTemplates:addTemplate(object_static_creature_shared_rori_pugoriss, "object/static/creature/shared_rori_pugoriss.iff")
 
 object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/squall.sat",
@@ -2578,10 +2700,12 @@ object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2689990897
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_rori_squall, 2689990897)
+ObjectTemplates:addTemplate(object_static_creature_shared_rori_squall, "object/static/creature/shared_rori_squall.iff")
 
 object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
@@ -2619,10 +2743,12 @@ object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2296435059
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_rori_vrobal, 2296435059)
+ObjectTemplates:addTemplate(object_static_creature_shared_rori_vrobal, "object/static/creature/shared_rori_vrobal.iff")
 
 object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
@@ -2660,10 +2786,12 @@ object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3737643958
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_talus_guf_drolg, 3737643958)
+ObjectTemplates:addTemplate(object_static_creature_shared_talus_guf_drolg, "object/static/creature/shared_talus_guf_drolg.iff")
 
 object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kima.sat",
@@ -2701,10 +2829,12 @@ object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 595006750
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_talus_kima, 595006750)
+ObjectTemplates:addTemplate(object_static_creature_shared_talus_kima, "object/static/creature/shared_talus_kima.iff")
 
 object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
@@ -2742,10 +2872,12 @@ object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 347380569
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_talus_sludge_panther, 347380569)
+ObjectTemplates:addTemplate(object_static_creature_shared_talus_sludge_panther, "object/static/creature/shared_talus_sludge_panther.iff")
 
 object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bantha.sat",
@@ -2783,10 +2915,12 @@ object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3938599478
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_nosaddle, 3938599478)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_nosaddle, "object/static/creature/shared_tatooine_bantha_nosaddle.iff")
 
 object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue_saddle.sat",
@@ -2824,10 +2958,12 @@ object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3837912821
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_saddle, 3837912821)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_saddle, "object/static/creature/shared_tatooine_bantha_saddle.iff")
 
 object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
@@ -2865,10 +3001,12 @@ object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1883442736
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_cu_pa, 1883442736)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_cu_pa, "object/static/creature/shared_tatooine_cu_pa.iff")
 
 object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_saddle_hue.sat",
@@ -2906,10 +3044,12 @@ object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 720218946
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback, 720218946)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback, "object/static/creature/shared_tatooine_dewback.iff")
 
 object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dewback.sat",
@@ -2947,10 +3087,12 @@ object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 73737599
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback_nosaddle, 73737599)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback_nosaddle, "object/static/creature/shared_tatooine_dewback_nosaddle.iff")
 
 object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
@@ -2988,10 +3130,12 @@ object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2624628846
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_eopie, 2624628846)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_eopie, "object/static/creature/shared_tatooine_eopie.iff")
 
 object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/jawa_m.sat",
@@ -3029,10 +3173,12 @@ object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 10526857
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_jawa, 10526857)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_jawa, "object/static/creature/shared_tatooine_jawa.iff")
 
 object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
@@ -3070,10 +3216,12 @@ object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2864148327
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_ronto, 2864148327)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_ronto, "object/static/creature/shared_tatooine_ronto.iff")
 
 object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sarlacc.sat",
@@ -3111,10 +3259,12 @@ object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 424564253
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_sarlacc, 424564253)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_sarlacc, "object/static/creature/shared_tatooine_sarlacc.iff")
 
 object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/squill.sat",
@@ -3152,10 +3302,12 @@ object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1422492223
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_squill, 1422492223)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_squill, "object/static/creature/shared_tatooine_squill.iff")
 
 object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/womp_rat.sat",
@@ -3193,10 +3345,12 @@ object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3864955184
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_womp_rat, 3864955184)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_womp_rat, "object/static/creature/shared_tatooine_womp_rat.iff")
 
 object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/worrt_hue.sat",
@@ -3234,10 +3388,12 @@ object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1929245972
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_worrt, 1929245972)
+ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_worrt, "object/static/creature/shared_tatooine_worrt.iff")
 
 object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
@@ -3275,10 +3431,12 @@ object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3688075301
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_choku, 3688075301)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_choku, "object/static/creature/shared_yavin4_choku.iff")
 
 object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik.sat",
@@ -3316,10 +3474,12 @@ object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4080884107
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_kliknik, 4080884107)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_kliknik, "object/static/creature/shared_yavin4_kliknik.iff")
 
 object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mamien_hue.sat",
@@ -3357,10 +3517,12 @@ object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3561928854
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mamien, 3561928854)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mamien, "object/static/creature/shared_yavin4_mamien.iff")
 
 object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
@@ -3398,10 +3560,12 @@ object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2479758005
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mawgax, 2479758005)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mawgax, "object/static/creature/shared_yavin4_mawgax.iff")
 
 object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/skreeg.sat",
@@ -3439,10 +3603,12 @@ object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 836656341
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_skreeg, 836656341)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_skreeg, "object/static/creature/shared_yavin4_skreeg.iff")
 
 object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
@@ -3480,7 +3646,9 @@ object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1663198408
 }
 
-ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_tybis, 1663198408)
+ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_tybis, "object/static/creature/shared_yavin4_tybis.iff")

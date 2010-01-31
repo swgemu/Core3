@@ -85,13 +85,14 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2823165423
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_awing, 2823165423)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_awing, "object/ship/player/shared_player_awing.iff")
 
 object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -137,13 +138,14 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 770455739
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_hutt_light, 770455739)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_hutt_light, "object/ship/player/shared_player_basic_hutt_light.iff")
 
 object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -189,13 +191,14 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2430870087
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_tiefighter, 2430870087)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_tiefighter, "object/ship/player/shared_player_basic_tiefighter.iff")
 
 object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -241,13 +244,14 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 960125460
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_z95, 960125460)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_z95, "object/ship/player/shared_player_basic_z95.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -293,13 +297,14 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2406012699
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s01, 2406012699)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s01, "object/ship/player/shared_player_blacksun_heavy_s01.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -345,13 +350,14 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1417641868
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s02, 1417641868)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s02, "object/ship/player/shared_player_blacksun_heavy_s02.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -397,13 +403,14 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 494016513
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s03, 494016513)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s03, "object/ship/player/shared_player_blacksun_heavy_s03.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -449,13 +456,14 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3868275477
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s04, 3868275477)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s04, "object/ship/player/shared_player_blacksun_heavy_s04.iff")
 
 object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -501,13 +509,14 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2468301121
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s01, 2468301121)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s01, "object/ship/player/shared_player_blacksun_light_s01.iff")
 
 object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -553,13 +562,14 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1208541654
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s02, 1208541654)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s02, "object/ship/player/shared_player_blacksun_light_s02.iff")
 
 object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -605,13 +615,14 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 17139291
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s03, 17139291)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s03, "object/ship/player/shared_player_blacksun_light_s03.iff")
 
 object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -657,13 +668,14 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4209421647
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s04, 4209421647)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s04, "object/ship/player/shared_player_blacksun_light_s04.iff")
 
 object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -709,13 +721,14 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2060411448
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s01, 2060411448)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s01, "object/ship/player/shared_player_blacksun_medium_s01.iff")
 
 object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -761,13 +774,14 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2715339439
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s02, 2715339439)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s02, "object/ship/player/shared_player_blacksun_medium_s02.iff")
 
 object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -813,13 +827,14 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3906317602
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s03, 3906317602)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s03, "object/ship/player/shared_player_blacksun_medium_s03.iff")
 
 object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -865,13 +880,14 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 322340406
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s04, 322340406)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s04, "object/ship/player/shared_player_blacksun_medium_s04.iff")
 
 object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -917,13 +933,14 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3129407218
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_bwing, 3129407218)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_bwing, "object/ship/player/shared_player_bwing.iff")
 
 object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -969,13 +986,14 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1738437900
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_corvette, 1738437900)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_corvette, "object/ship/player/shared_player_corvette.iff")
 
 object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -1021,13 +1039,14 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 4,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3150522393
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_decimator, 3150522393)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_decimator, "object/ship/player/shared_player_decimator.iff")
 
 object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -1073,13 +1092,14 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4073039210
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_firespray, 4073039210)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_firespray, "object/ship/player/shared_player_firespray.iff")
 
 object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -1125,13 +1145,14 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 354676203
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s01, 354676203)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s01, "object/ship/player/shared_player_hutt_heavy_s01.iff")
 
 object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -1177,13 +1198,14 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3459532156
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s02, 3459532156)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s02, "object/ship/player/shared_player_hutt_heavy_s02.iff")
 
 object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -1229,13 +1251,14 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 156529585
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s01, 156529585)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s01, "object/ship/player/shared_player_hutt_light_s01.iff")
 
 object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -1281,13 +1304,14 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3527662374
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s02, 3527662374)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s02, "object/ship/player/shared_player_hutt_light_s02.iff")
 
 object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -1333,13 +1357,14 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 996310896
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s01, 996310896)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s01, "object/ship/player/shared_player_hutt_medium_s01.iff")
 
 object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -1385,13 +1410,14 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3765819367
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s02, 3765819367)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s02, "object/ship/player/shared_player_hutt_medium_s02.iff")
 
 object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
@@ -1437,13 +1463,14 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2830008910
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_turret_ship, 2830008910)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_turret_ship, "object/ship/player/shared_player_hutt_turret_ship.iff")
 
 object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -1489,13 +1516,14 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1541926498
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_hutt_light, 1541926498)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_hutt_light, "object/ship/player/shared_player_prototype_hutt_light.iff")
 
 object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1541,13 +1569,14 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3874485406
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_tiefighter, 3874485406)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_tiefighter, "object/ship/player/shared_player_prototype_tiefighter.iff")
 
 object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -1593,13 +1622,14 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4125787031
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_z95, 4125787031)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_z95, "object/ship/player/shared_player_prototype_z95.iff")
 
 object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -1645,13 +1675,14 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4077746601
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_sorosuub_space_yacht, 4077746601)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_sorosuub_space_yacht, "object/ship/player/shared_player_sorosuub_space_yacht.iff")
 
 object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_in.apt",
@@ -1697,13 +1728,14 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 500982809
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_in, 500982809)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_in, "object/ship/player/shared_player_tie_in.iff")
 
 object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1749,13 +1781,14 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 349740221
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_light_duty, 349740221)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_light_duty, "object/ship/player/shared_player_tie_light_duty.iff")
 
 object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -1801,13 +1834,14 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 537219045
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tieadvanced, 537219045)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieadvanced, "object/ship/player/shared_player_tieadvanced.iff")
 
 object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -1853,13 +1887,14 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3313666579
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tieaggressor, 3313666579)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieaggressor, "object/ship/player/shared_player_tieaggressor.iff")
 
 object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -1905,13 +1940,14 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1403833964
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tiebomber, 1403833964)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tiebomber, "object/ship/player/shared_player_tiebomber.iff")
 
 object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1957,13 +1993,14 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1253337464
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tiefighter, 1253337464)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tiefighter, "object/ship/player/shared_player_tiefighter.iff")
 
 object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -2009,13 +2046,14 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4021866633
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tieinterceptor, 4021866633)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieinterceptor, "object/ship/player/shared_player_tieinterceptor.iff")
 
 object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -2061,13 +2099,14 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3411039109
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_tieoppressor, 3411039109)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieoppressor, "object/ship/player/shared_player_tieoppressor.iff")
 
 object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -2113,13 +2152,14 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3426854753
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_xwing, 3426854753)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_xwing, "object/ship/player/shared_player_xwing.iff")
 
 object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2165,13 +2205,14 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4283603432
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_ykl37r, 4283603432)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ykl37r, "object/ship/player/shared_player_ykl37r.iff")
 
 object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2217,13 +2258,14 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 7,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2643423122
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300, 2643423122)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300, "object/ship/player/shared_player_yt1300.iff")
 
 object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2269,13 +2311,14 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 7,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3619233988
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300_decorated_01, 3619233988)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300_decorated_01, "object/ship/player/shared_player_yt1300_decorated_01.iff")
 
 object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2321,13 +2364,14 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1044450567
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing, 1044450567)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing, "object/ship/player/shared_player_ywing.iff")
 
 object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2373,13 +2417,14 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 711184758
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing_longprobe, 711184758)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing_longprobe, "object/ship/player/shared_player_ywing_longprobe.iff")
 
 object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -2425,10 +2470,11 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3298750759
 }
 
-ObjectTemplates:addTemplate(object_ship_player_shared_player_z95, 3298750759)
+ObjectTemplates:addTemplate(object_ship_player_shared_player_z95, "object/ship/player/shared_player_z95.iff")

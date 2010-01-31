@@ -85,13 +85,14 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2069937842
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, 2069937842)
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_1.iff")
 
 object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_shieldtower_2.apt",
@@ -137,10 +138,11 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2692159013
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, 2692159013)
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_2.iff")

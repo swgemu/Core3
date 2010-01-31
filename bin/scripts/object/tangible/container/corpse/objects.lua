@@ -85,10 +85,11 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3090831505
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_corpse_shared_player_corpse, 3090831505)
+ObjectTemplates:addTemplate(object_tangible_container_corpse_shared_player_corpse, "object/tangible/container/corpse/shared_player_corpse.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3720772749
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, 3720772749)
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 202240792
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, 202240792)
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1727414364
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, 1727414364)
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff")

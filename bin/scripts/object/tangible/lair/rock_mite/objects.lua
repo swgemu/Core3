@@ -85,13 +85,14 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3536993046
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, 3536993046)
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4213428417
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, 4213428417)
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 151987616
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, 151987616)
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1944425271
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, 1944425271)
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff")

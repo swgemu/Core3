@@ -85,13 +85,14 @@ object_tangible_hair_rodian_base_shared_hair_rodian_base = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1082414446
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_base, 1082414446)
+ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_base, "object/tangible/hair/rodian/base/shared_hair_rodian_base.iff")
 
 object_tangible_hair_rodian_base_shared_hair_rodian_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_hair_rodian_base_shared_hair_rodian_female_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2387184273
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_female_base, 2387184273)
+ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_female_base, "object/tangible/hair/rodian/base/shared_hair_rodian_female_base.iff")
 
 object_tangible_hair_rodian_base_shared_hair_rodian_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_hair_rodian_base_shared_hair_rodian_male_base = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1061024720
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_male_base, 1061024720)
+ObjectTemplates:addTemplate(object_tangible_hair_rodian_base_shared_hair_rodian_male_base, "object/tangible/hair/rodian/base/shared_hair_rodian_male_base.iff")

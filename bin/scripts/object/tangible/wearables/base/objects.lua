@@ -85,13 +85,14 @@ object_tangible_wearables_base_shared_armor_base = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1118410205
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_armor_base, 1118410205)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_armor_base, "object/tangible/wearables/base/shared_armor_base.iff")
 
 object_tangible_wearables_base_shared_base_back = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_wearables_base_shared_base_back = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2810806644
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_back, 2810806644)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_back, "object/tangible/wearables/base/shared_base_back.iff")
 
 object_tangible_wearables_base_shared_base_backpack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,13 +191,14 @@ object_tangible_wearables_base_shared_base_backpack = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3185007320
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_backpack, 3185007320)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_backpack, "object/tangible/wearables/base/shared_base_backpack.iff")
 
 object_tangible_wearables_base_shared_base_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,13 +244,14 @@ object_tangible_wearables_base_shared_base_bandolier = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3970091966
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bandolier, 3970091966)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bandolier, "object/tangible/wearables/base/shared_base_bandolier.iff")
 
 object_tangible_wearables_base_shared_base_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -293,13 +297,14 @@ object_tangible_wearables_base_shared_base_belt = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1062557489
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_belt, 1062557489)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_belt, "object/tangible/wearables/base/shared_base_belt.iff")
 
 object_tangible_wearables_base_shared_base_bicep_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -345,13 +350,14 @@ object_tangible_wearables_base_shared_base_bicep_both = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2712137924
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_both, 2712137924)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_both, "object/tangible/wearables/base/shared_base_bicep_both.iff")
 
 object_tangible_wearables_base_shared_base_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -397,13 +403,14 @@ object_tangible_wearables_base_shared_base_bicep_l = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4008734029
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_l, 4008734029)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_l, "object/tangible/wearables/base/shared_base_bicep_l.iff")
 
 object_tangible_wearables_base_shared_base_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -449,13 +456,14 @@ object_tangible_wearables_base_shared_base_bicep_r = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2653235422
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_r, 2653235422)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_r, "object/tangible/wearables/base/shared_base_bicep_r.iff")
 
 object_tangible_wearables_base_shared_base_bracer_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -501,13 +509,14 @@ object_tangible_wearables_base_shared_base_bracer_both = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 837302752
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_both, 837302752)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_both, "object/tangible/wearables/base/shared_base_bracer_both.iff")
 
 object_tangible_wearables_base_shared_base_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -553,13 +562,14 @@ object_tangible_wearables_base_shared_base_bracer_l = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2708618999
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_l, 2708618999)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_l, "object/tangible/wearables/base/shared_base_bracer_l.iff")
 
 object_tangible_wearables_base_shared_base_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -605,13 +615,14 @@ object_tangible_wearables_base_shared_base_bracer_r = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3517414244
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_r, 3517414244)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_r, "object/tangible/wearables/base/shared_base_bracer_r.iff")
 
 object_tangible_wearables_base_shared_base_bracer_upper_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -657,13 +668,14 @@ object_tangible_wearables_base_shared_base_bracer_upper_both = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2675265298
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_both, 2675265298)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_both, "object/tangible/wearables/base/shared_base_bracer_upper_both.iff")
 
 object_tangible_wearables_base_shared_base_bracer_upper_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -709,13 +721,14 @@ object_tangible_wearables_base_shared_base_bracer_upper_l = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4140306303
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_l, 4140306303)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_l, "object/tangible/wearables/base/shared_base_bracer_upper_l.iff")
 
 object_tangible_wearables_base_shared_base_bracer_upper_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -761,13 +774,14 @@ object_tangible_wearables_base_shared_base_bracer_upper_r = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2250066668
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_r, 2250066668)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_r, "object/tangible/wearables/base/shared_base_bracer_upper_r.iff")
 
 object_tangible_wearables_base_shared_base_cape = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -813,13 +827,14 @@ object_tangible_wearables_base_shared_base_cape = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2484521886
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cape, 2484521886)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cape, "object/tangible/wearables/base/shared_base_cape.iff")
 
 object_tangible_wearables_base_shared_base_cloak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -865,13 +880,14 @@ object_tangible_wearables_base_shared_base_cloak = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2056216974
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak, 2056216974)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak, "object/tangible/wearables/base/shared_base_cloak.iff")
 
 object_tangible_wearables_base_shared_base_cloak_hooded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -917,13 +933,14 @@ object_tangible_wearables_base_shared_base_cloak_hooded = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 31223610
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_hooded, 31223610)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_hooded, "object/tangible/wearables/base/shared_base_cloak_hooded.iff")
 
 object_tangible_wearables_base_shared_base_cloak_noback = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -969,13 +986,14 @@ object_tangible_wearables_base_shared_base_cloak_noback = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2091266362
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_noback, 2091266362)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_noback, "object/tangible/wearables/base/shared_base_cloak_noback.iff")
 
 object_tangible_wearables_base_shared_base_costume_allow_jewelry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1021,13 +1039,14 @@ object_tangible_wearables_base_shared_base_costume_allow_jewelry = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2707266953
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_allow_jewelry, 2707266953)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_allow_jewelry, "object/tangible/wearables/base/shared_base_costume_allow_jewelry.iff")
 
 object_tangible_wearables_base_shared_base_costume_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1073,13 +1092,14 @@ object_tangible_wearables_base_shared_base_costume_full = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2269371502
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_full, 2269371502)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_full, "object/tangible/wearables/base/shared_base_costume_full.iff")
 
 object_tangible_wearables_base_shared_base_dress = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1125,13 +1145,14 @@ object_tangible_wearables_base_shared_base_dress = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2799882789
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress, 2799882789)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress, "object/tangible/wearables/base/shared_base_dress.iff")
 
 object_tangible_wearables_base_shared_base_dress_formal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1177,13 +1198,14 @@ object_tangible_wearables_base_shared_base_dress_formal = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3251571586
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal, 3251571586)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal, "object/tangible/wearables/base/shared_base_dress_formal.iff")
 
 object_tangible_wearables_base_shared_base_dress_formal_gloved = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1229,13 +1251,14 @@ object_tangible_wearables_base_shared_base_dress_formal_gloved = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3497114818
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_gloved, 3497114818)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_gloved, "object/tangible/wearables/base/shared_base_dress_formal_gloved.iff")
 
 object_tangible_wearables_base_shared_base_dress_formal_hooded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1281,13 +1304,14 @@ object_tangible_wearables_base_shared_base_dress_formal_hooded = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 593250873
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_hooded, 593250873)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_hooded, "object/tangible/wearables/base/shared_base_dress_formal_hooded.iff")
 
 object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1333,13 +1357,14 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4147701623
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets, 4147701623)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets, "object/tangible/wearables/base/shared_base_dress_poofysleeve_allow_gauntlets.iff")
 
 object_tangible_wearables_base_shared_base_dress_poofysleeve_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1385,13 +1410,14 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_full = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 470480709
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_full, 470480709)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_full, "object/tangible/wearables/base/shared_base_dress_poofysleeve_full.iff")
 
 object_tangible_wearables_base_shared_base_dress_poofysleeve_lower = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1437,13 +1463,14 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_lower = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1881919920
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_lower, 1881919920)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_lower, "object/tangible/wearables/base/shared_base_dress_poofysleeve_lower.iff")
 
 object_tangible_wearables_base_shared_base_dress_poofysleeve_upper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1489,13 +1516,14 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_upper = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 62461898
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_upper, 62461898)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_upper, "object/tangible/wearables/base/shared_base_dress_poofysleeve_upper.iff")
 
 object_tangible_wearables_base_shared_base_ear_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1541,13 +1569,14 @@ object_tangible_wearables_base_shared_base_ear_both = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 169169891
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_both, 169169891)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_both, "object/tangible/wearables/base/shared_base_ear_both.iff")
 
 object_tangible_wearables_base_shared_base_ear_either = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1593,13 +1622,14 @@ object_tangible_wearables_base_shared_base_ear_either = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1514339438
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_either, 1514339438)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_either, "object/tangible/wearables/base/shared_base_ear_either.iff")
 
 object_tangible_wearables_base_shared_base_ear_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1645,13 +1675,14 @@ object_tangible_wearables_base_shared_base_ear_l = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4290100541
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_l, 4290100541)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_l, "object/tangible/wearables/base/shared_base_ear_l.iff")
 
 object_tangible_wearables_base_shared_base_ear_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1697,13 +1728,14 @@ object_tangible_wearables_base_shared_base_ear_r = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2405497006
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_r, 2405497006)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_r, "object/tangible/wearables/base/shared_base_ear_r.iff")
 
 object_tangible_wearables_base_shared_base_eyes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1749,13 +1781,14 @@ object_tangible_wearables_base_shared_base_eyes = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 749543557
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_eyes, 749543557)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_eyes, "object/tangible/wearables/base/shared_base_eyes.iff")
 
 object_tangible_wearables_base_shared_base_gauntlets = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1801,13 +1834,14 @@ object_tangible_wearables_base_shared_base_gauntlets = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3961745252
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets, 3961745252)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets, "object/tangible/wearables/base/shared_base_gauntlets.iff")
 
 object_tangible_wearables_base_shared_base_gauntlets_long = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1853,13 +1887,14 @@ object_tangible_wearables_base_shared_base_gauntlets_long = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 199720665
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets_long, 199720665)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets_long, "object/tangible/wearables/base/shared_base_gauntlets_long.iff")
 
 object_tangible_wearables_base_shared_base_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1905,13 +1940,14 @@ object_tangible_wearables_base_shared_base_gloves = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2864390584
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves, 2864390584)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves, "object/tangible/wearables/base/shared_base_gloves.iff")
 
 object_tangible_wearables_base_shared_base_gloves_long = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1957,13 +1993,14 @@ object_tangible_wearables_base_shared_base_gloves_long = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1997625980
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves_long, 1997625980)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves_long, "object/tangible/wearables/base/shared_base_gloves_long.iff")
 
 object_tangible_wearables_base_shared_base_hat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2009,13 +2046,14 @@ object_tangible_wearables_base_shared_base_hat = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2527263770
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_hat, 2527263770)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_hat, "object/tangible/wearables/base/shared_base_hat.iff")
 
 object_tangible_wearables_base_shared_base_held_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2061,13 +2099,14 @@ object_tangible_wearables_base_shared_base_held_both = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4046540417
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_both, 4046540417)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_both, "object/tangible/wearables/base/shared_base_held_both.iff")
 
 object_tangible_wearables_base_shared_base_held_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2113,13 +2152,14 @@ object_tangible_wearables_base_shared_base_held_l = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3544049811
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_l, 3544049811)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_l, "object/tangible/wearables/base/shared_base_held_l.iff")
 
 object_tangible_wearables_base_shared_base_held_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2165,13 +2205,14 @@ object_tangible_wearables_base_shared_base_held_r = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2749934848
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_r, 2749934848)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_r, "object/tangible/wearables/base/shared_base_held_r.iff")
 
 object_tangible_wearables_base_shared_base_helmet_closed_eyes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2217,13 +2258,14 @@ object_tangible_wearables_base_shared_base_helmet_closed_eyes = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2362107763
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_eyes, 2362107763)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_eyes, "object/tangible/wearables/base/shared_base_helmet_closed_eyes.iff")
 
 object_tangible_wearables_base_shared_base_helmet_closed_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2269,13 +2311,14 @@ object_tangible_wearables_base_shared_base_helmet_closed_full = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3510435998
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full, 3510435998)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full, "object/tangible/wearables/base/shared_base_helmet_closed_full.iff")
 
 object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2321,13 +2364,14 @@ object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2962747437
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated, 2962747437)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated, "object/tangible/wearables/base/shared_base_helmet_closed_full_ventilated.iff")
 
 object_tangible_wearables_base_shared_base_helmet_closed_mouth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2373,13 +2417,14 @@ object_tangible_wearables_base_shared_base_helmet_closed_mouth = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3128780769
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_mouth, 3128780769)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_mouth, "object/tangible/wearables/base/shared_base_helmet_closed_mouth.iff")
 
 object_tangible_wearables_base_shared_base_helmet_open = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2425,13 +2470,14 @@ object_tangible_wearables_base_shared_base_helmet_open = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2025938864
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_open, 2025938864)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_open, "object/tangible/wearables/base/shared_base_helmet_open.iff")
 
 object_tangible_wearables_base_shared_base_jacket_halfsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2477,13 +2523,14 @@ object_tangible_wearables_base_shared_base_jacket_halfsleeve = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2465585907
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_halfsleeve, 2465585907)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_halfsleeve, "object/tangible/wearables/base/shared_base_jacket_halfsleeve.iff")
 
 object_tangible_wearables_base_shared_base_jacket_longsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2529,13 +2576,14 @@ object_tangible_wearables_base_shared_base_jacket_longsleeve = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1586795263
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_longsleeve, 1586795263)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_longsleeve, "object/tangible/wearables/base/shared_base_jacket_longsleeve.iff")
 
 object_tangible_wearables_base_shared_base_jacket_shortsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2581,13 +2629,14 @@ object_tangible_wearables_base_shared_base_jacket_shortsleeve = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1538565730
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_shortsleeve, 1538565730)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_shortsleeve, "object/tangible/wearables/base/shared_base_jacket_shortsleeve.iff")
 
 object_tangible_wearables_base_shared_base_jewelry_set = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2633,13 +2682,14 @@ object_tangible_wearables_base_shared_base_jewelry_set = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1811884613
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jewelry_set, 1811884613)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jewelry_set, "object/tangible/wearables/base/shared_base_jewelry_set.iff")
 
 object_tangible_wearables_base_shared_base_jumpsuit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2685,13 +2735,14 @@ object_tangible_wearables_base_shared_base_jumpsuit = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3014962433
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit, 3014962433)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit, "object/tangible/wearables/base/shared_base_jumpsuit.iff")
 
 object_tangible_wearables_base_shared_base_jumpsuit_gloved = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2737,13 +2788,14 @@ object_tangible_wearables_base_shared_base_jumpsuit_gloved = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1949399047
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_gloved, 1949399047)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_gloved, "object/tangible/wearables/base/shared_base_jumpsuit_gloved.iff")
 
 object_tangible_wearables_base_shared_base_jumpsuit_longsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2789,13 +2841,14 @@ object_tangible_wearables_base_shared_base_jumpsuit_longsleeve = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2013984551
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_longsleeve, 2013984551)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_longsleeve, "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff")
 
 object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2841,13 +2894,14 @@ object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1198818608
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve, 1198818608)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve, "object/tangible/wearables/base/shared_base_jumpsuit_shortsleeve.iff")
 
 object_tangible_wearables_base_shared_base_mask_face = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2893,13 +2947,14 @@ object_tangible_wearables_base_shared_base_mask_face = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3305679722
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mask_face, 3305679722)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mask_face, "object/tangible/wearables/base/shared_base_mask_face.iff")
 
 object_tangible_wearables_base_shared_base_mouth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2945,13 +3000,14 @@ object_tangible_wearables_base_shared_base_mouth = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 748013551
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mouth, 748013551)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mouth, "object/tangible/wearables/base/shared_base_mouth.iff")
 
 object_tangible_wearables_base_shared_base_neck = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -2997,13 +3053,14 @@ object_tangible_wearables_base_shared_base_neck = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 551522086
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_neck, 551522086)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_neck, "object/tangible/wearables/base/shared_base_neck.iff")
 
 object_tangible_wearables_base_shared_base_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3049,13 +3106,14 @@ object_tangible_wearables_base_shared_base_pants = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3653526929
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pants, 3653526929)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pants, "object/tangible/wearables/base/shared_base_pants.iff")
 
 object_tangible_wearables_base_shared_base_pauldron_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3101,13 +3159,14 @@ object_tangible_wearables_base_shared_base_pauldron_both = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 415713156
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_both, 415713156)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_both, "object/tangible/wearables/base/shared_base_pauldron_both.iff")
 
 object_tangible_wearables_base_shared_base_pauldron_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3153,13 +3212,14 @@ object_tangible_wearables_base_shared_base_pauldron_l = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3883644082
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_l, 3883644082)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_l, "object/tangible/wearables/base/shared_base_pauldron_l.iff")
 
 object_tangible_wearables_base_shared_base_pauldron_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3205,13 +3265,14 @@ object_tangible_wearables_base_shared_base_pauldron_r = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2544824609
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_r, 2544824609)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_r, "object/tangible/wearables/base/shared_base_pauldron_r.iff")
 
 object_tangible_wearables_base_shared_base_ring_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3257,13 +3318,14 @@ object_tangible_wearables_base_shared_base_ring_both = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2610078742
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_both, 2610078742)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_both, "object/tangible/wearables/base/shared_base_ring_both.iff")
 
 object_tangible_wearables_base_shared_base_ring_either = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3309,13 +3371,14 @@ object_tangible_wearables_base_shared_base_ring_either = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2587414226
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_either, 2587414226)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_either, "object/tangible/wearables/base/shared_base_ring_either.iff")
 
 object_tangible_wearables_base_shared_base_ring_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3361,13 +3424,14 @@ object_tangible_wearables_base_shared_base_ring_l = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3286738453
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_l, 3286738453)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_l, "object/tangible/wearables/base/shared_base_ring_l.iff")
 
 object_tangible_wearables_base_shared_base_ring_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3413,13 +3477,14 @@ object_tangible_wearables_base_shared_base_ring_r = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3006456710
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_r, 3006456710)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_r, "object/tangible/wearables/base/shared_base_ring_r.iff")
 
 object_tangible_wearables_base_shared_base_robe_longsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3465,13 +3530,14 @@ object_tangible_wearables_base_shared_base_robe_longsleeve = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3859006116
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve, 3859006116)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve, "object/tangible/wearables/base/shared_base_robe_longsleeve.iff")
 
 object_tangible_wearables_base_shared_base_robe_longsleeve_hooded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3517,13 +3583,14 @@ object_tangible_wearables_base_shared_base_robe_longsleeve_hooded = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3926887891
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve_hooded, 3926887891)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve_hooded, "object/tangible/wearables/base/shared_base_robe_longsleeve_hooded.iff")
 
 object_tangible_wearables_base_shared_base_robe_shortsleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3569,13 +3636,14 @@ object_tangible_wearables_base_shared_base_robe_shortsleeve = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1473420708
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve, 1473420708)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve, "object/tangible/wearables/base/shared_base_robe_shortsleeve.iff")
 
 object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3621,13 +3689,14 @@ object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1105969450
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded, 1105969450)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded, "object/tangible/wearables/base/shared_base_robe_shortsleeve_hooded.iff")
 
 object_tangible_wearables_base_shared_base_shirt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3673,13 +3742,14 @@ object_tangible_wearables_base_shared_base_shirt = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 224364220
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt, 224364220)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt, "object/tangible/wearables/base/shared_base_shirt.iff")
 
 object_tangible_wearables_base_shared_base_shirt_poofysleeve_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3725,13 +3795,14 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_full = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3144684645
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_full, 3144684645)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_full, "object/tangible/wearables/base/shared_base_shirt_poofysleeve_full.iff")
 
 object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3777,13 +3848,14 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3852531643
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower, 3852531643)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower, "object/tangible/wearables/base/shared_base_shirt_poofysleeve_lower.iff")
 
 object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3829,13 +3901,14 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2519871937
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper, 2519871937)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper, "object/tangible/wearables/base/shared_base_shirt_poofysleeve_upper.iff")
 
 object_tangible_wearables_base_shared_base_shoes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3881,13 +3954,14 @@ object_tangible_wearables_base_shared_base_shoes = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2786535462
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shoes, 2786535462)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shoes, "object/tangible/wearables/base/shared_base_shoes.iff")
 
 object_tangible_wearables_base_shared_base_skirt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3933,13 +4007,14 @@ object_tangible_wearables_base_shared_base_skirt = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3787318242
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_skirt, 3787318242)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_skirt, "object/tangible/wearables/base/shared_base_skirt.iff")
 
 object_tangible_wearables_base_shared_base_sleeve_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -3985,13 +4060,14 @@ object_tangible_wearables_base_shared_base_sleeve_both = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1904536543
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_both, 1904536543)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_both, "object/tangible/wearables/base/shared_base_sleeve_both.iff")
 
 object_tangible_wearables_base_shared_base_sleeve_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4037,13 +4113,14 @@ object_tangible_wearables_base_shared_base_sleeve_l = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3578472162
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_l, 3578472162)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_l, "object/tangible/wearables/base/shared_base_sleeve_l.iff")
 
 object_tangible_wearables_base_shared_base_sleeve_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4089,13 +4166,14 @@ object_tangible_wearables_base_shared_base_sleeve_r = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2778620785
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_r, 2778620785)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_r, "object/tangible/wearables/base/shared_base_sleeve_r.iff")
 
 object_tangible_wearables_base_shared_base_vest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4141,13 +4219,14 @@ object_tangible_wearables_base_shared_base_vest = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3591511546
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_vest, 3591511546)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_vest, "object/tangible/wearables/base/shared_base_vest.iff")
 
 object_tangible_wearables_base_shared_base_wrist_both = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4193,13 +4272,14 @@ object_tangible_wearables_base_shared_base_wrist_both = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3301034284
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_both, 3301034284)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_both, "object/tangible/wearables/base/shared_base_wrist_both.iff")
 
 object_tangible_wearables_base_shared_base_wrist_either = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4245,13 +4325,14 @@ object_tangible_wearables_base_shared_base_wrist_either = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1850116475
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_either, 1850116475)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_either, "object/tangible/wearables/base/shared_base_wrist_either.iff")
 
 object_tangible_wearables_base_shared_base_wrist_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4297,13 +4378,14 @@ object_tangible_wearables_base_shared_base_wrist_l = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3290100944
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_l, 3290100944)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_l, "object/tangible/wearables/base/shared_base_wrist_l.iff")
 
 object_tangible_wearables_base_shared_base_wrist_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4349,13 +4431,14 @@ object_tangible_wearables_base_shared_base_wrist_r = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3033510211
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_r, 3033510211)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_r, "object/tangible/wearables/base/shared_base_wrist_r.iff")
 
 object_tangible_wearables_base_shared_wearables_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -4401,10 +4484,11 @@ object_tangible_wearables_base_shared_wearables_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3547164646
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_wearables_base, 3547164646)
+ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_wearables_base, "object/tangible/wearables/base/shared_wearables_base.iff")

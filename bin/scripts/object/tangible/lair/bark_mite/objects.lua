@@ -85,13 +85,14 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 382017471
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, 382017471)
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, "object/tangible/lair/bark_mite/shared_lair_bark_mite.iff")
 
 object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3158646685
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, 3158646685)
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, "object/tangible/lair/bark_mite/shared_lair_bark_mite_grassland.iff")
 
 object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1801002251
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, 1801002251)
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, "object/tangible/lair/bark_mite/shared_lair_bark_mite_hills.iff")

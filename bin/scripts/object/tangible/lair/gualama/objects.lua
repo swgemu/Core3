@@ -85,13 +85,14 @@ object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1781219126
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama, 1781219126)
+ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama, "object/tangible/lair/gualama/shared_lair_gualama.iff")
 
 object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 464760681
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, 464760681)
+ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff")

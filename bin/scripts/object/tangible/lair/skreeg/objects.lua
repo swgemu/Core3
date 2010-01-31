@@ -85,13 +85,14 @@ object_tangible_lair_skreeg_shared_lair_skreeg = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3525197879
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, 3525197879)
+ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, "object/tangible/lair/skreeg/shared_lair_skreeg.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 962440956
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, 962440956)
+ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, "object/tangible/lair/skreeg/shared_lair_skreeg_jungle.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2757887034
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, 2757887034)
+ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, "object/tangible/lair/skreeg/shared_lair_skreeg_swamp.iff")

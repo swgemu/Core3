@@ -86,6 +86,7 @@ object_weapon_melee_knife_base_shared_knife_base = SharedWeaponObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_melee_knife_base_shared_knife_base = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 2605941713
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_base_shared_knife_base, 2605941713)
+ObjectTemplates:addTemplate(object_weapon_melee_knife_base_shared_knife_base, "object/weapon/melee/knife/base/shared_knife_base.iff")

@@ -85,13 +85,14 @@ object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4059441362
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s01, 4059441362)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s01, "object/tangible/wearables/backpack/shared_backpack_s01.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1676470216
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03, 1676470216)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03, "object/tangible/wearables/backpack/shared_backpack_s03.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1103784358
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, 1103784358)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, "object/tangible/wearables/backpack/shared_backpack_s03_quest.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s04_m.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2551172316
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s04, 2551172316)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s04, "object/tangible/wearables/backpack/shared_backpack_s04.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s05_m.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3506613073
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s05, 3506613073)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s05, "object/tangible/wearables/backpack/shared_backpack_s05.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 169149382
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06, 169149382)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06, "object/tangible/wearables/backpack/shared_backpack_s06.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1402459945
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, 1402459945)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff")
 
 object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_backpack_s01.sat",
@@ -449,10 +456,11 @@ object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1811378952
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, 1811378952)
+ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, "object/tangible/wearables/backpack/shared_singing_mountain_clan_backpack.iff")

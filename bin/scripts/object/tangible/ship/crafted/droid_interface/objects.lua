@@ -85,13 +85,14 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2841202755
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, 2841202755)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3849212575
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, 3849212575)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -189,13 +191,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1488124234
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, 1488124234)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1094447812
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, 1094447812)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1600874546
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, 1600874546)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2222768293
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, 2222768293)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3446777640
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, 3446777640)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 915573820
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, 915573820)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2141186993
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, 2141186993)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -553,13 +562,14 @@ object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3467786259
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, 3467786259)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1368476927
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, 1368476927)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2324096104
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, 2324096104)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -709,13 +721,14 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3280700389
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, 3280700389)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 946383089
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, 946383089)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1902497660
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, 1902497660)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1290028693
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, 1290028693)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2273558131
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, 2273558131)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1553209060
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, 1553209060)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 362377577
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, 362377577)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4000995965
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, 4000995965)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2809609712
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, 2809609712)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1177,13 +1198,14 @@ object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 930004332
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, 930004332)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 82900645
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, 82900645)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3756482098
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, 3756482098)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2531932607
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, 2531932607)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1829311147
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, 1829311147)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1437,10 +1463,11 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 604271910
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, 604271910)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

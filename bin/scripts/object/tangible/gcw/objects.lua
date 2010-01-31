@@ -85,13 +85,14 @@ object_tangible_gcw_shared_flip_banner_imperial = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 310211091
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_imperial, 310211091)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_imperial, "object/tangible/gcw/shared_flip_banner_imperial.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1127107666
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_imperial, 1127107666)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_imperial, "object/tangible/gcw/shared_flip_banner_onpole_imperial.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2107736696
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_rebel, 2107736696)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_rebel, "object/tangible/gcw/shared_flip_banner_onpole_rebel.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 60973770
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_spawner, 60973770)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_spawner, "object/tangible/gcw/shared_flip_banner_onpole_spawner.iff")
 
 object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_rebl.apt",
@@ -293,13 +297,14 @@ object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1184876615
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_rebel, 1184876615)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_rebel, "object/tangible/gcw/shared_flip_banner_rebel.iff")
 
 object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_impl.apt",
@@ -345,13 +350,14 @@ object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1768955620
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_spawner, 1768955620)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_spawner, "object/tangible/gcw/shared_flip_banner_spawner.iff")
 
 object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -397,10 +403,11 @@ object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 757466723
 }
 
-ObjectTemplates:addTemplate(object_tangible_gcw_shared_gcw_city_spawner, 757466723)
+ObjectTemplates:addTemplate(object_tangible_gcw_shared_gcw_city_spawner, "object/tangible/gcw/shared_gcw_city_spawner.iff")

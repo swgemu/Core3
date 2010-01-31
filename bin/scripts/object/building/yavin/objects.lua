@@ -88,13 +88,14 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 27,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2882030964
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_dark_enclave, 2882030964)
+ObjectTemplates:addTemplate(object_building_yavin_shared_dark_enclave, "object/building/yavin/shared_dark_enclave.iff")
 
 object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -143,13 +144,14 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 27,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3550315323
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_light_enclave, 3550315323)
+ObjectTemplates:addTemplate(object_building_yavin_shared_light_enclave, "object/building/yavin/shared_light_enclave.iff")
 
 object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,13 +200,14 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 2,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1060389087
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_temple_blueleaf, 1060389087)
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_blueleaf, "object/building/yavin/shared_temple_blueleaf.iff")
 
 object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -253,13 +256,14 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 15,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3687664408
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_temple_exar_kun, 3687664408)
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_exar_kun, "object/building/yavin/shared_temple_exar_kun.iff")
 
 object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -308,13 +312,14 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2078872520
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_temple_massassi, 2078872520)
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_massassi, "object/building/yavin/shared_temple_massassi.iff")
 
 object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -363,10 +368,11 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1136920717
 }
 
-ObjectTemplates:addTemplate(object_building_yavin_shared_temple_woolamander, 1136920717)
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_woolamander, "object/building/yavin/shared_temple_woolamander.iff")

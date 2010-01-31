@@ -85,13 +85,14 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2875084691
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, 2875084691)
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4195556845
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, 4195556845)
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3851962696
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, 3851962696)
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff")

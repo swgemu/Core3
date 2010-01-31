@@ -85,13 +85,14 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3179863902
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, 3179863902)
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, "object/tangible/lair/mawgax/shared_lair_mawgax.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 767243941
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, 767243941)
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, "object/tangible/lair/mawgax/shared_lair_mawgax_grassland.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 813716742
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, 813716742)
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, "object/tangible/lair/mawgax/shared_lair_mawgax_mountain.iff")

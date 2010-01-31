@@ -85,10 +85,11 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4243633165
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, 4243633165)
+ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")

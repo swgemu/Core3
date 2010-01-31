@@ -85,10 +85,11 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2015057562
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_base_shared_location_base, 2015057562)
+ObjectTemplates:addTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")

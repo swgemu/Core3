@@ -85,13 +85,14 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1494270747
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1, 1494270747)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2181524364
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2, 2181524364)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk2.iff")
 
 object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1126310988
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1, 1126310988)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_deluxe_cruiser_grade_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1087324097
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd3, 1087324097)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd3, "object/tangible/ship/components/engine/shared_eng_cygnus_hd3.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1614527554
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd7, 1614527554)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd7, "object/tangible/ship/components/engine/shared_eng_cygnus_hd7.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3660681296
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd8, 3660681296)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd8, "object/tangible/ship/components/engine/shared_eng_cygnus_hd8.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 775508572
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd_5, 775508572)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd_5, "object/tangible/ship/components/engine/shared_eng_cygnus_hd_5.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3707474702
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hdx, 3707474702)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hdx, "object/tangible/ship/components/engine/shared_eng_cygnus_hdx.iff")
 
 object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2546925520
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_freitek_dual_jet, 2546925520)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_freitek_dual_jet, "object/tangible/ship/components/engine/shared_eng_freitek_dual_jet.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4109218739
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_advanced, 4109218739)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_advanced, "object/tangible/ship/components/engine/shared_eng_gallofree_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3029000329
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx2, 3029000329)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx2, "object/tangible/ship/components/engine/shared_eng_gallofree_jx2.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4253517572
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx3, 4253517572)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx3, "object/tangible/ship/components/engine/shared_eng_gallofree_jx3.iff")
 
 object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -709,13 +721,14 @@ object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2137568563
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_generic, 2137568563)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_generic, "object/tangible/ship/components/engine/shared_eng_generic.iff")
 
 object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3688131239
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine, 3688131239)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine, "object/tangible/ship/components/engine/shared_eng_haor_chall_old_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1656121527
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced, 1656121527)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced, "object/tangible/ship/components/engine/shared_eng_incom_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1530662903
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust, 1530662903)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_advanced_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1983861509
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_elite, 1983861509)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_elite, "object/tangible/ship/components/engine/shared_eng_incom_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1150814129
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust, 1150814129)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3839998653
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2, 3839998653)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1860270722
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust, 1860270722)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_heavy_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3821177042
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2, 3821177042)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_improved_fusialthrust_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1177,13 +1198,14 @@ object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1630933097
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust, 1630933097)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_light_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3350954365
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive, 3350954365)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_rendili_hyperion_drive.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_fo
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 267311659
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces, 267311659)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sds_special_forces.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_fo
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2153536772
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces, 2153536772)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sfs_special_forces.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1686514173
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite, 1686514173)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_incom_t11_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhol
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2912460069
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite, 2912460069)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_blackhole_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1489,13 +1516,14 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3829446933
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138, 3829446933)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_grb1138.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2950758561
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_advanced, 2950758561)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_advanced, "object/tangible/ship/components/engine/shared_eng_koensayr_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1593,13 +1622,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2074333945
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet, 2074333945)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_dual_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1645,13 +1675,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 856779265
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_elite, 856779265)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_koensayr_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1697,13 +1728,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_i
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2994323720
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet, 2994323720)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_enhanced_dual_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 399309085
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet, 399309085)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_heavy_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1091345516
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet, 1091345516)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1853,13 +1887,14 @@ object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 225753299
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet, 225753299)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_tuned_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3609646499
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a2x, 3609646499)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a2x, "object/tangible/ship/components/engine/shared_eng_kse_a2x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2533291979
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a5x, 2533291979)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a5x, "object/tangible/ship/components/engine/shared_eng_kse_a5x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2009,13 +2046,14 @@ object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2695818555
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a7x, 2695818555)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a7x, "object/tangible/ship/components/engine/shared_eng_kse_a7x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2061,13 +2099,14 @@ object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 943105171
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a8x, 943105171)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a8x, "object/tangible/ship/components/engine/shared_eng_kse_a8x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2113,13 +2152,14 @@ object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4154059461
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_advanced, 4154059461)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_advanced, "object/tangible/ship/components/engine/shared_eng_kse_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2165,13 +2205,14 @@ object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3273736550
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_elite, 3273736550)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_elite, "object/tangible/ship/components/engine/shared_eng_kse_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2217,13 +2258,14 @@ object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1881362164
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_improved_a2x, 1881362164)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_improved_a2x, "object/tangible/ship/components/engine/shared_eng_kse_improved_a2x.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2269,13 +2311,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2801444011
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_advanced, 2801444011)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_advanced, "object/tangible/ship/components/engine/shared_eng_mandal_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2321,13 +2364,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1878143653
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_elite, 1878143653)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_elite, "object/tangible/ship/components/engine/shared_eng_mandal_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2373,13 +2417,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3570273187
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy, 3570273187)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_enhanced_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2425,13 +2470,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3541249894
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm, 3541249894)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2477,13 +2523,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 727952579
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2, 727952579)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2529,13 +2576,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4269473500
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_heavy, 4269473500)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2581,13 +2629,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1398811681
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal, 1398811681)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x37_vandal.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2633,13 +2682,14 @@ object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 691790673
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal, 691790673)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x57_vandal.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2685,13 +2735,14 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 116254934
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive, 116254934)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive, "object/tangible/ship/components/engine/shared_eng_mission_reward_imperial_cygnus_megadrive.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2737,13 +2788,14 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_ch
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1833143091
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military, 1833143091)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_haor_chall_military.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2789,13 +2841,14 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2762799874
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno, 2762799874)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_mandal_inferno.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2841,13 +2894,14 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_mil
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3414312899
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military, 3414312899)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_rebel_incom_military.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2893,13 +2947,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2970369817
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_charged_standard, 2970369817)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_charged_standard, "object/tangible/ship/components/engine/shared_eng_moncal_charged_standard.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2945,13 +3000,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2303167784
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light, 2303167784)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light, "object/tangible/ship/components/engine/shared_eng_moncal_enhanced_light.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2997,13 +3053,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1507745225
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_heavy, 1507745225)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3049,13 +3106,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 81343226
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs32, 81343226)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs32, "object/tangible/ship/components/engine/shared_eng_moncal_ifs32.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3101,13 +3159,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3250538235
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs64, 3250538235)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs64, "object/tangible/ship/components/engine/shared_eng_moncal_ifs64.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3153,13 +3212,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3680559351
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy, 3680559351)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_improved_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3205,13 +3265,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2558943511
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_light, 2558943511)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_light, "object/tangible/ship/components/engine/shared_eng_moncal_light.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3257,13 +3318,14 @@ object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1515726133
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_standard, 1515726133)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_standard, "object/tangible/ship/components/engine/shared_eng_moncal_standard.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3309,13 +3371,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3212374131
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_advanced, 3212374131)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_advanced, "object/tangible/ship/components/engine/shared_eng_novaldex_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3361,13 +3424,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 954786503
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon, 954786503)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3413,13 +3477,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4190415358
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon, 4190415358)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_light_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3465,13 +3530,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1243009933
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x6, 1243009933)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x6, "object/tangible/ship/components/engine/shared_eng_novaldex_x6.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3517,13 +3583,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 52147200
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x7, 52147200)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x7, "object/tangible/ship/components/engine/shared_eng_novaldex_x7.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3569,13 +3636,14 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4028432287
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x9, 4028432287)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x9, "object/tangible/ship/components/engine/shared_eng_novaldex_x9.iff")
 
 object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3621,13 +3689,14 @@ object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 938019795
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_prototype_engine, 938019795)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_prototype_engine, "object/tangible/ship/components/engine/shared_eng_prototype_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3673,13 +3742,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1058854056
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_a13, 1058854056)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_a13, "object/tangible/ship/components/engine/shared_eng_qualdex_a13.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3725,13 +3795,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1072902230
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_advanced, 1072902230)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_advanced, "object/tangible/ship/components/engine/shared_eng_qualdex_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3777,13 +3848,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 905102348
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_b10, 905102348)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_b10, "object/tangible/ship/components/engine/shared_eng_qualdex_b10.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3829,13 +3901,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2316920034
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_elite, 2316920034)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_elite, "object/tangible/ship/components/engine/shared_eng_qualdex_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3881,13 +3954,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3668146278
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster, 3668146278)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3933,13 +4007,14 @@ object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4106286177
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster, 4106286177)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_small_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3985,13 +4060,14 @@ object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2203700275
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1, 2203700275)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1, "object/tangible/ship/components/engine/shared_eng_rendili_demon_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4037,13 +4113,14 @@ object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3783532255
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_elite, 3783532255)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_elite, "object/tangible/ship/components/engine/shared_eng_rendili_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4089,13 +4166,14 @@ object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1914888370
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_incom_elite, 1914888370)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_incom_elite, "object/tangible/ship/components/engine/shared_eng_reward_incom_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4141,13 +4219,14 @@ object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1042959246
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite, 1042959246)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_reward_koensayr_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4193,13 +4272,14 @@ object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3024393485
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_kuat_elite, 3024393485)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_kuat_elite, "object/tangible/ship/components/engine/shared_eng_reward_kuat_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4245,13 +4325,14 @@ object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1822981655
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite, 1822981655)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite, "object/tangible/ship/components/engine/shared_eng_reward_novaldex_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4297,13 +4378,14 @@ object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1593887000
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_surronian_elite, 1593887000)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_surronian_elite, "object/tangible/ship/components/engine/shared_eng_reward_surronian_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4349,13 +4431,14 @@ object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2871154859
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_advanced, 2871154859)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_advanced, "object/tangible/ship/components/engine/shared_eng_rss_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4401,13 +4484,14 @@ object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2026233667
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_elite, 2026233667)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_elite, "object/tangible/ship/components/engine/shared_eng_rss_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4453,13 +4537,14 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4106763643
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner, 4106763643)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4505,13 +4590,14 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 348283927
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2, 348283927)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4557,13 +4643,14 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1573847962
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3, 1573847962)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4609,13 +4696,14 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2787911822
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4, 2787911822)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_4.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4661,13 +4749,14 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 161369355
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_1, 161369355)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4713,13 +4802,14 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3532252572
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_2, 3532252572)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_2, "object/tangible/ship/components/engine/shared_eng_sds_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4765,13 +4855,14 @@ object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3869362638
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1, 3869362638)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_limited_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4817,13 +4908,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3251975169
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_advanced, 3251975169)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_advanced, "object/tangible/ship/components/engine/shared_eng_sfs_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4869,13 +4961,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4146255416
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_elite, 4146255416)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_elite, "object/tangible/ship/components/engine/shared_eng_sfs_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4921,13 +5014,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 641216433
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_1, 641216433)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4973,13 +5067,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4247750438
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_2, 4247750438)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5025,13 +5120,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3022184619
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_3, 3022184619)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5077,13 +5173,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1338100671
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_4, 1338100671)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_4, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_4.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5129,13 +5226,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 114076722
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_5, 114076722)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_5, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_5.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5181,13 +5279,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3416202828
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3, 3416202828)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_modified_imperial_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5233,13 +5332,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4285524122
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1, 4285524122)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_performance_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5285,13 +5385,14 @@ object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3062194398
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2, 3062194398)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_tuned_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5337,13 +5438,14 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2256977477
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine, 2256977477)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_l_337_ion_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5389,13 +5491,14 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engin
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2014640684
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine, 2014640684)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_tuned_l_337_ion_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5441,13 +5544,14 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1154791429
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive, 1154791429)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive, "object/tangible/ship/components/engine/shared_eng_sorosuub_u83r_ion_drive.iff")
 
 object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5493,13 +5597,14 @@ object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2953087891
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_subpro_light_engines, 2953087891)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_subpro_light_engines, "object/tangible/ship/components/engine/shared_eng_subpro_light_engines.iff")
 
 object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5545,13 +5650,14 @@ object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 717637110
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_tiefighter_basic, 717637110)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_tiefighter_basic, "object/tangible/ship/components/engine/shared_eng_tiefighter_basic.iff")
 
 object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5597,13 +5703,14 @@ object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3860835004
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_z95_basic, 3860835004)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_z95_basic, "object/tangible/ship/components/engine/shared_eng_z95_basic.iff")
 
 object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5649,13 +5756,14 @@ object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4025396591
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_cygnus_hd7, 4025396591)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_cygnus_hd7, "object/tangible/ship/components/engine/shared_engine_cygnus_hd7.iff")
 
 object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5701,13 +5809,14 @@ object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3590792483
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_damorian_rx7, 3590792483)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_damorian_rx7, "object/tangible/ship/components/engine/shared_engine_damorian_rx7.iff")
 
 object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5753,13 +5862,14 @@ object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1073664893
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_e16, 1073664893)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_e16, "object/tangible/ship/components/engine/shared_engine_incom_e16.iff")
 
 object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5805,13 +5915,14 @@ object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3226309687
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_fusialthrust, 3226309687)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_fusialthrust, "object/tangible/ship/components/engine/shared_engine_incom_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5857,13 +5968,14 @@ object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1396982474
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_koensayr_ionjet, 1396982474)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_koensayr_ionjet, "object/tangible/ship/components/engine/shared_engine_koensayr_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5909,13 +6021,14 @@ object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1377789974
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kongar_defender, 1377789974)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kongar_defender, "object/tangible/ship/components/engine/shared_engine_kongar_defender.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5961,13 +6074,14 @@ object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 528919760
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_a9x, 528919760)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_a9x, "object/tangible/ship/components/engine/shared_engine_kuat_a9x.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6013,13 +6127,14 @@ object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 383630325
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_f31, 383630325)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_f31, "object/tangible/ship/components/engine/shared_engine_kuat_f31.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6065,13 +6180,14 @@ object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 630949966
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_tc40, 630949966)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_tc40, "object/tangible/ship/components/engine/shared_engine_kuat_tc40.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6117,13 +6233,14 @@ object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 958710190
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon, 958710190)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_engine_novaldex_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_singularity = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6169,13 +6286,14 @@ object_tangible_ship_components_engine_shared_engine_novaldex_singularity = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1145254225
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_singularity, 1145254225)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_singularity, "object/tangible/ship/components/engine/shared_engine_novaldex_singularity.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6221,13 +6339,14 @@ object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1195098255
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_x12, 1195098255)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_x12, "object/tangible/ship/components/engine/shared_engine_novaldex_x12.iff")
 
 object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6273,13 +6392,14 @@ object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 408364665
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221, 408364665)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221, "object/tangible/ship/components/engine/shared_engine_nubian_221.iff")
 
 object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6325,13 +6445,14 @@ object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3449726708
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod, 3449726708)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod, "object/tangible/ship/components/engine/shared_engine_nubian_221_racing_mod.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6377,13 +6498,14 @@ object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1616448620
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_a10, 1616448620)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_a10, "object/tangible/ship/components/engine/shared_engine_qualdex_a10.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6429,13 +6551,14 @@ object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 157942210
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_igt, 157942210)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_igt, "object/tangible/ship/components/engine/shared_engine_qualdex_igt.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6481,13 +6604,14 @@ object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1584851936
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster, 1584851936)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_engine_qualdex_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6533,13 +6657,14 @@ object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 425327830
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_seinar_ps56, 425327830)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_seinar_ps56, "object/tangible/ship/components/engine/shared_engine_seinar_ps56.iff")
 
 object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6585,13 +6710,14 @@ object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3679552737
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a2, 3679552737)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a2, "object/tangible/ship/components/engine/shared_engine_surronian_a2.iff")
 
 object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6637,13 +6763,14 @@ object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3019065064
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a25, 3019065064)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a25, "object/tangible/ship/components/engine/shared_engine_surronian_a25.iff")
 
 object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6689,13 +6816,14 @@ object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3349337615
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_test, 3349337615)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_test, "object/tangible/ship/components/engine/shared_engine_test.iff")
 
 object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6741,13 +6869,14 @@ object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2229515854
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_ubrikkian_n2, 2229515854)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_ubrikkian_n2, "object/tangible/ship/components/engine/shared_engine_ubrikkian_n2.iff")
 
 object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -6793,13 +6922,14 @@ object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1817330955
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s01_test, 1817330955)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s01_test, "object/tangible/ship/components/engine/shared_xwing_engine_s01_test.iff")
 
 object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -6845,10 +6975,11 @@ object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3911366677
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s02_test, 3911366677)
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s02_test, "object/tangible/ship/components/engine/shared_xwing_engine_s02_test.iff")

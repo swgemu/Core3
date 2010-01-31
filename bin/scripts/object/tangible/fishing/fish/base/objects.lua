@@ -85,10 +85,11 @@ object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3666883788
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_base_shared_fish_base, 3666883788)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_base_shared_fish_base, "object/tangible/fishing/fish/base/shared_fish_base.iff")

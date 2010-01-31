@@ -77,10 +77,12 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 956566051
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_blast, 956566051)
+ObjectTemplates:addTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
 
 object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bolt_red.prt",
@@ -118,10 +120,12 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1262353977
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, 1262353977)
+ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
 
 object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -159,10 +163,12 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4068306658
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, 4068306658)
+ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
 
 object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -200,10 +206,12 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 694863477
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, 694863477)
+ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
 
 object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
@@ -241,7 +249,9 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 82674764
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_static_sandcrawler, 82674764)
+ObjectTemplates:addTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")

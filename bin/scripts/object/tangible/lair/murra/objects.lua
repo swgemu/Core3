@@ -85,13 +85,14 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1522261205
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra, 1522261205)
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
 
 object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1680788890
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, 1680788890)
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
 
 object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3942109536
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, 3942109536)
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")

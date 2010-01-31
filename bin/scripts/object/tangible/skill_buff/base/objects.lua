@@ -85,10 +85,11 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 150738371
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, 150738371)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, "object/tangible/skill_buff/base/shared_skill_buff_base.iff")

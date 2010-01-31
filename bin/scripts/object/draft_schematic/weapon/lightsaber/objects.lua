@@ -77,10 +77,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2209371727
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1, 2209371727)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen1.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1487404760
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2, 1487404760)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen2.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 296393045
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3, 296393045)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen3.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3930698305
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4, 3930698305)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen4.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2739197388
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5, 2739197388)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen5.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2055057421
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1, 2055057421)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen1.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2708084890
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2, 2708084890)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen2.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3899096855
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3, 3899096855)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen3.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 327439363
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4, 327439363)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen4.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1518941070
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5, 1518941070)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen5.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2234584747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, 2234584747)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_training = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_training = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3899605882
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_training, 3899605882)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_training, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_training.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2495319493
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1, 2495319493)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen1.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1336681810
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2, 1336681810)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen2.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 111231711
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3, 111231711)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen3.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4248988107
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4, 4248988107)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen4.iff")
 
 object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,7 +765,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3025079878
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5, 3025079878)
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen5.iff")

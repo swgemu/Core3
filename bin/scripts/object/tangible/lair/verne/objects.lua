@@ -85,13 +85,14 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1856597850
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne, 1856597850)
+ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
 
 object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2461392200
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne_forest, 2461392200)
+ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")

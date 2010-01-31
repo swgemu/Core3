@@ -85,13 +85,14 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3826434758
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock, 3826434758)
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock, "object/tangible/lair/vynock/shared_lair_vynock.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 453779300
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, 453779300)
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, "object/tangible/lair/vynock/shared_lair_vynock_dune.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2882460738
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, 2882460738)
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1253121111
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, 1253121111)
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff")

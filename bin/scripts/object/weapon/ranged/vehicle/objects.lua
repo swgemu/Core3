@@ -86,6 +86,7 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	clientObjectCRC = 2231868029
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_vehicle_shared_vehicle_atst_ranged, 2231868029)
+ObjectTemplates:addTemplate(object_weapon_ranged_vehicle_shared_vehicle_atst_ranged, "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff")

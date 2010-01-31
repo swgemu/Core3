@@ -85,13 +85,14 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1336476935
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, 1336476935)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_generic_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
@@ -137,13 +138,14 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2123564231
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, 2123564231)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_patrol.apt",
@@ -189,13 +191,14 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 233417941
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, 233417941)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_generic.apt",
@@ -241,13 +244,14 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 283550594
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, 283550594)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, "object/tangible/space/content_infrastructure/shared_basic_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_content_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
@@ -293,13 +297,14 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2712609943
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_content_manager, 2712609943)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_content_manager, "object/tangible/space/content_infrastructure/shared_content_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_end_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_end.apt",
@@ -345,13 +350,14 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2186464753
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, 2186464753)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_start_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_start.apt",
@@ -397,13 +403,14 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4139087673
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, 4139087673)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -449,13 +456,14 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2261680514
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, 2261680514)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff")
 
 object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_patrol.apt",
@@ -501,13 +509,14 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4256567837
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, 4256567837)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
@@ -553,13 +562,14 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 493351489
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, 493351489)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, "object/tangible/space/content_infrastructure/shared_quest_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
@@ -605,13 +615,14 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 339299356
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, 339299356)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff")
 
 object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_wave.apt",
@@ -657,10 +668,11 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3763775974
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, 3763775974)
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, "object/tangible/space/content_infrastructure/shared_wave_spawner.iff")

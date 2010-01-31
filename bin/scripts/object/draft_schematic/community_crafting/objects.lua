@@ -77,10 +77,12 @@ object_draft_schematic_community_crafting_shared_base_community_crafting = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3199067220
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, 3199067220)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, "object/draft_schematic/community_crafting/shared_base_community_crafting.iff")
 
 object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2022784928
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_defenses, 2022784928)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_defenses, "object/draft_schematic/community_crafting/shared_village_defenses.iff")
 
 object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,7 +163,9 @@ object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2318897333
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_shields, 2318897333)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_shields, "object/draft_schematic/community_crafting/shared_village_shields.iff")

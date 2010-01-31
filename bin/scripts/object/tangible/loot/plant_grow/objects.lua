@@ -85,13 +85,14 @@ object_tangible_loot_plant_grow_shared_plant_stage_1 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3550223157
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_1, 3550223157)
+ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_1, "object/tangible/loot/plant_grow/shared_plant_stage_1.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_plant_2.apt",
@@ -137,13 +138,14 @@ object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 143373218
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_2, 143373218)
+ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_2, "object/tangible/loot/plant_grow/shared_plant_stage_2.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_plant_3.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1099355183
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_3, 1099355183)
+ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_3, "object/tangible/loot/plant_grow/shared_plant_stage_3.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_plant_dead.apt",
@@ -241,10 +244,11 @@ object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3320437812
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_dead, 3320437812)
+ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_dead, "object/tangible/loot/plant_grow/shared_plant_stage_dead.iff")

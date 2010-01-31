@@ -85,13 +85,14 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2186183651
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, 2186183651)
+ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, "object/tangible/lair/kliknik/shared_lair_kliknik.iff")
 
 object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 33728532
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, 33728532)
+ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff")

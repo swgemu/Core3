@@ -85,13 +85,14 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1593900791
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, 1593900791)
+ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat.iff")
 
 object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 664931344
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, 664931344)
+ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat_grassland.iff")

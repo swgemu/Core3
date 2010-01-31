@@ -77,10 +77,12 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3897855130
 }
 
-ObjectTemplates:addTemplate(object_token_base_shared_base_token, 3897855130)
+ObjectTemplates:addTemplate(object_token_base_shared_base_token, "object/token/base/shared_base_token.iff")
 
 object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 599623444
 }
 
-ObjectTemplates:addTemplate(object_token_base_shared_token_default, 599623444)
+ObjectTemplates:addTemplate(object_token_base_shared_token_default, "object/token/base/shared_token_default.iff")

@@ -85,10 +85,11 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3516023581
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_shared_test_deed, 3516023581)
+ObjectTemplates:addTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")

@@ -85,13 +85,14 @@ object_tangible_component_item_quest_item_shared_corrective_inducer = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2184126369
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_corrective_inducer, 2184126369)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_corrective_inducer, "object/tangible/component/item/quest_item/shared_corrective_inducer.iff")
 
 object_tangible_component_item_quest_item_shared_current_motivator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -137,13 +138,14 @@ object_tangible_component_item_quest_item_shared_current_motivator = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 899191445
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_current_motivator, 899191445)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_current_motivator, "object/tangible/component/item/quest_item/shared_current_motivator.iff")
 
 object_tangible_component_item_quest_item_shared_cycle_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -189,13 +191,14 @@ object_tangible_component_item_quest_item_shared_cycle_control = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 361454355
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_cycle_control, 361454355)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_cycle_control, "object/tangible/component/item/quest_item/shared_cycle_control.iff")
 
 object_tangible_component_item_quest_item_shared_decoherence_sensor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -241,13 +244,14 @@ object_tangible_component_item_quest_item_shared_decoherence_sensor = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2146196136
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_decoherence_sensor, 2146196136)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_decoherence_sensor, "object/tangible/component/item/quest_item/shared_decoherence_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_directional_sensor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -293,13 +297,14 @@ object_tangible_component_item_quest_item_shared_directional_sensor = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3309489661
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_directional_sensor, 3309489661)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_directional_sensor, "object/tangible/component/item/quest_item/shared_directional_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_loop_auditor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -345,13 +350,14 @@ object_tangible_component_item_quest_item_shared_loop_auditor = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 111523036
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_loop_auditor, 111523036)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_loop_auditor, "object/tangible/component/item/quest_item/shared_loop_auditor.iff")
 
 object_tangible_component_item_quest_item_shared_momentum_compensator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -397,13 +403,14 @@ object_tangible_component_item_quest_item_shared_momentum_compensator = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2600965554
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_momentum_compensator, 2600965554)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_momentum_compensator, "object/tangible/component/item/quest_item/shared_momentum_compensator.iff")
 
 object_tangible_component_item_quest_item_shared_particle_sensor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -449,13 +456,14 @@ object_tangible_component_item_quest_item_shared_particle_sensor = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1180256886
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_particle_sensor, 1180256886)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_particle_sensor, "object/tangible/component/item/quest_item/shared_particle_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_signal_cleanup_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -501,13 +509,14 @@ object_tangible_component_item_quest_item_shared_signal_cleanup_unit = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 754272347
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_signal_cleanup_unit, 754272347)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_signal_cleanup_unit, "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff")
 
 object_tangible_component_item_quest_item_shared_signal_rerouter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -553,13 +562,14 @@ object_tangible_component_item_quest_item_shared_signal_rerouter = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2201370721
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_signal_rerouter, 2201370721)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_signal_rerouter, "object/tangible/component/item/quest_item/shared_signal_rerouter.iff")
 
 object_tangible_component_item_quest_item_shared_spin_alignment_inducer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -605,13 +615,14 @@ object_tangible_component_item_quest_item_shared_spin_alignment_inducer = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 529542099
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_spin_alignment_inducer, 529542099)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_spin_alignment_inducer, "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff")
 
 object_tangible_component_item_quest_item_shared_transductive_shunt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -657,13 +668,14 @@ object_tangible_component_item_quest_item_shared_transductive_shunt = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3561575461
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_transductive_shunt, 3561575461)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_transductive_shunt, "object/tangible/component/item/quest_item/shared_transductive_shunt.iff")
 
 object_tangible_component_item_quest_item_shared_tuning_cell = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -709,13 +721,14 @@ object_tangible_component_item_quest_item_shared_tuning_cell = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 815023209
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_tuning_cell, 815023209)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_tuning_cell, "object/tangible/component/item/quest_item/shared_tuning_cell.iff")
 
 object_tangible_component_item_quest_item_shared_variance_throttle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -761,13 +774,14 @@ object_tangible_component_item_quest_item_shared_variance_throttle = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3604740995
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_variance_throttle, 3604740995)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_variance_throttle, "object/tangible/component/item/quest_item/shared_variance_throttle.iff")
 
 object_tangible_component_item_quest_item_shared_voltage_inducer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -813,10 +827,11 @@ object_tangible_component_item_quest_item_shared_voltage_inducer = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 373412997
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_voltage_inducer, 373412997)
+ObjectTemplates:addTemplate(object_tangible_component_item_quest_item_shared_voltage_inducer, "object/tangible/component/item/quest_item/shared_voltage_inducer.iff")

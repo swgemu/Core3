@@ -85,13 +85,14 @@ object_installation_mining_ore_shared_mining_ore_harvester_heavy = SharedInstall
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1077924017
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_heavy, 1077924017)
+ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_heavy, "object/installation/mining_ore/shared_mining_ore_harvester_heavy.iff")
 
 object_installation_mining_ore_shared_mining_ore_harvester_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_mobile_ore_refinery.apt",
@@ -137,13 +138,14 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_1 = SharedInsta
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1719643610
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_1, 1719643610)
+ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_1, "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff")
 
 object_installation_mining_ore_shared_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s01_u1.apt",
@@ -189,10 +191,11 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_2 = SharedInsta
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3177710925
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_2, 3177710925)
+ObjectTemplates:addTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_2, "object/installation/mining_ore/shared_mining_ore_harvester_style_2.iff")

@@ -85,13 +85,14 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2116612555
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, 2116612555)
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4266502475
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, 4266502475)
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3765113149
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, 3765113149)
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff")

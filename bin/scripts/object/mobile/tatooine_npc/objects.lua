@@ -105,6 +105,7 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -115,7 +116,7 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 2210665097
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_aaph_koden, 2210665097)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_aaph_koden, "object/mobile/tatooine_npc/shared_aaph_koden.iff")
 
 object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -181,6 +182,7 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -191,7 +193,7 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 3420862161
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_binna_jode, 3420862161)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_binna_jode, "object/mobile/tatooine_npc/shared_binna_jode.iff")
 
 object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -257,6 +259,7 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -267,7 +270,7 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 2463657324
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_blerx_tango, 2463657324)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_blerx_tango, "object/mobile/tatooine_npc/shared_blerx_tango.iff")
 
 object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -333,6 +336,7 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -343,7 +347,7 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1226761307
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_boshek, 1226761307)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_boshek, "object/mobile/tatooine_npc/shared_boshek.iff")
 
 object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -409,6 +413,7 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -419,7 +424,7 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 4285124243
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, 4285124243)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, "object/mobile/tatooine_npc/shared_brea_tonnika.iff")
 
 object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -485,6 +490,7 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -495,7 +501,7 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 4289563473
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_capt_loftus, 4289563473)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_capt_loftus, "object/mobile/tatooine_npc/shared_capt_loftus.iff")
 
 object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -561,6 +567,7 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -571,7 +578,7 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 	clientObjectCRC = 1952005063
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_farious_gletch, 1952005063)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_farious_gletch, "object/mobile/tatooine_npc/shared_farious_gletch.iff")
 
 object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -637,6 +644,7 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -647,7 +655,7 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 861642395
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_figrin_dan, 861642395)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_figrin_dan, "object/mobile/tatooine_npc/shared_figrin_dan.iff")
 
 object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -713,6 +721,7 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -723,7 +732,7 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 119383383
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_fixer, 119383383)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_fixer, "object/mobile/tatooine_npc/shared_fixer.iff")
 
 object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -789,6 +798,7 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -799,7 +809,7 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 4094763986
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_hedon_istee, 4094763986)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_hedon_istee, "object/mobile/tatooine_npc/shared_hedon_istee.iff")
 
 object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -865,6 +875,7 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -875,7 +886,7 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 1541010497
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, 1541010497)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, "object/mobile/tatooine_npc/shared_ikka_gesul.iff")
 
 object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -941,6 +952,7 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -951,7 +963,7 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 3479474175
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, 3479474175)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, "object/mobile/tatooine_npc/shared_jilljoo_jab.iff")
 
 object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1017,6 +1029,7 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1027,7 +1040,7 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 	clientObjectCRC = 28682516
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, 28682516)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, "object/mobile/tatooine_npc/shared_kaeline_ungasan.iff")
 
 object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1093,6 +1106,7 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1103,7 +1117,7 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 1703616350
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kitster_banai, 1703616350)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kitster_banai, "object/mobile/tatooine_npc/shared_kitster_banai.iff")
 
 object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1169,6 +1183,7 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1179,7 +1194,7 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 	clientObjectCRC = 1211559365
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, 1211559365)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, "object/mobile/tatooine_npc/shared_kormund_thrylle.iff")
 
 object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1245,6 +1260,7 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1255,7 +1271,7 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 253776339
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, 253776339)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, "object/mobile/tatooine_npc/shared_lilas_dinhint.iff")
 
 object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1321,6 +1337,7 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1331,7 +1348,7 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 1553404717
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lt_harburik, 1553404717)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lt_harburik, "object/mobile/tatooine_npc/shared_lt_harburik.iff")
 
 object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1397,6 +1414,7 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1407,7 +1425,7 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1901596031
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mat_rags, 1901596031)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mat_rags, "object/mobile/tatooine_npc/shared_mat_rags.iff")
 
 object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1473,6 +1491,7 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1483,7 +1502,7 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 4049550118
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_melios_purl, 4049550118)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_melios_purl, "object/mobile/tatooine_npc/shared_melios_purl.iff")
 
 object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1549,6 +1568,7 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1559,7 +1579,7 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 2971142656
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mikos_denari, 2971142656)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mikos_denari, "object/mobile/tatooine_npc/shared_mikos_denari.iff")
 
 object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1625,6 +1645,7 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1635,7 +1656,7 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 	clientObjectCRC = 3562269968
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, 3562269968)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, "object/mobile/tatooine_npc/shared_nitra_vendallan.iff")
 
 object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1701,6 +1722,7 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1711,7 +1733,7 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 197060903
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_om_aynat, 197060903)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_om_aynat, "object/mobile/tatooine_npc/shared_om_aynat.iff")
 
 object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1777,6 +1799,7 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1787,7 +1810,7 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 3055869175
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, 3055869175)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, "object/mobile/tatooine_npc/shared_pfilbee_jhorn.iff")
 
 object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1853,6 +1876,7 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1863,7 +1887,7 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 	clientObjectCRC = 1801428554
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, 1801428554)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, "object/mobile/tatooine_npc/shared_phinea_shantee.iff")
 
 object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1929,6 +1953,7 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -1939,7 +1964,7 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 2174990588
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_rakir_banai, 2174990588)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_rakir_banai, "object/mobile/tatooine_npc/shared_rakir_banai.iff")
 
 object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2005,6 +2030,7 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2015,7 +2041,7 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 3876719112
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, 3876719112)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, "object/mobile/tatooine_npc/shared_senni_tonnika.iff")
 
 object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2081,6 +2107,7 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2091,7 +2118,7 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 153136187
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tekil_barje, 153136187)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tekil_barje, "object/mobile/tatooine_npc/shared_tekil_barje.iff")
 
 object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2157,6 +2184,7 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2167,7 +2195,7 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 651899937
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tour_aryon, 651899937)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tour_aryon, "object/mobile/tatooine_npc/shared_tour_aryon.iff")
 
 object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2233,6 +2261,7 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2243,7 +2272,7 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 2121259164
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, 2121259164)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, "object/mobile/tatooine_npc/shared_vardias_tyne.iff")
 
 object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2309,6 +2338,7 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2319,7 +2349,7 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 4249752702
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, 4249752702)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, "object/mobile/tatooine_npc/shared_wilhalm_skrim.iff")
 
 object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2385,6 +2415,7 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -2395,4 +2426,4 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 	clientObjectCRC = 1129472596
 }
 
-ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_windom_starkiller, 1129472596)
+ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_windom_starkiller, "object/mobile/tatooine_npc/shared_windom_starkiller.iff")

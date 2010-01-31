@@ -77,10 +77,12 @@ object_draft_schematic_scout_shared_item_camokit_corellia = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1271566961
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_corellia, 1271566961)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_corellia, "object/draft_schematic/scout/shared_item_camokit_corellia.iff")
 
 object_draft_schematic_scout_shared_item_camokit_dantooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_scout_shared_item_camokit_dantooine = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1726167672
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dantooine, 1726167672)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dantooine, "object/draft_schematic/scout/shared_item_camokit_dantooine.iff")
 
 object_draft_schematic_scout_shared_item_camokit_dathomir = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_scout_shared_item_camokit_dathomir = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3742569809
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dathomir, 3742569809)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dathomir, "object/draft_schematic/scout/shared_item_camokit_dathomir.iff")
 
 object_draft_schematic_scout_shared_item_camokit_endor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_scout_shared_item_camokit_endor = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1218082990
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_endor, 1218082990)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_endor, "object/draft_schematic/scout/shared_item_camokit_endor.iff")
 
 object_draft_schematic_scout_shared_item_camokit_lok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_scout_shared_item_camokit_lok = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 594480745
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_lok, 594480745)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_lok, "object/draft_schematic/scout/shared_item_camokit_lok.iff")
 
 object_draft_schematic_scout_shared_item_camokit_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_scout_shared_item_camokit_naboo = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2327891628
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_naboo, 2327891628)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_naboo, "object/draft_schematic/scout/shared_item_camokit_naboo.iff")
 
 object_draft_schematic_scout_shared_item_camokit_rori = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_scout_shared_item_camokit_rori = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 380917503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_rori, 380917503)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_rori, "object/draft_schematic/scout/shared_item_camokit_rori.iff")
 
 object_draft_schematic_scout_shared_item_camokit_talus = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_scout_shared_item_camokit_talus = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2475866246
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_talus, 2475866246)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_talus, "object/draft_schematic/scout/shared_item_camokit_talus.iff")
 
 object_draft_schematic_scout_shared_item_camokit_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_scout_shared_item_camokit_tatooine = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2005529582
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_tatooine, 2005529582)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_tatooine, "object/draft_schematic/scout/shared_item_camokit_tatooine.iff")
 
 object_draft_schematic_scout_shared_item_camokit_yavin = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_scout_shared_item_camokit_yavin = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2300033935
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_yavin, 2300033935)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_yavin, "object/draft_schematic/scout/shared_item_camokit_yavin.iff")
 
 object_draft_schematic_scout_shared_item_camp_basic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_scout_shared_item_camp_basic = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2508179971
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_basic, 2508179971)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_basic, "object/draft_schematic/scout/shared_item_camp_basic.iff")
 
 object_draft_schematic_scout_shared_item_camp_elite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_scout_shared_item_camp_elite = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 102187210
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_elite, 102187210)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_elite, "object/draft_schematic/scout/shared_item_camp_elite.iff")
 
 object_draft_schematic_scout_shared_item_camp_improved = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_scout_shared_item_camp_improved = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3426650174
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_improved, 3426650174)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_improved, "object/draft_schematic/scout/shared_item_camp_improved.iff")
 
 object_draft_schematic_scout_shared_item_camp_luxury = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_scout_shared_item_camp_luxury = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 253213515
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_luxury, 253213515)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_luxury, "object/draft_schematic/scout/shared_item_camp_luxury.iff")
 
 object_draft_schematic_scout_shared_item_camp_multi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_scout_shared_item_camp_multi = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3178673319
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_multi, 3178673319)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_multi, "object/draft_schematic/scout/shared_item_camp_multi.iff")
 
 object_draft_schematic_scout_shared_item_camp_quality = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_scout_shared_item_camp_quality = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1609906001
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_quality, 1609906001)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_quality, "object/draft_schematic/scout/shared_item_camp_quality.iff")
 
 object_draft_schematic_scout_shared_item_trap_drowsy_dart = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_scout_shared_item_trap_drowsy_dart = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1724840642
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_drowsy_dart, 1724840642)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_drowsy_dart, "object/draft_schematic/scout/shared_item_trap_drowsy_dart.iff")
 
 object_draft_schematic_scout_shared_item_trap_enraging_spur = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_scout_shared_item_trap_enraging_spur = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 253853379
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_enraging_spur, 253853379)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_enraging_spur, "object/draft_schematic/scout/shared_item_trap_enraging_spur.iff")
 
 object_draft_schematic_scout_shared_item_trap_flash_bomb = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_scout_shared_item_trap_flash_bomb = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1322113998
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_flash_bomb, 1322113998)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_flash_bomb, "object/draft_schematic/scout/shared_item_trap_flash_bomb.iff")
 
 object_draft_schematic_scout_shared_item_trap_melee_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_scout_shared_item_trap_melee_def_1 = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4212347810
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_def_1, 4212347810)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_def_1, "object/draft_schematic/scout/shared_item_trap_melee_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1 = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2226010853
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1, 2226010853)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_melee_ranged_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_noise_maker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_scout_shared_item_trap_noise_maker = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4127661828
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_noise_maker, 4127661828)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_noise_maker, "object/draft_schematic/scout/shared_item_trap_noise_maker.iff")
 
 object_draft_schematic_scout_shared_item_trap_ranged_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_scout_shared_item_trap_ranged_def_1 = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3312435007
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_ranged_def_1, 3312435007)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_ranged_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_sonic_pulse = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_scout_shared_item_trap_sonic_pulse = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2585913329
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_sonic_pulse, 2585913329)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_sonic_pulse, "object/draft_schematic/scout/shared_item_trap_sonic_pulse.iff")
 
 object_draft_schematic_scout_shared_item_trap_state_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_scout_shared_item_trap_state_def_1 = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1618982847
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_state_def_1, 1618982847)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_state_def_1, "object/draft_schematic/scout/shared_item_trap_state_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_tranq_dart = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_scout_shared_item_trap_tranq_dart = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4155383645
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_tranq_dart, 4155383645)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_tranq_dart, "object/draft_schematic/scout/shared_item_trap_tranq_dart.iff")
 
 object_draft_schematic_scout_shared_item_trap_webber = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,7 +1195,9 @@ object_draft_schematic_scout_shared_item_trap_webber = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2895113899
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_webber, 2895113899)
+ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_webber, "object/draft_schematic/scout/shared_item_trap_webber.iff")

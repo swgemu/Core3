@@ -85,13 +85,14 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3070103050
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, 3070103050)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -137,13 +138,14 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2417642005
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, 2417642005)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -189,13 +191,14 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1148030361
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, 1148030361)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -241,13 +244,14 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2003739536
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, 2003739536)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -293,13 +297,14 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2803312333
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, 2803312333)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -345,13 +350,14 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 687567212
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, 687567212)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -397,13 +403,14 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3148321230
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, 3148321230)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -449,13 +456,14 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 336832987
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, 336832987)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -501,13 +509,14 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3043511880
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, 3043511880)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -553,13 +562,14 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4053673313
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, 4053673313)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -605,13 +615,14 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3705181543
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, 3705181543)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -657,13 +668,14 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2877612542
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, 2877612542)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -709,13 +721,14 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2574942749
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, 2574942749)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -761,13 +774,14 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2321374102
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, 2321374102)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -813,13 +827,14 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 655697476
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, 655697476)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -865,13 +880,14 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1676691901
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, 1676691901)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -917,13 +933,14 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1002436514
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, 1002436514)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -969,13 +986,14 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 675038361
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, 675038361)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1021,13 +1039,14 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2671557576
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, 2671557576)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1073,13 +1092,14 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1962907578
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, 1962907578)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1125,13 +1145,14 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2007596912
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, 2007596912)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1177,13 +1198,14 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2213257613
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, 2213257613)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1229,10 +1251,11 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2704330106
 }
 
-ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, 2704330106)
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff")

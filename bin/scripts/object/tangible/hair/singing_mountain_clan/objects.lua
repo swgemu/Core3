@@ -85,13 +85,14 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2584119077
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01, 2584119077)
+ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s01.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hair_s02.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1091645362
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02, 1091645362)
+ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s02.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hair_s03.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 136071231
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03, 136071231)
+ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s03.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bangs_s01.sat",
@@ -241,10 +244,11 @@ object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s0
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2007410332
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01, 2007410332)
+ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01, "object/tangible/hair/singing_mountain_clan/shared_singing_mountain_clan_bangs_s01.iff")

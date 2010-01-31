@@ -85,13 +85,14 @@ object_tangible_furniture_decorative_shared_bacta_tank = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 778917674
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bacta_tank, 778917674)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bacta_tank, "object/tangible/furniture/decorative/shared_bacta_tank.iff")
 
 object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1552726710
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_basket_closed, 1552726710)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_basket_closed, "object/tangible/furniture/decorative/shared_basket_closed.iff")
 
 object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2472176746
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_fat, 2472176746)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_fat, "object/tangible/furniture/decorative/shared_bottle_fat.iff")
 
 object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s04.apt",
@@ -241,13 +244,14 @@ object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3744745457
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_pear, 3744745457)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_pear, "object/tangible/furniture/decorative/shared_bottle_pear.iff")
 
 object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s02.apt",
@@ -293,13 +297,14 @@ object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1391690326
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_tall, 1391690326)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_tall, "object/tangible/furniture/decorative/shared_bottle_tall.iff")
 
 object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_bubble.apt",
@@ -345,13 +350,14 @@ object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3911421124
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bubble_tank, 3911421124)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bubble_tank, "object/tangible/furniture/decorative/shared_bubble_tank.iff")
 
 object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s02.apt",
@@ -397,13 +403,14 @@ object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4161463527
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_cafe_chair, 4161463527)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_cafe_chair, "object/tangible/furniture/decorative/shared_cafe_chair.iff")
 
 object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_fresh.apt",
@@ -449,13 +456,14 @@ object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2302774503
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_campfire, 2302774503)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_campfire, "object/tangible/furniture/decorative/shared_campfire.iff")
 
 object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
@@ -501,13 +509,14 @@ object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 339149947
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_carved_bowl, 339149947)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_carved_bowl, "object/tangible/furniture/decorative/shared_carved_bowl.iff")
 
 object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1081449691
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, 1081449691)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, "object/tangible/furniture/decorative/shared_corellian_flagpole.iff")
 
 object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -605,13 +615,14 @@ object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2673191290
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, 2673191290)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, "object/tangible/furniture/decorative/shared_diagnostic_screen.iff")
 
 object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_foodcart_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 247713361
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_foodcart, 247713361)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_foodcart, "object/tangible/furniture/decorative/shared_foodcart.iff")
 
 object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
@@ -709,13 +721,14 @@ object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2967222212
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, 2967222212)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, "object/tangible/furniture/decorative/shared_fruit_assorted.iff")
 
 object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_hanging_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3845808441
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_hanging_planter, 3845808441)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_hanging_planter, "object/tangible/furniture/decorative/shared_hanging_planter.iff")
 
 object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_kitchen_set_lg_s1.apt",
@@ -813,13 +827,14 @@ object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2914356187
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, 2914356187)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, "object/tangible/furniture/decorative/shared_kitchen_utensils.iff")
 
 object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s1.apt",
@@ -865,13 +880,14 @@ object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1371805603
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s01, 1371805603)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s01, "object/tangible/furniture/decorative/shared_microphone_s01.iff")
 
 object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s2.apt",
@@ -917,13 +933,14 @@ object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2329132852
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s02, 2329132852)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s02, "object/tangible/furniture/decorative/shared_microphone_s02.iff")
 
 object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_bench.apt",
@@ -969,13 +986,14 @@ object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3230914916
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_park_bench, 3230914916)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_park_bench, "object/tangible/furniture/decorative/shared_park_bench.iff")
 
 object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_pitcher_s1_full.apt",
@@ -1021,13 +1039,14 @@ object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3027440534
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_pitcher_full, 3027440534)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_pitcher_full, "object/tangible/furniture/decorative/shared_pitcher_full.iff")
 
 object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 265330510
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_plain_bowl, 265330510)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_plain_bowl, "object/tangible/furniture/decorative/shared_plain_bowl.iff")
 
 object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_sm_s1.apt",
@@ -1125,13 +1145,14 @@ object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1276845581
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_portable_stove, 1276845581)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_portable_stove, "object/tangible/furniture/decorative/shared_portable_stove.iff")
 
 object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -1177,13 +1198,14 @@ object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3449846247
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_professor_desk, 3449846247)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_professor_desk, "object/tangible/furniture/decorative/shared_professor_desk.iff")
 
 object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -1229,13 +1251,14 @@ object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1925051927
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_radio, 1925051927)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_radio, "object/tangible/furniture/decorative/shared_radio.iff")
 
 object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
@@ -1281,13 +1304,14 @@ object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2687763225
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_shisa, 2687763225)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_shisa, "object/tangible/furniture/decorative/shared_shisa.iff")
 
 object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_slave_brazier.apt",
@@ -1333,13 +1357,14 @@ object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3637045167
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_slave_brazier, 3637045167)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_slave_brazier, "object/tangible/furniture/decorative/shared_slave_brazier.iff")
 
 object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_rack_spears.apt",
@@ -1385,13 +1410,14 @@ object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 584986683
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_spear_rack, 584986683)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_spear_rack, "object/tangible/furniture/decorative/shared_spear_rack.iff")
 
 object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1025826272
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_streetlamp, 1025826272)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_streetlamp, "object/tangible/furniture/decorative/shared_streetlamp.iff")
 
 object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
@@ -1489,13 +1516,14 @@ object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3754610369
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, 3754610369)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, "object/tangible/furniture/decorative/shared_stuffed_fish.iff")
 
 object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 92142046
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, 92142046)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, "object/tangible/furniture/decorative/shared_tanning_hide_s01.iff")
 
 object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s02.apt",
@@ -1593,13 +1622,14 @@ object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3731509577
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, 3731509577)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, "object/tangible/furniture/decorative/shared_tanning_hide_s02.iff")
 
 object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tapestry_tato.apt",
@@ -1645,10 +1675,11 @@ object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2550512766
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, 2550512766)
+ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, "object/tangible/furniture/decorative/shared_tatooine_tapestry.iff")

@@ -77,10 +77,12 @@ object_draft_schematic_community_crafting_component_shared_connections = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4055607250
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_connections, 4055607250)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_connections, "object/draft_schematic/community_crafting/component/shared_connections.iff")
 
 object_draft_schematic_community_crafting_component_shared_endrost = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_community_crafting_component_shared_endrost = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2475941003
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_endrost, 2475941003)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_endrost, "object/draft_schematic/community_crafting/component/shared_endrost.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2447534688
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret, 2447534688)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret, "object/draft_schematic/community_crafting/component/shared_lightweight_turret.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_el
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3176161507
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics, 3176161507)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_electronics.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_ha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3801620264
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware, 3801620264)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_hardware.iff")
 
 object_draft_schematic_community_crafting_component_shared_power_supply = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_community_crafting_component_shared_power_supply = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4259828056
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_power_supply, 4259828056)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_power_supply, "object/draft_schematic/community_crafting/component/shared_power_supply.iff")
 
 object_draft_schematic_community_crafting_component_shared_primary_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_community_crafting_component_shared_primary_computer = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 165554499
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_primary_computer, 165554499)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_primary_computer, "object/draft_schematic/community_crafting/component/shared_primary_computer.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1988740242
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii, 1988740242)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii, "object/draft_schematic/community_crafting/component/shared_refined_ardanium_ii.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_endrine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_community_crafting_component_shared_refined_endrine = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3315144456
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_endrine, 3315144456)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_endrine, "object/draft_schematic/community_crafting/component/shared_refined_endrine.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_rudic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_community_crafting_component_shared_refined_rudic = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1152625889
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_rudic, 1152625889)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_rudic, "object/draft_schematic/community_crafting/component/shared_refined_rudic.iff")
 
 object_draft_schematic_community_crafting_component_shared_regulator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_community_crafting_component_shared_regulator = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3007982575
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_regulator, 3007982575)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_regulator, "object/draft_schematic/community_crafting/component/shared_regulator.iff")
 
 object_draft_schematic_community_crafting_component_shared_reinforced_wall_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_community_crafting_component_shared_reinforced_wall_modul
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 426210556
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_reinforced_wall_module, 426210556)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_reinforced_wall_module, "object/draft_schematic/community_crafting/component/shared_reinforced_wall_module.iff")
 
 object_draft_schematic_community_crafting_component_shared_shield_housing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_community_crafting_component_shared_shield_housing = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4054564743
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_shield_housing, 4054564743)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_shield_housing, "object/draft_schematic/community_crafting/component/shared_shield_housing.iff")
 
 object_draft_schematic_community_crafting_component_shared_unit_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,7 +636,9 @@ object_draft_schematic_community_crafting_component_shared_unit_computer = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 866494494
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_unit_computer, 866494494)
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_unit_computer, "object/draft_schematic/community_crafting/component/shared_unit_computer.iff")

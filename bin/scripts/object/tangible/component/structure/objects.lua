@@ -85,13 +85,14 @@ object_tangible_component_structure_shared_capacitor_bank = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1675600168
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_capacitor_bank, 1675600168)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_capacitor_bank, "object/tangible/component/structure/shared_capacitor_bank.iff")
 
 object_tangible_component_structure_shared_connections = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_high_power_module.apt",
@@ -137,13 +138,14 @@ object_tangible_component_structure_shared_connections = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1644580711
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_connections, 1644580711)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_connections, "object/tangible/component/structure/shared_connections.iff")
 
 object_tangible_component_structure_shared_fluidic_drilling_pumping_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -189,13 +191,14 @@ object_tangible_component_structure_shared_fluidic_drilling_pumping_unit = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 499199094
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_fluidic_drilling_pumping_unit, 499199094)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_fluidic_drilling_pumping_unit, "object/tangible/component/structure/shared_fluidic_drilling_pumping_unit.iff")
 
 object_tangible_component_structure_shared_generator_turbine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -241,13 +244,14 @@ object_tangible_component_structure_shared_generator_turbine = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1363328023
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_generator_turbine, 1363328023)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_generator_turbine, "object/tangible/component/structure/shared_generator_turbine.iff")
 
 object_tangible_component_structure_shared_harvesting_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -293,13 +297,14 @@ object_tangible_component_structure_shared_harvesting_mechanism = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2168038464
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_harvesting_mechanism, 2168038464)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_harvesting_mechanism, "object/tangible/component/structure/shared_harvesting_mechanism.iff")
 
 object_tangible_component_structure_shared_heavy_harvesting_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -345,13 +350,14 @@ object_tangible_component_structure_shared_heavy_harvesting_mechanism = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4202910010
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_heavy_harvesting_mechanism, 4202910010)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_heavy_harvesting_mechanism, "object/tangible/component/structure/shared_heavy_harvesting_mechanism.iff")
 
 object_tangible_component_structure_shared_light_ore_mining_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -397,13 +403,14 @@ object_tangible_component_structure_shared_light_ore_mining_unit = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4100404133
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_ore_mining_unit, 4100404133)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_ore_mining_unit, "object/tangible/component/structure/shared_light_ore_mining_unit.iff")
 
 object_tangible_component_structure_shared_light_power_core_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -449,13 +456,14 @@ object_tangible_component_structure_shared_light_power_core_unit = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1333204559
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_power_core_unit, 1333204559)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_power_core_unit, "object/tangible/component/structure/shared_light_power_core_unit.iff")
 
 object_tangible_component_structure_shared_lightweight_turret = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_component_structure_shared_lightweight_turret = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 216556073
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret, 216556073)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret, "object/tangible/component/structure/shared_lightweight_turret.iff")
 
 object_tangible_component_structure_shared_lightweight_turret_electronics = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -553,13 +562,14 @@ object_tangible_component_structure_shared_lightweight_turret_electronics = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1039813801
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_electronics, 1039813801)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_electronics, "object/tangible/component/structure/shared_lightweight_turret_electronics.iff")
 
 object_tangible_component_structure_shared_lightweight_turret_hardware = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02_barrel.apt",
@@ -605,13 +615,14 @@ object_tangible_component_structure_shared_lightweight_turret_hardware = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2213385801
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_hardware, 2213385801)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_hardware, "object/tangible/component/structure/shared_lightweight_turret_hardware.iff")
 
 object_tangible_component_structure_shared_manufacturing_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -657,13 +668,14 @@ object_tangible_component_structure_shared_manufacturing_mechanism = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2031466188
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_manufacturing_mechanism, 2031466188)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_manufacturing_mechanism, "object/tangible/component/structure/shared_manufacturing_mechanism.iff")
 
 object_tangible_component_structure_shared_ore_mining_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -709,13 +721,14 @@ object_tangible_component_structure_shared_ore_mining_unit = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 494485339
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_ore_mining_unit, 494485339)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_ore_mining_unit, "object/tangible/component/structure/shared_ore_mining_unit.iff")
 
 object_tangible_component_structure_shared_power_core_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -761,13 +774,14 @@ object_tangible_component_structure_shared_power_core_unit = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2791905969
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_core_unit, 2791905969)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_core_unit, "object/tangible/component/structure/shared_power_core_unit.iff")
 
 object_tangible_component_structure_shared_power_supply = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -813,13 +827,14 @@ object_tangible_component_structure_shared_power_supply = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1750169887
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_supply, 1750169887)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_supply, "object/tangible/component/structure/shared_power_supply.iff")
 
 object_tangible_component_structure_shared_primary_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_deflector_shield.apt",
@@ -865,13 +880,14 @@ object_tangible_component_structure_shared_primary_computer = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 872977107
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_primary_computer, 872977107)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_primary_computer, "object/tangible/component/structure/shared_primary_computer.iff")
 
 object_tangible_component_structure_shared_refined_ardanium_ii = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_component_structure_shared_refined_ardanium_ii = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1750151391
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_ardanium_ii, 1750151391)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_ardanium_ii, "object/tangible/component/structure/shared_refined_ardanium_ii.iff")
 
 object_tangible_component_structure_shared_refined_endrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -969,13 +986,14 @@ object_tangible_component_structure_shared_refined_endrine = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4117820382
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_endrine, 4117820382)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_endrine, "object/tangible/component/structure/shared_refined_endrine.iff")
 
 object_tangible_component_structure_shared_refined_rudic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -1021,13 +1039,14 @@ object_tangible_component_structure_shared_refined_rudic = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3234052884
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_rudic, 3234052884)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_rudic, "object/tangible/component/structure/shared_refined_rudic.iff")
 
 object_tangible_component_structure_shared_regulator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_demagnetizer.apt",
@@ -1073,13 +1092,14 @@ object_tangible_component_structure_shared_regulator = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 334361877
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_regulator, 334361877)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_regulator, "object/tangible/component/structure/shared_regulator.iff")
 
 object_tangible_component_structure_shared_reinforced_wall_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_building_wall.apt",
@@ -1125,13 +1145,14 @@ object_tangible_component_structure_shared_reinforced_wall_module = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2157237478
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_reinforced_wall_module, 2157237478)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_reinforced_wall_module, "object/tangible/component/structure/shared_reinforced_wall_module.iff")
 
 object_tangible_component_structure_shared_shield_housing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator_const_1.apt",
@@ -1177,13 +1198,14 @@ object_tangible_component_structure_shared_shield_housing = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4222934197
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_shield_housing, 4222934197)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_shield_housing, "object/tangible/component/structure/shared_shield_housing.iff")
 
 object_tangible_component_structure_shared_structural_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_building_block.apt",
@@ -1229,13 +1251,14 @@ object_tangible_component_structure_shared_structural_module = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 581097497
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structural_module, 581097497)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structural_module, "object/tangible/component/structure/shared_structural_module.iff")
 
 object_tangible_component_structure_shared_structure_small_storage_section = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1281,13 +1304,14 @@ object_tangible_component_structure_shared_structure_small_storage_section = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3065121947
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_small_storage_section, 3065121947)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_small_storage_section, "object/tangible/component/structure/shared_structure_small_storage_section.iff")
 
 object_tangible_component_structure_shared_structure_storage_section = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1333,13 +1357,14 @@ object_tangible_component_structure_shared_structure_storage_section = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2670328164
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_storage_section, 2670328164)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_storage_section, "object/tangible/component/structure/shared_structure_storage_section.iff")
 
 object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -1385,13 +1410,14 @@ object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3576172943
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit, 3576172943)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit, "object/tangible/component/structure/shared_turbo_fluidic_drilling_pumping_unit.iff")
 
 object_tangible_component_structure_shared_unit_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1437,13 +1463,14 @@ object_tangible_component_structure_shared_unit_computer = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3084238827
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_unit_computer, 3084238827)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_unit_computer, "object/tangible/component/structure/shared_unit_computer.iff")
 
 object_tangible_component_structure_shared_wall_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_building_wall.apt",
@@ -1489,13 +1516,14 @@ object_tangible_component_structure_shared_wall_module = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 831970225
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_wall_module, 831970225)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_wall_module, "object/tangible/component/structure/shared_wall_module.iff")
 
 object_tangible_component_structure_shared_weapon_high_power_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_high_power_module.apt",
@@ -1541,13 +1569,14 @@ object_tangible_component_structure_shared_weapon_high_power_module = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3919359812
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_high_power_module, 3919359812)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_high_power_module, "object/tangible/component/structure/shared_weapon_high_power_module.iff")
 
 object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_heavy_stabilization_unit.apt",
@@ -1593,10 +1622,11 @@ object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3638822414
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit, 3638822414)
+ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit, "object/tangible/component/structure/shared_weapon_mount_heavy_stabilization_unit.iff")

@@ -77,7 +77,9 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4042830301
 }
 
-ObjectTemplates:addTemplate(object_jedi_manager_shared_jedi_manager, 4042830301)
+ObjectTemplates:addTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")

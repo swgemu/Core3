@@ -85,13 +85,14 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 642963853
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, 642963853)
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, "object/tangible/lair/blistmok/shared_lair_blistmok.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 920509188
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, 920509188)
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1298589466
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, 1298589466)
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff")

@@ -88,13 +88,14 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2883928313
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_lrg, 2883928313)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_lrg, "object/building/poi/hq/shared_hutt_lrg.iff")
 
 object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -143,13 +144,14 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 8,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3359402016
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_med, 3359402016)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_med, "object/building/poi/hq/shared_hutt_med.iff")
 
 object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -198,13 +200,14 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 3,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1295187033
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_sm, 1295187033)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_sm, "object/building/poi/hq/shared_hutt_sm.iff")
 
 object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -253,13 +256,14 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 12,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1970934894
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_lrg, 1970934894)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_lrg, "object/building/poi/hq/shared_imperial_lrg.iff")
 
 object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -308,13 +312,14 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 2,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 379796663
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_med, 379796663)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_med, "object/building/poi/hq/shared_imperial_med.iff")
 
 object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -363,13 +368,14 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 759219915
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_sm, 759219915)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_sm, "object/building/poi/hq/shared_imperial_sm.iff")
 
 object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -418,13 +424,14 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 12,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1900138383
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_lrg, 1900138383)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_lrg, "object/building/poi/hq/shared_rebel_lrg.iff")
 
 object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -473,13 +480,14 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 2,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 312010582
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_med, 312010582)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_med, "object/building/poi/hq/shared_rebel_med.iff")
 
 object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -528,10 +536,11 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2752460800
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_sm, 2752460800)
+ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_sm, "object/building/poi/hq/shared_rebel_sm.iff")

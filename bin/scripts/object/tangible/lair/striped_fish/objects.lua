@@ -85,13 +85,14 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 348164560
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, 348164560)
+ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, "object/tangible/lair/striped_fish/shared_lair_striped_fish.iff")
 
 object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1569350634
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, 1569350634)
+ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, "object/tangible/lair/striped_fish/shared_lair_striped_fish_underwater.iff")

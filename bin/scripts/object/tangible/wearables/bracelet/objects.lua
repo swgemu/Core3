@@ -85,13 +85,14 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1474382637
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, 1474382637)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, "object/tangible/wearables/bracelet/shared_bracelet_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 657723070
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, 657723070)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, "object/tangible/wearables/bracelet/shared_bracelet_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_l.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3949931361
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, 3949931361)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, "object/tangible/wearables/bracelet/shared_bracelet_s02_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2612686578
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, 2612686578)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, "object/tangible/wearables/bracelet/shared_bracelet_s02_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_l.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2755150704
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, 2755150704)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, "object/tangible/wearables/bracelet/shared_bracelet_s03_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_r.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3572303587
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, 3572303587)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, "object/tangible/wearables/bracelet/shared_bracelet_s03_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_l.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1281181360
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, 1281181360)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, "object/tangible/wearables/bracelet/shared_bracelet_s04_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_r.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1015546659
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, 1015546659)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, "object/tangible/wearables/bracelet/shared_bracelet_s04_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_l.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 50998945
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, 50998945)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, "object/tangible/wearables/bracelet/shared_bracelet_s05_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_r.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1944021810
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, 1944021810)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, "object/tangible/wearables/bracelet/shared_bracelet_s05_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_l.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3539179154
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, 3539179154)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, "object/tangible/wearables/bracelet/shared_bracelet_s06_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_r.sat",
@@ -657,10 +668,11 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2720453377
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, 2720453377)
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, "object/tangible/wearables/bracelet/shared_bracelet_s06_r.iff")

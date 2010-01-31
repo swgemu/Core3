@@ -85,13 +85,14 @@ object_tangible_lair_worrt_shared_lair_worrt = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3340605461
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt, 3340605461)
+ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt, "object/tangible/lair/worrt/shared_lair_worrt.iff")
 
 object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 870158284
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt_desert, 870158284)
+ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt_desert, "object/tangible/lair/worrt/shared_lair_worrt_desert.iff")

@@ -85,13 +85,14 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3684259216
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_acklay_venom, 3684259216)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_acklay_venom, "object/tangible/component/munition/shared_acklay_venom.iff")
 
 object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
@@ -137,13 +138,14 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4029895422
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile, 4029895422)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile, "object/tangible/component/munition/shared_ammo_projectile.iff")
 
 object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile_entanglement.apt",
@@ -189,13 +191,14 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1717162905
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, 1717162905)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff")
 
 object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -241,13 +244,14 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1098837027
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_base_munition_enhancer, 1098837027)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_base_munition_enhancer, "object/tangible/component/munition/shared_base_munition_enhancer.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_composition = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -293,13 +297,14 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1739187546
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, 1739187546)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, "object/tangible/component/munition/shared_enhanced_charge_composition.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -345,13 +350,14 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 411019932
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, 411019932)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, "object/tangible/component/munition/shared_enhanced_charge_shaping.iff")
 
 object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -397,13 +403,14 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3545355156
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, 3545355156)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff")
 
 object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -449,13 +456,14 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 628465189
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, 628465189)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff")
 
 object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3311758812
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_kliknick_gland, 3311758812)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_kliknick_gland, "object/tangible/component/munition/shared_kliknick_gland.iff")
 
 object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -553,13 +562,14 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3966888720
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_chemical, 3966888720)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_chemical, "object/tangible/component/munition/shared_warhead_chemical.iff")
 
 object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -605,13 +615,14 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 896289962
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, 896289962)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff")
 
 object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_heavy.apt",
@@ -657,13 +668,14 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2416425450
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_heavy, 2416425450)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_heavy, "object/tangible/component/munition/shared_warhead_heavy.iff")
 
 object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -709,13 +721,14 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1365214516
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_light, 1365214516)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_light, "object/tangible/component/munition/shared_warhead_light.iff")
 
 object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_medium.apt",
@@ -761,13 +774,14 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1284211616
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_medium, 1284211616)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_medium, "object/tangible/component/munition/shared_warhead_medium.iff")
 
 object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -813,10 +827,11 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1000887058
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_stabilizer, 1000887058)
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_stabilizer, "object/tangible/component/munition/shared_warhead_stabilizer.iff")

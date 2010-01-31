@@ -43,11 +43,19 @@
 -- Global creature table
 ObjectTemplates = { }
 
-function ObjectTemplates:addTemplate(obj, crc)
+function ObjectTemplates:addTemplate(obj, file)
+	crc = crcString(file)
+	
+	if crc == 206832110 then
+		print("inserting 206832110")
+	end
+	
+	addTemplateCRC(file, crc)
+	
 	if self[crc] == nil then
 		self[crc] = obj 
 	else
-		print("error conflicting server template crc " .. crc)
+		print("error conflicting server template crc " .. crc .. " file " .. file)
 	end
 end
 
@@ -56,3 +64,4 @@ function getTemplate(crc)
 end
 
 includeFile("allobjects.lua")
+includeFile("serverobjects.lua")

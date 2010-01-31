@@ -58,7 +58,7 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 13,
+	gameObjectType = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
@@ -77,7 +77,9 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2022504856
 }
 
-ObjectTemplates:addTemplate(object_group_shared_group_object, 2022504856)
+ObjectTemplates:addTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")

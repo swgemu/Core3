@@ -86,6 +86,7 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	clientObjectCRC = 3903774700
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_grenade_base_shared_grenade_base, 3903774700)
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_base_shared_grenade_base, "object/weapon/ranged/grenade/base/shared_grenade_base.iff")

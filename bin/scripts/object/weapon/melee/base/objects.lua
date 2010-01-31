@@ -86,6 +86,7 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1158062481
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_base_shared_base_melee, 1158062481)
+ObjectTemplates:addTemplate(object_weapon_melee_base_shared_base_melee, "object/weapon/melee/base/shared_base_melee.iff")

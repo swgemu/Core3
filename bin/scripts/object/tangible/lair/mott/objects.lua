@@ -85,13 +85,14 @@ object_tangible_lair_mott_shared_lair_mott = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1868006233
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott, 1868006233)
+ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott, "object/tangible/lair/mott/shared_lair_mott.iff")
 
 object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1621695491
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott_grassland, 1621695491)
+ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott_grassland, "object/tangible/lair/mott/shared_lair_mott_grassland.iff")

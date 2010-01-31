@@ -85,13 +85,14 @@ object_tangible_lair_gronda_shared_lair_gronda = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 658868181
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda, 658868181)
+ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda, "object/tangible/lair/gronda/shared_lair_gronda.iff")
 
 object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1050006158
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda_grassland, 1050006158)
+ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda_grassland, "object/tangible/lair/gronda/shared_lair_gronda_grassland.iff")

@@ -85,13 +85,14 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 529503793
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, 529503793)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_gungan_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
@@ -137,13 +138,14 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 745421256
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, 745421256)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_nightsister_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -189,13 +191,14 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3854704940
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, 3854704940)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, "object/installation/battlefield/destructible/barracks/shared_rebel_infantry_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -241,10 +244,11 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3586973666
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, 3586973666)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, "object/installation/battlefield/destructible/barracks/shared_storm_trooper_barracks.iff")

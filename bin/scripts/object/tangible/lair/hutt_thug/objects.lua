@@ -85,10 +85,11 @@ object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2374143434
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, 2374143434)
+ObjectTemplates:addTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, "object/tangible/lair/hutt_thug/shared_lair_hutt_thug_npc.iff")

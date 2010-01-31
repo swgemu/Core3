@@ -85,13 +85,14 @@ object_tangible_ship_components_base_shared_ship_component_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 489689344
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_base, 489689344)
+ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_base, "object/tangible/ship/components/base/shared_ship_component_base.iff")
 
 object_tangible_ship_components_base_shared_ship_component_loot_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_ship_components_base_shared_ship_component_loot_base = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1282074761
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_loot_base, 1282074761)
+ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_loot_base, "object/tangible/ship/components/base/shared_ship_component_loot_base.iff")
 
 object_tangible_ship_components_base_shared_ship_subcomponent_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_ship_components_base_shared_ship_subcomponent_base = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1420884630
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_subcomponent_base, 1420884630)
+ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_subcomponent_base, "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff")

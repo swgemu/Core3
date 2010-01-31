@@ -85,13 +85,14 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 320002597
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku, 320002597)
+ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku, "object/tangible/lair/choku/shared_lair_choku.iff")
 
 object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1812548247
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, 1812548247)
+ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, "object/tangible/lair/choku/shared_lair_choku_jungle.iff")

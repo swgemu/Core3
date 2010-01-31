@@ -85,13 +85,14 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3973368814
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, 3973368814)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -137,13 +138,14 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 33357504
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, 33357504)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2176567440
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, 2176567440)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -241,13 +244,14 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 275009907
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, 275009907)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -293,13 +297,14 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2981833750
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, 2981833750)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -345,13 +350,14 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 49511220
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, 49511220)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -397,13 +403,14 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1843384540
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, 1843384540)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -449,13 +456,14 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2666433962
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, 2666433962)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -501,13 +509,14 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2499138491
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, 2499138491)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -553,13 +562,14 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 352538230
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, 352538230)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -605,13 +615,14 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2177174238
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, 2177174238)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -657,13 +668,14 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1817381441
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, 1817381441)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -709,13 +721,14 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1634921548
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, 1634921548)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -761,13 +774,14 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3816949248
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, 3816949248)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -813,13 +827,14 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1441840530
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, 1441840530)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -865,13 +880,14 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2788504736
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, 2788504736)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -917,13 +933,14 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2378673848
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, 2378673848)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -969,13 +986,14 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3464694105
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, 3464694105)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1021,13 +1039,14 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2109385771
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, 2109385771)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1073,13 +1092,14 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3869986987
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, 3869986987)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1125,13 +1145,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3186214418
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, 3186214418)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1177,13 +1198,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4262840848
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, 4262840848)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1229,13 +1251,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 712860035
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, 712860035)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1281,13 +1304,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2564896139
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, 2564896139)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1333,13 +1357,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4001355238
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, 4001355238)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1385,13 +1410,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 974618229
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, 974618229)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1437,13 +1463,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3084811322
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, 3084811322)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1489,13 +1516,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4286535235
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, 4286535235)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1541,13 +1569,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4021975943
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, 4021975943)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1593,13 +1622,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 204385497
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, 204385497)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1645,13 +1675,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 818256163
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, 818256163)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1697,13 +1728,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2390933673
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, 2390933673)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1749,13 +1781,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3163168550
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, 3163168550)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1801,13 +1834,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3952203976
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, 3952203976)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1853,13 +1887,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1073312603
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, 1073312603)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1905,13 +1940,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4294515772
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, 4294515772)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1957,13 +1993,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 834256381
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, 834256381)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2009,13 +2046,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3855685230
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, 3855685230)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2061,13 +2099,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2354501114
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, 2354501114)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2113,13 +2152,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1437890513
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, 1437890513)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2165,13 +2205,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1165056533
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, 1165056533)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -2217,13 +2258,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 571889949
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, 571889949)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2269,13 +2311,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3555247298
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, 3555247298)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2321,13 +2364,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 44057344
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, 44057344)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2373,13 +2417,14 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 56986758
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, 56986758)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2425,13 +2470,14 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 74183997
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, 74183997)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2477,13 +2523,14 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3014709176
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, 3014709176)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2529,13 +2576,14 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 443254179
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, 443254179)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2581,13 +2629,14 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1275187305
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, 1275187305)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2633,13 +2682,14 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1892700204
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, 1892700204)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2685,13 +2735,14 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4233888471
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, 4233888471)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2737,13 +2788,14 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 131416383
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, 131416383)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2789,13 +2841,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3869697913
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, 3869697913)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2841,13 +2894,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1435106538
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, 1435106538)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -2893,13 +2947,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2842219763
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, 2842219763)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -2945,13 +3000,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3191519467
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, 3191519467)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2997,13 +3053,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2133560437
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, 2133560437)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -3049,13 +3106,14 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 910955791
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, 910955791)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3101,13 +3159,14 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1451271511
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, 1451271511)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3153,13 +3212,14 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 138305507
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, 138305507)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3205,13 +3265,14 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 620571036
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, 620571036)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3257,13 +3318,14 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1194071997
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, 1194071997)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3309,13 +3371,14 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2736953476
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, 2736953476)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3361,13 +3424,14 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 385386900
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, 385386900)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3413,13 +3477,14 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4049237306
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, 4049237306)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3465,13 +3530,14 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2780825325
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, 2780825325)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3517,13 +3583,14 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1601376740
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, 1601376740)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3569,13 +3636,14 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4283977315
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, 4283977315)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, "object/tangible/loot/loot_schematic/shared_radio_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3621,13 +3689,14 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2074723143
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, 2074723143)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3673,13 +3742,14 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4016619674
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, 4016619674)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3725,13 +3795,14 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2882303083
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, 2882303083)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3777,13 +3848,14 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3338971500
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, 3338971500)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, "object/tangible/loot/loot_schematic/shared_stove_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3829,13 +3901,14 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2023724464
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, 2023724464)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3881,13 +3954,14 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 46984344
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, 46984344)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3933,13 +4007,14 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1657163664
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, 1657163664)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3985,13 +4060,14 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 189791805
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, 189791805)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4037,13 +4113,14 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1755234332
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, 1755234332)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4089,13 +4166,14 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1445555733
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, 1445555733)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4141,13 +4219,14 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 911123298
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, 911123298)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4193,13 +4272,14 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1436523843
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, 1436523843)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4245,13 +4325,14 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3095520200
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, 3095520200)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4297,13 +4378,14 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2145052130
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, 2145052130)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4349,10 +4431,11 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2313370154
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, 2313370154)
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff")

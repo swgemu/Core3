@@ -85,13 +85,14 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4164574755
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l, 4164574755)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bicep_r_s01.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2297371568
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r, 2297371568)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bracer_l_s01.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1037485621
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l, 1037485621)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bracer_r_s01.sat",
@@ -241,10 +244,11 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1292075942
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r, 1292075942)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_r.iff")

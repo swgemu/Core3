@@ -85,10 +85,11 @@ object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 264284589
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_instrument_shared_dual_wave_synthesizer, 264284589)
+ObjectTemplates:addTemplate(object_tangible_component_instrument_shared_dual_wave_synthesizer, "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff")

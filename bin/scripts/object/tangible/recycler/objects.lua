@@ -85,13 +85,14 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1627417847
 }
 
-ObjectTemplates:addTemplate(object_tangible_recycler_shared_chemical_recycler, 1627417847)
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_chemical_recycler, "object/tangible/recycler/shared_chemical_recycler.iff")
 
 object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_meat.apt",
@@ -137,13 +138,14 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2601090218
 }
 
-ObjectTemplates:addTemplate(object_tangible_recycler_shared_creature_recycler, 2601090218)
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_creature_recycler, "object/tangible/recycler/shared_creature_recycler.iff")
 
 object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_plant.apt",
@@ -189,13 +191,14 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 372626307
 }
 
-ObjectTemplates:addTemplate(object_tangible_recycler_shared_flora_recycler, 372626307)
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_flora_recycler, "object/tangible/recycler/shared_flora_recycler.iff")
 
 object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_metal.apt",
@@ -241,13 +244,14 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 860237131
 }
 
-ObjectTemplates:addTemplate(object_tangible_recycler_shared_metal_recycler, 860237131)
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_metal_recycler, "object/tangible/recycler/shared_metal_recycler.iff")
 
 object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_ore.apt",
@@ -293,10 +297,11 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4105541227
 }
 
-ObjectTemplates:addTemplate(object_tangible_recycler_shared_ore_recycler, 4105541227)
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_ore_recycler, "object/tangible/recycler/shared_ore_recycler.iff")

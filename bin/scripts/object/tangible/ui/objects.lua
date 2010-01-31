@@ -85,13 +85,14 @@ object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 580259338
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, 580259338)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, "object/tangible/ui/shared_ui_char_cust_pedestal.iff")
 
 object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_corl.apt",
@@ -137,13 +138,14 @@ object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 565167488
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_corellia, 565167488)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_corellia, "object/tangible/ui/shared_ui_planet_corellia.iff")
 
 object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_imperial.apt",
@@ -189,13 +191,14 @@ object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3225920634
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_imperial, 3225920634)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_imperial, "object/tangible/ui/shared_ui_planet_imperial.iff")
 
 object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_nboo.apt",
@@ -241,13 +244,14 @@ object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3585856086
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_naboo, 3585856086)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_naboo, "object/tangible/ui/shared_ui_planet_naboo.iff")
 
 object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_neutral.apt",
@@ -293,13 +297,14 @@ object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4127966392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_privateer, 4127966392)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_privateer, "object/tangible/ui/shared_ui_planet_privateer.iff")
 
 object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_rebel.apt",
@@ -345,13 +350,14 @@ object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3636261575
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rebel, 3636261575)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rebel, "object/tangible/ui/shared_ui_planet_rebel.iff")
 
 object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_rori.apt",
@@ -397,13 +403,14 @@ object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2331720771
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rori, 2331720771)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rori, "object/tangible/ui/shared_ui_planet_rori.iff")
 
 object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_talu.apt",
@@ -449,13 +456,14 @@ object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3437864060
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_talus, 3437864060)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_talus, "object/tangible/ui/shared_ui_planet_talus.iff")
 
 object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_tato.apt",
@@ -501,10 +509,11 @@ object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 502047775
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_tatooine, 502047775)
+ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_tatooine, "object/tangible/ui/shared_ui_planet_tatooine.iff")

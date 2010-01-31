@@ -85,13 +85,14 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 323029276
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun, 323029276)
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun, "object/tangible/lair/huf_dun/shared_lair_huf_dun.iff")
 
 object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1957462040
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland, 1957462040)
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland, "object/tangible/lair/huf_dun/shared_lair_huf_dun_grassland.iff")

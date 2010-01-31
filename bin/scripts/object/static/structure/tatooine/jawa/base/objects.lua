@@ -77,7 +77,9 @@ object_static_structure_tatooine_jawa_base_shared_tent_jawa_base = SharedStaticO
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3069872384
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_base_shared_tent_jawa_base, 3069872384)
+ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_base_shared_tent_jawa_base, "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff")

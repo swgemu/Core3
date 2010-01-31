@@ -85,10 +85,11 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1975147691
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_base_shared_drink_container_base, 1975147691)
+ObjectTemplates:addTemplate(object_tangible_component_food_base_shared_drink_container_base, "object/tangible/component/food/base/shared_drink_container_base.iff")

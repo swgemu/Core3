@@ -85,13 +85,14 @@ object_tangible_lair_vesp_shared_lair_vesp = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2116978464
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp, 2116978464)
+ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp, "object/tangible/lair/vesp/shared_lair_vesp.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2079570981
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, 2079570981)
+ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, "object/tangible/lair/vesp/shared_lair_vesp_desert.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4143757009
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, 4143757009)
+ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, "object/tangible/lair/vesp/shared_lair_vesp_mountain.iff")

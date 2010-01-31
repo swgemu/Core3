@@ -85,13 +85,14 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3783483774
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, 3783483774)
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, "object/tangible/lair/langlatch/shared_lair_langlatch.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3329291401
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, 3329291401)
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2238931411
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, 2238931411)
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1403100093
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, 1403100093)
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff")

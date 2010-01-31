@@ -77,7 +77,9 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1100063237
 }
 
-ObjectTemplates:addTemplate(object_soundobject_base_shared_soundobject_base, 1100063237)
+ObjectTemplates:addTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")

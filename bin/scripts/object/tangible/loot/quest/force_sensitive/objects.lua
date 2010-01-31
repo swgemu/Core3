@@ -85,13 +85,14 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 535228363
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, 535228363)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -137,13 +138,14 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2972904337
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, 2972904337)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3049740856
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, 3049740856)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -241,13 +244,14 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3130494948
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, 3130494948)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_force_crystal.apt",
@@ -293,13 +297,14 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2042144998
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, 2042144998)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -345,10 +350,11 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1900348707
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, 1900348707)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")

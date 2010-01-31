@@ -85,10 +85,11 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 675816768
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_base_shared_base_sign, 675816768)
+ObjectTemplates:addTemplate(object_tangible_sign_base_shared_base_sign, "object/tangible/sign/base/shared_base_sign.iff")

@@ -85,13 +85,14 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2415963091
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, 2415963091)
+ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff")
 
 object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -137,10 +138,11 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1615742669
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, 1615742669)
+ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff")

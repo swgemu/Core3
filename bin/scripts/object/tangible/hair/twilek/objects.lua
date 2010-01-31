@@ -85,13 +85,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s01 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3634839517
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s01, 3634839517)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s01, "object/tangible/hair/twilek/shared_hair_twilek_female_s01.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s02.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 61904714
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s02, 61904714)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s02, "object/tangible/hair/twilek/shared_hair_twilek_female_s02.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s03.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1253961927
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s03, 1253961927)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s03, "object/tangible/hair/twilek/shared_hair_twilek_female_s03.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s04.sat",
@@ -241,13 +244,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2975783891
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s04, 2975783891)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s04, "object/tangible/hair/twilek/shared_hair_twilek_female_s04.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s05.sat",
@@ -293,13 +297,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4166237278
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s05, 4166237278)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s05, "object/tangible/hair/twilek/shared_hair_twilek_female_s05.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s06.sat",
@@ -345,13 +350,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 591664329
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s06, 591664329)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s06, "object/tangible/hair/twilek/shared_hair_twilek_female_s06.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s07.sat",
@@ -397,13 +403,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1783198532
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s07, 1783198532)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s07, "object/tangible/hair/twilek/shared_hair_twilek_female_s07.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s08.sat",
@@ -449,13 +456,14 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3494076246
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s08, 3494076246)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s08, "object/tangible/hair/twilek/shared_hair_twilek_female_s08.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s01.sat",
@@ -501,13 +509,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2466956712
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s01, 2466956712)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s01, "object/tangible/hair/twilek/shared_hair_twilek_male_s01.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s02.sat",
@@ -553,13 +562,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1209888063
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s02, 1209888063)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s02, "object/tangible/hair/twilek/shared_hair_twilek_male_s02.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s03.sat",
@@ -605,13 +615,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 17828530
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s03, 17828530)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s03, "object/tangible/hair/twilek/shared_hair_twilek_male_s03.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s04.sat",
@@ -657,13 +668,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4210237862
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s04, 4210237862)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s04, "object/tangible/hair/twilek/shared_hair_twilek_male_s04.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s05.sat",
@@ -709,13 +721,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3019785771
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s05, 3019785771)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s05, "object/tangible/hair/twilek/shared_hair_twilek_male_s05.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s06.sat",
@@ -761,13 +774,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1760161468
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s06, 1760161468)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s06, "object/tangible/hair/twilek/shared_hair_twilek_male_s06.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s07.sat",
@@ -813,13 +827,14 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 568625457
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s07, 568625457)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s07, "object/tangible/hair/twilek/shared_hair_twilek_male_s07.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s08.sat",
@@ -865,10 +880,11 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2616108323
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s08, 2616108323)
+ObjectTemplates:addTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s08, "object/tangible/hair/twilek/shared_hair_twilek_male_s08.iff")

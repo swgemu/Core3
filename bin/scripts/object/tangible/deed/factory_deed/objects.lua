@@ -85,13 +85,14 @@ object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1812501477
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, 1812501477)
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3488359653
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, 3488359653)
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, "object/tangible/deed/factory_deed/shared_factory_food_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,13 +191,14 @@ object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4246665338
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, 4246665338)
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, "object/tangible/deed/factory_deed/shared_factory_item_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -241,10 +244,11 @@ object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2385714184
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, 2385714184)
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 196553824
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, 196553824)
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 150207939
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, 150207939)
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2092015518
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, 2092015518)
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")

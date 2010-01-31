@@ -86,6 +86,7 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	clientObjectCRC = 4214506567
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_turret_shared_turret_block_large, 4214506567)
+ObjectTemplates:addTemplate(object_weapon_ranged_turret_shared_turret_block_large, "object/weapon/ranged/turret/shared_turret_block_large.iff")

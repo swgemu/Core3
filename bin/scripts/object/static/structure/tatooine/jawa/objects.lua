@@ -77,10 +77,12 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1450417289
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_large, 1450417289)
+ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_large, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_large.iff")
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jawa_tent_med.apt",
@@ -118,10 +120,12 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3551226366
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_med, 3551226366)
+ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_med, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_med.iff")
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jawa_tent_small.apt",
@@ -159,7 +163,9 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1650985120
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_small, 1650985120)
+ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_small, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_small.iff")

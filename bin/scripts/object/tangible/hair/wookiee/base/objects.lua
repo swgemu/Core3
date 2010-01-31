@@ -85,13 +85,14 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2505702624
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, 2505702624)
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff")
 
 object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1402579310
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, 1402579310)
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_female_base.iff")
 
 object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 848817616
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, 848817616)
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_male_base.iff")

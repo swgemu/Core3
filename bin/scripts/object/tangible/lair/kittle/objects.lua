@@ -85,13 +85,14 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4291838693
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle, 4291838693)
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle, "object/tangible/lair/kittle/shared_lair_kittle.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2947041437
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, 2947041437)
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, "object/tangible/lair/kittle/shared_lair_kittle_forest.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4088792736
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, 4088792736)
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff")

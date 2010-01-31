@@ -85,13 +85,14 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1292354861
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_basic, 1292354861)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_basic, "object/tangible/scout/camp/shared_camp_basic.iff")
 
 object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s4.apt",
@@ -137,13 +138,14 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3731836900
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_elite, 3731836900)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_elite, "object/tangible/scout/camp/shared_camp_elite.iff")
 
 object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s2.apt",
@@ -189,13 +191,14 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2831120800
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_improved, 2831120800)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_improved, "object/tangible/scout/camp/shared_camp_improved.iff")
 
 object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s5.apt",
@@ -241,13 +244,14 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1082864410
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_luxury, 1082864410)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_luxury, "object/tangible/scout/camp/shared_camp_luxury.iff")
 
 object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
@@ -293,13 +297,14 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1695464329
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_multi, 1695464329)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_multi, "object/tangible/scout/camp/shared_camp_multi.iff")
 
 object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s3.apt",
@@ -345,10 +350,11 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3484724123
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_quality, 3484724123)
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_quality, "object/tangible/scout/camp/shared_camp_quality.iff")

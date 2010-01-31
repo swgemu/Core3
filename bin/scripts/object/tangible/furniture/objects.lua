@@ -85,13 +85,14 @@ object_tangible_furniture_shared_furniture_base = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 408550317
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_base, 408550317)
+ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_base, "object/tangible/furniture/shared_furniture_base.iff")
 
 object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tatt_chair_cantina_seat.apt",
@@ -137,10 +138,11 @@ object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3326667567
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01, 3326667567)
+ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01, "object/tangible/furniture/shared_furniture_tatooine_cantina_seat_01.iff")

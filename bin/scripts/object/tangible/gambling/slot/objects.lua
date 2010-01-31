@@ -85,10 +85,11 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1978853321
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_slot_shared_standard, 1978853321)
+ObjectTemplates:addTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")

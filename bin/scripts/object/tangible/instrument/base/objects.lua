@@ -85,10 +85,11 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2963077221
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_base_shared_instrument_base, 2963077221)
+ObjectTemplates:addTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")

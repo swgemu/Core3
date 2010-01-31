@@ -88,13 +88,14 @@ object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingOb
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2342412562
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_base_shared_factional_hq_base, 2342412562)
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_base_shared_factional_hq_base, "object/building/faction_perk/hq/base/shared_factional_hq_base.iff")
 
 object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -143,10 +144,11 @@ object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObje
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 622259850
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_base_shared_factional_hq_fp, 622259850)
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_base_shared_factional_hq_fp, "object/building/faction_perk/hq/base/shared_factional_hq_fp.iff")

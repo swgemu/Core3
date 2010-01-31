@@ -85,10 +85,11 @@ object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 781466578
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01, 781466578)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01, "object/tangible/wearables/armor/nightsister/shared_armor_nightsister_bicep_r_s01.iff")

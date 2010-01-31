@@ -86,6 +86,7 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,7 +96,7 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	clientObjectCRC = 4081145715
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, 4081145715)
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -142,6 +143,7 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -151,7 +153,7 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	clientObjectCRC = 1355297704
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, 1355297704)
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,6 +200,7 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -207,4 +210,4 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	clientObjectCRC = 4212036933
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_polearm_base, 4212036933)
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_polearm_base, "object/weapon/melee/polearm/base/shared_polearm_base.iff")

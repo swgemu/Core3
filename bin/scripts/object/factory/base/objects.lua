@@ -85,13 +85,14 @@ object_factory_base_shared_base_factory = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2878298230
 }
 
-ObjectTemplates:addTemplate(object_factory_base_shared_base_factory, 2878298230)
+ObjectTemplates:addTemplate(object_factory_base_shared_base_factory, "object/factory/base/shared_base_factory.iff")
 
 object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -137,10 +138,11 @@ object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4005028874
 }
 
-ObjectTemplates:addTemplate(object_factory_base_shared_factory_default, 4005028874)
+ObjectTemplates:addTemplate(object_factory_base_shared_factory_default, "object/factory/base/shared_factory_default.iff")

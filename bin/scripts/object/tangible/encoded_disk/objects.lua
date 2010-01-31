@@ -85,13 +85,14 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2852692407
 }
 
-ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, 2852692407)
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, "object/tangible/encoded_disk/shared_dead_eye_decoder.iff")
 
 object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -137,13 +138,14 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1811104039
 }
 
-ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, 1811104039)
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, "object/tangible/encoded_disk/shared_encoded_disk_base.iff")
 
 object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -189,13 +191,14 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3642693212
 }
 
-ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_assembled_base, 3642693212)
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_assembled_base, "object/tangible/encoded_disk/shared_message_assembled_base.iff")
 
 object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -241,10 +244,11 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 378623221
 }
 
-ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_fragment_base, 378623221)
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_fragment_base, "object/tangible/encoded_disk/shared_message_fragment_base.iff")

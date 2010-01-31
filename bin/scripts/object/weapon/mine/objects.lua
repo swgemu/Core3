@@ -86,6 +86,7 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,7 +96,7 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 1109205423
 }
 
-ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, 1109205423)
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, "object/weapon/mine/shared_wp_mine_anti_vehicle.iff")
 
 object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_drx55.apt",
@@ -142,6 +143,7 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -151,7 +153,7 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1308699589
 }
 
-ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_drx55, 1308699589)
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_drx55, "object/weapon/mine/shared_wp_mine_drx55.iff")
 
 object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_xg.apt",
@@ -198,6 +200,7 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -207,4 +210,4 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 350273897
 }
 
-ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_xg, 350273897)
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_xg, "object/weapon/mine/shared_wp_mine_xg.iff")

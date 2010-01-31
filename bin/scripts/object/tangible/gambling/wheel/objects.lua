@@ -85,10 +85,11 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2596039133
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_wheel_shared_roulette, 2596039133)
+ObjectTemplates:addTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")

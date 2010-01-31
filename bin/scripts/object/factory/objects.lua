@@ -85,13 +85,14 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1598099833
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_armor, 1598099833)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_armor, "object/factory/shared_factory_crate_armor.iff")
 
 object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
@@ -137,13 +138,14 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3401438151
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_chemicals, 3401438151)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_chemicals, "object/factory/shared_factory_crate_chemicals.iff")
 
 object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
@@ -189,13 +191,14 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2342101395
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_clothing, 2342101395)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_clothing, "object/factory/shared_factory_crate_clothing.iff")
 
 object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
@@ -241,13 +244,14 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1584679689
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_electronics, 1584679689)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_electronics, "object/factory/shared_factory_crate_electronics.iff")
 
 object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_food_sm.apt",
@@ -293,13 +297,14 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1184983851
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_food, 1184983851)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_food, "object/factory/shared_factory_crate_food.iff")
 
 object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -345,13 +350,14 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3880912033
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_furniture, 3880912033)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_furniture, "object/factory/shared_factory_crate_furniture.iff")
 
 object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -397,13 +403,14 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 685226208
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_generic_items, 685226208)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_generic_items, "object/factory/shared_factory_crate_generic_items.iff")
 
 object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_sm.apt",
@@ -449,13 +456,14 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 577406456
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_installation, 577406456)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_installation, "object/factory/shared_factory_crate_installation.iff")
 
 object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
@@ -501,10 +509,11 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4077073151
 }
 
-ObjectTemplates:addTemplate(object_factory_shared_factory_crate_weapon, 4077073151)
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_weapon, "object/factory/shared_factory_crate_weapon.iff")

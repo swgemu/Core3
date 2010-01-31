@@ -85,13 +85,14 @@ object_tangible_lair_borgle_shared_lair_borgle = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2434310431
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle, 2434310431)
+ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle, "object/tangible/lair/borgle/shared_lair_borgle.iff")
 
 object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1961458957
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle_jungle, 1961458957)
+ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle_jungle, "object/tangible/lair/borgle/shared_lair_borgle_jungle.iff")

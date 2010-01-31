@@ -77,7 +77,9 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2608329477
 }
 
-ObjectTemplates:addTemplate(object_intangible_faction_perk_shared_shuttle_extract, 2608329477)
+ObjectTemplates:addTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")

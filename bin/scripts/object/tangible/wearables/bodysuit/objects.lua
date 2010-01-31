@@ -85,13 +85,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2562125101
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, 2562125101)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2859919047
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, 2859919047)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2920765612
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, 2920765612)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2675213661
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, 2675213661)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s01_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3519793019
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, 3519793019)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s06_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 707325039
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, 707325039)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s07_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1663405026
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, 1663405026)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s08_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3643779056
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, 3643779056)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s12_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 301228692
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, 301228692)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1492714777
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, 1492714777)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s14_f.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2736401933
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, 2736401933)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s15_f.sat",
@@ -657,13 +668,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3927394688
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, 3927394688)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s16_f.sat",
@@ -709,13 +721,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 822141207
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, 822141207)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
@@ -761,13 +774,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2416523857
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, 2416523857)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
@@ -813,13 +827,14 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 19224104
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, 19224104)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
@@ -865,10 +880,11 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 184136204
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, 184136204)
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff")

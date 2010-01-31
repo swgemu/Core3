@@ -85,13 +85,14 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 390824199
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie, 390824199)
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie, "object/tangible/lair/eopie/shared_lair_eopie.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2432430820
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, 2432430820)
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, "object/tangible/lair/eopie/shared_lair_eopie_desert.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 769893304
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, 769893304)
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, "object/tangible/lair/eopie/shared_lair_eopie_dune.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -241,13 +244,14 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2248131866
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, 2248131866)
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -293,10 +297,11 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3741668029
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, 3741668029)
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff")

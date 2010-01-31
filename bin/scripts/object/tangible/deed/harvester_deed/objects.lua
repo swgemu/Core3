@@ -85,13 +85,14 @@ object_tangible_deed_harvester_deed_shared_harvester_creature_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3801540743
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, 3801540743)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, "object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2840949012
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, 2840949012)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,13 +191,14 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4005897011
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, 4005897011)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -241,13 +244,14 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1378608973
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, 1378608973)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -293,13 +297,14 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2231503385
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, 2231503385)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -345,13 +350,14 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 277903692
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, 277903692)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -397,13 +403,14 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2991048014
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, 2991048014)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -449,13 +456,14 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3335458434
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, 3335458434)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -501,13 +509,14 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1336331736
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, 1336331736)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -553,13 +562,14 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3291170804
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, 3291170804)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -605,13 +615,14 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1578846375
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, 1578846375)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -657,13 +668,14 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 21472355
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, 21472355)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -709,13 +721,14 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 759835785
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, 759835785)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -761,13 +774,14 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3224287923
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, 3224287923)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -813,13 +827,14 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2126009375
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, 2126009375)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -865,10 +880,11 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4224231681
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, 4224231681)
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff")

@@ -77,7 +77,9 @@ object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1649870245
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder, 1649870245)
+ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder, "object/draft_schematic/item/theme_park/alderaan/act2/shared_dead_eye_decoder.iff")

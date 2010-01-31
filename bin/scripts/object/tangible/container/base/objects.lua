@@ -85,13 +85,14 @@ object_tangible_container_base_shared_base_container = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1607613666
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container, 1607613666)
+ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container, "object/tangible/container/base/shared_base_container.iff")
 
 object_tangible_container_base_shared_base_container_slotted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_container_base_shared_base_container_slotted = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2617825065
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_slotted, 2617825065)
+ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_slotted, "object/tangible/container/base/shared_base_container_slotted.iff")
 
 object_tangible_container_base_shared_base_container_volume = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_container_base_shared_base_container_volume = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2281415090
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_volume, 2281415090)
+ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_volume, "object/tangible/container/base/shared_base_container_volume.iff")

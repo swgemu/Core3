@@ -86,6 +86,7 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,7 +96,7 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	clientObjectCRC = 3231039364
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, 3231039364)
+ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
 
 object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -142,6 +143,7 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -151,4 +153,4 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	clientObjectCRC = 3974479430
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, 3974479430)
+ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")

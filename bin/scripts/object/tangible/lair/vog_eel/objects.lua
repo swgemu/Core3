@@ -85,13 +85,14 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1441198347
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, 1441198347)
+ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
 
 object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1951814673
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, 1951814673)
+ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")

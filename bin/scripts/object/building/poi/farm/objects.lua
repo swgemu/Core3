@@ -88,10 +88,11 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2341623398
 }
 
-ObjectTemplates:addTemplate(object_building_poi_farm_shared_tatooine_flora_large, 2341623398)
+ObjectTemplates:addTemplate(object_building_poi_farm_shared_tatooine_flora_large, "object/building/poi/farm/shared_tatooine_flora_large.iff")

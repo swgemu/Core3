@@ -85,13 +85,14 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = Share
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1010668003
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_1, 1010668003)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_1, "object/installation/battlefield/destructible/shared_antenna_tatt_style_1.iff")
 
 object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s02.apt",
@@ -137,13 +138,14 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = Share
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3878304116
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_2, 3878304116)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_2, "object/installation/battlefield/destructible/shared_antenna_tatt_style_2.iff")
 
 object_installation_battlefield_destructible_shared_battlefield_constructor = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
@@ -189,13 +191,14 @@ object_installation_battlefield_destructible_shared_battlefield_constructor = Sh
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2493653890
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_battlefield_constructor, 2493653890)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_battlefield_constructor, "object/installation/battlefield/destructible/shared_battlefield_constructor.iff")
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -241,13 +244,14 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2039684051
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl, 2039684051)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl, "object/installation/battlefield/destructible/shared_bfield_banner_freestand_impl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
@@ -293,13 +297,14 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 520990553
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl, 520990553)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl, "object/installation/battlefield/destructible/shared_bfield_banner_freestand_rebl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_base_gate_impl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_impl_s01.apt",
@@ -345,13 +350,14 @@ object_installation_battlefield_destructible_shared_bfield_base_gate_impl = Shar
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2617968651
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_base_gate_impl, 2617968651)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_base_gate_impl, "object/installation/battlefield/destructible/shared_bfield_base_gate_impl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_imperial = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
@@ -397,13 +403,14 @@ object_installation_battlefield_destructible_shared_bfield_column_imperial = Sha
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2654774665
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_imperial, 2654774665)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_imperial, "object/installation/battlefield/destructible/shared_bfield_column_imperial.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
@@ -449,13 +456,14 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_med = Sha
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1286651525
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_med, 1286651525)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_med, "object/installation/battlefield/destructible/shared_bfield_column_impl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
@@ -501,13 +509,14 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_weak = Sh
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2786325575
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_weak, 2786325575)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_weak, "object/installation/battlefield/destructible/shared_bfield_column_impl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebel = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_rebl_s01.apt",
@@ -553,13 +562,14 @@ object_installation_battlefield_destructible_shared_bfield_column_rebel = Shared
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3243521441
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebel, 3243521441)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebel, "object/installation/battlefield/destructible/shared_bfield_column_rebel.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
@@ -605,13 +615,14 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_med = Sha
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4256393755
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_med, 4256393755)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_med, "object/installation/battlefield/destructible/shared_bfield_column_rebl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
@@ -657,13 +668,14 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2202504027
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_strong, 2202504027)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_strong, "object/installation/battlefield/destructible/shared_bfield_column_rebl_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
@@ -709,13 +721,14 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = Sh
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 473496206
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_weak, 473496206)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_weak, "object/installation/battlefield/destructible/shared_bfield_column_rebl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
@@ -761,13 +774,14 @@ object_installation_battlefield_destructible_shared_bfield_column_strong = Share
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3725708837
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_strong, 3725708837)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_strong, "object/installation/battlefield/destructible/shared_bfield_column_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_cleft_wall_lg_s01.apt",
@@ -813,13 +827,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3467497655
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg, 3467497655)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg, "object/installation/battlefield/destructible/shared_bfield_gungan_cleft_wall_lg.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_narrow_arch_s01.apt",
@@ -865,13 +880,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2072399894
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch, 2072399894)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_narrow_arch.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wall_lg_s01.apt",
@@ -917,13 +933,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_l
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3127732580
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg, 3127732580)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wall_lg.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wide_arch_s01.apt",
@@ -969,13 +986,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_a
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3148938953
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch, 3148938953)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wide_arch.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_damaged_s01.apt",
@@ -1021,13 +1039,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2861241123
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged, 2861241123)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged, "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_damaged.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_ruined_s01.apt",
@@ -1073,13 +1092,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3046900101
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined, 3046900101)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined, "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_ruined.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_relic = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s02.apt",
@@ -1125,13 +1145,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_relic = Shared
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3317620099
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_relic, 3317620099)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_relic, "object/installation/battlefield/destructible/shared_bfield_gungan_relic.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s01.apt",
@@ -1177,13 +1198,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3260516219
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a, 3260516219)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01a.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
@@ -1229,13 +1251,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 423636972
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b, 423636972)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01b.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s02.apt",
@@ -1281,13 +1304,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4012871923
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a, 4012871923)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02a.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s04.apt",
@@ -1333,13 +1357,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = 
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 876099684
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b, 876099684)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02b.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_gen_s01.apt",
@@ -1385,13 +1410,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2410944935
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen, 2410944935)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen, "object/installation/battlefield/destructible/shared_bfield_gungan_target_shield_gen.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s01.apt",
@@ -1437,13 +1463,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4289393973
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01, 4289393973)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s02.apt",
@@ -1489,13 +1516,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 616390050
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02, 616390050)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s01.apt",
@@ -1541,13 +1569,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 656107195
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01, 656107195)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s02.apt",
@@ -1593,13 +1622,14 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4228697644
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02, 4228697644)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_fence = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_fence_s01.apt",
@@ -1645,13 +1675,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_fence = S
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1198047599
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_fence, 1198047599)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_fence, "object/installation/battlefield/destructible/shared_bfield_nightsister_fence.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s01.apt",
@@ -1697,13 +1728,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 712214351
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01, 712214351)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s02.apt",
@@ -1749,13 +1781,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4049874904
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02, 4049874904)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s03.apt",
@@ -1801,13 +1834,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3093907541
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03, 3093907541)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner03.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_gate = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_gate_s01.apt",
@@ -1853,13 +1887,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_gate = Sh
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2788699463
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_gate, 2788699463)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_gate, "object/installation/battlefield/destructible/shared_bfield_nightsister_gate.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_hut = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_hut_s01.apt",
@@ -1905,13 +1940,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_hut = Sha
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1444171901
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_hut, 1444171901)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_hut, "object/installation/battlefield/destructible/shared_bfield_nightsister_hut.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/atf_sith_altar.apt",
@@ -1957,13 +1993,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3112050906
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar, 3112050906)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_altar.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/atf_sith_s01.apt",
@@ -2009,13 +2046,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 483726355
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal, 483726355)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_crystal.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_guard_tower_s01.apt",
@@ -2061,13 +2099,14 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_to
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3796911801
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower, 3796911801)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_tower.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_generator = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
@@ -2113,13 +2152,14 @@ object_installation_battlefield_destructible_shared_bfield_target_power_generato
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2393390431
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_generator, 2393390431)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_generator, "object/installation/battlefield/destructible/shared_bfield_target_power_generator.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
@@ -2165,13 +2205,14 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3659920532
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01, 3659920532)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01, "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
@@ -2217,13 +2258,14 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 20077571
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02, 20077571)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02, "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s03.apt",
@@ -2269,13 +2311,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedI
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4261137937
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_barbed, 4261137937)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_barbed, "object/installation/battlefield/destructible/shared_bfield_wall_barbed.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_connector = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
@@ -2321,13 +2364,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_connector = Shar
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2122168983
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_connector, 2122168983)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_connector, "object/installation/battlefield/destructible/shared_bfield_wall_connector.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
@@ -2373,13 +2417,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = Shar
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3072454055
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_impl_weak, 3072454055)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_impl_weak, "object/installation/battlefield/destructible/shared_bfield_wall_impl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
@@ -2425,13 +2470,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInst
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2827387119
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_med, 2827387119)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_med, "object/installation/battlefield/destructible/shared_bfield_wall_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
@@ -2477,13 +2523,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = Share
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3711597492
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_med, 3711597492)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_med, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
@@ -2529,13 +2576,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = Sh
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2237630314
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong, 2237630314)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
@@ -2581,13 +2629,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = Shar
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 218817390
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak, 218817390)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
@@ -2633,13 +2682,14 @@ object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedI
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1471201695
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_strong, 1471201695)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_strong, "object/installation/battlefield/destructible/shared_bfield_wall_strong.iff")
 
 object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
@@ -2685,13 +2735,14 @@ object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedI
 	surfaceType = 2,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2515256237
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_gungan_sacred_head, 2515256237)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_gungan_sacred_head, "object/installation/battlefield/destructible/shared_gungan_sacred_head.iff")
 
 object_installation_battlefield_destructible_shared_imperial_gate_house = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_impl_s01.apt",
@@ -2737,13 +2788,14 @@ object_installation_battlefield_destructible_shared_imperial_gate_house = Shared
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4180449547
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_imperial_gate_house, 4180449547)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_imperial_gate_house, "object/installation/battlefield/destructible/shared_imperial_gate_house.iff")
 
 object_installation_battlefield_destructible_shared_rebel_gate_house = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_rebl_s01.apt",
@@ -2789,13 +2841,14 @@ object_installation_battlefield_destructible_shared_rebel_gate_house = SharedIns
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3637065132
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_rebel_gate_house, 3637065132)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_rebel_gate_house, "object/installation/battlefield/destructible/shared_rebel_gate_house.iff")
 
 object_installation_battlefield_destructible_shared_small_turret = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
@@ -2841,13 +2894,14 @@ object_installation_battlefield_destructible_shared_small_turret = SharedInstall
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 422378636
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_small_turret, 422378636)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_small_turret, "object/installation/battlefield/destructible/shared_small_turret.iff")
 
 object_installation_battlefield_destructible_shared_turret_dish_small = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
@@ -2893,13 +2947,14 @@ object_installation_battlefield_destructible_shared_turret_dish_small = SharedIn
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 209537017
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_dish_small, 209537017)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_dish_small, "object/installation/battlefield/destructible/shared_turret_dish_small.iff")
 
 object_installation_battlefield_destructible_shared_turret_tower_small = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
@@ -2945,10 +3000,11 @@ object_installation_battlefield_destructible_shared_turret_tower_small = SharedI
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 718314234
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_tower_small, 718314234)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_tower_small, "object/installation/battlefield/destructible/shared_turret_tower_small.iff")

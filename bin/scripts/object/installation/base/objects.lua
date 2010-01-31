@@ -85,13 +85,14 @@ object_installation_base_shared_construction_installation_base = SharedInstallat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 1,
 
 	clientObjectCRC = 544424204
 }
 
-ObjectTemplates:addTemplate(object_installation_base_shared_construction_installation_base, 544424204)
+ObjectTemplates:addTemplate(object_installation_base_shared_construction_installation_base, "object/installation/base/shared_construction_installation_base.iff")
 
 object_installation_base_shared_installation_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_installation_base_shared_installation_base = SharedInstallationObjectTemp
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1610526259
 }
 
-ObjectTemplates:addTemplate(object_installation_base_shared_installation_base, 1610526259)
+ObjectTemplates:addTemplate(object_installation_base_shared_installation_base, "object/installation/base/shared_installation_base.iff")
 
 object_installation_base_shared_installation_default = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_installation_base_shared_installation_default = SharedInstallationObjectT
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4138250553
 }
 
-ObjectTemplates:addTemplate(object_installation_base_shared_installation_default, 4138250553)
+ObjectTemplates:addTemplate(object_installation_base_shared_installation_default, "object/installation/base/shared_installation_default.iff")

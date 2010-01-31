@@ -85,13 +85,14 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 804817169
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek, 804817169)
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4089303997
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, 4089303997)
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3319913083
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, 3319913083)
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")

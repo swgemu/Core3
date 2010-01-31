@@ -85,10 +85,11 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1834451270
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_medical_shared_medbag_base, 1834451270)
+ObjectTemplates:addTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")

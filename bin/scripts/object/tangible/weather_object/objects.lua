@@ -85,10 +85,11 @@ object_tangible_weather_object_shared_weather_object_base = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 638400460
 }
 
-ObjectTemplates:addTemplate(object_tangible_weather_object_shared_weather_object_base, 638400460)
+ObjectTemplates:addTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")

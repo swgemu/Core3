@@ -85,13 +85,14 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 866782264
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, 866782264)
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2443001594
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, 2443001594)
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3854748687
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, 3854748687)
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff")

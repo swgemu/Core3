@@ -85,13 +85,14 @@ object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 717357125
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_heavy, 717357125)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_heavy, "object/tangible/powerup/weapon/shared_heavy.iff")
 
 object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -137,13 +138,14 @@ object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1636293712
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee, 1636293712)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee, "object/tangible/powerup/weapon/shared_melee.iff")
 
 object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
@@ -189,13 +191,14 @@ object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1375892401
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_generic, 1375892401)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_generic, "object/tangible/powerup/weapon/shared_melee_generic.iff")
 
 object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon_lightsaber.apt",
@@ -241,13 +244,14 @@ object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1890042255
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_lightsaber, 1890042255)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_lightsaber, "object/tangible/powerup/weapon/shared_melee_lightsaber.iff")
 
 object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
@@ -293,13 +297,14 @@ object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2304219525
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine, 2304219525)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine, "object/tangible/powerup/weapon/shared_mine.iff")
 
 object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -345,13 +350,14 @@ object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3665923080
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine_explosive, 3665923080)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine_explosive, "object/tangible/powerup/weapon/shared_mine_explosive.iff")
 
 object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -397,13 +403,14 @@ object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1637218728
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged, 1637218728)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged, "object/tangible/powerup/weapon/shared_ranged.iff")
 
 object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_rifle_barrel.apt",
@@ -449,13 +456,14 @@ object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 137262486
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_barrel, 137262486)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_barrel, "object/tangible/powerup/weapon/shared_ranged_barrel.iff")
 
 object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -501,13 +509,14 @@ object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1312422379
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_grip, 1312422379)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_grip, "object/tangible/powerup/weapon/shared_ranged_grip.iff")
 
 object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -553,13 +562,14 @@ object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 555906025
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle, 555906025)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle, "object/tangible/powerup/weapon/shared_ranged_muzzle.iff")
 
 object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -605,13 +615,14 @@ object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1622710306
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_power, 1622710306)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_power, "object/tangible/powerup/weapon/shared_ranged_power.iff")
 
 object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s04.apt",
@@ -657,13 +668,14 @@ object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3758199555
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_scope, 3758199555)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_scope, "object/tangible/powerup/weapon/shared_ranged_scope.iff")
 
 object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_stock.apt",
@@ -709,13 +721,14 @@ object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2739120425
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_stock, 2739120425)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_stock, "object/tangible/powerup/weapon/shared_ranged_stock.iff")
 
 object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
@@ -761,13 +774,14 @@ object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 540983335
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown, 540983335)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown, "object/tangible/powerup/weapon/shared_thrown.iff")
 
 object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -813,13 +827,14 @@ object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2781934180
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_explosive, 2781934180)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_explosive, "object/tangible/powerup/weapon/shared_thrown_explosive.iff")
 
 object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -865,10 +880,11 @@ object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 569969360
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_wiring, 569969360)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_wiring, "object/tangible/powerup/weapon/shared_thrown_wiring.iff")

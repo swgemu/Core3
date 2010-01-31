@@ -86,6 +86,7 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,7 +96,7 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1343110417
 }
 
-ObjectTemplates:addTemplate(object_weapon_base_shared_base_weapon, 1343110417)
+ObjectTemplates:addTemplate(object_weapon_base_shared_base_weapon, "object/weapon/base/shared_base_weapon.iff")
 
 object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -142,6 +143,7 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -151,4 +153,4 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3295718930
 }
 
-ObjectTemplates:addTemplate(object_weapon_base_shared_weapon_default, 3295718930)
+ObjectTemplates:addTemplate(object_weapon_base_shared_weapon_default, "object/weapon/base/shared_weapon_default.iff")

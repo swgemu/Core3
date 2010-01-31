@@ -85,13 +85,14 @@ object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4281161854
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, 4281161854)
+ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, "object/tangible/lair/blackfish/shared_lair_blackfish.iff")
 
 object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3015378000
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, 3015378000)
+ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, "object/tangible/lair/blackfish/shared_lair_blackfish_underwater.iff")

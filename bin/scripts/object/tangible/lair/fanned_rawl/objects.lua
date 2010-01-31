@@ -85,13 +85,14 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3965462331
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, 3965462331)
+ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl.iff")
 
 object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1138635179
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, 1138635179)
+ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl_swamp.iff")

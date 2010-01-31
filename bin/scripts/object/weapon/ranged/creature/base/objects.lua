@@ -86,6 +86,7 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	clientObjectCRC = 2748406341
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_creature_base_shared_creature_base, 2748406341)
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")

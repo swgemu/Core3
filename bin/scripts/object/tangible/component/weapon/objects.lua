@@ -85,13 +85,14 @@ object_tangible_component_weapon_shared_acklay_bone_reinforcement_core = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4088226280
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, 4088226280)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, "object/tangible/component/weapon/shared_acklay_bone_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -137,13 +138,14 @@ object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3003199598
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, 3003199598)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff")
 
 object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -189,13 +191,14 @@ object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhanceme
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2928380904
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, 2928380904)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff")
 
 object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -241,13 +244,14 @@ object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1563728747
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, 1563728747)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1710329756
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, 1710329756)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2092661773
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, 2092661773)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s02.apt",
@@ -397,13 +403,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3202754315
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, 3202754315)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s02.apt",
@@ -449,13 +456,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2421758291
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, 2421758291)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s03.apt",
@@ -501,13 +509,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4159389830
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, 4159389830)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s03.apt",
@@ -553,13 +562,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3422078361
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, 3422078361)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -605,13 +615,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 201878418
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, 201878418)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -657,13 +668,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1297927768
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, 1297927768)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s05.apt",
@@ -709,13 +721,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1157958687
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, 1157958687)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s05.apt",
@@ -761,13 +774,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 385684114
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, 385684114)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s06.apt",
@@ -813,13 +827,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2652021896
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, 2652021896)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s06.apt",
@@ -865,13 +880,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4196366284
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, 4196366284)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -917,13 +933,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3609182981
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, 3609182981)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -969,13 +986,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2713627398
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, 2713627398)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4222005055
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, 4222005055)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3666495250
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, 3666495250)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s02.apt",
@@ -1125,13 +1145,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 548472744
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, 548472744)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s02.apt",
@@ -1177,13 +1198,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 912794188
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, 912794188)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s03.apt",
@@ -1229,13 +1251,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1773953061
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, 1773953061)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s03.apt",
@@ -1281,13 +1304,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1841954438
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, 1841954438)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s04.apt",
@@ -1333,13 +1357,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2455718705
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, 2455718705)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s04.apt",
@@ -1385,13 +1410,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3949851975
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, 3949851975)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s05.apt",
@@ -1437,13 +1463,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3679595708
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, 3679595708)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s05.apt",
@@ -1489,13 +1516,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2966169997
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, 2966169997)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s06.apt",
@@ -1541,13 +1569,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4555819
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, 4555819)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s06.apt",
@@ -1593,13 +1622,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1546538195
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, 1546538195)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s07.apt",
@@ -1645,13 +1675,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1229513638
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, 1229513638)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s07.apt",
@@ -1697,13 +1728,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 126849049
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, 126849049)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3175095314
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, 3175095314)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 867179315
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, 867179315)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s02.apt",
@@ -1853,13 +1887,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1717023877
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, 1717023877)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s02.apt",
@@ -1905,13 +1940,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3746725485
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, 3746725485)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -1957,13 +1993,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 794481416
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, 794481416)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -2009,13 +2046,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2230559399
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, 2230559399)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s04.apt",
@@ -2061,13 +2099,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3568957468
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, 3568957468)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s04.apt",
@@ -2113,13 +2152,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 39299430
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, 39299430)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s05.apt",
@@ -2165,13 +2205,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2645860241
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, 2645860241)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s05.apt",
@@ -2217,13 +2258,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1509324204
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, 1509324204)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -2269,13 +2311,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1185101574
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, 1185101574)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -2321,13 +2364,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3037991154
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, 3037991154)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s07.apt",
@@ -2373,13 +2417,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 263082123
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, 263082123)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s07.apt",
@@ -2425,13 +2470,14 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4004891704
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, 4004891704)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2477,13 +2523,14 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3001062270
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, 3001062270)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2529,13 +2576,14 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4250066631
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, 4250066631)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2581,13 +2629,14 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2263958541
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, 2263958541)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, "object/tangible/component/weapon/shared_blaster_pistol_barrel_quest.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2633,13 +2682,14 @@ object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3399297408
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler, 3399297408)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler, "object/tangible/component/weapon/shared_blaster_power_handler.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2685,13 +2735,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1426378303
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, 1426378303)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2737,13 +2788,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durabi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1717492287
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, 1717492287)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -2789,13 +2841,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3981194570
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, 3981194570)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_krayt.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2841,13 +2894,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_da
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3285791160
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, 3285791160)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2893,13 +2947,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_da
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4158958561
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, 4158958561)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2945,13 +3000,14 @@ object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3074802434
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, 3074802434)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, "object/tangible/component/weapon/shared_blaster_power_handler_quest.iff")
 
 object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -2997,13 +3053,14 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 260681278
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, 260681278)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -3049,13 +3106,14 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 992626072
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, 992626072)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, "object/tangible/component/weapon/shared_blaster_rifle_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -3101,13 +3159,14 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1194049951
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, 1194049951)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff")
 
 object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -3153,13 +3212,14 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1411275981
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, 1411275981)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism_advanced.iff")
 
 object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -3205,13 +3265,14 @@ object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3758372574
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, 3758372574)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, "object/tangible/component/weapon/shared_corvette_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_energization_crystals = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3257,13 +3318,14 @@ object_tangible_component_weapon_shared_energization_crystals = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 491130592
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_energization_crystals, 491130592)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_energization_crystals, "object/tangible/component/weapon/shared_energization_crystals.iff")
 
 object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3309,13 +3371,14 @@ object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4061079973
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, 4061079973)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, "object/tangible/component/weapon/shared_galven_tube_circuits.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3361,13 +3424,14 @@ object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2313307226
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, 2313307226)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, "object/tangible/component/weapon/shared_geonosian_power_cube.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3413,13 +3477,14 @@ object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4092441918
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, 4092441918)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3465,13 +3530,14 @@ object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2570329564
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, 2570329564)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, "object/tangible/component/weapon/shared_geonosian_power_cube_green.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3517,13 +3583,14 @@ object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 98191878
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, 98191878)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3569,13 +3636,14 @@ object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 783478248
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, 783478248)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, "object/tangible/component/weapon/shared_geonosian_power_cube_yellow.iff")
 
 object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -3621,13 +3689,14 @@ object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2362781931
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, 2362781931)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, "object/tangible/component/weapon/shared_geonosian_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -3673,13 +3742,14 @@ object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3710952248
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, 3710952248)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff")
 
 object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -3725,13 +3795,14 @@ object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 927591163
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, 927591163)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, "object/tangible/component/weapon/shared_geonosian_sword_core.iff")
 
 object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
@@ -3777,13 +3848,14 @@ object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2251276199
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, 2251276199)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, "object/tangible/component/weapon/shared_laser_cannon_cooling_sleeve.iff")
 
 object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon_gun.apt",
@@ -3829,13 +3901,14 @@ object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1385368085
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, 1385368085)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, "object/tangible/component/weapon/shared_laser_cannon_gun_tube.iff")
 
 object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "eqp_comp_weapon_high_power_module.apt",
@@ -3881,13 +3954,14 @@ object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 695643472
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_generator, 695643472)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_generator, "object/tangible/component/weapon/shared_laser_generator.iff")
 
 object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
@@ -3933,13 +4007,14 @@ object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 741674762
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, 741674762)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, "object/tangible/component/weapon/shared_laser_magnetic_flashback_supressor.iff")
 
 object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -3985,13 +4060,14 @@ object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3988462144
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, 3988462144)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, "object/tangible/component/weapon/shared_melee_core_enhancement.iff")
 
 object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -4037,13 +4113,14 @@ object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 466802862
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, 466802862)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, "object/tangible/component/weapon/shared_parallel_weapon_targeting_computer.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4089,13 +4166,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1361510729
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, 1361510729)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4141,13 +4219,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4156025153
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, 4156025153)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, "object/tangible/component/weapon/shared_projectile_feed_mechanism_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4193,13 +4272,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_du
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1517204001
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, 1517204001)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -4245,13 +4325,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_go
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 255106526
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, 255106526)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_gorax.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4297,13 +4378,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_ma
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4293482918
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, 4293482918)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4349,13 +4431,14 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_mi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3419718655
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, 3419718655)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4401,13 +4484,14 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1216914672
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, 1216914672)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4453,13 +4537,14 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3447151631
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, 3447151631)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4505,13 +4590,14 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1641350102
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, 1641350102)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, "object/tangible/component/weapon/shared_projectile_pistol_barrel_quest.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4557,13 +4643,14 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 769812356
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, 769812356)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4609,13 +4696,14 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 594573612
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, 594573612)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4661,13 +4749,14 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2968083189
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, 2968083189)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4713,13 +4802,14 @@ object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3366067371
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth, 3366067371)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth, "object/tangible/component/weapon/shared_rancor_tooth.iff")
 
 object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4765,13 +4855,14 @@ object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 829703922
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, 829703922)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, "object/tangible/component/weapon/shared_rancor_tooth_quest.iff")
 
 object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -4817,13 +4908,14 @@ object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 600823841
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core, 600823841)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core, "object/tangible/component/weapon/shared_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -4869,13 +4961,14 @@ object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 276012891
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, 276012891)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, "object/tangible/component/weapon/shared_reinforcement_core_advanced.iff")
 
 object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -4921,13 +5014,14 @@ object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 46230492
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon, 46230492)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon, "object/tangible/component/weapon/shared_scope_weapon.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -4973,13 +5067,14 @@ object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 210395856
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, 210395856)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, "object/tangible/component/weapon/shared_scope_weapon_advanced.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -5025,13 +5120,14 @@ object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3286610922
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, 3286610922)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, "object/tangible/component/weapon/shared_scope_weapon_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s01.apt",
@@ -5077,13 +5173,14 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1450202343
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, 1450202343)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, "object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s02.apt",
@@ -5129,13 +5226,14 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2372402288
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, 2372402288)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, "object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s03.apt",
@@ -5181,13 +5279,14 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3295321085
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, 3295321085)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, "object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -5233,13 +5332,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2395064169
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, 2395064169)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, "object/tangible/component/weapon/shared_scope_weapon_sm_s01.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s02.apt",
@@ -5285,13 +5385,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1440116734
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, 1440116734)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, "object/tangible/component/weapon/shared_scope_weapon_sm_s02.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -5337,13 +5438,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 484116595
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, 484116595)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, "object/tangible/component/weapon/shared_scope_weapon_sm_s03.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s04.apt",
@@ -5389,13 +5491,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3879215975
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, 3879215975)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, "object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s05.apt",
@@ -5441,13 +5544,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2922726634
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, 2922726634)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, "object/tangible/component/weapon/shared_scope_weapon_sm_s05.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s06.apt",
@@ -5493,13 +5597,14 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1965223037
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, 1965223037)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, "object/tangible/component/weapon/shared_scope_weapon_sm_s06.iff")
 
 object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -5545,13 +5650,14 @@ object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1418250527
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_spider_spine, 1418250527)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_spider_spine, "object/tangible/component/weapon/shared_spider_spine.iff")
 
 object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5597,13 +5703,14 @@ object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2306652479
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock, 2306652479)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock, "object/tangible/component/weapon/shared_stock.iff")
 
 object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5649,13 +5756,14 @@ object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3440579824
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced, 3440579824)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced, "object/tangible/component/weapon/shared_stock_advanced.iff")
 
 object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5701,13 +5809,14 @@ object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 473297139
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, 473297139)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, "object/tangible/component/weapon/shared_stock_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5753,13 +5862,14 @@ object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3001742780
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core, 3001742780)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core, "object/tangible/component/weapon/shared_sword_core.iff")
 
 object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5805,13 +5915,14 @@ object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 639496171
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_advanced, 639496171)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_advanced, "object/tangible/component/weapon/shared_sword_core_advanced.iff")
 
 object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5857,13 +5968,14 @@ object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 937100583
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_quest, 937100583)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_quest, "object/tangible/component/weapon/shared_sword_core_quest.iff")
 
 object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_turbo_laser.apt",
@@ -5909,13 +6021,14 @@ object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2743057273
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, 2743057273)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, "object/tangible/component/weapon/shared_turbo_laser_gun_tube.iff")
 
 object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -5961,13 +6074,14 @@ object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2075249202
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit, 2075249202)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit, "object/tangible/component/weapon/shared_vibro_unit.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6013,13 +6127,14 @@ object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1094994187
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, 1094994187)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, "object/tangible/component/weapon/shared_vibro_unit_advanced.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6065,13 +6180,14 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 719270332
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, 719270332)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, "object/tangible/component/weapon/shared_vibro_unit_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6117,13 +6233,14 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2404964923
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, 2404964923)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6169,13 +6286,14 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3143975010
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, 3143975010)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6221,13 +6339,14 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1279704725
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, 1279704725)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, "object/tangible/component/weapon/shared_vibro_unit_enhancement_wounding.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6273,13 +6392,14 @@ object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3670724056
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, 3670724056)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6325,13 +6445,14 @@ object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2177771940
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, 2177771940)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, "object/tangible/component/weapon/shared_vibro_unit_quest.iff")
 
 object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_stock.apt",
@@ -6377,13 +6498,14 @@ object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3845302346
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, 3845302346)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, "object/tangible/component/weapon/shared_weapon_carbine_laser_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20_stock.apt",
@@ -6429,13 +6551,14 @@ object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 784421487
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, 784421487)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, "object/tangible/component/weapon/shared_weapon_dlt20_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6_stock.apt",
@@ -6481,13 +6604,14 @@ object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3265377487
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, 3265377487)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, "object/tangible/component/weapon/shared_weapon_dxr6_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_stock_closed.apt",
@@ -6533,13 +6657,14 @@ object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2778389108
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, 2778389108)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, "object/tangible/component/weapon/shared_weapon_e11_stock_closed.iff")
 
 object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_stock_open.apt",
@@ -6585,13 +6710,14 @@ object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3082135386
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, 3082135386)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, "object/tangible/component/weapon/shared_weapon_e11_stock_open.iff")
 
 object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3_stock.apt",
@@ -6637,13 +6763,14 @@ object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 119190783
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, 119190783)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, "object/tangible/component/weapon/shared_weapon_ee3_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_stock.apt",
@@ -6689,13 +6816,14 @@ object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2199807561
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, 2199807561)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, "object/tangible/component/weapon/shared_weapon_elite_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
@@ -6741,13 +6869,14 @@ object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4368733
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount, 4368733)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount, "object/tangible/component/weapon/shared_weapon_mount.iff")
 
 object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
@@ -6793,13 +6922,14 @@ object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1483742937
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount_light, 1483742937)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount_light, "object/tangible/component/weapon/shared_weapon_mount_light.iff")
 
 object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_stock.apt",
@@ -6845,13 +6975,14 @@ object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2098038776
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, 2098038776)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, "object/tangible/component/weapon/shared_weapon_rifle_laser_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -6897,13 +7028,14 @@ object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1060795790
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, 1060795790)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, "object/tangible/component/weapon/shared_weapon_t21_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -6949,13 +7081,14 @@ object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1015355286
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, 1015355286)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, "object/tangible/component/weapon/shared_weapon_targeting_computer.iff")
 
 object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -7001,10 +7134,11 @@ object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1519446623
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, 1519446623)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, "object/tangible/component/weapon/shared_weapon_trajectory_computer.iff")

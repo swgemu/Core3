@@ -77,10 +77,12 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2421347186
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_200m, 2421347186)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_200m, "object/static/naboo/shared_waterfall_200m.iff")
 
 object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_thin_forked.apt",
@@ -118,10 +120,12 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2586864352
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_thin_forked, 2586864352)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_thin_forked, "object/static/naboo/shared_waterfall_all_thin_forked.iff")
 
 object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_wide_short.apt",
@@ -159,10 +163,12 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1454317490
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_wide_short, 1454317490)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_wide_short, "object/static/naboo/shared_waterfall_all_wide_short.iff")
 
 object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -200,10 +206,12 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4151923875
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_lg, 4151923875)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_lg, "object/static/naboo/shared_waterfall_mist_lg.iff")
 
 object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -241,10 +249,12 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3240630762
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_small, 3240630762)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_small, "object/static/naboo/shared_waterfall_mist_small.iff")
 
 object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
@@ -282,10 +292,12 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4101701818
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, 4101701818)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, "object/static/naboo/shared_waterfall_naboo_crest_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
@@ -323,10 +335,12 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 282497930
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, 282497930)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, "object/static/naboo/shared_waterfall_naboo_falls_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_thed_waterfall_hangar.apt",
@@ -364,10 +378,12 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 370991757
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_hangar, 370991757)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_hangar, "object/static/naboo/shared_waterfall_naboo_hangar.iff")
 
 object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_waterfall_moenia.apt",
@@ -405,10 +421,12 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3951584767
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_keren, 3951584767)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_keren, "object/static/naboo/shared_waterfall_naboo_keren.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -446,10 +464,12 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4195612510
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, 4195612510)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, "object/static/naboo/shared_waterfall_naboo_theed_base.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
@@ -487,10 +507,12 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3625221420
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, 3625221420)
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff")
 
 object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
@@ -528,7 +550,9 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4015665582
 }
 
-ObjectTemplates:addTemplate(object_static_naboo_shared_whitewater_6meter, 4015665582)
+ObjectTemplates:addTemplate(object_static_naboo_shared_whitewater_6meter, "object/static/naboo/shared_whitewater_6meter.iff")

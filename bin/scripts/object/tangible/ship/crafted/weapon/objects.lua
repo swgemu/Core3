@@ -85,13 +85,14 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2303674527
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1, 2303674527)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1, "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1381556232
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2, 1381556232)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2, "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 458590085
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3, 458590085)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3, "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3770068113
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4, 3770068113)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4, "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2847656732
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5, 2847656732)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5, "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2953001640
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon, 2953001640)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon, "object/tangible/ship/crafted/weapon/shared_base_weapon.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1696759306
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent, 1696759306)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4144294137
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1, 4144294137)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 739459182
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2, 739459182)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1696475107
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3, 1696475107)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2667384055
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4, 2667384055)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3622857594
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5, 3622857594)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5, "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_basic_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
@@ -709,13 +721,14 @@ object_tangible_ship_crafted_weapon_shared_basic_weapon = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3239954606
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_basic_weapon, 3239954606)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_basic_weapon, "object/tangible/ship/crafted/weapon/shared_basic_weapon.iff")
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2497461315
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1, 2497461315)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1, "object/tangible/ship/crafted/weapon/shared_max_damage_intensifier_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1338741972
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2, 1338741972)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2, "object/tangible/ship/crafted/weapon/shared_max_damage_intensifier_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 113701721
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3, 113701721)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3, "object/tangible/ship/crafted/weapon/shared_max_damage_intensifier_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4247115853
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4, 4247115853)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4, "object/tangible/ship/crafted/weapon/shared_max_damage_intensifier_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3022569408
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5, 3022569408)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5, "object/tangible/ship/crafted/weapon/shared_max_damage_intensifier_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 610130248
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1, 610130248)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1, "object/tangible/ship/crafted/weapon/shared_min_damage_intensifier_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4283068895
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2, 4283068895)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2, "object/tangible/ship/crafted/weapon/shared_min_damage_intensifier_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3058112082
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3, 3058112082)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3, "object/tangible/ship/crafted/weapon/shared_min_damage_intensifier_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1177,13 +1198,14 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1302609222
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4, 1302609222)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4, "object/tangible/ship/crafted/weapon/shared_min_damage_intensifier_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 78207691
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5, 78207691)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5, "object/tangible/ship/crafted/weapon/shared_min_damage_intensifier_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1346962133
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1, 1346962133)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1, "object/tangible/ship/crafted/weapon/shared_quick_shot_upgrade_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2338236994
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2, 2338236994)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2, "object/tangible/ship/crafted/weapon/shared_quick_shot_upgrade_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3260272079
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3, 3260272079)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3, "object/tangible/ship/crafted/weapon/shared_quick_shot_upgrade_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 967894747
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4, 967894747)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4, "object/tangible/ship/crafted/weapon/shared_quick_shot_upgrade_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1489,13 +1516,14 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1891467606
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5, 1891467606)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5, "object/tangible/ship/crafted/weapon/shared_quick_shot_upgrade_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1809056781
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1, 1809056781)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1, "object/tangible/ship/crafted/weapon/shared_shield_effectiveness_intensifier_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1593,13 +1622,14 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2965613722
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2, 2965613722)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2, "object/tangible/ship/crafted/weapon/shared_shield_effectiveness_intensifier_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1645,13 +1675,14 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4191079191
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3, 4191079191)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3, "object/tangible/ship/crafted/weapon/shared_shield_effectiveness_intensifier_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1697,13 +1728,14 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 36560899
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4, 36560899)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4, "object/tangible/ship/crafted/weapon/shared_shield_effectiveness_intensifier_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1260423054
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5, 1260423054)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5, "object/tangible/ship/crafted/weapon/shared_shield_effectiveness_intensifier_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 560730926
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1, 560730926)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1, "object/tangible/ship/crafted/weapon/shared_speed_limiter_upgrade_mk1.iff")
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1853,13 +1887,14 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4202412985
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2, 4202412985)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2, "object/tangible/ship/crafted/weapon/shared_speed_limiter_upgrade_mk2.iff")
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3010911284
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3, 3010911284)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3, "object/tangible/ship/crafted/weapon/shared_speed_limiter_upgrade_mk3.iff")
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1217787680
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4, 1217787680)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4, "object/tangible/ship/crafted/weapon/shared_speed_limiter_upgrade_mk4.iff")
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2009,13 +2046,14 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 26775725
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5, 26775725)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5, "object/tangible/ship/crafted/weapon/shared_speed_limiter_upgrade_mk5.iff")
 
 object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2061,13 +2099,14 @@ object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2853736517
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor, 2853736517)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor, "object/tangible/ship/crafted/weapon/shared_weapon_incom_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2113,13 +2152,14 @@ object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1179374625
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon, 1179374625)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon, "object/tangible/ship/crafted/weapon/shared_weapon_slayn_ioncannon.iff")
 
 object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2165,13 +2205,14 @@ object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2659812079
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster, 2659812079)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster, "object/tangible/ship/crafted/weapon/shared_weapon_subpro_tripleblaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2217,13 +2258,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 442446187
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster, 442446187)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster, "object/tangible/ship/crafted/weapon/shared_wpn_advanced_blaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -2269,13 +2311,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1237633285
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green, 1237633285)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green, "object/tangible/ship/crafted/weapon/shared_wpn_advanced_blaster_green.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2321,13 +2364,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 155333164
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor, 155333164)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor, "object/tangible/ship/crafted/weapon/shared_wpn_advanced_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2373,13 +2417,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1500710454
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon, 1500710454)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon, "object/tangible/ship/crafted/weapon/shared_wpn_advanced_ioncannon.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2425,13 +2470,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2125855304
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster, 2125855304)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster, "object/tangible/ship/crafted/weapon/shared_wpn_experimental_blaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -2477,13 +2523,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2441037978
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green, 2441037978)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green, "object/tangible/ship/crafted/weapon/shared_wpn_experimental_blaster_green.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2529,13 +2576,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 209959232
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor, 209959232)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor, "object/tangible/ship/crafted/weapon/shared_wpn_experimental_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2581,13 +2629,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1555205466
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon, 1555205466)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon, "object/tangible/ship/crafted/weapon/shared_wpn_experimental_ioncannon.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2633,13 +2682,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2536076684
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster, 2536076684)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster, "object/tangible/ship/crafted/weapon/shared_wpn_heavy_blaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -2685,13 +2735,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2144438671
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green, 2144438671)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green, "object/tangible/ship/crafted/weapon/shared_wpn_heavy_blaster_green.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2737,13 +2788,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 678304198
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor, 678304198)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor, "object/tangible/ship/crafted/weapon/shared_wpn_heavy_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2789,13 +2841,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2019503580
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon, 2019503580)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon, "object/tangible/ship/crafted/weapon/shared_wpn_heavy_ioncannon.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2841,13 +2894,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 449015883
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster, 449015883)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster, "object/tangible/ship/crafted/weapon/shared_wpn_light_blaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -2893,13 +2947,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2431967026
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green, 2431967026)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green, "object/tangible/ship/crafted/weapon/shared_wpn_light_blaster_green.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2945,13 +3000,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1483969238
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor, 1483969238)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor, "object/tangible/ship/crafted/weapon/shared_wpn_light_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2997,13 +3053,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 138585804
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon, 138585804)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon, "object/tangible/ship/crafted/weapon/shared_wpn_light_ioncannon.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3049,13 +3106,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3503157273
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster, 3503157273)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster, "object/tangible/ship/crafted/weapon/shared_wpn_medium_blaster.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -3101,13 +3159,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 928727391
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green, 928727391)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green, "object/tangible/ship/crafted/weapon/shared_wpn_medium_blaster_green.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3153,13 +3212,14 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 232741717
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor, 232741717)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor, "object/tangible/ship/crafted/weapon/shared_wpn_medium_disruptor.iff")
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3205,10 +3265,11 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1575907151
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon, 1575907151)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon, "object/tangible/ship/crafted/weapon/shared_wpn_medium_ioncannon.iff")

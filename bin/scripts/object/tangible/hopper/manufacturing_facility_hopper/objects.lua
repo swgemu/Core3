@@ -85,13 +85,14 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1304408300
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_large, 1304408300)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_large, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_large.iff")
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4058756214
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium, 4058756214)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_medium.iff")
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,13 +191,14 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2040800453
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small, 2040800453)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_small.iff")
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,13 +244,14 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2843941257
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large, 2843941257)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_large.iff")
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -293,13 +297,14 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 468681171
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium, 468681171)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_medium.iff")
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -345,10 +350,11 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2644020640
 }
 
-ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small, 2644020640)
+ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_small.iff")

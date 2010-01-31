@@ -85,10 +85,11 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1773382797
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_food_shared_lunchbox_base, 1773382797)
+ObjectTemplates:addTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")

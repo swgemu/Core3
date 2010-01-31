@@ -85,13 +85,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3236011689
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, 3236011689)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -137,13 +138,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3410306211
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, 3410306211)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -189,13 +191,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3771237737
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, 3771237737)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -241,13 +244,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3647827532
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, 3647827532)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -293,13 +297,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1785001308
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, 1785001308)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -345,13 +350,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1680490925
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, 1680490925)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -397,13 +403,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3811548404
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, 3811548404)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -449,13 +456,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 101788547
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, 101788547)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -501,13 +509,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2041501823
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, 2041501823)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -553,13 +562,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2402289971
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, 2402289971)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -605,13 +615,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 555356506
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, 555356506)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -657,13 +668,14 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1423370292
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, 1423370292)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_university = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -709,10 +721,11 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2713174086
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, 2713174086)
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff")

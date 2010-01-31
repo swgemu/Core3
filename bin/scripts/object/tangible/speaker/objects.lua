@@ -85,10 +85,11 @@ object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1991875875
 }
 
-ObjectTemplates:addTemplate(object_tangible_speaker_shared_speaker, 1991875875)
+ObjectTemplates:addTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")

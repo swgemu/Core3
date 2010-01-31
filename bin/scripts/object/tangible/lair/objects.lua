@@ -85,10 +85,11 @@ object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1938568983
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shared_npc_lair, 1938568983)
+ObjectTemplates:addTemplate(object_tangible_lair_shared_npc_lair, "object/tangible/lair/shared_npc_lair.iff")

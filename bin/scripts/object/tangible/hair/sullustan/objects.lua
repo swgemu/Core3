@@ -85,13 +85,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2917568319
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_f, 2917568319)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_f, "object/tangible/hair/sullustan/shared_sul_hair_s01_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s01_m.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 924328110
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_m, 924328110)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_m, "object/tangible/hair/sullustan/shared_sul_hair_s01_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s02_f.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2082420492
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_f, 2082420492)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_f, "object/tangible/hair/sullustan/shared_sul_hair_s02_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s02_m.sat",
@@ -241,13 +244,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3873544349
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_m, 3873544349)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_m, "object/tangible/hair/sullustan/shared_sul_hair_s02_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s03_f.sat",
@@ -293,13 +297,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 860380957
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_f, 860380957)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_f, "object/tangible/hair/sullustan/shared_sul_hair_s03_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s03_m.sat",
@@ -345,13 +350,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2847338636
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_m, 2847338636)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_m, "object/tangible/hair/sullustan/shared_sul_hair_s03_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s04_f.sat",
@@ -397,13 +403,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3677182685
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_f, 3677182685)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_f, "object/tangible/hair/sullustan/shared_sul_hair_s04_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s04_m.sat",
@@ -449,13 +456,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1104409932
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_m, 1104409932)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_m, "object/tangible/hair/sullustan/shared_sul_hair_s04_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s05_f.sat",
@@ -501,13 +509,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2491036364
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_f, 2491036364)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_f, "object/tangible/hair/sullustan/shared_sul_hair_s05_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s05_m.sat",
@@ -553,13 +562,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 243572061
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_m, 243572061)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_m, "object/tangible/hair/sullustan/shared_sul_hair_s05_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s06_f.sat",
@@ -605,13 +615,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1166248703
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_f, 1166248703)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_f, "object/tangible/hair/sullustan/shared_sul_hair_s06_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s06_m.sat",
@@ -657,13 +668,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3749520750
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_m, 3749520750)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_m, "object/tangible/hair/sullustan/shared_sul_hair_s06_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s07_f.sat",
@@ -709,13 +721,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 181723886
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_f, 181723886)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_f, "object/tangible/hair/sullustan/shared_sul_hair_s07_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s07_m.sat",
@@ -761,13 +774,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2418691455
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_m, 2418691455)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_m, "object/tangible/hair/sullustan/shared_sul_hair_s07_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s08_f.sat",
@@ -813,13 +827,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2441649352
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_f, 2441649352)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_f, "object/tangible/hair/sullustan/shared_sul_hair_s08_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s08_m.sat",
@@ -865,13 +880,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 192295769
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_m, 192295769)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_m, "object/tangible/hair/sullustan/shared_sul_hair_s08_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s09_f.sat",
@@ -917,13 +933,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3739219161
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_f, 3739219161)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_f, "object/tangible/hair/sullustan/shared_sul_hair_s09_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s09_m.sat",
@@ -969,13 +986,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1143036744
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_m, 1143036744)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_m, "object/tangible/hair/sullustan/shared_sul_hair_s09_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s10_f.sat",
@@ -1021,13 +1039,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3104848868
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_f, 3104848868)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_f, "object/tangible/hair/sullustan/shared_sul_hair_s10_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s10_m.sat",
@@ -1073,13 +1092,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 602838133
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_m, 602838133)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_m, "object/tangible/hair/sullustan/shared_sul_hair_s10_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s11_f.sat",
@@ -1125,13 +1145,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4131869685
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_f, 4131869685)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_f, "object/tangible/hair/sullustan/shared_sul_hair_s11_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s11_m.sat",
@@ -1177,13 +1198,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1824128100
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_m, 1824128100)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_m, "object/tangible/hair/sullustan/shared_sul_hair_s11_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s12_f.sat",
@@ -1229,13 +1251,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 666823622
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_f, 666823622)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_f, "object/tangible/hair/sullustan/shared_sul_hair_s12_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s12_m.sat",
@@ -1281,13 +1304,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3175105623
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_m, 3175105623)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_m, "object/tangible/hair/sullustan/shared_sul_hair_s12_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s13_f.sat",
@@ -1333,13 +1357,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1760134103
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_f, 1760134103)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_f, "object/tangible/hair/sullustan/shared_sul_hair_s13_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s13_m.sat",
@@ -1385,13 +1410,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4061604934
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_m, 4061604934)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_m, "object/tangible/hair/sullustan/shared_sul_hair_s13_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s14_f.sat",
@@ -1437,13 +1463,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2156693015
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_f, 2156693015)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_f, "object/tangible/hair/sullustan/shared_sul_hair_s14_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s14_m.sat",
@@ -1489,13 +1516,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 443689350
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_m, 443689350)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_m, "object/tangible/hair/sullustan/shared_sul_hair_s14_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s15_f.sat",
@@ -1541,13 +1569,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3487297030
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_f, 3487297030)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_f, "object/tangible/hair/sullustan/shared_sul_hair_s15_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s15_m.sat",
@@ -1593,13 +1622,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1428504983
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_m, 1428504983)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_m, "object/tangible/hair/sullustan/shared_sul_hair_s15_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s16_f.sat",
@@ -1645,13 +1675,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 505566773
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_f, 505566773)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_f, "object/tangible/hair/sullustan/shared_sul_hair_s16_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s16_m.sat",
@@ -1697,13 +1728,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2229074340
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_m, 2229074340)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_m, "object/tangible/hair/sullustan/shared_sul_hair_s16_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s17_f.sat",
@@ -1749,13 +1781,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1366638116
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_f, 1366638116)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_f, "object/tangible/hair/sullustan/shared_sul_hair_s17_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s17_m.sat",
@@ -1801,13 +1834,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3414921653
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_m, 3414921653)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_m, "object/tangible/hair/sullustan/shared_sul_hair_s17_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s18_f.sat",
@@ -1853,13 +1887,14 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3391700994
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_f, 3391700994)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_f, "object/tangible/hair/sullustan/shared_sul_hair_s18_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s18_m.sat",
@@ -1905,10 +1940,11 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1356328851
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_m, 1356328851)
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_m, "object/tangible/hair/sullustan/shared_sul_hair_s18_m.iff")

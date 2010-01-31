@@ -85,13 +85,14 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3444207030
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite, 3444207030)
+ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite.iff")
 
 object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1352445484
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain, 1352445484)
+ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite_mountain.iff")

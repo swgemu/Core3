@@ -77,10 +77,12 @@ object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3231609067
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_awing_pcd, 3231609067)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_awing_pcd, "object/intangible/ship/shared_awing_pcd.iff")
 
 object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -118,10 +120,12 @@ object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3117731697
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_hutt_light_pcd, 3117731697)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_hutt_light_pcd, "object/intangible/ship/shared_basic_hutt_light_pcd.iff")
 
 object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -159,10 +163,12 @@ object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3542586269
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_tiefighter_pcd, 3542586269)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_tiefighter_pcd, "object/intangible/ship/shared_basic_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -200,10 +206,12 @@ object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1951744339
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_z95_pcd, 1951744339)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_z95_pcd, "object/intangible/ship/shared_basic_z95_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -241,10 +249,12 @@ object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1920551856
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s01_pcd, 1920551856)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s01_pcd, "object/intangible/ship/shared_blacksun_heavy_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -282,10 +292,12 @@ object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1622780077
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s02_pcd, 1622780077)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s02_pcd, "object/intangible/ship/shared_blacksun_heavy_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -323,10 +335,12 @@ object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2461598411
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s03_pcd, 2461598411)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s03_pcd, "object/intangible/ship/shared_blacksun_heavy_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -364,10 +378,12 @@ object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1161326231
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s04_pcd, 1161326231)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s04_pcd, "object/intangible/ship/shared_blacksun_heavy_s04_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -405,10 +421,12 @@ object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4287843959
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s01_pcd, 4287843959)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s01_pcd, "object/intangible/ship/shared_blacksun_light_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -446,10 +464,12 @@ object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3981684074
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s02_pcd, 3981684074)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s02_pcd, "object/intangible/ship/shared_blacksun_light_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -487,10 +507,12 @@ object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 525534988
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s03_pcd, 525534988)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s03_pcd, "object/intangible/ship/shared_blacksun_light_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -528,10 +550,12 @@ object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3369233232
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s04_pcd, 3369233232)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s04_pcd, "object/intangible/ship/shared_blacksun_light_s04_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -569,10 +593,12 @@ object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3830604387
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s01_pcd, 3830604387)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s01_pcd, "object/intangible/ship/shared_blacksun_medium_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -610,10 +636,12 @@ object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4136796542
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s02_pcd, 4136796542)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s02_pcd, "object/intangible/ship/shared_blacksun_medium_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -651,10 +679,12 @@ object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 76688152
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s03_pcd, 76688152)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s03_pcd, "object/intangible/ship/shared_blacksun_medium_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -692,10 +722,12 @@ object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3541256004
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s04_pcd, 3541256004)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s04_pcd, "object/intangible/ship/shared_blacksun_medium_s04_pcd.iff")
 
 object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -733,10 +765,12 @@ object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4256405331
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_bwing_pcd, 4256405331)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_bwing_pcd, "object/intangible/ship/shared_bwing_pcd.iff")
 
 object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -774,10 +808,12 @@ object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 816398955
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_decimator_pcd, 816398955)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_decimator_pcd, "object/intangible/ship/shared_decimator_pcd.iff")
 
 object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -815,10 +851,12 @@ object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3214165542
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_firespray_pcd, 3214165542)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_firespray_pcd, "object/intangible/ship/shared_firespray_pcd.iff")
 
 object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -856,10 +894,12 @@ object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2913916856
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s01_pcd, 2913916856)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s01_pcd, "object/intangible/ship/shared_hutt_heavy_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -897,10 +937,12 @@ object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3211670693
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s02_pcd, 3211670693)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s02_pcd, "object/intangible/ship/shared_hutt_heavy_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -938,10 +980,12 @@ object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 541381247
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s01_pcd, 541381247)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s01_pcd, "object/intangible/ship/shared_hutt_light_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -979,10 +1023,12 @@ object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 847524194
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s02_pcd, 847524194)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s02_pcd, "object/intangible/ship/shared_hutt_light_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -1020,10 +1066,12 @@ object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 437951543
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s01_pcd, 437951543)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s01_pcd, "object/intangible/ship/shared_hutt_medium_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -1061,10 +1109,12 @@ object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 148537130
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s02_pcd, 148537130)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s02_pcd, "object/intangible/ship/shared_hutt_medium_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
@@ -1102,10 +1152,12 @@ object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3431555714
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_turret_ship_pcd, 3431555714)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_turret_ship_pcd, "object/intangible/ship/shared_hutt_turret_ship_pcd.iff")
 
 object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1143,10 +1195,12 @@ object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3404705593
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_1, 3404705593)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_1, "object/intangible/ship/shared_navicomputer_1.iff")
 
 object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1184,10 +1238,12 @@ object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 301467566
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_2, 301467566)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_2, "object/intangible/ship/shared_navicomputer_2.iff")
 
 object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1225,10 +1281,12 @@ object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1492475939
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_3, 1492475939)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_3, "object/intangible/ship/shared_navicomputer_3.iff")
 
 object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1266,10 +1324,12 @@ object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2736147255
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_4, 2736147255)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_4, "object/intangible/ship/shared_navicomputer_4.iff")
 
 object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1307,10 +1367,12 @@ object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3927649466
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_5, 3927649466)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_5, "object/intangible/ship/shared_navicomputer_5.iff")
 
 object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1348,10 +1410,12 @@ object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 822903853
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_6, 822903853)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_6, "object/intangible/ship/shared_navicomputer_6.iff")
 
 object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1389,10 +1453,12 @@ object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1537107009
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_base, 1537107009)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_base, "object/intangible/ship/shared_navicomputer_base.iff")
 
 object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -1430,10 +1496,12 @@ object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3320786901
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_hutt_light_pcd, 3320786901)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_hutt_light_pcd, "object/intangible/ship/shared_prototype_hutt_light_pcd.iff")
 
 object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1471,10 +1539,12 @@ object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2937877305
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_tiefighter_pcd, 2937877305)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_tiefighter_pcd, "object/intangible/ship/shared_prototype_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -1512,10 +1582,12 @@ object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3760715561
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_z95_pcd, 3760715561)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_z95_pcd, "object/intangible/ship/shared_prototype_z95_pcd.iff")
 
 object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
@@ -1553,10 +1625,12 @@ object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 264594860
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_sorosuub_space_yacht_pcd, 264594860)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_sorosuub_space_yacht_pcd, "object/intangible/ship/shared_sorosuub_space_yacht_pcd.iff")
 
 object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1594,10 +1668,12 @@ object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4072676654
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_in_pcd, 4072676654)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_in_pcd, "object/intangible/ship/shared_tie_in_pcd.iff")
 
 object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1635,10 +1711,12 @@ object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3211390
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_light_duty_pcd, 3211390)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_light_duty_pcd, "object/intangible/ship/shared_tie_light_duty_pcd.iff")
 
 object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -1676,10 +1754,12 @@ object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3041041630
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tieadvanced_pcd, 3041041630)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tieadvanced_pcd, "object/intangible/ship/shared_tieadvanced_pcd.iff")
 
 object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -1717,10 +1797,12 @@ object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3555369555
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tieaggressor_pcd, 3555369555)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tieaggressor_pcd, "object/intangible/ship/shared_tieaggressor_pcd.iff")
 
 object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -1758,10 +1840,12 @@ object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3994408379
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tiebomber_pcd, 3994408379)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tiebomber_pcd, "object/intangible/ship/shared_tiebomber_pcd.iff")
 
 object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1799,10 +1883,12 @@ object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2741040950
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tiefighter_pcd, 2741040950)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tiefighter_pcd, "object/intangible/ship/shared_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -1840,10 +1926,12 @@ object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4152772827
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tieinterceptor_pcd, 4152772827)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tieinterceptor_pcd, "object/intangible/ship/shared_tieinterceptor_pcd.iff")
 
 object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -1881,10 +1969,12 @@ object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3673716446
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_tieoppressor_pcd, 3673716446)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_tieoppressor_pcd, "object/intangible/ship/shared_tieoppressor_pcd.iff")
 
 object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -1922,10 +2012,12 @@ object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3314812569
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_xwing_pcd, 3314812569)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_xwing_pcd, "object/intangible/ship/shared_xwing_pcd.iff")
 
 object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -1963,10 +2055,12 @@ object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1454524572
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_ykl37r_pcd, 1454524572)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_ykl37r_pcd, "object/intangible/ship/shared_ykl37r_pcd.iff")
 
 object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_r0.apt",
@@ -2004,10 +2098,12 @@ object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2265582340
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_yt1300_pcd, 2265582340)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_yt1300_pcd, "object/intangible/ship/shared_yt1300_pcd.iff")
 
 object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2045,10 +2141,12 @@ object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3884767324
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_longprobe_pcd, 3884767324)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_longprobe_pcd, "object/intangible/ship/shared_ywing_longprobe_pcd.iff")
 
 object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2086,10 +2184,12 @@ object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 758141084
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_pcd, 758141084)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_pcd, "object/intangible/ship/shared_ywing_pcd.iff")
 
 object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -2127,7 +2227,9 @@ object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 628864673
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_shared_z95_pcd, 628864673)
+ObjectTemplates:addTemplate(object_intangible_ship_shared_z95_pcd, "object/intangible/ship/shared_z95_pcd.iff")

@@ -85,10 +85,11 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3515230028
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_base_shared_furniture_base, 3515230028)
+ObjectTemplates:addTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")

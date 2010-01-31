@@ -85,13 +85,14 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1829714494
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker, 1829714494)
+ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
 
 object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 571906509
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, 571906509)
+ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")

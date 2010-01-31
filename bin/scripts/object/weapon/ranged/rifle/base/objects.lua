@@ -86,6 +86,7 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 2730158915
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_base_shared_rifle_base, 2730158915)
+ObjectTemplates:addTemplate(object_weapon_ranged_rifle_base_shared_rifle_base, "object/weapon/ranged/rifle/base/shared_rifle_base.iff")

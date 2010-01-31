@@ -85,13 +85,14 @@ object_tangible_hair_bothan_base_shared_hair_bothan_base = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2550508164
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, 2550508164)
+ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff")
 
 object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4122368933
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, 4122368933)
+ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, "object/tangible/hair/bothan/base/shared_hair_bothan_female_base.iff")
 
 object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4062977600
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, 4062977600)
+ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, "object/tangible/hair/bothan/base/shared_hair_bothan_male_base.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3190753462
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, 3190753462)
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
 
 object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1664191883
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, 1664191883)
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")

@@ -85,13 +85,14 @@ object_tangible_container_jar_shared_jar_berries_s01 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4139801999
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_berries_s01, 4139801999)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_berries_s01, "object/tangible/container/jar/shared_jar_berries_s01.iff")
 
 object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 835828013
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_bugs_s01, 835828013)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_bugs_s01, "object/tangible/container/jar/shared_jar_bugs_s01.iff")
 
 object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1210399766
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_empty_s01, 1210399766)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_empty_s01, "object/tangible/container/jar/shared_jar_empty_s01.iff")
 
 object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 790427742
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_funk_s01, 790427742)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_funk_s01, "object/tangible/container/jar/shared_jar_funk_s01.iff")
 
 object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2207170789
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_guts_s01, 2207170789)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_guts_s01, "object/tangible/container/jar/shared_jar_guts_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2797429817
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s01, 2797429817)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s01, "object/tangible/container/jar/shared_jar_spice_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -397,13 +403,14 @@ object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2108345518
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s02, 2108345518)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s02, "object/tangible/container/jar/shared_jar_spice_s02.iff")
 
 object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -449,10 +456,11 @@ object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 883403555
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s03, 883403555)
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s03, "object/tangible/container/jar/shared_jar_spice_s03.iff")

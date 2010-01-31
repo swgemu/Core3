@@ -85,13 +85,14 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2543663822
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, 2543663822)
+ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, "object/tangible/lair/peko_peko/shared_lair_peko_peko.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1250959161
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, 1250959161)
+ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, "object/tangible/lair/peko_peko/shared_lair_peko_peko_forest.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 739180542
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, 739180542)
+ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, "object/tangible/lair/peko_peko/shared_lair_peko_peko_grassland.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4010621056
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, 4010621056)
+ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, "object/tangible/lair/peko_peko/shared_lair_peko_peko_swamp.iff")

@@ -85,13 +85,14 @@ object_tangible_hair_human_shared_hair_human_female_s01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3485410635
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s01, 3485410635)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s01, "object/tangible/hair/human/shared_hair_human_female_s01.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s02.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_human_shared_hair_human_female_s02 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 346590684
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s02, 346590684)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s02, "object/tangible/hair/human/shared_hair_human_female_s02.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s03.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_human_shared_hair_human_female_s03 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1571154513
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s03, 1571154513)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s03, "object/tangible/hair/human/shared_hair_human_female_s03.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s04.sat",
@@ -241,13 +244,14 @@ object_tangible_hair_human_shared_hair_human_female_s04 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2789654853
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s04, 2789654853)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s04, "object/tangible/hair/human/shared_hair_human_female_s04.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s05.sat",
@@ -293,13 +297,14 @@ object_tangible_hair_human_shared_hair_human_female_s05 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4014712520
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s05, 4014712520)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s05, "object/tangible/hair/human/shared_hair_human_female_s05.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s06.sat",
@@ -345,13 +350,14 @@ object_tangible_hair_human_shared_hair_human_female_s06 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 878448223
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s06, 878448223)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s06, "object/tangible/hair/human/shared_hair_human_female_s06.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s07.sat",
@@ -397,13 +403,14 @@ object_tangible_hair_human_shared_hair_human_female_s07 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2102487506
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s07, 2102487506)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s07, "object/tangible/hair/human/shared_hair_human_female_s07.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s08.sat",
@@ -449,13 +456,14 @@ object_tangible_hair_human_shared_hair_human_female_s08 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3344647616
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s08, 3344647616)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s08, "object/tangible/hair/human/shared_hair_human_female_s08.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s09.sat",
@@ -501,13 +509,14 @@ object_tangible_hair_human_shared_hair_human_female_s09 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2388009549
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s09, 2388009549)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s09, "object/tangible/hair/human/shared_hair_human_female_s09.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s10.sat",
@@ -553,13 +562,14 @@ object_tangible_hair_human_shared_hair_human_female_s10 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2644135870
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s10, 2644135870)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s10, "object/tangible/hair/human/shared_hair_human_female_s10.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s11.sat",
@@ -605,13 +615,14 @@ object_tangible_hair_human_shared_hair_human_female_s11 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3566676019
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s11, 3566676019)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s11, "object/tangible/hair/human/shared_hair_human_female_s11.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s12.sat",
@@ -657,13 +668,14 @@ object_tangible_hair_human_shared_hair_human_female_s12 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 260079780
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s12, 260079780)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s12, "object/tangible/hair/human/shared_hair_human_female_s12.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s14.sat",
@@ -709,13 +721,14 @@ object_tangible_hair_human_shared_hair_human_female_s14 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3178155069
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s14, 3178155069)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s14, "object/tangible/hair/human/shared_hair_human_female_s14.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s15.sat",
@@ -761,13 +774,14 @@ object_tangible_hair_human_shared_hair_human_female_s15 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4100172720
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s15, 4100172720)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s15, "object/tangible/hair/human/shared_hair_human_female_s15.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s16.sat",
@@ -813,13 +827,14 @@ object_tangible_hair_human_shared_hair_human_female_s16 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 796132135
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s16, 796132135)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s16, "object/tangible/hair/human/shared_hair_human_female_s16.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s17.sat",
@@ -865,13 +880,14 @@ object_tangible_hair_human_shared_hair_human_female_s17 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1719231658
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s17, 1719231658)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s17, "object/tangible/hair/human/shared_hair_human_female_s17.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s18.sat",
@@ -917,13 +933,14 @@ object_tangible_hair_human_shared_hair_human_female_s18 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3698542776
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s18, 3698542776)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s18, "object/tangible/hair/human/shared_hair_human_female_s18.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s19.sat",
@@ -969,13 +986,14 @@ object_tangible_hair_human_shared_hair_human_female_s19 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2508074805
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s19, 2508074805)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s19, "object/tangible/hair/human/shared_hair_human_female_s19.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s20.sat",
@@ -1021,13 +1039,14 @@ object_tangible_hair_human_shared_hair_human_female_s20 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2967623734
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s20, 2967623734)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s20, "object/tangible/hair/human/shared_hair_human_female_s20.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s21.sat",
@@ -1073,13 +1092,14 @@ object_tangible_hair_human_shared_hair_human_female_s21 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4193206203
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s21, 4193206203)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s21, "object/tangible/hair/human/shared_hair_human_female_s21.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s22.sat",
@@ -1125,13 +1145,14 @@ object_tangible_hair_human_shared_hair_human_female_s22 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 586716972
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s22, 586716972)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s22, "object/tangible/hair/human/shared_hair_human_female_s22.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s23 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s23.sat",
@@ -1177,13 +1198,14 @@ object_tangible_hair_human_shared_hair_human_female_s23 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1811280033
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s23, 1811280033)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s23, "object/tangible/hair/human/shared_hair_human_female_s23.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s24.sat",
@@ -1229,13 +1251,14 @@ object_tangible_hair_human_shared_hair_human_female_s24 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2417417141
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s24, 2417417141)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s24, "object/tangible/hair/human/shared_hair_human_female_s24.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s25.sat",
@@ -1281,13 +1304,14 @@ object_tangible_hair_human_shared_hair_human_female_s25 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3642473528
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s25, 3642473528)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s25, "object/tangible/hair/human/shared_hair_human_female_s25.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s26.sat",
@@ -1333,13 +1357,14 @@ object_tangible_hair_human_shared_hair_human_female_s26 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 34346159
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s26, 34346159)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s26, "object/tangible/hair/human/shared_hair_human_female_s26.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s27.sat",
@@ -1385,13 +1410,14 @@ object_tangible_hair_human_shared_hair_human_female_s27 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1258386210
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s27, 1258386210)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s27, "object/tangible/hair/human/shared_hair_human_female_s27.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s30.sat",
@@ -1437,13 +1463,14 @@ object_tangible_hair_human_shared_hair_human_female_s30 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2882164046
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s30, 2882164046)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s30, "object/tangible/hair/human/shared_hair_human_female_s30.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s31.sat",
@@ -1489,13 +1516,14 @@ object_tangible_hair_human_shared_hair_human_female_s31 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3804705475
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s31, 3804705475)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s31, "object/tangible/hair/human/shared_hair_human_female_s31.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s32.sat",
@@ -1541,13 +1569,14 @@ object_tangible_hair_human_shared_hair_human_female_s32 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 969972308
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s32, 969972308)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s32, "object/tangible/hair/human/shared_hair_human_female_s32.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s34 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s34.sat",
@@ -1593,13 +1622,14 @@ object_tangible_hair_human_shared_hair_human_female_s34 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2336151245
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s34, 2336151245)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s34, "object/tangible/hair/human/shared_hair_human_female_s34.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s35 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s35.sat",
@@ -1645,13 +1675,14 @@ object_tangible_hair_human_shared_hair_human_female_s35 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3258167616
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s35, 3258167616)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s35, "object/tangible/hair/human/shared_hair_human_female_s35.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s36 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s36.sat",
@@ -1697,13 +1728,14 @@ object_tangible_hair_human_shared_hair_human_female_s36 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 421796311
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s36, 421796311)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s36, "object/tangible/hair/human/shared_hair_human_female_s36.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s37 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s37.sat",
@@ -1749,13 +1781,14 @@ object_tangible_hair_human_shared_hair_human_female_s37 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1344896602
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s37, 1344896602)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s37, "object/tangible/hair/human/shared_hair_human_female_s37.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s38 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s38.sat",
@@ -1801,13 +1834,14 @@ object_tangible_hair_human_shared_hair_human_female_s38 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3928183368
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s38, 3928183368)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s38, "object/tangible/hair/human/shared_hair_human_female_s38.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s39 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s39.sat",
@@ -1853,13 +1887,14 @@ object_tangible_hair_human_shared_hair_human_female_s39 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2737714629
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s39, 2737714629)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s39, "object/tangible/hair/human/shared_hair_human_female_s39.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s40 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s40.sat",
@@ -1905,13 +1940,14 @@ object_tangible_hair_human_shared_hair_human_female_s40 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3927078694
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s40, 3927078694)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s40, "object/tangible/hair/human/shared_hair_human_female_s40.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s41 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s41.sat",
@@ -1957,13 +1993,14 @@ object_tangible_hair_human_shared_hair_human_female_s41 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2736722091
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s41, 2736722091)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s41, "object/tangible/hair/human/shared_hair_human_female_s41.iff")
 
 object_tangible_hair_human_shared_hair_human_female_s42 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_f_hair_s42.sat",
@@ -2009,13 +2046,14 @@ object_tangible_hair_human_shared_hair_human_female_s42 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2013837372
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s42, 2013837372)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s42, "object/tangible/hair/human/shared_hair_human_female_s42.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s01.sat",
@@ -2061,13 +2099,14 @@ object_tangible_hair_human_shared_hair_human_male_s01 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2377331336
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s01, 2377331336)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s01, "object/tangible/hair/human/shared_hair_human_male_s01.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s02.sat",
@@ -2113,13 +2152,14 @@ object_tangible_hair_human_shared_hair_human_male_s02 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1453627935
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s02, 1453627935)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s02, "object/tangible/hair/human/shared_hair_human_male_s02.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s03.sat",
@@ -2165,13 +2205,14 @@ object_tangible_hair_human_shared_hair_human_male_s03 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 531234194
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s03, 531234194)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s03, "object/tangible/hair/human/shared_hair_human_male_s03.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s04.sat",
@@ -2217,13 +2258,14 @@ object_tangible_hair_human_shared_hair_human_male_s04 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3830109830
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s04, 3830109830)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s04, "object/tangible/hair/human/shared_hair_human_male_s04.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s05.sat",
@@ -2269,13 +2311,14 @@ object_tangible_hair_human_shared_hair_human_male_s05 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2907156747
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s05, 2907156747)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s05, "object/tangible/hair/human/shared_hair_human_male_s05.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s06.sat",
@@ -2321,13 +2364,14 @@ object_tangible_hair_human_shared_hair_human_male_s06 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1984960924
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s06, 1984960924)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s06, "object/tangible/hair/human/shared_hair_human_male_s06.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s07.sat",
@@ -2373,13 +2417,14 @@ object_tangible_hair_human_shared_hair_human_male_s07 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1063091729
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s07, 1063091729)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s07, "object/tangible/hair/human/shared_hair_human_male_s07.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s08.sat",
@@ -2425,13 +2470,14 @@ object_tangible_hair_human_shared_hair_human_male_s08 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2237092355
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s08, 2237092355)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s08, "object/tangible/hair/human/shared_hair_human_male_s08.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s09.sat",
@@ -2477,13 +2523,14 @@ object_tangible_hair_human_shared_hair_human_male_s09 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3428464014
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s09, 3428464014)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s09, "object/tangible/hair/human/shared_hair_human_male_s09.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s10.sat",
@@ -2529,13 +2576,14 @@ object_tangible_hair_human_shared_hair_human_male_s10 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3751172221
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s10, 3751172221)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s10, "object/tangible/hair/human/shared_hair_human_male_s10.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s11.sat",
@@ -2581,13 +2629,14 @@ object_tangible_hair_human_shared_hair_human_male_s11 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2526756848
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s11, 2526756848)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s11, "object/tangible/hair/human/shared_hair_human_male_s11.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s12.sat",
@@ -2633,13 +2682,14 @@ object_tangible_hair_human_shared_hair_human_male_s12 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1301059431
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s12, 1301059431)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s12, "object/tangible/hair/human/shared_hair_human_male_s12.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s13.sat",
@@ -2685,13 +2735,14 @@ object_tangible_hair_human_shared_hair_human_male_s13 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 75624682
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s13, 75624682)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s13, "object/tangible/hair/human/shared_hair_human_male_s13.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s14.sat",
@@ -2737,13 +2788,14 @@ object_tangible_hair_human_shared_hair_human_male_s14 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4284668926
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s14, 4284668926)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s14, "object/tangible/hair/human/shared_hair_human_male_s14.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s15.sat",
@@ -2789,13 +2841,14 @@ object_tangible_hair_human_shared_hair_human_male_s15 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3060776051
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s15, 3060776051)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s15, "object/tangible/hair/human/shared_hair_human_male_s15.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s16.sat",
@@ -2841,13 +2894,14 @@ object_tangible_hair_human_shared_hair_human_male_s16 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1836586212
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s16, 1836586212)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s16, "object/tangible/hair/human/shared_hair_human_male_s16.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s17.sat",
@@ -2893,13 +2947,14 @@ object_tangible_hair_human_shared_hair_human_male_s17 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 611677033
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s17, 611677033)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s17, "object/tangible/hair/human/shared_hair_human_male_s17.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s18.sat",
@@ -2945,13 +3000,14 @@ object_tangible_hair_human_shared_hair_human_male_s18 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2659147643
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s18, 2659147643)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s18, "object/tangible/hair/human/shared_hair_human_male_s18.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s19.sat",
@@ -2997,13 +3053,14 @@ object_tangible_hair_human_shared_hair_human_male_s19 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3614587126
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s19, 3614587126)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s19, "object/tangible/hair/human/shared_hair_human_male_s19.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s20.sat",
@@ -3049,13 +3106,14 @@ object_tangible_hair_human_shared_hair_human_male_s20 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4075704309
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s20, 4075704309)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s20, "object/tangible/hair/human/shared_hair_human_male_s20.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s21.sat",
@@ -3101,13 +3159,14 @@ object_tangible_hair_human_shared_hair_human_male_s21 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3152226424
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s21, 3152226424)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s21, "object/tangible/hair/human/shared_hair_human_male_s21.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s22.sat",
@@ -3153,13 +3212,14 @@ object_tangible_hair_human_shared_hair_human_male_s22 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1626636527
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s22, 1626636527)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s22, "object/tangible/hair/human/shared_hair_human_male_s22.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s23 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s23.sat",
@@ -3205,13 +3265,14 @@ object_tangible_hair_human_shared_hair_human_male_s23 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 704243554
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s23, 704243554)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s23, "object/tangible/hair/human/shared_hair_human_male_s23.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s24.sat",
@@ -3257,13 +3318,14 @@ object_tangible_hair_human_shared_hair_human_male_s24 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3524971638
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s24, 3524971638)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s24, "object/tangible/hair/human/shared_hair_human_male_s24.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s25.sat",
@@ -3309,13 +3371,14 @@ object_tangible_hair_human_shared_hair_human_male_s25 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2602019835
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s25, 2602019835)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s25, "object/tangible/hair/human/shared_hair_human_male_s25.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s26.sat",
@@ -3361,13 +3424,14 @@ object_tangible_hair_human_shared_hair_human_male_s26 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1073742700
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s26, 1073742700)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s26, "object/tangible/hair/human/shared_hair_human_male_s26.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s27.sat",
@@ -3413,13 +3477,14 @@ object_tangible_hair_human_shared_hair_human_male_s27 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 151872737
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s27, 151872737)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s27, "object/tangible/hair/human/shared_hair_human_male_s27.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s28 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s28.sat",
@@ -3465,13 +3530,14 @@ object_tangible_hair_human_shared_hair_human_male_s28 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3003599091
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s28, 3003599091)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s28, "object/tangible/hair/human/shared_hair_human_male_s28.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s29 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s29.sat",
@@ -3517,13 +3583,14 @@ object_tangible_hair_human_shared_hair_human_male_s29 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4194971518
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s29, 4194971518)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s29, "object/tangible/hair/human/shared_hair_human_male_s29.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s30.sat",
@@ -3569,13 +3636,14 @@ object_tangible_hair_human_shared_hair_human_male_s30 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3922084493
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s30, 3922084493)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s30, "object/tangible/hair/human/shared_hair_human_male_s30.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s31.sat",
@@ -3621,13 +3689,14 @@ object_tangible_hair_human_shared_hair_human_male_s31 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2697667840
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s31, 2697667840)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s31, "object/tangible/hair/human/shared_hair_human_male_s31.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s32.sat",
@@ -3673,13 +3742,14 @@ object_tangible_hair_human_shared_hair_human_male_s32 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2078051735
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s32, 2078051735)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s32, "object/tangible/hair/human/shared_hair_human_male_s32.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s33.sat",
@@ -3725,13 +3795,14 @@ object_tangible_hair_human_shared_hair_human_male_s33 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 852617754
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s33, 852617754)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s33, "object/tangible/hair/human/shared_hair_human_male_s33.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s34 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s34.sat",
@@ -3777,13 +3848,14 @@ object_tangible_hair_human_shared_hair_human_male_s34 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3375546638
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s34, 3375546638)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s34, "object/tangible/hair/human/shared_hair_human_male_s34.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s35 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s35.sat",
@@ -3829,13 +3901,14 @@ object_tangible_hair_human_shared_hair_human_male_s35 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2151655043
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s35, 2151655043)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s35, "object/tangible/hair/human/shared_hair_human_male_s35.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s37 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s37.sat",
@@ -3881,13 +3954,14 @@ object_tangible_hair_human_shared_hair_human_male_s37 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 304441753
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s37, 304441753)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s37, "object/tangible/hair/human/shared_hair_human_male_s37.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s38 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s38.sat",
@@ -3933,13 +4007,14 @@ object_tangible_hair_human_shared_hair_human_male_s38 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2821670283
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s38, 2821670283)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s38, "object/tangible/hair/human/shared_hair_human_male_s38.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s39 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s39.sat",
@@ -3985,13 +4060,14 @@ object_tangible_hair_human_shared_hair_human_male_s39 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3777110534
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s39, 3777110534)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s39, "object/tangible/hair/human/shared_hair_human_male_s39.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s40 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s40.sat",
@@ -4037,13 +4113,14 @@ object_tangible_hair_human_shared_hair_human_male_s40 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2820563173
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s40, 2820563173)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s40, "object/tangible/hair/human/shared_hair_human_male_s40.iff")
 
 object_tangible_hair_human_shared_hair_human_male_s41 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s41.sat",
@@ -4089,10 +4166,11 @@ object_tangible_hair_human_shared_hair_human_male_s41 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3776120680
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s41, 3776120680)
+ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s41, "object/tangible/hair/human/shared_hair_human_male_s41.iff")

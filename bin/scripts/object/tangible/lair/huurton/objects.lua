@@ -85,13 +85,14 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1349396449
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton, 1349396449)
+ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
 
 object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3768282762
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, 3768282762)
+ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")

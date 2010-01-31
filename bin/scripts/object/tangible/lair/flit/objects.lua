@@ -85,13 +85,14 @@ object_tangible_lair_flit_shared_lair_flit = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 148367825
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit, 148367825)
+ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit, "object/tangible/lair/flit/shared_lair_flit.iff")
 
 object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1679618703
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_forest, 1679618703)
+ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_forest, "object/tangible/lair/flit/shared_lair_flit_forest.iff")
 
 object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 402738321
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, 402738321)
+ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, "object/tangible/lair/flit/shared_lair_flit_mountain.iff")

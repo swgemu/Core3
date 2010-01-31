@@ -86,6 +86,7 @@ object_weapon_melee_axe_base_shared_axe_base = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_melee_axe_base_shared_axe_base = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2307905353
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_axe_base_shared_axe_base, 2307905353)
+ObjectTemplates:addTemplate(object_weapon_melee_axe_base_shared_axe_base, "object/weapon/melee/axe/base/shared_axe_base.iff")

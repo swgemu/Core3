@@ -85,10 +85,11 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1937734566
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_base_shared_mining_ore_base, 1937734566)
+ObjectTemplates:addTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")

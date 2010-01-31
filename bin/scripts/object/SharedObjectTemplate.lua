@@ -71,6 +71,7 @@ SharedObjectTemplate = Object:new {
 	 noBuildRadius = 0,
 	 onlyVisibleInTools = 0,
 	 locationReservationRadius = 0,
+	 totalCellNumber = 0,
 
 	 clientObjectCRC = 0
 }

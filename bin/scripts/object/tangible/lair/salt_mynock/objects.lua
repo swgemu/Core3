@@ -85,13 +85,14 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2598164093
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, 2598164093)
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3617713744
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, 3617713744)
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4030433492
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, 4030433492)
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff")

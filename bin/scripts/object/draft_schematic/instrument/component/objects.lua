@@ -77,7 +77,9 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 658217892
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, 658217892)
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")

@@ -77,10 +77,12 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1225468655
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, 1225468655)
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 425747428
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, 425747428)
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
 
 object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1575116633
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, 1575116633)
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
 
 object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2888384407
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, 2888384407)
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
 
 object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,7 +249,9 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2390191987
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, 2390191987)
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")

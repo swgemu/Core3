@@ -76,10 +76,12 @@ object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01 = SharedStatic
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 218376108
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01, 218376108)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01, "object/static/structure/dathomir/shared_dath_imprv_bannerpole_s01.iff")
 
 object_static_structure_dathomir_shared_dath_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -116,10 +118,12 @@ object_static_structure_dathomir_shared_dath_imprv_flagpole_s01 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1208818658
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_flagpole_s01, 1208818658)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_flagpole_s01, "object/static/structure/dathomir/shared_dath_imprv_flagpole_s01.iff")
 
 object_static_structure_dathomir_shared_imp_prison = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_imp_prison.apt",
@@ -157,10 +161,12 @@ object_static_structure_dathomir_shared_imp_prison = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4186513770
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_imp_prison, 4186513770)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_imp_prison, "object/static/structure/dathomir/shared_imp_prison.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_crows_nest_s01.apt",
@@ -198,10 +204,12 @@ object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1840196313
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01, 1840196313)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01, "object/static/structure/dathomir/shared_mtn_clan_crows_nest_s01.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_gate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_gate_s01.apt",
@@ -239,10 +247,12 @@ object_static_structure_dathomir_shared_mtn_clan_gate_s01 = SharedStaticObjectTe
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 65550249
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_gate_s01, 65550249)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_gate_s01, "object/static/structure/dathomir/shared_mtn_clan_gate_s01.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_hut_s01.apt",
@@ -280,10 +290,12 @@ object_static_structure_dathomir_shared_mtn_clan_hut_s01 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2024122595
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_hut_s01, 2024122595)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_hut_s01, "object/static/structure/dathomir/shared_mtn_clan_hut_s01.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
@@ -321,10 +333,12 @@ object_static_structure_dathomir_shared_mtn_clan_pillar_s01 = SharedStaticObject
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 351866084
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_pillar_s01, 351866084)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_pillar_s01, "object/static/structure/dathomir/shared_mtn_clan_pillar_s01.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_strong_fence_s01.apt",
@@ -362,10 +376,12 @@ object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01 = SharedStatic
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2457942136
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01, 2457942136)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01, "object/static/structure/dathomir/shared_mtn_clan_strong_fence_s01.iff")
 
 object_static_structure_dathomir_shared_mtn_clan_tent_house_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_tent_house_s01.apt",
@@ -403,10 +419,12 @@ object_static_structure_dathomir_shared_mtn_clan_tent_house_s01 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1938207181
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_tent_house_s01, 1938207181)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_tent_house_s01, "object/static/structure/dathomir/shared_mtn_clan_tent_house_s01.iff")
 
 object_static_structure_dathomir_shared_night_sister_banner_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s01.apt",
@@ -444,10 +462,12 @@ object_static_structure_dathomir_shared_night_sister_banner_s01 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1990407384
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s01, 1990407384)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s01, "object/static/structure/dathomir/shared_night_sister_banner_s01.iff")
 
 object_static_structure_dathomir_shared_night_sister_banner_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s02.apt",
@@ -485,10 +505,12 @@ object_static_structure_dathomir_shared_night_sister_banner_s02 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2914294863
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s02, 2914294863)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s02, "object/static/structure/dathomir/shared_night_sister_banner_s02.iff")
 
 object_static_structure_dathomir_shared_night_sister_banner_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s03.apt",
@@ -526,10 +548,12 @@ object_static_structure_dathomir_shared_night_sister_banner_s03 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3837393858
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s03, 3837393858)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s03, "object/static/structure/dathomir/shared_night_sister_banner_s03.iff")
 
 object_static_structure_dathomir_shared_nsister_fence_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_fence_s01.apt",
@@ -567,10 +591,12 @@ object_static_structure_dathomir_shared_nsister_fence_style_01 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 446202967
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_fence_style_01, 446202967)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_fence_style_01, "object/static/structure/dathomir/shared_nsister_fence_style_01.iff")
 
 object_static_structure_dathomir_shared_nsister_gate_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_gate_s01.apt",
@@ -608,10 +634,12 @@ object_static_structure_dathomir_shared_nsister_gate_style_01 = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2480168117
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_gate_style_01, 2480168117)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_gate_style_01, "object/static/structure/dathomir/shared_nsister_gate_style_01.iff")
 
 object_static_structure_dathomir_shared_nsister_guard_tower_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_guard_tower_s01.apt",
@@ -649,10 +677,12 @@ object_static_structure_dathomir_shared_nsister_guard_tower_style_01 = SharedSta
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1729146517
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_guard_tower_style_01, 1729146517)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_guard_tower_style_01, "object/static/structure/dathomir/shared_nsister_guard_tower_style_01.iff")
 
 object_static_structure_dathomir_shared_nsister_hut_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_hut_s01.apt",
@@ -690,10 +720,12 @@ object_static_structure_dathomir_shared_nsister_hut_style_01 = SharedStaticObjec
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1535014405
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_hut_style_01, 1535014405)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_hut_style_01, "object/static/structure/dathomir/shared_nsister_hut_style_01.iff")
 
 object_static_structure_dathomir_shared_nsister_tent_house_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
@@ -731,7 +763,9 @@ object_static_structure_dathomir_shared_nsister_tent_house_style_01 = SharedStat
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2686708811
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_tent_house_style_01, 2686708811)
+ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_tent_house_style_01, "object/static/structure/dathomir/shared_nsister_tent_house_style_01.iff")

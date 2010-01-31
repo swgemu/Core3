@@ -85,13 +85,14 @@ object_tangible_item_shared_con_drinking_glass_01 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2860245091
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_shared_con_drinking_glass_01, 2860245091)
+ObjectTemplates:addTemplate(object_tangible_item_shared_con_drinking_glass_01, "object/tangible/item/shared_con_drinking_glass_01.iff")
 
 object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
@@ -137,13 +138,14 @@ object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3401469915
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_shared_droid_customization, 3401469915)
+ObjectTemplates:addTemplate(object_tangible_item_shared_droid_customization, "object/tangible/item/shared_droid_customization.iff")
 
 object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -189,13 +191,14 @@ object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4287269962
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_shared_loot_credit_chip, 4287269962)
+ObjectTemplates:addTemplate(object_tangible_item_shared_loot_credit_chip, "object/tangible/item/shared_loot_credit_chip.iff")
 
 object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_light.apt",
@@ -241,13 +244,14 @@ object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3055843193
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_shared_lytus_family_artefact, 3055843193)
+ObjectTemplates:addTemplate(object_tangible_item_shared_lytus_family_artefact, "object/tangible/item/shared_lytus_family_artefact.iff")
 
 object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
@@ -293,10 +297,11 @@ object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3528062501
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_shared_vehicle_customization, 3528062501)
+ObjectTemplates:addTemplate(object_tangible_item_shared_vehicle_customization, "object/tangible/item/shared_vehicle_customization.iff")

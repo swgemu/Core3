@@ -85,13 +85,14 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 100121621
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, 100121621)
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_large_deed.iff")
 
 object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_dee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4084143770
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, 4084143770)
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_medium_deed.iff")
 
 object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,10 +191,11 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1165081270
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, 1165081270)
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_small_deed.iff")

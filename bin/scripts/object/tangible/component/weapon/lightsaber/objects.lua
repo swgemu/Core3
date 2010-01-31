@@ -85,13 +85,14 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3404051263
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, 3404051263)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_lance_module.iff")
 
 object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -137,13 +138,14 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2816851382
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, 2816851382)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -189,13 +191,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1896638798
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, 1896638798)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_lance_module_force_crystal.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -241,13 +244,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 384190732
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, 384190732)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_attackspeed.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -293,13 +297,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2224509400
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, 2224509400)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_color.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -345,13 +350,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3690389169
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, 3690389169)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_damage.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -397,13 +403,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_cryst
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4273612814
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, 4273612814)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_force_crystal.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -449,13 +456,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3573227590
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, 3573227590)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_forcecost.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dragon_pearl.apt",
@@ -501,13 +509,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_drago
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2322379839
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, 2322379839)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_krayt_dragon_pearl.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -553,13 +562,14 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1396643279
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, 1396643279)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_woundchance.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -605,10 +615,11 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4078172805
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, 4078172805)
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")

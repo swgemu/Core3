@@ -77,7 +77,9 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 	snapToTerrain = 1,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2977184644
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_base_shared_nobuild_base, 2977184644)
+ObjectTemplates:addTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")

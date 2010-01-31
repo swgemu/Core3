@@ -85,13 +85,14 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3825894482
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_base, 3825894482)
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
 
 object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1525014593
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_craftable, 1525014593)
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
 
 object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,10 +191,11 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1350067174
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_default, 1350067174)
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")
