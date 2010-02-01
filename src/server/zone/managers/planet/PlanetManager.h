@@ -79,6 +79,8 @@ using namespace server::zone::managers::structure;
 
 #include "server/zone/objects/terrain/PlanetNames.h"
 
+#include "server/zone/managers/terrain/TerrainManager.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"

@@ -124,6 +124,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
+		server/zone/objects/terrain/TerrainGenerator.cpp \
+		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \

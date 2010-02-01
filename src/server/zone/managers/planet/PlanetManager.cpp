@@ -148,37 +148,37 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv) {
 	_initializeImplementation();
-	// server/zone/managers/planet/PlanetManager.idl(71):  zone = planet;
+	// server/zone/managers/planet/PlanetManager.idl(72):  zone = planet;
 	zone = planet;
-	// server/zone/managers/planet/PlanetManager.idl(72):  server = srv;
+	// server/zone/managers/planet/PlanetManager.idl(73):  server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl(74):  Logger.setLoggingName("PlanetManager");
+	// server/zone/managers/planet/PlanetManager.idl(75):  Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(75):  Logger.setLogging("false");
+	// server/zone/managers/planet/PlanetManager.idl(76):  Logger.setLogging("false");
 	Logger::setLogging("false");
-	// server/zone/managers/planet/PlanetManager.idl(76):  Logger.setGlobalLogging("true");
+	// server/zone/managers/planet/PlanetManager.idl(77):  Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
-	// server/zone/managers/planet/PlanetManager.idl(78):  structureManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(79):  structureManager = null;
 	structureManager = NULL;
 }
 
 void PlanetManagerImplementation::initialize() {
 	ManagedReference<StructureManager*> _ref0;
-	// server/zone/managers/planet/PlanetManager.idl(82):  loadRegions();
+	// server/zone/managers/planet/PlanetManager.idl(83):  loadRegions();
 	loadRegions();
-	// server/zone/managers/planet/PlanetManager.idl(84):  structureManager = new StructureManager(zone, server);
+	// server/zone/managers/planet/PlanetManager.idl(85):  structureManager = new StructureManager(zone, server);
 	structureManager = _ref0 = new StructureManager(zone, server);
-	// server/zone/managers/planet/PlanetManager.idl(85):  structureManager.loadStructures();
+	// server/zone/managers/planet/PlanetManager.idl(86):  structureManager.loadStructures();
 	structureManager->loadStructures();
 }
 
 bool PlanetManagerImplementation::getRegion(StringId& name, float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(93):  return regionMap.getRegion(name, x, y);
+	// server/zone/managers/planet/PlanetManager.idl(94):  return regionMap.getRegion(name, x, y);
 	return (&regionMap)->getRegion((&name), x, y);
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(97):  return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(98):  return structureManager;
 	return structureManager;
 }
 
