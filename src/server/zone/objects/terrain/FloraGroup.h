@@ -10,13 +10,15 @@
 
 
 #include "TemplateVariable.h"
+#include "FloraFamily.h"
 
 class FloraGroup : public TemplateVariable<'FGRP'> {
-
+	Vector<FloraFamily*> data;
 public:
 
-	FloraGroup() {
-
+	~FloraGroup() {
+		while (data.size() > 0)
+			delete data.remove(0);
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
@@ -37,7 +39,14 @@ public:
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0008'>) {
+		int number = iffStream->getSubChunksNumber();
 
+		for (int i = 0; i < number; ++i) {
+			FloraFamily* ffam = new FloraFamily();
+			ffam->readObject(iffStream);
+
+			data.add(ffam);
+		}
 	}
 };
 

@@ -98,14 +98,6 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public static final int SLICINGBOX = 20;
 	
-	public SuiBox(PlayerCreature play) { //remove this when super works for more than one argument
-		player = play;
-		
-		boxType = 0;
-		windowType = 0;
-		
-	}
-	
 	public SuiBox(PlayerCreature play, unsigned int windowtype, unsigned int boxtype) {
 		player = play;
 

@@ -71,8 +71,6 @@ public:
 
 	static const int SLICINGBOX = 20;
 
-	SuiBox(PlayerCreature* play);
-
 	SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype);
 
 	void initialize();
@@ -217,8 +215,6 @@ public:
 	static const int BANKTIPCONFIRMBOX = 10;
 
 	static const int SLICINGBOX = 20;
-
-	SuiBoxImplementation(PlayerCreature* play);
 
 	SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype);
 

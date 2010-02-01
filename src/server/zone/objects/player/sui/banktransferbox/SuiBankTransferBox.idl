@@ -67,14 +67,10 @@ class SuiBankTransferBox extends SuiBox {
 	protected SceneObject bank;
 	
 	public SuiBankTransferBox(SceneObject bankObject, PlayerCreature player, unsigned int windowtype) {
-		super(player);
-		
-		super.windowType = windowtype;
-		super.boxType = super.BANKTRANSFERBOX;
+		super(player, windowtype, super.BANKTRANSFERBOX);
 		
 		bank = bankObject;
 		
-		super.initialize(); // remove this when super works for more than one argument
 	}
 
 	public void addCash(int cash) {

@@ -10,28 +10,43 @@
 
 
 #include "TemplateVariable.h"
+#include "RadialFamily.h"
 
 class RadialGroup : public TemplateVariable<'RGRP'> {
-
+	Vector<RadialFamily*> data;
 public:
 
-	RadialGroup() {
-
+	~RadialGroup() {
+		while (data.size() > 0)
+			delete data.remove(0);
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		uint32 version = iffStream->getNextFormType();
 
+		iffStream->openForm(version);
+
 		switch (version) {
-		case '0000':
-			parseFromIffStream(iffStream, Version<'0000'>());
+		case '0003':
+			parseFromIffStream(iffStream, Version<'0003'>());
+			break;
 		default:
+			System::out << "unknown RGRP version " << version << endl;
 			break;
 		}
+
+		iffStream->closeForm(version);
 	}
 
-	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>) {
+	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>) {
+		int number = iffStream->getSubChunksNumber();
 
+		for (int i = 0; i < number; ++i) {
+			RadialFamily* ffam = new RadialFamily();
+			ffam->readObject(iffStream);
+
+			data.add(ffam);
+		}
 	}
 
 };

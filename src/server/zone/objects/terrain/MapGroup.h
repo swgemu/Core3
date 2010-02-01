@@ -8,6 +8,7 @@
 #ifndef MAPGROUP_H_
 #define MAPGROUP_H_
 
+#include "Mfrc.h"
 
 class MapGroup : public TemplateVariable<'MGRP'> {
 
