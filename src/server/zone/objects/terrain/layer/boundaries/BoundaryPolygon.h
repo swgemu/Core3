@@ -38,8 +38,10 @@ public:
 			generator->insertWaterBoundary(this);
 	}
 
-	bool containsPoint(float x, float y) {
-		int nvert = vertices.size();
+	bool containsPoint(float px, float py) {
+		//System::out << "checking in polygon if contains point with vertices.size(): " << vertices.size() << endl;
+
+		/*int nvert = vertices.size();
 
 		int i, j;
 		bool c = false;
@@ -50,7 +52,62 @@ public:
 				c = !c;
 		}
 
-		return c;
+		return c;*/
+
+		/* The points creating the polygon. */
+
+		float x1,x2;
+
+		/* The coordinates of the point */
+
+		/* How many times the ray crosses a line-segment */
+		int crossings = 0;
+
+		/* Coordinates of the points */
+
+		/* Iterate through each line */
+		for ( int i = 0; i < vertices.size(); ++i ){
+
+			/* This is done to ensure that we get the same result when
+			   the line goes from left to right and right to left */
+			if ( vertices.get(i)->getX() < vertices.get((i+1) % vertices.size())->getX()){
+				x1 = vertices.get(i)->getX();
+				x2 = vertices.get((i+1) % vertices.size())->getX();
+			} else {
+				x1 = vertices.get((i+1) % vertices.size())->getX();
+				x2 = vertices.get(i)->getX();
+			}
+
+			/* First check if the ray is possible to cross the line */
+			if ( px > x1 && px <= x2 && ( py < vertices.get(i)->getY() || py <= vertices.get((i+1) % vertices.size())->getY() ) ) {
+				static const float eps = 0.000001;
+
+				/* Calculate the equation of the line */
+				float dx = vertices.get((i+1) % vertices.size())->getX() - vertices.get(i)->getX();
+				float dy = vertices.get((i+1) % vertices.size())->getY() - vertices.get(i)->getY();
+				float k;
+
+				if ( fabs(dx) < eps ){
+					k = INFINITY;	// math.h
+				} else {
+					k = dy/dx;
+				}
+
+				float m = vertices.get(i)->getY() - k * vertices.get(i)->getX();
+
+				/* Find if the ray crosses the line */
+				float y2 = k * px + m;
+				if ( py <= y2 ){
+					crossings++;
+				}
+			}
+		}
+
+		//printf("The point is crossing %d lines", crossings);
+		if ( crossings % 2 == 1 )
+			return true;
+
+		return false;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

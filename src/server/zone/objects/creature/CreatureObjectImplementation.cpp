@@ -63,6 +63,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
@@ -72,7 +73,8 @@ which carries forward this exception.
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
 
-#include "CreatureFlag.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -101,6 +103,7 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	species = templateData->getIntField("species");
 	slopeModPercent = templateData->getFloatField("slopeModPercent");
 	slopeModAngle = templateData->getFloatField("slopeModAngle");
+	swimHeight = templateData->getFloatField("swimHeight");
 
 	stateBitmask = 0;
 	terrainNegotiation = 0.f;
@@ -322,6 +325,35 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 		removeDefenders();
 
 	//info("finished clearCombatState");
+}
+
+void CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
+	if (!(stateBitmask & state)) {
+		stateBitmask |= state;
+
+		if (notifyClient) {
+			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+			dcreo3->updateState();
+			dcreo3->close();
+
+			broadcastMessage(dcreo3, true);
+		}
+	}
+}
+
+
+void CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
+	if (stateBitmask & state) {
+		stateBitmask &= ~state;
+
+		if (notifyClient) {
+			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+			dcreo3->updateState();
+			dcreo3->close();
+
+			broadcastMessage(dcreo3, true);
+		}
+	}
 }
 
 void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient) {
@@ -687,3 +719,27 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
+int CreatureObjectImplementation::onPositionUpdate() {
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+
+	float waterHeight;
+
+	if (parent == NULL && terrainManager->getWaterHeight(positionX, positionY, waterHeight)) {
+		//info("detected water height " + String::valueOf(waterHeight), true);
+
+		float result = waterHeight - swimHeight;
+		StringBuffer msg;
+		msg << "positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
+		info(msg.toString());
+
+		if (ceil(positionZ) == (waterHeight - swimHeight)) {
+			info("trying to set swimming state");
+			setState(CreatureState::SWIMMING);
+		} else {
+			clearState(CreatureState::SWIMMING);
+		}
+	} else
+		clearState(CreatureState::SWIMMING);
+
+	return 0;
+}

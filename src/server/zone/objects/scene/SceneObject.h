@@ -576,6 +576,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	int onPositionUpdate();
+
 	bool hasNotifiedObject(SceneObject* object);
 
 	void addNotifiedObject(SceneObject* object);
@@ -1207,6 +1209,8 @@ public:
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	virtual int onPositionUpdate();
+
 	bool hasNotifiedObject(SceneObject* object);
 
 	void addNotifiedObject(SceneObject* object);
@@ -1439,6 +1443,8 @@ public:
 	unsigned long long getParentID();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int onPositionUpdate();
 
 	bool hasNotifiedObject(SceneObject* object);
 

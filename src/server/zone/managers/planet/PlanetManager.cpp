@@ -30,12 +30,24 @@ PlanetManager::~PlanetManager() {
 }
 
 
-void PlanetManager::initialize() {
+void PlanetManager::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->initializeTransientMembers();
+}
+
+void PlanetManager::initialize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -47,7 +59,7 @@ void PlanetManager::loadRegions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -67,11 +79,19 @@ StructureManager* PlanetManager::getStructureManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return (StructureManager*) method.executeWithObjectReturn();
 	} else
 		return ((PlanetManagerImplementation*) _impl)->getStructureManager();
+}
+
+TerrainManager* PlanetManager::getTerrainManager() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getTerrainManager();
 }
 
 /*
@@ -83,11 +103,9 @@ PlanetManagerImplementation::PlanetManagerImplementation(DummyConstructorParamet
 }
 
 PlanetManagerImplementation::~PlanetManagerImplementation() {
+	PlanetManagerImplementation::finalize();
 }
 
-
-void PlanetManagerImplementation::finalize() {
-}
 
 void PlanetManagerImplementation::_initializeImplementation() {
 	_setClassHelper(PlanetManagerHelper::instance());
@@ -148,38 +166,35 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv) {
 	_initializeImplementation();
-	// server/zone/managers/planet/PlanetManager.idl(72):  zone = planet;
+	// server/zone/managers/planet/PlanetManager.idl(74):  zone = planet;
 	zone = planet;
-	// server/zone/managers/planet/PlanetManager.idl(73):  server = srv;
+	// server/zone/managers/planet/PlanetManager.idl(75):  server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl(75):  Logger.setLoggingName("PlanetManager");
+	// server/zone/managers/planet/PlanetManager.idl(77):  Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(76):  Logger.setLogging("false");
+	// server/zone/managers/planet/PlanetManager.idl(78):  Logger.setLogging("false");
 	Logger::setLogging("false");
-	// server/zone/managers/planet/PlanetManager.idl(77):  Logger.setGlobalLogging("true");
+	// server/zone/managers/planet/PlanetManager.idl(79):  Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
-	// server/zone/managers/planet/PlanetManager.idl(79):  structureManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(81):  terrainManager = null;
+	terrainManager = NULL;
+	// server/zone/managers/planet/PlanetManager.idl(83):  structureManager = null;
 	structureManager = NULL;
 }
 
-void PlanetManagerImplementation::initialize() {
-	ManagedReference<StructureManager*> _ref0;
-	// server/zone/managers/planet/PlanetManager.idl(83):  loadRegions();
-	loadRegions();
-	// server/zone/managers/planet/PlanetManager.idl(85):  structureManager = new StructureManager(zone, server);
-	structureManager = _ref0 = new StructureManager(zone, server);
-	// server/zone/managers/planet/PlanetManager.idl(86):  structureManager.loadStructures();
-	structureManager->loadStructures();
-}
-
 bool PlanetManagerImplementation::getRegion(StringId& name, float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(94):  return regionMap.getRegion(name, x, y);
+	// server/zone/managers/planet/PlanetManager.idl(96):  return regionMap.getRegion(name, x, y);
 	return (&regionMap)->getRegion((&name), x, y);
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(98):  return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(100):  return structureManager;
 	return structureManager;
+}
+
+TerrainManager* PlanetManagerImplementation::getTerrainManager() {
+	// server/zone/managers/planet/PlanetManager.idl(106):  return terrainManager;
+	return terrainManager;
 }
 
 /*
@@ -194,12 +209,18 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		initialize();
+		initializeTransientMembers();
 		break;
 	case 7:
-		loadRegions();
+		finalize();
 		break;
 	case 8:
+		initialize();
+		break;
+	case 9:
+		loadRegions();
+		break;
+	case 10:
 		resp->insertLong(getStructureManager()->_getObjectID());
 		break;
 	default:
@@ -207,6 +228,14 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+void PlanetManagerAdapter::initializeTransientMembers() {
+	((PlanetManagerImplementation*) impl)->initializeTransientMembers();
+}
+
+void PlanetManagerAdapter::finalize() {
+	((PlanetManagerImplementation*) impl)->finalize();
 }
 
 void PlanetManagerAdapter::initialize() {

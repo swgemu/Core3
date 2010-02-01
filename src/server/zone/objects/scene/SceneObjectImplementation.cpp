@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
@@ -421,6 +423,9 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 		broadcastMessage(message, false);
 	}
 
+	zoneLocker.release();
+
+	onPositionUpdate();
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {

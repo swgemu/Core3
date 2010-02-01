@@ -42,6 +42,7 @@ public:
 	}
 
 	bool containsPoint(float X, float Y) {
+		//System::out << "checking in rectangle if contains point" << endl;
 		float w = fabs(x1 - x0);
 		float h = fabs(y1 - y0);
 

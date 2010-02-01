@@ -96,6 +96,8 @@ class PlanetManager : public ManagedObject {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServerImplementation* srv);
 
+	void initializeTransientMembers();
+
 	void initialize();
 
 	void loadRegions();
@@ -103,6 +105,8 @@ public:
 	bool getRegion(StringId& name, float x, float y);
 
 	StructureManager* getStructureManager();
+
+	TerrainManager* getTerrainManager();
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -134,10 +138,16 @@ protected:
 
 	ZoneProcessServerImplementation* server;
 
+	TerrainManager* terrainManager;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
 
 	PlanetManagerImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
+
+	void finalize();
 
 	void initialize();
 
@@ -147,6 +157,8 @@ public:
 
 	StructureManager* getStructureManager();
 
+	TerrainManager* getTerrainManager();
+
 	PlanetManager* _this;
 
 	operator const PlanetManager*();
@@ -154,8 +166,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlanetManagerImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -185,6 +195,10 @@ public:
 	PlanetManagerAdapter(PlanetManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
+
+	void finalize();
 
 	void initialize();
 

@@ -13,6 +13,8 @@
 ProceduralTerrainAppearance::ProceduralTerrainAppearance() : Logger("ProceduralTerrainAppearance") {
 	terrainGenerator = new TerrainGenerator(this);
 	terrainMaps = new TerrainMaps();
+
+	useGlobalWaterTable = 0;
 }
 
 ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
@@ -24,6 +26,8 @@ ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 }
 
 bool ProceduralTerrainAppearance::load(const String& file) {
+	setLoggingName(getLoggingName() + " " + file);
+
 	IffStream* iffStream;
 
 	try {
@@ -44,7 +48,6 @@ bool ProceduralTerrainAppearance::load(const String& file) {
 	terrainGenerator->processLayers();
 
 	info("loading finished", true);
-	System::out << "water table boundaries " << waterBoundaries.size() << endl;
 
 	return true;
 }
@@ -71,7 +74,7 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 
 	iffStream->getString(terrainFile);
 
-	info(terrainFile, true);
+	//info(terrainFile);
 
 	size = iffStream->getFloat();
 	chunkSize = iffStream->getFloat();
@@ -120,6 +123,9 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 			return true;
 		}
 	}
+
+	if (useGlobalWaterTable != 0)
+		return globalWaterTableHeight;
 
 	return false;
 }

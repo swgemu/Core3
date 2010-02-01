@@ -67,24 +67,26 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	protected transient ZoneProcessServerImplementation server;
 	
+	protected transient TerrainManager terrainManager;
+	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
 		server = srv;
-		
+				
 		Logger.setLoggingName("PlanetManager");
 		Logger.setLogging("false");
 		Logger.setGlobalLogging("true");
 		
+		terrainManager = null;
+		
 		structureManager = null;
 	}
 	
-	public void initialize() {
-		loadRegions();
-		
-		structureManager = new StructureManager(zone, server);
-		structureManager.loadStructures();
-	}
+	public native void initializeTransientMembers();
 	
+	public native void finalize();
+	
+	public native void initialize();
 	public native void loadRegions();
 	
 	@local
@@ -94,6 +96,11 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public StructureManager getStructureManager() {
 		return structureManager;
+	}
+	
+	@local
+	public TerrainManager getTerrainManager() {
+		return terrainManager;
 	}
 	
 	

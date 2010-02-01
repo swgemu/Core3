@@ -9,6 +9,24 @@
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/structure/StructureManager.h"
+
+void PlanetManagerImplementation::initialize() {
+	loadRegions();
+
+	terrainManager = new TerrainManager();
+
+	int zoneID = zone->getZoneID();
+
+	if (zoneID < 10) {
+		String planetName = Planet::getPlanetName(zoneID);
+
+		terrainManager->initialize("planets/" + planetName + "/" + planetName + ".trn");
+	}
+
+	structureManager = new StructureManager(zone, server);
+	structureManager->loadStructures();
+}
 
 void PlanetManagerImplementation::loadRegions() {
 	int zoneID = zone->getZoneID();
@@ -49,5 +67,17 @@ void PlanetManagerImplementation::loadRegions() {
 		msg << "loaded " << regionMap.size() << " client regions";
 		info(msg.toString(), true);
 	}
+}
+
+void PlanetManagerImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
+
+	terrainManager = new TerrainManager();
+}
+
+
+void PlanetManagerImplementation::finalize() {
+	delete terrainManager;
+	terrainManager = NULL;
 }
 

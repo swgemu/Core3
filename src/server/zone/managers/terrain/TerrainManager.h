@@ -13,7 +13,6 @@
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
 
 class TerrainManager {
-	String file;
 	ProceduralTerrainAppearance terrainData;
 
 	//Zone* zone;
@@ -24,8 +23,11 @@ public:
 	}
 
 	void initialize(const String& terrainFile) {
-		file = terrainFile;
-		terrainData.load(file);
+		terrainData.load(terrainFile);
+	}
+
+	inline bool getWaterHeight(float x, float y, float& waterHeight) {
+		return terrainData.getWater(x, y, waterHeight);
 	}
 };
 

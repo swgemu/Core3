@@ -186,6 +186,12 @@ public:
 
 	void deleteQueueAction(unsigned int actionCount);
 
+	void setState(unsigned long long state, bool notifyClient = true);
+
+	void clearState(unsigned long long state, bool notifyClient = true);
+
+	int onPositionUpdate();
+
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -349,6 +355,8 @@ protected:
 
 	float height;
 
+	float swimHeight;
+
 	float slopeModPercent;
 
 	float slopeModAngle;
@@ -489,6 +497,12 @@ public:
 	void setMood(byte moodID, bool notifyClient = true);
 
 	void deleteQueueAction(unsigned int actionCount);
+
+	void setState(unsigned long long state, bool notifyClient = true);
+
+	void clearState(unsigned long long state, bool notifyClient = true);
+
+	int onPositionUpdate();
 
 	void activateQueueAction();
 
@@ -680,6 +694,12 @@ public:
 	void setMood(byte moodID, bool notifyClient);
 
 	void deleteQueueAction(unsigned int actionCount);
+
+	void setState(unsigned long long state, bool notifyClient);
+
+	void clearState(unsigned long long state, bool notifyClient);
+
+	int onPositionUpdate();
 
 	void activateQueueAction();
 

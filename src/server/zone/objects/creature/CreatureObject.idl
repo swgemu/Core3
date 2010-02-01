@@ -95,6 +95,7 @@ class CreatureObject extends TangibleObject {
 	protected float runAcceleration;
 	protected float walkAcceleration;
 	protected float height;
+	protected float swimHeight;
 	protected float slopeModPercent;
 	protected float slopeModAngle;
 	
@@ -458,6 +459,27 @@ class CreatureObject extends TangibleObject {
 	 * @param actionCount the action count to remove
 	 */
 	public native void deleteQueueAction(unsigned int actionCount);
+	
+	/**
+	 * Sets a new state to the statebitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask has the new state }
+	 * @param state state to add
+	 */
+	public native void setState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Cleares a state from the state bitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask doesnt have the specified state }
+	 * @param state state to clear
+	 */
+	public native void clearState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Is called when this object has moved to a new position
+	 */
+	public native int onPositionUpdate();
 	
 	public native void activateQueueAction();
 	
