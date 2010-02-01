@@ -124,8 +124,10 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 		}
 	}
 
-	if (useGlobalWaterTable != 0)
-		return globalWaterTableHeight;
+	if (useGlobalWaterTable != 0) {
+		waterHeight = globalWaterTableHeight;
+		return true;
+	}
 
 	return false;
 }
