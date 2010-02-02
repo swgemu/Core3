@@ -12,8 +12,8 @@
 #include "../ProceduralRule.h"
 
 class AffectorHeightConstant : public ProceduralRule<'AHCN'> {
-	int var1;
-	float var2;
+	int var1; // id?
+	float height;
 
 public:
 	AffectorHeightConstant() {
@@ -43,7 +43,7 @@ public:
 		iffStream->openChunk('DATA');
 
 		var1 = iffStream->getInt();
-		var2 = iffStream->getFloat();
+		height = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

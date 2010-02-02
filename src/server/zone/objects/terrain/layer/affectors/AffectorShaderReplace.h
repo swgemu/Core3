@@ -13,10 +13,10 @@
 #include "../ProceduralRule.h"
 
 class AffectorShaderReplace : public ProceduralRule<'ASRP'> {
-	int var1;
-	int var2;
-	int var3;
-	float var4;
+	int oldShaderId;
+	int newShaderId;
+	int featheringType;
+	float featheringAmount;
 
 public:
 	AffectorShaderReplace() {
@@ -45,10 +45,10 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
-		var2 = iffStream->getInt();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getFloat();
+		oldShaderId = iffStream->getInt();
+		newShaderId = iffStream->getInt();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

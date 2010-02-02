@@ -11,9 +11,9 @@
 #include "../ProceduralRule.h"
 
 class AffectorColorRampFractal : public ProceduralRule<'ACRF'> {
-	int var1;
+	int familyId; // fractal family id
 	byte var2;
-	String var3;
+	String shaderFile; // .tga
 
 public:
 	AffectorColorRampFractal() {
@@ -44,10 +44,10 @@ public:
 
 		iffStream->openChunk('PARM');
 
-		var1 = iffStream->getInt();
+		familyId = iffStream->getInt();
 		var2 = iffStream->getByte();
 
-		iffStream->getString(var3);
+		iffStream->getString(shaderFile);
 
 		iffStream->closeChunk('PARM');
 

@@ -12,8 +12,9 @@
 #include "../ProceduralRule.h"
 
 class AffectorHeightFractal : public ProceduralRule<'AHFR'> {
-	int var1, var2;
-	float var3;
+	int fractalId; // fractal group id in MGRP
+	int var2;
+	float height;
 
 public:
 	AffectorHeightFractal() {
@@ -44,9 +45,9 @@ public:
 
 		iffStream->openChunk('PARM');
 
-		var1 = iffStream->getInt();
+		fractalId = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
+		height = iffStream->getFloat();
 
 		iffStream->closeChunk('PARM');
 		iffStream->closeForm('DATA');

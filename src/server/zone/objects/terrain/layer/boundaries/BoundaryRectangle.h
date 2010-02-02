@@ -19,13 +19,13 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
 	float y0;
 	float x1;
 	float y1;
-	int var5;
-	float var6;
+	int featheringType;
+	float featheringAmount; // how much to soften sides (like on a hill)
 	int var7;
 	int localWaterTableEnabled;
 	float localWaterTableHeight;
-	float var10;
-	String name;
+	float shaderSize;
+	String shaderName;
 
 public:
 	BoundaryRectangle() {
@@ -87,13 +87,13 @@ public:
 		y0 = iffStream->getFloat();
 		x1 = iffStream->getFloat();
 		y1 = iffStream->getFloat();
-		var5 = iffStream->getInt();
-		var6 = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 		var7 = iffStream->getInt();
 		localWaterTableEnabled = iffStream->getInt(); // local water table enabled?
 		localWaterTableHeight = iffStream->getFloat(); // local water table height
-		var10 = iffStream->getFloat();
-		iffStream->getString(name);
+		shaderSize = iffStream->getFloat();
+		iffStream->getString(shaderName);
 
 		iffStream->closeChunk('DATA');
 	}

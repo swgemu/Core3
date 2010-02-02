@@ -12,11 +12,11 @@
 #include "Boundary.h"
 
 class BoundaryCircle : public ProceduralRule<'BCIR'>, public Boundary {
-	float var1;
-	float var2;
-	float var3;
-	int var4;
-	float var5;
+	float x;
+	float y;
+	float radius;
+	int featheringType;
+	float featheringAmount;
 
 public:
 	BoundaryCircle() {
@@ -47,11 +47,11 @@ public:
 
 		// 5 vars
 
-		var1 = iffStream->getFloat();
-		var2 = iffStream->getFloat();
-		var3 = iffStream->getFloat();
-		var4 = iffStream->getInt();
-		var5 = iffStream->getFloat();
+		x = iffStream->getFloat();
+		y = iffStream->getFloat();
+		radius = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

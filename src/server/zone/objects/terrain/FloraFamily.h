@@ -12,7 +12,7 @@
 
 class FloraData {
 public:
-	String ascii; // + 8 4byte vars
+	String name; // + 8 4byte vars
 	float var1;
 	uint32 var2;
 	float var3;
@@ -24,11 +24,11 @@ public:
 };
 
 class FloraFamily : public TemplateVariable<'FFAM'> {
-	int var1;
-	String var2;
-	int var3, var4, var5;
-	float var6;
-	uint32 var7;
+	int familyId;
+	String familyName;
+	byte red, green, blue;
+	float weight;
+	uint32 isAquatic;
 
 	Vector<FloraData*> data;
 
@@ -42,21 +42,21 @@ public:
 	void readObject(IffStream* iffStream) {
 		iffStream->openChunk('FFAM');
 
-		var1 = iffStream->getInt();
-		iffStream->getString(var2);
+		familyId = iffStream->getInt();
+		iffStream->getString(familyName);
 
-		var3 = iffStream->getByte();
-		var4 = iffStream->getByte();
-		var5 = iffStream->getByte();
-		var6 = iffStream->getFloat();
-		var7 = iffStream->getUnsignedInt();
+		red = iffStream->getByte();
+		green = iffStream->getByte();
+		blue = iffStream->getByte();
+		weight = iffStream->getFloat();
+		isAquatic = iffStream->getUnsignedInt();
 
 		int var8 = iffStream->getInt();// counter
 
 		for (int i = 0; i < var8; ++i) {
 			FloraData* floraData = new FloraData();
 
-			iffStream->getString(floraData->ascii);
+			iffStream->getString(floraData->name);
 			floraData->var1 = iffStream->getFloat();
 			floraData->var2 = iffStream->getUnsignedInt();
 			floraData->var3 = iffStream->getFloat();

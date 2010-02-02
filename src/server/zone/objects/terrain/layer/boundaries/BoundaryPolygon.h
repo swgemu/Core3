@@ -17,12 +17,12 @@
 
 class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	Vector<Point2D*> vertices;
-	int var2;
-	float var3;
+	int featheringType;
+	float featheringAmount;
 	int localWaterTableEnabled;
 	float localWaterTableHeight;
-	float var6;
-	String name;
+	float shaderSize;
+	String shaderName;
 public:
 	BoundaryPolygon() {
 		ruleType = BOUNDARYPOLYGON;
@@ -142,12 +142,12 @@ public:
 			vertices.add(point);
 		}
 
-		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 		localWaterTableEnabled = iffStream->getInt(); // local water table enabled?
 		localWaterTableHeight = iffStream->getFloat(); // water height
-		var6 = iffStream->getFloat();
-		iffStream->getString(name);
+		shaderSize = iffStream->getFloat();
+		iffStream->getString(shaderName);
 
 		iffStream->closeChunk('DATA');
 	}

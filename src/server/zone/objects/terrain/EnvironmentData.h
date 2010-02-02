@@ -9,8 +9,8 @@
 #define ENVIRONMENTDATA_H_
 
 class EnvironmentData : public TemplateVariable<'EFAM'> {
-	int var1;
-	String var2;
+	int environmentId;
+	String environmentName;
 
 	byte var3;
 	byte var4;
@@ -25,9 +25,9 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
+		environmentId = iffStream->getInt();
 
-		iffStream->getString(var2);
+		iffStream->getString(environmentName);
 
 		var3 = iffStream->getByte();
 		var4 = iffStream->getByte();

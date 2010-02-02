@@ -12,12 +12,12 @@
 #include "../ProceduralRule.h"
 
 class FilterFractal : public ProceduralRule<'FFRA'> {
-	int var1;
+	int groupId; // Fractal Group ID to modify (MGRP)
 	int var2;
-	float var3;
-	float var4;
-	float var5;
-	float var6;
+	float max;
+	float min;
+	float var5; // Scale/Stepping?
+	float var6; // Scale/Stepping?
 
 public:
 	FilterFractal() {
@@ -49,10 +49,10 @@ public:
 		iffStream->openChunk('PARM');
 
 		//6 vars
-		var1 = iffStream->getInt();
+		groupId = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
-		var4 = iffStream->getFloat();
+		max = iffStream->getFloat();
+		min = iffStream->getFloat();
 		var5 = iffStream->getFloat();
 		var6 = iffStream->getFloat();
 

@@ -12,16 +12,17 @@
 
 class ShaderVar {
 public:
-	String var1;
-	float var2;
+	String name;
+	float weight;
 };
 
 class ShaderFamily : public TemplateVariable<'SFAM'> {
-	int var1;
-	String var2;
-	String var3;
-	int var4, var5, var6;
-	float var7, var8;
+	int familyId;
+	String familyName;
+	String fileName;
+	byte red, green, blue;
+	float var7;
+	float weight;
 
 	Vector<ShaderVar*> shaderVars;
 
@@ -35,24 +36,24 @@ public:
 	void readObject(IffStream* iffStream) {
 		iffStream->openChunk('SFAM');
 
-		var1 = iffStream->getInt();
+		familyId = iffStream->getInt();
 
-		iffStream->getString(var2);
+		iffStream->getString(familyName);
 
-		iffStream->getString(var3);
+		iffStream->getString(fileName);
 
-		var4 = iffStream->getByte();
-		var5 = iffStream->getByte();
-		var6 = iffStream->getByte();
+		red = iffStream->getByte();
+		green = iffStream->getByte();
+		blue = iffStream->getByte();
 		var7 = iffStream->getFloat();
-		var8 = iffStream->getFloat();
+		weight = iffStream->getFloat();
 
-		int var9 = iffStream->getInt();
+		int nLayers = iffStream->getInt();
 
-		for (int i = 0; i < var9; ++i) {
+		for (int i = 0; i < nLayers; ++i) {
 			ShaderVar* var = new ShaderVar();
-			iffStream->getString(var->var1);
-			var->var2 = iffStream->getFloat();
+			iffStream->getString(var->name);
+			var->weight = iffStream->getFloat();
 		}
 
 		iffStream->closeChunk('SFAM');

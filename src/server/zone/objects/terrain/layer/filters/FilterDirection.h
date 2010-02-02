@@ -12,9 +12,9 @@
 #include "../ProceduralRule.h"
 
 class FilterDirection : public ProceduralRule<'FDIR'> {
-	float var1;
-	float var2;
-	int var3;
+	float minDegree;
+	float maxDegree;
+	int var3; // Feathering type? Leftover?
 	float var4;
 
 public:
@@ -44,8 +44,8 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getFloat();
-		var2 = iffStream->getFloat();
+		minDegree = iffStream->getFloat();
+		maxDegree = iffStream->getFloat();
 		var3 = iffStream->getInt();
 		var4 = iffStream->getFloat();
 

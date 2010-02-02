@@ -12,10 +12,10 @@
 #include "../ProceduralRule.h"
 
 class FilterHeight : public ProceduralRule<'FHGT'> {
-	float var1;
-	float var2;
-	int var3;
-	float var4;
+	float minHeight;
+	float maxHeight;
+	int featheringType;
+	float featheringDistance; // how far out to affect the selected height
 
 public:
 	FilterHeight() {
@@ -44,10 +44,10 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getFloat();
-		var2 = iffStream->getFloat();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getFloat();
+		minHeight = iffStream->getFloat();
+		maxHeight = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringDistance = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

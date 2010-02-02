@@ -11,10 +11,10 @@
 #include "../ProceduralRule.h"
 
 class AffectorColorConstant : public ProceduralRule<'ACCN'> {
-	int var1;
-	byte var2;
-	byte var3;
-	byte var4;
+	int id; // never tested
+	byte r;
+	byte g;
+	byte b;
 
 public:
 	AffectorColorConstant() {
@@ -43,10 +43,10 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
-		var2 = iffStream->getByte();
-		var3 = iffStream->getByte();
-		var4 = iffStream->getByte();
+		id = iffStream->getInt();
+		r = iffStream->getByte();
+		g = iffStream->getByte();
+		b = iffStream->getByte();
 
 		iffStream->closeChunk('DATA');
 	}

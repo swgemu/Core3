@@ -26,10 +26,10 @@ public:
 };
 
 class RadialFamily : public TemplateVariable<'RFAM'> {
-	int var1;
-	String var2;
-	int var3, var4, var5;
-	float var6;
+	int familyId;
+	String familyName;
+	byte red, green, blue;
+	float weight;
 
 	Vector<RadialData*> data;
 
@@ -43,14 +43,14 @@ public:
 	void readObject(IffStream* iffStream) {
 		iffStream->openChunk('RFAM');
 
-		var1 = iffStream->getInt();
+		familyId = iffStream->getInt();
 
-		iffStream->getString(var2);
+		iffStream->getString(familyName);
 
-		var3 = iffStream->getByte();
-		var4 = iffStream->getByte();
-		var5 = iffStream->getByte();
-		var6 = iffStream->getFloat();
+		red = iffStream->getByte();
+		green = iffStream->getByte();
+		blue = iffStream->getByte();
+		weight = iffStream->getFloat();
 
 		int var7 = iffStream->getInt(); // counter
 

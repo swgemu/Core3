@@ -11,13 +11,14 @@
 
 #include "../ProceduralRule.h"
 
-class FilderSlope : public ProceduralRule<'FSLP'> {
-	float var1;
-	float var2;
-	int var3;
-	float var4;
+class FilterSlope : public ProceduralRule<'FSLP'> {
+	float minAngle;
+	float maxAngle;
+	int featheringType;
+	float featheringDistance; // I have seen this set to 0.1 with type set to 0. Removed flora from slopes on dant
+
 public:
-	FilderSlope() {
+	FilterSlope() {
 
 	}
 
@@ -43,10 +44,10 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getFloat();
-		var2 = iffStream->getFloat();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getFloat();
+		minAngle = iffStream->getFloat();
+		maxAngle = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringDistance = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

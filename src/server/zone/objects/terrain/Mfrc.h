@@ -11,19 +11,19 @@
 #include "TemplateVariable.h"
 
 class Mfrc : public TemplateVariable<'MFRC'> {
-	int var1;
-	int var2;
-	float var3;
-	int var4;
-	float var5;
-	uint32 var6;
-	float var7;
-	float var8;
-	float var9;
-	float var10;
-	uint32 var11;
-	uint32 var12;
-	uint32 var13;
+	int seed;
+	int biasType;
+	float biasValue;
+	int gainType;
+	float gainValue;
+	uint32 octaves;
+	float octaveParam;
+	float amplitude;
+	float x_freq;
+	float y_freq;
+	uint32 x_offset;
+	uint32 z_offset;
+	uint32 useCombination;
 public:
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		uint32 version = iffStream->getNextFormType();
@@ -45,19 +45,19 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
-		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
-		var4 = iffStream->getInt();
-		var5 = iffStream->getFloat();
-		var6 = iffStream->getUnsignedInt();
-		var7 = iffStream->getFloat();
-		var8 = iffStream->getFloat();
-		var9 = iffStream->getFloat();
-		var10 = iffStream->getFloat();
-		var11 = iffStream->getUnsignedInt();
-		var12 = iffStream->getUnsignedInt();
-		var13 = iffStream->getUnsignedInt();
+		seed = iffStream->getInt();
+		biasType = iffStream->getInt();
+		biasValue = iffStream->getFloat();
+		gainType = iffStream->getInt();
+		gainValue = iffStream->getFloat();
+		octaves = iffStream->getUnsignedInt();
+		octaveParam = iffStream->getFloat();
+		amplitude = iffStream->getFloat();
+		x_freq = iffStream->getFloat();
+		y_freq = iffStream->getFloat();
+		x_offset = iffStream->getUnsignedInt();
+		z_offset = iffStream->getUnsignedInt();
+		useCombination = iffStream->getUnsignedInt();
 
 		iffStream->closeChunk('DATA');
 	}

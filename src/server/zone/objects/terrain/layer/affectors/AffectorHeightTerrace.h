@@ -12,7 +12,8 @@
 #include "../ProceduralRule.h"
 
 class AffectorHeightTerrace : public ProceduralRule<'AHTR'> {
-	float var1, var2;
+	float flatRatio;
+	float height;
 
 public:
 	AffectorHeightTerrace() {
@@ -41,8 +42,8 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getFloat();
-		var2 = iffStream->getFloat();
+		flatRatio = iffStream->getFloat();
+		height = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

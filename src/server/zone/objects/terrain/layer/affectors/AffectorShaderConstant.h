@@ -12,8 +12,9 @@
 #include "../ProceduralRule.h"
 
 class AffectorShaderConstant : public ProceduralRule<'ASCN'> {
-	int var1, var2;
-	float var3;
+	int familyId; // shader family id to affect
+	int featheringType;
+	float featheringAmount; // how much to soften
 
 public:
 	AffectorShaderConstant() {
@@ -42,9 +43,9 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
-		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
+		familyId = iffStream->getInt();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

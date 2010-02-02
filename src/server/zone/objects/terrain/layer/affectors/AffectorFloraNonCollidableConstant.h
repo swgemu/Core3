@@ -12,11 +12,11 @@
 #include "../ProceduralRule.h"
 
 class AffectorFloraNonCollidableConstant : public ProceduralRule<'AFSN'> {
-	int var1;
+	int familyId;
 	int var2;
-	int var3;
-	int var4;
-	float var5;
+	int flag; //add/remove
+	int featheringType;
+	float featheringAmount;
 
 public:
 	AffectorFloraNonCollidableConstant() {
@@ -45,11 +45,11 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
+		familyId = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getInt();
-		var5 = iffStream->getFloat();
+		flag = iffStream->getInt();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}

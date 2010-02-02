@@ -15,9 +15,9 @@
 
 class BoundaryPolyline : public ProceduralRule<'BPLN'>,  public Boundary {
 	Vector<Point2D*> points;
-	int var3;
-	float var4;
-	float var5;
+	int featheringType;
+	float featheringAmount;
+	float lineWidth;
 
 
 public:
@@ -62,9 +62,9 @@ public:
 			points.add(point);
 		}
 
-		var3 = iffStream->getInt();
-		var4 = iffStream->getFloat();
-		var5 = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
+		lineWidth = iffStream->getFloat();
 
 		iffStream->closeForm('DATA');
 	}

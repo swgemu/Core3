@@ -248,7 +248,7 @@ TerrainRule* Layer::parseFilter(IffStream* iffStream) {
 		break;
 	}
 	case ('FSLP'): {
-		res = new FilderSlope();
+		res = new FilterSlope();
 		break;
 	}
 	default:

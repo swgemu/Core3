@@ -12,7 +12,7 @@
 #include "../ProceduralRule.h"
 
 class FilterShader : public ProceduralRule<'FSHD'> {
-	int var1;
+	int shaderId;
 
 public:
 	FilterShader() {
@@ -41,7 +41,7 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
+		shaderId = iffStream->getInt();
 
 		iffStream->closeChunk('DATA');
 	}

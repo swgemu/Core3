@@ -11,11 +11,11 @@
 #include "../ProceduralRule.h"
 
 class AffectorColorRampHeight : public ProceduralRule<'ACRH'> {
-	int var1;
-	float var2;
-	float var3;
+	int familyId;
+	float min;
+	float max;
 
-	String var4;
+	String shaderFile; //.tga
 
 public:
 	AffectorColorRampHeight() {
@@ -44,11 +44,11 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
-		var2 = iffStream->getFloat();
-		var3 = iffStream->getFloat();
+		familyId = iffStream->getInt();
+		min = iffStream->getFloat();
+		max = iffStream->getFloat();
 
-		iffStream->getString(var4);
+		iffStream->getString(shaderFile);
 
 		iffStream->closeChunk('DATA');
 	}

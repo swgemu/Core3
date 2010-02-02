@@ -85,27 +85,31 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 
 	iffStream->getString(globalWaterTableShader);
 
-	float var9 = iffStream->getFloat();
-	uint32 var10 = iffStream->getUnsignedInt();
-	float var11 = iffStream->getFloat();
-	float var12 = iffStream->getFloat();
-	float var13 = iffStream->getFloat();
-	uint32 var14 = iffStream->getUnsignedInt();
-	uint32 var15 = iffStream->getUnsignedInt();
-	float var16 = iffStream->getFloat();
-	float var17 = iffStream->getFloat();
-	float var18 = iffStream->getFloat();
-	uint32 var19 = iffStream->getUnsignedInt();
-	uint32 var20 = iffStream->getUnsignedInt();
-	float var21 = iffStream->getFloat();
-	float var22 = iffStream->getFloat();
-	float var23 = iffStream->getFloat();
-	uint32 var24 = iffStream->getUnsignedInt();
-	float var25 = iffStream->getFloat();
-	float var26 = iffStream->getFloat();
-	float var27 = iffStream->getFloat();
-	float var28 = iffStream->getFloat();
-	uint32 var29 = iffStream->getUnsignedInt();
+	timeCycle = iffStream->getFloat(); // i have docs on how this works somewhere..
+
+	floraCollidableMinDistance = iffStream->getUnsignedInt();
+	floraCollidableMaxDistance = iffStream->getFloat();
+	floraCollidableTileSize = iffStream->getFloat();
+	floraCollidableTileBorder = iffStream->getFloat();
+	floraCollidableSeed = iffStream->getUnsignedInt();
+
+	floraNonCollidableMinDistance = iffStream->getUnsignedInt();
+	floraNonCollidableMaxDistance = iffStream->getFloat();
+	floraNonCollidableTileSize = iffStream->getFloat();
+	floraNonCollidableTileBorder = iffStream->getFloat();
+	floraNonCollidableSeed = iffStream->getUnsignedInt();
+
+	radialNearMinDistance = iffStream->getUnsignedInt();
+	radialNearMaxDistance = iffStream->getFloat();
+	radialNearTileSize = iffStream->getFloat();
+	radialNearTileBorder = iffStream->getFloat();
+	radialNearSeed = iffStream->getUnsignedInt();
+
+	radialFarMinDistance = iffStream->getFloat();
+	radialFarMaxDistance = iffStream->getFloat();
+	radialFarTileSize = iffStream->getFloat();
+	radialFarTileBorder = iffStream->getFloat();
+	radialFarSeed = iffStream->getUnsignedInt();
 
 	iffStream->closeForm('DATA');
 

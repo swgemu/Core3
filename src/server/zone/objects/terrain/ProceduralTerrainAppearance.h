@@ -33,6 +33,32 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 	float globalWaterTableShaderSize;
 	String globalWaterTableShader;
 
+	float timeCycle;
+
+	uint32 floraCollidableMinDistance;
+	float floraCollidableMaxDistance;
+	float floraCollidableTileSize;
+	float floraCollidableTileBorder;
+	float floraCollidableSeed;
+
+	uint32 floraNonCollidableMinDistance;
+	float floraNonCollidableMaxDistance;
+	float floraNonCollidableTileSize;
+	float floraNonCollidableTileBorder;
+	float floraNonCollidableSeed;
+
+	uint32 radialNearMinDistance;
+	float radialNearMaxDistance;
+	float radialNearTileSize;
+	float radialNearTileBorder;
+	float radialNearSeed;
+
+	float radialFarMinDistance;
+	float radialFarMaxDistance;
+	float radialFarTileSize;
+	float radialFarTileBorder;
+	float radialFarSeed;
+
 public:
 	ProceduralTerrainAppearance();
 	~ProceduralTerrainAppearance();

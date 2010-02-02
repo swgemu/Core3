@@ -11,9 +11,9 @@
 #include "../ProceduralRule.h"
 
 class AffectorEnvironment : public ProceduralRule<'AENV'> {
-	int var1;
+	int environmentId;
 	int var2;
-	float var3;
+	float weight;
 
 public:
 	AffectorEnvironment() {
@@ -42,9 +42,9 @@ public:
 
 		iffStream->openChunk('DATA');
 
-		var1 = iffStream->getInt();
+		environmentId = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
+		weight = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
 	}
