@@ -63,6 +63,18 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL)
+			return false;
+
+		if (!object->isPlayerCreature())
+			return false;
+
+		PlayerCreature* playerCreature = (PlayerCreature*) object.get();
+
+		playerCreature->sendBadgesResponseTo(playerCreature);
+
 		return true;
 	}
 

@@ -62,6 +62,7 @@ import server.chat.room.ChatRoom;
 include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.creature.CreatureFlag;
 include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.player.badges.Badges;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -93,11 +94,8 @@ class PlayerCreature extends CreatureObject {
 	
 	protected int skillPoints;
 
-	// player objects
-
-	//Vector<CommandQueueAction> commandQueue;
 	@dereferenced
-	protected Time nextAction;
+	protected Badges badges;
 	
 	@dereferenced
 	protected Time nextTip;
@@ -116,6 +114,8 @@ class PlayerCreature extends CreatureObject {
 	protected int pvpRating;
 
 	protected int factionStatus;
+	
+	//Badges
 	
 	//protected BankTerminal registeredBank;
 	
@@ -212,6 +212,14 @@ class PlayerCreature extends CreatureObject {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	public native void sendToOwner(boolean doClose = true);
+	
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player PlayerCreature to receive badges response message
+	 */
+	public native void sendBadgesResponseTo(PlayerCreature player);
 	
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
@@ -353,6 +361,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public int getFactionStatus() {
 		return factionStatus;
+	}
+	
+	public unicode getBiography() {
+		return biography;
 	}
 	
 }

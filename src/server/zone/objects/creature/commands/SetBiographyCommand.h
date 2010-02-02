@@ -63,6 +63,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		player->setBiography(arguments);
+
 		return true;
 	}
 

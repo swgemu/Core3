@@ -46,6 +46,7 @@ which carries forward this exception.
 #define REQUESTBIOGRAPHYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/packets/object/Biography.h"
 
 class RequestBiographyCommand : public QueueCommand {
 public:
@@ -62,6 +63,22 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL)
+			return false;
+
+		if (!object->isPlayerCreature())
+			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerCreature* playerCreature = (PlayerCreature*) object.get();
+
+		Biography* bio = new Biography((PlayerCreature*)creature, playerCreature);
+		creature->sendMessage(bio);
 
 		return true;
 	}

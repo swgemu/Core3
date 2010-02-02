@@ -127,6 +127,8 @@ using namespace server::chat::room;
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
+#include "server/zone/objects/player/badges/Badges.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -187,6 +189,8 @@ public:
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
+
+	void sendBadgesResponseTo(PlayerCreature* player);
 
 	bool isOnline();
 
@@ -262,6 +266,8 @@ public:
 
 	int getFactionStatus();
 
+	UnicodeString getBiography();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -269,6 +275,8 @@ protected:
 
 	String _return_getFirstName;
 	String _return_getLastName;
+
+	UnicodeString _return_getBiography;
 
 	friend class PlayerCreatureHelper;
 };
@@ -319,7 +327,7 @@ protected:
 
 	int skillPoints;
 
-	Time nextAction;
+	Badges badges;
 
 	Time nextTip;
 
@@ -382,6 +390,8 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
+	void sendBadgesResponseTo(PlayerCreature* player);
+
 	bool isOnline();
 
 	bool isOffline();
@@ -455,6 +465,8 @@ public:
 	int getLotsRemaining();
 
 	int getFactionStatus();
+
+	UnicodeString getBiography();
 
 	PlayerCreature* _this;
 
@@ -517,6 +529,8 @@ public:
 
 	void sendToOwner(bool doClose);
 
+	void sendBadgesResponseTo(PlayerCreature* player);
+
 	bool isOnline();
 
 	bool isOffline();
@@ -590,6 +604,8 @@ public:
 	int getLotsRemaining();
 
 	int getFactionStatus();
+
+	UnicodeString getBiography();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

@@ -12,6 +12,7 @@
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/packets/player/BadgesResponseMessage.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -344,4 +345,9 @@ void PlayerCreatureImplementation::removeFromBuilding(BuildingObject * building)
 
 uint32 PlayerCreatureImplementation::getNewSuiBoxID(uint32 type) {
 	return (++suiBoxNextID << 16) + (uint16)type;
+}
+
+void PlayerCreatureImplementation::sendBadgesResponseTo(PlayerCreature* player) {
+	BaseMessage* msg = new BadgesResponseMessage(_this, &badges);
+	player->sendMessage(msg);
 }

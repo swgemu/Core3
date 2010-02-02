@@ -64,6 +64,13 @@ public:
 		play = pl;
 	}
 
+	void updateStomachFilling() {
+		addIntUpdate(0x0A, play->getFoodFilling());
+		addIntUpdate(0x0B, play->getFoodFillingMax());
+		addIntUpdate(0x0C, play->getDrinkFilling());
+		addIntUpdate(0x0D, play->getDrinkFillingMax());
+	}
+
 	/*void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
