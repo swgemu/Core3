@@ -29,7 +29,7 @@ class TerrainGenerator : public TemplateVariable<'TGEN'> {
 	FloraGroup floraGroup;
 	EnvironmentGroup environmentGroup;
 	MapGroup mapGroup;
-	MapGroup mapGroup2;
+	//MapGroup mapGroup2;
 	LayersGroup layers;
 
 public:
