@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/building/tutorial/events/UnloadBuildingTask.h"
+
 /*
  *	TutorialBuildingObjectStub
  */
@@ -34,6 +36,44 @@ void TutorialBuildingObject::initializeTransientMembers() {
 		((TutorialBuildingObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+void TutorialBuildingObject::onEnter(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((TutorialBuildingObjectImplementation*) _impl)->onEnter(player);
+}
+
+void TutorialBuildingObject::onExit(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((TutorialBuildingObjectImplementation*) _impl)->onExit(player);
+}
+
+void TutorialBuildingObject::clearUnloadEvent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		method.executeWithVoidReturn();
+	} else
+		((TutorialBuildingObjectImplementation*) _impl)->clearUnloadEvent();
+}
+
 /*
  *	TutorialBuildingObjectImplementation
  */
@@ -43,11 +83,9 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(Dummy
 }
 
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
+	TutorialBuildingObjectImplementation::finalize();
 }
 
-
-void TutorialBuildingObjectImplementation::finalize() {
-}
 
 void TutorialBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TutorialBuildingObjectHelper::instance());
@@ -103,17 +141,44 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
 	_initializeImplementation();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(56):  Logger.setLoggingName("TutorialBuildingObject");
-	Logger::setLoggingName("TutorialBuildingObject");
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(59):  initializeTransientMembers();
+	initializeTransientMembers();
 }
 
 void TutorialBuildingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(60):  super.initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(63):  super.initializeTransientMembers();
 	BuildingObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(62):  Logger.setLoggingName("TutorialBuildingObject");
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(65):  unloadTask = null;
+	unloadTask = NULL;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(67):  Logger.setLoggingName("TutorialBuildingObject");
 	Logger::setLoggingName("TutorialBuildingObject");
+}
+
+void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(71):  dequeueUnloadEvent();
+	dequeueUnloadEvent();
+}
+
+void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(75):  enqueueUnloadEvent();
+	enqueueUnloadEvent();
+}
+
+void TutorialBuildingObjectImplementation::clearUnloadEvent() {
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(79):  unloadTask = null;
+	unloadTask = NULL;
+}
+
+void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(83):  }
+	if (unloadTask){
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(84):  unloadTask.cancel();
+	unloadTask->cancel();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(85):  clearUnloadEvent();
+	clearUnloadEvent();
+}
 }
 
 /*
@@ -130,6 +195,15 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		onEnter((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 8:
+		onExit((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 9:
+		clearUnloadEvent();
+		break;
 	default:
 		return NULL;
 	}
@@ -139,6 +213,18 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 
 void TutorialBuildingObjectAdapter::initializeTransientMembers() {
 	((TutorialBuildingObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void TutorialBuildingObjectAdapter::onEnter(PlayerCreature* player) {
+	((TutorialBuildingObjectImplementation*) impl)->onEnter(player);
+}
+
+void TutorialBuildingObjectAdapter::onExit(PlayerCreature* player) {
+	((TutorialBuildingObjectImplementation*) impl)->onExit(player);
+}
+
+void TutorialBuildingObjectAdapter::clearUnloadEvent() {
+	((TutorialBuildingObjectImplementation*) impl)->clearUnloadEvent();
 }
 
 /*

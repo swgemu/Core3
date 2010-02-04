@@ -25,6 +25,24 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+namespace tutorial {
+namespace events {
+
+class UnloadBuildingTask;
+
+} // namespace events
+} // namespace tutorial
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building::tutorial::events;
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -40,6 +58,12 @@ public:
 	TutorialBuildingObject(LuaObject* templateData);
 
 	void initializeTransientMembers();
+
+	void onEnter(PlayerCreature* player);
+
+	void onExit(PlayerCreature* player);
+
+	void clearUnloadEvent();
 
 protected:
 	TutorialBuildingObject(DummyConstructorParameter* param);
@@ -64,6 +88,8 @@ namespace building {
 namespace tutorial {
 
 class TutorialBuildingObjectImplementation : public BuildingObjectImplementation {
+protected:
+	UnloadBuildingTask* unloadTask;
 
 public:
 	TutorialBuildingObjectImplementation(LuaObject* templateData);
@@ -72,6 +98,18 @@ public:
 
 	void initializeTransientMembers();
 
+	void onEnter(PlayerCreature* player);
+
+	void onExit(PlayerCreature* player);
+
+	void clearUnloadEvent();
+
+protected:
+	void dequeueUnloadEvent();
+
+	void enqueueUnloadEvent();
+
+public:
 	TutorialBuildingObject* _this;
 
 	operator const TutorialBuildingObject*();
@@ -79,8 +117,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~TutorialBuildingObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -112,6 +148,12 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void onEnter(PlayerCreature* player);
+
+	void onExit(PlayerCreature* player);
+
+	void clearUnloadEvent();
 
 };
 

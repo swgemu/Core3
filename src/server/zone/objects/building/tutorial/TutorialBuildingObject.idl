@@ -47,18 +47,44 @@ package server.zone.objects.building.tutorial;
 import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
 
 class TutorialBuildingObject extends BuildingObject {
+	
+	protected transient UnloadBuildingTask unloadTask;
 
 	public TutorialBuildingObject(LuaObject templateData) {
 		super(templateData);
 		
-		Logger.setLoggingName("TutorialBuildingObject");
+		initializeTransientMembers();
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
+		unloadTask = null;
+		
 		Logger.setLoggingName("TutorialBuildingObject");
 	}
+	
+	public void onEnter(PlayerCreature player) {
+		dequeueUnloadEvent();
+	}
+	
+	public void onExit(PlayerCreature player) {
+		enqueueUnloadEvent();
+	}
+	
+	public void clearUnloadEvent() {
+		unloadTask = null;
+	}
+	
+	protected void dequeueUnloadEvent() {
+		if (unloadTask) {
+			unloadTask.cancel();
+			clearUnloadEvent();
+		}
+	}
+	
+	protected native void enqueueUnloadEvent();
 }

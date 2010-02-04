@@ -143,6 +143,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
+		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/badges/Badge.cpp \
