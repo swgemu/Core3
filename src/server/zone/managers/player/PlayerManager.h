@@ -100,6 +100,8 @@ public:
 
 	void createTutorialBuilding(PlayerCreature* player);
 
+	void createSkippedTutorialBuilding(PlayerCreature* player);
+
 protected:
 	PlayerManager(DummyConstructorParameter* param);
 
@@ -143,6 +145,8 @@ public:
 	bool createAllPlayerObjects(PlayerCreature* player);
 
 	void createTutorialBuilding(PlayerCreature* player);
+
+	void createSkippedTutorialBuilding(PlayerCreature* player);
 
 	PlayerManager* _this;
 
@@ -190,6 +194,8 @@ public:
 	bool createAllPlayerObjects(PlayerCreature* player);
 
 	void createTutorialBuilding(PlayerCreature* player);
+
+	void createSkippedTutorialBuilding(PlayerCreature* player);
 
 protected:
 	String _param0_checkExistentNameInDatabase__String_;

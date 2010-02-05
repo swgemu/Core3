@@ -223,8 +223,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		if (callback->getTutorialFlag()) {
 			createTutorialBuilding(playerCreature);
 		} else {
-			Zone* zone = server->getZone(8);
-			player->setZone(zone);
+			createSkippedTutorialBuilding(playerCreature);
 		}
 
 		player->updateToDatabase();
@@ -399,3 +398,32 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	tutorial->updateToDatabase();
 }
+
+void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* player) {
+	Zone* zone = server->getZone(42);
+
+	String tut = "object/building/general/shared_newbie_hall_skipped.iff";
+	String cell = "object/cell/shared_cell.iff";
+
+	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	tutorial->createCellObjects();
+	tutorial->setStaticBuilding(false);
+
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
+
+	SceneObject* cellTut = tutorial->getCell(0);
+	cellTut->addObject(travelTutorialTerminal, -1);
+
+	tutorial->insertToZone(zone);
+	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
+	travelTutorialTerminal->insertToZone(zone);
+
+	player->initializePosition(27.0f, -3.5f, -165.0f);
+	player->setZone(zone);
+	cellTut->addObject(player, -1);
+	player->setSavedZoneID(zone->getZoneID());
+	player->setSavedParentID(cellTut->getObjectID());
+
+	tutorial->updateToDatabase();
+}
+

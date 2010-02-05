@@ -83,9 +83,11 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(Dummy
 }
 
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
-	TutorialBuildingObjectImplementation::finalize();
 }
 
+
+void TutorialBuildingObjectImplementation::finalize() {
+}
 
 void TutorialBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TutorialBuildingObjectHelper::instance());
@@ -141,7 +143,7 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(59):  initializeTransientMembers();
 	initializeTransientMembers();

@@ -99,6 +99,19 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		((PlayerManagerImplementation*) _impl)->createTutorialBuilding(player);
 }
 
+void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->createSkippedTutorialBuilding(player);
+}
+
 /*
  *	PlayerManagerImplementation
  */
@@ -192,6 +205,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 9:
 		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
+	case 10:
+		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -213,6 +229,10 @@ bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
 
 void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
 	((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
+}
+
+void PlayerManagerAdapter::createSkippedTutorialBuilding(PlayerCreature* player) {
+	((PlayerManagerImplementation*) impl)->createSkippedTutorialBuilding(player);
 }
 
 /*
