@@ -5492,7 +5492,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:association_hall_civilian_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 516,
 
 	interiorLayoutFileName = "interiorlayout/newbie_hall.ilf",
 
@@ -5548,7 +5548,7 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 
 	detailedDescription = "@building_detail:association_hall_civilian_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 516,
 
 	interiorLayoutFileName = "",
 
