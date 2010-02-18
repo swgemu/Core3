@@ -557,6 +557,10 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask;
 	}
 	
+	public boolean hasState(unsigned long state) {
+		return stateBitmask & state;
+	}
+	
 	public unsigned long getListenID() {
 		return listenToID;
 	}

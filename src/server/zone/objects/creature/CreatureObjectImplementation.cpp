@@ -571,6 +571,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 	posture = newPosture;
 
+	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
+		clearState(CreatureState::SITTINGONCHAIR);
+
 	if (notifyClient) {
 		Vector<BasePacket*> messages;
 
@@ -727,13 +730,15 @@ int CreatureObjectImplementation::onPositionUpdate() {
 	if (parent == NULL && terrainManager->getWaterHeight(positionX, positionY, waterHeight)) {
 		//info("detected water height " + String::valueOf(waterHeight), true);
 
-		float result = waterHeight - swimHeight;
-		StringBuffer msg;
-		msg << "positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
-		info(msg.toString());
+		float roundingPositionZ = floor(positionZ * 10) / 10;
 
-		if (ceil(positionZ) == (waterHeight - swimHeight)) {
-			info("trying to set swimming state");
+		float result = waterHeight - swimHeight;
+		/*StringBuffer msg;
+		msg << "rounding:" << roundingPositionZ << " positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
+		info(msg.toString(), true);*/
+
+		if (roundingPositionZ == (waterHeight - swimHeight)) {
+			//info("trying to set swimming state");
 			setState(CreatureState::SWIMMING);
 		} else {
 			clearState(CreatureState::SWIMMING);

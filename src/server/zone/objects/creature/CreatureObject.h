@@ -230,6 +230,8 @@ public:
 
 	unsigned long long getStateBitmask();
 
+	bool hasState(unsigned long long state);
+
 	unsigned long long getListenID();
 
 	float getRunSpeed();
@@ -542,6 +544,8 @@ public:
 
 	unsigned long long getStateBitmask();
 
+	bool hasState(unsigned long long state);
+
 	unsigned long long getListenID();
 
 	float getRunSpeed();
@@ -730,6 +734,8 @@ public:
 	float getShockWounds();
 
 	unsigned long long getStateBitmask();
+
+	bool hasState(unsigned long long state);
 
 	unsigned long long getListenID();
 
