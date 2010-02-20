@@ -53,7 +53,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
 	-L/usr/local/BerkeleyDB.4.8/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
-	-lmysqlclient -lz -lengine3 -llua -ldb_cxx
+	-lmysqlclient -lz -lengine3 -llua -ldb
 
 bin_PROGRAMS = core3
 
