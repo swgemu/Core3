@@ -1,16 +1,14 @@
 /*
- * ObjectDatabaseEnvironment.cpp
+ * ObjectDatabaseEnvironmentNEW.cpp
  *
- *  Created on: 11/11/2009
+ *  Created on: 20/02/2010
  *      Author: victor
  */
+
 
 #include "ObjectDatabaseEnvironment.h"
 
 ObjectDatabaseEnvironment::ObjectDatabaseEnvironment() : Logger("ObjectDatabaseEnvironment") {
-	databaseEnvironment = new DbEnv(0);
-
-	dbEnvironmentFlags = DB_CREATE | DB_THREAD | DB_INIT_LOCK | DB_INIT_LOG | DB_INIT_TXN | DB_INIT_MPOOL;
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -46,30 +44,30 @@ ObjectDatabaseEnvironment::~ObjectDatabaseEnvironment() {
 }
 
 void ObjectDatabaseEnvironment::openEnvironment() {
+	EnvironmentConfig config;
+	config.setAllowCreate(true);
+	config.setInitializeLocking(true);
+	config.setInitializeLogging(true);
+	config.setLogAutoRemove(true);
+	config.setThreaded(true);
+	config.setThreadCount(50);
+	config.setTransactional(true);
+	config.setInitializeCache(true);
+
 	try {
+		databaseEnvironment = new Environment("databases", config);
 
-		databaseEnvironment->set_thread_count(50);
-
-		int ret = databaseEnvironment->open("databases", dbEnvironmentFlags, 0);
-
-		databaseEnvironment->set_isalive(isAlive);
-
-		//databaseEnvironment->log_set_config(DB_LOG_AUTO_REMOVE, 1); // delete unnecesary log files
-
-		if (ret != 0)
-			error("Trying to open environment error: " + String::valueOf(ret));
-
-		if (databaseEnvironment->failchk(0) != 0) {
+		if (databaseEnvironment->failCheck() != 0) {
 			error("Database environment crashed and cant continue, please run db_recover in the databases folder");
 			exit(1);
 		}
 
-	} catch(DbException &e) {
-		error("Error opening environment... please run db_recover in the database folder");
-		error(e.what());
+	} catch (Exception& e) {
+		error("Error opening environment...");
+		error(e.getMessage());
 		exit(1);
 	} catch (...) {
-		error("unreported exception caught while trying to open berkeley DB ");
+		error("unreported exception caught while trying to open berkeley environment ");
 	}
 }
 
@@ -151,22 +149,18 @@ ObjectDatabase* ObjectDatabaseEnvironment::loadDatabase(const String& name, bool
 void ObjectDatabaseEnvironment::closeEnvironment() {
 	try {
 
-		databaseEnvironment->close(0);
+		int ret = databaseEnvironment->close();
 
-	} catch (DbException &e) {
+		if (ret != 0) {
+			error("Error closing environment: ");
+		}
+
+	} catch (Exception &e) {
 		error("Error closing environment: ");
-		error(e.what());
+		error(e.getMessage());
 	} catch (...) {
 		error("unreported exception caught while trying to close environment");
 	}
-}
-
-
-int ObjectDatabaseEnvironment::isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags) {
-	if (pid != Thread::getProcessID())
-		return 0;
-
-	return 1; // still running
 }
 
 void ObjectDatabaseEnvironment::getDatabaseName(uint16 tableID, String& name) {

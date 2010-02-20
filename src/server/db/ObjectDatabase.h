@@ -1,27 +1,26 @@
 /*
- * ObjectDatabase.h
+ * ObjectDatabaseNEW.h
  *
- *  Created on: Sep 26, 2009
- *      Author: theanswer
+ *  Created on: 19/02/2010
+ *      Author: victor
  */
 
-#ifndef OBJECTDATABASE_H_
-#define OBJECTDATABASE_H_
+#ifndef OBJECTDATABASENEW_H_
+#define OBJECTDATABASENEW_H_
 
 #include "engine/engine.h"
-
-#include "db_cxx.h"
 
 class ObjectDatabaseEnvironment;
 
 class ObjectDatabase : public Logger {
-	Db* objectsDatabase;
-	DbEnv* environment;
+	BerkeleyDatabase* objectsDatabase;
+	Environment* environment;
 
 	String databaseFileName;
-	uint32 dbFlags;
 
 private:
+	const static int DEADLOCK_MAX_RETRIES = 20;
+
 	void closeDatabase();
 	void openDatabase();
 
@@ -33,12 +32,12 @@ public:
 	~ObjectDatabase();
 
 	int getData(uint64 objKey, ObjectInputStream* objectData);
-	int putData(uint64 objKey, ObjectOutputStream* stream, bool useTransaction = false);
+	int putData(uint64 objKey, ObjectOutputStream* stream);
 	int deleteData(uint64 objKey);
 
 	int sync();
 
-	inline Db* getDatabaseHandle() {
+	inline BerkeleyDatabase* getDatabaseHandle() {
 		return objectsDatabase;
 	}
 
@@ -49,14 +48,14 @@ public:
 };
 
 class ObjectDatabaseIterator : public Logger {
-	Dbc* cursor;
-	Db* databaseHandle;
+	Cursor* cursor;
+	BerkeleyDatabase* databaseHandle;
 
-	Dbt key, data;
+	DatabaseEntry key, data;
 
 public:
 	ObjectDatabaseIterator(ObjectDatabase* database);
-	ObjectDatabaseIterator(Db* databaseHandle);
+	ObjectDatabaseIterator(BerkeleyDatabase* databaseHandle);
 	~ObjectDatabaseIterator();
 
 	void resetIterator();
@@ -66,16 +65,16 @@ public:
 	bool getNextKey(uint64& key);
 
 	inline void closeCursor() {
-		if (cursor != NULL)
+		if (cursor != NULL) {
 			cursor->close();
+
+			delete cursor;
+		}
 
 		cursor = NULL;
 	}
 
 };
 
-class ObjectDatabaseTransaction {
 
-};
-
-#endif /* OBJECTDATABASE_H_ */
+#endif /* OBJECTDATABASENEW_H_ */

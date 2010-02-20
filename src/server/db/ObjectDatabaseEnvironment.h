@@ -1,18 +1,19 @@
 /*
- * ObjectDatabaseEnvironment.h
+ * ObjectDatabaseEnvironmentNEW.h
  *
- *  Created on: 11/11/2009
+ *  Created on: 20/02/2010
  *      Author: victor
  */
 
-#ifndef OBJECTDATABASEENVIRONMENT_H_
-#define OBJECTDATABASEENVIRONMENT_H_
+#ifndef OBJECTDATABASEENVIRONMENTNEW_H_
+#define OBJECTDATABASEENVIRONMENTNEW_H_
+
 
 #include "engine/engine.h"
 #include "ObjectDatabase.h"
 
 class ObjectDatabaseEnvironment : public Logger, public Singleton<ObjectDatabaseEnvironment>, public Mutex {
-	DbEnv* databaseEnvironment;
+	Environment* databaseEnvironment;
 
 	VectorMap<uint16, ObjectDatabase*> databases;
 	VectorMap<String, uint16> nameDirectory;
@@ -34,8 +35,6 @@ public:
 	~ObjectDatabaseEnvironment();
 
 	void closeDatabases();
-
-	static int isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags);
 
 	/**
 	 * Loads or creates a database in this environment
@@ -69,11 +68,10 @@ public:
 		return databases.size();
 	}
 
-	inline DbEnv* getBerkeleyEnvironment() {
+	inline Environment* getBerkeleyEnvironment() {
 		return databaseEnvironment;
 	}
 
 };
 
-
-#endif /* OBJECTDATABASEENVIRONMENT_H_ */
+#endif /* OBJECTDATABASEENVIRONMENTNEW_H_ */
