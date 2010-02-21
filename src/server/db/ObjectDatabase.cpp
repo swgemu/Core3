@@ -115,8 +115,6 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData) {
 			info("deadlock detected in ObjectDatabse::get.. retrying", true);
 
 			transaction->abort();
-
-			delete transaction;
 		}
 
 		++i;
@@ -130,12 +128,10 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData) {
 		exit(1);
 	}
 
-	if (transaction->commit() != 0) {
+	if (transaction->commitNoSync() != 0) {
 		error("error commiting transaction in ObjectDatabase::putData :" + String::valueOf(ret));
 		exit(1);
 	}
-
-	delete transaction;
 
 	return ret;
 }

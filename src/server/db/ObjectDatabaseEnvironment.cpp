@@ -53,6 +53,7 @@ void ObjectDatabaseEnvironment::openEnvironment() {
 	config.setThreadCount(50);
 	config.setTransactional(true);
 	config.setInitializeCache(true);
+	config.setMaxLogFileSize(100000); // 100mb
 
 	try {
 		databaseEnvironment = new Environment("databases", config);
