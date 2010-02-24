@@ -75,6 +75,8 @@ using namespace server::zone;
 
 #include "server/zone/managers/player/PlayerMap.h"
 
+#include "server/zone/managers/player/CharacterNameMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedObject.h"
@@ -87,6 +89,8 @@ namespace player {
 class PlayerManager : public ManagedObject {
 public:
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
+
+	void loadNameMap();
 
 	bool createPlayer(MessageCallback* callback);
 
@@ -101,6 +105,10 @@ public:
 	void createTutorialBuilding(PlayerCreature* player);
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
+
+	bool existsName(const String& name);
+
+	unsigned long long getObjectID(const String& name);
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -129,10 +137,16 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 
 	PlayerMap* playerMap;
 
+	CharacterNameMap* nameMap;
+
 public:
 	PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
 	PlayerManagerImplementation(DummyConstructorParameter* param);
+
+	void loadNameMap();
+
+	void finalize();
 
 	bool createPlayer(MessageCallback* callback);
 
@@ -148,6 +162,10 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
+	bool existsName(const String& name);
+
+	unsigned long long getObjectID(const String& name);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -155,8 +173,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerManagerImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -187,6 +203,10 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void loadNameMap();
+
+	void finalize();
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -197,10 +217,16 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
+	bool existsName(const String& name);
+
+	unsigned long long getObjectID(const String& name);
+
 protected:
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
 	String _param1_createHairObject__String_String_;
+	String _param0_existsName__String_;
+	String _param0_getObjectID__String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

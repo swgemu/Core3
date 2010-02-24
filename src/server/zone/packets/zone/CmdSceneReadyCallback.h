@@ -25,8 +25,14 @@ public:
 	}
 
 	void run() {
-		BaseMessage* msg = new CmdSceneReady();
-		client->sendMessage(msg);
+		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+
+		if (object == NULL)
+			return;
+
+		Locker _locker(object);
+
+		object->notifySceneReady();
 	}
 };
 

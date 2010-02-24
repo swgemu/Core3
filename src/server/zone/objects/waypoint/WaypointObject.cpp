@@ -101,6 +101,19 @@ void WaypointObject::setActive(byte newStatus) {
 		((WaypointObjectImplementation*) _impl)->setActive(newStatus);
 }
 
+void WaypointObject::setUnknown(unsigned long long id) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addUnsignedLongParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->setUnknown(id);
+}
+
 /*
  *	WaypointObjectImplementation
  */
@@ -209,6 +222,11 @@ void WaypointObjectImplementation::setActive(byte newStatus) {
 	active = newStatus;
 }
 
+void WaypointObjectImplementation::setUnknown(unsigned long long id) {
+	// server/zone/objects/waypoint/WaypointObject.idl(64):  unknown = id;
+	unknown = id;
+}
+
 /*
  *	WaypointObjectAdapter
  */
@@ -235,6 +253,9 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 10:
 		setActive(inv->getByteParameter());
 		break;
+	case 11:
+		setUnknown(inv->getUnsignedLongParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -260,6 +281,10 @@ void WaypointObjectAdapter::setColor(byte newColor) {
 
 void WaypointObjectAdapter::setActive(byte newStatus) {
 	((WaypointObjectImplementation*) impl)->setActive(newStatus);
+}
+
+void WaypointObjectAdapter::setUnknown(unsigned long long id) {
+	((WaypointObjectImplementation*) impl)->setUnknown(id);
 }
 
 /*

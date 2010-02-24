@@ -4,16 +4,20 @@
 
 #include "MissionObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
 /*
  *	MissionObjectStub
  */
 
-MissionObject::MissionObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
+MissionObject::MissionObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new MissionObjectImplementation(templateData);
 	_impl->_setStub(this);
 }
 
-MissionObject::MissionObject(DummyConstructorParameter* param) : SceneObject(param) {
+MissionObject::MissionObject(DummyConstructorParameter* param) : IntangibleObject(param) {
 }
 
 MissionObject::~MissionObject() {
@@ -45,11 +49,125 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
 		((MissionObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
+WaypointObject* MissionObject::getWaypointToMission() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return (WaypointObject*) method.executeWithObjectReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getWaypointToMission();
+}
+
+unsigned int MissionObject::getTypeCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTypeCRC();
+}
+
+int MissionObject::getRewardCredits() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getRewardCredits();
+}
+
+UnicodeString MissionObject::getCreatorName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithUnicodeReturn(_return_getCreatorName);
+		return _return_getCreatorName;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getCreatorName();
+}
+
+int MissionObject::getDifficultyLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getDifficultyLevel();
+}
+
+StringId* MissionObject::getMissionDescription() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((MissionObjectImplementation*) _impl)->getMissionDescription();
+}
+
+StringId* MissionObject::getMissionTitle() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((MissionObjectImplementation*) _impl)->getMissionTitle();
+}
+
+String MissionObject::getTargetName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithAsciiReturn(_return_getTargetName);
+		return _return_getTargetName;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTargetName();
+}
+
+int MissionObject::getRefreshCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getRefreshCounter();
+}
+
+unsigned int MissionObject::getTargetTemplateCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTargetTemplateCRC();
+}
+
 /*
  *	MissionObjectImplementation
  */
 
-MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
+MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -66,7 +184,7 @@ void MissionObjectImplementation::_initializeImplementation() {
 
 void MissionObjectImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (MissionObject*) stub;
-	SceneObjectImplementation::_setStub(stub);
+	IntangibleObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* MissionObjectImplementation::_getStub() {
@@ -106,26 +224,96 @@ void MissionObjectImplementation::runlock(bool doLock) {
 }
 
 void MissionObjectImplementation::_serializationHelperMethod() {
-	SceneObjectImplementation::_serializationHelperMethod();
+	IntangibleObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("MissionObject");
 
+	addSerializableVariable("waypointToMission", &waypointToMission);
+	addSerializableVariable("typeCRC", &typeCRC);
+	addSerializableVariable("difficultyLevel", &difficultyLevel);
+	addSerializableVariable("creatorName", &creatorName);
+	addSerializableVariable("rewardCredits", &rewardCredits);
+	addSerializableVariable("missionDescription", &missionDescription);
+	addSerializableVariable("missionTitle", &missionTitle);
+	addSerializableVariable("refreshCounter", &refreshCounter);
+	addSerializableVariable("targetName", &targetName);
+	addSerializableVariable("targetTemplateCRC", &targetTemplateCRC);
 }
 
-MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(56):  Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl(93):  typeCRC = MUSICIAN;
+	typeCRC = MUSICIAN;
+	// server/zone/objects/mission/MissionObject.idl(95):  refreshCounter = 0;
+	refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl(97):  targetTemplateCRC = 0;
+	targetTemplateCRC = 0;
+	// server/zone/objects/mission/MissionObject.idl(99):  rewardCredits = 0;
+	rewardCredits = 0;
+	// server/zone/objects/mission/MissionObject.idl(101):  difficultyLevel = 0;
+	difficultyLevel = 0;
+	// server/zone/objects/mission/MissionObject.idl(103):  Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
 void MissionObjectImplementation::finalize() {
 }
 
+WaypointObject* MissionObjectImplementation::getWaypointToMission() {
+	// server/zone/objects/mission/MissionObject.idl(114):  return waypointToMission;
+	return waypointToMission;
+}
+
+unsigned int MissionObjectImplementation::getTypeCRC() {
+	// server/zone/objects/mission/MissionObject.idl(118):  return typeCRC;
+	return typeCRC;
+}
+
+int MissionObjectImplementation::getRewardCredits() {
+	// server/zone/objects/mission/MissionObject.idl(122):  return rewardCredits;
+	return rewardCredits;
+}
+
+UnicodeString MissionObjectImplementation::getCreatorName() {
+	// server/zone/objects/mission/MissionObject.idl(126):  return creatorName;
+	return creatorName;
+}
+
+int MissionObjectImplementation::getDifficultyLevel() {
+	// server/zone/objects/mission/MissionObject.idl(130):  return difficultyLevel;
+	return difficultyLevel;
+}
+
+StringId* MissionObjectImplementation::getMissionDescription() {
+	// server/zone/objects/mission/MissionObject.idl(136):  return missionDescription;
+	return (&missionDescription);
+}
+
+StringId* MissionObjectImplementation::getMissionTitle() {
+	// server/zone/objects/mission/MissionObject.idl(142):  return missionTitle;
+	return (&missionTitle);
+}
+
+String MissionObjectImplementation::getTargetName() {
+	// server/zone/objects/mission/MissionObject.idl(146):  return targetName;
+	return targetName;
+}
+
+int MissionObjectImplementation::getRefreshCounter() {
+	// server/zone/objects/mission/MissionObject.idl(150):  return refreshCounter;
+	return refreshCounter;
+}
+
+unsigned int MissionObjectImplementation::getTargetTemplateCRC() {
+	// server/zone/objects/mission/MissionObject.idl(154):  return targetTemplateCRC;
+	return targetTemplateCRC;
+}
+
 /*
  *	MissionObjectAdapter
  */
 
-MissionObjectAdapter::MissionObjectAdapter(MissionObjectImplementation* obj) : SceneObjectAdapter(obj) {
+MissionObjectAdapter::MissionObjectAdapter(MissionObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -140,6 +328,30 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 8:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		resp->insertLong(getWaypointToMission()->_getObjectID());
+		break;
+	case 10:
+		resp->insertInt(getTypeCRC());
+		break;
+	case 11:
+		resp->insertSignedInt(getRewardCredits());
+		break;
+	case 12:
+		resp->insertUnicode(getCreatorName());
+		break;
+	case 13:
+		resp->insertSignedInt(getDifficultyLevel());
+		break;
+	case 14:
+		resp->insertAscii(getTargetName());
+		break;
+	case 15:
+		resp->insertSignedInt(getRefreshCounter());
+		break;
+	case 16:
+		resp->insertInt(getTargetTemplateCRC());
 		break;
 	default:
 		return NULL;
@@ -158,6 +370,38 @@ void MissionObjectAdapter::initializeTransientMembers() {
 
 void MissionObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((MissionObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+WaypointObject* MissionObjectAdapter::getWaypointToMission() {
+	return ((MissionObjectImplementation*) impl)->getWaypointToMission();
+}
+
+unsigned int MissionObjectAdapter::getTypeCRC() {
+	return ((MissionObjectImplementation*) impl)->getTypeCRC();
+}
+
+int MissionObjectAdapter::getRewardCredits() {
+	return ((MissionObjectImplementation*) impl)->getRewardCredits();
+}
+
+UnicodeString MissionObjectAdapter::getCreatorName() {
+	return ((MissionObjectImplementation*) impl)->getCreatorName();
+}
+
+int MissionObjectAdapter::getDifficultyLevel() {
+	return ((MissionObjectImplementation*) impl)->getDifficultyLevel();
+}
+
+String MissionObjectAdapter::getTargetName() {
+	return ((MissionObjectImplementation*) impl)->getTargetName();
+}
+
+int MissionObjectAdapter::getRefreshCounter() {
+	return ((MissionObjectImplementation*) impl)->getRefreshCounter();
+}
+
+unsigned int MissionObjectAdapter::getTargetTemplateCRC() {
+	return ((MissionObjectImplementation*) impl)->getTargetTemplateCRC();
 }
 
 /*

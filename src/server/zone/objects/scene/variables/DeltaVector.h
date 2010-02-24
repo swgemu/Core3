@@ -132,6 +132,10 @@ public:
 		return updateCounter += increment;
 	}
 
+	inline void resetUpdateCounter() {
+		updateCounter = 0;
+	}
+
 	inline int size() {
 		return vector.size();
 	}

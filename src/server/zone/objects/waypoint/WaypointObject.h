@@ -54,6 +54,8 @@ public:
 
 	void setActive(byte newStatus);
 
+	void setUnknown(unsigned long long id);
+
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
@@ -119,6 +121,8 @@ public:
 
 	void setActive(byte newStatus);
 
+	void setUnknown(unsigned long long id);
+
 	WaypointObject* _this;
 
 	operator const WaypointObject*();
@@ -167,6 +171,8 @@ public:
 	void setColor(byte newColor);
 
 	void setActive(byte newStatus);
+
+	void setUnknown(unsigned long long id);
 
 protected:
 	UnicodeString _param0_setCustomName__UnicodeString_;

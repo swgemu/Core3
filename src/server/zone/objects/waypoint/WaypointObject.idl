@@ -58,4 +58,8 @@ class WaypointObject extends IntangibleObject {
 		active = newStatus;
 	}
 	
+	public void setUnknown(unsigned long id) {
+		unknown = id;
+	}
+	
 }

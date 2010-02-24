@@ -54,7 +54,7 @@ namespace building {
 namespace tutorial {
 namespace events {
 class UnloadBuildingTask: public Task {
-	ManagedWeakReference<TutorialBuildingObject *> building;
+	ManagedReference<TutorialBuildingObject *> building;
 
 public:
 	UnloadBuildingTask(TutorialBuildingObject* bo) :
@@ -63,6 +63,8 @@ public:
 	}
 
 	void run() {
+		Locker _locker(building);
+
 		try {
 			building->clearUnloadEvent();
 

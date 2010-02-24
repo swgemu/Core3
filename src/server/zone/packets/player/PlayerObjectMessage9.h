@@ -76,10 +76,14 @@ public:
 		insertInt(0);
 
 		// friends list
+		/*DeltaVector<String>* friends = play->getFriendList();
+		friends->insertToMessage(this);*/
 		insertInt(0);
 		insertInt(0);
 
 		// ignore list
+		/*DeltaVector<String>* ignores = play->getIgnoreList();
+		ignores->insertToMessage(this);*/
 		insertInt(0);
 		insertInt(0);
 

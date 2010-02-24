@@ -192,6 +192,10 @@ public:
 
 	void sendBadgesResponseTo(PlayerCreature* player);
 
+	void notifySceneReady();
+
+	PlayerObject* getPlayerObject();
+
 	bool isOnline();
 
 	bool isOffline();
@@ -232,6 +236,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setClientLastMovementStamp(unsigned int stamp);
+
 	void setOffline();
 
 	void setLinkDead();
@@ -267,6 +273,8 @@ public:
 	int getFactionStatus();
 
 	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -304,6 +312,8 @@ protected:
 	int onlineStatus;
 
 	Time logoutTimeStamp;
+
+	unsigned int clientLastMovementStamp;
 
 	unsigned int accountID;
 
@@ -392,6 +402,10 @@ public:
 
 	void sendBadgesResponseTo(PlayerCreature* player);
 
+	void notifySceneReady();
+
+	PlayerObject* getPlayerObject();
+
 	bool isOnline();
 
 	bool isOffline();
@@ -432,6 +446,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setClientLastMovementStamp(unsigned int stamp);
+
 	void setOffline();
 
 	void setLinkDead();
@@ -467,6 +483,8 @@ public:
 	int getFactionStatus();
 
 	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
 
 	PlayerCreature* _this;
 
@@ -531,6 +549,10 @@ public:
 
 	void sendBadgesResponseTo(PlayerCreature* player);
 
+	void notifySceneReady();
+
+	PlayerObject* getPlayerObject();
+
 	bool isOnline();
 
 	bool isOffline();
@@ -571,6 +593,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setClientLastMovementStamp(unsigned int stamp);
+
 	void setOffline();
 
 	void setLinkDead();
@@ -606,6 +630,8 @@ public:
 	int getFactionStatus();
 
 	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

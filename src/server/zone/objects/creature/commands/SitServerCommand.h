@@ -47,6 +47,9 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 
+#include "server/zone/packets/object/SitOnObject.h"
+#include "server/zone/objects/creature/CreatureState.h"
+
 class SitServerCommand : public QueueCommand {
 public:
 
@@ -63,7 +66,32 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		creature->setPosture(CreaturePosture::SITTING);
+		if (arguments.isEmpty()) {
+			creature->setPosture(CreaturePosture::SITTING);
+		} else {
+			StringTokenizer tokenizer(arguments.toString());
+			tokenizer.setDelimeter(",");
+			float x = tokenizer.getFloatToken();
+			float y = tokenizer.getFloatToken();
+			float z = tokenizer.getFloatToken();
+
+			uint64 coID = 0;
+			if (tokenizer.hasMoreTokens())
+				coID = tokenizer.getLongToken();
+
+			if (x < -8192 || x > 8192)
+				x = 0;
+			if (y < -8192 || y > 8192)
+				y = 0;
+			if (z < -8192 || z > 8192)
+				z = 0;
+
+			creature->setState(CreatureState::SITTINGONCHAIR);
+			SitOnObject* soo = new SitOnObject(creature, x, y, z);
+			creature->broadcastMessage(soo, true);
+
+			creature->setPosture(CreaturePosture::SITTING);
+		}
 
 		/*
 				packet->shiftOffset(8); //Shift past the blank long.

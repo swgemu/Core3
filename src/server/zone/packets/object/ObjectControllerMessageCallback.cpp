@@ -67,8 +67,7 @@ void ObjectControllerMessageCallback::run() {
 		return;
 
 	try {
-		player->wlock();
-
+		Locker _locker(player);
 
 		if (objectID != player->getObjectID()) {
 			player->error("wrong object id in object controller message?");
@@ -79,15 +78,11 @@ void ObjectControllerMessageCallback::run() {
 
 		objectControllerCallback->run();
 
-		player->unlock();
-
 	} catch (Exception& e) {
-		player->unlock();
 
 		System::out << "exception executing ObjectControllerMessage" << e.getMessage();
 		e.printStackTrace();
 	} catch (...) {
-		player->unlock();
 
 		System::out << "unknown exception caught in ObjectControllerMessageCallback::execute";
 	}

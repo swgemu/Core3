@@ -10,6 +10,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
+#include "server/zone/packets/zone/CmdSceneReady.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/player/BadgesResponseMessage.h"
@@ -175,6 +176,8 @@ void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
 	ManagedReference<SceneObject*> savedParent = NULL;
+
+	getPlayerObject()->notifyOffline();
 
 	if (parent != NULL) {
 		savedParentID = parent->getObjectID();
@@ -350,4 +353,12 @@ uint32 PlayerCreatureImplementation::getNewSuiBoxID(uint32 type) {
 void PlayerCreatureImplementation::sendBadgesResponseTo(PlayerCreature* player) {
 	BaseMessage* msg = new BadgesResponseMessage(_this, &badges);
 	player->sendMessage(msg);
+}
+
+void PlayerCreatureImplementation::notifySceneReady() {
+	BaseMessage* msg = new CmdSceneReady();
+	sendMessage(msg);
+
+	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+	playerObject->sendFriendLists();
 }

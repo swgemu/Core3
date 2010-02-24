@@ -75,6 +75,8 @@ class PlayerCreature extends CreatureObject {
 	@dereferenced
 	protected Time logoutTimeStamp;
 	
+	protected unsigned int clientLastMovementStamp;
+	
 	protected unsigned int accountID;
 	
 	protected unsigned int suiBoxNextID;
@@ -148,6 +150,8 @@ class PlayerCreature extends CreatureObject {
 		factionStatus = 0;
 		lotsRemaining = 0;
 		
+		clientLastMovementStamp = 0;
+		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 
 		setOffline();
@@ -220,6 +224,12 @@ class PlayerCreature extends CreatureObject {
 	 * @param player PlayerCreature to receive badges response message
 	 */
 	public native void sendBadgesResponseTo(PlayerCreature player);
+	
+	public native void notifySceneReady();
+	
+	public PlayerObject getPlayerObject() {
+		return (PlayerObject) super.getSlottedObject("ghost");
+	}
 	
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
@@ -296,6 +306,10 @@ class PlayerCreature extends CreatureObject {
 		raceID = id;
 	}
 	
+	public void setClientLastMovementStamp(unsigned int stamp) {
+		clientLastMovementStamp = stamp;
+	}
+	
 	public void setOffline() {
 		if (isLinkDead()) {
 			// clear LD flag
@@ -365,6 +379,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public unicode getBiography() {
 		return biography;
+	}
+	
+	public unsigned int getClientLastMovementStamp() {
+		return clientLastMovementStamp;
 	}
 	
 }

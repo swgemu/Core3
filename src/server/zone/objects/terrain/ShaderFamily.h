@@ -54,6 +54,8 @@ public:
 			ShaderVar* var = new ShaderVar();
 			iffStream->getString(var->name);
 			var->weight = iffStream->getFloat();
+
+			shaderVars.add(var);
 		}
 
 		iffStream->closeChunk('SFAM');

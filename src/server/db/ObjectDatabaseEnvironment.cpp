@@ -7,6 +7,7 @@
 
 
 #include "ObjectDatabaseEnvironment.h"
+#include "BerkeleyCheckpointTask.h"
 
 ObjectDatabaseEnvironment::ObjectDatabaseEnvironment() : Logger("ObjectDatabaseEnvironment") {
 
@@ -21,13 +22,14 @@ ObjectDatabaseEnvironment::ObjectDatabaseEnvironment() : Logger("ObjectDatabaseE
 
 	databaseDirectory = NULL;
 
+	checkpointTask = new BerkeleyCheckpointTask(this);
+
 	lastTableID = 0;
 
 	openEnvironment();
-
 	loadDatabases();
+	checkpoint();
 }
-
 
 ObjectDatabaseEnvironment::~ObjectDatabaseEnvironment() {
 	closeDatabases();
@@ -40,7 +42,15 @@ ObjectDatabaseEnvironment::~ObjectDatabaseEnvironment() {
 	delete databaseEnvironment;
 	databaseEnvironment = NULL;
 
+	checkpointTask->cancel();
+
 	info("closed", true);
+}
+
+void ObjectDatabaseEnvironment::checkpoint() {
+	databaseEnvironment->checkpoint();
+
+	checkpointTask->schedule(CHECKPOINTTIME);
 }
 
 void ObjectDatabaseEnvironment::openEnvironment() {

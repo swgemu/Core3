@@ -46,6 +46,13 @@ which carries forward this exception.
 #define FINDFRIENDCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 class FindFriendCommand : public QueueCommand {
 public:
@@ -62,6 +69,60 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		String name = arguments.toString().toLowerCase();
+
+		if (!ghost->hasFriend(name))
+			return false;
+
+		ChatManager* chatManager = server->getChatManager();
+
+		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(name);
+
+		if (targetPlayer == NULL)
+			return false;
+
+		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+		String myFirstName = player->getFirstName().toLowerCase();
+
+		if (!targetGhost->hasFriend(myFirstName))
+			return false;
+
+		Zone* zone = targetPlayer->getZone();
+
+		if (zone == NULL)
+			return false;
+
+		String planet = Planet::getPlanetName(zone->getZoneID());
+
+		float x, z = 0, y;
+
+		ManagedReference<SceneObject*> parent = targetPlayer->getParent();
+
+		if (parent != NULL && parent->isCellObject()) {
+			SceneObject* building = parent->getParent();
+
+			x = building->getPositionX();
+			y = building->getPositionY();
+		} else {
+			x = targetPlayer->getPositionX();
+			y = targetPlayer->getPositionY();
+		}
+
+		ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+		obj->setPlanetCRC(planet.hashCode());
+		obj->setPosition(x, z, y);
+		obj->setCustomName(name);
+		obj->setActive(true);
+
+		ghost->addWaypoint(obj, true);
 
 		return true;
 	}

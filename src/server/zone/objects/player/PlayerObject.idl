@@ -58,6 +58,9 @@ import server.zone.objects.waypoint.WaypointObject;
 include server.zone.objects.player.variables.WaypointList;
 include server.zone.objects.creature.professions.Skill;
 include server.zone.objects.player.variables.SkillList;
+include server.zone.objects.player.variables.FriendList;
+include server.zone.objects.player.variables.IgnoreList;
+
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -74,7 +77,7 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int jediState;
 	protected unsigned int adminLevel;
-	
+		
 	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
 	
@@ -83,6 +86,12 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SkillList skillList;
+	
+	@dereferenced
+	protected FriendList friendList;
+	
+	@dereferenced
+	protected IgnoreList ignoreList;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -173,7 +182,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Adds new queue commands to player
 	 * @pre { this is locked }
-	 * @post { his is locked }
+	 * @post { this is locked }
 	 * @param skills Vector of skills to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
@@ -183,7 +192,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Adds new certifications to player
 	 * @pre { this is locked }
-	 * @post { his is locked }
+	 * @post { this is locked }
 	 * @param skills Vector of skills to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
@@ -191,9 +200,9 @@ class PlayerObject extends IntangibleObject {
 	public native void addSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
 	
 	/**
-	 * Removes new queue commands to player
+	 * Removes queue commands from player
 	 * @pre { this is locked }
-	 * @post { his is locked }
+	 * @post { this is locked }
 	 * @param skills Vector of skills to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
@@ -201,14 +210,60 @@ class PlayerObject extends IntangibleObject {
 	public native void removeSkills(@dereferenced Vector<QueueCommand> skills, boolean notifyClient = true);
 	
 	/**
-	 * Removes new certifications to player
+	 * Removes certifications from player
 	 * @pre { this is locked }
-	 * @post { his is locked }
+	 * @post { this is locked }
 	 * @param skills Vector of skills to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	@local
 	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	
+	/**
+	 * Adds a friend if exists to the friend list
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param name friends name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void addFriend(final string name, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified friend from the friend list
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param name friend name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeFriend(final string name, boolean notifyClient = true);
+	
+	/**
+	 * Notifies all reverse friends online status
+	 * @pre { }
+	 * @post { }
+	 */
+	public native void notifyOnline();
+	
+	/**
+	 * Notifies all reverse friends offline status
+	 * @pre { }
+	 * @post { }
+	 */
+	public native void notifyOffline();
+	
+	public boolean hasFriend(final string name) {
+		return friendList.contains(name);
+	}
+	
+	public void addReverseFriend(final string name) {
+		friendList.addReversePlayer(name);
+	}
+	
+	public void removeReverseFriend(final string name) {
+		friendList.removeReversePlayer(name);
+	}
+	
+	public native void sendFriendLists();
 	
 	public boolean hasWaypoint(unsigned long objectID) {
 		return waypointList.contains(objectID);
@@ -283,5 +338,15 @@ class PlayerObject extends IntangibleObject {
 	
 	public int getJediState() {
 		return jediState;
+	}
+	
+	@local
+	public DeltaVector<string> getFriendList() {
+		return friendList;
+	}
+	
+	@local
+	public DeltaVector<string> getIgnoreList() {
+		return ignoreList;
 	}
 }

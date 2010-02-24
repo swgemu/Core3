@@ -48,6 +48,8 @@ import engine.log.Logger;
 
 include server.zone.objects.player.PlayerCreature;
 include server.zone.managers.player.PlayerMap;
+include server.zone.managers.player.CharacterNameMap;
+
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
@@ -61,8 +63,12 @@ class PlayerManager extends ManagedObject implements Logger {
 	ZoneServer server;
 	
 	transient PlayerMap playerMap;
+	transient CharacterNameMap nameMap;
 			
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
+	public native void loadNameMap();
+	
+	public native void finalize();
 	
 	@local
 	public native boolean createPlayer(MessageCallback callback);
@@ -76,6 +82,8 @@ class PlayerManager extends ManagedObject implements Logger {
 	public native boolean createAllPlayerObjects(PlayerCreature player);
 	
 	public native void createTutorialBuilding(PlayerCreature player);
-	
 	public native void createSkippedTutorialBuilding(PlayerCreature player);
+	
+	public native boolean existsName(final string name);
+	public native unsigned long getObjectID(final string name);
 }

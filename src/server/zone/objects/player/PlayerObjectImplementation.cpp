@@ -44,12 +44,20 @@ which carries forward this exception.
 
 #include "PlayerObject.h"
 
-#include "../../managers/object/ObjectManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/chat/ChatManager.h"
+
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
+#include "server/zone/packets/player/FriendListMessage.h"
+#include "server/zone/packets/player/IgnoreListMessage.h"
+#include "server/zone/packets/player/AddFriendInitiateMessage.h"
+#include "server/zone/packets/player/AddFriendMessage.h"
+#include "server/zone/packets/player/FriendStatusChangeMessage.h"
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
@@ -58,6 +66,10 @@ which carries forward this exception.
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/professions/Certification.h"
+#include "server/zone/objects/player/variables/PlayerList.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -95,11 +107,35 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* play6 = new PlayerObjectMessage6(_this);
 	player->sendMessage(play6);
 
-	BaseMessage* play8 = new PlayerObjectMessage8(this);
-	player->sendMessage(play8);
+	if (player == parent) {
+		BaseMessage* play8 = new PlayerObjectMessage8(this);
+		player->sendMessage(play8);
 
-	BaseMessage* play9 = new PlayerObjectMessage9(this);
-	player->sendMessage(play9);
+		BaseMessage* play9 = new PlayerObjectMessage9(this);
+		player->sendMessage(play9);
+	}
+}
+
+void PlayerObjectImplementation::sendFriendLists() {
+	info("sending friendslist message  size " + String::valueOf(friendList.size()), true);
+
+	ChatManager* chatManager = server->getChatManager();
+
+	friendList.resetUpdateCounter();
+	ignoreList.resetUpdateCounter();
+
+	FriendsListMessage* flist = new FriendsListMessage(_this);
+	parent->sendMessage(flist);
+
+	IgnoreListMessage* ilist = new IgnoreListMessage(_this);
+	parent->sendMessage(ilist);
+
+	DeltaMessage* delta = new PlayerObjectDeltaMessage9(_this);
+	friendList.insertToDeltaMessage(delta);
+	ignoreList.insertToDeltaMessage(delta);
+	delta->close();
+
+	parent->sendMessage(delta);
 }
 
 void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
@@ -317,5 +353,196 @@ void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bo
 	} else {
 		for (int i = 0; i < skills.size(); ++i)
 			skillList.remove(skillList.find(skills.get(i)));
+	}
+}
+
+void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (ignoreList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_fail_is_ignored");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	if (friendList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_duplicate");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerManager* playerManager = server->getPlayerManager();
+
+	bool validName = playerManager->existsName(nameLower);
+
+	if (!validName) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	uint64 objID = playerManager->getObjectID(nameLower);
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	ManagedReference<PlayerCreature*> playerToAdd;
+	playerToAdd = (PlayerCreature*) zoneServer->getObject(objID);
+
+	if (playerToAdd == NULL || playerToAdd == parent) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerObject* playerToAddGhost = playerToAdd->getPlayerObject();
+	playerToAddGhost->addReverseFriend(((PlayerCreature*) parent.get())->getFirstName());
+	playerToAddGhost->updateToDatabase();
+
+	if (notifyClient) {
+		AddFriendInitiateMessage* init = new AddFriendInitiateMessage();
+		parent->sendMessage(init);
+
+		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, "Core3", true);
+		parent->sendMessage(add);
+
+		if (playerToAdd->isOnline()) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(nameLower, "Core3", true);
+			parent->sendMessage(notifyStatus);
+		}
+
+		friendList.add(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		friendList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "friend_added");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		friendList.add(nameLower);
+	}
+}
+
+void PlayerObjectImplementation::removeFriend(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (!friendList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerManager* playerManager = server->getPlayerManager();
+	uint64 objID = playerManager->getObjectID(nameLower);
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	ManagedReference<PlayerCreature*> playerToRemove;
+	playerToRemove = (PlayerCreature*) zoneServer->getObject(objID);
+
+	if (playerToRemove == NULL) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+	playerToRemoveGhost->removeReverseFriend(((PlayerCreature*) parent.get())->getFirstName());
+	playerToRemoveGhost->updateToDatabase();
+
+	if (notifyClient) {
+		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		parent->sendMessage(add);
+
+		friendList.removePlayer(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		friendList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "friend_removed");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		friendList.removePlayer(nameLower);
+	}
+}
+
+void PlayerObjectImplementation::notifyOnline() {
+	ChatManager* chatManager = server->getChatManager();
+
+	Vector<String>* reverseTable = friendList.getReverseTable();
+
+	String firstName = ((PlayerCreature*) parent.get())->getFirstName();
+	firstName = firstName.toLowerCase();
+
+	for (int i = 0; i < reverseTable->size(); ++i) {
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", true);
+			player->sendMessage(notifyStatus);
+		}
+	}
+
+	for (int i = 0; i < friendList.size(); ++i) {
+		String name = friendList.get(i);
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(name);
+
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", true);
+			parent->sendMessage(notifyStatus);
+		} else {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", false);
+			parent->sendMessage(notifyStatus);
+		}
+	}
+}
+
+void PlayerObjectImplementation::notifyOffline() {
+	//info("notifyOffline", true);
+	ChatManager* chatManager = server->getChatManager();
+
+	Vector<String>* reverseTable = friendList.getReverseTable();
+
+	String firstName = ((PlayerCreature*) parent.get())->getFirstName();
+	firstName = firstName.toLowerCase();
+
+	for (int i = 0; i < reverseTable->size(); ++i) {
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", false);
+			player->sendMessage(notifyStatus);
+		}
 	}
 }

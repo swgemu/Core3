@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ADDFRIENDCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class AddFriendCommand : public QueueCommand {
 public:
@@ -62,6 +63,12 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		ghost->addFriend(arguments.toString());
 
 		return true;
 	}

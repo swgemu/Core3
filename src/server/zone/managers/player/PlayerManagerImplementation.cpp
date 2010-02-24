@@ -29,9 +29,73 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	processor = impl;
 
 	playerMap = new PlayerMap(3000);
+	nameMap = new CharacterNameMap();
 
 	setGlobalLogging(true);
 	setLogging(true);
+
+	loadNameMap();
+}
+
+void PlayerManagerImplementation::finalize() {
+	delete playerMap;
+	playerMap = NULL;
+
+	delete nameMap;
+	nameMap = NULL;
+}
+
+void PlayerManagerImplementation::loadNameMap() {
+	info("loading character names");
+
+	String query = "SELECT * FROM characters";
+
+	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+	while (res->next()) {
+		uint64 oid = res->getUnsignedLong(0);
+		String firstName = res->getString(3);
+
+		nameMap->put(firstName.toLowerCase(), oid);
+	}
+
+	delete res;
+
+	StringBuffer msg;
+	msg << "loaded " << nameMap->size() << " character names in memory";
+	info(msg.toString(), true);
+}
+
+bool PlayerManagerImplementation::existsName(const String& name) {
+	bool res = false;
+
+	rlock();
+
+	try {
+		res = nameMap->containsKey(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
+	}
+
+	runlock();
+
+	return res;
+}
+
+uint64 PlayerManagerImplementation::getObjectID(const String& name) {
+	uint64 oid = 0;
+
+	rlock();
+
+	try {
+		oid = nameMap->get(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
+	}
+
+	runlock();
+
+	return oid;
 }
 
 bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name) {
@@ -77,7 +141,7 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 		firstName = name;
 
 	//Does this name already exist?
-	if (!checkExistentNameInDatabase(firstName)) {
+	if (nameMap->containsKey(firstName.toLowerCase())) {
 		msg = new ClientCreateCharacterFailed("name_declined_in_use");
 		client->sendMessage(msg);
 
@@ -123,132 +187,117 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 }
 
 bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
+	Locker _locker(_this);
+
+	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	ZoneClientSession* client = data->getClient();
+
+	String race;
+	callback->getRaceFile(race);
+	info("trying to create " + race);
+
+	uint32 serverObjectCRC = race.hashCode();
+
+	int raceID = Races::getRaceID(race);
+	/*uint32 playerCRC = Races::getRaceCRC(raceID);*/
+
+	UnicodeString name;
+	callback->getCharacterName(name);
+
+	if (!checkPlayerName(callback)) {
+		info("invalid name " + name.toString());
+		return false;
+	}
+
+	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
+
+	if (player == NULL) {
+		error("could not create player... could not create player object");
+		return false;
+	}
+
+	if (!player->isPlayerCreature()) {
+		error("could not create player... wrong object type");
+		return false;
+	}
+
+	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
+	createAllPlayerObjects(playerCreature);
+
+	playerCreature->setRaceID((byte)raceID);
+
+	String playerCustomization;
+	callback->getCustomizationString(playerCustomization);
+	playerCreature->setCustomizationString(playerCustomization);
+
+	playerCreature->setObjectName(name);
+
+	String firstName = playerCreature->getFirstName();
+	String lastName = playerCreature->getLastName();
+
+	firstName.escapeString();
+	lastName.escapeString();
+	race.escapeString();
+
 	try {
-		wlock();
+		StringBuffer query;
+		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
+				<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
 
-		ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
-		ZoneClientSession* client = data->getClient();
-
-		String race;
-		callback->getRaceFile(race);
-		info("trying to create " + race);
-
-		uint32 serverObjectCRC = race.hashCode();
-
-		int raceID = Races::getRaceID(race);
-		/*uint32 playerCRC = Races::getRaceCRC(raceID);*/
-
-		UnicodeString name;
-		callback->getCharacterName(name);
-
-		if (!checkPlayerName(callback)) {
-			info("invalid name " + name.toString());
-			unlock();
-			return false;
-		}
-
-		SceneObject* player = server->createObject(serverObjectCRC, 2); // player
-
-		if (player == NULL) {
-			error("could not create player... could not create player object");
-			unlock();
-			return false;
-		}
-
-
-		if (!player->isPlayerCreature()) {
-			//player->finalize(); destroy object
-			error("could not create player... wrong object type");
-			unlock();
-			return false;
-		}
-
-		PlayerCreature* playerCreature = (PlayerCreature*) player;
-		createAllPlayerObjects(playerCreature);
-
-		playerCreature->setRaceID((byte)raceID);
-
-		String playerCustomization;
-		callback->getCustomizationString(playerCustomization);
-		playerCreature->setCustomizationString(playerCustomization);
-
-		playerCreature->setObjectName(name);
-
-		String firstName = playerCreature->getFirstName();
-		String lastName = playerCreature->getLastName();
-
-		firstName.escapeString();
-		lastName.escapeString();
-		race.escapeString();
-
-		try {
-			StringBuffer query;
-			query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-			<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
-			<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
-
-			ServerDatabase::instance()->executeStatement(query);
-		} catch (Exception& e) {
-			error(e.getMessage());
-		} catch (...) {
-			error("unreported exception caught while creating character");
-		}
-
-		//hair
-		String hairObjectFile;
-		callback->getHairObject(hairObjectFile);
-
-		String hairCustomization;
-		callback->getHairCustomization(hairCustomization);
-
-		TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
-
-		if (hair != NULL) {
-			player->addObject(hair, 4);
-
-			info("created hair object");
-		}
-
-		playerCreature->setHeight(callback->getHeight());
-
-		UnicodeString biography;
-		callback->getBiography(biography);
-		playerCreature->setBiography(biography);
-
-		playerCreature->setClient(client);
-		client->setPlayer(player);
-
-		playerCreature->setAccountID(client->getAccountID());
-
-		if (callback->getTutorialFlag()) {
-			createTutorialBuilding(playerCreature);
-		} else {
-			createSkippedTutorialBuilding(playerCreature);
-		}
-
-		player->updateToDatabase();
-
-		StringBuffer infoMsg;
-		infoMsg << "player " << name.toString() << " successfully created";
-		info(infoMsg);
-
-		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
-		playerCreature->sendMessage(msg);
-
-		ChatManager* chatManager = server->getChatManager();
-
-		chatManager->addPlayer(playerCreature);
-
-		unlock();
+		ServerDatabase::instance()->executeStatement(query);
 	} catch (Exception& e) {
 		error(e.getMessage());
-		e.printStackTrace();
-
-		unlock();
 	} catch (...) {
-		error("unreported exception caught while creating player");
-		unlock();
+		error("unreported exception caught while creating character");
 	}
+
+	nameMap->put(playerCreature);
+
+	//hair
+	String hairObjectFile;
+	callback->getHairObject(hairObjectFile);
+
+	String hairCustomization;
+	callback->getHairCustomization(hairCustomization);
+
+	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
+
+	if (hair != NULL) {
+		player->addObject(hair, 4);
+
+		info("created hair object");
+	}
+
+	playerCreature->setHeight(callback->getHeight());
+
+	UnicodeString biography;
+	callback->getBiography(biography);
+	playerCreature->setBiography(biography);
+
+	playerCreature->setClient(client);
+	client->setPlayer(player);
+
+	playerCreature->setAccountID(client->getAccountID());
+
+	if (callback->getTutorialFlag()) {
+		createTutorialBuilding(playerCreature);
+	} else {
+		createSkippedTutorialBuilding(playerCreature);
+	}
+
+	player->updateToDatabase();
+
+	StringBuffer infoMsg;
+	infoMsg << "player " << name.toString() << " successfully created";
+	info(infoMsg);
+
+	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
+	playerCreature->sendMessage(msg);
+
+	ChatManager* chatManager = server->getChatManager();
+
+	chatManager->addPlayer(playerCreature);
 
 	return true;
 }
@@ -359,21 +408,6 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
 	Zone* zone = server->getZone(42);
 
-	/*SceneObject* oldPlayer = server->getObject(0x1500000001uLL);
-
-	if (player!= oldPlayer && oldPlayer != NULL) {
-		SceneObject* tutCell = oldPlayer->getParent();
-
-		if (tutCell != NULL) {
-			player->initializePosition(27.0f, -3.5f, -165.0f);
-			player->setZone(zone);
-
-			tutCell->addObject(player, -1);
-
-			return;
-		}
-	}*/
-
 	String tut = "object/building/general/shared_newbie_hall.iff";
 	String cell = "object/cell/shared_cell.iff";
 
@@ -426,4 +460,3 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 
 	tutorial->updateToDatabase();
 }
-

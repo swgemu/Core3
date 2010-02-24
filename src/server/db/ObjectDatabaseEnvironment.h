@@ -12,6 +12,8 @@
 #include "engine/engine.h"
 #include "ObjectDatabase.h"
 
+class BerkeleyCheckpointTask;
+
 class ObjectDatabaseEnvironment : public Logger, public Singleton<ObjectDatabaseEnvironment>, public Mutex {
 	Environment* databaseEnvironment;
 
@@ -23,6 +25,12 @@ class ObjectDatabaseEnvironment : public Logger, public Singleton<ObjectDatabase
 	uint32 dbEnvironmentFlags;
 
 	uint16 lastTableID;
+
+	Reference<BerkeleyCheckpointTask*> checkpointTask;
+	uint32 checkpointTime;
+
+public:
+	const static int CHECKPOINTTIME = 1800000; //msec
 
 private:
 	void openEnvironment();
@@ -44,6 +52,10 @@ public:
 	 */
 	ObjectDatabase* loadDatabase(const String& name, bool create, uint16 uniqueID = 0xFFFF);
 
+	void checkpoint();
+
+	void getDatabaseName(uint16 tableID, String& name);
+
 	inline ObjectDatabase* getDatabase(uint16 id) {
 		//Locker _locker(this);
 
@@ -61,8 +73,6 @@ public:
 
 		return nameDirectory.get(name);
 	}
-
-	void getDatabaseName(uint16 tableID, String& name);
 
 	inline int getDatabaseCount() {
 		return databases.size();

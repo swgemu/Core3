@@ -91,6 +91,10 @@ using namespace server::zone::objects::waypoint;
 
 #include "server/zone/objects/player/variables/SkillList.h"
 
+#include "server/zone/objects/player/variables/FriendList.h"
+
+#include "server/zone/objects/player/variables/IgnoreList.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -160,6 +164,22 @@ public:
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
+	void addFriend(const String& name, bool notifyClient = true);
+
+	void removeFriend(const String& name, bool notifyClient = true);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
 	bool hasWaypoint(unsigned long long objectID);
 
 	bool hasSkill(Skill* skill);
@@ -197,6 +217,10 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
+
+	DeltaVector<String>* getFriendList();
+
+	DeltaVector<String>* getIgnoreList();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -247,6 +271,10 @@ protected:
 	WaypointList waypointList;
 
 	SkillList skillList;
+
+	FriendList friendList;
+
+	IgnoreList ignoreList;
 
 public:
 	static const int LFG = 1;
@@ -311,6 +339,22 @@ public:
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
+	void addFriend(const String& name, bool notifyClient = true);
+
+	void removeFriend(const String& name, bool notifyClient = true);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
 	bool hasWaypoint(unsigned long long objectID);
 
 	bool hasSkill(Skill* skill);
@@ -348,6 +392,10 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
+
+	DeltaVector<String>* getFriendList();
+
+	DeltaVector<String>* getIgnoreList();
 
 	PlayerObject* _this;
 
@@ -402,6 +450,22 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
 
+	void addFriend(const String& name, bool notifyClient);
+
+	void removeFriend(const String& name, bool notifyClient);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
 	bool hasWaypoint(unsigned long long objectID);
 
 	unsigned int getCharacterBitmask();
@@ -436,6 +500,11 @@ protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
 	String _param0_addWaypoint__String_float_float_bool_;
+	String _param0_addFriend__String_bool_;
+	String _param0_removeFriend__String_bool_;
+	String _param0_hasFriend__String_;
+	String _param0_addReverseFriend__String_;
+	String _param0_removeReverseFriend__String_;
 	String _param0_setTitle__String_;
 };
 
