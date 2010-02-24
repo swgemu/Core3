@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "server/zone/packets/player/IgnoreListMessage.h"
 #include "server/zone/packets/player/AddFriendInitiateMessage.h"
 #include "server/zone/packets/player/AddFriendMessage.h"
+#include "server/zone/packets/player/AddIgnoreMessage.h"
 #include "server/zone/packets/player/FriendStatusChangeMessage.h"
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
@@ -359,39 +360,7 @@ void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bo
 void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
 	String nameLower = name.toLowerCase();
 
-	if (ignoreList.contains(nameLower)) {
-		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_fail_is_ignored");
-			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
-		}
-
-		return;
-	}
-
-	if (friendList.contains(nameLower)) {
-		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_duplicate");
-			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
-		}
-
-		return;
-	}
-
 	PlayerManager* playerManager = server->getPlayerManager();
-
-	bool validName = playerManager->existsName(nameLower);
-
-	if (!validName) {
-		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_not_found");
-			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
-		}
-
-		return;
-	}
 
 	uint64 objID = playerManager->getObjectID(nameLower);
 
@@ -494,6 +463,66 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 	} else {
 		friendList.removePlayer(nameLower);
+	}
+}
+
+
+void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (notifyClient) {
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", true);
+		parent->sendMessage(add);
+
+		ignoreList.add(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		ignoreList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "ignore_added");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		ignoreList.add(nameLower);
+	}
+}
+
+
+void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (!ignoreList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "ignore_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	if (notifyClient) {
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		parent->sendMessage(add);
+
+		ignoreList.removePlayer(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		ignoreList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "ignore_removed");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		ignoreList.removePlayer(nameLower);
 	}
 }
 

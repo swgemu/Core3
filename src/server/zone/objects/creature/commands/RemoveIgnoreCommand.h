@@ -63,6 +63,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		ghost->removeIgnore(arguments.toString());
+
 		return true;
 	}
 

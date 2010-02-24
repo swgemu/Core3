@@ -21,6 +21,8 @@
 #include "server/zone/packets/chat/ChatOnSendRoomMessage.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
@@ -322,6 +324,7 @@ PlayerCreature* ChatManagerImplementation::removePlayer(const String& name) {
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
+		PlayerCreature* playerCreature = (PlayerCreature*) player;
 		Zone* zone = player->getZone();
 
 		/*if (message.toCharArray() == "LAG") {
@@ -343,6 +346,8 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		if (zone == NULL)
 			return;
 
+		String firstName = playerCreature->getFirstName().toLowerCase();
+
 		Locker zoneLocker(zone);
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
@@ -351,9 +356,14 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			if (object->isPlayerCreature()) {
 				PlayerCreature* creature = (PlayerCreature*) object;
 
-				if (player->isInRange(creature, 128)) {
-					SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
-					creature->sendMessage(cmsg);
+				if (player->isInRange(creature, 128) || creature->getParent() != NULL) {
+
+					PlayerObject* ghost = creature->getPlayerObject();
+
+					if (!ghost->isIgnoring(firstName)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+						creature->sendMessage(cmsg);
+					}
 				}
 			}
 		}

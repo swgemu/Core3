@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class AddFriendCommand : public QueueCommand {
 public:
@@ -67,8 +69,39 @@ public:
 		if (!creature->isPlayerCreature())
 			return false;
 
+		String nameLower = arguments.toString().toLowerCase();
+
 		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
-		ghost->addFriend(arguments.toString());
+
+		if (ghost->isIgnoring(nameLower)) {
+			ParameterizedStringId param("cmnty", "friend_fail_is_ignored");
+			param.setTT(nameLower);
+			creature->sendSystemMessage(param);
+
+			return false;
+		}
+
+		if (ghost->hasFriend(nameLower)) {
+			ParameterizedStringId param("cmnty", "friend_duplicate");
+			param.setTT(nameLower);
+			creature->sendSystemMessage(param);
+
+			return false;
+		}
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		bool validName = playerManager->existsName(nameLower);
+
+		if (!validName) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			creature->sendSystemMessage(param);
+
+			return false;
+		}
+
+		ghost->addFriend(nameLower);
 
 		return true;
 	}

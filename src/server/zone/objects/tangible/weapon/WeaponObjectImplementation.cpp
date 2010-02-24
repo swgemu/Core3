@@ -8,16 +8,6 @@
 #include "WeaponObject.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage3.h"
 
-/*WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData) {
-
-	setLoggingName("WeaponObject");
-
-	attackType = templateData->getIntField("attackType");
-	weaponEffect =  templateData->getStringField("weaponEffect");
-	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
-}*/
-
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 

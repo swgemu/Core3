@@ -168,11 +168,17 @@ public:
 
 	void removeFriend(const String& name, bool notifyClient = true);
 
+	void addIgnore(const String& name, bool notifyClient = true);
+
+	void removeIgnore(const String& name, bool notifyClient = true);
+
 	void notifyOnline();
 
 	void notifyOffline();
 
 	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
 
 	void addReverseFriend(const String& name);
 
@@ -343,11 +349,17 @@ public:
 
 	void removeFriend(const String& name, bool notifyClient = true);
 
+	void addIgnore(const String& name, bool notifyClient = true);
+
+	void removeIgnore(const String& name, bool notifyClient = true);
+
 	void notifyOnline();
 
 	void notifyOffline();
 
 	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
 
 	void addReverseFriend(const String& name);
 
@@ -454,11 +466,17 @@ public:
 
 	void removeFriend(const String& name, bool notifyClient);
 
+	void addIgnore(const String& name, bool notifyClient);
+
+	void removeIgnore(const String& name, bool notifyClient);
+
 	void notifyOnline();
 
 	void notifyOffline();
 
 	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
 
 	void addReverseFriend(const String& name);
 
@@ -502,7 +520,10 @@ protected:
 	String _param0_addWaypoint__String_float_float_bool_;
 	String _param0_addFriend__String_bool_;
 	String _param0_removeFriend__String_bool_;
+	String _param0_addIgnore__String_bool_;
+	String _param0_removeIgnore__String_bool_;
 	String _param0_hasFriend__String_;
+	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
 	String _param0_setTitle__String_;

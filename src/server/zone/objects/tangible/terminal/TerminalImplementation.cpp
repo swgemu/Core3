@@ -7,12 +7,6 @@
 
 #include "Terminal.h"
 
-/*
-TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
-	setLoggingName("Terminal");
-}
-*/
-
 void TerminalImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 

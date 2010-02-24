@@ -46,6 +46,10 @@ which carries forward this exception.
 #define ADDIGNORECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 
 class AddIgnoreCommand : public QueueCommand {
 public:
@@ -62,6 +66,35 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		String nameLower = arguments.toString().toLowerCase();
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		if (ghost->isIgnoring(nameLower)) {
+			ParameterizedStringId param("cmnty", "ignore_duplicate");
+			param.setTT(nameLower);
+			creature->sendSystemMessage(param);
+
+			return false;
+		}
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		bool validName = playerManager->existsName(nameLower);
+
+		if (!validName) {
+			ParameterizedStringId param("cmnty", "ignore_not_found");
+			param.setTT(nameLower);
+			creature->sendSystemMessage(param);
+
+			return false;
+		}
+
+		ghost->addIgnore(nameLower, true);
 
 		return true;
 	}
