@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ATTACKCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 class AttackCommand : public QueueCommand {
 public:
@@ -63,7 +64,15 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		creature->setCombatState();
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			return false;
+		}
+
+		CombatManager::instance()->startCombat(creature, (TangibleObject*) targetObject.get());
 
 		return true;
 	}

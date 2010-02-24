@@ -130,7 +130,7 @@ namespace planet {
 
 class PlanetManagerImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedReference<Zone* > zone;
+	ManagedWeakReference<Zone* > zone;
 
 	RegionMap regionMap;
 

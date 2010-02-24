@@ -382,6 +382,17 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(missionBag, 4);
 
+	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/shared_unarmed_default_player.iff").hashCode();
+
+	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 1);
+
+	if (defaultWeapon == NULL) {
+		error("could not create default_weapon");
+		return false;
+	}
+
+	player->addObject(defaultWeapon, 4);
+
 	// temp
 
 	SceneObject* vibro = server->createObject(0x652688CE, 1);

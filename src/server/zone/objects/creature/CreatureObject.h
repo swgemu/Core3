@@ -280,8 +280,6 @@ public:
 
 	int getFaction();
 
-	int getPvpStatusBitmask();
-
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -324,8 +322,6 @@ protected:
 	int gender;
 
 	int species;
-
-	int pvpStatusBitmask;
 
 	int faction;
 
@@ -594,8 +590,6 @@ public:
 
 	int getFaction();
 
-	int getPvpStatusBitmask();
-
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -784,8 +778,6 @@ public:
 	int getSpecies();
 
 	int getFaction();
-
-	int getPvpStatusBitmask();
 
 	void setHeight(float heigh);
 

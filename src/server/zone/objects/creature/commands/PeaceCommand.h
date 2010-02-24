@@ -46,6 +46,8 @@ which carries forward this exception.
 #define PEACECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+
 
 class PeaceCommand : public QueueCommand {
 public:
@@ -63,7 +65,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		creature->clearCombatState();
+		CombatManager::instance()->attemptPeace(creature);
 
 		return true;
 	}

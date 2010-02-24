@@ -87,6 +87,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
+				server/zone/managers/creature/CreatureManager.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
@@ -163,6 +164,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
+		server/zone/managers/creature/CreatureManagerImplementation.cpp \
+		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		main.cpp
 		

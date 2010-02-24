@@ -69,7 +69,6 @@ class CreatureObject extends TangibleObject {
 	protected int gender;
 	protected int species;
 	
-	protected int pvpStatusBitmask;
 	protected int faction;
 	
 	@dereferenced
@@ -658,10 +657,6 @@ class CreatureObject extends TangibleObject {
 	
 	public int getFaction() {
 		return faction;
-	}
-	
-	public int getPvpStatusBitmask() {
-		return pvpStatusBitmask;
 	}
 	
 	@local

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define KNEELCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 class KneelCommand : public QueueCommand {
 public:
@@ -62,6 +64,21 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return false;
+
+
+		float posX = creature->getPositionX(), posY = creature->getPositionY();
+		uint64 parID = creature->getParentID();
+
+		CreatureManager* creatureManager = zone->getCreatureManager();
+
+		uint32 templ = String("object/mobile/shared_boba_fett.iff").hashCode();
+
+		CreatureObject* npc = creatureManager->spawnCreature(templ, posX, posY, parID);
 
 		return true;
 	}

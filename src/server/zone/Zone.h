@@ -73,6 +73,20 @@ class PlanetManager;
 
 using namespace server::zone::managers::planet;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "server/zone/managers/object/ObjectMap.h"
@@ -122,6 +136,8 @@ public:
 
 	ZoneServer* getZoneServer();
 
+	CreatureManager* getCreatureManager();
+
 	unsigned long long getGalacticTime();
 
 	unsigned int getWeatherID();
@@ -167,6 +183,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedReference<PlanetManager* > planetManager;
 
+	ManagedReference<CreatureManager* > creatureManager;
+
 	ManagedReference<ZoneServer* > server;
 
 	Time galacticTime;
@@ -211,6 +229,8 @@ public:
 	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
+
+	CreatureManager* getCreatureManager();
 
 	unsigned long long getGalacticTime();
 
@@ -288,6 +308,8 @@ public:
 	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
+
+	CreatureManager* getCreatureManager();
 
 	unsigned long long getGalacticTime();
 

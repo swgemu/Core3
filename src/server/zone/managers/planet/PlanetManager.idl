@@ -58,6 +58,7 @@ include server.zone.objects.terrain.PlanetNames;
 include server.zone.managers.terrain.TerrainManager;
 
 class PlanetManager extends ManagedObject implements Logger {
+	@weakReference
 	protected Zone zone;
 	
 	@dereferenced

@@ -89,11 +89,13 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	bankCredits = 0;
 	cashCredits = 100;
 
-	pvpStatusBitmask = CreatureFlag::PLAYER;
+	pvpStatusBitmask = CreatureFlag::ATTACKABLE;
 
 	posture = 0;
 	factionRank = 0;
 	faction = 0;
+
+	height = 1;
 
 	creatureLinkID = 0;
 
