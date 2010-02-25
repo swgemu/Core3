@@ -129,23 +129,23 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("attackType", &attackType);
 	addSerializableVariable("weaponEffect", &weaponEffect);
 	addSerializableVariable("weaponEffectIndex", &weaponEffectIndex);
-	addSerializableVariable("certification", &certification);
+	addSerializableVariable("certificationsRequired", &certificationsRequired);
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(61):  attackType = templateData.getIntField("attackType");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(63):  attackType = templateData.getIntField("attackType");
 	attackType = templateData->getIntField("attackType");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(62):  weaponEffect = templateData.getStringField("weaponEffect");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(64):  weaponEffect = templateData.getStringField("weaponEffect");
 	weaponEffect = templateData->getStringField("weaponEffect");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(63):  weaponEffectIndex = templateData.getIntField("weaponEffectIndex");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(65):  weaponEffectIndex = templateData.getIntField("weaponEffectIndex");
 	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(65):  Logger.setLoggingName("WeaponObject");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(67):  Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 }
 
 int WeaponObjectImplementation::getAttackType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(73):  return attackType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(75):  return attackType;
 	return attackType;
 }
 

@@ -68,6 +68,9 @@ object_creature_player_trandoshan_male = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 250, 300, 400, 0, 0, 0, 0, 0, 100 },
+	skillMods = { "unarmed_accuracy=10", "unarmed_speed=5", "unarmed_damage=15", "melee_defense=10", "creature_harvesting=10", "private_innate_regeneration=1" },
 
 	clientObjectCRC = 1355045775
 }

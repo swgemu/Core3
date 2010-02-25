@@ -68,7 +68,10 @@ object_creature_player_rodian_female = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
-
+	
+	baseHAM = { 0, 0, 0, 200, 200, 450, 0, 0, 50 },
+	skillMods = { "blind_defense=15", "onehandmelee_accuracy=10", "twohandmelee_accuracy=10", "weapon_assembly=10" },
+	
 	clientObjectCRC = 3261342811
 }
 

@@ -67,6 +67,12 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	collisionOffsetX = 0,
 	collisionOffsetZ = 0,
 	collisionLength = 0,
-	cameraHeight = 0
+	cameraHeight = 0, 
+	
+	clientCRC = 0, 
+	
+	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
+	skillMods = { }
+	
 
 }

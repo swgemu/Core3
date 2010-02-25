@@ -104,6 +104,35 @@ void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 }
 */
 
+void ProfessionManager::setProfessionHAM(const String& startingProfession, PlayerCreature* player) {
+	int prof;
+
+	if (startingProfession == "crafting_artisan")
+		prof = 0;
+	else if (startingProfession == "combat_brawler")
+		prof = 1;
+	else if (startingProfession == "social_entertainer")
+		prof = 2;
+	else if (startingProfession == "combat_marksman")
+		prof = 3;
+	else if (startingProfession == "science_medic")
+		prof = 4;
+	else if (startingProfession == "outdoors_scout")
+		prof = 5;
+	else
+		prof = 6;
+
+
+	for (int i = 0; i < 9; ++i) {
+		int newVal = player->getBaseHAM(i) + professionHams[prof][i];
+
+		player->setBaseHAM(i, newVal, false);
+		player->setHAM(i, newVal, false);
+		player->setMaxHAM(i, newVal, false);
+	}
+
+}
+
 bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* player) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
@@ -186,7 +215,7 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player
 	if (!checkPrerequisites(skillBox, player))
 		return false;
 
-	System::out << "trying to teach 2" << skillBox << endl;
+	//System::out << "trying to teach 2" << skillBox->getName() << endl;
 
 
 	//skillManager->loadSkillBox(skillBox, player, false, updateClient);

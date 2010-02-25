@@ -51,11 +51,16 @@ which carries forward this exception.
 
 class StatMigrationTargetsMessage : public BaseMessage {
 public:
-	StatMigrationTargetsMessage(Player* player) : BaseMessage() {
+	StatMigrationTargetsMessage(CreatureObject* creo) : BaseMessage() {
 		insertShort(0x09);
 		insertInt(0xEFAC38C4);  // CRC
 
-		insertInt(player->getMigrationHealth()); // Health Migration
+		DeltaVector<int>* baseHam = creo->getBaseHAM();
+
+		for (int i = 0; i < 9; ++i) {
+			insertInt(baseHam->get(i));
+		}
+		/*insertInt(player->getMigrationHealth()); // Health Migration
 		insertInt(player->getMigrationStrength()); // Strength Migration
 		insertInt(player->getMigrationConstitution()); // Constitution Migration
 		insertInt(player->getMigrationAction()); // Action Migration
@@ -63,7 +68,7 @@ public:
 		insertInt(player->getMigrationStamina()); // Stamina Migration
 		insertInt(player->getMigrationMind()); // Mind Migration
 		insertInt(player->getMigrationFocus()); // Focus Migration
-		insertInt(player->getMigrationWillpower()); // Willpower Migration
+		insertInt(player->getMigrationWillpower()); // Willpower Migration*/
 		insertInt(0); // Points Remaining
 	}
 

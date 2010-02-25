@@ -75,7 +75,7 @@ protected:
 
 	int weaponEffectIndex;
 
-	String certification;
+	Vector<String> certificationsRequired;
 
 public:
 	WeaponObjectImplementation(LuaObject* templateData);

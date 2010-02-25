@@ -68,6 +68,9 @@ object_creature_player_zabrak_male = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 200, 0, 0, 300, 0, 0, 0, 0, 400 },
+	skillMods = { "dizzy_defense=10", "stun_defense=10", "intimidate_defense=10", "anti_shock=5", "private_innate_equilibrium=1", "private_innate_vitalize=1" },
 
 	clientObjectCRC = 3791955286
 }

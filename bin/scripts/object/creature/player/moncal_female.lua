@@ -68,7 +68,10 @@ object_creature_player_moncal_female = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
-
+	
+	baseHAM = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
+	skillMods = { "alert=15", "structure_assembly=10", "weapon_assembly=10" },
+	
 	clientObjectCRC = 2553266142
 }
 

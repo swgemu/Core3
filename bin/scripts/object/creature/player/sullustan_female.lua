@@ -68,6 +68,10 @@ object_creature_player_sullustan_female = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 150, 0, 0, 250, 50, 50, 200, 100, 100 },
+	skillMods = { "engine_assembly=10", "booster_assembly=10", "weapon_systems=10", "trapping=10", "creature_harvesting=10" },
+	
 
 	clientObjectCRC = 359871514
 }

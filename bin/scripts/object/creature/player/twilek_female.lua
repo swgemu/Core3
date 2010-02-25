@@ -68,6 +68,9 @@ object_creature_player_twilek_female = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 0, 0, 250, 250, 300, 0, 100, 0, 0 },
+	skillMods = { "healing_dance_wound=15", "healing_music_wound=5", "healing_dance_shock=15", "healing_music_shock=5" },
 
 	clientObjectCRC = 2224509660
 }

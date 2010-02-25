@@ -68,6 +68,9 @@ object_creature_player_bothan_male = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 0, 0, 0, 300, 300, 100, 100, 100, 0 },
+	skillMods = { "camouflage=15", "cover=10" },
 
 	clientObjectCRC = 1542946611
 }

@@ -20,6 +20,7 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
 #include "server/zone/Zone.h"
 
@@ -274,6 +275,22 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString biography;
 	callback->getBiography(biography);
 	playerCreature->setBiography(biography);
+
+	String profession;
+	callback->getProfession(profession);
+
+	//info("profession:" + profession, true);
+
+	ProfessionManager* professionManager = server->getProfessionManager();
+
+	Profession* prof = professionManager->getProfession(profession);
+
+	if (prof != NULL) {
+		SkillBox* novice = prof->getNoviceBox();
+		professionManager->trainSkillBox(novice, playerCreature, false);
+	}
+
+	professionManager->setProfessionHAM(profession, playerCreature);
 
 	playerCreature->setClient(client);
 	client->setPlayer(player);

@@ -46,6 +46,7 @@ which carries forward this exception.
 #define REQUESTSTATMIGRATIONDATACOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/packets/player/StatMigrationTargetsMessage.h"
 
 class RequestStatMigrationDataCommand : public QueueCommand {
 public:
@@ -62,6 +63,9 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(creature);
+		creature->sendMessage(smtm);
 
 		return true;
 	}

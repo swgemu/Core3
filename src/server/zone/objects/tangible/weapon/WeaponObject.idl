@@ -53,7 +53,8 @@ class WeaponObject extends TangibleObject {
 	protected string weaponEffect;
 	protected int weaponEffectIndex;
 	
-	protected string certification;
+	@dereferenced
+	protected Vector<string> certificationsRequired;
 		
 	public WeaponObject(LuaObject templateData) {
 		super(templateData);

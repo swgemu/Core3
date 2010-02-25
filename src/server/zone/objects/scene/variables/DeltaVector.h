@@ -132,6 +132,10 @@ public:
 		return updateCounter += increment;
 	}
 
+	inline void setUpdateCounter(int count) {
+		updateCounter = count;
+	}
+
 	inline void resetUpdateCounter() {
 		updateCounter = 0;
 	}

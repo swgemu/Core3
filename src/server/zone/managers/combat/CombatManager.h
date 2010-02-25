@@ -40,6 +40,10 @@ public:
 	 */
 	bool attemptPeace(CreatureObject* attacker);
 
+	/**
+	 *
+	 */
+
 	//all the combat math will go here
 };
 

@@ -130,20 +130,42 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 		encumbrances.add(0);
 	}
 
-	for (int i = 0; i < 9; ++i) {
-		baseHAM.add(100);
+	LuaObject hams = templateData->getObjectField("baseHAM");
+
+	for (int i = 1; i <= hams.getTableSize(); ++i) {
+		baseHAM.add(hams.getIntAt(i));
 	}
+
+	hams.pop();
+
+	LuaObject skillmods = templateData->getObjectField("skillMods");
+
+	for (int i = 1; i <= skillmods.getTableSize(); ++i) {
+		String skillMod = skillmods.getStringAt(i);
+
+		StringTokenizer tokenizer(skillMod);
+		tokenizer.setDelimeter("=");
+
+		String mod;
+		tokenizer.getStringToken(mod);
+
+		uint64 val = tokenizer.getIntToken();
+
+		skillModList.set(mod, val);
+	}
+
+	skillmods.pop();
 
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
 	}
 
 	for (int i = 0; i < 9; ++i) {
-		hamList.add(100);
+		hamList.add(baseHAM.get(i));
 	}
 
 	for (int i = 0; i < 9; ++i) {
-		maxHamList.add(100);
+		maxHamList.add(baseHAM.get(i));
 	}
 
 	frozen = 0;
@@ -184,8 +206,8 @@ void CreatureObjectImplementation::finalize() {
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == _this) {
-		/*CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
-		player->sendMessage(msg);*/
+		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
+		player->sendMessage(msg);
 	}
 
 	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(_this);
@@ -362,6 +384,10 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 	if (hamList.get(type) == value)
 		return;
 
+	StringBuffer msg;
+	msg << "setting ham type " << type << " to " << value;
+	info(msg.toString(), true);
+
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
 		msg->startUpdate(0x0D);
@@ -377,6 +403,10 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyClient) {
 	if (baseHAM.get(type) == value)
 		return;
+
+	StringBuffer msg;
+	msg << "setting baseham type " << type << " to " << value;
+	info(msg.toString(), true);
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
@@ -409,6 +439,10 @@ void CreatureObjectImplementation::setWounds(int type, int value, bool notifyCli
 void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyClient) {
 	if (maxHamList.get(type) == value)
 		return;
+
+	StringBuffer msg;
+	msg << "setting maxham type " << type << " to " << value;
+	info(msg.toString(), true);
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);

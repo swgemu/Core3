@@ -36,7 +36,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	if (parentID != 0) {
 		cellParent = server->getObject(parentID);
 
-		if (!cellParent->isCellObject()) {
+		if (cellParent != NULL && !cellParent->isCellObject()) {
 			error("trying to set a parent that is not a cell to creature");
 			cellParent = NULL;
 		}

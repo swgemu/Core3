@@ -68,6 +68,9 @@ object_creature_player_ithorian_male = SharedCreatureObjectTemplate:new {
 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
+	
+	baseHAM = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
+	skillMods = { "dizzy_defense=10", "stun_defense=10", "tame_bonus=10", "melee_defense=10", "chassis_assembly=10", "power_systems=10", "shields_assembly=10", "advanced_assembly=10" },
 
 	clientObjectCRC = 951764932
 }

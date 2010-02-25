@@ -96,6 +96,16 @@ namespace server {
   namespace managers {
    namespace professions {
 
+   static int professionHams[][9] = {
+   		{ 600, 300, 300, 800, 400, 300, 900, 400, 500 },
+   		{ 1000, 500, 400, 800, 350, 350, 500, 300, 300 },
+   		{ 500, 300, 300, 1000, 400, 400, 800, 400, 400 },
+   		{ 1000, 450, 300, 800, 450, 300, 600, 300, 300 },
+   		{ 600, 300, 300, 700, 300, 300, 1000, 500, 500 },
+   		{ 800, 300, 350, 800, 400, 400, 700, 350, 400 },
+   		{ 800, 350, 350, 800, 350, 350, 800, 350, 350 }
+   };
+
 
 	class ProfessionManager : public Mutex, public Logger {
 		//ZoneProcessServerImplementation* server;
@@ -142,6 +152,8 @@ namespace server {
 		//bool loseJediSkillBox(PlayerImplementation* player, bool updateClient = true);
 
 		//void surrenderAll(PlayerImplementation* player);
+
+		void setProfessionHAM(const String& startingProfession, PlayerCreature* player);
 
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
