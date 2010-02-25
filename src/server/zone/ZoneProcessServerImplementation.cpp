@@ -90,6 +90,8 @@ which carries forward this exception.
 #include "managers/sui/SuiManager.h"
 
 #include "managers/name/NameManager.h"
+#include "managers/professions/ProfessionManager.h"
+#include "managers/objectcontroller/ObjectController.h"
 
 ZoneProcessServerImplementation* ZoneProcessServerImplementation::instance = NULL;
 
@@ -102,6 +104,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 
 	nameManager = new NameManager(this);
 	suiManager = new SuiManager(this);
+	objectController = new ObjectController(this);
+	professionManager = new ProfessionManager(objectController);
 
 	zonephandler = NULL;
 
@@ -131,6 +135,11 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	if (suiManager != NULL) {
 		delete suiManager;
 		suiManager = NULL;
+	}
+
+	if (professionManager != NULL) {
+		delete professionManager;
+		professionManager = NULL;
 	}
 }
 

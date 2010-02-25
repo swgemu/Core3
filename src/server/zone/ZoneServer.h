@@ -304,11 +304,7 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	ManagedReference<PlayerManager* > playerManager;
 
-	ProfessionManager* professionManager;
-
 	ManagedReference<ChatManager* > chatManager;
-
-	ManagedReference<ObjectController* > objectController;
 
 	ManagedReference<RadialManager* > radialManager;
 

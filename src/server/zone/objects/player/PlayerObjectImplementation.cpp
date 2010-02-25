@@ -94,6 +94,8 @@ void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	jediState = 0;
 
+	languageID = 0;
+
 	//adminLevel = 5;
 
 	//skillList.add(new QueueCommand("admin", server));
@@ -574,4 +576,19 @@ void PlayerObjectImplementation::notifyOffline() {
 			player->sendMessage(notifyStatus);
 		}
 	}
+}
+
+void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {
+	if (languageID == language)
+		return;
+
+	languageID = language;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(_this);
+		dplay9->setLanguageID(languageID);
+		dplay9->close();
+		parent->sendMessage(dplay9);
+	}
+
 }

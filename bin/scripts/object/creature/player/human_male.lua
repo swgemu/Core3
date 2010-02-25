@@ -70,8 +70,7 @@ object_creature_player_human_male = SharedCreatureObjectTemplate:new {
 	waterModPercent = 0.75,
 	
 	baseHAM = { 100, 100, 100, 100, 100, 100, 100, 100, 100 },
-	skillMods = { "leadership=10", "general_experimentation=15" },
-	
+		
 	clientObjectCRC = 2937962913
 }
 

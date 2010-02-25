@@ -347,6 +347,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			return;
 
 		String firstName = playerCreature->getFirstName().toLowerCase();
+		PlayerObject* myGhost = playerCreature->getPlayerObject();
 
 		Locker zoneLocker(zone);
 
@@ -361,7 +362,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					PlayerObject* ghost = creature->getPlayerObject();
 
 					if (!ghost->isIgnoring(firstName)) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());
 						creature->sendMessage(cmsg);
 					}
 				}

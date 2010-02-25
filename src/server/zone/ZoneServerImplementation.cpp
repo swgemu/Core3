@@ -76,9 +76,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	objectManager = NULL;
 	playerManager = NULL;
 	chatManager = NULL;
-	objectController = NULL;
 	radialManager = NULL;
-	professionManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -403,11 +401,6 @@ void ZoneServerImplementation::startManagers() {
 
 	objectManager->loadStaticObjects();
 
-	objectController = new ObjectController(processor);
-	objectController->deploy("ObjectController");
-
-	professionManager = new ProfessionManager(objectController);
-
 	playerManager = new PlayerManager(_this, processor);
 	playerManager->deploy("PlayerManager");
 
@@ -495,10 +488,6 @@ void ZoneServerImplementation::stopManagers() {
 
 	//info("saving objects...");
 
-	delete professionManager;
-	professionManager = NULL;
-
-	objectController = NULL;
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 

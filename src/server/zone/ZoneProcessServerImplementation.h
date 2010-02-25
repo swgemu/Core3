@@ -93,6 +93,31 @@ namespace server {
 
 using namespace server::zone::managers::sui;
 
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace professions {
+    class ProfessionManager;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::professions;
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace objectcontroller {
+    class ObjectController;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::objectcontroller;
+
 namespace server {
 namespace zone {
 
@@ -118,9 +143,12 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	NameManager* nameManager;
 	SuiManager* suiManager;
 
+	ManagedReference<ObjectController*> objectController;
+	ProfessionManager* professionManager;
+
+
 
 	/*CombatManager* combatManager;
-	ProfessionManager* professionManager;
 	SkillManager* skillManager;
 	RadialManager* radialManager;
 	GroupManager* groupManager;
@@ -148,6 +176,14 @@ public:
 	// setters and getters
 	inline ZoneServer* getZoneServer() {
 		return server;
+	}
+
+	inline ProfessionManager* getProfessionManager() {
+		return professionManager;
+	}
+
+	inline ObjectController* getObjectController() {
+		return objectController;
 	}
 
 	inline PlayerManager* getPlayerManager() {
@@ -192,10 +228,6 @@ public:
 
 	inline CombatManager* getCombatManager() {
 		return combatManager;
-	}
-
-	inline ProfessionManager* getProfessionManager() {
-		return professionManager;
 	}
 
 	inline SkillManager* getSkillManager() {

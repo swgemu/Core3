@@ -52,7 +52,7 @@
 class SpatialChat: public ObjectControllerMessage {
 public:
 	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
-			uint32 mood2) :
+			uint32 mood2, uint8 langID) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);
 		insertLong(target);
@@ -62,7 +62,7 @@ public:
 		insertShort((uint16) mood2);
 		insertShort((uint16) moodid);
 		insertByte(0);
-		insertByte(0);
+		insertByte(langID);
 
 		insertLong(0);
 		insertInt(0);
@@ -72,7 +72,7 @@ public:
 	}
 
 	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& stringid, uint64 target, uint32 moodid,
-			uint32 mood2) :
+			uint32 mood2, uint8 langID) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);
 		insertLong(target);
@@ -82,7 +82,7 @@ public:
 		insertShort((uint16) mood2);
 		insertShort((uint16) moodid);
 		insertByte(0);
-		insertByte(0);
+		insertByte(langID);
 
 		insertLong(0);
 		insertInt(0);

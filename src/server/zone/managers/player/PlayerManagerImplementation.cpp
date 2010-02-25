@@ -282,15 +282,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	//info("profession:" + profession, true);
 
 	ProfessionManager* professionManager = server->getProfessionManager();
-
-	Profession* prof = professionManager->getProfession(profession);
-
-	if (prof != NULL) {
-		SkillBox* novice = prof->getNoviceBox();
-		professionManager->trainSkillBox(novice, playerCreature, false);
-	}
-
-	professionManager->setProfessionHAM(profession, playerCreature);
+	professionManager->setStartingProfession(profession, raceID, playerCreature);
 
 	playerCreature->setClient(client);
 	client->setPlayer(player);

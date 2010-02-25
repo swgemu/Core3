@@ -77,6 +77,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int jediState;
 	protected unsigned int adminLevel;
+	
+	protected byte languageID;
 		
 	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
@@ -220,6 +222,15 @@ class PlayerObject extends IntangibleObject {
 	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
 	
 	/**
+	 * Sets the specified language id
+	 * @pre { }
+	 * @post { }
+	 * @param language language id to set
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void setLanguageID(byte language, boolean notifyClient = true);
+	
+	/**
 	 * Adds a friend to the friend list
 	 * @pre { this is locked }
 	 * @post { this is locked }
@@ -360,6 +371,10 @@ class PlayerObject extends IntangibleObject {
 	
 	public int getJediState() {
 		return jediState;
+	}
+	
+	public byte getLanguageID() {
+		return languageID;
 	}
 	
 	@local

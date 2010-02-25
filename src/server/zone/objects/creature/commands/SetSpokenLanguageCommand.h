@@ -63,6 +63,18 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		String lang = arguments.toString();
+
+		int langID = Integer::valueOf(lang);
+
+		if (langID > 0 && langID < 12)
+			ghost->setLanguageID((uint8)langID, true);
+
 		return true;
 	}
 

@@ -164,6 +164,8 @@ public:
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
+	void setLanguageID(byte language, bool notifyClient = true);
+
 	void addFriend(const String& name, bool notifyClient = true);
 
 	void removeFriend(const String& name, bool notifyClient = true);
@@ -224,6 +226,8 @@ public:
 
 	int getJediState();
 
+	byte getLanguageID();
+
 	DeltaVector<String>* getFriendList();
 
 	DeltaVector<String>* getIgnoreList();
@@ -271,6 +275,8 @@ protected:
 	int jediState;
 
 	unsigned int adminLevel;
+
+	byte languageID;
 
 	DeltaVectorMap<String, int> experienceList;
 
@@ -345,6 +351,8 @@ public:
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
+	void setLanguageID(byte language, bool notifyClient = true);
+
 	void addFriend(const String& name, bool notifyClient = true);
 
 	void removeFriend(const String& name, bool notifyClient = true);
@@ -405,6 +413,8 @@ public:
 
 	int getJediState();
 
+	byte getLanguageID();
+
 	DeltaVector<String>* getFriendList();
 
 	DeltaVector<String>* getIgnoreList();
@@ -462,6 +472,8 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
 
+	void setLanguageID(byte language, bool notifyClient);
+
 	void addFriend(const String& name, bool notifyClient);
 
 	void removeFriend(const String& name, bool notifyClient);
@@ -513,6 +525,8 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
+
+	byte getLanguageID();
 
 protected:
 	String _param0_addExperience__String_int_bool_;

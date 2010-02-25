@@ -71,6 +71,11 @@ public:
 		addIntUpdate(0x0D, play->getDrinkFillingMax());
 	}
 
+	void setLanguageID(uint8 lid) {
+		startUpdate(9);
+		insertInt((uint32)lid);
+	}
+
 	/*void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));

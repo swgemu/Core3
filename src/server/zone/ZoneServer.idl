@@ -81,12 +81,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient ObjectManager objectManager;
 	
 	private PlayerManager playerManager;
-	
-	private transient ProfessionManager professionManager;
-	
+		
 	private ChatManager chatManager;
-	
-	private ObjectController objectController;
 	
 	private RadialManager radialManager;
 
@@ -271,7 +267,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	}
 	
 	public ObjectController getObjectController() {
-		return objectController;
+		return processor.getObjectController();
 	}
 	
 	public RadialManager getRadialManager() {
@@ -280,7 +276,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	@local
 	public ProfessionManager getProfessionManager() {
-		return professionManager;
+		return processor.getProfessionManager();
 	}
 
 	/*public time_t getStartTimestamp() {

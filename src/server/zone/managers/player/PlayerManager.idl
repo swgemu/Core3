@@ -72,7 +72,7 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	@local
 	public native boolean createPlayer(MessageCallback callback);
-	
+		
 	@local
 	public native boolean checkPlayerName(MessageCallback callback);
 	

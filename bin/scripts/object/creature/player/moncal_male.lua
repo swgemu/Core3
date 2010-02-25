@@ -70,7 +70,6 @@ object_creature_player_moncal_male = SharedCreatureObjectTemplate:new {
 	waterModPercent = 0.75,
 	
 	baseHam = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
-	skillMods = { "alert=15", "structure_assembly=10", "weapon_assembly=10" },
 
 	clientObjectCRC = 3116914088
 }

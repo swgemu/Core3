@@ -88,7 +88,7 @@ public:
 		insertInt(0);
 
 		// language
-		insertInt(0);
+		insertInt(play->getLanguageID());
 
 		// stomach fillings
 		insertInt(play->getFoodFilling());

@@ -104,7 +104,7 @@ void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 }
 */
 
-void ProfessionManager::setProfessionHAM(const String& startingProfession, PlayerCreature* player) {
+void ProfessionManager::setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player) {
 	int prof;
 
 	if (startingProfession == "crafting_artisan")
@@ -130,6 +130,54 @@ void ProfessionManager::setProfessionHAM(const String& startingProfession, Playe
 		player->setHAM(i, newVal, false);
 		player->setMaxHAM(i, newVal, false);
 	}
+
+	Profession* profObj = getProfession(startingProfession);
+
+	if (profObj != NULL) {
+		SkillBox* novice = profObj->getNoviceBox();
+		trainSkillBox(novice, player, false);
+	}
+
+	String race = Races::getSpecies(raceID);
+
+	//skillmods
+	SkillBox* speciesBox = getSkillBox("species_" + race);
+
+	if (speciesBox != NULL) {
+		trainSkillBox(speciesBox, player, false);
+	} else {
+		error("speciesBox null for " + race);
+	}
+
+	trainSkillBox("social_language_basic_speak", player, false);
+	trainSkillBox("social_language_basic_comprehend", player, false);
+	//lang
+	if (raceID != 0 && raceID != 10) {
+		String langBox = String("social_language_");
+
+		if (raceID == 6 || raceID == 16)
+			langBox += "moncalamari";
+		else
+			langBox += Races::getSpecies(raceID);
+
+		trainSkillBox(langBox, player, false);
+		String langDiscreteBox = langBox + String("_speak");
+		trainSkillBox(langDiscreteBox, player, false);
+		langDiscreteBox = langBox + String("_comprehend");
+		trainSkillBox(langDiscreteBox, player, false);
+	}
+
+	if (race == 2 || race == 12) {
+		String langBox = String("social_language_lekku");
+		trainSkillBox(langBox, player, false);
+		String langDiscreteBox = langBox + String("_speak");
+		trainSkillBox(langDiscreteBox, player, false);
+		langDiscreteBox = langBox + String("_comprehend");
+		trainSkillBox(langDiscreteBox, player, false);
+	}
+
+	PlayerObject* ghost = player->getPlayerObject();
+	ghost->setLanguageID(getLangFromRace(raceID), false);
 
 }
 
@@ -746,4 +794,54 @@ Skill* ProfessionManager::getSkill(const String& name) {
 		skill = objectController->getQueueCommand(name);
 
 	return skill;
+}
+
+uint8 ProfessionManager::getLangFromRace(int race) {
+
+	switch(race) {
+	case 0:
+	case 10:
+		return 0x01;
+		break;
+	case 1:
+	case 11:
+		return 0x03;
+		break;
+	case 2:
+	case 12:
+		return 0x07;
+		break;
+	case 3:
+	case 13:
+		return 0x06;
+		break;
+	case 4:
+	case 14:
+		return 0x08;
+		break;
+	case 5:
+	case 15:
+		return 0x02;
+		break;
+	case 6:
+	case 16:
+		return 0x04;
+		break;
+	case 7:
+	case 17:
+		return 0x05;
+		break;
+	case 8:
+	case 18:
+		return 0x0B;
+		break;
+	case 9:
+	case 19:
+		return 0x0A;
+		break;
+	default:
+		return 1;
+	}
+
+	return 1;
 }

@@ -140,6 +140,8 @@ namespace server {
 
 		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player);
 
+		uint8 getLangFromRace(int race);
+
 	public:
 		ProfessionManager(ObjectController* controller);
 		~ProfessionManager();
@@ -153,7 +155,7 @@ namespace server {
 
 		//void surrenderAll(PlayerImplementation* player);
 
-		void setProfessionHAM(const String& startingProfession, PlayerCreature* player);
+		void setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player);
 
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);

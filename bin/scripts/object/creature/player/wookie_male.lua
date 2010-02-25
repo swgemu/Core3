@@ -70,7 +70,6 @@ object_creature_player_wookiee_male = SharedCreatureObjectTemplate:new {
 	waterModPercent = 0.75,
 	
 	baseHAM = { 350, 350, 150, 200, 100, 100, 100, 150, 100 },
-	skillMods = { "trapping=10", "tame_bonus=10", "rescue=10", "warcry=10", "private_innate_roar=1" },
 
 	clientObjectCRC = 90470685
 }

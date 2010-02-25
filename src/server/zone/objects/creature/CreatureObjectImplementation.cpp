@@ -75,6 +75,7 @@ which carries forward this exception.
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -137,24 +138,6 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	}
 
 	hams.pop();
-
-	LuaObject skillmods = templateData->getObjectField("skillMods");
-
-	for (int i = 1; i <= skillmods.getTableSize(); ++i) {
-		String skillMod = skillmods.getStringAt(i);
-
-		StringTokenizer tokenizer(skillMod);
-		tokenizer.setDelimeter("=");
-
-		String mod;
-		tokenizer.getStringToken(mod);
-
-		uint64 val = tokenizer.getIntToken();
-
-		skillModList.set(mod, val);
-	}
-
-	skillmods.pop();
 
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
@@ -384,9 +367,9 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 	if (hamList.get(type) == value)
 		return;
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "setting ham type " << type << " to " << value;
-	info(msg.toString(), true);
+	info(msg.toString(), true);*/
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
@@ -404,9 +387,9 @@ void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyCl
 	if (baseHAM.get(type) == value)
 		return;
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "setting baseham type " << type << " to " << value;
-	info(msg.toString(), true);
+	info(msg.toString(), true);*/
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
@@ -440,9 +423,9 @@ void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyCli
 	if (maxHamList.get(type) == value)
 		return;
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "setting maxham type " << type << " to " << value;
-	info(msg.toString(), true);
+	info(msg.toString(), true);*/
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
