@@ -87,6 +87,11 @@ public:
 		addAsciiUpdate(0x04, creo->getMoodString());
 	}
 
+	void updateInstrumentID(int value) {
+		startUpdate(0x0C);
+		insertInt(value);
+	}
+
 	/*
 
 	void updateInviterId() {

@@ -55,7 +55,9 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/group/GroupObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
+				server/zone/objects/tangible/Instrument.idl \
 				server/zone/objects/tangible/Container.idl \
+				server/zone/objects/tangible/Food.idl \
 				server/zone/objects/cell/CellObject.idl \
 				server/zone/objects/building/BuildingObject.idl \
 				server/zone/objects/building/cloning/CloningBuildingObject.idl \
@@ -65,6 +67,9 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/building/tutorial/TutorialBuildingObject.idl \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl \
+				server/zone/objects/tangible/tool/SurveyTool.idl \
+				server/zone/objects/tangible/tool/CraftingTool.idl \
+				server/zone/objects/tangible/tool/ToolTangibleObject.idl \
 				server/zone/managers/player/PlayerManager.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/chat/room/ChatRoom.idl \
@@ -73,8 +78,13 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/managers/planet/PlanetManager.idl \
 				server/zone/objects/tangible/weapon/WeaponObject.idl \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.idl \
+				server/zone/objects/tangible/weapon/RangedWeaponObject.idl \
+				server/zone/objects/tangible/weapon/PistolWeaponObject.idl \
+				server/zone/objects/tangible/weapon/RifleWeaponObject.idl \
+				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl \
 				server/zone/objects/tangible/wearables/WearableObject.idl \
 				server/zone/objects/tangible/wearables/ArmorObject.idl \
+				server/zone/objects/tangible/wearables/ClothingObject.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
 				server/zone/objects/mission/MissionObject.idl \

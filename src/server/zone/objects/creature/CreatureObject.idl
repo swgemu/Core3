@@ -331,6 +331,15 @@ class CreatureObject extends TangibleObject {
 	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
 	
 	/**
+	 * Updates the instrument id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param instrumentid the new instrument id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setInstrumentID(int instrumentid, boolean notifyClient = false);
+	
+	/**
 	 * Updates the target id to the specified object id
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified target id }

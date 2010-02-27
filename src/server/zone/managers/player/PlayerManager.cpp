@@ -98,12 +98,27 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		return ((PlayerManagerImplementation*) _impl)->createAllPlayerObjects(player);
 }
 
-void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
+void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(profession);
+		method.addAsciiParameter(templateFile);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->createDefaultPlayerItems(player, profession, templateFile);
+}
+
+void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -116,7 +131,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -129,7 +144,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -142,7 +157,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -245,15 +260,18 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 11:
-		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
 		break;
 	case 12:
-		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 14:
+		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		break;
+	case 15:
 		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
 		break;
 	default:
@@ -281,6 +299,10 @@ TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectF
 
 bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
 	return ((PlayerManagerImplementation*) impl)->createAllPlayerObjects(player);
+}
+
+void PlayerManagerAdapter::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
+	((PlayerManagerImplementation*) impl)->createDefaultPlayerItems(player, profession, templateFile);
 }
 
 void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {

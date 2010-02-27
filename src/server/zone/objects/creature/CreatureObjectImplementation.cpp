@@ -268,11 +268,29 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr, float tim
 }
 
 void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClient) {
+	if (weaponID == objectID)
+		return;
+
 	weaponID = objectID;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
 		msg->updateWeapon();
+		msg->close();
+
+		broadcastMessage(msg, true);
+	}
+}
+
+void CreatureObjectImplementation::setInstrumentID(int instrumentid, bool notifyClient) {
+	if (instrumentid == instrumentID)
+		return;
+
+	instrumentID = instrumentid;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+		msg->updateInstrumentID(instrumentID);
 		msg->close();
 
 		broadcastMessage(msg, true);

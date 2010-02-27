@@ -84,8 +84,8 @@ public:
 			return false;
 		}
 
-		if (!objectToTransfer->isWeaponObject()) {
-			creature->error("objectToTransfer is not an weapon object in transferitemweapon");
+		if (!objectToTransfer->isWeaponObject() && !objectToTransfer->isInstrument()) {
+			creature->error("objectToTransfer is neither a weapon object nor an instrument in transferitemweapon");
 			return false;
 		}
 

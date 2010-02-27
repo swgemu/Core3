@@ -26,6 +26,11 @@ public:
 	String getTemplateFile(uint32 key) {
 		return templateCRCMap.get(key);
 	}
+
+	bool existsTemplate(uint32 key) {
+		return templateCRCMap.containsKey(key);
+	}
+
 };
 
 

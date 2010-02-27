@@ -11,12 +11,21 @@
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/tangible/Food.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/RangedWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/PistolWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/RifleWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/OneHandMeleeWeapon.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/building/medical/MedicalBuildingObject.h"
@@ -24,6 +33,7 @@
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
@@ -89,6 +99,12 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
 
+	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
+	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
+	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
+
+	objectFactory.registerObject<Instrument>(SceneObject::INSTRUMENT);
+	objectFactory.registerObject<Food>(SceneObject::FOOD);
 	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
@@ -107,6 +123,10 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObject::MELEEWEAPON);
+	objectFactory.registerObject<PistolWeaponObject>(SceneObject::PISTOL);
+	objectFactory.registerObject<RangedWeaponObject>(SceneObject::RANGEDWEAPON);
+	objectFactory.registerObject<OneHandMeleeWeapon>(SceneObject::ONEHANDMELEEWEAPON);
+	objectFactory.registerObject<RifleWeaponObject>(SceneObject::RIFLE);
 
 	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
@@ -120,6 +140,26 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
+
+	//clothing
+	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BANDOLIER);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BELT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BODYSUIT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::CAPE);
+	objectFactory.registerObject<ClothingObject>(SceneObject::CLOAK);
+	objectFactory.registerObject<ClothingObject>(SceneObject::FOOTWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObject::DRESS);
+	objectFactory.registerObject<ClothingObject>(SceneObject::HANDWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObject::JACKET);
+	objectFactory.registerObject<ClothingObject>(SceneObject::PANTS);
+	objectFactory.registerObject<ClothingObject>(SceneObject::ROBE);
+	objectFactory.registerObject<ClothingObject>(SceneObject::SHIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::VEST);
+	objectFactory.registerObject<ClothingObject>(SceneObject::WOOKIEGARB);
+	objectFactory.registerObject<ClothingObject>(SceneObject::MISCCLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObject::SKIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
 
 
 	//temporary
@@ -424,7 +464,9 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 	object = instantiateSceneObject(objectCRC, oid);
 
 	if (object == NULL) {
-		error("could not create object CRC = " + String::valueOf(objectCRC));
+		StringBuffer msg;
+		msg << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
+		error(msg.toString());
 		return NULL;
 	}
 

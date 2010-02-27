@@ -15,6 +15,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/template/TemplateManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 
@@ -32,10 +33,25 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	playerMap = new PlayerMap(3000);
 	nameMap = new CharacterNameMap();
 
+	loadStartingItems();
+
 	setGlobalLogging(true);
 	setLogging(true);
 
 	loadNameMap();
+}
+
+void PlayerManagerImplementation::loadStartingItems() {
+	try {
+		startingItemList = StartingItemList::instance();
+
+		startingItemList->loadItems();
+	} catch (Exception& e) {
+		error("unknown error while loadStartingItems");
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in loadStartingItems");
+	}
 }
 
 void PlayerManagerImplementation::finalize() {
@@ -222,8 +238,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
+	String profession;
+	callback->getProfession(profession);
+
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
 	createAllPlayerObjects(playerCreature);
+	createDefaultPlayerItems(playerCreature, profession, race);
 
 	playerCreature->setRaceID((byte)raceID);
 
@@ -275,9 +295,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString biography;
 	callback->getBiography(biography);
 	playerCreature->setBiography(biography);
-
-	String profession;
-	callback->getProfession(profession);
 
 	//info("profession:" + profession, true);
 
@@ -404,7 +421,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	// temp
 
-	SceneObject* vibro = server->createObject(0x652688CE, 1);
+	/*SceneObject* vibro = server->createObject(0x652688CE, 1);
 	player->addObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
 
@@ -417,7 +434,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
-	inventory->addObject(backpackObject, -1);
+	inventory->addObject(backpackObject, -1);*/
 
 	SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
 	datapad->addObject(mission, -1);
@@ -479,4 +496,115 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
+}
+
+void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
+	String prof = profession.subString(profession.indexOf('_') + 1);
+
+	String race = templateFile;
+	int ls = race.lastIndexOf('/');
+	int fu = race.indexOf('_');
+	int dot = race.lastIndexOf('.');
+
+	String species = race.subString(ls + 1, fu);
+	String sex = race.subString(fu + 1, dot);
+
+	String gen = "general";
+	String all = "all";
+
+	Vector<StartingItem>* items;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	//Make profession items for species
+
+	items = startingItemList->getProfessionItems(prof, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+	//Make profession items for that apply to all species
+	items = startingItemList->getProfessionItems(prof, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+
+	//Make general items for species
+	items = startingItemList->getProfessionItems(gen, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+
+	//Make general items that apple to all species
+	items = startingItemList->getProfessionItems(gen, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
 }

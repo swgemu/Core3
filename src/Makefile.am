@@ -64,6 +64,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
 				server/zone/objects/tangible/Container.cpp \
+				server/zone/objects/tangible/Instrument.cpp \
+				server/zone/objects/tangible/Food.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
@@ -84,11 +86,19 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
+				server/zone/objects/tangible/weapon/RangedWeaponObject.cpp \
+				server/zone/objects/tangible/weapon/PistolWeaponObject.cpp \
+				server/zone/objects/tangible/weapon/RifleWeaponObject.cpp \
+				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
+				server/zone/objects/tangible/tool/CraftingTool.cpp \
+				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
+				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
+				server/zone/objects/tangible/wearables/ClothingObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \

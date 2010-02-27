@@ -923,6 +923,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == CELLOBJECT;
 	}
 	
+	public boolean isInstrument() {
+		return gameObjectType == INSTRUMENT;
+	}
+	
 	public boolean isBazaarTerminal() {
 		return gameObjectType == BAZAAR;
 	}

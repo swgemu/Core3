@@ -158,6 +158,8 @@ public:
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
+	void setInstrumentID(int instrumentid, bool notifyClient = false);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
@@ -468,6 +470,8 @@ public:
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
+	void setInstrumentID(int instrumentid, bool notifyClient = false);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
@@ -668,6 +672,8 @@ public:
 	void setEncumbrance(int type, int value, bool notifyClient);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient);
+
+	void setInstrumentID(int instrumentid, bool notifyClient);
 
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 

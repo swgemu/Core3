@@ -77,7 +77,13 @@ using namespace server::zone;
 
 #include "server/zone/managers/player/CharacterNameMap.h"
 
+#include "server/zone/managers/player/StartingItemList.h"
+
 #include "engine/log/Logger.h"
+
+#include "engine/lua/Lua.h"
+
+#include "system/util/VectorMap.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -101,6 +107,8 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
+
+	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
 
 	void createTutorialBuilding(PlayerCreature* player);
 
@@ -140,12 +148,18 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 	CharacterNameMap* nameMap;
 
 public:
+	StartingItemList* startingItemList;
+
 	PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
 	PlayerManagerImplementation(DummyConstructorParameter* param);
 
 	void loadNameMap();
 
+private:
+	void loadStartingItems();
+
+public:
 	void finalize();
 
 	bool createPlayer(MessageCallback* callback);
@@ -157,6 +171,8 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
+
+	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
 
 	void createTutorialBuilding(PlayerCreature* player);
 
@@ -213,6 +229,8 @@ public:
 
 	bool createAllPlayerObjects(PlayerCreature* player);
 
+	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
+
 	void createTutorialBuilding(PlayerCreature* player);
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
@@ -225,6 +243,8 @@ protected:
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
 	String _param1_createHairObject__String_String_;
+	String _param1_createDefaultPlayerItems__PlayerCreature_String_String_;
+	String _param2_createDefaultPlayerItems__PlayerCreature_String_String_;
 	String _param0_existsName__String_;
 	String _param0_getObjectID__String_;
 };
