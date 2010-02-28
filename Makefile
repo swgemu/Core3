@@ -42,58 +42,7 @@
 
 IDLC = /usr/local/bin/idlc 
 				
-IDL_SOURCES = 	server/zone/Zone.idl \
-				server/zone/ZoneServer.idl \
-				server/zone/ZoneClientSession.idl \
-				server/zone/objects/scene/SceneObject.idl \
-				server/zone/objects/creature/CreatureObject.idl \
-				server/zone/objects/player/PlayerObject.idl \
-				server/zone/objects/player/PlayerCreature.idl \
-				server/zone/objects/player/sui/SuiBox.idl \
-				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
-				server/zone/objects/intangible/IntangibleObject.idl \
-				server/zone/objects/group/GroupObject.idl \
-				server/zone/objects/waypoint/WaypointObject.idl \
-				server/zone/objects/tangible/TangibleObject.idl \
-				server/zone/objects/tangible/Instrument.idl \
-				server/zone/objects/tangible/Container.idl \
-				server/zone/objects/tangible/Food.idl \
-				server/zone/objects/cell/CellObject.idl \
-				server/zone/objects/building/BuildingObject.idl \
-				server/zone/objects/building/cloning/CloningBuildingObject.idl \
-				server/zone/objects/building/medical/MedicalBuildingObject.idl \
-				server/zone/objects/building/recreation/RecreationBuildingObject.idl \
-				server/zone/objects/building/travel/TravelBuildingObject.idl \
-				server/zone/objects/building/tutorial/TutorialBuildingObject.idl \
-				server/zone/objects/tangible/terminal/bank/BankTerminal.idl \
-				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl \
-				server/zone/objects/tangible/tool/SurveyTool.idl \
-				server/zone/objects/tangible/tool/CraftingTool.idl \
-				server/zone/objects/tangible/tool/ToolTangibleObject.idl \
-				server/zone/managers/player/PlayerManager.idl \
-				server/zone/managers/structure/StructureManager.idl \
-				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl \
-				server/zone/managers/objectcontroller/ObjectController.idl \
-				server/zone/managers/planet/PlanetManager.idl \
-				server/zone/objects/tangible/weapon/WeaponObject.idl \
-				server/zone/objects/tangible/weapon/MeleeWeaponObject.idl \
-				server/zone/objects/tangible/weapon/RangedWeaponObject.idl \
-				server/zone/objects/tangible/weapon/PistolWeaponObject.idl \
-				server/zone/objects/tangible/weapon/RifleWeaponObject.idl \
-				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl \
-				server/zone/objects/tangible/wearables/WearableObject.idl \
-				server/zone/objects/tangible/wearables/ArmorObject.idl \
-				server/zone/objects/tangible/wearables/ClothingObject.idl \
-				server/zone/objects/tangible/terminal/Terminal.idl \
-				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
-				server/zone/objects/mission/MissionObject.idl \
-				server/zone/objects/tangible/terminal/mission/MissionTerminal.idl \
-				server/zone/managers/radial/RadialManager.idl \
-				server/zone/managers/creature/CreatureManager.idl
-				
-
-IDL_CLASSPATH = ../../MMOEngine/include 
+IDL_CLASSPATH = ../MMOEngine/include
 
 all:
 	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
@@ -105,7 +54,7 @@ all:
 rebuild: clean all
 
 idl:
-	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
+	$(IDLC) -cp $(IDL_CLASSPATH) -sd src anyadEclipse
 	#done
 
 config:
@@ -118,4 +67,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && $(IDLC) -rebuild -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
+	$(IDLC) -rebuild -cp $(IDL_CLASSPATH) -sd src anyadEclipse
