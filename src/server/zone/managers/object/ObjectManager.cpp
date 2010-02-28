@@ -65,6 +65,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	info("loading object templates...", true);
 	registerFunctions();
+	registerGlobals();
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
 	databaseEnvironment->loadDatabase("staticobjects", true, 0);
@@ -591,6 +592,10 @@ void ObjectManager::registerFunctions() {
 	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
 	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
 	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+}
+
+void ObjectManager::registerGlobals() {
+	luaTemplatesInstance->setGlobalShort("NEUTRAL", 0);
 }
 
 int ObjectManager::includeFile(lua_State* L) {

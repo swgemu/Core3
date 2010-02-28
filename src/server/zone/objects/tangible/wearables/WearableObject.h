@@ -50,6 +50,8 @@ namespace tangible {
 namespace wearables {
 
 class WearableObjectImplementation : public TangibleObjectImplementation {
+protected:
+	int wearableMask;
 
 public:
 	WearableObjectImplementation(LuaObject* templateData);

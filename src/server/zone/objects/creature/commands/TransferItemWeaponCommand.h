@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 
 class TransferItemWeaponCommand : public QueueCommand {
@@ -128,8 +129,20 @@ public:
 			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 				return false;
 
-			if (creature == destinationObject)
+			if (creature == destinationObject) {
 				creature->setWeaponID(objectToTransfer->getObjectID(), true);
+
+				if (creature->isWeaponObject() && creature->isPlayerCreature()) {
+					PlayerCreature* playerCreature = (PlayerCreature*) creature;
+					WeaponObject* weaponObject = (WeaponObject*) objectToTransfer.get();
+
+					if (weaponObject->isCertifiedFor(playerCreature)) {
+						weaponObject->setCertified(true);
+					} else {
+						weaponObject->setCertified(false);
+					}
+				}
+			}
 
 		} /*else if (transferType == 4) {
 

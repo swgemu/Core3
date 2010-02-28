@@ -25,6 +25,34 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -43,7 +71,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isCertifiedFor(PlayerCreature* object);
+
+	void setCertified(bool cert);
+
 	int getAttackType();
+
+	bool isCertified();
 
 protected:
 	WeaponObject(DummyConstructorParameter* param);
@@ -75,6 +111,8 @@ protected:
 
 	int weaponEffectIndex;
 
+	bool certified;
+
 	Vector<String> certificationsRequired;
 
 public:
@@ -82,11 +120,23 @@ public:
 
 	WeaponObjectImplementation(DummyConstructorParameter* param);
 
+private:
+	void loadTemplateData(LuaObject* templateData);
+
+public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isCertifiedFor(PlayerCreature* object);
+
+	void setCertified(bool cert);
+
 	int getAttackType();
+
+	bool isCertified();
 
 	WeaponObject* _this;
 
@@ -131,7 +181,13 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	bool isCertifiedFor(PlayerCreature* object);
+
+	void setCertified(bool cert);
+
 	int getAttackType();
+
+	bool isCertified();
 
 };
 

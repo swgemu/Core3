@@ -93,6 +93,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
@@ -541,6 +555,8 @@ public:
 	void sendToOwner(bool doClose = true);
 
 	void sendAttributeListTo(PlayerCreature* object);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
@@ -1176,6 +1192,8 @@ public:
 	virtual void sendToOwner(bool doClose = true);
 
 	virtual void sendAttributeListTo(PlayerCreature* object);
+
+	virtual void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 

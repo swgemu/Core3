@@ -69,6 +69,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.packets.scene.AttributeListMessage;
 
 include server.zone.objects.scene.variables.StringId;
 
@@ -580,6 +581,18 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param object SceneObject that will receive the message
 	 */
 	public native abstract void sendAttributeListTo(PlayerCreature object);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public abstract void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
+		
+	}
 
 	/**
 	 * Fills the radial options, needs to be overriden

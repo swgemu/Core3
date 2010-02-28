@@ -74,4 +74,4 @@ object_creature_player_wookiee_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 90470685
 }
 
-ObjectTemplates:addTemplate(object_creature_player_wookiee_male, "object/creature/player/wookie_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_wookiee_male, "object/creature/player/wookiee_male.iff")

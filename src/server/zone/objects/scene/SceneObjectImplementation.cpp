@@ -265,7 +265,7 @@ void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
-	//addAttributes(alm);
+	fillAttributeList(alm, object);
 
 	object->sendMessage(alm);
 }

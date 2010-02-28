@@ -99,11 +99,14 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("WearableObject");
 
+	addSerializableVariable("wearableMask", &wearableMask);
 }
 
 WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl(55):  Logger.setLoggingName("WearableObject");
+	// server/zone/objects/tangible/wearables/WearableObject.idl(95):  		wearableMask = templateData.getIntField("wearableMask");
+	wearableMask = templateData->getIntField("wearableMask");
+	// server/zone/objects/tangible/wearables/WearableObject.idl(97):  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }
 

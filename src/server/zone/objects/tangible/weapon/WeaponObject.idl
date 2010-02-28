@@ -47,11 +47,16 @@ package server.zone.objects.tangible.weapon;
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.packets.scene.AttributeListMessage;
+
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;
 	protected string weaponEffect;
 	protected int weaponEffectIndex;
+	
+	protected boolean certified;
 	
 	@dereferenced
 	protected Vector<string> certificationsRequired;
@@ -59,18 +64,44 @@ class WeaponObject extends TangibleObject {
 	public WeaponObject(LuaObject templateData) {
 		super(templateData);
 		
-		attackType = templateData.getIntField("attackType");
-		weaponEffect =  templateData.getStringField("weaponEffect");
-		weaponEffectIndex = templateData.getIntField("weaponEffectIndex");
+		loadTemplateData(templateData);
 		
 		Logger.setLoggingName("WeaponObject");
 	}
+	
+	private native void loadTemplateData(LuaObject templateData);
 	
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Returns true if the player has the required certifications for this weapon
+	 * @pre { }
+	 * @post { }
+	 * @param object player object to check against
+	 */
+	public native boolean isCertifiedFor(PlayerCreature object);
+	
+	public void setCertified(boolean cert) {
+		certified = cert;
+	}
+	
 	public int getAttackType() {
 		return attackType;
+	}
+	
+	public boolean isCertified() {
+		return certified;
 	}
 }

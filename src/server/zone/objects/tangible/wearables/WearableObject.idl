@@ -49,8 +49,50 @@ import engine.lua.LuaObject;
 
 
 class WearableObject extends TangibleObject {
+	protected int wearableMask;
+	
+	//item mask
+	/*public static final int MALE = 0x01;
+	public static final int FEMALE = 0x02;
+
+	public static final int HUMAN = 0x004;
+	public static final int TRANDOSHAN = 0x008;
+	public static final int TWILEK = 0x010;
+	public static final int BOTHAN = 0x020;
+	public static final int ZABRAK = 0x040;
+	public static final int RODIAN = 0x080;
+	public static final int MONCALAMARI = 0x100;
+	public static final int WOOKIEE = 0x200;
+	public static final int SULLUSTAN = 0x400;
+	public static final int ITHORIAN = 0x800;
+
+	public static final int NEUTRAL = 0x1000;
+	public static final int IMPERIAL = 0x2000;
+	public static final int REBEL = 0x4000;
+	public static final int COVERT = 0x8000;
+	
+	public static final int ALL = 0xFFFF;
+	public static final int ALLSEXES = MALE | FEMALE;
+	public static final int ALLFACTIONS = NEUTRAL | IMPERIAL | REBEL | COVERT;
+	public static final int HUMANOIDS = ALL & ~(WOOKIEE | ITHORIAN);
+	public static final int HUMANOID_FOOTWEAR = HUMANOIDS & ~TRANDOSHAN;
+	public static final int HUMANOID_HANDWEAR = HUMANOIDS & ~TRANDOSHAN;
+	public static final int HUMANOID_HEADWEAR = HUMANOIDS & ~TWILEK;
+	public static final int HUMANOID_MALES = HUMANOIDS & ~FEMALE;
+	public static final int HUMANOID_FEMALES = HUMANOIDS & ~MALE;
+	public static final int HUMANOID_IMPERIALS = HUMANOIDS & ~(REBEL | NEUTRAL | COVERT);
+	public static final int HUMANOID_REBELS = HUMANOIDS & ~(IMPERIAL | NEUTRAL | COVERT);
+	public static final int NO_RODIANS = ALL & ~RODIAN;
+	public static final int NO_MONCALAMARI = ALL & ~MONCALAMARI;
+	public static final int NO_WOOKIES = ALL & ~WOOKIEE;
+	public static final int WOOKIEES = WOOKIEE | ALLSEXES | ALLFACTIONS;
+	public static final int ITHORIANS = ITHORIAN | ALLSEXES | ALLFACTIONS;
+	public static final int TWILEKS = TWILEK | ALLSEXES | ALLFACTIONS;*/
+	
 	public WearableObject(LuaObject templateData) {
 		super(templateData);
+		
+		wearableMask = templateData.getIntField("wearableMask");
 		
 		Logger.setLoggingName("WearableObject");
 	}

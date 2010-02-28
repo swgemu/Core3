@@ -192,6 +192,8 @@ public:
 
 	bool hasSkill(Skill* skill);
 
+	bool hasSkill(const String& skillName);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -379,6 +381,8 @@ public:
 
 	bool hasSkill(Skill* skill);
 
+	bool hasSkill(const String& skillName);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -498,6 +502,8 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
+	bool hasSkill(const String& skillName);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -540,6 +546,7 @@ protected:
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
+	String _param0_hasSkill__String_;
 	String _param0_setTitle__String_;
 };
 

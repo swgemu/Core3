@@ -432,3 +432,249 @@ createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
 createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
 createItemsFromList("general", "all", "both", general_general_items)
 
+
+paneledBoots = {
+	template = "object/tangible/wearables/boots/boots_s21.iff",
+	equipped = 1
+}
+
+paddedJacket = {
+	template = "object/tangible/wearables/jacket/jacket_s05.iff",
+	equipped = 1
+}
+
+pocketedWorkPants = {
+	template = "object/tangible/wearables/pants/pants_s04.iff",
+	equipped = 1
+}
+
+casualShoes = {
+	template = "object/tangible/wearables/shoes/shoes_s02.iff",
+	equipped = 1
+}
+
+sportsWrap = {
+	template = "object/tangible/wearables/shirt/shirt_s24.iff",
+	equipped = 1
+}
+
+pantaloons = {
+	template = "object/tangible/wearables/pants/pants_s24.iff",
+	equipped = 1
+}
+
+mangyVest = {
+	template = "object/tangible/wearables/vest/vest_s10.iff", 
+	equipped = 1
+}
+
+ithCargoJacket = {
+	template = "object/tangible/wearables/ithorian/ith_jacket_s02.iff",
+	equipped = 1
+}
+
+ithCamos = {
+	template = "object/tangible/wearables/ithorian/ith_pants_s05.iff",
+	equipped = 1
+}
+
+ithTightFitShirt = {
+	template = "object/tangible/wearables/ithorian/ith_shirt_s12.iff",
+	equipped = 1
+}
+
+-------------------Male Humanoid Items------------------------------------
+
+marksman_humanoid_male_items = {paneledBoots, paddedJacket, pocketedWorkPants}
+
+--------------------------Female Humanoid Items---------------------------
+
+
+marksman_humanoid_female_items = {casualShoes, sportsWrap, pantaloons, mangyVest}
+
+--------------------------Male Trandoshan Items---------------------------
+
+marksman_trandoshan_male_items = {paddedJacket, pocketedWorkPants}
+
+--------------------------Female Trandoshan Items------------------------
+
+marksman_trandoshan_female_items = {sportsWrap, pantaloons, mangyVest}
+
+--------------------------Male Ithorian Items---------------------------
+
+marksman_ithorian_male_items = {ithCargoJacket, ithCamos, ithTightFitShirt}
+
+--------------------------Female Ithorian Items---------------------------
+
+marksman_ithorian_female_items = {ithCamos, ithTightFitShirt}
+
+marksman_wookie_male_items = { }
+marksman_wookie_female_items = { }
+
+----------------------Marksman Items (All Species)------------------------
+
+general_marksman_items = {cdefPistol, cdefCarbine, cdefRifle}
+
+createItemsFromList("marksman", "humanoid", "male", marksman_humanoid_male_items)
+createItemsFromList("marksman", "humanoid", "female", marksman_humanoid_female_items)
+createItemsFromList("marksman", "trandoshan", "male", marksman_trandoshan_male_items)
+createItemsFromList("marksman", "trandoshan", "female", marksman_trandoshan_female_items)
+createItemsFromList("marksman", "ithorian", "male", marksman_ithorian_male_items)
+createItemsFromList("marksman", "ithorian", "female", marksman_ithorian_female_items)
+createItemsFromList("marksman", "wookiee", "male", marksman_wookie_male_items)
+createItemsFromList("marksman", "wookiee", "female", marksman_wookie_female_items)
+createItemsFromList("marksman", "all", "both", general_marksman_items)
+
+sleevelessJacket = {
+	template = "object/tangible/wearables/jacket/jacket_s24.iff",
+	equipped = 1
+}
+
+workSlacks = {
+	template = "object/tangible/wearables/pants/pants_s12.iff",
+	equipped = 1
+}
+
+reinforcedWorkShirt = {
+	template = "object/tangible/wearables/shirt/shirt_s10.iff",
+	equipped = 1
+}
+
+hideBoots = {
+	template = "object/tangible/wearables/boots/boots_s04.iff",
+	equipped = 1
+}
+
+reinforcedJumpSuit = {
+	template = "object/tangible/wearables/bodysuit/bodysuit_s13.iff",
+	equipped = 1
+}
+
+ithMedTeamJacket = {
+	template = "object/tangible/wearables/ithorian/ith_jacket_s05.iff",
+	equipped = 1
+}
+
+ithCargoPants = {
+	template = "object/tangible/wearables/ithorian/ith_pants_s12.iff",
+	equipped = 1
+}
+
+ithLongSweater = {
+	tempalte = "object/tangible/wearables/ithorian/ith_shirt_s01.iff",
+	equipped = 1
+}
+---------------------Male Humanoid Items------------------------------------
+
+medic_humanoid_male_items = {casualShoes, sleevelessJacket, workSlacks, reinforcedWorkShirt}
+
+--------------------------Female Humanoid Items---------------------------
+
+medic_humanoid_female_items = {hideBoots, reinforcedJumpSuit}
+
+--------------------------Male Trandoshan Items---------------------------
+
+medic_trandoshan_male_items = {sleevelessJacket, workSlacks, reinforcedWorkShirt}
+
+--------------------------Female Trandoshan Items------------------------
+
+medic_trandoshan_female_items = {reinforcedJumpSuit}
+
+--------------------------Male Ithorian Items---------------------------
+
+medic_ithorian_male_items = {ithMedTeamJacket, ithCargoPants, ithStripedShirt}
+
+--------------------------Female Ithorian Items---------------------------
+
+medic_ithorian_female_items = {ithStripedPants, ithLongSweater}
+
+medic_wookie_male_items = { }
+medic_wookie_female_items = { }
+
+-------------------Medic Items (All Species)--------------------
+
+general_medic_items = {cdefPistol, generic_tool, survivalKnife}
+
+createItemsFromList("medic", "humanoid", "male", medic_humanoid_male_items)
+createItemsFromList("medic", "humanoid", "female", medic_humanoid_female_items)
+createItemsFromList("medic", "trandoshan", "male", medic_trandoshan_male_items)
+createItemsFromList("medic", "trandoshan", "female", medic_trandoshan_female_items)
+createItemsFromList("medic", "ithorian", "male", medic_ithorian_male_items)
+createItemsFromList("medic", "ithorian", "female", medic_ithorian_female_items)
+createItemsFromList("medic", "wookiee", "male", medic_wookie_male_items)
+createItemsFromList("medic", "wookiee", "female", medic_wookie_female_items)
+createItemsFromList("medic", "all", "both", general_medic_items)
+
+cargoVest = {
+	template = "object/tangible/wearables/vest/vest_s09.iff",
+	equipped = 1
+}
+
+paramilitaryCamos = {
+	template = "object/tangible/wearables/pants/pants_s21.iff",
+	equipped = 1
+}
+
+longSleeveShirt = {
+	template = "object/tangible/wearables/shirt/shirt_s16.iff",
+	equipped = 1
+}
+
+linedWorkShirt = {
+	template = "object/tangible/wearables/shirt/shirt_s26.iff",
+	equipped = 1
+}
+
+ithHalfSweater = {
+	template = "object/tangible/wearables/ithorian/ith_shirt_s04.iff",
+	equipped = 1
+}
+
+ithStrangePants = {
+	template = "object/tangible/wearables/ithorian/ith_pants_s21.iff",
+	equipped = 1
+}
+
+---------------------Male Humanoid Items------------------------------------
+
+scout_humanoid_male_items = {casualShoes, cargoVest, paramilitaryCamos, longSleeveShirt}
+
+--------------------------Female Humanoid Items---------------------------
+
+
+scout_humanoid_female_items = {casualShoes, linedWorkShirt, paramilitaryCamos}
+
+--------------------------Male Trandoshan Items---------------------------
+
+scout_trandoshan_male_items = {cargoVest, paramilitaryCamos, longSleeveShirt}
+
+--------------------------Female Trandoshan Items------------------------
+
+scout_trandoshan_female_items = {linedWorkShirt, paramilitaryCamos}
+
+--------------------------Male Ithorian Items---------------------------
+
+scout_ithorian_male_items = {ithHalfSweater, ithStrangePants}
+
+--------------------------Female Ithorian Items---------------------------
+
+scout_ithorian_female_items = {ithHalfSweater, ithStrangePants}
+
+scout_wookie_male_items = { }
+scout_wookie_female_items = { }
+
+-------------------Scout Items (All Species)--------------------
+
+general_scout_items = {cdefPistol}
+
+createItemsFromList("scout", "humanoid", "male", scout_humanoid_male_items)
+createItemsFromList("scout", "humanoid", "female", scout_humanoid_female_items)
+createItemsFromList("scout", "trandoshan", "male", scout_trandoshan_male_items)
+createItemsFromList("scout", "trandoshan", "female", scout_trandoshan_female_items)
+createItemsFromList("scout", "ithorian", "male", scout_ithorian_male_items)
+createItemsFromList("scout", "ithorian", "female", scout_ithorian_female_items)
+createItemsFromList("scout", "wookiee", "male", scout_wookie_male_items)
+createItemsFromList("scout", "wookiee", "female", scout_wookie_female_items)
+createItemsFromList("scout", "all", "both", general_scout_items)
+
+

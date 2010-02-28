@@ -11,6 +11,34 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -47,6 +75,8 @@ public:
 	void removeDefenders();
 
 	void setCombatState();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void clearCombatState(bool clearDefenders = true);
 
@@ -140,6 +170,8 @@ public:
 	virtual void removeDefenders();
 
 	virtual void setCombatState();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void clearCombatState(bool clearDefenders = true);
 

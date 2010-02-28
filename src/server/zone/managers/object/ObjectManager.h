@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "ObjectMap.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/util/ObjectFactory.h"
 
@@ -120,6 +120,7 @@ namespace zone {
 
 		// LUA
 		void registerFunctions();
+		void registerGlobals();
 		static int includeFile(lua_State* L);
 		static int crcString(lua_State* L);
 		static int addTemplateCRC(lua_State* L);

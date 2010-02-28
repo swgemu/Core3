@@ -41,11 +41,11 @@
 # which carries forward this exception.
 
 IDLC = /usr/local/bin/idlc 
+
 				
 IDL_CLASSPATH = ../MMOEngine/include
 
-all:
-	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
+all: idl
 	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin

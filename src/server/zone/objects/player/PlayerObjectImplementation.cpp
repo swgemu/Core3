@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/ZoneClientSession.h"
@@ -313,6 +314,17 @@ void PlayerObjectImplementation::addSkills(Vector<Certification*>& skills, bool 
 		for (int i = 0; i < skills.size(); ++i)
 			skillList.add(skills.get(i));
 	}
+}
+
+bool PlayerObjectImplementation::hasSkill(const String& skillName) {
+	ProfessionManager* professionManager = server->getProfessionManager();
+
+	Skill* skill = professionManager->getSkill(skillName);
+
+	if (skill == NULL)
+		return false;
+
+	return hasSkill(skill);
 }
 
 void PlayerObjectImplementation::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {

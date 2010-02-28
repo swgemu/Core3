@@ -1,0 +1,4 @@
+object_tangible_wearables_ithorian_ith_pants_s21 = object_tangible_wearables_ithorian_shared_ith_pants_s21:new {
+}
+
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_ith_pants_s21, "object/tangible/wearables/ithorian/ith_pants_s21.iff")
