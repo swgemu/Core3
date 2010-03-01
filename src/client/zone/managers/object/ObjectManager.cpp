@@ -159,7 +159,7 @@ SceneObject* ObjectManager::getObject(uint64 objectID) {
 SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 	Locker _locker(this);
 
-	HashTableIterator<uint64, SceneObject* > iterator(objectMap);
+	HashTableIterator<uint64, Reference<SceneObject*> > iterator(objectMap);
 
 	while (iterator.hasNext()) {
 		SceneObject* object = iterator.next();
@@ -198,7 +198,7 @@ void ObjectManager::destroyObject(uint64 objectID) {
 			destroyObject(obj->getObjectID());
 		}
 
-		object->finalize();
+		//object->finalize();
 	}
 }
 
@@ -212,12 +212,35 @@ uint32 ObjectManager::getObjectMapSize() {
 void ObjectManager::registerFunctions() {
 	//lua generic
 	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
+	lua_register(luaInstance->getLuaState(), "crcString", crcString);
+	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
 	Lua::runFile("scripts/object/" + filename, L);
+
+	return 0;
+}
+
+int ObjectManager::crcString(lua_State* L) {
+	String ascii = Lua::getStringParameter(L);
+
+	uint32 crc = ascii.hashCode();
+
+	lua_pushnumber(L, crc);
+
+	return 1;
+}
+
+int ObjectManager::addTemplateCRC(lua_State* L) {
+	/*String ascii =  lua_tostring(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	uint32 crc = (uint32) ascii.hashCode();
+
+	TemplateManager::instance()->addTemplate(crc, ascii);*/
 
 	return 0;
 }

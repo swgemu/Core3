@@ -499,7 +499,13 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 }
 
 void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
-	String prof = profession.subString(profession.indexOf('_') + 1);
+	String prof;
+
+	try {
+		prof = profession.subString(profession.indexOf('_') + 1);
+	} catch (...) {
+		prof = "artisan";
+	}
 
 	String race = templateFile;
 	int ls = race.lastIndexOf('/');

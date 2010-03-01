@@ -25,6 +25,7 @@ public:
 	bool doCommand(uint32 crc, const UnicodeString& arguments);
 
 	void doSayCommand(const UnicodeString& msg);
+	void doEnqueueCommand(uint32 command, const UnicodeString& arguments);
 
 	inline void setZone(Zone* zon) {
 		zone = zon;

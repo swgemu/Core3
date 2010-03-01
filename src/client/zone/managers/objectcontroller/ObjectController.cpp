@@ -48,10 +48,27 @@ bool ObjectController::doCommand(uint32 crc, const UnicodeString& arguments) {
 		break;
 
 	default:
-		return false;
+		doEnqueueCommand(crc, arguments);
+
+		return true;
 	}
 
 	return true;
+}
+
+void ObjectController::doEnqueueCommand(uint32 command, const UnicodeString& arguments) {
+	PlayerCreature* object = zone->getSelfPlayer();
+
+	Locker _locker(object);
+
+	BaseMessage* message = new ObjectControllerMessage(object->getObjectID(), 0x23, 0x116);
+
+	message->insertInt(object->getNewActionCount());
+	message->insertInt(command);
+	message->insertLong(0);
+	message->insertUnicode(arguments);
+
+	object->getClient()->sendMessage(message);
 }
 
 void ObjectController::doSayCommand(const UnicodeString& msg) {
