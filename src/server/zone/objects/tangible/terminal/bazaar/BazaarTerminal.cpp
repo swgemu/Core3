@@ -150,29 +150,29 @@ void BazaarTerminalImplementation::_serializationHelperMethod() {
 
 BazaarTerminalImplementation::BazaarTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(59):  Logger.setLoggingName("BazaarTerminal");
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(59):  		Logger.setLoggingName("BazaarTerminal");
 	Logger::setLoggingName("BazaarTerminal");
 }
 
 void BazaarTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(63):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(63):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(65):  Logger.setLoggingName("BazaarTerminal");
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(65):  		Logger.setLoggingName("BazaarTerminal");
 	Logger::setLoggingName("BazaarTerminal");
 }
 
 int BazaarTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(75):  return 0;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(75):  		return 0;
 	return 0;
 }
 
 void BazaarTerminalImplementation::setBazaarRegion(const String& region) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(79):  bazaarRegion = region;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(79):  		bazaarRegion = region;
 	bazaarRegion = region;
 }
 
 String BazaarTerminalImplementation::getBazaarRegion() {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(83):  return bazaarRegion;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(83):  		return bazaarRegion;
 	return bazaarRegion;
 }
 

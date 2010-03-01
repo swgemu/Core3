@@ -105,14 +105,14 @@ void ToolTangibleObjectImplementation::_serializationHelperMethod() {
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(55):  Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(55):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 
 void ToolTangibleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(59):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(59):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(61):  Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(61):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 

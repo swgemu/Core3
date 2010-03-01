@@ -140,13 +140,13 @@ void CellObjectImplementation::_serializationHelperMethod() {
 
 CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/cell/CellObject.idl(57):  Logger.setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl(57):  		Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");
-	// server/zone/objects/cell/CellObject.idl(59):  cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl(59):  		cellNumber = 0;
 	cellNumber = 0;
-	// server/zone/objects/cell/CellObject.idl(61):  super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/cell/CellObject.idl(61):  		super.containerVolumeLimit = 0xFFFFFFFF;
 	SceneObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/cell/CellObject.idl(63):  super.containerType = 2;
+	// server/zone/objects/cell/CellObject.idl(63):  		super.containerType = 2;
 	SceneObjectImplementation::containerType = 2;
 }
 
@@ -154,12 +154,12 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(74):  return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(74):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(78):  cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(78):  		cellNumber = number;
 	cellNumber = number;
 }
 

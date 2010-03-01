@@ -172,15 +172,15 @@ void ObjectControllerImplementation::_serializationHelperMethod() {
 
 ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServerImplementation* srv) {
 	_initializeImplementation();
-	// server/zone/managers/objectcontroller/ObjectController.idl(65):  server = srv;
+	// server/zone/managers/objectcontroller/ObjectController.idl(65):  		server = srv;
 	server = srv;
-	// server/zone/managers/objectcontroller/ObjectController.idl(67):  Logger.setLoggingName("ObjectController");
+	// server/zone/managers/objectcontroller/ObjectController.idl(67):  		Logger.setLoggingName("ObjectController");
 	Logger::setLoggingName("ObjectController");
-	// server/zone/managers/objectcontroller/ObjectController.idl(69):  Logger.setLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl(69):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/objectcontroller/ObjectController.idl(70):  Logger.setGlobalLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl(70):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/objectcontroller/ObjectController.idl(72):  loadCommands();
+	// server/zone/managers/objectcontroller/ObjectController.idl(72):  		loadCommands();
 	loadCommands();
 }
 

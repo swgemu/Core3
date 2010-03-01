@@ -103,7 +103,7 @@ void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(LuaObject* templateData) : WeaponObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(55):  Logger.setLoggingName("MeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(55):  		Logger.setLoggingName("MeleeWeaponObject");
 	Logger::setLoggingName("MeleeWeaponObject");
 }
 

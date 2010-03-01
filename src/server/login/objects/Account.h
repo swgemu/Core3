@@ -86,8 +86,8 @@ public:
 	Account(Packet* pack) {
 		AccountVersionMessage::parse(pack, username, password, version);
 
-		MySqlDatabase::escapeString(username);
-		MySqlDatabase::escapeString(password);
+		Database::escapeString(username);
+		Database::escapeString(password);
 	}
 
 	//Checks for publish 14 clients. To disable: have the function return true all the time.
@@ -222,7 +222,7 @@ public:
 				}
 
 				String forSalt = forumSalt;
-				MySqlDatabase::escapeString(forSalt);
+				Database::escapeString(forSalt);
 
 				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forSalt + "\'))";
 				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);

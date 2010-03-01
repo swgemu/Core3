@@ -191,39 +191,39 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 
 WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/waypoint/WaypointObject.idl(30):  Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl(30):  		Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
-	// server/zone/objects/waypoint/WaypointObject.idl(32):  loadTemplateData(templateData);
+	// server/zone/objects/waypoint/WaypointObject.idl(32):  		loadTemplateData(templateData);
 	loadTemplateData(templateData);
 }
 
 void WaypointObjectImplementation::setCellID(unsigned int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(44):  cellID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(42):  		cellID = id;
 	cellID = id;
 }
 
 void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
-	// server/zone/objects/waypoint/WaypointObject.idl(48):  planetCRC = crc;
+	// server/zone/objects/waypoint/WaypointObject.idl(46):  		planetCRC = crc;
 	planetCRC = crc;
 }
 
 void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl(52):  customName = name;
+	// server/zone/objects/waypoint/WaypointObject.idl(50):  		customName = name;
 	customName = name;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(56):  color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl(54):  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(60):  active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl(58):  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(64):  unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(62):  		unknown = id;
 	unknown = id;
 }
 

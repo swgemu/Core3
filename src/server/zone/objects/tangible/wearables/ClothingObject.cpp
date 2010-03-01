@@ -103,14 +103,14 @@ void ClothingObjectImplementation::_serializationHelperMethod() {
 
 ClothingObjectImplementation::ClothingObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(55):  Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(55):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  		super.initializeTransientMembers();
 	WearableObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(61):  Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(61):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 

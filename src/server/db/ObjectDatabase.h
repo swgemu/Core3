@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+using namespace engine::db::berkley;
+
 class ObjectDatabaseEnvironment;
 
 class ObjectDatabase : public Logger {

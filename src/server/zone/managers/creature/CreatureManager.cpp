@@ -150,29 +150,29 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(29):  server = planet.getZoneServer();
+	// server/zone/managers/creature/CreatureManager.idl(27):  		server = planet.getZoneServer();
 	server = planet->getZoneServer();
-	// server/zone/managers/creature/CreatureManager.idl(30):  processor = impl;
+	// server/zone/managers/creature/CreatureManager.idl(28):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/creature/CreatureManager.idl(31):  zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(29):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/creature/CreatureManager.idl(33):  Logger.setLoggingName("CreatureManager");
+	// server/zone/managers/creature/CreatureManager.idl(31):  		Logger.setLoggingName("CreatureManager");
 	Logger::setLoggingName("CreatureManager");
-	// server/zone/managers/creature/CreatureManager.idl(34):  Logger.setGlobalLogging(true);
+	// server/zone/managers/creature/CreatureManager.idl(32):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/creature/CreatureManager.idl(35):  Logger.setLogging(false);
+	// server/zone/managers/creature/CreatureManager.idl(33):  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
 void CreatureManagerImplementation::addCreatureToMap(CreatureObject* creature) {
 	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(53):  creatureMap.put(creature.getObjectID(), creature);
+	// server/zone/managers/creature/CreatureManager.idl(51):  		creatureMap.put(creature.getObjectID(), creature);
 	(&creatureMap)->put(creature->getObjectID(), creature);
 }
 
 void CreatureManagerImplementation::removeCreatureFromMap(unsigned long long oid) {
 	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(57):  creatureMap.remove(oid);
+	// server/zone/managers/creature/CreatureManager.idl(55):  		creatureMap.remove(oid);
 	(&creatureMap)->remove(oid);
 }
 

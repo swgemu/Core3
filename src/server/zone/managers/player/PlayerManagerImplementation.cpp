@@ -121,7 +121,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 
 	try {
 		String fname = name.toLowerCase();
-		MySqlDatabase::escapeString(fname);
+		Database::escapeString(fname);
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
 					   + fname + "\"";
 

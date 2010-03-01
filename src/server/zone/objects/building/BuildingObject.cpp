@@ -315,68 +315,68 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(68):  Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(68):  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(70):  QuadTree.setSize(-1024, -1024, 1024, 1024);
-	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(72):  super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl(70):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
+	QuadTree::setSize(1024, 1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(72):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(74):  super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(74):  		super.containerVolumeLimit = 0xFFFFFFFF;
 	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(76):  super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(76):  		super.containerType = 2;
 	TangibleObjectImplementation::containerType = 2;
-	// server/zone/objects/building/BuildingObject.idl(78):  totalCellNumber = templateData.getIntField("totalCellNumber");
+	// server/zone/objects/building/BuildingObject.idl(78):  		totalCellNumber = templateData.getIntField("totalCellNumber");
 	totalCellNumber = templateData->getIntField("totalCellNumber");
 }
 
 void BuildingObjectImplementation::createCellObjects() {
 	// server/zone/objects/building/BuildingObject.idl(82):  
-	for (	// server/zone/objects/building/BuildingObject.idl(82):  for (int i = 0;
+	for (	// server/zone/objects/building/BuildingObject.idl(82):  		for (int i = 0;
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(83):  SceneObject newCell = getZoneServer().createObject(206832110, 2);
+	// server/zone/objects/building/BuildingObject.idl(83):  			SceneObject newCell = getZoneServer().createObject(206832110, 2);
 	SceneObject* newCell = getZoneServer()->createObject(206832110, 2);
-	// server/zone/objects/building/BuildingObject.idl(85):  addCell((CellObject)newCell);
+	// server/zone/objects/building/BuildingObject.idl(85):  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }
 }
 
 void BuildingObjectImplementation::removeFromZone() {
 	// server/zone/objects/building/BuildingObject.idl(92):  
-	for (	// server/zone/objects/building/BuildingObject.idl(92):  for (int i = 0;
+	for (	// server/zone/objects/building/BuildingObject.idl(92):  		for (int i = 0;
 	int i = 0;
 	i < (&cells)->size();
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(93):  CellObject cell = cells.get(i);
+	// server/zone/objects/building/BuildingObject.idl(93):  			CellObject cell = cells.get(i);
 	CellObject* cell = (&cells)->get(i);
 	// server/zone/objects/building/BuildingObject.idl(95):  
-	for (	// server/zone/objects/building/BuildingObject.idl(95):  for (int j = 0;
+	for (	// server/zone/objects/building/BuildingObject.idl(95):  			for (int j = 0;
 	int j = 0;
 	j < cell->getContainerObjectsSize();
  ++j) {
-	// server/zone/objects/building/BuildingObject.idl(96):  SceneObject obj = cell.getContainerObject(j);
+	// server/zone/objects/building/BuildingObject.idl(96):  				SceneObject obj = cell.getContainerObject(j);
 	SceneObject* obj = cell->getContainerObject(j);
-	// server/zone/objects/building/BuildingObject.idl(97):  obj.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(97):  				obj.removeFromZone();
 	obj->removeFromZone();
 }
 }
-	// server/zone/objects/building/BuildingObject.idl(101):  super.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(101):  		super.removeFromZone();
 	TangibleObjectImplementation::removeFromZone();
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(131):  return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(131):  		return super.staticObject;
 	return TangibleObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(135):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(135):  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(139):  super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(139):  		super.staticObject = value;
 	TangibleObjectImplementation::staticObject = value;
 }
 

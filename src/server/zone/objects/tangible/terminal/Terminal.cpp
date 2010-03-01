@@ -103,7 +103,7 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(55):  Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(55):  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
 }
 

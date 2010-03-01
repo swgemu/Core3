@@ -103,14 +103,14 @@ void OneHandMeleeWeaponImplementation::_serializationHelperMethod() {
 
 OneHandMeleeWeaponImplementation::OneHandMeleeWeaponImplementation(LuaObject* templateData) : MeleeWeaponObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(55):  Logger.setLoggingName("OneHandMeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(55):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	Logger::setLoggingName("OneHandMeleeWeaponObject");
 }
 
 void OneHandMeleeWeaponImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(59):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(59):  		super.initializeTransientMembers();
 	MeleeWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(61):  Logger.setLoggingName("OneHandMeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(61):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	Logger::setLoggingName("OneHandMeleeWeaponObject");
 }
 

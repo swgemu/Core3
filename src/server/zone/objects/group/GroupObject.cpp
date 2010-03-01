@@ -292,46 +292,46 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 
 GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/group/GroupObject.idl(67):  groupLevel = 0;
+	// server/zone/objects/group/GroupObject.idl(66):  		groupLevel = 0;
 	groupLevel = 0;
-	// server/zone/objects/group/GroupObject.idl(69):  Logger.setLoggingName("GroupObject");
+	// server/zone/objects/group/GroupObject.idl(68):  		Logger.setLoggingName("GroupObject");
 	Logger::setLoggingName("GroupObject");
-	// server/zone/objects/group/GroupObject.idl(71):  chatRoom = null;
+	// server/zone/objects/group/GroupObject.idl(70):  		chatRoom = null;
 	chatRoom = NULL;
 }
 
 int GroupObjectImplementation::getGroupLevel() {
-	// server/zone/objects/group/GroupObject.idl(100):  return groupLevel;
+	// server/zone/objects/group/GroupObject.idl(99):  		return groupLevel;
 	return groupLevel;
 }
 
 ChatRoom* GroupObjectImplementation::getGroupChannel() {
-	// server/zone/objects/group/GroupObject.idl(104):  return chatRoom;
+	// server/zone/objects/group/GroupObject.idl(103):  		return chatRoom;
 	return chatRoom;
 }
 
 int GroupObjectImplementation::getGroupSize() {
-	// server/zone/objects/group/GroupObject.idl(108):  return groupMembers.size();
+	// server/zone/objects/group/GroupObject.idl(107):  		return groupMembers.size();
 	return (&groupMembers)->size();
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl(112):  return groupMembers.get(index);
+	// server/zone/objects/group/GroupObject.idl(111):  		return groupMembers.get(index);
 	return (&groupMembers)->get(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
-	// server/zone/objects/group/GroupObject.idl(116):  groupMembers.add(player);
+	// server/zone/objects/group/GroupObject.idl(115):  		groupMembers.add(player);
 	(&groupMembers)->add(player);
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl(120):  return groupMembers.get(0);
+	// server/zone/objects/group/GroupObject.idl(119):  		return groupMembers.get(0);
 	return (&groupMembers)->get(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {
-	// server/zone/objects/group/GroupObject.idl(126):  return groupMembers;
+	// server/zone/objects/group/GroupObject.idl(124):  		return groupMembers;
 	return (&groupMembers);
 }
 

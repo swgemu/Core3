@@ -185,24 +185,24 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 
 WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(68):  loadTemplateData(templateData);
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(67):  		loadTemplateData(templateData);
 	loadTemplateData(templateData);
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(70):  Logger.setLoggingName("WeaponObject");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(69):  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 }
 
 void WeaponObjectImplementation::setCertified(bool cert) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(99):  certified = cert;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(97):  		certified = cert;
 	certified = cert;
 }
 
 int WeaponObjectImplementation::getAttackType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(103):  return attackType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(101):  		return attackType;
 	return attackType;
 }
 
 bool WeaponObjectImplementation::isCertified() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(107):  return certified;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(105):  		return certified;
 	return certified;
 }
 

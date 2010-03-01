@@ -135,11 +135,11 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 
 IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/intangible/IntangibleObject.idl(56):  Logger.setLoggingName("IntangibleObject");
+	// server/zone/objects/intangible/IntangibleObject.idl(56):  		Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");
-	// server/zone/objects/intangible/IntangibleObject.idl(58):  loadTemplateData(templateData);
+	// server/zone/objects/intangible/IntangibleObject.idl(58):  		loadTemplateData(templateData);
 	loadTemplateData(templateData);
-	// server/zone/objects/intangible/IntangibleObject.idl(60):  status = 0;
+	// server/zone/objects/intangible/IntangibleObject.idl(60):  		status = 0;
 	status = 0;
 }
 
@@ -147,7 +147,7 @@ void IntangibleObjectImplementation::finalize() {
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(74):  return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(74):  		return status;
 	return status;
 }
 

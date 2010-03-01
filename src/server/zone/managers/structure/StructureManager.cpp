@@ -109,15 +109,15 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(74):  loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(74):  		loadStaticBuildings();
 	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(75):  loadPlayerStructures();
+	// server/zone/managers/structure/StructureManager.idl(75):  		loadPlayerStructures();
 	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl(76):  loadStaticBanks();
+	// server/zone/managers/structure/StructureManager.idl(76):  		loadStaticBanks();
 	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl(77):  loadStaticBazaars();
+	// server/zone/managers/structure/StructureManager.idl(77):  		loadStaticBazaars();
 	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl(78):  loadStaticMissionTerminals();
+	// server/zone/managers/structure/StructureManager.idl(78):  		loadStaticMissionTerminals();
 	loadStaticMissionTerminals();
 }
 

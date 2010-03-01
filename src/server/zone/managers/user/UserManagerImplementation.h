@@ -42,55 +42,73 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SERVERDATABASE_H_
-#define SERVERDATABASE_H_
+#ifndef USERMANAGERIMPLEMENTATION_H_
+#define USERMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
 
-#include "../conf/ConfigManager.h"
+class ZoneServer;
 
-class ServerDatabase {
-	static Vector<Database*>* databases;
-	static uint32 currentDB;
+#include "UserManager.h"
+
+class BannedClientSet : public HashSet<uint32> {
+	int hash(const uint32& key) {
+		return key;
+	}
 
 public:
-	ServerDatabase(ConfigManager* configManager) {
-		String& dbHost = configManager->getDBHost();
-        String& dbUser = configManager->getDBUser();
-        String& dbPass = configManager->getDBPass();
-        String& dbName = configManager->getDBName();
-        uint16& dbPort = configManager->getDBPort();
-
-        databases = new Vector<Database*>();
-
-        for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
-        	Database* db = new engine::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
-        	db->connect(dbName, dbUser, dbPass, dbPort);
-
-        	databases->add(db);
-        }
-
+	BannedClientSet() : HashSet<uint32>() {
 	}
 
-	const static int DEFAULT_SERVERDATABASE_INSTANCES = 1;
+};
 
-	~ServerDatabase() {
-		while (!databases->isEmpty()) {
-			Database* db = databases->remove(0);
-
-			delete db;
-		}
-
-		delete databases;
-		databases = NULL;
+class AdminSet : public HashSet<String> {
+	int hash(const String& str) {
+		return str.hashCode();
 	}
 
-	inline static Database* instance() {
-		int i = currentDB % databases->size();
-		Atomic::incrementInt(&currentDB);
+public:
+	AdminSet() : HashSet<String>() {
+	}
 
-		return databases->get(i);
+};
+
+class UserManagerImplementation : public UserManagerServant, public Logger {
+	ZoneServer* server;
+
+	BannedClientSet bannedClients;
+
+	AdminSet* adminUsers;
+
+	int userCap;
+
+public:
+	UserManagerImplementation(ZoneServer* serv);
+
+	~UserManagerImplementation();
+
+	//bool checkUser(SocketAddress* addr);
+	bool checkUser(uint32 ipid);
+	bool isAdmin(const String& name);
+
+	void grantAdmin(const String& name);
+
+	void parseBanList();
+	void parseAdminList();
+
+	void banUser(const String& ipaddr);
+	bool banUserByName(String& name, String& admin);
+	bool kickUser(String& name, String& admin);
+
+	void changeUserCap(int amount);
+
+	inline bool isBannedUser(uint32 ipid) {
+		return bannedClients.contains(ipid);
+	}
+
+	inline int getUserCap() {
+		return userCap;
 	}
 };
 
-#endif /*SERVERDATABASE_H_*/
+#endif /*USERMANAGERIMPLEMENTATION_H_*/

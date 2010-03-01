@@ -166,34 +166,34 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv) {
 	_initializeImplementation();
-	// server/zone/managers/planet/PlanetManager.idl(76):  zone = planet;
+	// server/zone/managers/planet/PlanetManager.idl(74):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/planet/PlanetManager.idl(77):  server = srv;
+	// server/zone/managers/planet/PlanetManager.idl(75):  		server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl(79):  Logger.setLoggingName("PlanetManager");
+	// server/zone/managers/planet/PlanetManager.idl(77):  		Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(80):  Logger.setLogging("false");
+	// server/zone/managers/planet/PlanetManager.idl(78):  		Logger.setLogging("false");
 	Logger::setLogging("false");
-	// server/zone/managers/planet/PlanetManager.idl(81):  Logger.setGlobalLogging("true");
+	// server/zone/managers/planet/PlanetManager.idl(79):  		Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
-	// server/zone/managers/planet/PlanetManager.idl(83):  terrainManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(81):  		terrainManager = null;
 	terrainManager = NULL;
-	// server/zone/managers/planet/PlanetManager.idl(85):  structureManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(83):  		structureManager = null;
 	structureManager = NULL;
 }
 
 bool PlanetManagerImplementation::getRegion(StringId& name, float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(98):  return regionMap.getRegion(name, x, y);
+	// server/zone/managers/planet/PlanetManager.idl(95):  		return regionMap.getRegion(name, x, y);
 	return (&regionMap)->getRegion((&name), x, y);
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(102):  return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(99):  		return structureManager;
 	return structureManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
-	// server/zone/managers/planet/PlanetManager.idl(108):  return terrainManager;
+	// server/zone/managers/planet/PlanetManager.idl(104):  		return terrainManager;
 	return terrainManager;
 }
 

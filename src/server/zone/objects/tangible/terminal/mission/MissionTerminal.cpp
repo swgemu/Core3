@@ -107,14 +107,14 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 
 MissionTerminalImplementation::MissionTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(56):  Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(56):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
 void MissionTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(60):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(60):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(62):  Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(62):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 

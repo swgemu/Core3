@@ -105,14 +105,14 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 InstrumentImplementation::InstrumentImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(55):  Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(55):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(59):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(59):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(61):  Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(61):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 

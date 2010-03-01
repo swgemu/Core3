@@ -103,7 +103,7 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 
 ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(54):  Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(54):  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
 

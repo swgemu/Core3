@@ -444,36 +444,36 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(96):  roomMap.put(channel.getRoomID(), channel);
+	// server/chat/ChatManager.idl(96):  		roomMap.put(channel.getRoomID(), channel);
 	roomMap->put(channel->getRoomID(), channel);
 }
 
 void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(100):  roomMap.remove(channel.getRoomID());
+	// server/chat/ChatManager.idl(100):  		roomMap.remove(channel.getRoomID());
 	roomMap->remove(channel->getRoomID());
 }
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(167):  return roomMap.get(id);
+	// server/chat/ChatManager.idl(166):  		return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(171):  return gameRooms.get(game);
+	// server/chat/ChatManager.idl(170):  		return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(175):  return ++roomID;
+	// server/chat/ChatManager.idl(174):  		return ++roomID;
 	return  ++roomID;
 }
 
 int ChatManagerImplementation::getPlayerCount() {
-	// server/chat/ChatManager.idl(180):  return playerMap.size();
+	// server/chat/ChatManager.idl(179):  		return playerMap.size();
 	return playerMap->size();
 }
 

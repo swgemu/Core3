@@ -154,34 +154,34 @@ void SuiBankTransferBoxImplementation::_serializationHelperMethod() {
 
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBoxImplementation(player, windowtype, SuiBoxImplementation::BANKTRANSFERBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(72):  bank = bankObject;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(72):  		bank = bankObject;
 	bank = bankObject;
 }
 
 void SuiBankTransferBoxImplementation::addCash(int cash) {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(77):  lblFrom = "Cash";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(77):  		lblFrom = "Cash";
 	lblFrom = "Cash";
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(78):  lblStartingFrom = String.valueOf(cash);
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(78):  		lblStartingFrom = String.valueOf(cash);
 	lblStartingFrom = String::valueOf(cash);
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(80):  lblInputFrom = lblStartingFrom;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(80):  		lblInputFrom = lblStartingFrom;
 	lblInputFrom = lblStartingFrom;
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(82):  convertRatioFrom = "1";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(82):  		convertRatioFrom = "1";
 	convertRatioFrom = "1";
 }
 
 void SuiBankTransferBoxImplementation::addBank(int bank) {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(86):  lblTo = "Bank";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(86):  		lblTo = "Bank";
 	lblTo = "Bank";
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(88):  lblStartingTo = String.valueOf(bank);
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(88):  		lblStartingTo = String.valueOf(bank);
 	lblStartingTo = String::valueOf(bank);
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(89):  lblInputTo = lblStartingTo;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(89):  		lblInputTo = lblStartingTo;
 	lblInputTo = lblStartingTo;
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(90):  convertRatioTo = "1";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(90):  		convertRatioTo = "1";
 	convertRatioTo = "1";
 }
 
 SceneObject* SuiBankTransferBoxImplementation::getBank() {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(94):  return bank;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(94):  		return bank;
 	return bank;
 }
 

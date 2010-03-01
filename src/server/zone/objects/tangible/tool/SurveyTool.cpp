@@ -105,14 +105,14 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 SurveyToolImplementation::SurveyToolImplementation(LuaObject* templateData) : ToolTangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(55):  Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(55):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(59):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(59):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(61):  Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(61):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 

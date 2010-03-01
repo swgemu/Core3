@@ -70,7 +70,7 @@ public:
         forumsBannedTable = configManager->getForumsBannedTable();
         forumsNewActivationTable = configManager->getForumsNewActivationTable();
 
-        impl = new MySqlDatabase(String("ForumsDatabase"), forumdbHost);
+        impl = new engine::db::mysql::MySqlDatabase(String("ForumsDatabase"), forumdbHost);
         impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
 	}
 

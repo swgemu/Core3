@@ -91,7 +91,7 @@ void CloningBuildingObjectImplementation::_serializationHelperMethod() {
 
 CloningBuildingObjectImplementation::CloningBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  Logger.setLoggingName("CloningBuildingObject");
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  		Logger.setLoggingName("CloningBuildingObject");
 	Logger::setLoggingName("CloningBuildingObject");
 }
 
