@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
