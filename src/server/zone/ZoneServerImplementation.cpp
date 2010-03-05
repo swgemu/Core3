@@ -49,7 +49,6 @@ which carries forward this exception.
 #include "Zone.h"
 
 #include "../db/ServerDatabase.h"
-#include "../db/ObjectDatabaseEnvironment.h"
 
 #include "managers/object/ObjectManager.h"
 #include "managers/objectcontroller/ObjectController.h"

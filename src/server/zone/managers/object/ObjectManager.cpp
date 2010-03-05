@@ -41,21 +41,25 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+
 #include "server/db/ServerDatabase.h"
+
 #include "ObjectMap.h"
+
 #include "server/zone/Zone.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
-#include "server/db/ObjectDatabase.h"
-#include "server/db/ObjectDatabaseEnvironment.h"
 #include "server/zone/managers/template/TemplateManager.h"
+
+#include "server/chat/ChatManager.h"
+
+using namespace engine::db;
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
 
-	databaseEnvironment = ObjectDatabaseEnvironment::instance();
+	databaseManager = ObjectDatabaseManager::instance();
 	templateManager = TemplateManager::instance();
 
 	registerObjectTypes();
@@ -68,7 +72,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	registerGlobals();
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
-	databaseEnvironment->loadDatabase("staticobjects", true, 0);
+	databaseManager->loadDatabase("staticobjects", true, 0);
 
 	loadLastUsedObjectID();
 
@@ -79,7 +83,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 ObjectManager::~ObjectManager() {
 	info("closing databases...", true);
 
-	ObjectDatabaseEnvironment::instance()->finalize();
+	ObjectDatabaseManager::instance()->finalize();
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
@@ -177,8 +181,8 @@ void ObjectManager::loadLastUsedObjectID() {
 	uint64 nullify = 0x0000FFFF;
 	nullify = (nullify << 32) + 0xFFFFFFFF;
 
-	for (int i = 0; i < databaseEnvironment->getDatabaseCount(); ++i) {
-		ObjectDatabase* db = databaseEnvironment->getDatabase(i);
+	for (int i = 0; i < databaseManager->getDatabaseCount(); ++i) {
+		ObjectDatabase* db = databaseManager->getDatabase(i);
 
 		ObjectDatabaseIterator iterator(db);
 
@@ -201,7 +205,7 @@ void ObjectManager::loadStaticObjects() {
 
 	info("loading static objects...", true);
 
-	ObjectDatabase* staticDatabase = databaseEnvironment->loadDatabase("staticobjects", true, 0);
+	ObjectDatabase* staticDatabase = databaseManager->loadDatabase("staticobjects", true, 0);
 
 	ObjectDatabaseIterator iterator(staticDatabase);
 
@@ -330,7 +334,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	infoMsg << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
 	info(infoMsg.toString(), true);*/
 
-	ObjectDatabase* database = databaseEnvironment->getDatabase(tableID);
+	ObjectDatabase* database = databaseManager->getDatabase(tableID);
 
 	if (database == NULL)
 		return NULL;
@@ -531,7 +535,7 @@ uint64 ObjectManager::getNextObjectID(const String& database) {
 	if (database.length() > 0) {
 		uint16 tableID;
 
-		tableID = databaseEnvironment->getDatabaseID(database);
+		tableID = databaseManager->getDatabaseID(database);
 
 		oid += tableID;
 
@@ -550,9 +554,9 @@ ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID
 		if (objectID != 0) {
 			uint16 tableID = (uint16) (objectID >> 48);
 
-			table = databaseEnvironment->loadDatabase(database, true, tableID);
+			table = databaseManager->loadDatabase(database, true, tableID);
 		} else {
-			table = databaseEnvironment->loadDatabase(database, true);
+			table = databaseManager->loadDatabase(database, true);
 		}
 	}
 
@@ -565,7 +569,7 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 	if (objectID != 0) {
 		uint16 tableID = (uint16) (objectID >> 48);
 
-		table = databaseEnvironment->getDatabase(tableID);
+		table = databaseManager->getDatabase(tableID);
 	}
 
 	return table;

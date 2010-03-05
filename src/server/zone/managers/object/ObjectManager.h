@@ -53,8 +53,6 @@ which carries forward this exception.
 
 #include "engine/util/ObjectFactory.h"
 
-class ObjectDatabase;
-class ObjectDatabaseEnvironment;
 class TemplateManager;
 
 namespace server {
@@ -67,7 +65,9 @@ namespace zone {
 
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
-		ObjectDatabaseEnvironment* databaseEnvironment;
+
+		ObjectDatabaseManager* databaseManager;
+
 		TemplateManager* templateManager;
 
 	public:

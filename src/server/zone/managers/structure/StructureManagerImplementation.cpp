@@ -5,21 +5,25 @@
  *      Author: TheAnswer
  */
 
-#include "StructureManager.h"
+#include "server/db/ServerDatabase.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/Zone.h"
-#include "server/db/ServerDatabase.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
+
 #include "server/zone/objects/cell/CellObject.h"
+
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-#include "server/db/ObjectDatabase.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 
+#include "StructureManager.h"
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
 	ManagedObjectImplementation() {

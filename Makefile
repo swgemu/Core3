@@ -41,7 +41,6 @@
 # which carries forward this exception.
 
 IDLC = /usr/local/bin/idlc 
-
 				
 IDL_CLASSPATH = ../MMOEngine/include
 
@@ -64,6 +63,8 @@ config:
 
 clean: cleanidl
 	cd build/unix && make clean
+	#cd build/unix/src && rm *
+	#cd build/unix/src/.deps && rm *
 	#done
 
 cleanidl:
