@@ -33,6 +33,8 @@ using namespace server::zone;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/lua/Lua.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {
@@ -64,7 +66,7 @@ namespace zone {
 namespace managers {
 namespace resource {
 
-class ResourceManagerImplementation : public ManagedObjectImplementation, public Logger {
+class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > zoneServer;
@@ -74,6 +76,14 @@ public:
 
 	ResourceManagerImplementation(DummyConstructorParameter* param);
 
+private:
+	void init();
+
+	bool loadConfigFile();
+
+	bool loadConfigData();
+
+public:
 	ResourceManager* _this;
 
 	operator const ResourceManager*();

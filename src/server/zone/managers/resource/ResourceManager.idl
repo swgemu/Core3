@@ -45,13 +45,29 @@ which carries forward this exception.
 package server.zone.managers.resource;
 
 import engine.core.ManagedObject;
+import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 
-class ResourceManager extends ManagedObject implements Logger {
+class ResourceManager extends ManagedObject implements Lua {
 	transient ZoneProcessServerImplementation processor;
 	ZoneServer zoneServer;
 	
-	public native ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl);
+	public native ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl) {
+
+		Logger.setLoggingName("ResourceManager");
+		
+		Logger.setLogging(true);
+		Logger.setGlobalLogging(true);
+		
+		zoneServer = server;
+		processor = impl;
+	}
+	
+	
+	
+	private native void init();
+	private native boolean loadConfigFile();
+	private native boolean loadConfigData();
 }

@@ -42,15 +42,67 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "engine/engine.h"
+
 #include "ResourceManager.h"
 #include "server/zone/ZoneServer.h"
 
-ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl) : ManagedObjectImplementation(), Logger() {
-	setLoggingName("ResourceManager");
 
-	setGlobalLogging("true");
-	setLogging("true");
+void ResourceManagerImplementation::init() {
+	Lua::init();
+}
 
-	zoneServer = server;
-	processor = impl;
+bool ResourceManagerImplementation::loadConfigFile() {
+	return runFile("scripts/resources/config.lua");
+}
+
+bool ResourceManagerImplementation::loadConfigData() {
+	if (!loadConfigFile())
+		return false;
+
+	/*averageShiftTime = getGlobalInt("averageShiftTime");
+	aveduration = getGlobalInt("aveduration");
+	spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
+
+	if(spawnThrottling > .9f)
+		spawnThrottling = .9f;
+	if(spawnThrottling < .1f)
+			spawnThrottling = .1f;
+
+	lowerGateOverride = getGlobalInt("lowerGateOverride");
+
+	if(lowerGateOverride < 1)
+		lowerGateOverride = 1;
+	if(lowerGateOverride > 1000)
+		lowerGateOverride = 1000;
+
+	maxspawns = getGlobalInt("maxspawns");
+	minspawns = getGlobalInt("minspawns");
+	maxradius = getGlobalInt("maxradius");
+	minradius = getGlobalInt("minradius");
+
+	String minimumpoolstring = getGlobalString("minimumpool");
+
+	StringTokenizer minimumPoolTokens(minimumpoolstring);
+	minimumPoolTokens.setDelimeter(",");
+
+	while(minimumPoolTokens.hasMoreTokens()) {
+		String token;
+		minimumPoolTokens.getStringToken(token);
+		if(token != "")
+			minimumpool->add(token);
+	}
+
+	String zonesString = getGlobalString("spawnZones");
+
+	StringTokenizer zonesTokens(zonesString);
+	zonesTokens.setDelimeter(",");
+
+	while(zonesTokens.hasMoreTokens()) {
+		int token = zonesTokens.getIntToken();
+
+		planets.add(token);
+	}*/
+
+	return true;
 }
