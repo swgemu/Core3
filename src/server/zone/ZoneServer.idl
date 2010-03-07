@@ -65,6 +65,7 @@ import server.chat.ChatManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
 import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.resource.ResourceManager;
 
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
@@ -85,6 +86,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private ChatManager chatManager;
 	
 	private RadialManager radialManager;
+
+	private ResourceManager resourceManager;
 
 	private int totalSentPackets;
 	
@@ -274,6 +277,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		return radialManager;
 	}
 	
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
 	@local
 	public ProfessionManager getProfessionManager() {
 		return processor.getProfessionManager();

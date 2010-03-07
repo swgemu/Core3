@@ -125,6 +125,20 @@ class ProfessionManager;
 
 using namespace server::zone::managers::professions;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace resource {
+
+class ResourceManager;
+
+} // namespace resource
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::resource;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -254,6 +268,8 @@ public:
 
 	RadialManager* getRadialManager();
 
+	ResourceManager* getResourceManager();
+
 	ProfessionManager* getProfessionManager();
 
 	void setServerName(const String& servername);
@@ -307,6 +323,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<ChatManager* > chatManager;
 
 	ManagedReference<RadialManager* > radialManager;
+
+	ManagedReference<ResourceManager* > resourceManager;
 
 	int totalSentPackets;
 
@@ -432,6 +450,8 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
+
+	ResourceManager* getResourceManager();
 
 	ProfessionManager* getProfessionManager();
 
@@ -561,6 +581,8 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
+
+	ResourceManager* getResourceManager();
 
 	void setServerName(const String& servername);
 

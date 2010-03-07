@@ -69,3 +69,7 @@ clean: cleanidl
 
 cleanidl:
 	$(IDLC) -rebuild -cp $(IDL_CLASSPATH) -sd src anyadEclipse
+
+cleardb:
+	cd bin/databases && rm -rf *.*
+	#done
