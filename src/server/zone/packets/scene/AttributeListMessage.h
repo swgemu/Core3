@@ -74,6 +74,14 @@ public:
 		countLocation = 18;
 	}
 
+	AttributeListMessage(uint64 objectID, int listCount) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(0xF3F12F2A); // opcode
+
+		insertLong(objectID);
+		insertInt(listCount); // list count
+	}
+
 	AttributeListMessage(uint64 objectID) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xF3F12F2A);

@@ -93,13 +93,15 @@ void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	drinkFilling = 0;
 	drinkFillingMax = 0;
 
-	jediState = 0;
+	jediState = 4;
 
 	languageID = 0;
 
-	//adminLevel = 5;
+	adminLevel = 0;
 
-	//skillList.add(new QueueCommand("admin", server));
+	/*skillList.add(new QueueCommand("admin", server));
+	skillList.add(new QueueCommand("hidden", server));
+	skillList.add(new QueueCommand("addbannedplayer", server));*/
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {

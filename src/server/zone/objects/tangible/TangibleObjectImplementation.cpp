@@ -61,6 +61,8 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	targetable = templateData->getByteField("targetable");
 
+	playerUseMask = templateData->getShortField("playerUseMask");
+
 	complexity = 100.f;
 
 	volume = 1;
@@ -71,6 +73,8 @@ void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	conditionDamage = 0;
 	maxCondition = 6000;
+
+	sliced = false;
 
 	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
@@ -204,5 +208,5 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("condition", cond);
 	}
 
-	alm->insertAttribute("volume", "1");
+	alm->insertAttribute("volume", volume);
 }

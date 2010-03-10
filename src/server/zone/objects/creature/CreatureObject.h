@@ -192,11 +192,21 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
 	int onPositionUpdate();
 
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
 
 	bool isGroupped();
 
@@ -504,11 +514,21 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
 	int onPositionUpdate();
 
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
 
 	bool isGroupped();
 
@@ -703,11 +723,21 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient);
 
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
 	int onPositionUpdate();
 
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
 
 	bool isGroupped();
 

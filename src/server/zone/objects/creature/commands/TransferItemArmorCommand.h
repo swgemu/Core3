@@ -112,7 +112,9 @@ public:
 			ZoneServer* zoneServer = server->getZoneServer();
 			ObjectController* objectController = zoneServer->getObjectController();
 
-			if (!destinationObject->canAddObject(objectToTransfer)) {
+			int transferPreProcess = destinationObject->canAddObject(objectToTransfer);
+
+			if (transferPreProcess == TransferErrorCode::SLOTOCCUPIED) {
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
 
 				if (arrangementSize > 0) {
@@ -123,6 +125,8 @@ public:
 					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 						return false;
 				}
+			} else if (transferPreProcess != 0) {
+				return false;
 			}
 
 			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))

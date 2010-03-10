@@ -32,6 +32,40 @@ void ArmorObject::initializeTransientMembers() {
 		((ArmorObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ArmorObjectImplementation*) _impl)->fillAttributeList(msg, object);
+}
+
+bool ArmorObject::isSpecial(const String& special) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addAsciiParameter(special);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->isSpecial(special);
+}
+
+bool ArmorObject::isVulnerable(const String& vulnerability) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(vulnerability);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->isVulnerable(vulnerability);
+}
+
 /*
  *	ArmorObjectImplementation
  */
@@ -99,12 +133,64 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("ArmorObject");
 
+	addSerializableVariable("healthEncumbrance", &healthEncumbrance);
+	addSerializableVariable("actionEncumbrance", &actionEncumbrance);
+	addSerializableVariable("mindEncumbrance", &mindEncumbrance);
+	addSerializableVariable("rating", &rating);
+	addSerializableVariable("kinetic", &kinetic);
+	addSerializableVariable("energy", &energy);
+	addSerializableVariable("electricity", &electricity);
+	addSerializableVariable("stun", &stun);
+	addSerializableVariable("blast", &blast);
+	addSerializableVariable("heat", &heat);
+	addSerializableVariable("cold", &cold);
+	addSerializableVariable("acid", &acid);
+	addSerializableVariable("lightSaber", &lightSaber);
+	addSerializableVariable("specialResistsVector", &specialResistsVector);
+	addSerializableVariable("vulnerabilitesVector", &vulnerabilitesVector);
+	addSerializableVariable("specialBase", &specialBase);
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(54):  		Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		healthEncumbrance = 100;
+	healthEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(83):  		actionEncumbrance = 100;
+	actionEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		mindEncumbrance = 100;
+	mindEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		rating = LIGHT;
+	rating = LIGHT;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		kinetic = 0;
+	kinetic = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		energy = 0;
+	energy = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		electricity = 0;
+	electricity = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		stun = 0;
+	stun = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		blast = 0;
+	blast = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		heat = 0;
+	heat = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		cold = 0;
+	cold = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(95):  		acid = 0;
+	acid = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(96):  		lightSaber = 0;
+	lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(102):  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
+}
+
+bool ArmorObjectImplementation::isSpecial(const String& special) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(118):  		return specialResistsVector.contains(special);
+	return (&specialResistsVector)->contains(special);
+}
+
+bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(122):  		return vulnerabilitesVector.contains(vulnerability);
+	return (&vulnerabilitesVector)->contains(vulnerability);
 }
 
 /*
@@ -121,6 +207,12 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isSpecial(inv->getAsciiParameter(_param0_isSpecial__String_)));
+		break;
+	case 8:
+		resp->insertBoolean(isVulnerable(inv->getAsciiParameter(_param0_isVulnerable__String_)));
+		break;
 	default:
 		return NULL;
 	}
@@ -130,6 +222,14 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void ArmorObjectAdapter::initializeTransientMembers() {
 	((ArmorObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool ArmorObjectAdapter::isSpecial(const String& special) {
+	return ((ArmorObjectImplementation*) impl)->isSpecial(special);
+}
+
+bool ArmorObjectAdapter::isVulnerable(const String& vulnerability) {
+	return ((ArmorObjectImplementation*) impl)->isVulnerable(vulnerability);
 }
 
 /*

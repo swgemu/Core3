@@ -72,6 +72,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 
 include server.zone.objects.scene.variables.StringId;
+include server.zone.objects.scene.TransferErrorCode;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -315,7 +316,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int MISCCLOTHING = 0x1000011;
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
-
+	
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
@@ -441,19 +442,19 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
 	 * @param object SceneObject that will be checked
-	 * @return returns true if the object can be added
+	 * @return returns 0 on success, or error code
 	 */
-	public abstract boolean canAddObject(SceneObject object) {
+	public abstract int canAddObject(SceneObject object) {
 		int arrangementSize = object.getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
 			string childArrangement = object.getArrangementDescriptor(i);
 
 			if (slottedObjects.contains(childArrangement))
-				return false;
+				return TransferErrorCode.SLOTOCCUPIED;
 		}
 
-		return true;
+		return 0;
 	}
 	
 	/**
@@ -927,6 +928,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public boolean isWeaponObject() {
 		return gameObjectType & WEAPON;
 	}
+	
+	public abstract boolean isWearableObject() {
+		return false;
+	}
 
 	public boolean isArmorObject() {
 		return gameObjectType & ARMOR;
@@ -934,6 +939,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	public boolean isCellObject() {
 		return gameObjectType == CELLOBJECT;
+	}
+	
+	public abstract boolean isTangibleObject() {
+		return false;
 	}
 	
 	public boolean isInstrument() {

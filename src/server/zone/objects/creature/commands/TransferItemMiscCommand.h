@@ -91,7 +91,7 @@ public:
 			return false;
 		}
 
-		if (!destinationObject->canAddObject(objectToTransfer)) {
+		if (destinationObject->canAddObject(objectToTransfer) != 0) {
 			creature->error("cannot add objectToTransfer to destinationObject");
 			return false;
 		}

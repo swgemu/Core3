@@ -72,10 +72,14 @@ which carries forward this exception.
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+
+#include "professions/SkillBox.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -784,4 +788,105 @@ int CreatureObjectImplementation::onPositionUpdate() {
 		clearState(CreatureState::SWIMMING);
 
 	return 0;
+}
+
+uint32 CreatureObjectImplementation::getWearableMask() {
+	uint16 characterMask = 0;
+
+	int raceID = Races::getRaceID(TemplateManager::instance()->getTemplateFile(serverObjectCRC));
+
+	if (this->isRebel())
+		characterMask |= WearableObject::REBEL;
+	else if (this->isImperial())
+		characterMask |= WearableObject::IMPERIAL;
+	else
+		characterMask |= WearableObject::NEUTRAL;
+
+	/*if (this->isOnLeave())
+		characterMask |= WearableObject::COVERT;*/
+
+	switch (raceID) {
+	case 0:
+		characterMask |= WearableObject::MALE | WearableObject::HUMAN;
+		break;
+	case 1:
+		characterMask |= WearableObject::MALE | WearableObject::TRANDOSHAN;
+		break;
+	case 2:
+		characterMask |= WearableObject::MALE | WearableObject::TWILEK;
+		break;
+	case 3:
+		characterMask |= WearableObject::MALE | WearableObject::BOTHAN;
+		break;
+	case 4:
+		characterMask |= WearableObject::MALE | WearableObject::ZABRAK;
+		break;
+	case 5:
+		characterMask |= WearableObject::MALE | WearableObject::RODIAN;
+		break;
+	case 6:
+		characterMask |= WearableObject::MALE | WearableObject::MONCALAMARI;
+		break;
+	case 7:
+		characterMask |= WearableObject::MALE | WearableObject::WOOKIEE;
+		break;
+	case 8:
+		characterMask |= WearableObject::MALE | WearableObject::SULLUSTAN;
+		break;
+	case 9:
+		characterMask |= WearableObject::MALE | WearableObject::ITHORIAN;
+		break;
+	case 10:
+		characterMask |= WearableObject::FEMALE | WearableObject::HUMAN;
+		break;
+	case 11:
+		characterMask |= WearableObject::FEMALE | WearableObject::TRANDOSHAN;
+		break;
+	case 12:
+		characterMask |= WearableObject::FEMALE | WearableObject::TWILEK;
+		break;
+	case 13:
+		characterMask |= WearableObject::FEMALE | WearableObject::BOTHAN;
+		break;
+	case 14:
+		characterMask |= WearableObject::FEMALE | WearableObject::ZABRAK;
+		break;
+	case 15:
+		characterMask |= WearableObject::FEMALE | WearableObject::RODIAN;
+		break;
+	case 16:
+		characterMask |= WearableObject::FEMALE | WearableObject::MONCALAMARI;
+		break;
+	case 17:
+		characterMask |= WearableObject::FEMALE | WearableObject::WOOKIEE;
+		break;
+	case 18:
+		characterMask |= WearableObject::FEMALE | WearableObject::SULLUSTAN;
+		break;
+	case 19:
+		characterMask |= WearableObject::FEMALE | WearableObject::ITHORIAN;
+		break;
+	}
+
+	return characterMask;
+}
+
+int CreatureObjectImplementation::canAddObject(SceneObject* object) {
+	if (object->isTangibleObject()) {
+		TangibleObject* wearable = (WearableObject*) object;
+
+		uint16 charMask = getWearableMask();
+		uint16 objMask = wearable->getPlayerUseMask();
+
+		uint16 maskRes = ~objMask & charMask;
+
+		if (maskRes != 0) {
+			/*StringBuffer maskResol;
+			maskResol << "returned maskRes :" << maskRes;
+			info(maskResol.toString(), true);*/
+			return TransferErrorCode::PLAYERUSEMASKERROR;
+		}
+	}
+
+	return SceneObjectImplementation::canAddObject(object);
 }

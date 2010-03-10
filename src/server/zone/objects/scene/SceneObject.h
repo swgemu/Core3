@@ -111,6 +111,8 @@ using namespace server::zone::packets::scene;
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
+#include "server/zone/objects/scene/TransferErrorCode.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -524,7 +526,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	bool canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object);
 
 	void updateToDatabase();
 
@@ -672,9 +674,13 @@ public:
 
 	bool isWeaponObject();
 
+	bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	bool isTangibleObject();
 
 	bool isInstrument();
 
@@ -1161,7 +1167,7 @@ public:
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	virtual bool canAddObject(SceneObject* object);
+	virtual int canAddObject(SceneObject* object);
 
 	void updateToDatabase();
 
@@ -1309,9 +1315,13 @@ public:
 
 	bool isWeaponObject();
 
+	virtual bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	virtual bool isTangibleObject();
 
 	bool isInstrument();
 
@@ -1404,7 +1414,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient);
 
-	bool canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object);
 
 	void updateToDatabase();
 
@@ -1542,9 +1552,13 @@ public:
 
 	bool isWeaponObject();
 
+	bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	bool isTangibleObject();
 
 	bool isInstrument();
 
