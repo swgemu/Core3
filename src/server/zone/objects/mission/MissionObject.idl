@@ -85,9 +85,7 @@ class MissionObject extends IntangibleObject {
 	public static final int RECON = 0x34F4C2E4;
 	public static final int SURVEY = 0x19C9FAC1;
 	
-	public MissionObject(LuaObject templateData) {
-		super(templateData);
-		
+	public MissionObject() {
 		typeCRC = MUSICIAN;
 		
 		refreshCounter = 0;

@@ -52,9 +52,7 @@ import server.zone.objects.player.PlayerCreature;
 
 class StartingLocationTerminal extends Terminal {
 	
-	public StartingLocationTerminal(LuaObject templateData) {
-		super(templateData);
-		
+	public StartingLocationTerminal() {		
 		Logger.setLoggingName("StartingLocationTerminal");
 	}
 	

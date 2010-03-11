@@ -23,7 +23,7 @@ namespace medical {
 
 class MedicalBuildingObject : public BuildingObject {
 public:
-	MedicalBuildingObject(LuaObject* templateData);
+	MedicalBuildingObject();
 
 protected:
 	MedicalBuildingObject(DummyConstructorParameter* param);
@@ -50,7 +50,7 @@ namespace medical {
 class MedicalBuildingObjectImplementation : public BuildingObjectImplementation {
 
 public:
-	MedicalBuildingObjectImplementation(LuaObject* templateData);
+	MedicalBuildingObjectImplementation();
 
 	MedicalBuildingObjectImplementation(DummyConstructorParameter* param);
 

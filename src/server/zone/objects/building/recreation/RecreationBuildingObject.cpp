@@ -8,8 +8,8 @@
  *	RecreationBuildingObjectStub
  */
 
-RecreationBuildingObject::RecreationBuildingObject(LuaObject* templateData) : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new RecreationBuildingObjectImplementation(templateData);
+RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new RecreationBuildingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -89,9 +89,9 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  		Logger.setLoggingName("RecreationBuildingObject");
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(53):  		Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");
 }
 

@@ -62,9 +62,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	protected int totalCellNumber;
 	
-	public BuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
@@ -75,7 +73,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 
 		super.containerType = 2;
 		
-		totalCellNumber = templateData.getIntField("totalCellNumber");
+		totalCellNumber = 0;
 	}
 	
 	public void createCellObjects() {
@@ -85,6 +83,9 @@ class BuildingObject extends TangibleObject implements QuadTree {
 			addCell((CellObject)newCell);
 		}
 	}
+	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
 		
 	public native void initializeTransientMembers();
 	

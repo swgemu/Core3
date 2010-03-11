@@ -8,8 +8,8 @@
  *	CellObjectStub
  */
 
-CellObject::CellObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation(templateData);
+CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new CellObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -19,6 +19,14 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
+
+void CellObject::loadTemplateData(LuaObject* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((CellObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
 
 void CellObject::initializeTransientMembers() {
 	if (_impl == NULL) {
@@ -138,28 +146,24 @@ void CellObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cellNumber", &cellNumber);
 }
 
-CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+CellObjectImplementation::CellObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/cell/CellObject.idl(57):  		Logger.setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl(55):  		Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");
-	// server/zone/objects/cell/CellObject.idl(59):  		cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl(57):  		cellNumber = 0;
 	cellNumber = 0;
-	// server/zone/objects/cell/CellObject.idl(61):  		super.containerVolumeLimit = 0xFFFFFFFF;
-	SceneObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/cell/CellObject.idl(63):  		super.containerType = 2;
-	SceneObjectImplementation::containerType = 2;
 }
 
 void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(74):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(71):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(78):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(75):  		cellNumber = number;
 	cellNumber = number;
 }
 

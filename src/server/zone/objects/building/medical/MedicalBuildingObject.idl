@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 class MedicalBuildingObject extends BuildingObject {
 
-	public MedicalBuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public MedicalBuildingObject() {
 		Logger.setLoggingName("MedicalBuildingObject");
 	}
 }

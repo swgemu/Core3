@@ -74,7 +74,7 @@ public:
 
 	static const int SURVEY = 0x19C9FAC1;
 
-	MissionObject(LuaObject* templateData);
+	MissionObject();
 
 	void initializeTransientMembers();
 
@@ -169,7 +169,7 @@ public:
 
 	static const int SURVEY = 0x19C9FAC1;
 
-	MissionObjectImplementation(LuaObject* templateData);
+	MissionObjectImplementation();
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
 

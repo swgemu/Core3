@@ -323,8 +323,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { SceneObject is initialized } 
 	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
 	 */
-	public SceneObject(LuaObject templateData) {
-		loadTemplateData(templateData);
+	public SceneObject() {
 		initializeTransientMembers();
 	}
 	
@@ -340,7 +339,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
 	 */
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public abstract native void loadTemplateData(LuaObject templateData);
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.

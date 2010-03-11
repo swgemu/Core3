@@ -49,9 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 
 class Instrument extends TangibleObject {	
-	public Instrument(LuaObject templateData) {
-		super(templateData);
-		
+	public Instrument() {
 		Logger.setLoggingName("Instrument");
 	}
 	

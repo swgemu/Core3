@@ -124,7 +124,7 @@ public:
 
 	unsigned static const short TWILEKS = 0xF013;
 
-	TangibleObject(LuaObject* templateData);
+	TangibleObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -295,7 +295,7 @@ public:
 
 	unsigned static const short TWILEKS = 0xF013;
 
-	TangibleObjectImplementation(LuaObject* templateData);
+	TangibleObjectImplementation();
 
 	TangibleObjectImplementation(DummyConstructorParameter* param);
 

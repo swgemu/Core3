@@ -24,12 +24,8 @@ class WaypointObject extends IntangibleObject {
 	public static final byte COLOR_YELLOW = 0x04;
 	public static final byte COLOR_PURPLE = 0x05;
 	
-	public WaypointObject(LuaObject templateData) {
-		super(templateData);
-		
+	public WaypointObject() {
 		Logger.setLoggingName("WaypointObject");
-		
-		loadTemplateData(templateData);
 	}
 	
 	@local

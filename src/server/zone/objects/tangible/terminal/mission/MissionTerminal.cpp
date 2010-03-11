@@ -12,8 +12,8 @@
  *	MissionTerminalStub
  */
 
-MissionTerminal::MissionTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new MissionTerminalImplementation(templateData);
+MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
+	_impl = new MissionTerminalImplementation();
 	_impl->_setStub(this);
 }
 
@@ -105,16 +105,16 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-MissionTerminalImplementation::MissionTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
+MissionTerminalImplementation::MissionTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(56):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(54):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
 void MissionTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(60):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(58):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(62):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(60):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 

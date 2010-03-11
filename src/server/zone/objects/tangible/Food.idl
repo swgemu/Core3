@@ -49,9 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 
 class Food extends TangibleObject {
-	public Food(LuaObject templateData) {
-		super(templateData);
-		
+	public Food() {		
 		Logger.setLoggingName("Food");
 	}
 	

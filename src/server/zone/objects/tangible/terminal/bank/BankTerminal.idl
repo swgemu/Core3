@@ -57,9 +57,7 @@ include server.zone.objects.player.sui.SuiWindowType;
 
 class BankTerminal extends Terminal {
 	
-	public BankTerminal(LuaObject templateData) {
-		super(templateData);
-		
+	public BankTerminal() {		
 		Logger.setLoggingName("BankTerminal");
 	}
 	

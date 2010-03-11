@@ -52,7 +52,7 @@ namespace startinglocation {
 
 class StartingLocationTerminal : public Terminal {
 public:
-	StartingLocationTerminal(LuaObject* templateData);
+	StartingLocationTerminal();
 
 	void initializeTransientMembers();
 
@@ -85,7 +85,7 @@ namespace startinglocation {
 class StartingLocationTerminalImplementation : public TerminalImplementation {
 
 public:
-	StartingLocationTerminalImplementation(LuaObject* templateData);
+	StartingLocationTerminalImplementation();
 
 	StartingLocationTerminalImplementation(DummyConstructorParameter* param);
 

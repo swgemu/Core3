@@ -54,9 +54,7 @@ class WearableObject extends TangibleObject {
 	@dereferenced
 	protected WearableSkillModMap wearableSkillModMap;
 	
-	public WearableObject(LuaObject templateData) {
-		super(templateData);
-		
+	public WearableObject() {
 		socketCount = 0;
 		
 		Logger.setLoggingName("WearableObject");

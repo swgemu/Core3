@@ -50,9 +50,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 
 class MissionTerminal extends Terminal {
-	public MissionTerminal(LuaObject templateData) {
-		super(templateData);
-		
+	public MissionTerminal() {
 		Logger.setLoggingName("MissionTerminal");
 	}
 	

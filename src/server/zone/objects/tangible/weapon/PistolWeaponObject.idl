@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 
 class PistolWeaponObject extends RangedWeaponObject {
-	public PistolWeaponObject(LuaObject templateData) {
-		super(templateData);
-		
+	public PistolWeaponObject() {		
 		Logger.setLoggingName("PistolWeaponObject");
 	}
 	

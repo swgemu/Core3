@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 
 class CraftingTool extends ToolTangibleObject {
-	public CraftingTool(LuaObject templateData) {
-		super(templateData);
-		
+	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
 	}
 	

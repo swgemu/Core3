@@ -23,7 +23,7 @@ namespace travel {
 
 class TravelBuildingObject : public BuildingObject {
 public:
-	TravelBuildingObject(LuaObject* templateData);
+	TravelBuildingObject();
 
 protected:
 	TravelBuildingObject(DummyConstructorParameter* param);
@@ -50,7 +50,7 @@ namespace travel {
 class TravelBuildingObjectImplementation : public BuildingObjectImplementation {
 
 public:
-	TravelBuildingObjectImplementation(LuaObject* templateData);
+	TravelBuildingObjectImplementation();
 
 	TravelBuildingObjectImplementation(DummyConstructorParameter* param);
 

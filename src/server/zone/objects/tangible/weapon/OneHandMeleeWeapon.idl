@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 
 class OneHandMeleeWeapon extends MeleeWeaponObject {
-	public OneHandMeleeWeapon(LuaObject templateData) {
-		super(templateData);
-		
+	public OneHandMeleeWeapon() {		
 		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	}
 	

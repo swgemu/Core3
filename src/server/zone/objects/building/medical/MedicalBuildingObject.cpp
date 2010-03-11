@@ -8,8 +8,8 @@
  *	MedicalBuildingObjectStub
  */
 
-MedicalBuildingObject::MedicalBuildingObject(LuaObject* templateData) : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new MedicalBuildingObjectImplementation(templateData);
+MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new MedicalBuildingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -89,9 +89,9 @@ void MedicalBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/medical/MedicalBuildingObject.idl(55):  		Logger.setLoggingName("MedicalBuildingObject");
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl(53):  		Logger.setLoggingName("MedicalBuildingObject");
 	Logger::setLoggingName("MedicalBuildingObject");
 }
 

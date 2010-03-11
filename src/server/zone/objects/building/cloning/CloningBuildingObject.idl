@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 class CloningBuildingObject extends BuildingObject {
 
-	public CloningBuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public CloningBuildingObject() {		
 		Logger.setLoggingName("CloningBuildingObject");
 	}
 }

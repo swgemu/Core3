@@ -80,6 +80,8 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 }
 
 void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	IntangibleObjectImplementation::loadTemplateData(templateData);
+
 	characterBitmask = ANONYMOUS;
 
 	adminLevel = 0;

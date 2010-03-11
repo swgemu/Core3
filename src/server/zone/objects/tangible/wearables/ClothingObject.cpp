@@ -8,8 +8,8 @@
  *	ClothingObjectStub
  */
 
-ClothingObject::ClothingObject(LuaObject* templateData) : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ClothingObjectImplementation(templateData);
+ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
+	_impl = new ClothingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -101,16 +101,16 @@ void ClothingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-ClothingObjectImplementation::ClothingObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
+ClothingObjectImplementation::ClothingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(55):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(53):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(57):  		super.initializeTransientMembers();
 	WearableObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(61):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 

@@ -60,9 +60,7 @@ class GroupObject extends SceneObject {
 	
 	int groupLevel;
 	
-	public GroupObject(LuaObject templateData) {
-		super(templateData);
-		
+	public GroupObject() {		
 		groupLevel = 0;
 		
 		Logger.setLoggingName("GroupObject");

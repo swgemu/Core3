@@ -8,6 +8,8 @@
 #include "WaypointObject.h"
 
 void WaypointObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	IntangibleObjectImplementation::loadTemplateData(templateData);
+
 	cellID = 0; //?
 
 	unknown = 0;

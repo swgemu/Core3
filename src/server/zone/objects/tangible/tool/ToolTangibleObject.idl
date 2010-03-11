@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 
 class ToolTangibleObject extends TangibleObject {
-	public ToolTangibleObject(LuaObject templateData) {
-		super(templateData);
-		
+	public ToolTangibleObject() {
 		Logger.setLoggingName("ToolTangibleObject");
 	}
 	

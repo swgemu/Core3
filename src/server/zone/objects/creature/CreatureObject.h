@@ -120,7 +120,7 @@ public:
 
 	static const int FEMALE = 1;
 
-	CreatureObject(LuaObject* templateData);
+	CreatureObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -438,7 +438,7 @@ public:
 
 	static const int FEMALE = 1;
 
-	CreatureObjectImplementation(LuaObject* templateData);
+	CreatureObjectImplementation();
 
 	CreatureObjectImplementation(DummyConstructorParameter* param);
 

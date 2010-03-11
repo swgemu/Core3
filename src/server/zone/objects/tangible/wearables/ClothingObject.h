@@ -23,7 +23,7 @@ namespace wearables {
 
 class ClothingObject : public WearableObject {
 public:
-	ClothingObject(LuaObject* templateData);
+	ClothingObject();
 
 	void initializeTransientMembers();
 
@@ -52,7 +52,7 @@ namespace wearables {
 class ClothingObjectImplementation : public WearableObjectImplementation {
 
 public:
-	ClothingObjectImplementation(LuaObject* templateData);
+	ClothingObjectImplementation();
 
 	ClothingObjectImplementation(DummyConstructorParameter* param);
 

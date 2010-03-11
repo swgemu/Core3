@@ -51,17 +51,14 @@ import system.util.VectorMap;
 class CellObject extends SceneObject {
 	protected int cellNumber;
 	
-	public CellObject(LuaObject templateData) {
-		super(templateData);
-		
+	public CellObject() {
 		Logger.setLoggingName("CellObject");
 
 		cellNumber = 0;
-
-		super.containerVolumeLimit = 0xFFFFFFFF;
-
-		super.containerType = 2;
 	}
+	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
 	
 	public native void initializeTransientMembers();
 	

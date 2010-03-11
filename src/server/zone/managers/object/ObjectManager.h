@@ -71,7 +71,7 @@ namespace zone {
 		TemplateManager* templateManager;
 
 	public:
-		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+		ObjectFactory<SceneObject* (), uint32> objectFactory;
 
 		static Lua* luaTemplatesInstance;
 

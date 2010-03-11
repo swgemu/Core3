@@ -55,7 +55,7 @@ namespace tutorial {
 
 class TutorialBuildingObject : public BuildingObject {
 public:
-	TutorialBuildingObject(LuaObject* templateData);
+	TutorialBuildingObject();
 
 	void initializeTransientMembers();
 
@@ -92,7 +92,7 @@ protected:
 	UnloadBuildingTask* unloadTask;
 
 public:
-	TutorialBuildingObjectImplementation(LuaObject* templateData);
+	TutorialBuildingObjectImplementation();
 
 	TutorialBuildingObjectImplementation(DummyConstructorParameter* param);
 

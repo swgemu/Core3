@@ -128,9 +128,7 @@ class PlayerCreature extends CreatureObject {
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
 	
-	public PlayerCreature(LuaObject templateData) {
-		super(templateData);
-		
+	public PlayerCreature() {
 		Logger.setLoggingName("PlayerCreature");
 
 		owner = null;

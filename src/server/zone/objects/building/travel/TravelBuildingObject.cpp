@@ -8,8 +8,8 @@
  *	TravelBuildingObjectStub
  */
 
-TravelBuildingObject::TravelBuildingObject(LuaObject* templateData) : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new TravelBuildingObjectImplementation(templateData);
+TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new TravelBuildingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -89,9 +89,9 @@ void TravelBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/travel/TravelBuildingObject.idl(55):  		Logger.setLoggingName("TravelBuildingObject");
+	// server/zone/objects/building/travel/TravelBuildingObject.idl(53):  		Logger.setLoggingName("TravelBuildingObject");
 	Logger::setLoggingName("TravelBuildingObject");
 }
 

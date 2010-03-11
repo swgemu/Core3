@@ -162,7 +162,7 @@ public:
 
 	static const int LOADING = 6;
 
-	PlayerCreature(LuaObject* templateData);
+	PlayerCreature();
 
 	void initializeTransientMembers();
 
@@ -368,7 +368,7 @@ public:
 
 	static const int LOADING = 6;
 
-	PlayerCreatureImplementation(LuaObject* templateData);
+	PlayerCreatureImplementation();
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
 

@@ -36,7 +36,7 @@ namespace tangible {
 
 class Instrument : public TangibleObject {
 public:
-	Instrument(LuaObject* templateData);
+	Instrument();
 
 	void initializeTransientMembers();
 
@@ -63,7 +63,7 @@ namespace tangible {
 class InstrumentImplementation : public TangibleObjectImplementation {
 
 public:
-	InstrumentImplementation(LuaObject* templateData);
+	InstrumentImplementation();
 
 	InstrumentImplementation(DummyConstructorParameter* param);
 

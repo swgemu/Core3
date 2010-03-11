@@ -14,8 +14,8 @@
  *	WeaponObjectStub
  */
 
-WeaponObject::WeaponObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WeaponObjectImplementation(templateData);
+WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WeaponObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -25,6 +25,14 @@ WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(pa
 WeaponObject::~WeaponObject() {
 }
 
+
+void WeaponObject::loadTemplateData(LuaObject* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((WeaponObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
 
 void WeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
@@ -183,26 +191,24 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("certificationsRequired", &certificationsRequired);
 }
 
-WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+WeaponObjectImplementation::WeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(67):  		loadTemplateData(templateData);
-	loadTemplateData(templateData);
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(69):  		Logger.setLoggingName("WeaponObject");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(65):  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 }
 
 void WeaponObjectImplementation::setCertified(bool cert) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(97):  		certified = cert;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(94):  		certified = cert;
 	certified = cert;
 }
 
 int WeaponObjectImplementation::getAttackType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(101):  		return attackType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(98):  		return attackType;
 	return attackType;
 }
 
 bool WeaponObjectImplementation::isCertified() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(105):  		return certified;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(102):  		return certified;
 	return certified;
 }
 

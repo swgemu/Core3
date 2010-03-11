@@ -40,7 +40,7 @@ namespace group {
 
 class GroupObject : public SceneObject {
 public:
-	GroupObject(LuaObject* templateData);
+	GroupObject();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -102,7 +102,7 @@ class GroupObjectImplementation : public SceneObjectImplementation {
 	int groupLevel;
 
 public:
-	GroupObjectImplementation(LuaObject* templateData);
+	GroupObjectImplementation();
 
 	GroupObjectImplementation(DummyConstructorParameter* param);
 

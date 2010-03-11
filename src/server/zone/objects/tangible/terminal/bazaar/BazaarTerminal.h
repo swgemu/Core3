@@ -66,7 +66,7 @@ namespace bazaar {
 
 class BazaarTerminal : public Terminal {
 public:
-	BazaarTerminal(LuaObject* templateData);
+	BazaarTerminal();
 
 	void initializeTransientMembers();
 
@@ -107,7 +107,7 @@ protected:
 	String bazaarRegion;
 
 public:
-	BazaarTerminalImplementation(LuaObject* templateData);
+	BazaarTerminalImplementation();
 
 	BazaarTerminalImplementation(DummyConstructorParameter* param);
 

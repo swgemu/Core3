@@ -16,6 +16,15 @@ void CellObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CellObject");
 }
 
+void CellObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::loadTemplateData(templateData);
+
+	containerVolumeLimit = 0xFFFFFFFF;
+
+	containerType = 2;
+}
+
+
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	StringBuffer msg;
 	msg << "sending cell number " << cellNumber << " baselines";

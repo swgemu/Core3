@@ -36,7 +36,7 @@ namespace tangible {
 
 class Container : public TangibleObject {
 public:
-	Container(LuaObject* templateData);
+	Container();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -67,7 +67,7 @@ namespace tangible {
 class ContainerImplementation : public TangibleObjectImplementation {
 
 public:
-	ContainerImplementation(LuaObject* templateData);
+	ContainerImplementation();
 
 	ContainerImplementation(DummyConstructorParameter* param);
 

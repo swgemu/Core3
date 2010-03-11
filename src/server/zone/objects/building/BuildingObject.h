@@ -82,9 +82,11 @@ namespace building {
 
 class BuildingObject : public TangibleObject {
 public:
-	BuildingObject(LuaObject* templateData);
+	BuildingObject();
 
 	void createCellObjects();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
@@ -149,11 +151,13 @@ protected:
 	int totalCellNumber;
 
 public:
-	BuildingObjectImplementation(LuaObject* templateData);
+	BuildingObjectImplementation();
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
 	void createCellObjects();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 

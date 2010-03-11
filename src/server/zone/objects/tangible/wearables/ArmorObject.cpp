@@ -8,8 +8,8 @@
  *	ArmorObjectStub
  */
 
-ArmorObject::ArmorObject(LuaObject* templateData) : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ArmorObjectImplementation(templateData);
+ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
+	_impl = new ArmorObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -151,45 +151,45 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("specialBase", &specialBase);
 }
 
-ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
+ArmorObjectImplementation::ArmorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		healthEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(80):  		healthEncumbrance = 100;
 	healthEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(83):  		actionEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(81):  		actionEncumbrance = 100;
 	actionEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		mindEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		mindEncumbrance = 100;
 	mindEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		rating = LIGHT;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		rating = LIGHT;
 	rating = LIGHT;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		kinetic = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		kinetic = 0;
 	kinetic = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		energy = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(87):  		energy = 0;
 	energy = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		electricity = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		electricity = 0;
 	electricity = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		stun = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		stun = 0;
 	stun = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		blast = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		blast = 0;
 	blast = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		heat = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		heat = 0;
 	heat = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		cold = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		cold = 0;
 	cold = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(95):  		acid = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		acid = 0;
 	acid = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(96):  		lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		lightSaber = 0;
 	lightSaber = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(102):  		Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(100):  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
 
 bool ArmorObjectImplementation::isSpecial(const String& special) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(118):  		return specialResistsVector.contains(special);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(116):  		return specialResistsVector.contains(special);
 	return (&specialResistsVector)->contains(special);
 }
 
 bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(122):  		return vulnerabilitesVector.contains(vulnerability);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(120):  		return vulnerabilitesVector.contains(vulnerability);
 	return (&vulnerabilitesVector)->contains(vulnerability);
 }
 

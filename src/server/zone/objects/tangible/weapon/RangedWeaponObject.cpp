@@ -8,8 +8,8 @@
  *	RangedWeaponObjectStub
  */
 
-RangedWeaponObject::RangedWeaponObject(LuaObject* templateData) : WeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RangedWeaponObjectImplementation(templateData);
+RangedWeaponObject::RangedWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
+	_impl = new RangedWeaponObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -101,16 +101,16 @@ void RangedWeaponObjectImplementation::_serializationHelperMethod() {
 
 }
 
-RangedWeaponObjectImplementation::RangedWeaponObjectImplementation(LuaObject* templateData) : WeaponObjectImplementation(templateData) {
+RangedWeaponObjectImplementation::RangedWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(55):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(53):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
 }
 
 void RangedWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(57):  		super.initializeTransientMembers();
 	WeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(61):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(59):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
 }
 

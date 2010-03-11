@@ -65,7 +65,9 @@ namespace weapon {
 
 class WeaponObject : public TangibleObject {
 public:
-	WeaponObject(LuaObject* templateData);
+	WeaponObject();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
@@ -116,14 +118,12 @@ protected:
 	Vector<String> certificationsRequired;
 
 public:
-	WeaponObjectImplementation(LuaObject* templateData);
+	WeaponObjectImplementation();
 
 	WeaponObjectImplementation(DummyConstructorParameter* param);
 
-private:
 	void loadTemplateData(LuaObject* templateData);
 
-public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);

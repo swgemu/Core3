@@ -53,9 +53,7 @@ class TutorialBuildingObject extends BuildingObject {
 	
 	protected transient UnloadBuildingTask unloadTask;
 
-	public TutorialBuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public TutorialBuildingObject() {
 		initializeTransientMembers();
 	}
 	

@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 
 class SurveyTool extends ToolTangibleObject {
-	public SurveyTool(LuaObject templateData) {
-		super(templateData);
-		
+	public SurveyTool() {
 		Logger.setLoggingName("SurveyTool");
 	}
 	

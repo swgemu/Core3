@@ -31,7 +31,7 @@ public:
 
 	static const int HEAVY = 0x3;
 
-	ArmorObject(LuaObject* templateData);
+	ArmorObject();
 
 	void initializeTransientMembers();
 
@@ -104,7 +104,7 @@ public:
 
 	static const int HEAVY = 0x3;
 
-	ArmorObjectImplementation(LuaObject* templateData);
+	ArmorObjectImplementation();
 
 	ArmorObjectImplementation(DummyConstructorParameter* param);
 

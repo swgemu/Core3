@@ -10,8 +10,8 @@
  *	InstrumentStub
  */
 
-Instrument::Instrument(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InstrumentImplementation(templateData);
+Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new InstrumentImplementation();
 	_impl->_setStub(this);
 }
 
@@ -103,16 +103,16 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 }
 
-InstrumentImplementation::InstrumentImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(55):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(53):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(57):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(61):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(59):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 

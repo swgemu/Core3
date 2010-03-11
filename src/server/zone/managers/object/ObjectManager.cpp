@@ -296,7 +296,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
-		object = objectFactory.createObject(gameObjectType, &result);
+		object = objectFactory.createObject(gameObjectType);
+		object->loadTemplateData(&result);
 		object->setServerObjectCRC(objectCRC);
 
 	} catch (Exception& e) {

@@ -37,7 +37,7 @@ namespace tool {
 
 class SurveyTool : public ToolTangibleObject {
 public:
-	SurveyTool(LuaObject* templateData);
+	SurveyTool();
 
 	void initializeTransientMembers();
 
@@ -66,7 +66,7 @@ namespace tool {
 class SurveyToolImplementation : public ToolTangibleObjectImplementation {
 
 public:
-	SurveyToolImplementation(LuaObject* templateData);
+	SurveyToolImplementation();
 
 	SurveyToolImplementation(DummyConstructorParameter* param);
 

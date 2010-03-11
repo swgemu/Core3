@@ -52,7 +52,7 @@ namespace mission {
 
 class MissionTerminal : public Terminal {
 public:
-	MissionTerminal(LuaObject* templateData);
+	MissionTerminal();
 
 	void initializeTransientMembers();
 
@@ -83,7 +83,7 @@ namespace mission {
 class MissionTerminalImplementation : public TerminalImplementation {
 
 public:
-	MissionTerminalImplementation(LuaObject* templateData);
+	MissionTerminalImplementation();
 
 	MissionTerminalImplementation(DummyConstructorParameter* param);
 

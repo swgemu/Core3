@@ -23,7 +23,7 @@ namespace weapon {
 
 class MeleeWeaponObject : public WeaponObject {
 public:
-	MeleeWeaponObject(LuaObject* templateData);
+	MeleeWeaponObject();
 
 	void initializeTransientMembers();
 
@@ -52,7 +52,7 @@ namespace weapon {
 class MeleeWeaponObjectImplementation : public WeaponObjectImplementation {
 
 public:
-	MeleeWeaponObjectImplementation(LuaObject* templateData);
+	MeleeWeaponObjectImplementation();
 
 	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
 

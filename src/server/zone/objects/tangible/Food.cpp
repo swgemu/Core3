@@ -10,8 +10,8 @@
  *	FoodStub
  */
 
-Food::Food(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FoodImplementation(templateData);
+Food::Food() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FoodImplementation();
 	_impl->_setStub(this);
 }
 
@@ -103,16 +103,16 @@ void FoodImplementation::_serializationHelperMethod() {
 
 }
 
-FoodImplementation::FoodImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+FoodImplementation::FoodImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Food.idl(55):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(53):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 
 void FoodImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Food.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Food.idl(57):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Food.idl(61):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(59):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 

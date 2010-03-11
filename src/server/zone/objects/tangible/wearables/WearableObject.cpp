@@ -8,8 +8,8 @@
  *	WearableObjectStub
  */
 
-WearableObject::WearableObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WearableObjectImplementation(templateData);
+WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WearableObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -164,36 +164,36 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("wearableSkillModMap", &wearableSkillModMap);
 }
 
-WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+WearableObjectImplementation::WearableObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl(60):  		socketCount = 0;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(58):  		socketCount = 0;
 	socketCount = 0;
-	// server/zone/objects/tangible/wearables/WearableObject.idl(62):  		Logger.setLoggingName("WearableObject");
+	// server/zone/objects/tangible/wearables/WearableObject.idl(60):  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }
 
 bool WearableObjectImplementation::isWearableObject() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(68):  		return true;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(66):  		return true;
 	return true;
 }
 
 int WearableObjectImplementation::getMaxSockets() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(72):  		return socketCount;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(70):  		return socketCount;
 	return socketCount;
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(76):  		return wearableSkillModMap.getUsedSocketCount();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(74):  		return wearableSkillModMap.getUsedSocketCount();
 	return (&wearableSkillModMap)->getUsedSocketCount();
 }
 
 int WearableObjectImplementation::socketsLeft() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(80):  		return socketCount - socketsUsed();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(78):  		return socketCount - socketsUsed();
 	return socketCount - socketsUsed();
 }
 
 void WearableObjectImplementation::setMaxSockets(int sockets) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(84):  		socketCount = sockets;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(82):  		socketCount = sockets;
 	socketCount = sockets;
 }
 

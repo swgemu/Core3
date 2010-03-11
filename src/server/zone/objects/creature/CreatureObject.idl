@@ -160,12 +160,8 @@ class CreatureObject extends TangibleObject {
 	 * @post { CreatureObject is initialized } 
 	 * @param templateData templateData points to the SharedCreatureObjectTemplate LuaObject that is used to initialize CreatureObject members
 	 */
-	public CreatureObject(LuaObject templateData) {
-		super(templateData);
-		
+	public CreatureObject() {
 		Logger.setLoggingName("CreatureObject");
-
-		loadTemplateData(templateData);
 	}
 	
 	public native void finalize();

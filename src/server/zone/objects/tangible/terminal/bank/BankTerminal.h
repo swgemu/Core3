@@ -102,7 +102,7 @@ namespace bank {
 
 class BankTerminal : public Terminal {
 public:
-	BankTerminal(LuaObject* templateData);
+	BankTerminal();
 
 	void initializeTransientMembers();
 
@@ -137,7 +137,7 @@ namespace bank {
 class BankTerminalImplementation : public TerminalImplementation {
 
 public:
-	BankTerminalImplementation(LuaObject* templateData);
+	BankTerminalImplementation();
 
 	BankTerminalImplementation(DummyConstructorParameter* param);
 

@@ -37,7 +37,7 @@ namespace tool {
 
 class ToolTangibleObject : public TangibleObject {
 public:
-	ToolTangibleObject(LuaObject* templateData);
+	ToolTangibleObject();
 
 	void initializeTransientMembers();
 
@@ -66,7 +66,7 @@ namespace tool {
 class ToolTangibleObjectImplementation : public TangibleObjectImplementation {
 
 public:
-	ToolTangibleObjectImplementation(LuaObject* templateData);
+	ToolTangibleObjectImplementation();
 
 	ToolTangibleObjectImplementation(DummyConstructorParameter* param);
 

@@ -23,7 +23,7 @@ namespace terminal {
 
 class Terminal : public TangibleObject {
 public:
-	Terminal(LuaObject* templateData);
+	Terminal();
 
 	void initializeTransientMembers();
 
@@ -52,7 +52,7 @@ namespace terminal {
 class TerminalImplementation : public TangibleObjectImplementation {
 
 public:
-	TerminalImplementation(LuaObject* templateData);
+	TerminalImplementation();
 
 	TerminalImplementation(DummyConstructorParameter* param);
 

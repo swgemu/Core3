@@ -12,8 +12,8 @@
  *	TutorialBuildingObjectStub
  */
 
-TutorialBuildingObject::TutorialBuildingObject(LuaObject* templateData) : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new TutorialBuildingObjectImplementation(templateData);
+TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new TutorialBuildingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -143,42 +143,42 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(59):  		initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(57):  		initializeTransientMembers();
 	initializeTransientMembers();
 }
 
 void TutorialBuildingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(63):  		super.initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(61):  		super.initializeTransientMembers();
 	BuildingObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(65):  		unloadTask = null;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(63):  		unloadTask = null;
 	unloadTask = NULL;
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(67):  		Logger.setLoggingName("TutorialBuildingObject");
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(65):  		Logger.setLoggingName("TutorialBuildingObject");
 	Logger::setLoggingName("TutorialBuildingObject");
 }
 
 void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(71):  		dequeueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(69):  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
 }
 
 void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(75):  		enqueueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(73):  		enqueueUnloadEvent();
 	enqueueUnloadEvent();
 }
 
 void TutorialBuildingObjectImplementation::clearUnloadEvent() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(79):  		unloadTask = null;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(77):  		unloadTask = null;
 	unloadTask = NULL;
 }
 
 void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(83):  	}
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(81):  	}
 	if (unloadTask){
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(84):  			unloadTask.cancel();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(82):  			unloadTask.cancel();
 	unloadTask->cancel();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(85):  			clearUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(83):  			clearUnloadEvent();
 	clearUnloadEvent();
 }
 }

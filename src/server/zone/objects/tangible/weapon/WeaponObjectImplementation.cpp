@@ -18,6 +18,8 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 }
 
 void WeaponObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
 	certified = false;
 
 	attackType = templateData->getIntField("attackType");

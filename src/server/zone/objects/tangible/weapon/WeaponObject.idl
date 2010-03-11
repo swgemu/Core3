@@ -61,15 +61,12 @@ class WeaponObject extends TangibleObject {
 	@dereferenced
 	protected Vector<string> certificationsRequired;
 		
-	public WeaponObject(LuaObject templateData) {
-		super(templateData);
-		
-		loadTemplateData(templateData);
-		
+	public WeaponObject() {
 		Logger.setLoggingName("WeaponObject");
 	}
 	
-	private native void loadTemplateData(LuaObject templateData);
+	@local
+	public native void loadTemplateData(LuaObject templateData);
 	
 	public native void initializeTransientMembers();
 	

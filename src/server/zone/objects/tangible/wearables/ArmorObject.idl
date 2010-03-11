@@ -76,9 +76,7 @@ class ArmorObject extends WearableObject {
 	public static final int MEDIUM = 0x2;
 	public static final int HEAVY = 0x3;
 	
-	public ArmorObject(LuaObject templateData) {
-		super(templateData);
-		
+	public ArmorObject() {		
 		healthEncumbrance = 100;
 		actionEncumbrance = 100;
 		mindEncumbrance = 100;

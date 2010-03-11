@@ -8,8 +8,8 @@
  *	RifleWeaponObjectStub
  */
 
-RifleWeaponObject::RifleWeaponObject(LuaObject* templateData) : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RifleWeaponObjectImplementation(templateData);
+RifleWeaponObject::RifleWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
+	_impl = new RifleWeaponObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -101,16 +101,16 @@ void RifleWeaponObjectImplementation::_serializationHelperMethod() {
 
 }
 
-RifleWeaponObjectImplementation::RifleWeaponObjectImplementation(LuaObject* templateData) : RangedWeaponObjectImplementation(templateData) {
+RifleWeaponObjectImplementation::RifleWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(55):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(53):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 
 void RifleWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(57):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(61):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(59):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 

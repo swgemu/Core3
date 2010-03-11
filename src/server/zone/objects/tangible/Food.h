@@ -36,7 +36,7 @@ namespace tangible {
 
 class Food : public TangibleObject {
 public:
-	Food(LuaObject* templateData);
+	Food();
 
 	void initializeTransientMembers();
 
@@ -63,7 +63,7 @@ namespace tangible {
 class FoodImplementation : public TangibleObjectImplementation {
 
 public:
-	FoodImplementation(LuaObject* templateData);
+	FoodImplementation();
 
 	FoodImplementation(DummyConstructorParameter* param);
 

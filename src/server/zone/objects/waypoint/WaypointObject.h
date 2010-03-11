@@ -38,7 +38,7 @@ public:
 
 	static const byte COLOR_PURPLE = 0x05;
 
-	WaypointObject(LuaObject* templateData);
+	WaypointObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -103,7 +103,7 @@ public:
 
 	static const byte COLOR_PURPLE = 0x05;
 
-	WaypointObjectImplementation(LuaObject* templateData);
+	WaypointObjectImplementation();
 
 	WaypointObjectImplementation(DummyConstructorParameter* param);
 

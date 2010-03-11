@@ -8,8 +8,8 @@
  *	WaypointObjectStub
  */
 
-WaypointObject::WaypointObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation(templateData);
+WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WaypointObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -189,41 +189,39 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("active", &active);
 }
 
-WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+WaypointObjectImplementation::WaypointObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/waypoint/WaypointObject.idl(30):  		Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl(28):  		Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
-	// server/zone/objects/waypoint/WaypointObject.idl(32):  		loadTemplateData(templateData);
-	loadTemplateData(templateData);
 }
 
 void WaypointObjectImplementation::setCellID(unsigned int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(42):  		cellID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(38):  		cellID = id;
 	cellID = id;
 }
 
 void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
-	// server/zone/objects/waypoint/WaypointObject.idl(46):  		planetCRC = crc;
+	// server/zone/objects/waypoint/WaypointObject.idl(42):  		planetCRC = crc;
 	planetCRC = crc;
 }
 
 void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl(50):  		customName = name;
+	// server/zone/objects/waypoint/WaypointObject.idl(46):  		customName = name;
 	customName = name;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(54):  		color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl(50):  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(58):  		active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl(54):  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(62):  		unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(58):  		unknown = id;
 	unknown = id;
 }
 

@@ -23,7 +23,7 @@ namespace recreation {
 
 class RecreationBuildingObject : public BuildingObject {
 public:
-	RecreationBuildingObject(LuaObject* templateData);
+	RecreationBuildingObject();
 
 protected:
 	RecreationBuildingObject(DummyConstructorParameter* param);
@@ -50,7 +50,7 @@ namespace recreation {
 class RecreationBuildingObjectImplementation : public BuildingObjectImplementation {
 
 public:
-	RecreationBuildingObjectImplementation(LuaObject* templateData);
+	RecreationBuildingObjectImplementation();
 
 	RecreationBuildingObjectImplementation(DummyConstructorParameter* param);
 

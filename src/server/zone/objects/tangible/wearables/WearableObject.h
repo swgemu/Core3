@@ -25,7 +25,7 @@ namespace wearables {
 
 class WearableObject : public TangibleObject {
 public:
-	WearableObject(LuaObject* templateData);
+	WearableObject();
 
 	void initializeTransientMembers();
 
@@ -68,7 +68,7 @@ protected:
 	WearableSkillModMap wearableSkillModMap;
 
 public:
-	WearableObjectImplementation(LuaObject* templateData);
+	WearableObjectImplementation();
 
 	WearableObjectImplementation(DummyConstructorParameter* param);
 

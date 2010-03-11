@@ -23,7 +23,7 @@ namespace cloning {
 
 class CloningBuildingObject : public BuildingObject {
 public:
-	CloningBuildingObject(LuaObject* templateData);
+	CloningBuildingObject();
 
 protected:
 	CloningBuildingObject(DummyConstructorParameter* param);
@@ -50,7 +50,7 @@ namespace cloning {
 class CloningBuildingObjectImplementation : public BuildingObjectImplementation {
 
 public:
-	CloningBuildingObjectImplementation(LuaObject* templateData);
+	CloningBuildingObjectImplementation();
 
 	CloningBuildingObjectImplementation(DummyConstructorParameter* param);
 

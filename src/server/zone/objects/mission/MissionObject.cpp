@@ -12,8 +12,8 @@
  *	MissionObjectStub
  */
 
-MissionObject::MissionObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new MissionObjectImplementation(templateData);
+MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new MissionObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -240,19 +240,19 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("targetTemplateCRC", &targetTemplateCRC);
 }
 
-MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(91):  		typeCRC = MUSICIAN;
+	// server/zone/objects/mission/MissionObject.idl(89):  		typeCRC = MUSICIAN;
 	typeCRC = MUSICIAN;
-	// server/zone/objects/mission/MissionObject.idl(93):  		refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl(91):  		refreshCounter = 0;
 	refreshCounter = 0;
-	// server/zone/objects/mission/MissionObject.idl(95):  		targetTemplateCRC = 0;
+	// server/zone/objects/mission/MissionObject.idl(93):  		targetTemplateCRC = 0;
 	targetTemplateCRC = 0;
-	// server/zone/objects/mission/MissionObject.idl(97):  		rewardCredits = 0;
+	// server/zone/objects/mission/MissionObject.idl(95):  		rewardCredits = 0;
 	rewardCredits = 0;
-	// server/zone/objects/mission/MissionObject.idl(99):  		difficultyLevel = 0;
+	// server/zone/objects/mission/MissionObject.idl(97):  		difficultyLevel = 0;
 	difficultyLevel = 0;
-	// server/zone/objects/mission/MissionObject.idl(101):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl(99):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
@@ -260,52 +260,52 @@ void MissionObjectImplementation::finalize() {
 }
 
 WaypointObject* MissionObjectImplementation::getWaypointToMission() {
-	// server/zone/objects/mission/MissionObject.idl(112):  		return waypointToMission;
+	// server/zone/objects/mission/MissionObject.idl(110):  		return waypointToMission;
 	return waypointToMission;
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
-	// server/zone/objects/mission/MissionObject.idl(116):  		return typeCRC;
+	// server/zone/objects/mission/MissionObject.idl(114):  		return typeCRC;
 	return typeCRC;
 }
 
 int MissionObjectImplementation::getRewardCredits() {
-	// server/zone/objects/mission/MissionObject.idl(120):  		return rewardCredits;
+	// server/zone/objects/mission/MissionObject.idl(118):  		return rewardCredits;
 	return rewardCredits;
 }
 
 UnicodeString MissionObjectImplementation::getCreatorName() {
-	// server/zone/objects/mission/MissionObject.idl(124):  		return creatorName;
+	// server/zone/objects/mission/MissionObject.idl(122):  		return creatorName;
 	return creatorName;
 }
 
 int MissionObjectImplementation::getDifficultyLevel() {
-	// server/zone/objects/mission/MissionObject.idl(128):  		return difficultyLevel;
+	// server/zone/objects/mission/MissionObject.idl(126):  		return difficultyLevel;
 	return difficultyLevel;
 }
 
 StringId* MissionObjectImplementation::getMissionDescription() {
-	// server/zone/objects/mission/MissionObject.idl(133):  		return missionDescription;
+	// server/zone/objects/mission/MissionObject.idl(131):  		return missionDescription;
 	return (&missionDescription);
 }
 
 StringId* MissionObjectImplementation::getMissionTitle() {
-	// server/zone/objects/mission/MissionObject.idl(138):  		return missionTitle;
+	// server/zone/objects/mission/MissionObject.idl(136):  		return missionTitle;
 	return (&missionTitle);
 }
 
 String MissionObjectImplementation::getTargetName() {
-	// server/zone/objects/mission/MissionObject.idl(142):  		return targetName;
+	// server/zone/objects/mission/MissionObject.idl(140):  		return targetName;
 	return targetName;
 }
 
 int MissionObjectImplementation::getRefreshCounter() {
-	// server/zone/objects/mission/MissionObject.idl(146):  		return refreshCounter;
+	// server/zone/objects/mission/MissionObject.idl(144):  		return refreshCounter;
 	return refreshCounter;
 }
 
 unsigned int MissionObjectImplementation::getTargetTemplateCRC() {
-	// server/zone/objects/mission/MissionObject.idl(150):  		return targetTemplateCRC;
+	// server/zone/objects/mission/MissionObject.idl(148):  		return targetTemplateCRC;
 	return targetTemplateCRC;
 }
 

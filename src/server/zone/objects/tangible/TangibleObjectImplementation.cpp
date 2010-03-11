@@ -59,6 +59,8 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 }
 
 void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::loadTemplateData(templateData);
+
 	targetable = templateData->getByteField("targetable");
 
 	playerUseMask = templateData->getShortField("playerUseMask");

@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 class RecreationBuildingObject extends BuildingObject {
 
-	public RecreationBuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public RecreationBuildingObject() {		
 		Logger.setLoggingName("RecreationBuildingObject");
 	}
 }

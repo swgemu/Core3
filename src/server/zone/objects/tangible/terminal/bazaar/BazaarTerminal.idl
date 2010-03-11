@@ -53,9 +53,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 class BazaarTerminal extends Terminal {
 	protected string bazaarRegion;
 	
-	public BazaarTerminal(LuaObject templateData) {
-		super(templateData);
-		
+	public BazaarTerminal() {
 		Logger.setLoggingName("BazaarTerminal");
 	}
 	

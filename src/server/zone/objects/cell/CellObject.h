@@ -24,7 +24,9 @@ namespace cell {
 
 class CellObject : public SceneObject {
 public:
-	CellObject(LuaObject* templateData);
+	CellObject();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
@@ -59,9 +61,11 @@ protected:
 	int cellNumber;
 
 public:
-	CellObjectImplementation(LuaObject* templateData);
+	CellObjectImplementation();
 
 	CellObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 

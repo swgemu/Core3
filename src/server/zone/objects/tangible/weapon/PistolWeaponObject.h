@@ -23,7 +23,7 @@ namespace weapon {
 
 class PistolWeaponObject : public RangedWeaponObject {
 public:
-	PistolWeaponObject(LuaObject* templateData);
+	PistolWeaponObject();
 
 	void initializeTransientMembers();
 
@@ -52,7 +52,7 @@ namespace weapon {
 class PistolWeaponObjectImplementation : public RangedWeaponObjectImplementation {
 
 public:
-	PistolWeaponObjectImplementation(LuaObject* templateData);
+	PistolWeaponObjectImplementation();
 
 	PistolWeaponObjectImplementation(DummyConstructorParameter* param);
 

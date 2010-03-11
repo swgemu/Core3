@@ -10,8 +10,8 @@
  *	CraftingToolStub
  */
 
-CraftingTool::CraftingTool(LuaObject* templateData) : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CraftingToolImplementation(templateData);
+CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new CraftingToolImplementation();
 	_impl->_setStub(this);
 }
 
@@ -103,16 +103,16 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 }
 
-CraftingToolImplementation::CraftingToolImplementation(LuaObject* templateData) : ToolTangibleObjectImplementation(templateData) {
+CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(55):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(53):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(57):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(61):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(59):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
 }
 

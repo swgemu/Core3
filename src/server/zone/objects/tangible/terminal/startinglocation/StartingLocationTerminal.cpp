@@ -12,8 +12,8 @@
  *	StartingLocationTerminalStub
  */
 
-StartingLocationTerminal::StartingLocationTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StartingLocationTerminalImplementation(templateData);
+StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
+	_impl = new StartingLocationTerminalImplementation();
 	_impl->_setStub(this);
 }
 
@@ -119,9 +119,9 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(58):  		Logger.setLoggingName("StartingLocationTerminal");
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  		Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
 }
 

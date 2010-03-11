@@ -8,8 +8,8 @@
  *	CloningBuildingObjectStub
  */
 
-CloningBuildingObject::CloningBuildingObject(LuaObject* templateData) : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CloningBuildingObjectImplementation(templateData);
+CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new CloningBuildingObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -89,9 +89,9 @@ void CloningBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-CloningBuildingObjectImplementation::CloningBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+CloningBuildingObjectImplementation::CloningBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  		Logger.setLoggingName("CloningBuildingObject");
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(53):  		Logger.setLoggingName("CloningBuildingObject");
 	Logger::setLoggingName("CloningBuildingObject");
 }
 

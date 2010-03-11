@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 class TravelBuildingObject extends BuildingObject {
 
-	public TravelBuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public TravelBuildingObject() {
 		Logger.setLoggingName("TravelBuildingObject");
 	}
 }

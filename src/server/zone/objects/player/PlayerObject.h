@@ -136,7 +136,7 @@ public:
 
 	static const int ECJR = 64;
 
-	PlayerObject(LuaObject* templateData);
+	PlayerObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -321,7 +321,7 @@ public:
 
 	static const int ECJR = 64;
 
-	PlayerObjectImplementation(LuaObject* templateData);
+	PlayerObjectImplementation();
 
 	PlayerObjectImplementation(DummyConstructorParameter* param);
 

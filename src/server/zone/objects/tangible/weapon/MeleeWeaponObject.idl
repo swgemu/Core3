@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 
 class MeleeWeaponObject extends WeaponObject {
-	public MeleeWeaponObject(LuaObject templateData) {
-		super(templateData);
-		
+	public MeleeWeaponObject() {
 		Logger.setLoggingName("MeleeWeaponObject");
 	}
 	

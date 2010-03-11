@@ -112,11 +112,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int CSRJR = 32;
 	public static final int ECJR = 64;
 	
-	public PlayerObject(LuaObject templateData) {
-		super(templateData);
-		
-		loadTemplateData(templateData);
-
+	public PlayerObject() {
 		Logger.setLoggingName("PlayerObject");
 	}
 	

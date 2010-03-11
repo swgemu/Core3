@@ -49,9 +49,7 @@ import engine.lua.LuaObject;
 
 
 class ClothingObject extends WearableObject {
-	public ClothingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public ClothingObject() {		
 		Logger.setLoggingName("ClothingObject");
 	}
 	

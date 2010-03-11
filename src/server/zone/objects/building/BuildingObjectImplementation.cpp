@@ -20,6 +20,16 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 }
 
+void BuildingObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	totalCellNumber = templateData->getIntField("totalCellNumber");
+
+	containerVolumeLimit = 0xFFFFFFFF;
+
+	containerType = 2;
+}
+
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");

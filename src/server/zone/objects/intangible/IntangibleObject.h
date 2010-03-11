@@ -22,7 +22,7 @@ namespace intangible {
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject(LuaObject* templateData);
+	IntangibleObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -57,7 +57,7 @@ protected:
 	unsigned int status;
 
 public:
-	IntangibleObjectImplementation(LuaObject* templateData);
+	IntangibleObjectImplementation();
 
 	IntangibleObjectImplementation(DummyConstructorParameter* param);
 

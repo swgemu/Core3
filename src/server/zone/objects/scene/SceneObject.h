@@ -504,7 +504,7 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	SceneObject(LuaObject* templateData);
+	SceneObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -1141,13 +1141,13 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	SceneObjectImplementation(LuaObject* templateData);
+	SceneObjectImplementation();
 
 	SceneObjectImplementation(DummyConstructorParameter* param);
 
 	void finalize();
 
-	void loadTemplateData(LuaObject* templateData);
+	virtual void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
