@@ -49,6 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.terminal.bazaar.AuctionItem;
+import system.util.VectorMap;
 
 class BazaarTerminal extends Terminal {
 	protected string bazaarRegion;
