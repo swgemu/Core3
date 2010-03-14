@@ -53,6 +53,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.managers.bazaar.BazaarAuctionsMap;
 import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
 import server.zone.objects.scene.SceneObject;
+import system.util.VectorMap;
 
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 
