@@ -73,6 +73,18 @@ private:
 	}
 
 public:
+	StringIdParameter(const StringIdParameter& par);
+
+	StringIdParameter& operator=(const StringIdParameter& par) {
+		if (this == &par)
+			return *this;
+
+		pointerParameter = par.pointerParameter;
+		stringID = par.stringID;
+
+		return *this;
+	}
+
 	void set(SceneObject* obj);
 	void set(StringId* sid);
 	void set(StringId& sid);

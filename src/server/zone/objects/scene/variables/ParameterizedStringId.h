@@ -94,6 +94,24 @@ public:
 	ParameterizedStringId(const String& fullPath);
 	ParameterizedStringId(const String& fil, const String& stringId);
 	ParameterizedStringId(const UnicodeString& custom);
+	ParameterizedStringId(const ParameterizedStringId& custom);
+
+
+	ParameterizedStringId& operator=(const ParameterizedStringId& id) {
+		if (this == &id)
+			return *this;
+
+		TT = id.TT;
+		TU = id.TU;
+		TO = id.TO;
+
+		DI = id.DI;
+		DF = id.DF;
+
+		StringId::operator=(id);
+
+		return *this;
+	}
 
 	/**
 	* Inserts stf string identifier and variables into a packet

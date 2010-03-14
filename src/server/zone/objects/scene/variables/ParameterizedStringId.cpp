@@ -68,6 +68,17 @@ ParameterizedStringId::ParameterizedStringId(const UnicodeString& custom) : Stri
 	addSerializableVariables();
 }
 
+ParameterizedStringId::ParameterizedStringId(const ParameterizedStringId& custom) : Object(), StringId(custom) {
+	addSerializableVariables();
+
+	TT = custom.TT;
+	TU = custom.TU;
+	TO = custom.TO;
+
+	DI = custom.DI;
+	DF = custom.DF;
+}
+
 void ParameterizedStringId::addToPacketStream(Message * packet) {
 	uint32 size = 54 + file.length() + stringID.length() + parametersSize();
 

@@ -47,6 +47,13 @@ which carries forward this exception.
 #include "StringId.h"
 #include "../SceneObject.h"
 
+StringIdParameter::StringIdParameter(const StringIdParameter& par) : Object(), Serializable() {
+	addSerializableVariables();
+
+	pointerParameter = par.pointerParameter;
+	stringID = par.stringID;
+}
+
 void StringIdParameter::set(SceneObject* obj) {
 	clear();
 
