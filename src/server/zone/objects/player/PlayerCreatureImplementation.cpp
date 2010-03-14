@@ -38,6 +38,8 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
+	persistentMessages.setNoDuplicateInsertPlan();
+
 	setLoggingName("PlayerCreature");
 }
 
@@ -210,14 +212,13 @@ void PlayerCreatureImplementation::unload() {
 }
 
 void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
-	if (isLoggingOut()) {
-		if (disconnectEvent != NULL) {
+	if (disconnectEvent != NULL) {
+		disconnectEvent->cancel();
+		delete disconnectEvent;
+		disconnectEvent = NULL;
+	}
 
-			disconnectEvent->cancel();
-			delete disconnectEvent;
-			disconnectEvent = NULL;
-		}
-	} else if (isLoggingIn()) {
+	if (isLoggingIn()) {
 		unlock();
 
 		if (owner != NULL && owner != client)

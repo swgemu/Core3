@@ -94,6 +94,58 @@ TerrainManager* PlanetManager::getTerrainManager() {
 		return ((PlanetManagerImplementation*) _impl)->getTerrainManager();
 }
 
+Region* PlanetManager::getRegion(float x, float y) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return (Region*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getRegion(x, y);
+}
+
+int PlanetManager::getRegionCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getRegionCount();
+}
+
+Region* PlanetManager::getRegion(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addSignedIntParameter(index);
+
+		return (Region*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getRegion(index);
+}
+
+Region* PlanetManager::getRegion(const String& regionName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(regionName);
+
+		return (Region*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getRegion(regionName);
+}
+
 /*
  *	PlanetManagerImplementation
  */
@@ -166,35 +218,55 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv) {
 	_initializeImplementation();
-	// server/zone/managers/planet/PlanetManager.idl(74):  		zone = planet;
+	// server/zone/managers/planet/PlanetManager.idl(75):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/planet/PlanetManager.idl(75):  		server = srv;
+	// server/zone/managers/planet/PlanetManager.idl(76):  		server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl(77):  		Logger.setLoggingName("PlanetManager");
+	// server/zone/managers/planet/PlanetManager.idl(78):  		Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(78):  		Logger.setLogging("false");
+	// server/zone/managers/planet/PlanetManager.idl(79):  		Logger.setLogging("false");
 	Logger::setLogging("false");
-	// server/zone/managers/planet/PlanetManager.idl(79):  		Logger.setGlobalLogging("true");
+	// server/zone/managers/planet/PlanetManager.idl(80):  		Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
-	// server/zone/managers/planet/PlanetManager.idl(81):  		terrainManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(82):  		terrainManager = null;
 	terrainManager = NULL;
-	// server/zone/managers/planet/PlanetManager.idl(83):  		structureManager = null;
+	// server/zone/managers/planet/PlanetManager.idl(84):  		structureManager = null;
 	structureManager = NULL;
 }
 
 bool PlanetManagerImplementation::getRegion(StringId& name, float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(95):  		return regionMap.getRegion(name, x, y);
+	// server/zone/managers/planet/PlanetManager.idl(96):  		return regionMap.getRegion(name, x, y);
 	return (&regionMap)->getRegion((&name), x, y);
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(99):  		return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(100):  		return structureManager;
 	return structureManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
-	// server/zone/managers/planet/PlanetManager.idl(104):  		return terrainManager;
+	// server/zone/managers/planet/PlanetManager.idl(105):  		return terrainManager;
 	return terrainManager;
+}
+
+Region* PlanetManagerImplementation::getRegion(float x, float y) {
+	// server/zone/managers/planet/PlanetManager.idl(109):  		return regionMap.getRegion(x, y);
+	return (&regionMap)->getRegion(x, y);
+}
+
+int PlanetManagerImplementation::getRegionCount() {
+	// server/zone/managers/planet/PlanetManager.idl(113):  		return regionMap.size();
+	return (&regionMap)->size();
+}
+
+Region* PlanetManagerImplementation::getRegion(int index) {
+	// server/zone/managers/planet/PlanetManager.idl(117):  		return regionMap.getRegion(index);
+	return (&regionMap)->getRegion(index);
+}
+
+Region* PlanetManagerImplementation::getRegion(const String& regionName) {
+	// server/zone/managers/planet/PlanetManager.idl(121):  		return regionMap.getRegion(regionName);
+	return (&regionMap)->getRegion(regionName);
 }
 
 /*
@@ -223,6 +295,18 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 10:
 		resp->insertLong(getStructureManager()->_getObjectID());
 		break;
+	case 11:
+		resp->insertLong(getRegion(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		break;
+	case 12:
+		resp->insertSignedInt(getRegionCount());
+		break;
+	case 13:
+		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 14:
+		resp->insertLong(getRegion(inv->getAsciiParameter(_param0_getRegion__String_))->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -248,6 +332,22 @@ void PlanetManagerAdapter::loadRegions() {
 
 StructureManager* PlanetManagerAdapter::getStructureManager() {
 	return ((PlanetManagerImplementation*) impl)->getStructureManager();
+}
+
+Region* PlanetManagerAdapter::getRegion(float x, float y) {
+	return ((PlanetManagerImplementation*) impl)->getRegion(x, y);
+}
+
+int PlanetManagerAdapter::getRegionCount() {
+	return ((PlanetManagerImplementation*) impl)->getRegionCount();
+}
+
+Region* PlanetManagerAdapter::getRegion(int index) {
+	return ((PlanetManagerImplementation*) impl)->getRegion(index);
+}
+
+Region* PlanetManagerAdapter::getRegion(const String& regionName) {
+	return ((PlanetManagerImplementation*) impl)->getRegion(regionName);
 }
 
 /*

@@ -341,13 +341,12 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		return NULL;
 
 	// only for debugging proposes
-	/*DistributedObject* dobject = getObject(objectID);
+	DistributedObject* dobject = getObject(objectID);
 
-	if (dobject != NULL && dobject->_getObjectID() != objectID) {
-		error("different object already in database");
-
-		return NULL;
-	}*/
+	if (dobject != NULL) {
+		//error("different object already in database");
+		return (DistributedObjectStub*) dobject;
+	}
 
 	ObjectInputStream objectData(500);
 
@@ -379,6 +378,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		}
 
 		deSerializeObject((ManagedObject*)object, &objectData);
+
 	} else {
 		error("could not load object from database, unknown template crc or class name");
 	}
@@ -408,6 +408,8 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 }
 
 void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
+	String logName = object->getLoggingName();
+
 	try {
 		object->wlock();
 
@@ -417,6 +419,8 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 
 		if (zone != NULL)
 			object->insertToZone(zone);
+
+		object->setLoggingName(logName);
 
 		if (object->isPersistent())
 			object->queueUpdateToDatabaseTask();

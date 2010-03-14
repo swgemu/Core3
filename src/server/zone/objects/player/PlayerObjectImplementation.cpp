@@ -125,7 +125,7 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
-	info("sending friendslist message  size " + String::valueOf(friendList.size()), true);
+	info("sending friendslist message  size " + String::valueOf(friendList.size()));
 
 	ChatManager* chatManager = server->getChatManager();
 

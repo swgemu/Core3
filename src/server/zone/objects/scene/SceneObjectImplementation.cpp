@@ -75,6 +75,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	notifiedObjects.setNoDuplicateInsertPlan();
+	slottedObjects.setNullValue(NULL);
+	slottedObjects.setNoDuplicateInsertPlan();
+	containerObjects.setNullValue(NULL);
+	containerObjects.setNoDuplicateInsertPlan();
 
 	server = ZoneProcessServerImplementation::instance;
 
@@ -152,6 +156,11 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 
 void SceneObjectImplementation::updateToDatabase() {
 	updateToDatabaseAllObjects(true);
+}
+
+void SceneObjectImplementation::updateToDatabaseWithoutChildren() {
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToDatabase(_this);
 }
 
 void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {

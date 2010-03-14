@@ -46,22 +46,24 @@ package server.zone.objects.tangible.terminal.bazaar;
 
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.tangible.terminal.bazaar.AuctionItem;
 
 class BazaarTerminal extends Terminal {
 	protected string bazaarRegion;
 	
-	public BazaarTerminal() {
-		Logger.setLoggingName("BazaarTerminal");
-	}
+	@dereferenced
+	protected VectorMap<unsigned long, AuctionItem> auctions;
 	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
+	public BazaarTerminal() {		
+		auctions.setNullValue(null);
+		auctions.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("BazaarTerminal");
 	}
+	
+	public native void initializeTransientMembers();
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -71,6 +73,25 @@ class BazaarTerminal extends Terminal {
 	 */
 	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		return 0;
+	}
+	
+	public void addAuction(AuctionItem item) {
+		item.setBazaarTerminal(this);
+		auctions.put(item.getAuctionedItemObjectID(), item);
+	}
+	
+	public void dropAuction(unsigned long auctionItemID) {
+		AuctionItem item = auctions.get(auctionItemID);
+		
+		if (item != null) {
+			item.setBazaarTerminal(null);
+			auctions.drop(auctionItemID);
+		}
+	}
+	
+	@local
+	public VectorMap<unsigned long, AuctionItem> getAuctions() {
+		return auctions;
 	}
 	
 	public void setBazaarRegion(final string region) {

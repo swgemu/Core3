@@ -52,6 +52,7 @@ import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
+include server.zone.objects.region.Region;
 
 include server.zone.managers.planet.RegionMap;
 include server.zone.objects.terrain.PlanetNames;
@@ -104,5 +105,20 @@ class PlanetManager extends ManagedObject implements Logger {
 		return terrainManager;
 	}
 	
+	public Region getRegion(float x, float y) {
+		return regionMap.getRegion(x, y);
+	}
 	
+	public int getRegionCount() {
+		return regionMap.size();
+	}
+	
+	public Region getRegion(int index) {
+		return regionMap.getRegion(index);
+	}
+	
+	public Region getRegion(final string regionName) {
+		return regionMap.getRegion(regionName);
+	}
+		
 }

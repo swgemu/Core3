@@ -75,7 +75,9 @@ public:
 
 			player->setOnline();
 
-			zoneServer->getChatManager()->addPlayer(player);
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->addPlayer(player);
+			chatManager->loadMail(player);
 
 			PlayerObject* ghost = player->getPlayerObject();
 			ghost->notifyOnline();

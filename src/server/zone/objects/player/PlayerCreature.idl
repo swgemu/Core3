@@ -117,6 +117,9 @@ class PlayerCreature extends CreatureObject {
 
 	protected int factionStatus;
 	
+	@dereferenced
+	SortedVector<unsigned long> persistentMessages;
+	
 	//Badges
 	
 	//protected BankTerminal registeredBank;
@@ -151,6 +154,8 @@ class PlayerCreature extends CreatureObject {
 		clientLastMovementStamp = 0;
 		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+		
+		persistentMessages.setNoDuplicateInsertPlan();
 
 		setOffline();
 	}
@@ -224,6 +229,19 @@ class PlayerCreature extends CreatureObject {
 	public native void sendBadgesResponseTo(PlayerCreature player);
 	
 	public native void notifySceneReady();
+	
+	@local
+	public SortedVector<unsigned long> getPersistentMessages() {
+		return persistentMessages;
+	}
+	
+	public void addPersistentMessage(unsigned long id) {
+		persistentMessages.put(id);
+	}
+	
+	public void dropPersistentMessage(unsigned long id) {
+		persistentMessages.drop(id);
+	}
 	
 	public PlayerObject getPlayerObject() {
 		return (PlayerObject) super.getSlottedObject("ghost");

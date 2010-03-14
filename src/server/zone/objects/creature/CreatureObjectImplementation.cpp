@@ -93,7 +93,7 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	bankCredits = 0;
+	bankCredits = 1000;
 	cashCredits = 100;
 
 	pvpStatusBitmask = CreatureFlag::ATTACKABLE;

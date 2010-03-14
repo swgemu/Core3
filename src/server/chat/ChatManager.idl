@@ -56,9 +56,10 @@ import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
+import engine.log.Logger;
 
 
-class ChatManager extends ManagedObject {
+class ChatManager extends ManagedObject implements Logger {
 	ZoneServer server;
 
 	//UserManager userManager;
@@ -128,8 +129,12 @@ class ChatManager extends ManagedObject {
 	
 	public native ChatRoom createGroupRoom(unsigned long groupID, PlayerCreature creator);
 
-	/*public native void sendMail(final string sendername, unicode header, unicode body, final string name);
-	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
+	public native void loadMail(PlayerCreature player);
+	public native void sendMail(final string sendername, unicode header, unicode body, final string name);
+	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
+	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
+	
+	/*public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
 	public native void listMail(PlayerCreature ply);
 	public native void deleteMail(unsigned int mailid);
 
@@ -162,6 +167,10 @@ class ChatManager extends ManagedObject {
 
 	 */
 	
+	public void setPlayerManager(PlayerManager manager) {
+		playerManager = manager;
+	}
+	
 	public synchronized ChatRoom getChatRoom(unsigned int id) {
 		return roomMap.get(id);
 	}
@@ -173,7 +182,6 @@ class ChatManager extends ManagedObject {
 	public synchronized unsigned int getNextRoomID() {
 		return ++roomID;
 	}
-	
 	
 	public int getPlayerCount() {
 		return playerMap.size();

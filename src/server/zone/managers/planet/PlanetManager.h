@@ -75,6 +75,8 @@ class StructureManager;
 
 using namespace server::zone::managers::structure;
 
+#include "server/zone/objects/region/Region.h"
+
 #include "server/zone/managers/planet/RegionMap.h"
 
 #include "server/zone/objects/terrain/PlanetNames.h"
@@ -107,6 +109,14 @@ public:
 	StructureManager* getStructureManager();
 
 	TerrainManager* getTerrainManager();
+
+	Region* getRegion(float x, float y);
+
+	int getRegionCount();
+
+	Region* getRegion(int index);
+
+	Region* getRegion(const String& regionName);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -159,6 +169,14 @@ public:
 
 	TerrainManager* getTerrainManager();
 
+	Region* getRegion(float x, float y);
+
+	int getRegionCount();
+
+	Region* getRegion(int index);
+
+	Region* getRegion(const String& regionName);
+
 	PlanetManager* _this;
 
 	operator const PlanetManager*();
@@ -206,6 +224,16 @@ public:
 
 	StructureManager* getStructureManager();
 
+	Region* getRegion(float x, float y);
+
+	int getRegionCount();
+
+	Region* getRegion(int index);
+
+	Region* getRegion(const String& regionName);
+
+protected:
+	String _param0_getRegion__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

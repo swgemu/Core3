@@ -75,12 +75,18 @@ class ParameterizedStringId : public StringId {
 	uint32 DI;
 	float DF;
 
+	byte unknownByte;
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("TT", &TT);
 		addSerializableVariable("TU", &TU);
 		addSerializableVariable("TO", &TO);
 		addSerializableVariable("DI", &DI);
 		addSerializableVariable("DF", &DF);
+
+		unknownByte = 0;
+		DI = 0;
+		DF = 0;
 	}
 
 	inline uint32 parametersSize() const {
@@ -107,6 +113,8 @@ public:
 
 		DI = id.DI;
 		DF = id.DF;
+
+		unknownByte = id.unknownByte;
 
 		StringId::operator=(id);
 
@@ -214,6 +222,10 @@ public:
 	*/
 	inline void setDF(float f) {
 		DF = f;
+	}
+
+	inline void setUnknownByte(uint16 val) {
+		unknownByte = val;
 	}
 };
 

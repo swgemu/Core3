@@ -139,6 +139,20 @@ class ResourceManager;
 
 using namespace server::zone::managers::resource;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace bazaar {
+
+class BazaarManager;
+
+} // namespace bazaar
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::bazaar;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -270,6 +284,8 @@ public:
 
 	ResourceManager* getResourceManager();
 
+	BazaarManager* getBazaarManager();
+
 	ProfessionManager* getProfessionManager();
 
 	void setServerName(const String& servername);
@@ -325,6 +341,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<RadialManager* > radialManager;
 
 	ManagedReference<ResourceManager* > resourceManager;
+
+	ManagedReference<BazaarManager* > bazaarManager;
 
 	int totalSentPackets;
 
@@ -452,6 +470,8 @@ public:
 	RadialManager* getRadialManager();
 
 	ResourceManager* getResourceManager();
+
+	BazaarManager* getBazaarManager();
 
 	ProfessionManager* getProfessionManager();
 
@@ -583,6 +603,8 @@ public:
 	RadialManager* getRadialManager();
 
 	ResourceManager* getResourceManager();
+
+	BazaarManager* getBazaarManager();
 
 	void setServerName(const String& servername);
 

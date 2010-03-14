@@ -463,6 +463,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param startTask if true, queues a new update task
 	 */
 	 public native void updateToDatabase();
+	 
+	 /**
+	  * Updates only this object to database without updating children
+	  */
+	 public native void updateToDatabaseWithoutChildren();
 
 	/**
 	 * Updates this object and childre objects to database
@@ -850,6 +855,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public int getContainerObjectsSize() {
 		return containerObjects.size();
 	}
+	
+	public boolean hasFullContainerObjects() {
+		return containerObjects.size() == containerVolumeLimit;
+	}
 
 	public SceneObject getContainerObject(int idx) {
 		return containerObjects.get(idx);
@@ -903,6 +912,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns true if this object is a child of object
 	 */
 	public native boolean isASubChildOf(SceneObject object);
+	
+	public unicode getCustomObjectName() {
+		return objectName.getCustomString();
+	}
 
 	public boolean isInQuadTree() {
 		return QuadTreeEntry.isInQuadTree();
@@ -1016,6 +1029,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public boolean hasObjectInContainer(unsigned long objectID) {
 		return containerObjects.contains(objectID);
+	}
+	
+	public SceneObject getContainerObject(unsigned long objectID) {
+		return containerObjects.get(objectID);
 	}
 	
 	public boolean isStaticObject() {

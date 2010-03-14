@@ -127,8 +127,6 @@ class TangibleObject extends SceneObject {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
 	 */
 	public TangibleObject() {
-		//super(templateData);
-		
 		Logger.setLoggingName("TangibleObject");
 	}
 	

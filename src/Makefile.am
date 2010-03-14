@@ -74,6 +74,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
+				server/zone/objects/region/Region.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
@@ -83,6 +84,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
+				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
@@ -95,6 +97,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
 				server/zone/managers/resource/ResourceManager.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
+				server/zone/managers/bazaar/BazaarManager.cpp \
+				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
@@ -105,6 +109,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
+				server/zone/objects/tangible/terminal/bazaar/AuctionItem.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
 				
@@ -133,13 +138,16 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
+		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
@@ -162,6 +170,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
+		server/chat/PersistentMessageImplementation.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
@@ -172,6 +181,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \

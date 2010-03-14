@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
+
 /*
  *	BazaarTerminalStub
  */
@@ -52,12 +54,46 @@ int BazaarTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return ((BazaarTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void BazaarTerminal::setBazaarRegion(const String& region) {
+void BazaarTerminal::addAuction(AuctionItem* item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((BazaarTerminalImplementation*) _impl)->addAuction(item);
+}
+
+void BazaarTerminal::dropAuction(unsigned long long auctionItemID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedLongParameter(auctionItemID);
+
+		method.executeWithVoidReturn();
+	} else
+		((BazaarTerminalImplementation*) _impl)->dropAuction(auctionItemID);
+}
+
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminal::getAuctions() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((BazaarTerminalImplementation*) _impl)->getAuctions();
+}
+
+void BazaarTerminal::setBazaarRegion(const String& region) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(region);
 
 		method.executeWithVoidReturn();
@@ -70,7 +106,7 @@ String BazaarTerminal::getBazaarRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getBazaarRegion);
 		return _return_getBazaarRegion;
@@ -146,33 +182,55 @@ void BazaarTerminalImplementation::_serializationHelperMethod() {
 	_setClassName("BazaarTerminal");
 
 	addSerializableVariable("bazaarRegion", &bazaarRegion);
+	addSerializableVariable("auctions", &auctions);
 }
 
 BazaarTerminalImplementation::BazaarTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(57):  		Logger.setLoggingName("BazaarTerminal");
-	Logger::setLoggingName("BazaarTerminal");
-}
-
-void BazaarTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(61):  		super.initializeTransientMembers();
-	TerminalImplementation::initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(60):  		auctions.setNullValue(null);
+	(&auctions)->setNullValue(NULL);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(61):  		auctions.setNoDuplicateInsertPlan();
+	(&auctions)->setNoDuplicateInsertPlan();
 	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(63):  		Logger.setLoggingName("BazaarTerminal");
 	Logger::setLoggingName("BazaarTerminal");
 }
 
 int BazaarTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(73):  		return 0;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(75):  		return 0;
 	return 0;
 }
 
+void BazaarTerminalImplementation::addAuction(AuctionItem* item) {
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(79):  		item.setBazaarTerminal(this);
+	item->setBazaarTerminal(_this);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(80):  		auctions.put(item.getAuctionedItemObjectID(), item);
+	(&auctions)->put(item->getAuctionedItemObjectID(), item);
+}
+
+void BazaarTerminalImplementation::dropAuction(unsigned long long auctionItemID) {
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(84):  		AuctionItem item = auctions.get(auctionItemID);
+	AuctionItem* item = (&auctions)->get(auctionItemID);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(86):  	}
+	if (item != NULL){
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(87):  			item.setBazaarTerminal(null);
+	item->setBazaarTerminal(NULL);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(88):  			auctions.drop(auctionItemID);
+	(&auctions)->drop(auctionItemID);
+}
+}
+
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminalImplementation::getAuctions() {
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(94):  		return auctions;
+	return (&auctions);
+}
+
 void BazaarTerminalImplementation::setBazaarRegion(const String& region) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(77):  		bazaarRegion = region;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(98):  		bazaarRegion = region;
 	bazaarRegion = region;
 }
 
 String BazaarTerminalImplementation::getBazaarRegion() {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(81):  		return bazaarRegion;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(102):  		return bazaarRegion;
 	return bazaarRegion;
 }
 
@@ -194,9 +252,15 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 8:
-		setBazaarRegion(inv->getAsciiParameter(_param0_setBazaarRegion__String_));
+		addAuction((AuctionItem*) inv->getObjectParameter());
 		break;
 	case 9:
+		dropAuction(inv->getUnsignedLongParameter());
+		break;
+	case 10:
+		setBazaarRegion(inv->getAsciiParameter(_param0_setBazaarRegion__String_));
+		break;
+	case 11:
 		resp->insertAscii(getBazaarRegion());
 		break;
 	default:
@@ -212,6 +276,14 @@ void BazaarTerminalAdapter::initializeTransientMembers() {
 
 int BazaarTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((BazaarTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void BazaarTerminalAdapter::addAuction(AuctionItem* item) {
+	((BazaarTerminalImplementation*) impl)->addAuction(item);
+}
+
+void BazaarTerminalAdapter::dropAuction(unsigned long long auctionItemID) {
+	((BazaarTerminalImplementation*) impl)->dropAuction(auctionItemID);
 }
 
 void BazaarTerminalAdapter::setBazaarRegion(const String& region) {

@@ -10,7 +10,17 @@
 
 #include "../MessageCallback.h"
 
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
 class AuctionQueryHeadersMessageCallback : public MessageCallback {
+	int extent;
+	int counter;
+	int screen;
+	uint32 category;
+	uint64 bazaarID;
+	char unk1;
+	int offset;
+
 public:
 	AuctionQueryHeadersMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
 			MessageCallback(client, server) {
@@ -18,36 +28,29 @@ public:
 	}
 
 	void parse(Message* message) {
-		/*int extent = pack->parseInt();
+		extent = message->parseInt();
 		// 0 - galaxy, 1 - planet, 2 - region, 3 - vendor
-		int counter = pack->parseInt();
-		int screen = pack->parseInt();
+		counter = message->parseInt();
+		screen = message->parseInt();
 		// 2 - all items, 3 - my sales, 4 - my bids, 5 - available items,
 		// 7 - for sale, 9 - offers to vendor
-		uint32 category = pack->parseInt();  // Bitmask
-		pack->shiftOffset(21);
-		uint64 bazaarId = pack->parseLong();
-		char unk1 = pack->parseByte();
-		int offset = pack->parseShort();
+		category = message->parseInt();  // Bitmask
+		message->shiftOffset(21);
+		bazaarID = message->parseLong();
+		unk1 = message->parseByte();
+		offset = message->parseShort();
 
-		BazaarManager* bazaarManager = server->getBazaarManager();
-		if (extent == 0)
-			bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
-		else if (extent == 1) {
-			BazaarPlanetManager* planetManager = bazaarManager->getPlanet(bazaarId);
 
-			if (planetManager != NULL)
-				planetManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
-		}
-		else if (extent == 2) {
-			RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
-			if (bazaar != NULL)
-				bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
-		}*/
 	}
 
 	void run() {
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
 
+		if (player == NULL)
+			return;
+
+		BazaarManager* bazaarManager = server->getZoneServer()->getBazaarManager();
+		bazaarManager->getBazaarData(player, extent, bazaarID, screen, category, counter, offset);
 	}
 };
 

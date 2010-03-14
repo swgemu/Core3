@@ -11,12 +11,10 @@
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
-
 #include "server/zone/managers/planet/PlanetManager.h"
-
 #include "server/zone/objects/building/BuildingObject.h"
-
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/region/Region.h"
 
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
@@ -147,10 +145,11 @@ void StructureManagerImplementation::loadStaticBazaars() {
 			positionZ = result->getFloat(9);
 			positionY = result->getFloat(10);
 
-			StringId region;
+			Region* region;
+			//StringId region;
 
 			if (parentId == 0) {
-				if (!planetManager->getRegion(region, positionX, positionY)) {
+				if ((region = planetManager->getRegion(positionX, positionY)) == NULL) {
 					StringBuffer msg;
 					msg << "could not find region for bazaar " << dec << objectID;
 					msg << " positionX " << positionX << " positionY " << positionY;
@@ -162,7 +161,7 @@ void StructureManagerImplementation::loadStaticBazaars() {
 				cell = zoneServer->getObject(parentId);
 				SceneObject* buildingObject = cell->getParent();
 
-				if (!planetManager->getRegion(region, buildingObject->getPositionX(), buildingObject->getPositionY())) {
+				if ((region = planetManager->getRegion(buildingObject->getPositionX(), buildingObject->getPositionY())) == NULL) {
 					StringBuffer msg;
 					msg << "could not find region for bazaar " << dec << objectID << " parentid " << dec << parentId;
 					msg << " positionX " << buildingObject->getPositionX() << " positionY " << buildingObject->getPositionY();
@@ -170,11 +169,13 @@ void StructureManagerImplementation::loadStaticBazaars() {
 				}
 			}
 
-			String regionCity = region.getStringID();
+			String regionCity = region->getName()->getStringID();
 
 			bazaar = (BazaarTerminal*) zoneServer->createStaticObject(bazaarCRC, objectID);
 			bazaar->setBazaarRegion(regionCity);
 			bazaar->setStaticObject(true);
+
+			region->addBazaar(bazaar);
 
 			if (cell != NULL)
 				cell->addObject(bazaar, -1);

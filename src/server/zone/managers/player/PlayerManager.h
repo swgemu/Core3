@@ -118,6 +118,8 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
+	PlayerCreature* getPlayer(const String& name);
+
 protected:
 	PlayerManager(DummyConstructorParameter* param);
 
@@ -182,6 +184,8 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
+	PlayerCreature* getPlayer(const String& name);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -239,6 +243,8 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
+	PlayerCreature* getPlayer(const String& name);
+
 protected:
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
@@ -247,6 +253,7 @@ protected:
 	String _param2_createDefaultPlayerItems__PlayerCreature_String_String_;
 	String _param0_existsName__String_;
 	String _param0_getObjectID__String_;
+	String _param0_getPlayer__String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

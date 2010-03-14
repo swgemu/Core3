@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "managers/radial/RadialManager.h"
 #include "managers/resource/ResourceManager.h"
 #include "managers/professions/ProfessionManager.h"
+#include "managers/bazaar/BazaarManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -404,6 +405,12 @@ void ZoneServerImplementation::startManagers() {
 
 	playerManager = new PlayerManager(_this, processor);
 	playerManager->deploy("PlayerManager");
+
+	chatManager->setPlayerManager(playerManager);
+
+	bazaarManager = new BazaarManager(_this);
+	bazaarManager->deploy();
+	bazaarManager->initialize();
 
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");

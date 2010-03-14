@@ -9,68 +9,59 @@
 #define REGIONMAP_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/scene/variables/StringId.h"
 
-class Region : public Serializable {
-protected:
-	StringId name;
-	float x, y;
-	float radius;
-	float radius2;
-
-public:
-	Region(const String& fullName, float posX, float posY, float radi) {
-		name.setStringId(fullName);
-		x = posX;
-		y = posY;
-		radius = radi;
-		radius2 = radius * radius;
-
-		addSerializableVariable("name", &name);
-		addSerializableVariable("x", &x);
-		addSerializableVariable("y", &y);
-		addSerializableVariable("radius", &radius);
-		addSerializableVariable("radius2", &radius2);
-	}
-
-	bool containsPoint(float px, float py) {
-		return (((px - x) * (px - x)) + ((py - y) * (py - y)) <= radius2 );
-	}
-
-	inline StringId getName() {
-		return name;
-	}
-
-	inline float getX() {
-		return x;
-	}
-
-	inline float getY() {
-		return y;
-	}
-
-	inline float getRadius() {
-		return radius;
-	}
-
-};
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public Serializable {
-	Vector<Region*> regions;
+	VectorMap<String, ManagedReference<Region*> > regions;
 
 public:
 	RegionMap() {
 		addSerializableVariable("regions", &regions);
+		regions.setNoDuplicateInsertPlan();
+		regions.setNullValue(NULL);
 	}
 
 	~RegionMap() {
-		for (int i = 0; i < regions.size(); ++i) {
-			delete regions.get(i);
-		}
+
 	}
 
 	void addRegion(const String& name, float x, float y, float radius) {
-		regions.add(new Region(name, x, y, radius));
+		StringId nameid;
+		nameid.setStringId(name);
+
+		Region* region = regions.get(nameid.getStringID());
+
+		if (region == NULL) {
+			region = new Region(name, x, y, radius);
+			region->deploy();
+			regions.put(nameid.getStringID(), region);
+		} else {
+			region->addPoint(x, y, radius);
+		}
+	}
+
+	Region* getRegion(float x, float y) {
+		Region* region = NULL;
+
+		for (int i = 0; i < regions.size(); ++i) {
+			region = regions.get(i);
+
+			if (region->containsPoint(x, y)) {
+				return region;
+			}
+		}
+
+		return NULL;
+	}
+
+	inline Region* getRegion(int index) {
+		return regions.get(index);
+	}
+
+	inline Region* getRegion(const String& name) {
+		return regions.get(name);
 	}
 
 	bool getRegion(StringId* name, float x, float y) {
@@ -78,7 +69,7 @@ public:
 			Region* region = regions.get(i);
 
 			if (region->containsPoint(x, y)) {
-				*name = region->getName();
+				name = region->getName();
 
 				return true;
 			}

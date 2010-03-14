@@ -165,6 +165,19 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		return ((PlayerManagerImplementation*) _impl)->getObjectID(name);
 }
 
+PlayerCreature* PlayerManager::getPlayer(const String& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(name);
+
+		return (PlayerCreature*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->getPlayer(name);
+}
+
 /*
  *	PlayerManagerImplementation
  */
@@ -274,6 +287,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 15:
 		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
 		break;
+	case 16:
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -319,6 +335,10 @@ bool PlayerManagerAdapter::existsName(const String& name) {
 
 unsigned long long PlayerManagerAdapter::getObjectID(const String& name) {
 	return ((PlayerManagerImplementation*) impl)->getObjectID(name);
+}
+
+PlayerCreature* PlayerManagerAdapter::getPlayer(const String& name) {
+	return ((PlayerManagerImplementation*) impl)->getPlayer(name);
 }
 
 /*

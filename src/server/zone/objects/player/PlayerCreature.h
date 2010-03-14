@@ -194,6 +194,12 @@ public:
 
 	void notifySceneReady();
 
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
 	PlayerObject* getPlayerObject();
 
 	bool isOnline();
@@ -355,6 +361,9 @@ protected:
 
 	int factionStatus;
 
+private:
+	SortedVector<unsigned long long> persistentMessages;
+
 public:
 	static const int ONLINE = 1;
 
@@ -403,6 +412,12 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void notifySceneReady();
+
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
 
 	PlayerObject* getPlayerObject();
 
@@ -550,6 +565,10 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void notifySceneReady();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
 
 	PlayerObject* getPlayerObject();
 

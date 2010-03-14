@@ -77,6 +77,8 @@ ParameterizedStringId::ParameterizedStringId(const ParameterizedStringId& custom
 
 	DI = custom.DI;
 	DF = custom.DF;
+
+	unknownByte = custom.unknownByte;
 }
 
 void ParameterizedStringId::addToPacketStream(Message * packet) {
@@ -89,7 +91,7 @@ void ParameterizedStringId::addToPacketStream(Message * packet) {
 	else
 		packet->insertInt(size / 2);
 
-		packet->insertShort(0);
+		packet->insertShort(unknownByte);
 		packet->insertByte(1);
 		packet->insertInt(0xFFFFFFFF);
 

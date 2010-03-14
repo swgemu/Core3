@@ -353,6 +353,16 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
+	public void addBankCredits(int credits, boolean notifyClient = true) {
+		int newCredits = bankCredits + credits;
+		setBankCredits(newCredits);
+	}
+	
+	public void substractBankCredits(int credits) {
+		int newCredits = bankCredits - credits;
+		setBankCredits(newCredits);
+	}
+	
 	/**
 	 * Update the cash credits of this object
 	 * @pre { this object is locked }

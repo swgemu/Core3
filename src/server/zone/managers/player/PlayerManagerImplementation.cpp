@@ -99,6 +99,30 @@ bool PlayerManagerImplementation::existsName(const String& name) {
 	return res;
 }
 
+PlayerCreature* PlayerManagerImplementation::getPlayer(const String& name) {
+	uint64 oid = 0;
+
+	rlock();
+
+	try {
+		oid = nameMap->get(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::getPlayer(const String& name)");
+	}
+
+	runlock();
+
+	if (oid == 0)
+		return NULL;
+
+	SceneObject* obj = server->getObject(oid);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return NULL;
+
+	return (PlayerCreature*) obj;
+}
+
 uint64 PlayerManagerImplementation::getObjectID(const String& name) {
 	uint64 oid = 0;
 

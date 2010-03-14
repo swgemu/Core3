@@ -53,9 +53,25 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
-#include "server/zone/objects/tangible/terminal/Terminal.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace bazaar {
 
-#include "engine/lua/LuaObject.h"
+class AuctionItem;
+
+} // namespace bazaar
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::bazaar;
+
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 
 namespace server {
 namespace zone {
@@ -71,6 +87,12 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void addAuction(AuctionItem* item);
+
+	void dropAuction(unsigned long long auctionItemID);
+
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 
@@ -106,6 +128,8 @@ class BazaarTerminalImplementation : public TerminalImplementation {
 protected:
 	String bazaarRegion;
 
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
+
 public:
 	BazaarTerminalImplementation();
 
@@ -114,6 +138,12 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void addAuction(AuctionItem* item);
+
+	void dropAuction(unsigned long long auctionItemID);
+
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 
@@ -161,6 +191,10 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void addAuction(AuctionItem* item);
+
+	void dropAuction(unsigned long long auctionItemID);
 
 	void setBazaarRegion(const String& region);
 

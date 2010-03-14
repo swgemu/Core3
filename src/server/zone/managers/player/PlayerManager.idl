@@ -94,4 +94,5 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
+	public native PlayerCreature getPlayer(final string name);
 }

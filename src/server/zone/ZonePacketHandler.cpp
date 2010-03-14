@@ -60,6 +60,13 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacterCallback.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
+#include "packets/auction/AuctionQueryHeadersMessageCallback.h"
+#include "packets/auction/CreateAuctionMessageCallback.h"
+#include "packets/auction/CreateImmediateAuctionMessageCallback.h"
+#include "packets/auction/GetAuctionDetailsCallback.h"
+#include "packets/auction/RetrieveAuctionItemMessageCallback.h"
+#include "packets/auction/BidAuctionMessageCallback.h"
+
 #include "packets/object/ObjectControllerMessageCallback.h"
 #include "packets/object/DataTransform.h"
 #include "packets/object/DataTransformWithParent.h"
@@ -82,6 +89,9 @@ which carries forward this exception.
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
 #include "packets/chat/ChatSendToRoomCallback.h"
+#include "packets/chat/ChatPersistentMessageToServerCallback.h"
+#include "packets/chat/ChatRequestPersistentMessageCallback.h"
+#include "packets/chat/ChatDeletePersistentMessageCallback.h"
 
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
@@ -124,6 +134,15 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<SuiEventNotificationCallback>(0x092D3564);
 	messageCallbackFactory.registerObject<StomachRequestMessageCallback>(0xB75DD5D7);
 	messageCallbackFactory.registerObject<PlayerMoneyRequestMessageCallback>(0x9D105AA1);
+	messageCallbackFactory.registerObject<AuctionQueryHeadersMessageCallback>(0x679E0D00);
+	messageCallbackFactory.registerObject<CreateAuctionMessageCallback>(0xAD47021D);
+	messageCallbackFactory.registerObject<CreateImmediateAuctionMessageCallback>(0x1E9CE308);
+	messageCallbackFactory.registerObject<GetAuctionDetailsCallback>(0xD36EFAE4);
+	messageCallbackFactory.registerObject<ChatPersistentMessageToServerCallback>(0x25A29FA6);
+	messageCallbackFactory.registerObject<ChatRequestPersistentMessageCallback>(0x07E3559F);
+	messageCallbackFactory.registerObject<ChatDeletePersistentMessageCallback>(0x8F251641);
+	messageCallbackFactory.registerObject<RetrieveAuctionItemMessageCallback>(0x12B0D449);
+	messageCallbackFactory.registerObject<BidAuctionMessageCallback>(0x91125453);
 
 }
 

@@ -530,6 +530,8 @@ public:
 
 	void updateToDatabase();
 
+	void updateToDatabaseWithoutChildren();
+
 	void updateToDatabaseAllObjects(bool startTask = true);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
@@ -640,6 +642,8 @@ public:
 
 	int getContainerObjectsSize();
 
+	bool hasFullContainerObjects();
+
 	SceneObject* getContainerObject(int idx);
 
 	ZoneClientSession* getClient();
@@ -661,6 +665,8 @@ public:
 	SceneObject* getGrandParent();
 
 	bool isASubChildOf(SceneObject* object);
+
+	UnicodeString getCustomObjectName();
 
 	bool isInQuadTree();
 
@@ -718,6 +724,8 @@ public:
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
+	SceneObject* getContainerObject(unsigned long long objectID);
+
 	bool isStaticObject();
 
 protected:
@@ -728,6 +736,8 @@ protected:
 	String _return_getArrangementDescriptor;
 	String _return_getLoggingName;
 	String _return_getSlotDescriptor;
+
+	UnicodeString _return_getCustomObjectName;
 
 	friend class SceneObjectHelper;
 };
@@ -1171,6 +1181,8 @@ public:
 
 	void updateToDatabase();
 
+	void updateToDatabaseWithoutChildren();
+
 	void updateToDatabaseAllObjects(bool startTask = true);
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
@@ -1281,6 +1293,8 @@ public:
 
 	int getContainerObjectsSize();
 
+	bool hasFullContainerObjects();
+
 	SceneObject* getContainerObject(int idx);
 
 	virtual ZoneClientSession* getClient();
@@ -1302,6 +1316,8 @@ public:
 	SceneObject* getGrandParent();
 
 	bool isASubChildOf(SceneObject* object);
+
+	UnicodeString getCustomObjectName();
 
 	bool isInQuadTree();
 
@@ -1358,6 +1374,8 @@ public:
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
 
 	bool isStaticObject();
 
@@ -1417,6 +1435,8 @@ public:
 	int canAddObject(SceneObject* object);
 
 	void updateToDatabase();
+
+	void updateToDatabaseWithoutChildren();
 
 	void updateToDatabaseAllObjects(bool startTask);
 
@@ -1518,6 +1538,8 @@ public:
 
 	int getContainerObjectsSize();
 
+	bool hasFullContainerObjects();
+
 	SceneObject* getContainerObject(int idx);
 
 	ZoneClientSession* getClient();
@@ -1539,6 +1561,8 @@ public:
 	SceneObject* getGrandParent();
 
 	bool isASubChildOf(SceneObject* object);
+
+	UnicodeString getCustomObjectName();
 
 	bool isInQuadTree();
 
@@ -1591,6 +1615,8 @@ public:
 	void setStaticObject(bool val);
 
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
 
 	bool isStaticObject();
 

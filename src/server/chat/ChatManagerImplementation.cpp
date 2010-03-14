@@ -20,9 +20,11 @@
 #include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
 #include "server/zone/packets/chat/ChatOnSendRoomMessage.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
+#include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "PersistentMessage.h"
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
@@ -32,10 +34,12 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	//userManager = server->getUserManager();
 
-	playerManager = serv->getPlayerManager();
+	playerManager = NULL;
 	//guildManager = playerManager->getGuildManager();
 
 	//resourceManager = server->getResourceManager();
+
+	ObjectDatabaseManager::instance()->loadDatabase("mail", true);
 
 	playerMap = new PlayerMap(initsize);
 	//playerMap->deploy("ChatPlayerMap");
@@ -45,6 +49,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	mute = false;
 
 	roomID = 0;
+
+	setLoggingName("ChatManager");
 
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
@@ -502,4 +508,147 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 	}
 
 	sender->wlock();
+}
+
+void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
+	uint64 receiverObjectID = playerManager->getObjectID(name);
+
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
+
+	if (receiverObjectID == 0) {
+		error("unexistent name for persistent message");
+		return;
+	}
+
+	ManagedReference<SceneObject*> receiver = server->getObject(receiverObjectID);
+
+	if (receiver == NULL) {
+		error("NULL receiver in send mail");
+
+		return;
+	}
+
+	if (!receiver->isPlayerCreature()) {
+		error("not player in send mail");
+
+		return;
+	}
+
+	PlayerCreature* player = (PlayerCreature*) receiver.get();
+
+	/*ParameterizedStringId test("base_player", "sale_fee");
+	test.setDI(100);
+	test.setUnknownByte(1);*/
+
+	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
+	mail->setSenderName(sendername);
+	mail->setSubject(header);
+	mail->setBody(body);
+	//mail->setParameterizedBody(test);
+	mail->setReceiverObjectID(receiverObjectID);
+	mail->setTimeStamp(currentTime);
+
+	ObjectManager::instance()->persistObject(mail, 1, "mail");
+
+	Locker _locker(player);
+
+	player->addPersistentMessage(mail->getObjectID());
+
+	if (player->isOnline()) {
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
+		player->sendMessage(mmsg);
+	}
+
+	player->updateToDatabaseWithoutChildren();
+}
+
+void ChatManagerImplementation::loadMail(PlayerCreature* player) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	for (int i = 0; i < messages->size(); ++i) {
+		uint64 messageObjectID = messages->get(i);
+
+		ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+
+		if (mail == NULL) {
+			messages->drop(messageObjectID);
+			continue;
+		}
+
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x01, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	}
+}
+
+void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* player, uint32 mailID) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	uint64 messageObjectID = -1;
+
+	for (int i = 0; i < messages->size(); ++i) {
+		messageObjectID = messages->get(i);
+
+		if (Long::hashCode(messageObjectID) == mailID)
+			break;
+	}
+
+	if (messageObjectID == -1) {
+		error("could not find mail in handleRequestPersistentMsg");
+		return;
+	}
+
+	ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+
+	if (mail == NULL) {
+		messages->drop(messageObjectID);
+		return;
+	}
+
+	_locker.release();
+
+	mail->setStatus('R');
+	mail->updateToDatabase();
+
+	UnicodeString mailBody = mail->getBody();
+
+	if (mailBody.length() > 0) {
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	} else {
+		ParameterizedStringId* body = mail->getParameterizedBody();
+
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), *body, mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	}
+}
+
+void ChatManagerImplementation::deletePersistentMessage(PlayerCreature* player, uint32 mailID) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	uint64 messageObjectID = -1;
+
+	for (int i = 0; i < messages->size(); ++i) {
+		messageObjectID = messages->get(i);
+
+		if (Long::hashCode(messageObjectID) == mailID)
+			break;
+	}
+
+	if (messageObjectID == -1) {
+		error("could not find mail in deletePersistentMessage");
+		return;
+	}
+
+	messages->drop(messageObjectID);
+
+	_locker.release();
+
+	ObjectManager::instance()->destroyObject(messageObjectID);
 }

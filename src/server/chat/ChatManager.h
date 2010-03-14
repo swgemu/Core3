@@ -135,6 +135,8 @@ using namespace server::zone::packets::chat;
 
 #include "system/util/VectorMap.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace chat {
 
@@ -184,6 +186,16 @@ public:
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
+	void loadMail(PlayerCreature* player);
+
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+
+	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+
+	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+
+	void setPlayerManager(PlayerManager* manager);
+
 	ChatRoom* getChatRoom(unsigned int id);
 
 	ChatRoom* getGameRoom(const String& game);
@@ -208,7 +220,7 @@ using namespace server::chat;
 namespace server {
 namespace chat {
 
-class ChatManagerImplementation : public ManagedObjectImplementation {
+class ChatManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ManagedReference<ZoneServer* > server;
 
 	ManagedReference<PlayerManager* > playerManager;
@@ -275,6 +287,16 @@ public:
 	void destroyRoom(ChatRoom* room);
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
+
+	void loadMail(PlayerCreature* player);
+
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+
+	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+
+	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+
+	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
 
@@ -363,6 +385,16 @@ public:
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
+	void loadMail(PlayerCreature* player);
+
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+
+	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+
+	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+
+	void setPlayerManager(PlayerManager* manager);
+
 	ChatRoom* getChatRoom(unsigned int id);
 
 	ChatRoom* getGameRoom(const String& game);
@@ -383,6 +415,10 @@ protected:
 	String _param1_getChatRoomByGamePath__ChatRoom_String_;
 	UnicodeString _param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_;
 	UnicodeString _param1_handleSocialInternalMessage__CreatureObject_UnicodeString_;
+	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
+	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
 	String _param0_getGameRoom__String_;
 };
 
