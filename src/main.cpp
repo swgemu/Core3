@@ -48,15 +48,133 @@ which carries forward this exception.
 
 #include "server/zone/managers/planet/HeightMap.h"
 
+class TestClassReference;
+
+class TestClass : public TransactionalObject {
+	int value;
+
+	long value2;
+
+	TestClass* otherValue;
+
+public:
+	TestClass(int val) {
+		value = val;
+		value2 = 4;
+		otherValue = NULL;
+	}
+
+	int getValue2() {
+		return value2;
+	}
+
+	void setValue2(int val) {
+		value2 = val;
+	}
+
+	int size() {
+		return sizeof(TestClass);
+	}
+
+	static Vector<TestClassReference*> references;
+};
+
+Vector<TestClassReference*> TestClass::references;
+
+class TestClassReference {
+	TransactionalObjectHeader<TestClass>* header;
+
+public:
+	TestClassReference() {
+		header = NULL;
+	}
+
+	TestClassReference(const TestClassReference& ref) {
+		header = ref.header;
+	}
+
+	TestClassReference(TestClass* object) {
+		header = new TransactionalObjectHeader<TestClass>(object);
+	}
+
+	void operator=(TestClass* object) {
+		header = new TransactionalObjectHeader<TestClass>(object);
+	}
+
+	TestClass* get() {
+		return (TestClass*) header->get();
+	}
+
+	TestClass* getForUpdate() {
+		return (TestClass*) header->getForUpdate();
+	}
+};
+
+class TestTask : public Thread {
+	int taskID;
+
+public:
+	TestTask(int id) {
+		taskID = id;
+	}
+
+	void run() {
+		uint64 starttime = System::getMikroTime();
+
+		testMethod();
+
+		uint64 endtime = System::getMikroTime();
+
+		System::out.println("Transaction " + String::valueOf(taskID) + " time: " + Long::toString(endtime - starttime) + " usec");
+
+		starttime = System::getMikroTime();
+
+		engine::stm::Transaction* transaction =
+				engine::stm::Transaction::currentTransaction();
+
+		if (transaction->commit()) {
+			endtime = System::getMikroTime();
+			System::out.println("Transaction " + String::valueOf(taskID) + " commited: " + Long::toString(endtime - starttime) + " usec");
+		}
+	}
+
+	void testMethod() {
+		for (int i = 0; i < TestClass::references.size(); ++i) {
+			TestClassReference* reference = TestClass::references.get(i);
+
+			TestClass* object = reference->getForUpdate();
+
+			object->setValue2(i);
+
+			int size = object->size();
+			if (size != sizeof(TestClass))
+				System::out.println("CONSISTENCY ERROR");
+		}
+	}
+};
+
 int main(int argc, char* argv[]) {
-	/*TaskManager* taskManager = TaskManager::instance();
-	taskManager->initialize();
+	/*for (int i = 0; i < 100; ++i) {
+		TestClass* object = new TestClass(i);
+		TestClassReference* reference = new TestClassReference(object);
 
-	taskManager->testScheduler();
+		TestClass::references.add(reference);
+	}
 
-	Thread::sleep(10000000);
+	Vector<Thread*> threads;
 
-	taskManager->shutdown();
+	for (int i = 0; i < 20; ++i) {
+		Thread* thread = new TestTask(i);
+		thread->start();
+
+		threads.add(thread);
+	}
+
+	for (int i = 0; i < threads.size(); ++i) {
+		Thread* thread = threads.get(i);
+
+		thread->join();
+	}
 
 	return 0;*/
 

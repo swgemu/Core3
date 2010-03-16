@@ -45,4 +45,5 @@ which carries forward this exception.
 #include "ServerDatabase.h"
 
 Vector<Database*>* ServerDatabase::databases = NULL;
-uint32 ServerDatabase::currentDB = 0;
+
+AtomicInteger ServerDatabase::currentDB = 0;
