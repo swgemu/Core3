@@ -13,7 +13,7 @@
 #include "BazaarManager.h"
 
 class CheckAuctionsTask : public Task {
-	ManagedWeakReference<BazaarManager*> bazaarManager;
+	ManagedWeakReference<BazaarManager> bazaarManager;
 
 public:
 	CheckAuctionsTask(BazaarManager* bazaar) {

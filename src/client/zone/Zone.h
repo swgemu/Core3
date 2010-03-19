@@ -71,7 +71,7 @@ class Zone : public Thread, public Mutex, public Logger {
 	ZoneClientThread* clientThread;
 	ZoneMessageProcessorThread* processor;
 
-	Reference<PlayerCreature*> player;
+	Reference<PlayerCreature> player;
 	ObjectController* objectController;
 
 	Condition characterCreatedCondition;

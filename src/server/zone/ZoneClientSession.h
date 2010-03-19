@@ -110,7 +110,7 @@ namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
 protected:
-	ManagedWeakReference<SceneObject* > player;
+	ManagedWeakReference<SceneObject > player;
 
 	unsigned int sessionKey;
 

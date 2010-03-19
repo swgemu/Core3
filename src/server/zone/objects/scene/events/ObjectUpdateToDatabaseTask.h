@@ -17,7 +17,7 @@ namespace scene {
 namespace events {
 
 class ObjectUpdateToDatabaseTask : public Task {
-	ManagedReference<SceneObject*> object;
+	ManagedReference<SceneObject> object;
 
 public:
 	ObjectUpdateToDatabaseTask(SceneObject* object) : Task(300000) {

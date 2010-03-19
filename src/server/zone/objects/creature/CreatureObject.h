@@ -385,7 +385,7 @@ protected:
 
 	unsigned long long weaponID;
 
-	ManagedReference<GroupObject* > group;
+	ManagedReference<GroupObject > group;
 
 	unsigned long long groupInviterID;
 

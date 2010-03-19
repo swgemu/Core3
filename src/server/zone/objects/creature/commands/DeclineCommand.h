@@ -67,7 +67,7 @@ public:
 			return false;
 
 		uint64 inviterID = creature->getGroupInviterID();
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(inviterID);
+		ManagedReference<SceneObject> object = server->getZoneServer()->getObject(inviterID);
 
 		if (object == NULL || !object->isPlayerCreature())
 			return false;

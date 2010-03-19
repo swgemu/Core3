@@ -177,7 +177,7 @@ void PlayerCreatureImplementation::activateRecovery() {
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
-	ManagedReference<SceneObject*> savedParent = NULL;
+	ManagedReference<SceneObject> savedParent = NULL;
 
 	getPlayerObject()->notifyOffline();
 

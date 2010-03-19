@@ -145,7 +145,7 @@ namespace bazaar {
 
 class AuctionItemImplementation : public ManagedObjectImplementation {
 protected:
-	ManagedWeakReference<BazaarTerminal* > bazaarTerminal;
+	ManagedWeakReference<BazaarTerminal > bazaarTerminal;
 
 	unsigned long long auctionedItemObjectID;
 

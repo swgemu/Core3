@@ -67,7 +67,7 @@ public:
 
 		GroupManager* groupManager = GroupManager::instance();
 
-		ManagedReference<GroupObject*> group = creature->getGroup();
+		ManagedReference<GroupObject> group = creature->getGroup();
 
 		if (group == NULL)
 			return false;

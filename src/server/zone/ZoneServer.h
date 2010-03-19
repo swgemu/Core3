@@ -330,19 +330,19 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	int procThreadCount;
 
-	Vector<ManagedReference<Zone* > > zones;
+	Vector<ManagedReference<Zone > > zones;
 
 	ObjectManager* objectManager;
 
-	ManagedReference<PlayerManager* > playerManager;
+	ManagedReference<PlayerManager > playerManager;
 
-	ManagedReference<ChatManager* > chatManager;
+	ManagedReference<ChatManager > chatManager;
 
-	ManagedReference<RadialManager* > radialManager;
+	ManagedReference<RadialManager > radialManager;
 
-	ManagedReference<ResourceManager* > resourceManager;
+	ManagedReference<ResourceManager > resourceManager;
 
-	ManagedReference<BazaarManager* > bazaarManager;
+	ManagedReference<BazaarManager > bazaarManager;
 
 	int totalSentPackets;
 

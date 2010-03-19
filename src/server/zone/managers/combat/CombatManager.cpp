@@ -29,10 +29,10 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
-	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
+	DeltaVector<ManagedReference<SceneObject> >* defenderList = attacker->getDefenderList();
 
 	for (int i = 0; i < defenderList->size(); ++i) {
-		ManagedReference<SceneObject*> object = defenderList->get(i);
+		ManagedReference<SceneObject> object = defenderList->get(i);
 
 		if (!object->isCreatureObject())
 			continue;

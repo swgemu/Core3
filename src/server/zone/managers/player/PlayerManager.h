@@ -143,7 +143,7 @@ namespace player {
 class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer* > server;
+	ManagedReference<ZoneServer > server;
 
 	PlayerMap* playerMap;
 

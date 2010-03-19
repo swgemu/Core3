@@ -67,14 +67,14 @@ public:
 
 		GroupManager* groupManager = GroupManager::instance();
 
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isPlayerCreature())
 			return false;
 
 		CreatureObject* targetObject = (CreatureObject*) object.get();
 
-		ManagedReference<GroupObject*> group = creature->getGroup();
+		ManagedReference<GroupObject> group = creature->getGroup();
 		if (group == NULL)
 			return false;
 

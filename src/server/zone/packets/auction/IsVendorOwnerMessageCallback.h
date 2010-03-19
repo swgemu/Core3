@@ -33,7 +33,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> bazaar = server->getZoneServer()->getObject(oid);
+		ManagedReference<SceneObject> bazaar = server->getZoneServer()->getObject(oid);
 
 		if (bazaar == NULL)
 			return;

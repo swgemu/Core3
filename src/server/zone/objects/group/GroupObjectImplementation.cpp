@@ -42,8 +42,8 @@ void GroupObjectImplementation::destroyChatRoom() {
 	if (chatRoom == NULL)
 		return;
 
-	ManagedReference<ChatRoom*> room = chatRoom->getParent();
-	ManagedReference<ChatRoom*> parent = room->getParent();
+	ManagedReference<ChatRoom> room = chatRoom->getParent();
+	ManagedReference<ChatRoom> parent = room->getParent();
 
 	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
@@ -75,7 +75,7 @@ void GroupObjectImplementation::addMember(SceneObject* player) {
 }
 
 void GroupObjectImplementation::removeMember(SceneObject* player) {
-	ManagedReference<SceneObject*> obj = player;
+	ManagedReference<SceneObject> obj = player;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
 		SceneObject* play = groupMembers.get(i);
@@ -111,7 +111,7 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 
 	//SceneObject* obj = groupMembers.get();
 
-	ManagedReference<SceneObject*> temp = (SceneObject*) groupMembers.get(0);
+	ManagedReference<SceneObject> temp = (SceneObject*) groupMembers.get(0);
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
 		if (groupMembers.get(i) == player) {

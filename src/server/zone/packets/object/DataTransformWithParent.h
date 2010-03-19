@@ -133,7 +133,7 @@ public:
 		/*if (object->isMounted())
 				object->dismount(true, true);*/
 
-		ManagedReference<SceneObject*> newParent = server->getZoneServer()->getObject(parent, true);
+		ManagedReference<SceneObject> newParent = server->getZoneServer()->getObject(parent, true);
 
 		if (newParent == NULL)
 			return;

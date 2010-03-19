@@ -67,7 +67,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		player->wlock(leader);
 
 		if (leader->isGroupped()) {
-			ManagedReference<GroupObject*> group = leader->getGroup();
+			ManagedReference<GroupObject> group = leader->getGroup();
 
 			if (group->getLeader() != leader) {
 				leader->sendSystemMessage("group", "must_be_leader");
@@ -129,7 +129,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	uint64 inviterID = player->getGroupInviterID();
 
 	ZoneServer* server = player->getZone()->getZoneServer();
-	ManagedReference<SceneObject*> object = server->getObject(inviterID);
+	ManagedReference<SceneObject> object = server->getObject(inviterID);
 
 	if (object == NULL || !object->isPlayerCreature() || object == player)
 		return;
@@ -176,7 +176,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		player->updateGroup(group);
 		player->sendSystemMessage("group", "joined_self");
 
-		ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
+		ManagedReference<ChatRoom> groupChannel = group->getGroupChannel();
 
 		if (groupChannel != NULL && player->isPlayerCreature()) {
 			groupChannel->sendTo((PlayerCreature*) player);
@@ -198,7 +198,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(0x13dcb432, 0, "");
+	ManagedReference<GroupObject> group = (GroupObject*) ObjectManager::instance()->createObject(0x13dcb432, 0, "");
 	group->initializeLeader(leader);
 	group->startChatRoom();
 	group->setZone(leader->getZone());
@@ -214,7 +214,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	return group;
 }
 
-void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player) {
+void GroupManager::leaveGroup(ManagedReference<GroupObject> group, CreatureObject* player) {
 	// Pre: player locked
 	// Post: player locked
 	if (group == NULL)
@@ -263,7 +263,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 	player->wlock();
 }
 
-void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player) {
+void GroupManager::disbandGroup(ManagedReference<GroupObject> group, CreatureObject* player) {
 	//Pre: player locked
 	//Post: player locked
 	player->unlock();
@@ -298,7 +298,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 	player->wlock();
 }
 
-void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* playerToKick) {
+void GroupManager::kickFromGroup(ManagedReference<GroupObject> group, CreatureObject* player, CreatureObject* playerToKick) {
 	// Pre: player is locked, group != NULL
 	// Post: playerToKick kicked from group
 
@@ -355,11 +355,11 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 			if (playerToKick->isPlayerCreature()) {
 				PlayerCreature* pl = (PlayerCreature*) playerToKick;
-				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
+				ManagedReference<ChatRoom> groupChannel = group->getGroupChannel();
 				groupChannel->removePlayer(pl, false);
 				groupChannel->sendDestroyTo(pl);
 
-				ManagedReference<ChatRoom*> room = groupChannel->getParent();
+				ManagedReference<ChatRoom> room = groupChannel->getParent();
 				room->sendDestroyTo(pl);
 			}
 

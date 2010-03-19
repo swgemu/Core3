@@ -181,11 +181,11 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ObjectMap objectMap;
 
-	ManagedReference<PlanetManager* > planetManager;
+	ManagedReference<PlanetManager > planetManager;
 
-	ManagedReference<CreatureManager* > creatureManager;
+	ManagedReference<CreatureManager > creatureManager;
 
-	ManagedReference<ZoneServer* > server;
+	ManagedReference<ZoneServer > server;
 
 	Time galacticTime;
 

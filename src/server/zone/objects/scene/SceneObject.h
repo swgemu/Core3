@@ -590,7 +590,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
+	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject > >& objects);
 
 	unsigned long long getParentID();
 
@@ -720,7 +720,7 @@ public:
 
 	void setStaticObject(bool val);
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+	VectorMap<unsigned long long, ManagedReference<SceneObject > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
@@ -758,13 +758,13 @@ class SceneObjectImplementation : public ManagedObjectImplementation, public Qua
 protected:
 	ZoneProcessServerImplementation* server;
 
-	ManagedReference<Zone* > zone;
+	ManagedReference<Zone > zone;
 
-	ManagedWeakReference<SceneObject* > parent;
+	ManagedWeakReference<SceneObject > parent;
 
-	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
+	VectorMap<String, ManagedReference<SceneObject > > slottedObjects;
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
+	VectorMap<unsigned long long, ManagedReference<SceneObject > > containerObjects;
 
 	unsigned int serverObjectCRC;
 
@@ -782,7 +782,7 @@ protected:
 
 	StringId detailedDescription;
 
-	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
+	SortedVector<ManagedReference<SceneObject > > notifiedObjects;
 
 	bool staticObject;
 
@@ -1241,7 +1241,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
+	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject > >& objects);
 
 	unsigned long long getParentID();
 
@@ -1371,7 +1371,7 @@ public:
 
 	void setStaticObject(bool val);
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+	VectorMap<unsigned long long, ManagedReference<SceneObject > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
 

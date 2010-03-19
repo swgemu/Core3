@@ -97,7 +97,7 @@ namespace group {
 class GroupObjectImplementation : public SceneObjectImplementation {
 	GroupList groupMembers;
 
-	ManagedReference<ChatRoom* > chatRoom;
+	ManagedReference<ChatRoom > chatRoom;
 
 	int groupLevel;
 

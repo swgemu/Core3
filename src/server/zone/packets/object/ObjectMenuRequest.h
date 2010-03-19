@@ -74,7 +74,7 @@ public:
 
 	void run() {
 		if (menuResponse != NULL) {
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)client->getPlayer();
+			ManagedReference<PlayerCreature> player = (PlayerCreature*)client->getPlayer();
 
 			if (player != NULL) {
 				RadialManager* radialManager = server->getZoneServer()->getRadialManager();

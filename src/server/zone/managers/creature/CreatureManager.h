@@ -140,9 +140,9 @@ class CreatureManagerImplementation : public ManagedObjectImplementation, public
 protected:
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer* > server;
+	ManagedReference<ZoneServer > server;
 
-	ManagedWeakReference<Zone* > zone;
+	ManagedWeakReference<Zone > zone;
 
 	CreatureMap creatureMap;
 

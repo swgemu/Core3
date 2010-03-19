@@ -146,7 +146,7 @@ namespace building {
 
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
 protected:
-	Vector<ManagedReference<CellObject* > > cells;
+	Vector<ManagedReference<CellObject > > cells;
 
 	int totalCellNumber;
 

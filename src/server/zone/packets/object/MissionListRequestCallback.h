@@ -41,7 +41,7 @@ public:
 		if (player == NULL)
 			return;
 
-		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
+		ManagedReference<SceneObject> terminal = server->getZoneServer()->getObject(terminalObjectID);
 
 		if (terminal == NULL)
 			player->sendSystemMessage("skill_teacher", "skill_terminal_disabled");

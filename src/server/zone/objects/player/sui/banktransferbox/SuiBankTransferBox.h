@@ -112,7 +112,7 @@ protected:
 
 	String convertRatioTo;
 
-	ManagedReference<SceneObject* > bank;
+	ManagedReference<SceneObject > bank;
 
 public:
 	SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype);

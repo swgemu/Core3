@@ -69,7 +69,7 @@ namespace resource {
 class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua {
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedReference<ZoneServer > zoneServer;
 
 public:
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl);

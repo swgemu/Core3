@@ -83,7 +83,7 @@ namespace managers {
 namespace structure {
 
 class StructureManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<Zone* > zone;
+	ManagedReference<Zone > zone;
 
 	ZoneProcessServerImplementation* server;
 

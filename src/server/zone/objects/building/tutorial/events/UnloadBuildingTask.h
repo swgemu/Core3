@@ -54,7 +54,7 @@ namespace building {
 namespace tutorial {
 namespace events {
 class UnloadBuildingTask: public Task {
-	ManagedReference<TutorialBuildingObject *> building;
+	ManagedReference<TutorialBuildingObject > building;
 
 public:
 	UnloadBuildingTask(TutorialBuildingObject* bo) :

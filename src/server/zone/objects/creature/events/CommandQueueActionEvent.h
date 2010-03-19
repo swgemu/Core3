@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class CommandQueueActionEvent : public Task {
-	ManagedReference<CreatureObject*> creature;
+	ManagedReference<CreatureObject> creature;
 	
 public:
 	CommandQueueActionEvent(CreatureObject* pl) : Task() {

@@ -143,7 +143,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	NameManager* nameManager;
 	SuiManager* suiManager;
 
-	ManagedReference<ObjectController*> objectController;
+	ManagedReference<ObjectController> objectController;
 	ProfessionManager* professionManager;
 
 

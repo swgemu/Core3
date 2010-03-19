@@ -66,7 +66,7 @@ public:
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
+		ManagedReference<SceneObject> targetObject = zoneServer->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isCreatureObject()) {
 			return false;

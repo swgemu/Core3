@@ -119,32 +119,54 @@ public:
 	}
 
 	void run() {
-		uint64 starttime = System::getMikroTime();
+		uint64 starttime, endtime;
+		int attempts = 0;
 
-		testMethod();
+		while (true) {
+			starttime = System::getMikroTime();
 
-		uint64 endtime = System::getMikroTime();
+			testMethod();
 
-		System::out.println("Transaction " + String::valueOf(taskID) + " time: " + Long::toString(endtime - starttime) + " usec");
-
-		starttime = System::getMikroTime();
-
-		engine::stm::Transaction* transaction =
-				engine::stm::Transaction::currentTransaction();
-
-		if (transaction->commit()) {
 			endtime = System::getMikroTime();
-			System::out.println("Transaction " + String::valueOf(taskID) + " commited: " + Long::toString(endtime - starttime) + " usec");
+
+			//System::out.println("Transaction " + String::valueOf(taskID) + " time: " + Long::toString(endtime - starttime) + " usec");
+
+			starttime = System::getMikroTime();
+
+			engine::stm::Transaction* transaction =
+					engine::stm::Transaction::currentTransaction();
+
+			if (transaction->commit())
+				break;
+			else
+				++attempts;
+
+			System::out.println("Transaction " + String::valueOf(taskID) + " aborted");
+
+			transaction->reset();
 		}
+
+		endtime = System::getMikroTime();
+		System::out.println("Transaction " + String::valueOf(taskID) + " commited: " + Long::toString(endtime - starttime) + " usec in "
+				+ String::valueOf(attempts) + " attempts");
 	}
 
 	void testMethod() {
 		for (int i = 0; i < TestClass::references.size(); ++i) {
 			TestClassReference* reference = TestClass::references.get(i);
 
-			TestClass* object = reference->getForUpdate();
+			if (System::random(10) == 0)
+				Thread::sleep(1);
 
-			object->setValue2(i);
+			TestClass* object = NULL;
+
+			if (System::random(10) < 6) {
+				object = reference->getForUpdate();
+				object->setValue2(i);
+			} else {
+				object = reference->get();
+				object->getValue2();
+			}
 
 			int size = object->size();
 			if (size != sizeof(TestClass))
@@ -154,7 +176,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-	/*for (int i = 0; i < 100; ++i) {
+	for (int i = 0; i < 100; ++i) {
 		TestClass* object = new TestClass(i);
 		TestClassReference* reference = new TestClassReference(object);
 
@@ -163,11 +185,15 @@ int main(int argc, char* argv[]) {
 
 	Vector<Thread*> threads;
 
-	for (int i = 0; i < 20; ++i) {
-		Thread* thread = new TestTask(i);
-		thread->start();
-
+	for (int i = 0; i < 25; ++i) {
+		Thread* thread = new TestTask(i + 1);
 		threads.add(thread);
+	}
+
+	for (int i = 0; i < threads.size(); ++i) {
+		Thread* thread = threads.get(i);
+
+		thread->start();
 	}
 
 	for (int i = 0; i < threads.size(); ++i) {
@@ -176,7 +202,7 @@ int main(int argc, char* argv[]) {
 		thread->join();
 	}
 
-	return 0;*/
+	return 0;
 
 	try {
 		Vector<String> arguments;

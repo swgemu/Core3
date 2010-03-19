@@ -78,7 +78,7 @@ public:
 		float unknown2 = tokenizer.getFloatToken();
 		float unknown3 = tokenizer.getFloatToken();
 
-		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject> objectToTransfer = server->getZoneServer()->getObject(target);
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transfermiscweapon command");
@@ -90,7 +90,7 @@ public:
 			return false;
 		}
 
-		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
+		ManagedReference<SceneObject> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
 			creature->error("destinationObject NULL in tansfermiscweapon command");
@@ -121,7 +121,7 @@ public:
 				if (arrangementSize > 0) {
 					String childArrangement = objectToTransfer->getArrangementDescriptor(0);
 
-					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
+					ManagedReference<SceneObject> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
 					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 						return false;

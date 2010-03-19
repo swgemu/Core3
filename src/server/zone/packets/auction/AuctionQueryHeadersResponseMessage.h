@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
 
-	Vector<ManagedReference<AuctionItem*> > itemList;
+	Vector<ManagedReference<AuctionItem> > itemList;
 
 	SortedVector<String> locationList;
 

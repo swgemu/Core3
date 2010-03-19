@@ -103,7 +103,7 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> temp = NULL;
+	ManagedReference<SceneObject> temp = NULL;
 
 	int i = 0;
 	for (; i < defenderList.size(); i++) {

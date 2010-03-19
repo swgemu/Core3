@@ -77,14 +77,14 @@ public:
 		float unknown2 = tokenizer.getFloatToken();
 		float unknown3 = tokenizer.getFloatToken();
 
-		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject> objectToTransfer = server->getZoneServer()->getObject(target);
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transfermisc command");
 			return false;
 		}
 
-		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
+		ManagedReference<SceneObject> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
 			creature->error("destinationObject NULL in tansfermisc command");

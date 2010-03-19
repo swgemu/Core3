@@ -90,7 +90,7 @@ protected:
 
 	RegionCenterPointList points;
 
-	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
+	VectorMap<unsigned long long, ManagedReference<BazaarTerminal > > bazaars;
 
 public:
 	RegionImplementation(const String& fullName, float posX, float posY, float radi);

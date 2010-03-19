@@ -73,6 +73,8 @@ using namespace server::zone::objects::tangible::terminal::bazaar;
 
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
+#include "system/util/VectorMap.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -92,7 +94,7 @@ public:
 
 	void dropAuction(unsigned long long auctionItemID);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 
@@ -128,7 +130,7 @@ class BazaarTerminalImplementation : public TerminalImplementation {
 protected:
 	String bazaarRegion;
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
+	VectorMap<unsigned long long, ManagedReference<AuctionItem > > auctions;
 
 public:
 	BazaarTerminalImplementation();
@@ -143,7 +145,7 @@ public:
 
 	void dropAuction(unsigned long long auctionItemID);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 

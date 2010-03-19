@@ -566,7 +566,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 		return ((SceneObjectImplementation*) _impl)->compareTo(obj);
 }
 
-void SceneObject::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
+void SceneObject::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject > >& objects) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1364,7 +1364,7 @@ void SceneObject::setStaticObject(bool val) {
 		((SceneObjectImplementation*) _impl)->setStaticObject(val);
 }
 
-VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
+VectorMap<unsigned long long, ManagedReference<SceneObject > >* SceneObject::getContainerObjects() {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1892,7 +1892,7 @@ void SceneObjectImplementation::setStaticObject(bool val) {
 	staticObject = val;
 }
 
-VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
+VectorMap<unsigned long long, ManagedReference<SceneObject > >* SceneObjectImplementation::getContainerObjects() {
 	// server/zone/objects/scene/SceneObject.idl(1027):  		return containerObjects;
 	return (&containerObjects);
 }

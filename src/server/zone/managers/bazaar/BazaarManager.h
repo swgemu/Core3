@@ -94,6 +94,24 @@ using namespace server::zone::objects::tangible::terminal::bazaar;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace terminal {
+namespace bazaar {
+
+class AuctionItem;
+
+} // namespace bazaar
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::bazaar;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -110,6 +128,8 @@ using namespace server::zone::objects::scene;
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedObject.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {
@@ -160,7 +180,7 @@ public:
 
 	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset);
 
 protected:
 	BazaarManager(DummyConstructorParameter* param);
@@ -184,9 +204,9 @@ namespace bazaar {
 
 class BazaarManagerImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedReference<BazaarAuctionsMap* > auctionMap;
+	ManagedReference<BazaarAuctionsMap > auctionMap;
 
-	ManagedWeakReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer > zoneServer;
 
 public:
 	static const int MAXPRICE = 20000;
@@ -237,7 +257,7 @@ public:
 
 	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset);
 
 	BazaarManager* _this;
 

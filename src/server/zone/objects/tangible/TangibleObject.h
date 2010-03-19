@@ -170,7 +170,7 @@ public:
 
 	void getCustomizationString(String& variables);
 
-	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
+	DeltaVector<ManagedReference<SceneObject > >* getDefenderList();
 
 	unsigned int getPlayerUseMask();
 
@@ -222,7 +222,7 @@ protected:
 
 	String craftersName;
 
-	DeltaVector<ManagedReference<SceneObject* > > defenderList;
+	DeltaVector<ManagedReference<SceneObject > > defenderList;
 
 	unsigned short playerUseMask;
 
@@ -343,7 +343,7 @@ public:
 
 	void getCustomizationString(String& variables);
 
-	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
+	DeltaVector<ManagedReference<SceneObject > >* getDefenderList();
 
 	unsigned int getPlayerUseMask();
 

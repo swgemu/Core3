@@ -309,7 +309,7 @@ namespace player {
 
 class PlayerCreatureImplementation : public CreatureObjectImplementation {
 protected:
-	ManagedReference<ZoneClientSession* > owner;
+	ManagedReference<ZoneClientSession > owner;
 
 	int savedZoneID;
 
@@ -347,14 +347,14 @@ protected:
 
 	Time nextTip;
 
-	SortedVector<ManagedReference<ChatRoom* > > chatRooms;
+	SortedVector<ManagedReference<ChatRoom > > chatRooms;
 
 	byte incapacitationCounter;
 
 	Time firstIncapacitationTime;
 
 private:
-	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
+	VectorMap<unsigned int, ManagedReference<SuiBox > > suiBoxes;
 
 protected:
 	int pvpRating;

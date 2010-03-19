@@ -84,7 +84,7 @@ public:
 
 		ChatManager* chatManager = server->getChatManager();
 
-		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(name);
+		ManagedReference<PlayerCreature> targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == NULL)
 			return false;
@@ -104,7 +104,7 @@ public:
 
 		float x, z = 0, y;
 
-		ManagedReference<SceneObject*> parent = targetPlayer->getParent();
+		ManagedReference<SceneObject> parent = targetPlayer->getParent();
 
 		if (parent != NULL && parent->isCellObject()) {
 			SceneObject* building = parent->getParent();
@@ -116,7 +116,7 @@ public:
 			y = targetPlayer->getPositionY();
 		}
 
-		ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+		ManagedReference<WaypointObject> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomName(name);

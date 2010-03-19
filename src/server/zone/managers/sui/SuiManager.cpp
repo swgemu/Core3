@@ -270,7 +270,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		Locker _locker(player);
 
 		if (player->hasSuiBox(boxID)) {
-			ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+			ManagedReference<SuiBox> sui = player->getSuiBox(boxID);
 
 			player->removeSuiBox(boxID);
 		}
@@ -1109,7 +1109,7 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 		return;
 	}
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+	ManagedReference<SuiBox> sui = player->getSuiBox(boxID);
 
 	player->removeSuiBox(boxID);
 
@@ -1118,7 +1118,7 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 	}
 
 	SuiBankTransferBox* suiBank = (SuiBankTransferBox*) sui.get();
-	ManagedReference<SceneObject*> bankObject = suiBank->getBank();
+	ManagedReference<SceneObject> bankObject = suiBank->getBank();
 
 	if (bankObject == NULL) {
 		return;

@@ -16,6 +16,8 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
+#include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 /*
@@ -292,7 +294,7 @@ int BazaarManager::checkBidAuction(PlayerCreature* player, AuctionItem* item, in
 		return ((BazaarManagerImplementation*) _impl)->checkBidAuction(player, item, price1, price2);
 }
 
-AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset) {
+AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -373,9 +375,9 @@ void BazaarManagerImplementation::_serializationHelperMethod() {
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/bazaar/BazaarManager.idl(72):  		zoneServer = server;
+	// server/zone/managers/bazaar/BazaarManager.idl(74):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/bazaar/BazaarManager.idl(74):  		Logger.setLoggingName("BazaarManager");
+	// server/zone/managers/bazaar/BazaarManager.idl(76):  		Logger.setLoggingName("BazaarManager");
 	Logger::setLoggingName("BazaarManager");
 }
 

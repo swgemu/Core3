@@ -248,7 +248,7 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool noti
 }
 
 void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient) {
-	ManagedReference<WaypointObject*> waypoint = waypointList.get(waypointID);
+	ManagedReference<WaypointObject> waypoint = waypointList.get(waypointID);
 
 	if (waypoint == NULL)
 		return;
@@ -268,7 +268,7 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 
 
 void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+	ManagedReference<WaypointObject> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
 	obj->setPlanetCRC(planet.hashCode());
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);
@@ -383,7 +383,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 	uint64 objID = playerManager->getObjectID(nameLower);
 
 	ZoneServer* zoneServer = server->getZoneServer();
-	ManagedReference<PlayerCreature*> playerToAdd;
+	ManagedReference<PlayerCreature> playerToAdd;
 	playerToAdd = (PlayerCreature*) zoneServer->getObject(objID);
 
 	if (playerToAdd == NULL || playerToAdd == parent) {
@@ -446,7 +446,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	uint64 objID = playerManager->getObjectID(nameLower);
 
 	ZoneServer* zoneServer = server->getZoneServer();
-	ManagedReference<PlayerCreature*> playerToRemove;
+	ManagedReference<PlayerCreature> playerToRemove;
 	playerToRemove = (PlayerCreature*) zoneServer->getObject(objID);
 
 	if (playerToRemove == NULL) {
@@ -553,7 +553,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	firstName = firstName.toLowerCase();
 
 	for (int i = 0; i < reverseTable->size(); ++i) {
-		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+		ManagedReference<PlayerCreature> player = chatManager->getPlayer(reverseTable->get(i));
 
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", true);
@@ -563,7 +563,7 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	for (int i = 0; i < friendList.size(); ++i) {
 		String name = friendList.get(i);
-		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(name);
+		ManagedReference<PlayerCreature> player = chatManager->getPlayer(name);
 
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", true);
@@ -585,7 +585,7 @@ void PlayerObjectImplementation::notifyOffline() {
 	firstName = firstName.toLowerCase();
 
 	for (int i = 0; i < reverseTable->size(); ++i) {
-		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+		ManagedReference<PlayerCreature> player = chatManager->getPlayer(reverseTable->get(i));
 
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", false);

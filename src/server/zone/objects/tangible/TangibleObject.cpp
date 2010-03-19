@@ -283,7 +283,7 @@ void TangibleObject::getCustomizationString(String& variables) {
 		((TangibleObjectImplementation*) _impl)->getCustomizationString(variables);
 }
 
-DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList() {
+DeltaVector<ManagedReference<SceneObject > >* TangibleObject::getDefenderList() {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -495,7 +495,7 @@ void TangibleObjectImplementation::getCustomizationString(String& variables) {
 	(&customizationVariables)->getData(variables);
 }
 
-DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
+DeltaVector<ManagedReference<SceneObject > >* TangibleObjectImplementation::getDefenderList() {
 	// server/zone/objects/tangible/TangibleObject.idl(281):  		return defenderList;
 	return (&defenderList);
 }

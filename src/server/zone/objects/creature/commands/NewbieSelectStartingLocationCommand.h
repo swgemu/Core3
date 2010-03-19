@@ -63,12 +63,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		ManagedReference<SceneObject*> cell = creature->getParent();
+		ManagedReference<SceneObject> cell = creature->getParent();
 
 		if (cell == NULL)
 			return false;
 
-		ManagedReference<SceneObject*> tutorial = cell->getParent();
+		ManagedReference<SceneObject> tutorial = cell->getParent();
 
 		String city = arguments.toString();
 		//"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
