@@ -176,7 +176,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-	for (int i = 0; i < 100; ++i) {
+	/*for (int i = 0; i < 100; ++i) {
 		TestClass* object = new TestClass(i);
 		TestClassReference* reference = new TestClassReference(object);
 
@@ -202,7 +202,7 @@ int main(int argc, char* argv[]) {
 		thread->join();
 	}
 
-	return 0;
+	return 0;*/
 
 	try {
 		Vector<String> arguments;
