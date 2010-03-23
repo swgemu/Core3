@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 
 /*#include "../item/ItemManager.h"

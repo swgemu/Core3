@@ -54,4 +54,8 @@ class MeleeWeaponObject extends WeaponObject {
 	}
 	
 	public native void initializeTransientMembers();
+	
+	public boolean isMeleeWeapon() {
+		return true;
+	}
 }

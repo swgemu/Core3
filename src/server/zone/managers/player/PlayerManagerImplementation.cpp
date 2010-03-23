@@ -18,6 +18,7 @@
 #include "server/zone/managers/template/TemplateManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
@@ -432,7 +433,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(missionBag, 4);
 
-	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/shared_unarmed_default_player.iff").hashCode();
+	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default_player.iff").hashCode();
 
 	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 1);
 

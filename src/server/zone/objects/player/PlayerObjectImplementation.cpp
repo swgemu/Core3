@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "PlayerObject.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/chat/ChatManager.h"

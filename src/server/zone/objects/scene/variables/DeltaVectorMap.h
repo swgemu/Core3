@@ -116,6 +116,10 @@ public:
 	inline uint32 getUpdateCounter() {
 		return updateCounter;
 	}
+
+	inline void setNullValue(const V& val) {
+		vectorMap.setNullValue(val);
+	}
 };
 
 

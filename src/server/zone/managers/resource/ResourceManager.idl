@@ -49,6 +49,7 @@ import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.objectcontroller.ObjectController;
 
 class ResourceManager extends ManagedObject implements Lua {
 	transient ZoneProcessServerImplementation processor;

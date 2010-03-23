@@ -27,6 +27,8 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isRangedWeapon();
+
 protected:
 	RangedWeaponObject(DummyConstructorParameter* param);
 
@@ -60,6 +62,8 @@ public:
 	RangedWeaponObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isRangedWeapon();
 
 	RangedWeaponObject* _this;
 
@@ -101,6 +105,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isRangedWeapon();
 
 };
 

@@ -27,6 +27,8 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isMeleeWeapon();
+
 protected:
 	MeleeWeaponObject(DummyConstructorParameter* param);
 
@@ -60,6 +62,8 @@ public:
 	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isMeleeWeapon();
 
 	MeleeWeaponObject* _this;
 
@@ -101,6 +105,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isMeleeWeapon();
 
 };
 

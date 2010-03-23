@@ -48,6 +48,8 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.variables.ParameterizedStringId;
 import server.zone.objects.creature.professions.SkillBox;
 import server.zone.objects.group.GroupObject;
+import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.managers.objectcontroller.ObjectController;
 
 //import server.zone.objects.player.professions.SkillBox;
 
@@ -56,6 +58,8 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
 include server.zone.objects.creature.variables.CommandQueueAction;
+include server.zone.objects.creature.CreaturePosture;
+include server.zone.objects.creature.CreatureState;
 
 import engine.core.ManagedObject;
 import engine.lua.LuaObject;
@@ -105,7 +109,7 @@ class CreatureObject extends TangibleObject {
 	protected string performanceAnimation;
 	protected string moodString;
 	
-	protected unsigned long weaponID;
+	protected WeaponObject weapon;
 	
 	protected GroupObject group;
 	protected unsigned long groupInviterID;
@@ -162,6 +166,8 @@ class CreatureObject extends TangibleObject {
 	 */
 	public CreatureObject() {
 		Logger.setLoggingName("CreatureObject");
+		
+		skillModList.setNullValue(0);
 	}
 	
 	public native void finalize();
@@ -318,13 +324,13 @@ class CreatureObject extends TangibleObject {
 	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
 	
 	/**
-	 * Updates the weapon id to the specified object id
+	 * Updates the weapon to the specified object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified weapon id }
-	 * @param objectID the new weapon id
+	 * @param weao the new weapon
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
+	public native void setWeapon(WeaponObject weao, boolean notifyClient = false);
 	
 	/**
 	 * Updates the instrument id to the specified object id
@@ -590,6 +596,18 @@ class CreatureObject extends TangibleObject {
 		return shockWounds;
 	}
 	
+	public boolean isBlinded() {
+		return CreatureState.BLINDED & stateBitmask;
+	}
+	
+	public boolean isStunned() {
+		return stateBitmask & CreatureState.STUNNED;
+	}
+	
+	public boolean isAiming() {
+		return stateBitmask & CreatureState.AIMING;
+	}
+	
 	public unsigned long getStateBitmask() {
 		return stateBitmask;
 	}
@@ -635,7 +653,17 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public unsigned long getWeaponID() {
-		return weaponID;
+		if (weapon == null)
+			return 0;
+		else
+			return weapon.getObjectID();
+	}
+	
+	public WeaponObject getWeapon() {
+		if (weapon == null) {
+			return (WeaponObject) super.getSlottedObject("default_weapon");
+		} else
+			return weapon;
 	}
 	
 	public unsigned long getGroupID() {
@@ -707,6 +735,10 @@ class CreatureObject extends TangibleObject {
 		return skillBoxList;
 	}
 	
+	public long getSkillMod(final string skillmod) {
+		return skillModList.get(skillmod);
+	}
+	
 	@local
 	public DeltaVectorMap<string, long> getSkillModList() {
 		return skillModList;
@@ -716,4 +748,19 @@ class CreatureObject extends TangibleObject {
 		height = heigh;
 	}
 	
+	public boolean isKneeling() {
+		return posture == CreaturePosture.CROUCHED;
+	}
+	
+	public boolean isProne() {
+		return posture == CreaturePosture.PRONE;
+	}
+	
+	public boolean isInCover() {
+		return stateBitmask & CreatureState.COVER;
+	}
+	
+	public boolean isBerserked() {
+		return stateBitmask & CreatureState.BERSERK;
+	}
 }

@@ -103,7 +103,7 @@ public:
 			return false;
 
 		if (objectToTransfer->isWeaponObject() && creature == objectToTransfer->getParent())
-			creature->setWeaponID(0, true);
+			creature->setWeapon(NULL, true);
 
 		/*
 				if (transferType == -1) {

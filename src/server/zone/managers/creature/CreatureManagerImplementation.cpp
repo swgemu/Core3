@@ -66,7 +66,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 }
 
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {
-	uint32 defaultWeaponCRC = String("object/weapon/creature/shared_creature_default_weapon.iff").hashCode();
+	uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
 
 	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 0);
 

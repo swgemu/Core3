@@ -40,6 +40,18 @@ void MeleeWeaponObject::initializeTransientMembers() {
 		((MeleeWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool MeleeWeaponObject::isMeleeWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MeleeWeaponObjectImplementation*) _impl)->isMeleeWeapon();
+}
+
 /*
  *	MeleeWeaponObjectImplementation
  */
@@ -115,6 +127,11 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation() {
 	Logger::setLoggingName("MeleeWeaponObject");
 }
 
+bool MeleeWeaponObjectImplementation::isMeleeWeapon() {
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(59):  		return true;
+	return true;
+}
+
 /*
  *	MeleeWeaponObjectAdapter
  */
@@ -129,6 +146,9 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isMeleeWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -138,6 +158,10 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 void MeleeWeaponObjectAdapter::initializeTransientMembers() {
 	((MeleeWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool MeleeWeaponObjectAdapter::isMeleeWeapon() {
+	return ((MeleeWeaponObjectImplementation*) impl)->isMeleeWeapon();
 }
 
 /*

@@ -52,6 +52,7 @@ import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
+import server.zone.managers.objectcontroller.ObjectController;
 include server.zone.objects.region.Region;
 
 include server.zone.managers.planet.RegionMap;

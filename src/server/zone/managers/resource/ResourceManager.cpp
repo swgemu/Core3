@@ -8,6 +8,8 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -104,15 +106,15 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(59):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(60):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(61):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(62):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(62):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(63):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(64):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(65):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(65):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(66):  		processor = impl;
 	processor = impl;
 }
 

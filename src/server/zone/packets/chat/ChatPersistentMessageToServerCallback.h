@@ -32,6 +32,7 @@ public:
 		wpInfoSize = message->parseInt();
 
 		if(wpInfoSize > 0) {
+			System::out << message->toStringData() << endl;
 			return;
 			/*message->shiftOffset(11); //Shift past the STF param start(7) + unk int(4)
 				wpX = message->parseFloat();

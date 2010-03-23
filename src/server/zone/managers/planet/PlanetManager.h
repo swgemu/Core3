@@ -75,6 +75,20 @@ class StructureManager;
 
 using namespace server::zone::managers::structure;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "server/zone/objects/region/Region.h"
 
 #include "server/zone/managers/planet/RegionMap.h"

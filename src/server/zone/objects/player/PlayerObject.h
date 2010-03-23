@@ -57,6 +57,20 @@ using namespace server::zone::objects::creature::commands;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
+namespace server {
+namespace zone {
 
 class ZoneClientSession;
 

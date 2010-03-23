@@ -133,17 +133,22 @@ public:
 				return false;
 
 			if (creature == destinationObject) {
-				creature->setWeaponID(objectToTransfer->getObjectID(), true);
 
-				if (creature->isWeaponObject() && creature->isPlayerCreature()) {
-					PlayerCreature* playerCreature = (PlayerCreature*) creature;
+				if (objectToTransfer->isWeaponObject()) {
 					WeaponObject* weaponObject = (WeaponObject*) objectToTransfer.get();
 
-					if (weaponObject->isCertifiedFor(playerCreature)) {
-						weaponObject->setCertified(true);
-					} else {
-						weaponObject->setCertified(false);
+					creature->setWeapon(weaponObject, true);
+
+					if (creature->isPlayerCreature()) {
+						PlayerCreature* playerCreature = (PlayerCreature*) creature;
+
+						if (weaponObject->isCertifiedFor(playerCreature)) {
+							weaponObject->setCertified(true);
+						} else {
+							weaponObject->setCertified(false);
+						}
 					}
+
 				}
 			}
 

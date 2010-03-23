@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "StructureManager.h"
 

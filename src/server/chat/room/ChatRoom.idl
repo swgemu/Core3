@@ -50,6 +50,7 @@ import system.util.Vector;
 import engine.service.proto.BaseMessage;
 import server.zone.ZoneServer;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.managers.objectcontroller.ObjectController;
 
 
 class ChatRoom extends ManagedObject {

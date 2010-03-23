@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "system/lang/SignalException.h"
 
 #include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/planet/HeightMap.h"
 

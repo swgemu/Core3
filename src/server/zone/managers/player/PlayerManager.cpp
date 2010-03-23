@@ -4,6 +4,8 @@
 
 #include "PlayerManager.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 #include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "server/zone/managers/object/ObjectManager.h"

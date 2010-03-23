@@ -60,6 +60,36 @@ using namespace server::zone::objects::group;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -78,6 +108,10 @@ using namespace server::zone::objects::scene;
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
 
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
+
+#include "server/zone/objects/creature/CreaturePosture.h"
+
+#include "server/zone/objects/creature/CreatureState.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -156,7 +190,7 @@ public:
 
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
-	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
+	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
@@ -244,6 +278,12 @@ public:
 
 	float getShockWounds();
 
+	bool isBlinded();
+
+	bool isStunned();
+
+	bool isAiming();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -267,6 +307,8 @@ public:
 	String getMoodString();
 
 	unsigned long long getWeaponID();
+
+	WeaponObject* getWeapon();
 
 	unsigned long long getGroupID();
 
@@ -300,9 +342,19 @@ public:
 
 	SkillBoxList* getSkillBoxList();
 
+	long long getSkillMod(const String& skillmod);
+
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isInCover();
+
+	bool isBerserked();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -386,7 +438,7 @@ protected:
 
 	String moodString;
 
-	unsigned long long weaponID;
+	ManagedReference<WeaponObject > weapon;
 
 	ManagedReference<GroupObject > group;
 
@@ -485,7 +537,7 @@ public:
 
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
-	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
+	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
@@ -573,6 +625,12 @@ public:
 
 	float getShockWounds();
 
+	bool isBlinded();
+
+	bool isStunned();
+
+	bool isAiming();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -596,6 +654,8 @@ public:
 	String getMoodString();
 
 	unsigned long long getWeaponID();
+
+	WeaponObject* getWeapon();
 
 	unsigned long long getGroupID();
 
@@ -629,9 +689,19 @@ public:
 
 	SkillBoxList* getSkillBoxList();
 
+	long long getSkillMod(const String& skillmod);
+
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isInCover();
+
+	bool isBerserked();
 
 	CreatureObject* _this;
 
@@ -702,7 +772,7 @@ public:
 
 	void setEncumbrance(int type, int value, bool notifyClient);
 
-	void setWeaponID(unsigned long long objectID, bool notifyClient);
+	void setWeapon(WeaponObject* weao, bool notifyClient);
 
 	void setInstrumentID(int instrumentid, bool notifyClient);
 
@@ -778,6 +848,12 @@ public:
 
 	float getShockWounds();
 
+	bool isBlinded();
+
+	bool isStunned();
+
+	bool isAiming();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -801,6 +877,8 @@ public:
 	String getMoodString();
 
 	unsigned long long getWeaponID();
+
+	WeaponObject* getWeapon();
 
 	unsigned long long getGroupID();
 
@@ -830,7 +908,17 @@ public:
 
 	int getFaction();
 
+	long long getSkillMod(const String& skillmod);
+
 	void setHeight(float heigh);
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isInCover();
+
+	bool isBerserked();
 
 protected:
 	String _param0_sendSystemMessage__String_;
@@ -842,6 +930,7 @@ protected:
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
+	String _param0_getSkillMod__String_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {
