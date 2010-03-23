@@ -22,6 +22,14 @@ BazaarAuctionsMap::~BazaarAuctionsMap() {
 }
 
 
+TransactionalObject* BazaarAuctionsMap::clone() {
+	BazaarAuctionsMap* objectCopy = new BazaarAuctionsMap(DummyConstructorParameter::instance());
+	objectCopy->_impl = new BazaarAuctionsMapImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 int BazaarAuctionsMap::getAuctionCount() {
 	if (_impl == NULL) {
 		if (!deployed)

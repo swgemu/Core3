@@ -105,9 +105,12 @@ protected:
 
 	virtual ~BazaarTerminal();
 
+	TransactionalObject* clone();
+
 	String _return_getBazaarRegion;
 
 	friend class BazaarTerminalHelper;
+	friend class TransactionalObjectHandle<BazaarTerminal>;
 };
 
 } // namespace bazaar

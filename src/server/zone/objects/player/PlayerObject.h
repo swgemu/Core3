@@ -239,9 +239,12 @@ protected:
 
 	virtual ~PlayerObject();
 
+	TransactionalObject* clone();
+
 	String _return_getTitle;
 
 	friend class PlayerObjectHelper;
+	friend class TransactionalObjectHandle<PlayerObject>;
 };
 
 } // namespace player

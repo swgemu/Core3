@@ -24,6 +24,14 @@ StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
 
+TransactionalObject* StartingLocationTerminal::clone() {
+	StartingLocationTerminal* objectCopy = new StartingLocationTerminal(DummyConstructorParameter::instance());
+	objectCopy->_impl = new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void StartingLocationTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

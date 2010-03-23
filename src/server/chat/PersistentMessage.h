@@ -59,6 +59,8 @@ protected:
 
 	virtual ~PersistentMessage();
 
+	TransactionalObject* clone();
+
 	UnicodeString _return_getBody;
 
 	UnicodeString _return_getSenderName;
@@ -66,6 +68,7 @@ protected:
 	UnicodeString _return_getSubject;
 
 	friend class PersistentMessageHelper;
+	friend class TransactionalObjectHandle<PersistentMessage>;
 };
 
 } // namespace chat

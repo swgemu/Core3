@@ -20,6 +20,14 @@ MeleeWeaponObject::~MeleeWeaponObject() {
 }
 
 
+TransactionalObject* MeleeWeaponObject::clone() {
+	MeleeWeaponObject* objectCopy = new MeleeWeaponObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new MeleeWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void MeleeWeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

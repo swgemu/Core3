@@ -51,7 +51,10 @@ protected:
 
 	virtual ~ResourceManager();
 
+	TransactionalObject* clone();
+
 	friend class ResourceManagerHelper;
+	friend class TransactionalObjectHandle<ResourceManager>;
 };
 
 } // namespace resource

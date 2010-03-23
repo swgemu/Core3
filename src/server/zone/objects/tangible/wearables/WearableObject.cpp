@@ -20,6 +20,14 @@ WearableObject::~WearableObject() {
 }
 
 
+TransactionalObject* WearableObject::clone() {
+	WearableObject* objectCopy = new WearableObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new WearableObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void WearableObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

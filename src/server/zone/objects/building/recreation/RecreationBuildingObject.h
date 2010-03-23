@@ -30,7 +30,10 @@ protected:
 
 	virtual ~RecreationBuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class RecreationBuildingObjectHelper;
+	friend class TransactionalObjectHandle<RecreationBuildingObject>;
 };
 
 } // namespace recreation

@@ -26,6 +26,14 @@ WeaponObject::~WeaponObject() {
 }
 
 
+TransactionalObject* WeaponObject::clone() {
+	WeaponObject* objectCopy = new WeaponObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new WeaponObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void WeaponObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

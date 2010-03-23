@@ -22,6 +22,14 @@ GroupObject::~GroupObject() {
 }
 
 
+TransactionalObject* GroupObject::clone() {
+	GroupObject* objectCopy = new GroupObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new GroupObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void GroupObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)

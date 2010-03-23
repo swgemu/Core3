@@ -67,7 +67,10 @@ protected:
 
 	virtual ~StructureManager();
 
+	TransactionalObject* clone();
+
 	friend class StructureManagerHelper;
+	friend class TransactionalObjectHandle<StructureManager>;
 };
 
 } // namespace structure

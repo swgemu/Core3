@@ -32,7 +32,10 @@ protected:
 
 	virtual ~RangedWeaponObject();
 
+	TransactionalObject* clone();
+
 	friend class RangedWeaponObjectHelper;
+	friend class TransactionalObjectHandle<RangedWeaponObject>;
 };
 
 } // namespace weapon

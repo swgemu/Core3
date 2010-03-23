@@ -187,7 +187,10 @@ protected:
 
 	virtual ~BazaarManager();
 
+	TransactionalObject* clone();
+
 	friend class BazaarManagerHelper;
+	friend class TransactionalObjectHandle<BazaarManager>;
 };
 
 } // namespace bazaar

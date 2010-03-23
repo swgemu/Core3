@@ -30,7 +30,10 @@ protected:
 
 	virtual ~CloningBuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class CloningBuildingObjectHelper;
+	friend class TransactionalObjectHandle<CloningBuildingObject>;
 };
 
 } // namespace cloning

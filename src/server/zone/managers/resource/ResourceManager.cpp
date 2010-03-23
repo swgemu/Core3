@@ -24,6 +24,14 @@ ResourceManager::~ResourceManager() {
 }
 
 
+TransactionalObject* ResourceManager::clone() {
+	ResourceManager* objectCopy = new ResourceManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ResourceManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 /*
  *	ResourceManagerImplementation
  */

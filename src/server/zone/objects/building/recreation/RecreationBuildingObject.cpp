@@ -20,6 +20,14 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 }
 
 
+TransactionalObject* RecreationBuildingObject::clone() {
+	RecreationBuildingObject* objectCopy = new RecreationBuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new RecreationBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 /*
  *	RecreationBuildingObjectImplementation
  */

@@ -70,7 +70,10 @@ protected:
 
 	virtual ~TutorialBuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class TutorialBuildingObjectHelper;
+	friend class TransactionalObjectHandle<TutorialBuildingObject>;
 };
 
 } // namespace tutorial

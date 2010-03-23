@@ -45,7 +45,10 @@ protected:
 
 	virtual ~Instrument();
 
+	TransactionalObject* clone();
+
 	friend class InstrumentHelper;
+	friend class TransactionalObjectHandle<Instrument>;
 };
 
 } // namespace tangible

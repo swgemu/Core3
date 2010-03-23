@@ -20,6 +20,14 @@ CellObject::~CellObject() {
 }
 
 
+TransactionalObject* CellObject::clone() {
+	CellObject* objectCopy = new CellObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new CellObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void CellObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

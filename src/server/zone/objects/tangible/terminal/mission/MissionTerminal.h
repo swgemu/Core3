@@ -61,7 +61,10 @@ protected:
 
 	virtual ~MissionTerminal();
 
+	TransactionalObject* clone();
+
 	friend class MissionTerminalHelper;
+	friend class TransactionalObjectHandle<MissionTerminal>;
 };
 
 } // namespace mission

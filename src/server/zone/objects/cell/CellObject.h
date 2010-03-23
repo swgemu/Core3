@@ -41,7 +41,10 @@ protected:
 
 	virtual ~CellObject();
 
+	TransactionalObject* clone();
+
 	friend class CellObjectHelper;
+	friend class TransactionalObjectHandle<CellObject>;
 };
 
 } // namespace cell

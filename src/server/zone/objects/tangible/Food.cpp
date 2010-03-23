@@ -22,6 +22,14 @@ Food::~Food() {
 }
 
 
+TransactionalObject* Food::clone() {
+	Food* objectCopy = new Food(DummyConstructorParameter::instance());
+	objectCopy->_impl = new FoodImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void Food::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

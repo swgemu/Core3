@@ -20,6 +20,14 @@ PersistentMessage::~PersistentMessage() {
 }
 
 
+TransactionalObject* PersistentMessage::clone() {
+	PersistentMessage* objectCopy = new PersistentMessage(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PersistentMessageImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 int PersistentMessage::getMailID() {
 	if (_impl == NULL) {
 		if (!deployed)

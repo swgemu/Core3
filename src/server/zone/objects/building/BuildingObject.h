@@ -129,7 +129,10 @@ protected:
 
 	virtual ~BuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class BuildingObjectHelper;
+	friend class TransactionalObjectHandle<BuildingObject>;
 };
 
 } // namespace building

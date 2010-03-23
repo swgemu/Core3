@@ -121,7 +121,10 @@ protected:
 
 	virtual ~CreatureManager();
 
+	TransactionalObject* clone();
+
 	friend class CreatureManagerHelper;
+	friend class TransactionalObjectHandle<CreatureManager>;
 };
 
 } // namespace creature

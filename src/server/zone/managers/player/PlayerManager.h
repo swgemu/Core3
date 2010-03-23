@@ -125,7 +125,10 @@ protected:
 
 	virtual ~PlayerManager();
 
+	TransactionalObject* clone();
+
 	friend class PlayerManagerHelper;
+	friend class TransactionalObjectHandle<PlayerManager>;
 };
 
 } // namespace player

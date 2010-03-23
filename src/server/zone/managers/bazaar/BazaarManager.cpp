@@ -36,6 +36,14 @@ BazaarManager::~BazaarManager() {
 }
 
 
+TransactionalObject* BazaarManager::clone() {
+	BazaarManager* objectCopy = new BazaarManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new BazaarManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void BazaarManager::initialize() {
 	if (_impl == NULL) {
 		if (!deployed)

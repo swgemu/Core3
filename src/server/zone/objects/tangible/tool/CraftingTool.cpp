@@ -22,6 +22,14 @@ CraftingTool::~CraftingTool() {
 }
 
 
+TransactionalObject* CraftingTool::clone() {
+	CraftingTool* objectCopy = new CraftingTool(DummyConstructorParameter::instance());
+	objectCopy->_impl = new CraftingToolImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void CraftingTool::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

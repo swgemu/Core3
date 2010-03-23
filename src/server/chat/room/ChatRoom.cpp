@@ -24,6 +24,14 @@ ChatRoom::~ChatRoom() {
 }
 
 
+TransactionalObject* ChatRoom::clone() {
+	ChatRoom* objectCopy = new ChatRoom(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ChatRoomImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {
 	if (_impl == NULL) {
 		if (!deployed)

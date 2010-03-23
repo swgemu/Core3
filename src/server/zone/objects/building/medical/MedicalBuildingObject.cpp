@@ -20,6 +20,14 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 }
 
 
+TransactionalObject* MedicalBuildingObject::clone() {
+	MedicalBuildingObject* objectCopy = new MedicalBuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new MedicalBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 /*
  *	MedicalBuildingObjectImplementation
  */

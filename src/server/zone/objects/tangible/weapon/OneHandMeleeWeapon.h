@@ -32,7 +32,10 @@ protected:
 
 	virtual ~OneHandMeleeWeapon();
 
+	TransactionalObject* clone();
+
 	friend class OneHandMeleeWeaponHelper;
+	friend class TransactionalObjectHandle<OneHandMeleeWeapon>;
 };
 
 } // namespace weapon

@@ -85,7 +85,10 @@ protected:
 
 	virtual ~RadialManager();
 
+	TransactionalObject* clone();
+
 	friend class RadialManagerHelper;
+	friend class TransactionalObjectHandle<RadialManager>;
 };
 
 } // namespace radial

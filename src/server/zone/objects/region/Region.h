@@ -67,9 +67,12 @@ protected:
 
 	virtual ~Region();
 
+	TransactionalObject* clone();
+
 	String _return_getRegionName;
 
 	friend class RegionHelper;
+	friend class TransactionalObjectHandle<Region>;
 };
 
 } // namespace bazaar

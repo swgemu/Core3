@@ -22,6 +22,14 @@ Container::~Container() {
 }
 
 
+TransactionalObject* Container::clone() {
+	Container* objectCopy = new Container(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ContainerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void Container::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

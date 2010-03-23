@@ -46,7 +46,10 @@ protected:
 
 	virtual ~SurveyTool();
 
+	TransactionalObject* clone();
+
 	friend class SurveyToolHelper;
+	friend class TransactionalObjectHandle<SurveyTool>;
 };
 
 } // namespace tool

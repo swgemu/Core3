@@ -28,6 +28,14 @@ BazaarTerminal::~BazaarTerminal() {
 }
 
 
+TransactionalObject* BazaarTerminal::clone() {
+	BazaarTerminal* objectCopy = new BazaarTerminal(DummyConstructorParameter::instance());
+	objectCopy->_impl = new BazaarTerminalImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void BazaarTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

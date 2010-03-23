@@ -34,6 +34,14 @@ CreatureManager::~CreatureManager() {
 }
 
 
+TransactionalObject* CreatureManager::clone() {
+	CreatureManager* objectCopy = new CreatureManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new CreatureManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID) {
 	if (_impl == NULL) {
 		if (!deployed)

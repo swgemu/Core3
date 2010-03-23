@@ -733,6 +733,8 @@ protected:
 
 	virtual ~SceneObject();
 
+	TransactionalObject* clone();
+
 	String _return_getArrangementDescriptor;
 	String _return_getLoggingName;
 	String _return_getSlotDescriptor;
@@ -740,6 +742,7 @@ protected:
 	UnicodeString _return_getCustomObjectName;
 
 	friend class SceneObjectHelper;
+	friend class TransactionalObjectHandle<SceneObject>;
 };
 
 } // namespace scene

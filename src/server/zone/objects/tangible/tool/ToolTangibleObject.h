@@ -46,7 +46,10 @@ protected:
 
 	virtual ~ToolTangibleObject();
 
+	TransactionalObject* clone();
+
 	friend class ToolTangibleObjectHelper;
+	friend class TransactionalObjectHandle<ToolTangibleObject>;
 };
 
 } // namespace tool

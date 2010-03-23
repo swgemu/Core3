@@ -20,6 +20,14 @@ RangedWeaponObject::~RangedWeaponObject() {
 }
 
 
+TransactionalObject* RangedWeaponObject::clone() {
+	RangedWeaponObject* objectCopy = new RangedWeaponObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new RangedWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void RangedWeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

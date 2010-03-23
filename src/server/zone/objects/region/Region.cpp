@@ -22,6 +22,14 @@ Region::~Region() {
 }
 
 
+TransactionalObject* Region::clone() {
+	Region* objectCopy = new Region(DummyConstructorParameter::instance());
+	objectCopy->_impl = new RegionImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 bool Region::containsPoint(float px, float py) {
 	if (_impl == NULL) {
 		if (!deployed)

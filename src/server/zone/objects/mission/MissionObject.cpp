@@ -24,6 +24,14 @@ MissionObject::~MissionObject() {
 }
 
 
+TransactionalObject* MissionObject::clone() {
+	MissionObject* objectCopy = new MissionObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new MissionObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void MissionObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

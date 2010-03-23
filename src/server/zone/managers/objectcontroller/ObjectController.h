@@ -139,7 +139,10 @@ protected:
 
 	virtual ~ObjectController();
 
+	TransactionalObject* clone();
+
 	friend class ObjectControllerHelper;
+	friend class TransactionalObjectHandle<ObjectController>;
 };
 
 } // namespace objectcontroller

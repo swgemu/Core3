@@ -24,6 +24,14 @@ ZoneClientSession::~ZoneClientSession() {
 }
 
 
+TransactionalObject* ZoneClientSession::clone() {
+	ZoneClientSession* objectCopy = new ZoneClientSession(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ZoneClientSessionImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ZoneClientSession::disconnect() {
 	if (_impl == NULL) {
 		if (!deployed)

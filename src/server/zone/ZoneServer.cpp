@@ -42,6 +42,14 @@ ZoneServer::~ZoneServer() {
 }
 
 
+TransactionalObject* ZoneServer::clone() {
+	ZoneServer* objectCopy = new ZoneServer(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ZoneServerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ZoneServer::test() {
 	if (_impl == NULL) {
 		if (!deployed)

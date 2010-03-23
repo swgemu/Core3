@@ -30,6 +30,14 @@ PlayerObject::~PlayerObject() {
 }
 
 
+TransactionalObject* PlayerObject::clone() {
+	PlayerObject* objectCopy = new PlayerObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PlayerObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void PlayerObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

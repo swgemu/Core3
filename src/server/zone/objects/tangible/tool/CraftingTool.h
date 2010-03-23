@@ -46,7 +46,10 @@ protected:
 
 	virtual ~CraftingTool();
 
+	TransactionalObject* clone();
+
 	friend class CraftingToolHelper;
+	friend class TransactionalObjectHandle<CraftingTool>;
 };
 
 } // namespace tool

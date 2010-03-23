@@ -20,6 +20,14 @@ WaypointObject::~WaypointObject() {
 }
 
 
+TransactionalObject* WaypointObject::clone() {
+	WaypointObject* objectCopy = new WaypointObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new WaypointObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void WaypointObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

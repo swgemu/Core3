@@ -163,7 +163,10 @@ protected:
 
 	virtual ~Zone();
 
+	TransactionalObject* clone();
+
 	friend class ZoneHelper;
+	friend class TransactionalObjectHandle<Zone>;
 };
 
 } // namespace zone

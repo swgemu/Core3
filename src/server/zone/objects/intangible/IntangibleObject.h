@@ -37,7 +37,10 @@ protected:
 
 	virtual ~IntangibleObject();
 
+	TransactionalObject* clone();
+
 	friend class IntangibleObjectHelper;
+	friend class TransactionalObjectHandle<IntangibleObject>;
 };
 
 } // namespace intangible

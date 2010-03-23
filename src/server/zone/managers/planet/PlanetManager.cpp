@@ -30,6 +30,14 @@ PlanetManager::~PlanetManager() {
 }
 
 
+TransactionalObject* PlanetManager::clone() {
+	PlanetManager* objectCopy = new PlanetManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PlanetManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void PlanetManager::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

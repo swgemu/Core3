@@ -309,12 +309,15 @@ protected:
 
 	virtual ~CreatureObject();
 
+	TransactionalObject* clone();
+
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
 
 	UnicodeString _return_getCreatureName;
 
 	friend class CreatureObjectHelper;
+	friend class TransactionalObjectHandle<CreatureObject>;
 };
 
 } // namespace creature

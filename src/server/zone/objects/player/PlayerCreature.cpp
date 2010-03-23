@@ -36,6 +36,14 @@ PlayerCreature::~PlayerCreature() {
 }
 
 
+TransactionalObject* PlayerCreature::clone() {
+	PlayerCreature* objectCopy = new PlayerCreature(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PlayerCreatureImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void PlayerCreature::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

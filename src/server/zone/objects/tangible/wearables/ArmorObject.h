@@ -46,7 +46,10 @@ protected:
 
 	virtual ~ArmorObject();
 
+	TransactionalObject* clone();
+
 	friend class ArmorObjectHelper;
+	friend class TransactionalObjectHandle<ArmorObject>;
 };
 
 } // namespace wearables

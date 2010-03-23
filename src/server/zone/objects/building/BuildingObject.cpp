@@ -28,6 +28,14 @@ BuildingObject::~BuildingObject() {
 }
 
 
+TransactionalObject* BuildingObject::clone() {
+	BuildingObject* objectCopy = new BuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new BuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void BuildingObject::createCellObjects() {
 	if (_impl == NULL) {
 		if (!deployed)

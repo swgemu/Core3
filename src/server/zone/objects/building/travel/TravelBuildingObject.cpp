@@ -20,6 +20,14 @@ TravelBuildingObject::~TravelBuildingObject() {
 }
 
 
+TransactionalObject* TravelBuildingObject::clone() {
+	TravelBuildingObject* objectCopy = new TravelBuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new TravelBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 /*
  *	TravelBuildingObjectImplementation
  */

@@ -79,7 +79,10 @@ protected:
 
 	virtual ~GroupObject();
 
+	TransactionalObject* clone();
+
 	friend class GroupObjectHelper;
+	friend class TransactionalObjectHandle<GroupObject>;
 };
 
 } // namespace group

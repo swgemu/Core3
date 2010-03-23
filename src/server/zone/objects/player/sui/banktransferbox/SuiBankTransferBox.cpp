@@ -24,6 +24,14 @@ SuiBankTransferBox::~SuiBankTransferBox() {
 }
 
 
+TransactionalObject* SuiBankTransferBox::clone() {
+	SuiBankTransferBox* objectCopy = new SuiBankTransferBox(DummyConstructorParameter::instance());
+	objectCopy->_impl = new SuiBankTransferBoxImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void SuiBankTransferBox::addCash(int cash) {
 	if (_impl == NULL) {
 		if (!deployed)

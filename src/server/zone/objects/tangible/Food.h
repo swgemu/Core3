@@ -45,7 +45,10 @@ protected:
 
 	virtual ~Food();
 
+	TransactionalObject* clone();
+
 	friend class FoodHelper;
+	friend class TransactionalObjectHandle<Food>;
 };
 
 } // namespace tangible

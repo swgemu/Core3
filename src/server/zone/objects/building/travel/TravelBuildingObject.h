@@ -30,7 +30,10 @@ protected:
 
 	virtual ~TravelBuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class TravelBuildingObjectHelper;
+	friend class TransactionalObjectHandle<TravelBuildingObject>;
 };
 
 } // namespace travel

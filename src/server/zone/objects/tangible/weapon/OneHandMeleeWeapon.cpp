@@ -20,6 +20,14 @@ OneHandMeleeWeapon::~OneHandMeleeWeapon() {
 }
 
 
+TransactionalObject* OneHandMeleeWeapon::clone() {
+	OneHandMeleeWeapon* objectCopy = new OneHandMeleeWeapon(DummyConstructorParameter::instance());
+	objectCopy->_impl = new OneHandMeleeWeaponImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void OneHandMeleeWeapon::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

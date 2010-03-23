@@ -24,6 +24,14 @@ SuiBox::~SuiBox() {
 }
 
 
+TransactionalObject* SuiBox::clone() {
+	SuiBox* objectCopy = new SuiBox(DummyConstructorParameter::instance());
+	objectCopy->_impl = new SuiBoxImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void SuiBox::initialize() {
 	if (_impl == NULL) {
 		if (!deployed)

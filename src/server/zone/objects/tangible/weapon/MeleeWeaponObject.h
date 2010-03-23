@@ -32,7 +32,10 @@ protected:
 
 	virtual ~MeleeWeaponObject();
 
+	TransactionalObject* clone();
+
 	friend class MeleeWeaponObjectHelper;
+	friend class TransactionalObjectHandle<MeleeWeaponObject>;
 };
 
 } // namespace weapon

@@ -36,6 +36,14 @@ SceneObject::~SceneObject() {
 }
 
 
+TransactionalObject* SceneObject::clone() {
+	SceneObject* objectCopy = new SceneObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new SceneObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void SceneObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

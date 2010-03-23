@@ -30,6 +30,14 @@ BankTerminal::~BankTerminal() {
 }
 
 
+TransactionalObject* BankTerminal::clone() {
+	BankTerminal* objectCopy = new BankTerminal(DummyConstructorParameter::instance());
+	objectCopy->_impl = new BankTerminalImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void BankTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

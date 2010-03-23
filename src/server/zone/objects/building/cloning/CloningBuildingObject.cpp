@@ -20,6 +20,14 @@ CloningBuildingObject::~CloningBuildingObject() {
 }
 
 
+TransactionalObject* CloningBuildingObject::clone() {
+	CloningBuildingObject* objectCopy = new CloningBuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new CloningBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 /*
  *	CloningBuildingObjectImplementation
  */

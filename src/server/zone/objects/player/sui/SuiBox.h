@@ -144,7 +144,10 @@ protected:
 
 	virtual ~SuiBox();
 
+	TransactionalObject* clone();
+
 	friend class SuiBoxHelper;
+	friend class TransactionalObjectHandle<SuiBox>;
 };
 
 } // namespace sui

@@ -24,6 +24,14 @@ TangibleObject::~TangibleObject() {
 }
 
 
+TransactionalObject* TangibleObject::clone() {
+	TangibleObject* objectCopy = new TangibleObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new TangibleObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void TangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

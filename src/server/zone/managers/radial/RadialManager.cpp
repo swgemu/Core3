@@ -28,6 +28,14 @@ RadialManager::~RadialManager() {
 }
 
 
+TransactionalObject* RadialManager::clone() {
+	RadialManager* objectCopy = new RadialManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new RadialManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)

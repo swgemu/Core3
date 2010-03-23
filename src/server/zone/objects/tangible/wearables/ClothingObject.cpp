@@ -20,6 +20,14 @@ ClothingObject::~ClothingObject() {
 }
 
 
+TransactionalObject* ClothingObject::clone() {
+	ClothingObject* objectCopy = new ClothingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ClothingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ClothingObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

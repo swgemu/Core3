@@ -91,6 +91,8 @@ protected:
 
 	virtual ~ZoneClientSession();
 
+	TransactionalObject* clone();
+
 	void _acquire();
 
 	void _release();
@@ -98,6 +100,7 @@ protected:
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
+	friend class TransactionalObjectHandle<ZoneClientSession>;
 };
 
 } // namespace zone

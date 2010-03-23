@@ -34,6 +34,14 @@ ObjectController::~ObjectController() {
 }
 
 
+TransactionalObject* ObjectController::clone() {
+	ObjectController* objectCopy = new ObjectController(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ObjectControllerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ObjectController::loadCommands() {
 	if (_impl == NULL) {
 		if (!deployed)

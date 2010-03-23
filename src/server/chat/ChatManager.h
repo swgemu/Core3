@@ -209,7 +209,10 @@ protected:
 
 	virtual ~ChatManager();
 
+	TransactionalObject* clone();
+
 	friend class ChatManagerHelper;
+	friend class TransactionalObjectHandle<ChatManager>;
 };
 
 } // namespace chat

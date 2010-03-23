@@ -24,6 +24,14 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
 
+TransactionalObject* TutorialBuildingObject::clone() {
+	TutorialBuildingObject* objectCopy = new TutorialBuildingObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new TutorialBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void TutorialBuildingObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

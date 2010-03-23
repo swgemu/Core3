@@ -20,6 +20,14 @@ IntangibleObject::~IntangibleObject() {
 }
 
 
+TransactionalObject* IntangibleObject::clone() {
+	IntangibleObject* objectCopy = new IntangibleObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new IntangibleObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void IntangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);

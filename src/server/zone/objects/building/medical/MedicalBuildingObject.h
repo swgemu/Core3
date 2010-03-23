@@ -30,7 +30,10 @@ protected:
 
 	virtual ~MedicalBuildingObject();
 
+	TransactionalObject* clone();
+
 	friend class MedicalBuildingObjectHelper;
+	friend class TransactionalObjectHandle<MedicalBuildingObject>;
 };
 
 } // namespace medical

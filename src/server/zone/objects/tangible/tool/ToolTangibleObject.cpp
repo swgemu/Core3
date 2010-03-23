@@ -22,6 +22,14 @@ ToolTangibleObject::~ToolTangibleObject() {
 }
 
 
+TransactionalObject* ToolTangibleObject::clone() {
+	ToolTangibleObject* objectCopy = new ToolTangibleObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ToolTangibleObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ToolTangibleObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

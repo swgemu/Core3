@@ -61,7 +61,10 @@ protected:
 
 	virtual ~WaypointObject();
 
+	TransactionalObject* clone();
+
 	friend class WaypointObjectHelper;
+	friend class TransactionalObjectHandle<WaypointObject>;
 };
 
 } // namespace waypoint

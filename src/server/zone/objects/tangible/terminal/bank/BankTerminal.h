@@ -115,7 +115,10 @@ protected:
 
 	virtual ~BankTerminal();
 
+	TransactionalObject* clone();
+
 	friend class BankTerminalHelper;
+	friend class TransactionalObjectHandle<BankTerminal>;
 };
 
 } // namespace bank

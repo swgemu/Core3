@@ -20,6 +20,14 @@ ArmorObject::~ArmorObject() {
 }
 
 
+TransactionalObject* ArmorObject::clone() {
+	ArmorObject* objectCopy = new ArmorObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ArmorObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ArmorObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

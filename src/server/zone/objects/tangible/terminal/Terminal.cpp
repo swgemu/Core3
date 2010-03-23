@@ -20,6 +20,14 @@ Terminal::~Terminal() {
 }
 
 
+TransactionalObject* Terminal::clone() {
+	Terminal* objectCopy = new Terminal(DummyConstructorParameter::instance());
+	objectCopy->_impl = new TerminalImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void Terminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

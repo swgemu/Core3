@@ -88,7 +88,10 @@ protected:
 
 	virtual ~WeaponObject();
 
+	TransactionalObject* clone();
+
 	friend class WeaponObjectHelper;
+	friend class TransactionalObjectHandle<WeaponObject>;
 };
 
 } // namespace weapon

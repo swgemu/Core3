@@ -32,7 +32,10 @@ protected:
 
 	virtual ~Terminal();
 
+	TransactionalObject* clone();
+
 	friend class TerminalHelper;
+	friend class TransactionalObjectHandle<Terminal>;
 };
 
 } // namespace terminal

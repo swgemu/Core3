@@ -183,7 +183,10 @@ protected:
 
 	virtual ~TangibleObject();
 
+	TransactionalObject* clone();
+
 	friend class TangibleObjectHelper;
+	friend class TransactionalObjectHandle<TangibleObject>;
 };
 
 } // namespace tangible

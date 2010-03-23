@@ -20,6 +20,14 @@ RifleWeaponObject::~RifleWeaponObject() {
 }
 
 
+TransactionalObject* RifleWeaponObject::clone() {
+	RifleWeaponObject* objectCopy = new RifleWeaponObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new RifleWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void RifleWeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

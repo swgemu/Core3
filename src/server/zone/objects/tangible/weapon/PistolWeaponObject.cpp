@@ -20,6 +20,14 @@ PistolWeaponObject::~PistolWeaponObject() {
 }
 
 
+TransactionalObject* PistolWeaponObject::clone() {
+	PistolWeaponObject* objectCopy = new PistolWeaponObject(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PistolWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void PistolWeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

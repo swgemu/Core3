@@ -75,7 +75,10 @@ protected:
 
 	virtual ~SuiBankTransferBox();
 
+	TransactionalObject* clone();
+
 	friend class SuiBankTransferBoxHelper;
+	friend class TransactionalObjectHandle<SuiBankTransferBox>;
 };
 
 } // namespace banktransferbox

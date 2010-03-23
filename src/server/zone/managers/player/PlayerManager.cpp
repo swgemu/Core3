@@ -30,6 +30,14 @@ PlayerManager::~PlayerManager() {
 }
 
 
+TransactionalObject* PlayerManager::clone() {
+	PlayerManager* objectCopy = new PlayerManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new PlayerManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void PlayerManager::loadNameMap() {
 	if (_impl == NULL) {
 		if (!deployed)

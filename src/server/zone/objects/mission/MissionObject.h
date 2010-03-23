@@ -105,11 +105,14 @@ protected:
 
 	virtual ~MissionObject();
 
+	TransactionalObject* clone();
+
 	String _return_getTargetName;
 
 	UnicodeString _return_getCreatorName;
 
 	friend class MissionObjectHelper;
+	friend class TransactionalObjectHandle<MissionObject>;
 };
 
 } // namespace mission

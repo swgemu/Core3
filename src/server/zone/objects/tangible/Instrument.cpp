@@ -22,6 +22,14 @@ Instrument::~Instrument() {
 }
 
 
+TransactionalObject* Instrument::clone() {
+	Instrument* objectCopy = new Instrument(DummyConstructorParameter::instance());
+	objectCopy->_impl = new InstrumentImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void Instrument::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

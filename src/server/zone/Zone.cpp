@@ -32,6 +32,14 @@ Zone::~Zone() {
 }
 
 
+TransactionalObject* Zone::clone() {
+	Zone* objectCopy = new Zone(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ZoneImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void Zone::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

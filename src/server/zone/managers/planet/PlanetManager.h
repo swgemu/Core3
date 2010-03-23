@@ -123,7 +123,10 @@ protected:
 
 	virtual ~PlanetManager();
 
+	TransactionalObject* clone();
+
 	friend class PlanetManagerHelper;
+	friend class TransactionalObjectHandle<PlanetManager>;
 };
 
 } // namespace planet

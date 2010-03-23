@@ -63,7 +63,10 @@ protected:
 
 	virtual ~StartingLocationTerminal();
 
+	TransactionalObject* clone();
+
 	friend class StartingLocationTerminalHelper;
+	friend class TransactionalObjectHandle<StartingLocationTerminal>;
 };
 
 } // namespace startinglocation

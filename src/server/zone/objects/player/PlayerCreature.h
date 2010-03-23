@@ -287,12 +287,15 @@ protected:
 
 	virtual ~PlayerCreature();
 
+	TransactionalObject* clone();
+
 	String _return_getFirstName;
 	String _return_getLastName;
 
 	UnicodeString _return_getBiography;
 
 	friend class PlayerCreatureHelper;
+	friend class TransactionalObjectHandle<PlayerCreature>;
 };
 
 } // namespace player

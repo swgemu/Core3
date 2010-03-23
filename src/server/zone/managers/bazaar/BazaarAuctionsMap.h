@@ -63,7 +63,10 @@ protected:
 
 	virtual ~BazaarAuctionsMap();
 
+	TransactionalObject* clone();
+
 	friend class BazaarAuctionsMapHelper;
+	friend class TransactionalObjectHandle<BazaarAuctionsMap>;
 };
 
 } // namespace bazaar

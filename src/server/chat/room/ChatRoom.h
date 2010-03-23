@@ -128,6 +128,8 @@ protected:
 
 	virtual ~ChatRoom();
 
+	TransactionalObject* clone();
+
 	String _return_getCreator;
 	String _return_getFullPath;
 	String _return_getName;
@@ -137,6 +139,7 @@ protected:
 	UnicodeString _return_getTitle;
 
 	friend class ChatRoomHelper;
+	friend class TransactionalObjectHandle<ChatRoom>;
 };
 
 } // namespace room

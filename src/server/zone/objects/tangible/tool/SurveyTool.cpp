@@ -22,6 +22,14 @@ SurveyTool::~SurveyTool() {
 }
 
 
+TransactionalObject* SurveyTool::clone() {
+	SurveyTool* objectCopy = new SurveyTool(DummyConstructorParameter::instance());
+	objectCopy->_impl = new SurveyToolImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void SurveyTool::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

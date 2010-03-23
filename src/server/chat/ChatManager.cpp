@@ -38,6 +38,14 @@ ChatManager::~ChatManager() {
 }
 
 
+TransactionalObject* ChatManager::clone() {
+	ChatManager* objectCopy = new ChatManager(DummyConstructorParameter::instance());
+	objectCopy->_impl = new ChatManagerImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void ChatManager::initiateRooms() {
 	if (_impl == NULL) {
 		if (!deployed)

@@ -22,6 +22,14 @@ AuctionItem::~AuctionItem() {
 }
 
 
+TransactionalObject* AuctionItem::clone() {
+	AuctionItem* objectCopy = new AuctionItem(DummyConstructorParameter::instance());
+	objectCopy->_impl = new AuctionItemImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void AuctionItem::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
 	if (_impl == NULL) {
 		if (!deployed)

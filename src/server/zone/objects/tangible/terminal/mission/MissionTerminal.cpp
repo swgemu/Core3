@@ -24,6 +24,14 @@ MissionTerminal::~MissionTerminal() {
 }
 
 
+TransactionalObject* MissionTerminal::clone() {
+	MissionTerminal* objectCopy = new MissionTerminal(DummyConstructorParameter::instance());
+	objectCopy->_impl = new MissionTerminalImplementation(DummyConstructorParameter::instance());
+	*(objectCopy->_impl) = *_impl;
+	return (TransactionalObject*) objectCopy;
+}
+
+
 void MissionTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)

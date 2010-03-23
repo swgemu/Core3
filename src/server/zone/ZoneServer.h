@@ -309,10 +309,13 @@ protected:
 
 	virtual ~ZoneServer();
 
+	TransactionalObject* clone();
+
 	String _return_getMessageoftheDay;
 	String _return_getServerName;
 
 	friend class ZoneServerHelper;
+	friend class TransactionalObjectHandle<ZoneServer>;
 };
 
 } // namespace zone
