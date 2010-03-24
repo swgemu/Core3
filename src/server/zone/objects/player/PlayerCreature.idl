@@ -59,10 +59,13 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.chat.room.ChatRoom;
+import server.zone.Zone;
 include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.creature.CreatureFlag;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.player.badges.Badges;
+import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.objects.group.GroupObject;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;

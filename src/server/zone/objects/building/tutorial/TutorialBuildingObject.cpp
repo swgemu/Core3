@@ -8,6 +8,10 @@
 
 #include "server/zone/objects/building/tutorial/events/UnloadBuildingTask.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	TutorialBuildingObjectStub
  */
@@ -27,7 +31,8 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 TransactionalObject* TutorialBuildingObject::clone() {
 	TutorialBuildingObject* objectCopy = new TutorialBuildingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new TutorialBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((TutorialBuildingObjectImplementation*) objectCopy->_impl) = *((TutorialBuildingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -153,40 +158,40 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(57):  		initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(59):  		initializeTransientMembers();
 	initializeTransientMembers();
 }
 
 void TutorialBuildingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(61):  		super.initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(63):  		super.initializeTransientMembers();
 	BuildingObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(63):  		unloadTask = null;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(65):  		unloadTask = null;
 	unloadTask = NULL;
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(65):  		Logger.setLoggingName("TutorialBuildingObject");
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(67):  		Logger.setLoggingName("TutorialBuildingObject");
 	Logger::setLoggingName("TutorialBuildingObject");
 }
 
 void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(69):  		dequeueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(71):  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
 }
 
 void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(73):  		enqueueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(75):  		enqueueUnloadEvent();
 	enqueueUnloadEvent();
 }
 
 void TutorialBuildingObjectImplementation::clearUnloadEvent() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(77):  		unloadTask = null;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(79):  		unloadTask = null;
 	unloadTask = NULL;
 }
 
 void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(81):  	}
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(83):  	}
 	if (unloadTask){
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(82):  			unloadTask.cancel();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(84):  			unloadTask.cancel();
 	unloadTask->cancel();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(83):  			clearUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(85):  			clearUnloadEvent();
 	clearUnloadEvent();
 }
 }

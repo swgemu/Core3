@@ -31,7 +31,8 @@ StructureManager::~StructureManager() {
 TransactionalObject* StructureManager::clone() {
 	StructureManager* objectCopy = new StructureManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new StructureManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((StructureManagerImplementation*) objectCopy->_impl) = *((StructureManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

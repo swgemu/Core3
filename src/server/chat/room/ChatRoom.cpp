@@ -29,7 +29,8 @@ ChatRoom::~ChatRoom() {
 TransactionalObject* ChatRoom::clone() {
 	ChatRoom* objectCopy = new ChatRoom(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ChatRoomImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ChatRoomImplementation*) objectCopy->_impl) = *((ChatRoomImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

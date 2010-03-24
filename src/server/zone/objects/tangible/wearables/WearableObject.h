@@ -11,6 +11,16 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"

@@ -535,7 +535,7 @@ AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* play
 	if (name.length() < 2)
 		objectName->getFullPath(name);
 
-	item->setLocation(planetStr, region, terminal->getObjectID(), terminal->getPositionX(), terminal->getPositionY(), false);
+	item->setLocation(planetStr, region, terminal->getObjectID(), (int)terminal->getPositionX(), (int)terminal->getPositionY(), false);
 	item->setOwnerID(player->getObjectID());
 	item->setOwnerName(playername);
 	item->setItemName(name);

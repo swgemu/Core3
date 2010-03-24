@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MissionTerminalStub
  */
@@ -27,7 +29,8 @@ MissionTerminal::~MissionTerminal() {
 TransactionalObject* MissionTerminal::clone() {
 	MissionTerminal* objectCopy = new MissionTerminal(DummyConstructorParameter::instance());
 	objectCopy->_impl = new MissionTerminalImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((MissionTerminalImplementation*) objectCopy->_impl) = *((MissionTerminalImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -115,14 +118,14 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 
 MissionTerminalImplementation::MissionTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(54):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(55):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
 void MissionTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(59):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(60):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(61):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 

@@ -4,6 +4,10 @@
 
 #include "CloningBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	CloningBuildingObjectStub
  */
@@ -23,7 +27,8 @@ CloningBuildingObject::~CloningBuildingObject() {
 TransactionalObject* CloningBuildingObject::clone() {
 	CloningBuildingObject* objectCopy = new CloningBuildingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new CloningBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((CloningBuildingObjectImplementation*) objectCopy->_impl) = *((CloningBuildingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -99,7 +104,7 @@ void CloningBuildingObjectImplementation::_serializationHelperMethod() {
 
 CloningBuildingObjectImplementation::CloningBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl(53):  		Logger.setLoggingName("CloningBuildingObject");
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  		Logger.setLoggingName("CloningBuildingObject");
 	Logger::setLoggingName("CloningBuildingObject");
 }
 

@@ -49,6 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.Zone;
 
 
 class WeaponObject extends TangibleObject {

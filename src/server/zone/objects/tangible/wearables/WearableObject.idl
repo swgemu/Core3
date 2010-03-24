@@ -47,6 +47,7 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
+import server.zone.Zone;
 
 class WearableObject extends TangibleObject {	
 	protected int socketCount;

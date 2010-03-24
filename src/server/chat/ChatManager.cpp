@@ -43,7 +43,8 @@ ChatManager::~ChatManager() {
 TransactionalObject* ChatManager::clone() {
 	ChatManager* objectCopy = new ChatManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ChatManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ChatManagerImplementation*) objectCopy->_impl) = *((ChatManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

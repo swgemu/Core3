@@ -27,7 +27,8 @@ SuiBankTransferBox::~SuiBankTransferBox() {
 TransactionalObject* SuiBankTransferBox::clone() {
 	SuiBankTransferBox* objectCopy = new SuiBankTransferBox(DummyConstructorParameter::instance());
 	objectCopy->_impl = new SuiBankTransferBoxImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((SuiBankTransferBoxImplementation*) objectCopy->_impl) = *((SuiBankTransferBoxImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

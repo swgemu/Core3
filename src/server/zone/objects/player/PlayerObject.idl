@@ -61,6 +61,7 @@ include server.zone.objects.creature.professions.Skill;
 include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
+import server.zone.Zone;
 
 
 class PlayerObject extends IntangibleObject {	
@@ -229,7 +230,7 @@ class PlayerObject extends IntangibleObject {
 	
 	/**
 	 * Adds a friend to the friend list
-	 * @pre { this is lockedÊ}
+	 * @pre { this is lockedï¿½}
 	 * @post { this is locked }
 	 * @param name friends name
 	 * @param notifyClient determines whether to update the client with the changes
@@ -239,7 +240,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Removes the specified friend from the friend list
 	 * @pre { this is locked }
-	 * @post { this is lockedÊ}
+	 * @post { this is lockedï¿½}
 	 * @param name friend name to remove
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
@@ -247,7 +248,7 @@ class PlayerObject extends IntangibleObject {
 	
 	/**
 	 * Adds a player to the ignore list
-	 * @pre { this is lockedÊ}
+	 * @pre { this is lockedï¿½}
 	 * @post { this is locked }
 	 * @param name player name
 	 * @param notifyClient determines whether to update the client with the changes
@@ -257,7 +258,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Removes the specified player from the ignore list
 	 * @pre { this is locked }
-	 * @post { this is lockedÊ}
+	 * @post { this is lockedï¿½}
 	 * @param name player name to remove
 	 * @param notifyClient determines whether to update the client with the changes
 	 */

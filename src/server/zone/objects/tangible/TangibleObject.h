@@ -39,6 +39,16 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"

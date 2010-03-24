@@ -4,6 +4,8 @@
 
 #include "RifleWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	RifleWeaponObjectStub
  */
@@ -23,7 +25,8 @@ RifleWeaponObject::~RifleWeaponObject() {
 TransactionalObject* RifleWeaponObject::clone() {
 	RifleWeaponObject* objectCopy = new RifleWeaponObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new RifleWeaponObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((RifleWeaponObjectImplementation*) objectCopy->_impl) = *((RifleWeaponObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -111,14 +114,14 @@ void RifleWeaponObjectImplementation::_serializationHelperMethod() {
 
 RifleWeaponObjectImplementation::RifleWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(53):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(54):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 
 void RifleWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(58):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(59):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(60):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 

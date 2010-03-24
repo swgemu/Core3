@@ -23,7 +23,8 @@ PersistentMessage::~PersistentMessage() {
 TransactionalObject* PersistentMessage::clone() {
 	PersistentMessage* objectCopy = new PersistentMessage(DummyConstructorParameter::instance());
 	objectCopy->_impl = new PersistentMessageImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((PersistentMessageImplementation*) objectCopy->_impl) = *((PersistentMessageImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

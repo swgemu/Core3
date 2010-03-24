@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	StartingLocationTerminalStub
  */
@@ -27,7 +29,8 @@ StartingLocationTerminal::~StartingLocationTerminal() {
 TransactionalObject* StartingLocationTerminal::clone() {
 	StartingLocationTerminal* objectCopy = new StartingLocationTerminal(DummyConstructorParameter::instance());
 	objectCopy->_impl = new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((StartingLocationTerminalImplementation*) objectCopy->_impl) = *((StartingLocationTerminalImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -129,7 +132,7 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  		Logger.setLoggingName("StartingLocationTerminal");
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(57):  		Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
 }
 

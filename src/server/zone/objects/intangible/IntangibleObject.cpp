@@ -4,6 +4,8 @@
 
 #include "IntangibleObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	IntangibleObjectStub
  */
@@ -23,7 +25,8 @@ IntangibleObject::~IntangibleObject() {
 TransactionalObject* IntangibleObject::clone() {
 	IntangibleObject* objectCopy = new IntangibleObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new IntangibleObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((IntangibleObjectImplementation*) objectCopy->_impl) = *((IntangibleObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -143,9 +146,9 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 
 IntangibleObjectImplementation::IntangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/intangible/IntangibleObject.idl(54):  		Logger.setLoggingName("IntangibleObject");
+	// server/zone/objects/intangible/IntangibleObject.idl(55):  		Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");
-	// server/zone/objects/intangible/IntangibleObject.idl(56):  		status = 0;
+	// server/zone/objects/intangible/IntangibleObject.idl(57):  		status = 0;
 	status = 0;
 }
 
@@ -153,7 +156,7 @@ void IntangibleObjectImplementation::finalize() {
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(70):  		return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(71):  		return status;
 	return status;
 }
 

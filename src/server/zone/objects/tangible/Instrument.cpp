@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	InstrumentStub
  */
@@ -25,7 +27,8 @@ Instrument::~Instrument() {
 TransactionalObject* Instrument::clone() {
 	Instrument* objectCopy = new Instrument(DummyConstructorParameter::instance());
 	objectCopy->_impl = new InstrumentImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((InstrumentImplementation*) objectCopy->_impl) = *((InstrumentImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -113,14 +116,14 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(53):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(54):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(58):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(59):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(60):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 

@@ -47,6 +47,7 @@ package server.zone.objects.tangible;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 class Food extends TangibleObject {
 	public Food() {		

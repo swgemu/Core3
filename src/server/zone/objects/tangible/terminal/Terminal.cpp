@@ -4,6 +4,8 @@
 
 #include "Terminal.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	TerminalStub
  */
@@ -23,7 +25,8 @@ Terminal::~Terminal() {
 TransactionalObject* Terminal::clone() {
 	Terminal* objectCopy = new Terminal(DummyConstructorParameter::instance());
 	objectCopy->_impl = new TerminalImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((TerminalImplementation*) objectCopy->_impl) = *((TerminalImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -111,7 +114,7 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 TerminalImplementation::TerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(53):  		Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(54):  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
 }
 

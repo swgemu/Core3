@@ -37,7 +37,8 @@ Zone::~Zone() {
 TransactionalObject* Zone::clone() {
 	Zone* objectCopy = new Zone(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ZoneImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ZoneImplementation*) objectCopy->_impl) = *((ZoneImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

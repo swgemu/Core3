@@ -50,6 +50,7 @@ import system.util.Vector;
 import engine.log.Logger;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.Zone;
 
 
 include server.zone.objects.scene.variables.CustomizationVariables;
@@ -141,7 +142,7 @@ class TangibleObject extends SceneObject {
 	
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
-	 * @pre {Êtransient members are not initialized }
+	 * @pre {ï¿½transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();

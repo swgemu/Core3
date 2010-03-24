@@ -25,7 +25,8 @@ AuctionItem::~AuctionItem() {
 TransactionalObject* AuctionItem::clone() {
 	AuctionItem* objectCopy = new AuctionItem(DummyConstructorParameter::instance());
 	objectCopy->_impl = new AuctionItemImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((AuctionItemImplementation*) objectCopy->_impl) = *((AuctionItemImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

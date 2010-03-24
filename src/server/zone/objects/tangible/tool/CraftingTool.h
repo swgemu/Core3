@@ -25,6 +25,16 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
 #include "engine/lua/LuaObject.h"

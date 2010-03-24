@@ -4,6 +4,10 @@
 
 #include "MedicalBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	MedicalBuildingObjectStub
  */
@@ -23,7 +27,8 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 TransactionalObject* MedicalBuildingObject::clone() {
 	MedicalBuildingObject* objectCopy = new MedicalBuildingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new MedicalBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((MedicalBuildingObjectImplementation*) objectCopy->_impl) = *((MedicalBuildingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -99,7 +104,7 @@ void MedicalBuildingObjectImplementation::_serializationHelperMethod() {
 
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/medical/MedicalBuildingObject.idl(53):  		Logger.setLoggingName("MedicalBuildingObject");
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl(55):  		Logger.setLoggingName("MedicalBuildingObject");
 	Logger::setLoggingName("MedicalBuildingObject");
 }
 

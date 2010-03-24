@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ContainerStub
  */
@@ -25,7 +27,8 @@ Container::~Container() {
 TransactionalObject* Container::clone() {
 	Container* objectCopy = new Container(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ContainerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ContainerImplementation*) objectCopy->_impl) = *((ContainerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -134,7 +137,7 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(53):  		Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl(54):  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
 }
 

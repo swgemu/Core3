@@ -46,6 +46,7 @@ package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 
 class ClothingObject extends WearableObject {

@@ -4,6 +4,8 @@
 
 #include "ClothingObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ClothingObjectStub
  */
@@ -23,7 +25,8 @@ ClothingObject::~ClothingObject() {
 TransactionalObject* ClothingObject::clone() {
 	ClothingObject* objectCopy = new ClothingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ClothingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ClothingObjectImplementation*) objectCopy->_impl) = *((ClothingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -111,14 +114,14 @@ void ClothingObjectImplementation::_serializationHelperMethod() {
 
 ClothingObjectImplementation::ClothingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(53):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(54):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(58):  		super.initializeTransientMembers();
 	WearableObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(60):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 

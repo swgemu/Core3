@@ -4,6 +4,10 @@
 
 #include "TravelBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	TravelBuildingObjectStub
  */
@@ -23,7 +27,8 @@ TravelBuildingObject::~TravelBuildingObject() {
 TransactionalObject* TravelBuildingObject::clone() {
 	TravelBuildingObject* objectCopy = new TravelBuildingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new TravelBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((TravelBuildingObjectImplementation*) objectCopy->_impl) = *((TravelBuildingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -99,7 +104,7 @@ void TravelBuildingObjectImplementation::_serializationHelperMethod() {
 
 TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/travel/TravelBuildingObject.idl(53):  		Logger.setLoggingName("TravelBuildingObject");
+	// server/zone/objects/building/travel/TravelBuildingObject.idl(55):  		Logger.setLoggingName("TravelBuildingObject");
 	Logger::setLoggingName("TravelBuildingObject");
 }
 

@@ -39,6 +39,16 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/lua/LuaObject.h"

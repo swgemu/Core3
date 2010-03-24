@@ -25,7 +25,8 @@ Region::~Region() {
 TransactionalObject* Region::clone() {
 	Region* objectCopy = new Region(DummyConstructorParameter::instance());
 	objectCopy->_impl = new RegionImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((RegionImplementation*) objectCopy->_impl) = *((RegionImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

@@ -4,6 +4,10 @@
 
 #include "RecreationBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	RecreationBuildingObjectStub
  */
@@ -23,7 +27,8 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 TransactionalObject* RecreationBuildingObject::clone() {
 	RecreationBuildingObject* objectCopy = new RecreationBuildingObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new RecreationBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((RecreationBuildingObjectImplementation*) objectCopy->_impl) = *((RecreationBuildingObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -99,7 +104,7 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 
 RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(53):  		Logger.setLoggingName("RecreationBuildingObject");
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  		Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");
 }
 

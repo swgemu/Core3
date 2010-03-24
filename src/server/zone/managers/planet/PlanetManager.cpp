@@ -35,7 +35,8 @@ PlanetManager::~PlanetManager() {
 TransactionalObject* PlanetManager::clone() {
 	PlanetManager* objectCopy = new PlanetManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new PlanetManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((PlanetManagerImplementation*) objectCopy->_impl) = *((PlanetManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

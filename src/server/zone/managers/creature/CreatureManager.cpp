@@ -39,7 +39,8 @@ CreatureManager::~CreatureManager() {
 TransactionalObject* CreatureManager::clone() {
 	CreatureManager* objectCopy = new CreatureManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new CreatureManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((CreatureManagerImplementation*) objectCopy->_impl) = *((CreatureManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

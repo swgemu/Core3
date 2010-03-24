@@ -11,6 +11,30 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace cell {
+
+class CellObject;
+
+} // namespace cell
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::cell;
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"

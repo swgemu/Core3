@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	CraftingToolStub
  */
@@ -25,7 +27,8 @@ CraftingTool::~CraftingTool() {
 TransactionalObject* CraftingTool::clone() {
 	CraftingTool* objectCopy = new CraftingTool(DummyConstructorParameter::instance());
 	objectCopy->_impl = new CraftingToolImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((CraftingToolImplementation*) objectCopy->_impl) = *((CraftingToolImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -113,14 +116,14 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(53):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(54):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(58):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(59):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(60):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
 }
 

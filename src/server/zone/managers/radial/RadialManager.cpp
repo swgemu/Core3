@@ -31,7 +31,8 @@ RadialManager::~RadialManager() {
 TransactionalObject* RadialManager::clone() {
 	RadialManager* objectCopy = new RadialManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new RadialManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((RadialManagerImplementation*) objectCopy->_impl) = *((RadialManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

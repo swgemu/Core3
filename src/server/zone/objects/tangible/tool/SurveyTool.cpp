@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	SurveyToolStub
  */
@@ -25,7 +27,8 @@ SurveyTool::~SurveyTool() {
 TransactionalObject* SurveyTool::clone() {
 	SurveyTool* objectCopy = new SurveyTool(DummyConstructorParameter::instance());
 	objectCopy->_impl = new SurveyToolImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((SurveyToolImplementation*) objectCopy->_impl) = *((SurveyToolImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -113,14 +116,14 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(53):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(54):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(58):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(59):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(60):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 

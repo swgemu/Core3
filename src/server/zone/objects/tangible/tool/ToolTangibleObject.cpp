@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ToolTangibleObjectStub
  */
@@ -25,7 +27,8 @@ ToolTangibleObject::~ToolTangibleObject() {
 TransactionalObject* ToolTangibleObject::clone() {
 	ToolTangibleObject* objectCopy = new ToolTangibleObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ToolTangibleObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ToolTangibleObjectImplementation*) objectCopy->_impl) = *((ToolTangibleObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -113,14 +116,14 @@ void ToolTangibleObjectImplementation::_serializationHelperMethod() {
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(53):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(54):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 
 void ToolTangibleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(58):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(59):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(60):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 

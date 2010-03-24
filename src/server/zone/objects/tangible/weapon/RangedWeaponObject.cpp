@@ -4,6 +4,8 @@
 
 #include "RangedWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	RangedWeaponObjectStub
  */
@@ -23,7 +25,8 @@ RangedWeaponObject::~RangedWeaponObject() {
 TransactionalObject* RangedWeaponObject::clone() {
 	RangedWeaponObject* objectCopy = new RangedWeaponObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new RangedWeaponObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((RangedWeaponObjectImplementation*) objectCopy->_impl) = *((RangedWeaponObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -123,19 +126,19 @@ void RangedWeaponObjectImplementation::_serializationHelperMethod() {
 
 RangedWeaponObjectImplementation::RangedWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(53):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(54):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
 }
 
 void RangedWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(58):  		super.initializeTransientMembers();
 	WeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(59):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(60):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
 }
 
 bool RangedWeaponObjectImplementation::isRangedWeapon() {
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(63):  		return true;
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(64):  		return true;
 	return true;
 }
 

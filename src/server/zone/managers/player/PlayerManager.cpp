@@ -35,7 +35,8 @@ PlayerManager::~PlayerManager() {
 TransactionalObject* PlayerManager::clone() {
 	PlayerManager* objectCopy = new PlayerManager(DummyConstructorParameter::instance());
 	objectCopy->_impl = new PlayerManagerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((PlayerManagerImplementation*) objectCopy->_impl) = *((PlayerManagerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

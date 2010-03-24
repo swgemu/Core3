@@ -4,6 +4,8 @@
 
 #include "MeleeWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MeleeWeaponObjectStub
  */
@@ -23,7 +25,8 @@ MeleeWeaponObject::~MeleeWeaponObject() {
 TransactionalObject* MeleeWeaponObject::clone() {
 	MeleeWeaponObject* objectCopy = new MeleeWeaponObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new MeleeWeaponObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((MeleeWeaponObjectImplementation*) objectCopy->_impl) = *((MeleeWeaponObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -123,12 +126,12 @@ void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(53):  		Logger.setLoggingName("MeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(54):  		Logger.setLoggingName("MeleeWeaponObject");
 	Logger::setLoggingName("MeleeWeaponObject");
 }
 
 bool MeleeWeaponObjectImplementation::isMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(59):  		return true;
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(60):  		return true;
 	return true;
 }
 

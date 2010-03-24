@@ -93,6 +93,16 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/creature/professions/Certification.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"

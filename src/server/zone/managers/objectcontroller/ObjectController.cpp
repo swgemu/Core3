@@ -37,7 +37,8 @@ ObjectController::~ObjectController() {
 TransactionalObject* ObjectController::clone() {
 	ObjectController* objectCopy = new ObjectController(DummyConstructorParameter::instance());
 	objectCopy->_impl = new ObjectControllerImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((ObjectControllerImplementation*) objectCopy->_impl) = *((ObjectControllerImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

@@ -25,7 +25,8 @@ BazaarAuctionsMap::~BazaarAuctionsMap() {
 TransactionalObject* BazaarAuctionsMap::clone() {
 	BazaarAuctionsMap* objectCopy = new BazaarAuctionsMap(DummyConstructorParameter::instance());
 	objectCopy->_impl = new BazaarAuctionsMapImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((BazaarAuctionsMapImplementation*) objectCopy->_impl) = *((BazaarAuctionsMapImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

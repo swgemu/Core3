@@ -41,7 +41,8 @@ SceneObject::~SceneObject() {
 TransactionalObject* SceneObject::clone() {
 	SceneObject* objectCopy = new SceneObject(DummyConstructorParameter::instance());
 	objectCopy->_impl = new SceneObjectImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((SceneObjectImplementation*) objectCopy->_impl) = *((SceneObjectImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 

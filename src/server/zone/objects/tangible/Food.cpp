@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	FoodStub
  */
@@ -25,7 +27,8 @@ Food::~Food() {
 TransactionalObject* Food::clone() {
 	Food* objectCopy = new Food(DummyConstructorParameter::instance());
 	objectCopy->_impl = new FoodImplementation(DummyConstructorParameter::instance());
-	*(objectCopy->_impl) = *_impl;
+	*((FoodImplementation*) objectCopy->_impl) = *((FoodImplementation*) _impl);
+	objectCopy->_impl->_setStub(objectCopy);
 	return (TransactionalObject*) objectCopy;
 }
 
@@ -113,14 +116,14 @@ void FoodImplementation::_serializationHelperMethod() {
 
 FoodImplementation::FoodImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Food.idl(53):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(54):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 
 void FoodImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Food.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Food.idl(58):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Food.idl(59):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(60):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 

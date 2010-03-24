@@ -65,6 +65,7 @@ import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import system.lang.Time;
+import server.zone.Zone;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -183,7 +184,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
-	 * @pre {Êtransient members are not initialized }
+	 * @pre {ï¿½transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
@@ -209,7 +210,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {Ê}
+	 * @pre {ï¿½}
 	 * @post { this object received the message }
 	 * @param message string message to send
 	 */
@@ -217,7 +218,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {Ê}
+	 * @pre {ï¿½}
 	 * @post { this object received the message }
 	 * @param message unicode message to send
 	 */
@@ -225,7 +226,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {Ê}
+	 * @pre {ï¿½}
 	 * @post { this object received the message }
 	 * @param file stf file name of the message
 	 * @param stringid stf stringid of the message
@@ -234,7 +235,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {Ê}
+	 * @pre {ï¿½}
 	 * @post { this object received the message }
 	 * @param message ParameterizedStringId message to send
 	 */
@@ -267,7 +268,7 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Sets a new posture
 	 * @pre { this object is locked }
-	 * @post {Êthis object is locked, this object has the new posture set }
+	 * @post {ï¿½this object is locked, this object has the new posture set }
 	 * @param newPosture posture to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
@@ -483,7 +484,7 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Sets a new state to the statebitmask
 	 * @pre { this object is locked }
-	 * @post { this object is lockedÊ, stateBitmask has the new state }
+	 * @post { this object is lockedï¿½, stateBitmask has the new state }
 	 * @param state state to add
 	 */
 	public native void setState(unsigned long state, boolean notifyClient = true);
@@ -491,15 +492,15 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Cleares a state from the state bitmask
 	 * @pre { this object is locked }
-	 * @post { this object is lockedÊ, stateBitmask doesnt have the specified state }
+	 * @post { this object is lockedï¿½, stateBitmask doesnt have the specified state }
 	 * @param state state to clear
 	 */
 	public native void clearState(unsigned long state, boolean notifyClient = true);
 	
 	/**
 	 * Returns character mask to check against wearable player use mask
-	 * @pre {Ê}
-	 * @post {Ê}
+	 * @pre {ï¿½}
+	 * @post {ï¿½}
 	 * 
 	 */
 	public native unsigned int getWearableMask();
