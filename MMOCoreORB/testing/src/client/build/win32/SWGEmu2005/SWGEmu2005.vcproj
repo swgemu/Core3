@@ -1,0 +1,3209 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="SWGEmu2005"
+	ProjectGUID="{888F925F-F907-4FE2-AE4D-09F0F40AA99E}"
+	RootNamespace="SWGEmu2005"
+	Keyword="MakeFileProj"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat"
+				ReBuildCommandLine=""
+				CleanCommandLine="make -C ../../../ clean"
+				Output="core3.exe"
+				PreprocessorDefinitions="WIN32;_DEBUG"
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="pwd"
+				ReBuildCommandLine=""
+				CleanCommandLine=""
+				Output="SWGEmu2005.exe"
+				PreprocessorDefinitions="WIN32;NDEBUG"
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+						<Filter
+			Name="Source Files"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<Filter
+				Name="Server"
+				>
+				<Filter
+					Name="Chat"
+					>
+					<Filter
+						Name="Room"
+						>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoom.cpp"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoom.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoom.idl"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoomImplementation.cpp"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoomImplementation.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\chat\room\ChatRoomMap.h"
+							>
+						</File>
+					</Filter>
+					<File
+RelativePath="..\..\..\src\server\chat\ChatManager.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\ChatManager.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\ChatManager.idl"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\ChatManagerImplementation.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\ChatManagerImplementation.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\GameCommandHandler.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\chat\GameCommandHandler.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Conf"
+					>
+					<File
+RelativePath="..\..\..\src\server\conf\CommandManager.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\conf\ConfigManager.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\conf\ConfigManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Db"
+					>
+					<File
+RelativePath="..\..\..\src\server\db\ServerDatabase.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\db\ServerDatabase.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Login"
+					>
+					<Filter
+						Name="Objects"
+						>
+						<File
+RelativePath="..\..\..\src\server\login\objects\Account.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\objects\CharacterList.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\objects\GalaxyList.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\objects\Species.h"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="Packets"
+						>
+						<File
+RelativePath="..\..\..\src\server\login\packets\AccountVersionMessage.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\DeleteCharacterReplyMessage.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\EnumerateCharacterId.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\ErrorMessage.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\LoginClientToken.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\LoginClusterStatus.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\login\packets\LoginEnumCluster.h"
+							>
+						</File>
+					</Filter>
+					<File
+RelativePath="..\..\..\src\server\login\LoginClient.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginMessageProcessorThread.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginMessageProcessorThread.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginPacketHandler.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginPacketHandler.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginServer.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\LoginServer.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\login\objects.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Proxy"
+					>
+					<File
+RelativePath="..\..\..\src\server\proxy\ProxyServer.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Zone"
+					>
+					<Filter
+						Name="Managers"
+						>
+						<Filter
+							Name="Bazaar"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\events\CheckBazaarStatus.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarPlanetManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarPlanetManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarPlanetManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarPlanetManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarPlanetManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarTerminalDetails.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\bazaar\BazaarTerminals.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Combat"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\combat\events\SelfEnhanceEvent.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\combat\CombatManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\combat\CombatManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\combat\CommandQueueAction.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\combat\CommandQueueAction.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Creature"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\creature\events\CreatureAIAttackEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\creature\events\CreatureAIEvent.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Layouts"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\creature\layouts\CreatureLineLayout.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureActivityQueue.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\creature\CreatureMap.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Group"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\group\GroupManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\group\GroupManager.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Guild"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildMap.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildMap.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\guild\GuildMapImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Item"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\item\ItemManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\item\ItemManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\item\ItemManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\item\ItemManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\item\ItemManagerImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Loot"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\loot\LootManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\loot\LootManager.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Object"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\object\ObjectManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\object\ObjectManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\object\ObjectMap.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Planet"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\planet\events\ShuttleLandingEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\planet\events\ShuttleTakeOffEvent.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\BuildingMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\CellMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\PlanetManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\PlanetManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\PlanetManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\PlanetManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\PlanetManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\planet\ShuttleMap.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Player"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerMap.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerMap.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\PlayerMapImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\ProfessionManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\ProfessionManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\player\ProfessionMap.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Radial"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\radial\RadialManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\radial\RadialManager.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Resource"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\managers\resource\events\SpawnResourcesEvent.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\LocalResourceManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\LocalResourceManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\LocalResourceManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\LocalResourceManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\LocalResourceManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceManagerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceTemplate.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceTemplate.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceTemplate.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\ResourceTemplateImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\SpawnLocation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\SpawnLocation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\SpawnLocation.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\resource\SpawnLocationImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Ship"
+							>
+						</Filter>
+						<Filter
+							Name="Skills"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\skills\ScriptAttacksManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\skills\ScriptAttacksManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\skills\SkillList.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\skills\SkillManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\skills\SkillManager.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Sui"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\sui\SuiManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\sui\SuiManager.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="User"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\user\UserManager.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\user\UserManager.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\user\UserManager.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\user\UserManagerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\managers\user\UserManagerImplementation.h"
+								>
+							</File>
+						</Filter>
+					</Filter>
+					<Filter
+						Name="Objects"
+						>
+						<Filter
+							Name="Auction"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\auction\AuctionController.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\auction\AuctionItem.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\auction\AuctionItem.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Building"
+							>
+							<Filter
+								Name="Cell"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\building\cell\CellObject.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\building\cell\CellObject.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\building\cell\CellObject.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\building\cell\CellObjectImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\building\cell\CellObjectImplementation.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\building\BuildingObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\building\BuildingObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\building\BuildingObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\building\BuildingObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\building\BuildingObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Creature"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\CreatureBuffEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\CreatureBurstRunOverEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\CreatureForceRunOverEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\CreatureMoveEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\CreatureRecoveryEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\events\DizzyFallDownEvent.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Mount"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\mount\MountCreature.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\mount\MountCreature.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\mount\MountCreature.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\mount\MountCreatureImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\mount\MountCreatureImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Recruiter"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\recruiter\RecruiterCreature.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\recruiter\RecruiterCreature.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\recruiter\RecruiterCreature.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\recruiter\RecruiterCreatureImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Shuttle"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\shuttle\ShuttleCreature.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\shuttle\ShuttleCreature.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\shuttle\ShuttleCreature.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\shuttle\ShuttleCreatureImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\shuttle\ShuttleCreatureImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Skillmods"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skillmods\SkillModList.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Skills"
+								>
+								<Filter
+									Name="Self"
+									>
+									<Filter
+										Name="Force"
+										>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\self\force\ForceHealSelfSkill.h"
+											>
+										</File>
+									</Filter>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\self\ChangePostureSelfSkill.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\self\EnhanceSelfSkill.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\self\HealSelfSkill.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\self\MeditateSelfSkill.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Target"
+									>
+									<Filter
+										Name="Attack"
+										>
+										<Filter
+											Name="Force"
+											>
+											<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\force\ForceDotPoolAttackTargetSkill.h"
+												>
+											</File>
+											<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\force\ForceRandomPoolAttackTargetSkill.h"
+												>
+											</File>
+										</Filter>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\DeBuffAttackTargetSkill.h"
+											>
+										</File>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\DirectPoolAttackTargetSkill.h"
+											>
+										</File>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\DotPoolAttackTargetSkill.h"
+											>
+										</File>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\RandomPoolAttackTargetSkill.h"
+											>
+										</File>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\attack\WoundsDirectPoolAttackTargetSkill.h"
+											>
+										</File>
+									</Filter>
+									<Filter
+										Name="Heal"
+										>
+										<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\heal\ForceHealTargetSkill.h"
+											>
+										</File>
+									</Filter>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\AttackTargetSkill.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\HealTargetSkill.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\target\HealWoundTargetSkill.h"
+										>
+									</File>
+								</Filter>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\Animations.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\EntertainerSkills.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\PassiveSkill.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\SelfSkill.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\Skill.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\skills.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\skills\TargetSkill.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Trainer"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\trainer\TrainerCreature.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\trainer\TrainerCreature.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\trainer\TrainerCreature.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\trainer\TrainerCreatureImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\creature\trainer\TrainerCreatureImplementation.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\Creature.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\Creature.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\Creature.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureGroup.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureGroup.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureGroup.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureGroupImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\creature\CreatureObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Group"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\group\GroupObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Guild"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\guild\Guild.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\guild\Guild.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\guild\Guild.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\guild\GuildImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\guild\GuildImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Intangible"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\intangible\IntangibleObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\intangible\IntangibleObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\intangible\IntangibleObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\intangible\IntangibleObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\intangible\IntangibleObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Manufacture"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\manufacture\ManufactureSchematic.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\manufacture\ManufactureSchematic.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\manufacture\ManufactureSchematic.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\manufacture\ManufactureSchematicImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Mission"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\mission\MissionObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\mission\MissionObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\mission\MissionObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\mission\MissionObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Player"
+							>
+							<Filter
+								Name="Badges"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\badges\Badges.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\CenterOfBeingEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\ChangeFactionEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\CommandQueueActionEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\PlayerDisconnectEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\PlayerLogoutEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\PlayerRecoveryEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\SampleEvent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\events\SurveyEvent.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Professions"
+								>
+								<Filter
+									Name="Profession"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\profession\FourByFourProfession.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\profession\OneByFourProfession.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\profession\PyramidProfession.h"
+										>
+									</File>
+								</Filter>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\Certification.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\Profession.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\SkillBox.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\SkillBoxMap.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\professions\XpMap.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Sui"
+								>
+								<Filter
+									Name="Colorpicker"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\colorpicker\SuiColorPicker.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\colorpicker\SuiColorPicker.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\colorpicker\SuiColorPicker.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\colorpicker\SuiColorPickerImplementation.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\colorpicker\SuiColorPickerImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Inputbox"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\inputbox\SuiInputBox.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\inputbox\SuiInputBox.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\inputbox\SuiInputBox.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\inputbox\SuiInputBoxImplementation.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\inputbox\SuiInputBoxImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Listbox"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBox.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBox.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBox.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBoxImplementation.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBoxImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\listbox\SuiListBoxMenuItem.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Messagebox"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\messagebox\SuiMessageBox.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\messagebox\SuiMessageBox.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\messagebox\SuiMessageBox.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\messagebox\SuiMessageBoxImplementation.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\messagebox\SuiMessageBoxImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Transferbox"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\transferbox\SuiTransferBox.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\transferbox\SuiTransferBox.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\transferbox\SuiTransferBox.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\transferbox\SuiTransferBoxImplementation.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\transferbox\SuiTransferBoxImplementation.h"
+										>
+									</File>
+								</Filter>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\SuiBox.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\SuiBox.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\SuiBox.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\SuiBoxImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\player\sui\SuiBoxImplementation.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\Player.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\Player.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\Player.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerHAM.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\PlayerObjectImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\player\Races.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Scene"
+							>
+							<Filter
+								Name="Events"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\scene\events\UndeploySceneObjectEvent.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\scene\SceneObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\scene\SceneObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\scene\SceneObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\scene\SceneObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\scene\SceneObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Ship"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\ship\ShipObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\ship\ShipObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\ship\ShipObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\ship\ShipObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\ship\ShipObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Static"
+							>
+							<Filter
+								Name="Firework"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\static\firework\FireworkWorld.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\static\firework\FireworkWorld.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\static\firework\FireworkWorld.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\static\firework\FireworkWorldImplementation.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\static\StaticObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\static\StaticObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\static\StaticObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\static\StaticObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\static\StaticObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Tangible"
+							>
+							<Filter
+								Name="Appearance"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\appearance\HairObject.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\appearance\HairObject.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\appearance\HairObject.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\appearance\HairObjectImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Attachment"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\attachment\Attachment.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\attachment\Attachment.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\attachment\Attachment.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\attachment\AttachmentImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\attachment\AttachmentImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Component"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\component\ShipComponent.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\component\ShipComponent.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\component\ShipComponent.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\component\ShipComponentImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Firework"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\firework\Firework.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\firework\Firework.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\firework\Firework.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\firework\FireworkImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Holocron"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\holocron\Holocron.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\holocron\Holocron.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\holocron\Holocron.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\holocron\HolocronImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Instrument"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\instrument\Instrument.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\instrument\Instrument.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\instrument\Instrument.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\instrument\InstrumentImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Lair"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\lair\LairObject.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\lair\LairObject.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\lair\LairObject.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\lair\LairObjectImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\lair\LairObjectImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Resource"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\resource\ResourceContainer.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\resource\ResourceContainer.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\resource\ResourceContainer.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\resource\ResourceContainerImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\resource\ResourceContainerImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Surveytool"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\surveytool\SurveyTool.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\surveytool\SurveyTool.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\surveytool\SurveyTool.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\surveytool\SurveyToolImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\surveytool\SurveyToolImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Terminal"
+								>
+								<Filter
+									Name="Bazaar"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\bazaar\RegionBazaar.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\bazaar\RegionBazaar.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\bazaar\RegionBazaar.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\bazaar\RegionBazaarImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Guild"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\guild\GuildTerminal.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\guild\GuildTerminal.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\guild\GuildTerminal.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\guild\GuildTerminalImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Travel"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\travel\TravelTerminal.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\travel\TravelTerminal.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\travel\TravelTerminal.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\travel\TravelTerminalImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Vendor"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\vendor\VendorTerminal.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\vendor\VendorTerminal.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\vendor\VendorTerminal.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\vendor\VendorTerminalImplementation.h"
+										>
+									</File>
+								</Filter>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\Terminal.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\Terminal.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\Terminal.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\terminal\TerminalImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Ticket"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticket\Ticket.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticket\Ticket.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticket\Ticket.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticket\TicketImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticket\TicketImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Ticketcollector"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticketcollector\TicketCollector.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticketcollector\TicketCollector.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticketcollector\TicketCollector.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticketcollector\TicketCollectorImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ticketcollector\TicketCollectorImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Weapons"
+								>
+								<Filter
+									Name="Jedi"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\OneHandedJediWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\OneHandedJediWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\OneHandedJediWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\OneHandedJediWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\PolearmJediWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\PolearmJediWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\PolearmJediWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\PolearmJediWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\TwoHandedJediWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\TwoHandedJediWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\TwoHandedJediWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\jedi\TwoHandedJediWeaponImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Melee"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\OneHandedMeleeWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\OneHandedMeleeWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\OneHandedMeleeWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\OneHandedMeleeWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\PolearmMeleeWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\PolearmMeleeWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\PolearmMeleeWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\PolearmMeleeWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\TwoHandedMeleeWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\TwoHandedMeleeWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\TwoHandedMeleeWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\TwoHandedMeleeWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\UnarmedMeleeWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\UnarmedMeleeWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\UnarmedMeleeWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\melee\UnarmedMeleeWeaponImplementation.h"
+										>
+									</File>
+								</Filter>
+								<Filter
+									Name="Ranged"
+									>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\CarbineRangedWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\CarbineRangedWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\CarbineRangedWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\CarbineRangedWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\PistolRangedWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\PistolRangedWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\PistolRangedWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\PistolRangedWeaponImplementation.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\RifleRangedWeapon.cpp"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\RifleRangedWeapon.h"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\RifleRangedWeapon.idl"
+										>
+									</File>
+									<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\ranged\RifleRangedWeaponImplementation.h"
+										>
+									</File>
+								</Filter>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\JediWeapon.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\JediWeapon.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\JediWeapon.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\JediWeaponImplementation.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\MeleeWeapon.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\MeleeWeapon.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\MeleeWeapon.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\MeleeWeaponImplementation.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\RangedWeapon.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\RangedWeapon.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\RangedWeapon.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\RangedWeaponImplementation.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\Weapon.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\Weapon.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\Weapon.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\WeaponImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\weapons\WeaponImplementation.h"
+									>
+								</File>
+							</Filter>
+							<Filter
+								Name="Wearables"
+								>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Armor.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Armor.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Armor.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\ArmorImplementation.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\ArmorImplementation.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Wearable.cpp"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Wearable.h"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\Wearable.idl"
+									>
+								</File>
+								<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\wearables\WearableImplementation.h"
+									>
+								</File>
+							</Filter>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\AttributeMap.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Bank.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Bank.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Bank.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\BankImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Container.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Container.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Container.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ContainerImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\CustomizationVariables.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Datapad.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Datapad.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Datapad.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\DatapadImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Inventory.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Inventory.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\Inventory.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\InventoryImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\ItemAttributes.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\MissionBag.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\MissionBag.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\MissionBag.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\MissionBagImplementation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\TangibleObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\TangibleObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\TangibleObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\TangibleObjectImplementation.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\tangible\TangibleObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Terrain"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\terrain\PlanetNames.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\terrain\RegionNames.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\terrain\Terrain.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Waypoint"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\waypoint\WaypointObject.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\waypoint\WaypointObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\waypoint\WaypointObject.idl"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\objects\waypoint\WaypointObjectImplementation.h"
+								>
+							</File>
+						</Filter>
+					</Filter>
+					<Filter
+						Name="Packets"
+						>
+						<Filter
+							Name="Auction"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\AuctionQueryHeadersResponseMessage.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\AuctionQueryHeadersResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\BazaarDisplayUI.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\BidAuctionResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\GetAuctionDetailsResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\IsVendorOwnerResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\ItemSoldMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\auction\RetrieveAuctionItemResponseMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Building"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\building\BuildingObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\building\BuildingObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Cell"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\cell\CellObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\cell\CellObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\cell\UpdateCellPermissionsMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Charcreation"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\charcreation\ClientCreateCharacter.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\charcreation\ClientCreateCharacterFailed.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\charcreation\ClientCreateCharacterSuccess.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\charcreation\ClientRandomNameResponse.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Chat"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatInstantMessageToCharacter.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatInstantMessageToClient.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnConnectAvatar.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnCreateRoom.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnDestroyRoom.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnEnteredRoom.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnLeaveRoom.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnReceiveRoomInvitation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnSendInstantMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnSendPersistentMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatOnSendRoomMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatPersistentMessageToClient.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatRoomList.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatRoomMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\chat\ChatSystemMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Creature"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectDeltaMessage1.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectDeltaMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectDeltaMessage4.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectDeltaMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectMessage1.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectMessage4.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\CreatureObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\creature\UpdatePVPStatusMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Group"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\group\GroupObjectDeltaMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\group\GroupObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\group\GroupObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Guild"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\guild\GuildObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\guild\GuildObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Harvester"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\harvester\HarvesterObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\harvester\HarvesterObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Installation"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\installation\InstallationObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\installation\InstallationObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Intangible"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\intangible\IntangibleObjectDeltaMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\intangible\IntangibleObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\intangible\IntangibleObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\intangible\IntangibleObjectMessage8.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\intangible\IntangibleObjectMessage9.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Object"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\Animation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\Biography.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\Buffs.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\CombatAction.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\CombatSpam.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\CommandQueueRemove.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\DataTransform.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\Emote.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\Flourish.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\NpcConversationMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\ObjectControllerMessage.cpp"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\ObjectControllerMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\ObjectMenuResponse.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\PlayClientEffectObjectMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\PlayersNearYou.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\PostureMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\ShowFlyText.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\SitOnObject.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\SpatialChat.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\StartNpcConversation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\StopNpcConversation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\object\StringList.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Player"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\BadgesResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\CharacterSheetResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\EnterStructurePlacementModeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\EnterTicketPurchaseModeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\FactionResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\GetMapLocationsResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\GuildResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\MapLocation.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerMoneyResponseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectDeltaMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectDeltaMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectDeltaMessage8.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectDeltaMessage9.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectMessage8.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayerObjectMessage9.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\PlayMusicMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\player\TravelListResponseMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Resource"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\ResourceContainerObjectDeltaMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\ResourceContainerObjectDeltaMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\ResourceContainerObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\ResourceContainerObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\ResourceListForSurveyMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\resource\SurveyMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Scene"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\AttributeListMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\GameSceneChangedMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\LightUpdateTransformMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\LightUpdateTransformWithParentMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\PlayClientEffectLocMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\SceneObjectCloseMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\SceneObjectCreateMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\SceneObjectDestroyMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\ServerTimeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\ServerWeatherMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\UpdateContainmentMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\UpdateTransformMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\scene\UpdateTransformWithParentMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Ship"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\ship\ShipObjectMessage1.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\ship\ShipObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\ship\ShipObjectMessage4.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\ship\ShipObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Static"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\static\StaticObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\static\StaticObjectMessage6.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Tangible"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\tangible\TangibleObjectDeltaMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\tangible\TangibleObjectMessage3.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\tangible\TangibleObjectMessage6.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\tangible\WeaponObjectMessage3.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Trade"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\AbortTradeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\AcceptTransactionMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\AddItemMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\BeginTradeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\DenyTradeMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\GiveMoneyMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\TradeCompleteMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\trade\UnAcceptTransactionMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Ui"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\ui\SuiCreatePageMessage.h"
+								>
+							</File>
+						</Filter>
+						<Filter
+							Name="Zone"
+							>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\ClientIDMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\ClientLogout.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\ClientPermissionsMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\CmdSceneReady.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\CmdStartScene.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\ParametersMessage.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\SelectCharacter.h"
+								>
+							</File>
+							<File
+RelativePath="..\..\..\src\server\zone\packets\zone\unkByteFlag.h"
+								>
+							</File>
+						</Filter>
+						<File
+RelativePath="..\..\..\src\server\zone\packets\BaseLineMessage.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\zone\packets\DeltaMessage.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\zone\packets\HeartBeat.h"
+							>
+						</File>
+						<File
+RelativePath="..\..\..\src\server\zone\packets\LinkDeadMessage.h"
+							>
+						</File>
+					</Filter>
+					<File
+RelativePath="..\..\..\src\server\zone\objects.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\packets.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\Zone.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\Zone.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\Zone.idl"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneClient.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneClient.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneClient.idl"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneClientImplementation.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneClientImplementation.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneImplementation.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneImplementation.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneMessageProcessorThread.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneMessageProcessorThread.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZonePacketHandler.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZonePacketHandler.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneProcessServerImplementation.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneProcessServerImplementation.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneServer.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneServer.h"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneServer.idl"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneServerImplementation.cpp"
+						>
+					</File>
+					<File
+RelativePath="..\..\..\src\server\zone\ZoneServerImplementation.h"
+						>
+					</File>
+				</Filter>
+				<File
+RelativePath="..\..\..\src\server\ServerCore.cpp"
+					>
+				</File>
+				<File
+RelativePath="..\..\..\src\server\ServerCore.h"
+					>
+				</File>
+			</Filter>
+			<File
+RelativePath="..\..\..\src\main.cpp"
+				>
+			</File>
+		</Filter>
+
+
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
