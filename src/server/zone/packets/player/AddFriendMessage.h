@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class AddFriendMessage : public BaseMessage {
 public:
-    AddFriendMessage(uint64 oid, String name, String server, bool add) : BaseMessage() {
+    AddFriendMessage(uint64 oid, const String& name, const String& server, bool add) : BaseMessage() {
 	
     	insertShort(0x06);
     	insertInt(0x54336726);  // CRC

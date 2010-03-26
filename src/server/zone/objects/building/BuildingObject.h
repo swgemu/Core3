@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -51,6 +53,16 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -70,9 +82,15 @@ namespace building {
 
 class BuildingObject : public TangibleObject {
 public:
-	BuildingObject(LuaObject* templateData);
+	BuildingObject();
+
+	void createCellObjects();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
+
+	void removeFromZone();
 
 	void notifyInsert(QuadTreeEntry* obj);
 
@@ -102,11 +120,9 @@ public:
 
 	void setStaticBuilding(bool value);
 
-	bool hasNotifiedObject(SceneObject* object);
+	void onEnter(PlayerCreature* player);
 
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
+	void onExit(PlayerCreature* player);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -132,16 +148,20 @@ class BuildingObjectImplementation : public TangibleObjectImplementation, public
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
-	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
-
-	bool staticBuilding;
+	int totalCellNumber;
 
 public:
-	BuildingObjectImplementation(LuaObject* templateData);
+	BuildingObjectImplementation();
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
+	void createCellObjects();
+
+	void loadTemplateData(LuaObject* templateData);
+
 	void initializeTransientMembers();
+
+	void removeFromZone();
 
 	void notifyInsert(QuadTreeEntry* obj);
 
@@ -171,11 +191,9 @@ public:
 
 	void setStaticBuilding(bool value);
 
-	bool hasNotifiedObject(SceneObject* object);
+	virtual void onEnter(PlayerCreature* player);
 
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
+	virtual void onExit(PlayerCreature* player);
 
 	BuildingObject* _this;
 
@@ -216,7 +234,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void createCellObjects();
+
 	void initializeTransientMembers();
+
+	void removeFromZone();
 
 	void notifyInsertToZone(SceneObject* object);
 
@@ -234,11 +256,9 @@ public:
 
 	void setStaticBuilding(bool value);
 
-	bool hasNotifiedObject(SceneObject* object);
+	void onEnter(PlayerCreature* player);
 
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
+	void onExit(PlayerCreature* player);
 
 };
 

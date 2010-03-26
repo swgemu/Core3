@@ -72,10 +72,8 @@ public:
 		lock(doLock);
 
 		try {
-			play = HashTable<String, ManagedReference<PlayerCreature*> >::put(name.toLowerCase(), player);
 
-			if (play == NULL)
-				player->acquire();
+			play = HashTable<String, ManagedReference<PlayerCreature*> >::put(name.toLowerCase(), player);
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -119,8 +117,6 @@ public:
 
 			player = HashTable<String, ManagedReference<PlayerCreature*> >::remove(name.toLowerCase());
 
-			if (player != NULL)
-				player->release();
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();

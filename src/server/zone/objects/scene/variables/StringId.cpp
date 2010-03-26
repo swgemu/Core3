@@ -48,7 +48,7 @@ StringId::StringId() : Serializable() {
 	addSerializableVariables();
 }
 
-StringId::StringId(const StringId& id) : Serializable() {
+StringId::StringId(const StringId& id) : Object(), Serializable() {
 	file = id.file;
 	stringID = id.stringID;
 
@@ -59,6 +59,12 @@ StringId::StringId(const StringId& id) : Serializable() {
 
 StringId::StringId(const String& fullPath) : Serializable() {
 	setStringId(fullPath);
+
+	addSerializableVariables();
+}
+
+StringId::StringId(const char * fullPath) : Serializable() {
+	setStringId(String(fullPath));
 
 	addSerializableVariables();
 }
@@ -76,8 +82,22 @@ StringId::StringId(const UnicodeString& custom) : Serializable() {
 	addSerializableVariables();
 }
 
-void StringId::addSerializableVariables() {
-	addSerializableVariable("file", &file);
-	addSerializableVariable("stringID", &stringID);
-	addSerializableVariable("customName", &customName);
+void StringId::clear() {
+	file = "";
+	stringID = "";
+	customName.clear();
 }
+
+void StringId::setStringId(const String& fullPath) {
+	if (fullPath.isEmpty())
+		return;
+
+	if (fullPath.charAt(0) == '@') {
+		StringTokenizer tokenizer(fullPath.subString(1));
+		tokenizer.setDelimeter(":");
+
+		tokenizer.getStringToken(file);
+		tokenizer.getStringToken(stringID);
+	}
+}
+

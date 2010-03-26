@@ -46,22 +46,22 @@ package server.zone;
 
 import engine.service.proto.BaseClientProxy;
 import engine.service.proto.BasePacket;
-import engine.service.DatagramServiceThread;
+import engine.core.ManagedObject;
 import system.net.SocketAddress;
 import system.net.Socket;
-include engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
-	SceneObject player;
+	@weakReference
+	protected SceneObject player;
 	
-	unsigned int sessionKey;
-	unsigned int accountID;
+	protected unsigned int sessionKey;
+	protected unsigned int accountID;
 	
 	boolean disconnecting;
 	
-	public native ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
+	public native ZoneClientSession(Socket sock, SocketAddress addr);
 		
 	public native void disconnect();
 	public native void disconnect(boolean doLock);
@@ -80,6 +80,12 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);
+
+	@nativeStub
+	public native void acquire();
+
+	@nativeStub
+	public native void release();
 
 	public string getAddress() {
 		return BaseClientProxy.getAddress();

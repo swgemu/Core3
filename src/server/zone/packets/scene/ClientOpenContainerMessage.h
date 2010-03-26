@@ -47,14 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/tangible/Container.h"
-#include "../../objects/tangible/ContainerImplementation.h"
-
-#include "../../objects/scene/SceneObjectImplementation.h"
+#include "../../objects/scene/SceneObject.h"
 
 class ClientOpenContainerMessage : public BaseMessage {
 public:
-	ClientOpenContainerMessage(Container* container) : BaseMessage() {
+	/*ClientOpenContainerMessage(Container* container) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xDCA57409);
 
@@ -70,7 +67,7 @@ public:
 		insertLong(container->getObjectID());
 		insertInt(0);
 		insertShort(2);
-	}
+	}*/
 
 	ClientOpenContainerMessage(SceneObject* container) : BaseMessage() {
 		insertShort(0x04);
@@ -81,7 +78,7 @@ public:
 		insertShort(0);
 	}
 
-	ClientOpenContainerMessage(SceneObjectImplementation* container) : BaseMessage() {
+	/*ClientOpenContainerMessage(SceneObjectImplementation* container) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xDCA57409);
 
@@ -97,7 +94,7 @@ public:
 		insertLong(container->getObjectID());
 		insertInt(0);
 		insertShort(0);
-	}
+	}*/
 };
 
 #endif /*CLIENTOPENCONTAINERMESSAGE_H_*/

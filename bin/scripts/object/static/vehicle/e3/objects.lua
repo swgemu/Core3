@@ -77,7 +77,9 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2401779536
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_e3_shared_landspeeder, 2401779536)
+ObjectTemplates:addTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")

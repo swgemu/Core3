@@ -77,10 +77,12 @@ object_draft_schematic_structure_city_shared_bank_corellia = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1957527431
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_corellia, 1957527431)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_corellia, "object/draft_schematic/structure/city/shared_bank_corellia.iff")
 
 object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1356737706
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_naboo, 1356737706)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_naboo, "object/draft_schematic/structure/city/shared_bank_naboo.iff")
 
 object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1223564824
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, 1223564824)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, "object/draft_schematic/structure/city/shared_bank_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 922879724
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, 922879724)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, "object/draft_schematic/structure/city/shared_cantina_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1642793186
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, 1642793186)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, "object/draft_schematic/structure/city/shared_cantina_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 188835699
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, 188835699)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, "object/draft_schematic/structure/city/shared_cantina_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4052243419
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, 4052243419)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, "object/draft_schematic/structure/city/shared_cityhall_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4095160852
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, 4095160852)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, "object/draft_schematic/structure/city/shared_cityhall_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3452645956
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, 3452645956)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, "object/draft_schematic/structure/city/shared_cityhall_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3102761064
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, 3102761064)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, "object/draft_schematic/structure/city/shared_cloning_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2637377287
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, 2637377287)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, "object/draft_schematic/structure/city/shared_cloning_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2226323959
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, 2226323959)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, "object/draft_schematic/structure/city/shared_cloning_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2511913384
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_corellia, 2511913384)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_corellia, "object/draft_schematic/structure/city/shared_garage_corellia.iff")
 
 object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3583461183
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_naboo, 3583461183)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_naboo, "object/draft_schematic/structure/city/shared_garage_naboo.iff")
 
 object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2851840055
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, 2851840055)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, "object/draft_schematic/structure/city/shared_garage_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 191116922
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, 191116922)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, "object/draft_schematic/structure/city/shared_garden_exotic_dantooine.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2283291302
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, 2283291302)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, "object/draft_schematic/structure/city/shared_garden_exotic_dathomir.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 197575835
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, 197575835)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, "object/draft_schematic/structure/city/shared_garden_exotic_endor.iff")
 
 object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1276792416
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_large, 1276792416)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_large, "object/draft_schematic/structure/city/shared_garden_large.iff")
 
 object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1356080577
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_medium, 1356080577)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_medium, "object/draft_schematic/structure/city/shared_garden_medium.iff")
 
 object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2013387337
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_small, 2013387337)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_small, "object/draft_schematic/structure/city/shared_garden_small.iff")
 
 object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3104967184
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, 3104967184)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, "object/draft_schematic/structure/city/shared_hospital_corellia.iff")
 
 object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1804532749
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, 1804532749)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, "object/draft_schematic/structure/city/shared_hospital_naboo.iff")
 
 object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2236705679
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, 2236705679)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, "object/draft_schematic/structure/city/shared_hospital_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2673430783
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, 2673430783)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, "object/draft_schematic/structure/city/shared_shuttleport_corellia.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 881536708
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, 881536708)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, "object/draft_schematic/structure/city/shared_shuttleport_naboo.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2736402784
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, 2736402784)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, "object/draft_schematic/structure/city/shared_shuttleport_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 758724611
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_corellia, 758724611)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_corellia, "object/draft_schematic/structure/city/shared_theater_corellia.iff")
 
 object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3113591979
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_naboo, 3113591979)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_naboo, "object/draft_schematic/structure/city/shared_theater_naboo.iff")
 
 object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,7 +1324,9 @@ object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 293231004
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, 293231004)
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, "object/draft_schematic/structure/city/shared_theater_tatooine.iff")

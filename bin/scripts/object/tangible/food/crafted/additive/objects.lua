@@ -85,13 +85,14 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4284585922
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_base, 4284585922)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_base, "object/tangible/food/crafted/additive/shared_additive_base.iff")
 
 object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -137,13 +138,14 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2284977295
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, 2284977295)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, "object/tangible/food/crafted/additive/shared_additive_heavy.iff")
 
 object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -189,13 +191,14 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1231667281
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_light, 1231667281)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_light, "object/tangible/food/crafted/additive/shared_additive_light.iff")
 
 object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -241,10 +244,11 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 282579048
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_medium, 282579048)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_medium, "object/tangible/food/crafted/additive/shared_additive_medium.iff")

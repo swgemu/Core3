@@ -74,7 +74,7 @@ public:
 		uint32 crc = value->getNameCRC();
 
 		StringBuffer infoMsg;
-		infoMsg << "adding queueCommand 0x" << hex << crc << " " << value->getSlashCommandName();
+		infoMsg << "adding queueCommand 0x" << hex << crc << " " << value->getQueueCommandName();
 		info(infoMsg);
 
 		HashTable<uint32, QueueCommand*>::put(crc, value);

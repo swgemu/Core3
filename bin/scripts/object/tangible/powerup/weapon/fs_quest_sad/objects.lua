@@ -85,10 +85,11 @@ object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3511795045
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest, 3511795045)
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest, "object/tangible/powerup/weapon/fs_quest_sad/shared_melee_speed_quest.iff")

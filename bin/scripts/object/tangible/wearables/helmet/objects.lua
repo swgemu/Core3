@@ -85,13 +85,14 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4140396271
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_atat, 4140396271)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_atat, "object/tangible/wearables/helmet/shared_helmet_atat.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_blacksun_m.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 430117123
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, 430117123)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_imperial_ace_m.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2580358001
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, 2580358001)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_hutt_m.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1909608537
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, 1909608537)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_rebel_ace_m.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4143277653
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, 4143277653)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_s06_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1007682682
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_s06, 1007682682)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_s06, "object/tangible/wearables/helmet/shared_helmet_s06.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tie_fighter_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 49314199
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, 49314199)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s01_m.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4156063051
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, 4156063051)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s02_m.sat",
@@ -501,10 +509,11 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 749721052
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, 749721052)
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff")

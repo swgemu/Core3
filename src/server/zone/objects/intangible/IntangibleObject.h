@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -20,7 +22,7 @@ namespace intangible {
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject(LuaObject* templateData);
+	IntangibleObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -55,9 +57,11 @@ protected:
 	unsigned int status;
 
 public:
-	IntangibleObjectImplementation(LuaObject* templateData);
+	IntangibleObjectImplementation();
 
 	IntangibleObjectImplementation(DummyConstructorParameter* param);
+
+	void finalize();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -74,8 +78,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~IntangibleObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -105,6 +107,8 @@ public:
 	IntangibleObjectAdapter(IntangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

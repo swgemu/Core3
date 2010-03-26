@@ -46,14 +46,39 @@ package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
+include server.zone.objects.tangible.wearables.WearableSkillModMap;
 
-
-class WearableObject extends TangibleObject {
-	public WearableObject(LuaObject templateData) {
-		super(templateData);
+class WearableObject extends TangibleObject {	
+	protected int socketCount;
+	
+	@dereferenced
+	protected WearableSkillModMap wearableSkillModMap;
+	
+	public WearableObject() {
+		socketCount = 0;
 		
 		Logger.setLoggingName("WearableObject");
 	}
 	
 	public native void initializeTransientMembers();
+	
+	public boolean isWearableObject() {
+		return true;
+	}
+	
+	public int getMaxSockets() {
+		return socketCount;
+	}
+	
+	public int socketsUsed() {
+		return wearableSkillModMap.getUsedSocketCount();
+	}
+	
+	public int socketsLeft() {
+		return socketCount - socketsUsed();
+	}
+	
+	public void setMaxSockets(int sockets) {
+		socketCount = sockets;
+	}
 }

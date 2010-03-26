@@ -85,13 +85,14 @@ object_tangible_lair_kaadu_shared_lair_kaadu = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3251401603
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, 3251401603)
+ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, "object/tangible/lair/kaadu/shared_lair_kaadu.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1694176520
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, 1694176520)
+ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, "object/tangible/lair/kaadu/shared_lair_kaadu_forest.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2596368393
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, 2596368393)
+ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, "object/tangible/lair/kaadu/shared_lair_kaadu_grassland.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2515299649
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, 2515299649)
+ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, "object/tangible/lair/kaadu/shared_lair_kaadu_swamp.iff")

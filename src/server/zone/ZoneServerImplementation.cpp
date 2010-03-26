@@ -54,6 +54,9 @@ which carries forward this exception.
 #include "managers/objectcontroller/ObjectController.h"
 #include "managers/player/PlayerManager.h"
 #include "managers/radial/RadialManager.h"
+#include "managers/resource/ResourceManager.h"
+#include "managers/professions/ProfessionManager.h"
+#include "managers/bazaar/BazaarManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -74,8 +77,8 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	objectManager = NULL;
 	playerManager = NULL;
 	chatManager = NULL;
-	objectController = NULL;
 	radialManager = NULL;
+	resourceManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -344,26 +347,7 @@ void ZoneServerImplementation::init() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	info("Initializing zones", true);
-
-	for (int i = 0; i < 45; ++i) {
-		Zone* zone = NULL;
-
-		if (i <= 10 || i == 42) {
-			zone = new Zone(_this, processor, i);
-			uint64 zoneObjectID = 0;
-
-			zoneObjectID = ~zoneObjectID;
-			zoneObjectID -= i;
-			zone->_setObjectID(zoneObjectID);
-
-			zone->deploy("Zone", i);
-
-			zone->startManagers();
-		}
-
-		zones.add(zone);
-	}
+	startZones();
 
 	startManagers();
 /*
@@ -390,17 +374,49 @@ void ZoneServerImplementation::init() {
 	return;
 }
 
+void ZoneServerImplementation::startZones() {
+	info("Initializing zones", true);
+
+	for (int i = 0; i < 45; ++i) {
+		Zone* zone = NULL;
+
+		if (i <= 10 || i == 42) {
+			zone = new Zone(_this, processor, i);
+			uint64 zoneObjectID = 0;
+
+			zoneObjectID = ~zoneObjectID;
+			zoneObjectID -= i;
+			zone->_setObjectID(zoneObjectID);
+
+			zone->deploy("Zone", i);
+
+			zone->startManagers();
+		}
+
+		zones.add(zone);
+	}
+
+}
+
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	objectController = new ObjectController(processor);
-	objectController->deploy("ObjectController");
+	objectManager->loadStaticObjects();
 
 	playerManager = new PlayerManager(_this, processor);
 	playerManager->deploy("PlayerManager");
 
+	chatManager->setPlayerManager(playerManager);
+
+	bazaarManager = new BazaarManager(_this);
+	bazaarManager->deploy();
+	bazaarManager->initialize();
+
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
+
+	resourceManager = new ResourceManager(_this, processor);
+	resourceManager->deploy("ResourceManager");
 
 	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
@@ -417,8 +433,6 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	resourceManager = new ResourceManager(_this, processor);
-	resourceManager->deploy("ResourceManager");
 
 	lootTableManager = new LootTableManager(_this, processor);
 	lootTableManager->deploy("LootTableManager");
@@ -473,10 +487,6 @@ void ZoneServerImplementation::shutdown() {
 
 	info("zones shut down", true);
 
-	info("closing databases...", true);
-
-	objectManager->closeDatabases();
-
 	printInfo(true);
 
 	info("shut down complete", true);
@@ -486,7 +496,6 @@ void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..");
 
 	//info("saving objects...");
-
 
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
@@ -504,10 +513,11 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return NULL;*/
 
-	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
+	ZoneClientSession* client = new ZoneClientSession(sock, &addr);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
 	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
+	clientImpl->init(this);
 
 	String address = client->getAddress();
 
@@ -609,19 +619,20 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 }
 
 void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
-	objectManager->updatePersistentObject(object, object->isPermanent());
+	objectManager->updatePersistentObject(object);
 }
 
-SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
+void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
+	objectManager->updatePersistentObject(object);
+}
+
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, persistent, false, oid);
-
-		if (obj != NULL && obj->isPlayerCreature())
-			chatManager->addPlayer((PlayerCreature*)obj);
+		obj = objectManager->createObject(templateCRC, persistenceLevel, "sceneobjects", oid);
 
 		//unlock();
 	} catch (Exception& e) {
@@ -637,13 +648,13 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool per
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createPermanentObject(uint32 templateCRC, uint64 oid) {
+SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, true, true, oid);
+		obj = objectManager->createObject(templateCRC, 1, "staticobjects", oid);
 
 		//unlock();
 	} catch (Exception& e) {
@@ -659,17 +670,10 @@ SceneObject* ZoneServerImplementation::createPermanentObject(uint32 templateCRC,
 	return obj;
 }
 
-void ZoneServerImplementation::destroyObject(uint64 objectID) {
-	ManagedReference<SceneObject*> object = getObject(objectID);
-
-	if (object == NULL)
-		return;
-
-	if (object->isPlayerCreature())
-		chatManager->removePlayer(((PlayerCreature*)object.get())->getFirstName());
-
+void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
 	objectManager->destroyObject(objectID);
 }
+
 /*
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;

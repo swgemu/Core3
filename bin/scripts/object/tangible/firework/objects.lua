@@ -85,13 +85,14 @@ object_tangible_firework_shared_default = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4158245667
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_default, 4158245667)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_default, "object/tangible/firework/shared_default.iff")
 
 object_tangible_firework_shared_firework_five = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -137,13 +138,14 @@ object_tangible_firework_shared_firework_five = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3899934399
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_five, 3899934399)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_five, "object/tangible/firework/shared_firework_five.iff")
 
 object_tangible_firework_shared_firework_four = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -189,13 +191,14 @@ object_tangible_firework_shared_firework_four = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 437197310
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_four, 437197310)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_four, "object/tangible/firework/shared_firework_four.iff")
 
 object_tangible_firework_shared_firework_one = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -241,13 +244,14 @@ object_tangible_firework_shared_firework_one = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4192390072
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_one, 4192390072)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_one, "object/tangible/firework/shared_firework_one.iff")
 
 object_tangible_firework_shared_firework_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -293,13 +297,14 @@ object_tangible_firework_shared_firework_s01 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 363719141
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s01, 363719141)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s01, "object/tangible/firework/shared_firework_s01.iff")
 
 object_tangible_firework_shared_firework_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -345,13 +350,14 @@ object_tangible_firework_shared_firework_s02 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3468312946
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s02, 3468312946)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s02, "object/tangible/firework/shared_firework_s02.iff")
 
 object_tangible_firework_shared_firework_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -397,13 +403,14 @@ object_tangible_firework_shared_firework_s03 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2276927231
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s03, 2276927231)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s03, "object/tangible/firework/shared_firework_s03.iff")
 
 object_tangible_firework_shared_firework_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -449,13 +456,14 @@ object_tangible_firework_shared_firework_s04 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2085883371
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s04, 2085883371)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s04, "object/tangible/firework/shared_firework_s04.iff")
 
 object_tangible_firework_shared_firework_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -501,13 +509,14 @@ object_tangible_firework_shared_firework_s05 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 895052390
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s05, 895052390)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s05, "object/tangible/firework/shared_firework_s05.iff")
 
 object_tangible_firework_shared_firework_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -553,13 +562,14 @@ object_tangible_firework_shared_firework_s10 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1200128784
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s10, 1200128784)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s10, "object/tangible/firework/shared_firework_s10.iff")
 
 object_tangible_firework_shared_firework_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -605,13 +615,14 @@ object_tangible_firework_shared_firework_s11 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 243655837
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s11, 243655837)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s11, "object/tangible/firework/shared_firework_s11.iff")
 
 object_tangible_firework_shared_firework_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -657,13 +668,14 @@ object_tangible_firework_shared_firework_s18 = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 107054102
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s18, 107054102)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s18, "object/tangible/firework/shared_firework_s18.iff")
 
 object_tangible_firework_shared_firework_three = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -709,13 +721,14 @@ object_tangible_firework_shared_firework_three = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1356885356
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_three, 1356885356)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_three, "object/tangible/firework/shared_firework_three.iff")
 
 object_tangible_firework_shared_firework_two = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -761,13 +774,14 @@ object_tangible_firework_shared_firework_two = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 445291314
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_two, 445291314)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_two, "object/tangible/firework/shared_firework_two.iff")
 
 object_tangible_firework_shared_show = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
@@ -813,13 +827,14 @@ object_tangible_firework_shared_show = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4211144857
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_show, 4211144857)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_show, "object/tangible/firework/shared_show.iff")
 
 object_tangible_firework_shared_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
@@ -865,10 +880,11 @@ object_tangible_firework_shared_test = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2699059676
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_shared_test, 2699059676)
+ObjectTemplates:addTemplate(object_tangible_firework_shared_test, "object/tangible/firework/shared_test.iff")

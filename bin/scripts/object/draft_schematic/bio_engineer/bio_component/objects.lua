@@ -77,10 +77,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2925842
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, 2925842)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3961130234
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, 3961130234)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 768952240
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, 768952240)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2552206589
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, 2552206589)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1589090972
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, 1589090972)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3813406638
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, 3813406638)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1620152707
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, 1620152707)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 899505469
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, 899505469)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2024699150
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, 2024699150)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2809419089
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, 2809419089)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2665358309
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, 2665358309)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 395605474
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, 395605474)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1070501512
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, 1070501512)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2262729200
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, 2262729200)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3361810650
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, 3361810650)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 756747736
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, 756747736)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2635065111
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, 2635065111)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3034020975
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, 3034020975)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1421353901
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, 1421353901)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1217369934
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, 1217369934)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1549050933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, 1549050933)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3053086977
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, 3053086977)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 295650264
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, 295650264)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4077000315
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, 4077000315)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 463434519
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, 463434519)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3722871954
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, 3722871954)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2624931359
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, 2624931359)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3804703928
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, 3804703928)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1803745287
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, 1803745287)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,10 +1324,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1864508847
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, 1864508847)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1307,10 +1367,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 903570077
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, 903570077)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1348,10 +1410,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 929619132
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, 929619132)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,10 +1453,12 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2027905587
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, 2027905587)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1430,7 +1496,9 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 316670382
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, 316670382)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff")

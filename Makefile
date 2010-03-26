@@ -42,51 +42,34 @@
 
 IDLC = /usr/local/bin/idlc 
 				
-IDL_SOURCES = 	server/zone/Zone.idl \
-				server/zone/ZoneServer.idl \
-				server/zone/ZoneClientSession.idl \
-				server/zone/objects/scene/SceneObject.idl \
-				server/zone/objects/creature/CreatureObject.idl \
-				server/zone/objects/player/PlayerObject.idl \
-				server/zone/objects/player/PlayerCreature.idl \
-				server/zone/objects/intangible/IntangibleObject.idl \
-				server/zone/objects/tangible/TangibleObject.idl \
-				server/zone/objects/tangible/Container.idl \
-				server/zone/objects/cell/CellObject.idl \
-				server/zone/objects/building/BuildingObject.idl \
-				server/zone/managers/player/PlayerManager.idl \
-				server/zone/managers/structure/StructureManager.idl \
-				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl \
-				server/zone/managers/objectcontroller/ObjectController.idl \
-				server/zone/objects/waypoint/WaypointObject.idl \
-				server/zone/objects/tangible/weapon/WeaponObject.idl \
-				server/zone/objects/tangible/weapon/MeleeWeaponObject.idl \
-				server/zone/objects/tangible/wearables/WearableObject.idl \
-				server/zone/objects/tangible/wearables/ArmorObject.idl \
-				server/zone/objects/tangible/terminal/Terminal.idl \
-				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
-				server/zone/objects/mission/MissionObject.idl \
-				server/zone/managers/radial/RadialManager.idl
+IDL_CLASSPATH = ../MMOEngine/include
 
-IDL_CLASSPATH = ../../MMOEngine/include 
-
-all:
-	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
-	cd build/unix && ../../configure && make -j4
+all: idl
+	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#done
 
 rebuild: clean all
 
+idl:
+	$(IDLC) -cp $(IDL_CLASSPATH) -sd src anyadEclipse
+	#done
+
 config:
 	autoreconf --force
+	cd build/unix && ../../configure
 	#done
 
 clean: cleanidl
 	cd build/unix && make clean
+	#cd build/unix/src && rm *
+	#cd build/unix/src/.deps && rm *
 	#done
 
 cleanidl:
-	cd src && $(IDLC) -rebuild -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
+	$(IDLC) -rebuild -cp $(IDL_CLASSPATH) -sd src anyadEclipse
+
+cleardb:
+	cd bin/databases && rm -rf *.*
+	#done

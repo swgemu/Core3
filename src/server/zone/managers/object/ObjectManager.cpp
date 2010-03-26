@@ -1,46 +1,9 @@
 /*
-Copyright (C) 2007 <SWGEmu>
-
-This File is part of Core3.
-
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ * ObjectManager.cpp
+ *
+ *  Created on: 13/11/2009
+ *      Author: victor
+ */
 
 #include "ObjectManager.h"
 
@@ -48,31 +11,56 @@ which carries forward this exception.
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/tangible/Food.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/RangedWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/PistolWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/RifleWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/OneHandMeleeWeapon.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
+#include "server/zone/objects/building/medical/MedicalBuildingObject.h"
+#include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
+#include "server/zone/objects/building/travel/TravelBuildingObject.h"
+#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
 #include "server/db/ServerDatabase.h"
+
 #include "ObjectMap.h"
+
 #include "server/zone/Zone.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
-#include "server/db/ObjectDatabase.h"
+#include "server/zone/managers/template/TemplateManager.h"
+
+#include "server/chat/ChatManager.h"
+
+using namespace engine::db;
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
 
-	database = new ObjectDatabase("objects.db");
-	staticDatabase = new ObjectDatabase("staticobjects.db");
+	databaseManager = ObjectDatabaseManager::instance();
+	templateManager = TemplateManager::instance();
 
 	registerObjectTypes();
 
@@ -81,7 +69,10 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	info("loading object templates...", true);
 	registerFunctions();
+	registerGlobals();
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
+
+	databaseManager->loadDatabase("staticobjects", true, 0);
 
 	loadLastUsedObjectID();
 
@@ -90,73 +81,117 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 }
 
 ObjectManager::~ObjectManager() {
+	info("closing databases...", true);
+
+	ObjectDatabaseManager::instance()->finalize();
+
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
-
-	closeDatabases();
 }
 
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::CREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::NPCCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::DROIDCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::PROBOTCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 
-	objectFactory.registerObject<PlayerCreature>(SceneObjectImplementation::PLAYERCREATURE);
+	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 
-	objectFactory.registerObject<IntangibleObject>(SceneObjectImplementation::INTANGIBLE);
+	objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
 
-	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::ARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::BODYARMOR); //chest plates
+	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
 
-	objectFactory.registerObject<Container>(SceneObjectImplementation::CONTAINER);
-	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::GENERICITEM);
-	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::WEARABLECONTAINER);
+	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
+	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
+	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
 
-	objectFactory.registerObject<CellObject>(SceneObjectImplementation::CELLOBJECT);
-	objectFactory.registerObject<PlayerObject>(SceneObjectImplementation::PLAYEROBJECT);
+	objectFactory.registerObject<Instrument>(SceneObject::INSTRUMENT);
+	objectFactory.registerObject<Food>(SceneObject::FOOD);
+	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
+	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
 
-	objectFactory.registerObject<WaypointObject>(SceneObjectImplementation::WAYPOINT);
+	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
+	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
 
-	objectFactory.registerObject<BuildingObject>(SceneObjectImplementation::BUILDING);
+	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
-	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
-	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
+	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
+	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
+	objectFactory.registerObject<CloningBuildingObject>(SceneObject::CLONINGBUILDING);
+	objectFactory.registerObject<MedicalBuildingObject>(SceneObject::MEDICALBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
+	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
 
-	objectFactory.registerObject<MissionObject>(SceneObjectImplementation::MISSIONOBJECT);
+	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
+	objectFactory.registerObject<MeleeWeaponObject>(SceneObject::MELEEWEAPON);
+	objectFactory.registerObject<PistolWeaponObject>(SceneObject::PISTOL);
+	objectFactory.registerObject<RangedWeaponObject>(SceneObject::RANGEDWEAPON);
+	objectFactory.registerObject<OneHandMeleeWeapon>(SceneObject::ONEHANDMELEEWEAPON);
+	objectFactory.registerObject<RifleWeaponObject>(SceneObject::RIFLE);
 
+	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::TERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SPACETERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SHIPPINGTERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::INTERACTIVETERMINAL);
-	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectImplementation::NEWBIETUTORIALTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::SPACETERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
+	objectFactory.registerObject<MissionTerminal>(SceneObject::MISSIONTERMINAL);
+	objectFactory.registerObject<BazaarTerminal>(SceneObject::BAZAAR);
+	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
+	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
+
+	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
+
+	//clothing
+	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BANDOLIER);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BELT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::BODYSUIT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::CAPE);
+	objectFactory.registerObject<ClothingObject>(SceneObject::CLOAK);
+	objectFactory.registerObject<ClothingObject>(SceneObject::FOOTWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObject::DRESS);
+	objectFactory.registerObject<ClothingObject>(SceneObject::HANDWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObject::JACKET);
+	objectFactory.registerObject<ClothingObject>(SceneObject::PANTS);
+	objectFactory.registerObject<ClothingObject>(SceneObject::ROBE);
+	objectFactory.registerObject<ClothingObject>(SceneObject::SHIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::VEST);
+	objectFactory.registerObject<ClothingObject>(SceneObject::WOOKIEGARB);
+	objectFactory.registerObject<ClothingObject>(SceneObject::MISCCLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObject::SKIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
 
 
 	//temporary
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::HOVERVEHICLE);
-
+	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);
 }
+
 
 void ObjectManager::loadLastUsedObjectID() {
 	info("loading last used object id");
 
-	ObjectDatabaseIterator iterator(database);
-	ObjectDatabaseIterator staticIterator(staticDatabase);
-
 	uint64 maxObjectID = 0;
 	uint64 objectID;
 
-	while (iterator.getNextKey(objectID)) {
-		if (objectID > maxObjectID)
-			maxObjectID = objectID;
-	}
+	uint64 nullify = 0x0000FFFF;
+	nullify = (nullify << 32) + 0xFFFFFFFF;
 
-	while (staticIterator.getNextKey(objectID)) {
-		if (objectID > maxObjectID)
-			maxObjectID = objectID;
+	for (int i = 0; i < databaseManager->getDatabaseCount(); ++i) {
+		ObjectDatabase* db = databaseManager->getDatabase(i);
+
+		ObjectDatabaseIterator iterator(db);
+
+		while (iterator.getNextKey(objectID)) {
+			objectID = objectID & nullify;
+
+			if (objectID > maxObjectID)
+				maxObjectID = objectID;
+		}
 	}
 
 	if (nextObjectID < maxObjectID + 1)
@@ -165,187 +200,88 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("done loading last use object id " + String::valueOf(nextObjectID));
 }
 
-/*void ObjectManager::savePersistentObjects() {
+void ObjectManager::loadStaticObjects() {
 	Locker _locker(this);
 
-}*/
+	info("loading static objects...", true);
 
-void ObjectManager::closeDatabases() {
-	Locker _locker(this);
+	ObjectDatabase* staticDatabase = databaseManager->loadDatabase("staticobjects", true, 0);
 
-	if (database != NULL) {
-		database->sync();
+	ObjectDatabaseIterator iterator(staticDatabase);
 
-		delete database;
-		database = NULL;
-	}
+	uint32 serverObjectCRC;
+	uint64 objectID;
 
-	if (staticDatabase != NULL) {
-		staticDatabase->sync();
+	ObjectInputStream objectData(2000);
 
-		delete staticDatabase;
-		staticDatabase = NULL;
+	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+		SceneObject* object = (SceneObject*) getObject(objectID);
+
+		if (object != NULL)
+			continue;
+
+		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+			error("unknown scene object in static database");
+			continue;
+		}
+
+		if (object == NULL) {
+			object = createObject(serverObjectCRC, 0, "staticobjects", objectID);
+
+			if (object == NULL) {
+				error("could not load object from static database");
+
+				continue;
+			}
+
+			deSerializeObject(object, &objectData);
+
+			objectData.reset();
+		}
 	}
 }
 
+int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	try {
+		ObjectOutputStream objectData(500);
 
-DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
-	DistributedObjectStub* object = NULL;
+		((ManagedObject*)object)->writeObject(&objectData);
 
-	Locker _locker(this);
+		uint64 oid = object->_getObjectID();
 
-	bool permanant = false;
+		ObjectDatabase* database = getTable(oid);
 
-	// only for debugging proposes
-	DistributedObject* dobject = getObject(objectID);
+		if (database != NULL) {
+			StringBuffer msg;
+			String dbName;
 
-	if (dobject != NULL && dobject->_getObjectID() != objectID) {
-		error("different object already in database");
+			database->getDatabaseName(dbName);
 
-		return NULL;
-	}
+			msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
+			info(msg.toString(), true);
 
-	ObjectInputStream* objectData = new ObjectInputStream(500);
-
-	if (database->getData(objectID, objectData)) {
-		//Not found in regular database, let's check static
-		if (staticDatabase->getData(objectID, objectData)) {
-			//Not found in static database either.
-			delete objectData;
-			return NULL;
+			database->putData(oid, &objectData);
 		} else {
-			permanant = true;
-		}
-	}
-
-	uint32 serverObjectCRC = 0;
-	String className;
-
-	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-		object = createObject(serverObjectCRC, false, permanant, objectID);
-
-		if (object == NULL) {
-			error("could not load object from database");
-			delete objectData;
-			return NULL;
+			StringBuffer err;
+			err << "unknown database id of objectID 0x" << hex << oid;
+			error(err.toString());
 		}
 
-		deSerializeObject((SceneObject*)object, objectData);
+		/*objectData.escapeString();
 
-		((SceneObject*)object)->info("loaded from db");
-
-	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
-		object = createObject(className, false, permanant, objectID);
-
-		if (object == NULL) {
-			error("could not load object from database");
-			delete objectData;
-			return NULL;
-		}
-
-		deSerializeObject((ManagedObject*)object, objectData);
-	} else {
-		error("could not load object from database, unknown template crc or class name");
-		object = NULL;
-	}
-
-	delete objectData;
-
-	return object;
-}
-
-ManagedObject* ObjectManager::createObject(const String& className, bool persistent, bool permanent, uint64 oid) {
-	ManagedObject* object = NULL;
-
-	Locker _locker(this);
-
-	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
-
-	DistributedObjectClassHelper* helper = classMap->get(className);
-
-	if (helper != NULL) {
-		object = (ManagedObject*) helper->instantiateObject();
-		DistributedObjectServant* servant = helper->instantiateServant();
-
-		if (oid == 0)
-			oid = getNextFreeObjectID();
-
-		object->_setObjectID(oid);
-		object->_setImplementation(servant);
-
-		servant->_setStub(object);
-		servant->_setClassHelper(helper);
-		servant->_serializationHelperMethod();
-
-		object->deploy();
-
-		if (persistent) {
-			updatePersistentObject(object, permanent);
-
-			object->queueUpdateToDatabaseTask();
-
-			object->setPersistent();
-
-			/*//TODO: Uncomment once permanent flags are moved to ManagedObject
-			if (permanent)
-				object->setPermanent();
-			*/
-		}
-
-	} else {
-		error("unknown className:" + className + " in classMap");
-	}
-
-	return object;
-}
-
-void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* data) {
-	try {
-		object->wlock();
-
-		object->setPersistent();
-		object->readObject(data);
-
-		object->queueUpdateToDatabaseTask();
-
-		object->unlock();
-	} catch (Exception& e) {
-		object->unlock();
-		error("could not deserialize object from DB");
+		StringBuffer query;
+		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
+		ServerDatabase::instance()->executeStatement(query);*/
 	} catch (...) {
-		object->unlock();
-		error("could not deserialize object from DB");
-	}
-}
-
-void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
-	try {
-		object->wlock();
-
-		object->setPersistent();
-		object->readObject(data);
-
-		Zone* zone = object->getZone();
-
-		if (zone != NULL)
-			object->insertToZone(zone);
-
-		object->queueUpdateToDatabaseTask();
-
-		object->unlock();
-	} catch (Exception& e) {
-		object->unlock();
-		error("could not deserialize object from DB");
-	} catch (...) {
-		object->unlock();
-		error("could not deserialize object from DB");
+		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
 	}
 
-	if (object->isPlayerCreature())
-		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
+	return 1;
 }
 
 SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
+	Locker _locker(this);
+
 	SceneObject* object = NULL;
 
 	try {
@@ -360,7 +296,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
-		object = objectFactory.createObject(gameObjectType, &result);
+		object = objectFactory.createObject(gameObjectType);
+		object->loadTemplateData(&result);
 		object->setServerObjectCRC(objectCRC);
 
 	} catch (Exception& e) {
@@ -375,55 +312,140 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
-int ObjectManager::updatePersistentObject(DistributedObject* object, bool permanent) {
-	if (database == NULL)
-		return 0;
+void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, const String& database) {
+	Locker _locker(this);
 
-	try {
-		ObjectOutputStream* objectData = new ObjectOutputStream(500);
+	uint64 newObjectID = getNextObjectID(database);
 
-		((ManagedObject*)object)->writeObject(objectData);
+	object->_setObjectID(newObjectID);
 
-		if(permanent)
-			staticDatabase->putData(object->_getObjectID(), objectData);
-		else
-			database->putData(object->_getObjectID(), objectData);
+	object->setPersistent(persistenceLevel);
 
-		delete objectData;
-
-		/*objectData.escapeString();
-
-		StringBuffer query;
-		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
-		ServerDatabase::instance()->executeStatement(query);*/
-	} catch (...) {
-		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
-	}
-
-	return 1;
+	updatePersistentObject(object);
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool permanent, uint64 oid) {
+DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
+	DistributedObjectStub* object = NULL;
+
+	Locker _locker(this);
+
+	uint16 tableID = (uint16)(objectID >> 48);
+
+	/*StringBuffer infoMsg;
+	infoMsg << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
+	info(infoMsg.toString(), true);*/
+
+	ObjectDatabase* database = databaseManager->getDatabase(tableID);
+
+	if (database == NULL)
+		return NULL;
+
+	// only for debugging proposes
+	DistributedObject* dobject = getObject(objectID);
+
+	if (dobject != NULL) {
+		//error("different object already in database");
+		return (DistributedObjectStub*) dobject;
+	}
+
+	ObjectInputStream objectData(500);
+
+	if (database->getData(objectID, &objectData)) {
+		return NULL;
+	}
+
+	uint32 serverObjectCRC = 0;
+	String className;
+
+	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+		object = instantiateSceneObject(serverObjectCRC, objectID);
+
+		if (object == NULL) {
+			error("could not load object from database");
+			return NULL;
+		}
+
+		deSerializeObject((SceneObject*)object, &objectData);
+
+		((SceneObject*)object)->info("loaded from db");
+
+	} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
+		object = createObject(className, false, "", objectID);
+
+		if (object == NULL) {
+			error("could not load object from database");
+			return NULL;
+		}
+
+		deSerializeObject((ManagedObject*)object, &objectData);
+
+	} else {
+		error("could not load object from database, unknown template crc or class name");
+	}
+
+
+	return object;
+}
+
+
+void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* data) {
+	try {
+		object->wlock();
+
+		object->readObject(data);
+
+		if (object->isPersistent())
+			object->queueUpdateToDatabaseTask();
+
+		object->unlock();
+	} catch (Exception& e) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	} catch (...) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	}
+}
+
+void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
+	String logName = object->getLoggingName();
+
+	try {
+		object->wlock();
+
+		object->readObject(data);
+
+		Zone* zone = object->getZone();
+
+		if (zone != NULL)
+			object->insertToZone(zone);
+
+		object->setLoggingName(logName);
+
+		if (object->isPersistent())
+			object->queueUpdateToDatabaseTask();
+
+		object->unlock();
+	} catch (Exception& e) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	} catch (...) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	}
+}
+
+SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid) {
 	SceneObject* object = NULL;
 
 	Locker _locker(this);
 
 	object = loadObjectFromTemplate(objectCRC);
 
-	if (object == NULL) {
+	if (object == NULL)
 		return NULL;
-	}
 
 	object->setZoneProcessServer(server);
-
-	if (persistent)
-		object->setPersistent();
-
-	if (permanent)
-		object->setPermanent();
-
-	if (oid == 0)
-		oid = getNextFreeObjectID();
 
 	object->_setObjectID(oid);
 
@@ -435,9 +457,33 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool
 	object->setLoggingName(newLogName.toString());
 
 	object->deploy(newLogName.toString());
+	info("deploying.." + newLogName.toString());
 
-	if (persistent) {
-		updatePersistentObject(object, permanent);
+	return object;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid) {
+	SceneObject* object = NULL;
+
+	loadTable(database, oid);
+
+	if (oid == 0) {
+		oid = getNextObjectID(database);
+	}
+
+	object = instantiateSceneObject(objectCRC, oid);
+
+	if (object == NULL) {
+		StringBuffer msg;
+		msg << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
+		error(msg.toString());
+		return NULL;
+	}
+
+	if (persistenceLevel > 0) {
+		object->setPersistent(persistenceLevel);
+
+		updatePersistentObject(object);
 
 		object->queueUpdateToDatabaseTask();
 	}
@@ -445,32 +491,107 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool
 	return object;
 }
 
+
+ManagedObject* ObjectManager::createObject(const String& className, int persistenceLevel, const String& database, uint64 oid) {
+	ManagedObject* object = NULL;
+
+	Locker _locker(this);
+
+	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
+
+	DistributedObjectClassHelper* helper = classMap->get(className);
+
+	if (helper != NULL) {
+		object = (ManagedObject*) helper->instantiateObject();
+		DistributedObjectServant* servant = helper->instantiateServant();
+
+		loadTable(database, oid);
+
+		if (oid == 0) {
+			oid = getNextObjectID(database);
+		}
+
+		object->_setObjectID(oid);
+		object->_setImplementation(servant);
+		object->setPersistent(persistenceLevel);
+
+		servant->_setStub(object);
+		servant->_setClassHelper(helper);
+		servant->_serializationHelperMethod();
+
+		object->deploy();
+
+		if (persistenceLevel > 0) {
+			updatePersistentObject(object);
+
+			object->queueUpdateToDatabaseTask();
+		}
+
+	} else {
+		error("unknown className:" + className + " in classMap");
+	}
+
+	return object;
+}
+
+uint64 ObjectManager::getNextObjectID(const String& database) {
+	uint64 oid = 0;
+
+	if (database.length() > 0) {
+		uint16 tableID;
+
+		tableID = databaseManager->getDatabaseID(database);
+
+		oid += tableID;
+
+		oid = oid << 48;
+	}
+
+	oid += getNextFreeObjectID();
+
+	return oid;
+}
+
+ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID) {
+	ObjectDatabase* table = NULL;
+
+	if (database.length() > 0) {
+		if (objectID != 0) {
+			uint16 tableID = (uint16) (objectID >> 48);
+
+			table = databaseManager->loadDatabase(database, true, tableID);
+		} else {
+			table = databaseManager->loadDatabase(database, true);
+		}
+	}
+
+	return table;
+}
+
+ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
+	ObjectDatabase* table = NULL;
+
+	if (objectID != 0) {
+		uint16 tableID = (uint16) (objectID >> 48);
+
+		table = databaseManager->getDatabase(tableID);
+	}
+
+	return table;
+}
+
 int ObjectManager::destroyObject(uint64 objectID) {
 	Locker _locker(this);
 
-	/*try {
-		ManagedReference<SceneObject*> object = remove(objectID);
+	ObjectDatabase* table = getTable(objectID);
 
-		if (object == NULL) {
-			return;
-		}
-
-		if (object->isPlayerCreature()) {
-			return;
-		}
-
-		ManagedReference<SceneObject*> parent = object->getParent();
-
-		if (parent != NULL)
-			error("warning trying to destroy object with parent");
-
-		object->finalize();
-
-		// remove from db
-
-	} catch (...) {
-		error("unreported exception caught in void ObjectManager::destroyObject(uint64 objectID)");
-	}*/
+	if (table != NULL) {
+		table->deleteData(objectID);
+	} else {
+		StringBuffer msg;
+		msg << "could not delete object id from database table NULL for id 0x" << hex << objectID;
+		error(msg);
+	}
 
 	return 1;
 }
@@ -478,6 +599,43 @@ int ObjectManager::destroyObject(uint64 objectID) {
 void ObjectManager::registerFunctions() {
 	//lua generic
 	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
+	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
+	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+}
+
+void ObjectManager::registerGlobals() {
+	//ItemMasks
+	luaTemplatesInstance->setGlobalShort("MALE", WearableObject::MALE);
+	luaTemplatesInstance->setGlobalShort("FEMALE", WearableObject::FEMALE);
+
+	luaTemplatesInstance->setGlobalShort("HUMAN", WearableObject::HUMAN);
+	luaTemplatesInstance->setGlobalShort("TRANDOSHAN", WearableObject::TRANDOSHAN);
+	luaTemplatesInstance->setGlobalShort("TWILEK", WearableObject::TWILEK);
+	luaTemplatesInstance->setGlobalShort("BOTHAN", WearableObject::BOTHAN);
+	luaTemplatesInstance->setGlobalShort("ZABRAK", WearableObject::ZABRAK);
+	luaTemplatesInstance->setGlobalShort("RODIAN", WearableObject::RODIAN);
+	luaTemplatesInstance->setGlobalShort("MONCALAMARI", WearableObject::MONCALAMARI);
+	luaTemplatesInstance->setGlobalShort("WOOKIEE", WearableObject::WOOKIEE);
+	luaTemplatesInstance->setGlobalShort("SULLUSTAN", WearableObject::SULLUSTAN);
+	luaTemplatesInstance->setGlobalShort("ITHORIAN", WearableObject::ITHORIAN);
+
+	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
+	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
+	luaTemplatesInstance->setGlobalShort("REBEL", WearableObject::REBEL);
+	luaTemplatesInstance->setGlobalShort("COVERT", WearableObject::COVERT);
+
+	luaTemplatesInstance->setGlobalShort("ALL", WearableObject::ALL);
+	luaTemplatesInstance->setGlobalShort("ALLSEXES",  WearableObject::ALLSEXES);
+	luaTemplatesInstance->setGlobalShort("ALLFACTIONS", WearableObject::ALLFACTIONS);
+	luaTemplatesInstance->setGlobalShort("HUMANOIDS", WearableObject::HUMANOIDS);
+	luaTemplatesInstance->setGlobalShort("HUMANOID_FOOTWEAR", WearableObject::HUMANOID_FOOTWEAR);
+	luaTemplatesInstance->setGlobalShort("HUMANOID_MALES", WearableObject::HUMANOID_MALES);
+	luaTemplatesInstance->setGlobalShort("HUMANOID_FEMALES", WearableObject::HUMANOID_FEMALES);
+	luaTemplatesInstance->setGlobalShort("HUMANOID_IMPERIALS", WearableObject::HUMANOID_IMPERIALS);
+	luaTemplatesInstance->setGlobalShort("HUMANOID_REBELS", WearableObject::HUMANOID_REBELS);
+	luaTemplatesInstance->setGlobalShort("WOOKIEES", WearableObject::WOOKIEES);
+	luaTemplatesInstance->setGlobalShort("ITHORIANS", WearableObject::ITHORIANS);
+	luaTemplatesInstance->setGlobalShort("TWILEKS", WearableObject::TWILEKS);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
@@ -487,3 +645,25 @@ int ObjectManager::includeFile(lua_State* L) {
 
 	return 0;
 }
+
+int ObjectManager::crcString(lua_State* L) {
+	String ascii = Lua::getStringParameter(L);
+
+	uint32 crc = ascii.hashCode();
+
+	lua_pushnumber(L, crc);
+
+	return 1;
+}
+
+int ObjectManager::addTemplateCRC(lua_State* L) {
+	String ascii =  lua_tostring(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	uint32 crc = (uint32) ascii.hashCode();
+
+	TemplateManager::instance()->addTemplate(crc, ascii);
+
+	return 0;
+}
+

@@ -85,13 +85,14 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4155092607
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp, 4155092607)
+ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp.iff")
 
 object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3519101848
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland, 3519101848)
+ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp_grassland.iff")
 
 object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3173314157
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain, 3173314157)
+ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp_mountain.iff")

@@ -9,11 +9,15 @@
 
 #include "engine/core/ManagedReference.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedWeakReference.h"
+
+#include "engine/lua/LuaObject.h"
+
+#include "engine/core/ManagedReference.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
 
-#include "engine/lua/LuaObject.h"
+#include "engine/service/proto/BaseMessage.h"
 
 namespace server {
 namespace zone {
@@ -22,33 +26,40 @@ namespace waypoint {
 
 class WaypointObject : public IntangibleObject {
 public:
-	WaypointObject(LuaObject* templateData);
+	static const byte COLOR_WHITE = 0x00;
 
-	void initializeTransientMembers();
+	static const byte COLOR_BLUE = 0x01;
 
-	void changeStatus(bool status);
+	static const byte COLOR_GREEN = 0x02;
 
-	void switchStatus();
+	static const byte COLOR_ORANGE = 0x03;
 
-	bool getStatus();
+	static const byte COLOR_YELLOW = 0x04;
 
-	void setInternalNote(const String& message);
+	static const byte COLOR_PURPLE = 0x05;
 
-	void setPlanetName(const String& planet);
+	WaypointObject();
 
-	unsigned int getPlanetCRC();
+	void loadTemplateData(LuaObject* templateData);
 
-	String getInternalNote();
+	void insertToMessage(BaseMessage* msg);
 
-	String getPlanetName();
+	void setCellID(unsigned int id);
+
+	void setPlanetCRC(unsigned int crc);
+
+	void setCustomName(const UnicodeString& name);
+
+	void setColor(byte newColor);
+
+	void setActive(byte newStatus);
+
+	void setUnknown(unsigned long long id);
 
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
 	virtual ~WaypointObject();
-
-	String _return_getInternalNote;
-	String _return_getPlanetName;
 
 	friend class WaypointObjectHelper;
 };
@@ -66,34 +77,51 @@ namespace objects {
 namespace waypoint {
 
 class WaypointObjectImplementation : public IntangibleObjectImplementation {
-	String internalNote;
+protected:
+	unsigned int cellID;
 
-	String planetName;
+	unsigned long long unknown;
 
-	bool active;
+	unsigned int planetCRC;
+
+	UnicodeString customName;
+
+	byte color;
+
+	byte active;
 
 public:
-	WaypointObjectImplementation(LuaObject* templateData);
+	static const byte COLOR_WHITE = 0x00;
+
+	static const byte COLOR_BLUE = 0x01;
+
+	static const byte COLOR_GREEN = 0x02;
+
+	static const byte COLOR_ORANGE = 0x03;
+
+	static const byte COLOR_YELLOW = 0x04;
+
+	static const byte COLOR_PURPLE = 0x05;
+
+	WaypointObjectImplementation();
 
 	WaypointObjectImplementation(DummyConstructorParameter* param);
 
-	void initializeTransientMembers();
+	void loadTemplateData(LuaObject* templateData);
 
-	void changeStatus(bool status);
+	void insertToMessage(BaseMessage* msg);
 
-	void switchStatus();
+	void setCellID(unsigned int id);
 
-	bool getStatus();
+	void setPlanetCRC(unsigned int crc);
 
-	void setInternalNote(const String& message);
+	void setCustomName(const UnicodeString& name);
 
-	void setPlanetName(const String& planet);
+	void setColor(byte newColor);
 
-	unsigned int getPlanetCRC();
+	void setActive(byte newStatus);
 
-	String getInternalNote();
-
-	String getPlanetName();
+	void setUnknown(unsigned long long id);
 
 	WaypointObject* _this;
 
@@ -134,27 +162,20 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
+	void setCellID(unsigned int id);
 
-	void changeStatus(bool status);
+	void setPlanetCRC(unsigned int crc);
 
-	void switchStatus();
+	void setCustomName(const UnicodeString& name);
 
-	bool getStatus();
+	void setColor(byte newColor);
 
-	void setInternalNote(const String& message);
+	void setActive(byte newStatus);
 
-	void setPlanetName(const String& planet);
-
-	unsigned int getPlanetCRC();
-
-	String getInternalNote();
-
-	String getPlanetName();
+	void setUnknown(unsigned long long id);
 
 protected:
-	String _param0_setInternalNote__String_;
-	String _param0_setPlanetName__String_;
+	UnicodeString _param0_setCustomName__UnicodeString_;
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {

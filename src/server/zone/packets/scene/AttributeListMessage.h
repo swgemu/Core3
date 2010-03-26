@@ -51,6 +51,13 @@ which carries forward this exception.
 
 //class SceneObject;
 
+namespace server {
+ namespace zone {
+  namespace packets {
+   namespace scene {
+
+
+
 class AttributeListMessage : public BaseMessage {
 	int listcount;
 	int countLocation;
@@ -65,6 +72,14 @@ public:
 
 		listcount = 0;
 		countLocation = 18;
+	}
+
+	AttributeListMessage(uint64 objectID, int listCount) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(0xF3F12F2A); // opcode
+
+		insertLong(objectID);
+		insertInt(listCount); // list count
 	}
 
 	AttributeListMessage(uint64 objectID) : BaseMessage() {
@@ -159,5 +174,13 @@ public:
 
 
 };
+
+   }
+  }
+ }
+}
+
+using namespace server::zone::packets::scene;
+
 
 #endif /*ATTRIBUTELISTMESSAGE_H_*/

@@ -48,12 +48,12 @@ which carries forward this exception.
 #include "../DeltaMessage.h"
 
 #include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
+/*#include "../../objects/player/Player.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
 #include "../../objects/player/FriendsList.h"
-#include "../../objects/player/IgnoreList.h"
+#include "../../objects/player/IgnoreList.h"*/
 
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;
@@ -64,7 +64,19 @@ public:
 		play = pl;
 	}
 
-	void startSkillListUpdate(int skillsToUpdate) {
+	void updateStomachFilling() {
+		addIntUpdate(0x0A, play->getFoodFilling());
+		addIntUpdate(0x0B, play->getFoodFillingMax());
+		addIntUpdate(0x0C, play->getDrinkFilling());
+		addIntUpdate(0x0D, play->getDrinkFillingMax());
+	}
+
+	void setLanguageID(uint8 lid) {
+		startUpdate(9);
+		insertInt((uint32)lid);
+	}
+
+	/*void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
 	}
@@ -223,7 +235,7 @@ public:
 		addIntUpdate(0x0B, play->getFoodFillingMax());
 		addIntUpdate(0x0C, play->getDrinkFilling());
 		addIntUpdate(0x0D, play->getDrinkFillingMax());
-	}
+	}*/
 
 };
 

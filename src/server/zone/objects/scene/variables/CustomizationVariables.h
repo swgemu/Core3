@@ -182,7 +182,7 @@ public:
 
 	void setVariable(uint8 type, uint8 value);
 
-	void setVariable(String type, uint8 value);
+	void setVariable(const String& type, uint8 value);
 
 	uint8 getVariable(uint8 type) {
 		return get(type);
@@ -203,7 +203,6 @@ public:
 	void getData(String& ascii);
 
 	bool toString(String& ascii);
-
 	bool parseFromString(const String& str, int version = 0);
 
 	bool toBinaryStream(ObjectOutputStream* stream);

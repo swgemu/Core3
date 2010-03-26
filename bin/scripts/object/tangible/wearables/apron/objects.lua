@@ -85,13 +85,14 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1238323119
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, 1238323119)
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, "object/tangible/wearables/apron/shared_apron_chef_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_porcellus_m.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3631236476
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_porcellus, 3631236476)
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_porcellus, "object/tangible/wearables/apron/shared_apron_porcellus.iff")
 
 object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 129788759
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01, 129788759)
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01, "object/tangible/wearables/apron/shared_apron_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
@@ -241,10 +244,11 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3378416176
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, 3378416176)
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, "object/tangible/wearables/apron/shared_apron_s01_quest.iff")

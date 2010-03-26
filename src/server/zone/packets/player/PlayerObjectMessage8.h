@@ -47,18 +47,21 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/waypoint/WaypointObject.h"
-#include "../../objects/player/PlayerObjectImplementation.h"
+#include "../../objects/player/PlayerObject.h"
+#include "../../objects/player/variables/WaypointList.h"
+
 
 class PlayerObjectMessage8 : public BaseLineMessage {
 public:
 	PlayerObjectMessage8(PlayerObjectImplementation* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
 		// experiences
-		insertExperiences(play);
+		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
+		xpList->insertToMessage(this);
 		
 		// waypoints
-		insertWaypoints(play);
+		WaypointList* wayList = play->getWaypointList();
+		wayList->insertToMessage(this);
 
 		// force bar stats
 		insertInt(play->getForcePower());
@@ -82,53 +85,6 @@ public:
 		
 		setSize();
 	}
-	
-	void insertExperiences(PlayerObjectImplementation* play) {
-		int size = play->experienceList.size();
-		
-		insertInt(size);
-		insertInt(play->experienceListCount);
-		
-		play->experienceList.resetIterator();
-		while (play->experienceList.hasNext()) {
-			String xpType;
-			int value;
-			play->experienceList.getNextKeyAndValue(xpType, value);
-			
-			insertByte(0);
-			insertAscii(xpType);
-			insertInt(value);
-		}
-	}
-	
-	void insertWaypoints(PlayerObjectImplementation* play) {
-		int size = play->waypointList.size();
-		
-		insertInt(size);
-		insertInt(play->waypointListCount);
-
-		for (int i = 0; i < size; ++i) {
-			WaypointObject* wp = play->waypointList.get(i);
-
-			insertByte(0); //create a waypoint subtype
-
-			insertLong(wp->getObjectID());
-			insertInt(0); //?
-			insertFloat(wp->getPositionX());
-			insertFloat(0.0f); //Z
-			insertFloat(wp->getPositionY());
-			insertLong(0); //?
-			insertInt(wp->getPlanetCRC());
-
-			UnicodeString wpName = wp->getName();
-			insertUnicode(wpName);
-
-			insertLong(wp->getObjectID());
-			insertByte(0x01);
-			insertByte(wp->getStatus());
-		}
-	}
-			
 	
 };
 

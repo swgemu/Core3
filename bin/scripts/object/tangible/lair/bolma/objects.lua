@@ -85,13 +85,14 @@ object_tangible_lair_bolma_shared_lair_bolma = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3974943996
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma, 3974943996)
+ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma, "object/tangible/lair/bolma/shared_lair_bolma.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 907065118
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_desert, 907065118)
+ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_desert, "object/tangible/lair/bolma/shared_lair_bolma_desert.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 184119716
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_dune, 184119716)
+ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_dune, "object/tangible/lair/bolma/shared_lair_bolma_dune.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1763604762
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_mountain, 1763604762)
+ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_mountain, "object/tangible/lair/bolma/shared_lair_bolma_mountain.iff")

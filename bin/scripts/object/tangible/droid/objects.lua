@@ -85,13 +85,14 @@ object_tangible_droid_shared_droid_space_memory_module_1 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 240821599
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_1, 240821599)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_1, "object/tangible/droid/shared_droid_space_memory_module_1.iff")
 
 object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2856908563
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_base, 2856908563)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_base, "object/tangible/droid/shared_droid_space_memory_module_base.iff")
 
 object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1883811803
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_1, 1883811803)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_1, "object/tangible/droid/shared_navicomputer_1.iff")
 
 object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2875131724
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_2, 2875131724)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_2, "object/tangible/droid/shared_navicomputer_2.iff")
 
 object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3797049537
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_3, 3797049537)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_3, "object/tangible/droid/shared_navicomputer_3.iff")
 
 object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 431049685
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_4, 431049685)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_4, "object/tangible/droid/shared_navicomputer_4.iff")
 
 object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1354509400
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_5, 1354509400)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_5, "object/tangible/droid/shared_navicomputer_5.iff")
 
 object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2343273679
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_6, 2343273679)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_6, "object/tangible/droid/shared_navicomputer_6.iff")
 
 object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -501,10 +509,11 @@ object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3955479203
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_base, 3955479203)
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_base, "object/tangible/droid/shared_navicomputer_base.iff")

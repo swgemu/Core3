@@ -47,16 +47,50 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	//Pre: player is NOT wlocked upon entry
 	//Post: nothing is WLOCKED
 
+	//System::out << "entering radial call 1" << endl;
+
 	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == NULL) {
 		StringBuffer infoMsg;
 		infoMsg << "NULL object selected in ObjectMenuSelect objectID: 0x" << hex << objectID;
 		error(infoMsg.toString());
+
+		return;
 	}
 
-	//remove the switch and make the calls virtual to SceneObject??
+	try {
+		player->wlock();
 
+		try {
+			selectedObject->wlock(player);
+
+			//System::out << "entering radial call" << endl;
+			selectedObject->handleObjectMenuSelect(player, selectID);
+
+			selectedObject->unlock();
+		} catch (...) {
+			selectedObject->unlock();
+
+			throw;
+		}
+
+		player->unlock();
+	} catch (Exception& e) {
+		player->unlock();
+
+		error("exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		player->unlock();
+		error("unreported exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
+	}
+
+
+
+	//remove the switch and make the calls virtual to SceneObject??
+/*
 	switch (selectID) {
 	case 0: //UNKNOWN
 	case 1: //COMBAT_TARGET
@@ -98,30 +132,5 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	default:
 		break;
 	}
-}
-
-void RadialManagerImplementation::handleUseObject(PlayerCreature* player, SceneObject* object) {
-	StringBuffer infoMsg;
-	infoMsg << player->getLoggingName() << " using object " << object->getLoggingName();
-	info(infoMsg.toString());
-
-	try {
-		player->wlock();
-
-		try {
-			object->wlock(player);
-
-			object->useObject(player);
-
-			object->unlock();
-		} catch (...) {
-			error("unreported exception caught in void RadialManagerImplementation::handleUseObject(PlayerCreature* player, SceneObject* object)");
-			object->unlock();
-		}
-
-		player->unlock();
-	} catch (...) {
-		error("unreported exception caught in void RadialManagerImplementation::handleUseObject(PlayerCreature* player, SceneObject* object)");
-		player->unlock();
-	}
+	*/
 }

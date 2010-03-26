@@ -80,6 +80,44 @@ class ChatManager;
 
 using namespace server::chat;
 
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace sui {
+    class SuiManager;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::sui;
+
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace professions {
+    class ProfessionManager;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::professions;
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace objectcontroller {
+    class ObjectController;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::objectcontroller;
+
 namespace server {
 namespace zone {
 
@@ -103,14 +141,18 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 
 	//Static Managers
 	NameManager* nameManager;
+	SuiManager* suiManager;
+
+	ManagedReference<ObjectController*> objectController;
+	ProfessionManager* professionManager;
+
+
 
 	/*CombatManager* combatManager;
-	ProfessionManager* professionManager;
 	SkillManager* skillManager;
 	RadialManager* radialManager;
 	GroupManager* groupManager;
 	LootManager* lootManager;
-	SuiManager* suiManager;
 	*/
 
 public:
@@ -136,6 +178,14 @@ public:
 		return server;
 	}
 
+	inline ProfessionManager* getProfessionManager() {
+		return professionManager;
+	}
+
+	inline ObjectController* getObjectController() {
+		return objectController;
+	}
+
 	inline PlayerManager* getPlayerManager() {
 		return server->getPlayerManager();
 	}
@@ -146,6 +196,10 @@ public:
 
 	inline ChatManager* getChatManager() {
 		return server->getChatManager();
+	}
+
+	inline SuiManager* getSuiManager() {
+		return suiManager;
 	}
 
 	/*inline UserManager* getUserManager() {
@@ -176,10 +230,6 @@ public:
 		return combatManager;
 	}
 
-	inline ProfessionManager* getProfessionManager() {
-		return professionManager;
-	}
-
 	inline SkillManager* getSkillManager() {
 		return skillManager;
 	}
@@ -196,9 +246,7 @@ public:
 		return lootManager;
 	}
 
-	inline SuiManager* getSuiManager() {
-		return suiManager;
-	}
+
 
 	*/
 

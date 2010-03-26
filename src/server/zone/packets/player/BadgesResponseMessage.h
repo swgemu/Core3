@@ -47,13 +47,13 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/Player.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
-#include "../../objects/player/badges/Badges.h"
+#include "server/zone/objects/player/badges/Badges.h"
 
 class BadgesResponseMessage : public BaseMessage {
 public:
-    BadgesResponseMessage(Player* player) : BaseMessage() {
+    BadgesResponseMessage(PlayerCreature* player, Badges* badges) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x6D89D25B);  // CRC
 		insertLong(player->getObjectID()); //Player ID
@@ -61,7 +61,6 @@ public:
 
 		insertInt(0x0F); //needs to be 0F in order to show badges. *shrug*
 
-		Badges* badges = player->getBadges();
 		for (int i = 0; i < 5; ++i) {
 			insertInt(badges->getBitmask(i));
 		}

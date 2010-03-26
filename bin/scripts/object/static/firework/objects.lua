@@ -77,10 +77,12 @@ object_static_firework_shared_fx_01 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4015660279
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_01, 4015660279)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_01, "object/static/firework/shared_fx_01.iff")
 
 object_static_firework_shared_fx_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s02_trail_blast.prt",
@@ -118,10 +120,12 @@ object_static_firework_shared_fx_02 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 877507680
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_02, 877507680)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_02, "object/static/firework/shared_fx_02.iff")
 
 object_static_firework_shared_fx_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s03_trail_shockwave.prt",
@@ -159,10 +163,12 @@ object_static_firework_shared_fx_03 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2101400557
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_03, 2101400557)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_03, "object/static/firework/shared_fx_03.iff")
 
 object_static_firework_shared_fx_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s04_ring.prt",
@@ -200,10 +206,12 @@ object_static_firework_shared_fx_04 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2258893049
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_04, 2258893049)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_04, "object/static/firework/shared_fx_04.iff")
 
 object_static_firework_shared_fx_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s05_ring_double.prt",
@@ -241,10 +249,12 @@ object_static_firework_shared_fx_05 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3484327796
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_05, 3484327796)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_05, "object/static/firework/shared_fx_05.iff")
 
 object_static_firework_shared_fx_10 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s10_chandelier.prt",
@@ -282,10 +292,12 @@ object_static_firework_shared_fx_10 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3179247106
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_10, 3179247106)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_10, "object/static/firework/shared_fx_10.iff")
 
 object_static_firework_shared_fx_11 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s11_blast_sphere.prt",
@@ -323,10 +335,12 @@ object_static_firework_shared_fx_11 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4101116303
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_11, 4101116303)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_11, "object/static/firework/shared_fx_11.iff")
 
 object_static_firework_shared_fx_18 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_complete_s18_flocking.prt",
@@ -364,10 +378,12 @@ object_static_firework_shared_fx_18 = SharedStaticObjectTemplate:new {
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4237717764
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_fx_18, 4237717764)
+ObjectTemplates:addTemplate(object_static_firework_shared_fx_18, "object/static/firework/shared_fx_18.iff")
 
 object_static_firework_shared_show_launcher = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
@@ -405,7 +421,9 @@ object_static_firework_shared_show_launcher = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4092821074
 }
 
-ObjectTemplates:addTemplate(object_static_firework_shared_show_launcher, 4092821074)
+ObjectTemplates:addTemplate(object_static_firework_shared_show_launcher, "object/static/firework/shared_show_launcher.iff")

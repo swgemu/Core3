@@ -105,6 +105,7 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -115,7 +116,7 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 721694525
 }
 
-ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_thrawn, 721694525)
+ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_thrawn, "object/mobile/naboo_npc/shared_thrawn.iff")
 
 object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -181,6 +182,7 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -191,4 +193,4 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 548983473
 }
 
-ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_veers, 548983473)
+ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_veers, "object/mobile/naboo_npc/shared_veers.iff")

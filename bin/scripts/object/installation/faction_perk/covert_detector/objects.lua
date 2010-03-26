@@ -85,10 +85,11 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2218940295
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, 2218940295)
+ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")

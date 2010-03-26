@@ -77,10 +77,12 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2096609656
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_jetpack_pcd, 2096609656)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_jetpack_pcd, "object/intangible/vehicle/shared_jetpack_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_av21.apt",
@@ -118,10 +120,12 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3762629621
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, 3762629621)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
@@ -159,10 +163,12 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3148893162
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, 3148893162)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
@@ -200,10 +206,12 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2364632781
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, 2364632781)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flash_speeder.apt",
@@ -241,10 +249,12 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1448247515
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, 1448247515)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, "object/intangible/vehicle/shared_speederbike_flash_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/speeder_bike.apt",
@@ -282,10 +292,12 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3659586517
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_pcd, 3659586517)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_pcd, "object/intangible/vehicle/shared_speederbike_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swoop_bike.apt",
@@ -323,10 +335,12 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2233671002
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, 2233671002)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff")
 
 object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
@@ -364,7 +378,9 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2853503513
 }
 
-ObjectTemplates:addTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, 2853503513)
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")

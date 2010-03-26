@@ -85,13 +85,14 @@ object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2009793095
 }
 
-ObjectTemplates:addTemplate(object_tangible_spawning_shared_fs_village_npc_spawner, 2009793095)
+ObjectTemplates:addTemplate(object_tangible_spawning_shared_fs_village_npc_spawner, "object/tangible/spawning/shared_fs_village_npc_spawner.iff")
 
 object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -137,13 +138,14 @@ object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3065118291
 }
 
-ObjectTemplates:addTemplate(object_tangible_spawning_shared_quest_spawner, 3065118291)
+ObjectTemplates:addTemplate(object_tangible_spawning_shared_quest_spawner, "object/tangible/spawning/shared_quest_spawner.iff")
 
 object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -189,13 +191,14 @@ object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1732078563
 }
 
-ObjectTemplates:addTemplate(object_tangible_spawning_shared_remote_theater_spawner, 1732078563)
+ObjectTemplates:addTemplate(object_tangible_spawning_shared_remote_theater_spawner, "object/tangible/spawning/shared_remote_theater_spawner.iff")
 
 object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -241,10 +244,11 @@ object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 85728691
 }
 
-ObjectTemplates:addTemplate(object_tangible_spawning_shared_spawn_egg, 85728691)
+ObjectTemplates:addTemplate(object_tangible_spawning_shared_spawn_egg, "object/tangible/spawning/shared_spawn_egg.iff")

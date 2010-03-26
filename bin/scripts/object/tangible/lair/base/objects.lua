@@ -85,13 +85,14 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 326994159
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_dark, 326994159)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_dark, "object/tangible/lair/base/shared_antpile_dark.iff")
 
 object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1286978231
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_light, 1286978231)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_light, "object/tangible/lair/base/shared_antpile_light.iff")
 
 object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2767616602
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_dark, 2767616602)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_dark, "object/tangible/lair/base/shared_bramble_dark.iff")
 
 object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -241,13 +244,14 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1681838796
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_light, 1681838796)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_light, "object/tangible/lair/base/shared_bramble_light.iff")
 
 object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -293,13 +297,14 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1710583853
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_dark, 1710583853)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_dark, "object/tangible/lair/base/shared_cave_small_dark.iff")
 
 object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -345,13 +350,14 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1048520930
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_light, 1048520930)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_light, "object/tangible/lair/base/shared_cave_small_light.iff")
 
 object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -397,13 +403,14 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2097596216
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_dark, 2097596216)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_dark, "object/tangible/lair/base/shared_earthmound_dark.iff")
 
 object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -449,13 +456,14 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2815494954
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_light, 2815494954)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_light, "object/tangible/lair/base/shared_earthmound_light.iff")
 
 object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -501,13 +509,14 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3530316477
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base, 3530316477)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base, "object/tangible/lair/base/shared_lair_base.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -553,13 +562,14 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3488597328
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, 3488597328)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, "object/tangible/lair/base/shared_lair_base_cave_griffon_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -605,13 +615,14 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4201633082
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, 4201633082)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, "object/tangible/lair/base/shared_lair_base_cave_griffon_light.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -657,13 +668,14 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 552648551
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, 552648551)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, "object/tangible/lair/base/shared_lair_base_cave_lion_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -709,13 +721,14 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 418609662
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, 418609662)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -761,13 +774,14 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3148303792
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, 3148303792)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, "object/tangible/lair/base/shared_lair_base_crevice_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -813,13 +827,14 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1096244737
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, 1096244737)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, "object/tangible/lair/base/shared_lair_base_crevice_light.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -865,13 +880,14 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3561390098
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, 3561390098)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, "object/tangible/lair/base/shared_lair_base_den_earthen_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -917,13 +933,14 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 879789867
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, 879789867)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, "object/tangible/lair/base/shared_lair_base_den_earthen_light.iff")
 
 object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 734574174
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_hovel, 734574174)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_hovel, "object/tangible/lair/base/shared_lair_base_hovel.iff")
 
 object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3776501697
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, 3776501697)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, "object/tangible/lair/base/shared_lair_base_imperial_guard.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -1073,13 +1092,14 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2387382663
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, 2387382663)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_tatt.apt",
@@ -1125,13 +1145,14 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1769762810
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, 1769762810)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, "object/tangible/lair/base/shared_lair_base_mound_bramble_light.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -1177,13 +1198,14 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3360926461
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, 3360926461)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -1229,13 +1251,14 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1481058367
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, 1481058367)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1281,13 +1304,14 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1671618921
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, 1671618921)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -1333,13 +1357,14 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1936204112
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, 1936204112)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1385,13 +1410,14 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3610220706
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, 3610220706)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1437,13 +1463,14 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1344999922
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, 1344999922)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -1489,13 +1516,14 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 738621096
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, 738621096)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, "object/tangible/lair/base/shared_lair_base_rancor_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -1541,13 +1569,14 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3677760922
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, 3677760922)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, "object/tangible/lair/base/shared_lair_base_rancor_light.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -1593,13 +1622,14 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 960523007
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, 960523007)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, "object/tangible/lair/base/shared_lair_base_trash_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -1645,13 +1675,14 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3338586753
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_light, 3338586753)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_light, "object/tangible/lair/base/shared_lair_base_trash_light.iff")
 
 object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -1697,13 +1728,14 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1002824904
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_nest_tree, 1002824904)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_nest_tree, "object/tangible/lair/base/shared_nest_tree.iff")
 
 object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
@@ -1749,13 +1781,14 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1575829275
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_corellia, 1575829275)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_corellia, "object/tangible/lair/base/shared_objective_banner_corellia.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1806591986
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, 1806591986)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, "object/tangible/lair/base/shared_objective_banner_generic_1.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
@@ -1853,13 +1887,14 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2964967269
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, 2964967269)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, "object/tangible/lair/base/shared_objective_banner_generic_2.iff")
 
 object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3154468577
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_imperial, 3154468577)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_imperial, "object/tangible/lair/base/shared_objective_banner_imperial.iff")
 
 object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3574902738
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_rebel, 3574902738)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_rebel, "object/tangible/lair/base/shared_objective_banner_rebel.iff")
 
 object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
@@ -2009,13 +2046,14 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1638817412
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, 1638817412)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, "object/tangible/lair/base/shared_objective_banner_tatooine.iff")
 
 object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
@@ -2061,13 +2099,14 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1367098929
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, 1367098929)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, "object/tangible/lair/base/shared_objective_dantari_fire_pit.iff")
 
 object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
@@ -2113,13 +2152,14 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 426269176
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, 426269176)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, "object/tangible/lair/base/shared_objective_dantari_monolith.iff")
 
 object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -2165,13 +2205,14 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1140811690
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_data_terminal, 1140811690)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_data_terminal, "object/tangible/lair/base/shared_objective_data_terminal.iff")
 
 object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
@@ -2217,13 +2258,14 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2446722637
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_gungan_statue, 2446722637)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_gungan_statue, "object/tangible/lair/base/shared_objective_gungan_statue.iff")
 
 object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -2269,13 +2311,14 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3090575675
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_main_terminal, 3090575675)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_main_terminal, "object/tangible/lair/base/shared_objective_main_terminal.iff")
 
 object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
@@ -2321,13 +2364,14 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4290984139
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, 4290984139)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, "object/tangible/lair/base/shared_objective_mts_clan_monolith.iff")
 
 object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
@@ -2373,13 +2417,14 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 468482047
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_generator, 468482047)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_generator, "object/tangible/lair/base/shared_objective_power_generator.iff")
 
 object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
@@ -2425,13 +2470,14 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2086368006
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_node, 2086368006)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_node, "object/tangible/lair/base/shared_objective_power_node.iff")
 
 object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
@@ -2477,13 +2523,14 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3115996224
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_transformer, 3115996224)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_transformer, "object/tangible/lair/base/shared_objective_power_transformer.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2529,13 +2576,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3142299424
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, 3142299424)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, "object/tangible/lair/base/shared_poi_all_lair_bones.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2581,13 +2629,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2845871690
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, 2845871690)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2633,13 +2682,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1770695820
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, 1770695820)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2685,13 +2735,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3803873203
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, 3803873203)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2737,13 +2788,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 430580141
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, 430580141)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2789,13 +2841,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 965028408
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, 965028408)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2841,13 +2894,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3554933816
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, 3554933816)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2893,13 +2947,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1163934021
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, 1163934021)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -2945,13 +3000,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1362281265
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, 1362281265)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, "object/tangible/lair/base/shared_poi_all_lair_bones_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -2997,13 +3053,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3202178196
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, 3202178196)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3049,13 +3106,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 287273685
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, 287273685)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3101,13 +3159,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4123503981
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, 4123503981)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3153,13 +3212,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2627450629
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, 2627450629)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3205,13 +3265,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1994000829
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, 1994000829)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3257,13 +3318,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1283439590
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, 1283439590)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3309,13 +3371,14 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4286037128
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, 4286037128)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3361,13 +3424,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2971623955
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, 2971623955)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, "object/tangible/lair/base/shared_poi_all_lair_brambles_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3413,13 +3477,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3450920549
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, 3450920549)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3465,13 +3530,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3728817132
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, 3728817132)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3517,13 +3583,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2259300252
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, 2259300252)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3569,13 +3636,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1837327181
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, 1837327181)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3621,13 +3689,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1099426587
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, 1099426587)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3673,13 +3742,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1255201415
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, 1255201415)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3725,13 +3795,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1330750206
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, 1330750206)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3777,13 +3848,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3991876404
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, 3991876404)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3829,13 +3901,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2231694906
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, 2231694906)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3881,13 +3954,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3553159285
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, 3553159285)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3933,13 +4007,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1553145843
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, 1553145843)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3985,13 +4060,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2563905932
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, 2563905932)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4037,13 +4113,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1638603949
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, 1638603949)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4089,13 +4166,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4261730919
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, 4261730919)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4141,13 +4219,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3128216527
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, 3128216527)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4193,13 +4272,14 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1159215224
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, 1159215224)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4245,13 +4325,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 759277072
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, 759277072)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4297,13 +4378,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3507525090
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, 3507525090)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4349,13 +4431,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2858454846
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, 2858454846)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4401,13 +4484,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2584372251
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, 2584372251)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4453,13 +4537,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1743001105
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, 1743001105)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4505,13 +4590,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2877828053
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, 2877828053)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4557,13 +4643,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3521947503
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, 3521947503)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4609,13 +4696,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3824541289
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, 3824541289)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4661,13 +4749,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 425341497
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, 425341497)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4713,13 +4802,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3479741426
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, 3479741426)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4765,13 +4855,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 682797857
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, 682797857)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4817,13 +4908,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2222084619
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, 2222084619)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4869,13 +4961,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1204347303
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, 1204347303)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4921,13 +5014,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 526134069
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, 526134069)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4973,13 +5067,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 617205342
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, 617205342)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -5025,13 +5120,14 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1258476837
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, 1258476837)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5077,13 +5173,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2517129351
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, 2517129351)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, "object/tangible/lair/base/shared_poi_all_lair_garbage_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5129,13 +5226,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2898447287
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, 2898447287)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5181,13 +5279,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 182921096
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, 182921096)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5233,13 +5332,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3889707598
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, 3889707598)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5285,13 +5385,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 823883732
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, 823883732)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5337,13 +5438,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 922224736
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, 922224736)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5389,13 +5491,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2638567972
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, 2638567972)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5441,13 +5544,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2777489717
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, 2777489717)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5493,13 +5597,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2719206574
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, 2719206574)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5545,13 +5650,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2998599079
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, 2998599079)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5597,13 +5703,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2285175703
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, 2285175703)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5649,13 +5756,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4188015710
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, 4188015710)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5701,13 +5809,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 288850018
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, 288850018)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5753,13 +5862,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2183923840
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, 2183923840)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5805,13 +5915,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1751134997
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, 1751134997)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5857,13 +5968,14 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 226110073
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, 226110073)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -5909,13 +6021,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2912626123
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, 2912626123)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -5961,13 +6074,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1861288469
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, 1861288469)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6013,13 +6127,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2385068823
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, 2385068823)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6065,13 +6180,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 636220396
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, 636220396)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6117,13 +6233,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1730491297
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, 1730491297)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6169,13 +6286,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1789762517
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, 1789762517)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6221,13 +6339,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4292415468
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, 4292415468)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6273,13 +6392,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2995341818
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, 2995341818)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6325,13 +6445,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2575348194
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, 2575348194)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6377,13 +6498,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1888039941
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, 1888039941)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6429,13 +6551,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 217802504
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, 217802504)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6481,13 +6604,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 999540220
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, 999540220)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6533,13 +6657,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1191822359
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, 1191822359)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6585,13 +6710,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3732511541
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, 3732511541)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6637,13 +6763,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 184313565
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, 184313565)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6689,13 +6816,14 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 444482230
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, 444482230)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6741,13 +6869,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 228848137
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, 228848137)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, "object/tangible/lair/base/shared_poi_all_lair_leaf_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6793,13 +6922,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 289667785
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, 289667785)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6845,13 +6975,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2898038316
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, 2898038316)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6897,13 +7028,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1515785008
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, 1515785008)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6949,13 +7081,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1207051318
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, 1207051318)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7001,13 +7134,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 630831669
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, 630831669)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7053,13 +7187,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3855500740
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, 3855500740)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7105,13 +7240,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3523558187
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, 3523558187)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7157,13 +7293,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3643744513
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, 3643744513)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, "object/tangible/lair/base/shared_poi_all_lair_leaf_medium.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7209,13 +7346,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 968386080
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, 968386080)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7261,13 +7399,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 255577305
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, 255577305)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7313,13 +7452,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 779004467
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, 779004467)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7365,13 +7505,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1143029024
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, 1143029024)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7417,13 +7558,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1742656384
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, 1742656384)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7469,13 +7611,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2437790421
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, 2437790421)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7521,13 +7664,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 283847925
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, 283847925)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7573,13 +7717,14 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2062692455
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, 2062692455)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7625,13 +7770,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 420187503
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, 420187503)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, "object/tangible/lair/base/shared_poi_all_lair_mound_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7677,13 +7823,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1540415537
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, 1540415537)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7729,13 +7876,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3337919854
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, 3337919854)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7781,13 +7929,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 281678280
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, 281678280)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7833,13 +7982,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2881445329
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, 2881445329)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7885,13 +8035,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2554716200
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, 2554716200)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7937,13 +8088,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 877609923
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, 877609923)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7989,13 +8141,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2718548559
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, 2718548559)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8041,13 +8194,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 756029766
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, 756029766)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8093,13 +8247,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1168692769
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, 1168692769)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8145,13 +8300,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1143388529
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, 1143388529)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8197,13 +8353,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 246556632
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, 246556632)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8249,13 +8406,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2341710439
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, 2341710439)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8301,13 +8459,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 747757768
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, 747757768)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8353,13 +8512,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3244960498
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, 3244960498)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8405,13 +8565,14 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 184469763
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, 184469763)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8457,13 +8618,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2815445201
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, 2815445201)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, "object/tangible/lair/base/shared_poi_all_lair_nest_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8509,13 +8671,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1869084369
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, 1869084369)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8561,13 +8724,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 622648314
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, 622648314)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8613,13 +8777,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 612173608
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, 612173608)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8665,13 +8830,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2401663752
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, 2401663752)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8717,13 +8883,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2319776020
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, 2319776020)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8769,13 +8936,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2568051560
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, 2568051560)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8821,13 +8989,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2703235151
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, 2703235151)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -8873,13 +9042,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2479611128
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, 2479611128)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -8925,13 +9095,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1897906369
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, 1897906369)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -8977,13 +9148,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2815360997
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, 2815360997)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9029,13 +9201,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 973418808
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, 973418808)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9081,13 +9254,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2936704190
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, 2936704190)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9133,13 +9307,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1049688564
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, 1049688564)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9185,13 +9360,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1815360089
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, 1815360089)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9237,13 +9413,14 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 165090051
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, 165090051)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9289,13 +9466,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4005767247
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, 4005767247)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9341,13 +9519,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 643219996
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, 643219996)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9393,13 +9572,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 58803054
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, 58803054)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9445,13 +9625,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1833710565
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, 1833710565)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9497,13 +9678,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 534560840
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, 534560840)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9549,13 +9731,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1440907914
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, 1440907914)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9601,13 +9784,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1731875387
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, 1731875387)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9653,13 +9837,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1658858306
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, 1658858306)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9705,13 +9890,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3671637094
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, 3671637094)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9757,13 +9943,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 942601228
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, 942601228)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9809,13 +9996,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2169726833
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, 2169726833)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9861,13 +10049,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1932789237
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, 1932789237)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9913,13 +10102,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1072707582
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, 1072707582)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9965,13 +10155,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3778445930
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, 3778445930)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10017,13 +10208,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2451520266
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, 2451520266)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10069,13 +10261,14 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3390513166
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, 3390513166)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10121,13 +10314,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2207500291
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, 2207500291)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, "object/tangible/lair/base/shared_poi_all_lair_rocks_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10173,13 +10367,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2753825733
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, 2753825733)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10225,13 +10420,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 708322841
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, 708322841)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10277,13 +10473,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4013881916
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, 4013881916)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10329,13 +10526,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4032828716
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, 4032828716)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10381,13 +10579,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 349273422
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, 349273422)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10433,13 +10632,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3536893154
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, 3536893154)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10485,13 +10685,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1849334540
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, 1849334540)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10537,13 +10738,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3079167018
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, 3079167018)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10589,13 +10791,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3126607317
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, 3126607317)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10641,13 +10844,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2833908230
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, 2833908230)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10693,13 +10897,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4047948844
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, 4047948844)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10745,13 +10950,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3494699674
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, 3494699674)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10797,13 +11003,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2684714414
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, 2684714414)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10849,13 +11056,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 670424531
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, 670424531)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10901,13 +11109,14 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3335360576
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, 3335360576)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -10953,13 +11162,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1820503108
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, 1820503108)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, "object/tangible/lair/base/shared_poi_all_lair_thicket_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11005,13 +11215,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3034883500
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, 3034883500)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11057,13 +11268,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3085171685
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, 3085171685)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11109,13 +11321,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3961426279
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, 3961426279)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11161,13 +11374,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4244179484
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, 4244179484)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11213,13 +11427,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 939589773
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, 939589773)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11265,13 +11480,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 239509871
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, 239509871)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11317,13 +11533,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 255891767
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, 255891767)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11369,13 +11586,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 619312831
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, 619312831)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11421,13 +11639,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1486436461
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, 1486436461)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11473,13 +11692,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2845560309
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, 2845560309)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11525,13 +11745,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1858909560
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, 1858909560)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11577,13 +11798,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3800120332
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, 3800120332)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11629,13 +11851,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 405665595
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, 405665595)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11681,13 +11904,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3130171791
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, 3130171791)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11733,13 +11957,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4200984582
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, 4200984582)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11785,13 +12010,14 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2350841331
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, 2350841331)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -11837,13 +12063,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4287958045
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, 4287958045)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, "object/tangible/lair/base/shared_poi_all_lair_warren_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -11889,13 +12116,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 637821318
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, 637821318)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -11941,13 +12169,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 28715451
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, 28715451)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -11993,13 +12222,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1830719615
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, 1830719615)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12045,13 +12275,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2592614872
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, 2592614872)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12097,13 +12328,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2143459599
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, 2143459599)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12149,13 +12381,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4001697696
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, 4001697696)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12201,13 +12434,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1387351494
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, 1387351494)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12253,13 +12487,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3415119924
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, 3415119924)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12305,13 +12540,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 947672982
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, 947672982)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12357,13 +12593,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2204372388
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, 2204372388)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12409,13 +12646,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1936107119
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, 1936107119)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12461,13 +12699,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3131367022
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, 3131367022)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12513,13 +12752,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3407256047
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, 3407256047)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12565,13 +12805,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 463496849
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, 463496849)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12617,13 +12858,14 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4198909578
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, 4198909578)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -12669,13 +12911,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1183728413
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, 1183728413)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, "object/tangible/lair/base/shared_poi_all_lair_wooden.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12721,13 +12964,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4124016419
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, 4124016419)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12773,13 +13017,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 329214614
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, 329214614)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12825,13 +13070,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 238872353
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, 238872353)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12877,13 +13123,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1485151087
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, 1485151087)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12929,13 +13176,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2993244082
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, 2993244082)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12981,13 +13229,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 545761367
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, 545761367)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13033,13 +13282,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 269409995
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, 269409995)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13085,13 +13335,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4267544421
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, 4267544421)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13137,13 +13388,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3398422442
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, 3398422442)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13189,13 +13441,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2885574443
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, 2885574443)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13241,13 +13494,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2174041683
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, 2174041683)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13293,13 +13547,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2521819744
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, 2521819744)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13345,13 +13600,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2366487147
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, 2366487147)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13397,13 +13653,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4226721130
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, 4226721130)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13449,13 +13706,14 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1520141032
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, 1520141032)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_red.iff")
 
 object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -13501,13 +13759,14 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2089078932
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_dark, 2089078932)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_dark, "object/tangible/lair/base/shared_rancor_dark.iff")
 
 object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -13553,13 +13812,14 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 554154653
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_light, 554154653)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_light, "object/tangible/lair/base/shared_rancor_light.iff")
 
 object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -13605,10 +13865,11 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 496750489
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_base_shared_trash_dark, 496750489)
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_trash_dark, "object/tangible/lair/base/shared_trash_dark.iff")

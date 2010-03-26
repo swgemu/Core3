@@ -64,7 +64,7 @@ public:
         databases = new Vector<Database*>();
 
         for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
-        	Database* db = new MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
+        	Database* db = new engine::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
         	db->connect(dbName, dbUser, dbPass, dbPort);
 
         	databases->add(db);

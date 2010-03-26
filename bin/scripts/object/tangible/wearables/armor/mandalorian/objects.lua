@@ -85,13 +85,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1505873604
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, 1505873604)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bicep_l_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2184224460
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, 2184224460)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bicep_r_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4075150175
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, 4075150175)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bracer_l_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4163428868
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, 4163428868)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bracer_r_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2298324887
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, 2298324887)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_chest_plate_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 609377308
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, 609377308)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_gloves_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2170849590
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, 2170849590)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_helmet_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 933521470
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, 933521470)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_leggings_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1997291291
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, 1997291291)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_shoes_f.sat",
@@ -553,10 +562,11 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2225952259
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, 2225952259)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff")

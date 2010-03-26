@@ -85,13 +85,14 @@ object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4020591662
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_air_cake, 4020591662)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_air_cake, "object/tangible/food/crafted/shared_dessert_air_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -137,13 +138,14 @@ object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2785624477
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies, 2785624477)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies, "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff")
 
 object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -189,13 +191,14 @@ object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1764032352
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_bantha_butter, 1764032352)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_bantha_butter, "object/tangible/food/crafted/shared_dessert_bantha_butter.iff")
 
 object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -241,13 +244,14 @@ object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 834290076
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_blap_biscuit, 834290076)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_blap_biscuit, "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff")
 
 object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
@@ -293,13 +297,14 @@ object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 254187661
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_blob_candy, 254187661)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_blob_candy, "object/tangible/food/crafted/shared_dessert_blob_candy.iff")
 
 object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
@@ -345,13 +350,14 @@ object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2010692823
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_bofa_treat, 2010692823)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_bofa_treat, "object/tangible/food/crafted/shared_dessert_bofa_treat.iff")
 
 object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1999279141
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_cavaellin_creams, 1999279141)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_cavaellin_creams, "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff")
 
 object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -449,13 +456,14 @@ object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3279557459
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_chandad, 3279557459)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_chandad, "object/tangible/food/crafted/shared_dessert_chandad.iff")
 
 object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -501,13 +509,14 @@ object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4084605779
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_citros_snow_cake, 4084605779)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_citros_snow_cake, "object/tangible/food/crafted/shared_dessert_citros_snow_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
@@ -553,13 +562,14 @@ object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 998986934
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_corellian_fried_icecream, 998986934)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_corellian_fried_icecream, "object/tangible/food/crafted/shared_dessert_corellian_fried_icecream.iff")
 
 object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
@@ -605,13 +615,14 @@ object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2123466191
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding, 2123466191)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding, "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff")
 
 object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -657,13 +668,14 @@ object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1922269771
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_dweezel, 1922269771)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_dweezel, "object/tangible/food/crafted/shared_dessert_dweezel.iff")
 
 object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -709,13 +721,14 @@ object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1695031231
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_felbar, 1695031231)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_felbar, "object/tangible/food/crafted/shared_dessert_felbar.iff")
 
 object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
@@ -761,13 +774,14 @@ object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2513718406
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_glazed_glucose_pate, 2513718406)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_glazed_glucose_pate, "object/tangible/food/crafted/shared_dessert_glazed_glucose_pate.iff")
 
 object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -813,13 +827,14 @@ object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1661429797
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_gorrnar, 1661429797)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_gorrnar, "object/tangible/food/crafted/shared_dessert_gorrnar.iff")
 
 object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
@@ -865,13 +880,14 @@ object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1507202736
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl, 1507202736)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl, "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff")
 
 object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
@@ -917,13 +933,14 @@ object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 151593405
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_nanana_twist, 151593405)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_nanana_twist, "object/tangible/food/crafted/shared_dessert_nanana_twist.iff")
 
 object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -969,13 +986,14 @@ object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3718080232
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_para_roll, 3718080232)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_para_roll, "object/tangible/food/crafted/shared_dessert_para_roll.iff")
 
 object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_parwan_nutricake.apt",
@@ -1021,13 +1039,14 @@ object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3299488351
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_parwan_nutricake, 3299488351)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_parwan_nutricake, "object/tangible/food/crafted/shared_dessert_parwan_nutricake.iff")
 
 object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -1073,13 +1092,14 @@ object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3214438726
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pastebread, 3214438726)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pastebread, "object/tangible/food/crafted/shared_dessert_pastebread.iff")
 
 object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_pikatta_pie.apt",
@@ -1125,13 +1145,14 @@ object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 443057003
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pikatta_pie, 443057003)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pikatta_pie, "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff")
 
 object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -1177,13 +1198,14 @@ object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 128351778
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pkneb, 128351778)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pkneb, "object/tangible/food/crafted/shared_dessert_pkneb.iff")
 
 object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
@@ -1229,13 +1251,14 @@ object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2099760655
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_puffcake, 2099760655)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_puffcake, "object/tangible/food/crafted/shared_dessert_puffcake.iff")
 
 object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -1281,13 +1304,14 @@ object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2379589648
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pyollian_cake, 2379589648)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_pyollian_cake, "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -1333,13 +1357,14 @@ object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1800464858
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_ryshcate, 1800464858)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_ryshcate, "object/tangible/food/crafted/shared_dessert_ryshcate.iff")
 
 object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
@@ -1385,13 +1410,14 @@ object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 921981708
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_smugglers_delight, 921981708)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_smugglers_delight, "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff")
 
 object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -1437,13 +1463,14 @@ object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3216510743
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_sweesonberry_rolls, 3216510743)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_sweesonberry_rolls, "object/tangible/food/crafted/shared_dessert_sweesonberry_rolls.iff")
 
 object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -1489,13 +1516,14 @@ object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1272384230
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_sweet_cake_mix, 1272384230)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_sweet_cake_mix, "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff")
 
 object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
@@ -1541,13 +1569,14 @@ object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1498097624
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_tranna_nougat_cream, 1498097624)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_tranna_nougat_cream, "object/tangible/food/crafted/shared_dessert_tranna_nougat_cream.iff")
 
 object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -1593,13 +1622,14 @@ object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2118223714
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_vagnerian_canape, 2118223714)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_vagnerian_canape, "object/tangible/food/crafted/shared_dessert_vagnerian_canape.iff")
 
 object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
@@ -1645,13 +1675,14 @@ object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3493029754
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_wedding_cake, 3493029754)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_wedding_cake, "object/tangible/food/crafted/shared_dessert_wedding_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -1697,13 +1728,14 @@ object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2478713849
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_won_won, 2478713849)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dessert_won_won, "object/tangible/food/crafted/shared_dessert_won_won.iff")
 
 object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -1749,13 +1781,14 @@ object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 407534571
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ahrisa, 407534571)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ahrisa, "object/tangible/food/crafted/shared_dish_ahrisa.iff")
 
 object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_bivoli_tempari.apt",
@@ -1801,13 +1834,14 @@ object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 166570214
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_bivoli_tempari, 166570214)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_bivoli_tempari, "object/tangible/food/crafted/shared_dish_bivoli_tempari.iff")
 
 object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
@@ -1853,13 +1887,14 @@ object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3058470690
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_blood_chowder, 3058470690)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_blood_chowder, "object/tangible/food/crafted/shared_dish_blood_chowder.iff")
 
 object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -1905,13 +1940,14 @@ object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1863318524
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_braised_canron, 1863318524)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_braised_canron, "object/tangible/food/crafted/shared_dish_braised_canron.iff")
 
 object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2528298667
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_cho_nor_hoola, 2528298667)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_cho_nor_hoola, "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff")
 
 object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_crispic.apt",
@@ -2009,13 +2046,14 @@ object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1201766714
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_crispic, 1201766714)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_crispic, "object/tangible/food/crafted/shared_dish_crispic.iff")
 
 object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_dustcrepe.apt",
@@ -2061,13 +2099,14 @@ object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3723091380
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_dustcrepe, 3723091380)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_dustcrepe, "object/tangible/food/crafted/shared_dish_dustcrepe.iff")
 
 object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -2113,13 +2152,14 @@ object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2915488362
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_exo_protein_wafers, 2915488362)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_exo_protein_wafers, "object/tangible/food/crafted/shared_dish_exo_protein_wafers.iff")
 
 object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
@@ -2165,13 +2205,14 @@ object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1075172541
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_fire_stew, 1075172541)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_fire_stew, "object/tangible/food/crafted/shared_dish_fire_stew.iff")
 
 object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_skewer.apt",
@@ -2217,13 +2258,14 @@ object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 509609425
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_fried_endwa, 509609425)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_fried_endwa, "object/tangible/food/crafted/shared_dish_fried_endwa.iff")
 
 object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
@@ -2269,13 +2311,14 @@ object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3655863733
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_gruuvan_shaal, 3655863733)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_gruuvan_shaal, "object/tangible/food/crafted/shared_dish_gruuvan_shaal.iff")
 
 object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -2321,13 +2364,14 @@ object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3540915880
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_havla, 3540915880)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_havla, "object/tangible/food/crafted/shared_dish_havla.iff")
 
 object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_kanali_wafers.apt",
@@ -2373,13 +2417,14 @@ object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2212622551
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_kanali_wafers, 2212622551)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_kanali_wafers, "object/tangible/food/crafted/shared_dish_kanali_wafers.iff")
 
 object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
@@ -2425,13 +2470,14 @@ object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3901856789
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_karkan_ribenes, 3901856789)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_karkan_ribenes, "object/tangible/food/crafted/shared_dish_karkan_ribenes.iff")
 
 object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sausage_links.apt",
@@ -2477,13 +2523,14 @@ object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2825035524
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_meatlump, 2825035524)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_meatlump, "object/tangible/food/crafted/shared_dish_meatlump.iff")
 
 object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -2529,13 +2576,14 @@ object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2722923063
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ormachek, 2722923063)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ormachek, "object/tangible/food/crafted/shared_dish_ormachek.iff")
 
 object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -2581,13 +2629,14 @@ object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 191716043
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_patot_panak, 191716043)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_patot_panak, "object/tangible/food/crafted/shared_dish_patot_panak.iff")
 
 object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -2633,13 +2682,14 @@ object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2558957614
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_protato, 2558957614)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_protato, "object/tangible/food/crafted/shared_dish_protato.iff")
 
 object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
@@ -2685,13 +2735,14 @@ object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2037089871
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_puk, 2037089871)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_puk, "object/tangible/food/crafted/shared_dish_puk.iff")
 
 object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_poison_chemical.apt",
@@ -2737,13 +2788,14 @@ object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1023909182
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce, 1023909182)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce, "object/tangible/food/crafted/shared_dish_rakririan_burnout_sauce.iff")
 
 object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
@@ -2789,13 +2841,14 @@ object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1904202530
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ramorrean_capanata, 1904202530)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_ramorrean_capanata, "object/tangible/food/crafted/shared_dish_ramorrean_capanata.iff")
 
 object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -2841,13 +2894,14 @@ object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1720551551
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_rations, 1720551551)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_rations, "object/tangible/food/crafted/shared_dish_rations.iff")
 
 object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
@@ -2893,13 +2947,14 @@ object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1144916999
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_scrimpi, 1144916999)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_scrimpi, "object/tangible/food/crafted/shared_dish_scrimpi.iff")
 
 object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
@@ -2945,13 +3000,14 @@ object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4017404858
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_soypro, 4017404858)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_soypro, "object/tangible/food/crafted/shared_dish_soypro.iff")
 
 object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -2997,13 +3053,14 @@ object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 356304761
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_stewed_gwouch, 356304761)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_stewed_gwouch, "object/tangible/food/crafted/shared_dish_stewed_gwouch.iff")
 
 object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
@@ -3049,13 +3106,14 @@ object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 513761366
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_synthsteak, 513761366)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_synthsteak, "object/tangible/food/crafted/shared_dish_synthsteak.iff")
 
 object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -3101,13 +3159,14 @@ object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 601858027
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_teltier_noodles, 601858027)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_teltier_noodles, "object/tangible/food/crafted/shared_dish_teltier_noodles.iff")
 
 object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_terratta.apt",
@@ -3153,13 +3212,14 @@ object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1953777354
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_terratta, 1953777354)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_terratta, "object/tangible/food/crafted/shared_dish_terratta.iff")
 
 object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
@@ -3205,13 +3265,14 @@ object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2182149536
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_thakitillo, 2182149536)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_thakitillo, "object/tangible/food/crafted/shared_dish_thakitillo.iff")
 
 object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -3257,13 +3318,14 @@ object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2831837498
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_travel_biscuits, 2831837498)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_travel_biscuits, "object/tangible/food/crafted/shared_dish_travel_biscuits.iff")
 
 object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_trimpian.apt",
@@ -3309,13 +3371,14 @@ object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2709111425
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_trimpian, 2709111425)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_trimpian, "object/tangible/food/crafted/shared_dish_trimpian.iff")
 
 object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
@@ -3361,13 +3424,14 @@ object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2526756449
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_vegeparsine, 2526756449)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_vegeparsine, "object/tangible/food/crafted/shared_dish_vegeparsine.iff")
 
 object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -3413,13 +3477,14 @@ object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 37093667
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_veghash, 37093667)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_veghash, "object/tangible/food/crafted/shared_dish_veghash.iff")
 
 object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -3465,13 +3530,14 @@ object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3271121360
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee, 3271121360)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee, "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff")
 
 object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -3517,13 +3583,14 @@ object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2578711144
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_wastril_bread, 2578711144)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_wastril_bread, "object/tangible/food/crafted/shared_dish_wastril_bread.iff")
 
 object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -3569,13 +3636,14 @@ object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 202720794
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_xermaauc, 202720794)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_dish_xermaauc, "object/tangible/food/crafted/shared_dish_xermaauc.iff")
 
 object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -3621,13 +3689,14 @@ object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4146017985
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_accarragm, 4146017985)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_accarragm, "object/tangible/food/crafted/shared_drink_accarragm.iff")
 
 object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
@@ -3673,13 +3742,14 @@ object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2316612245
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_aitha, 2316612245)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_aitha, "object/tangible/food/crafted/shared_drink_aitha.iff")
 
 object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -3725,13 +3795,14 @@ object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4157864214
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_alcohol, 4157864214)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_alcohol, "object/tangible/food/crafted/shared_drink_alcohol.iff")
 
 object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_water.apt",
@@ -3777,13 +3848,14 @@ object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3758052832
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_aludium_pu36, 3758052832)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_aludium_pu36, "object/tangible/food/crafted/shared_drink_aludium_pu36.iff")
 
 object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -3829,13 +3901,14 @@ object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3229633223
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_angerian_fishak_surprise, 3229633223)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_angerian_fishak_surprise, "object/tangible/food/crafted/shared_drink_angerian_fishak_surprise.iff")
 
 object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
@@ -3881,13 +3954,14 @@ object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2154164402
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_antakarian_fire_dancer, 2154164402)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_antakarian_fire_dancer, "object/tangible/food/crafted/shared_drink_antakarian_fire_dancer.iff")
 
 object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
@@ -3933,13 +4007,14 @@ object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2599646659
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_bantha_blaster, 2599646659)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_bantha_blaster, "object/tangible/food/crafted/shared_drink_bantha_blaster.iff")
 
 object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
@@ -3985,13 +4060,14 @@ object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1402973041
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_bespin_port, 1402973041)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_bespin_port, "object/tangible/food/crafted/shared_drink_bespin_port.iff")
 
 object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s5.apt",
@@ -4037,13 +4113,14 @@ object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 352131413
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_blue_milk, 352131413)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_blue_milk, "object/tangible/food/crafted/shared_drink_blue_milk.iff")
 
 object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
@@ -4089,13 +4166,14 @@ object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2001723418
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_breath_of_heaven, 2001723418)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_breath_of_heaven, "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff")
 
 object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
@@ -4141,13 +4219,14 @@ object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2701899786
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_caf, 2701899786)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_caf, "object/tangible/food/crafted/shared_drink_caf.iff")
 
 object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -4193,13 +4272,14 @@ object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 406392603
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_charde, 406392603)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_charde, "object/tangible/food/crafted/shared_drink_charde.iff")
 
 object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4245,13 +4325,14 @@ object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3769443904
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_corellian_ale, 3769443904)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_corellian_ale, "object/tangible/food/crafted/shared_drink_corellian_ale.iff")
 
 object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4297,13 +4378,14 @@ object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2481855553
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_corellian_brandy, 2481855553)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_corellian_brandy, "object/tangible/food/crafted/shared_drink_corellian_brandy.iff")
 
 object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4349,13 +4431,14 @@ object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2737019510
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_cortyg, 2737019510)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_cortyg, "object/tangible/food/crafted/shared_drink_cortyg.iff")
 
 object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
@@ -4401,13 +4484,14 @@ object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3050569282
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_deuterium_pyro, 3050569282)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_deuterium_pyro, "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff")
 
 object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4453,13 +4537,14 @@ object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2758987936
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop, 2758987936)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop, "object/tangible/food/crafted/shared_drink_double_dip_outer_rim_rumdrop.iff")
 
 object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
@@ -4505,13 +4590,14 @@ object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2621798949
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_durindfire, 2621798949)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_durindfire, "object/tangible/food/crafted/shared_drink_durindfire.iff")
 
 object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -4557,13 +4643,14 @@ object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3434180885
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud, 3434180885)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud, "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff")
 
 object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -4609,13 +4696,14 @@ object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2965669451
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_flameout, 2965669451)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_flameout, "object/tangible/food/crafted/shared_drink_flameout.iff")
 
 object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
@@ -4661,13 +4749,14 @@ object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3403096201
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_garrmorl, 3403096201)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_garrmorl, "object/tangible/food/crafted/shared_drink_garrmorl.iff")
 
 object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
@@ -4713,13 +4802,14 @@ object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3730504288
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_gralinyn_juice, 3730504288)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_gralinyn_juice, "object/tangible/food/crafted/shared_drink_gralinyn_juice.iff")
 
 object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
@@ -4765,13 +4855,14 @@ object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4204858859
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ice_blaster, 4204858859)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ice_blaster, "object/tangible/food/crafted/shared_drink_ice_blaster.iff")
 
 object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4817,13 +4908,14 @@ object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1406762352
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ithorian_mist, 1406762352)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ithorian_mist, "object/tangible/food/crafted/shared_drink_ithorian_mist.iff")
 
 object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
@@ -4869,13 +4961,14 @@ object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 355298575
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_jaar, 355298575)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_jaar, "object/tangible/food/crafted/shared_drink_jaar.iff")
 
 object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
@@ -4921,13 +5014,14 @@ object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3314105882
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_jawa_beer, 3314105882)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_jawa_beer, "object/tangible/food/crafted/shared_drink_jawa_beer.iff")
 
 object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -4973,13 +5067,14 @@ object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3748723548
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate, 3748723548)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate, "object/tangible/food/crafted/shared_drink_kylessian_fruit_distillate.iff")
 
 object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
@@ -5025,13 +5120,14 @@ object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 475983499
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_mandalorian_wine, 475983499)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_mandalorian_wine, "object/tangible/food/crafted/shared_drink_mandalorian_wine.iff")
 
 object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -5077,13 +5173,14 @@ object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4051771038
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ruby_bliel, 4051771038)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_ruby_bliel, "object/tangible/food/crafted/shared_drink_ruby_bliel.iff")
 
 object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -5129,13 +5226,14 @@ object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3068541916
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_skannbult_likker, 3068541916)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_skannbult_likker, "object/tangible/food/crafted/shared_drink_skannbult_likker.iff")
 
 object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
@@ -5181,13 +5279,14 @@ object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3551363941
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_spiced_tea, 3551363941)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_spiced_tea, "object/tangible/food/crafted/shared_drink_spiced_tea.iff")
 
 object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -5233,13 +5332,14 @@ object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 789489529
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_starshine_surprise, 789489529)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_starshine_surprise, "object/tangible/food/crafted/shared_drink_starshine_surprise.iff")
 
 object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -5285,13 +5385,14 @@ object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2478328705
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_sullustan_gin, 2478328705)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_sullustan_gin, "object/tangible/food/crafted/shared_drink_sullustan_gin.iff")
 
 object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
@@ -5337,13 +5438,14 @@ object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1008892971
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tatooine_sunburn, 1008892971)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tatooine_sunburn, "object/tangible/food/crafted/shared_drink_tatooine_sunburn.iff")
 
 object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
@@ -5389,13 +5491,14 @@ object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2374587508
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tilla_tiil, 2374587508)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tilla_tiil, "object/tangible/food/crafted/shared_drink_tilla_tiil.iff")
 
 object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
@@ -5441,13 +5544,14 @@ object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 721473598
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tssolok, 721473598)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_tssolok, "object/tangible/food/crafted/shared_drink_tssolok.iff")
 
 object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s05.apt",
@@ -5493,13 +5597,14 @@ object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 780459444
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_vasarian_brandy, 780459444)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_vasarian_brandy, "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff")
 
 object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -5545,13 +5650,14 @@ object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4128399839
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_vayerbok, 4128399839)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_vayerbok, "object/tangible/food/crafted/shared_drink_vayerbok.iff")
 
 object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -5597,10 +5703,11 @@ object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4052111265
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_veronian_berry_wine, 4052111265)
+ObjectTemplates:addTemplate(object_tangible_food_crafted_shared_drink_veronian_berry_wine, "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff")

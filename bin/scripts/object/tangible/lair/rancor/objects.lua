@@ -85,13 +85,14 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2318276825
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor, 2318276825)
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor, "object/tangible/lair/rancor/shared_lair_rancor.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2929914812
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, 2929914812)
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, "object/tangible/lair/rancor/shared_lair_rancor_desert.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2174078931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, 2174078931)
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff")

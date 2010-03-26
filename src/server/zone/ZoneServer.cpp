@@ -20,6 +20,12 @@
 
 #include "server/zone/managers/radial/RadialManager.h"
 
+#include "server/zone/managers/professions/ProfessionManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
 /*
  *	ZoneServerStub
  */
@@ -36,12 +42,24 @@ ZoneServer::~ZoneServer() {
 }
 
 
-void ZoneServer::initializeTransientMembers() {
+void ZoneServer::test() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->test();
+}
+
+void ZoneServer::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -61,7 +79,7 @@ void ZoneServer::init() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -73,7 +91,7 @@ void ZoneServer::run() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -85,7 +103,7 @@ void ZoneServer::shutdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -97,11 +115,23 @@ void ZoneServer::startManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithVoidReturn();
 	} else
 		((ZoneServerImplementation*) _impl)->startManagers();
+}
+
+void ZoneServer::startZones() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->startZones();
 }
 
 void ZoneServer::stopManagers() {
@@ -109,7 +139,7 @@ void ZoneServer::stopManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -121,7 +151,7 @@ void ZoneServer::start(int p, int mconn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(p);
 		method.addSignedIntParameter(mconn);
 
@@ -135,7 +165,7 @@ void ZoneServer::stop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 
 		method.executeWithVoidReturn();
 	} else
@@ -163,7 +193,7 @@ void ZoneServer::addTotalSentPacket(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -176,7 +206,7 @@ void ZoneServer::addTotalResentPacket(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -189,7 +219,7 @@ void ZoneServer::printInfo(bool forcedLog) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addBooleanParameter(forcedLog);
 
 		method.executeWithVoidReturn();
@@ -202,7 +232,7 @@ void ZoneServer::printEvents() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -214,7 +244,7 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addUnsignedLongParameter(objectID);
 		method.addBooleanParameter(doLock);
 
@@ -223,33 +253,33 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServer::createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID) {
+SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addUnsignedIntParameter(templateCRC);
-		method.addBooleanParameter(persistent);
+		method.addSignedIntParameter(persistenceLevel);
 		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistent, objectID);
+		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServer::createPermanentObject(unsigned int templateCRC, unsigned long long objectID) {
+SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createPermanentObject(templateCRC, objectID);
+		return ((ZoneServerImplementation*) _impl)->createStaticObject(templateCRC, objectID);
 }
 
 void ZoneServer::updateObjectToDatabase(SceneObject* object) {
@@ -257,7 +287,7 @@ void ZoneServer::updateObjectToDatabase(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -265,17 +295,30 @@ void ZoneServer::updateObjectToDatabase(SceneObject* object) {
 		((ZoneServerImplementation*) _impl)->updateObjectToDatabase(object);
 }
 
-void ZoneServer::destroyObject(unsigned long long objectID) {
+void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->updateObjectToStaticDatabase(object);
+}
+
+void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->destroyObject(objectID);
+		((ZoneServerImplementation*) _impl)->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServer::lock(bool doLock) {
@@ -283,7 +326,7 @@ void ZoneServer::lock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 26);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -296,7 +339,7 @@ void ZoneServer::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 27);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -309,7 +352,7 @@ void ZoneServer::fixScheduler() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 28);
 
 		method.executeWithVoidReturn();
 	} else
@@ -321,7 +364,7 @@ void ZoneServer::changeUserCap(int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 29);
 		method.addSignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -334,7 +377,7 @@ int ZoneServer::getConnectionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -346,7 +389,7 @@ void ZoneServer::increaseOnlinePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 31);
 
 		method.executeWithVoidReturn();
 	} else
@@ -358,7 +401,7 @@ void ZoneServer::decreaseOnlinePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 32);
 
 		method.executeWithVoidReturn();
 	} else
@@ -370,7 +413,7 @@ void ZoneServer::increaseTotalDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 33);
 
 		method.executeWithVoidReturn();
 	} else
@@ -382,7 +425,7 @@ int ZoneServer::getGalaxyID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -394,7 +437,7 @@ String ZoneServer::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 35);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -407,7 +450,7 @@ bool ZoneServer::isServerLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -419,7 +462,7 @@ bool ZoneServer::isServerOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -431,7 +474,7 @@ bool ZoneServer::isServerOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -443,7 +486,7 @@ bool ZoneServer::isServerLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -455,7 +498,7 @@ int ZoneServer::getServerState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -467,7 +510,7 @@ Zone* ZoneServer::getZone(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 41);
 		method.addSignedIntParameter(index);
 
 		return (Zone*) method.executeWithObjectReturn();
@@ -480,7 +523,7 @@ int ZoneServer::getMaxPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -492,7 +535,7 @@ int ZoneServer::getTotalPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -504,7 +547,7 @@ int ZoneServer::getDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -516,7 +559,7 @@ PlayerManager* ZoneServer::getPlayerManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 45);
 
 		return (PlayerManager*) method.executeWithObjectReturn();
 	} else
@@ -528,7 +571,7 @@ ChatManager* ZoneServer::getChatManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 46);
 
 		return (ChatManager*) method.executeWithObjectReturn();
 	} else
@@ -540,7 +583,7 @@ ObjectController* ZoneServer::getObjectController() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 47);
 
 		return (ObjectController*) method.executeWithObjectReturn();
 	} else
@@ -552,11 +595,43 @@ RadialManager* ZoneServer::getRadialManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 48);
 
 		return (RadialManager*) method.executeWithObjectReturn();
 	} else
 		return ((ZoneServerImplementation*) _impl)->getRadialManager();
+}
+
+ResourceManager* ZoneServer::getResourceManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+
+		return (ResourceManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getResourceManager();
+}
+
+BazaarManager* ZoneServer::getBazaarManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+
+		return (BazaarManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getBazaarManager();
+}
+
+ProfessionManager* ZoneServer::getProfessionManager() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ZoneServerImplementation*) _impl)->getProfessionManager();
 }
 
 void ZoneServer::setServerName(const String& servername) {
@@ -564,7 +639,7 @@ void ZoneServer::setServerName(const String& servername) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 51);
 		method.addAsciiParameter(servername);
 
 		method.executeWithVoidReturn();
@@ -577,7 +652,7 @@ void ZoneServer::setGalaxyID(int galaxyid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 52);
 		method.addSignedIntParameter(galaxyid);
 
 		method.executeWithVoidReturn();
@@ -590,7 +665,7 @@ void ZoneServer::setServerState(int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 53);
 		method.addSignedIntParameter(state);
 
 		method.executeWithVoidReturn();
@@ -603,7 +678,7 @@ void ZoneServer::setServerStateLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 54);
 
 		method.executeWithVoidReturn();
 	} else
@@ -615,7 +690,7 @@ void ZoneServer::setServerStateOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 55);
 
 		method.executeWithVoidReturn();
 	} else
@@ -627,7 +702,7 @@ void ZoneServer::loadMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 56);
 
 		method.executeWithVoidReturn();
 	} else
@@ -639,7 +714,7 @@ void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 57);
 		method.addAsciiParameter(newMOTD);
 
 		method.executeWithVoidReturn();
@@ -652,7 +727,7 @@ String ZoneServer::getMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 58);
 
 		method.executeWithAsciiReturn(_return_getMessageoftheDay);
 		return _return_getMessageoftheDay;
@@ -669,7 +744,6 @@ ZoneServerImplementation::ZoneServerImplementation(DummyConstructorParameter* pa
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
-	ZoneServerImplementation::finalize();
 }
 
 
@@ -704,8 +778,9 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("zones", &zones);
 	addSerializableVariable("playerManager", &playerManager);
 	addSerializableVariable("chatManager", &chatManager);
-	addSerializableVariable("objectController", &objectController);
 	addSerializableVariable("radialManager", &radialManager);
+	addSerializableVariable("resourceManager", &resourceManager);
+	addSerializableVariable("bazaarManager", &bazaarManager);
 	addSerializableVariable("totalSentPackets", &totalSentPackets);
 	addSerializableVariable("totalResentPackets", &totalResentPackets);
 	addSerializableVariable("currentPlayers", &currentPlayers);
@@ -718,110 +793,133 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("galaxyID", &galaxyID);
 }
 
+void ZoneServerImplementation::test() {
+	ManagedReference<Zone*> _ref0;
+	// server/zone/ZoneServer.idl(113):  		Zone zone = new Zone(null, null, 0);
+	Zone* zone = _ref0 = new Zone(NULL, NULL, 0);
+	// server/zone/ZoneServer.idl(114):  		zone.getHeight(0, 1);
+	zone->getHeight(0, 1);
+}
+
 void ZoneServerImplementation::fixScheduler() {
 }
 
 void ZoneServerImplementation::increaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(197):  ++
-	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(198):  maximumPlayers = currentPlayers;
+	// server/zone/ZoneServer.idl(207):  		++
+	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(208):  			maximumPlayers = currentPlayers;
 	maximumPlayers = currentPlayers;
-	// server/zone/ZoneServer.idl(200):  totalPlayers;
+	// server/zone/ZoneServer.idl(210):  totalPlayers;
 	 ++totalPlayers;
 }
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(204):  currentPlayers = currentPlayers - 1;
+	// server/zone/ZoneServer.idl(214):  		currentPlayers = currentPlayers - 1;
 	currentPlayers = currentPlayers - 1;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(208):  ++totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(218):  		++totalDeletedPlayers;
 	 ++totalDeletedPlayers;
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(212):  return galaxyID;
+	// server/zone/ZoneServer.idl(222):  		return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(218):  return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(228):  		return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(222):  return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(232):  		return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(226):  return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(236):  		return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(230):  return serverState == LOADING;
+	// server/zone/ZoneServer.idl(240):  		return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(234):  return serverState;
+	// server/zone/ZoneServer.idl(244):  		return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(238):  return zones.get(index);
+	// server/zone/ZoneServer.idl(248):  		return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(242):  return maximumPlayers;
+	// server/zone/ZoneServer.idl(252):  		return maximumPlayers;
 	return maximumPlayers;
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(246):  return totalPlayers;
+	// server/zone/ZoneServer.idl(256):  		return totalPlayers;
 	return totalPlayers;
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(250):  return totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(260):  		return totalDeletedPlayers;
 	return totalDeletedPlayers;
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(254):  return playerManager;
+	// server/zone/ZoneServer.idl(264):  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(258):  return chatManager;
+	// server/zone/ZoneServer.idl(268):  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(262):  return objectController;
-	return objectController;
+	// server/zone/ZoneServer.idl(272):  		return processor.getObjectController();
+	return processor->getObjectController();
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(266):  return radialManager;
+	// server/zone/ZoneServer.idl(276):  		return radialManager;
 	return radialManager;
+}
+
+ResourceManager* ZoneServerImplementation::getResourceManager() {
+	// server/zone/ZoneServer.idl(280):  		return resourceManager;
+	return resourceManager;
+}
+
+BazaarManager* ZoneServerImplementation::getBazaarManager() {
+	// server/zone/ZoneServer.idl(284):  		return bazaarManager;
+	return bazaarManager;
+}
+
+ProfessionManager* ZoneServerImplementation::getProfessionManager() {
+	// server/zone/ZoneServer.idl(289):  		return processor.getProfessionManager();
+	return processor->getProfessionManager();
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(276):  galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(299):  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(280):  serverState = state;
+	// server/zone/ZoneServer.idl(303):  		serverState = state;
 	serverState = state;
 }
 
@@ -837,147 +935,162 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		test();
 		break;
 	case 7:
-		init();
+		initializeTransientMembers();
 		break;
 	case 8:
-		run();
+		init();
 		break;
 	case 9:
-		shutdown();
+		run();
 		break;
 	case 10:
-		startManagers();
+		shutdown();
 		break;
 	case 11:
-		stopManagers();
+		startManagers();
 		break;
 	case 12:
-		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		startZones();
 		break;
 	case 13:
-		stop();
+		stopManagers();
 		break;
 	case 14:
-		addTotalSentPacket(inv->getSignedIntParameter());
+		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 15:
-		addTotalResentPacket(inv->getSignedIntParameter());
+		stop();
 		break;
 	case 16:
-		printInfo(inv->getBooleanParameter());
+		addTotalSentPacket(inv->getSignedIntParameter());
 		break;
 	case 17:
-		printEvents();
+		addTotalResentPacket(inv->getSignedIntParameter());
 		break;
 	case 18:
-		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		printInfo(inv->getBooleanParameter());
 		break;
 	case 19:
-		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		printEvents();
 		break;
 	case 20:
-		resp->insertLong(createPermanentObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 21:
-		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
+		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 22:
-		destroyObject(inv->getUnsignedLongParameter());
+		resp->insertLong(createStaticObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 23:
-		lock(inv->getBooleanParameter());
+		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
 		break;
 	case 24:
-		unlock(inv->getBooleanParameter());
+		updateObjectToStaticDatabase((SceneObject*) inv->getObjectParameter());
 		break;
 	case 25:
-		fixScheduler();
+		destroyObjectFromDatabase(inv->getUnsignedLongParameter());
 		break;
 	case 26:
-		changeUserCap(inv->getSignedIntParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 27:
-		resp->insertSignedInt(getConnectionCount());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 28:
-		increaseOnlinePlayers();
+		fixScheduler();
 		break;
 	case 29:
-		decreaseOnlinePlayers();
+		changeUserCap(inv->getSignedIntParameter());
 		break;
 	case 30:
-		increaseTotalDeletedPlayers();
+		resp->insertSignedInt(getConnectionCount());
 		break;
 	case 31:
-		resp->insertSignedInt(getGalaxyID());
+		increaseOnlinePlayers();
 		break;
 	case 32:
-		resp->insertAscii(getServerName());
+		decreaseOnlinePlayers();
 		break;
 	case 33:
-		resp->insertBoolean(isServerLocked());
+		increaseTotalDeletedPlayers();
 		break;
 	case 34:
-		resp->insertBoolean(isServerOnline());
+		resp->insertSignedInt(getGalaxyID());
 		break;
 	case 35:
-		resp->insertBoolean(isServerOffline());
+		resp->insertAscii(getServerName());
 		break;
 	case 36:
-		resp->insertBoolean(isServerLoading());
+		resp->insertBoolean(isServerLocked());
 		break;
 	case 37:
-		resp->insertSignedInt(getServerState());
+		resp->insertBoolean(isServerOnline());
 		break;
 	case 38:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isServerOffline());
 		break;
 	case 39:
-		resp->insertSignedInt(getMaxPlayers());
+		resp->insertBoolean(isServerLoading());
 		break;
 	case 40:
-		resp->insertSignedInt(getTotalPlayers());
+		resp->insertSignedInt(getServerState());
 		break;
 	case 41:
-		resp->insertSignedInt(getDeletedPlayers());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 42:
-		resp->insertLong(getPlayerManager()->_getObjectID());
+		resp->insertSignedInt(getMaxPlayers());
 		break;
 	case 43:
-		resp->insertLong(getChatManager()->_getObjectID());
+		resp->insertSignedInt(getTotalPlayers());
 		break;
 	case 44:
-		resp->insertLong(getObjectController()->_getObjectID());
+		resp->insertSignedInt(getDeletedPlayers());
 		break;
 	case 45:
-		resp->insertLong(getRadialManager()->_getObjectID());
+		resp->insertLong(getPlayerManager()->_getObjectID());
 		break;
 	case 46:
-		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
+		resp->insertLong(getChatManager()->_getObjectID());
 		break;
 	case 47:
-		setGalaxyID(inv->getSignedIntParameter());
+		resp->insertLong(getObjectController()->_getObjectID());
 		break;
 	case 48:
-		setServerState(inv->getSignedIntParameter());
+		resp->insertLong(getRadialManager()->_getObjectID());
 		break;
 	case 49:
-		setServerStateLocked();
+		resp->insertLong(getResourceManager()->_getObjectID());
 		break;
 	case 50:
-		setServerStateOnline();
+		resp->insertLong(getBazaarManager()->_getObjectID());
 		break;
 	case 51:
-		loadMessageoftheDay();
+		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
 		break;
 	case 52:
-		changeMessageoftheDay(inv->getAsciiParameter(_param0_changeMessageoftheDay__String_));
+		setGalaxyID(inv->getSignedIntParameter());
 		break;
 	case 53:
+		setServerState(inv->getSignedIntParameter());
+		break;
+	case 54:
+		setServerStateLocked();
+		break;
+	case 55:
+		setServerStateOnline();
+		break;
+	case 56:
+		loadMessageoftheDay();
+		break;
+	case 57:
+		changeMessageoftheDay(inv->getAsciiParameter(_param0_changeMessageoftheDay__String_));
+		break;
+	case 58:
 		resp->insertAscii(getMessageoftheDay());
 		break;
 	default:
@@ -985,6 +1098,10 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void ZoneServerAdapter::test() {
+	((ZoneServerImplementation*) impl)->test();
 }
 
 void ZoneServerAdapter::initializeTransientMembers() {
@@ -1005,6 +1122,10 @@ void ZoneServerAdapter::shutdown() {
 
 void ZoneServerAdapter::startManagers() {
 	((ZoneServerImplementation*) impl)->startManagers();
+}
+
+void ZoneServerAdapter::startZones() {
+	((ZoneServerImplementation*) impl)->startZones();
 }
 
 void ZoneServerAdapter::stopManagers() {
@@ -1039,20 +1160,24 @@ SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLo
 	return ((ZoneServerImplementation*) impl)->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistent, objectID);
+SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServerAdapter::createPermanentObject(unsigned int templateCRC, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createPermanentObject(templateCRC, objectID);
+SceneObject* ZoneServerAdapter::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createStaticObject(templateCRC, objectID);
 }
 
 void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {
 	((ZoneServerImplementation*) impl)->updateObjectToDatabase(object);
 }
 
-void ZoneServerAdapter::destroyObject(unsigned long long objectID) {
-	((ZoneServerImplementation*) impl)->destroyObject(objectID);
+void ZoneServerAdapter::updateObjectToStaticDatabase(SceneObject* object) {
+	((ZoneServerImplementation*) impl)->updateObjectToStaticDatabase(object);
+}
+
+void ZoneServerAdapter::destroyObjectFromDatabase(unsigned long long objectID) {
+	((ZoneServerImplementation*) impl)->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServerAdapter::lock(bool doLock) {
@@ -1145,6 +1270,14 @@ ObjectController* ZoneServerAdapter::getObjectController() {
 
 RadialManager* ZoneServerAdapter::getRadialManager() {
 	return ((ZoneServerImplementation*) impl)->getRadialManager();
+}
+
+ResourceManager* ZoneServerAdapter::getResourceManager() {
+	return ((ZoneServerImplementation*) impl)->getResourceManager();
+}
+
+BazaarManager* ZoneServerAdapter::getBazaarManager() {
+	return ((ZoneServerImplementation*) impl)->getBazaarManager();
 }
 
 void ZoneServerAdapter::setServerName(const String& servername) {

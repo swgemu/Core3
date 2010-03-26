@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -43,7 +45,51 @@ class StructureManager;
 
 using namespace server::zone::managers::structure;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace planet {
+
+class PlanetManager;
+
+} // namespace planet
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::planet;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
 #include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
 
 #include "engine/util/QuadTree.h"
 
@@ -80,9 +126,17 @@ public:
 
 	float getHeight(float x, float y);
 
+	void addSceneObject(SceneObject* object);
+
+	void dropSceneObject(unsigned long long objectID);
+
 	int getZoneID();
 
+	PlanetManager* getPlanetManager();
+
 	ZoneServer* getZoneServer();
+
+	CreatureManager* getCreatureManager();
 
 	unsigned long long getGalacticTime();
 
@@ -125,7 +179,11 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<StructureManager* > structureManager;
+	ObjectMap objectMap;
+
+	ManagedReference<PlanetManager* > planetManager;
+
+	ManagedReference<CreatureManager* > creatureManager;
 
 	ManagedReference<ZoneServer* > server;
 
@@ -146,8 +204,6 @@ public:
 
 	ZoneImplementation(DummyConstructorParameter* param);
 
-	void finalize();
-
 	void initializeTransientMembers();
 
 	void insert(QuadTreeEntry* entry);
@@ -164,9 +220,17 @@ public:
 
 	float getHeight(float x, float y);
 
+	void addSceneObject(SceneObject* object);
+
+	void dropSceneObject(unsigned long long objectID);
+
 	int getZoneID();
 
+	PlanetManager* getPlanetManager();
+
 	ZoneServer* getZoneServer();
+
+	CreatureManager* getCreatureManager();
 
 	unsigned long long getGalacticTime();
 
@@ -195,6 +259,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ZoneImplementation();
+
+	void finalize();
 
 	void _initializeImplementation();
 
@@ -225,8 +291,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void finalize();
-
 	void initializeTransientMembers();
 
 	void startManagers();
@@ -235,9 +299,17 @@ public:
 
 	float getHeight(float x, float y);
 
+	void addSceneObject(SceneObject* object);
+
+	void dropSceneObject(unsigned long long objectID);
+
 	int getZoneID();
 
+	PlanetManager* getPlanetManager();
+
 	ZoneServer* getZoneServer();
+
+	CreatureManager* getCreatureManager();
 
 	unsigned long long getGalacticTime();
 

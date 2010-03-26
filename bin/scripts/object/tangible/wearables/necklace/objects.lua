@@ -85,13 +85,14 @@ object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3954123718
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_bestine_quest_badge, 3954123718)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_bestine_quest_badge, "object/tangible/wearables/necklace/shared_bestine_quest_badge.iff")
 
 object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1050230351
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_adorned_beads, 1050230351)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_adorned_beads, "object/tangible/wearables/necklace/shared_necklace_adorned_beads.iff")
 
 object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,13 +191,14 @@ object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3453591411
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_base, 3453591411)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_base, "object/tangible/wearables/necklace/shared_necklace_base.iff")
 
 object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3584437673
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_blue_gadget, 3584437673)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_blue_gadget, "object/tangible/wearables/necklace/shared_necklace_blue_gadget.iff")
 
 object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4150202535
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_brass_charm, 4150202535)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_brass_charm, "object/tangible/wearables/necklace/shared_necklace_brass_charm.iff")
 
 object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3040940329
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_bright_bauble, 3040940329)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_bright_bauble, "object/tangible/wearables/necklace/shared_necklace_bright_bauble.iff")
 
 object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 974368601
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_complex_pattern, 974368601)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_complex_pattern, "object/tangible/wearables/necklace/shared_necklace_complex_pattern.iff")
 
 object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2325808611
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_convoluted_adornment, 2325808611)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_convoluted_adornment, "object/tangible/wearables/necklace/shared_necklace_convoluted_adornment.iff")
 
 object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1155738012
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_crushed_brooch, 1155738012)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_crushed_brooch, "object/tangible/wearables/necklace/shared_necklace_crushed_brooch.iff")
 
 object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 283875663
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_elaborate_necklet, 283875663)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_elaborate_necklet, "object/tangible/wearables/necklace/shared_necklace_elaborate_necklet.iff")
 
 object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2530110745
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_flashy_choker, 2530110745)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_flashy_choker, "object/tangible/wearables/necklace/shared_necklace_flashy_choker.iff")
 
 object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -657,13 +668,14 @@ object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3024190115
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_hologram_locket, 3024190115)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_hologram_locket, "object/tangible/wearables/necklace/shared_necklace_hologram_locket.iff")
 
 object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -709,13 +721,14 @@ object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3734395119
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ice_pendant, 3734395119)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ice_pendant, "object/tangible/wearables/necklace/shared_necklace_ice_pendant.iff")
 
 object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -761,13 +774,14 @@ object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4144828811
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_brooch, 4144828811)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_brooch, "object/tangible/wearables/necklace/shared_necklace_iron_brooch.iff")
 
 object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -813,13 +827,14 @@ object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 840414348
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_choker, 840414348)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_choker, "object/tangible/wearables/necklace/shared_necklace_iron_choker.iff")
 
 object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -865,13 +880,14 @@ object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 218269484
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_jeweled_pendant, 218269484)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_jeweled_pendant, "object/tangible/wearables/necklace/shared_necklace_jeweled_pendant.iff")
 
 object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -917,13 +933,14 @@ object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3512942236
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_knickknack, 3512942236)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_knickknack, "object/tangible/wearables/necklace/shared_necklace_knickknack.iff")
 
 object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
@@ -969,13 +986,14 @@ object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3087789204
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_living_chains, 3087789204)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_living_chains, "object/tangible/wearables/necklace/shared_necklace_living_chains.iff")
 
 object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1021,13 +1039,14 @@ object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2122077046
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere, 2122077046)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere, "object/tangible/wearables/necklace/shared_necklace_magnificent_lavaliere.iff")
 
 object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -1073,13 +1092,14 @@ object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3448479035
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_nyax, 3448479035)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_nyax, "object/tangible/wearables/necklace/shared_necklace_nyax.iff")
 
 object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1125,13 +1145,14 @@ object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 118177721
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_opulent_cameo, 118177721)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_opulent_cameo, "object/tangible/wearables/necklace/shared_necklace_opulent_cameo.iff")
 
 object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -1177,13 +1198,14 @@ object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2206646823
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet, 2206646823)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet, "object/tangible/wearables/necklace/shared_necklace_ornamental_ratchet.iff")
 
 object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1229,13 +1251,14 @@ object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1137026386
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_pawl_chain, 1137026386)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_pawl_chain, "object/tangible/wearables/necklace/shared_necklace_pawl_chain.iff")
 
 object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1281,13 +1304,14 @@ object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2922514792
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_platinum_pin, 2922514792)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_platinum_pin, "object/tangible/wearables/necklace/shared_necklace_platinum_pin.iff")
 
 object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1333,13 +1357,14 @@ object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3826079370
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_reebo_charm, 3826079370)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_reebo_charm, "object/tangible/wearables/necklace/shared_necklace_reebo_charm.iff")
 
 object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s01_f.sat",
@@ -1385,13 +1410,14 @@ object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2107115657
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rosy_pearl, 2107115657)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rosy_pearl, "object/tangible/wearables/necklace/shared_necklace_rosy_pearl.iff")
 
 object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -1437,13 +1463,14 @@ object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 509359350
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rusty_beads, 509359350)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rusty_beads, "object/tangible/wearables/necklace/shared_necklace_rusty_beads.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s01_f.sat",
@@ -1489,13 +1516,14 @@ object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 705351361
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s01, 705351361)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s01, "object/tangible/wearables/necklace/shared_necklace_s01.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -1541,13 +1569,14 @@ object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4045235798
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s02, 4045235798)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s02, "object/tangible/wearables/necklace/shared_necklace_s02.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
@@ -1593,13 +1622,14 @@ object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3088056795
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s03, 3088056795)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s03, "object/tangible/wearables/necklace/shared_necklace_s03.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s04_f.sat",
@@ -1645,13 +1675,14 @@ object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1140009679
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s04, 1140009679)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s04, "object/tangible/wearables/necklace/shared_necklace_s04.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s05_f.sat",
@@ -1697,13 +1728,14 @@ object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 184438082
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s05, 184438082)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s05, "object/tangible/wearables/necklace/shared_necklace_s05.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s06_f.sat",
@@ -1749,13 +1781,14 @@ object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3521766869
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s06, 3521766869)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s06, "object/tangible/wearables/necklace/shared_necklace_s06.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -1801,13 +1834,14 @@ object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2565112408
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s07, 2565112408)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s07, "object/tangible/wearables/necklace/shared_necklace_s07.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
@@ -1853,13 +1887,14 @@ object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 586067530
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s08, 586067530)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s08, "object/tangible/wearables/necklace/shared_necklace_s08.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s09_f.sat",
@@ -1905,13 +1940,14 @@ object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1810090439
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09, 1810090439)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09, "object/tangible/wearables/necklace/shared_necklace_s09.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s09_f.sat",
@@ -1957,13 +1993,14 @@ object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4204967934
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09_quest, 4204967934)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09_quest, "object/tangible/wearables/necklace/shared_necklace_s09_quest.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s10_f.sat",
@@ -2009,13 +2046,14 @@ object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2016388148
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s10, 2016388148)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s10, "object/tangible/wearables/necklace/shared_necklace_s10.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s11_f.sat",
@@ -2061,13 +2099,14 @@ object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 824361913
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s11, 824361913)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s11, "object/tangible/wearables/necklace/shared_necklace_s11.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s12_f.sat",
@@ -2113,13 +2152,14 @@ object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3929369390
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s12, 3929369390)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s12, "object/tangible/wearables/necklace/shared_necklace_s12.iff")
 
 object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
@@ -2165,13 +2205,14 @@ object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4111333468
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_sparkling_bijou, 4111333468)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_sparkling_bijou, "object/tangible/wearables/necklace/shared_necklace_sparkling_bijou.iff")
 
 object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
@@ -2217,10 +2258,11 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3192072783
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, 3192072783)
+ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")

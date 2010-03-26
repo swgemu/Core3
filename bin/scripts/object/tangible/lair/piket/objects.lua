@@ -85,13 +85,14 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 206631052
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket, 206631052)
+ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
 
 object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1495135397
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, 1495135397)
+ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")

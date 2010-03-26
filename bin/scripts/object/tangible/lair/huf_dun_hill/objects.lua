@@ -85,10 +85,11 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1260954181
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, 1260954181)
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")

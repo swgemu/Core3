@@ -8,8 +8,8 @@
  *	WearableObjectStub
  */
 
-WearableObject::WearableObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WearableObjectImplementation(templateData);
+WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WearableObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -32,6 +32,67 @@ void WearableObject::initializeTransientMembers() {
 		((WearableObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool WearableObject::isWearableObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WearableObjectImplementation*) _impl)->isWearableObject();
+}
+
+int WearableObject::getMaxSockets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableObjectImplementation*) _impl)->getMaxSockets();
+}
+
+int WearableObject::socketsUsed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableObjectImplementation*) _impl)->socketsUsed();
+}
+
+int WearableObject::socketsLeft() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableObjectImplementation*) _impl)->socketsLeft();
+}
+
+void WearableObject::setMaxSockets(int sockets) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(sockets);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableObjectImplementation*) _impl)->setMaxSockets(sockets);
+}
+
 /*
  *	WearableObjectImplementation
  */
@@ -41,7 +102,6 @@ WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParam
 }
 
 WearableObjectImplementation::~WearableObjectImplementation() {
-	WearableObjectImplementation::finalize();
 }
 
 
@@ -100,12 +160,41 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("WearableObject");
 
+	addSerializableVariable("socketCount", &socketCount);
+	addSerializableVariable("wearableSkillModMap", &wearableSkillModMap);
 }
 
-WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
+WearableObjectImplementation::WearableObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl(55):  Logger.setLoggingName("WearableObject");
+	// server/zone/objects/tangible/wearables/WearableObject.idl(58):  		socketCount = 0;
+	socketCount = 0;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(60):  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
+}
+
+bool WearableObjectImplementation::isWearableObject() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl(66):  		return true;
+	return true;
+}
+
+int WearableObjectImplementation::getMaxSockets() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl(70):  		return socketCount;
+	return socketCount;
+}
+
+int WearableObjectImplementation::socketsUsed() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl(74):  		return wearableSkillModMap.getUsedSocketCount();
+	return (&wearableSkillModMap)->getUsedSocketCount();
+}
+
+int WearableObjectImplementation::socketsLeft() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl(78):  		return socketCount - socketsUsed();
+	return socketCount - socketsUsed();
+}
+
+void WearableObjectImplementation::setMaxSockets(int sockets) {
+	// server/zone/objects/tangible/wearables/WearableObject.idl(82):  		socketCount = sockets;
+	socketCount = sockets;
 }
 
 /*
@@ -122,6 +211,21 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isWearableObject());
+		break;
+	case 8:
+		resp->insertSignedInt(getMaxSockets());
+		break;
+	case 9:
+		resp->insertSignedInt(socketsUsed());
+		break;
+	case 10:
+		resp->insertSignedInt(socketsLeft());
+		break;
+	case 11:
+		setMaxSockets(inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -131,6 +235,26 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void WearableObjectAdapter::initializeTransientMembers() {
 	((WearableObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool WearableObjectAdapter::isWearableObject() {
+	return ((WearableObjectImplementation*) impl)->isWearableObject();
+}
+
+int WearableObjectAdapter::getMaxSockets() {
+	return ((WearableObjectImplementation*) impl)->getMaxSockets();
+}
+
+int WearableObjectAdapter::socketsUsed() {
+	return ((WearableObjectImplementation*) impl)->socketsUsed();
+}
+
+int WearableObjectAdapter::socketsLeft() {
+	return ((WearableObjectImplementation*) impl)->socketsLeft();
+}
+
+void WearableObjectAdapter::setMaxSockets(int sockets) {
+	((WearableObjectImplementation*) impl)->setMaxSockets(sockets);
 }
 
 /*

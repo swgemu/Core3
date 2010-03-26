@@ -97,8 +97,8 @@ public:
 		if (player == NULL)
 			return;
 
-		ObjectController* objectController = server->getZoneServer()->getObjectController();
-		objectController->enqueueCommand(player, actionCRC, actionCount, targetID, arguments);
+		//ObjectController* objectController = server->getZoneServer()->getObjectController();
+		player->enqueueCommand(actionCRC, actionCount, targetID, arguments);
 	}
 };
 

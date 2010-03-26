@@ -15,11 +15,13 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/template/TemplateManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
 #include "server/zone/Zone.h"
 
@@ -29,9 +31,112 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	processor = impl;
 
 	playerMap = new PlayerMap(3000);
+	nameMap = new CharacterNameMap();
+
+	loadStartingItems();
 
 	setGlobalLogging(true);
 	setLogging(true);
+
+	loadNameMap();
+}
+
+void PlayerManagerImplementation::loadStartingItems() {
+	try {
+		startingItemList = StartingItemList::instance();
+
+		startingItemList->loadItems();
+	} catch (Exception& e) {
+		error("unknown error while loadStartingItems");
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in loadStartingItems");
+	}
+}
+
+void PlayerManagerImplementation::finalize() {
+	delete playerMap;
+	playerMap = NULL;
+
+	delete nameMap;
+	nameMap = NULL;
+}
+
+void PlayerManagerImplementation::loadNameMap() {
+	info("loading character names");
+
+	String query = "SELECT * FROM characters";
+
+	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+	while (res->next()) {
+		uint64 oid = res->getUnsignedLong(0);
+		String firstName = res->getString(3);
+
+		nameMap->put(firstName.toLowerCase(), oid);
+	}
+
+	delete res;
+
+	StringBuffer msg;
+	msg << "loaded " << nameMap->size() << " character names in memory";
+	info(msg.toString(), true);
+}
+
+bool PlayerManagerImplementation::existsName(const String& name) {
+	bool res = false;
+
+	rlock();
+
+	try {
+		res = nameMap->containsKey(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
+	}
+
+	runlock();
+
+	return res;
+}
+
+PlayerCreature* PlayerManagerImplementation::getPlayer(const String& name) {
+	uint64 oid = 0;
+
+	rlock();
+
+	try {
+		oid = nameMap->get(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::getPlayer(const String& name)");
+	}
+
+	runlock();
+
+	if (oid == 0)
+		return NULL;
+
+	SceneObject* obj = server->getObject(oid);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return NULL;
+
+	return (PlayerCreature*) obj;
+}
+
+uint64 PlayerManagerImplementation::getObjectID(const String& name) {
+	uint64 oid = 0;
+
+	rlock();
+
+	try {
+		oid = nameMap->get(name.toLowerCase());
+	} catch (...) {
+		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
+	}
+
+	runlock();
+
+	return oid;
 }
 
 bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name) {
@@ -40,7 +145,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 
 	try {
 		String fname = name.toLowerCase();
-		MySqlDatabase::escapeString(fname);
+		Database::escapeString(fname);
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
 					   + fname + "\"";
 
@@ -77,7 +182,7 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 		firstName = name;
 
 	//Does this name already exist?
-	if (!checkExistentNameInDatabase(firstName)) {
+	if (nameMap->containsKey(firstName.toLowerCase())) {
 		msg = new ClientCreateCharacterFailed("name_declined_in_use");
 		client->sendMessage(msg);
 
@@ -123,131 +228,126 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 }
 
 bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
+	Locker _locker(_this);
+
+	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	ZoneClientSession* client = data->getClient();
+
+	String race;
+	callback->getRaceFile(race);
+	info("trying to create " + race);
+
+	uint32 serverObjectCRC = race.hashCode();
+
+	int raceID = Races::getRaceID(race);
+	/*uint32 playerCRC = Races::getRaceCRC(raceID);*/
+
+	UnicodeString name;
+	callback->getCharacterName(name);
+
+	if (!checkPlayerName(callback)) {
+		info("invalid name " + name.toString());
+		return false;
+	}
+
+	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
+
+	if (player == NULL) {
+		error("could not create player... could not create player object");
+		return false;
+	}
+
+	if (!player->isPlayerCreature()) {
+		error("could not create player... wrong object type");
+		return false;
+	}
+
+	String profession;
+	callback->getProfession(profession);
+
+	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
+	createAllPlayerObjects(playerCreature);
+	createDefaultPlayerItems(playerCreature, profession, race);
+
+	playerCreature->setRaceID((byte)raceID);
+
+	String playerCustomization;
+	callback->getCustomizationString(playerCustomization);
+	playerCreature->setCustomizationString(playerCustomization);
+
+	playerCreature->setObjectName(name);
+
+	String firstName = playerCreature->getFirstName();
+	String lastName = playerCreature->getLastName();
+
+	firstName.escapeString();
+	lastName.escapeString();
+	race.escapeString();
+
 	try {
-		wlock();
+		StringBuffer query;
+		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
+				<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
 
-		ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
-		ZoneClientSession* client = data->getClient();
-
-		String race;
-		callback->getRaceFile(race);
-		info("trying to create " + race);
-
-		int raceID = Races::getRaceID(race);
-		uint32 playerCRC = Races::getRaceCRC(raceID);
-
-		UnicodeString name;
-		callback->getCharacterName(name);
-
-		if (!checkPlayerName(callback)) {
-			info("invalid name " + name.toString());
-			unlock();
-			return false;
-		}
-
-		SceneObject* player = server->createObject(playerCRC, true); // player
-
-		if (player == NULL) {
-			error("could not create player... could not create player object");
-			unlock();
-			return false;
-		}
-
-
-		if (!player->isPlayerCreature()) {
-			//player->finalize(); destroy object
-			error("could not create player... wrong object type");
-			unlock();
-			return false;
-		}
-
-		PlayerCreature* playerCreature = (PlayerCreature*) player;
-		createAllPlayerObjects(playerCreature);
-
-		playerCreature->setRaceID((byte)raceID);
-
-		String playerCustomization;
-		callback->getCustomizationString(playerCustomization);
-		playerCreature->setCustomizationString(playerCustomization);
-
-		playerCreature->setObjectName(name);
-
-		String firstName = playerCreature->getFirstName();
-		String lastName = playerCreature->getLastName();
-
-		firstName.escapeString();
-		lastName.escapeString();
-		race.escapeString();
-
-		try {
-			StringBuffer query;
-			query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-			<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
-			<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
-
-			ServerDatabase::instance()->executeStatement(query);
-		} catch (Exception& e) {
-			error(e.getMessage());
-		} catch (...) {
-			error("unreported exception caught while creating character");
-		}
-
-		//hair
-		String hairObjectFile;
-		callback->getHairObject(hairObjectFile);
-
-		String hairCustomization;
-		callback->getHairCustomization(hairCustomization);
-
-		TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
-
-		if (hair != NULL) {
-			player->addObject(hair, 4);
-
-			info("created hair object");
-		}
-
-		playerCreature->setHeight(callback->getHeight());
-
-		UnicodeString biography;
-		callback->getBiography(biography);
-		playerCreature->setBiography(biography);
-
-		playerCreature->setClient(client);
-		client->setPlayer(player);
-
-		playerCreature->setAccountID(client->getAccountID());
-
-		if (callback->getTutorialFlag()) {
-			createTutorialBuilding(playerCreature);
-		} else {
-			Zone* zone = server->getZone(8);
-			player->setZone(zone);
-		}
-
-		player->updateToDatabase();
-
-		StringBuffer infoMsg;
-		infoMsg << "player " << name.toString() << " successfully created";
-		info(infoMsg);
-
-		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
-		playerCreature->sendMessage(msg);
-
-		ChatManager* chatManager = server->getChatManager();
-
-		chatManager->addPlayer(playerCreature);
-
-		unlock();
+		ServerDatabase::instance()->executeStatement(query);
 	} catch (Exception& e) {
 		error(e.getMessage());
-		e.printStackTrace();
-
-		unlock();
 	} catch (...) {
-		error("unreported exception caught while creating player");
-		unlock();
+		error("unreported exception caught while creating character");
 	}
+
+	nameMap->put(playerCreature);
+
+	//hair
+	String hairObjectFile;
+	callback->getHairObject(hairObjectFile);
+
+	String hairCustomization;
+	callback->getHairCustomization(hairCustomization);
+
+	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
+
+	if (hair != NULL) {
+		player->addObject(hair, 4);
+
+		info("created hair object");
+	}
+
+	playerCreature->setHeight(callback->getHeight());
+
+	UnicodeString biography;
+	callback->getBiography(biography);
+	playerCreature->setBiography(biography);
+
+	//info("profession:" + profession, true);
+
+	ProfessionManager* professionManager = server->getProfessionManager();
+	professionManager->setStartingProfession(profession, raceID, playerCreature);
+
+	playerCreature->setClient(client);
+	client->setPlayer(player);
+
+	playerCreature->setAccountID(client->getAccountID());
+
+	if (callback->getTutorialFlag()) {
+		createTutorialBuilding(playerCreature);
+	} else {
+		createSkippedTutorialBuilding(playerCreature);
+	}
+
+	player->updateToDatabase();
+
+	StringBuffer infoMsg;
+	infoMsg << "player " << name.toString() << " successfully created";
+	info(infoMsg);
+
+	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
+	playerCreature->sendMessage(msg);
+
+	ChatManager* chatManager = server->getChatManager();
+
+	chatManager->addPlayer(playerCreature);
 
 	return true;
 }
@@ -263,7 +363,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 	String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
 	info("trying to create hair object " + sharedHairObjectFile);
-	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode(), true);
+	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode(), 1);
 
 	if (hair == NULL) {
 		info("objectManager returned NULL hair object");
@@ -287,7 +387,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 }
 
 bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player) {
-	SceneObject* inventory = server->createObject(0x3969E83B, true); // character_inventory
+	SceneObject* inventory = server->createObject(0x3969E83B, 1); // character_inventory
 
 	if (inventory == NULL) {
 		error("could not create player inventory");
@@ -296,7 +396,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(inventory, 4);
 
-	SceneObject* datapad = server->createObject(0x73BA5001, true); //datapad
+	SceneObject* datapad = server->createObject(0x73BA5001, 1); //datapad
 
 	if (datapad == NULL) {
 		error("could not create player datapad");
@@ -305,7 +405,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(datapad, 4);
 
-	SceneObject* playerObject = server->createObject(0x619BAE21, true); //player object
+	SceneObject* playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
 
 	if (playerObject == NULL) {
 		error("could not create player object");
@@ -314,7 +414,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(playerObject, 4);
 
-	SceneObject* bank = server->createObject(0x70FD1394, true); //bank
+	SceneObject* bank = server->createObject(0x70FD1394, 1); //bank
 
 	if (bank == NULL) {
 		error("could not create bank");
@@ -323,7 +423,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(bank, 4);
 
-	SceneObject* missionBag = server->createObject(0x3D7F6F9F, true); //mission bag
+	SceneObject* missionBag = server->createObject(0x3D7F6F9F, 1); //mission bag
 
 	if (missionBag == NULL) {
 		error("could not create mission bag");
@@ -332,24 +432,35 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(missionBag, 4);
 
+	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/shared_unarmed_default_player.iff").hashCode();
+
+	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 1);
+
+	if (defaultWeapon == NULL) {
+		error("could not create default_weapon");
+		return false;
+	}
+
+	player->addObject(defaultWeapon, 4);
+
 	// temp
 
-	SceneObject* vibro = server->createObject(0x652688CE, true);
+	/*SceneObject* vibro = server->createObject(0x652688CE, 1);
 	player->addObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
 
-	SceneObject* vibro2 = server->createObject(0x652688CE, true);
+	SceneObject* vibro2 = server->createObject(0x652688CE, 1);
 	inventory->addObject(vibro2, -1);
 
 	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
-	SceneObject* armor = server->createObject(bharmor.hashCode(), true);
+	SceneObject* armor = server->createObject(bharmor.hashCode(), 1);
 	inventory->addObject(armor, -1);
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
-	SceneObject* backpackObject = server->createObject(backpack.hashCode(), true);
-	inventory->addObject(backpackObject, -1);
+	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
+	inventory->addObject(backpackObject, -1);*/
 
-	SceneObject* mission = server->createObject(3741732474UL, true); // empty mission
+	SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
 	datapad->addObject(mission, -1);
 
 	return true;
@@ -358,41 +469,17 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
 	Zone* zone = server->getZone(42);
 
-	/*SceneObject* oldPlayer = server->getObject(0x1500000001uLL);
-
-	if (player!= oldPlayer && oldPlayer != NULL) {
-		SceneObject* tutCell = oldPlayer->getParent();
-
-		if (tutCell != NULL) {
-			player->initializePosition(27.0f, -3.5f, -165.0f);
-			player->setZone(zone);
-
-			tutCell->addObject(player, -1);
-
-			return;
-		}
-	}*/
-
 	String tut = "object/building/general/shared_newbie_hall.iff";
 	String cell = "object/cell/shared_cell.iff";
 
-	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), true);
+	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = server->createObject(4258705837uL, true);
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
 
-	SceneObject* cellTut = NULL;
-
-	for (int i = 0; i < 14; ++i) {
-		SceneObject* newCell = server->createObject(cell.hashCode(), true);
-
-		tutorial->addCell((CellObject*)newCell);
-
-		if (i == 10) {
-			cellTut = newCell;
-			cellTut->addObject(travelTutorialTerminal, -1);
-		}
-	}
+	SceneObject* cellTut = tutorial->getCell(10);
+	cellTut->addObject(travelTutorialTerminal, -1);
 
 	tutorial->insertToZone(zone);
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
@@ -405,4 +492,149 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
+}
+
+void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* player) {
+	Zone* zone = server->getZone(42);
+
+	String tut = "object/building/general/shared_newbie_hall_skipped.iff";
+	String cell = "object/cell/shared_cell.iff";
+
+	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	tutorial->createCellObjects();
+	tutorial->setStaticBuilding(false);
+
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
+
+	SceneObject* cellTut = tutorial->getCell(0);
+	cellTut->addObject(travelTutorialTerminal, -1);
+
+	tutorial->insertToZone(zone);
+	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
+	travelTutorialTerminal->insertToZone(zone);
+
+	player->initializePosition(27.0f, -3.5f, -165.0f);
+	player->setZone(zone);
+	cellTut->addObject(player, -1);
+	player->setSavedZoneID(zone->getZoneID());
+	player->setSavedParentID(cellTut->getObjectID());
+
+	tutorial->updateToDatabase();
+}
+
+void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
+	String prof;
+
+	try {
+		prof = profession.subString(profession.indexOf('_') + 1);
+	} catch (...) {
+		prof = "artisan";
+	}
+
+	String race = templateFile;
+	int ls = race.lastIndexOf('/');
+	int fu = race.indexOf('_');
+	int dot = race.lastIndexOf('.');
+
+	String species = race.subString(ls + 1, fu);
+	String sex = race.subString(fu + 1, dot);
+
+	String gen = "general";
+	String all = "all";
+
+	Vector<StartingItem>* items;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	//Make profession items for species
+
+	items = startingItemList->getProfessionItems(prof, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+	//Make profession items for that apply to all species
+	items = startingItemList->getProfessionItems(prof, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+
+	//Make general items for species
+	items = startingItemList->getProfessionItems(gen, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
+
+	//Make general items that apple to all species
+	items = startingItemList->getProfessionItems(gen, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		StartingItem item = items->get(j);
+
+		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+
+		if (obj == NULL) {
+			StringBuffer msg;
+			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
+			error(msg.toString());
+
+			continue;
+		}
+
+		if (item.createEquipped()) {
+			player->addObject(obj, 4);
+		} else {
+			inventory->addObject(obj, -1);
+		}
+	}
+
 }

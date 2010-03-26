@@ -85,13 +85,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s01 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3692198825
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s01, 3692198825)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s01, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s01.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s02.sat",
@@ -137,13 +138,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s02 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 117822270
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s02, 117822270)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s02, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s02.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s03.sat",
@@ -189,13 +191,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s03 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1309193395
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s03, 1309193395)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s03, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s03.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s04.sat",
@@ -241,13 +244,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s04 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3052117927
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s04, 3052117927)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s04, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s04.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s05.sat",
@@ -293,13 +297,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s05 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4242995242
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s05, 4242995242)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s05, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s05.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s06.sat",
@@ -345,13 +350,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s06 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 670126269
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s06, 670126269)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s06, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s06.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s07.sat",
@@ -397,13 +403,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s07 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1862022960
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s07, 1862022960)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s07, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s07.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s08.sat",
@@ -449,13 +456,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s08 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3572898594
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s08, 3572898594)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s08, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s08.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s09.sat",
@@ -501,13 +509,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s09 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2650504367
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s09, 2650504367)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s09, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s09.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s10.sat",
@@ -553,13 +562,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s10 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2385973596
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s10, 2385973596)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s10, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s10.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s11.sat",
@@ -605,13 +615,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s11 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3342497489
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s11, 3342497489)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s11, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s11.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s12.sat",
@@ -657,13 +668,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s12 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 472768070
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s12, 472768070)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s12, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s12.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s13.sat",
@@ -709,13 +721,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s13 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1428208075
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s13, 1428208075)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s13, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s13.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s14.sat",
@@ -761,13 +774,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s14 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2932052703
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s14, 2932052703)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s14, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s14.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s15.sat",
@@ -813,13 +827,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s15 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3889100114
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s15, 3889100114)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s15, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s15.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s16.sat",
@@ -865,13 +880,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s16 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1020878277
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s16, 1020878277)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s16, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s16.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s17.sat",
@@ -917,13 +933,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s17 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1976842824
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s17, 1976842824)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s17, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s17.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s18.sat",
@@ -969,13 +986,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s18 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3487438426
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s18, 3487438426)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s18, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s18.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s19.sat",
@@ -1021,13 +1039,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s19 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2262004183
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s19, 2262004183)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s19, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s19.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_female_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_f_hair_s20.sat",
@@ -1073,13 +1092,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s20 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2739865300
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s20, 2739865300)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s20, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s20.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s01.sat",
@@ -1125,13 +1145,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3250935101
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s01, 3250935101)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s01, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s01.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s02.sat",
@@ -1177,13 +1198,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s02 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 450035114
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s02, 450035114)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s02, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s02.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s03.sat",
@@ -1229,13 +1251,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s03 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1407162919
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s03, 1407162919)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s03, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s03.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s04.sat",
@@ -1281,13 +1304,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s04 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2822549811
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s04, 2822549811)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s04, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s04.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s05.sat",
@@ -1333,13 +1357,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s05 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3778139838
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s05, 3778139838)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s05, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s05.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s06.sat",
@@ -1385,13 +1410,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s06 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 975601193
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s06, 975601193)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s06, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s06.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s07.sat",
@@ -1437,13 +1463,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s07 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1932204452
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s07, 1932204452)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s07, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s07.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s08.sat",
@@ -1489,13 +1516,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s08 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3374396854
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s08, 3374396854)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s08, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s08.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s09.sat",
@@ -1541,13 +1569,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s09 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2150388283
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s09, 2150388283)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s09, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s09.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s10.sat",
@@ -1593,13 +1622,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s10 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2480947144
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s10, 2480947144)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s10, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s10.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s11.sat",
@@ -1645,13 +1675,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s11 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3672987717
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s11, 3672987717)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s11, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s11.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s12.sat",
@@ -1697,13 +1728,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s12 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 33222866
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s12, 33222866)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s12, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s12.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s13.sat",
@@ -1749,13 +1781,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s13 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1224185695
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s13, 1224185695)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s13, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s13.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s14.sat",
@@ -1801,13 +1834,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s14 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3004480587
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s14, 3004480587)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s14, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s14.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s15.sat",
@@ -1853,13 +1887,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s15 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4195998662
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s15, 4195998662)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s15, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s15.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s16.sat",
@@ -1905,13 +1940,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s16 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 554595153
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s16, 554595153)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s16, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s16.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s17.sat",
@@ -1957,13 +1993,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s17 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1745032412
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s17, 1745032412)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s17, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s17.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s18.sat",
@@ -2009,13 +2046,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s18 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3523819726
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s18, 3523819726)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s18, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s18.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s19.sat",
@@ -2061,13 +2099,14 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s19 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2600755011
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s19, 2600755011)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s19, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s19.iff")
 
 object_tangible_hair_zabrak_shared_hair_zabrak_male_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zab_m_hair_s20.sat",
@@ -2113,10 +2152,11 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s20 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3197642816
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s20, 3197642816)
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s20, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s20.iff")

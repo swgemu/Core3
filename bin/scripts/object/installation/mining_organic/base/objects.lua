@@ -85,10 +85,11 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1780958356
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_base_shared_mining_organic_base, 1780958356)
+ObjectTemplates:addTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")

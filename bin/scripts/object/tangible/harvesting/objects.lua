@@ -85,10 +85,11 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 867105366
 }
 
-ObjectTemplates:addTemplate(object_tangible_harvesting_shared_shellfish_harvester, 867105366)
+ObjectTemplates:addTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")

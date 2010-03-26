@@ -77,10 +77,12 @@ object_draft_schematic_food_shared_base_food_schematic = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3534105211
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_base_food_schematic, 3534105211)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_base_food_schematic, "object/draft_schematic/food/shared_base_food_schematic.iff")
 
 object_draft_schematic_food_shared_dessert_air_cake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_food_shared_dessert_air_cake = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1232265308
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_air_cake, 1232265308)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_air_cake, "object/draft_schematic/food/shared_dessert_air_cake.iff")
 
 object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1643860574
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies, 1643860574)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies, "object/draft_schematic/food/shared_dessert_almond_kwevvu_crisp_munchies.iff")
 
 object_draft_schematic_food_shared_dessert_bantha_butter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_food_shared_dessert_bantha_butter = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1534089256
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_bantha_butter, 1534089256)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_bantha_butter, "object/draft_schematic/food/shared_dessert_bantha_butter.iff")
 
 object_draft_schematic_food_shared_dessert_blap_biscuit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_food_shared_dessert_blap_biscuit = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2877457110
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_blap_biscuit, 2877457110)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_blap_biscuit, "object/draft_schematic/food/shared_dessert_blap_biscuit.iff")
 
 object_draft_schematic_food_shared_dessert_blob_candy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_food_shared_dessert_blob_candy = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4218540665
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_blob_candy, 4218540665)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_blob_candy, "object/draft_schematic/food/shared_dessert_blob_candy.iff")
 
 object_draft_schematic_food_shared_dessert_bofa_treat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_food_shared_dessert_bofa_treat = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2207249955
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_bofa_treat, 2207249955)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_bofa_treat, "object/draft_schematic/food/shared_dessert_bofa_treat.iff")
 
 object_draft_schematic_food_shared_dessert_cavaellin_creams = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_food_shared_dessert_cavaellin_creams = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3781117254
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_cavaellin_creams, 3781117254)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_cavaellin_creams, "object/draft_schematic/food/shared_dessert_cavaellin_creams.iff")
 
 object_draft_schematic_food_shared_dessert_chandad = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_food_shared_dessert_chandad = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2230715855
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_chandad, 2230715855)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_chandad, "object/draft_schematic/food/shared_dessert_chandad.iff")
 
 object_draft_schematic_food_shared_dessert_citros_snow_cake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_food_shared_dessert_citros_snow_cake = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1694757424
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_citros_snow_cake, 1694757424)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_citros_snow_cake, "object/draft_schematic/food/shared_dessert_citros_snow_cake.iff")
 
 object_draft_schematic_food_shared_dessert_corellian_fried_icecream = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_food_shared_dessert_corellian_fried_icecream = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4175174885
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_corellian_fried_icecream, 4175174885)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_corellian_fried_icecream, "object/draft_schematic/food/shared_dessert_corellian_fried_icecream.iff")
 
 object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3417631805
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding, 3417631805)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding, "object/draft_schematic/food/shared_dessert_deneelian_fizz_pudding.iff")
 
 object_draft_schematic_food_shared_dessert_dweezel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_food_shared_dessert_dweezel = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 891262167
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_dweezel, 891262167)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_dweezel, "object/draft_schematic/food/shared_dessert_dweezel.iff")
 
 object_draft_schematic_food_shared_dessert_felbar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_food_shared_dessert_felbar = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2718719593
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_felbar, 2718719593)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_felbar, "object/draft_schematic/food/shared_dessert_felbar.iff")
 
 object_draft_schematic_food_shared_dessert_glazed_glucose_pate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_food_shared_dessert_glazed_glucose_pate = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4027079478
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_glazed_glucose_pate, 4027079478)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_glazed_glucose_pate, "object/draft_schematic/food/shared_dessert_glazed_glucose_pate.iff")
 
 object_draft_schematic_food_shared_dessert_gorrnar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_food_shared_dessert_gorrnar = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 613121721
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_gorrnar, 613121721)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_gorrnar, "object/draft_schematic/food/shared_dessert_gorrnar.iff")
 
 object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 147823633
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl, 147823633)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl, "object/draft_schematic/food/shared_dessert_kiwik_clusjo_swirl.iff")
 
 object_draft_schematic_food_shared_dessert_nanana_twist = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_food_shared_dessert_nanana_twist = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2469520119
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_nanana_twist, 2469520119)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_nanana_twist, "object/draft_schematic/food/shared_dessert_nanana_twist.iff")
 
 object_draft_schematic_food_shared_dessert_para_roll = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_food_shared_dessert_para_roll = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3783790420
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_para_roll, 3783790420)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_para_roll, "object/draft_schematic/food/shared_dessert_para_roll.iff")
 
 object_draft_schematic_food_shared_dessert_parwan_nutricake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_food_shared_dessert_parwan_nutricake = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1390404412
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_parwan_nutricake, 1390404412)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_parwan_nutricake, "object/draft_schematic/food/shared_dessert_parwan_nutricake.iff")
 
 object_draft_schematic_food_shared_dessert_pastebread = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_food_shared_dessert_pastebread = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1271872434
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pastebread, 1271872434)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pastebread, "object/draft_schematic/food/shared_dessert_pastebread.iff")
 
 object_draft_schematic_food_shared_dessert_pikatta_pie = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_food_shared_dessert_pikatta_pie = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3617520830
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pikatta_pie, 3617520830)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pikatta_pie, "object/draft_schematic/food/shared_dessert_pikatta_pie.iff")
 
 object_draft_schematic_food_shared_dessert_pkneb = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_food_shared_dessert_pkneb = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 223277237
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pkneb, 223277237)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pkneb, "object/draft_schematic/food/shared_dessert_pkneb.iff")
 
 object_draft_schematic_food_shared_dessert_puffcake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_food_shared_dessert_puffcake = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3689968253
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_puffcake, 3689968253)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_puffcake, "object/draft_schematic/food/shared_dessert_puffcake.iff")
 
 object_draft_schematic_food_shared_dessert_pyollian_cake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_food_shared_dessert_pyollian_cake = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3212906328
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pyollian_cake, 3212906328)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_pyollian_cake, "object/draft_schematic/food/shared_dessert_pyollian_cake.iff")
 
 object_draft_schematic_food_shared_dessert_ryshcate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_food_shared_dessert_ryshcate = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3448198568
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_ryshcate, 3448198568)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_ryshcate, "object/draft_schematic/food/shared_dessert_ryshcate.iff")
 
 object_draft_schematic_food_shared_dessert_smugglers_delight = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_food_shared_dessert_smugglers_delight = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2092844576
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_smugglers_delight, 2092844576)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_smugglers_delight, "object/draft_schematic/food/shared_dessert_smugglers_delight.iff")
 
 object_draft_schematic_food_shared_dessert_sweesonberry_rolls = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_food_shared_dessert_sweesonberry_rolls = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4003562934
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_sweesonberry_rolls, 4003562934)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_sweesonberry_rolls, "object/draft_schematic/food/shared_dessert_sweesonberry_rolls.iff")
 
 object_draft_schematic_food_shared_dessert_sweet_cake_mix = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_food_shared_dessert_sweet_cake_mix = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3267367960
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_sweet_cake_mix, 3267367960)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_sweet_cake_mix, "object/draft_schematic/food/shared_dessert_sweet_cake_mix.iff")
 
 object_draft_schematic_food_shared_dessert_tranna_nougat_cream = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,10 +1324,12 @@ object_draft_schematic_food_shared_dessert_tranna_nougat_cream = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1016541288
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_tranna_nougat_cream, 1016541288)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_tranna_nougat_cream, "object/draft_schematic/food/shared_dessert_tranna_nougat_cream.iff")
 
 object_draft_schematic_food_shared_dessert_vagnerian_canape = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1307,10 +1367,12 @@ object_draft_schematic_food_shared_dessert_vagnerian_canape = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3895744001
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_vagnerian_canape, 3895744001)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_vagnerian_canape, "object/draft_schematic/food/shared_dessert_vagnerian_canape.iff")
 
 object_draft_schematic_food_shared_dessert_wedding_cake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1348,10 +1410,12 @@ object_draft_schematic_food_shared_dessert_wedding_cake = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1242276912
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_wedding_cake, 1242276912)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_wedding_cake, "object/draft_schematic/food/shared_dessert_wedding_cake.iff")
 
 object_draft_schematic_food_shared_dessert_won_won = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,10 +1453,12 @@ object_draft_schematic_food_shared_dessert_won_won = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3560062309
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_won_won, 3560062309)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dessert_won_won, "object/draft_schematic/food/shared_dessert_won_won.iff")
 
 object_draft_schematic_food_shared_dish_ahrisa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1430,10 +1496,12 @@ object_draft_schematic_food_shared_dish_ahrisa = SharedDraftSchematicObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2183154251
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ahrisa, 2183154251)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ahrisa, "object/draft_schematic/food/shared_dish_ahrisa.iff")
 
 object_draft_schematic_food_shared_dish_bivoli_tempari = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1471,10 +1539,12 @@ object_draft_schematic_food_shared_dish_bivoli_tempari = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3290158899
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_bivoli_tempari, 3290158899)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_bivoli_tempari, "object/draft_schematic/food/shared_dish_bivoli_tempari.iff")
 
 object_draft_schematic_food_shared_dish_blood_chowder = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1512,10 +1582,12 @@ object_draft_schematic_food_shared_dish_blood_chowder = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1109116374
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_blood_chowder, 1109116374)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_blood_chowder, "object/draft_schematic/food/shared_dish_blood_chowder.iff")
 
 object_draft_schematic_food_shared_dish_braised_canron = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1553,10 +1625,12 @@ object_draft_schematic_food_shared_dish_braised_canron = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2734261289
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_braised_canron, 2734261289)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_braised_canron, "object/draft_schematic/food/shared_dish_braised_canron.iff")
 
 object_draft_schematic_food_shared_dish_cho_nor_hoola = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1594,10 +1668,12 @@ object_draft_schematic_food_shared_dish_cho_nor_hoola = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1659210847
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_cho_nor_hoola, 1659210847)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_cho_nor_hoola, "object/draft_schematic/food/shared_dish_cho_nor_hoola.iff")
 
 object_draft_schematic_food_shared_dish_crispic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1635,10 +1711,12 @@ object_draft_schematic_food_shared_dish_crispic = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 654822514
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_crispic, 654822514)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_crispic, "object/draft_schematic/food/shared_dish_crispic.iff")
 
 object_draft_schematic_food_shared_dish_dustcrepe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1676,10 +1754,12 @@ object_draft_schematic_food_shared_dish_dustcrepe = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 451779682
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_dustcrepe, 451779682)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_dustcrepe, "object/draft_schematic/food/shared_dish_dustcrepe.iff")
 
 object_draft_schematic_food_shared_dish_exo_protein_wafers = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1717,10 +1797,12 @@ object_draft_schematic_food_shared_dish_exo_protein_wafers = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4045225099
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_exo_protein_wafers, 4045225099)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_exo_protein_wafers, "object/draft_schematic/food/shared_dish_exo_protein_wafers.iff")
 
 object_draft_schematic_food_shared_dish_fire_stew = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1758,10 +1840,12 @@ object_draft_schematic_food_shared_dish_fire_stew = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2266076523
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_fire_stew, 2266076523)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_fire_stew, "object/draft_schematic/food/shared_dish_fire_stew.iff")
 
 object_draft_schematic_food_shared_dish_fried_endwa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,10 +1883,12 @@ object_draft_schematic_food_shared_dish_fried_endwa = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3099048355
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_fried_endwa, 3099048355)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_fried_endwa, "object/draft_schematic/food/shared_dish_fried_endwa.iff")
 
 object_draft_schematic_food_shared_dish_gruuvan_shaal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1840,10 +1926,12 @@ object_draft_schematic_food_shared_dish_gruuvan_shaal = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 767510337
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_gruuvan_shaal, 767510337)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_gruuvan_shaal, "object/draft_schematic/food/shared_dish_gruuvan_shaal.iff")
 
 object_draft_schematic_food_shared_dish_havla = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1881,10 +1969,12 @@ object_draft_schematic_food_shared_dish_havla = SharedDraftSchematicObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 811374233
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_havla, 811374233)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_havla, "object/draft_schematic/food/shared_dish_havla.iff")
 
 object_draft_schematic_food_shared_dish_kanali_wafers = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1922,10 +2012,12 @@ object_draft_schematic_food_shared_dish_kanali_wafers = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2008463907
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_kanali_wafers, 2008463907)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_kanali_wafers, "object/draft_schematic/food/shared_dish_kanali_wafers.iff")
 
 object_draft_schematic_food_shared_dish_karkan_ribenes = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1963,10 +2055,12 @@ object_draft_schematic_food_shared_dish_karkan_ribenes = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 627565504
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_karkan_ribenes, 627565504)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_karkan_ribenes, "object/draft_schematic/food/shared_dish_karkan_ribenes.iff")
 
 object_draft_schematic_food_shared_dish_meatlump = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2004,10 +2098,12 @@ object_draft_schematic_food_shared_dish_meatlump = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2726957459
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_meatlump, 2726957459)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_meatlump, "object/draft_schematic/food/shared_dish_meatlump.iff")
 
 object_draft_schematic_food_shared_dish_ormachek = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2045,10 +2141,12 @@ object_draft_schematic_food_shared_dish_ormachek = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2829323424
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ormachek, 2829323424)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ormachek, "object/draft_schematic/food/shared_dish_ormachek.iff")
 
 object_draft_schematic_food_shared_dish_patot_panak = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2086,10 +2184,12 @@ object_draft_schematic_food_shared_dish_patot_panak = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2914707129
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_patot_panak, 2914707129)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_patot_panak, "object/draft_schematic/food/shared_dish_patot_panak.iff")
 
 object_draft_schematic_food_shared_dish_protato = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2127,10 +2227,12 @@ object_draft_schematic_food_shared_dish_protato = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4162901350
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_protato, 4162901350)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_protato, "object/draft_schematic/food/shared_dish_protato.iff")
 
 object_draft_schematic_food_shared_dish_puk = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2168,10 +2270,12 @@ object_draft_schematic_food_shared_dish_puk = SharedDraftSchematicObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 497945491
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_puk, 497945491)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_puk, "object/draft_schematic/food/shared_dish_puk.iff")
 
 object_draft_schematic_food_shared_dish_rakririan_burnout_sauce = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2209,10 +2313,12 @@ object_draft_schematic_food_shared_dish_rakririan_burnout_sauce = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1517322434
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_rakririan_burnout_sauce, 1517322434)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_rakririan_burnout_sauce, "object/draft_schematic/food/shared_dish_rakririan_burnout_sauce.iff")
 
 object_draft_schematic_food_shared_dish_ramorrean_capanata = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2250,10 +2356,12 @@ object_draft_schematic_food_shared_dish_ramorrean_capanata = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 765738435
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ramorrean_capanata, 765738435)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_ramorrean_capanata, "object/draft_schematic/food/shared_dish_ramorrean_capanata.iff")
 
 object_draft_schematic_food_shared_dish_rations = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2291,10 +2399,12 @@ object_draft_schematic_food_shared_dish_rations = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 103531831
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_rations, 103531831)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_rations, "object/draft_schematic/food/shared_dish_rations.iff")
 
 object_draft_schematic_food_shared_dish_scrimpi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2332,10 +2442,12 @@ object_draft_schematic_food_shared_dish_scrimpi = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 613957967
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_scrimpi, 613957967)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_scrimpi, "object/draft_schematic/food/shared_dish_scrimpi.iff")
 
 object_draft_schematic_food_shared_dish_soypro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2373,10 +2485,12 @@ object_draft_schematic_food_shared_dish_soypro = SharedDraftSchematicObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1964935706
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_soypro, 1964935706)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_soypro, "object/draft_schematic/food/shared_dish_soypro.iff")
 
 object_draft_schematic_food_shared_dish_stewed_gwouch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2414,10 +2528,12 @@ object_draft_schematic_food_shared_dish_stewed_gwouch = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3781922189
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_stewed_gwouch, 3781922189)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_stewed_gwouch, "object/draft_schematic/food/shared_dish_stewed_gwouch.iff")
 
 object_draft_schematic_food_shared_dish_synthsteak = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2455,10 +2571,12 @@ object_draft_schematic_food_shared_dish_synthsteak = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1494447818
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_synthsteak, 1494447818)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_synthsteak, "object/draft_schematic/food/shared_dish_synthsteak.iff")
 
 object_draft_schematic_food_shared_dish_teltier_noodles = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2496,10 +2614,12 @@ object_draft_schematic_food_shared_dish_teltier_noodles = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3118947489
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_teltier_noodles, 3118947489)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_teltier_noodles, "object/draft_schematic/food/shared_dish_teltier_noodles.iff")
 
 object_draft_schematic_food_shared_dish_terratta = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2537,10 +2657,12 @@ object_draft_schematic_food_shared_dish_terratta = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2124204125
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_terratta, 2124204125)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_terratta, "object/draft_schematic/food/shared_dish_terratta.iff")
 
 object_draft_schematic_food_shared_dish_thakitillo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2578,10 +2700,12 @@ object_draft_schematic_food_shared_dish_thakitillo = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3315393340
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_thakitillo, 3315393340)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_thakitillo, "object/draft_schematic/food/shared_dish_thakitillo.iff")
 
 object_draft_schematic_food_shared_dish_travel_biscuits = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2619,10 +2743,12 @@ object_draft_schematic_food_shared_dish_travel_biscuits = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 854764144
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_travel_biscuits, 854764144)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_travel_biscuits, "object/draft_schematic/food/shared_dish_travel_biscuits.iff")
 
 object_draft_schematic_food_shared_dish_trimpian = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2660,10 +2786,12 @@ object_draft_schematic_food_shared_dish_trimpian = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2878426134
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_trimpian, 2878426134)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_trimpian, "object/draft_schematic/food/shared_dish_trimpian.iff")
 
 object_draft_schematic_food_shared_dish_vegeparsine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2701,10 +2829,12 @@ object_draft_schematic_food_shared_dish_vegeparsine = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 810320403
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_vegeparsine, 810320403)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_vegeparsine, "object/draft_schematic/food/shared_dish_vegeparsine.iff")
 
 object_draft_schematic_food_shared_dish_veghash = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2742,10 +2872,12 @@ object_draft_schematic_food_shared_dish_veghash = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1653623915
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_veghash, 1653623915)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_veghash, "object/draft_schematic/food/shared_dish_veghash.iff")
 
 object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2783,10 +2915,12 @@ object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3313024144
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee, 3313024144)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee, "object/draft_schematic/food/shared_dish_vercupti_of_agazza_boleruuee.iff")
 
 object_draft_schematic_food_shared_dish_wastril_bread = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2824,10 +2958,12 @@ object_draft_schematic_food_shared_dish_wastril_bread = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1843611804
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_wastril_bread, 1843611804)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_wastril_bread, "object/draft_schematic/food/shared_dish_wastril_bread.iff")
 
 object_draft_schematic_food_shared_dish_xermaauc = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2865,10 +3001,12 @@ object_draft_schematic_food_shared_dish_xermaauc = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 117295245
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_xermaauc, 117295245)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_dish_xermaauc, "object/draft_schematic/food/shared_dish_xermaauc.iff")
 
 object_draft_schematic_food_shared_drink_accarragm = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2906,10 +3044,12 @@ object_draft_schematic_food_shared_drink_accarragm = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2962432093
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_accarragm, 2962432093)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_accarragm, "object/draft_schematic/food/shared_drink_accarragm.iff")
 
 object_draft_schematic_food_shared_drink_aitha = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2947,10 +3087,12 @@ object_draft_schematic_food_shared_drink_aitha = SharedDraftSchematicObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 276726581
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_aitha, 276726581)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_aitha, "object/draft_schematic/food/shared_drink_aitha.iff")
 
 object_draft_schematic_food_shared_drink_alcohol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2988,10 +3130,12 @@ object_draft_schematic_food_shared_drink_alcohol = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4248532865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_alcohol, 4248532865)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_alcohol, "object/draft_schematic/food/shared_drink_alcohol.iff")
 
 object_draft_schematic_food_shared_drink_aludium_pu36 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3029,10 +3173,12 @@ object_draft_schematic_food_shared_drink_aludium_pu36 = SharedDraftSchematicObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 732438292
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_aludium_pu36, 732438292)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_aludium_pu36, "object/draft_schematic/food/shared_drink_aludium_pu36.iff")
 
 object_draft_schematic_food_shared_drink_angerian_fishak_surprise = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3070,10 +3216,12 @@ object_draft_schematic_food_shared_drink_angerian_fishak_surprise = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1973756725
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_angerian_fishak_surprise, 1973756725)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_angerian_fishak_surprise, "object/draft_schematic/food/shared_drink_angerian_fishak_surprise.iff")
 
 object_draft_schematic_food_shared_drink_antakarian_fire_dancer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3111,10 +3259,12 @@ object_draft_schematic_food_shared_drink_antakarian_fire_dancer = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3876777294
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_antakarian_fire_dancer, 3876777294)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_antakarian_fire_dancer, "object/draft_schematic/food/shared_drink_antakarian_fire_dancer.iff")
 
 object_draft_schematic_food_shared_drink_bantha_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3152,10 +3302,12 @@ object_draft_schematic_food_shared_drink_bantha_blaster = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 13350537
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_bantha_blaster, 13350537)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_bantha_blaster, "object/draft_schematic/food/shared_drink_bantha_blaster.iff")
 
 object_draft_schematic_food_shared_drink_bespin_port = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3193,10 +3345,12 @@ object_draft_schematic_food_shared_drink_bespin_port = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1871364813
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_bespin_port, 1871364813)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_bespin_port, "object/draft_schematic/food/shared_drink_bespin_port.iff")
 
 object_draft_schematic_food_shared_drink_blue_milk = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3234,10 +3388,12 @@ object_draft_schematic_food_shared_drink_blue_milk = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1399918537
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_blue_milk, 1399918537)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_blue_milk, "object/draft_schematic/food/shared_drink_blue_milk.iff")
 
 object_draft_schematic_food_shared_drink_breath_of_heaven = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3275,10 +3431,12 @@ object_draft_schematic_food_shared_drink_breath_of_heaven = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4267245284
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_breath_of_heaven, 4267245284)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_breath_of_heaven, "object/draft_schematic/food/shared_drink_breath_of_heaven.iff")
 
 object_draft_schematic_food_shared_drink_caf = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3316,10 +3474,12 @@ object_draft_schematic_food_shared_drink_caf = SharedDraftSchematicObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3676820545
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_caf, 3676820545)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_caf, "object/draft_schematic/food/shared_drink_caf.iff")
 
 object_draft_schematic_food_shared_drink_charde = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3357,10 +3517,12 @@ object_draft_schematic_food_shared_drink_charde = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2023703123
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_charde, 2023703123)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_charde, "object/draft_schematic/food/shared_drink_charde.iff")
 
 object_draft_schematic_food_shared_drink_corellian_ale = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3398,10 +3560,12 @@ object_draft_schematic_food_shared_drink_corellian_ale = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 760961429
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_corellian_ale, 760961429)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_corellian_ale, "object/draft_schematic/food/shared_drink_corellian_ale.iff")
 
 object_draft_schematic_food_shared_drink_corellian_brandy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3439,10 +3603,12 @@ object_draft_schematic_food_shared_drink_corellian_brandy = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 452526783
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_corellian_brandy, 452526783)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_corellian_brandy, "object/draft_schematic/food/shared_drink_corellian_brandy.iff")
 
 object_draft_schematic_food_shared_drink_cortyg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3480,10 +3646,12 @@ object_draft_schematic_food_shared_drink_cortyg = SharedDraftSchematicObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3280328510
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_cortyg, 3280328510)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_cortyg, "object/draft_schematic/food/shared_drink_cortyg.iff")
 
 object_draft_schematic_food_shared_drink_deuterium_pyro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3521,10 +3689,12 @@ object_draft_schematic_food_shared_drink_deuterium_pyro = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 803945736
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_deuterium_pyro, 803945736)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_deuterium_pyro, "object/draft_schematic/food/shared_drink_deuterium_pyro.iff")
 
 object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3562,10 +3732,12 @@ object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1003536549
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop, 1003536549)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop, "object/draft_schematic/food/shared_drink_double_dip_outer_rim_rumdrop.iff")
 
 object_draft_schematic_food_shared_drink_durindfire = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3603,10 +3775,12 @@ object_draft_schematic_food_shared_drink_durindfire = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 982697559
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_durindfire, 982697559)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_durindfire, "object/draft_schematic/food/shared_drink_durindfire.iff")
 
 object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3644,10 +3818,12 @@ object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1393778960
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud, 1393778960)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud, "object/draft_schematic/food/shared_drink_elshandruu_pica_thundercloud.iff")
 
 object_draft_schematic_food_shared_drink_flameout = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3685,10 +3861,12 @@ object_draft_schematic_food_shared_drink_flameout = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2009122717
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_flameout, 2009122717)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_flameout, "object/draft_schematic/food/shared_drink_flameout.iff")
 
 object_draft_schematic_food_shared_drink_garrmorl = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3726,10 +3904,12 @@ object_draft_schematic_food_shared_drink_garrmorl = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 231956831
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_garrmorl, 231956831)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_garrmorl, "object/draft_schematic/food/shared_drink_garrmorl.iff")
 
 object_draft_schematic_food_shared_drink_gralinyn_juice = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3767,10 +3947,12 @@ object_draft_schematic_food_shared_drink_gralinyn_juice = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1147287850
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_gralinyn_juice, 1147287850)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_gralinyn_juice, "object/draft_schematic/food/shared_drink_gralinyn_juice.iff")
 
 object_draft_schematic_food_shared_drink_ice_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3808,10 +3990,12 @@ object_draft_schematic_food_shared_drink_ice_blaster = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3333710935
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ice_blaster, 3333710935)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ice_blaster, "object/draft_schematic/food/shared_drink_ice_blaster.iff")
 
 object_draft_schematic_food_shared_drink_ithorian_mist = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3849,10 +4033,12 @@ object_draft_schematic_food_shared_drink_ithorian_mist = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2653880997
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ithorian_mist, 2653880997)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ithorian_mist, "object/draft_schematic/food/shared_drink_ithorian_mist.iff")
 
 object_draft_schematic_food_shared_drink_jaar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3890,10 +4076,12 @@ object_draft_schematic_food_shared_drink_jaar = SharedDraftSchematicObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4135578942
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_jaar, 4135578942)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_jaar, "object/draft_schematic/food/shared_drink_jaar.iff")
 
 object_draft_schematic_food_shared_drink_jawa_beer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3931,10 +4119,12 @@ object_draft_schematic_food_shared_drink_jawa_beer = SharedDraftSchematicObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2181376134
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_jawa_beer, 2181376134)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_jawa_beer, "object/draft_schematic/food/shared_drink_jawa_beer.iff")
 
 object_draft_schematic_food_shared_drink_kylessian_fruit_distillate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3972,10 +4162,12 @@ object_draft_schematic_food_shared_drink_kylessian_fruit_distillate = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 472363791
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_kylessian_fruit_distillate, 472363791)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_kylessian_fruit_distillate, "object/draft_schematic/food/shared_drink_kylessian_fruit_distillate.iff")
 
 object_draft_schematic_food_shared_drink_mandalorian_wine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4013,10 +4205,12 @@ object_draft_schematic_food_shared_drink_mandalorian_wine = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2504650869
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_mandalorian_wine, 2504650869)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_mandalorian_wine, "object/draft_schematic/food/shared_drink_mandalorian_wine.iff")
 
 object_draft_schematic_food_shared_drink_ruby_bliel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4054,10 +4248,12 @@ object_draft_schematic_food_shared_drink_ruby_bliel = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1465295596
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ruby_bliel, 1465295596)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_ruby_bliel, "object/draft_schematic/food/shared_drink_ruby_bliel.iff")
 
 object_draft_schematic_food_shared_drink_skannbult_likker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4095,10 +4291,12 @@ object_draft_schematic_food_shared_drink_skannbult_likker = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1072768290
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_skannbult_likker, 1072768290)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_skannbult_likker, "object/draft_schematic/food/shared_drink_skannbult_likker.iff")
 
 object_draft_schematic_food_shared_drink_spiced_tea = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4136,10 +4334,12 @@ object_draft_schematic_food_shared_drink_spiced_tea = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1970945815
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_spiced_tea, 1970945815)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_spiced_tea, "object/draft_schematic/food/shared_drink_spiced_tea.iff")
 
 object_draft_schematic_food_shared_drink_starshine_surprise = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4177,10 +4377,12 @@ object_draft_schematic_food_shared_drink_starshine_surprise = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3111876122
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_starshine_surprise, 3111876122)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_starshine_surprise, "object/draft_schematic/food/shared_drink_starshine_surprise.iff")
 
 object_draft_schematic_food_shared_drink_sullustan_gin = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4218,10 +4420,12 @@ object_draft_schematic_food_shared_drink_sullustan_gin = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1582183508
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_sullustan_gin, 1582183508)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_sullustan_gin, "object/draft_schematic/food/shared_drink_sullustan_gin.iff")
 
 object_draft_schematic_food_shared_drink_tatooine_sunburn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4259,10 +4463,12 @@ object_draft_schematic_food_shared_drink_tatooine_sunburn = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3040174805
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tatooine_sunburn, 3040174805)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tatooine_sunburn, "object/draft_schematic/food/shared_drink_tatooine_sunburn.iff")
 
 object_draft_schematic_food_shared_drink_tilla_tiil = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4300,10 +4506,12 @@ object_draft_schematic_food_shared_drink_tilla_tiil = SharedDraftSchematicObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 727640070
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tilla_tiil, 727640070)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tilla_tiil, "object/draft_schematic/food/shared_drink_tilla_tiil.iff")
 
 object_draft_schematic_food_shared_drink_tssolok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4341,10 +4549,12 @@ object_draft_schematic_food_shared_drink_tssolok = SharedDraftSchematicObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 568876713
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tssolok, 568876713)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_tssolok, "object/draft_schematic/food/shared_drink_tssolok.iff")
 
 object_draft_schematic_food_shared_drink_vasarian_brandy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4382,10 +4592,12 @@ object_draft_schematic_food_shared_drink_vasarian_brandy = SharedDraftSchematicO
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 483425020
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_vasarian_brandy, 483425020)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_vasarian_brandy, "object/draft_schematic/food/shared_drink_vasarian_brandy.iff")
 
 object_draft_schematic_food_shared_drink_vayerbok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4423,10 +4635,12 @@ object_draft_schematic_food_shared_drink_vayerbok = SharedDraftSchematicObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 823533577
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_vayerbok, 823533577)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_vayerbok, "object/draft_schematic/food/shared_drink_vayerbok.iff")
 
 object_draft_schematic_food_shared_drink_veronian_berry_wine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4464,7 +4678,9 @@ object_draft_schematic_food_shared_drink_veronian_berry_wine = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3150731917
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_veronian_berry_wine, 3150731917)
+ObjectTemplates:addTemplate(object_draft_schematic_food_shared_drink_veronian_berry_wine, "object/draft_schematic/food/shared_drink_veronian_berry_wine.iff")

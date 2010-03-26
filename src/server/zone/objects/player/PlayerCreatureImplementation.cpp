@@ -10,18 +10,25 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
+#include "server/zone/packets/zone/CmdSceneReady.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/packets/player/BadgesResponseMessage.h"
 
 #include "server/chat/room/ChatRoom.h"
+#include "server/chat/ChatManager.h"
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/group/GroupObject.h"
+
 
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
+
 
 #include "PlayerObject.h"
 
@@ -30,6 +37,8 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
+
+	persistentMessages.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerCreature");
 }
@@ -55,6 +64,9 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		grandParent->sendTo(_this);
 	} else
 		sendTo(_this, doClose);
+
+	if (group != NULL)
+		group->sendTo(_this);
 
 	owner->resetPacketCheckupTime();
 }
@@ -106,9 +118,6 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	if (scno == _this)
 		return;
-
-	if (scno->isBuildingObject())
-		((BuildingObject*)scno)->removeNotifiedObject(_this);
 
 	scno->sendDestroyTo(_this);
 }
@@ -170,6 +179,8 @@ void PlayerCreatureImplementation::unload() {
 
 	ManagedReference<SceneObject*> savedParent = NULL;
 
+	getPlayerObject()->notifyOffline();
+
 	if (parent != NULL) {
 		savedParentID = parent->getObjectID();
 
@@ -186,21 +197,28 @@ void PlayerCreatureImplementation::unload() {
 	}
 
 	clearUpdateToDatabaseTask();
-	updateToDatabase(false);
+	updateToDatabaseAllObjects(false);
 
 	if (savedParent != NULL)
 		getZoneServer()->updateObjectToDatabase(savedParent);
+
+	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
+
+	/*StringBuffer msg;
+	msg << "remaining ref count: " << _this->getReferenceCount();
+	info(msg.toString(), true);
+
+	_this->printReferenceHolders();*/
 }
 
 void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
-	if (isLoggingOut()) {
-		if (disconnectEvent != NULL) {
+	if (disconnectEvent != NULL) {
+		disconnectEvent->cancel();
+		delete disconnectEvent;
+		disconnectEvent = NULL;
+	}
 
-			disconnectEvent->cancel();
-			delete disconnectEvent;
-			disconnectEvent = NULL;
-		}
-	} else if (isLoggingIn()) {
+	if (isLoggingIn()) {
 		unlock();
 
 		if (owner != NULL && owner != client)
@@ -308,4 +326,40 @@ void PlayerCreatureImplementation::setOnline() {
 		playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
 
 	doRecovery();
+}
+
+void PlayerCreatureImplementation::sendMessage(BasePacket* msg) {
+	if (owner == NULL) {
+		delete msg;
+		return;
+	} else {
+		owner->sendMessage(msg);
+	}
+}
+
+void PlayerCreatureImplementation::insertToBuilding(BuildingObject * building) {
+	SceneObjectImplementation::insertToBuilding(building);
+	building->onEnter(_this);
+}
+
+void PlayerCreatureImplementation::removeFromBuilding(BuildingObject * building) {
+	SceneObjectImplementation::removeFromBuilding(building);
+	building->onExit(_this);
+}
+
+uint32 PlayerCreatureImplementation::getNewSuiBoxID(uint32 type) {
+	return (++suiBoxNextID << 16) + (uint16)type;
+}
+
+void PlayerCreatureImplementation::sendBadgesResponseTo(PlayerCreature* player) {
+	BaseMessage* msg = new BadgesResponseMessage(_this, &badges);
+	player->sendMessage(msg);
+}
+
+void PlayerCreatureImplementation::notifySceneReady() {
+	BaseMessage* msg = new CmdSceneReady();
+	sendMessage(msg);
+
+	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+	playerObject->sendFriendLists();
 }

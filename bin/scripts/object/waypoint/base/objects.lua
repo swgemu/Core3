@@ -77,10 +77,12 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 80681620
 }
 
-ObjectTemplates:addTemplate(object_waypoint_base_shared_base_waypoint, 80681620)
+ObjectTemplates:addTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
 
 object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2511311124
 }
 
-ObjectTemplates:addTemplate(object_waypoint_base_shared_waypoint_default, 2511311124)
+ObjectTemplates:addTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")

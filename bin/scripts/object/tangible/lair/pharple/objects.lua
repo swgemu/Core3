@@ -85,13 +85,14 @@ object_tangible_lair_pharple_shared_lair_pharple = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3003958462
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple, 3003958462)
+ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple, "object/tangible/lair/pharple/shared_lair_pharple.iff")
 
 object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4033646950
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, 4033646950)
+ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, "object/tangible/lair/pharple/shared_lair_pharple_wasteland.iff")

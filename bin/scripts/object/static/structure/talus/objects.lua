@@ -76,10 +76,12 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 181836729
 }
 
-ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, 181836729)
+ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, "object/static/structure/talus/shared_talus_imprv_bannerpole_s01.iff")
 
 object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -116,7 +118,9 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 929058155
 }
 
-ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, 929058155)
+ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, "object/static/structure/talus/shared_talus_imprv_flagpole_s01.iff")

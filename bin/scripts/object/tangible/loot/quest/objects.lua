@@ -85,13 +85,14 @@ object_tangible_loot_quest_shared_2h_sword_scythe_schematic = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1779384495
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_2h_sword_scythe_schematic, 1779384495)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_2h_sword_scythe_schematic, "object/tangible/loot/quest/shared_2h_sword_scythe_schematic.iff")
 
 object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s04_m.sat",
@@ -137,13 +138,14 @@ object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 619337831
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_anakin_helmet, 619337831)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_anakin_helmet, "object/tangible/loot/quest/shared_anakin_helmet.iff")
 
 object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 144495220
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ardanium_ii, 144495220)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ardanium_ii, "object/tangible/loot/quest/shared_ardanium_ii.iff")
 
 object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
@@ -241,13 +244,14 @@ object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3429421231
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_bantha_doll, 3429421231)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_bantha_doll, "object/tangible/loot/quest/shared_bantha_doll.iff")
 
 object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
@@ -293,13 +297,14 @@ object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1855025689
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_carved_stone, 1855025689)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_carved_stone, "object/tangible/loot/quest/shared_carved_stone.iff")
 
 object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -345,13 +350,14 @@ object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1540822606
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_crude_stone, 1540822606)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_crude_stone, "object/tangible/loot/quest/shared_crude_stone.iff")
 
 object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -397,13 +403,14 @@ object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 513781670
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_droid_brain_anakin, 513781670)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_droid_brain_anakin, "object/tangible/loot/quest/shared_droid_brain_anakin.iff")
 
 object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
@@ -449,13 +456,14 @@ object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2926434751
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_edb_quest_heirloom_bowl, 2926434751)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_edb_quest_heirloom_bowl, "object/tangible/loot/quest/shared_edb_quest_heirloom_bowl.iff")
 
 object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -501,13 +509,14 @@ object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 561758267
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_endrine, 561758267)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_endrine, "object/tangible/loot/quest/shared_endrine.iff")
 
 object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_bol_skull.apt",
@@ -553,13 +562,14 @@ object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3113427386
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01, 3113427386)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01, "object/tangible/loot/quest/shared_frn_quest_dant_skull_bol_01.iff")
 
 object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2961420204
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_krayt_skull_01, 2961420204)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_krayt_skull_01, "object/tangible/loot/quest/shared_frn_quest_krayt_skull_01.iff")
 
 object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -657,13 +668,14 @@ object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1225123257
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_borvos_money, 1225123257)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_borvos_money, "object/tangible/loot/quest/shared_huff_quest_borvos_money.iff")
 
 object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -709,13 +721,14 @@ object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3663409611
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_corsec_badge, 3663409611)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_corsec_badge, "object/tangible/loot/quest/shared_huff_quest_corsec_badge.iff")
 
 object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 940267990
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_top_secret_documents, 940267990)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_top_secret_documents, "object/tangible/loot/quest/shared_huff_quest_top_secret_documents.iff")
 
 object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
@@ -813,13 +827,14 @@ object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2337201287
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken, 2337201287)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken, "object/tangible/loot/quest/shared_hvy_disruptor_cannon_broken.iff")
 
 object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4063290190
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lance_nightsister_schematic, 4063290190)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lance_nightsister_schematic, "object/tangible/loot/quest/shared_lance_nightsister_schematic.iff")
 
 object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lifeday_orb.apt",
@@ -917,13 +933,14 @@ object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3441146756
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lifeday_orb, 3441146756)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lifeday_orb, "object/tangible/loot/quest/shared_lifeday_orb.iff")
 
 object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -969,13 +986,14 @@ object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2300896857
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_droid_memory_chip, 2300896857)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_droid_memory_chip, "object/tangible/loot/quest/shared_nym_droid_memory_chip.iff")
 
 object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -1021,13 +1039,14 @@ object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1171264370
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_filtered_gas, 1171264370)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_filtered_gas, "object/tangible/loot/quest/shared_nym_filtered_gas.iff")
 
 object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1073,13 +1092,14 @@ object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 701926242
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_hard_drive, 701926242)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_hard_drive, "object/tangible/loot/quest/shared_nym_hard_drive.iff")
 
 object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
@@ -1125,13 +1145,14 @@ object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1123957010
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_imggc, 1123957010)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_imggc, "object/tangible/loot/quest/shared_nym_imggc.iff")
 
 object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -1177,13 +1198,14 @@ object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2924880449
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ostrine, 2924880449)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ostrine, "object/tangible/loot/quest/shared_ostrine.iff")
 
 object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -1229,13 +1251,14 @@ object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2547815080
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_goru_calling_card, 2547815080)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_goru_calling_card, "object/tangible/loot/quest/shared_quest_item_goru_calling_card.iff")
 
 object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3548721475
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar, 3548721475)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar, "object/tangible/loot/quest/shared_quest_item_sarlacc_bile_jar.iff")
 
 object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -1333,13 +1357,14 @@ object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2368845489
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_spice_jar, 2368845489)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_spice_jar, "object/tangible/loot/quest/shared_quest_item_spice_jar.iff")
 
 object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2624714198
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_zicx_bug_jar, 2624714198)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_zicx_bug_jar, "object/tangible/loot/quest/shared_quest_item_zicx_bug_jar.iff")
 
 object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -1437,13 +1463,14 @@ object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2224923865
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_satchel_charge, 2224923865)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_satchel_charge, "object/tangible/loot/quest/shared_quest_satchel_charge.iff")
 
 object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1489,13 +1516,14 @@ object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 916480864
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_stimpack_a_schematic, 916480864)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_stimpack_a_schematic, "object/tangible/loot/quest/shared_quest_stimpack_a_schematic.iff")
 
 object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
@@ -1542,6 +1570,7 @@ object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -1551,7 +1580,7 @@ object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplat
 	clientObjectCRC = 1695535287
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rifle_quest_tusken, 1695535287)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rifle_quest_tusken, "object/tangible/loot/quest/shared_rifle_quest_tusken.iff")
 
 object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -1597,13 +1626,14 @@ object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 880694768
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rudic, 880694768)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rudic, "object/tangible/loot/quest/shared_rudic.iff")
 
 object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1649,13 +1679,14 @@ object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1815099947
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest, 1815099947)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest, "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1701,13 +1732,14 @@ object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2800706287
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s03_quest, 2800706287)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s03_quest, "object/tangible/loot/quest/shared_schematic_backpack_s03_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1753,13 +1785,14 @@ object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3031620704
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s06_quest, 3031620704)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s06_quest, "object/tangible/loot/quest/shared_schematic_backpack_s06_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1805,13 +1838,14 @@ object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2807969436
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s02_quest, 2807969436)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s02_quest, "object/tangible/loot/quest/shared_schematic_bandolier_s02_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1857,13 +1891,14 @@ object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3140951446
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s04_quest, 3140951446)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s04_quest, "object/tangible/loot/quest/shared_schematic_bandolier_s04_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1909,13 +1944,14 @@ object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3011414562
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_belt_s05_quest, 3011414562)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_belt_s05_quest, "object/tangible/loot/quest/shared_schematic_belt_s05_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -1961,13 +1997,14 @@ object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3738946257
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_carbine_e11_quest, 3738946257)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_carbine_e11_quest, "object/tangible/loot/quest/shared_schematic_carbine_e11_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -2013,13 +2050,14 @@ object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4276949463
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_dress_s08_quest, 4276949463)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_dress_s08_quest, "object/tangible/loot/quest/shared_schematic_dress_s08_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -2065,13 +2103,14 @@ object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4044312600
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest, 4044312600)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest, "object/tangible/loot/quest/shared_schematic_pistol_fwg5_quest.iff")
 
 object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -2117,13 +2156,14 @@ object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3517653342
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_republic_blaster_quest, 3517653342)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_republic_blaster_quest, "object/tangible/loot/quest/shared_schematic_republic_blaster_quest.iff")
 
 object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2169,13 +2209,14 @@ object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2394816327
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_campaign_disk, 2394816327)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_campaign_disk, "object/tangible/loot/quest/shared_sean_campaign_disk.iff")
 
 object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2221,13 +2262,14 @@ object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1553800313
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_history_disk, 1553800313)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_history_disk, "object/tangible/loot/quest/shared_sean_history_disk.iff")
 
 object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2273,13 +2315,14 @@ object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 560125063
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_alog, 560125063)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_alog, "object/tangible/loot/quest/shared_sean_questn_alog.iff")
 
 object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2325,13 +2368,14 @@ object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1604016241
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_gpapers, 1604016241)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_gpapers, "object/tangible/loot/quest/shared_sean_questn_gpapers.iff")
 
 object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2377,13 +2421,14 @@ object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3604298808
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_tdisk, 3604298808)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_tdisk, "object/tangible/loot/quest/shared_sean_questn_tdisk.iff")
 
 object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -2429,13 +2474,14 @@ object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3591581058
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_ctestimony, 3591581058)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_ctestimony, "object/tangible/loot/quest/shared_sean_questp_ctestimony.iff")
 
 object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -2481,13 +2527,14 @@ object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 674706343
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_htestimony, 674706343)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_htestimony, "object/tangible/loot/quest/shared_sean_questp_htestimony.iff")
 
 object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2533,13 +2580,14 @@ object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3743353236
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_mdisk, 3743353236)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_mdisk, "object/tangible/loot/quest/shared_sean_questp_mdisk.iff")
 
 object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2585,13 +2633,14 @@ object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2894170579
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shellfish_harvester_schematic, 2894170579)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shellfish_harvester_schematic, "object/tangible/loot/quest/shared_shellfish_harvester_schematic.iff")
 
 object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2637,13 +2686,14 @@ object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schema
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 856720284
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic, 856720284)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic, "object/tangible/loot/quest/shared_shield_generator_personal_imperial_test_schematic.iff")
 
 object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dragon_pearl.apt",
@@ -2689,13 +2739,14 @@ object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1409323836
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_smooth_stone, 1409323836)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_smooth_stone, "object/tangible/loot/quest/shared_smooth_stone.iff")
 
 object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2741,13 +2792,14 @@ object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1380874599
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_treasure_map_hedon, 1380874599)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_treasure_map_hedon, "object/tangible/loot/quest/shared_treasure_map_hedon.iff")
 
 object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s01_m.sat",
@@ -2793,13 +2845,14 @@ object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2221778773
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_tusken_head, 2221778773)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_tusken_head, "object/tangible/loot/quest/shared_tusken_head.iff")
 
 object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
@@ -2845,13 +2898,14 @@ object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2259444048
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_valarian_dagger, 2259444048)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_valarian_dagger, "object/tangible/loot/quest/shared_valarian_dagger.iff")
 
 object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2897,13 +2951,14 @@ object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1885312788
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_campaign_disk, 1885312788)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_campaign_disk, "object/tangible/loot/quest/shared_victor_campaign_disk.iff")
 
 object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -2949,13 +3004,14 @@ object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1528043292
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_dseal, 1528043292)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_dseal, "object/tangible/loot/quest/shared_victor_questn_dseal.iff")
 
 object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3001,13 +3057,14 @@ object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3882415492
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_hlist, 3882415492)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_hlist, "object/tangible/loot/quest/shared_victor_questn_hlist.iff")
 
 object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -3053,13 +3110,14 @@ object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 367939380
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_journal, 367939380)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_journal, "object/tangible/loot/quest/shared_victor_questn_journal.iff")
 
 object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -3105,13 +3163,14 @@ object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1576962769
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_jregistry, 1576962769)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_jregistry, "object/tangible/loot/quest/shared_victor_questp_jregistry.iff")
 
 object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -3157,13 +3216,14 @@ object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1884397294
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_receipt, 1884397294)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_receipt, "object/tangible/loot/quest/shared_victor_questp_receipt.iff")
 
 object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -3209,13 +3269,14 @@ object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1434128341
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_testimony, 1434128341)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_testimony, "object/tangible/loot/quest/shared_victor_questp_testimony.iff")
 
 object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s01.apt",
@@ -3261,10 +3322,11 @@ object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1481000655
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_wind_crystal, 1481000655)
+ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_wind_crystal, "object/tangible/loot/quest/shared_wind_crystal.iff")

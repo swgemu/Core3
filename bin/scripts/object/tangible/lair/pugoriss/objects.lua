@@ -85,13 +85,14 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1270614001
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, 1270614001)
+ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
 
 object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3218295663
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, 3218295663)
+ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")

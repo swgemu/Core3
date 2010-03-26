@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -77,9 +79,39 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/TransferErrorCode.h"
 
 #include "engine/log/Logger.h"
 
@@ -105,6 +137,10 @@ using namespace server::zone::packets::object;
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "system/util/SortedVector.h"
+
+#include "system/lang/StackTrace.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -115,6 +151,8 @@ public:
 	static const int CELLOBJECT = 11;
 
 	static const int PLAYEROBJECT = 12;
+
+	static const int GROUPOBJECT = 13;
 
 	static const int ARMOR = 0x100;
 
@@ -139,6 +177,16 @@ public:
 	static const int MUNICIPALBUILDING = 0x201;
 
 	static const int FACTIONPERKBUILDING = 0x203;
+
+	static const int TUTORIALBUILDING = 0x204;
+
+	static const int MEDICALBUILDING = 0x205;
+
+	static const int RECREATIONBUILDING = 0x206;
+
+	static const int CLONINGBUILDING = 0x207;
+
+	static const int TRAVELBUILDING = 0x208;
 
 	static const int CREATURE = 0x400;
 
@@ -456,7 +504,7 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	SceneObject(LuaObject* templateData);
+	SceneObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -478,9 +526,15 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	bool canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask = true);
+	void updateToDatabase();
+
+	void updateToDatabaseWithoutChildren();
+
+	void updateToDatabaseAllObjects(bool startTask = true);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	void create(ZoneClientSession* client);
 
@@ -504,11 +558,13 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
-	void sendAttributeListTo(SceneObject* object);
+	void sendAttributeListTo(PlayerCreature* object);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	int useObject(SceneObject* object);
+	void openContainerTo(PlayerCreature* player);
 
 	void insertToZone(Zone* zone);
 
@@ -538,6 +594,16 @@ public:
 
 	unsigned long long getParentID();
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int onPositionUpdate();
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -558,6 +624,8 @@ public:
 
 	unsigned int getServerObjectCRC();
 
+	bool isWaypointObject();
+
 	StringId* getObjectName();
 
 	StringId* getDetailedDescription();
@@ -573,6 +641,8 @@ public:
 	int getSlotDescriptorSize();
 
 	int getContainerObjectsSize();
+
+	bool hasFullContainerObjects();
 
 	SceneObject* getContainerObject(int idx);
 
@@ -596,6 +666,8 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
+	UnicodeString getCustomObjectName();
+
 	bool isInQuadTree();
 
 	String getLoggingName();
@@ -608,9 +680,17 @@ public:
 
 	bool isWeaponObject();
 
+	bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	bool isTangibleObject();
+
+	bool isInstrument();
+
+	bool isBazaarTerminal();
 
 	void setPosition(float x, float z, float y);
 
@@ -638,11 +718,15 @@ public:
 
 	void setLoggingName(const String& name);
 
+	void setStaticObject(bool val);
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
-	bool isPermanent();
+	bool hasObjectInContainer(unsigned long long objectID);
 
-	void setPermanent();
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	bool isStaticObject();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -652,6 +736,8 @@ protected:
 	String _return_getArrangementDescriptor;
 	String _return_getLoggingName;
 	String _return_getSlotDescriptor;
+
+	UnicodeString _return_getCustomObjectName;
 
 	friend class SceneObjectHelper;
 };
@@ -674,7 +760,7 @@ protected:
 
 	ManagedReference<Zone* > zone;
 
-	ManagedReference<SceneObject* > parent;
+	ManagedWeakReference<SceneObject* > parent;
 
 	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
 
@@ -696,7 +782,9 @@ protected:
 
 	StringId detailedDescription;
 
-	bool permanent;
+	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
+
+	bool staticObject;
 
 	unsigned int containerType;
 
@@ -710,6 +798,8 @@ public:
 	static const int CELLOBJECT = 11;
 
 	static const int PLAYEROBJECT = 12;
+
+	static const int GROUPOBJECT = 13;
 
 	static const int ARMOR = 0x100;
 
@@ -734,6 +824,16 @@ public:
 	static const int MUNICIPALBUILDING = 0x201;
 
 	static const int FACTIONPERKBUILDING = 0x203;
+
+	static const int TUTORIALBUILDING = 0x204;
+
+	static const int MEDICALBUILDING = 0x205;
+
+	static const int RECREATIONBUILDING = 0x206;
+
+	static const int CLONINGBUILDING = 0x207;
+
+	static const int TRAVELBUILDING = 0x208;
 
 	static const int CREATURE = 0x400;
 
@@ -1051,11 +1151,13 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	SceneObjectImplementation(LuaObject* templateData);
+	SceneObjectImplementation();
 
 	SceneObjectImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(LuaObject* templateData);
+	void finalize();
+
+	virtual void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
@@ -1075,9 +1177,15 @@ public:
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	virtual bool canAddObject(SceneObject* object);
+	virtual int canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask = true);
+	void updateToDatabase();
+
+	void updateToDatabaseWithoutChildren();
+
+	void updateToDatabaseAllObjects(bool startTask = true);
+
+	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	void create(ZoneClientSession* client);
 
@@ -1101,11 +1209,13 @@ public:
 
 	virtual void sendToOwner(bool doClose = true);
 
-	virtual void sendAttributeListTo(SceneObject* object);
+	virtual void sendAttributeListTo(PlayerCreature* object);
+
+	virtual void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	virtual int useObject(SceneObject* object);
+	virtual void openContainerTo(PlayerCreature* player);
 
 	virtual void insertToZone(Zone* zone);
 
@@ -1135,6 +1245,16 @@ public:
 
 	unsigned long long getParentID();
 
+	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	virtual int onPositionUpdate();
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -1155,6 +1275,8 @@ public:
 
 	unsigned int getServerObjectCRC();
 
+	bool isWaypointObject();
+
 	StringId* getObjectName();
 
 	StringId* getDetailedDescription();
@@ -1170,6 +1292,8 @@ public:
 	int getSlotDescriptorSize();
 
 	int getContainerObjectsSize();
+
+	bool hasFullContainerObjects();
 
 	SceneObject* getContainerObject(int idx);
 
@@ -1193,6 +1317,8 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
+	UnicodeString getCustomObjectName();
+
 	bool isInQuadTree();
 
 	String getLoggingName();
@@ -1205,9 +1331,17 @@ public:
 
 	bool isWeaponObject();
 
+	virtual bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	virtual bool isTangibleObject();
+
+	bool isInstrument();
+
+	bool isBazaarTerminal();
 
 	void setPosition(float x, float z, float y);
 
@@ -1235,11 +1369,15 @@ public:
 
 	void setLoggingName(const String& name);
 
+	void setStaticObject(bool val);
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
-	bool isPermanent();
+	bool hasObjectInContainer(unsigned long long objectID);
 
-	void setPermanent();
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	bool isStaticObject();
 
 	SceneObject* _this;
 
@@ -1248,8 +1386,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~SceneObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -1280,6 +1416,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void info(const String& msg, bool forced);
@@ -1294,9 +1432,15 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient);
 
-	bool canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask);
+	void updateToDatabase();
+
+	void updateToDatabaseWithoutChildren();
+
+	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	void create(ZoneClientSession* client);
 
@@ -1320,11 +1464,11 @@ public:
 
 	void sendToOwner(bool doClose);
 
-	void sendAttributeListTo(SceneObject* object);
+	void sendAttributeListTo(PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	int useObject(SceneObject* object);
+	void openContainerTo(PlayerCreature* player);
 
 	void insertToZone(Zone* zone);
 
@@ -1350,6 +1494,16 @@ public:
 
 	unsigned long long getParentID();
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int onPositionUpdate();
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -1370,6 +1524,8 @@ public:
 
 	unsigned int getServerObjectCRC();
 
+	bool isWaypointObject();
+
 	int getArrangementDescriptorSize();
 
 	String getArrangementDescriptor(int idx);
@@ -1381,6 +1537,8 @@ public:
 	int getSlotDescriptorSize();
 
 	int getContainerObjectsSize();
+
+	bool hasFullContainerObjects();
 
 	SceneObject* getContainerObject(int idx);
 
@@ -1404,6 +1562,8 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
+	UnicodeString getCustomObjectName();
+
 	bool isInQuadTree();
 
 	String getLoggingName();
@@ -1416,9 +1576,17 @@ public:
 
 	bool isWeaponObject();
 
+	bool isWearableObject();
+
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	bool isTangibleObject();
+
+	bool isInstrument();
+
+	bool isBazaarTerminal();
 
 	void setPosition(float x, float z, float y);
 
@@ -1444,9 +1612,13 @@ public:
 
 	void setLoggingName(const String& name);
 
-	bool isPermanent();
+	void setStaticObject(bool val);
 
-	void setPermanent();
+	bool hasObjectInContainer(unsigned long long objectID);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	bool isStaticObject();
 
 protected:
 	String _param0_info__String_bool_;

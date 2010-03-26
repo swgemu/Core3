@@ -85,13 +85,14 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1578605257
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, 1578605257)
+ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, "object/tangible/space/mission_objects/shared_palace_access_doc.iff")
 
 object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
@@ -137,10 +138,11 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1004695364
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_transfer_auth, 1004695364)
+ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_transfer_auth, "object/tangible/space/mission_objects/shared_transfer_auth.iff")

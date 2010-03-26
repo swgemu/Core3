@@ -85,10 +85,11 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 832067310
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_base_shared_base_medicine, 832067310)
+ObjectTemplates:addTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")

@@ -41,14 +41,14 @@ void HeightMap::load(const String& path) {
 		if (file->exists()) {
 			info("loaded " + path);
 		} else {
-			info("failed to load " + path);
+			error("failed to load " + path);
 
 			reader = NULL;
 		}
 	} catch (FileNotFoundException& e) {
 		reader = NULL;
 
-		info("failed to load " + path);
+		error("failed to load " + path);
 	}
 
 	unlock();

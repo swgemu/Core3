@@ -49,9 +49,7 @@ import server.zone.objects.tangible.TangibleObject;
 
 class Terminal extends TangibleObject {
 	
-	public Terminal(LuaObject templateData) {
-		super(templateData);
-		
+	public Terminal() {		
 		Logger.setLoggingName("Terminal");
 	}
 	

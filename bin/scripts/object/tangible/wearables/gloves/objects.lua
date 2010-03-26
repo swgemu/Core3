@@ -85,13 +85,14 @@ object_tangible_wearables_gloves_shared_gloves_corsec = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2451059154
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_corsec, 2451059154)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_corsec, "object/tangible/wearables/gloves/shared_gloves_corsec.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s02_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1702772985
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s02, 1702772985)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s02, "object/tangible/wearables/gloves/shared_gloves_s02.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s03_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 745744244
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s03, 745744244)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s03, "object/tangible/wearables/gloves/shared_gloves_s03.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s06_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1166721914
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s06, 1166721914)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s06, "object/tangible/wearables/gloves/shared_gloves_s06.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s07_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 210216183
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s07, 210216183)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s07, "object/tangible/wearables/gloves/shared_gloves_s07.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s10_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3964437147
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s10, 3964437147)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s10, "object/tangible/wearables/gloves/shared_gloves_s10.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s11_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2772559126
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s11, 2772559126)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s11, "object/tangible/wearables/gloves/shared_gloves_s11.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s12_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2119585153
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s12, 2119585153)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s12, "object/tangible/wearables/gloves/shared_gloves_s12.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s13_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 928721420
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s13, 928721420)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s13, "object/tangible/wearables/gloves/shared_gloves_s13.iff")
 
 object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s14_f.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3434610968
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s14, 3434610968)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s14, "object/tangible/wearables/gloves/shared_gloves_s14.iff")
 
 object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_tusken_raider_m.sat",
@@ -605,10 +615,11 @@ object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1738692931
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_tusken_raider, 1738692931)
+ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_tusken_raider, "object/tangible/wearables/gloves/shared_gloves_tusken_raider.iff")

@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ChatRoom.h"
 
 #include "../../zone/objects/player/PlayerCreature.h"
+#include "../../zone/objects/creature/CreatureObject.h"
 
 #include "../../zone/ZoneServer.h"
 
@@ -52,12 +53,6 @@ which carries forward this exception.
 #include "../../zone/packets/chat/ChatOnDestroyRoom.h"
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
-
-void ChatRoomImplementation::deploy() {
-	_this->_setObjectID(roomID);
-
-	((DistributedObjectStub*)_this)->deploy();
-}
 
 void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
@@ -98,6 +93,12 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 }
 
 void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
+	player->wlock(doLock);
+
+	player->removeChatRoom((ChatRoom*) _this);
+
+	player->unlock(doLock);
+
 	wlock();
 
 	playerList.drop(player->getFirstName());
@@ -106,12 +107,6 @@ void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
 	player->sendMessage(msg);
 
 	unlock();
-
-	player->wlock(doLock);
-
-	player->removeChatRoom((ChatRoom*) _this);
-
-	player->unlock(doLock);
 }
 
 void ChatRoomImplementation::removePlayer(const String& player) {
@@ -139,6 +134,15 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 		System::out << "unreported Exception in ChatRoom::removePlayer(const String& player)\n";
 		play->unlock();
 	}
+}
+
+void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
+	for (int i = 0; i < playerList.size(); ++i) {
+		PlayerCreature* player = playerList.get(i);
+		player->sendMessage(msg->clone());
+	}
+
+	delete msg;
 }
 
 void ChatRoomImplementation::removeAllPlayers() {

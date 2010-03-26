@@ -86,6 +86,7 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,7 +96,7 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 337224478
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, 337224478)
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
@@ -142,6 +143,7 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -151,7 +153,7 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 	clientObjectCRC = 1073082434
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_beam, 1073082434)
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_beam, "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
@@ -198,6 +200,7 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -207,7 +210,7 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 	clientObjectCRC = 1442646668
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_particle_beam, 1442646668)
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_particle_beam, "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
@@ -254,6 +257,7 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -263,7 +267,7 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 	clientObjectCRC = 3022005655
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launcher, 3022005655)
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launcher, "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff")
 
 object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
@@ -310,6 +314,7 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -319,4 +324,4 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2595978283
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_launcher, 2595978283)
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_launcher, "object/weapon/ranged/heavy/shared_launcher.iff")

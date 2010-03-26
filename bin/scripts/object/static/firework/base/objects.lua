@@ -77,7 +77,9 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2524579942
 }
 
-ObjectTemplates:addTemplate(object_static_firework_base_shared_firework_fx_base, 2524579942)
+ObjectTemplates:addTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")

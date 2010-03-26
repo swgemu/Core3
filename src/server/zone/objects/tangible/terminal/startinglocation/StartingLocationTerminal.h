@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -23,6 +25,20 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -36,11 +52,11 @@ namespace startinglocation {
 
 class StartingLocationTerminal : public Terminal {
 public:
-	StartingLocationTerminal(LuaObject* templateData);
+	StartingLocationTerminal();
 
 	void initializeTransientMembers();
 
-	int useObject(SceneObject* object);
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 protected:
 	StartingLocationTerminal(DummyConstructorParameter* param);
@@ -69,13 +85,13 @@ namespace startinglocation {
 class StartingLocationTerminalImplementation : public TerminalImplementation {
 
 public:
-	StartingLocationTerminalImplementation(LuaObject* templateData);
+	StartingLocationTerminalImplementation();
 
 	StartingLocationTerminalImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
 
-	int useObject(SceneObject* object);
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	StartingLocationTerminal* _this;
 
@@ -118,7 +134,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int useObject(SceneObject* object);
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 };
 

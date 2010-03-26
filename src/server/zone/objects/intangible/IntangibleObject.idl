@@ -50,14 +50,14 @@ import server.zone.objects.scene.SceneObject;
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;
 	
-	public IntangibleObject(LuaObject templateData) {
-		super(templateData);
-		
+	public IntangibleObject() {
 		Logger.setLoggingName("IntangibleObject");
 
-		loadTemplateData(templateData);
-
 		status = 0;
+	}
+	
+	public void finalize() {
+		
 	}
 	
 	@local

@@ -85,10 +85,11 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1744278717
 }
 
-ObjectTemplates:addTemplate(object_tangible_microphone_shared_microphone, 1744278717)
+ObjectTemplates:addTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")

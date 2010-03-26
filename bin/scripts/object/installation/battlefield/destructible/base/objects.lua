@@ -85,13 +85,14 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3062251189
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, 3062251189)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff")
 
 object_installation_battlefield_destructible_base_shared_construction_base_destructible_building = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -137,10 +138,11 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 1,
 
 	clientObjectCRC = 2258056519
 }
 
-ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, 2258056519)
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff")

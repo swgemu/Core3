@@ -77,7 +77,9 @@ object_construction_contract_base_shared_base_construction_contract = SharedCons
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 645732506
 }
 
-ObjectTemplates:addTemplate(object_construction_contract_base_shared_base_construction_contract, 645732506)
+ObjectTemplates:addTemplate(object_construction_contract_base_shared_base_construction_contract, "object/construction_contract/base/shared_base_construction_contract.iff")

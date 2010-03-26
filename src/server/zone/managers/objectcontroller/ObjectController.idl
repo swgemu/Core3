@@ -61,11 +61,33 @@ class ObjectController extends ManagedObject implements Lua {
 	private transient CommandConfigManager configManager;
 	private transient CommandList queueCommands;
 	
-	public native ObjectController(ZoneProcessServerImplementation server);
+	public ObjectController(ZoneProcessServerImplementation srv) {
+		server = srv;
+		
+		Logger.setLoggingName("ObjectController");
+		
+		Logger.setLogging(true);
+		Logger.setGlobalLogging(true);
+		
+		loadCommands();
+	}
+	
+	public native void finalize();
+	
+	public native void loadCommands();
 	
 	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
 	
-	public native void enqueueCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, unicode arguments);
+	/**
+	 * Activates a queue command from a creature object
+	 * @param object creature object that the command will be run on
+	 * @param actionCRC crc of the command to run
+	 * @param actionCount count of the command
+	 * @paramt targetID target object id
+	 * @param arguments arguments of the command
+	 * @returns time in seconds of command execution
+	 */
+	public native float activateCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
 	
 	@local
 	public native void addQueueCommand(QueueCommand command);

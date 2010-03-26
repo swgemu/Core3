@@ -77,10 +77,12 @@ object_draft_schematic_furniture_shared_furniture_armoire_cheap = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 503234127
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_cheap, 503234127)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_cheap, "object/draft_schematic/furniture/shared_furniture_armoire_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_armoire_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_furniture_shared_furniture_armoire_elegant = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4043086902
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_elegant, 4043086902)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_elegant, "object/draft_schematic/furniture/shared_furniture_armoire_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_armoire_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_furniture_shared_furniture_armoire_modern = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3731755770
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_modern, 3731755770)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_armoire_modern, "object/draft_schematic/furniture/shared_furniture_armoire_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_assorted_fruit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_furniture_shared_furniture_assorted_fruit = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4186069946
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_assorted_fruit, 4186069946)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_assorted_fruit, "object/draft_schematic/furniture/shared_furniture_assorted_fruit.iff")
 
 object_draft_schematic_furniture_shared_furniture_bacta_tank_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_furniture_shared_furniture_bacta_tank_large = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2153194
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bacta_tank_large, 2153194)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bacta_tank_large, "object/draft_schematic/furniture/shared_furniture_bacta_tank_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_furniture_shared_furniture_base = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1897060991
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_base, 1897060991)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_base, "object/draft_schematic/furniture/shared_furniture_base.iff")
 
 object_draft_schematic_furniture_shared_furniture_basket_closed = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_furniture_shared_furniture_basket_closed = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2001218854
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_basket_closed, 2001218854)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_basket_closed, "object/draft_schematic/furniture/shared_furniture_basket_closed.iff")
 
 object_draft_schematic_furniture_shared_furniture_bed_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_furniture_shared_furniture_bed_large = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 533283202
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bed_large, 533283202)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bed_large, "object/draft_schematic/furniture/shared_furniture_bed_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_bed_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_furniture_shared_furniture_bed_small = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 735237547
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bed_small, 735237547)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bed_small, "object/draft_schematic/furniture/shared_furniture_bed_small.iff")
 
 object_draft_schematic_furniture_shared_furniture_bench_park = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_furniture_shared_furniture_bench_park = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2537699992
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bench_park, 2537699992)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bench_park, "object/draft_schematic/furniture/shared_furniture_bench_park.iff")
 
 object_draft_schematic_furniture_shared_furniture_bookcase_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_furniture_shared_furniture_bookcase_cheap = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 12431605
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_cheap, 12431605)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_cheap, "object/draft_schematic/furniture/shared_furniture_bookcase_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_bookcase_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_furniture_shared_furniture_bookcase_elegant = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3400004268
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_elegant, 3400004268)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_elegant, "object/draft_schematic/furniture/shared_furniture_bookcase_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_bookcase_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_furniture_shared_furniture_bookcase_modern = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3770479961
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_modern, 3770479961)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bookcase_modern, "object/draft_schematic/furniture/shared_furniture_bookcase_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_bottle_fat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_furniture_shared_furniture_bottle_fat = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 461981833
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_fat, 461981833)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_fat, "object/draft_schematic/furniture/shared_furniture_bottle_fat.iff")
 
 object_draft_schematic_furniture_shared_furniture_bottle_pear = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_furniture_shared_furniture_bottle_pear = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1125427623
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_pear, 1125427623)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_pear, "object/draft_schematic/furniture/shared_furniture_bottle_pear.iff")
 
 object_draft_schematic_furniture_shared_furniture_bottle_tall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_furniture_shared_furniture_bottle_tall = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3469962240
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_tall, 3469962240)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bottle_tall, "object/draft_schematic/furniture/shared_furniture_bottle_tall.iff")
 
 object_draft_schematic_furniture_shared_furniture_bowl_carved = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_furniture_shared_furniture_bowl_carved = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2212832359
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bowl_carved, 2212832359)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bowl_carved, "object/draft_schematic/furniture/shared_furniture_bowl_carved.iff")
 
 object_draft_schematic_furniture_shared_furniture_bowl_plain = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_furniture_shared_furniture_bowl_plain = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3322611379
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bowl_plain, 3322611379)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bowl_plain, "object/draft_schematic/furniture/shared_furniture_bowl_plain.iff")
 
 object_draft_schematic_furniture_shared_furniture_bubble_tank = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_furniture_shared_furniture_bubble_tank = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1963156114
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bubble_tank, 1963156114)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_bubble_tank, "object/draft_schematic/furniture/shared_furniture_bubble_tank.iff")
 
 object_draft_schematic_furniture_shared_furniture_cabinet_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_furniture_shared_furniture_cabinet_elegant = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2423921648
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_cabinet_elegant, 2423921648)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_cabinet_elegant, "object/draft_schematic/furniture/shared_furniture_cabinet_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_cabinet_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_furniture_shared_furniture_cabinet_modern = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1721082397
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_cabinet_modern, 1721082397)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_cabinet_modern, "object/draft_schematic/furniture/shared_furniture_cabinet_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_campfire = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_furniture_shared_furniture_campfire = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3247286204
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_campfire, 3247286204)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_campfire, "object/draft_schematic/furniture/shared_furniture_campfire.iff")
 
 object_draft_schematic_furniture_shared_furniture_candle_free_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_furniture_shared_furniture_candle_free_s01_on = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1751547432
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_free_s01_on, 1751547432)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_free_s01_on, "object/draft_schematic/furniture/shared_furniture_candle_free_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_candle_free_s02_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_furniture_shared_furniture_candle_free_s02_on = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2223250294
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_free_s02_on, 2223250294)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_free_s02_on, "object/draft_schematic/furniture/shared_furniture_candle_free_s02_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_candle_table_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_furniture_shared_furniture_candle_table_s01_on = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3133739820
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s01_on, 3133739820)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s01_on, "object/draft_schematic/furniture/shared_furniture_candle_table_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_candle_table_s02_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_furniture_shared_furniture_candle_table_s02_on = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1445688946
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s02_on, 1445688946)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s02_on, "object/draft_schematic/furniture/shared_furniture_candle_table_s02_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_candle_table_s03_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_furniture_shared_furniture_candle_table_s03_on = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 227191480
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s03_on, 227191480)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_candle_table_s03_on, "object/draft_schematic/furniture/shared_furniture_candle_table_s03_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_cafe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_furniture_shared_furniture_chair_cafe = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2513782024
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cafe, 2513782024)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cafe, "object/draft_schematic/furniture/shared_furniture_chair_cafe.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_cantina = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_furniture_shared_furniture_chair_cantina = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 910119282
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cantina, 910119282)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cantina, "object/draft_schematic/furniture/shared_furniture_chair_cantina.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,10 +1324,12 @@ object_draft_schematic_furniture_shared_furniture_chair_cheap = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1652364514
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cheap, 1652364514)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_cheap, "object/draft_schematic/furniture/shared_furniture_chair_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_divan = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1307,10 +1367,12 @@ object_draft_schematic_furniture_shared_furniture_chair_divan = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2835590680
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_divan, 2835590680)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_divan, "object/draft_schematic/furniture/shared_furniture_chair_divan.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1348,10 +1410,12 @@ object_draft_schematic_furniture_shared_furniture_chair_elegant = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4063077968
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_elegant, 4063077968)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_elegant, "object/draft_schematic/furniture/shared_furniture_chair_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_futon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,10 +1453,12 @@ object_draft_schematic_furniture_shared_furniture_chair_futon = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1204774907
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_futon, 1204774907)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_futon, "object/draft_schematic/furniture/shared_furniture_chair_futon.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_kitchen = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1430,10 +1496,12 @@ object_draft_schematic_furniture_shared_furniture_chair_kitchen = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2923662897
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_kitchen, 2923662897)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_kitchen, "object/draft_schematic/furniture/shared_furniture_chair_kitchen.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_love_seat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1471,10 +1539,12 @@ object_draft_schematic_furniture_shared_furniture_chair_love_seat = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 567802060
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_love_seat, 567802060)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_love_seat, "object/draft_schematic/furniture/shared_furniture_chair_love_seat.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_loveseat_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1512,10 +1582,12 @@ object_draft_schematic_furniture_shared_furniture_chair_loveseat_cheap = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3169224090
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_cheap, 3169224090)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_cheap, "object/draft_schematic/furniture/shared_furniture_chair_loveseat_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_loveseat_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1553,10 +1625,12 @@ object_draft_schematic_furniture_shared_furniture_chair_loveseat_elegant = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3506865564
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_elegant, 3506865564)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_elegant, "object/draft_schematic/furniture/shared_furniture_chair_loveseat_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_loveseat_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1594,10 +1668,12 @@ object_draft_schematic_furniture_shared_furniture_chair_loveseat_modern = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 867929155
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_modern, 867929155)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_loveseat_modern, "object/draft_schematic/furniture/shared_furniture_chair_loveseat_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_metal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1635,10 +1711,12 @@ object_draft_schematic_furniture_shared_furniture_chair_metal = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1732226002
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_metal, 1732226002)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_metal, "object/draft_schematic/furniture/shared_furniture_chair_metal.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_metal_wheeled = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1676,10 +1754,12 @@ object_draft_schematic_furniture_shared_furniture_chair_metal_wheeled = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4056307587
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_metal_wheeled, 4056307587)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_metal_wheeled, "object/draft_schematic/furniture/shared_furniture_chair_metal_wheeled.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1717,10 +1797,12 @@ object_draft_schematic_furniture_shared_furniture_chair_modern = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2235506592
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_modern, 2235506592)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_modern, "object/draft_schematic/furniture/shared_furniture_chair_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_ottoman = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1758,10 +1840,12 @@ object_draft_schematic_furniture_shared_furniture_chair_ottoman = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1388339274
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_ottoman, 1388339274)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_ottoman, "object/draft_schematic/furniture/shared_furniture_chair_ottoman.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_recliner = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,10 +1883,12 @@ object_draft_schematic_furniture_shared_furniture_chair_recliner = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 561313142
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_recliner, 561313142)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_recliner, "object/draft_schematic/furniture/shared_furniture_chair_recliner.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_tatooine_cafe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1840,10 +1926,12 @@ object_draft_schematic_furniture_shared_furniture_chair_tatooine_cafe = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2144483446
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_tatooine_cafe, 2144483446)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_tatooine_cafe, "object/draft_schematic/furniture/shared_furniture_chair_tatooine_cafe.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_upholstered = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1881,10 +1969,12 @@ object_draft_schematic_furniture_shared_furniture_chair_upholstered = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3440141471
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_upholstered, 3440141471)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_upholstered, "object/draft_schematic/furniture/shared_furniture_chair_upholstered.iff")
 
 object_draft_schematic_furniture_shared_furniture_chair_wooden = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1922,10 +2012,12 @@ object_draft_schematic_furniture_shared_furniture_chair_wooden = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 956097755
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_wooden, 956097755)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chair_wooden, "object/draft_schematic/furniture/shared_furniture_chair_wooden.iff")
 
 object_draft_schematic_furniture_shared_furniture_chest_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1963,10 +2055,12 @@ object_draft_schematic_furniture_shared_furniture_chest_cheap = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2666704761
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_cheap, 2666704761)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_cheap, "object/draft_schematic/furniture/shared_furniture_chest_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_chest_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2004,10 +2098,12 @@ object_draft_schematic_furniture_shared_furniture_chest_elegant = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 614563865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_elegant, 614563865)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_elegant, "object/draft_schematic/furniture/shared_furniture_chest_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_chest_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2045,10 +2141,12 @@ object_draft_schematic_furniture_shared_furniture_chest_modern = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3056657101
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_modern, 3056657101)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_chest_modern, "object/draft_schematic/furniture/shared_furniture_chest_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_command_console = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2086,10 +2184,12 @@ object_draft_schematic_furniture_shared_furniture_command_console = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2937549491
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_command_console, 2937549491)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_command_console, "object/draft_schematic/furniture/shared_furniture_command_console.iff")
 
 object_draft_schematic_furniture_shared_furniture_corellia_flagpole = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2127,10 +2227,12 @@ object_draft_schematic_furniture_shared_furniture_corellia_flagpole = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3733441831
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_corellia_flagpole, 3733441831)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_corellia_flagpole, "object/draft_schematic/furniture/shared_furniture_corellia_flagpole.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_blue = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2168,10 +2270,12 @@ object_draft_schematic_furniture_shared_furniture_couch_blue = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3140317503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_blue, 3140317503)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_blue, "object/draft_schematic/furniture/shared_furniture_couch_blue.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2209,10 +2313,12 @@ object_draft_schematic_furniture_shared_furniture_couch_cheap = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 503627770
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_cheap, 503627770)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_cheap, "object/draft_schematic/furniture/shared_furniture_couch_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2250,10 +2356,12 @@ object_draft_schematic_furniture_shared_furniture_couch_elegant = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 630253626
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_elegant, 630253626)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_elegant, "object/draft_schematic/furniture/shared_furniture_couch_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2291,10 +2399,12 @@ object_draft_schematic_furniture_shared_furniture_couch_large = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1982260857
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_large, 1982260857)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_large, "object/draft_schematic/furniture/shared_furniture_couch_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2332,10 +2442,12 @@ object_draft_schematic_furniture_shared_furniture_couch_modern = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 690782499
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_modern, 690782499)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_modern, "object/draft_schematic/furniture/shared_furniture_couch_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_couch_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2373,10 +2485,12 @@ object_draft_schematic_furniture_shared_furniture_couch_small = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1111323216
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_small, 1111323216)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_couch_small, "object/draft_schematic/furniture/shared_furniture_couch_small.iff")
 
 object_draft_schematic_furniture_shared_furniture_diagnostic_screen = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2414,10 +2528,12 @@ object_draft_schematic_furniture_shared_furniture_diagnostic_screen = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4046525404
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_diagnostic_screen, 4046525404)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_diagnostic_screen, "object/draft_schematic/furniture/shared_furniture_diagnostic_screen.iff")
 
 object_draft_schematic_furniture_shared_furniture_display_fish = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2455,10 +2571,12 @@ object_draft_schematic_furniture_shared_furniture_display_fish = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1416269598
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_display_fish, 1416269598)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_display_fish, "object/draft_schematic/furniture/shared_furniture_display_fish.iff")
 
 object_draft_schematic_furniture_shared_furniture_droid_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2496,10 +2614,12 @@ object_draft_schematic_furniture_shared_furniture_droid_body = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 727885265
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_body, 727885265)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_body, "object/draft_schematic/furniture/shared_furniture_droid_body.iff")
 
 object_draft_schematic_furniture_shared_furniture_droid_detector = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2537,10 +2657,12 @@ object_draft_schematic_furniture_shared_furniture_droid_detector = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 387670342
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_detector, 387670342)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_detector, "object/draft_schematic/furniture/shared_furniture_droid_detector.iff")
 
 object_draft_schematic_furniture_shared_furniture_droid_head = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2578,10 +2700,12 @@ object_draft_schematic_furniture_shared_furniture_droid_head = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2037432099
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_head, 2037432099)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_droid_head, "object/draft_schematic/furniture/shared_furniture_droid_head.iff")
 
 object_draft_schematic_furniture_shared_furniture_food_cart = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2619,10 +2743,12 @@ object_draft_schematic_furniture_shared_furniture_food_cart = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 259067166
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_food_cart, 259067166)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_food_cart, "object/draft_schematic/furniture/shared_furniture_food_cart.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_desk = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2660,10 +2786,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_desk = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3767456943
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk, 3767456943)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk, "object/draft_schematic/furniture/shared_furniture_lamp_desk.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_desk_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2701,10 +2829,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_desk_s01_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3644518188
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk_s01_on, 3644518188)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk_s01_on, "object/draft_schematic/furniture/shared_furniture_lamp_desk_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_desk_s02_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2742,10 +2872,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_desk_s02_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 903383666
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk_s02_on, 903383666)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_desk_s02_on, "object/draft_schematic/furniture/shared_furniture_lamp_desk_s02_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_free_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2783,10 +2915,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_free_s01_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 998998605
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s01_on, 998998605)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s01_on, "object/draft_schematic/furniture/shared_furniture_lamp_free_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_free_s02_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2824,10 +2958,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_free_s02_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3614041875
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s02_on, 3614041875)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s02_on, "object/draft_schematic/furniture/shared_furniture_lamp_free_s02_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_free_s03_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2865,10 +3001,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_free_s03_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2361932761
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s03_on, 2361932761)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s03_on, "object/draft_schematic/furniture/shared_furniture_lamp_free_s03_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_free_s04_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2906,10 +3044,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_free_s04_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 174862360
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s04_on, 174862360)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_free_s04_on, "object/draft_schematic/furniture/shared_furniture_lamp_free_s04_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_freestanding = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2947,10 +3087,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_freestanding = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3738470849
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_freestanding, 3738470849)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_freestanding, "object/draft_schematic/furniture/shared_furniture_lamp_freestanding.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_street = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2988,10 +3130,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_street = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3339274515
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_street, 3339274515)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_street, "object/draft_schematic/furniture/shared_furniture_lamp_street.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_table = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3029,10 +3173,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_table = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2352769980
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table, 2352769980)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table, "object/draft_schematic/furniture/shared_furniture_lamp_table.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_table_cantina = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3070,10 +3216,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_table_cantina = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1555131837
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_cantina, 1555131837)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_cantina, "object/draft_schematic/furniture/shared_furniture_lamp_table_cantina.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_table_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3111,10 +3259,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_table_s01_on = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 585235442
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s01_on, 585235442)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s01_on, "object/draft_schematic/furniture/shared_furniture_lamp_table_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_table_s02_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3152,10 +3302,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_table_s02_on = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3456343724
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s02_on, 3456343724)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s02_on, "object/draft_schematic/furniture/shared_furniture_lamp_table_s02_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_table_s03_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3193,10 +3345,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_table_s03_on = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2510439014
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s03_on, 2510439014)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_table_s03_on, "object/draft_schematic/furniture/shared_furniture_lamp_table_s03_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_lamp_tatt_s01_on = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3234,10 +3388,12 @@ object_draft_schematic_furniture_shared_furniture_lamp_tatt_s01_on = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3874570331
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_tatt_s01_on, 3874570331)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_lamp_tatt_s01_on, "object/draft_schematic/furniture/shared_furniture_lamp_tatt_s01_on.iff")
 
 object_draft_schematic_furniture_shared_furniture_microphone_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3275,10 +3431,12 @@ object_draft_schematic_furniture_shared_furniture_microphone_s01 = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 641464866
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_microphone_s01, 641464866)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_microphone_s01, "object/draft_schematic/furniture/shared_furniture_microphone_s01.iff")
 
 object_draft_schematic_furniture_shared_furniture_microphone_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3316,10 +3474,12 @@ object_draft_schematic_furniture_shared_furniture_microphone_s02 = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4247540405
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_microphone_s02, 4247540405)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_microphone_s02, "object/draft_schematic/furniture/shared_furniture_microphone_s02.iff")
 
 object_draft_schematic_furniture_shared_furniture_pitcher_full = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3357,10 +3517,12 @@ object_draft_schematic_furniture_shared_furniture_pitcher_full = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2223826284
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_pitcher_full, 2223826284)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_pitcher_full, "object/draft_schematic/furniture/shared_furniture_pitcher_full.iff")
 
 object_draft_schematic_furniture_shared_furniture_plant_hanging = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3398,10 +3560,12 @@ object_draft_schematic_furniture_shared_furniture_plant_hanging = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1324890214
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plant_hanging, 1324890214)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plant_hanging, "object/draft_schematic/furniture/shared_furniture_plant_hanging.iff")
 
 object_draft_schematic_furniture_shared_furniture_plants_potted_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3439,10 +3603,12 @@ object_draft_schematic_furniture_shared_furniture_plants_potted_large = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1254741892
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plants_potted_large, 1254741892)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plants_potted_large, "object/draft_schematic/furniture/shared_furniture_plants_potted_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_plants_potted_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3480,10 +3646,12 @@ object_draft_schematic_furniture_shared_furniture_plants_potted_small = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2127709101
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plants_potted_small, 2127709101)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_plants_potted_small, "object/draft_schematic/furniture/shared_furniture_plants_potted_small.iff")
 
 object_draft_schematic_furniture_shared_furniture_professors_desk = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3521,10 +3689,12 @@ object_draft_schematic_furniture_shared_furniture_professors_desk = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3765530604
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_professors_desk, 3765530604)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_professors_desk, "object/draft_schematic/furniture/shared_furniture_professors_desk.iff")
 
 object_draft_schematic_furniture_shared_furniture_radar_table = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3562,10 +3732,12 @@ object_draft_schematic_furniture_shared_furniture_radar_table = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3139706323
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_radar_table, 3139706323)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_radar_table, "object/draft_schematic/furniture/shared_furniture_radar_table.iff")
 
 object_draft_schematic_furniture_shared_furniture_radio = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3603,10 +3775,12 @@ object_draft_schematic_furniture_shared_furniture_radio = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3679529615
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_radio, 3679529615)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_radio, "object/draft_schematic/furniture/shared_furniture_radio.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_rectangle_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3644,10 +3818,12 @@ object_draft_schematic_furniture_shared_furniture_rug_rectangle_large = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 966033779
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_large, 966033779)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_large, "object/draft_schematic/furniture/shared_furniture_rug_rectangle_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_rectangle_large_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3685,10 +3861,12 @@ object_draft_schematic_furniture_shared_furniture_rug_rectangle_large_modern = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3851878103
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_large_modern, 3851878103)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_large_modern, "object/draft_schematic/furniture/shared_furniture_rug_rectangle_large_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_rectangle_medium_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3726,10 +3904,12 @@ object_draft_schematic_furniture_shared_furniture_rug_rectangle_medium_modern = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1303564975
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_medium_modern, 1303564975)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_medium_modern, "object/draft_schematic/furniture/shared_furniture_rug_rectangle_medium_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_rectangle_small_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3767,10 +3947,12 @@ object_draft_schematic_furniture_shared_furniture_rug_rectangle_small_modern = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3522772935
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_small_modern, 3522772935)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_rectangle_small_modern, "object/draft_schematic/furniture/shared_furniture_rug_rectangle_small_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_round_large_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3808,10 +3990,12 @@ object_draft_schematic_furniture_shared_furniture_rug_round_large_modern = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1853332128
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_large_modern, 1853332128)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_large_modern, "object/draft_schematic/furniture/shared_furniture_rug_round_large_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_round_medium_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3849,10 +4033,12 @@ object_draft_schematic_furniture_shared_furniture_rug_round_medium_modern = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4002516512
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_medium_modern, 4002516512)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_medium_modern, "object/draft_schematic/furniture/shared_furniture_rug_round_medium_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_rug_round_small_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3890,10 +4076,12 @@ object_draft_schematic_furniture_shared_furniture_rug_round_small_modern = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1511545776
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_small_modern, 1511545776)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_rug_round_small_modern, "object/draft_schematic/furniture/shared_furniture_rug_round_small_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_shisa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3931,10 +4119,12 @@ object_draft_schematic_furniture_shared_furniture_shisa = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 165207937
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_shisa, 165207937)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_shisa, "object/draft_schematic/furniture/shared_furniture_shisa.iff")
 
 object_draft_schematic_furniture_shared_furniture_slave_brazier = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3972,10 +4162,12 @@ object_draft_schematic_furniture_shared_furniture_slave_brazier = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4077678655
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_slave_brazier, 4077678655)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_slave_brazier, "object/draft_schematic/furniture/shared_furniture_slave_brazier.iff")
 
 object_draft_schematic_furniture_shared_furniture_sofachair_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4013,10 +4205,12 @@ object_draft_schematic_furniture_shared_furniture_sofachair_modern = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4112658765
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_sofachair_modern, 4112658765)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_sofachair_modern, "object/draft_schematic/furniture/shared_furniture_sofachair_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_spear_stand = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4054,10 +4248,12 @@ object_draft_schematic_furniture_shared_furniture_spear_stand = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1075462693
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_spear_stand, 1075462693)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_spear_stand, "object/draft_schematic/furniture/shared_furniture_spear_stand.iff")
 
 object_draft_schematic_furniture_shared_furniture_stove = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4095,10 +4291,12 @@ object_draft_schematic_furniture_shared_furniture_stove = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3934526753
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_stove, 3934526753)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_stove, "object/draft_schematic/furniture/shared_furniture_stove.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_coffee_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4136,10 +4334,12 @@ object_draft_schematic_furniture_shared_furniture_table_coffee_cheap = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3996703472
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_cheap, 3996703472)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_cheap, "object/draft_schematic/furniture/shared_furniture_table_coffee_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_coffee_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4177,10 +4377,12 @@ object_draft_schematic_furniture_shared_furniture_table_coffee_elegant = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1385957167
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_elegant, 1385957167)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_elegant, "object/draft_schematic/furniture/shared_furniture_table_coffee_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_coffee_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4218,10 +4420,12 @@ object_draft_schematic_furniture_shared_furniture_table_coffee_modern = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2633070122
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_modern, 2633070122)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_modern, "object/draft_schematic/furniture/shared_furniture_table_coffee_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_coffee_modern_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4259,10 +4463,12 @@ object_draft_schematic_furniture_shared_furniture_table_coffee_modern_02 = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3991989661
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_modern_02, 3991989661)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_coffee_modern_02, "object/draft_schematic/furniture/shared_furniture_table_coffee_modern_02.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_dining_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4300,10 +4506,12 @@ object_draft_schematic_furniture_shared_furniture_table_dining_modern = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1679809800
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_dining_modern, 1679809800)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_dining_modern, "object/draft_schematic/furniture/shared_furniture_table_dining_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_endtable_cheap = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4341,10 +4549,12 @@ object_draft_schematic_furniture_shared_furniture_table_endtable_cheap = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1303951734
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_cheap, 1303951734)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_cheap, "object/draft_schematic/furniture/shared_furniture_table_endtable_cheap.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_endtable_elegant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4382,10 +4592,12 @@ object_draft_schematic_furniture_shared_furniture_table_endtable_elegant = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2295486124
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_elegant, 2295486124)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_elegant, "object/draft_schematic/furniture/shared_furniture_table_endtable_elegant.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_endtable_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4423,10 +4635,12 @@ object_draft_schematic_furniture_shared_furniture_table_endtable_modern = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3774775549
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_modern, 3774775549)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_modern, "object/draft_schematic/furniture/shared_furniture_table_endtable_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_endtable_small_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4464,10 +4678,12 @@ object_draft_schematic_furniture_shared_furniture_table_endtable_small_modern = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3560273523
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_small_modern, 3560273523)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_endtable_small_modern, "object/draft_schematic/furniture/shared_furniture_table_endtable_small_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_gambling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4505,10 +4721,12 @@ object_draft_schematic_furniture_shared_furniture_table_gambling = SharedDraftSc
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2712386824
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_gambling, 2712386824)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_gambling, "object/draft_schematic/furniture/shared_furniture_table_gambling.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_modern = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4546,10 +4764,12 @@ object_draft_schematic_furniture_shared_furniture_table_modern = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1911992161
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_modern, 1911992161)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_modern, "object/draft_schematic/furniture/shared_furniture_table_modern.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_small_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4587,10 +4807,12 @@ object_draft_schematic_furniture_shared_furniture_table_small_tatooine = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4131306340
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_small_tatooine, 4131306340)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_small_tatooine, "object/draft_schematic/furniture/shared_furniture_table_small_tatooine.iff")
 
 object_draft_schematic_furniture_shared_furniture_table_tatooine_cafe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4628,10 +4850,12 @@ object_draft_schematic_furniture_shared_furniture_table_tatooine_cafe = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1088284371
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_tatooine_cafe, 1088284371)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_table_tatooine_cafe, "object/draft_schematic/furniture/shared_furniture_table_tatooine_cafe.iff")
 
 object_draft_schematic_furniture_shared_furniture_tatooine_tapestry = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4669,10 +4893,12 @@ object_draft_schematic_furniture_shared_furniture_tatooine_tapestry = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4133553880
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tatooine_tapestry, 4133553880)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tatooine_tapestry, "object/draft_schematic/furniture/shared_furniture_tatooine_tapestry.iff")
 
 object_draft_schematic_furniture_shared_furniture_technical_console_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4710,10 +4936,12 @@ object_draft_schematic_furniture_shared_furniture_technical_console_s01 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2712417397
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_technical_console_s01, 2712417397)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_technical_console_s01, "object/draft_schematic/furniture/shared_furniture_technical_console_s01.iff")
 
 object_draft_schematic_furniture_shared_furniture_technical_console_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4751,10 +4979,12 @@ object_draft_schematic_furniture_shared_furniture_technical_console_s02 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2059115746
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_technical_console_s02, 2059115746)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_technical_console_s02, "object/draft_schematic/furniture/shared_furniture_technical_console_s02.iff")
 
 object_draft_schematic_furniture_shared_furniture_terminal_freestanding = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4792,10 +5022,12 @@ object_draft_schematic_furniture_shared_furniture_terminal_freestanding = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3617247497
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_terminal_freestanding, 3617247497)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_terminal_freestanding, "object/draft_schematic/furniture/shared_furniture_terminal_freestanding.iff")
 
 object_draft_schematic_furniture_shared_furniture_terminal_wall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4833,10 +5065,12 @@ object_draft_schematic_furniture_shared_furniture_terminal_wall = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1070041440
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_terminal_wall, 1070041440)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_terminal_wall, "object/draft_schematic/furniture/shared_furniture_terminal_wall.iff")
 
 object_draft_schematic_furniture_shared_furniture_throwpillow = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4874,10 +5108,12 @@ object_draft_schematic_furniture_shared_furniture_throwpillow = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2544072226
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_throwpillow, 2544072226)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_throwpillow, "object/draft_schematic/furniture/shared_furniture_throwpillow.iff")
 
 object_draft_schematic_furniture_shared_furniture_tiki_torch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4915,10 +5151,12 @@ object_draft_schematic_furniture_shared_furniture_tiki_torch = SharedDraftSchema
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1246784176
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tiki_torch, 1246784176)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tiki_torch, "object/draft_schematic/furniture/shared_furniture_tiki_torch.iff")
 
 object_draft_schematic_furniture_shared_furniture_toolchest_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4956,10 +5194,12 @@ object_draft_schematic_furniture_shared_furniture_toolchest_large = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4284576998
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_toolchest_large, 4284576998)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_toolchest_large, "object/draft_schematic/furniture/shared_furniture_toolchest_large.iff")
 
 object_draft_schematic_furniture_shared_furniture_toolchest_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4997,10 +5237,12 @@ object_draft_schematic_furniture_shared_furniture_toolchest_medium = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2610104422
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_toolchest_medium, 2610104422)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_toolchest_medium, "object/draft_schematic/furniture/shared_furniture_toolchest_medium.iff")
 
 object_draft_schematic_furniture_shared_furniture_tree_potted = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5038,10 +5280,12 @@ object_draft_schematic_furniture_shared_furniture_tree_potted = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3133188143
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tree_potted, 3133188143)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_tree_potted, "object/draft_schematic/furniture/shared_furniture_tree_potted.iff")
 
 object_draft_schematic_furniture_shared_furniture_utensils = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5079,10 +5323,12 @@ object_draft_schematic_furniture_shared_furniture_utensils = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 586863296
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_utensils, 586863296)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_furniture_utensils, "object/draft_schematic/furniture/shared_furniture_utensils.iff")
 
 object_draft_schematic_furniture_shared_tanning_hide = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5120,10 +5366,12 @@ object_draft_schematic_furniture_shared_tanning_hide = SharedDraftSchematicObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1770705362
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_tanning_hide, 1770705362)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_tanning_hide, "object/draft_schematic/furniture/shared_tanning_hide.iff")
 
 object_draft_schematic_furniture_shared_tanning_hide_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5161,7 +5409,9 @@ object_draft_schematic_furniture_shared_tanning_hide_2 = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1254608802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_tanning_hide_2, 1254608802)
+ObjectTemplates:addTemplate(object_draft_schematic_furniture_shared_tanning_hide_2, "object/draft_schematic/furniture/shared_tanning_hide_2.iff")

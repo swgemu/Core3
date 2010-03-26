@@ -50,10 +50,8 @@ which carries forward this exception.
 
 #include "objects/player/PlayerCreature.h"
 
-ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
-	init(serv);
-
 	player = NULL;
 	sessionKey = 0;
 	accountID = 0;
@@ -181,3 +179,18 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	}
 }
 
+void ZoneClientSession::acquire() {
+	ManagedObject::acquire();
+}
+
+void ZoneClientSession::release() {
+	ManagedObject::release();
+}
+
+void ZoneClientSessionImplementation::acquire() {
+	_this->acquire();
+}
+
+void ZoneClientSessionImplementation::release() {
+	_this->release();
+}

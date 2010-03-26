@@ -85,13 +85,14 @@ object_tangible_lair_narglatch_shared_lair_narglatch = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1786171158
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch, 1786171158)
+ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch, "object/tangible/lair/narglatch/shared_lair_narglatch.iff")
 
 object_tangible_lair_narglatch_shared_lair_narglatch_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_narglatch_shared_lair_narglatch_swamp = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1005548587
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch_swamp, 1005548587)
+ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch_swamp, "object/tangible/lair/narglatch/shared_lair_narglatch_swamp.iff")

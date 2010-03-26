@@ -49,12 +49,8 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 
 class Container extends TangibleObject {
-	public Container(LuaObject templateData) {
-		super(templateData);
-		
+	public Container() {
 		Logger.setLoggingName("Container");
-
-		loadTemplateData(templateData);
 	}
 	
 	@local

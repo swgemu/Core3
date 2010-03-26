@@ -13,6 +13,8 @@
 #include "../../ZoneServer.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "server/chat/ChatManager.h"
 
 class SelectCharacterCallback : public MessageCallback {
@@ -36,48 +38,49 @@ public:
 		if (obj != NULL && obj->isPlayerCreature()) {
 			PlayerCreature* player = (PlayerCreature*) obj.get();
 
-			try {
-				player->wlock();
+			Locker _locker(player);
 
-				player->setClient(client);
-				client->setPlayer(obj);
+			player->setClient(client);
+			client->setPlayer(obj);
 
-				Zone* zone = player->getZone();
+			Zone* zone = player->getZone();
 
-				if (zone != NULL) {
-					//reload
+			if (zone != NULL) {
+				//reload
 
-					player->reload(client);
+				player->reload(client);
 
-				} else {
-					int zoneID = player->getSavedZoneID();
-					uint64 savedParentID = player->getSavedParentID();
+			} else {
+				int zoneID = player->getSavedZoneID();
+				uint64 savedParentID = player->getSavedParentID();
 
-					ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
+				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
 
-					if (parent != NULL) {
-						try {
-							parent->wlock(player);
+				if (parent != NULL) {
+					try {
+						parent->wlock(player);
 
-							parent->addObject(player, -1);
+						parent->addObject(player, -1);
 
-							parent->unlock();
-						} catch (...) {
-							parent->unlock();
-						}
+						parent->unlock();
+					} catch (...) {
+						parent->unlock();
 					}
-
-					zone = zoneServer->getZone(zoneID);
-
-					player->insertToZone(zone);
 				}
 
-				player->setOnline();
+				zone = zoneServer->getZone(zoneID);
 
-				player->unlock();
-			} catch (...) {
-				player->unlock();
+				player->insertToZone(zone);
 			}
+
+			player->setOnline();
+
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->addPlayer(player);
+			chatManager->loadMail(player);
+
+			PlayerObject* ghost = player->getPlayerObject();
+			ghost->notifyOnline();
 
 		}
 	}

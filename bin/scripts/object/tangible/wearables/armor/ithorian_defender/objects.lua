@@ -85,13 +85,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 391015330
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l, 391015330)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bicep_r_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1738223153
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r, 1738223153)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_boots_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2766594033
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots, 2766594033)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_boots.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bracer_l_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3020283121
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l, 3020283121)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bracer_r_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3302005090
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r, 3302005090)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_chest_plate_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_pla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2075456355
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate, 2075456355)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_gloves_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2214098424
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves, 2214098424)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_gloves.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_helmet_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 892900592
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet, 892900592)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_helmet.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_leggings_f.sat",
@@ -501,10 +509,11 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 992018926
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings, 992018926)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_leggings.iff")

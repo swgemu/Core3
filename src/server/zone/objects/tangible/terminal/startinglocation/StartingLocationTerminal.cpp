@@ -6,12 +6,14 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	StartingLocationTerminalStub
  */
 
-StartingLocationTerminal::StartingLocationTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StartingLocationTerminalImplementation(templateData);
+StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
+	_impl = new StartingLocationTerminalImplementation();
 	_impl->_setStub(this);
 }
 
@@ -34,17 +36,18 @@ void StartingLocationTerminal::initializeTransientMembers() {
 		((StartingLocationTerminalImplementation*) _impl)->initializeTransientMembers();
 }
 
-int StartingLocationTerminal::useObject(SceneObject* object) {
+int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(object);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StartingLocationTerminalImplementation*) _impl)->useObject(object);
+		return ((StartingLocationTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -56,7 +59,6 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(D
 }
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
-	StartingLocationTerminalImplementation::finalize();
 }
 
 
@@ -117,9 +119,9 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  Logger.setLoggingName("StartingLocationTerminal");
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  		Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
 }
 
@@ -138,7 +140,7 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertSignedInt(useObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -151,8 +153,8 @@ void StartingLocationTerminalAdapter::initializeTransientMembers() {
 	((StartingLocationTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-int StartingLocationTerminalAdapter::useObject(SceneObject* object) {
-	return ((StartingLocationTerminalImplementation*) impl)->useObject(object);
+int StartingLocationTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((StartingLocationTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 /*

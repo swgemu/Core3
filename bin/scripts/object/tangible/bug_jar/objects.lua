@@ -85,13 +85,14 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3865262015
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, 3865262015)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, "object/tangible/bug_jar/shared_craftable_bug_habitat.iff")
 
 object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 649283460
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bats, 649283460)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bats, "object/tangible/bug_jar/shared_sample_bats.iff")
 
 object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2990947640
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bees, 2990947640)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bees, "object/tangible/bug_jar/shared_sample_bees.iff")
 
 object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1650774020
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bugs, 1650774020)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bugs, "object/tangible/bug_jar/shared_sample_bugs.iff")
 
 object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3511677766
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_butterflies, 3511677766)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_butterflies, "object/tangible/bug_jar/shared_sample_butterflies.iff")
 
 object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1920617264
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_flies, 1920617264)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_flies, "object/tangible/bug_jar/shared_sample_flies.iff")
 
 object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 543867771
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_glowzees, 543867771)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_glowzees, "object/tangible/bug_jar/shared_sample_glowzees.iff")
 
 object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -449,10 +456,11 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1330824406
 }
 
-ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_moths, 1330824406)
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_moths, "object/tangible/bug_jar/shared_sample_moths.iff")

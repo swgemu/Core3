@@ -85,13 +85,14 @@ object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1440189415
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_antidote_sm_s1, 1440189415)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_antidote_sm_s1, "object/tangible/medicine/shared_antidote_sm_s1.iff")
 
 object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
@@ -137,13 +138,14 @@ object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4251613254
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_disease, 4251613254)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_disease, "object/tangible/medicine/shared_grenade_area_disease.iff")
 
 object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
@@ -189,13 +191,14 @@ object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 407306967
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_poison, 407306967)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_poison, "object/tangible/medicine/shared_grenade_area_poison.iff")
 
 object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
@@ -241,13 +244,14 @@ object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1464815996
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_disease, 1464815996)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_disease, "object/tangible/medicine/shared_grenade_disease.iff")
 
 object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
@@ -293,13 +297,14 @@ object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3318575411
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_poison, 3318575411)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_poison, "object/tangible/medicine/shared_grenade_poison.iff")
 
 object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
@@ -345,13 +350,14 @@ object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1436861013
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade, 1436861013)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade, "object/tangible/medicine/shared_healing_grenade.iff")
 
 object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_medic_healing_energy_area.prt",
@@ -397,13 +403,14 @@ object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 517120211
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade_longrange, 517120211)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade_longrange, "object/tangible/medicine/shared_healing_grenade_longrange.iff")
 
 object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -449,13 +456,14 @@ object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 354709332
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medic_damage, 354709332)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medic_damage, "object/tangible/medicine/shared_medic_damage.iff")
 
 object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
@@ -501,13 +509,14 @@ object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1604165582
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_advanced, 1604165582)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_advanced, "object/tangible/medicine/shared_medikit_tool_advanced.iff")
 
 object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
@@ -553,13 +562,14 @@ object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2114140377
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_basic, 2114140377)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_basic, "object/tangible/medicine/shared_medikit_tool_basic.iff")
 
 object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -605,13 +615,14 @@ object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 765314717
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_blinded, 765314717)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_blinded, "object/tangible/medicine/shared_medpack_blinded.iff")
 
 object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -657,13 +668,14 @@ object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3567534855
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_disease, 3567534855)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_disease, "object/tangible/medicine/shared_medpack_cure_disease.iff")
 
 object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -709,13 +721,14 @@ object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1928193020
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_poison, 1928193020)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_poison, "object/tangible/medicine/shared_medpack_cure_poison.iff")
 
 object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -761,13 +774,14 @@ object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1572232451
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_damage, 1572232451)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_damage, "object/tangible/medicine/shared_medpack_damage.iff")
 
 object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -813,13 +827,14 @@ object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 832861899
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_disease_health, 832861899)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_disease_health, "object/tangible/medicine/shared_medpack_disease_health.iff")
 
 object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -865,13 +880,14 @@ object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2465786722
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_dizzy, 2465786722)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_dizzy, "object/tangible/medicine/shared_medpack_dizzy.iff")
 
 object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -917,13 +933,14 @@ object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2933500212
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_action, 2933500212)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_action, "object/tangible/medicine/shared_medpack_enhance_action.iff")
 
 object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -969,13 +986,14 @@ object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4043375021
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_constitution, 4043375021)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_constitution, "object/tangible/medicine/shared_medpack_enhance_constitution.iff")
 
 object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -1021,13 +1039,14 @@ object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 103448599
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_health, 103448599)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_health, "object/tangible/medicine/shared_medpack_enhance_health.iff")
 
 object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1073,13 +1092,14 @@ object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1230024376
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_quickness, 1230024376)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_quickness, "object/tangible/medicine/shared_medpack_enhance_quickness.iff")
 
 object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -1125,13 +1145,14 @@ object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2141072147
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_stamina, 2141072147)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_stamina, "object/tangible/medicine/shared_medpack_enhance_stamina.iff")
 
 object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -1177,13 +1198,14 @@ object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1816954138
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_strength, 1816954138)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_strength, "object/tangible/medicine/shared_medpack_enhance_strength.iff")
 
 object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1229,13 +1251,14 @@ object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4052941806
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_area, 4052941806)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_area, "object/tangible/medicine/shared_medpack_grenade_area.iff")
 
 object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -1281,13 +1304,14 @@ object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1050069168
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_damage, 1050069168)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_damage, "object/tangible/medicine/shared_medpack_grenade_damage.iff")
 
 object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -1333,13 +1357,14 @@ object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3337310390
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_intimidated, 3337310390)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_intimidated, "object/tangible/medicine/shared_medpack_intimidated.iff")
 
 object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -1385,13 +1410,14 @@ object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3017797623
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_poison_health, 3017797623)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_poison_health, "object/tangible/medicine/shared_medpack_poison_health.iff")
 
 object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -1437,13 +1463,14 @@ object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4063460611
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_revive, 4063460611)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_revive, "object/tangible/medicine/shared_medpack_revive.iff")
 
 object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -1489,13 +1516,14 @@ object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 215922513
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_sm_s1, 215922513)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_sm_s1, "object/tangible/medicine/shared_medpack_sm_s1.iff")
 
 object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -1541,13 +1569,14 @@ object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4041482351
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_stunned, 4041482351)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_stunned, "object/tangible/medicine/shared_medpack_stunned.iff")
 
 object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -1593,13 +1622,14 @@ object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2936514652
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound, 2936514652)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound, "object/tangible/medicine/shared_medpack_wound.iff")
 
 object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -1645,13 +1675,14 @@ object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 457349028
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_action, 457349028)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_action, "object/tangible/medicine/shared_medpack_wound_action.iff")
 
 object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -1697,13 +1728,14 @@ object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1021180765
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_constitution, 1021180765)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_constitution, "object/tangible/medicine/shared_medpack_wound_constitution.iff")
 
 object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -1749,13 +1781,14 @@ object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3014770311
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_health, 3014770311)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_health, "object/tangible/medicine/shared_medpack_wound_health.iff")
 
 object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1801,13 +1834,14 @@ object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2548119971
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_quickness, 2548119971)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_quickness, "object/tangible/medicine/shared_medpack_wound_quickness.iff")
 
 object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -1853,13 +1887,14 @@ object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1314610438
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_stamina, 1314610438)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_stamina, "object/tangible/medicine/shared_medpack_wound_stamina.iff")
 
 object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -1905,13 +1940,14 @@ object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2043273277
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_strength, 2043273277)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_strength, "object/tangible/medicine/shared_medpack_wound_strength.iff")
 
 object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -1957,13 +1993,14 @@ object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2246906578
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_newbie_heal_mission_medicine, 2246906578)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_newbie_heal_mission_medicine, "object/tangible/medicine/shared_newbie_heal_mission_medicine.iff")
 
 object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -2009,13 +2046,14 @@ object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 424530466
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_stimpack_sm_s1, 424530466)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_stimpack_sm_s1, "object/tangible/medicine/shared_stimpack_sm_s1.iff")
 
 object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -2061,10 +2099,11 @@ object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 120135169
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_shared_test_fire_blanket, 120135169)
+ObjectTemplates:addTemplate(object_tangible_medicine_shared_test_fire_blanket, "object/tangible/medicine/shared_test_fire_blanket.iff")

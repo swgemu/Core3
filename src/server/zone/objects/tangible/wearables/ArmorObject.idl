@@ -46,13 +46,78 @@ package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
+import system.util.SortedVector;
 
 class ArmorObject extends WearableObject {
-	public ArmorObject(LuaObject templateData) {
-		super(templateData);
+	protected int healthEncumbrance;
+	protected int actionEncumbrance;
+	protected int mindEncumbrance;
+	
+	protected int rating;
+
+	protected float kinetic;
+	protected float energy;
+	protected float electricity;
+	protected float stun;
+	protected float blast;
+	protected float heat;
+	protected float cold;
+	protected float acid;
+	protected float lightSaber;
+
+	@dereferenced
+	protected SortedVector<string> specialResistsVector;
+	@dereferenced
+	protected SortedVector<string> vulnerabilitesVector;
+
+	protected float specialBase;
+	
+	public static final int LIGHT = 0x1;
+	public static final int MEDIUM = 0x2;
+	public static final int HEAVY = 0x3;
+	
+	public ArmorObject() {		
+		healthEncumbrance = 100;
+		actionEncumbrance = 100;
+		mindEncumbrance = 100;
+		
+		rating = LIGHT;
+
+		kinetic = 0;
+		energy = 0;
+		electricity = 0;
+		stun = 0;
+		blast = 0;
+		heat = 0;
+		cold = 0;
+		acid = 0;
+		lightSaber = 0;
+		
+		/*super.customizationVariables.setVariable(3, 0);
+		super.customizationVariables.setVariable(2, 0);
+		super.customizationVariables.setVariable(1, 0);*/
 		
 		Logger.setLoggingName("ArmorObject");
 	}
 	
 	public native void initializeTransientMembers();
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public boolean isSpecial(final string special) {
+		return specialResistsVector.contains(special);
+	}
+	
+	public boolean isVulnerable(final string vulnerability) {
+		return vulnerabilitesVector.contains(vulnerability);
+	}
+
 }

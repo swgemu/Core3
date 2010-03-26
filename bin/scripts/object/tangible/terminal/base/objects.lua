@@ -85,10 +85,11 @@ object_tangible_terminal_base_shared_base_terminal = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 88218105
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_base_shared_base_terminal, 88218105)
+ObjectTemplates:addTemplate(object_tangible_terminal_base_shared_base_terminal, "object/tangible/terminal/base/shared_base_terminal.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3979491544
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, 3979491544)
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird.iff")
 
 object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3994387683
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, 3994387683)
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_jungle.iff")
 
 object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 522402134
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, 522402134)
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_swamp.iff")

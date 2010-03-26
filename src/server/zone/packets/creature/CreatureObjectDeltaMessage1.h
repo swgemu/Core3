@@ -57,27 +57,10 @@ public:
 		creo = cr;
 	}
 
-	/*void startSkillBoxListUpdate(int skillBoxesToUpdate) {
-		startUpdate(0x03);
-		startList(skillBoxesToUpdate, creo->skillBoxesUpdateCounter += skillBoxesToUpdate);
-	}
-
-	void addSkillBox(const String& name) {
-		insertByte(0x01);
-		insertAscii(name.toCharArray());
-	}
-
-	void removeSkillBox(const String& name) {
-		insertByte(0x00);
-		insertAscii(name.toCharArray());
-	}*/
-
 	void updateBankCredits() {
 		startUpdate(0x00);
 		insertInt(creo->getBankCredits());
 	}
-
-
 
 	void updateCashCredits() {
 		startUpdate(0x01);

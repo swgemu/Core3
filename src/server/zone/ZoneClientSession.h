@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -33,13 +35,11 @@ class ZoneServer;
 
 using namespace server::zone;
 
-#include "engine/core/ManagedObject.h"
-
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BasePacket.h"
 
-#include "engine/service/DatagramServiceThread.h"
+#include "engine/core/ManagedObject.h"
 
 #include "system/net/SocketAddress.h"
 
@@ -50,7 +50,7 @@ namespace zone {
 
 class ZoneClientSession : public ManagedObject {
 public:
-	ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
+	ZoneClientSession(Socket* sock, SocketAddress* addr);
 
 	void disconnect();
 
@@ -67,6 +67,10 @@ public:
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
+
+	void acquire();
+
+	void release();
 
 	String getAddress();
 
@@ -87,6 +91,10 @@ protected:
 
 	virtual ~ZoneClientSession();
 
+	void _acquire();
+
+	void _release();
+
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
@@ -101,16 +109,18 @@ namespace server {
 namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
-	ManagedReference<SceneObject* > player;
+protected:
+	ManagedWeakReference<SceneObject* > player;
 
 	unsigned int sessionKey;
 
 	unsigned int accountID;
 
+private:
 	bool disconnecting;
 
 public:
-	ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
+	ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr);
 
 	ZoneClientSessionImplementation(DummyConstructorParameter* param);
 
@@ -129,6 +139,10 @@ public:
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
+
+	void acquire();
+
+	void release();
 
 	String getAddress();
 
@@ -184,6 +198,10 @@ public:
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
+
+	void acquire();
+
+	void release();
 
 	String getAddress();
 

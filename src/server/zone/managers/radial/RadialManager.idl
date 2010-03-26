@@ -60,5 +60,4 @@ class RadialManager extends ManagedObject implements Logger {
 	public native void handleObjectMenuSelect(PlayerCreature player, byte selectID, unsigned long objectID);
 	public native void handleObjectMenuRequest(PlayerCreature player, ObjectMenuResponse defaultMenuResponse, unsigned long objectID);
 	
-	public native void handleUseObject(PlayerCreature player, SceneObject object);
 }

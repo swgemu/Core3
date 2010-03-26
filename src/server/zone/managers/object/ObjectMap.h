@@ -57,6 +57,10 @@ class ObjectMap : public HashTable<uint64, ManagedReference<SceneObject*> >, pub
 	}
 
 public:
+	ObjectMap() {
+		ObjectMap(3000);
+	}
+
 	ObjectMap(int initsize) : HashTable<uint64, ManagedReference<SceneObject*> >(initsize), HashTableIterator<uint64, ManagedReference<SceneObject*> >(this) {
 		setNullValue(NULL);
 	}

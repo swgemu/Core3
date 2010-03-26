@@ -85,13 +85,14 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 1,
 
 	clientObjectCRC = 2242761962
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, 2242761962)
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -137,13 +138,14 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 1,
 
 	clientObjectCRC = 1589279869
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, 1589279869)
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -189,10 +191,11 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 1,
 
 	clientObjectCRC = 1103585647
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, 1103585647)
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff")

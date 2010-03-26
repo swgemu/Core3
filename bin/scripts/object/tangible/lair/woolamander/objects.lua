@@ -85,13 +85,14 @@ object_tangible_lair_woolamander_shared_lair_woolamander = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2207514475
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander, 2207514475)
+ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander, "object/tangible/lair/woolamander/shared_lair_woolamander.iff")
 
 object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2613243319
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander_jungle, 2613243319)
+ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander_jungle, "object/tangible/lair/woolamander/shared_lair_woolamander_jungle.iff")

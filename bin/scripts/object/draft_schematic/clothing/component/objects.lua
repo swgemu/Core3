@@ -77,10 +77,12 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 217803170
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, 217803170)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2902252643
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component, 2902252643)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component, "object/draft_schematic/clothing/component/shared_clothing_component.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3235529113
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, 3235529113)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, "object/draft_schematic/clothing/component/shared_clothing_component_base.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 656345238
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, 656345238)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3119926044
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, 3119926044)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 196841582
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, 196841582)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_padding_segment = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1984198906
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, 1984198906)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 394655839
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, 394655839)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 794389103
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, 794389103)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 329274185
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, 329274185)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,7 +507,9 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3996452682
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, 3996452682)
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, "object/draft_schematic/clothing/component/shared_clothing_trim.iff")

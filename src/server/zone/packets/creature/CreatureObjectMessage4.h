@@ -59,10 +59,11 @@ public:
 
 		//Encumbrances
 		DeltaVector<int>* encumbrances = creo->getEncumbrances();
-		insertDeltaVector(encumbrances);
+		encumbrances->insertToMessage(this);
 
 		// skill mods
-		insertSkillMods(creo);
+		DeltaVectorMap<String, int64>* skillMods = creo->getSkillModList();
+		skillMods->insertToMessage(this);
 
 		//
 		insertFloat(1);
@@ -90,29 +91,6 @@ public:
 		setSize();
 	}
 
-	// TODO: this needs to be cleaner for dealing with values
-	void insertSkillMods(CreatureObjectImplementation* creo) {
-		/*String skillmod;
-		int value;
-
-		creo->creatureSkillMods.resetIterator();
-
-		insertInt(creo->creatureSkillMods.size());
-		insertInt(creo->skillModsCounter);
-
-		while (creo->creatureSkillMods.hasNext()) {
-			insertByte(0);
-
-			creo->creatureSkillMods.getNextKeyAndValue(skillmod, value);
-			insertAscii(skillmod);
-			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
-
-			insertInt(0);
-		}*/
-
-		insertInt(0);
-		insertInt(0);
-	}
 };
 
 #endif /*CREATUREOBJECTMESSAGE4_H_*/

@@ -65,7 +65,7 @@ public:
 		insertLong(creo->getStateBitmask());
 
 		DeltaVector<int>* wounds = creo->getWounds();
-		insertDeltaVector(wounds);
+		wounds->insertToMessage(this);
 
 		setSize();
 	}

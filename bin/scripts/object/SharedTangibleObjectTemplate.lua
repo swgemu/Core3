@@ -68,6 +68,8 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 	targetable = 0,
+	
+	playerUseMask = ALL,
 
 	certificationsRequired = { },
 	customizationVariableMapping = { }

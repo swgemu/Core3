@@ -44,14 +44,6 @@ which carries forward this exception.
 
 #include "Container.h"
 
-/*ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData) {
-
-	loadTemplateData(templateData);
-
-	setLoggingName("Container");
-}*/
-
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
@@ -59,7 +51,7 @@ void ContainerImplementation::initializeTransientMembers() {
 }
 
 void ContainerImplementation::loadTemplateData(LuaObject* templateData) {
-
+	TangibleObjectImplementation::loadTemplateData(templateData);
 }
 
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {

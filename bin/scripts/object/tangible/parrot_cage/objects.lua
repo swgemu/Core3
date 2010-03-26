@@ -85,10 +85,11 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1639031767
 }
 
-ObjectTemplates:addTemplate(object_tangible_parrot_cage_shared_parrot_cage, 1639031767)
+ObjectTemplates:addTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")

@@ -88,13 +88,14 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3733495054
 }
 
-ObjectTemplates:addTemplate(object_building_dathomir_shared_mtn_clan_stronghold, 3733495054)
+ObjectTemplates:addTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
 
 object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -143,10 +144,11 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 12,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1104863563
 }
 
-ObjectTemplates:addTemplate(object_building_dathomir_shared_night_sister_stronghold, 1104863563)
+ObjectTemplates:addTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")

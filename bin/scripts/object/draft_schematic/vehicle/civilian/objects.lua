@@ -77,10 +77,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_a = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3547848737
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_a, 3547848737)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_a, "object/draft_schematic/vehicle/civilian/shared_civilian_a.iff")
 
 object_draft_schematic_vehicle_civilian_shared_civilian_aa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_aa = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 376694145
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_aa, 376694145)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_aa, "object/draft_schematic/vehicle/civilian/shared_civilian_aa.iff")
 
 object_draft_schematic_vehicle_civilian_shared_civilian_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_b = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 140527798
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_b, 140527798)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_b, "object/draft_schematic/vehicle/civilian/shared_civilian_b.iff")
 
 object_draft_schematic_vehicle_civilian_shared_civilian_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_c = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1097674555
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_c, 1097674555)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_c, "object/draft_schematic/vehicle/civilian/shared_civilian_c.iff")
 
 object_draft_schematic_vehicle_civilian_shared_civilian_d = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_d = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3129869359
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_d, 3129869359)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_d, "object/draft_schematic/vehicle/civilian/shared_civilian_d.iff")
 
 object_draft_schematic_vehicle_civilian_shared_civilian_e = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_vehicle_civilian_shared_civilian_e = SharedDraftSchematic
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4085474210
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_e, 4085474210)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_e, "object/draft_schematic/vehicle/civilian/shared_civilian_e.iff")
 
 object_draft_schematic_vehicle_civilian_shared_jetpack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_vehicle_civilian_shared_jetpack = SharedDraftSchematicObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3255217674
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_jetpack, 3255217674)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_jetpack, "object/draft_schematic/vehicle/civilian/shared_jetpack.iff")
 
 object_draft_schematic_vehicle_civilian_shared_landspeeder_av21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_vehicle_civilian_shared_landspeeder_av21 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2632559466
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_av21, 2632559466)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_av21, "object/draft_schematic/vehicle/civilian/shared_landspeeder_av21.iff")
 
 object_draft_schematic_vehicle_civilian_shared_landspeeder_x34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_vehicle_civilian_shared_landspeeder_x34 = SharedDraftSche
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3178368929
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_x34, 3178368929)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_x34, "object/draft_schematic/vehicle/civilian/shared_landspeeder_x34.iff")
 
 object_draft_schematic_vehicle_civilian_shared_speeder_bike = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_vehicle_civilian_shared_speeder_bike = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3893680726
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike, 3893680726)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike, "object/draft_schematic/vehicle/civilian/shared_speeder_bike.iff")
 
 object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,7 +507,9 @@ object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop = SharedDraftS
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4231876597
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop, 4231876597)
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop, "object/draft_schematic/vehicle/civilian/shared_speeder_bike_swoop.iff")

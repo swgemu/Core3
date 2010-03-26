@@ -85,13 +85,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3989520572
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier, 3989520572)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bandolier.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_boots_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1207105731
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_boots, 1207105731)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_boots, "object/tangible/wearables/armor/ubese/shared_armor_ubese_boots.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_l_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4128606087
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l, 4128606087)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_l.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_r_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2260779540
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r, 2260779540)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_r.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_gloves_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1597327192
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves, 1597327192)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves, "object/tangible/wearables/armor/ubese/shared_armor_ubese_gloves.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3925190224
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet, 3925190224)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1916840424
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest, 1916840424)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3696152390
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket, 3696152390)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
@@ -501,13 +509,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3409085291
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest, 3409085291)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
@@ -553,13 +562,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4188653633
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants, 4188653633)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
@@ -605,13 +615,14 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1051305101
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest, 1051305101)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_shirt_f.sat",
@@ -657,10 +668,11 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 758262636
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt, 758262636)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt, "object/tangible/wearables/armor/ubese/shared_armor_ubese_shirt.iff")

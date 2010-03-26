@@ -85,13 +85,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1200831709
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l, 1200831709)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_l.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bicep_r_m.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 927365454
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r, 927365454)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_r.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_boots_m.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1126436738
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_boots, 1126436738)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_boots, "object/tangible/wearables/armor/ris/shared_armor_ris_boots.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bracer_l_m.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 298125558
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l, 298125558)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_l.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bracer_r_m.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1628458341
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r, 1628458341)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_r.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_chest_plate_m.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1813559161
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate, 1813559161)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate, "object/tangible/wearables/armor/ris/shared_armor_ris_chest_plate.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_gloves_m.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2596696196
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_gloves, 2596696196)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_gloves, "object/tangible/wearables/armor/ris/shared_armor_ris_gloves.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_helmet_m.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 738627980
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_helmet, 738627980)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_helmet, "object/tangible/wearables/armor/ris/shared_armor_ris_helmet.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_leggings_m.sat",
@@ -501,10 +509,11 @@ object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2665600489
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_leggings, 2665600489)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_leggings, "object/tangible/wearables/armor/ris/shared_armor_ris_leggings.iff")

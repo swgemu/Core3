@@ -60,22 +60,41 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacterCallback.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
+#include "packets/auction/AuctionQueryHeadersMessageCallback.h"
+#include "packets/auction/CreateAuctionMessageCallback.h"
+#include "packets/auction/CreateImmediateAuctionMessageCallback.h"
+#include "packets/auction/GetAuctionDetailsCallback.h"
+#include "packets/auction/RetrieveAuctionItemMessageCallback.h"
+#include "packets/auction/BidAuctionMessageCallback.h"
+
 #include "packets/object/ObjectControllerMessageCallback.h"
 #include "packets/object/DataTransform.h"
 #include "packets/object/DataTransformWithParent.h"
 #include "packets/object/CommandQueueEnqueue.h"
+#include "packets/object/CommandQueueRemove.h"
 #include "packets/object/ObjectMenuRequest.h"
 #include "packets/object/TargetUpdate.h"
 #include "packets/object/ObjectMenuSelect.h"
+#include "packets/object/MissionListRequestCallback.h"
 
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
 #include "packets/ui/CommoditiesItemTypeListResponse.h"
+#include "packets/ui/SuiEventNotificationCallback.h"
 
 #include "packets/player/NewbieTutorialRequest.h"
+#include "packets/player/StomachRequestMessage.h"
+#include "packets/player/PlayerMoneyRequest.h"
 
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
+#include "packets/chat/ChatSendToRoomCallback.h"
+#include "packets/chat/ChatPersistentMessageToServerCallback.h"
+#include "packets/chat/ChatRequestPersistentMessageCallback.h"
+#include "packets/chat/ChatDeletePersistentMessageCallback.h"
+
+#include "packets/auction/IsVendorOwnerMessageCallback.h"
+
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
@@ -110,6 +129,21 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<LagRequestCallback>(0x31805ee0);
 	messageCallbackFactory.registerObject<LagReportCallback>(0xc5ed2f85);
 	messageCallbackFactory.registerObject<ChatInstantMessageToCharacter>(0x84BB21F7);
+	messageCallbackFactory.registerObject<ChatSendToRoomCallback>(0x20e4dbe3);
+	messageCallbackFactory.registerObject<IsVendorOwnerMessageCallback>(0x21b55a3b);
+	messageCallbackFactory.registerObject<SuiEventNotificationCallback>(0x092D3564);
+	messageCallbackFactory.registerObject<StomachRequestMessageCallback>(0xB75DD5D7);
+	messageCallbackFactory.registerObject<PlayerMoneyRequestMessageCallback>(0x9D105AA1);
+	messageCallbackFactory.registerObject<AuctionQueryHeadersMessageCallback>(0x679E0D00);
+	messageCallbackFactory.registerObject<CreateAuctionMessageCallback>(0xAD47021D);
+	messageCallbackFactory.registerObject<CreateImmediateAuctionMessageCallback>(0x1E9CE308);
+	messageCallbackFactory.registerObject<GetAuctionDetailsCallback>(0xD36EFAE4);
+	messageCallbackFactory.registerObject<ChatPersistentMessageToServerCallback>(0x25A29FA6);
+	messageCallbackFactory.registerObject<ChatRequestPersistentMessageCallback>(0x07E3559F);
+	messageCallbackFactory.registerObject<ChatDeletePersistentMessageCallback>(0x8F251641);
+	messageCallbackFactory.registerObject<RetrieveAuctionItemMessageCallback>(0x12B0D449);
+	messageCallbackFactory.registerObject<BidAuctionMessageCallback>(0x91125453);
+
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
@@ -120,7 +154,9 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
+	objectMessageControllerFactory->registerObject<MissionListRequestCallback>(0xF5);
 	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
+	objectMessageControllerFactory->registerObject<CommandQueueRemoveCallback>(0x117);
 	objectMessageControllerFactory->registerObject<TargetUpdateCallback>(0x126);
 	objectMessageControllerFactory->registerObject<ObjectMenuRequestCallback>(0x146);
 }

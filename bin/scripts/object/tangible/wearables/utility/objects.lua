@@ -85,10 +85,11 @@ object_tangible_wearables_utility_shared_utility_belt_tusken_raider = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 34828875
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_utility_shared_utility_belt_tusken_raider, 34828875)
+ObjectTemplates:addTemplate(object_tangible_wearables_utility_shared_utility_belt_tusken_raider, "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff")

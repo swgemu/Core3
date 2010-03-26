@@ -68,9 +68,31 @@ public:
 		addLongUpdate(0x09, creo->getTargetID());
 	}
 
-	/*void updateGroupID() {
+	void updateInviterId() {
+		startUpdate(0x07);
+
+		insertLong(creo->getGroupInviterID());
+		insertLong(creo->getGroupInviteCounter());
+	}
+
+	void updateGroupID() {
 		addLongUpdate(0x06, creo->getGroupID());
 	}
+
+	void updateMoodID() {
+		addByteUpdate(0x0A, creo->getMoodID());
+	}
+
+	void updateMoodStr() {
+		addAsciiUpdate(0x04, creo->getMoodString());
+	}
+
+	void updateInstrumentID(int value) {
+		startUpdate(0x0C);
+		insertInt(value);
+	}
+
+	/*
 
 	void updateInviterId() {
 		startUpdate(0x07);
@@ -79,13 +101,7 @@ public:
 		insertLong(creo->getNewGroupInviteCounter());
 	}
 
-	void updateMoodID() {
-		addByteUpdate(0x0A, creo->getMoodID());
-	}
 
-	void updateMoodStr() {
-		addAsciiUpdate(0x04, creo->getMoodStr());
-	}
 
 	void updatePerformanceAnimation(String pAnimation) {
 		startUpdate(0x03);

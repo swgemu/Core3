@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -21,7 +23,7 @@ namespace terminal {
 
 class Terminal : public TangibleObject {
 public:
-	Terminal(LuaObject* templateData);
+	Terminal();
 
 	void initializeTransientMembers();
 
@@ -50,7 +52,7 @@ namespace terminal {
 class TerminalImplementation : public TangibleObjectImplementation {
 
 public:
-	TerminalImplementation(LuaObject* templateData);
+	TerminalImplementation();
 
 	TerminalImplementation(DummyConstructorParameter* param);
 

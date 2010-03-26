@@ -47,57 +47,58 @@ package server.zone.objects.group;
 import server.zone.objects.scene.SceneObject;
 import system.util.Vector;
 import server.chat.room.ChatRoom;
-import server.zone.packets.object.StfParameter;
+//import server.zone.packets.object.StfParameter;
 import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
+include server.zone.objects.group.GroupList;
 
-
-class GroupObject extends SceneObject {
-	SceneObject leader;
-	
-	Vector<SceneObject> groupMembers;
-	unsigned int listCount;
-	
-	ChatRoom groupChannel;
+class GroupObject extends SceneObject {	
+	@dereferenced
+	GroupList groupMembers;
+		
+	ChatRoom chatRoom;
 	
 	int groupLevel;
 	
-	public native GroupObject(LuaObject templateData);
+	public GroupObject() {		
+		groupLevel = 0;
+		
+		Logger.setLoggingName("GroupObject");
+		
+		chatRoom = null;
+	}
 	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void broadcastMessage(BaseMessage msg);
 
-	public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
+	/*public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, unsigned long targetid = 0, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, StfParameter param, boolean sendToSelf = false);
-
-	public native void addSceneObject(SceneObject player);
-	public native void removeSceneObject(SceneObject player);
+*/
+	public native void addMember(SceneObject player);
+	public native void removeMember(SceneObject player);
 
 	public native void disband();
 	public native void makeLeader(SceneObject player);
 
 	public native boolean hasMember(SceneObject player);
 
-	public native void startChannel();
+	public native void startChatRoom();
+	public native void destroyChatRoom();
 
-	public native float getRangerBonusForHarvesting(SceneObject player);
+	//public native float getRangerBonusForHarvesting(SceneObject player);
 
-	public native void addSquadLeaderBonuses(CreatureObject groupMember);
+	/*public native void addSquadLeaderBonuses(CreatureObject groupMember);
 	public native void removeSquadLeaderBonuses(CreatureObject groupMember);
 
-	public native void calcGroupLevel();
+	public native void calcGroupLevel();*/
 
 	public int getGroupLevel() {
 		return groupLevel;
 	}
 
 	public ChatRoom getGroupChannel() {
-		return groupChannel;
-	}
-
-	public int getListSize() {
-		return groupMembers.size();
+		return chatRoom;
 	}
 
 	public int getGroupSize() {
@@ -108,20 +109,17 @@ class GroupObject extends SceneObject {
 		return groupMembers.get(index);
 	}
 
-	void addMember(SceneObject player) {
+	public void initializeLeader(SceneObject player) {
 		groupMembers.add(player);
 	}
 
 	public SceneObject getLeader() {
-		return leader;
+		return groupMembers.get(0);
 	}
-
-	public unsigned int getListCount() {
-		return listCount;
-	}
-
-	public unsigned int getNewListCount(int cnt) {
-		return listCount += cnt;
+	
+	@local
+	public GroupList getGroupList() {
+		return groupMembers;
 	}
 
 }

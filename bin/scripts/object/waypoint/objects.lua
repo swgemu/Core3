@@ -77,10 +77,12 @@ object_waypoint_shared_path_waypoint = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4195736526
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_path_waypoint, 4195736526)
+ObjectTemplates:addTemplate(object_waypoint_shared_path_waypoint, "object/waypoint/shared_path_waypoint.iff")
 
 object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_default.apt",
@@ -118,10 +120,12 @@ object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4251347533
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_waypoint, 4251347533)
+ObjectTemplates:addTemplate(object_waypoint_shared_waypoint, "object/waypoint/shared_waypoint.iff")
 
 object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_blue.prt",
@@ -159,10 +163,12 @@ object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 629636525
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint, 629636525)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint, "object/waypoint/shared_world_waypoint.iff")
 
 object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_blue.prt",
@@ -200,10 +206,12 @@ object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3038003230
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_blue, 3038003230)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_blue, "object/waypoint/shared_world_waypoint_blue.iff")
 
 object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_green.prt",
@@ -241,10 +249,12 @@ object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 211288739
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_green, 211288739)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_green, "object/waypoint/shared_world_waypoint_green.iff")
 
 object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_orange.prt",
@@ -282,10 +292,12 @@ object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3990793280
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_orange, 3990793280)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_orange, "object/waypoint/shared_world_waypoint_orange.iff")
 
 object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_red.prt",
@@ -323,10 +335,12 @@ object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 186074874
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_purple, 186074874)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_purple, "object/waypoint/shared_world_waypoint_purple.iff")
 
 object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_space_waypoint.prt",
@@ -364,10 +378,12 @@ object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2672628441
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_space, 2672628441)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_space, "object/waypoint/shared_world_waypoint_space.iff")
 
 object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_white.prt",
@@ -405,10 +421,12 @@ object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2818077908
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_white, 2818077908)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_white, "object/waypoint/shared_world_waypoint_white.iff")
 
 object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_yellow.prt",
@@ -446,7 +464,9 @@ object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2960507421
 }
 
-ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_yellow, 2960507421)
+ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_yellow, "object/waypoint/shared_world_waypoint_yellow.iff")

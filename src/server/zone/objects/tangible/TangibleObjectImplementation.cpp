@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -57,7 +59,11 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 }
 
 void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::loadTemplateData(templateData);
+
 	targetable = templateData->getByteField("targetable");
+
+	playerUseMask = templateData->getShortField("playerUseMask");
 
 	complexity = 100.f;
 
@@ -69,6 +75,8 @@ void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	conditionDamage = 0;
 	maxCondition = 6000;
+
+	sliced = false;
 
 	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
@@ -190,4 +198,17 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 		clearCombatState(false);
 
 	//info("finished removing defender");
+}
+
+void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	SceneObjectImplementation::fillAttributeList(alm, object);
+
+	if (maxCondition > 0) {
+		StringBuffer cond;
+		cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+
+		alm->insertAttribute("condition", cond);
+	}
+
+	alm->insertAttribute("volume", volume);
 }

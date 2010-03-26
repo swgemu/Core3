@@ -85,13 +85,14 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3216787509
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_base, 3216787509)
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_base, "object/tangible/deed/base/shared_deed_base.iff")
 
 object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2878588829
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_building_base, 2878588829)
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_building_base, "object/tangible/deed/base/shared_deed_building_base.iff")
 
 object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,13 +191,14 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3225611811
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_installation_base, 3225611811)
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_installation_base, "object/tangible/deed/base/shared_deed_installation_base.iff")
 
 object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -241,13 +244,14 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2503565638
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_deed_base, 2503565638)
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_deed_base, "object/tangible/deed/base/shared_pet_deed_base.iff")
 
 object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -293,10 +297,11 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4079953693
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, 4079953693)
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, "object/tangible/deed/base/shared_pet_droid_deed_base.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3571980970
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp, 3571980970)
+ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp.iff")
 
 object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 847621417
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest, 847621417)
+ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_forest.iff")
 
 object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4105359353
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain, 4105359353)
+ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_mountain.iff")

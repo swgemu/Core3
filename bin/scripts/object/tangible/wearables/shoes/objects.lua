@@ -85,13 +85,14 @@ object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3549441025
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s01, 3549441025)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s01, "object/tangible/wearables/shoes/shared_shoes_s01.iff")
 
 object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s02_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 143099030
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s02, 143099030)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s02, "object/tangible/wearables/shoes/shared_shoes_s02.iff")
 
 object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s03_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1099621147
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s03, 1099621147)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s03, "object/tangible/wearables/shoes/shared_shoes_s03.iff")
 
 object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s07_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1635672216
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s07, 1635672216)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s07, "object/tangible/wearables/shoes/shared_shoes_s07.iff")
 
 object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s08_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3681832074
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s08, 3681832074)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s08, "object/tangible/wearables/shoes/shared_shoes_s08.iff")
 
 object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s09_f.sat",
@@ -345,10 +350,11 @@ object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2457414407
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s09, 2457414407)
+ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s09, "object/tangible/wearables/shoes/shared_shoes_s09.iff")

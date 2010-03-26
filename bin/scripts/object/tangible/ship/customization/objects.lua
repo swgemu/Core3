@@ -85,13 +85,14 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2278316907
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, 2278316907)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, "object/tangible/ship/customization/shared_xwing_cowl_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1557918716
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, 1557918716)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, "object/tangible/ship/customization/shared_xwing_cowl_neg_s02.iff")
 
 object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2209400056
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, 2209400056)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, "object/tangible/ship/customization/shared_xwing_gun_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s02.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1487367279
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, 1487367279)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, "object/tangible/ship/customization/shared_xwing_gun_neg_s02.iff")
 
 object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_thruster_neg_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 900489122
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, 900489122)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, "object/tangible/ship/customization/shared_xwing_thruster_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_thruster_neg_s02.apt",
@@ -345,10 +350,11 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4005295925
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, 4005295925)
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, "object/tangible/ship/customization/shared_xwing_thruster_neg_s02.iff")

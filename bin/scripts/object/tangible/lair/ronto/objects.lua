@@ -85,13 +85,14 @@ object_tangible_lair_ronto_shared_lair_ronto = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2470399210
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto, 2470399210)
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto, "object/tangible/lair/ronto/shared_lair_ronto.iff")
 
 object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 28411685
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, 28411685)
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, "object/tangible/lair/ronto/shared_lair_ronto_desert.iff")
 
 object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3699812531
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, 3699812531)
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, "object/tangible/lair/ronto/shared_lair_ronto_dune.iff")

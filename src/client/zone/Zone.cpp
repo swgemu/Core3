@@ -84,7 +84,7 @@ void Zone::run() {
 			String charName = name;
 			charName = charName.replaceFirst("\n", "");
 
-			BaseMessage* msg = new ClientCreateCharacter(name);
+			BaseMessage* msg = new ClientCreateCharacter(charName);
 			client->sendMessage(msg);
 		} else {
 			BaseMessage* selectChar = new SelectCharacter(characterID);

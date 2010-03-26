@@ -85,10 +85,11 @@ object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 60452333
 }
 
-ObjectTemplates:addTemplate(object_tangible_planet_map_location_shared_map_location_base, 60452333)
+ObjectTemplates:addTemplate(object_tangible_planet_map_location_shared_map_location_base, "object/tangible/planet_map_location/shared_map_location_base.iff")

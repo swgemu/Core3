@@ -77,10 +77,12 @@ object_draft_schematic_food_additive_shared_additive_heavy = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3572109934
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_heavy, 3572109934)
+ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_heavy, "object/draft_schematic/food/additive/shared_additive_heavy.iff")
 
 object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchemati
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 363998896
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_light, 363998896)
+ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_light, "object/draft_schematic/food/additive/shared_additive_light.iff")
 
 object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,7 +163,9 @@ object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2258764043
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_medium, 2258764043)
+ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_medium, "object/draft_schematic/food/additive/shared_additive_medium.iff")

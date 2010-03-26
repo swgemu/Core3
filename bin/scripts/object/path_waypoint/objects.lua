@@ -85,13 +85,14 @@ object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2053891523
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint, 2053891523)
+ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint, "object/path_waypoint/shared_path_waypoint.iff")
 
 object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_path.apt",
@@ -137,13 +138,14 @@ object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3534396119
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, 3534396119)
+ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, "object/path_waypoint/shared_path_waypoint_auto_spawn.iff")
 
 object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_npc.apt",
@@ -189,13 +191,14 @@ object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3085605223
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_city, 3085605223)
+ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_city, "object/path_waypoint/shared_path_waypoint_city.iff")
 
 object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_droid.apt",
@@ -241,13 +244,14 @@ object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3986061853
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_droid, 3986061853)
+ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_droid, "object/path_waypoint/shared_path_waypoint_droid.iff")
 
 object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_guard.apt",
@@ -293,10 +297,11 @@ object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1010698515
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_patrol, 1010698515)
+ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_patrol, "object/path_waypoint/shared_path_waypoint_patrol.iff")

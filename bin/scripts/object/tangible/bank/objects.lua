@@ -85,10 +85,11 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1895633812
 }
 
-ObjectTemplates:addTemplate(object_tangible_bank_shared_character_bank, 1895633812)
+ObjectTemplates:addTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")

@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -119,9 +121,19 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+#include "server/zone/objects/player/sui/SuiBox.h"
+
+#include "server/zone/objects/creature/CreatureFlag.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
+
+#include "system/util/VectorMap.h"
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -150,7 +162,7 @@ public:
 
 	static const int LOADING = 6;
 
-	PlayerCreature(LuaObject* templateData);
+	PlayerCreature();
 
 	void initializeTransientMembers();
 
@@ -170,9 +182,25 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
+
+	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void notifySceneReady();
+
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	PlayerObject* getPlayerObject();
 
 	bool isOnline();
 
@@ -204,11 +232,17 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
 
 	void setRaceID(byte id);
+
+	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
 
@@ -228,6 +262,26 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	int getSkillPoints();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
+
+	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -235,6 +289,8 @@ protected:
 
 	String _return_getFirstName;
 	String _return_getLastName;
+
+	UnicodeString _return_getBiography;
 
 	friend class PlayerCreatureHelper;
 };
@@ -263,7 +319,11 @@ protected:
 
 	Time logoutTimeStamp;
 
+	unsigned int clientLastMovementStamp;
+
 	unsigned int accountID;
+
+	unsigned int suiBoxNextID;
 
 	String raceFile;
 
@@ -275,13 +335,15 @@ protected:
 
 	UnicodeString biography;
 
-	byte lotsRemaining;
+	int lotsRemaining;
 
 	PlayerDisconnectEvent* disconnectEvent;
 
 	PlayerRecoveryEvent* recoveryEvent;
 
-	Time nextAction;
+	int skillPoints;
+
+	Badges badges;
 
 	Time nextTip;
 
@@ -291,9 +353,16 @@ protected:
 
 	Time firstIncapacitationTime;
 
+private:
+	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
+
+protected:
 	int pvpRating;
 
 	int factionStatus;
+
+private:
+	SortedVector<unsigned long long> persistentMessages;
 
 public:
 	static const int ONLINE = 1;
@@ -308,9 +377,11 @@ public:
 
 	static const int LOADING = 6;
 
-	PlayerCreatureImplementation(LuaObject* templateData);
+	PlayerCreatureImplementation();
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
+
+	void finalize();
 
 	void initializeTransientMembers();
 
@@ -330,9 +401,25 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
+
+	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void notifySceneReady();
+
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	PlayerObject* getPlayerObject();
 
 	bool isOnline();
 
@@ -364,11 +451,17 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
 
 	void setRaceID(byte id);
+
+	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
 
@@ -388,6 +481,26 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	int getSkillPoints();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
+
+	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -395,8 +508,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerCreatureImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -427,6 +538,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void disconnect(bool closeClient, bool doLock);
@@ -441,9 +554,23 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose);
+
+	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void notifySceneReady();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	PlayerObject* getPlayerObject();
 
 	bool isOnline();
 
@@ -475,11 +602,17 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
 
 	void setRaceID(byte id);
+
+	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
 
@@ -498,6 +631,26 @@ public:
 	void addChatRoom(ChatRoom* room);
 
 	void removeChatRoom(ChatRoom* room);
+
+	int getSkillPoints();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
+
+	UnicodeString getBiography();
+
+	unsigned int getClientLastMovementStamp();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

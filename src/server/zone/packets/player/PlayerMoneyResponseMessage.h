@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 class PlayerMoneyResponseMessage : public BaseMessage {
 public:
     PlayerMoneyResponseMessage(CreatureObject* creo) : BaseMessage(20) {

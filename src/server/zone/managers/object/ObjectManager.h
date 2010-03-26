@@ -49,11 +49,11 @@ which carries forward this exception.
 
 #include "ObjectMap.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/util/ObjectFactory.h"
 
-class ObjectDatabase;
+class TemplateManager;
 
 namespace server {
 namespace zone {
@@ -65,15 +65,20 @@ namespace zone {
 
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
-		ObjectDatabase* database;
-		ObjectDatabase* staticDatabase;
+
+		ObjectDatabaseManager* databaseManager;
+
+		TemplateManager* templateManager;
 
 	public:
-		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+		ObjectFactory<SceneObject* (), uint32> objectFactory;
 
 		static Lua* luaTemplatesInstance;
 
 	private:
+		/**
+		 * Loads the highest object id without the highest 16 bits that specify the table.
+		 */
 		void loadLastUsedObjectID();
 
 		void registerObjectTypes();
@@ -81,40 +86,44 @@ namespace zone {
 		void deSerializeObject(SceneObject* object, ObjectInputStream* data);
 		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
 
+		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid);
+
 	public:
 		ObjectManager();
-
 		~ObjectManager();
 
+		void loadStaticObjects();
+
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, bool persistent, bool permanent = false, uint64 oid = 0);
-		ManagedObject* createObject(const String& className, bool persistent, bool permanent = false, uint64 oid = 0);
+		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
+
+		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
+
+		/**
+		 * Assigns a new persistent object id, stores in the specified database
+		 */
+		void persistObject(ManagedObject* object, int persistenceLevel, const String& database);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
-		int updatePersistentObject(DistributedObject* object, bool permanent = false);
+		int updatePersistentObject(DistributedObject* object);
 
 		int destroyObject(uint64 objectID);
 
-		/*template<typename ClassType> void createObject() {
+		uint64 getNextObjectID(const String& database);
 
-		}*/
+		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);
+		ObjectDatabase* getTable(uint64 objectID);
 
-		//void savePersistentObjects();
-
-		void closeDatabases();
-
-		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
+		inline void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;
-		}
-
-		inline ObjectDatabase* getObjectDatabase() {
-			return database;
 		}
 
 		// LUA
 		void registerFunctions();
-
+		void registerGlobals();
 		static int includeFile(lua_State* L);
+		static int crcString(lua_State* L);
+		static int addTemplateCRC(lua_State* L);
 
 	};
 

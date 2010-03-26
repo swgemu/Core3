@@ -45,14 +45,22 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
-import system.util.Vector;
-import server.zone.packets.object.StfParameter;
+import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.zone.objects.creature.professions.SkillBox;
+import server.zone.objects.group.GroupObject;
 
 //import server.zone.objects.player.professions.SkillBox;
 
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.creature.variables.SkillBoxList;
+include server.zone.objects.creature.variables.CommandQueueAction;
+
+import engine.core.ManagedObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.lang.Time;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -60,6 +68,8 @@ class CreatureObject extends TangibleObject {
 	
 	protected int gender;
 	protected int species;
+	
+	protected int faction;
 	
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
@@ -74,20 +84,17 @@ class CreatureObject extends TangibleObject {
 	protected DeltaVector<int> wounds;
 	
 	protected unsigned long stateBitmask;
-	
-	//protected VectorMap<string, SkillBox> skillBoxes;
-	
+		
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
-	
-	// skillmods
-	
+		
 	protected float runSpeed;
 	protected float walkSpeed;
 	protected float terrainNegotiation;
 	protected float runAcceleration;
 	protected float walkAcceleration;
 	protected float height;
+	protected float swimHeight;
 	protected float slopeModPercent;
 	protected float slopeModAngle;
 	
@@ -99,7 +106,8 @@ class CreatureObject extends TangibleObject {
 	protected string moodString;
 	
 	protected unsigned long weaponID;
-	protected unsigned long groupID;
+	
+	protected GroupObject group;
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
 	
@@ -118,6 +126,19 @@ class CreatureObject extends TangibleObject {
 	protected byte frozen;
 	
 	protected string templateString;
+	
+	// Profession stuff
+	@dereferenced
+	protected SkillBoxList skillBoxList;
+		
+	@dereferenced
+	protected DeltaVectorMap<string, long> skillModList;
+	
+	@dereferenced
+	protected Vector<CommandQueueAction> commandQueue;
+	
+	@dereferenced
+	protected Time nextAction;
 	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
@@ -139,14 +160,12 @@ class CreatureObject extends TangibleObject {
 	 * @post { CreatureObject is initialized } 
 	 * @param templateData templateData points to the SharedCreatureObjectTemplate LuaObject that is used to initialize CreatureObject members
 	 */
-	public CreatureObject(LuaObject templateData) {
-		super(templateData);
-		
+	public CreatureObject() {
 		Logger.setLoggingName("CreatureObject");
-
-		loadTemplateData(templateData);
 	}
 	
+	public native void finalize();
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -197,10 +216,24 @@ class CreatureObject extends TangibleObject {
 	 * @param message unicode message to send
 	 */
 	public native void sendSystemMessage(unicode message);
-	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
 	
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param file stf file name of the message
+	 * @param stringid stf stringid of the message
+	 */
+	public native void sendSystemMessage(final string file, final string stringid);
+	
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param message ParameterizedStringId message to send
+	 */
 	@local
-	public native void sendSystemMessage(final string file, final string str, StfParameter param);
+	public native void sendSystemMessage(@dereferenced ParameterizedStringId stringid);
 	
 	/**
 	 * Sends the contained slotted objects to the specified player
@@ -294,6 +327,15 @@ class CreatureObject extends TangibleObject {
 	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
 	
 	/**
+	 * Updates the instrument id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param instrumentid the new instrument id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setInstrumentID(int instrumentid, boolean notifyClient = false);
+	
+	/**
 	 * Updates the target id to the specified object id
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified target id }
@@ -303,13 +345,186 @@ class CreatureObject extends TangibleObject {
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
 	
 	/**
-	 * Updates the bank credits of the this object
+	 * Updates the bank credits of this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified bank credits }
 	 * @param credits the new credits
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setBankCredits(int credits, boolean notifyClient = true);
+	
+	public void addBankCredits(int credits, boolean notifyClient = true) {
+		int newCredits = bankCredits + credits;
+		setBankCredits(newCredits);
+	}
+	
+	public void substractBankCredits(int credits) {
+		int newCredits = bankCredits - credits;
+		setBankCredits(newCredits);
+	}
+	
+	/**
+	 * Update the cash credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified cash credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setCashCredits(int credits, boolean notifyClient = true);
+	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void addSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox name to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void removeSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to substract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/substract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	
+	/**
+	 * Removes skill mod from the list (same as setting to 0)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillMod(final string skillMod, boolean notifyCLient = true);
+	
+	/**
+	 * Sets a new group inviter id
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param id object id of the inviter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroupInviterID(unsigned long id, boolean notifyClient = true);
+	
+	/**
+	 * Sets the group of this object
+	 * @pre { this object is locked }
+	 * @post {this object is locked }
+	 * @param group GroupObject to update
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroup(GroupObject group, boolean notifyClient = true);
+	
+	/**
+	 * Enqueues a command action
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCRC queue command crc
+	 * @param actionCount command count
+	 * @param targetID target
+	 * @param arguments arguments
+	 */
+	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
+	
+	/**
+	 * Sets characters mood
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param moodID mood to set
+	 */
+	public native void setMood(byte moodID, boolean notifyClient = true);
+	
+	/**
+	 * Removes a command from queue
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCount the action count to remove
+	 */
+	public native void deleteQueueAction(unsigned int actionCount);
+	
+	/**
+	 * Sets a new state to the statebitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask has the new state }
+	 * @param state state to add
+	 */
+	public native void setState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Cleares a state from the state bitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask doesnt have the specified state }
+	 * @param state state to clear
+	 */
+	public native void clearState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Returns character mask to check against wearable player use mask
+	 * @pre { }
+	 * @post { }
+	 * 
+	 */
+	public native unsigned int getWearableMask();
+	
+	public native int canAddObject(SceneObject object);
+
+	
+	/**
+	 * Is called when this object has moved to a new position
+	 */
+	public native int onPositionUpdate();
+	
+	public native void activateQueueAction();
+	
+	public native unicode getCreatureName();
+	
+	public boolean isRebel() {
+		return faction == 0x16148850;
+	}
+	
+	public boolean isImperial() {
+		return faction == 0xDB4ACC54;
+	}
+	
+	public boolean isNeurtral() {
+		return faction == 0;
+	}
+	
+	public boolean isGroupped() {
+		return group != null;
+	}
 	
 	public int getBankCredits() {
 		return bankCredits;
@@ -379,6 +594,10 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask;
 	}
 	
+	public boolean hasState(unsigned long state) {
+		return stateBitmask & state;
+	}
+	
 	public unsigned long getListenID() {
 		return listenToID;
 	}
@@ -420,11 +639,18 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public unsigned long getGroupID() {
-		return groupID;
+		if (group != null)
+			return group.getObjectID();
+		else
+			return 0;
 	}
 	
 	public unsigned long getGroupInviterID() {
 		return groupInviterID;
+	}
+	
+	public GroupObject getGroup() {
+		return group;
 	}
 	
 	public unsigned long getGroupInviteCounter() {
@@ -467,9 +693,23 @@ class CreatureObject extends TangibleObject {
 		return species;
 	}
 	
+	public int getFaction() {
+		return faction;
+	}
+	
 	@local
 	public DeltaVector<int> getBaseHAM() {
 		return baseHAM;
+	}
+	
+	@local
+	public SkillBoxList getSkillBoxList() {
+		return skillBoxList;
+	}
+	
+	@local
+	public DeltaVectorMap<string, long> getSkillModList() {
+		return skillModList;
 	}
 	
 	public void setHeight(float heigh) {

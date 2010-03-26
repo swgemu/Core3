@@ -85,13 +85,14 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3941503205
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba, 3941503205)
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2016717177
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, 2016717177)
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 745493888
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, 745493888)
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")

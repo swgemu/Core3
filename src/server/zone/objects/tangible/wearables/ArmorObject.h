@@ -9,9 +9,13 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -21,9 +25,21 @@ namespace wearables {
 
 class ArmorObject : public WearableObject {
 public:
-	ArmorObject(LuaObject* templateData);
+	static const int LIGHT = 0x1;
+
+	static const int MEDIUM = 0x2;
+
+	static const int HEAVY = 0x3;
+
+	ArmorObject();
 
 	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isSpecial(const String& special);
+
+	bool isVulnerable(const String& vulnerability);
 
 protected:
 	ArmorObject(DummyConstructorParameter* param);
@@ -48,13 +64,57 @@ namespace tangible {
 namespace wearables {
 
 class ArmorObjectImplementation : public WearableObjectImplementation {
+protected:
+	int healthEncumbrance;
+
+	int actionEncumbrance;
+
+	int mindEncumbrance;
+
+	int rating;
+
+	float kinetic;
+
+	float energy;
+
+	float electricity;
+
+	float stun;
+
+	float blast;
+
+	float heat;
+
+	float cold;
+
+	float acid;
+
+	float lightSaber;
+
+	SortedVector<String> specialResistsVector;
+
+	SortedVector<String> vulnerabilitesVector;
+
+	float specialBase;
 
 public:
-	ArmorObjectImplementation(LuaObject* templateData);
+	static const int LIGHT = 0x1;
+
+	static const int MEDIUM = 0x2;
+
+	static const int HEAVY = 0x3;
+
+	ArmorObjectImplementation();
 
 	ArmorObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isSpecial(const String& special);
+
+	bool isVulnerable(const String& vulnerability);
 
 	ArmorObject* _this;
 
@@ -97,6 +157,13 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isSpecial(const String& special);
+
+	bool isVulnerable(const String& vulnerability);
+
+protected:
+	String _param0_isSpecial__String_;
+	String _param0_isVulnerable__String_;
 };
 
 class ArmorObjectHelper : public DistributedObjectClassHelper, public Singleton<ArmorObjectHelper> {

@@ -85,13 +85,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1049353985
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l, 1049353985)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bicep_r_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1314822802
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r, 1314822802)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_boots_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1961496739
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots, 1961496739)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_boots.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_l_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3411753246
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l, 3411753246)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_r_f.sat",
@@ -293,13 +297,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3146677389
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r, 3146677389)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_chest_plate_f.sat",
@@ -345,13 +350,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 590081831
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate, 590081831)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_gloves_f.sat",
@@ -397,13 +403,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2662099985
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves, 2662099985)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_gloves.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_helmet_f.sat",
@@ -449,13 +456,14 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 678202649
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet, 678202649)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_helmet.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_leggings_f.sat",
@@ -501,10 +509,11 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1149232129
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings, 1149232129)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_leggings.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1654178930
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, 1654178930)
+ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff")
 
 object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2587304882
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, 2587304882)
+ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff")

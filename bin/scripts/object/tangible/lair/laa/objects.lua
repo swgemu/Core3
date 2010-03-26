@@ -85,13 +85,14 @@ object_tangible_lair_laa_shared_lair_laa = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 986654540
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa, 986654540)
+ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa, "object/tangible/lair/laa/shared_lair_laa.iff")
 
 object_tangible_lair_laa_shared_lair_laa_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_laa_shared_lair_laa_underwater = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4014734204
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa_underwater, 4014734204)
+ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa_underwater, "object/tangible/lair/laa/shared_lair_laa_underwater.iff")

@@ -85,13 +85,14 @@ object_tangible_location_shared_location_32 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 742219640
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_shared_location_32, 742219640)
+ObjectTemplates:addTemplate(object_tangible_location_shared_location_32, "object/tangible/location/shared_location_32.iff")
 
 object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3189159180
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_shared_location_48, 3189159180)
+ObjectTemplates:addTemplate(object_tangible_location_shared_location_48, "object/tangible/location/shared_location_48.iff")
 
 object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,13 +191,14 @@ object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3915066233
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_shared_location_64, 3915066233)
+ObjectTemplates:addTemplate(object_tangible_location_shared_location_64, "object/tangible/location/shared_location_64.iff")
 
 object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -241,13 +244,14 @@ object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1243606058
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_shared_location_80, 1243606058)
+ObjectTemplates:addTemplate(object_tangible_location_shared_location_80, "object/tangible/location/shared_location_80.iff")
 
 object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -293,10 +297,11 @@ object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3822693835
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_shared_location_96, 3822693835)
+ObjectTemplates:addTemplate(object_tangible_location_shared_location_96, "object/tangible/location/shared_location_96.iff")

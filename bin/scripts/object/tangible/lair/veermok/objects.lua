@@ -85,13 +85,14 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2070384123
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok, 2070384123)
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4273060059
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, 4273060059)
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2554849898
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, 2554849898)
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")

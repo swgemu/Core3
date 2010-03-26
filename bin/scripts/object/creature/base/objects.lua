@@ -105,6 +105,7 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -115,7 +116,7 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 697154328
 }
 
-ObjectTemplates:addTemplate(object_creature_base_shared_base_creature, 697154328)
+ObjectTemplates:addTemplate(object_creature_base_shared_base_creature, "object/creature/base/shared_base_creature.iff")
 
 object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new {
 	acceleration = {2,2},
@@ -181,6 +182,7 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -191,4 +193,4 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 937448992
 }
 
-ObjectTemplates:addTemplate(object_creature_base_shared_creature_default, 937448992)
+ObjectTemplates:addTemplate(object_creature_base_shared_creature_default, "object/creature/base/shared_creature_default.iff")

@@ -85,10 +85,11 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3460199396
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_base_shared_manufacture_base, 3460199396)
+ObjectTemplates:addTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")

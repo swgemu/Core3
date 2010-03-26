@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -54,56 +55,70 @@ namespace scene {
 namespace variables {
 
 class StringId : public Serializable {
+protected:
 	String file;
 	String stringID;
-
 	UnicodeString customName;
 
-private:
-	inline void addSerializableVariables();
+	inline void addSerializableVariables() {
+		addSerializableVariable("file", &file);
+		addSerializableVariable("stringID", &stringID);
+		addSerializableVariable("customName", &customName);
+	}
 
 public:
 	StringId();
 	StringId(const StringId& id);
+	StringId(const char * cstr);
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
 	StringId(const UnicodeString& custom);
 
-	void getFullPath(String& str) {
+	StringId& operator=(const StringId& id) {
+		if (&id == this)
+			return *this;
+
+		file = id.file;
+		stringID = id.stringID;
+
+		customName = id.customName;
+
+		return *this;
+	}
+
+	void clear();
+
+	void getFullPath(String& str) const {
 		str = "@" + file + ":" + stringID;
 	}
 
-	String& getFile() {
+	inline String& getFile() {
 		return file;
 	}
 
-	String& getStringID() {
+	inline String& getStringID() {
 		return stringID;
 	}
 
-	UnicodeString& getCustomString() {
+	inline UnicodeString& getCustomString() {
 		return customName;
 	}
 
-	void setCustomString(const UnicodeString& custom) {
+	inline uint32 size() const {
+		return customName.length() * 2 + file.length() + stringID.length();
+	}
+
+	inline void setCustomString(const UnicodeString& custom) {
 		customName = custom;
 	}
 
-	void setStringId(const String& fullPath) {
-		if (fullPath.isEmpty())
-			return;
+	void setStringId(const String& fullPath);
 
-		if (fullPath.charAt(0) == '@') {
-			StringTokenizer tokenizer(fullPath.subString(1));
-			tokenizer.setDelimeter(":");
-
-			tokenizer.getStringToken(file);
-			tokenizer.getStringToken(stringID);
-		}
+	inline void setStringId(const String& file, const String& id) {
+		StringId::file = file;
+		StringId::stringID = id;
 	}
-
 };
-
 
 }
 }

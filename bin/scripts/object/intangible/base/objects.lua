@@ -77,10 +77,12 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3949582877
 }
 
-ObjectTemplates:addTemplate(object_intangible_base_shared_base_intangible, 3949582877)
+ObjectTemplates:addTemplate(object_intangible_base_shared_base_intangible, "object/intangible/base/shared_base_intangible.iff")
 
 object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1331018210
 }
 
-ObjectTemplates:addTemplate(object_intangible_base_shared_intangible_default, 1331018210)
+ObjectTemplates:addTemplate(object_intangible_base_shared_intangible_default, "object/intangible/base/shared_intangible_default.iff")

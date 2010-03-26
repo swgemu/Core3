@@ -85,13 +85,14 @@ object_tangible_loot_collectible_kits_shared_blue_rug_kit = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1365765159
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_blue_rug_kit, 1365765159)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_blue_rug_kit, "object/tangible/loot/collectible/kits/shared_blue_rug_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
@@ -137,13 +138,14 @@ object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3179120955
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit, 3179120955)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit, "object/tangible/loot/collectible/kits/shared_fs_tracking_device_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
@@ -189,13 +191,14 @@ object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3922864269
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_gong_kit, 3922864269)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_gong_kit, "object/tangible/loot/collectible/kits/shared_gong_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_furniture.apt",
@@ -241,13 +244,14 @@ object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3392193780
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_light_table_kit, 3392193780)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_light_table_kit, "object/tangible/loot/collectible/kits/shared_light_table_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
@@ -293,13 +297,14 @@ object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2076973768
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_orange_rug_kit, 2076973768)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_orange_rug_kit, "object/tangible/loot/collectible/kits/shared_orange_rug_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
@@ -345,10 +350,11 @@ object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1751538268
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_sculpture_kit, 1751538268)
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_shared_sculpture_kit, "object/tangible/loot/collectible/kits/shared_sculpture_kit.iff")

@@ -85,10 +85,11 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1622629631
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, 1622629631)
+ObjectTemplates:addTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")

@@ -85,13 +85,14 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 838757271
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_bandfill, 838757271)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_bandfill, "object/tangible/instrument/shared_bandfill.iff")
 
 object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fanfar.apt",
@@ -137,13 +138,14 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2024043623
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_fanfar, 2024043623)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_fanfar, "object/tangible/instrument/shared_fanfar.iff")
 
 object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fizz.apt",
@@ -189,13 +191,14 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 197364379
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_fizz, 197364379)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_fizz, "object/tangible/instrument/shared_fizz.iff")
 
 object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_flute_droopy.apt",
@@ -241,13 +244,14 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1186559398
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_flute_droopy, 1186559398)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_flute_droopy, "object/tangible/instrument/shared_flute_droopy.iff")
 
 object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rebos_organ.apt",
@@ -293,13 +297,14 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2221793724
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, 2221793724)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff")
 
 object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -345,13 +350,14 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3369165758
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, 3369165758)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, "object/tangible/instrument/shared_instrument_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_kloo_horn.apt",
@@ -397,13 +403,14 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4261135292
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_kloo_horn, 4261135292)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_kloo_horn, "object/tangible/instrument/shared_kloo_horn.iff")
 
 object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
@@ -449,13 +456,14 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1784205003
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_mandoviol, 1784205003)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_mandoviol, "object/tangible/instrument/shared_mandoviol.iff")
 
 object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -501,13 +509,14 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2412019728
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_nalargon, 2412019728)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_nalargon, "object/tangible/instrument/shared_nalargon.iff")
 
 object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
@@ -553,13 +562,14 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2010287603
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_ommni_box, 2010287603)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_ommni_box, "object/tangible/instrument/shared_ommni_box.iff")
 
 object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -605,13 +615,14 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1225824678
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_organ_max_rebo, 1225824678)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_organ_max_rebo, "object/tangible/instrument/shared_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_slitherhorn.apt",
@@ -657,13 +668,14 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3533891079
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_slitherhorn, 3533891079)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_slitherhorn, "object/tangible/instrument/shared_slitherhorn.iff")
 
 object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_traz.apt",
@@ -709,10 +721,11 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 395515554
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_shared_traz, 395515554)
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_traz, "object/tangible/instrument/shared_traz.iff")

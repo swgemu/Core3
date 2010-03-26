@@ -85,10 +85,11 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1860325711
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, 1860325711)
+ObjectTemplates:addTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")

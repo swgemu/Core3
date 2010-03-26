@@ -85,13 +85,14 @@ object_tangible_furniture_cheap_shared_armoire_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 814787995
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_armoire_s01, 814787995)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_armoire_s01, "object/tangible/furniture/cheap/shared_armoire_s01.iff")
 
 object_tangible_furniture_cheap_shared_bookcase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_bookcase_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_furniture_cheap_shared_bookcase_s01 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 536193644
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_bookcase_s01, 536193644)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_bookcase_s01, "object/tangible/furniture/cheap/shared_bookcase_s01.iff")
 
 object_tangible_furniture_cheap_shared_cabinet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_cabinet_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_furniture_cheap_shared_cabinet_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1571830128
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_cabinet_s01, 1571830128)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_cabinet_s01, "object/tangible/furniture/cheap/shared_cabinet_s01.iff")
 
 object_tangible_furniture_cheap_shared_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chair_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_furniture_cheap_shared_chair_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 390371593
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chair_s01, 390371593)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chair_s01, "object/tangible/furniture/cheap/shared_chair_s01.iff")
 
 object_tangible_furniture_cheap_shared_chest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chest_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_furniture_cheap_shared_chest_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3830949127
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chest_s01, 3830949127)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chest_s01, "object/tangible/furniture/cheap/shared_chest_s01.iff")
 
 object_tangible_furniture_cheap_shared_coffee_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_coffee_table_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_furniture_cheap_shared_coffee_table_s01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3533156957
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_coffee_table_s01, 3533156957)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_coffee_table_s01, "object/tangible/furniture/cheap/shared_coffee_table_s01.iff")
 
 object_tangible_furniture_cheap_shared_couch_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_couch_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_furniture_cheap_shared_couch_s01 = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 760525609
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_couch_s01, 760525609)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_couch_s01, "object/tangible/furniture/cheap/shared_couch_s01.iff")
 
 object_tangible_furniture_cheap_shared_end_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_end_table_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_furniture_cheap_shared_end_table_s01 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 506885495
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_end_table_s01, 506885495)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_end_table_s01, "object/tangible/furniture/cheap/shared_end_table_s01.iff")
 
 object_tangible_furniture_cheap_shared_love_seat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_love_seat_s01.apt",
@@ -501,10 +509,11 @@ object_tangible_furniture_cheap_shared_love_seat_s01 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 649092668
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_love_seat_s01, 649092668)
+ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_love_seat_s01, "object/tangible/furniture/cheap/shared_love_seat_s01.iff")

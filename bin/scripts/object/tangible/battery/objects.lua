@@ -85,10 +85,11 @@ object_tangible_battery_shared_battery = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2246798191
 }
 
-ObjectTemplates:addTemplate(object_tangible_battery_shared_battery, 2246798191)
+ObjectTemplates:addTemplate(object_tangible_battery_shared_battery, "object/tangible/battery/shared_battery.iff")

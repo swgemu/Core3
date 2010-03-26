@@ -58,20 +58,6 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 		((RadialManagerImplementation*) _impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
-void RadialManager::handleUseObject(PlayerCreature* player, SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(player);
-		method.addObjectParameter(object);
-
-		method.executeWithVoidReturn();
-	} else
-		((RadialManagerImplementation*) _impl)->handleUseObject(player, object);
-}
-
 /*
  *	RadialManagerImplementation
  */
@@ -81,7 +67,6 @@ RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParamet
 }
 
 RadialManagerImplementation::~RadialManagerImplementation() {
-	RadialManagerImplementation::finalize();
 }
 
 
@@ -160,9 +145,6 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 7:
 		handleObjectMenuRequest((PlayerCreature*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 8:
-		handleUseObject((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
-		break;
 	default:
 		return NULL;
 	}
@@ -176,10 +158,6 @@ void RadialManagerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte s
 
 void RadialManagerAdapter::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
 	((RadialManagerImplementation*) impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
-}
-
-void RadialManagerAdapter::handleUseObject(PlayerCreature* player, SceneObject* object) {
-	((RadialManagerImplementation*) impl)->handleUseObject(player, object);
 }
 
 /*

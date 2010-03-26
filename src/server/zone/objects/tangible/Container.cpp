@@ -10,8 +10,8 @@
  *	ContainerStub
  */
 
-Container::Container(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ContainerImplementation(templateData);
+Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ContainerImplementation();
 	_impl->_setStub(this);
 }
 
@@ -64,7 +64,6 @@ ContainerImplementation::ContainerImplementation(DummyConstructorParameter* para
 }
 
 ContainerImplementation::~ContainerImplementation() {
-	ContainerImplementation::finalize();
 }
 
 
@@ -125,12 +124,10 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 }
 
-ContainerImplementation::ContainerImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
+ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(55):  Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl(53):  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
-	// server/zone/objects/tangible/Container.idl(57):  loadTemplateData(templateData);
-	loadTemplateData(templateData);
 }
 
 /*

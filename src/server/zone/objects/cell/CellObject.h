@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -22,7 +24,9 @@ namespace cell {
 
 class CellObject : public SceneObject {
 public:
-	CellObject(LuaObject* templateData);
+	CellObject();
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
@@ -57,13 +61,17 @@ protected:
 	int cellNumber;
 
 public:
-	CellObjectImplementation(LuaObject* templateData);
+	CellObjectImplementation();
 
 	CellObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void finalize();
 
 	int getCellNumber();
 
@@ -76,8 +84,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~CellObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -111,6 +117,8 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void finalize();
 
 	int getCellNumber();
 

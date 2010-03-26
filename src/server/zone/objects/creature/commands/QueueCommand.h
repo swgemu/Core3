@@ -53,6 +53,7 @@ which carries forward this exception.
 
 
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "../professions/Skill.h"
 //#include "../../../managers/combat/CombatManager.h"
 
 namespace server {
@@ -62,9 +63,8 @@ namespace creature {
 namespace commands {
 
 
-class QueueCommand {
+class QueueCommand : public Skill {
 protected:
-	String slashCommandName;
 	uint32 nameCRC;
 
 	uint32 animCRC;
@@ -79,15 +79,19 @@ protected:
 
 	uint32 cooldown; // in msec
 
+	float defaultTime;
+
+	String characterAbility;
+
 	ZoneProcessServerImplementation* server;
 
+	int defaultPriority;
+
 public:
-	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) {
+	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) : Skill(name) {
 		server = serv;
 
 		nameCRC = name.hashCode();
-
-		slashCommandName = name;
 
 		animCRC = 0;
 
@@ -99,10 +103,24 @@ public:
 		disabled = false;
 		addToQueue = false;
 
+		defaultTime = 0.f;
+
 		cooldown = 0;
+
+		defaultPriority = NORMAL;
+
+		skillType = QUEUECOMMAND;
 	}
 
+	const static int NORMAL = 0;
+	const static int FRONT = 1;
+	const static int IMMEDIATE = 2;
+
 	virtual ~QueueCommand() {
+	}
+
+	int compareTo(QueueCommand* command) {
+		return name.compareTo(command->name);
 	}
 
 	//setters
@@ -138,6 +156,10 @@ public:
 		target = num;
 	}
 
+	inline void setDefaultTime(float time) {
+		defaultTime = time;
+	}
+
 	inline void setTargetType(int num) {
 		targetType = num;
 	}
@@ -168,6 +190,21 @@ public:
 		maxRangeToTarget = (int)r;
 	}
 
+	inline void setCharacterAbility(const String& ability) {
+		characterAbility = ability;
+	}
+
+	inline void setDefaultPriority(const String& priority) {
+		if (priority == "immediate")
+			defaultPriority = IMMEDIATE;
+		else if (priority == "normal")
+			defaultPriority = NORMAL;
+		else if (priority == "front")
+			defaultPriority = FRONT;
+		else
+			System::out << "Setting unknown priority " << priority << endl;
+	}
+
 	//getters
 	inline uint64 getStateMask() {
 		return stateMask;
@@ -195,6 +232,22 @@ public:
 
 	inline float getMaxRange() {
 		return maxRangeToTarget;
+	}
+
+	inline String& getQueueCommandName() {
+		return name;
+	}
+
+	inline String& getCharacterAbility() {
+		return characterAbility;
+	}
+
+	inline float getDefaultTime() {
+		return defaultTime;
+	}
+
+	inline int getDefaultPriority() {
+		return defaultPriority;
 	}
 
 	//misc
@@ -270,56 +323,56 @@ public:
 		 * Because of this, we have to have this switch statement to match them up manually
 		 * */
 		if (!checkInvalidPostures(creature)) {
-			/*switch(player->getPosture()) {
+			switch(creature->getPosture()) {
 			case(CreaturePosture::UPRIGHT):
-				player->clearQueueAction(actioncntr, 0, 1, 0);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 0);
+			break;
 			case(CreaturePosture::CROUCHED):
-				player->clearQueueAction(actioncntr, 0, 1, 4);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 4);
+			break;
 			case(CreaturePosture::PRONE):
-				player->clearQueueAction(actioncntr, 0, 1, 7);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 7);
+			break;
 			case(CreaturePosture::SNEAKING):
-				player->clearQueueAction(actioncntr, 0, 1, 5);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 5);
+			break;
 			case(CreaturePosture::BLOCKING):
-				player->clearQueueAction(actioncntr, 0, 1, 21);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 21);
+			break;
 			case(CreaturePosture::CLIMBING):
-				player->clearQueueAction(actioncntr, 0, 1, 10);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 10);
+			break;
 			case(CreaturePosture::FLYING):
-				player->clearQueueAction(actioncntr, 0, 1, 12);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 12);
+			break;
 			case(CreaturePosture::LYINGDOWN):
-				player->clearQueueAction(actioncntr, 0, 1, 13);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 13);
+			break;
 			case(CreaturePosture::SITTING):
-				player->clearQueueAction(actioncntr, 0, 1, 14);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 14);
+			break;
 			case(CreaturePosture::SKILLANIMATING):
-				player->clearQueueAction(actioncntr, 0, 1, 15);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 15);
+			break;
 			case(CreaturePosture::DRIVINGVEHICLE):
-				player->clearQueueAction(actioncntr, 0, 1, 16);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 16);
+			break;
 			case(CreaturePosture::RIDINGCREATURE):
-				player->clearQueueAction(actioncntr, 0, 1, 17);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 17);
+			break;
 			case(CreaturePosture::KNOCKEDDOWN):
-				player->clearQueueAction(actioncntr, 0, 1, 18);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 18);
+			break;
 			case(CreaturePosture::INCAPACITATED):
-				player->clearQueueAction(actioncntr, 0, 1, 19);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 19);
+			break;
 			case(CreaturePosture::DEAD):
-				player->clearQueueAction(actioncntr, 0, 1, 20);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 20);
+			break;
 			default:
-				player->clearQueueAction(actioncntr);
+				creature->clearQueueAction(actioncntr);
 				break;
-			}*/
+			}
 		}
 	}
 
@@ -330,9 +383,14 @@ public:
 
 	}
 
-	inline String& getSlashCommandName() {
-		return slashCommandName;
+	/**
+	 * Returns duration of the command
+	 */
+
+	virtual float getCommandDuration() {
+		return defaultTime;
 	}
+
 
 };
 
@@ -346,4 +404,5 @@ public:
 using namespace server::zone::objects::creature::commands;
 
 #endif //SLASHCOMMAND_H_
+
 

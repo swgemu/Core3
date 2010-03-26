@@ -85,13 +85,14 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2521145726
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, 2521145726)
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s01.iff")
 
 object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
@@ -137,13 +138,14 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1297222121
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, 1297222121)
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s02.iff")
 
 object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section_corner.apt",
@@ -189,13 +191,14 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3613873422
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, 3613873422)
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_corner_s01.iff")
 
 object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section.apt",
@@ -241,10 +244,11 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 927756693
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, 927756693)
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_section_s01.iff")

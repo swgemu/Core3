@@ -85,13 +85,14 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 84456311
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_astromech_container, 84456311)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_astromech_container, "object/tangible/container/loot/shared_astromech_container.iff")
 
 object_tangible_container_loot_shared_computer_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
@@ -137,13 +138,14 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2996080617
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_computer_container, 2996080617)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_computer_container, "object/tangible/container/loot/shared_computer_container.iff")
 
 object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
@@ -189,13 +191,14 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 349560727
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_gas_filter_container, 349560727)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_gas_filter_container, "object/tangible/container/loot/shared_gas_filter_container.iff")
 
 object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -241,13 +244,14 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1268006083
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_loot_crate, 1268006083)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_loot_crate, "object/tangible/container/loot/shared_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -293,13 +297,14 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2362384973
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate, 2362384973)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate, "object/tangible/container/loot/shared_placable_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
@@ -345,13 +350,14 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2636682415
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, 2636682415)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -397,13 +403,14 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2665565001
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, 2665565001)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_headandbody.apt",
@@ -449,13 +456,14 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2780389059
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, 2780389059)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2410892657
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, 2410892657)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4025920030
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, 4025920030)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_imprv_trash_pile_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2638627675
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, 2638627675)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff")
 
 object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -657,10 +668,11 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3460646661
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_loot_shared_player_loot_crate, 3460646661)
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_player_loot_crate, "object/tangible/container/loot/shared_player_loot_crate.iff")

@@ -85,10 +85,11 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 80246849
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, 80246849)
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")

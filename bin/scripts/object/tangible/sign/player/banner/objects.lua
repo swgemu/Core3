@@ -85,13 +85,14 @@ object_tangible_sign_player_banner_shared_banner_base = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2165019612
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_banner_base, 2165019612)
+ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_banner_base, "object/tangible/sign/player/banner/shared_banner_base.iff")
 
 object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_player_house.apt",
@@ -137,10 +138,11 @@ object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1294986677
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_pa_hall, 1294986677)
+ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_pa_hall, "object/tangible/sign/player/banner/shared_pa_hall.iff")

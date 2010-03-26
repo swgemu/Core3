@@ -85,10 +85,11 @@ object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3259696709
 }
 
-ObjectTemplates:addTemplate(object_tangible_magic_eight_ball_shared_magic_eight_ball, 3259696709)
+ObjectTemplates:addTemplate(object_tangible_magic_eight_ball_shared_magic_eight_ball, "object/tangible/magic_eight_ball/shared_magic_eight_ball.iff")

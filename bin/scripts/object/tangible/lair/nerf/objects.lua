@@ -85,13 +85,14 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2431052313
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf, 2431052313)
+ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
 
 object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2861606931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, 2861606931)
+ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")

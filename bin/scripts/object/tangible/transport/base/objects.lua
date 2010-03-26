@@ -85,10 +85,11 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3243898728
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_base_shared_transport_base, 3243898728)
+ObjectTemplates:addTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")

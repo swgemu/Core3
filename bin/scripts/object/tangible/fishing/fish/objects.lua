@@ -85,13 +85,14 @@ object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 408623623
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blackfish, 408623623)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blackfish, "object/tangible/fishing/fish/shared_blackfish.iff")
 
 object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_blowfish.apt",
@@ -137,13 +138,14 @@ object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2010790033
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blowfish, 2010790033)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blowfish, "object/tangible/fishing/fish/shared_blowfish.iff")
 
 object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_bluefish.apt",
@@ -189,13 +191,14 @@ object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2990319970
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_bluefish, 2990319970)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_bluefish, "object/tangible/fishing/fish/shared_bluefish.iff")
 
 object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_faa.apt",
@@ -241,13 +244,14 @@ object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2004254750
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_faa, 2004254750)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_faa, "object/tangible/fishing/fish/shared_faa.iff")
 
 object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
@@ -293,13 +297,14 @@ object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1061978988
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_fish_generic, 1061978988)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_fish_generic, "object/tangible/fishing/fish/shared_fish_generic.iff")
 
 object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_laa.apt",
@@ -345,13 +350,14 @@ object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2598448090
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_laa, 2598448090)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_laa, "object/tangible/fishing/fish/shared_laa.iff")
 
 object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_ray.apt",
@@ -397,13 +403,14 @@ object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1789117227
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_ray, 1789117227)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_ray, "object/tangible/fishing/fish/shared_ray.iff")
 
 object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_striped_tropical.apt",
@@ -449,10 +456,11 @@ object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2919980156
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_striped, 2919980156)
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_striped, "object/tangible/fishing/fish/shared_striped.iff")

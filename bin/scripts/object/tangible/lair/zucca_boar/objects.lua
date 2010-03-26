@@ -85,13 +85,14 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3052352906
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, 3052352906)
+ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 415973727
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, 415973727)
+ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3550514923
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, 3550514923)
+ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 102331287
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, 102331287)
+ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff")

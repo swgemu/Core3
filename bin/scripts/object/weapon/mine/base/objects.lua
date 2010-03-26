@@ -86,6 +86,7 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -95,4 +96,4 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 482351684
 }
 
-ObjectTemplates:addTemplate(object_weapon_mine_base_shared_mine_base, 482351684)
+ObjectTemplates:addTemplate(object_weapon_mine_base_shared_mine_base, "object/weapon/mine/base/shared_mine_base.iff")

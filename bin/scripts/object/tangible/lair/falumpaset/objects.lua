@@ -85,13 +85,14 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4013916432
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, 4013916432)
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3600280476
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, 3600280476)
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3691403141
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, 3691403141)
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 189239844
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, 189239844)
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff")

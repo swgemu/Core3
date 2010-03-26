@@ -21,6 +21,10 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
+	StringBuffer objectCtrl;
+	objectCtrl << "parsing objc type 0x" << hex << type;
+	client->getPlayer()->info(objectCtrl.toString());
+
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 
 	if (objectControllerCallback == NULL) {
@@ -33,6 +37,10 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	}
 
 	try {
+
+		/*StringBuffer objectCtrl;
+		objectCtrl << "parsing objc type 0x" << hex << type;
+		client->getPlayer()->info(objectCtrl.toString(), true);*/
 
 		objectControllerCallback->parse(message);
 
@@ -55,12 +63,11 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 void ObjectControllerMessageCallback::run() {
 	ManagedReference<SceneObject*> player = client->getPlayer();
 
-	if (player == NULL)
+	if (player == NULL || objectControllerCallback == NULL)
 		return;
 
 	try {
-		player->wlock();
-
+		Locker _locker(player);
 
 		if (objectID != player->getObjectID()) {
 			player->error("wrong object id in object controller message?");
@@ -69,18 +76,13 @@ void ObjectControllerMessageCallback::run() {
 			return;
 		}
 
-		if (objectControllerCallback != NULL)
-			objectControllerCallback->run();
-
-		player->unlock();
+		objectControllerCallback->run();
 
 	} catch (Exception& e) {
-		player->unlock();
 
 		System::out << "exception executing ObjectControllerMessage" << e.getMessage();
 		e.printStackTrace();
 	} catch (...) {
-		player->unlock();
 
 		System::out << "unknown exception caught in ObjectControllerMessageCallback::execute";
 	}

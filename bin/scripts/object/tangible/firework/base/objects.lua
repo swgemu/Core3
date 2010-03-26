@@ -85,10 +85,11 @@ object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1696219911
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_base_shared_firework_base, 1696219911)
+ObjectTemplates:addTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")

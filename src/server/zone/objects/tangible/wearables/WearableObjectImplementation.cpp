@@ -7,13 +7,6 @@
 
 #include "WearableObject.h"
 
-/*
-WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData) {
-	setLoggingName("WearableObject");
-}
-*/
-
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 

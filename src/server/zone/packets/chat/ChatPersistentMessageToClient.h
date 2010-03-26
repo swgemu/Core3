@@ -49,10 +49,12 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../../objects/scene/variables/ParameterizedStringId.h"
+
 class ChatPersistentMessageToClient : public BaseMessage {
 public:
-	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, UnicodeString& subject
-			, UnicodeString& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
+	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, const UnicodeString& subject
+			, const UnicodeString& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x08485E17);  // CRC
 
@@ -82,6 +84,40 @@ public:
 		
 		insertInt(0x00);
 	}
+
+
+	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, const UnicodeString& subject
+			, ParameterizedStringId& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
+		insertShort(0x02);
+		insertInt(0x08485E17);  // CRC
+
+		insertAscii(sender.toCharArray());
+		insertAscii("SWG");
+		insertAscii(""); //galaxy
+		insertInt(mailid);
+
+		insertByte(type);
+
+		if (type == 0x00)
+			body.addToPacketStream(this);
+		else
+			insertInt(0);
+
+		insertUnicode(subject);
+
+		insertInt(0); //sequence?
+
+		insertByte(status); // status 'N' 'U' or 'R'
+
+		if (timestamp == 0) {
+			Time systemTime;
+			timestamp = systemTime.getMiliTime() / 1000;
+		}
+		insertInt(timestamp);
+
+		insertInt(0x00);
+	}
+
 };
 
 #endif /*CHATPERSISTENTMESSAGETOCLIENT_H_*/

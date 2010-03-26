@@ -85,13 +85,14 @@ object_tangible_deed_event_perk_shared_atat_static_deed = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 96032000
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_atat_static_deed, 96032000)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_atat_static_deed, "object/tangible/deed/event_perk/shared_atat_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_atst_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_event_perk_shared_atst_static_deed = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 868380341
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_atst_static_deed, 868380341)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_atst_static_deed, "object/tangible/deed/event_perk/shared_atst_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_audience_seating_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,13 +191,14 @@ object_tangible_deed_event_perk_shared_audience_seating_deed = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3738549694
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_audience_seating_deed, 3738549694)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_audience_seating_deed, "object/tangible/deed/event_perk/shared_audience_seating_deed.iff")
 
 object_tangible_deed_event_perk_shared_banner_style_1_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -241,13 +244,14 @@ object_tangible_deed_event_perk_shared_banner_style_1_static_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1077833957
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_banner_style_1_static_deed, 1077833957)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_banner_style_1_static_deed, "object/tangible/deed/event_perk/shared_banner_style_1_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_banner_style_2_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -293,13 +297,14 @@ object_tangible_deed_event_perk_shared_banner_style_2_static_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2018190082
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_banner_style_2_static_deed, 2018190082)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_banner_style_2_static_deed, "object/tangible/deed/event_perk/shared_banner_style_2_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_bantha_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -345,13 +350,14 @@ object_tangible_deed_event_perk_shared_bantha_static_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 490659620
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_bantha_static_deed, 490659620)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_bantha_static_deed, "object/tangible/deed/event_perk/shared_bantha_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_corellia_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -397,13 +403,14 @@ object_tangible_deed_event_perk_shared_corellia_flag_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2758380112
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corellia_flag_deed, 2758380112)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corellia_flag_deed, "object/tangible/deed/event_perk/shared_corellia_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_corellian_banner_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -449,13 +456,14 @@ object_tangible_deed_event_perk_shared_corellian_banner_static_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 394496697
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corellian_banner_static_deed, 394496697)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corellian_banner_static_deed, "object/tangible/deed/event_perk/shared_corellian_banner_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_corsec_1x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -501,13 +509,14 @@ object_tangible_deed_event_perk_shared_corsec_1x10_honorguard_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2118733227
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_1x10_honorguard_deed, 2118733227)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_1x10_honorguard_deed, "object/tangible/deed/event_perk/shared_corsec_1x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_corsec_2x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -553,13 +562,14 @@ object_tangible_deed_event_perk_shared_corsec_2x10_honorguard_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2243554173
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_2x10_honorguard_deed, 2243554173)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_2x10_honorguard_deed, "object/tangible/deed/event_perk/shared_corsec_2x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_corsec_3x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -605,13 +615,14 @@ object_tangible_deed_event_perk_shared_corsec_3x10_honorguard_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3541464783
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_3x10_honorguard_deed, 3541464783)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_3x10_honorguard_deed, "object/tangible/deed/event_perk/shared_corsec_3x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -657,13 +668,14 @@ object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1989786470
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed, 1989786470)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed, "object/tangible/deed/event_perk/shared_corsec_4x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_corsec_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -709,13 +721,14 @@ object_tangible_deed_event_perk_shared_corsec_stage_theater_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 669879864
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_stage_theater_deed, 669879864)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_corsec_stage_theater_deed, "object/tangible/deed/event_perk/shared_corsec_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_crashed_tie_bomber_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -761,13 +774,14 @@ object_tangible_deed_event_perk_shared_crashed_tie_bomber_theater_deed = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 278767627
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_tie_bomber_theater_deed, 278767627)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_tie_bomber_theater_deed, "object/tangible/deed/event_perk/shared_crashed_tie_bomber_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -813,13 +827,14 @@ object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3107518803
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed, 3107518803)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed, "object/tangible/deed/event_perk/shared_crashed_tie_fighter_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_crashed_xwing_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -865,13 +880,14 @@ object_tangible_deed_event_perk_shared_crashed_xwing_theater_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2283518877
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_xwing_theater_deed, 2283518877)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_crashed_xwing_theater_deed, "object/tangible/deed/event_perk/shared_crashed_xwing_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_dantooine_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -917,13 +933,14 @@ object_tangible_deed_event_perk_shared_dantooine_flag_deed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2997866157
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_dantooine_flag_deed, 2997866157)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_dantooine_flag_deed, "object/tangible/deed/event_perk/shared_dantooine_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_dathomir_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -969,13 +986,14 @@ object_tangible_deed_event_perk_shared_dathomir_flag_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 214316882
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_dathomir_flag_deed, 214316882)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_dathomir_flag_deed, "object/tangible/deed/event_perk/shared_dathomir_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_destroyed_atat_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1021,13 +1039,14 @@ object_tangible_deed_event_perk_shared_destroyed_atat_theater_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1222265113
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_destroyed_atat_theater_deed, 1222265113)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_destroyed_atat_theater_deed, "object/tangible/deed/event_perk/shared_destroyed_atat_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_endor_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1073,13 +1092,14 @@ object_tangible_deed_event_perk_shared_endor_flag_deed = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3400416537
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_endor_flag_deed, 3400416537)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_endor_flag_deed, "object/tangible/deed/event_perk/shared_endor_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_fed_dub_1x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1125,13 +1145,14 @@ object_tangible_deed_event_perk_shared_fed_dub_1x10_honorguard_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3098769210
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_1x10_honorguard_deed, 3098769210)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_1x10_honorguard_deed, "object/tangible/deed/event_perk/shared_fed_dub_1x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_fed_dub_2x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1177,13 +1198,14 @@ object_tangible_deed_event_perk_shared_fed_dub_2x10_honorguard_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1128518124
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_2x10_honorguard_deed, 1128518124)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_2x10_honorguard_deed, "object/tangible/deed/event_perk/shared_fed_dub_2x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_fed_dub_3x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1229,13 +1251,14 @@ object_tangible_deed_event_perk_shared_fed_dub_3x10_honorguard_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 367807582
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_3x10_honorguard_deed, 367807582)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_3x10_honorguard_deed, "object/tangible/deed/event_perk/shared_fed_dub_3x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_fed_dub_4x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1281,13 +1304,14 @@ object_tangible_deed_event_perk_shared_fed_dub_4x10_honorguard_deed = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2959311351
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_4x10_honorguard_deed, 2959311351)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_4x10_honorguard_deed, "object/tangible/deed/event_perk/shared_fed_dub_4x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_fed_dub_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1333,13 +1357,14 @@ object_tangible_deed_event_perk_shared_fed_dub_stage_theater_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 478885552
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_stage_theater_deed, 478885552)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fed_dub_stage_theater_deed, "object/tangible/deed/event_perk/shared_fed_dub_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_fenced_enclosure_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1385,13 +1410,14 @@ object_tangible_deed_event_perk_shared_fenced_enclosure_deed = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2005192774
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fenced_enclosure_deed, 2005192774)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fenced_enclosure_deed, "object/tangible/deed/event_perk/shared_fenced_enclosure_deed.iff")
 
 object_tangible_deed_event_perk_shared_fire_pit_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1437,13 +1463,14 @@ object_tangible_deed_event_perk_shared_fire_pit_deed = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4035297442
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fire_pit_deed, 4035297442)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fire_pit_deed, "object/tangible/deed/event_perk/shared_fire_pit_deed.iff")
 
 object_tangible_deed_event_perk_shared_fruit_stand = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1489,13 +1516,14 @@ object_tangible_deed_event_perk_shared_fruit_stand = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 108143208
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fruit_stand, 108143208)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_fruit_stand, "object/tangible/deed/event_perk/shared_fruit_stand.iff")
 
 object_tangible_deed_event_perk_shared_game_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1541,13 +1569,14 @@ object_tangible_deed_event_perk_shared_game_flag_deed = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2492601987
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_game_flag_deed, 2492601987)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_game_flag_deed, "object/tangible/deed/event_perk/shared_game_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_gravestone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1593,13 +1622,14 @@ object_tangible_deed_event_perk_shared_gravestone = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 78051306
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_gravestone, 78051306)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_gravestone, "object/tangible/deed/event_perk/shared_gravestone.iff")
 
 object_tangible_deed_event_perk_shared_graveyard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1645,13 +1675,14 @@ object_tangible_deed_event_perk_shared_graveyard_deed = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3959939076
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_graveyard_deed, 3959939076)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_graveyard_deed, "object/tangible/deed/event_perk/shared_graveyard_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_1x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1697,13 +1728,14 @@ object_tangible_deed_event_perk_shared_imperial_1x10_honorguard_deed = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2067322746
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_1x10_honorguard_deed, 2067322746)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_1x10_honorguard_deed, "object/tangible/deed/event_perk/shared_imperial_1x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_2x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1749,13 +1781,14 @@ object_tangible_deed_event_perk_shared_imperial_2x10_honorguard_deed = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2160619948
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_2x10_honorguard_deed, 2160619948)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_2x10_honorguard_deed, "object/tangible/deed/event_perk/shared_imperial_2x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_3x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1801,13 +1834,14 @@ object_tangible_deed_event_perk_shared_imperial_3x10_honorguard_deed = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3597134878
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_3x10_honorguard_deed, 3597134878)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_3x10_honorguard_deed, "object/tangible/deed/event_perk/shared_imperial_3x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_4x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1853,13 +1887,14 @@ object_tangible_deed_event_perk_shared_imperial_4x10_honorguard_deed = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1944592823
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_4x10_honorguard_deed, 1944592823)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_4x10_honorguard_deed, "object/tangible/deed/event_perk/shared_imperial_4x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_banner_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1905,13 +1940,14 @@ object_tangible_deed_event_perk_shared_imperial_banner_static_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1199828440
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_banner_static_deed, 1199828440)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_banner_static_deed, "object/tangible/deed/event_perk/shared_imperial_banner_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_landing_party_atat_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1957,13 +1993,14 @@ object_tangible_deed_event_perk_shared_imperial_landing_party_atat_theater_deed 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 950407805
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_landing_party_atat_theater_deed, 950407805)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_landing_party_atat_theater_deed, "object/tangible/deed/event_perk/shared_imperial_landing_party_atat_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_landing_party_lambda_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2009,13 +2046,14 @@ object_tangible_deed_event_perk_shared_imperial_landing_party_lambda_theater_dee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1341560350
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_landing_party_lambda_theater_deed, 1341560350)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_landing_party_lambda_theater_deed, "object/tangible/deed/event_perk/shared_imperial_landing_party_lambda_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_recruiter_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2061,13 +2099,14 @@ object_tangible_deed_event_perk_shared_imperial_recruiter_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3942321443
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_recruiter_deed, 3942321443)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_recruiter_deed, "object/tangible/deed/event_perk/shared_imperial_recruiter_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_recruiting_station_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2113,13 +2152,14 @@ object_tangible_deed_event_perk_shared_imperial_recruiting_station_theater_deed 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3037735539
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_recruiting_station_theater_deed, 3037735539)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_recruiting_station_theater_deed, "object/tangible/deed/event_perk/shared_imperial_recruiting_station_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_imperial_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2165,13 +2205,14 @@ object_tangible_deed_event_perk_shared_imperial_stage_theater_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1465346121
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_stage_theater_deed, 1465346121)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_imperial_stage_theater_deed, "object/tangible/deed/event_perk/shared_imperial_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_jawas_and_droids_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2217,13 +2258,14 @@ object_tangible_deed_event_perk_shared_jawas_and_droids_deed = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 616594072
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_jawas_and_droids_deed, 616594072)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_jawas_and_droids_deed, "object/tangible/deed/event_perk/shared_jawas_and_droids_deed.iff")
 
 object_tangible_deed_event_perk_shared_lambda_shuttle_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2269,13 +2311,14 @@ object_tangible_deed_event_perk_shared_lambda_shuttle_static_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 740174005
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lambda_shuttle_static_deed, 740174005)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lambda_shuttle_static_deed, "object/tangible/deed/event_perk/shared_lambda_shuttle_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_lok_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2321,13 +2364,14 @@ object_tangible_deed_event_perk_shared_lok_flag_deed = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 161207781
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lok_flag_deed, 161207781)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lok_flag_deed, "object/tangible/deed/event_perk/shared_lok_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_lottery_droid_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2373,13 +2417,14 @@ object_tangible_deed_event_perk_shared_lottery_droid_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 630171523
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lottery_droid_deed, 630171523)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_lottery_droid_deed, "object/tangible/deed/event_perk/shared_lottery_droid_deed.iff")
 
 object_tangible_deed_event_perk_shared_marble_gazebo_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2425,13 +2470,14 @@ object_tangible_deed_event_perk_shared_marble_gazebo_static_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3495277454
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_marble_gazebo_static_deed, 3495277454)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_marble_gazebo_static_deed, "object/tangible/deed/event_perk/shared_marble_gazebo_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_meat_rack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2477,13 +2523,14 @@ object_tangible_deed_event_perk_shared_meat_rack = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 409537317
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_meat_rack, 409537317)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_meat_rack, "object/tangible/deed/event_perk/shared_meat_rack.iff")
 
 object_tangible_deed_event_perk_shared_military_outpost_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2529,13 +2576,14 @@ object_tangible_deed_event_perk_shared_military_outpost_deed = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2684948325
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_military_outpost_deed, 2684948325)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_military_outpost_deed, "object/tangible/deed/event_perk/shared_military_outpost_deed.iff")
 
 object_tangible_deed_event_perk_shared_naboo_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2581,13 +2629,14 @@ object_tangible_deed_event_perk_shared_naboo_flag_deed = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3494057376
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_naboo_flag_deed, 3494057376)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_naboo_flag_deed, "object/tangible/deed/event_perk/shared_naboo_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_naboo_gazebo_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2633,13 +2682,14 @@ object_tangible_deed_event_perk_shared_naboo_gazebo_static_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1889831990
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_naboo_gazebo_static_deed, 1889831990)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_naboo_gazebo_static_deed, "object/tangible/deed/event_perk/shared_naboo_gazebo_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_npc_actor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2685,13 +2735,14 @@ object_tangible_deed_event_perk_shared_npc_actor_deed = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3932323881
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_npc_actor_deed, 3932323881)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_npc_actor_deed, "object/tangible/deed/event_perk/shared_npc_actor_deed.iff")
 
 object_tangible_deed_event_perk_shared_party_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2737,13 +2788,14 @@ object_tangible_deed_event_perk_shared_party_stage_theater_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3871451836
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_party_stage_theater_deed, 3871451836)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_party_stage_theater_deed, "object/tangible/deed/event_perk/shared_party_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_pavillion_1_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2789,13 +2841,14 @@ object_tangible_deed_event_perk_shared_pavillion_1_static_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1418087679
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_pavillion_1_static_deed, 1418087679)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_pavillion_1_static_deed, "object/tangible/deed/event_perk/shared_pavillion_1_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_pavillion_2_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2841,13 +2894,14 @@ object_tangible_deed_event_perk_shared_pavillion_2_static_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1827872536
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_pavillion_2_static_deed, 1827872536)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_pavillion_2_static_deed, "object/tangible/deed/event_perk/shared_pavillion_2_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_picnic_pavillion_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2893,13 +2947,14 @@ object_tangible_deed_event_perk_shared_picnic_pavillion_deed = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1494071339
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_picnic_pavillion_deed, 1494071339)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_picnic_pavillion_deed, "object/tangible/deed/event_perk/shared_picnic_pavillion_deed.iff")
 
 object_tangible_deed_event_perk_shared_race_droid_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2945,13 +3000,14 @@ object_tangible_deed_event_perk_shared_race_droid_deed = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 316690423
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_race_droid_deed, 316690423)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_race_droid_deed, "object/tangible/deed/event_perk/shared_race_droid_deed.iff")
 
 object_tangible_deed_event_perk_shared_radiologically_shielded_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2997,13 +3053,14 @@ object_tangible_deed_event_perk_shared_radiologically_shielded_chest_deed = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2285088159
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_radiologically_shielded_chest_deed, 2285088159)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_radiologically_shielded_chest_deed, "object/tangible/deed/event_perk/shared_radiologically_shielded_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_1x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3049,13 +3106,14 @@ object_tangible_deed_event_perk_shared_rebel_1x10_honorguard_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1723520463
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_1x10_honorguard_deed, 1723520463)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_1x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rebel_1x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_2x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3101,13 +3159,14 @@ object_tangible_deed_event_perk_shared_rebel_2x10_honorguard_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2638902041
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_2x10_honorguard_deed, 2638902041)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_2x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rebel_2x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_3x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3153,13 +3212,14 @@ object_tangible_deed_event_perk_shared_rebel_3x10_honorguard_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3420843691
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_3x10_honorguard_deed, 3420843691)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_3x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rebel_3x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_4x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3205,13 +3265,14 @@ object_tangible_deed_event_perk_shared_rebel_4x10_honorguard_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1852449538
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_4x10_honorguard_deed, 1852449538)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_4x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rebel_4x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_banner_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3257,13 +3318,14 @@ object_tangible_deed_event_perk_shared_rebel_banner_static_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3380613131
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_banner_static_deed, 3380613131)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_banner_static_deed, "object/tangible/deed/event_perk/shared_rebel_banner_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_recruiter_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3309,13 +3371,14 @@ object_tangible_deed_event_perk_shared_rebel_recruiter_deed = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3579561687
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_recruiter_deed, 3579561687)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_recruiter_deed, "object/tangible/deed/event_perk/shared_rebel_recruiter_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_recruiting_station_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3361,13 +3424,14 @@ object_tangible_deed_event_perk_shared_rebel_recruiting_station_theater_deed = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4115692973
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_recruiting_station_theater_deed, 4115692973)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_recruiting_station_theater_deed, "object/tangible/deed/event_perk/shared_rebel_recruiting_station_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_rebel_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3413,13 +3477,14 @@ object_tangible_deed_event_perk_shared_rebel_stage_theater_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3646199194
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_stage_theater_deed, 3646199194)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rebel_stage_theater_deed, "object/tangible/deed/event_perk/shared_rebel_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_rori_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3465,13 +3530,14 @@ object_tangible_deed_event_perk_shared_rori_flag_deed = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 703132094
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rori_flag_deed, 703132094)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rori_flag_deed, "object/tangible/deed/event_perk/shared_rori_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_rsf_1x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3517,13 +3583,14 @@ object_tangible_deed_event_perk_shared_rsf_1x10_honorguard_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1754106896
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_1x10_honorguard_deed, 1754106896)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_1x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rsf_1x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rsf_2x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3569,13 +3636,14 @@ object_tangible_deed_event_perk_shared_rsf_2x10_honorguard_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2474453702
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_2x10_honorguard_deed, 2474453702)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_2x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rsf_2x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rsf_3x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3621,13 +3689,14 @@ object_tangible_deed_event_perk_shared_rsf_3x10_honorguard_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3318921076
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_3x10_honorguard_deed, 3318921076)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_3x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rsf_3x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rsf_4x10_honorguard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3673,13 +3742,14 @@ object_tangible_deed_event_perk_shared_rsf_4x10_honorguard_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1616739037
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_4x10_honorguard_deed, 1616739037)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_4x10_honorguard_deed, "object/tangible/deed/event_perk/shared_rsf_4x10_honorguard_deed.iff")
 
 object_tangible_deed_event_perk_shared_rsf_stage_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3725,13 +3795,14 @@ object_tangible_deed_event_perk_shared_rsf_stage_theater_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2659515583
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_stage_theater_deed, 2659515583)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_rsf_stage_theater_deed, "object/tangible/deed/event_perk/shared_rsf_stage_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_sandcrawler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3777,13 +3848,14 @@ object_tangible_deed_event_perk_shared_sandcrawler = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1095563503
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_sandcrawler, 1095563503)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_sandcrawler, "object/tangible/deed/event_perk/shared_sandcrawler.iff")
 
 object_tangible_deed_event_perk_shared_scavenger_droid_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3829,13 +3901,14 @@ object_tangible_deed_event_perk_shared_scavenger_droid_deed = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2216046432
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_scavenger_droid_deed, 2216046432)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_scavenger_droid_deed, "object/tangible/deed/event_perk/shared_scavenger_droid_deed.iff")
 
 object_tangible_deed_event_perk_shared_shuttle_beacon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s1.apt",
@@ -3881,13 +3954,14 @@ object_tangible_deed_event_perk_shared_shuttle_beacon = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1834589804
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_shuttle_beacon, 1834589804)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_shuttle_beacon, "object/tangible/deed/event_perk/shared_shuttle_beacon.iff")
 
 object_tangible_deed_event_perk_shared_shuttle_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3933,13 +4007,14 @@ object_tangible_deed_event_perk_shared_shuttle_static_deed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 411294361
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_shuttle_static_deed, 411294361)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_shuttle_static_deed, "object/tangible/deed/event_perk/shared_shuttle_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_skeleton_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3985,13 +4060,14 @@ object_tangible_deed_event_perk_shared_skeleton_chest_deed = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3218012813
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_skeleton_chest_deed, 3218012813)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_skeleton_chest_deed, "object/tangible/deed/event_perk/shared_skeleton_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_sparking_treasure_box_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4037,13 +4113,14 @@ object_tangible_deed_event_perk_shared_sparking_treasure_box_chest_deed = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2059968039
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_sparking_treasure_box_chest_deed, 2059968039)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_sparking_treasure_box_chest_deed, "object/tangible/deed/event_perk/shared_sparking_treasure_box_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_stone_base_banner_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4089,13 +4166,14 @@ object_tangible_deed_event_perk_shared_stone_base_banner_static_deed = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 791289209
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_stone_base_banner_static_deed, 791289209)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_stone_base_banner_static_deed, "object/tangible/deed/event_perk/shared_stone_base_banner_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_talus_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4141,13 +4219,14 @@ object_tangible_deed_event_perk_shared_talus_flag_deed = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1161808241
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_talus_flag_deed, 1161808241)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_talus_flag_deed, "object/tangible/deed/event_perk/shared_talus_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_tatooine_banner_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4193,13 +4272,14 @@ object_tangible_deed_event_perk_shared_tatooine_banner_static_deed = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3487161883
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tatooine_banner_static_deed, 3487161883)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tatooine_banner_static_deed, "object/tangible/deed/event_perk/shared_tatooine_banner_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_tatooine_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4245,13 +4325,14 @@ object_tangible_deed_event_perk_shared_tatooine_flag_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1345632337
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tatooine_flag_deed, 1345632337)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tatooine_flag_deed, "object/tangible/deed/event_perk/shared_tatooine_flag_deed.iff")
 
 object_tangible_deed_event_perk_shared_technical_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4297,13 +4378,14 @@ object_tangible_deed_event_perk_shared_technical_chest_deed = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2676733006
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_technical_chest_deed, 2676733006)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_technical_chest_deed, "object/tangible/deed/event_perk/shared_technical_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_test_gaming_table_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4349,13 +4431,14 @@ object_tangible_deed_event_perk_shared_test_gaming_table_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3261222674
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_gaming_table_deed, 3261222674)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_gaming_table_deed, "object/tangible/deed/event_perk/shared_test_gaming_table_deed.iff")
 
 object_tangible_deed_event_perk_shared_test_npc_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4401,13 +4484,14 @@ object_tangible_deed_event_perk_shared_test_npc_deed = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4003914281
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_npc_deed, 4003914281)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_npc_deed, "object/tangible/deed/event_perk/shared_test_npc_deed.iff")
 
 object_tangible_deed_event_perk_shared_test_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4453,13 +4537,14 @@ object_tangible_deed_event_perk_shared_test_theater_deed = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4208408711
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_theater_deed, 4208408711)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_test_theater_deed, "object/tangible/deed/event_perk/shared_test_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_tie_bomber_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4505,13 +4590,14 @@ object_tangible_deed_event_perk_shared_tie_bomber_static_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3210011419
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tie_bomber_static_deed, 3210011419)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tie_bomber_static_deed, "object/tangible/deed/event_perk/shared_tie_bomber_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_tie_fighter_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4557,13 +4643,14 @@ object_tangible_deed_event_perk_shared_tie_fighter_static_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2234203599
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tie_fighter_static_deed, 2234203599)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_tie_fighter_static_deed, "object/tangible/deed/event_perk/shared_tie_fighter_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_treasure_box_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4609,13 +4696,14 @@ object_tangible_deed_event_perk_shared_treasure_box_chest_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3166995738
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_treasure_box_chest_deed, 3166995738)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_treasure_box_chest_deed, "object/tangible/deed/event_perk/shared_treasure_box_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_treasure_crate_chest_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4661,13 +4749,14 @@ object_tangible_deed_event_perk_shared_treasure_crate_chest_deed = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2343696726
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_treasure_crate_chest_deed, 2343696726)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_treasure_crate_chest_deed, "object/tangible/deed/event_perk/shared_treasure_crate_chest_deed.iff")
 
 object_tangible_deed_event_perk_shared_universe_flags_theater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4713,13 +4802,14 @@ object_tangible_deed_event_perk_shared_universe_flags_theater = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1584596145
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_universe_flags_theater, 1584596145)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_universe_flags_theater, "object/tangible/deed/event_perk/shared_universe_flags_theater.iff")
 
 object_tangible_deed_event_perk_shared_web_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4765,13 +4855,14 @@ object_tangible_deed_event_perk_shared_web_tree = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 76568066
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_web_tree, 76568066)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_web_tree, "object/tangible/deed/event_perk/shared_web_tree.iff")
 
 object_tangible_deed_event_perk_shared_wedding_garden_imperial_large_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4817,13 +4908,14 @@ object_tangible_deed_event_perk_shared_wedding_garden_imperial_large_theater_dee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 719238316
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wedding_garden_imperial_large_theater_deed, 719238316)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wedding_garden_imperial_large_theater_deed, "object/tangible/deed/event_perk/shared_wedding_garden_imperial_large_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4869,13 +4961,14 @@ object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1935091430
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed, 1935091430)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed, "object/tangible/deed/event_perk/shared_wedding_garden_rebel_large_theater_deed.iff")
 
 object_tangible_deed_event_perk_shared_wrecked_sandcrawler_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4921,13 +5014,14 @@ object_tangible_deed_event_perk_shared_wrecked_sandcrawler_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1668737760
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wrecked_sandcrawler_deed, 1668737760)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_wrecked_sandcrawler_deed, "object/tangible/deed/event_perk/shared_wrecked_sandcrawler_deed.iff")
 
 object_tangible_deed_event_perk_shared_xwing_static_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4973,13 +5067,14 @@ object_tangible_deed_event_perk_shared_xwing_static_deed = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 680163975
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_xwing_static_deed, 680163975)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_xwing_static_deed, "object/tangible/deed/event_perk/shared_xwing_static_deed.iff")
 
 object_tangible_deed_event_perk_shared_yavin_flag_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -5025,10 +5120,11 @@ object_tangible_deed_event_perk_shared_yavin_flag_deed = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1572439874
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_yavin_flag_deed, 1572439874)
+ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shared_yavin_flag_deed, "object/tangible/deed/event_perk/shared_yavin_flag_deed.iff")

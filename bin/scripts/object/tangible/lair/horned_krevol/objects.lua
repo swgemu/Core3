@@ -85,13 +85,14 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3995926996
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, 3995926996)
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 883847742
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, 883847742)
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 524661947
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, 524661947)
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2373765729
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, 2373765729)
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")

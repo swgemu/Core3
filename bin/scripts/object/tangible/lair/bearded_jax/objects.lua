@@ -85,13 +85,14 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2902384723
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, 2902384723)
+ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax.iff")
 
 object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1258386738
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, 1258386738)
+ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax_grassland.iff")

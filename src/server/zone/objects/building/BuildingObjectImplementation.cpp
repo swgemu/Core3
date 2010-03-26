@@ -20,6 +20,16 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 }
 
+void BuildingObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	totalCellNumber = templateData->getIntField("totalCellNumber");
+
+	containerVolumeLimit = 0xFFFFFFFF;
+
+	containerType = 2;
+}
+
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");
@@ -88,6 +98,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+
+	SceneObject* scnoStub = (SceneObject*) scno->_getStub();
+
+	removeNotifiedObject(scnoStub);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);

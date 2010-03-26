@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -39,6 +41,22 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+namespace commands {
+
+class QueueCommand;
+
+} // namespace commands
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::commands;
+
+namespace server {
+namespace zone {
 
 class ZoneClientSession;
 
@@ -46,6 +64,36 @@ class ZoneClientSession;
 } // namespace server
 
 using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+#include "server/zone/objects/creature/professions/Certification.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/player/variables/WaypointList.h"
+
+#include "server/zone/objects/creature/professions/Skill.h"
+
+#include "server/zone/objects/player/variables/SkillList.h"
+
+#include "server/zone/objects/player/variables/FriendList.h"
+
+#include "server/zone/objects/player/variables/IgnoreList.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -88,13 +136,63 @@ public:
 
 	static const int ECJR = 64;
 
-	PlayerObject(LuaObject* templateData);
+	PlayerObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendMessage(BasePacket* msg);
+
+	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+
+	void removeExperience(const String& xpType, bool notifyClient = true);
+
+	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
+
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
+
+	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void setLanguageID(byte language, bool notifyClient = true);
+
+	void addFriend(const String& name, bool notifyClient = true);
+
+	void removeFriend(const String& name, bool notifyClient = true);
+
+	void addIgnore(const String& name, bool notifyClient = true);
+
+	void removeIgnore(const String& name, bool notifyClient = true);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
+	bool hasWaypoint(unsigned long long objectID);
+
+	bool hasSkill(Skill* skill);
+
+	bool hasSkill(const String& skillName);
 
 	unsigned int getCharacterBitmask();
 
@@ -109,6 +207,32 @@ public:
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	void setTitle(const String& characterTitle);
+
+	DeltaVectorMap<String, int>* getExperienceList();
+
+	int getForcePower();
+
+	int getForcePowerMax();
+
+	WaypointList* getWaypointList();
+
+	SkillList* getSkills();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
+
+	byte getLanguageID();
+
+	DeltaVector<String>* getFriendList();
+
+	DeltaVector<String>* getIgnoreList();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -138,7 +262,33 @@ protected:
 
 	String title;
 
+	int forcePower;
+
+	int forcePowerMax;
+
+	int foodFilling;
+
+	int foodFillingMax;
+
+	int drinkFilling;
+
+	int drinkFillingMax;
+
+	int jediState;
+
 	unsigned int adminLevel;
+
+	byte languageID;
+
+	DeltaVectorMap<String, int> experienceList;
+
+	WaypointList waypointList;
+
+	SkillList skillList;
+
+	FriendList friendList;
+
+	IgnoreList ignoreList;
 
 public:
 	static const int LFG = 1;
@@ -171,15 +321,67 @@ public:
 
 	static const int ECJR = 64;
 
-	PlayerObjectImplementation(LuaObject* templateData);
+	PlayerObjectImplementation();
 
 	PlayerObjectImplementation(DummyConstructorParameter* param);
+
+	void finalize();
 
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendMessage(BasePacket* msg);
+
+	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+
+	void removeExperience(const String& xpType, bool notifyClient = true);
+
+	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
+
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
+
+	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void setLanguageID(byte language, bool notifyClient = true);
+
+	void addFriend(const String& name, bool notifyClient = true);
+
+	void removeFriend(const String& name, bool notifyClient = true);
+
+	void addIgnore(const String& name, bool notifyClient = true);
+
+	void removeIgnore(const String& name, bool notifyClient = true);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
+	bool hasWaypoint(unsigned long long objectID);
+
+	bool hasSkill(Skill* skill);
+
+	bool hasSkill(const String& skillName);
 
 	unsigned int getCharacterBitmask();
 
@@ -195,6 +397,32 @@ public:
 
 	void setTitle(const String& characterTitle);
 
+	DeltaVectorMap<String, int>* getExperienceList();
+
+	int getForcePower();
+
+	int getForcePowerMax();
+
+	WaypointList* getWaypointList();
+
+	SkillList* getSkills();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
+
+	byte getLanguageID();
+
+	DeltaVector<String>* getFriendList();
+
+	DeltaVector<String>* getIgnoreList();
+
 	PlayerObject* _this;
 
 	operator const PlayerObject*();
@@ -202,8 +430,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -234,9 +460,49 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendMessage(BasePacket* msg);
+
+	void addExperience(const String& xpType, int xp, bool notifyClient);
+
+	void removeExperience(const String& xpType, bool notifyClient);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient);
+
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
+
+	void setLanguageID(byte language, bool notifyClient);
+
+	void addFriend(const String& name, bool notifyClient);
+
+	void removeFriend(const String& name, bool notifyClient);
+
+	void addIgnore(const String& name, bool notifyClient);
+
+	void removeIgnore(const String& name, bool notifyClient);
+
+	void notifyOnline();
+
+	void notifyOffline();
+
+	bool hasFriend(const String& name);
+
+	bool isIgnoring(const String& name);
+
+	void addReverseFriend(const String& name);
+
+	void removeReverseFriend(const String& name);
+
+	void sendFriendLists();
+
+	bool hasWaypoint(unsigned long long objectID);
+
+	bool hasSkill(const String& skillName);
 
 	unsigned int getCharacterBitmask();
 
@@ -252,7 +518,35 @@ public:
 
 	void setTitle(const String& characterTitle);
 
+	int getForcePower();
+
+	int getForcePowerMax();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
+
+	byte getLanguageID();
+
 protected:
+	String _param0_addExperience__String_int_bool_;
+	String _param0_removeExperience__String_bool_;
+	String _param0_addWaypoint__String_float_float_bool_;
+	String _param0_addFriend__String_bool_;
+	String _param0_removeFriend__String_bool_;
+	String _param0_addIgnore__String_bool_;
+	String _param0_removeIgnore__String_bool_;
+	String _param0_hasFriend__String_;
+	String _param0_isIgnoring__String_;
+	String _param0_addReverseFriend__String_;
+	String _param0_removeReverseFriend__String_;
+	String _param0_hasSkill__String_;
 	String _param0_setTitle__String_;
 };
 

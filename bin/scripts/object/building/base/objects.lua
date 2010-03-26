@@ -88,13 +88,14 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 892199285
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_aircar, 892199285)
+ObjectTemplates:addTemplate(object_building_base_shared_base_aircar, "object/building/base/shared_base_aircar.iff")
 
 object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -143,13 +144,14 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1304404449
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_arena, 1304404449)
+ObjectTemplates:addTemplate(object_building_base_shared_base_arena, "object/building/base/shared_base_arena.iff")
 
 object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,13 +200,14 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2838642045
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_arena_large, 2838642045)
+ObjectTemplates:addTemplate(object_building_base_shared_base_arena_large, "object/building/base/shared_base_arena_large.iff")
 
 object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -253,13 +256,14 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2010161339
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_association_hall, 2010161339)
+ObjectTemplates:addTemplate(object_building_base_shared_base_association_hall, "object/building/base/shared_base_association_hall.iff")
 
 object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -308,13 +312,14 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 930886639
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_bank, 930886639)
+ObjectTemplates:addTemplate(object_building_base_shared_base_bank, "object/building/base/shared_base_bank.iff")
 
 object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -363,13 +368,14 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3077444681
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_bubble_naboo, 3077444681)
+ObjectTemplates:addTemplate(object_building_base_shared_base_bubble_naboo, "object/building/base/shared_base_bubble_naboo.iff")
 
 object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -418,13 +424,14 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 563265939
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_building, 563265939)
+ObjectTemplates:addTemplate(object_building_base_shared_base_building, "object/building/base/shared_base_building.iff")
 
 object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -473,13 +480,14 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2078697879
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_cantina, 2078697879)
+ObjectTemplates:addTemplate(object_building_base_shared_base_cantina, "object/building/base/shared_base_cantina.iff")
 
 object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,13 +536,14 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1349240925
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_capitol, 1349240925)
+ObjectTemplates:addTemplate(object_building_base_shared_base_capitol, "object/building/base/shared_base_capitol.iff")
 
 object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -583,13 +592,14 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4040885581
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_cave, 4040885581)
+ObjectTemplates:addTemplate(object_building_base_shared_base_cave, "object/building/base/shared_base_cave.iff")
 
 object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -638,13 +648,14 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2798966210
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_cloning_facility, 2798966210)
+ObjectTemplates:addTemplate(object_building_base_shared_base_cloning_facility, "object/building/base/shared_base_cloning_facility.iff")
 
 object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -693,13 +704,14 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2827665869
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_filler_building, 2827665869)
+ObjectTemplates:addTemplate(object_building_base_shared_base_filler_building, "object/building/base/shared_base_filler_building.iff")
 
 object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -748,13 +760,14 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4220933361
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_guild, 4220933361)
+ObjectTemplates:addTemplate(object_building_base_shared_base_guild, "object/building/base/shared_base_guild.iff")
 
 object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -803,13 +816,14 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 116432474
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_hangar, 116432474)
+ObjectTemplates:addTemplate(object_building_base_shared_base_hangar, "object/building/base/shared_base_hangar.iff")
 
 object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -858,13 +872,14 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4250674570
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_hospital, 4250674570)
+ObjectTemplates:addTemplate(object_building_base_shared_base_hospital, "object/building/base/shared_base_hospital.iff")
 
 object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -913,13 +928,14 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 205766799
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_hotel, 205766799)
+ObjectTemplates:addTemplate(object_building_base_shared_base_hotel, "object/building/base/shared_base_hotel.iff")
 
 object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -968,13 +984,14 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 266190245
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_housing, 266190245)
+ObjectTemplates:addTemplate(object_building_base_shared_base_housing, "object/building/base/shared_base_housing.iff")
 
 object_building_base_shared_base_military_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1023,13 +1040,14 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 952281337
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_military_building, 952281337)
+ObjectTemplates:addTemplate(object_building_base_shared_base_military_building, "object/building/base/shared_base_military_building.iff")
 
 object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1078,13 +1096,14 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1132404592
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_municipal, 1132404592)
+ObjectTemplates:addTemplate(object_building_base_shared_base_municipal, "object/building/base/shared_base_municipal.iff")
 
 object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1133,13 +1152,14 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1617161179
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_palace, 1617161179)
+ObjectTemplates:addTemplate(object_building_base_shared_base_palace, "object/building/base/shared_base_palace.iff")
 
 object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1188,13 +1208,14 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1335851436
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_parking_garage, 1335851436)
+ObjectTemplates:addTemplate(object_building_base_shared_base_parking_garage, "object/building/base/shared_base_parking_garage.iff")
 
 object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1243,13 +1264,14 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 763835545
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_player_building, 763835545)
+ObjectTemplates:addTemplate(object_building_base_shared_base_player_building, "object/building/base/shared_base_player_building.iff")
 
 object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1298,13 +1320,14 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3206316286
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_power_generator, 3206316286)
+ObjectTemplates:addTemplate(object_building_base_shared_base_power_generator, "object/building/base/shared_base_power_generator.iff")
 
 object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1353,13 +1376,14 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1766589263
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_salon, 1766589263)
+ObjectTemplates:addTemplate(object_building_base_shared_base_salon, "object/building/base/shared_base_salon.iff")
 
 object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1408,13 +1432,14 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4237016019
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_shuttleport, 4237016019)
+ObjectTemplates:addTemplate(object_building_base_shared_base_shuttleport, "object/building/base/shared_base_shuttleport.iff")
 
 object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1463,13 +1488,14 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1063888932
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_starport, 1063888932)
+ObjectTemplates:addTemplate(object_building_base_shared_base_starport, "object/building/base/shared_base_starport.iff")
 
 object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1518,13 +1544,14 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3832915200
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_theater, 3832915200)
+ObjectTemplates:addTemplate(object_building_base_shared_base_theater, "object/building/base/shared_base_theater.iff")
 
 object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1573,13 +1600,14 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4264143494
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_base_tower, 4264143494)
+ObjectTemplates:addTemplate(object_building_base_shared_base_tower, "object/building/base/shared_base_tower.iff")
 
 object_building_base_shared_building_default = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1628,10 +1656,11 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2497050652
 }
 
-ObjectTemplates:addTemplate(object_building_base_shared_building_default, 2497050652)
+ObjectTemplates:addTemplate(object_building_base_shared_building_default, "object/building/base/shared_building_default.iff")

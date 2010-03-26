@@ -85,13 +85,14 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2904726131
 }
 
-ObjectTemplates:addTemplate(object_counting_base_shared_base_counting, 2904726131)
+ObjectTemplates:addTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
 
 object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,10 +138,11 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3211286444
 }
 
-ObjectTemplates:addTemplate(object_counting_base_shared_counting_default, 3211286444)
+ObjectTemplates:addTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")

@@ -85,10 +85,11 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3676361903
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_base_shared_power_generator_base, 3676361903)
+ObjectTemplates:addTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")

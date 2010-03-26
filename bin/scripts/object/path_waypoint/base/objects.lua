@@ -85,10 +85,11 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3574077008
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_base_shared_path_waypoint_base, 3574077008)
+ObjectTemplates:addTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")

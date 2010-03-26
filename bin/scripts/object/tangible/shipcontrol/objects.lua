@@ -85,13 +85,14 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3541722217
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_pilot_chair, 3541722217)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_pilot_chair, "object/tangible/shipcontrol/shared_pilot_chair.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
@@ -137,13 +138,14 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 543526931
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, 543526931)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 362033500
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, 362033500)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 752872042
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, 752872042)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, "object/tangible/shipcontrol/shared_shipoperations_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_ladder.apt",
@@ -293,13 +297,14 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3238239508
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, 3238239508)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_ladder.apt",
@@ -345,10 +350,11 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 315011154
 }
 
-ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, 315011154)
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff")

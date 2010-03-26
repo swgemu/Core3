@@ -85,13 +85,14 @@ object_tangible_mission_shared_assassin_missions_device = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2808148877
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_assassin_missions_device, 2808148877)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_assassin_missions_device, "object/tangible/mission/shared_assassin_missions_device.iff")
 
 object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_homing_beacon.apt",
@@ -137,13 +138,14 @@ object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 492694456
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_probot, 492694456)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_probot, "object/tangible/mission/shared_mission_bounty_droid_probot.iff")
 
 object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/maul_probe_droid.sat",
@@ -189,13 +191,14 @@ object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1438002131
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_seeker, 1438002131)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_seeker, "object/tangible/mission/shared_mission_bounty_droid_seeker.iff")
 
 object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_mission_bounty_target.apt",
@@ -241,13 +244,14 @@ object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3104954918
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_target, 3104954918)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_target, "object/tangible/mission/shared_mission_bounty_target.iff")
 
 object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -293,13 +297,14 @@ object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3784432555
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_datadisk, 3784432555)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_datadisk, "object/tangible/mission/shared_mission_datadisk.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
@@ -345,13 +350,14 @@ object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 528020933
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_easy, 528020933)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_easy, "object/tangible/mission/shared_mission_informant_spawner_easy.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
@@ -397,13 +403,14 @@ object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1257863890
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_hard, 1257863890)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_hard, "object/tangible/mission/shared_mission_informant_spawner_hard.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
@@ -449,13 +456,14 @@ object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3708162000
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_medium, 3708162000)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_medium, "object/tangible/mission/shared_mission_informant_spawner_medium.iff")
 
 object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_mission_recon_target.apt",
@@ -501,13 +509,14 @@ object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1165528802
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_recon_target, 1165528802)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_recon_target, "object/tangible/mission/shared_mission_recon_target.iff")
 
 object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/test_mission_terminal.apt",
@@ -553,10 +562,11 @@ object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1188112429
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_terminal, 1188112429)
+ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_terminal, "object/tangible/mission/shared_mission_terminal.iff")

@@ -61,11 +61,11 @@ class StructureManager extends ManagedObject implements Logger {
 	//PRIVATE METHODS
 	
 	private native void loadStaticBuildings();
-	
+	private native void loadStaticBanks();
+	private native void loadStaticBazaars();
+	private native void loadStaticMissionTerminals();
 	private native void loadPlayerStructures();
-	
 	private native BuildingObject loadStaticBuilding(unsigned long oid);
-	
 	private native void loadStaticCells(BuildingObject building);
 	
 	//PUBLIC METHODS
@@ -73,5 +73,9 @@ class StructureManager extends ManagedObject implements Logger {
 	public void loadStructures() {
 		loadStaticBuildings();
 		loadPlayerStructures();
+		loadStaticBanks();
+		loadStaticBazaars();
+		loadStaticMissionTerminals();
 	}	
 }
+

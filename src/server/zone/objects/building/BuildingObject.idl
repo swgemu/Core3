@@ -53,34 +53,54 @@ import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.ZoneServer;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
 	
-	@dereferenced
-	protected SortedVector<SceneObject> notifiedObjects;
+	protected int totalCellNumber;
 	
-	protected boolean staticBuilding;
-
-	public BuildingObject(LuaObject templateData) {
-		super(templateData);
-		
+	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
 
-		notifiedObjects.setNoDuplicateInsertPlan();
-
-		staticBuilding = false;
+		super.staticObject = false;
 		
 		super.containerVolumeLimit = 0xFFFFFFFF;
 
 		super.containerType = 2;
+		
+		totalCellNumber = 0;
 	}
+	
+	public void createCellObjects() {
+		for (int i = 0; i < totalCellNumber; ++i) {
+			SceneObject newCell = getZoneServer().createObject(206832110, 2);
+
+			addCell((CellObject)newCell);
+		}
+	}
+	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
 		
 	public native void initializeTransientMembers();
+	
+	public void removeFromZone() {
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject cell = cells.get(i);
+			
+			for (int j = 0; j < cell.getContainerObjectsSize(); ++j) {
+				SceneObject obj = cell.getContainerObject(j);
+				obj.removeFromZone();
+			}
+		}
+		
+		super.removeFromZone();
+	}
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);
@@ -109,7 +129,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	public native void addCell(CellObject cell);
 	
 	public boolean isStaticBuilding() {
-		return staticBuilding;
+		return super.staticObject;
 	}
 	
 	public CellObject getCell(int idx) {
@@ -117,18 +137,31 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	}
 	
 	public void setStaticBuilding(boolean value) {
-		staticBuilding = value;
+		super.staticObject = value;
 	}
 	
-	public boolean hasNotifiedObject(SceneObject object) {
-		return notifiedObjects.contains(object);
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from PlayerCreature::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that entered the building
+	 */
+	public abstract void onEnter(PlayerCreature player) { 
+
 	}
 	
-	public void addNotifiedObject(SceneObject object) {
-		notifiedObjects.put(object);
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from PlayerCreature::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that exited the building
+	 */
+	public abstract void onExit(PlayerCreature player) {
+		
 	}
 	
-	public void removeNotifiedObject(SceneObject object) {
-		notifiedObjects.drop(object);
-	}
 }

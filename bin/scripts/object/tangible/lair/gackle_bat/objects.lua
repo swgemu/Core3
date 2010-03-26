@@ -85,13 +85,14 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3668255923
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, 3668255923)
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 987504645
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, 987504645)
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3334775369
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, 3334775369)
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff")

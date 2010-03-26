@@ -85,10 +85,11 @@ object_tangible_mission_bag_shared_mission_bag = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1031761823
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_bag_shared_mission_bag, 1031761823)
+ObjectTemplates:addTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")

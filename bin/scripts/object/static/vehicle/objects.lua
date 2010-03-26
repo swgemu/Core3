@@ -77,10 +77,12 @@ object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3753376188
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_player_shuttle, 3753376188)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_player_shuttle, "object/static/vehicle/shared_player_shuttle.iff")
 
 object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_static_s01.apt",
@@ -118,10 +120,12 @@ object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 520035504
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_lambda_shuttle, 520035504)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_lambda_shuttle, "object/static/vehicle/shared_static_lambda_shuttle.iff")
 
 object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
@@ -159,10 +163,12 @@ object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1560527030
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_sandcrawler, 1560527030)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_sandcrawler, "object/static/vehicle/shared_static_sandcrawler.iff")
 
 object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/speeder_bike.apt",
@@ -200,10 +206,12 @@ object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1319374106
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_speeder_bike, 1319374106)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_speeder_bike, "object/static/vehicle/shared_static_speeder_bike.iff")
 
 object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/swoop_bike.apt",
@@ -241,10 +249,12 @@ object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1844639584
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_swoop_bike, 1844639584)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_swoop_bike, "object/static/vehicle/shared_static_swoop_bike.iff")
 
 object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber.apt",
@@ -282,10 +292,12 @@ object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4082501071
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_tie_bomber, 4082501071)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_tie_bomber, "object/static/vehicle/shared_static_tie_bomber.iff")
 
 object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_static.apt",
@@ -323,7 +335,9 @@ object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1095801974
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_shared_static_tie_fighter, 1095801974)
+ObjectTemplates:addTemplate(object_static_vehicle_shared_static_tie_fighter, "object/static/vehicle/shared_static_tie_fighter.iff")

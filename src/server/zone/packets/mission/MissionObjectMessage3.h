@@ -66,12 +66,8 @@ public:
 
 		insertFloat(1.0f);
 
-		insertAscii("mission/mission_object");
-		insertInt(0);
-		insertAscii(mi->getTypeStr());
 
-		//CustomName
-		insertUnicode(UnicodeString(mi->getTitle()));
+		insertStringId(mi->getObjectName());
 
 		//Volume
 		insertInt(0);
@@ -83,11 +79,11 @@ public:
 		insertInt(mi->getDifficultyLevel());
 
 		//Target Location
-		insertFloat(mi->getTargetX()); //x
+		insertFloat(0);//insertFloat(mi->getTargetX()); //x
 		insertFloat(0); //z
-		insertFloat(mi->getTargetY()); //y
+		insertFloat(0);//insertFloat(mi->getTargetY()); //y
 		insertLong(0); //Start obj id
-		insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
+		insertInt(0);//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
 
 		//Creator Name
 		insertUnicode(mi->getCreatorName());
@@ -96,30 +92,33 @@ public:
 		insertInt(mi->getRewardCredits());
 
 		//Dest Location
-		insertFloat(mi->getDestX()); //x
+		insertFloat(0);//insertFloat(mi->getTargetX()); //x
 		insertFloat(0); //z
-		insertFloat(mi->getDestY()); //y
-		insertLong(0); //obj id
-		insertInt(mi->getDestPlanetCrc()); //planet crc
+		insertFloat(0);//insertFloat(mi->getTargetY()); //y
+		insertLong(0); //Start obj id
+		insertInt(0);//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
 
 		//Target Object IFF crc
-		insertInt(mi->getDepictedObjCrc());
+		insertInt(mi->getTargetTemplateCRC());
 
 		//Mission Description
-		insertAscii(mi->getDescriptionStf()); //Description STF
+		StringId* strId = mi->getMissionDescription();
+		insertAscii(strId->getFile()); //Description STF
 		insertInt(0); //?? probably the stf key
-		insertAscii(mi->getDescription()); //Description text
+		insertAscii(strId->getStringID()); //Description text
+
+		strId = mi->getMissionTitle();
 
 		//Mission Title
-		insertAscii(mi->getTitleStf()); //Title STF
+		insertAscii(strId->getFile()); //Description STF
 		insertInt(0); //?? probably the stf key
-		insertAscii(mi->getTitle()); //Title text
+		insertAscii(strId->getStringID()); //Description text
 
 		//Refresh Counter
-		insertInt(mi->getRefreshCount());
+		insertInt(mi->getRefreshCounter());
 
 		//Mission Type CRC
-		insertInt(mi->getTypeCrc());
+		insertInt(mi->getTypeCRC());
 
 		//Target Name
 		insertAscii(mi->getTargetName());
@@ -127,12 +126,12 @@ public:
 		insertInt(0); //??
 
 		//Waypoint Info
-		insertFloat(mi->getDestX()); //x
+		insertFloat(0);//insertFloat(mi->getDestX()); //x
 		insertFloat(0); //z
-		insertFloat(mi->getDestY()); //y
+		insertFloat(0);//insertFloat(mi->getDestY()); //y
 		insertLong(0); //Target ID
 		insertInt(0); //planet crc
-		insertUnicode(UnicodeString(mi->getTitle())); //Name
+		insertUnicode("");//insertUnicode(UnicodeString(mi->getTitle())); //Name
 		insertLong(0); //waypoint obj id
 		insertByte(0x00); //color
 		insertByte(0x01); //active

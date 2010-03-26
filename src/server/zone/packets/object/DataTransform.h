@@ -116,9 +116,36 @@ public:
 			return;
 		}
 
+		/*float oldPosX = object->getPositionX(), oldPosY = object->getPositionY(), oldPosZ = object->getPositionZ();
+
+		float deltaX = positionX - oldPosX;
+		float deltaY = positionY - oldPosY;
+		float deltaZ = positionZ - oldPosZ;
+
+		uint32 stamp = object->getClientLastMovementStamp();
+
+		uint32 deltaTime = movementStamp - stamp;
+
+		float dist = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+
+		float slope = deltaZ / dist;
+
+		float angle = atan(slope);
+
+		float deg = Math::rad2deg(angle);
+
+		float seconds = (float) deltaTime * 1000;
+
+		float speed = dist / (float) deltaTime;
+
+		StringBuffer slopeMsg;
+		slopeMsg << "dist:" << dist << " speed:" << speed * 1000.f << " deltaTime:" << deltaTime << " slope: " << slope << " angle:" << angle << " degrees:" << deg;
+		object->info(slopeMsg.toString(), true);*/
+
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
+		object->setClientLastMovementStamp(movementStamp);
 
 
 		/*StringBuffer posMsg;

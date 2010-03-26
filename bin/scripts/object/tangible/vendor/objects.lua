@@ -85,13 +85,14 @@ object_tangible_vendor_shared_vendor_droid_bartender = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 887599030
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_bartender, 887599030)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_bartender, "object/tangible/vendor/shared_vendor_droid_bartender.iff")
 
 object_tangible_vendor_shared_vendor_droid_power = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -137,13 +138,14 @@ object_tangible_vendor_shared_vendor_droid_power = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1459672491
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_power, 1459672491)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_power, "object/tangible/vendor/shared_vendor_droid_power.iff")
 
 object_tangible_vendor_shared_vendor_droid_protocol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_red.sat",
@@ -189,13 +191,14 @@ object_tangible_vendor_shared_vendor_droid_protocol = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 844125696
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_protocol, 844125696)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_protocol, "object/tangible/vendor/shared_vendor_droid_protocol.iff")
 
 object_tangible_vendor_shared_vendor_droid_surgical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -241,13 +244,14 @@ object_tangible_vendor_shared_vendor_droid_surgical = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 946679884
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_surgical, 946679884)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_surgical, "object/tangible/vendor/shared_vendor_droid_surgical.iff")
 
 object_tangible_vendor_shared_vendor_droid_wed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
@@ -293,13 +297,14 @@ object_tangible_vendor_shared_vendor_droid_wed = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1745672602
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_wed, 1745672602)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_wed, "object/tangible/vendor/shared_vendor_droid_wed.iff")
 
 object_tangible_vendor_shared_vendor_terminal_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
@@ -345,13 +350,14 @@ object_tangible_vendor_shared_vendor_terminal_basic = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1946512190
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_basic, 1946512190)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_basic, "object/tangible/vendor/shared_vendor_terminal_basic.iff")
 
 object_tangible_vendor_shared_vendor_terminal_bulky = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -397,13 +403,14 @@ object_tangible_vendor_shared_vendor_terminal_bulky = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2831480672
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_bulky, 2831480672)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_bulky, "object/tangible/vendor/shared_vendor_terminal_bulky.iff")
 
 object_tangible_vendor_shared_vendor_terminal_fancy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -449,13 +456,14 @@ object_tangible_vendor_shared_vendor_terminal_fancy = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3992259223
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_fancy, 3992259223)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_fancy, "object/tangible/vendor/shared_vendor_terminal_fancy.iff")
 
 object_tangible_vendor_shared_vendor_terminal_slim = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -501,13 +509,14 @@ object_tangible_vendor_shared_vendor_terminal_slim = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3179269297
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_slim, 3179269297)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_slim, "object/tangible/vendor/shared_vendor_terminal_slim.iff")
 
 object_tangible_vendor_shared_vendor_terminal_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
@@ -553,13 +562,14 @@ object_tangible_vendor_shared_vendor_terminal_small = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2513721920
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_small, 2513721920)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_small, "object/tangible/vendor/shared_vendor_terminal_small.iff")
 
 object_tangible_vendor_shared_vendor_terminal_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
@@ -605,10 +615,11 @@ object_tangible_vendor_shared_vendor_terminal_standard = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 90585643
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_standard, 90585643)
+ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_standard, "object/tangible/vendor/shared_vendor_terminal_standard.iff")

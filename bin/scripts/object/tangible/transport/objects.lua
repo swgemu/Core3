@@ -85,13 +85,14 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2330152069
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_shared_door, 2330152069)
+ObjectTemplates:addTemplate(object_tangible_transport_shared_door, "object/tangible/transport/shared_door.iff")
 
 object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_a.apt",
@@ -137,13 +138,14 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3646229980
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_a, 3646229980)
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_a, "object/tangible/transport/shared_strut_a.iff")
 
 object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_b.apt",
@@ -189,13 +191,14 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 37922123
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_b, 37922123)
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_b, "object/tangible/transport/shared_strut_b.iff")
 
 object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_c.apt",
@@ -241,13 +244,14 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1263518406
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_c, 1263518406)
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_c, "object/tangible/transport/shared_strut_c.iff")
 
 object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/transport.apt",
@@ -293,10 +297,11 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3801530659
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_shared_transport, 3801530659)
+ObjectTemplates:addTemplate(object_tangible_transport_shared_transport, "object/tangible/transport/shared_transport.iff")

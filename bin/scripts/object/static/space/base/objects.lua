@@ -77,7 +77,9 @@ object_static_space_base_shared_static_space_base = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 2,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4149044600
 }
 
-ObjectTemplates:addTemplate(object_static_space_base_shared_static_space_base, 4149044600)
+ObjectTemplates:addTemplate(object_static_space_base_shared_static_space_base, "object/static/space/base/shared_static_space_base.iff")

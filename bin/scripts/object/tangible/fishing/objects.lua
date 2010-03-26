@@ -85,13 +85,14 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1813029717
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, 1813029717)
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
 
 object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_fishing_float.apt",
@@ -137,13 +138,14 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 0,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1763394438
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, 1763394438)
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
 
 object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_splash.prt",
@@ -181,7 +183,9 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1084993175
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_splash, 1084993175)
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")

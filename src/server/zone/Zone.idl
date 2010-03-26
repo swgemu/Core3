@@ -54,24 +54,29 @@ import engine.core.ManagedObject;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.ZoneServer;
 import server.zone.managers.structure.StructureManager;
+import server.zone.objects.scene.SceneObject;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.creature.CreatureManager;
 
 
 include server.zone.managers.planet.HeightMap;
+include server.zone.managers.object.ObjectMap;
 
 import system.lang.System;
 
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
 
-	public void finalize() {
-		System.out.println("vazze");
-	}
-	
 	private transient ZoneProcessServerImplementation processor;
 
-	//private transient TaskManager taskManager;
+	@dereferenced
+	private ObjectMap objectMap;
 	
-	private StructureManager structureManager; // move to planet manager when converted
+	//private StructureManager structureManager; // move to planet manager when converted
+	
+	private PlanetManager planetManager;
+	
+	private CreatureManager creatureManager;
 	
 	private ZoneServer server;
 
@@ -106,6 +111,14 @@ class Zone extends ManagedObject implements QuadTree {
 	public native void stopManagers();
 	
 	public native float getHeight(float x, float y);
+	
+	public void addSceneObject(SceneObject object) {
+		objectMap.put(object.getObjectID(), object);
+	}
+	
+	public void dropSceneObject(unsigned long objectID) {
+		objectMap.remove(objectID);
+	}
 
 	// setters and getters
 	public int getZoneID() {
@@ -113,9 +126,17 @@ class Zone extends ManagedObject implements QuadTree {
 	}
 	
 	//public native SceneObject lookupObject(unsigned long objectID);
+	
+	public PlanetManager getPlanetManager() {
+		return planetManager;
+	}
 
 	public ZoneServer getZoneServer() {
 		return server;
+	}
+	
+	public CreatureManager getCreatureManager() {
+		return creatureManager;
 	}
 	
 	public unsigned long getGalacticTime() {

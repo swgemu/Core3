@@ -80,7 +80,7 @@ void CustomizationVariables::setVariable(uint8 type, uint8 value) {
 	//System::out << "inserted type:[" << hex << type << "] value:[" << hex << value << "]\n";
 }
 
-void CustomizationVariables::setVariable(String type, uint8 value) {
+void CustomizationVariables::setVariable(const String& type, uint8 value) {
 	if (type == "blend_asian_0")
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_ASIAN_0, value);
 	else if (type == "blend_brow_0")

@@ -85,13 +85,14 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1294781391
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, 1294781391)
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff")
 
 object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3907598549
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, 3907598549)
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff")

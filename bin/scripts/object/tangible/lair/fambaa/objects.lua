@@ -85,13 +85,14 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2348330712
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, 2348330712)
+ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
 
 object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3030660529
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, 3030660529)
+ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")

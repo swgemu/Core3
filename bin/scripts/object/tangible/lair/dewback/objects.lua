@@ -85,13 +85,14 @@ object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 62836419
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback, 62836419)
+ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback, "object/tangible/lair/dewback/shared_lair_dewback.iff")
 
 object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 605037773
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, 605037773)
+ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, "object/tangible/lair/dewback/shared_lair_dewback_desert.iff")

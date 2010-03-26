@@ -46,6 +46,7 @@ package server.zone.objects.player;
 
 import system.lang.Time;
 import system.util.SortedVector;
+import system.util.VectorMap;
 import engine.util.QuadTreeEntry;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
@@ -58,6 +59,10 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.chat.room.ChatRoom;
+include server.zone.objects.player.sui.SuiBox;
+include server.zone.objects.creature.CreatureFlag;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.player.badges.Badges;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -70,7 +75,11 @@ class PlayerCreature extends CreatureObject {
 	@dereferenced
 	protected Time logoutTimeStamp;
 	
+	protected unsigned int clientLastMovementStamp;
+	
 	protected unsigned int accountID;
+	
+	protected unsigned int suiBoxNextID;
 
 	protected string raceFile; //race iff, defines the race file of the character being created.
 	protected byte raceID;
@@ -80,16 +89,15 @@ class PlayerCreature extends CreatureObject {
 
 	protected unicode biography; //char biography
 
-	protected byte lotsRemaining;
+	protected int lotsRemaining;
 	
 	protected transient PlayerDisconnectEvent disconnectEvent;
 	protected transient PlayerRecoveryEvent recoveryEvent;
+	
+	protected int skillPoints;
 
-	// player objects
-
-	//Vector<CommandQueueAction> commandQueue;
 	@dereferenced
-	protected Time nextAction;
+	protected Badges badges;
 	
 	@dereferenced
 	protected Time nextTip;
@@ -102,9 +110,19 @@ class PlayerCreature extends CreatureObject {
 	@dereferenced
 	protected Time firstIncapacitationTime;
 	
+	@dereferenced
+	VectorMap<unsigned int, SuiBox> suiBoxes;
+	
 	protected int pvpRating;
 
 	protected int factionStatus;
+	
+	@dereferenced
+	SortedVector<unsigned long> persistentMessages;
+	
+	//Badges
+	
+	//protected BankTerminal registeredBank;
 	
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
@@ -113,9 +131,7 @@ class PlayerCreature extends CreatureObject {
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
 	
-	public PlayerCreature(LuaObject templateData) {
-		super(templateData);
-		
+	public PlayerCreature() {
 		Logger.setLoggingName("PlayerCreature");
 
 		owner = null;
@@ -127,12 +143,28 @@ class PlayerCreature extends CreatureObject {
 
 		savedZoneID = -1;
 		savedParentID = 0;
+		
+		skillPoints = 0;
+		
+		suiBoxNextID = 0;
+		
+		factionStatus = 0;
+		lotsRemaining = 0;
+		
+		clientLastMovementStamp = 0;
+		
+		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+		
+		persistentMessages.setNoDuplicateInsertPlan();
 
 		setOffline();
 	}
 	
+	public void finalize() {
+		
+	}
+	
 	public native void initializeTransientMembers();
-
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry entry);
@@ -152,16 +184,68 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
-	public void sendMessage(BasePacket msg) {
-		if (owner == null) {
-			msg.finalize();
-			return;
-		} else {
-			owner.sendMessage(msg);
-		}
+	/**
+	 * Inserts this object into the building, this method is only to be called from insertToZone
+	 * Includes a trigger to BuildingObject::onEnter
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is in the building, building->onEnter has been triggered,
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject where this object will be inserted
+	 */
+	public native void insertToBuilding(BuildingObject building);
+	
+	/**
+	 * Removes this object from the building, this method is only to be called from removeFromZone
+	 * Includes a trigger to BuildingObject::onExit
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is not in the building, building->onExit has been triggered, 
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject from where this object will be removed
+	 */
+	public native void removeFromBuilding(BuildingObject building);
+	
+	/**
+	 * Sends a message to client
+	 * @pre { }
+	 * @post { message is sent to client }
+	 * @param msg BasePacket to send
+	 */
+	public native void sendMessage(BasePacket msg);
+	
+	/**
+	 * Sends the necessary messages to owner client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	public native void sendToOwner(boolean doClose = true);
+	
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player PlayerCreature to receive badges response message
+	 */
+	public native void sendBadgesResponseTo(PlayerCreature player);
+	
+	public native void notifySceneReady();
+	
+	@local
+	public SortedVector<unsigned long> getPersistentMessages() {
+		return persistentMessages;
 	}
 	
-	public native void sendToOwner(boolean doClose = true);
+	public void addPersistentMessage(unsigned long id) {
+		persistentMessages.put(id);
+	}
+	
+	public void dropPersistentMessage(unsigned long id) {
+		persistentMessages.drop(id);
+	}
+	
+	public PlayerObject getPlayerObject() {
+		return (PlayerObject) super.getSlottedObject("ghost");
+	}
 	
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
@@ -218,6 +302,14 @@ class PlayerCreature extends CreatureObject {
 		savedZoneID = id;
 	}
 	
+	public void setSkillPoints(int points) {
+		skillPoints = points;
+	}
+	
+	public void addSkillPoints(int points) {
+		skillPoints += points;
+	}
+	
 	public void setClient(ZoneClientSession cli) {
 		owner = cli;
 	}
@@ -228,6 +320,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setRaceID(byte id) {
 		raceID = id;
+	}
+	
+	public void setClientLastMovementStamp(unsigned int stamp) {
+		clientLastMovementStamp = stamp;
 	}
 	
 	public void setOffline() {
@@ -265,4 +361,44 @@ class PlayerCreature extends CreatureObject {
 	public void removeChatRoom(ChatRoom room) {
 		chatRooms.drop(room);
 	}
+	
+	public int getSkillPoints() {
+		return skillPoints;
+	}
+	
+	public native unsigned int getNewSuiBoxID(unsigned int type);
+	
+	public boolean hasSuiBox(unsigned int boxID) {
+		return suiBoxes.contains(boxID);
+	}
+	
+	public SuiBox getSuiBox(unsigned int boxID) {
+		return suiBoxes.get(boxID);
+	}
+	
+	public void removeSuiBox(unsigned int boxID) {
+		suiBoxes.drop(boxID);
+	}
+	
+	public void addSuiBox(SuiBox sui) {
+		unsigned int key = sui.getBoxID();
+		suiBoxes.put(key, sui);
+	}
+	
+	public int getLotsRemaining() {
+		return lotsRemaining;
+	}
+	
+	public int getFactionStatus() {
+		return factionStatus;
+	}
+	
+	public unicode getBiography() {
+		return biography;
+	}
+	
+	public unsigned int getClientLastMovementStamp() {
+		return clientLastMovementStamp;
+	}
+	
 }

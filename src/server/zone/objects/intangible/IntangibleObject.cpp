@@ -8,8 +8,8 @@
  *	IntangibleObjectStub
  */
 
-IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation(templateData);
+IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -78,9 +78,6 @@ IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 }
 
 
-void IntangibleObjectImplementation::finalize() {
-}
-
 void IntangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(IntangibleObjectHelper::instance());
 
@@ -136,18 +133,19 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("status", &status);
 }
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
+IntangibleObjectImplementation::IntangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/intangible/IntangibleObject.idl(56):  Logger.setLoggingName("IntangibleObject");
+	// server/zone/objects/intangible/IntangibleObject.idl(54):  		Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");
-	// server/zone/objects/intangible/IntangibleObject.idl(58):  loadTemplateData(templateData);
-	loadTemplateData(templateData);
-	// server/zone/objects/intangible/IntangibleObject.idl(60):  status = 0;
+	// server/zone/objects/intangible/IntangibleObject.idl(56):  		status = 0;
 	status = 0;
 }
 
+void IntangibleObjectImplementation::finalize() {
+}
+
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(70):  return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(70):  		return status;
 	return status;
 }
 
@@ -163,12 +161,15 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		finalize();
 		break;
 	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 8:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
 		resp->insertInt(getStatus());
 		break;
 	default:
@@ -176,6 +177,10 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 
 	return resp;
+}
+
+void IntangibleObjectAdapter::finalize() {
+	((IntangibleObjectImplementation*) impl)->finalize();
 }
 
 void IntangibleObjectAdapter::initializeTransientMembers() {

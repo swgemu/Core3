@@ -85,13 +85,14 @@ object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1653632566
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, 1653632566)
+ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, "object/tangible/lair/ikopi/shared_lair_ikopi.iff")
 
 object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 852367209
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, 852367209)
+ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff")

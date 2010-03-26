@@ -47,28 +47,28 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
-#include "../../objects/player/FriendsList.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+/*#include "../../objects/player/Player.h"
+#include "../../objects/player/FriendsList.h"*/
 
 class FriendsListMessage : public BaseMessage {
 public:
-	FriendsListMessage(Player* play) : BaseMessage() {
-	
-		FriendsList* friendsList = play->getPlayerObject()->getFriendsList();
-
+	FriendsListMessage(PlayerObject* ghost) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE97AB594); // CRC
 
-		insertLong(play->getObjectID());
+		insertLong(ghost->getParentID());
 
-		insertInt(friendsList->getCount());
+		DeltaVector<String>* friendList = ghost->getFriendList();
+		insertInt(friendList->size());
 
-		for (int i = 0; i < friendsList->getCount(); ++i) {
+		for (int i = 0; i < friendList->size(); ++i) {
 			insertAscii("SWG");
-			insertAscii(friendsList->getFriendsServer(i));
-			insertAscii(friendsList->getFriendsName(i));
+			insertAscii("Core3");
+			insertAscii(friendList->get(i));
 		}
+
 	}
 };
 

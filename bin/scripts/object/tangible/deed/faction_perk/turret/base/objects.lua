@@ -85,10 +85,11 @@ object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1819939378
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed, 1819939378)
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed, "object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff")

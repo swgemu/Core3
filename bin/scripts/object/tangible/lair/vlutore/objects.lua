@@ -85,13 +85,14 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 594764698
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, 594764698)
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3306801185
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, 3306801185)
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 482728149
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, 482728149)
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")

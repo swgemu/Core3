@@ -9,6 +9,10 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
+#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -21,9 +25,19 @@ namespace wearables {
 
 class WearableObject : public TangibleObject {
 public:
-	WearableObject(LuaObject* templateData);
+	WearableObject();
 
 	void initializeTransientMembers();
+
+	bool isWearableObject();
+
+	int getMaxSockets();
+
+	int socketsUsed();
+
+	int socketsLeft();
+
+	void setMaxSockets(int sockets);
 
 protected:
 	WearableObject(DummyConstructorParameter* param);
@@ -48,13 +62,27 @@ namespace tangible {
 namespace wearables {
 
 class WearableObjectImplementation : public TangibleObjectImplementation {
+protected:
+	int socketCount;
+
+	WearableSkillModMap wearableSkillModMap;
 
 public:
-	WearableObjectImplementation(LuaObject* templateData);
+	WearableObjectImplementation();
 
 	WearableObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isWearableObject();
+
+	int getMaxSockets();
+
+	int socketsUsed();
+
+	int socketsLeft();
+
+	void setMaxSockets(int sockets);
 
 	WearableObject* _this;
 
@@ -96,6 +124,16 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isWearableObject();
+
+	int getMaxSockets();
+
+	int socketsUsed();
+
+	int socketsLeft();
+
+	void setMaxSockets(int sockets);
 
 };
 

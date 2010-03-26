@@ -85,13 +85,14 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3843288645
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, 3843288645)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4282694391
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, 4282694391)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3064505654
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, 3064505654)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4258529862
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, 4258529862)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1484781854
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, 1484781854)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2204651913
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, 2204651913)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3395630596
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, 3395630596)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 830872848
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, 830872848)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2022406813
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, 2022406813)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1364868080
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, 1364868080)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 277361603
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, 277361603)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3416234836
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, 3416234836)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -709,13 +721,14 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2190671065
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, 2190671065)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2037503949
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, 2037503949)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 813477952
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, 813477952)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 598079079
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, 598079079)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4172439280
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, 4172439280)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2982099325
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, 2982099325)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1247548009
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, 1247548009)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 55670244
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, 55670244)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1281522685
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, 1281522685)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1177,13 +1198,14 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2541081450
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, 2541081450)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3732452583
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, 3732452583)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 630956019
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, 630956019)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1821833342
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, 1821833342)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1987626722
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, 1987626722)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2909761141
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, 2909761141)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1489,13 +1516,14 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3831630328
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, 3831630328)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 528556780
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, 528556780)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1593,13 +1622,14 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1452033377
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, 1452033377)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1645,13 +1675,14 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1831490574
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, 1831490574)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1697,13 +1728,14 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3057515673
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, 3057515673)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4281375508
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, 4281375508)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 80982016
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, 80982016)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1853,13 +1887,14 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1306449805
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, 1306449805)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3218110775
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, 3218110775)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1957,10 +1993,11 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4261874664
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, 4261874664)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff")

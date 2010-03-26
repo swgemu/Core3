@@ -85,13 +85,14 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2444927445
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard, 2444927445)
+ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard.iff")
 
 object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2514665274
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert, 2514665274)
+ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard_desert.iff")

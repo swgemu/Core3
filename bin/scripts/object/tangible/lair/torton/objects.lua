@@ -85,13 +85,14 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1086986057
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton, 1086986057)
+ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
 
 object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2619306263
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, 2619306263)
+ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")

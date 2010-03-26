@@ -45,9 +45,13 @@ which carries forward this exception.
 package server.zone.managers.player;
 
 import engine.log.Logger;
+import engine.lua.Lua;
+import system.util.VectorMap;
 
 include server.zone.objects.player.PlayerCreature;
 include server.zone.managers.player.PlayerMap;
+include server.zone.managers.player.CharacterNameMap;
+
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
@@ -56,17 +60,26 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 
+include server.zone.managers.player.StartingItemList;
+
 class PlayerManager extends ManagedObject implements Logger {
 	transient ZoneProcessServerImplementation processor;
-	ZoneServer server;
+	private ZoneServer server;
 	
 	transient PlayerMap playerMap;
-			
+	transient CharacterNameMap nameMap;
+	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
+	public native void loadNameMap();
+	private native void loadStartingItems();
+	
+	public native void finalize();
+	
+	public transient StartingItemList startingItemList;
 	
 	@local
 	public native boolean createPlayer(MessageCallback callback);
-	
+		
 	@local
 	public native boolean checkPlayerName(MessageCallback callback);
 	
@@ -74,6 +87,12 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
 	public native boolean createAllPlayerObjects(PlayerCreature player);
+	public native void createDefaultPlayerItems(PlayerCreature player, final string profession, final string templateFile);
 	
 	public native void createTutorialBuilding(PlayerCreature player);
+	public native void createSkippedTutorialBuilding(PlayerCreature player);
+	
+	public native boolean existsName(final string name);
+	public native unsigned long getObjectID(final string name);
+	public native PlayerCreature getPlayer(final string name);
 }

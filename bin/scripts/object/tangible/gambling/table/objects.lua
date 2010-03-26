@@ -85,10 +85,11 @@ object_tangible_gambling_table_shared_table_base = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 294893544
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_table_shared_table_base, 294893544)
+ObjectTemplates:addTemplate(object_tangible_gambling_table_shared_table_base, "object/tangible/gambling/table/shared_table_base.iff")

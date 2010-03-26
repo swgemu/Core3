@@ -85,10 +85,11 @@ object_installation_faction_perk_minefield_shared_field_1x1 = SharedInstallation
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1970833898
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_shared_field_1x1, 1970833898)
+ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_shared_field_1x1, "object/installation/faction_perk/minefield/shared_field_1x1.iff")

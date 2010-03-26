@@ -85,13 +85,14 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2658633620
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, 2658633620)
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, "object/tangible/lair/kupernug/shared_lair_kupernug.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3996614231
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, 3996614231)
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2421166667
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, 2421166667)
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff")

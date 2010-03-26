@@ -85,13 +85,14 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 56634783
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, 56634783)
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1064337645
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, 1064337645)
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2989589042
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, 2989589042)
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")

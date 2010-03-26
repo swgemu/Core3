@@ -85,10 +85,11 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 646823895
 }
 
-ObjectTemplates:addTemplate(object_installation_turret_base_shared_turret_base, 646823895)
+ObjectTemplates:addTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")

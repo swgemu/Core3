@@ -85,13 +85,14 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 772926850
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, 772926850)
+ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap.iff")
 
 object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1110501147
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, 1110501147)
+ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap_forest.iff")

@@ -85,10 +85,11 @@ object_tangible_ship_attachment_base_shared_base_ship_attachment = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1517850046
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, 1517850046)
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff")

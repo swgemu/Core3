@@ -1,30 +1,22 @@
 /*
  * GroupObjectImplementation.cpp
  *
- *  Created on: 10/08/2009
+ *  Created on: 29/12/2009
  *      Author: victor
  */
-
 
 #include "GroupObject.h"
 #include "server/zone/packets/group/GroupObjectMessage3.h"
 #include "server/zone/packets/group/GroupObjectMessage6.h"
 #include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/chat/room/ChatRoom.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
-GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
-	setLoggingName("GroupObject");
-
-	leader = NULL;
-	groupMembers = new Vector<SceneObject*>();
-
-	listCount = 0;
-
-	groupLevel = 0;
-}
-
-void GroupObjectImplementation::sendTo(SceneObject* player) {
+void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
@@ -35,107 +27,142 @@ void GroupObjectImplementation::sendTo(SceneObject* player) {
 	BaseMessage* grup6 = new GroupObjectMessage6((GroupObject*) _this);
 	client->sendMessage(grup6);
 
-	if (player->isPlayerCreature() && groupChannel != NULL)
-		groupChannel->sendTo((PlayerCreature*)player);
+	if (player->isPlayerCreature() && chatRoom != NULL)
+		chatRoom->sendTo((PlayerCreature*) player);
 }
 
-void GroupObjectImplementation::addPlayer(SceneObject* player) {
-	int index = groupMembers.size();
+void GroupObjectImplementation::startChatRoom() {
+	PlayerCreature* leader = (PlayerCreature*) ((SceneObject*) groupMembers.get(0));
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
-	groupMembers->add(player);
-	calcGroupLevel();
-	addSquadLeaderBonuses(player);
+	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
+}
 
+void GroupObjectImplementation::destroyChatRoom() {
+	if (chatRoom == NULL)
+		return;
+
+	ManagedReference<ChatRoom*> room = chatRoom->getParent();
+	ManagedReference<ChatRoom*> parent = room->getParent();
+
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
+
+	chatManager->destroyRoom(chatRoom);
+	chatManager->destroyRoom(room);
+
+	chatRoom = NULL;
+}
+
+void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
+
+		play->sendMessage(msg->clone());
+	}
+
+	delete msg;
+}
+
+void GroupObjectImplementation::addMember(SceneObject* player) {
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-	grp->addMember(player, index);
-	grp->updateLevel(groupLevel);
+	grp->startUpdate(1);
+	groupMembers.add(player, grp);
 	grp->close();
 
 	broadcastMessage(grp);
 
-	//groupMembers.add(player);
-	//calcGroupLevel();
-
 	sendTo(player);
 }
 
-void GroupObjectImplementation::calcGroupLevel() {
-	groupLevel = 0;
+void GroupObjectImplementation::removeMember(SceneObject* player) {
+	ManagedReference<SceneObject*> obj = player;
 
-	for (int i = 0; i < getGroupSize(); i++) {
-		SceneObject* member = getGroupMember(i);
-
-		if (member->isCreatureObject()) {
-			CreatureObject* creature = (CreatureObject*) member;
-
-			int currentlevel = groupLevel - getGroupSize();
-			int memberlevel = creature->getLevel();
-
-			if (memberlevel > currentlevel)
-				groupLevel = memberlevel + getGroupSize();
-		}
-	}
-}
-
-void GroupObjectImplementation::removePlayer(SceneObject* player) {
-	int size = groupMembers->size();
-
-	for (int i = 0; i < size; i++) {
-		SceneObject* play = groupMembers->get(i);
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
 
 		if (play == player) {
-			groupMembers->remove(i);
-
-			calcGroupLevel();
-			removeSquadLeaderBonuses(play);
-
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-			grp->removeMember(i);
-			grp->updateLevel(groupLevel);
+			grp->startUpdate(1);
+			groupMembers.remove(i, grp);
 			grp->close();
 
 			broadcastMessage(grp);
 
-			break;
+			return;
 		}
 	}
-
-	if ((player == leader) && groupMembers->size() > 0)
-		leader = groupMembers->get(0);
-
-	calcGroupLevel();
 }
 
-bool GroupObjectImplementation::hasMember(Player* player) {
-	for (int i = 0; i < groupMembers->size(); i++) {
-		SceneObject* play = groupMembers->get(i);
+bool GroupObjectImplementation::hasMember(SceneObject* player) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
 
 		if (play == player)
 			return true;
 	}
+
 	return false;
+}
+
+
+void GroupObjectImplementation::makeLeader(SceneObject* player) {
+	if (groupMembers.size() < 2)
+		return;
+
+	//SceneObject* obj = groupMembers.get();
+
+	ManagedReference<SceneObject*> temp = (SceneObject*) groupMembers.get(0);
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		if (groupMembers.get(i) == player) {
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
+			grp->startUpdate(1);
+
+			groupMembers.set(0, player, grp, 2);
+			groupMembers.set(i, temp.get(), grp, 0);
+
+			grp->close();
+
+			broadcastMessage(grp);
+
+			return;
+		}
+	}
 }
 
 void GroupObjectImplementation::disband() {
 	// this locked
-	for (int i = 0; i < groupMembers->size(); ++i) {
-		SceneObject* play = groupMembers->get(i);
-
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* play = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
 		try {
 			play->wlock((GroupObject*) _this);
 
 			if (play->isPlayerCreature()) {
-				PlayerCreature* playerCreature = (PlayerCreature*) play;
-				playerCreature->removeChatRoom(groupChannel);
+				chatRoom->removePlayer((PlayerCreature*) play, false);
+				chatRoom->sendDestroyTo((PlayerCreature*) play);
 
-				playerCreature->setGroup(NULL);
-				playerCreature->updateGroupId(0);
+				ChatRoom* room = chatRoom->getParent();
+				room->sendDestroyTo((PlayerCreature*) play);
 			}
 
-			removeSquadLeaderBonuses(play);
+			//sendClosestWaypointDestroyTo(play);
 
-			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
-			play->sendMessage(msg);
+			play->updateGroup(NULL);
+			//play->updateGroupId(0);
+
+			/*if (play->getTeacher() != NULL) {
+				play->getTeacher()->setStudent(NULL);
+				play->setTeacher(NULL);
+			}
+
+			if (play->getStudent() != NULL) {
+				play->getStudent()->setTeacher(NULL);
+				play->setStudent(NULL);
+			}*/
+
+			//removeSquadLeaderBonuses(play);
+
+			sendDestroyTo(play);
 
 			play->unlock();
 
@@ -145,179 +172,11 @@ void GroupObjectImplementation::disband() {
 		}
 	}
 
+	destroyChatRoom();
 
-	if (groupChannel != NULL) {
-		ChatRoom* room = groupChannel->getParent();
-		ChatRoom* parent = room->getParent();
+	groupMembers.removeAll();
 
-		ChatManager* chatManager = getZone()->getChatManager();
-
-		chatManager->destroyRoom(groupChannel);
-		chatManager->destroyRoom(room);
-
-		groupChannel = NULL;
-	}
-
-	groupMembers->removeAll();
+	//The mission waypoints should not be destroyed. They belong to the players.
+	//missionWaypoints.removeAll();
 }
 
-void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
-	for (int i = 0; i < groupMembers->size(); i++) {
-		Player* play = groupMembers->get(i);
-
-		play->sendMessage(msg->clone());
-	}
-
-	msg->finalize();
-}
-
-void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
-		const String& message, bool sendToSelf) {
-	for (int i = 0; i < groupMembers->size(); i++) {
-		SceneObject* play = groupMembers->get(i);
-
-		if (play->isPlayerCreature()) {
-			SceneObject* playerCreature = (PlayerCreature*) play;
-
-			if (playerCreature != player) {
-				playerCreature->sendSystemMessage(message);
-			} else {
-				if (sendToSelf)
-					playerCreature->sendSystemMessage(message);
-			}
-		}
-	}
-}
-
-void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
-		const String& file, const String& str, uint64 targetid, bool sendToSelf) {
-	for (int i = 0; i < groupMembers->size(); i++) {
-		SceneObject* play = groupMembers->get(i);
-
-		if (play->isPlayerCreature()) {
-			SceneObject* playerCreature = (PlayerCreature*) play;
-
-			if (playerCreature != player) {
-				playerCreature->sendSystemMessage(file, str, targetid);
-			} else {
-				if (sendToSelf)
-					playerCreature->sendSystemMessage(file, str, targetid);
-			}
-		}
-	}
-}
-
-void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
-		const String& file, const String& str, StfParameter* param,
-		bool sendToSelf) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
-
-		if (play->isPlayerCreature()) {
-			SceneObject* playerCreature = (PlayerCreature*) play;
-
-			if (playerCreature != player) {
-				playerCreature->sendSystemMessage(file, str, param);
-			} else {
-				if (sendToSelf)
-					playerCreature->sendSystemMessage(file, str, param);
-			}
-		}
-	}
-}
-
-void GroupObjectImplementation::makeLeader(SceneObject* player) {
-	if (groupMembers->size() < 2)
-		return;
-
-	for (int i = 0; i < groupMembers->size(); ++i) {
-		removeSquadLeaderBonuses(groupMembers->get(i));
-	}
-
-	SceneObject* temp = leader;
-	leader = player;
-	int i = 0;
-	for (; i < groupMembers->size(); i++) {
-		addSquadLeaderBonuses(groupMembers->get(i));
-
-		if (groupMembers->get(i) == player) {
-			groupMembers->set(0, player);
-			groupMembers->set(i, temp);
-			break;
-		}
-	}
-
-	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-	grp->updateLeader(player, temp, i);
-	grp->close();
-
-	broadcastMessage(grp);
-}
-
-float GroupObjectImplementation::getRangerBonusForHarvesting(SceneObject* player) {
-	Player* temp;
-	String skillBox = "outdoors_ranger_novice";
-	String skillBox2 = "outdoors_ranger_master";
-
-	float bonus = .2f;
-	bool closeEnough = false;
-
-	int i = 0;
-	for (; i < groupMembers.size(); i++) {
-
-		temp = groupMembers.get(i);
-
-		try {
-			if (temp != player)
-				temp->wlock(player);
-
-			if (temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
-					player->getZoneID() == temp->getZoneID())
-				closeEnough = true;
-
-			if (temp->hasSkillBox(skillBox))
-				bonus = .3f;
-
-			if (temp->hasSkillBox(skillBox2))
-				bonus = .4f;
-
-			if (temp != player)
-				temp->unlock();
-		} catch (...) {
-			temp->error("unreported exception caught in GroupObjectImplementation::getRangerBonusForHarvesting");
-
-			if (temp != player)
-				temp->unlock();
-		}
-
-	}
-
-	if (closeEnough)
-		return bonus;
-	else
-		return 0.0f;
-}
-
-void GroupObjectImplementation::addSquadLeaderBonuses(CreatureObject* groupMember) {
-	int meleeDefenseBonus = leader->getSkillMod("group_melee_defense");
-	int rangedDefenseBonus = leader->getSkillMod("group_ranged_defense");
-	int burstRunBonus = leader->getSkillMod("group_burst_run");
-	int terrainNegotiationBonus = leader->getSkillMod("group_slope_move");
-
-	groupMember->addSkillModBonus("melee_defense", meleeDefenseBonus, false);
-	groupMember->addSkillModBonus("ranged_defense", rangedDefenseBonus, false);
-	groupMember->addSkillModBonus("burst_run", burstRunBonus, false);
-	groupMember->addSkillModBonus("slope_move", terrainNegotiationBonus, false);
-}
-
-void GroupObjectImplementation::removeSquadLeaderBonuses(CreatureObject* groupMember) {
-	int meleeDefenseBonus = leader->getSkillMod("group_melee_defense");
-	int rangedDefenseBonus = leader->getSkillMod("group_ranged_defense");
-	int burstRunBonus = leader->getSkillMod("group_burst_run");
-	int terrainNegotiationBonus = leader->getSkillMod("group_slope_move");
-
-	groupMember->addSkillModBonus("melee_defense", -meleeDefenseBonus, false);
-	groupMember->addSkillModBonus("ranged_defense", -rangedDefenseBonus, false);
-	groupMember->addSkillModBonus("burst_run", -burstRunBonus, false);
-	groupMember->addSkillModBonus("slope_move", -terrainNegotiationBonus, false);
-}

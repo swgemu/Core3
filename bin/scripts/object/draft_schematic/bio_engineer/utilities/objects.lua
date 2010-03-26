@@ -77,10 +77,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2910061894
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a, 2910061894)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_a.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1986244049
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b, 1986244049)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_b.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1064225372
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c, 1064225372)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_c.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3297632584
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d, 3297632584)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_d.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 996406481
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a, 996406481)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_a.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3765722182
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b, 3765722182)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_b.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,7 +335,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraf
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2843294667
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c, 2843294667)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_c.iff")

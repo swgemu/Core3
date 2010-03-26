@@ -8,8 +8,8 @@
  *	TerminalStub
  */
 
-Terminal::Terminal(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TerminalImplementation(templateData);
+Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new TerminalImplementation();
 	_impl->_setStub(this);
 }
 
@@ -41,7 +41,6 @@ TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param)
 }
 
 TerminalImplementation::~TerminalImplementation() {
-	TerminalImplementation::finalize();
 }
 
 
@@ -102,9 +101,9 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 }
 
-TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
+TerminalImplementation::TerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(55):  Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(53):  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
 }
 

@@ -8,8 +8,8 @@
  *	WaypointObjectStub
  */
 
-WaypointObject::WaypointObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation(templateData);
+WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WaypointObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -20,117 +20,98 @@ WaypointObject::~WaypointObject() {
 }
 
 
-void WaypointObject::initializeTransientMembers() {
+void WaypointObject::loadTemplateData(LuaObject* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((WaypointObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void WaypointObject::insertToMessage(BaseMessage* msg) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((WaypointObjectImplementation*) _impl)->insertToMessage(msg);
+}
+
+void WaypointObject::setCellID(unsigned int id) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->initializeTransientMembers();
+		((WaypointObjectImplementation*) _impl)->setCellID(id);
 }
 
-void WaypointObject::changeStatus(bool status) {
+void WaypointObject::setPlanetCRC(unsigned int crc) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addBooleanParameter(status);
+		method.addUnsignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->changeStatus(status);
+		((WaypointObjectImplementation*) _impl)->setPlanetCRC(crc);
 }
 
-void WaypointObject::switchStatus() {
+void WaypointObject::setCustomName(const UnicodeString& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addUnicodeParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->switchStatus();
+		((WaypointObjectImplementation*) _impl)->setCustomName(name);
 }
 
-bool WaypointObject::getStatus() {
+void WaypointObject::setColor(byte newColor) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addByteParameter(newColor);
 
-		return method.executeWithBooleanReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((WaypointObjectImplementation*) _impl)->getStatus();
+		((WaypointObjectImplementation*) _impl)->setColor(newColor);
 }
 
-void WaypointObject::setInternalNote(const String& message) {
+void WaypointObject::setActive(byte newStatus) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
-		method.addAsciiParameter(message);
+		method.addByteParameter(newStatus);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setInternalNote(message);
+		((WaypointObjectImplementation*) _impl)->setActive(newStatus);
 }
 
-void WaypointObject::setPlanetName(const String& planet) {
+void WaypointObject::setUnknown(unsigned long long id) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
-		method.addAsciiParameter(planet);
+		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setPlanetName(planet);
-}
-
-unsigned int WaypointObject::getPlanetCRC() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((WaypointObjectImplementation*) _impl)->getPlanetCRC();
-}
-
-String WaypointObject::getInternalNote() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		method.executeWithAsciiReturn(_return_getInternalNote);
-		return _return_getInternalNote;
-	} else
-		return ((WaypointObjectImplementation*) _impl)->getInternalNote();
-}
-
-String WaypointObject::getPlanetName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-
-		method.executeWithAsciiReturn(_return_getPlanetName);
-		return _return_getPlanetName;
-	} else
-		return ((WaypointObjectImplementation*) _impl)->getPlanetName();
+		((WaypointObjectImplementation*) _impl)->setUnknown(id);
 }
 
 /*
@@ -142,7 +123,6 @@ WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParam
 }
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
-	WaypointObjectImplementation::finalize();
 }
 
 
@@ -201,56 +181,48 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("WaypointObject");
 
-	addSerializableVariable("internalNote", &internalNote);
-	addSerializableVariable("planetName", &planetName);
+	addSerializableVariable("cellID", &cellID);
+	addSerializableVariable("unknown", &unknown);
+	addSerializableVariable("planetCRC", &planetCRC);
+	addSerializableVariable("customName", &customName);
+	addSerializableVariable("color", &color);
 	addSerializableVariable("active", &active);
 }
 
-WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
+WaypointObjectImplementation::WaypointObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/waypoint/WaypointObject.idl(60):  internalNote = "EMPTY";
-	internalNote = "EMPTY";
-	// server/zone/objects/waypoint/WaypointObject.idl(62):  Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl(28):  		Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
 }
 
-void WaypointObjectImplementation::changeStatus(bool status) {
-	// server/zone/objects/waypoint/WaypointObject.idl(68):  active = status;
-	active = status;
+void WaypointObjectImplementation::setCellID(unsigned int id) {
+	// server/zone/objects/waypoint/WaypointObject.idl(38):  		cellID = id;
+	cellID = id;
 }
 
-void WaypointObjectImplementation::switchStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(72):  
-	if (active)	// server/zone/objects/waypoint/WaypointObject.idl(73):  active = false;
-	active = false;
-
-	else 	// server/zone/objects/waypoint/WaypointObject.idl(76):  active = true;
-	active = true;
+void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
+	// server/zone/objects/waypoint/WaypointObject.idl(42):  		planetCRC = crc;
+	planetCRC = crc;
 }
 
-bool WaypointObjectImplementation::getStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(80):  return active;
-	return active;
+void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
+	// server/zone/objects/waypoint/WaypointObject.idl(46):  		customName = name;
+	customName = name;
 }
 
-void WaypointObjectImplementation::setInternalNote(const String& message) {
-	// server/zone/objects/waypoint/WaypointObject.idl(84):  internalNote = message;
-	internalNote = message;
+void WaypointObjectImplementation::setColor(byte newColor) {
+	// server/zone/objects/waypoint/WaypointObject.idl(50):  		color = newColor;
+	color = newColor;
 }
 
-void WaypointObjectImplementation::setPlanetName(const String& planet) {
-	// server/zone/objects/waypoint/WaypointObject.idl(88):  planetName = planet;
-	planetName = planet;
+void WaypointObjectImplementation::setActive(byte newStatus) {
+	// server/zone/objects/waypoint/WaypointObject.idl(54):  		active = newStatus;
+	active = newStatus;
 }
 
-String WaypointObjectImplementation::getInternalNote() {
-	// server/zone/objects/waypoint/WaypointObject.idl(94):  return internalNote;
-	return internalNote;
-}
-
-String WaypointObjectImplementation::getPlanetName() {
-	// server/zone/objects/waypoint/WaypointObject.idl(98):  return planetName;
-	return planetName;
+void WaypointObjectImplementation::setUnknown(unsigned long long id) {
+	// server/zone/objects/waypoint/WaypointObject.idl(58):  		unknown = id;
+	unknown = id;
 }
 
 /*
@@ -265,31 +237,22 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		setCellID(inv->getUnsignedIntParameter());
 		break;
 	case 7:
-		changeStatus(inv->getBooleanParameter());
+		setPlanetCRC(inv->getUnsignedIntParameter());
 		break;
 	case 8:
-		switchStatus();
+		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
 		break;
 	case 9:
-		resp->insertBoolean(getStatus());
+		setColor(inv->getByteParameter());
 		break;
 	case 10:
-		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__String_));
+		setActive(inv->getByteParameter());
 		break;
 	case 11:
-		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__String_));
-		break;
-	case 12:
-		resp->insertInt(getPlanetCRC());
-		break;
-	case 13:
-		resp->insertAscii(getInternalNote());
-		break;
-	case 14:
-		resp->insertAscii(getPlanetName());
+		setUnknown(inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -298,40 +261,28 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void WaypointObjectAdapter::initializeTransientMembers() {
-	((WaypointObjectImplementation*) impl)->initializeTransientMembers();
+void WaypointObjectAdapter::setCellID(unsigned int id) {
+	((WaypointObjectImplementation*) impl)->setCellID(id);
 }
 
-void WaypointObjectAdapter::changeStatus(bool status) {
-	((WaypointObjectImplementation*) impl)->changeStatus(status);
+void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
+	((WaypointObjectImplementation*) impl)->setPlanetCRC(crc);
 }
 
-void WaypointObjectAdapter::switchStatus() {
-	((WaypointObjectImplementation*) impl)->switchStatus();
+void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {
+	((WaypointObjectImplementation*) impl)->setCustomName(name);
 }
 
-bool WaypointObjectAdapter::getStatus() {
-	return ((WaypointObjectImplementation*) impl)->getStatus();
+void WaypointObjectAdapter::setColor(byte newColor) {
+	((WaypointObjectImplementation*) impl)->setColor(newColor);
 }
 
-void WaypointObjectAdapter::setInternalNote(const String& message) {
-	((WaypointObjectImplementation*) impl)->setInternalNote(message);
+void WaypointObjectAdapter::setActive(byte newStatus) {
+	((WaypointObjectImplementation*) impl)->setActive(newStatus);
 }
 
-void WaypointObjectAdapter::setPlanetName(const String& planet) {
-	((WaypointObjectImplementation*) impl)->setPlanetName(planet);
-}
-
-unsigned int WaypointObjectAdapter::getPlanetCRC() {
-	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
-}
-
-String WaypointObjectAdapter::getInternalNote() {
-	return ((WaypointObjectImplementation*) impl)->getInternalNote();
-}
-
-String WaypointObjectAdapter::getPlanetName() {
-	return ((WaypointObjectImplementation*) impl)->getPlanetName();
+void WaypointObjectAdapter::setUnknown(unsigned long long id) {
+	((WaypointObjectImplementation*) impl)->setUnknown(id);
 }
 
 /*

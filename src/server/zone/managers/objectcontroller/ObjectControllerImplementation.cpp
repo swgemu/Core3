@@ -12,19 +12,13 @@
 
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "server/db/ServerDatabase.h"
 
-
-ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServerImplementation* server) : ManagedObjectImplementation(), Lua() {
-	setLoggingName("ObjectController");
-
-	ObjectControllerImplementation::server = server;
-
+void ObjectControllerImplementation::loadCommands() {
 	configManager = new CommandConfigManager(server);
 	queueCommands = new CommandList();
-
-	setLogging(true);
-	setGlobalLogging(true);
 
 	info("loading queue commands...", true);
 	configManager->loadSlashCommandsFile(queueCommands);
@@ -36,7 +30,31 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
 	// LUA
 	init();
 	Luna<LuaCreatureObject>::Register(L);
-	//runFile("scripts/testscript.lua");
+
+}
+
+void ObjectControllerImplementation::finalize() {
+	info("deleting object controller", true);
+
+	delete configManager;
+	configManager = NULL;
+
+	CommandConfigManager::slashCommands = NULL;
+
+	queueCommands->resetIterator();
+
+	SortedVector<QueueCommand*> uniqueCommands;
+	uniqueCommands.setNoDuplicateInsertPlan();
+
+	while (queueCommands->hasNext()) {
+		uniqueCommands.put(queueCommands->getNextValue());
+	}
+
+	for (int i = 0; i < uniqueCommands.size(); ++i)
+		delete uniqueCommands.get(i);
+
+	delete queueCommands;
+	queueCommands = NULL;
 }
 
 bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
@@ -66,70 +84,64 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	return true;
 }
 
-void ObjectControllerImplementation::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, uint64 targetID, UnicodeString& arguments) {
+float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
 	// Pre: object is wlocked
 	// Post: object is wlocked
 
-	QueueCommand* sc = getQueueCommand(actionCRC);
+	QueueCommand* queueCommand = getQueueCommand(actionCRC);
 
-	if (sc != NULL) {
-		StringBuffer infoMsg;
-		infoMsg << "activating queue command 0x" << hex << actionCRC << " " << sc->getSlashCommandName();
-		object->info(infoMsg.toString());
+	float durationTime = 0.f;
 
-		bool completed = sc->doQueueCommand(object, targetID, arguments);
-
-		if (!completed)
-			sc->onFail(actionCount, object);
-		else {
-			sc->onComplete(actionCount, object);
-
-			if (sc->addToCombatQueue() && object->isPlayerCreature())
-				((PlayerCreature*)object)->clearQueueAction(actionCount);
-		}
-
-		return;
-	} else {
+	if (queueCommand == NULL) {
 		StringBuffer msg;
 		msg << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
 		object->error(msg.toString());
+
+		return 0.f;
 	}
 
-	if (object->isPlayerCreature()) {
+	StringBuffer infoMsg;
+	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName();
+	object->info(infoMsg.toString(), true);
+
+	String characterAbility = queueCommand->getCharacterAbility();
+
+	if (characterAbility.length() > 1) {
+		object->info("activating characterAbility " + characterAbility, true);
+
+		if (object->isPlayerCreature()) {
+			PlayerObject* playerObject = (PlayerObject*) object->getSlottedObject("ghost");
+
+			if (!playerObject->hasSkill(queueCommand)) {
+				object->clearQueueAction(actionCount, 0, 2);
+
+				return 0.f;
+			}
+		}
+	}
+
+	bool completed = queueCommand->doQueueCommand(object, targetID, arguments);
+
+	if (!completed)
+		queueCommand->onFail(actionCount, object);
+	else {
+		queueCommand->onComplete(actionCount, object);
+
+		if (queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE)
+			durationTime = queueCommand->getCommandDuration();
+
+		if (queueCommand->addToCombatQueue() && object->isPlayerCreature())
+			((PlayerCreature*)object)->clearQueueAction(actionCount, durationTime);
+
+	}
+
+	return durationTime;
+
+	/*if (object->isPlayerCreature()) {
 		PlayerCreature* player = (PlayerCreature*) object;
 
 		player->clearQueueAction(actionCount, 0, 2, 0);
-	}
-
-
-	/*
-
-	lua_getglobal(L, "runScript");
-	lua_pushlightuserdata(L, object);
-
-	if (lua_pcall(L, 1, 0, 0) != 0) {
-		System::out << "Error running function " << "runScript" << " " << lua_tostring(L, -1);
 	}*/
-
-	/*LuaFunction runScript(getLuaState(), "runScript", 0);
-			runScript << object; // push first argument
-			callFunction(&runScript);*/
-	//}
-
-	/*System::out << "200000 executions = " << testingSpeed2.miliDifference() << "\n";
-
-	Time testingSpeed;
-
-	for (int i = 0; i < 200000; ++i) {
-		//object->setBankCredits(i - 1);
-
-		object->setBankCredits(i + 3);
-
-	}
-
-	System::out << "200000 executions = " << testingSpeed.miliDifference() << "\n";*/
-
-
 }
 
 void ObjectControllerImplementation::addQueueCommand(QueueCommand* command) {

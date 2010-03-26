@@ -85,13 +85,14 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 939893081
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc, 939893081)
+ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc, "object/tangible/lair/sarlacc/shared_lair_sarlacc.iff")
 
 object_tangible_lair_sarlacc_shared_lair_sarlacc_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc_desert = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2362534144
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc_desert, 2362534144)
+ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc_desert, "object/tangible/lair/sarlacc/shared_lair_sarlacc_desert.iff")

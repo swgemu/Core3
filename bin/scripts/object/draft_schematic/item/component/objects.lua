@@ -77,10 +77,12 @@ object_draft_schematic_item_component_shared_item_electronic_control_unit = Shar
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 989624055
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, 989624055)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, "object/draft_schematic/item/component/shared_item_electronic_control_unit.iff")
 
 object_draft_schematic_item_component_shared_item_electronic_energy_distributor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_item_component_shared_item_electronic_energy_distributor 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1152098080
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, 1152098080)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, "object/draft_schematic/item/component/shared_item_electronic_energy_distributor.iff")
 
 object_draft_schematic_item_component_shared_item_electronic_power_conditioner = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_item_component_shared_item_electronic_power_conditioner =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3615264224
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, 3615264224)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, "object/draft_schematic/item/component/shared_item_electronic_power_conditioner.iff")
 
 object_draft_schematic_item_component_shared_item_electronics_gp_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_item_component_shared_item_electronics_gp_module = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4228360112
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, 4228360112)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, "object/draft_schematic/item/component/shared_item_electronics_gp_module.iff")
 
 object_draft_schematic_item_component_shared_item_electronics_memory_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_item_component_shared_item_electronics_memory_module = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2170102415
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, 2170102415)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, "object/draft_schematic/item/component/shared_item_electronics_memory_module.iff")
 
 object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,7 +292,9 @@ object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDra
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 622519855
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, 622519855)
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, "object/draft_schematic/item/component/shared_item_micro_sensor_suite.iff")

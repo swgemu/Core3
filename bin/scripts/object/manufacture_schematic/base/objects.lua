@@ -77,10 +77,12 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3062041799
 }
 
-ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, 3062041799)
+ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff")
 
 object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedManufactureSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,7 +120,9 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 933697332
 }
 
-ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, 933697332)
+ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, "object/manufacture_schematic/base/shared_manufacture_schematic_default.iff")

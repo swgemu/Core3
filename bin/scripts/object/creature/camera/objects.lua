@@ -105,6 +105,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -115,7 +116,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2217042692
 }
 
-ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, 2217042692)
+ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -181,6 +182,7 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	swimHeight = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
@@ -191,4 +193,4 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1416223243
 }
 
-ObjectTemplates:addTemplate(object_creature_camera_shared_intro_controller, 1416223243)
+ObjectTemplates:addTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")

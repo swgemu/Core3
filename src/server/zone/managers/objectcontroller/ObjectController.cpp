@@ -22,8 +22,8 @@
  *	ObjectControllerStub
  */
 
-ObjectController::ObjectController(ZoneProcessServerImplementation* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ObjectControllerImplementation(server);
+ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new ObjectControllerImplementation(srv);
 	_impl->_setStub(this);
 }
 
@@ -34,12 +34,24 @@ ObjectController::~ObjectController() {
 }
 
 
-bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+void ObjectController::loadCommands() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ObjectControllerImplementation*) _impl)->loadCommands();
+}
+
+bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(objectToTransfer);
 		method.addObjectParameter(destinationObject);
 		method.addSignedIntParameter(containmentType);
@@ -50,21 +62,21 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
-void ObjectController::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
+float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(object);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addUnsignedIntParameter(actionCount);
 		method.addUnsignedLongParameter(targetID);
 		method.addUnicodeParameter(arguments);
 
-		method.executeWithVoidReturn();
+		return method.executeWithFloatReturn();
 	} else
-		((ObjectControllerImplementation*) _impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+		return ((ObjectControllerImplementation*) _impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
@@ -103,9 +115,6 @@ ObjectControllerImplementation::~ObjectControllerImplementation() {
 	ObjectControllerImplementation::finalize();
 }
 
-
-void ObjectControllerImplementation::finalize() {
-}
 
 void ObjectControllerImplementation::_initializeImplementation() {
 	_setClassHelper(ObjectControllerHelper::instance());
@@ -161,6 +170,20 @@ void ObjectControllerImplementation::_serializationHelperMethod() {
 
 }
 
+ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServerImplementation* srv) {
+	_initializeImplementation();
+	// server/zone/managers/objectcontroller/ObjectController.idl(65):  		server = srv;
+	server = srv;
+	// server/zone/managers/objectcontroller/ObjectController.idl(67):  		Logger.setLoggingName("ObjectController");
+	Logger::setLoggingName("ObjectController");
+	// server/zone/managers/objectcontroller/ObjectController.idl(69):  		Logger.setLogging(true);
+	Logger::setLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl(70):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl(72):  		loadCommands();
+	loadCommands();
+}
+
 /*
  *	ObjectControllerAdapter
  */
@@ -173,10 +196,16 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		finalize();
 		break;
 	case 7:
-		enqueueCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_));
+		loadCommands();
+		break;
+	case 8:
+		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 9:
+		resp->insertFloat(activateCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
 		break;
 	default:
 		return NULL;
@@ -185,12 +214,20 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
+void ObjectControllerAdapter::finalize() {
+	((ObjectControllerImplementation*) impl)->finalize();
+}
+
+void ObjectControllerAdapter::loadCommands() {
+	((ObjectControllerImplementation*) impl)->loadCommands();
+}
+
 bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
 	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
-void ObjectControllerAdapter::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
-	((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+float ObjectControllerAdapter::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
+	return ((ObjectControllerImplementation*) impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*

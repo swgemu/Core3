@@ -50,7 +50,6 @@ which carries forward this exception.
 #include "../../objects/tangible/TangibleObject.h"
 
 #include "../../objects/creature/CreatureObject.h"
-#include "../../objects/creature/CreatureObjectImplementation.h"
 
 class UpdatePVPStatusMessage : public BaseMessage {
 public:

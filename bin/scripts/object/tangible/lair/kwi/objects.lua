@@ -85,13 +85,14 @@ object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2075620240
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi, 2075620240)
+ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi, "object/tangible/lair/kwi/shared_lair_kwi.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3436978198
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, 3436978198)
+ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, "object/tangible/lair/kwi/shared_lair_kwi_desert.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3879200403
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, 3879200403)
+ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, "object/tangible/lair/kwi/shared_lair_kwi_forest.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1326626395
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, 1326626395)
+ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff")

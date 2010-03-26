@@ -85,13 +85,14 @@ object_tangible_lair_mamien_shared_lair_mamien = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1262287323
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien, 1262287323)
+ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien, "object/tangible/lair/mamien/shared_lair_mamien.iff")
 
 object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 222781865
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, 222781865)
+ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, "object/tangible/lair/mamien/shared_lair_mamien_jungle.iff")

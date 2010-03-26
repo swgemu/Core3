@@ -85,13 +85,14 @@ object_tangible_component_bio_shared_base_bio_component_clothing_casual = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 219382584
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_casual, 219382584)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_casual, "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff")
 
 object_tangible_component_bio_shared_base_bio_component_clothing_field = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -137,13 +138,14 @@ object_tangible_component_bio_shared_base_bio_component_clothing_field = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2494958129
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_field, 2494958129)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_field, "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff")
 
 object_tangible_component_bio_shared_base_bio_component_clothing_formal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -189,13 +191,14 @@ object_tangible_component_bio_shared_base_bio_component_clothing_formal = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3815377986
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_formal, 3815377986)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_formal, "object/tangible/component/bio/shared_base_bio_component_clothing_formal.iff")
 
 object_tangible_component_bio_shared_base_bio_component_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,13 +244,14 @@ object_tangible_component_bio_shared_base_bio_component_food = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2633814515
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_food, 2633814515)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_food, "object/tangible/component/bio/shared_base_bio_component_food.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_charisma = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1272895118
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma, 1272895118)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma, "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2790898256
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2, 2790898256)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_chromatic.apt",
@@ -397,13 +403,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1970227985
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer, 1970227985)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer, "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_chromatic.apt",
@@ -449,13 +456,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3713366872
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2, 3713366872)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_medic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches_enhanced.apt",
@@ -501,13 +509,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 55693017
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic, 55693017)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic, "object/tangible/component/bio/shared_bio_component_clothing_casual_medic.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches_enhanced.apt",
@@ -553,13 +562,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 608421917
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2, 608421917)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_medic_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_taming = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
@@ -605,13 +615,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3483367767
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming, 3483367767)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming, "object/tangible/component/bio/shared_bio_component_clothing_casual_taming.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
@@ -657,13 +668,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2121215649
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2, 2121215649)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_taming_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_training = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -709,13 +721,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 861669010
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training, 861669010)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training, "object/tangible/component/bio/shared_bio_component_clothing_casual_training.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_training_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -761,13 +774,14 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training_2 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3979863035
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training_2, 3979863035)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_training_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -813,13 +827,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1523403607
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor, 1523403607)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor, "object/tangible/component/bio/shared_bio_component_clothing_field_armor.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_armor_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -865,13 +880,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor_2 = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3097107766
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor_2, 3097107766)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor_2, "object/tangible/component/bio/shared_bio_component_clothing_field_armor_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_bleeding = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -917,13 +933,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4173771067
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding, 4173771067)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding, "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -969,13 +986,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2 = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1801496294
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2, 1801496294)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2, "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_camo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
@@ -1021,13 +1039,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3468672511
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo, 3468672511)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo, "object/tangible/component/bio/shared_bio_component_clothing_field_camo.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_camo_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
@@ -1073,13 +1092,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo_2 = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1895651741
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo_2, 1895651741)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo_2, "object/tangible/component/bio/shared_bio_component_clothing_field_camo_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_cover = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
@@ -1125,13 +1145,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1495044005
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover, 1495044005)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover, "object/tangible/component/bio/shared_bio_component_clothing_field_cover.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_cover_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
@@ -1177,13 +1198,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover_2 = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 467211451
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover_2, 467211451)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover_2, "object/tangible/component/bio/shared_bio_component_clothing_field_cover_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_defense = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -1229,13 +1251,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4223028089
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense, 4223028089)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense, "object/tangible/component/bio/shared_bio_component_clothing_field_defense.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_defense_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -1281,13 +1304,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense_2 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 58582226
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense_2, 58582226)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense_2, "object/tangible/component/bio/shared_bio_component_clothing_field_defense_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_intimidate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2984936227
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate, 2984936227)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate, "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2 =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3980420512
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2, 3980420512)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2, "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate_2.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1437,13 +1463,14 @@ object_tangible_component_bio_shared_bio_component_food_heavy = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2498712826
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy, 2498712826)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy, "object/tangible/component/bio/shared_bio_component_food_heavy.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_filling = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1489,13 +1516,14 @@ object_tangible_component_bio_shared_bio_component_food_heavy_filling = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1999617734
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_filling, 1999617734)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_filling, "object/tangible/component/bio/shared_bio_component_food_heavy_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_flavor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1541,13 +1569,14 @@ object_tangible_component_bio_shared_bio_component_food_heavy_flavor = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3777049958
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_flavor, 3777049958)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_flavor, "object/tangible/component/bio/shared_bio_component_food_heavy_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_nutrition = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1593,13 +1622,14 @@ object_tangible_component_bio_shared_bio_component_food_heavy_nutrition = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3750501285
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_nutrition, 3750501285)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_nutrition, "object/tangible/component/bio/shared_bio_component_food_heavy_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_quantity = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1645,13 +1675,14 @@ object_tangible_component_bio_shared_bio_component_food_heavy_quantity = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3677884855
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_quantity, 3677884855)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_quantity, "object/tangible/component/bio/shared_bio_component_food_heavy_quantity.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1697,13 +1728,14 @@ object_tangible_component_bio_shared_bio_component_food_light = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1438083108
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light, 1438083108)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light, "object/tangible/component/bio/shared_bio_component_food_light.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_filling = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1749,13 +1781,14 @@ object_tangible_component_bio_shared_bio_component_food_light_filling = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4207262465
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_filling, 4207262465)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_filling, "object/tangible/component/bio/shared_bio_component_food_light_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_flavor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1801,13 +1834,14 @@ object_tangible_component_bio_shared_bio_component_food_light_flavor = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4041478053
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_flavor, 4041478053)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_flavor, "object/tangible/component/bio/shared_bio_component_food_light_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_nutrition = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1853,13 +1887,14 @@ object_tangible_component_bio_shared_bio_component_food_light_nutrition = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2945552565
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_nutrition, 2945552565)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_nutrition, "object/tangible/component/bio/shared_bio_component_food_light_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_quantity = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1905,13 +1940,14 @@ object_tangible_component_bio_shared_bio_component_food_light_quantity = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1778167946
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_quantity, 1778167946)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_quantity, "object/tangible/component/bio/shared_bio_component_food_light_quantity.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -1957,13 +1993,14 @@ object_tangible_component_bio_shared_bio_component_food_medium = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3076711804
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium, 3076711804)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium, "object/tangible/component/bio/shared_bio_component_food_medium.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_filling = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -2009,13 +2046,14 @@ object_tangible_component_bio_shared_bio_component_food_medium_filling = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 856029112
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_filling, 856029112)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_filling, "object/tangible/component/bio/shared_bio_component_food_medium_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_flavor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -2061,13 +2099,14 @@ object_tangible_component_bio_shared_bio_component_food_medium_flavor = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1373118882
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_flavor, 1373118882)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_flavor, "object/tangible/component/bio/shared_bio_component_food_medium_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_nutrition = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -2113,13 +2152,14 @@ object_tangible_component_bio_shared_bio_component_food_medium_nutrition = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 624506486
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_nutrition, 624506486)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_nutrition, "object/tangible/component/bio/shared_bio_component_food_medium_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_quantity = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
@@ -2165,10 +2205,11 @@ object_tangible_component_bio_shared_bio_component_food_medium_quantity = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3606276380
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_quantity, 3606276380)
+ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_quantity, "object/tangible/component/bio/shared_bio_component_food_medium_quantity.iff")

@@ -85,13 +85,14 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3757784174
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_force_shrine_stone, 3757784174)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_force_shrine_stone, "object/tangible/jedi/shared_force_shrine_stone.iff")
 
 object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
@@ -137,13 +138,14 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2292501440
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_dark, 2292501440)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_dark, "object/tangible/jedi/shared_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
@@ -189,13 +191,14 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2610980168
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_light, 2610980168)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_light, "object/tangible/jedi/shared_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
@@ -241,13 +244,14 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2325658238
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, 2325658238)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
@@ -293,13 +297,14 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2824069158
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, 2824069158)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -345,13 +350,14 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3447451409
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, 3447451409)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, "object/tangible/jedi/shared_padawan_trials_skeleton.iff")
 
 object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
@@ -397,13 +403,14 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2994720477
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine, 2994720477)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine, "object/tangible/jedi/shared_power_shrine.iff")
 
 object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
@@ -449,10 +456,11 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2808368973
 }
 
-ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine_red, 2808368973)
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine_red, "object/tangible/jedi/shared_power_shrine_red.iff")

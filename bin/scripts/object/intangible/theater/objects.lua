@@ -77,7 +77,9 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 1,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2322781790
 }
 
-ObjectTemplates:addTemplate(object_intangible_theater_shared_base_theater, 2322781790)
+ObjectTemplates:addTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")

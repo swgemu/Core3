@@ -85,10 +85,11 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3800711792
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_plant_shared_force_melon, 3800711792)
+ObjectTemplates:addTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")

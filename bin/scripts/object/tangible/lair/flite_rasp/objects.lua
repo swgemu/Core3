@@ -85,13 +85,14 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3680958140
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, 3680958140)
+ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp.iff")
 
 object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3329199331
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, 3329199331)
+ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp_grassland.iff")

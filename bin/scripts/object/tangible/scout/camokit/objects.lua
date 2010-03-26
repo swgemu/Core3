@@ -85,13 +85,14 @@ object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2196629790
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_corellia, 2196629790)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_corellia, "object/tangible/scout/camokit/shared_camokit_corellia.iff")
 
 object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
@@ -137,13 +138,14 @@ object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1054553582
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dantooine, 1054553582)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dantooine, "object/tangible/scout/camokit/shared_camokit_dantooine.iff")
 
 object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
@@ -189,13 +191,14 @@ object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 372534846
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dathomir, 372534846)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dathomir, "object/tangible/scout/camokit/shared_camokit_dathomir.iff")
 
 object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -241,13 +244,14 @@ object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2201297332
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_endor, 2201297332)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_endor, "object/tangible/scout/camokit/shared_camokit_endor.iff")
 
 object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -293,13 +297,14 @@ object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3919662514
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_lok, 3919662514)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_lok, "object/tangible/scout/camokit/shared_camokit_lok.iff")
 
 object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
@@ -345,13 +350,14 @@ object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1097832374
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_naboo, 1097832374)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_naboo, "object/tangible/scout/camokit/shared_camokit_naboo.iff")
 
 object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
@@ -397,13 +403,14 @@ object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2868366256
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_rori, 2868366256)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_rori, "object/tangible/scout/camokit/shared_camokit_rori.iff")
 
 object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -449,13 +456,14 @@ object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1480450460
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_talus, 1480450460)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_talus, "object/tangible/scout/camokit/shared_camokit_talus.iff")
 
 object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
@@ -501,13 +509,14 @@ object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3199109249
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_tatooine, 3199109249)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_tatooine, "object/tangible/scout/camokit/shared_camokit_tatooine.iff")
 
 object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -553,10 +562,11 @@ object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1119412885
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_yavin, 1119412885)
+ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_yavin, "object/tangible/scout/camokit/shared_camokit_yavin.iff")

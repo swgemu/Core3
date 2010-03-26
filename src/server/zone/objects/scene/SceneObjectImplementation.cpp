@@ -55,6 +55,9 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
@@ -65,17 +68,21 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
+	notifiedObjects.setNoDuplicateInsertPlan();
+	slottedObjects.setNullValue(NULL);
+	slottedObjects.setNoDuplicateInsertPlan();
+	containerObjects.setNullValue(NULL);
+	containerObjects.setNoDuplicateInsertPlan();
+
 	server = ZoneProcessServerImplementation::instance;
 
 	movementCounter = 0;
-
-	//TODO: This belongs in Managed Object - Bobius
-	permanent = false;
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -121,9 +128,9 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	initializePosition(0.f, 0.f, 0.f);
 
-	persistent = false;
-
 	movementCounter = 0;
+
+	staticObject = false;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -147,7 +154,19 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
 }
 
-void SceneObjectImplementation::updateToDatabase(bool startTask) {
+void SceneObjectImplementation::updateToDatabase() {
+	updateToDatabaseAllObjects(true);
+}
+
+void SceneObjectImplementation::updateToDatabaseWithoutChildren() {
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToDatabase(_this);
+}
+
+void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
+	if (!isPersistent())
+		return;
+
 	Time start;
 
 	ZoneServer* server = getZoneServer();
@@ -156,19 +175,42 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
-		object->updateToDatabase(false);
+		object->updateToDatabaseAllObjects(false);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
-		object->updateToDatabase(false);
+		object->updateToDatabaseAllObjects(false);
 	}
 
-	if (startTask && !isPermanent())
+	if (startTask)
 		queueUpdateToDatabaseTask();
 
-	info("saved in " + String::valueOf(start.miliDifference()));
+	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
+}
+
+void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	ZoneServer* server = getZoneServer();
+
+	server->destroyObjectFromDatabase(getObjectID());
+
+	_this->setPersistent(0);
+
+	if (!destroyContainedObjects)
+		return;
+
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->destroyObjectFromDatabase(true);
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->destroyObjectFromDatabase(true);
+	}
 }
 
 uint64 SceneObjectImplementation::getObjectID() {
@@ -176,6 +218,9 @@ uint64 SceneObjectImplementation::getObjectID() {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isStaticObject())
+		return;
+
 	ManagedReference<ZoneClientSession*> client = player->getClient();
 
 	if (client == NULL)
@@ -218,18 +263,18 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
+	if (staticObject)
+		return;
+
 	destroy(player->getClient());
 }
 
-void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
-	if (!object->isPlayerCreature())
-		return;
-
-	info("sending attribute list");
+void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
+	info("sending attribute list", true);
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
-	//addAttributes(alm);
+	fillAttributeList(alm, object);
 
 	object->sendMessage(alm);
 }
@@ -279,7 +324,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 			return;
 		} else {
-			message->finalize();
+			delete message;
 
 			return;
 		}
@@ -298,7 +343,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	message->finalize();
+	delete message;
 }
 
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
@@ -311,7 +356,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 			return;
 		} else {
 			while (!messages->isEmpty()) {
-				messages->remove(0)->finalize();
+				delete messages->remove(0);
 			}
 
 			return;
@@ -335,8 +380,12 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	}
 
 	while (!messages->isEmpty()) {
-		messages->remove(0)->finalize();
+		delete messages->remove(0);
 	}
+}
+
+void SceneObjectImplementation::sendMessage(BasePacket* msg) {
+	delete msg;
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
@@ -383,6 +432,9 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 		broadcastMessage(message, false);
 	}
 
+	zoneLocker.release();
+
+	onPositionUpdate();
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
@@ -457,6 +509,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 	SceneObjectImplementation::zone = newZone;
 
+	zone->addSceneObject(_this);
+
 	initializePosition(positionX, positionZ, positionY);
 
 	sendToOwner(true);
@@ -525,7 +579,7 @@ void SceneObjectImplementation::removeFromZone() {
 
 	Locker zoneLocker(zone);
 
-	ManagedReference<SceneObject*> par = parent;
+	ManagedReference<SceneObject*> par = parent.get();
 
 	if (parent != NULL && parent->isCellObject()) {
 		BuildingObject* building = (BuildingObject*)parent->getParent();
@@ -544,6 +598,8 @@ void SceneObjectImplementation::removeFromZone() {
 	}
 
 	removeInRangeObjects();
+
+	zone->dropSceneObject(getObjectID());
 
 	zone = NULL;
 
@@ -617,6 +673,11 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	return true;
 }
 
+void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
+	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
+	player->sendMessage(cont);
+}
+
 void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
 	objects = slottedObjects;
 }
@@ -625,7 +686,7 @@ SceneObject* SceneObjectImplementation::getGrandParent() {
 	if (parent == NULL)
 		return NULL;
 
-	ManagedReference<SceneObject*> grandParent = parent;
+	SceneObject* grandParent = parent;
 
 	while (grandParent->getParent() != NULL)
 		grandParent = grandParent->getParent();
@@ -640,7 +701,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	if (parent == object)
 		return true;
 
-	ManagedReference<SceneObject*> grandParent = parent;
+	SceneObject* grandParent = parent;
 
 	while (grandParent->getParent() != NULL) {
 		grandParent = grandParent->getParent();

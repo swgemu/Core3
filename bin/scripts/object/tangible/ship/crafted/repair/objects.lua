@@ -85,13 +85,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4170937873
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, 4170937873)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1229310280
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, 1229310280)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1003395918
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, 1003395918)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4086932014
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, 4086932014)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3855703758
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, 3855703758)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4137917364
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, 4137917364)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3545826505
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, 3545826505)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3287770531
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, 3287770531)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1646486394
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, 1646486394)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -553,13 +562,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2366222507
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, 2366222507)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 807989435
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, 807989435)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3322698996
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, 3322698996)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -709,10 +721,11 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3536823939
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, 3536823939)
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff")

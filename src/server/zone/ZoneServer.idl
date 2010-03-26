@@ -64,6 +64,9 @@ import server.zone.Zone;
 import server.chat.ChatManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
+import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.resource.ResourceManager;
+import server.zone.managers.bazaar.BazaarManager;
 
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
@@ -78,14 +81,12 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private Vector<Zone> zones;
 	
 	private transient ObjectManager objectManager;
-	
 	private PlayerManager playerManager;
-	
 	private ChatManager chatManager;
-	
-	private ObjectController objectController;
-	
 	private RadialManager radialManager;
+
+	private ResourceManager resourceManager;
+	private BazaarManager bazaarManager;
 
 	private int totalSentPackets;
 	
@@ -107,6 +108,11 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public static final int LOADING = 1;
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
+	
+	public void test() {
+		Zone zone = new Zone(null, null, 0);
+		zone.getHeight(0, 1);
+	}
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);/* {
 		//super(Dat)
@@ -154,6 +160,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void shutdown();
 
 	public native void startManagers();
+	
+	public native void startZones();
 
 	public native void stopManagers();
 	
@@ -174,10 +182,12 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void printEvents();
 	
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
-	public native SceneObject createObject(unsigned int templateCRC, boolean persistent, unsigned long objectID = 0);
-	public native SceneObject createPermanentObject(unsigned int templateCRC, unsigned long objectID = 0);
+	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
+	public native SceneObject createStaticObject(unsigned int templateCRC, unsigned long objectID = 0);
 	public native void updateObjectToDatabase(SceneObject object);
-	public native void destroyObject(unsigned long objectID);
+	public native void updateObjectToStaticDatabase(SceneObject object);
+	public native void destroyObjectFromDatabase(unsigned long objectID);
+
 	
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);
@@ -259,11 +269,24 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	}
 	
 	public ObjectController getObjectController() {
-		return objectController;
+		return processor.getObjectController();
 	}
 	
 	public RadialManager getRadialManager() {
 		return radialManager;
+	}
+	
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
+	public BazaarManager getBazaarManager() {
+		return bazaarManager;
+	}
+	
+	@local
+	public ProfessionManager getProfessionManager() {
+		return processor.getProfessionManager();
 	}
 
 	/*public time_t getStartTimestamp() {

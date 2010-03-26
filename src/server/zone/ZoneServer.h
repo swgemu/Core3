@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -109,6 +111,48 @@ class RadialManager;
 
 using namespace server::zone::managers::radial;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace professions {
+
+class ProfessionManager;
+
+} // namespace professions
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::professions;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace resource {
+
+class ResourceManager;
+
+} // namespace resource
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::resource;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace bazaar {
+
+class BazaarManager;
+
+} // namespace bazaar
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::bazaar;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -146,6 +190,8 @@ public:
 
 	ZoneServer(int processingThreads, int galaxyid = 2);
 
+	void test();
+
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -157,6 +203,8 @@ public:
 	void shutdown();
 
 	void startManagers();
+
+	void startZones();
 
 	void stopManagers();
 
@@ -178,13 +226,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void updateObjectToStaticDatabase(SceneObject* object);
+
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock = true);
 
@@ -231,6 +281,12 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
+
+	ResourceManager* getResourceManager();
+
+	BazaarManager* getBazaarManager();
+
+	ProfessionManager* getProfessionManager();
 
 	void setServerName(const String& servername);
 
@@ -282,9 +338,11 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	ManagedReference<ChatManager* > chatManager;
 
-	ManagedReference<ObjectController* > objectController;
-
 	ManagedReference<RadialManager* > radialManager;
+
+	ManagedReference<ResourceManager* > resourceManager;
+
+	ManagedReference<BazaarManager* > bazaarManager;
 
 	int totalSentPackets;
 
@@ -319,6 +377,8 @@ public:
 
 	ZoneServerImplementation(DummyConstructorParameter* param);
 
+	void test();
+
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -330,6 +390,8 @@ public:
 	void shutdown();
 
 	void startManagers();
+
+	void startZones();
 
 	void stopManagers();
 
@@ -351,13 +413,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void updateObjectToStaticDatabase(SceneObject* object);
+
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock = true);
 
@@ -405,6 +469,12 @@ public:
 
 	RadialManager* getRadialManager();
 
+	ResourceManager* getResourceManager();
+
+	BazaarManager* getBazaarManager();
+
+	ProfessionManager* getProfessionManager();
+
 	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
@@ -446,6 +516,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void test();
+
 	void initializeTransientMembers();
 
 	void init();
@@ -455,6 +527,8 @@ public:
 	void shutdown();
 
 	void startManagers();
+
+	void startZones();
 
 	void stopManagers();
 
@@ -472,13 +546,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID);
 
 	void updateObjectToDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void updateObjectToStaticDatabase(SceneObject* object);
+
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock);
 
@@ -525,6 +601,10 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
+
+	ResourceManager* getResourceManager();
+
+	BazaarManager* getBazaarManager();
 
 	void setServerName(const String& servername);
 

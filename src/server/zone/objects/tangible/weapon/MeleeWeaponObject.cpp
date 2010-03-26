@@ -8,8 +8,8 @@
  *	MeleeWeaponObjectStub
  */
 
-MeleeWeaponObject::MeleeWeaponObject(LuaObject* templateData) : WeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new MeleeWeaponObjectImplementation(templateData);
+MeleeWeaponObject::MeleeWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
+	_impl = new MeleeWeaponObjectImplementation();
 	_impl->_setStub(this);
 }
 
@@ -41,7 +41,6 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructo
 }
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
-	MeleeWeaponObjectImplementation::finalize();
 }
 
 
@@ -102,9 +101,9 @@ void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 
 }
 
-MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(LuaObject* templateData) : WeaponObjectImplementation((templateData)) {
+MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(55):  Logger.setLoggingName("MeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(53):  		Logger.setLoggingName("MeleeWeaponObject");
 	Logger::setLoggingName("MeleeWeaponObject");
 }
 

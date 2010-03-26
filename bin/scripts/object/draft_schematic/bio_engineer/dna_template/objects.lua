@@ -77,10 +77,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4075558247
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler, 4075558247)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_angler.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3258253069
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha, 3258253069)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bantha.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1415032707
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax, 1415032707)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bearded_jax.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2718719227
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg, 2718719227)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_blurrg.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = Share
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 359532674
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol, 359532674)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bol.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3039475182
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol, 3039475182)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bolle_bol.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1304346718
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma, 1304346718)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bolma.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1635634277
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset, 1635634277)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_brackaset.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spa
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3075374860
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat, 3075374860)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_carrion_spat.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 288717653
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku, 288717653)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_choku.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 297710271
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake, 297710271)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_dalyrake.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3338837483
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback, 3338837483)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_dewback.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2059152312
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie, 2059152312)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_eopie.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1502836358
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset, 1502836358)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_falumpaset.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2789137412
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa, 2789137412)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_fambaa.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3001518312
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic, 3001518312)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_generic.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2184886456
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama, 2184886456)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gualama.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2546683411
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg, 2546683411)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_guf_drolg.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3985344902
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat, 3985344902)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gurrcat.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1160895673
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck, 1160895673)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gurreck.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1556686347
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu, 1556686347)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kaadu.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 184501953
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra, 184501953)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kahmurra.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3650412283
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila, 3650412283)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kimogila.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3983133143
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu, 3983133143)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_krahbu.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3839276474
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak, 3839276474)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kusak.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch =
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3256313792
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch, 3256313792)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_narglatch.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3125557602
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss, 3125557602)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_pugoriss.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,10 +1238,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4198261306
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor, 4198261306)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_rancor.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1225,10 +1281,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1283189937
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto, 1283189937)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_ronto.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1266,10 +1324,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panthe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1137121554
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther, 1137121554)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_sand_panther.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1307,10 +1367,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 891571292
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal, 891571292)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_snorbal.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1348,10 +1410,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = Sh
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2685742161
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton, 2685742161)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_torton.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,10 +1453,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = Sha
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2848231352
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis, 2848231352)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_tybis.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1430,10 +1496,12 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = S
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 939860357
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok, 939860357)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_veermok.iff")
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1471,7 +1539,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2084231750
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar, 2084231750)
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_zucca_boar.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 486155425
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, 486155425)
+ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff")
 
 object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 662717072
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, 662717072)
+ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff")

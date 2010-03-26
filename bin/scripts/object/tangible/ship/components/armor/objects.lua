@@ -85,13 +85,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3014828629
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel, 3014828629)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2711392870
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel, 2711392870)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_cheap_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1457378842
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel, 1457378842)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_elite_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plasti
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4170685241
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel, 4170685241)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_corellian_enhanced_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 912895666
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel, 912895666)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_dur
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3145007708
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel, 3145007708)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_improved_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1182016930
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel, 1182016930)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_light_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durast
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4076917946
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durasteel, 4076917946)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_modified_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_dura
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2793909249
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel, 2793909249)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_reinforced_light_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_du
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 792770319
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_durasteel, 792770319)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_reinforced_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_special_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_special_standard_dura
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3131875437
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_special_standard_durasteel, 3131875437)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_special_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_special_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2484547864
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel, 2484547864)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -709,13 +721,14 @@ object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3245469229
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel, 3245469229)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_cygnus_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -761,13 +774,14 @@ object_tangible_ship_components_armor_shared_arm_cygnus_light_weave = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2417515644
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_light_weave, 2417515644)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_light_weave, "object/tangible/ship/components/armor/shared_arm_cygnus_light_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1396020444
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave, 1396020444)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave, "object/tangible/ship/components/armor/shared_arm_cygnus_standard_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 203726257
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light, 203726257)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light, "object/tangible/ship/components/armor/shared_arm_freitek_deluxe_light.iff")
 
 object_tangible_ship_components_armor_shared_arm_freitek_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_ship_components_armor_shared_arm_freitek_standard = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1109511404
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_freitek_standard, 1109511404)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_freitek_standard, "object/tangible/ship/components/armor/shared_arm_freitek_standard.iff")
 
 object_tangible_ship_components_armor_shared_arm_gallofree_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -969,13 +986,14 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk1 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 39221168
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk1, 39221168)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk1, "object/tangible/ship/components/armor/shared_arm_gallofree_mk1.iff")
 
 object_tangible_ship_components_armor_shared_arm_gallofree_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk2 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3644972839
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk2, 3644972839)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk2, "object/tangible/ship/components/armor/shared_arm_gallofree_mk2.iff")
 
 object_tangible_ship_components_armor_shared_arm_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_ship_components_armor_shared_arm_generic = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1622491618
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_generic, 1622491618)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_generic, "object/tangible/ship/components/armor/shared_arm_generic.iff")
 
 object_tangible_ship_components_armor_shared_arm_incom_light_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_ship_components_armor_shared_arm_incom_light_plate = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1227421656
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_light_plate, 1227421656)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_light_plate, "object/tangible/ship/components/armor/shared_arm_incom_light_plate.iff")
 
 object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1177,13 +1198,14 @@ object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2366385613
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate, 2366385613)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate, "object/tangible/ship/components/armor/shared_arm_incom_modified_standard_plate.iff")
 
 object_tangible_ship_components_armor_shared_arm_incom_standard_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_ship_components_armor_shared_arm_incom_standard_plate = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 641382819
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_standard_plate, 641382819)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_incom_standard_plate, "object/tangible/ship/components/armor/shared_arm_incom_standard_plate.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystal
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1625601979
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel, 1625601979)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_rendili_crystalline_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_impervious = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_im
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3348661069
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_impervious, 3348661069)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_impervious, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_sds_imperial_impervious.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_fi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1099045901
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest, 1099045901)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_sfs_imperial_finest.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4176245510
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel, 4176245510)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_mandal_corrugated_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1489,13 +1516,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_mu
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3545922834
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer, 3545922834)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_slayn_flexsteel_multilayer.iff")
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1672663550
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating, 1672663550)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_sorosuub_spidershell_plating.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1593,13 +1622,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 828530711
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel, 828530711)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1645,13 +1675,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1171221751
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel, 1171221751)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_b5_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1697,13 +1728,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3460991428
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel, 3460991428)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_b9_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2857270890
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel, 2857270890)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_koensayr_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1801,13 +1834,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_duraste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3973535465
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_durasteel, 3973535465)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_enhanced_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1853,13 +1887,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_dura
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 935608310
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_durasteel, 935608310)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_enhanced_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1092389644
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel, 1092389644)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastis
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2296134538
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel, 2296134538)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_koensayr_improved_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2009,13 +2046,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_duraste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1035628527
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_durasteel, 1035628527)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_light_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2061,13 +2099,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durastee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2917985380
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durasteel, 2917985380)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_limited_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2113,13 +2152,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durast
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2534423202
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durasteel, 2534423202)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_limited_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2165,13 +2205,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_duraste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 167045731
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel, 167045731)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_promotional_b9_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2217,13 +2258,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durastee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 258640314
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durasteel, 258640314)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_reinforced_b5_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2269,13 +2311,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durast
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1378987090
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durasteel, 1378987090)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_special_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2321,13 +2364,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 382202714
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel, 382202714)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2373,13 +2417,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1438984098
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel, 1438984098)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2425,13 +2470,14 @@ object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_duraste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3772847383
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_durasteel, 3772847383)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_thick_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2477,13 +2523,14 @@ object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 987276877
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel, 987276877)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2529,13 +2576,14 @@ object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_duraste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2637845243
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_durasteel, 2637845243)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_customized_advanced_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2581,13 +2629,14 @@ object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3918028246
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel, 3918028246)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_elite_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2633,13 +2682,14 @@ object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2302420350
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel, 2302420350)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2685,13 +2735,14 @@ object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2472601379
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel, 2472601379)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_intermediate_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2737,13 +2788,14 @@ object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 754583097
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel, 754583097)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_limited_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2789,13 +2841,14 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 759538289
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel, 759538289)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_heavy_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2841,13 +2894,14 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1566058849
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel, 1566058849)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_light_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2893,13 +2947,14 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2288993339
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel, 2288993339)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2945,13 +3000,14 @@ object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 494744832
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel, 494744832)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -2997,13 +3053,14 @@ object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 706111172
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel, 706111172)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_supreme_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3049,13 +3106,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1688248880
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite, 1688248880)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite, "object/tangible/ship/components/armor/shared_arm_mandal_advanced_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_composite_j5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3101,13 +3159,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j5 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2614891769
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j5, 2614891769)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j5, "object/tangible/ship/components/armor/shared_arm_mandal_composite_j5.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_composite_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3153,13 +3212,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j7 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 164027363
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j7, 164027363)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j7, "object/tangible/ship/components/armor/shared_arm_mandal_composite_j7.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3205,13 +3265,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2443269363
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite, 2443269363)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_custom_heavy_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3257,13 +3318,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4187492746
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5, 4187492746)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5, "object/tangible/ship/components/armor/shared_arm_mandal_double_insulated_i5.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3309,13 +3371,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7 = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1803738768
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7, 1803738768)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7, "object/tangible/ship/components/armor/shared_arm_mandal_double_insulated_i7.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3361,13 +3424,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2556935456
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7, 2556935456)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7, "object/tangible/ship/components/armor/shared_arm_mandal_double_plated_composite_j7.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_elite_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3413,13 +3477,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_elite_composite = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2373681857
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_elite_composite, 2373681857)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_elite_composite, "object/tangible/ship/components/armor/shared_arm_mandal_elite_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3465,13 +3530,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1466373688
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite, 1466373688)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite, "object/tangible/ship/components/armor/shared_arm_mandal_enhanced_elite_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3517,13 +3583,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 936603280
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite, 936603280)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_enhanced_heavy_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3569,13 +3636,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3989830249
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite, 3989830249)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_heavy_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3621,13 +3689,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7 = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 156429997
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7, 156429997)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7, "object/tangible/ship/components/armor/shared_arm_mandal_insulated_i7.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3673,13 +3742,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2798415892
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composite, 2798415892)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composite, "object/tangible/ship/components/armor/shared_arm_mandal_modified_supreme_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3725,13 +3795,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5 = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2535453726
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5, 2535453726)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5, "object/tangible/ship/components/armor/shared_arm_mandal_modifier_composite_j5.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3777,13 +3848,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_comp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3155179627
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_composite, 3155179627)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_composite, "object/tangible/ship/components/armor/shared_arm_mandal_reinforced_advanced_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3829,13 +3901,14 @@ object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3572993151
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite, 3572993151)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite, "object/tangible/ship/components/armor/shared_arm_mandal_supreme_composite.iff")
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3881,13 +3954,14 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_spe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 8094392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel, 8094392)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel, "object/tangible/ship/components/armor/shared_arm_mission_reward_imperial_rss_special_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3933,13 +4007,14 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_lig
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3133915377
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military, 3133915377)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military, "object/tangible/ship/components/armor/shared_arm_mission_reward_imperial_sfs_light_military.iff")
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -3985,13 +4060,14 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_hand
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 250102310
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted, 250102310)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted, "object/tangible/ship/components/armor/shared_arm_mission_reward_neutral_kse_handcrafted.iff")
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4037,13 +4113,14 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 935409503
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate, 935409503)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate, "object/tangible/ship/components/armor/shared_arm_mission_reward_rebel_corellian_triplate.iff")
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4089,13 +4166,14 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultr
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2559663629
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight, 2559663629)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight, "object/tangible/ship/components/armor/shared_arm_mission_reward_rebel_incom_ultralight.iff")
 
 object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4141,13 +4219,14 @@ object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 109261874
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave, 109261874)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave, "object/tangible/ship/components/armor/shared_arm_moncal_advanced_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_moncal_elite_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4193,13 +4272,14 @@ object_tangible_ship_components_armor_shared_arm_moncal_elite_weave = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3758987303
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_elite_weave, 3758987303)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_elite_weave, "object/tangible/ship/components/armor/shared_arm_moncal_elite_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4245,13 +4325,14 @@ object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2065607228
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave, 2065607228)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave, "object/tangible/ship/components/armor/shared_arm_moncal_improved_light_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_moncal_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4297,13 +4378,14 @@ object_tangible_ship_components_armor_shared_arm_moncal_light_weave = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3053787299
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_light_weave, 3053787299)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_light_weave, "object/tangible/ship/components/armor/shared_arm_moncal_light_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4349,13 +4431,14 @@ object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1882172430
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave, 1882172430)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave, "object/tangible/ship/components/armor/shared_arm_moncal_supreme_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_prototype_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4401,13 +4484,14 @@ object_tangible_ship_components_armor_shared_arm_prototype_armor = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2845706811
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_prototype_armor, 2845706811)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_prototype_armor, "object/tangible/ship/components/armor/shared_arm_prototype_armor.iff")
 
 object_tangible_ship_components_armor_shared_arm_rendili_tough_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4453,13 +4537,14 @@ object_tangible_ship_components_armor_shared_arm_rendili_tough_plate = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3837917885
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rendili_tough_plate, 3837917885)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rendili_tough_plate, "object/tangible/ship/components/armor/shared_arm_rendili_tough_plate.iff")
 
 object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4505,13 +4590,14 @@ object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 558663557
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite, 558663557)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite, "object/tangible/ship/components/armor/shared_arm_reward_alderaan_elite.iff")
 
 object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4557,13 +4643,14 @@ object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 161167635
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite, 161167635)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite, "object/tangible/ship/components/armor/shared_arm_reward_baktoid_elite.iff")
 
 object_tangible_ship_components_armor_shared_arm_reward_freitek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4609,13 +4696,14 @@ object_tangible_ship_components_armor_shared_arm_reward_freitek_elite = SharedTa
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 554262569
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_freitek_elite, 554262569)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_freitek_elite, "object/tangible/ship/components/armor/shared_arm_reward_freitek_elite.iff")
 
 object_tangible_ship_components_armor_shared_arm_reward_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4661,13 +4749,14 @@ object_tangible_ship_components_armor_shared_arm_reward_mandal_elite = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 648039775
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_mandal_elite, 648039775)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_mandal_elite, "object/tangible/ship/components/armor/shared_arm_reward_mandal_elite.iff")
 
 object_tangible_ship_components_armor_shared_arm_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4713,13 +4802,14 @@ object_tangible_ship_components_armor_shared_arm_reward_subpro_elite = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2577499173
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_subpro_elite, 2577499173)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_reward_subpro_elite, "object/tangible/ship/components/armor/shared_arm_reward_subpro_elite.iff")
 
 object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4765,13 +4855,14 @@ object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3260614501
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel, 3260614501)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_rss_light_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sds_triplate_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4817,13 +4908,14 @@ object_tangible_ship_components_armor_shared_arm_sds_triplate_system = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4088171955
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sds_triplate_system, 4088171955)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sds_triplate_system, "object/tangible/ship/components/armor/shared_arm_sds_triplate_system.iff")
 
 object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4869,13 +4961,14 @@ object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3164042253
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel, 3164042253)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_enhanced_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4921,13 +5014,14 @@ object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1705716466
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel, 1705716466)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_light_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -4973,13 +5067,14 @@ object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2872638243
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel, 2872638243)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_slayn_tech_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5025,13 +5120,14 @@ object_tangible_ship_components_armor_shared_arm_slayn_tech_weave = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2741880354
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_slayn_tech_weave, 2741880354)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_slayn_tech_weave, "object/tangible/ship/components/armor/shared_arm_slayn_tech_weave.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5077,13 +5173,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3788237472
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel, 3788237472)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_advanced_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5129,13 +5226,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4256777864
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel, 4256777864)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5181,13 +5279,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plas
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1781793436
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plastisteel, 1781793436)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_enhanced_advanced_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5233,13 +5332,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1255073600
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel, 1255073600)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_heavy_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5285,13 +5385,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastis
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3554465146
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel, 3554465146)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_improved_light_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5337,13 +5438,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastistee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 293552888
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastisteel, 293552888)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_intemediate_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5389,13 +5491,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastis
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3015832844
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastisteel, 3015832844)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_modified_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5441,13 +5544,14 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_d
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2255439223
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel, 2255439223)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_special_intermediate_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5493,13 +5597,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3054433644
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel, 3054433644)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel, "object/tangible/ship/components/armor/shared_arm_subpro_advanced_plasisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5545,13 +5650,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 762200952
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel, 762200952)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_bargain_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5597,13 +5703,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 557901816
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel, 557901816)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5649,13 +5756,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastis
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1248323519
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastisteel, 1248323519)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_enhanced_supreme_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5701,13 +5809,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_pl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2166232467
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_plastisteel, 2166232467)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_experimental_advanced_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5753,13 +5862,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2520204848
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel, 2520204848)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_heavy_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5805,13 +5915,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastiste
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1038537255
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastisteel, 1038537255)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_improved_light_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5857,13 +5968,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durast
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1581165137
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durasteel, 1581165137)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_subpro_improved_standard_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5909,13 +6021,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastistee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2268555312
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastisteel, 2268555312)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_limited_heavy_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -5961,13 +6074,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastistee
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4116799240
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastisteel, 4116799240)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_special_elite_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6013,13 +6127,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel = S
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 601305947
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel, 601305947)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_standard_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6065,13 +6180,14 @@ object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 142850797
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel, 142850797)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_supreme_plastisteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6117,13 +6233,14 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3192065844
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate, 3192065844)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate, "object/tangible/ship/components/armor/shared_armor_alderaan_royal_plate.iff")
 
 object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6169,13 +6286,14 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3502209132
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave, 3502209132)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave, "object/tangible/ship/components/armor/shared_armor_alderaan_royal_weave.iff")
 
 object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6221,13 +6339,14 @@ object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2941453089
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype, 2941453089)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype, "object/tangible/ship/components/armor/shared_armor_baktoid_mtt_prototype.iff")
 
 object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6273,13 +6392,14 @@ object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2893359892
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor, 2893359892)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor, "object/tangible/ship/components/armor/shared_armor_baktoid_shock_armor.iff")
 
 object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6325,13 +6445,14 @@ object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2 = Sha
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3860828257
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2, 3860828257)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2, "object/tangible/ship/components/armor/shared_armor_baktoid_spider_shell_g2.iff")
 
 object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6377,13 +6498,14 @@ object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2157390663
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel, 2157390663)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel, "object/tangible/ship/components/armor/shared_armor_freitek_es4_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6429,13 +6551,14 @@ object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2136590551
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype, 2136590551)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype, "object/tangible/ship/components/armor/shared_armor_freitek_ew6_prototype.iff")
 
 object_tangible_ship_components_armor_shared_armor_mandal_composite_j14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6481,13 +6604,14 @@ object_tangible_ship_components_armor_shared_armor_mandal_composite_j14 = Shared
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 189197792
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_mandal_composite_j14, 189197792)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_mandal_composite_j14, "object/tangible/ship/components/armor/shared_armor_mandal_composite_j14.iff")
 
 object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6533,13 +6657,14 @@ object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5 = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2126398315
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5, 2126398315)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5, "object/tangible/ship/components/armor/shared_armor_mandal_insulated_i5.iff")
 
 object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6585,13 +6710,14 @@ object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 502029625
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel, 502029625)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel, "object/tangible/ship/components/armor/shared_armor_seinar_coated_plasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6637,13 +6763,14 @@ object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel = Sh
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1304001760
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel, 1304001760)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel, "object/tangible/ship/components/armor/shared_armor_seinar_enhanced_plasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6689,13 +6816,14 @@ object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel =
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2835323687
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel, 2835323687)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel, "object/tangible/ship/components/armor/shared_armor_subpro_corrugated_durasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6741,13 +6869,14 @@ object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3103851668
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel, 3103851668)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel, "object/tangible/ship/components/armor/shared_armor_subpro_light_plasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6793,13 +6922,14 @@ object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel = 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4267599025
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel, 4267599025)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel, "object/tangible/ship/components/armor/shared_armor_subpro_reinforced_plasteel.iff")
 
 object_tangible_ship_components_armor_shared_armor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_f.sat",
@@ -6845,13 +6975,14 @@ object_tangible_ship_components_armor_shared_armor_test = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1291680085
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_test, 1291680085)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_test, "object/tangible/ship/components/armor/shared_armor_test.iff")
 
 object_tangible_ship_components_armor_shared_armor_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6897,13 +7028,14 @@ object_tangible_ship_components_armor_shared_armor_tiefighter_basic = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2493559431
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_tiefighter_basic, 2493559431)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_tiefighter_basic, "object/tangible/ship/components/armor/shared_armor_tiefighter_basic.iff")
 
 object_tangible_ship_components_armor_shared_armor_trilon_custom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -6949,13 +7081,14 @@ object_tangible_ship_components_armor_shared_armor_trilon_custom = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1331552040
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_trilon_custom, 1331552040)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_trilon_custom, "object/tangible/ship/components/armor/shared_armor_trilon_custom.iff")
 
 object_tangible_ship_components_armor_shared_armor_trilon_unknown = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -7001,13 +7134,14 @@ object_tangible_ship_components_armor_shared_armor_trilon_unknown = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2483784578
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_trilon_unknown, 2483784578)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_trilon_unknown, "object/tangible/ship/components/armor/shared_armor_trilon_unknown.iff")
 
 object_tangible_ship_components_armor_shared_armor_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -7053,10 +7187,11 @@ object_tangible_ship_components_armor_shared_armor_z95_basic = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 710519304
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_z95_basic, 710519304)
+ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_z95_basic, "object/tangible/ship/components/armor/shared_armor_z95_basic.iff")

@@ -85,13 +85,14 @@ object_tangible_lair_gekk_shared_lair_gekk = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 451691491
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk, 451691491)
+ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk, "object/tangible/lair/gekk/shared_lair_gekk.iff")
 
 object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1243506243
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, 1243506243)
+ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, "object/tangible/lair/gekk/shared_lair_gekk_forest.iff")

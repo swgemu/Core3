@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -78,8 +80,6 @@ public:
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
-	void handleUseObject(PlayerCreature* player, SceneObject* object);
-
 protected:
 	RadialManager(DummyConstructorParameter* param);
 
@@ -111,8 +111,6 @@ public:
 	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
-
-	void handleUseObject(PlayerCreature* player, SceneObject* object);
 
 	RadialManager* _this;
 
@@ -156,8 +154,6 @@ public:
 	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
-
-	void handleUseObject(PlayerCreature* player, SceneObject* object);
 
 };
 

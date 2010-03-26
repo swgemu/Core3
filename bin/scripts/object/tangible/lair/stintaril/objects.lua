@@ -85,13 +85,14 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3535581753
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, 3535581753)
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3799137931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, 3799137931)
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3834490330
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, 3834490330)
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")

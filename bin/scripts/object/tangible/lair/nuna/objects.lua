@@ -85,13 +85,14 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1870027501
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna, 1870027501)
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3366083630
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, 3366083630)
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -189,13 +191,14 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2100068580
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, 2100068580)
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -241,10 +244,11 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 222503390
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, 222503390)
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")

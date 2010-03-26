@@ -88,13 +88,14 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 17,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2742139830
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_association_hall_civilian_corellia, 2742139830)
+ObjectTemplates:addTemplate(object_building_corellia_shared_association_hall_civilian_corellia, "object/building/corellia/shared_association_hall_civilian_corellia.iff")
 
 object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_bank_s01.apt",
@@ -143,13 +144,14 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 925292585
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_bank_corellia, 925292585)
+ObjectTemplates:addTemplate(object_building_corellia_shared_bank_corellia, "object/building/corellia/shared_bank_corellia.iff")
 
 object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,13 +200,14 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 15,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2013728951
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_cantina_corellia, 2013728951)
+ObjectTemplates:addTemplate(object_building_corellia_shared_cantina_corellia, "object/building/corellia/shared_cantina_corellia.iff")
 
 object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -253,13 +256,14 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 11,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2023346551
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_capitol_corellia, 2023346551)
+ObjectTemplates:addTemplate(object_building_corellia_shared_capitol_corellia, "object/building/corellia/shared_capitol_corellia.iff")
 
 object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -308,13 +312,14 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 6,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4160058931
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_cloning_corellia, 4160058931)
+ObjectTemplates:addTemplate(object_building_corellia_shared_cloning_corellia, "object/building/corellia/shared_cloning_corellia.iff")
 
 object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_32x16_s01.apt",
@@ -363,13 +368,14 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3487204259
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, 3487204259)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, "object/building/corellia/shared_filler_block_corellia_32x16_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s01.apt",
@@ -418,13 +424,14 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1480274759
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, 1480274759)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, "object/building/corellia/shared_filler_block_corellia_64x32_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s02.apt",
@@ -473,13 +480,14 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2200738768
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, 2200738768)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, "object/building/corellia/shared_filler_block_corellia_64x32_s02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s01.apt",
@@ -528,13 +536,14 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2891016021
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_01, 2891016021)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_01, "object/building/corellia/shared_filler_building_corellia_style_01.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s02.apt",
@@ -583,13 +592,14 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2001129410
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_02, 2001129410)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_02, "object/building/corellia/shared_filler_building_corellia_style_02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s03.apt",
@@ -638,13 +648,14 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1045145679
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_03, 1045145679)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_03, "object/building/corellia/shared_filler_building_corellia_style_03.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s04.apt",
@@ -693,13 +704,14 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3316155227
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_04, 3316155227)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_04, "object/building/corellia/shared_filler_building_corellia_style_04.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s05.apt",
@@ -748,13 +760,14 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2359682262
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_05, 2359682262)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_05, "object/building/corellia/shared_filler_building_corellia_style_05.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s06.apt",
@@ -803,13 +816,14 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1471302721
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_06, 1471302721)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_06, "object/building/corellia/shared_filler_building_corellia_style_06.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s07.apt",
@@ -858,13 +872,14 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 515845068
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_07, 515845068)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_07, "object/building/corellia/shared_filler_building_corellia_style_07.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s01.apt",
@@ -913,13 +928,14 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2616481902
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s01, 2616481902)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s01, "object/building/corellia/shared_filler_historic_24x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s02.apt",
@@ -968,13 +984,14 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1088680185
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s02, 1088680185)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s02, "object/building/corellia/shared_filler_historic_24x16_s02.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s01.apt",
@@ -1023,13 +1040,14 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1667646591
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s01, 1667646591)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s01, "object/building/corellia/shared_filler_historic_32x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s02.apt",
@@ -1078,13 +1096,14 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3094473960
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s02, 3094473960)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s02, "object/building/corellia/shared_filler_historic_32x16_s02.iff")
 
 object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x16_s01.apt",
@@ -1133,13 +1152,14 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2757381075
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x16_s01, 2757381075)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x16_s01, "object/building/corellia/shared_filler_slum_16x16_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s01.apt",
@@ -1188,13 +1208,14 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1694210539
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s01, 1694210539)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s01, "object/building/corellia/shared_filler_slum_16x32_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s02.apt",
@@ -1243,13 +1264,14 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3219927420
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s02, 3219927420)
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s02, "object/building/corellia/shared_filler_slum_16x32_s02.iff")
 
 object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_garage_s01_u01.apt",
@@ -1298,13 +1320,14 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1140644280
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_garage_corellia, 1140644280)
+ObjectTemplates:addTemplate(object_building_corellia_shared_garage_corellia, "object/building/corellia/shared_garage_corellia.iff")
 
 object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1353,13 +1376,14 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1288802152
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, 1288802152)
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, "object/building/corellia/shared_guild_combat_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1408,13 +1432,14 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2920780919
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, 2920780919)
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, "object/building/corellia/shared_guild_commerce_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1463,13 +1488,14 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3431234640
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_theater_corellia_s01, 3431234640)
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_theater_corellia_s01, "object/building/corellia/shared_guild_theater_corellia_s01.iff")
 
 object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1518,13 +1544,14 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 9,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3226540131
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_university_corellia_style_01, 3226540131)
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_university_corellia_style_01, "object/building/corellia/shared_guild_university_corellia_style_01.iff")
 
 object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1573,13 +1600,14 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 14,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2966265050
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia, 2966265050)
+ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia, "object/building/corellia/shared_hospital_corellia.iff")
 
 object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1628,13 +1656,14 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 3,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1414124568
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia_s02, 1414124568)
+ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia_s02, "object/building/corellia/shared_hospital_corellia_s02.iff")
 
 object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1683,13 +1712,14 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 10,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3326447330
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hotel_corellia, 3326447330)
+ObjectTemplates:addTemplate(object_building_corellia_shared_hotel_corellia, "object/building/corellia/shared_hotel_corellia.iff")
 
 object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1738,13 +1768,14 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 1,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2032858770
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, 2032858770)
+ObjectTemplates:addTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, "object/building/corellia/shared_merchant_tent_corellia_s01.iff")
 
 object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1793,13 +1824,14 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 13,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2468987350
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, 2468987350)
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, "object/building/corellia/shared_ply_corl_house_lg_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1848,13 +1880,14 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 4,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1777902906
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, 1777902906)
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, "object/building/corellia/shared_ply_corl_house_m_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1903,13 +1936,14 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 4,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4262283837
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, 4262283837)
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, "object/building/corellia/shared_ply_corl_house_s_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1958,13 +1992,14 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 4,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 622518954
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, 622518954)
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, "object/building/corellia/shared_ply_corl_house_s_s01_fp2.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2013,13 +2048,14 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 3,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3972901152
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, 3972901152)
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, "object/building/corellia/shared_ply_corl_house_s_s02_fp1.iff")
 
 object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2068,13 +2104,14 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 1,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4015891242
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_salon_corellia, 4015891242)
+ObjectTemplates:addTemplate(object_building_corellia_shared_salon_corellia, "object/building/corellia/shared_salon_corellia.iff")
 
 object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_shuttleport_s01.apt",
@@ -2123,13 +2160,14 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 197393539
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_shuttleport_corellia, 197393539)
+ObjectTemplates:addTemplate(object_building_corellia_shared_shuttleport_corellia, "object/building/corellia/shared_shuttleport_corellia.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s01.apt",
@@ -2178,13 +2216,14 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2284214156
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, 2284214156)
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, "object/building/corellia/shared_skyscraper_corellia_style_01.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s02.apt",
@@ -2233,13 +2272,14 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1395785499
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, 1395785499)
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, "object/building/corellia/shared_skyscraper_corellia_style_02.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s03.apt",
@@ -2288,13 +2328,14 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 440178838
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, 440178838)
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, "object/building/corellia/shared_skyscraper_corellia_style_03.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s04.apt",
@@ -2343,13 +2384,14 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3789534082
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, 3789534082)
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, "object/building/corellia/shared_skyscraper_corellia_style_04.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s05.apt",
@@ -2398,13 +2440,14 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2832389135
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, 2832389135)
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, "object/building/corellia/shared_skyscraper_corellia_style_05.iff")
 
 object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2453,10 +2496,11 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 
 	targetable = 0,
 	terrainModificationFileName = "",
+	totalCellNumber = 16,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1449497657
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_starport_corellia, 1449497657)
+ObjectTemplates:addTemplate(object_building_corellia_shared_starport_corellia, "object/building/corellia/shared_starport_corellia.iff")

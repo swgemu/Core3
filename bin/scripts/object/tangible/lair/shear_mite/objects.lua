@@ -85,13 +85,14 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1395090938
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, 1395090938)
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, "object/tangible/lair/shear_mite/shared_lair_shear_mite.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 9878364
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, 9878364)
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, "object/tangible/lair/shear_mite/shared_lair_shear_mite_forest.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 865403242
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, 865403242)
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, "object/tangible/lair/shear_mite/shared_lair_shear_mite_mountain.iff")

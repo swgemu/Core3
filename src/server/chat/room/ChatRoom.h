@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -47,9 +49,9 @@ namespace room {
 
 class ChatRoom : public ManagedObject {
 public:
-	ChatRoom(ZoneServer* serv, const String& roomName, unsigned long long channelId);
+	ChatRoom();
 
-	ChatRoom(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId);
+	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 
 	void sendTo(PlayerCreature* player);
 
@@ -78,8 +80,6 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
-
-	void deploy();
 
 	void setPrivate();
 
@@ -112,6 +112,8 @@ public:
 	void setCreator(const String& Creator);
 
 	void setTitle(const String& Title);
+
+	void setRoomID(int id);
 
 	unsigned int getRoomID();
 
@@ -161,7 +163,7 @@ protected:
 
 	UnicodeString title;
 
-	unsigned long long roomID;
+	unsigned int roomID;
 
 	ManagedReference<ChatRoom* > parent;
 
@@ -172,11 +174,11 @@ protected:
 	bool isPublicRoom;
 
 public:
-	ChatRoomImplementation(ZoneServer* serv, const String& roomName, unsigned long long channelId);
-
-	ChatRoomImplementation(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId);
+	ChatRoomImplementation();
 
 	ChatRoomImplementation(DummyConstructorParameter* param);
+
+	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 
 	void sendTo(PlayerCreature* player);
 
@@ -205,8 +207,6 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
-
-	void deploy();
 
 	void setPrivate();
 
@@ -239,6 +239,8 @@ public:
 	void setCreator(const String& Creator);
 
 	void setTitle(const String& Title);
+
+	void setRoomID(int id);
 
 	unsigned int getRoomID();
 
@@ -287,6 +289,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
+
 	void sendTo(PlayerCreature* player);
 
 	void sendDestroyTo(PlayerCreature* player);
@@ -312,8 +316,6 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
-
-	void deploy();
 
 	void setPrivate();
 
@@ -347,6 +349,8 @@ public:
 
 	void setTitle(const String& Title);
 
+	void setRoomID(int id);
+
 	unsigned int getRoomID();
 
 	int getSubRoomsSize();
@@ -356,6 +360,7 @@ public:
 	int compareTo(ChatRoom* obj);
 
 protected:
+	String _param2_init__ZoneServer_ChatRoom_String_int_;
 	String _param0_getSubRoom__String_;
 	String _param0_removePlayer__String_;
 	String _param0_hasPlayer__String_;

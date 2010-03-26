@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -92,6 +94,12 @@ public:
 
 private:
 	void loadStaticBuildings();
+
+	void loadStaticBanks();
+
+	void loadStaticBazaars();
+
+	void loadStaticMissionTerminals();
 
 	void loadPlayerStructures();
 

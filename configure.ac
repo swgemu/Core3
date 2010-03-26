@@ -12,6 +12,16 @@ CXXFLAGS="$CXXFLAGS $C_EXTRA_FLAGS "
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
+AC_PROG_MAKE_SET
+
+# checking for library dependencies.
+AC_CHECK_HEADER(lua.h, [], [AC_MSG_ERROR([*** lua.h is required, install lua header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
+AC_CHECK_HEADER(mysql/mysql.h, [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
+#AC_CHECK_HEADER(db_cxx.h, [], [AC_MSG_ERROR([*** db_cxx.h is required, install berkleydb header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
+
+#AC_CHECK_LIB(liblua, lua_open, [], [AC_MSG_ERROR([*** libblua.a is required, install lua library files])])	 
+#AC_CHECK_LIB(libmysqlclient, mysql_init, [], [AC_MSG_ERROR([*** libmysqlclient.a is required, install mysql library files])])	 
+#AC_CHECK_LIB(db_cxx.a, db_env_create, [], [AC_MSG_ERROR([*** libdb_cxx.a is required, install berkleydb library files])])	 
 
 case "$host_cpu-$host_os" in
     *freebsd*)

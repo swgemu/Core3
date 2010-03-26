@@ -9,19 +9,53 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
-namespace packets {
-namespace object {
+namespace objects {
+namespace scene {
+namespace variables {
 
-class StfParameter;
+class ParameterizedStringId;
 
-} // namespace object
-} // namespace packets
+} // namespace variables
+} // namespace scene
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::packets::object;
+using namespace server::zone::objects::scene::variables;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace professions {
+
+class SkillBox;
+
+} // namespace professions
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::professions;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace group {
+
+class GroupObject;
+
+} // namespace group
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::group;
 
 namespace server {
 namespace zone {
@@ -39,11 +73,21 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
+
+#include "system/lang/Time.h"
 
 namespace server {
 namespace zone {
@@ -76,7 +120,7 @@ public:
 
 	static const int FEMALE = 1;
 
-	CreatureObject(LuaObject* templateData);
+	CreatureObject();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -90,9 +134,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
+	void sendSystemMessage(const String& file, const String& stringid);
 
-	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
+	void sendSystemMessage(ParameterizedStringId& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -114,9 +158,61 @@ public:
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
+	void setInstrumentID(int instrumentid, bool notifyClient = false);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
+
+	void addBankCredits(int credits, bool notifyClient = true);
+
+	void substractBankCredits(int credits);
+
+	void setCashCredits(int credits, bool notifyClient = true);
+
+	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void addSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
+
+	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
+
+	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void setMood(byte moodID, bool notifyClient = true);
+
+	void deleteQueueAction(unsigned int actionCount);
+
+	void setState(unsigned long long state, bool notifyClient = true);
+
+	void clearState(unsigned long long state, bool notifyClient = true);
+
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
+	int onPositionUpdate();
+
+	void activateQueueAction();
+
+	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
+
+	bool isGroupped();
 
 	int getBankCredits();
 
@@ -150,6 +246,8 @@ public:
 
 	unsigned long long getStateBitmask();
 
+	bool hasState(unsigned long long state);
+
 	unsigned long long getListenID();
 
 	float getRunSpeed();
@@ -174,6 +272,8 @@ public:
 
 	unsigned long long getGroupInviterID();
 
+	GroupObject* getGroup();
+
 	unsigned long long getGroupInviteCounter();
 
 	int getGuildID();
@@ -194,7 +294,13 @@ public:
 
 	int getSpecies();
 
+	int getFaction();
+
 	DeltaVector<int>* getBaseHAM();
+
+	SkillBoxList* getSkillBoxList();
+
+	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
 
@@ -205,6 +311,8 @@ protected:
 
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
+
+	UnicodeString _return_getCreatureName;
 
 	friend class CreatureObjectHelper;
 };
@@ -230,6 +338,8 @@ protected:
 	int gender;
 
 	int species;
+
+	int faction;
 
 	DeltaVector<int> baseHAM;
 
@@ -259,6 +369,8 @@ protected:
 
 	float height;
 
+	float swimHeight;
+
 	float slopeModPercent;
 
 	float slopeModAngle;
@@ -273,7 +385,7 @@ protected:
 
 	unsigned long long weaponID;
 
-	unsigned long long groupID;
+	ManagedReference<GroupObject* > group;
 
 	unsigned long long groupInviterID;
 
@@ -296,6 +408,14 @@ protected:
 	byte frozen;
 
 	String templateString;
+
+	SkillBoxList skillBoxList;
+
+	DeltaVectorMap<String, long long> skillModList;
+
+	Vector<CommandQueueAction*> commandQueue;
+
+	Time nextAction;
 
 public:
 	static const int HUMAN = 0;
@@ -322,9 +442,11 @@ public:
 
 	static const int FEMALE = 1;
 
-	CreatureObjectImplementation(LuaObject* templateData);
+	CreatureObjectImplementation();
 
 	CreatureObjectImplementation(DummyConstructorParameter* param);
+
+	void finalize();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -338,9 +460,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
+	void sendSystemMessage(const String& file, const String& stringid);
 
-	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
+	void sendSystemMessage(ParameterizedStringId& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -362,9 +484,61 @@ public:
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
+	void setInstrumentID(int instrumentid, bool notifyClient = false);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
+
+	void addBankCredits(int credits, bool notifyClient = true);
+
+	void substractBankCredits(int credits);
+
+	void setCashCredits(int credits, bool notifyClient = true);
+
+	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void addSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
+
+	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
+
+	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void setMood(byte moodID, bool notifyClient = true);
+
+	void deleteQueueAction(unsigned int actionCount);
+
+	void setState(unsigned long long state, bool notifyClient = true);
+
+	void clearState(unsigned long long state, bool notifyClient = true);
+
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
+	int onPositionUpdate();
+
+	void activateQueueAction();
+
+	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
+
+	bool isGroupped();
 
 	int getBankCredits();
 
@@ -398,6 +572,8 @@ public:
 
 	unsigned long long getStateBitmask();
 
+	bool hasState(unsigned long long state);
+
 	unsigned long long getListenID();
 
 	float getRunSpeed();
@@ -422,6 +598,8 @@ public:
 
 	unsigned long long getGroupInviterID();
 
+	GroupObject* getGroup();
+
 	unsigned long long getGroupInviteCounter();
 
 	int getGuildID();
@@ -442,7 +620,13 @@ public:
 
 	int getSpecies();
 
+	int getFaction();
+
 	DeltaVector<int>* getBaseHAM();
+
+	SkillBoxList* getSkillBoxList();
+
+	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
 
@@ -453,8 +637,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~CreatureObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -485,6 +667,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
@@ -495,7 +679,7 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
+	void sendSystemMessage(const String& file, const String& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -517,9 +701,57 @@ public:
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient);
 
+	void setInstrumentID(int instrumentid, bool notifyClient);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 
 	void setBankCredits(int credits, bool notifyClient);
+
+	void addBankCredits(int credits, bool notifyClient);
+
+	void substractBankCredits(int credits);
+
+	void setCashCredits(int credits, bool notifyClient);
+
+	void addSkillBox(const String& skillBox, bool notifyClient);
+
+	void removeSkillBox(const String& skillBox, bool notifyClient);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient);
+
+	void updateGroupInviterID(unsigned long long id, bool notifyClient);
+
+	void updateGroup(GroupObject* group, bool notifyClient);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void setMood(byte moodID, bool notifyClient);
+
+	void deleteQueueAction(unsigned int actionCount);
+
+	void setState(unsigned long long state, bool notifyClient);
+
+	void clearState(unsigned long long state, bool notifyClient);
+
+	unsigned int getWearableMask();
+
+	int canAddObject(SceneObject* object);
+
+	int onPositionUpdate();
+
+	void activateQueueAction();
+
+	UnicodeString getCreatureName();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeurtral();
+
+	bool isGroupped();
 
 	int getBankCredits();
 
@@ -545,6 +777,8 @@ public:
 
 	unsigned long long getStateBitmask();
 
+	bool hasState(unsigned long long state);
+
 	unsigned long long getListenID();
 
 	float getRunSpeed();
@@ -569,6 +803,8 @@ public:
 
 	unsigned long long getGroupInviterID();
 
+	GroupObject* getGroup();
+
 	unsigned long long getGroupInviteCounter();
 
 	int getGuildID();
@@ -589,13 +825,20 @@ public:
 
 	int getSpecies();
 
+	int getFaction();
+
 	void setHeight(float heigh);
 
 protected:
 	String _param0_sendSystemMessage__String_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
-	String _param0_sendSystemMessage__String_String_long_;
-	String _param1_sendSystemMessage__String_String_long_;
+	String _param0_sendSystemMessage__String_String_;
+	String _param1_sendSystemMessage__String_String_;
+	String _param0_addSkillBox__String_bool_;
+	String _param0_removeSkillBox__String_bool_;
+	String _param0_addSkillMod__String_long_bool_;
+	String _param0_removeSkillMod__String_bool_;
+	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

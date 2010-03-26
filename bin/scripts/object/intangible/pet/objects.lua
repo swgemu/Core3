@@ -77,10 +77,12 @@ object_intangible_pet_shared_21b_surgical_droid = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1339278002
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_21b_surgical_droid, 1339278002)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_21b_surgical_droid, "object/intangible/pet/shared_21b_surgical_droid.iff")
 
 object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
@@ -118,10 +120,12 @@ object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1151045797
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid, 1151045797)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid, "object/intangible/pet/shared_3po_protocol_droid.iff")
 
 object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
@@ -159,10 +163,12 @@ object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 23365206
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_crafted, 23365206)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_crafted, "object/intangible/pet/shared_3po_protocol_droid_crafted.iff")
 
 object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_red.sat",
@@ -200,10 +206,12 @@ object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1404851907
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_red, 1404851907)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_red, "object/intangible/pet/shared_3po_protocol_droid_red.iff")
 
 object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
@@ -241,10 +249,12 @@ object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2910857037
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_silver, 2910857037)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_silver, "object/intangible/pet/shared_3po_protocol_droid_silver.iff")
 
 object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
@@ -282,10 +292,12 @@ object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 589316378
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_angler_hue, 589316378)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_angler_hue, "object/intangible/pet/shared_angler_hue.iff")
 
 object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_waiter.sat",
@@ -323,10 +335,12 @@ object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1324343534
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_astromech_waiter, 1324343534)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_astromech_waiter, "object/intangible/pet/shared_astromech_waiter.iff")
 
 object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bageraset_hue.sat",
@@ -364,10 +378,12 @@ object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3823818603
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bageraset_hue, 3823818603)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bageraset_hue, "object/intangible/pet/shared_bageraset_hue.iff")
 
 object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue.sat",
@@ -405,10 +421,12 @@ object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4245924782
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bantha_hue, 4245924782)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bantha_hue, "object/intangible/pet/shared_bantha_hue.iff")
 
 object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bark_mite_hue.sat",
@@ -446,10 +464,12 @@ object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2460317493
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bark_mite_hue, 2460317493)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bark_mite_hue, "object/intangible/pet/shared_bark_mite_hue.iff")
 
 object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax_hue.sat",
@@ -487,10 +507,12 @@ object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2105300149
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bearded_jax_hue, 2105300149)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bearded_jax_hue, "object/intangible/pet/shared_bearded_jax_hue.iff")
 
 object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
@@ -528,10 +550,12 @@ object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2907258996
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_blurrg_hue, 2907258996)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_blurrg_hue, "object/intangible/pet/shared_blurrg_hue.iff")
 
 object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf_hue.sat",
@@ -569,10 +593,12 @@ object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3961986832
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_boar_wolf_hue, 3961986832)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_boar_wolf_hue, "object/intangible/pet/shared_boar_wolf_hue.iff")
 
 object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bocatt_hue.sat",
@@ -610,10 +636,12 @@ object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1462408235
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bocatt_hue, 1462408235)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bocatt_hue, "object/intangible/pet/shared_bocatt_hue.iff")
 
 object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
@@ -651,10 +679,12 @@ object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3365864788
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bol_hue, 3365864788)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bol_hue, "object/intangible/pet/shared_bol_hue.iff")
 
 object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
@@ -692,10 +722,12 @@ object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3465438553
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bolle_bol_hue, 3465438553)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bolle_bol_hue, "object/intangible/pet/shared_bolle_bol_hue.iff")
 
 object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
@@ -733,10 +765,12 @@ object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2112020105
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bolma_hue, 2112020105)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bolma_hue, "object/intangible/pet/shared_bolma_hue.iff")
 
 object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spider_droid.sat",
@@ -774,10 +808,12 @@ object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2304397641
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bomarr_monk_spider_droid, 2304397641)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bomarr_monk_spider_droid, "object/intangible/pet/shared_bomarr_monk_spider_droid.iff")
 
 object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
@@ -815,10 +851,12 @@ object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3248156228
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_bordok_hue, 3248156228)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_bordok_hue, "object/intangible/pet/shared_bordok_hue.iff")
 
 object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/borgle_hue.sat",
@@ -856,10 +894,12 @@ object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3776791504
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_borgle_hue, 3776791504)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_borgle_hue, "object/intangible/pet/shared_borgle_hue.iff")
 
 object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
@@ -897,10 +937,12 @@ object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 932343786
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_brackaset_hue, 932343786)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_brackaset_hue, "object/intangible/pet/shared_brackaset_hue.iff")
 
 object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/capper_spineflap_hue.sat",
@@ -938,10 +980,12 @@ object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 85637661
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_capper_spineflap_hue, 85637661)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_capper_spineflap_hue, "object/intangible/pet/shared_capper_spineflap_hue.iff")
 
 object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
@@ -979,10 +1023,12 @@ object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1876009660
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_carrion_spat_hue, 1876009660)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_carrion_spat_hue, "object/intangible/pet/shared_carrion_spat_hue.iff")
 
 object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
@@ -1020,10 +1066,12 @@ object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1603716876
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_choku_hue, 1603716876)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_choku_hue, "object/intangible/pet/shared_choku_hue.iff")
 
 object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/chuba_hue.sat",
@@ -1061,10 +1109,12 @@ object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2478782544
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_chuba_hue, 2478782544)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_chuba_hue, "object/intangible/pet/shared_chuba_hue.iff")
 
 object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -1102,10 +1152,12 @@ object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1945863130
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_cll8_binary_load_lifter, 1945863130)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_cll8_binary_load_lifter, "object/intangible/pet/shared_cll8_binary_load_lifter.iff")
 
 object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/condor_dragon_hue.sat",
@@ -1143,10 +1195,12 @@ object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4157866050
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_condor_dragon_hue, 4157866050)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_condor_dragon_hue, "object/intangible/pet/shared_condor_dragon_hue.iff")
 
 object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_butterfly_hue.sat",
@@ -1184,10 +1238,12 @@ object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1485452335
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_butterfly_hue, 1485452335)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_butterfly_hue, "object/intangible/pet/shared_corellian_butterfly_hue.iff")
 
 object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
@@ -1225,10 +1281,12 @@ object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObject
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 261977165
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_sand_panther_hue, 261977165)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_sand_panther_hue, "object/intangible/pet/shared_corellian_sand_panther_hue.iff")
 
 object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
@@ -1266,10 +1324,12 @@ object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectT
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 636628481
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_slice_hound_hue, 636628481)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_slice_hound_hue, "object/intangible/pet/shared_corellian_slice_hound_hue.iff")
 
 object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/crystal_snake.sat",
@@ -1307,10 +1367,12 @@ object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2696046285
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_crystal_snake, 2696046285)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_crystal_snake, "object/intangible/pet/shared_crystal_snake.iff")
 
 object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
@@ -1348,10 +1410,12 @@ object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2229022652
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_cu_pa_hue, 2229022652)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_cu_pa_hue, "object/intangible/pet/shared_cu_pa_hue.iff")
 
 object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake_hue.sat",
@@ -1389,10 +1453,12 @@ object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3738155310
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_dalyrake_hue, 3738155310)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_dalyrake_hue, "object/intangible/pet/shared_dalyrake_hue.iff")
 
 object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/maul_probe_droid.sat",
@@ -1430,10 +1496,12 @@ object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3870771439
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_darth_maul_probe_droid, 3870771439)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_darth_maul_probe_droid, "object/intangible/pet/shared_darth_maul_probe_droid.iff")
 
 object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_hue.sat",
@@ -1471,10 +1539,12 @@ object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2745422351
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_dewback_hue, 2745422351)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_dewback_hue, "object/intangible/pet/shared_dewback_hue.iff")
 
 object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -1512,10 +1582,12 @@ object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2217571195
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_droid_pet, 2217571195)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_droid_pet, "object/intangible/pet/shared_droid_pet.iff")
 
 object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droideka.sat",
@@ -1553,10 +1625,12 @@ object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3107311581
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_droideka, 3107311581)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_droideka, "object/intangible/pet/shared_droideka.iff")
 
 object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dune_lizard_hue.sat",
@@ -1594,10 +1668,12 @@ object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2377707050
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_dune_lizard_hue, 2377707050)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_dune_lizard_hue, "object/intangible/pet/shared_dune_lizard_hue.iff")
 
 object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
@@ -1635,10 +1711,12 @@ object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 779257516
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_durni_hue, 779257516)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_durni_hue, "object/intangible/pet/shared_durni_hue.iff")
 
 object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dwarf_nuna_hue.sat",
@@ -1676,10 +1754,12 @@ object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2326969858
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_dwarf_nuna_hue, 2326969858)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_dwarf_nuna_hue, "object/intangible/pet/shared_dwarf_nuna_hue.iff")
 
 object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1717,10 +1797,12 @@ object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjec
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 215765850
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_dz70_fugitive_tracker_droid, 215765850)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_dz70_fugitive_tracker_droid, "object/intangible/pet/shared_dz70_fugitive_tracker_droid.iff")
 
 object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -1758,10 +1840,12 @@ object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4040278264
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid, 4040278264)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid, "object/intangible/pet/shared_eg6_power_droid.iff")
 
 object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -1799,10 +1883,12 @@ object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1381576162
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid_crafted, 1381576162)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid_crafted, "object/intangible/pet/shared_eg6_power_droid_crafted.iff")
 
 object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
@@ -1840,10 +1926,12 @@ object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3150571270
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_eopie_hue, 3150571270)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_eopie_hue, "object/intangible/pet/shared_eopie_hue.iff")
 
 object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ev_9d9.sat",
@@ -1881,10 +1969,12 @@ object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2257725045
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ev_9d9, 2257725045)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ev_9d9, "object/intangible/pet/shared_ev_9d9.iff")
 
 object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
@@ -1922,10 +2012,12 @@ object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2686405669
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_falumpaset_hue, 2686405669)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_falumpaset_hue, "object/intangible/pet/shared_falumpaset_hue.iff")
 
 object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
@@ -1963,10 +2055,12 @@ object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3353974211
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_fambaa_hue, 3353974211)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_fambaa_hue, "object/intangible/pet/shared_fambaa_hue.iff")
 
 object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fanned_rawl_hue.sat",
@@ -2004,10 +2098,12 @@ object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1856953327
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_fanned_rawl_hue, 1856953327)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_fanned_rawl_hue, "object/intangible/pet/shared_fanned_rawl_hue.iff")
 
 object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flewt_hue.sat",
@@ -2045,10 +2141,12 @@ object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3804467322
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_flewt_hue, 3804467322)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_flewt_hue, "object/intangible/pet/shared_flewt_hue.iff")
 
 object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flit_hue.sat",
@@ -2086,10 +2184,12 @@ object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2923608669
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_flit_hue, 2923608669)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_flit_hue, "object/intangible/pet/shared_flit_hue.iff")
 
 object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fynock_hue.sat",
@@ -2127,10 +2227,12 @@ object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2285917811
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_fynock_hue, 2285917811)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_fynock_hue, "object/intangible/pet/shared_fynock_hue.iff")
 
 object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gackle_bat_hue.sat",
@@ -2168,10 +2270,12 @@ object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 184038036
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gackle_bat_hue, 184038036)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gackle_bat_hue, "object/intangible/pet/shared_gackle_bat_hue.iff")
 
 object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gaping_spider_hue.sat",
@@ -2209,10 +2313,12 @@ object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3334930732
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gaping_spider_hue, 3334930732)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gaping_spider_hue, "object/intangible/pet/shared_gaping_spider_hue.iff")
 
 object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gnort_hue.sat",
@@ -2250,10 +2356,12 @@ object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2858510328
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gnort_hue, 2858510328)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gnort_hue, "object/intangible/pet/shared_gnort_hue.iff")
 
 object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/graul_hue.sat",
@@ -2291,10 +2399,12 @@ object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 580835531
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_graul_hue, 580835531)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_graul_hue, "object/intangible/pet/shared_graul_hue.iff")
 
 object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gronda_hue.sat",
@@ -2332,10 +2442,12 @@ object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3080189549
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gronda_hue, 3080189549)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gronda_hue, "object/intangible/pet/shared_gronda_hue.iff")
 
 object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
@@ -2373,10 +2485,12 @@ object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 943256525
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gualama_hue, 943256525)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gualama_hue, "object/intangible/pet/shared_gualama_hue.iff")
 
 object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gubbur_hue.sat",
@@ -2414,10 +2528,12 @@ object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2671246669
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gubbur_hue, 2671246669)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gubbur_hue, "object/intangible/pet/shared_gubbur_hue.iff")
 
 object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
@@ -2455,10 +2571,12 @@ object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2334338028
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_guf_drolg_hue, 2334338028)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_guf_drolg_hue, "object/intangible/pet/shared_guf_drolg_hue.iff")
 
 object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gulginaw_hue.sat",
@@ -2496,10 +2614,12 @@ object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 896340341
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gulginaw_hue, 896340341)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gulginaw_hue, "object/intangible/pet/shared_gulginaw_hue.iff")
 
 object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurk_hue.sat",
@@ -2537,10 +2657,12 @@ object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3720963355
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gurk_hue, 3720963355)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gurk_hue, "object/intangible/pet/shared_gurk_hue.iff")
 
 object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
@@ -2578,10 +2700,12 @@ object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 223844542
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gurnaset_hue, 223844542)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gurnaset_hue, "object/intangible/pet/shared_gurnaset_hue.iff")
 
 object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
@@ -2619,10 +2743,12 @@ object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2145605419
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_gurreck_hue, 2145605419)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_gurreck_hue, "object/intangible/pet/shared_gurreck_hue.iff")
 
 object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hanadak_hue.sat",
@@ -2660,10 +2786,12 @@ object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 697606401
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_hanadak_hue, 697606401)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_hanadak_hue, "object/intangible/pet/shared_hanadak_hue.iff")
 
 object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hermit_spider_hue.sat",
@@ -2701,10 +2829,12 @@ object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2367204663
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_hermit_spider_hue, 2367204663)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_hermit_spider_hue, "object/intangible/pet/shared_hermit_spider_hue.iff")
 
 object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/horned_krevol_hue.sat",
@@ -2742,10 +2872,12 @@ object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2396316832
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_krevol_hue, 2396316832)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_krevol_hue, "object/intangible/pet/shared_horned_krevol_hue.iff")
 
 object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/horned_rasp_hue.sat",
@@ -2783,10 +2915,12 @@ object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3500397762
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_rasp_hue, 3500397762)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_rasp_hue, "object/intangible/pet/shared_horned_rasp_hue.iff")
 
 object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huf_dun_hue.sat",
@@ -2824,10 +2958,12 @@ object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3089599434
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_huf_dun_hue, 3089599434)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_huf_dun_hue, "object/intangible/pet/shared_huf_dun_hue.iff")
 
 object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huurton_hue.sat",
@@ -2865,10 +3001,12 @@ object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1969470414
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_huurton_hue, 1969470414)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_huurton_hue, "object/intangible/pet/shared_huurton_hue.iff")
 
 object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ig88.sat",
@@ -2906,10 +3044,12 @@ object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1786377662
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ig_assassin_droid, 1786377662)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ig_assassin_droid, "object/intangible/pet/shared_ig_assassin_droid.iff")
 
 object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ikopi_hue.sat",
@@ -2947,10 +3087,12 @@ object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 936658701
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ikopi_hue, 936658701)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ikopi_hue, "object/intangible/pet/shared_ikopi_hue.iff")
 
 object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ito.sat",
@@ -2988,10 +3130,12 @@ object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1276251054
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ito_interrogator, 1276251054)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ito_interrogator, "object/intangible/pet/shared_ito_interrogator.iff")
 
 object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
@@ -3029,10 +3173,12 @@ object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1791601248
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kaadu_hue, 1791601248)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kaadu_hue, "object/intangible/pet/shared_kaadu_hue.iff")
 
 object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kai_tok_hue.sat",
@@ -3070,10 +3216,12 @@ object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3450820067
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kai_tok_hue, 3450820067)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kai_tok_hue, "object/intangible/pet/shared_kai_tok_hue.iff")
 
 object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kima_hue.sat",
@@ -3111,10 +3259,12 @@ object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3208771572
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kima_hue, 3208771572)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kima_hue, "object/intangible/pet/shared_kima_hue.iff")
 
 object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kimogila_hue.sat",
@@ -3152,10 +3302,12 @@ object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4021952384
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kimogila_hue, 4021952384)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kimogila_hue, "object/intangible/pet/shared_kimogila_hue.iff")
 
 object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik_hue.sat",
@@ -3193,10 +3345,12 @@ object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2970580359
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kliknik_hue, 2970580359)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kliknik_hue, "object/intangible/pet/shared_kliknik_hue.iff")
 
 object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
@@ -3234,10 +3388,12 @@ object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2054788993
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_krahbu_hue, 2054788993)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_krahbu_hue, "object/intangible/pet/shared_krahbu_hue.iff")
 
 object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
@@ -3275,10 +3431,12 @@ object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1739916137
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kusak_hue, 1739916137)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kusak_hue, "object/intangible/pet/shared_kusak_hue.iff")
 
 object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
@@ -3316,10 +3474,12 @@ object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3989984964
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_kwi_hue, 3989984964)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_kwi_hue, "object/intangible/pet/shared_kwi_hue.iff")
 
 object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch_hue.sat",
@@ -3357,10 +3517,12 @@ object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2731995998
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_langlatch_hue, 2731995998)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_langlatch_hue, "object/intangible/pet/shared_langlatch_hue.iff")
 
 object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lantern_bird_hue.sat",
@@ -3398,10 +3560,12 @@ object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 554540263
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_lantern_bird_hue, 554540263)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_lantern_bird_hue, "object/intangible/pet/shared_lantern_bird_hue.iff")
 
 object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -3439,10 +3603,12 @@ object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1013378354
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_le_repair_droid, 1013378354)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_le_repair_droid, "object/intangible/pet/shared_le_repair_droid.iff")
 
 object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lin_demolition.sat",
@@ -3480,10 +3646,12 @@ object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 771860722
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_lin_demolitionmech, 771860722)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_lin_demolitionmech, "object/intangible/pet/shared_lin_demolitionmech.iff")
 
 object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/malkloc_hue.sat",
@@ -3521,10 +3689,12 @@ object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 754217676
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_malkloc_hue, 754217676)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_malkloc_hue, "object/intangible/pet/shared_malkloc_hue.iff")
 
 object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mamien_hue.sat",
@@ -3562,10 +3732,12 @@ object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3067716749
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mamien_hue, 3067716749)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mamien_hue, "object/intangible/pet/shared_mamien_hue.iff")
 
 object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
@@ -3603,10 +3775,12 @@ object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 10709435
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mawgax_hue, 10709435)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mawgax_hue, "object/intangible/pet/shared_mawgax_hue.iff")
 
 object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merek_hue.sat",
@@ -3644,10 +3818,12 @@ object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2431435109
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_merek_hue, 2431435109)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_merek_hue, "object/intangible/pet/shared_merek_hue.iff")
 
 object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mott_hue.sat",
@@ -3685,10 +3861,12 @@ object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 604608091
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mott_hue, 604608091)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mott_hue, "object/intangible/pet/shared_mott_hue.iff")
 
 object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
@@ -3726,10 +3904,12 @@ object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1597090102
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid, 1597090102)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid, "object/intangible/pet/shared_mouse_droid.iff")
 
 object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
@@ -3767,10 +3947,12 @@ object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3582700290
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid_crafted, 3582700290)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid_crafted, "object/intangible/pet/shared_mouse_droid_crafted.iff")
 
 object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
@@ -3808,10 +3990,12 @@ object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 548542319
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_murra_hue, 548542319)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_murra_hue, "object/intangible/pet/shared_murra_hue.iff")
 
 object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mynock_hue.sat",
@@ -3849,10 +4033,12 @@ object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1986283606
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_mynock_hue, 1986283606)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_mynock_hue, "object/intangible/pet/shared_mynock_hue.iff")
 
 object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/narglatch_hue.sat",
@@ -3890,10 +4076,12 @@ object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3888571684
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_narglatch_hue, 3888571684)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_narglatch_hue, "object/intangible/pet/shared_narglatch_hue.iff")
 
 object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -3931,10 +4119,12 @@ object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3421430045
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_nhelper_droid, 3421430045)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_nhelper_droid, "object/intangible/pet/shared_nhelper_droid.iff")
 
 object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nuna_hue.sat",
@@ -3972,10 +4162,12 @@ object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3091853501
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_nuna_hue, 3091853501)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_nuna_hue, "object/intangible/pet/shared_nuna_hue.iff")
 
 object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/peko_peko_hue.sat",
@@ -4013,10 +4205,12 @@ object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 392393668
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_peko_peko_hue, 392393668)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_peko_peko_hue, "object/intangible/pet/shared_peko_peko_hue.iff")
 
 object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/perlek_hue.sat",
@@ -4054,10 +4248,12 @@ object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1839464306
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_perlek_hue, 1839464306)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_perlek_hue, "object/intangible/pet/shared_perlek_hue.iff")
 
 object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -4095,10 +4291,12 @@ object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1094694212
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_control, 1094694212)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_control, "object/intangible/pet/shared_pet_control.iff")
 
 object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
@@ -4136,10 +4334,12 @@ object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3291887021
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_deed, 3291887021)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_deed, "object/intangible/pet/shared_pet_deed.iff")
 
 object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
@@ -4177,10 +4377,12 @@ object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3554017920
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_piket_hue, 3554017920)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_piket_hue, "object/intangible/pet/shared_piket_hue.iff")
 
 object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/plumed_rasp_hue.sat",
@@ -4218,10 +4420,12 @@ object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2974753647
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_plumed_rasp_hue, 2974753647)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_plumed_rasp_hue, "object/intangible/pet/shared_plumed_rasp_hue.iff")
 
 object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
@@ -4259,10 +4463,12 @@ object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 535952493
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_probot, 535952493)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_probot, "object/intangible/pet/shared_probot.iff")
 
 object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss_hue.sat",
@@ -4300,10 +4506,12 @@ object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4000809563
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_pugoriss_hue, 4000809563)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_pugoriss_hue, "object/intangible/pet/shared_pugoriss_hue.iff")
 
 object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/purbole_hue.sat",
@@ -4341,10 +4549,12 @@ object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3982156177
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_purbole_hue, 3982156177)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_purbole_hue, "object/intangible/pet/shared_purbole_hue.iff")
 
 object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/quenker_hue.sat",
@@ -4382,10 +4592,12 @@ object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2267633287
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_quenker_hue, 2267633287)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_quenker_hue, "object/intangible/pet/shared_quenker_hue.iff")
 
 object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -4423,10 +4635,12 @@ object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2191450852
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r2, 2191450852)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r2, "object/intangible/pet/shared_r2.iff")
 
 object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -4464,10 +4678,12 @@ object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 442194865
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r2_crafted, 442194865)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r2_crafted, "object/intangible/pet/shared_r2_crafted.iff")
 
 object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/r2d2.sat",
@@ -4505,10 +4721,12 @@ object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 387302363
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r2d2, 387302363)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r2d2, "object/intangible/pet/shared_r2d2.iff")
 
 object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -4546,10 +4764,12 @@ object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3415442793
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r3, 3415442793)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r3, "object/intangible/pet/shared_r3.iff")
 
 object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -4587,10 +4807,12 @@ object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4076801460
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r3_crafted, 4076801460)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r3_crafted, "object/intangible/pet/shared_r3_crafted.iff")
 
 object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -4628,10 +4850,12 @@ object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 812691069
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r4, 812691069)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r4, "object/intangible/pet/shared_r4.iff")
 
 object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -4669,10 +4893,12 @@ object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1610650817
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r4_crafted, 1610650817)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r4_crafted, "object/intangible/pet/shared_r4_crafted.iff")
 
 object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
@@ -4710,10 +4936,12 @@ object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2038286832
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r5, 2038286832)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r5, "object/intangible/pet/shared_r5.iff")
 
 object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
@@ -4751,10 +4979,12 @@ object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2292499140
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_r5_crafted, 2292499140)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_r5_crafted, "object/intangible/pet/shared_r5_crafted.iff")
 
 object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ra7.sat",
@@ -4792,10 +5022,12 @@ object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 50664012
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ra7_bug_droid, 50664012)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ra7_bug_droid, "object/intangible/pet/shared_ra7_bug_droid.iff")
 
 object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
@@ -4833,10 +5065,12 @@ object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1377624567
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_rancor_hue, 1377624567)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_rancor_hue, "object/intangible/pet/shared_rancor_hue.iff")
 
 object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/reptilian_flier_hue.sat",
@@ -4874,10 +5108,12 @@ object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2028852617
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_reptilian_flier_hue, 2028852617)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_reptilian_flier_hue, "object/intangible/pet/shared_reptilian_flier_hue.iff")
 
 object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
@@ -4915,10 +5151,12 @@ object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2100700576
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_roba_hue, 2100700576)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_roba_hue, "object/intangible/pet/shared_roba_hue.iff")
 
 object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robo_bartender.sat",
@@ -4956,10 +5194,12 @@ object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2925451769
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_robo_bartender, 2925451769)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_robo_bartender, "object/intangible/pet/shared_robo_bartender.iff")
 
 object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rock_mite_hue.sat",
@@ -4997,10 +5237,12 @@ object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1336305960
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_rock_mite_hue, 1336305960)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_rock_mite_hue, "object/intangible/pet/shared_rock_mite_hue.iff")
 
 object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
@@ -5038,10 +5280,12 @@ object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 794949628
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_ronto_hue, 794949628)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_ronto_hue, "object/intangible/pet/shared_ronto_hue.iff")
 
 object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/salt_mynock_hue.sat",
@@ -5079,10 +5323,12 @@ object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2085682547
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_salt_mynock_hue, 2085682547)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_salt_mynock_hue, "object/intangible/pet/shared_salt_mynock_hue.iff")
 
 object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sharnaff_hue.sat",
@@ -5120,10 +5366,12 @@ object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 273179059
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_sharnaff_hue, 273179059)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_sharnaff_hue, "object/intangible/pet/shared_sharnaff_hue.iff")
 
 object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shaupaut_hue.sat",
@@ -5161,10 +5409,12 @@ object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2159009522
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_shaupaut_hue, 2159009522)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_shaupaut_hue, "object/intangible/pet/shared_shaupaut_hue.iff")
 
 object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shear_mite_hue.sat",
@@ -5202,10 +5452,12 @@ object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2966894198
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_shear_mite_hue, 2966894198)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_shear_mite_hue, "object/intangible/pet/shared_shear_mite_hue.iff")
 
 object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skreeg_hue.sat",
@@ -5243,10 +5495,12 @@ object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3842631555
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_skreeg_hue, 3842631555)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_skreeg_hue, "object/intangible/pet/shared_skreeg_hue.iff")
 
 object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
@@ -5284,10 +5538,12 @@ object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3901518942
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_snorbal_hue, 3901518942)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_snorbal_hue, "object/intangible/pet/shared_snorbal_hue.iff")
 
 object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spined_puc_hue.sat",
@@ -5325,10 +5581,12 @@ object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4255586723
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_puc_hue, 4255586723)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_puc_hue, "object/intangible/pet/shared_spined_puc_hue.iff")
 
 object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spined_snake_hue.sat",
@@ -5366,10 +5624,12 @@ object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2113307554
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_snake_hue, 2113307554)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_snake_hue, "object/intangible/pet/shared_spined_snake_hue.iff")
 
 object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squall_hue.sat",
@@ -5407,10 +5667,12 @@ object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 713872273
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_squall_hue, 713872273)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_squall_hue, "object/intangible/pet/shared_squall_hue.iff")
 
 object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squill_hue.sat",
@@ -5448,10 +5710,12 @@ object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4189043940
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_squill_hue, 4189043940)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_squill_hue, "object/intangible/pet/shared_squill_hue.iff")
 
 object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/stintaril_hue.sat",
@@ -5489,10 +5753,12 @@ object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 748019304
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_stintaril_hue, 748019304)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_stintaril_hue, "object/intangible/pet/shared_stintaril_hue.iff")
 
 object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
@@ -5530,10 +5796,12 @@ object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2871755001
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_swirl_prong_hue, 2871755001)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_swirl_prong_hue, "object/intangible/pet/shared_swirl_prong_hue.iff")
 
 object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tanc_mite_hue.sat",
@@ -5571,10 +5839,12 @@ object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3342328122
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tanc_mite_hue, 3342328122)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tanc_mite_hue, "object/intangible/pet/shared_tanc_mite_hue.iff")
 
 object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
@@ -5612,10 +5882,12 @@ object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1854611752
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_thune_hue, 1854611752)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_thune_hue, "object/intangible/pet/shared_thune_hue.iff")
 
 object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/maul_probe_droid.sat",
@@ -5653,10 +5925,12 @@ object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 969518136
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tip_solicitor_droid, 969518136)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tip_solicitor_droid, "object/intangible/pet/shared_tip_solicitor_droid.iff")
 
 object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/torton_hue.sat",
@@ -5694,10 +5968,12 @@ object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2899651011
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_torton_hue, 2899651011)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_torton_hue, "object/intangible/pet/shared_torton_hue.iff")
 
 object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jedi_training_droid.sat",
@@ -5735,10 +6011,12 @@ object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3182158026
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_training_remote, 3182158026)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_training_remote, "object/intangible/pet/shared_training_remote.iff")
 
 object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tt8l.sat",
@@ -5776,10 +6054,12 @@ object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1553023360
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l, 1553023360)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l, "object/intangible/pet/shared_tt8l.iff")
 
 object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tt8l_y7.sat",
@@ -5817,10 +6097,12 @@ object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 218724646
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l_y7, 218724646)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l_y7, "object/intangible/pet/shared_tt8l_y7.iff")
 
 object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
@@ -5858,10 +6140,12 @@ object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2290289692
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tusk_cat_hue, 2290289692)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tusk_cat_hue, "object/intangible/pet/shared_tusk_cat_hue.iff")
 
 object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
@@ -5899,10 +6183,12 @@ object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3794077692
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_tybis_hue, 3794077692)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_tybis_hue, "object/intangible/pet/shared_tybis_hue.iff")
 
 object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/veermok_hue.sat",
@@ -5940,10 +6226,12 @@ object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3304145962
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_veermok_hue, 3304145962)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_veermok_hue, "object/intangible/pet/shared_veermok_hue.iff")
 
 object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/monstrosity.sat",
@@ -5981,10 +6269,12 @@ object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3441960181
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype, 3441960181)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype, "object/intangible/pet/shared_vehicular_prototype.iff")
 
 object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
@@ -6022,10 +6312,12 @@ object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTe
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2843250911
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype_bike, 2843250911)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype_bike, "object/intangible/pet/shared_vehicular_prototype_bike.iff")
 
 object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/verne_hue.sat",
@@ -6063,10 +6355,12 @@ object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2036157279
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_verne_hue, 2036157279)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_verne_hue, "object/intangible/pet/shared_verne_hue.iff")
 
 object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vesp_hue.sat",
@@ -6104,10 +6398,12 @@ object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 58797746
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_vesp_hue, 58797746)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_vesp_hue, "object/intangible/pet/shared_vesp_hue.iff")
 
 object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vir_vur_hue.sat",
@@ -6145,10 +6441,12 @@ object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 844441928
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_vir_vur_hue, 844441928)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_vir_vur_hue, "object/intangible/pet/shared_vir_vur_hue.iff")
 
 object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/voritor_lizard_hue.sat",
@@ -6186,10 +6484,12 @@ object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1578601916
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_voritor_lizard_hue, 1578601916)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_voritor_lizard_hue, "object/intangible/pet/shared_voritor_lizard_hue.iff")
 
 object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vynock_hue.sat",
@@ -6227,10 +6527,12 @@ object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3828927679
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_vynock_hue, 3828927679)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_vynock_hue, "object/intangible/pet/shared_vynock_hue.iff")
 
 object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
@@ -6268,10 +6570,12 @@ object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1347741729
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_wed_treadwell, 1347741729)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_wed_treadwell, "object/intangible/pet/shared_wed_treadwell.iff")
 
 object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/womp_rat_hue.sat",
@@ -6309,10 +6613,12 @@ object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 273820215
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_womp_rat_hue, 273820215)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_womp_rat_hue, "object/intangible/pet/shared_womp_rat_hue.iff")
 
 object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/woolamander_hue.sat",
@@ -6350,10 +6656,12 @@ object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3182931850
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_woolamander_hue, 3182931850)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_woolamander_hue, "object/intangible/pet/shared_woolamander_hue.iff")
 
 object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/worrt_hue.sat",
@@ -6391,10 +6699,12 @@ object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2024101379
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_worrt_hue, 2024101379)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_worrt_hue, "object/intangible/pet/shared_worrt_hue.iff")
 
 object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zucca_boar_hue.sat",
@@ -6432,7 +6742,9 @@ object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 49929061
 }
 
-ObjectTemplates:addTemplate(object_intangible_pet_shared_zucca_boar_hue, 49929061)
+ObjectTemplates:addTemplate(object_intangible_pet_shared_zucca_boar_hue, "object/intangible/pet/shared_zucca_boar_hue.iff")

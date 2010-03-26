@@ -85,13 +85,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2668141954
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing, 2668141954)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_housing.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -137,13 +138,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power = SharedTangi
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1253904609
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power, 1253904609)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_power.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -189,13 +191,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1745145484
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor, 1745145484)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_processor.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -241,13 +244,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 551792434
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader, 551792434)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_reader.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -293,13 +297,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1766910306
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen, 1766910306)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_screen.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -345,13 +350,14 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation = Share
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3061856066
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation, 3061856066)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_translation.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_interface_override_device = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
@@ -397,13 +403,14 @@ object_tangible_theme_park_alderaan_act2_shared_interface_override_device = Shar
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1110698456
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_interface_override_device, 1110698456)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_interface_override_device, "object/tangible/theme_park/alderaan/act2/shared_interface_override_device.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -449,10 +456,11 @@ object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1889725651
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal, 1889725651)
+ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal, "object/tangible/theme_park/alderaan/act2/shared_relay_station_terminal.iff")

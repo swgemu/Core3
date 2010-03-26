@@ -77,7 +77,9 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1318932514
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_base_shared_ship_control_device_base, 1318932514)
+ObjectTemplates:addTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")

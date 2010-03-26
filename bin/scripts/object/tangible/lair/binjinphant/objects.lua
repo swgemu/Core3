@@ -85,13 +85,14 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 40317031
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, 40317031)
+ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, "object/tangible/lair/binjinphant/shared_lair_binjinphant.iff")
 
 object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 165640576
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, 165640576)
+ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, "object/tangible/lair/binjinphant/shared_lair_binjinphant_forest.iff")

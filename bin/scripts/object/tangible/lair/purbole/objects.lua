@@ -85,13 +85,14 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1874608603
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole, 1874608603)
+ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole, "object/tangible/lair/purbole/shared_lair_purbole.iff")
 
 object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2529340012
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, 2529340012)
+ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, "object/tangible/lair/purbole/shared_lair_purbole_forest.iff")

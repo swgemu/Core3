@@ -85,13 +85,14 @@ object_tangible_lair_krahbu_shared_lair_krahbu = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2273906310
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu, 2273906310)
+ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu, "object/tangible/lair/krahbu/shared_lair_krahbu.iff")
 
 object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2706872784
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu_grassland, 2706872784)
+ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu_grassland, "object/tangible/lair/krahbu/shared_lair_krahbu_grassland.iff")

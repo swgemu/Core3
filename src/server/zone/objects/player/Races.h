@@ -398,7 +398,7 @@ public:
 		return RaceStrs[raceid];
 	}
 
-	inline const static int getSpeciesID(int raceid) {
+	inline static int getSpeciesID(int raceid) {
 		return TemplateSpecies[raceid];
 	}
 

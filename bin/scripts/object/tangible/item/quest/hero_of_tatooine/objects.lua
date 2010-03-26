@@ -85,13 +85,14 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2331373945
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives, 2331373945)
+ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives, "object/tangible/item/quest/hero_of_tatooine/shared_explosives.iff")
 
 object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_newbie_crate.apt",
@@ -137,10 +138,11 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 633901236
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate, 633901236)
+ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate, "object/tangible/item/quest/hero_of_tatooine/shared_explosives_crate.iff")

@@ -76,10 +76,12 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2504717915
 }
 
-ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, 2504717915)
+ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff")
 
 object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -116,7 +118,9 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 	snapToTerrain = 0,
 	surfaceType = 1,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1455376607
 }
 
-ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, 1455376607)
+ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff")

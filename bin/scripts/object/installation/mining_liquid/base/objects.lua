@@ -85,10 +85,11 @@ object_installation_mining_liquid_base_shared_mining_liquid_base = SharedInstall
 	surfaceType = 1,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2659189194
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, 2659189194)
+ObjectTemplates:addTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, "object/installation/mining_liquid/base/shared_mining_liquid_base.iff")

@@ -85,13 +85,14 @@ object_tangible_furniture_city_shared_city_furniture = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4151196909
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_city_furniture, 4151196909)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_city_furniture, "object/tangible/furniture/city/shared_city_furniture.iff")
 
 object_tangible_furniture_city_shared_fountain_brazier_round = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_round_s01.apt",
@@ -137,13 +138,14 @@ object_tangible_furniture_city_shared_fountain_brazier_round = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2313257856
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_brazier_round, 2313257856)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_brazier_round, "object/tangible/furniture/city/shared_fountain_brazier_round.iff")
 
 object_tangible_furniture_city_shared_fountain_brazier_square = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_square_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_furniture_city_shared_fountain_brazier_square = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3003277159
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_brazier_square, 3003277159)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_brazier_square, "object/tangible/furniture/city/shared_fountain_brazier_square.iff")
 
 object_tangible_furniture_city_shared_fountain_circle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_circle_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_furniture_city_shared_fountain_circle = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2062230985
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_circle, 2062230985)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_circle, "object/tangible/furniture/city/shared_fountain_circle.iff")
 
 object_tangible_furniture_city_shared_fountain_contemplate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_contemplate_s01.apt",
@@ -293,13 +297,14 @@ object_tangible_furniture_city_shared_fountain_contemplate = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2289141154
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_contemplate, 2289141154)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_contemplate, "object/tangible/furniture/city/shared_fountain_contemplate.iff")
 
 object_tangible_furniture_city_shared_fountain_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_fountain_sm_s01.apt",
@@ -345,13 +350,14 @@ object_tangible_furniture_city_shared_fountain_generic = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 891317652
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_generic, 891317652)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_generic, "object/tangible/furniture/city/shared_fountain_generic.iff")
 
 object_tangible_furniture_city_shared_fountain_heroic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_heroic_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_furniture_city_shared_fountain_heroic = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 752522067
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_heroic, 752522067)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_heroic, "object/tangible/furniture/city/shared_fountain_heroic.iff")
 
 object_tangible_furniture_city_shared_fountain_rectangle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_rectangle_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_furniture_city_shared_fountain_rectangle = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 288593099
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_rectangle, 288593099)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_fountain_rectangle, "object/tangible/furniture/city/shared_fountain_rectangle.iff")
 
 object_tangible_furniture_city_shared_statue_gungan_head = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
@@ -501,13 +509,14 @@ object_tangible_furniture_city_shared_statue_gungan_head = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2297433571
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_gungan_head, 2297433571)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_gungan_head, "object/tangible/furniture/city/shared_statue_gungan_head.iff")
 
 object_tangible_furniture_city_shared_statue_sentinel_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_statue_freestand_s01.apt",
@@ -553,13 +562,14 @@ object_tangible_furniture_city_shared_statue_sentinel_01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2790671586
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_sentinel_01, 2790671586)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_sentinel_01, "object/tangible/furniture/city/shared_statue_sentinel_01.iff")
 
 object_tangible_furniture_city_shared_statue_sentinel_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_tato_guild_statue_freestand_s01.apt",
@@ -605,13 +615,14 @@ object_tangible_furniture_city_shared_statue_sentinel_02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2101472373
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_sentinel_02, 2101472373)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_sentinel_02, "object/tangible/furniture/city/shared_statue_sentinel_02.iff")
 
 object_tangible_furniture_city_shared_statue_tatooine_sunball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_golden_ball_freestand_s01.apt",
@@ -657,13 +668,14 @@ object_tangible_furniture_city_shared_statue_tatooine_sunball = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2953802016
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_tatooine_sunball, 2953802016)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_tatooine_sunball, "object/tangible/furniture/city/shared_statue_tatooine_sunball.iff")
 
 object_tangible_furniture_city_shared_statue_weird_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_lg_s1.apt",
@@ -709,13 +721,14 @@ object_tangible_furniture_city_shared_statue_weird_01 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3005115588
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_weird_01, 3005115588)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_weird_01, "object/tangible/furniture/city/shared_statue_weird_01.iff")
 
 object_tangible_furniture_city_shared_statue_weird_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_lg_s2.apt",
@@ -761,13 +774,14 @@ object_tangible_furniture_city_shared_statue_weird_02 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1745470547
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_weird_02, 1745470547)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_statue_weird_02, "object/tangible/furniture/city/shared_statue_weird_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
@@ -813,13 +827,14 @@ object_tangible_furniture_city_shared_streetlamp_large_01 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2047185274
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_01, 2047185274)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_01, "object/tangible/furniture/city/shared_streetlamp_large_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
@@ -865,13 +880,14 @@ object_tangible_furniture_city_shared_streetlamp_large_02 = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2702326253
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_02, 2702326253)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_02, "object/tangible/furniture/city/shared_streetlamp_large_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_blue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
@@ -917,13 +933,14 @@ object_tangible_furniture_city_shared_streetlamp_large_blue_01 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 551133960
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_01, 551133960)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_01, "object/tangible/furniture/city/shared_streetlamp_large_blue_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_blue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
@@ -969,13 +986,14 @@ object_tangible_furniture_city_shared_streetlamp_large_blue_02 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4224584607
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_02, 4224584607)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_02, "object/tangible/furniture/city/shared_streetlamp_large_blue_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_green_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
@@ -1021,13 +1039,14 @@ object_tangible_furniture_city_shared_streetlamp_large_green_01 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2531280975
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_01, 2531280975)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_01, "object/tangible/furniture/city/shared_streetlamp_large_green_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_green_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
@@ -1073,13 +1092,14 @@ object_tangible_furniture_city_shared_streetlamp_large_green_02 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1308090584
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_02, 1308090584)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_02, "object/tangible/furniture/city/shared_streetlamp_large_green_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_red_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
@@ -1125,13 +1145,14 @@ object_tangible_furniture_city_shared_streetlamp_large_red_01 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2282086980
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_01, 2282086980)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_01, "object/tangible/furniture/city/shared_streetlamp_large_red_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_large_red_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
@@ -1177,13 +1198,14 @@ object_tangible_furniture_city_shared_streetlamp_large_red_02 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1393707731
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_02, 1393707731)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_02, "object/tangible/furniture/city/shared_streetlamp_large_red_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_furniture_city_shared_streetlamp_med_01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1764304868
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_01, 1764304868)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_01, "object/tangible/furniture/city/shared_streetlamp_med_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
@@ -1281,13 +1304,14 @@ object_tangible_furniture_city_shared_streetlamp_med_02 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2990444403
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_02, 2990444403)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_02, "object/tangible/furniture/city/shared_streetlamp_med_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_blue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_furniture_city_shared_streetlamp_med_blue_01 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 615766032
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_01, 615766032)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_01, "object/tangible/furniture/city/shared_streetlamp_med_blue_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_blue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
@@ -1385,13 +1410,14 @@ object_tangible_furniture_city_shared_streetlamp_med_blue_02 = SharedTangibleObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4288966791
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_02, 4288966791)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_02, "object/tangible/furniture/city/shared_streetlamp_med_blue_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_green_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_furniture_city_shared_streetlamp_med_green_01 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4020184723
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_01, 4020184723)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_01, "object/tangible/furniture/city/shared_streetlamp_med_green_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_green_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
@@ -1489,13 +1516,14 @@ object_tangible_furniture_city_shared_streetlamp_med_green_02 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 881364484
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_02, 881364484)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_02, "object/tangible/furniture/city/shared_streetlamp_med_green_02.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_red_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
@@ -1541,13 +1569,14 @@ object_tangible_furniture_city_shared_streetlamp_med_red_01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1676634834
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_01, 1676634834)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_01, "object/tangible/furniture/city/shared_streetlamp_med_red_01.iff")
 
 object_tangible_furniture_city_shared_streetlamp_med_red_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
@@ -1593,10 +1622,11 @@ object_tangible_furniture_city_shared_streetlamp_med_red_02 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3103310405
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_02, 3103310405)
+ObjectTemplates:addTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_02, "object/tangible/furniture/city/shared_streetlamp_med_red_02.iff")

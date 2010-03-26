@@ -77,10 +77,12 @@ object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 216548376
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, 216548376)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, "object/draft_schematic/space/booster/shared_advanced_fuel_ignition.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1157928076
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk1, 1157928076)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk1, "object/draft_schematic/space/booster/shared_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2652060699
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk2, 2652060699)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk2, "object/draft_schematic/space/booster/shared_booster_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3609090966
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk3, 3609090966)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk3, "object/draft_schematic/space/booster/shared_booster_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 754806914
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk4, 754806914)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk4, "object/draft_schematic/space/booster/shared_booster_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,10 +292,12 @@ object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicOb
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1710233359
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk5, 1710233359)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk5, "object/draft_schematic/space/booster/shared_booster_mk5.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -323,10 +335,12 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1287538938
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, 1287538938)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, "object/draft_schematic/space/booster/shared_booster_overdriver_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -364,10 +378,12 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2544492653
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, 2544492653)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, "object/draft_schematic/space/booster/shared_booster_overdriver_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -405,10 +421,12 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3735324640
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, 3735324640)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, "object/draft_schematic/space/booster/shared_booster_overdriver_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -446,10 +464,12 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 625454324
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, 625454324)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, "object/draft_schematic/space/booster/shared_booster_overdriver_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,10 +507,12 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1816841081
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, 1816841081)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, "object/draft_schematic/space/booster/shared_booster_overdriver_mk5.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -528,10 +550,12 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1033968628
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, 1033968628)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -569,10 +593,12 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3870733155
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, 3870733155)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -610,10 +636,12 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2948322542
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, 2948322542)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -651,10 +679,12 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1415118842
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, 1415118842)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,10 +722,12 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = Shared
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 492148855
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, 492148855)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,10 +765,12 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2613161095
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, 2613161095)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -774,10 +808,12 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1087767568
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, 1087767568)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -815,10 +851,12 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 165372829
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, 165372829)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,10 +894,12 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4063774857
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, 4063774857)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -897,10 +937,12 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3140824836
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, 3140824836)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -938,10 +980,12 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3915024240
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, 3915024240)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,10 +1023,12 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 843919335
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, 843919335)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1020,10 +1066,12 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2067810410
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, 2067810410)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1061,10 +1109,12 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2158191486
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, 2158191486)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1102,10 +1152,12 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSch
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3383624947
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, 3383624947)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1143,10 +1195,12 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1520819528
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, 1520819528)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, "object/draft_schematic/space/booster/shared_xwing_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1184,7 +1238,9 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2175956447
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, 2175956447)
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, "object/draft_schematic/space/booster/shared_xwing_booster_mk2.iff")

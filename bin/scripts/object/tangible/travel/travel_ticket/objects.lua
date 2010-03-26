@@ -85,10 +85,11 @@ object_tangible_travel_travel_ticket_shared_dungeon_ticket = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1400905177
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_shared_dungeon_ticket, 1400905177)
+ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_shared_dungeon_ticket, "object/tangible/travel/travel_ticket/shared_dungeon_ticket.iff")

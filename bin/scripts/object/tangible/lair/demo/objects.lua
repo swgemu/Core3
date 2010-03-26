@@ -85,10 +85,11 @@ object_tangible_lair_demo_shared_lair_demo = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 146696119
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_demo_shared_lair_demo, 146696119)
+ObjectTemplates:addTemplate(object_tangible_lair_demo_shared_lair_demo, "object/tangible/lair/demo/shared_lair_demo.iff")

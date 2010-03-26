@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -34,7 +36,7 @@ namespace tangible {
 
 class Container : public TangibleObject {
 public:
-	Container(LuaObject* templateData);
+	Container();
 
 	void loadTemplateData(LuaObject* templateData);
 
@@ -65,7 +67,7 @@ namespace tangible {
 class ContainerImplementation : public TangibleObjectImplementation {
 
 public:
-	ContainerImplementation(LuaObject* templateData);
+	ContainerImplementation();
 
 	ContainerImplementation(DummyConstructorParameter* param);
 

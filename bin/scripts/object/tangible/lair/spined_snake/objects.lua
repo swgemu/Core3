@@ -85,13 +85,14 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2281325742
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, 2281325742)
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,13 +138,14 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1340697568
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, 1340697568)
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -189,10 +191,11 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3148607218
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, 3148607218)
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")

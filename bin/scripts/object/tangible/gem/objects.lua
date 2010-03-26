@@ -85,13 +85,14 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3742650204
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_armor, 3742650204)
+ObjectTemplates:addTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
 
 object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -137,13 +138,14 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3237805620
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_clothing, 3237805620)
+ObjectTemplates:addTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
 
 object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -189,10 +191,11 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 330070250
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_default, 330070250)
+ObjectTemplates:addTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")

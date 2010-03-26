@@ -77,10 +77,12 @@ object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1809601710
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_barrel, 1809601710)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_barrel, "object/draft_schematic/food/component/shared_container_barrel.iff")
 
 object_draft_schematic_food_component_shared_container_cask = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -118,10 +120,12 @@ object_draft_schematic_food_component_shared_container_cask = SharedDraftSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2983185528
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_cask, 2983185528)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_cask, "object/draft_schematic/food/component/shared_container_cask.iff")
 
 object_draft_schematic_food_component_shared_container_large_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -159,10 +163,12 @@ object_draft_schematic_food_component_shared_container_large_glass = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3740654207
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_large_glass, 3740654207)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_large_glass, "object/draft_schematic/food/component/shared_container_large_glass.iff")
 
 object_draft_schematic_food_component_shared_container_small_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -200,10 +206,12 @@ object_draft_schematic_food_component_shared_container_small_glass = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1819609352
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_small_glass, 1819609352)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_small_glass, "object/draft_schematic/food/component/shared_container_small_glass.iff")
 
 object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -241,10 +249,12 @@ object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDr
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 797799084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, 797799084)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, "object/draft_schematic/food/component/shared_ingredient_ball_of_dough.iff")
 
 object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -282,7 +292,9 @@ object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraft
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 752274773
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, 752274773)
+ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, "object/draft_schematic/food/component/shared_ingredient_carbosyrup.iff")

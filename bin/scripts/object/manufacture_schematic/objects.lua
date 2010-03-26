@@ -77,7 +77,9 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 941212681
 }
 
-ObjectTemplates:addTemplate(object_manufacture_schematic_shared_generic_schematic, 941212681)
+ObjectTemplates:addTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")

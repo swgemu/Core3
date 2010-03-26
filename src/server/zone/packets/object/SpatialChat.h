@@ -46,12 +46,13 @@
 #define SPATIALCHAT_H_
 
 #include "ObjectControllerMessage.h"
-#include "StfParameter.h"
+
+#include "../../objects/scene/variables/ParameterizedStringId.h"
 
 class SpatialChat: public ObjectControllerMessage {
 public:
 	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
-			uint32 mood2) :
+			uint32 mood2, uint8 langID) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);
 		insertLong(target);
@@ -61,7 +62,7 @@ public:
 		insertShort((uint16) mood2);
 		insertShort((uint16) moodid);
 		insertByte(0);
-		insertByte(0);
+		insertByte(langID);
 
 		insertLong(0);
 		insertInt(0);
@@ -70,51 +71,44 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& str, StfParameter* params, uint64 target, uint16 moodid, uint16 mood2) :
+	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& stringid, uint64 target, uint32 moodid,
+			uint32 mood2, uint8 langID) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-
-		params->generate();
-
-		//insertLong(senderid);
-		//insertInt(0);
 		insertLong(senderid);
 		insertLong(target);
-		insertUnicode("");
-		//insertInt(0);
+		insertUnicode(UnicodeString("@" + file + ":" + stringid));
+
+		insertShort(0x32);
+		insertShort((uint16) mood2);
+		insertShort((uint16) moodid);
+		insertByte(0);
+		insertByte(langID);
+
+		insertLong(0);
+		insertInt(0);
+		insertInt(0);
+
+		setCompression(true);
+	}
+
+	SpatialChat(uint64 senderid, uint64 recvid, ParameterizedStringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
+		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+
+		insertLong(senderid);
+		insertLong(target);
+		insertInt(0);
 		insertShort(0x32);
 		insertShort(mood2);
 		insertShort(moodid);
 		insertShort(0);
 
-		//
-		int size = 0x0E + file.length() + str.length() + params->size();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(1);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file.toCharArray());
-		insertInt(0);
-		insertAscii(str.toCharArray());
-
-		insertStream(params);
-
-		if (odd)
-			insertByte(0);
+		stringid.addToPacketStream(this);
 
 		insertByte(0);
 		insertShort(0);
 
 		setCompression(true);
 	}
-
-
 };
 
 #endif /*SPATIALCHAT_H_*/

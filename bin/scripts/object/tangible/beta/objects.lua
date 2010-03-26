@@ -85,13 +85,14 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3480787913
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_food, 3480787913)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_food, "object/tangible/beta/shared_beta_terminal_food.iff")
 
 object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -137,13 +138,14 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 600604858
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_medicine, 600604858)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_medicine, "object/tangible/beta/shared_beta_terminal_medicine.iff")
 
 object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -189,13 +191,14 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1792262622
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_money, 1792262622)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_money, "object/tangible/beta/shared_beta_terminal_money.iff")
 
 object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -241,13 +244,14 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1782676583
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_resource, 1782676583)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_resource, "object/tangible/beta/shared_beta_terminal_resource.iff")
 
 object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -293,13 +297,14 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1453711903
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_warp, 1453711903)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_warp, "object/tangible/beta/shared_beta_terminal_warp.iff")
 
 object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -345,13 +350,14 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 123483416
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_wound, 123483416)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_wound, "object/tangible/beta/shared_beta_terminal_wound.iff")
 
 object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -397,13 +403,14 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3440875324
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_xp, 3440875324)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_xp, "object/tangible/beta/shared_beta_terminal_xp.iff")
 
 object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -449,10 +456,11 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3977978094
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_donham_terminal, 3977978094)
+ObjectTemplates:addTemplate(object_tangible_beta_shared_donham_terminal, "object/tangible/beta/shared_donham_terminal.iff")

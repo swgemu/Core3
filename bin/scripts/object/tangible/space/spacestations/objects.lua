@@ -85,13 +85,14 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3055118687
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, 3055118687)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -137,13 +138,14 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2372198483
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, 2372198483)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -189,13 +191,14 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3537441951
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, 3537441951)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff")
 
 object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -241,13 +244,14 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2417244262
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, 2417244262)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -293,13 +297,14 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2407802973
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, 2407802973)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -345,13 +350,14 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3861915556
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, 3861915556)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -397,10 +403,11 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2272557315
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, 2272557315)
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff")

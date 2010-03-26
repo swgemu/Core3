@@ -58,7 +58,7 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 12,
+	gameObjectType = 1025,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
@@ -77,7 +77,9 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1637592609
 }
 
-ObjectTemplates:addTemplate(object_player_shared_player, 1637592609)
+ObjectTemplates:addTemplate(object_player_shared_player, "object/player/shared_player.iff")

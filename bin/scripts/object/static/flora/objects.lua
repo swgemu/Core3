@@ -77,10 +77,12 @@ object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3282656608
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_base, 3282656608)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_base, "object/static/flora/shared_flora_base.iff")
 
 object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_dath_hwotha.apt",
@@ -118,10 +120,12 @@ object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3380635776
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_dathomir_hwotha, 3380635776)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_dathomir_hwotha, "object/static/flora/shared_flora_bush_dathomir_hwotha.iff")
 
 object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_endr_rainbowbush.apt",
@@ -159,10 +163,12 @@ object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2385797177
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_endor_rainbowbush, 2385797177)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_endor_rainbowbush, "object/static/flora/shared_flora_bush_endor_rainbowbush.iff")
 
 object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_tals_razorcoil.apt",
@@ -200,10 +206,12 @@ object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1622915798
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_talus_razorcoil, 1622915798)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_talus_razorcoil, "object/static/flora/shared_flora_bush_talus_razorcoil.iff")
 
 object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shrb_blueleaf.apt",
@@ -241,10 +249,12 @@ object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4112833826
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf, 4112833826)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf, "object/static/flora/shared_flora_bush_yavin_blueleaf.iff")
 
 object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_dath_azerontree.apt",
@@ -282,10 +292,12 @@ object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTempla
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1303000302
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_azerontree, 1303000302)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_azerontree, "object/static/flora/shared_flora_decd_dath_azerontree.iff")
 
 object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_dath_blacktree.apt",
@@ -323,10 +335,12 @@ object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1239955396
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_blacktree, 1239955396)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_blacktree, "object/static/flora/shared_flora_decd_dath_blacktree.iff")
 
 object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_endr_destree_dead.apt",
@@ -364,10 +378,12 @@ object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3087503053
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_endr_destree_dead, 3087503053)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_endr_destree_dead, "object/static/flora/shared_flora_decd_endr_destree_dead.iff")
 
 object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_massassi.apt",
@@ -405,10 +421,12 @@ object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1850241596
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi, 1850241596)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi, "object/static/flora/shared_flora_decd_scorched_massassi.iff")
 
 object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_massassi_broke.apt",
@@ -446,10 +464,12 @@ object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObje
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1334140957
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi_broke, 1334140957)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi_broke, "object/static/flora/shared_flora_decd_scorched_massassi_broke.iff")
 
 object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_tallbirch.apt",
@@ -487,10 +507,12 @@ object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4131259780
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch, 4131259780)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch, "object/static/flora/shared_flora_decd_scorched_tallbirch.iff")
 
 object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_tallbirch_broke.apt",
@@ -528,10 +550,12 @@ object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObj
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2780610841
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch_broke, 2780610841)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch_broke, "object/static/flora/shared_flora_decd_scorched_tallbirch_broke.iff")
 
 object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_bauhin.apt",
@@ -569,10 +593,12 @@ object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2323835715
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_all_bauhin, 2323835715)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_all_bauhin, "object/static/flora/shared_flora_flower_all_bauhin.iff")
 
 object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_endr_scrubwort.apt",
@@ -610,10 +636,12 @@ object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1951625577
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_endor_scrubwort, 1951625577)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_endor_scrubwort, "object/static/flora/shared_flora_flower_endor_scrubwort.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_lrg.apt",
@@ -651,10 +679,12 @@ object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3210762519
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel, 3210762519)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel, "object/static/flora/shared_flora_flower_tato_funnel.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_med.apt",
@@ -692,10 +722,12 @@ object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemp
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1114511484
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_med, 1114511484)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_med, "object/static/flora/shared_flora_flower_tato_funnel_med.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_sm.apt",
@@ -733,10 +765,12 @@ object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3419088004
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_sm, 3419088004)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_sm, "object/static/flora/shared_flora_flower_tato_funnel_sm.iff")
 
 object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_falotil_nuts.apt",
@@ -774,10 +808,12 @@ object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3330222752
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil, 3330222752)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil, "object/static/flora/shared_flora_plant_tato_falotil.iff")
 
 object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_falotil_bare.apt",
@@ -815,10 +851,12 @@ object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3257873338
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil_bare, 3257873338)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil_bare, "object/static/flora/shared_flora_plant_tato_falotil_bare.iff")
 
 object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_hubba_lrg.apt",
@@ -856,10 +894,12 @@ object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 998793848
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_hubba, 998793848)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_hubba, "object/static/flora/shared_flora_plant_tato_hubba.iff")
 
 object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_pika_solo.apt",
@@ -897,10 +937,12 @@ object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:ne
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2097396056
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika, 2097396056)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika, "object/static/flora/shared_flora_plant_tato_pika.iff")
 
 object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_pika_tri.apt",
@@ -938,10 +980,12 @@ object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 753105168
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika_tri, 753105168)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika_tri, "object/static/flora/shared_flora_plant_tato_pika_tri.iff")
 
 object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shrb_dath_glingi.apt",
@@ -979,10 +1023,12 @@ object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:n
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4134879921
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_shrb_dath_glingi, 4134879921)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_shrb_dath_glingi, "object/static/flora/shared_flora_shrb_dath_glingi.iff")
 
 object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_lok_mkpud.apt",
@@ -1020,10 +1066,12 @@ object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3776365618
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_lok_mkpud, 3776365618)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_lok_mkpud, "object/static/flora/shared_flora_tree_lok_mkpud.iff")
 
 object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_fngi.apt",
@@ -1061,10 +1109,12 @@ object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2866142506
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_fngi, 2866142506)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_fngi, "object/static/flora/shared_flora_tree_palm_fngi.iff")
 
 object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_sm.apt",
@@ -1102,10 +1152,12 @@ object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2535930087
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_sm, 2535930087)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_sm, "object/static/flora/shared_flora_tree_palm_sm.iff")
 
 object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_thk.apt",
@@ -1143,10 +1195,12 @@ object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new 
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 758632558
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_thk, 758632558)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_thk, "object/static/flora/shared_flora_tree_palm_thk.iff")
 
 object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_mkpodtree.apt",
@@ -1184,10 +1238,12 @@ object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1443720376
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree, 1443720376)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree, "object/static/flora/shared_flora_tree_rori_mkpodtree.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept.apt",
@@ -1225,10 +1281,12 @@ object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4015418034
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s00, 4015418034)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s00, "object/static/flora/shared_flora_tree_rori_windswept_s00.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a1.apt",
@@ -1266,10 +1324,12 @@ object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2790985023
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s01, 2790985023)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s01, "object/static/flora/shared_flora_tree_rori_windswept_s01.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a2.apt",
@@ -1307,10 +1367,12 @@ object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2102175144
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s02, 2102175144)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s02, "object/static/flora/shared_flora_tree_rori_windswept_s02.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a3.apt",
@@ -1348,10 +1410,12 @@ object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTem
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 876724773
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s03, 876724773)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s03, "object/static/flora/shared_flora_tree_rori_windswept_s03.iff")
 
 object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_touchnot1.apt",
@@ -1389,10 +1453,12 @@ object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1020776426
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_tato_touchnot, 1020776426)
+ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_tato_touchnot, "object/static/flora/shared_flora_tree_tato_touchnot.iff")
 
 object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s01.apt",
@@ -1430,10 +1496,12 @@ object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 248082179
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_orange, 248082179)
+ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_orange, "object/static/flora/shared_potted_plant_flowers_orange.iff")
 
 object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s02.apt",
@@ -1471,10 +1539,12 @@ object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTempl
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3892348345
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_purple, 3892348345)
+ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_purple, "object/static/flora/shared_potted_plant_flowers_purple.iff")
 
 object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s03.apt",
@@ -1512,10 +1582,12 @@ object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 877469590
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_fern, 877469590)
+ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_fern, "object/static/flora/shared_potted_plant_leaves_fern.iff")
 
 object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s04.apt",
@@ -1553,10 +1625,12 @@ object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 1315610543
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_ivy, 1315610543)
+ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_ivy, "object/static/flora/shared_potted_plant_leaves_ivy.iff")
 
 object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s05.apt",
@@ -1594,7 +1668,9 @@ object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplat
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 622948670
 }
 
-ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_small, 622948670)
+ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_small, "object/static/flora/shared_potted_plant_leaves_small.iff")

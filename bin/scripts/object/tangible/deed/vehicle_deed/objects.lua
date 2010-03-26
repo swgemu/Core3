@@ -85,13 +85,14 @@ object_tangible_deed_vehicle_deed_shared_jetpack_deed = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2560190060
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_jetpack_deed, 2560190060)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_jetpack_deed, "object/tangible/deed/vehicle_deed/shared_jetpack_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -137,13 +138,14 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3746524983
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed, 3746524983)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_av21_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -189,13 +191,14 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3199159464
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed, 3199159464)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x31_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -241,13 +244,14 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 905926205
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed, 905926205)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -293,13 +297,14 @@ object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4075476273
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_deed, 4075476273)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -345,13 +350,14 @@ object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1892530279
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed, 1892530279)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_flash_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -397,13 +403,14 @@ object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 495473751
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed, 495473751)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_swoop_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_landspeeder_luke.sat",
@@ -449,13 +456,14 @@ object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 504910832
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicle_deed_base, 504910832)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicle_deed_base, "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
@@ -501,13 +509,14 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1262265566
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed, 1262265566)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_bike_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/monstrosity.sat",
@@ -553,10 +562,11 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3990622047
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed, 3990622047)
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_deed.iff")

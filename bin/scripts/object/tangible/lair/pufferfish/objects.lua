@@ -85,13 +85,14 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2069689133
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, 2069689133)
+ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, "object/tangible/lair/pufferfish/shared_lair_pufferfish.iff")
 
 object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2279018496
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, 2279018496)
+ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, "object/tangible/lair/pufferfish/shared_lair_pufferfish_underwater.iff")

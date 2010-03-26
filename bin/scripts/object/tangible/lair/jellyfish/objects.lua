@@ -85,13 +85,14 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1244300952
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, 1244300952)
+ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff")
 
 object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -137,10 +138,11 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2597048309
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, 2597048309)
+ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff")

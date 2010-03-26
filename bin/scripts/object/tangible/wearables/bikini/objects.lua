@@ -85,13 +85,14 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 389872487
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, 389872487)
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s01_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 798815144
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s01, 798815144)
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s01, "object/tangible/wearables/bikini/shared_bikini_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s02_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4102773567
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s02, 4102773567)
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s02, "object/tangible/wearables/bikini/shared_bikini_s02.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s03_f.sat",
@@ -241,13 +244,14 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3179691186
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s03, 3179691186)
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s03, "object/tangible/wearables/bikini/shared_bikini_s03.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s04_f.sat",
@@ -293,10 +297,11 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1181030310
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s04, 1181030310)
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s04, "object/tangible/wearables/bikini/shared_bikini_s04.iff")

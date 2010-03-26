@@ -85,13 +85,14 @@ object_tangible_painting_shared_bestine_history_quest_painting = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3716079022
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_history_quest_painting, 3716079022)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_history_quest_painting, "object/tangible/painting/shared_bestine_history_quest_painting.iff")
 
 object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_jail.apt",
@@ -137,13 +138,14 @@ object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 550655936
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_quest_painting, 550655936)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_quest_painting, "object/tangible/painting/shared_bestine_quest_painting.iff")
 
 object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_s01.apt",
@@ -189,13 +191,14 @@ object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2365303481
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_agrilat_s01, 2365303481)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_agrilat_s01, "object/tangible/painting/shared_painting_agrilat_s01.iff")
 
 object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
@@ -241,13 +244,14 @@ object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2522220824
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_armor_blueprint, 2522220824)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_armor_blueprint, "object/tangible/painting/shared_painting_armor_blueprint.iff")
 
 object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_temple_blue_leaf1.apt",
@@ -293,13 +297,14 @@ object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2092717443
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blueleaf_temple, 2092717443)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blueleaf_temple, "object/tangible/painting/shared_painting_bestine_blueleaf_temple.iff")
 
 object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_blumbush.apt",
@@ -345,13 +350,14 @@ object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2399181727
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blumbush, 2399181727)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blumbush, "object/tangible/painting/shared_painting_bestine_blumbush.iff")
 
 object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_boffa_s01.apt",
@@ -397,13 +403,14 @@ object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1521577134
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_boffa, 1521577134)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_boffa, "object/tangible/painting/shared_painting_bestine_boffa.iff")
 
 object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s01.apt",
@@ -449,13 +456,14 @@ object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 268388150
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_01, 268388150)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_01, "object/tangible/painting/shared_painting_bestine_golden_flower_01.iff")
 
 object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s02.apt",
@@ -501,13 +509,14 @@ object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3572035489
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_02, 3572035489)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_02, "object/tangible/painting/shared_painting_bestine_golden_flower_02.iff")
 
 object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s03.apt",
@@ -553,13 +562,14 @@ object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2649065516
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_03, 2649065516)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_03, "object/tangible/painting/shared_painting_bestine_golden_flower_03.iff")
 
 object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_player_house.apt",
@@ -605,13 +615,14 @@ object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3800373299
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_house, 3800373299)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_house, "object/tangible/painting/shared_painting_bestine_house.iff")
 
 object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_krayt_skeleton.apt",
@@ -657,13 +668,14 @@ object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3652558255
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_krayt_skeleton, 3652558255)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_krayt_skeleton, "object/tangible/painting/shared_painting_bestine_krayt_skeleton.iff")
 
 object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_lucky_despot.apt",
@@ -709,13 +721,14 @@ object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2981494109
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_lucky_despot, 2981494109)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_lucky_despot, "object/tangible/painting/shared_painting_bestine_lucky_despot.iff")
 
 object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_mattberry.apt",
@@ -761,13 +774,14 @@ object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4207518182
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mattberry, 4207518182)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mattberry, "object/tangible/painting/shared_painting_bestine_mattberry.iff")
 
 object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_moncal_eye.apt",
@@ -813,13 +827,14 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1833552017
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_01, 1833552017)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_01, "object/tangible/painting/shared_painting_bestine_moncal_eye_01.iff")
 
 object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_moncal_eye_s01.apt",
@@ -865,13 +880,14 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleO
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3059638278
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_02, 3059638278)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_02, "object/tangible/painting/shared_painting_bestine_moncal_eye_02.iff")
 
 object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rainbow_berry_bush.apt",
@@ -917,13 +933,14 @@ object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTang
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4083160615
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_rainbow_berry_bush, 4083160615)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_rainbow_berry_bush, "object/tangible/painting/shared_painting_bestine_rainbow_berry_bush.iff")
 
 object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_raventhorn.apt",
@@ -969,13 +986,14 @@ object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1526591701
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_raventhorn, 1526591701)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_raventhorn, "object/tangible/painting/shared_painting_bestine_raventhorn.iff")
 
 object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_ronka.apt",
@@ -1021,13 +1039,14 @@ object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2667929549
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_ronka, 2667929549)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_ronka, "object/tangible/painting/shared_painting_bestine_ronka.iff")
 
 object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1073,13 +1092,14 @@ object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObje
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 232377496
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bioengineer_orange, 232377496)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bioengineer_orange, "object/tangible/painting/shared_painting_bioengineer_orange.iff")
 
 object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan_f.apt",
@@ -1125,13 +1145,14 @@ object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 854788635
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_f, 854788635)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_f, "object/tangible/painting/shared_painting_bothan_f.iff")
 
 object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan_m.apt",
@@ -1177,13 +1198,14 @@ object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2819466634
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_m, 2819466634)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_m, "object/tangible/painting/shared_painting_bothan_m.iff")
 
 object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1229,13 +1251,14 @@ object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2585541648
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bw_stormtrooper, 2585541648)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bw_stormtrooper, "object/tangible/painting/shared_painting_bw_stormtrooper.iff")
 
 object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1281,13 +1304,14 @@ object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 8552875
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_cargoport, 8552875)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_cargoport, "object/tangible/painting/shared_painting_cargoport.iff")
 
 object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
@@ -1333,13 +1357,14 @@ object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 105361220
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_dance_party, 105361220)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_dance_party, "object/tangible/painting/shared_painting_dance_party.iff")
 
 object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
@@ -1385,13 +1410,14 @@ object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2823052972
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_double_helix, 2823052972)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_double_helix, "object/tangible/painting/shared_painting_double_helix.iff")
 
 object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1437,13 +1463,14 @@ object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2843033838
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_droid_bright, 2843033838)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_droid_bright, "object/tangible/painting/shared_painting_droid_bright.iff")
 
 object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_endor_s01.apt",
@@ -1489,13 +1516,14 @@ object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 633275539
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_endor_style_01, 633275539)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_endor_style_01, "object/tangible/painting/shared_painting_endor_style_01.iff")
 
 object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_fighter_pilot_human1.apt",
@@ -1541,13 +1569,14 @@ object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangible
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4258475485
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_fighter_pilot_human_01, 4258475485)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_fighter_pilot_human_01, "object/tangible/painting/shared_painting_fighter_pilot_human_01.iff")
 
 object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_food_baking_s01.apt",
@@ -1593,13 +1622,14 @@ object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3144090584
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s01, 3144090584)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s01, "object/tangible/painting/shared_painting_food_baking_s01.iff")
 
 object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_food_baking_s02.apt",
@@ -1645,13 +1675,14 @@ object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1617996623
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s02, 1617996623)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s02, "object/tangible/painting/shared_painting_food_baking_s02.iff")
 
 object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1697,13 +1728,14 @@ object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3648739651
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_freedom, 3648739651)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_freedom, "object/tangible/painting/shared_painting_freedom.iff")
 
 object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1749,13 +1781,14 @@ object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2218996276
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_han_wanted, 2218996276)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_han_wanted, "object/tangible/painting/shared_painting_han_wanted.iff")
 
 object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_human_f.apt",
@@ -1801,13 +1834,14 @@ object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3589238977
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_human_f, 3589238977)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_human_f, "object/tangible/painting/shared_painting_human_f.iff")
 
 object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_kite_plant.apt",
@@ -1853,13 +1887,14 @@ object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1814671481
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_kite_plant, 1814671481)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_kite_plant, "object/tangible/painting/shared_painting_kite_plant.iff")
 
 object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1905,13 +1940,14 @@ object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3845142344
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_leia_wanted, 3845142344)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_leia_wanted, "object/tangible/painting/shared_painting_leia_wanted.iff")
 
 object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -1957,13 +1993,14 @@ object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1125814305
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_luke_wanted, 1125814305)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_luke_wanted, "object/tangible/painting/shared_painting_luke_wanted.iff")
 
 object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_nebula_orchid.apt",
@@ -2009,13 +2046,14 @@ object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4178650060
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_nebula_flower, 4178650060)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_nebula_flower, "object/tangible/painting/shared_painting_nebula_flower.iff")
 
 object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s01.apt",
@@ -2061,13 +2099,14 @@ object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1851630183
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s01, 1851630183)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s01, "object/tangible/painting/shared_painting_palowick_ad_s01.iff")
 
 object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s02.apt",
@@ -2113,13 +2152,14 @@ object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3041528560
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s02, 3041528560)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s02, "object/tangible/painting/shared_painting_palowick_ad_s02.iff")
 
 object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s03.apt",
@@ -2165,13 +2205,14 @@ object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4232539517
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s03, 4232539517)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s03, "object/tangible/painting/shared_painting_palowick_ad_s03.iff")
 
 object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s04.apt",
@@ -2217,13 +2258,14 @@ object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 128206441
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s04, 128206441)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s04, "object/tangible/painting/shared_painting_palowick_ad_s04.iff")
 
 object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_planet_s01.apt",
@@ -2269,13 +2311,14 @@ object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1235349261
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_planet_s01, 1235349261)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_planet_s01, "object/tangible/painting/shared_painting_planet_s01.iff")
 
 object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_f.apt",
@@ -2321,13 +2364,14 @@ object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2426371029
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f, 2426371029)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f, "object/tangible/painting/shared_painting_rodian_f.iff")
 
 object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_f_ad_s01.apt",
@@ -2373,13 +2417,14 @@ object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTe
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3837717304
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f_ad_01, 3837717304)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f_ad_01, "object/tangible/painting/shared_painting_rodian_f_ad_01.iff")
 
 object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_m.apt",
@@ -2425,13 +2470,14 @@ object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 174183492
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_m, 174183492)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_m, "object/tangible/painting/shared_painting_rodian_m.iff")
 
 object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_droid.apt",
@@ -2477,13 +2523,14 @@ object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1382937840
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_droid, 1382937840)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_droid, "object/tangible/painting/shared_painting_schematic_droid.iff")
 
 object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_transport_ship.apt",
@@ -2529,13 +2576,14 @@ object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangib
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 648855104
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_transport_ship, 648855104)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_transport_ship, "object/tangible/painting/shared_painting_schematic_transport_ship.iff")
 
 object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_weapon.apt",
@@ -2581,13 +2629,14 @@ object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2579175131
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon, 2579175131)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon, "object/tangible/painting/shared_painting_schematic_weapon.iff")
 
 object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_weapon_s03.apt",
@@ -2633,13 +2682,14 @@ object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleOb
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 716865001
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon_s03, 716865001)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon_s03, "object/tangible/painting/shared_painting_schematic_weapon_s03.iff")
 
 object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -2685,13 +2735,14 @@ object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4253954885
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_skyscraper, 4253954885)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_skyscraper, "object/tangible/painting/shared_painting_skyscraper.iff")
 
 object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_smoking_ad.apt",
@@ -2737,13 +2788,14 @@ object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 200259882
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_smoking_ad, 200259882)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_smoking_ad, "object/tangible/painting/shared_painting_smoking_ad.iff")
 
 object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -2789,13 +2841,14 @@ object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2644531826
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_starmap, 2644531826)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_starmap, "object/tangible/painting/shared_painting_starmap.iff")
 
 object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s03.apt",
@@ -2841,13 +2894,14 @@ object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2441069764
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s03, 2441069764)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s03, "object/tangible/painting/shared_painting_tato_s03.iff")
 
 object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s04.apt",
@@ -2893,13 +2947,14 @@ object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1788669904
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s04, 1788669904)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s04, "object/tangible/painting/shared_painting_tato_s04.iff")
 
 object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -2945,13 +3000,14 @@ object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTempla
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4110008393
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi, 4110008393)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi, "object/tangible/painting/shared_painting_teras_kasi.iff")
 
 object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -2997,13 +3053,14 @@ object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 956503088
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi_2, 956503088)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi_2, "object/tangible/painting/shared_painting_teras_kasi_2.iff")
 
 object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tandoshan_m.apt",
@@ -3049,13 +3106,14 @@ object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemp
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2913821862
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m, 2913821862)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m, "object/tangible/painting/shared_painting_trandoshan_m.iff")
 
 object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tandoshan_m1.apt",
@@ -3101,13 +3159,14 @@ object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1179174055
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m_01, 1179174055)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m_01, "object/tangible/painting/shared_painting_trandoshan_m_01.iff")
 
 object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -3153,13 +3212,14 @@ object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjec
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3605402564
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_wanted, 3605402564)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_wanted, "object/tangible/painting/shared_painting_trandoshan_wanted.iff")
 
 object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_trees_s01.apt",
@@ -3205,13 +3265,14 @@ object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3334758805
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tree, 3334758805)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tree, "object/tangible/painting/shared_painting_tree.iff")
 
 object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_trees_s01.apt",
@@ -3257,13 +3318,14 @@ object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1783509906
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trees_s01, 1783509906)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trees_s01, "object/tangible/painting/shared_painting_trees_s01.iff")
 
 object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_twilek_f.apt",
@@ -3309,13 +3371,14 @@ object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1175481538
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f, 1175481538)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f, "object/tangible/painting/shared_painting_twilek_f.iff")
 
 object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -3361,13 +3424,14 @@ object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 380699826
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s01, 380699826)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s01, "object/tangible/painting/shared_painting_twilek_f_lg_s01.iff")
 
 object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s02.apt",
@@ -3413,13 +3477,14 @@ object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3450252325
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s02, 3450252325)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s02, "object/tangible/painting/shared_painting_twilek_f_lg_s02.iff")
 
 object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s03.apt",
@@ -3465,13 +3530,14 @@ object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2225851304
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s03, 2225851304)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s03, "object/tangible/painting/shared_painting_twilek_f_lg_s03.iff")
 
 object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s04.apt",
@@ -3517,13 +3583,14 @@ object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2135482556
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s04, 2135482556)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s04, "object/tangible/painting/shared_painting_twilek_f_lg_s04.iff")
 
 object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s01.apt",
@@ -3569,13 +3636,14 @@ object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3456145212
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s01, 3456145212)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s01, "object/tangible/painting/shared_painting_twilek_f_sm_s01.iff")
 
 object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s02.apt",
@@ -3621,13 +3689,14 @@ object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 353845163
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s02, 353845163)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s02, "object/tangible/painting/shared_painting_twilek_f_sm_s02.iff")
 
 object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s03.apt",
@@ -3673,13 +3742,14 @@ object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1545230374
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s03, 1545230374)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s03, "object/tangible/painting/shared_painting_twilek_f_sm_s03.iff")
 
 object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s04.apt",
@@ -3725,13 +3795,14 @@ object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectT
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2818143026
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s04, 2818143026)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s04, "object/tangible/painting/shared_painting_twilek_f_sm_s04.iff")
 
 object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_twilek_m.apt",
@@ -3777,13 +3848,14 @@ object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3706635091
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_m, 3706635091)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_m, "object/tangible/painting/shared_painting_twilek_m.iff")
 
 object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
@@ -3829,13 +3901,14 @@ object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTem
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3566316574
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_vader_victory, 3566316574)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_vader_victory, "object/tangible/painting/shared_painting_vader_victory.iff")
 
 object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -3881,13 +3954,14 @@ object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTempl
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2895682928
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_valley_view, 2895682928)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_valley_view, "object/tangible/painting/shared_painting_valley_view.iff")
 
 object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
@@ -3933,13 +4007,14 @@ object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObject
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2421149115
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_victorious_reign, 2421149115)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_victorious_reign, "object/tangible/painting/shared_painting_victorious_reign.iff")
 
 object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
@@ -3985,13 +4060,14 @@ object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 4064843162
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_waterfall, 4064843162)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_waterfall, "object/tangible/painting/shared_painting_waterfall.iff")
 
 object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wookiee_f.apt",
@@ -4037,13 +4113,14 @@ object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3402224478
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_f, 3402224478)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_f, "object/tangible/painting/shared_painting_wookiee_f.iff")
 
 object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wookiee_m.apt",
@@ -4089,13 +4166,14 @@ object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplat
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1345813711
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_m, 1345813711)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_m, "object/tangible/painting/shared_painting_wookiee_m.iff")
 
 object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_zabrak_f.apt",
@@ -4141,13 +4219,14 @@ object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2622418438
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_f, 2622418438)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_f, "object/tangible/painting/shared_painting_zabrak_f.iff")
 
 object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_zabrak_m1.apt",
@@ -4193,10 +4272,11 @@ object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 112214423
 }
 
-ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_m, 112214423)
+ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_m, "object/tangible/painting/shared_painting_zabrak_m.iff")

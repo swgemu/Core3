@@ -77,7 +77,9 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 4231471595
 }
 
-ObjectTemplates:addTemplate(object_token_shared_token, 4231471595)
+ObjectTemplates:addTemplate(object_token_shared_token, "object/token/shared_token.iff")

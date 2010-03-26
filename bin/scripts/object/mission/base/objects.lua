@@ -77,10 +77,12 @@ object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 3240843527
 }
 
-ObjectTemplates:addTemplate(object_mission_base_shared_base_mission, 3240843527)
+ObjectTemplates:addTemplate(object_mission_base_shared_base_mission, "object/mission/base/shared_base_mission.iff")
 
 object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -118,7 +120,9 @@ object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 	snapToTerrain = 0,
 	surfaceType = 0,
 
+	totalCellNumber = 0,
+
 	clientObjectCRC = 2210569821
 }
 
-ObjectTemplates:addTemplate(object_mission_base_shared_mission_default, 2210569821)
+ObjectTemplates:addTemplate(object_mission_base_shared_mission_default, "object/mission/base/shared_mission_default.iff")

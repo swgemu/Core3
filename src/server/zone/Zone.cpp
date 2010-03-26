@@ -10,6 +10,12 @@
 
 #include "server/zone/managers/structure/StructureManager.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
 /*
  *	ZoneStub
  */
@@ -108,16 +114,54 @@ float Zone::getHeight(float x, float y) {
 		return ((ZoneImplementation*) _impl)->getHeight(x, y);
 }
 
-int Zone::getZoneID() {
+void Zone::addSceneObject(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneImplementation*) _impl)->addSceneObject(object);
+}
+
+void Zone::dropSceneObject(unsigned long long objectID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addUnsignedLongParameter(objectID);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneImplementation*) _impl)->dropSceneObject(objectID);
+}
+
+int Zone::getZoneID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ZoneImplementation*) _impl)->getZoneID();
+}
+
+PlanetManager* Zone::getPlanetManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return (PlanetManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getPlanetManager();
 }
 
 ZoneServer* Zone::getZoneServer() {
@@ -125,11 +169,23 @@ ZoneServer* Zone::getZoneServer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 
 		return (ZoneServer*) method.executeWithObjectReturn();
 	} else
 		return ((ZoneImplementation*) _impl)->getZoneServer();
+}
+
+CreatureManager* Zone::getCreatureManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return (CreatureManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getCreatureManager();
 }
 
 unsigned long long Zone::getGalacticTime() {
@@ -137,7 +193,7 @@ unsigned long long Zone::getGalacticTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -149,7 +205,7 @@ unsigned int Zone::getWeatherID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -161,7 +217,7 @@ void Zone::setWeatherID(unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 18);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -174,7 +230,7 @@ void Zone::changeWeatherID(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -187,7 +243,7 @@ bool Zone::isWeatherEnabled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -199,7 +255,7 @@ void Zone::setWeatherEnabled(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 21);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -212,7 +268,7 @@ void Zone::setWeatherWindX(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 22);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -225,7 +281,7 @@ void Zone::setWeatherWindY(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 23);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -238,7 +294,7 @@ float Zone::getWeatherWindX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -250,7 +306,7 @@ float Zone::getWeatherWindY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -266,9 +322,11 @@ ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : Manag
 }
 
 ZoneImplementation::~ZoneImplementation() {
-	ZoneImplementation::finalize();
 }
 
+
+void ZoneImplementation::finalize() {
+}
 
 void ZoneImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneHelper::instance());
@@ -323,7 +381,9 @@ void ZoneImplementation::_serializationHelperMethod() {
 	_setClassName("Zone");
 
 	addSerializableVariable("zoneID", &zoneID);
-	addSerializableVariable("structureManager", &structureManager);
+	addSerializableVariable("objectMap", &objectMap);
+	addSerializableVariable("planetManager", &planetManager);
+	addSerializableVariable("creatureManager", &creatureManager);
 	addSerializableVariable("server", &server);
 	addSerializableVariable("galacticTime", &galacticTime);
 	addSerializableVariable("weatherWindX", &weatherWindX);
@@ -332,82 +392,97 @@ void ZoneImplementation::_serializationHelperMethod() {
 	addSerializableVariable("weatherEnabled", &weatherEnabled);
 }
 
-void ZoneImplementation::finalize() {
-	// server/zone/Zone.idl(67):  System.out.println("vazze");
-	System::out->println("vazze");
+void ZoneImplementation::addSceneObject(SceneObject* object) {
+	// server/zone/Zone.idl(116):  		objectMap.put(object.getObjectID(), object);
+	(&objectMap)->put(object->getObjectID(), object);
+}
+
+void ZoneImplementation::dropSceneObject(unsigned long long objectID) {
+	// server/zone/Zone.idl(120):  		objectMap.remove(objectID);
+	(&objectMap)->remove(objectID);
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(112):  return zoneID;
+	// server/zone/Zone.idl(125):  		return zoneID;
 	return zoneID;
 }
 
+PlanetManager* ZoneImplementation::getPlanetManager() {
+	// server/zone/Zone.idl(131):  		return planetManager;
+	return planetManager;
+}
+
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(118):  return server;
+	// server/zone/Zone.idl(135):  		return server;
 	return server;
 }
 
+CreatureManager* ZoneImplementation::getCreatureManager() {
+	// server/zone/Zone.idl(139):  		return creatureManager;
+	return creatureManager;
+}
+
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(122):  return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(143):  		return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(126):  return weatherID;
+	// server/zone/Zone.idl(147):  		return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(130):  weatherID = value;
+	// server/zone/Zone.idl(151):  		weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(134):  weatherID 
+	// server/zone/Zone.idl(155):  		weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(135):  weatherID = 0;
+	// server/zone/Zone.idl(156):  			weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(136):  return;
+	// server/zone/Zone.idl(157):  			return;
 	return;
 }
-	// server/zone/Zone.idl(139):  += value;
+	// server/zone/Zone.idl(160):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(141):  }
+	// server/zone/Zone.idl(162):  	}
 	if (weatherID > 4){
-	// server/zone/Zone.idl(142):  weatherID = 4;
+	// server/zone/Zone.idl(163):  			weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(143):  return;
+	// server/zone/Zone.idl(164):  			return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(148):  return weatherEnabled;
+	// server/zone/Zone.idl(169):  		return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(152):  weatherEnabled = value;
+	// server/zone/Zone.idl(173):  		weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(156):  weatherWindX = value;
+	// server/zone/Zone.idl(177):  		weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(160):  weatherWindY = value;
+	// server/zone/Zone.idl(181):  		weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(164):  return weatherWindX;
+	// server/zone/Zone.idl(185):  		return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(168):  return weatherWindY;
+	// server/zone/Zone.idl(189):  		return weatherWindY;
 	return weatherWindY;
 }
 
@@ -423,54 +498,63 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		finalize();
-		break;
-	case 7:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case 7:
 		startManagers();
 		break;
-	case 9:
+	case 8:
 		stopManagers();
 		break;
-	case 10:
+	case 9:
 		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
+	case 10:
+		addSceneObject((SceneObject*) inv->getObjectParameter());
+		break;
 	case 11:
-		resp->insertSignedInt(getZoneID());
+		dropSceneObject(inv->getUnsignedLongParameter());
 		break;
 	case 12:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 13:
-		resp->insertLong(getGalacticTime());
+		resp->insertLong(getPlanetManager()->_getObjectID());
 		break;
 	case 14:
-		resp->insertInt(getWeatherID());
+		resp->insertLong(getZoneServer()->_getObjectID());
 		break;
 	case 15:
-		setWeatherID(inv->getUnsignedIntParameter());
+		resp->insertLong(getCreatureManager()->_getObjectID());
 		break;
 	case 16:
-		changeWeatherID(inv->getSignedIntParameter());
+		resp->insertLong(getGalacticTime());
 		break;
 	case 17:
-		resp->insertBoolean(isWeatherEnabled());
+		resp->insertInt(getWeatherID());
 		break;
 	case 18:
-		setWeatherEnabled(inv->getBooleanParameter());
+		setWeatherID(inv->getUnsignedIntParameter());
 		break;
 	case 19:
-		setWeatherWindX(inv->getFloatParameter());
+		changeWeatherID(inv->getSignedIntParameter());
 		break;
 	case 20:
-		setWeatherWindY(inv->getFloatParameter());
+		resp->insertBoolean(isWeatherEnabled());
 		break;
 	case 21:
-		resp->insertFloat(getWeatherWindX());
+		setWeatherEnabled(inv->getBooleanParameter());
 		break;
 	case 22:
+		setWeatherWindX(inv->getFloatParameter());
+		break;
+	case 23:
+		setWeatherWindY(inv->getFloatParameter());
+		break;
+	case 24:
+		resp->insertFloat(getWeatherWindX());
+		break;
+	case 25:
 		resp->insertFloat(getWeatherWindY());
 		break;
 	default:
@@ -478,10 +562,6 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void ZoneAdapter::finalize() {
-	((ZoneImplementation*) impl)->finalize();
 }
 
 void ZoneAdapter::initializeTransientMembers() {
@@ -500,12 +580,28 @@ float ZoneAdapter::getHeight(float x, float y) {
 	return ((ZoneImplementation*) impl)->getHeight(x, y);
 }
 
+void ZoneAdapter::addSceneObject(SceneObject* object) {
+	((ZoneImplementation*) impl)->addSceneObject(object);
+}
+
+void ZoneAdapter::dropSceneObject(unsigned long long objectID) {
+	((ZoneImplementation*) impl)->dropSceneObject(objectID);
+}
+
 int ZoneAdapter::getZoneID() {
 	return ((ZoneImplementation*) impl)->getZoneID();
 }
 
+PlanetManager* ZoneAdapter::getPlanetManager() {
+	return ((ZoneImplementation*) impl)->getPlanetManager();
+}
+
 ZoneServer* ZoneAdapter::getZoneServer() {
 	return ((ZoneImplementation*) impl)->getZoneServer();
+}
+
+CreatureManager* ZoneAdapter::getCreatureManager() {
+	return ((ZoneImplementation*) impl)->getCreatureManager();
 }
 
 unsigned long long ZoneAdapter::getGalacticTime() {

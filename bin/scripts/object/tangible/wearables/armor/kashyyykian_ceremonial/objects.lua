@@ -85,13 +85,14 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 107997252
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, 107997252)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_l.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_bracer_r_wke_f.sat",
@@ -137,13 +138,14 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1991945687
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, 1991945687)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_r.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_chest_plate_wke_f.sat",
@@ -189,13 +191,14 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2342857990
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, 2342857990)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_chest_plate.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_leggings_wke_f.sat",
@@ -241,10 +244,11 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 2303407451
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, 2303407451)
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff")

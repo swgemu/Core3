@@ -5,23 +5,273 @@
  *      Author: TheAnswer
  */
 
-#include "StructureManager.h"
+#include "server/db/ServerDatabase.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/Zone.h"
-#include "server/db/ServerDatabase.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/db/ObjectDatabase.h"
+#include "server/zone/objects/region/Region.h"
+
+#include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
+
+#include "StructureManager.h"
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
-	ManagedObjectImplementation(), Logger("StructureManager") {
+	ManagedObjectImplementation() {
 	StructureManagerImplementation::zone = zone;
 	StructureManagerImplementation::server = processor;
 
+	String managerName = "StructureManager ";
+	setLoggingName(managerName + Planet::getPlanetName(zone->getZoneID()));
+
 	setGlobalLogging(true);
 	setLogging(false);
+}
+
+void StructureManagerImplementation::loadStaticMissionTerminals() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	uint32 bankCRC = String("object/tangible/terminal/shared_terminal_mission.iff").hashCode();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/tangible/terminal/shared_terminal_mission.iff';";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		MissionTerminal* missionTerminal = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("mission terminal unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			missionTerminal = (MissionTerminal*) zoneServer->createStaticObject(bankCRC, objectID);
+			missionTerminal->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(missionTerminal, -1);
+
+			missionTerminal->initializePosition(positionX, positionZ, positionY);
+			missionTerminal->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				missionTerminal->updateToDatabase();
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+}
+
+void StructureManagerImplementation::loadStaticBazaars() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	uint32 bazaarCRC = String("object/tangible/terminal/shared_terminal_bazaar.iff").hashCode();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/tangible/terminal/shared_terminal_bazaar.iff';";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+		SceneObject* cell;
+		BazaarTerminal* bazaar;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			Region* region;
+			//StringId region;
+
+			if (parentId == 0) {
+				if ((region = planetManager->getRegion(positionX, positionY)) == NULL) {
+					StringBuffer msg;
+					msg << "could not find region for bazaar " << dec << objectID;
+					msg << " positionX " << positionX << " positionY " << positionY;
+					error(msg.toString());
+				}
+
+				cell = NULL;
+			} else {
+				cell = zoneServer->getObject(parentId);
+				SceneObject* buildingObject = cell->getParent();
+
+				if ((region = planetManager->getRegion(buildingObject->getPositionX(), buildingObject->getPositionY())) == NULL) {
+					StringBuffer msg;
+					msg << "could not find region for bazaar " << dec << objectID << " parentid " << dec << parentId;
+					msg << " positionX " << buildingObject->getPositionX() << " positionY " << buildingObject->getPositionY();
+					error(msg.toString());
+				}
+			}
+
+			String regionCity = region->getName()->getStringID();
+
+			bazaar = (BazaarTerminal*) zoneServer->createStaticObject(bazaarCRC, objectID);
+			bazaar->setBazaarRegion(regionCity);
+			bazaar->setStaticObject(true);
+
+			region->addBazaar(bazaar);
+
+			if (cell != NULL)
+				cell->addObject(bazaar, -1);
+
+			bazaar->initializePosition(positionX, positionZ, positionY);
+			bazaar->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				bazaar->updateToDatabase();
+		}
+
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBazaars()\n");
+	}
+
+	delete result;
+}
+
+void StructureManagerImplementation::loadStaticBanks() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	uint32 bankCRC = String("object/tangible/terminal/shared_terminal_bank.iff").hashCode();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/tangible/terminal/shared_terminal_bank.iff';";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		BankTerminal* bank = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("bank unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			bank = (BankTerminal*) zoneServer->createStaticObject(bankCRC, objectID);
+			bank->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(bank, -1);
+
+			bank->initializePosition(positionX, positionZ, positionY);
+			bank->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				bank->updateToDatabase();
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+
+	//unlock();
 }
 
 void StructureManagerImplementation::loadStaticBuildings() {
@@ -86,7 +336,7 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 
 			info("loading cell (" + String::valueOf(oid) + ") from mysql db");
 
-			cell = (CellObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
+			cell = (CellObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
 			if (cell == NULL) {
 				error("cannot create static cell " + String::valueOf(oid));
@@ -113,7 +363,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 	ZoneServer * zoneServer = zone->getZoneServer();
 
 	try {
-		ManagedReference<SceneObject *> obj = zoneServer->getObject(oid);
+		ManagedWeakReference<SceneObject *> obj = zoneServer->getObject(oid);
 
 		if (obj != NULL && obj->isBuildingObject()) {
 			info("loading building (" + String::valueOf(oid) + ") from static object db");
@@ -141,7 +391,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 				info("trying to create " + file);
 
-				buio = (BuildingObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
+				buio = (BuildingObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
 				if (buio == NULL) {
 					return NULL;

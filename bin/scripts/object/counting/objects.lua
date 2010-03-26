@@ -85,10 +85,11 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 3842659589
 }
 
-ObjectTemplates:addTemplate(object_counting_shared_default_battery, 3842659589)
+ObjectTemplates:addTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")

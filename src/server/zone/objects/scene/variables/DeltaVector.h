@@ -18,6 +18,7 @@ namespace scene {
 namespace variables {
 
 template <class E> class DeltaVector : public Serializable {
+protected:
 	Vector<E> vector;
 	uint32 updateCounter;
 
@@ -39,34 +40,35 @@ public:
 		addSerializableVariable("updateCounter", &updateCounter);
 	}
 
-	E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
+	virtual E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
 		E object = vector.set(idx, newValue);
 
 		if (message != NULL) {
 			if (updates != 0)
-				message->startList(1, updateCounter += updates);
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(2);
 			message->insertShort(idx);
 
-			E oldElement = newValue;
-			TypeInfo<E>::toBinaryStream(&oldElement, message);
+			E& nonconst = const_cast<E&>(newValue);
+			TypeInfo<E>::toBinaryStream(&nonconst, message);
 		}
 
 		return object;
 	}
 
-	bool add(const E& element, DeltaMessage* message = NULL) {
+	virtual bool add(const E& element, DeltaMessage* message = NULL, int updates = 1) {
 		bool val = vector.add(element);
 
 		if (message != NULL) {
-			message->startList(1, ++updateCounter);
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(1);
 			message->insertShort(vector.size() - 1);
 
-			E oldElement = element;
-			TypeInfo<E>::toBinaryStream(&oldElement, message);
+			E& nonconst = const_cast<E&>(element);
+			TypeInfo<E>::toBinaryStream(&nonconst, message);
 		}
 
 		return val;
@@ -76,11 +78,12 @@ public:
 		return vector.get(index);
 	}
 
-	E remove(int index, DeltaMessage* message = NULL) {
+	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {
 		E object = vector.remove(index);
 
 		if (message != NULL) {
-			message->startList(1, ++updateCounter);
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(0);
 			message->insertShort((uint16)index);
@@ -98,12 +101,43 @@ public:
 		}
 	}
 
+	virtual void insertToMessage(BaseMessage* msg) {
+		msg->insertInt(size());
+		msg->insertInt(updateCounter);
+
+		for (int i = 0; i < size(); ++i) {
+			E& value = get(i);
+			TypeInfo<E>::toBinaryStream(&value, msg);
+		}
+	}
+
+	bool contains(const E& element) {
+		return find(element) != -1;
+	}
+
+	int find(const E& element) {
+		for (int i = 0; i < size(); ++i) {
+			if (element == get(i))
+				return i;
+		}
+
+		return -1;
+	}
+
 	inline uint32 getUpdateCounter() {
 		return updateCounter;
 	}
 
 	inline uint32 getNewUpdateCounter(int increment) {
 		return updateCounter += increment;
+	}
+
+	inline void setUpdateCounter(int count) {
+		updateCounter = count;
+	}
+
+	inline void resetUpdateCounter() {
+		updateCounter = 0;
 	}
 
 	inline int size() {
