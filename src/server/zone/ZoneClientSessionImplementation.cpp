@@ -42,37 +42,43 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "ZoneClientSession.h"
+
 #include "ZoneServer.h"
 
 #include "Zone.h"
 
-#include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
+#include "objects/player/PlayerCreature.h"
 
-#include "objects/player/Player.h"
-
-ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
-		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {
-	init(serv);
-
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
+		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
 	player = NULL;
 	sessionKey = 0;
+	accountID = 0;
 
 	disconnecting = false;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "ZoneClientSession " << addr->getFullIPAddress();
 
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 	setLogging(false);
-}
-
-ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
-	player = NULL;
 }
 
 void ZoneClientSessionImplementation::disconnect() {
 	BaseClient::disconnect();
+}
+
+void ZoneClientSessionImplementation::lock(bool doLock) {
+	BaseClient::lock(doLock);
+}
+
+void ZoneClientSessionImplementation::unlock(bool doLock) {
+	BaseClient::unlock(doLock);
+}
+
+void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
+	BaseClientProxy::sendPacket(msg);
 }
 
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
@@ -87,26 +93,42 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 	if (hasError || !clientDisconnected) {
 		if (player != NULL) {
-			unlock();
+			unlock(true);
 
-			player->disconnect(false, true);
+			if (player->getClient() == _this)
+				((PlayerCreature*)player.get())->disconnect(false, true);
 
-			lock();
+			lock(true);
 		}
 
-		closeConnection(false);
+		closeConnection(true, false);
 	} else if (player != NULL) {
-		unlock();
+		unlock(true);
 
-		player->logout();
+		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this)
+			((PlayerCreature*)player.get())->logout(true);
+		else {
+			try {
+				//player->wlock();
 
-		lock();
+				if (player->getClient() == _this)
+					((PlayerCreature*)player.get())->setLinkDead();
+
+				//player->unlock();
+			} catch (...) {
+				//player->unlock();
+			}
+
+			closeConnection(true, true);
+		}
+
+		lock(true);
 	}
 
 	unlock(doLock);
 }
 
-void ZoneClientSessionImplementation::closeConnection(bool doLock) {
+void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -115,12 +137,33 @@ void ZoneClientSessionImplementation::closeConnection(bool doLock) {
 		ZoneServer* server = NULL;
 
 		if (player != NULL) {
-		 	if (player->getZone() != NULL)
-				server = player->getZone()->getZoneServer();
+			ZoneServer* srv = NULL;
 
-			player->setClient(NULL);
+			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
-			player = NULL;
+			if (lockPlayer)
+				unlock(true);
+
+			try {
+				play->wlock(lockPlayer);
+
+				if (play->getZone() != NULL)
+					srv = play->getZone()->getZoneServer();
+
+				if (player->getClient() == _this)
+					play->setClient(NULL);
+
+				play->unlock(lockPlayer);
+			} catch (...) {
+				play->unlock(lockPlayer);
+			}
+
+			if (lockPlayer)
+				lock(true);
+
+			server = srv;
+
+			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
 		}
 
 		BaseClient::disconnect(false);
@@ -134,6 +177,14 @@ void ZoneClientSessionImplementation::closeConnection(bool doLock) {
 	} catch (...) {
 		unlock(doLock);
 	}
+}
+
+void ZoneClientSession::acquire() {
+	ManagedObject::acquire();
+}
+
+void ZoneClientSession::release() {
+	ManagedObject::release();
 }
 
 void ZoneClientSessionImplementation::acquire() {

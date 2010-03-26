@@ -40,3 +40,87 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+ --Brigade
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeCaptain.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeGeneral.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeGunner.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeInfiltrator.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeMarine.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeOfficer.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeScout.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeSergeant.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeTechnician.lua")
+ RunCreatureFile("objects/rori/npcs/brigade/brigadeTrooper.lua")
+
+ --Cobral
+ RunCreatureFile("objects/rori/npcs/cobral/cobralAssassin.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralBandit.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralBoss.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralHitman.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralOverlord.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralRunner.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralThief.lua")
+ RunCreatureFile("objects/rori/npcs/cobral/cobralThug.lua")
+
+ --Garyn
+ RunCreatureFile("objects/rori/npcs/garyn/garynDragoon.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynLieutenant.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynMarauder.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynMugger.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynPirate.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynProwler.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynRaider.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynThief.lua")
+ RunCreatureFile("objects/rori/npcs/garyn/garynVigo.lua")
+
+ --Gundark
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkCrook.lua")
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkDesperado.lua")
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkHooligan.lua")
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkRaider.lua")
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkRogue.lua")
+ RunCreatureFile("objects/rori/npcs/gundark/gundarkRuffian.lua")
+
+ --Kobola
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaAssassin.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaForeman.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaGuard.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaMiner.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaPitboss.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaSmuggler.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaThief.lua")
+ RunCreatureFile("objects/rori/npcs/kobola/kobolaUnderboss.lua")
+
+ --Misc
+ RunCreatureFile("objects/rori/npcs/misc/captainHassk.lua")
+ RunCreatureFile("objects/rori/npcs/misc/enragedMiner.lua")
+ RunCreatureFile("objects/rori/npcs/misc/lieutenantHebNee.lua")
+ RunCreatureFile("objects/rori/npcs/misc/lieutenantOri.lua")
+
+ --Narmle
+ RunCreatureFile("objects/rori/npcs/narmle/narmleCaptain.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleColonel.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleCommander.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleCommando.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleEnsign.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleGrenadier.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleGuard.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleLieutenant.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleMajor.lua")
+ RunCreatureFile("objects/rori/npcs/narmle/narmleRifleman.lua")
+
+ --Rori Gungan
+ RunCreatureFile("objects/rori/npcs/roriGungan/roriGunganBoss.lua")
+ RunCreatureFile("objects/rori/npcs/roriGungan/roriGunganCommoner.lua")
+ RunCreatureFile("objects/rori/npcs/roriGungan/roriGunganScout.lua")
+ RunCreatureFile("objects/rori/npcs/roriGungan/roriGunganWarchief.lua")
+ RunCreatureFile("objects/rori/npcs/roriGungan/roriGunganWarrior.lua")
+
+ --Spice Collective
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveCourier.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveEliteGuard.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveForeman.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveHeavyGuard.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveMiner.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveSentry.lua")
+ RunCreatureFile("objects/rori/npcs/spiceCollective/spiceCollectiveWorkChief.lua")

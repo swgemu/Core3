@@ -76,28 +76,6 @@ AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
 
 -----------------------------------------------------------------------
 
-HealEnhaceSkill = {
-	skillname = "berserk1",
-	effect = "clienteffect/combat_special_attacker_berserk.cef",
-	
-	duration = 15.0,
-	
-	speed = 1.0,
-
-	healthBonus = 0,
-	actionBonus = 0,
-	mindBonus = 0,
-
-	damageBonus = 10,
-	accuracyBonus = -10,
-
-	defenseBonus = 0,
-	speedBonus = 0,
-
-	StartFlyText = "go_berserk", 
-	FinishFlyText = "no_berserk",
-}
-
 --AddEnhanceSelfSkill(HealEnhaceSkill)
 
 -----------------------------------------------------------------------
@@ -155,11 +133,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 10,
@@ -186,11 +169,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 10,
@@ -217,11 +205,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 10,
@@ -248,11 +241,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 10,
@@ -279,11 +277,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -310,11 +313,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 1.25,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -341,11 +349,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -372,11 +385,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -403,12 +421,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -434,11 +457,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -476,11 +504,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -507,11 +540,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -538,11 +576,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -569,11 +612,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -611,11 +659,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.7,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 10,
@@ -642,11 +695,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -673,11 +731,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -704,11 +767,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -746,11 +814,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -777,11 +850,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -813,6 +891,11 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -844,6 +927,11 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -875,6 +963,11 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -906,6 +999,11 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -932,7 +1030,7 @@ CmbtEnhaceSkill = {
 
 	range = 15,
 
-	duration = 20.0,
+	duration = 120.0,
 	
 	speedRatio = 1.0,
 
@@ -958,30 +1056,7 @@ CmbtEnhaceSkill = {
 }
 
 AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
-
------------------------------------------------------------------------
-
-HealEnhaceSkill = {
-	skillname = "berserk2",
-	effect = "clienteffect/combat_special_attacker_berserk.cef",
-	
-	duration = 40.0,
-	
-	speed = 1.0,
-
-	damageBonus = 20,
-	accuracyBonus = -10,
-	
-	defenseBonus = 0,
-	speedBonus = 0,
-
-	StartFlyText = "go_berserk", 
-	FinishFlyText = "no_berserk",
-}
-
---AddEnhanceSelfSkill(HealEnhaceSkill)
-
------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 CmbtEnhaceSkill = {
 	skillname = "warcry2",
@@ -1016,3 +1091,26 @@ CmbtEnhaceSkill = {
 }
 
 AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
+
+Berserk = {
+	skillname = "berserk1",
+
+	duration = 20,
+	
+	damage = 25,
+
+	requiredWeaponType = MELEE
+}
+
+AddBerserkSelfSkill(Berserk)
+Berserk = {
+	skillname = "berserk2",
+
+	duration = 40,
+	
+	damage = 75,
+
+	requiredWeaponType = MELEE	
+}
+
+AddBerserkSelfSkill(Berserk)

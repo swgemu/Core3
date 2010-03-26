@@ -50,15 +50,30 @@ which carries forward this exception.
 class CellObjectMessage6 : public BaseLineMessage {
 public:
 	CellObjectMessage6(uint64 coId)
-			: BaseLineMessage(coId, 0x53434C54, 6, 0x05) {
+			: BaseLineMessage(coId, 0x53434C54, 6, 0x02) {
 
-		insertShort(1); //operand count
-		insertInt(66); // unk
+		//insertShort(1); //operand count
+		//insertInt(0x42); // some const value it appears
 		//insertInt(0x4A); //*shrug*
+		insertInt(0x95);
+		insertInt(0);
+		insertInt(0);
 
 		setSize();
 
-		/* From Current Live:
+		/*
+		 *
+		 *
+Pre-CU:
+05 00
+0C 5F A7 68
+26 88 AB 67 00 00 00 00
+54 4C 43 53
+06
+01 00
+42 00 00 00
+
+		 * From Current Live:
 // CellObjectMessage6
 0000:    00 09 04 C8
 05 00
@@ -73,9 +88,9 @@ public:
 00 00 00 00
 00 00 00 00
 */
-		//stringstream msg;
+		//StringBuffer msg;
 		//msg << hex << "CellObjectMessage6 [Object = " << coId << "]\n";
-		//cout << msg.str();
+		//System::out << msg.toString();
 	}
 };
 #endif /*CELLOBJECTMESSAGE6_H_*/

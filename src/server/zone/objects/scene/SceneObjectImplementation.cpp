@@ -42,126 +42,95 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../../ServerCore.h"
+#include "SceneObject.h"
 
-#include "../../ZoneClientSession.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
-#include "../../ZoneProcessServerImplementation.h"
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
+#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
+#include "server/zone/packets/scene/UpdateContainmentMessage.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
-#include "../../Zone.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "../../packets.h"
+#include "variables/StringId.h"
+#include "events/ObjectUpdateToDatabaseTask.h"
 
-#include "SceneObjectImplementation.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
-#include "engine/core/ManagedObjectImplementation.h"
+void SceneObjectImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
 
-#include "../building/cell/CellObject.h"
+	notifiedObjects.setNoDuplicateInsertPlan();
+	slottedObjects.setNullValue(NULL);
+	slottedObjects.setNoDuplicateInsertPlan();
+	containerObjects.setNullValue(NULL);
+	containerObjects.setNoDuplicateInsertPlan();
 
-SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
-	objectID = 0;
-	objectType = 0;
+	server = ZoneProcessServerImplementation::instance;
 
-	server = NULL;
+	movementCounter = 0;
+
+	setGlobalLogging(true);
+	setLogging(false);
+
+	setLoggingName("SceneObject");
+}
+
+void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::parent = NULL;
+
+	slottedObjects.setNullValue(NULL);
+	objectName.setStringId(String(templateData->getStringField("objectName")));
+
+	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
+
+	containerType = templateData->getIntField("containerType");
+	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
+
+	gameObjectType = templateData->getIntField("gameObjectType");
+
+	clientObjectCRC = templateData->getIntField("clientObjectCRC");
+	serverObjectCRC = 0;
+
+	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
+
+	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
+		arrangementDescriptors.add(arrangements.getStringAt(i));
+	}
+
+	arrangements.pop();
+
+	LuaObject slots = templateData->getObjectField("slotDescriptors");
+
+	for (int i = 1; i <= slots.getTableSize(); ++i) {
+		slotDescriptors.add(slots.getStringAt(i));
+	}
+
+	slots.pop();
+
 	zone = NULL;
 
-	positionX = positionZ = positionY = 0;
-	directionX = directionZ = directionY = 0;
+	containmentType = 4;
 
-	parent = NULL;
+	initializePosition(0.f, 0.f, 0.f);
 
-	linkType = 0x04;
+	movementCounter = 0;
 
-	moving = false;
-
-	undeployEvent = NULL;
-	keepObject = false;
-}
-
-SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : SceneObjectServant(),QuadTreeEntry(), Logger() {
-	objectID = oid;
-	objectType = type;
-
-	stringstream name;
-	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
-	//setDeployingName(name.str());
-
-	server = NULL;
-	zone = NULL;
-
-	positionX = positionZ = positionY = 0;
-	directionY = 1;
-	directionZ = directionX = directionW = 0;
-
-	parent = NULL;
-
-	linkType = 0x04;
-
-	moving = false;
-
-	undeployEvent = NULL;
-	keepObject = false;
-}
-
-SceneObjectImplementation::~SceneObjectImplementation() {
-	parent = NULL;
-
-	undeploy();
-}
-
-bool SceneObject::destroy() {
-	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
-
-	if (destroying) {
-		//info("destroying object");
-
-		delete this;
-	}
-
-	return destroying;
-}
-
-bool SceneObjectImplementation::destroy() {
-	return _this->destroy();
-}
-
-void SceneObjectImplementation::redeploy() {
-	info("redeploying object");
-
-	_this->revoke();
-
-	removeUndeploymentEvent();
-}
-
-void SceneObjectImplementation::scheduleUndeploy() {
-	if (undeployEvent == NULL && !keepObject && server != NULL) {
-		info("scheduling uneploy");
-
-		undeployEvent = new UndeploySceneObjectEvent(_this);
-		server->addEvent(undeployEvent);
-	}
-}
-
-void SceneObjectImplementation::undeploy() {
-	if (isInQuadTree()) {
-		error("Deleting scene object that is in QT");
-		raise(SIGSEGV);
-	}
-
-	removeUndeploymentEvent();
-
-	/*if (zone != NULL)
-		//zone->deleteObject(_this);
-		error("object is still in Zone");*/
-}
-
-void SceneObjectImplementation::removeUndeploymentEvent() {
-	if (undeployEvent != NULL) {
-		server->removeEvent(undeployEvent);
-
-		delete undeployEvent;
-		undeployEvent = NULL;
-	}
+	staticObject = false;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -170,30 +139,144 @@ void SceneObjectImplementation::create(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::link(ZoneClientSession* client, SceneObject* container) {
-	if (client == NULL)
-		return;
-
-	parent = container;
-
-	BaseMessage* msg = new UpdateContainmentMessage(container, _this, linkType);
-	client->sendMessage(msg);
-}
-
-BaseMessage* SceneObjectImplementation::link(uint64 container, uint32 type) {
-	return new UpdateContainmentMessage(objectID, container, type);
-}
-
-BaseMessage* SceneObjectImplementation::link(SceneObject* container) {
-	return new UpdateContainmentMessage(container, _this, linkType);
-}
-
 void SceneObjectImplementation::close(ZoneClientSession* client) {
+	BaseMessage* msg = new SceneObjectCloseMessage(_this);
+
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containmentType) {
+	BaseMessage* msg = new UpdateContainmentMessage(_this, parent, containmentType);
+	client->sendMessage(msg);
+}
+
+BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containmentType) {
+	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
+}
+
+void SceneObjectImplementation::updateToDatabase() {
+	updateToDatabaseAllObjects(true);
+}
+
+void SceneObjectImplementation::updateToDatabaseWithoutChildren() {
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToDatabase(_this);
+}
+
+void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
+	if (!isPersistent())
+		return;
+
+	Time start;
+
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToDatabase(_this);
+
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->updateToDatabaseAllObjects(false);
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->updateToDatabaseAllObjects(false);
+	}
+
+	if (startTask)
+		queueUpdateToDatabaseTask();
+
+	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
+}
+
+void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	ZoneServer* server = getZoneServer();
+
+	server->destroyObjectFromDatabase(getObjectID());
+
+	_this->setPersistent(0);
+
+	if (!destroyContainedObjects)
+		return;
+
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->destroyObjectFromDatabase(true);
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->destroyObjectFromDatabase(true);
+	}
+}
+
+uint64 SceneObjectImplementation::getObjectID() {
+	return _this->_getObjectID();
+}
+
+void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isStaticObject())
+		return;
+
+	ManagedReference<ZoneClientSession*> client = player->getClient();
+
 	if (client == NULL)
 		return;
 
-	BaseMessage* msg = new SceneObjectCloseMessage(_this);
-	client->sendMessage(msg);
+	/*StringBuffer msg;
+	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
+	info(msg.toString());*/
+
+	create(client);
+
+	if (parent != NULL)
+		link(client.get(), containmentType);
+
+	sendBaselinesTo(player);
+
+	sendSlottedObjectsTo(player);
+	sendContainerObjectsTo(player);
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
+}
+
+void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
+	//sending all slotted objects by default
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		SceneObject* object = slottedObjects.get(i);
+
+		object->sendTo(player);
+	}
+}
+
+void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	//sending all objects by default
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		SceneObject* containerObject = containerObjects.get(j);
+
+		containerObject->sendTo(player);
+	}
+}
+
+void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
+	if (staticObject)
+		return;
+
+	destroy(player->getClient());
+}
+
+void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
+	info("sending attribute list", true);
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	fillAttributeList(alm, object);
+
+	object->sendMessage(alm);
 }
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {
@@ -204,244 +287,428 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
-	if (!obj->isPlayer())
-		return;
+void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getGrandParent();
 
-	Player* player = (Player*) obj;
+		if (grandParent != NULL) {
+			grandParent->broadcastObject(object, sendSelf);
 
-	AttributeListMessage* alm = new AttributeListMessage(_this);
-	player->sendMessage(alm);
-}
-
-void SceneObjectImplementation::randomizePosition(float radius) {
-	Coordinate::randomizePosition(radius);
-
-	previousPositionZ = positionZ;
-
-	if (zone != NULL)
-		positionZ = zone->getHeight(positionX, positionY);
-	else
-		positionZ = 0;
-
-}
-
-void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	omr->finish();
-
-	player->sendMessage(omr);
-}
-
-void SceneObjectImplementation::lock(bool doLock) {
-	ManagedObjectImplementation::wlock(doLock);
-}
-
-void SceneObjectImplementation::lock(ManagedObject* obj) {
-	ManagedObjectImplementation::wlock(obj);
-}
-
-void SceneObjectImplementation::wlock(bool doLock) {
-	ManagedObjectImplementation::wlock(doLock);
-}
-
-void SceneObjectImplementation::wlock(ManagedObject* obj) {
-	ManagedObjectImplementation::wlock(obj);
-}
-
-void SceneObjectImplementation::unlock(bool doLock) {
-	ManagedObjectImplementation::unlock(doLock);
-}
-
-void SceneObjectImplementation::setLockName(const string& name) {
-	//ManagedObjectImplementation::setLockName(name);
-}
-
-void SceneObjectImplementation::insertToZone(Zone* zone) {
-	SceneObjectImplementation::zone = zone;
-	zoneID = zone->getZoneID();
-
-	try {
-		zone->lock();
-
-		zone->registerObject(_this);
-
-		if (parent != NULL && parent->isCell()) {
-			BuildingObject* building = (BuildingObject*)parent->getParent();
-
-			insertToBuilding(building);
-
-			// TODO - FIXME: building can be NULL
-			building->notifyInsertToZone(_this);
+			return;
 		} else {
-			zone->insert(this);
-			zone->inRange(this, 128);
+			return;
 		}
+	}
 
-		zone->unlock();
-	} catch (...) {
-		cout << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
+	Locker zoneLocker(zone);
 
-		zone->unlock();
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			object->sendTo((SceneObject*) scno->_getStub());
+		}
+	}
+
+}
+
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getGrandParent();
+
+		if (grandParent != NULL) {
+			grandParent->broadcastMessage(message, sendSelf);
+
+			return;
+		} else {
+			delete message;
+
+			return;
+		}
+	}
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			scno->sendMessage(message->clone());
+		}
+	}
+
+	delete message;
+}
+
+void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getGrandParent();
+
+		if (grandParent != NULL) {
+			grandParent->broadcastMessages(messages, sendSelf);
+
+			return;
+		} else {
+			while (!messages->isEmpty()) {
+				delete messages->remove(0);
+			}
+
+			return;
+		}
+	}
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			for (int j = 0; j < messages->size(); ++j) {
+				BasePacket* msg = messages->get(j);
+				scno->sendMessage(msg->clone());
+			}
+		}
+	}
+
+	while (!messages->isEmpty()) {
+		delete messages->remove(0);
 	}
 }
 
+void SceneObjectImplementation::sendMessage(BasePacket* msg) {
+	delete msg;
+}
+
+void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
+	if (!isInQuadTree() || !parent->isCellObject())
+		return;
+
+	if (building != parent->getParent()) {
+		error("removing from wrong building object");
+		return;
+	}
+
+    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true);
+
+    parent->removeObject(_this);
+
+    building->remove(this);
+    building->removeNotifiedObject(_this);
+}
+
+void SceneObjectImplementation::updateZone(bool lightUpdate) {
+	if (zone == NULL)
+		return;
+
+	Locker zoneLocker(zone);
+
+	if (parent != NULL && parent->isCellObject()) {
+		CellObject* cell = (CellObject*)parent.get();
+
+		removeFromBuilding((BuildingObject*)cell->getParent());
+
+		setParent(NULL);
+
+		zone->insert(this);
+	} else
+		zone->update(this);
+
+	zone->inRange(this, 128);
+
+	if (lightUpdate) {
+		LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
+		broadcastMessage(message, false);
+	} else {
+		UpdateTransformMessage* message = new UpdateTransformMessage(_this);
+		broadcastMessage(message, false);
+	}
+
+	zoneLocker.release();
+
+	onPositionUpdate();
+}
+
+void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
+	if (zone == NULL)
+		return;
+
+	bool insert = false;
+
+	Locker zoneLocker(zone);
+
+	if (newParent != parent) {
+		if (parent == NULL) {
+			zone->remove(this);
+			insert = true;
+		} else {
+			if (parent->isCellObject()) {
+				BuildingObject* building = (BuildingObject*) parent->getParent();
+				SceneObject* newObj = newParent->getParent();
+
+				BuildingObject* newBuilding = (BuildingObject*) newObj;
+
+				if (building != newBuilding) {
+					//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+
+					removeFromBuilding(building);
+
+					insert = true;
+				}
+
+				// remove from old cell
+				if (parent != NULL)
+					parent->removeObject(_this);
+			} else
+				insert = true;
+		}
+
+		//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+		// add to new cell
+		//parent = newParent;
+		newParent->addObject(_this, -1);
+
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
+	}
+
+	BuildingObject* building = (BuildingObject*) parent->getParent();
+
+	if (insert) {
+		info("insertToBuilding from updateZoneWithParent");
+		insertToBuilding(building);
+	} else {
+		building->update(this);
+		building->inRange(this, 128);
+	}
+
+	if (lightUpdate) {
+		LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
+		broadcastMessage(message, false);
+	} else {
+		UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
+		broadcastMessage(message, false);
+	}
+
+}
+
+void SceneObjectImplementation::insertToZone(Zone* newZone) {
+	Locker zoneLocker(newZone);
+
+	if (isInQuadTree() && newZone != zone) {
+		error("trying to insert to zone an object that is already in a different quadtree");
+		StackTrace::printStackTrace();
+	}
+
+	SceneObjectImplementation::zone = newZone;
+
+	zone->addSceneObject(_this);
+
+	initializePosition(positionX, positionZ, positionY);
+
+	sendToOwner(true);
+
+	if (isInQuadTree()) {
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			notifyInsert(getInRangeObject(i));
+		}
+	}
+
+	if (parent == NULL || !parent->isCellObject()) {
+		zone->insert(this);
+		zone->inRange(this, 128);
+	} else if (parent->isCellObject()) {
+		BuildingObject* building = (BuildingObject*) parent->getParent();
+		insertToBuilding(building);
+	}
+
+	movementCounter = 0;
+}
+
+void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
+	if (zone == NULL)
+		return;
+
+	removeFromZone();
+
+	ZoneServer* server = getZoneServer();
+	Zone* zone = server->getZone(newZoneID);
+
+	initializePosition(newPostionX, newPositionZ, newPositionY);
+
+	insertToZone(zone);
+}
+
 void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
-	if (isInQuadTree() || !parent->isCell())
+	if (isInQuadTree() || !parent->isCellObject())
 		return;
 
 	try {
-		//building->lock(doLock);
+		//info("SceneObjectImplementation::insertToBuilding");
 
-		info("inserting to building");
-
-		((CellObject*)parent.get())->addChild(_this);
+		//parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
 		building->inRange(this, 128);
 
-		//building->unlock(doLock);
+		building->notifyInsertToZone(_this);
 
-		linkType = 0xFFFFFFFF;
-		broadcastMessage(link(parent), 128, false);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
 
+		//info("sent cell link to everyone else");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
-
-		//building->unlock(doLock);
 	}
 }
 
-void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
-
-	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		zone->lock(doLock);
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
-			SceneObject* object = (SceneObject*) scno->_getStub();
-
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
-					player->sendMessage(msg->clone());
-				}
-			}
-		}
-
-		delete msg;
-
-		zone->unlock(doLock);
-
-	} catch (...) {
-		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
-
-		zone->unlock(doLock);
-	}
-
-	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-}
-
-void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
-
-	try {
-		//cout << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		zone->lock(doLock);
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
-			SceneObject* object = (SceneObject*) scno->_getStub();
-
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
-					player->sendMessage((StandaloneBaseMessage*)msg->clone());
-				}
-			}
-		}
-
-		delete msg;
-
-		zone->unlock(doLock);
-
-	} catch (...) {
-		error("exception SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)");
-
-		zone->unlock(doLock);
-	}
-
-	//cout << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
-}
-
-void SceneObjectImplementation::removeFromZone(bool doLock) {
-	try {
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
-		if (zone == NULL || !isInQuadTree())
-			return;
-
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
-		//deagro();
-
-		zone->lock(doLock);
-
-		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent.get();
-			BuildingObject* building = (BuildingObject*)parent->getParent();
-
-			removeFromBuilding(building);
-		} else
-			zone->remove(this);
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->deleteObject(objectID);
-
-		zone->unlock(doLock);
-	} catch (...) {
-		cout << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
-
-		zone->unlock(doLock);
-	}
-}
-
-void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
-	if (building == NULL || !isInQuadTree() || !parent->isCell())
+void SceneObjectImplementation::removeFromZone() {
+	if (zone == NULL)
 		return;
 
-	try {
-		//building->lock(doLock);
+	info("removing from zone");
 
-		info("removing from building");
+	Locker zoneLocker(zone);
 
-		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+	ManagedReference<SceneObject*> par = parent.get();
 
-		((CellObject*)parent.get())->removeChild(_this);
+	if (parent != NULL && parent->isCellObject()) {
+		BuildingObject* building = (BuildingObject*)parent->getParent();
 
-		building->remove(this);
+		par = parent;
 
-		//building->unlock(doLock);
-	} catch (...) {
-		error("exception SceneObjectImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
+		removeFromBuilding(building);
+	} else
+		zone->remove(this);
 
-		//building->unlock(doLock);
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		QuadTreeEntry* obj = getInRangeObject(i);
+
+		if (obj != this)
+			obj->removeInRangeObject(this);
 	}
+
+	removeInRangeObjects();
+
+	zone->dropSceneObject(getObjectID());
+
+	zone = NULL;
+
+	info("removed from zone");
+}
+
+bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (slottedObjects.contains(childArrangement))
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			slottedObjects.put(object->getArrangementDescriptor(i), object);
+		}
+	} else if (containerType == 2 || containerType == 3) {
+		if (containerObjects.size() >= containerVolumeLimit)
+			return false;
+
+		if (containerObjects.contains(object->getObjectID()))
+			return false;
+
+		containerObjects.put(object->getObjectID(), object);
+	} else {
+		error("unkown container type");
+		return false;
+	}
+
+	object->setParent(_this);
+	object->setContainmentType(containmentType);
+
+	if (notifyClient)
+		broadcastMessage(object->link(getObjectID(), containmentType), true);
+
+	return true;
+}
+
+bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (slottedObjects.get(childArrangement) != object)
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i)
+			slottedObjects.drop(object->getArrangementDescriptor(i));
+	} else if (containerType == 2 || containerType == 3) {
+		if (!containerObjects.contains(object->getObjectID()))
+			return false;
+
+		containerObjects.drop(object->getObjectID());
+	} else {
+		error("unkown container type");
+		return false;
+	}
+
+	object->setParent(NULL);
+
+	/*if (notifyClient)
+		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
+
+	return true;
+}
+
+void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
+	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
+	player->sendMessage(cont);
+}
+
+void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
+	objects = slottedObjects;
+}
+
+SceneObject* SceneObjectImplementation::getGrandParent() {
+	if (parent == NULL)
+		return NULL;
+
+	SceneObject* grandParent = parent;
+
+	while (grandParent->getParent() != NULL)
+		grandParent = grandParent->getParent();
+
+	return grandParent;
+}
+
+bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
+	if (parent == NULL)
+		return false;
+
+	if (parent == object)
+		return true;
+
+	SceneObject* grandParent = parent;
+
+	while (grandParent->getParent() != NULL) {
+		grandParent = grandParent->getParent();
+
+		if (grandParent == object)
+			return true;
+	}
+
+	return false;
 }

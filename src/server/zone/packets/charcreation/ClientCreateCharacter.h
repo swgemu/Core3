@@ -47,98 +47,27 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/Player.h"
-#include "../../objects/player/Races.h"
-
 class ClientCreateCharacter : public BaseMessage {
 public:
-	ClientCreateCharacter(const unicode& name) {
+	ClientCreateCharacter(const UnicodeString& name) {
 		insertShort(12);
 		insertInt(0xB97F3074);
 
-		insertAscii("");
-		insertUnicode(name);
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertByte(0);
-		insertInt(1);
-		insertInt(0);
-		insertByte(0);
+		insertAscii(""); // customization
+		insertUnicode(name); // name
+
+		insertAscii("object/creature/player/human_male.iff"); // racefile
+		insertAscii(""); // location
+		insertAscii(""); // hairobj
+		insertAscii(""); // haircust
+		insertAscii(""); // profession
+		insertByte(0); // unknown byte
+		insertFloat(1); // height
+		insertInt(0); // bio
+		insertByte(0); // char
 	}
-
-	static void parse(Packet* pack, Player* player) {
-		string customization;
-		pack->parseAscii(customization);
-
-		player->setCharacterAppearance(customization);
-
-		unicode characterName;
-		pack->parseUnicode(characterName); //get unicode name
-		player->setCharacterName(characterName);
-
-		int idx = characterName.indexOf(' ');
-		if (idx != -1) {
-			player->setFirstName(characterName.substring(0, idx).c_str());
-			player->setLastName(characterName.substring(idx + 1, characterName.size()).c_str());
-		}
-		else {
-			player->setFirstName(characterName.c_str());
-			player->setLastName("");
-		}
-
-
-		string racefile;
-		pack->parseAscii(racefile);
-		player->setRaceFileName(racefile);
-
-		int raceid = Races::getRaceID(racefile);
-		player->setRaceID(raceid);
-		player->setRaceName(Races::getRace(raceid));
-		player->setSpeciesName(Races::getSpecies(raceid));
-		player->setGender(Races::getGender(raceid));
-
-		player->makeCharacterMask();
-
-		string location;
-		pack->parseAscii(location);
-		player->setStartingLocation(location);
-
-		string hairobj;
-		pack->parseAscii(hairobj);
-		if (!hairobj.empty()) {
-			int idx = hairobj.find("hair_", 0);
-			if (idx != -1) {
-				hairobj.replace(idx, 5, "shared_hair_");
-				player->setHairObject(hairobj);
-			}
-		}
-
-		string haircust;
-		pack->parseAscii(haircust); //grab the hair cust data
-		player->setHairAppearance(haircust);
-
-		string profession;
-		pack->parseAscii(profession);
-		player->setStartingProfession(profession);
-
-		pack->shiftOffset(1); //move past some unknown byte
-
-		float height = pack->parseFloat();
-		if (height < 0.7 || height > 1.5)
-			height = 1;
-
-		player->setHeight(height);
-
-		unicode bio;
-		pack->parseUnicode(bio); //get the biography.
-		player->setBiography(bio);
-
-		uint8 tutflag = pack->parseByte(); //tutorial bool.
-	}
-
 };
+
+
 
 #endif /*CLIENTCREATECHARACTER_H_*/

@@ -47,8 +47,9 @@ RunSkillsFile("playerSkills/defaultSkill.lua")
 RunSkillsFile("playerSkills/passiveSkills.lua")
 
 --Combat
+RunSkillsFile("playerSkills/combat/combatMedic.lua")
 RunSkillsFile("playerSkills/combat/brawler.lua")
-RunSkillsFile("playerSkills/combat/bountyhunter.lua")
+RunSkillsFile("playerSkills/combat/bountyHunter.lua")
 RunSkillsFile("playerSkills/combat/carbineer.lua")
 RunSkillsFile("playerSkills/combat/commando.lua")
 RunSkillsFile("playerSkills/combat/fencer.lua")
@@ -58,7 +59,14 @@ RunSkillsFile("playerSkills/combat/pistoleer.lua")
 RunSkillsFile("playerSkills/combat/rifleman.lua")
 RunSkillsFile("playerSkills/combat/swordsman.lua")
 RunSkillsFile("playerSkills/combat/smuggler.lua")
-RunSkillsFile("playerSkills/combat/teraskasiartist.lua")
+RunSkillsFile("playerSkills/combat/terasKasiArtist.lua")
+RunSkillsFile("playerSkills/combat/squadLeader.lua")
+RunSkillsFile("playerSkills/combat/jedi/lightsaber.lua")
+RunSkillsFile("playerSkills/combat/jedi/powers.lua")
+--RunSkillsFile("playerSkills/combat/jedi/defense.lua")
+--RunSkillsFile("playerSkills/combat/jedi/enhancement.lua")
+RunSkillsFile("playerSkills/combat/jedi/healing.lua")
+
 
 --Non Combat
 RunSkillsFile("playerSkills/nonCombat/doctor.lua")
@@ -66,6 +74,8 @@ RunSkillsFile("playerSkills/nonCombat/dancer.lua")
 RunSkillsFile("playerSkills/nonCombat/entertainer.lua")
 RunSkillsFile("playerSkills/nonCombat/medic.lua")
 RunSkillsFile("playerSkills/nonCombat/musician.lua")
+RunSkillsFile("playerSkills/nonCombat/scout.lua")
+RunSkillsFile("playerSkills/nonCombat/ranger.lua")
 
 -- Jedi
 --RunSkillsFile("playerSkills/combat/jedi/jedi.lua")

@@ -41,104 +41,104 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 pekoPeko = Creature:new {
-      objectName = "pekoPeko",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "self",
-      gender = "",
+	objectName = "pekoPeko",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	gender = "",
 
-      name = "a Peko Peko",
-      objectCRC = 2319882660, 
-      socialGroup = "self",
-      named = FALSE, 
+	speciesName = "peko_peko",
+	
+	stfName = "mob/creature_names",
+	objectCRC = 2319882660, 
+	socialGroup = "self",
+	level = 14,
 
-      level = 14,
-      xp = 609,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	healthMax = 2400,
+	healthMin = 2000,
+	strength = 500,
+	constitution = 500,
 
-      healthMax = 2400,
-      healthMin = 2000,
-      strength = 0,
-      constitution = 0,
+	actionMax = 2400,
+	actionMin = 2000,
+	quickness = 500,
+	stamina = 500,
 
-      actionMax = 2400,
-      actionMin = 2000,
-      quickness = 0,
-      stamina = 0,
+	mindMax = 2400,
+	mindMin = 2000,
+	focus = 500,
+	willpower = 500,
 
-      mindMax = 2400,
-      mindMin = 2000,
-      focus = 0,
-      willpower = 0,
+	height = 1, -- Size of creature
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 25,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 25,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	accuracy = 300,
+	healer = 0,
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 0,
+	ferocity = 0,
+	aggressive = 0,
+	invincible = 0, 
+	
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      accuracy = 200,
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      healer = 0,
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 0,
+      	weaponMinDamage = 150,
+      	weaponMaxDamage = 160,
+      	weaponAttackSpeed = 2,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0,
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	lootGroup = "0", -- Group it belongs to for loot
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	tame = 0.25,  -- Likely hood to be tamed
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	milk = 0,
 
-      lootGroup = "0", -- Group it belongs to for loot
+	boneType = "bone_avian_naboo",
+	boneMax = 30,
 
-      tame = 0.25,  -- Likely hood to be tamed
+	hideType = "hide_wooly_naboo",
+	hideMax = 40,
 
-      milk = 0,
+	meatType = "meat_avian_naboo",
+	meatMax = 105,
 
-      boneType = "bone_avian_naboo",
-      boneMax = 30,
+	skills = { "pekoPekoAttack1", "pekoPekoAttack2", "pekoPekoAttack3" },
+	respawnTimer = 60,
 
-      hideType = "hide_wooly_naboo",
-      hideMax = 40,
-
-      meatType = "meat_avian_naboo",
-      meatMax = 105,
-
-      skills = { " Intimidation attack", "", "" }
-       respawnTimer = 60,
-
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(pekoPeko, 2319882660) --  Add to Global Table

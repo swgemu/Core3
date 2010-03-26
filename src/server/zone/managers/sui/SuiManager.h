@@ -45,55 +45,102 @@ which carries forward this exception.
 #ifndef SUIMANAGER_H_
 #define SUIMANAGER_H_
 
-#include "SuiManager.h"
 #include "engine/engine.h"
 
-class ZoneProcessServerImplementation;
-class Player;
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-class SuiManager : public Logger {
-	ZoneProcessServerImplementation* server;
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace player {
+    class PlayerCreature;
+   }
+  }
+ }
+}
 
-public:
-	SuiManager(ZoneProcessServerImplementation* serv);
+using namespace server::zone::objects::player;
 
-	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2);
+namespace server {
+ namespace zone {
+  namespace managers {
+	  namespace sui {
 
-	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song, bool change = false);
-	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance, bool change = false);
+	  class SuiManager : public Logger {
+	  	ZoneProcessServerImplementation* server;
 
-	void handleSurveyToolRange(uint32 boxID, Player* player, uint32 cancel, int range);
+	  public:
+	  	SuiManager(ZoneProcessServerImplementation* serv);
 
-	void handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex);
-	void handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex);
+	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2);
 
-	void handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex);
-	void handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex);
+	  	void handleTuneCrystal(uint32 boxID, PlayerCreature* player, uint32 cancel);
+	  	void handleChangeColorCrystal(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 
-	void handleTicketPurchaseMessageBox(uint32 boxID, Player* player);
-	void handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex);
+	  	void handleMessageoftheDay(uint32 boxID, PlayerCreature* player, uint32 cancel);
+	  	void handleSetMOTD(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& returnString);
 
-	void handleCodeForRedeed(uint32 boxID, Player* player, uint32 cancel, const string& extra);
-	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
-	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
-	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const string& name); 
-	void handleAddMaintenance(uint32 boxID, Player* player,uint32 cancel, const string& name);
-	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const string& name);
+	  	void handleStartMusic(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& song, bool change = false);
+	  	void handleStartDancing(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& dance, bool change = false);
 
-	
-	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
+	  	void handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range);
 
-	void handleBankTransfer(uint32 boxID, Player* player, int cash, int bank);
+	  	void handleRepairWeapon(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
+	  	void handleRepairArmor(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 
-	void handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
-	void handleWoundTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
-	void handleStateTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
+	  	void handleTicketPurchaseMessageBox(uint32 boxID, PlayerCreature* player);
+	  	void handleTicketCollectorRespones(uint32 boxID, PlayerCreature* player, uint32 cancel, int ticketIndex);
 
-	void handleDiagnose(uint32 boxID, Player* player);
+	  	void handleCodeForRedeed(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& extra);
+	  	void handleRedeedStructure(uint32 boxID, PlayerCreature* player, uint32 cancel, const int extra);
+	  	void handleRefreshStatusListBox(uint32 boxID, PlayerCreature* player, uint32 cancel, const int extra);
+	  	void handleSetObjectName(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& name);
+	  	void handleManageMaintenance(uint32 boxID, PlayerCreature* player,uint32 cancel, const int amount);
+	  	void handleAddEnergy(uint32 boxID, PlayerCreature* player,uint32 cancel, const int amount);
 
-	void handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int value);
-	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);
+	  	void handleColorPicker(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, int var);
 
-};
+	  	void handleBankTransfer(uint32 boxID, PlayerCreature* player, int cash, int bank);
+
+	  	void handleBlueFrogItemRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
+	  	void handleWoundTerminalRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
+	  	void handleStateTerminalRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
+
+	  	void handleDiagnose(uint32 boxID, PlayerCreature* player);
+	  	void handleFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+
+	  	void handleCloneConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+
+	  	void handleDenyTrainingList(uint32 boxID, PlayerCreature* player);
+
+	  	void handleTeachPlayer(uint32 boxID, PlayerCreature* player, int value, uint32 cancel);
+	  	void handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 cancel);
+
+	  	void handleInsuranceMenu(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleInsureAllConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel);
+
+	  	void handleBankTipConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel);
+	  	void handleSlicingMenu(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleRangerWhatToTrackBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+
+	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+
+	  	void handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleBanListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleCommandsListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleAccountListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleCharacterListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  };
+	  }
+  }
+ }
+}
+
+using namespace server::zone::managers::sui;
+
+
 
 #endif /*SUIMANAGER_H_*/

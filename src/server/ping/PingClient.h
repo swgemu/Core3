@@ -63,11 +63,11 @@ public:
 		if (isDisconnected())
 			return;
 
-		string time;
+		String time;
 		Logger::getTime(time);
 
-		stringstream msg;
-		msg << time << " [LoginServer] disconnecting client \'" << ip << "\'\n";
+		StringBuffer msg;
+		msg << time << " [PingServer] disconnecting client \'" << ip << "\'\n";
 		Logger::console.log(msg);
 
 		BaseClientProxy::disconnect(doLock);

@@ -43,45 +43,145 @@ which carries forward this exception.
 */
 
 #include "zone/Zone.h"
+#include "zone/managers/object/ObjectManager.h"
 
 #include "ClientCore.h"
+#include "login/LoginSession.h"
 
-ClientCore::ClientCore() : Logger("Core") {
+ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
+	ClientCore::instances = instances;
 }
 
 void ClientCore::init() {
 	info("starting up client..");
-
-	scheduler = new ScheduleManager();
 }
 
 void ClientCore::run() {
-	scheduler->start();
+	for (int i = 0; i < instances; ++i) {
+		LoginSession loginSession(i);
+		loginSession.run();
 
-	Zone* zone = new Zone(scheduler, NULL);
+		uint32 selectedCharacter = loginSession.getSelectedCharacter();
+		uint64 objid = 0;
 
-	zone->run();
+		if (selectedCharacter != -1) {
+			objid = loginSession.getCharacterObjectID(selectedCharacter);
+
+			info("trying to login " + String::valueOf(objid), true);
+		}
+
+		uint32 acc = loginSession.getAccountID();
+		uint32 session = loginSession.getSessionID();
+
+		Zone* zone = new Zone(i, objid, acc, session);
+		zone->start();
+
+		zones.add(zone);
+	}
 
 	info("initialized", true);
+
+	handleCommands();
+
+	/*delete zone;
+	zone = NULL;*/
+}
+
+void ClientCore::handleCommands() {
+	while (true) {
+		try {
+			String command;
+
+			Thread::sleep(500);
+
+			System::out << "> ";
+
+			char line[256];
+			fgets(line, sizeof(line), stdin);
+
+			command = line;
+			command = command.replaceFirst("\n", "");
+
+			StringTokenizer tokenizer(command);
+			String firstToken;
+			tokenizer.getStringToken(firstToken);
+
+			if (firstToken == "exit") {
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->disconnect();
+
+				return;
+			} else if (firstToken == "follow") {
+				String name;
+				tokenizer.finalToken(name);
+
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->follow(name);
+
+			} else if (firstToken == "stopFollow") {
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->stopFollow();
+			} else if (firstToken == "info") {
+				for (int i = 0; i < zones.size(); ++i) {
+					uint32 size = zones.get(i)->getObjectManager()->getObjectMapSize();
+					StringBuffer msg;
+					msg << "[ObjectManager" << i << "] size: " << size;
+
+					info(msg.toString(), true);
+				}
+
+			} else {
+				String args;
+				if (tokenizer.hasMoreTokens())
+					tokenizer.finalToken(args);
+
+				for (int i = 0; i < zones.size(); ++i)
+					if (!zones.get(i)->doCommand(firstToken, args))
+						Logger::console.error("unknown command");
+			}
+		} catch (SocketException& e) {
+			System::out << "[ClientCore] " << e.getMessage();
+		} catch (ArrayIndexOutOfBoundsException& e) {
+			System::out << "[ClientCore] " << e.getMessage() << "\n";
+			e.printStackTrace();
+
+		} catch (Exception& e) {
+			StringBuffer msg;
+			msg << "[ClientCore] Exception caught";
+			error(msg.toString());
+			error(e.getMessage());
+			e.printStackTrace();
+
+		} catch (...) {
+			System::out << "[ClientCore] unreported Exception caught\n";
+		}
+	}
 }
 
 int main(int argc, char* argv[]) {
 	try {
-		Vector<string> arguments;
+		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
 			arguments.add(argv[i]);
 		}
 
-		ClientCore core;
+		StackTrace::setBinaryName("core3client");
+
+		int instances = 1;
+
+		if (argc > 1)
+			instances = Integer::valueOf(arguments.get(0));
+
+		ClientCore core(instances);
 
 		core.init();
 
 		core.run();
 	} catch (Exception& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		e.printStackTrace();
 	} catch (...) {
-		cout << "unreported exception caught main()\n";
+		System::out << "unreported exception caught main()\n";
 	}
 
 	return 0;

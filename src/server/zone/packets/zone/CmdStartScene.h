@@ -47,23 +47,30 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "../../objects/player/Races.h"
+#include "../../objects/player/PlayerCreature.h"
+#include "../../objects/terrain/Terrain.h"
+
 
 #include "../../Zone.h"
 
 class CmdStartScene : public BaseMessage {
 public:
-	CmdStartScene(CreatureObject* creo) : BaseMessage(50) {
+	CmdStartScene(PlayerCreature* creo) : BaseMessage(50) {
+		String terrainName;
+		Zone* zone = creo->getZone();
+		terrainName = Terrain::getTerrainName(zone->getZoneID());
+
 		insertShort(0x09);
 		insertInt(0x3AE6DFAE);
 		insertByte(0);
 		insertLong(creo->getObjectID());
-	 	insertAscii(creo->getTerrainName()); //terrain name
+	 	insertAscii(terrainName); //terrain name
 	 	insertFloat(creo->getPositionX()); //X
 	 	insertFloat(creo->getPositionZ()); //Z
 	 	insertFloat(creo->getPositionY()); //Y
 	 	
-	 	insertAscii(creo->getRaceName());
+	 	insertAscii(Races::getRace(creo->getRaceID()));
 	 	
 	 	insertLong(creo->getZone()->getGalacticTime()); //galactic time
 	}

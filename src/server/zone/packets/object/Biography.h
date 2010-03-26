@@ -46,11 +46,11 @@ which carries forward this exception.
 #define BIOGRAPHY_H_
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/player/PlayerCreature.h"
 
 class Biography : public ObjectControllerMessage {
 public:
-	Biography(Player* play, Player* player) : ObjectControllerMessage(play->getObjectID(), 0x1B, 0x1DB, false) {
+	Biography(PlayerCreature* play, PlayerCreature* player) : ObjectControllerMessage(play->getObjectID(), 0x1B, 0x1DB, false) {
 		insertLong(player->getObjectID());
 		insertUnicode(player->getBiography());		
 	}

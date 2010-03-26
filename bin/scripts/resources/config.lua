@@ -42,10 +42,13 @@
 -- Core3 Config File
 -- 0 = false, 1 = true
 
+--  These indicate zone ID's where resources spawn
+activeZones = "0,1,2,3,4,5,6,7,8,9"
+
 averageShiftTime = 7200000 -- In milliseconds
   --  This is the time between each time the Resource Manager schedules
   --  itself to run again.
-  --  *** Default is 1 hour (3600000) ***
+  --  *** Default is 2 hours (7200000) ***
   --  *** Good testing time is (15000) ***
 
 aveduration = 86400 -- In seconds
@@ -56,14 +59,21 @@ aveduration = 86400 -- In seconds
   --  *** Default is 1 day (86400) ***
   --  *** Good testing period is (40) ***
 
-spawnThrottling = 50 -- 0-90  is a percentage
+spawnThrottling = 50 -- *** 10-90 ***
   -- This will add a throttle to the spawner so
   -- that 90% of resources will have stats less than
   -- x * maxGate.  So if a resource has stat 0-1000
   -- and this is set at 70, 90% of resources will have 
   -- a value of < 700 and 10% > 700
 
-maxspawns = 40   --  Maximum number of spawns per planet
-minspawns = 25   --  Minimum number of spawns per planet
-maxradius = 2000 --  Maximum Spawn radius of resource on map
-minradius = 600  --  Minimum Spawn radius of resource on map
+lowerGateOverride = 1000 -- 1-1000  
+  -- This will manually set the lower gate to this 
+  -- number if it has a lower gate greater than the
+  -- number entered.  ex. if a resource has a SOE gate
+  -- of 850-950, and the number is set at 300, it will
+  -- change the gate to 300-950.  This allows for resource
+  -- quality control, especially for resources with 
+  -- very high gates.  Set to 1000 for standard gates.
+
+minimumpool = "Steel,Copper,Aluminum,Extrusive Ore,Intrusive Ore,Carbonate Ore,Crystalline Gemstone,Amorphous Gemstone,Known Radioactive,Solid Petrochem Fuel,Liquid Petrochem Fuel,Polymer,Polymer,Lubricating Oil,Lubricating Oil"
+

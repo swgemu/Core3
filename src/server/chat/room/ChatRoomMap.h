@@ -47,7 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom*> {
+namespace server {
+namespace chat {
+namespace room {
+
+class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom* > {
 	
 	int hash(const uint32& key) {
         return key;
@@ -58,6 +62,25 @@ public:
 		setNullValue(NULL);
 	}
 
+	void put(uint32 key, ChatRoom* room) {
+		if (HashTable<uint32, ChatRoom*>::put(key, room) == NULL)
+			room->acquire();
+	}
+
+	void remove(uint32 key) {
+		ChatRoom* room = HashTable<uint32, ChatRoom*>::remove(key);
+
+		if (room != NULL)
+			room->release();
+	}
+
 };
+
+
+}
+}
+}
+
+using namespace server::chat::room;
 
 #endif /*CHATROOMMAP_H_*/

@@ -48,8 +48,9 @@ dwbSBDAttack40 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -79,8 +80,9 @@ dwbSBDAttack41 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -110,8 +112,9 @@ dwbSBDAttack42 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -141,8 +144,9 @@ dwbSBDAttack43 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -173,8 +177,9 @@ dwbSBDAttack44 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -188,7 +193,7 @@ dwbSBDAttack44 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -215,8 +220,9 @@ dwbSBDAttack45 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -247,8 +253,9 @@ dwbSBDAttack46 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -262,7 +269,7 @@ dwbSBDAttack46 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -289,8 +296,9 @@ dwbSBDAttack47 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -331,8 +339,9 @@ dwbSBDAttack48 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -373,8 +382,9 @@ dwbSBDAttack49 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -404,8 +414,9 @@ dwbSBDAttack50 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.55,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -435,8 +446,9 @@ dwbSBDAttack51 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -468,8 +480,9 @@ dwbSBDAttack52 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -483,7 +496,7 @@ dwbSBDAttack52 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -509,8 +522,9 @@ dwbSBDAttack53 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -524,7 +538,7 @@ dwbSBDAttack53 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 2,
 	bleedingType = 0,
 
 	poisonStrength = 0,
@@ -552,10 +566,10 @@ dwbSBDRangedAttack1 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
-	coneAngle = 0,
+	coneAngle = 7,
 
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -584,10 +598,10 @@ dwbSBDRangedAttack2 = {
 
 	range = 64,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
-	coneAngle = 0,
+	coneAngle = 7,
 
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -616,7 +630,7 @@ dwbSBDRangedAttack3 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,
@@ -647,8 +661,9 @@ dwbSBDRangedAttack4 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 	speedRatio = 7,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 

@@ -49,7 +49,7 @@ korgaAttack01 = {
 	requiredWeaponType = NONE,
 
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -91,7 +91,7 @@ korgaAttack02 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 25,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -133,7 +133,7 @@ korgaAttack03 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 25,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -164,7 +164,7 @@ korgaAttack04 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 30,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -194,7 +194,7 @@ korgaAttack05 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -224,7 +224,7 @@ korgaAttack06 = {
 	requiredWeaponType = NONE, 
 	
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 7, 
 	accuracyBonus = 0, 

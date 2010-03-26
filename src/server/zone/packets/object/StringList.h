@@ -46,7 +46,7 @@ which carries forward this exception.
 #define STRINGLIST_H_
 
 #include "ObjectControllerMessage.h"
-#include "StfParameter.h"
+#include "../../objects/scene/variables/ParameterizedStringId.h"
 
 class StringList : public ObjectControllerMessage {
 	uint8 optionCount;
@@ -58,89 +58,24 @@ public:
 		insertByte(0);
 	}
 
-	void insertOption(const string& file, const string& str) {
+	void insertOption(const String& file, const String& str) {
+		insertUnicode(UnicodeString("@" + file + ":" + str));
+		updateOptionCount();
+	}
 
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
+	void insertOption(ParameterizedStringId& sid) {
 
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
+		sid.addToPacketStream(this);
 
 		updateOptionCount();
 	}
 
-	void insertOption(const string& file, const string& str, StfParameter* params) {
-		params->generate();
-
-		int size = 0x11 + file.size() + str.size() + params->size();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-
-		insertStream(params);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
-
-		delete params;
-	}
-
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
+	void insertOption(String& option) {
+		insertUnicode(UnicodeString(option));
 		updateOptionCount();
 	}
 
-	void insertOption(unicode& option) {
+	void insertOption(UnicodeString& option) {
 		insertUnicode(option);
 		updateOptionCount();
 	}
@@ -149,6 +84,9 @@ public:
 		insertByte(30, ++optionCount);
 	}
 
+	int getOptionCount() {
+		return optionCount;
+	}
 };
 
 #endif

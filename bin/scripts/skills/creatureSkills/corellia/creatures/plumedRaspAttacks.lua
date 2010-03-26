@@ -45,13 +45,13 @@ plumedRaspAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -59,7 +59,7 @@ plumedRaspAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 50,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",

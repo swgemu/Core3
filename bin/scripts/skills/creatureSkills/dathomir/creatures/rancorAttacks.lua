@@ -45,22 +45,22 @@ rancorAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 50,
 	blindChance = 0,
-	stunChance = 1,
-	intimidateChance = 1,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -68,21 +68,23 @@ rancorAttack1 = {
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
 }
-
 AddRandomPoolAttackTargetSkill(rancorAttack1)
+
+---------------------------------------------------------------
+
 rancorAttack2 = {
 	attackname = "rancorAttack2",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 100,
@@ -101,7 +103,7 @@ rancorAttack2 = {
 	poisonStrength = 0,
 	poisonType = 0,
 
-	diseaseStrength = 1,
+	diseaseStrength = 100,
 	diseaseType = HEALTH,
 		
 	knockdownChance = 0,
@@ -121,22 +123,24 @@ rancorAttack2 = {
 
 AddDotPoolAttackTargetSkill(rancorAttack2)
 
+---------------------------------------------------------------
+
 rancorAttack3 = {
 	attackname = "rancorAttack3",
 	animation = "creature_attack_medium",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 13,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 50,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -153,22 +157,24 @@ rancorAttack3 = {
 
 AddRandomPoolAttackTargetSkill(rancorAttack3)
 
+---------------------------------------------------------------
+
 rancorAttack4 = {
 	attackname = "rancorAttack4",
 	animation = "creature_attack_heavy",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 20,
+	damageRatio = 1.2,
 
 	speedRatio = 8,
 
-	areaRange = 10,
+	arearange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 50,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -185,4 +191,70 @@ rancorAttack4 = {
 
 AddRandomPoolAttackTargetSkill(rancorAttack4)
 
------------------------------------------------
+---------------------------------------------------------------
+
+rancorAttack5 = {
+	attackname = "rancorAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 4,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 50,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+AddRandomPoolAttackTargetSkill(rancorAttack5)
+
+---------------------------------------------------------------
+
+rancorAttack6 = {
+	attackname = "rancorAttack6",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 4,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+AddRandomPoolAttackTargetSkill(rancorAttack6)
+
+---------------------------------------------------------------

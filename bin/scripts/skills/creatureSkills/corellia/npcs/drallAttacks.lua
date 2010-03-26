@@ -47,7 +47,7 @@ drallAttack01 = {
 
 	range = 64,
 
-	damageRatio = 7.0,
+	damageRatio = 1.2,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -82,7 +82,7 @@ drallAttack02 = {
 
 	range = 64,
 
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -117,7 +117,7 @@ drallAttack03 = {
 
 	range = 64,
 
-	damageRatio = 9.0,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 	coneAngle = 0,
@@ -152,7 +152,7 @@ drallAttack04 = {
 
 	range = 64,
 
-	damageRatio = 7.0,
+	damageRatio = 1.2,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -187,7 +187,7 @@ drallAttack05 = {
 
 	range = 64,
 
-	damageRatio = 7.0,
+	damageRatio = 1.2,
 
 	speedRatio = 5,
 	coneAngle = 0,

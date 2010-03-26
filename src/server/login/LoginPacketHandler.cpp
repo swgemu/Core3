@@ -49,8 +49,8 @@ which carries forward this exception.
 #include "LoginClient.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
-	stringstream msg;
-	msg << "parsing " << pack->toString();
+	StringBuffer msg;
+	msg << "parsing " << pack->toStringData();
 	//info(msg);
 
 	uint16 opcount = pack->parseShort();
@@ -85,7 +85,7 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
-	string errtype, errmsg;
+	String errtype, errmsg;
 	Message* ver;
 
 	Account account(pack);
@@ -98,11 +98,11 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	} else {
 		int validateResult = account.validate(configManager);
 
-		if(validateResult != ACCOUNTOK){
+		if (validateResult != ACCOUNTOK){
 
 			validateResult = account.create(configManager);
 
-			if(validateResult == ACCOUNTOK){
+			if (validateResult == ACCOUNTOK){
 
 				account.validate(configManager);
 
@@ -145,7 +145,9 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 			return;
 		case ACCOUNTNOTACTIVE:
 			errtype = "Inactive Account";
-			errmsg = "You have not responded to your activation email, and will not be allowed to log on until you do.";
+			errmsg = "Your forum account is not active.  Please respond to your activation email.  "
+					"If you have already responded to the email, it can take up to 24 hours for "
+					"your game account to activate";
 			ver = new ErrorMessage(errtype, errmsg, 0x00);
 			client->sendMessage(ver);
 			return;
@@ -159,12 +161,18 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
 	uint32 ServerId = pack->parseInt();
-    uint64 charId = pack->parseLong();
+
+	pack->shiftOffset(4);
+    uint32 charId = pack->parseInt();
+
     int dbDelete;
-    string firstName;
+
+    String firstName;
 
     try {
-		stringstream query;
+		StringBuffer query;
+
+		Database::escapeString(firstName);
 
 		query << "SELECT lower(firstname) FROM characters WHERE character_id = " << charId <<" and galaxy_id = " << ServerId << ";";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -172,59 +180,58 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		if (res->next())
 			firstName = res->getString(0);
 
-
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_items WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
-		query << "DELETE FROM character_faction WHERE character_id = '" << charId <<"';";
+		query.deleteAll(); // clear stream
+		query << "DELETE FROM character_faction_points WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_profession WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_badge WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM waypoints WHERE owner_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM friendlist WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM friendlist WHERE friend_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM ignorelist WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM ignorelist WHERE ignore_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM mail WHERE lower(recv_name) = '" << firstName <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
 
 		/* ToDO: Revisit this, when mail attachments are functionally
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM mail_attachment WHERE lower(name) = '" << firstName <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 		*/
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM consentlist WHERE character_id = '" << charId << "';";
 		ServerDatabase::instance()->executeStatement(query);
 

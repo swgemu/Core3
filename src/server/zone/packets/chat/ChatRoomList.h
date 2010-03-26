@@ -48,6 +48,17 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../../../chat/room/ChatRoom.h"
+#include "../MessageCallback.h"
+
+#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/chat/ChatManager.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace chat {
 
 class ChatRoomList : public BaseMessage {
 	int channelCounter;
@@ -103,18 +114,47 @@ public:
 		
 		/*insertInt(1); //List Count of Players in Room?
 		insertAscii("SWG");
-		insertAscii(serverName.c_str());
-		insertAscii(name.c_str());*/
+		insertAscii(serverName.toCharArray());
+		insertAscii(name.toCharArray());*/
 	}
 	
 	void addToUnknownListB() {
 		insertInt(0); //List Count
 		/*insertAscii("SWG");
-		insertAscii(serverName.c_str());
+		insertAscii(serverName.toCharArray());
 		insertAscii(name);*/	
 	}
 
 
 };
+
+class ChatRequestRoomListCallback : public MessageCallback {
+public:
+	ChatRequestRoomListCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+
+	}
+
+	void run() {
+		ZoneServer* zoneServer = server->getZoneServer();
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+
+		if (player != NULL)
+			chatManager->sendRoomList(player);
+	}
+};
+
+}
+}
+}
+}
+
+using namespace server::zone::packets::chat;
 
 #endif /*CHATROOMLIST_H_*/

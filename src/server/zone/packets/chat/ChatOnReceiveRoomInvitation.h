@@ -49,11 +49,11 @@ which carries forward this exception.
 
 class ChatOnReceiveRoomInvitation : public BaseMessage {
 public:
-	ChatOnReceiveRoomInvitation(const string& server, const string& channel) : BaseMessage() {
+	ChatOnReceiveRoomInvitation(const String& server, const String& channel) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xC17EB06D);  // Opcode
 		insertAscii("SWG");
-		insertAscii(server.c_str());
+		insertAscii(server.toCharArray());
 		insertAscii("system");
 		insertAscii(channel);
 	

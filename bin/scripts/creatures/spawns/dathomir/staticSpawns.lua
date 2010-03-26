@@ -219,8 +219,7 @@ spawnCreatures(malkloc, 2, -4059, -157, 1000, 5)
 spawnCreatures(purbole, 2, -4059, -157, 1000, 5)
 spawnCreatures(verne, 2, -4059, -157, 1000, 5)
 
--- Imperial / Rebel
-
+--Rebel
 spawnCreatures(rebelSurfaceMarshal, 2, 0, 0, 2500, 50)
 spawnCreatures(rebelSurfaceMarshal, 2, -5000, 0, 2500, 50)
 spawnCreatures(rebelSurfaceMarshal, 2, 5000, 0, 2500, 50)
@@ -240,58 +239,3 @@ spawnCreatures(rebelGeneral, 2, -5000, -5000, 2500, 100)
 spawnCreatures(rebelGeneral, 2, 5000, 5000, 2500, 100)
 spawnCreatures(rebelGeneral, 2, 5000, -5000, 2500, 100)
 spawnCreatures(rebelGeneral, 2, -5000, 5000, 2500, 100)
-
--- NS VS SMC POI
-spawnCreatures(singingMtnClanGuardian, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMountainClanSentry, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanCouncilwoman, 2, -2530, 1600, 50, 2)
-spawnCreatures(singingMountainClanSentry, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanInitiate, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanScout, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanScout, 2, -2530, 1600, 1000, 25)
-spawnCreatures(singingMtnClanHuntress, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanArchWitch, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanRancorTamer, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMtnClanSlave, 2, -2530, 1600, 500, 5)
-
-spawnCreatures(nightsisterRancorTamer, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterRanger, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterOutcast, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterProtector, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterSpellWeaver, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterStalker, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterElder, 2, -2515, 1475, 50, 2)
-spawnCreatures(nightsisterInitiate, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterSentinal, 2, -2515, 1475, 500, 5)
-spawnCreatures(nightsisterRanger, 2, -2515, 1475, 1000, 25)
-
-
--- Imperial Prision
-
-spawnCreatures(stormTrooper, 2, -6134, 911, 100, 2)
-spawnCreatures(stormTrooper, 2, -6207, 808, 100, 2)
-spawnCreatures(stormTrooper, 2, -6233, 650, 100, 2)
-spawnCreatures(stormTrooper, 2, -6418, 712, 100, 8)
-spawnCreatures(stormTrooper, 2, -6190, 851, 100, 8)
-spawnCreatures(stormTrooper, 2, -6122, 1082, 100, 8)
-spawnCreatures(stormTrooper, 2, -6274, 712, 300, 15)
-spawnCreatures(stormTrooper, 2, -6381, 712, 300, 15)
-spawnCreatures(stormTrooper, 2, -6385, 938, 100, 15)
-spawnCreatures(stormTrooper, 2, -6429, 968, 100, 15)
-
-spawnCreature(atSt, 2, -6418, 712)
-spawnCreature(atSt, 2, -6190, 851)
-spawnCreature(atSt, 2, -6122, 1082)
-spawnCreature(atSt, 2, -6274, 712)
-spawnCreature(atSt, 2, -6381, 712)
-spawnCreature(atSt, 2, -6164, 972)
-spawnCreature(atAt, 2, -6134, 911)
-spawnCreature(atAt, 2, -6207, 808)
-spawnCreature(atAt, 2, -6233, 650)
-
-spawnCreature(darthVader, 2, -6300, 930)
-
--- Sarlaac POI
-spawnCreatures(rancor, 2, -2075, 3147, 1000, 80)
-spawnCreatures(bullRancor, 2, -2075, 3147, 600, 20)
-spawnCreatures(mutantRancor, 2, -2075, 3147, 400, 50)

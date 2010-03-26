@@ -45,16 +45,118 @@ fambaaAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(fambaaAttack1)
+
+-----------------------------------------------
+
+fambaaAttack2 = {
+	attackname = "fambaaAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 50,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(fambaaAttack2)
+
+-----------------------------------------------
+
+fambaaAttack3 = {
+	attackname = "fambaaAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(fambaaAttack3)
+
+-----------------------------------------------
+
+fambaaAttack4 = {
+	attackname = "fambaaAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -69,6 +171,6 @@ fambaaAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(fambaaAttack1)
+AddRandomPoolAttackTargetSkill(fambaaAttack4)
 
 -----------------------------------------------

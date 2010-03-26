@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class TravelPoint {
-	string name;
+	String name;
 	
 	float positionX;
 	float positionY;
@@ -58,7 +58,7 @@ class TravelPoint {
 	uint8 starport;
 	
 public:
-	TravelPoint(const string& Name, float x, float z, float y, uint32 tax, uint8 starport) {
+	TravelPoint(const String& Name, float x, float z, float y, uint32 tax, uint8 starport) {
 		name = Name;
 		
 		positionX = x;
@@ -76,7 +76,7 @@ class TravelListResponseMessage : public BaseMessage {
 	Vector<TravelPoint*> travelPoints;
 	
 public:
-    TravelListResponseMessage(const string& planet) : BaseMessage() {
+    TravelListResponseMessage(const String& planet) : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);
@@ -90,7 +90,7 @@ public:
 		}
 	}
     
-    void addPoint(const string& name, float x, float z, float y, uint32 tax, uint8 starport) {
+    void addPoint(const String& name, float x, float z, float y, uint32 tax, uint8 starport) {
     	travelPoints.add(new TravelPoint(name, x, z, y, tax, starport));
     }
     

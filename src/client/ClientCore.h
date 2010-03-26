@@ -48,15 +48,20 @@ which carries forward this exception.
 #include "system/lang.h"
 #include "engine/engine.h"
 
-class ClientCore : public Logger {
-	ScheduleManager* scheduler;
+class Zone;
 
+class ClientCore : public Core, public Logger {
+	int instances;
+
+	Vector<Zone*> zones;
 public:
-	ClientCore();
+	ClientCore(int instances);
 
 	void init();
 
 	void run();
+
+	void handleCommands();
 };
 
 #endif /*CLIENTCORE_H_*/

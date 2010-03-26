@@ -43,11 +43,11 @@ corsecAttack1 = {
 	attackname = "corsecAttack1",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = PISTOL,
 
 	range = 64,
 
-	damageRatio = 5.1,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -75,11 +75,11 @@ corsecAttack2 = {
 	attackname = "corsecAttack2",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = PISTOL,
 
 	range = 64,
 
-	damageRatio = 5.8,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -107,11 +107,11 @@ corsecAttack3 = {
 	attackname = "corsecAttack3",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = PISTOL,
 
 	range = 64,
 
-	damageRatio = 5.5,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,

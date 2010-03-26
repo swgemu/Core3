@@ -5,106 +5,175 @@
 /*#include "packets/zone/SelectCharacterMessage.h"
 #include "packets/zone/ClientCreateCharacter.h"
 #include "packets/zone/ClientIDMessage.h"*/
+#include "ZoneMessageProcessorThread.h"
+#include "ZoneClientThread.h"
 
-Zone::Zone(ScheduleManager* sched, LoginSession* login) : Thread(), Mutex("Zone") {
-	scheduler = sched;
+#include "engine/service/proto/packets/SessionIDRequestMessage.h"
+#include "../../server/zone/packets/zone/ClientIDMessage.h"
+#include "../../server/zone/packets/zone/SelectCharacter.h"
+#include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "managers/objectcontroller/ObjectController.h"
+#include "managers/object/ObjectManager.h"
 
-	loginSession = login;
 
+Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
+	//loginSession = login;
+
+	characterID = characterObjectID;
+	accountID = account;
+	sessionID = session;
 	player = NULL;
 
-	client = new ZoneClient("127.0.0.1", 44463);
-	//client = new ZoneClient("80.99.84.166", 44463);
-	client->init(scheduler);
+	objectManager = new ObjectManager();
+	objectManager->setZone(this);
 
-	client->setZone(this);
+	objectController = new ObjectController(this);
+
+	client = NULL;
+	clientThread = NULL;
+	processor = NULL;
+
+	Zone::instance = instance;
+}
+
+Zone::~Zone() {
+	delete objectManager;
+	objectManager = NULL;
+
+	delete client;
+	client = NULL;
+
+	delete clientThread;
+	clientThread = NULL;
+
+	delete processor;
+	processor = NULL;
 }
 
 void Zone::run() {
 	try {
-		characterID = 8; //loginSession->getCharacterID ( );
+		client = new ZoneClient(44463);
+		client->setAccountID(accountID);
+		client->setZone(this);
+		client->setLoggingName("ZoneClient" + String::valueOf(instance));
+		client->initialize();
 
-		if (client != NULL) {
-			if (characterID == 0) {
-				/*Message * idmsg = new ClientIDMessage ( loginSession->getAccountID ( ) );
-				client->sendMessage ( idmsg );*/
+		clientThread = new ZoneClientThread(client);
+		clientThread->start();
 
-				string name;
+		processor = new ZoneMessageProcessorThread("Zone", client);
+		processor->start();
 
-				cout << "Creating Charater\nName: ";
-				cin >> name;
-
-				unicode uname = name;
-
-				/*Message* msg = new ClientCreateCharacter (uname);
-				client->sendMessage(msg);*/
-
-				lock();
-
-				characterCreatedCondition.wait(this);
-
-				unlock();
-			}
-
-			/*Message* msg = new SelectCharacterMessage(characterID);
-			client->sendMessage(msg);*/
+		if (client->connect()) {
+			client->info("connected", true);
 		} else {
-			/*uint64 playerID = characterID;
-
-			Player * player = createPlayer(playerID);
-			player->setPosition(0, 5, 0);
-
-			insertPlayer(player);*/
+			client->error("could not connect");
+			return;
 		}
+
+		BaseMessage* acc = new ClientIDMessage(accountID, sessionID);
+		client->sendMessage(acc);
+
+		client->info("sent client id message", true);
+
+		if (characterID == 0) {
+			client->info("enter new Character Name to create", true);
+			char name[256];
+			fgets(name, sizeof(name), stdin);
+
+			String charName = name;
+			charName = charName.replaceFirst("\n", "");
+
+			BaseMessage* msg = new ClientCreateCharacter(charName);
+			client->sendMessage(msg);
+		} else {
+			BaseMessage* selectChar = new SelectCharacter(characterID);
+			client->sendMessage(selectChar);
+		}
+
 	} catch (sys::lang::Exception& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		exit(0);
 	} catch (...) {
-		cout << "unreported exception\n";
+		System::out << "unreported exception\n";
 	}
-}
-
-Player* Zone::createPlayer(uint64 pid) {
-	lock();
-
-	Player* pl = new Player(pid);
-
-	objectMap.put(pid, pl);
-
-	playerArray.add(pl);
-
-	unlock();
-	return pl;
 }
 
 void Zone::insertPlayer() {
 	insertPlayer(player);
 }
 
-void Zone::insertPlayer(Player* pl) {
-	lock();
+void Zone::insertPlayer(PlayerCreature* pl) {
+	//lock();
 
-	if (player == NULL) {
+	/*if (player == NULL) {
 		player = pl;
 
 		player->insertToZone(this);
-	}
+	}*/
 
-//	cout << hex << "inserting Player [" << pl->getObjectID() << "] to (" << dec << pl->getPositionX() << ", "
+//	System::out << hex << "inserting Player [" << pl->getObjectID() << "] to (" << dec << pl->getPositionX() << ", "
 //		 << pl->getPositionZ() << ", " << pl->getPositionY() << ")\n";
 
-	unlock();
+
+	//unlock();
 }
 
 SceneObject* Zone::getObject(uint64 objid) {
-	lock();
+	//lock();
 
-	SceneObject* obj = objectMap.get(objid);
+	//SceneObject* obj = objectMap.get(objid);
 
-	unlock();
+	//unlock();
+
+
+	SceneObject* obj = objectManager->getObject(objid);
+
 	return obj;
 }
 
-void Zone::waitFor() {
-	client->join();
+PlayerCreature* Zone::getSelfPlayer() {
+	return (PlayerCreature*)objectManager->getObject(characterID);
 }
+
+void Zone::disconnect() {
+	client->disconnect();
+	//client->set
+}
+
+void Zone::follow(const String& name) {
+	SceneObject* object = objectManager->getObject(name);
+
+	if (object == NULL) {
+		client->error(name + " not found");
+
+		return;
+	}
+
+	PlayerCreature* player = getSelfPlayer();
+
+	Locker _locker(player);
+	player->setFollow(object);
+
+	client->info("started following " + name, true);
+}
+
+void Zone::stopFollow() {
+	PlayerCreature* player = getSelfPlayer();
+
+	Locker _locker(player);
+
+	player->setFollow(NULL);
+	client->info("stopped following", true);
+}
+
+bool Zone::doCommand(const String& command, const String& arguments) {
+	if (command.length() == 0)
+		return false;
+
+	return objectController->doCommand(command.hashCode(), arguments);
+}
+
+/*void Zone::waitFor() {
+	client->join();
+}*/

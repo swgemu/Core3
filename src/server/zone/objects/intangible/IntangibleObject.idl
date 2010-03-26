@@ -42,32 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
+package server.zone.objects.intangible;
 
-import "../scene/SceneObject";
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
 
-import "../player/Player";
+class IntangibleObject extends SceneObject {
+	protected unsigned int status;
+	
+	public IntangibleObject() {
+		Logger.setLoggingName("IntangibleObject");
 
-interface IntangibleObject implements SceneObject {
-	IntangibleObject(SceneObject container, unsigned int objCRC, unsigned long oid) {
-		super(oid, int type);
+		status = 0;
 	}
 	
-	void sendTo(Player player, boolean doClose = true);
-	void sendDestroyTo(Player player);
-
-	void setName(const string name);
-	void setDetailName(const string detail);
+	public void finalize() {
+		
+	}
 	
-	void setWorldObject(SceneObject obj);
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
 	
-	void updateStatus(unsigned int stat);
+	public native void sendBaselinesTo(SceneObject player);
 	
-	//int useObject(Player player);
-
-	string getName();
-	string getDetailName();
-	SceneObject getWorldObject();
-	
-	unsigned int getStatus();
+	public unsigned int getStatus() {
+		return status;
+	}
 }

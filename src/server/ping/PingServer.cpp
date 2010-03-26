@@ -62,7 +62,7 @@ PingServer::~PingServer() {
 }
 
 void PingServer::init() {
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 
 	procThreadCount = 0;
 
@@ -70,10 +70,10 @@ void PingServer::init() {
 		processors = (PingMessageProcessorThread**) malloc(procThreadCount * sizeof(PingMessageProcessorThread*));
 
 		for (int i = 0; i < procThreadCount; ++i) {
-			stringstream name;
+			StringBuffer name;
 			name << "PingProcessor" << i;
 
-			processors[i] = new PingMessageProcessorThread(name.str());
+			processors[i] = new PingMessageProcessorThread(name.toString());
 		}
 	}
 
@@ -81,8 +81,6 @@ void PingServer::init() {
 }
 
 void PingServer::run() {
-	scheduler->start();
-
 	for (int i = 0; i < procThreadCount; ++i) {
 		PingMessageProcessorThread* processor = processors[i];
 		processor->start(this);
@@ -104,8 +102,6 @@ void PingServer::shutdown() {
 
 		delete processor;
 	}
-
-	scheduler->stop();
 }
 
 PingClient* PingServer::createConnection(Socket* sock, SocketAddress& addr) {
@@ -124,19 +120,21 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 		if (lclient->isAvailable() && (message->size() == 4)) {
 			lclient->updateNetStatus();
 
-			lclient->send(message);
+			Packet* mess = message->clone();
+
+			lclient->send(mess);
 		}
 
 	} catch (PacketIndexOutOfBoundsException& e) {
-		cout << e.getMessage();
+		System::out << e.getMessage();
 
-		error("incorrect packet - " + message->toString());
+		error("incorrect packet - " + message->toStringData());
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (ArrayIndexOutOfBoundsException& e) {
 		error(e.getMessage());
 	} catch (...) {
-		cout << "[PingServer] unreported Exception caught\n";
+		System::out << "[PingServer] unreported Exception caught\n";
 	}
 }
 
@@ -152,13 +150,9 @@ bool PingServer::handleError(ServiceClient* client, Exception& e) {
 void PingServer::printInfo() {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, true);
-
-	stringstream msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
-	info(msg2, true);
 
 	unlock();
 }

@@ -41,8 +41,17 @@
 --which carries forward this exception.
 -- Load files
 
--- Tatooine
-
-RunSkillsFile("creatureSkills/tatooine/npcs/sennexAttacks.lua")
-RunSkillsFile("creatureSkills/tatooine/npcs/tuskenAttacks.lua")
-RunSkillsFile("creatureSkills/tatooine/npcs/jabbaAttacks.lua")
+ -- Tatooine
+ RunSkillsFile("creatureSkills/tatooine/npcs/bomarrMonkAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/desertDemonAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/dimUAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/duneStalkerAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/jabbaAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/jawaAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/mosEisleyAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/mosTaikeAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/sennexAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/tuskenAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/valarianAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/weequayAttacks.lua")
+ RunSkillsFile("creatureSkills/tatooine/npcs/tuskenRangedAttacks.lua")

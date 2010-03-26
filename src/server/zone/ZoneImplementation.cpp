@@ -42,9 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneServer.h"
+#include "Zone.h"
+//#include "ZoneServer.h"
 
-#include "managers/creature/CreatureManager.h"
+/*#include "managers/creature/CreatureManager.h"
 #include "managers/creature/CreatureManagerImplementation.h"
 
 #include "managers/combat/CombatManager.h"
@@ -56,29 +57,71 @@ which carries forward this exception.
 
 #include "objects/scene/SceneObject.h"
 
-#include "objects/creature/Creature.h"
+#include "objects/creature/Creature.h"*/
 
-#include "Zone.h"
-#include "ZoneImplementation.h"
 
-ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ZoneServant(), QuadTree(-8192, -8192, 8192, 8192) {
+//#include "ZoneImplementation.h"
+
+#include "objects/terrain/PlanetNames.h"
+
+#include "ZoneProcessServerImplementation.h"
+#include "objects/scene/SceneObject.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+
+ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
 
 	processor = srv;
 	server = serv;
 
-	creatureManager = NULL;
+	//Weather
+	weatherID = 0;
+	weatherWindX = 1.0f;
+	weatherWindY = -1.0f;
+	weatherEnabled = true;
+
+	heightMap = new HeightMap();
+
+	//galacticTime = new Time();
+
 	planetManager = NULL;
 }
 
+void ZoneImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
+
+	processor = ZoneProcessServerImplementation::instance;
+
+	//taskManager =
+
+	heightMap = new HeightMap();
+
+	if (zoneID <= 9) {
+		String planetName = Planet::getPlanetName(zoneID);
+
+		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
+	}
+}
+
 void ZoneImplementation::startManagers() {
-	if (zoneID > 10) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-		return;
+	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
+	//	return;
+
+	if (zoneID <= 9) {
+		String planetName = Planet::getPlanetName(zoneID);
+
+		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
+	}
+
+	planetManager = new PlanetManager(_this, processor);
+	planetManager->initialize();
 
 	creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 
-	creatureManager->init();
+	/*creatureManager->init();
 
 	planetManager = new PlanetManager(_this, processor);
 	planetManager->deploy("PlanetManager", zoneID);
@@ -89,17 +132,14 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->start();
 
-	creatureManager->start();
-
-	/*if (zoneID == 8)
-		heightMap.load("planets/tatooine/tatooine.hmap");*/
+	creatureManager->start();*/
 }
 
 void ZoneImplementation::stopManagers() {
-	if (zoneID > 10) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-		return;
+	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
+	//	return;
 
-	if (creatureManager != NULL) {
+	/*if (creatureManager != NULL) {
 		creatureManager->stop();
 
 		creatureManager->finalize();
@@ -111,10 +151,10 @@ void ZoneImplementation::stopManagers() {
 
 		planetManager->finalize();
 		planetManager = NULL;
-	}
+	}*/
 }
 
-void ZoneImplementation::registerObject(SceneObject* obj) {
+/*void ZoneImplementation::registerObject(SceneObject* obj) {
 	server->addObject(obj);
 }
 
@@ -132,15 +172,28 @@ SceneObject* ZoneImplementation::deleteObject(SceneObject* obj) {
 
 SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
 	return server->removeCachedObject(obj->getObjectID());
-}
+}*/
 
 float ZoneImplementation::getHeight(float x, float y) {
-	//if (zoneID != 8)
-		return 0.0f;
-
-	//return heightMap.getHeight(x, y);
+	return heightMap->getHeight(x, y);
 }
 
-ChatManager* ZoneImplementation::getChatManager() {
+void ZoneImplementation::insert(QuadTreeEntry* entry) {
+	QuadTree::insert(entry);
+}
+
+void ZoneImplementation::remove(QuadTreeEntry* entry) {
+	QuadTree::remove(entry);
+}
+
+void ZoneImplementation::update(QuadTreeEntry* entry) {
+	QuadTree::update(entry);
+}
+
+void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
+	QuadTree::inRange(entry, range);
+}
+
+/*ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
-}
+}*/

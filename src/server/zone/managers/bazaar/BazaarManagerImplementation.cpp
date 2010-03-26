@@ -1,1022 +1,763 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ * BazaarManagerImplementation.cpp
+ *
+ *  Created on: 13/03/2010
+ *      Author: victor
+ */
 
-This File is part of Core3.
+#include "BazaarManager.h"
+#include "BazaarAuctionsMap.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/auction/ItemSoldMessage.h"
+#include "server/zone/packets/auction/AuctionQueryHeadersResponseMessage.h"
+#include "server/zone/packets/auction/RetrieveAuctionItemResponseMessage.h"
+#include "server/zone/packets/auction/BidAuctionResponseMessage.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
+#include "server/chat/ChatManager.h"
+#include "CheckAuctionsTask.h"
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+void BazaarManagerImplementation::initialize() {
+	auctionMap = new BazaarAuctionsMap();
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+	ObjectDatabase* auctionDatabase = ObjectDatabaseManager::instance()->loadDatabase("auctions", true);
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+	ObjectDatabaseIterator iterator(auctionDatabase);
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+	uint64 objectID = 0;
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+	while (iterator.getNextKey(objectID)) {
+		AuctionItem* auctionItem = (AuctionItem*) DistributedObjectBroker::instance()->lookUp(objectID);
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
-
-#include "events/CheckBazaarStatus.h"
-
-#include "BazaarManagerImplementation.h"
-
-#include "../../Zone.h"
-#include "../../ZoneServer.h"
-
-#include "BazaarTerminalDetails.h"
-
-#include "../../packets.h"
-#include "../../objects.h"
-#include "../../objects/auction/AuctionController.h"
-#include "../../packets/scene/AttributeListMessage.h"
-
-#include "../../objects/tangible/ItemAttributes.h"
-
-#include "../item/ItemManager.h"
-
-#include "../player/PlayerManager.h"
-#include "../../../chat/ChatManager.h"
-
-BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server)
-	: AuctionController(), BazaarManagerServant(), Logger("BazaarManager") {
-
-	processServer = server;
-	zoneServer = zoneserver;
-
-	setLogging(false);
-	setGlobalLogging(true);
-
-	bazaarTerminals = new BazaarTerminals();
-
-	info("Setting up bazaars");
-
-	// Set up the bazaar planet managers
-	for (int i = 0; i < 10; ++i)  {
-		BazaarPlanetManager* bpManager = new BazaarPlanetManager(i);
-		bpManager->deploy("BazaarPlanetManager", i);
-
-		bazaarPlanets[i] = bpManager;
+		auctionMap->addAuction(auctionItem->getAuctionedItemObjectID(), auctionItem);
 	}
 
-	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
-	bazaarLocations->resetIterator();
-	while (bazaarLocations->hasNext()) {
-		BazaarTerminalDetails* bazaar = bazaarLocations->getNextValue();
-		bazaarPlanets[bazaar->getPlanet()]->addBazaar(bazaar);
-	}
-
-	// Populate the bazaars
-	info("Starting to populate the bazaars");
-
-	for (int i = 0; i < 10; ++i)  {
-		stringstream query;
-		query << "SELECT * from `bazaar_items` where `planet` = " << i << ";";
-
-		ResultSet* items = ServerDatabase::instance()->executeQuery(query);
-
-		while (items->next()) {
-			uint64 objectId = items->getUnsignedLong(0);
-			AuctionItem* item  = new AuctionItem(objectId);
-
-			item->setVendorID(items->getLong(10));
-			item->setPlanet(i);
-
-			BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
-			BazaarTerminalDetails* bazaar = bazaarLocations->get(item->getVendorID());
-
-			string region = bazaar->getRegion();
-			string planet = Planet::getPlanetName(i);
-
-			item->setLocation(planet, region, item->getVendorID(), bazaar->getX(), bazaar->getZ(), false);
-			item->setOwnerID(items->getUnsignedLong(4));
-			item->setOwnerName(items->getString(5));
-			item->setItemName(items->getString(1));
-			item->setItemDescription(items->getString(2));
-			item->setItemType(items->getUnsignedInt(3));
-			item->setPrice(items->getUnsignedInt(6));
-			item->setAuction(items->getBoolean(7));
-			item->setSold(items->getBoolean(8));
-			item->setExpireTime(items->getUnsignedInt(9));
-			item->setBuyerID(items->getUnsignedLong(12));
-			item->setBidderName(items->getString(13));
-
-			if (!item->isSold()) {
-				bazaarPlanets[i]->addBazaarItem(item);
-			}
-
-			addItem(item);
-		}
-
-		delete items;
-	}
-
-	info("Bazaars populated");
-
-	// Setup event handling to check auction items
-
-	checkEvent = new CheckBazaarStatus(this);
 	checkAuctions();
 }
 
-BazaarManagerImplementation::~BazaarManagerImplementation() {
-	delete bazaarTerminals;
-	bazaarTerminals = NULL;
-
-	if (checkEvent->isQueued())
-		processServer->removeEvent(checkEvent);
-
-	delete checkEvent;
-	checkEvent = NULL;
-
-	for (int i = 0; i < 10; ++i)
-		bazaarPlanets[i]->finalize();
-
-}
-
-bool BazaarManagerImplementation::isBazaarTerminal(uint64 objectID) {
-	return bazaarTerminals->isBazaarTerminal(objectID) != NULL;
-}
-
-void BazaarManagerImplementation::newBazaarRequest(uint64 bazaarID, Player* player, int planet) {
-	BazaarTerminalDetails* location;
-
-	bool vendor;
-
-	string header;
-
-	int bazaarX;
-	int bazaarZ;
-
-	if ((location = bazaarTerminals->isBazaarTerminal(bazaarID)) == NULL)
-		vendor = true;
-	else
-		vendor = false;
-
-	string planetString = Planet::getPlanetName(planet);
-
-	if (!vendor) {
-		header = location->getRegion();
-
-		bazaarX = location->getX();
-		bazaarZ = location->getZ();
-	}
-
-	BaseMessage* msg = new IsVendorOwnerResponseMessage(vendor, bazaarID, planetString, header, bazaarX, bazaarZ);
-	player->sendMessage(msg);
-
-	msg = new BazaarDisplayUI(vendor, bazaarID, player);
-	player->sendMessage(msg);
-}
-
-void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, uint64 bazaarid, unicode& description, int price, uint32 duration, bool auction) {
-	uint32 itemType;
-	string identity;
-
-	lock();
-
-	player->wlock();
-
-	// Check if the item is already for sale
-	if (items.find(objectid) >= 0) {
-
-		stringstream str;
-		str << player->getCharacterName().c_str() << " trying to add objectid "
-		<< objectid << " to the bazaar again";
-		error(str.str());
-
-		BaseMessage* msg = new ItemSoldMessage(objectid, 6);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	if (price > MAXPRICE) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 14);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-
-	} else if (price < 1) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 4);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	if (player->getBankCredits() < SALESFEE) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 9);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	int numberOfItems;
-
-	try {
-		stringstream query1;
-		query1 << "SELECT count(*) from `bazaar_items` WHERE ownerid = " << player->getObjectID() << ";";
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query1);
-
-		res->next();
-		numberOfItems = res->getInt(0);
-
-		delete res;
-
-	} catch (DatabaseException& e) {
-		error("Can't count bazaar_items for user " + player->getCharacterName().c_str());
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	if (numberOfItems >= MAXSALES) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 13);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
-	BazaarTerminalDetails* bazaar = bazaarLocations->get(bazaarid);
-
-	SceneObject* invObj = player->getInventoryItem(objectid);
-
-	if (invObj == NULL || !invObj->isTangible()) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
-		player->sendMessage(msg);
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	TangibleObject* obj = (TangibleObject*)invObj;
-
-	if (obj->isEquipped()) {
-		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
-		player->sendMessage(msg);
-
-		player->sendSystemMessage("you must unequip your item!!");
-
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	itemType = obj->getObjectSubType();
-
-	string name = obj->getName().c_str();
-
-	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-
-	if (!obj->isPersistent())
-		itemManager->createPlayerItem(player, obj);
-
-	if (obj->isUpdated())
-		itemManager->savePlayerItem(player, obj);
-
-	Time expireTime;
-	expireTime.addMiliTime(duration * 1000);
-	uint64 expire = expireTime.getMiliTime() / 1000;
-
-	int auctionout;
-
-	if (auction)
-		auctionout = 1;
-	else
-		auctionout = 0;
-
-	int planet = bazaar->getPlanet();
-
-	string playername = player->getFirstName();
-	String::toLower(playername);
-
-	try {
-		stringstream query2;
-		query2 << "INSERT into `bazaar_items` (objectid, name, description, item_type, ownerid, ownername,"
-		<< " price, auction, sold, expire, terminalid, planet, buyerid, bidderName) "
-		<< "VALUES (" << objectid << ",'\\" << name << "','" << description.c_str() << "'," << itemType << ","
-		<< player->getObjectID() << ",'" << playername << "'," << price << "," << auctionout << ",0,"
-		<< expire << "," << bazaarid << "," << planet << ",0,'');";
-
-		ServerDatabase::instance()->executeStatement(query2);
-
-		stringstream query3;
-		query3 << "UPDATE `character_items` SET character_id = 0 where item_id = " << objectid << ";";
-
-		ServerDatabase::instance()->executeStatement(query3);
-
-	} catch (DatabaseException& e) {
-		stringstream err;
-		err << "Can't add bazaar_item " << objectid;
-		error(err);
-		player->unlock();
-		unlock();
-		return;
-	}
-
-	AuctionItem* item  = new AuctionItem(objectid);
-
-	item->setPlanet(planet);
-	item->setVendorID(bazaarid);
-
-	string region = bazaar->getRegion();
-	string planetStr = Planet::getPlanetName(planet);
-
-	item->setLocation(planetStr, region, bazaarid, bazaar->getX(), bazaar->getZ(), false);
-	item->setOwnerID(player->getObjectID());
-	item->setOwnerName(playername);
-	item->setItemName(name);
-	item->setItemDescription(description.c_str());
-	item->setItemType(itemType);
-	item->setPrice(price);
-	item->setAuction(auction);
-	item->setSold(false);
-	item->setExpireTime(expire);
-	item->setBuyerID(0);
-	item->setBidderName("");
-
-	bazaarPlanets[planet]->addBazaarItem(item);
-
-	addItem(item, false);
-
-	string str1 = "base_player";
-	string str2 = "sale_fee";
-	unicode uni = unicode("");
-
-	player->removeInventoryItem(objectid);
-
-	obj->finalize();
-
-	BaseMessage* msg = new ChatSystemMessage(str1, str2, uni, SALESFEE, true);
-	player->sendMessage(msg);
-
-	msg = new ItemSoldMessage(objectid, 0);
-	player->sendMessage(msg);
-
-	msg = new SceneObjectDestroyMessage(objectid);
-	player->sendMessage(msg);
-
-	player->subtractBankCredits(SALESFEE);
-
-	player->unlock();
-	unlock();
-}
-
-BazaarPlanetManager* BazaarManagerImplementation::getPlanet(uint64 bazaarid) {
-	BazaarTerminalDetails* location;
-
-	location = bazaarTerminals->getBazaarMap()->get(bazaarid);
-	int planet = location->getPlanet();
-	return bazaarPlanets[planet];
-}
-
-RegionBazaar* BazaarManagerImplementation::getBazaar(uint64 bazaarid) {
-	BazaarTerminalDetails* location;
-
-	if ((location = bazaarTerminals->isBazaarTerminal(bazaarid)) != NULL) {
-		return location->getTerminal();
-	} else
-		return NULL;
-}
-
 void BazaarManagerImplementation::checkAuctions() {
+	Locker _locker(_this);
+
 	info("Checking auctions");
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
 
-	for (int i = 0; i < items.size(); ++i) {
-		AuctionItem* item = items.get(i);
-		uint64 objectId = item->getID();
+	for (int i = 0; i < auctionMap->getAuctionCount(); ++i) {
+		ManagedReference<AuctionItem*> item = auctionMap->getAuction(i);
+		uint64 objectId = item->getAuctionedItemObjectID();
 
-		try {
-			item->wlock();
+		Locker _ilocker(item);
 
-			if (item->getExpireTime() <= currentTime) {
-				if (item->isSold()) {
-					bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
+		if (item->getExpireTime() <= currentTime) {
+			if (item->isSold()) {
+				auctionMap->dropAuction(objectId);
+				BazaarTerminal* terminal = item->getBazaarTerminal();
+				terminal->dropAuction(objectId);
 
-					if (removeItem(objectId, false)) {
-						//item->finalize(); the reference is still stored somewhere else
-					} else {
-						stringstream err;
-						err << "checkAuctions cannot remove bazaar item from items " << objectId;
-						error(err);
-					}
+				ObjectManager::instance()->destroyObject(item->_getObjectID());
+			} else {
+				ChatManager* cman = zoneServer->getChatManager();
 
-					stringstream del1;
-					del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
-
-					stringstream del2;
-					del2 << "DELETE from `character_items` WHERE objectid = " << objectId << ";";
-
-					try {
-						ServerDatabase::instance()->executeStatement(del1);
-
-					} catch (DatabaseException& e) {
-						stringstream err;
-						err << "Can't delete bazaar_item " << objectId;
-						error(err);
-						error(e.getMessage());
-
-						/*unlock();
-						return;*/
-					}
-
-					try {
-						ServerDatabase::instance()->executeStatement(del2);
-
-					} catch (DatabaseException& e) {
-						stringstream err;
-						err << "Can't delete character_item " << objectId;
-						error(err);
-						error(e.getMessage());
-
-						/*unlock();
-						return;*/
-					}
-				} else {
-					ChatManager* cman = processServer->getChatManager();
-
-					// retrieve failed auctions for owner
-					if (item->getBidderName().length() < 1) {
-						item->setBuyerID(item->getOwnerID());
-						item->setBidderName(item->getOwnerName());
-
-						stringstream message;
-						unicode subject("Auction Unsuccessful");
-
-						message << "Your auction of " << item->getItemName() <<
-						" has been completed and has not been  purchased.";
-						unicode body(message.str());
-
-						cman->sendMail("Auctioner", subject, body, item->getOwnerName());
-
-						// bidder won auction. handle transactions and send messages
-					} else {
-						PlayerManager* pman = zoneServer->getPlayerManager();
-						pman->modifyRecipientOfflineBank(item->getOwnerName(), item->getPrice());
-
-						string sender = "Auctioner";
-						stringstream message1;
-						unicode subject1("Auction Sale Complete");
-						unicode subject2("Auction Won");
-
-						message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
-						<< " for " << item->getPrice() << " credits.";
-
-						unicode body1(message1.str());
-
-						cman->sendMail(sender, subject1, body1, item->getOwnerName());
-
-						stringstream message2;
-
-						message2 << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << item->getPrice() << " credits.\n"
-						<< "The sale took place at " << item->getLocation();
-						unicode body2(message2.str());
-						cman->sendMail(sender, subject2, body2, item->getBidderName());
-
-						item->setOwnerID(item->getBuyerID());
-						item->setOwnerName(item->getBidderName());
-					}
-
-					// move to available items
-					bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
-
-					item->setSold(true);
-					item->setExpireTime(availableTime);
+				// retrieve failed auctions for owner
+				if (item->getBidderName().length() < 1) {
 					item->setBuyerID(item->getOwnerID());
+					item->setBidderName(item->getOwnerName());
 
-					stringstream update;
-					update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-					<< item->getBuyerID() << ", bidderName = '" << item->getBidderName() << "', ownerid = "
-					<< item->getOwnerID() << ", ownerName = '" << item->getOwnerName() << "' where objectid = " << item->getID() << ";";
+					StringBuffer message;
+					UnicodeString subject("Auction Unsuccessful");
 
-					try {
-						ServerDatabase::instance()->executeStatement(update);
-					} catch (DatabaseException& e) {
-						stringstream err;
-						err << "Can't update bazaar_item " << objectId;
-						error(err);
-						error(e.getMessage());
+					message << "Your auction of " << item->getItemName() <<
+							" has been completed and has not been purchased.";
+					UnicodeString body(message.toString());
 
-						item->unlock();
-						unlock();
-						return;
-					}
+					cman->sendMail("Auctioner", subject, body, item->getOwnerName());
+
+					// bidder won auction. handle transactions and send messages
+				} else {
+					PlayerManager* pman = zoneServer->getPlayerManager();
+					ManagedReference<PlayerCreature*> player = pman->getPlayer(item->getOwnerName());
+
+					Locker _locker(player);
+					player->addBankCredits(item->getPrice());
+					player->updateToDatabaseWithoutChildren();
+
+					String sender = "Auctioner";
+					StringBuffer message1;
+					UnicodeString subject1("Auction Sale Complete");
+					UnicodeString subject2("Auction Won");
+
+					message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
+											<< " for " << item->getPrice() << " credits.";
+
+					UnicodeString body1(message1.toString());
+
+					cman->sendMail(sender, subject1, body1, item->getOwnerName());
+
+					StringBuffer message2;
+
+					message2 << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << item->getPrice() << " credits.\n"
+							<< "The sale took place at " << item->getLocation();
+					UnicodeString body2(message2.toString());
+					cman->sendMail(sender, subject2, body2, item->getBidderName());
+
+					item->setOwnerID(item->getBuyerID());
+					item->setOwnerName(item->getBidderName());
 				}
-			}
-
-			item->unlock();
-		} catch (...) {
-			item->unlock();
-			error("unreported exception caught in BazaarManagerImplementation::checkAuctions()");
-		}
-	}
-
-	processServer->addEvent(checkEvent, CHECKEVERY * 60000);
-}
-
-void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2) {
-	AuctionItem* item = NULL;
-
-	try {
-		lock();
-		player->wlock();
-
-		ChatManager *cman = processServer->getChatManager();
-		PlayerManager *pman = processServer->getPlayerManager();
-		item = getItem(objectid, false);
-
-		string playername = player->getFirstName();
-		String::toLower(playername);
-
-		if (item == NULL) { // send invalid item message
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
-			player->sendMessage(msg);
-
-			player->unlock();
-			unlock();
-			return;
-		}
-
-		item->wlock();
-
-		if (price1 > MAXPRICE || price2 > MAXPRICE) {
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 14);
-			player->sendMessage(msg);
-
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		} else if (price1 < 1 || price2 < 1) {
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 4);
-			player->sendMessage(msg);
-
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
-
-		Time expireTime;
-		uint64 currentTime = expireTime.getMiliTime() / 1000;
-		uint64 availableTime = currentTime + 2592000;
-
-		if (player->getBankCredits() < price1) { // Credit Check
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 9);
-			player->sendMessage(msg);
-
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
-
-		if (!item->getAuction()) { // Instant buy
-			item->setSold(true);
-			item->setExpireTime(availableTime);
-			item->setBuyerID(player->getObjectID());
-			item->setBidderName(playername);
-
-			stringstream update;
-			update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-			<< item->getBuyerID() << ", bidderName='" << item->getBidderName() << "' where objectid = " << item->getID() << ";";
-
-			try {
-				ServerDatabase::instance()->executeStatement(update);
-
-				player->subtractBankCredits(price1);
 
 				// move to available items
-				bazaarPlanets[item->getPlanet()]->removeBazaarItem(item->getID());
+				item->setSold(true);
+				item->setExpireTime(availableTime);
+				item->setBuyerID(item->getOwnerID());
 
-				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0);
-				player->sendMessage(msg);
-
-				// send the bidder a message
-				stringstream body;
-
-				body << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << price1 << " credits.\n"
-				"The sale took place at " << item->getLocation();
-				unicode subject1("Instant Sale Item, Puchased");
-				unicode ubody1(body.str());
-
-				player->sendSystemMessage(body.str());
-				cman->sendMail("Auctioner", subject1, ubody1, item->getBidderName());
-
-				// send the seller a message
-				stringstream body2;
-
-				body2 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
-				<< " for " << price1 << " credits.";
-				unicode subject2("Instant Sale Complete");
-				unicode ubody2(body2.str());
-				cman->sendMail("Auctioner", subject2, ubody2, item->getOwnerName());
-
-				// pay the seller
-				Player* seller = pman->getPlayer(item->getOwnerName());
-
-				if (seller != NULL) {
-					try {
-						if (seller != player)
-							seller->wlock(player);
-
-						seller->sendSystemMessage(body2.str());
-						seller->addBankCredits(price1);
-
-						if (seller != player)
-							seller->unlock();
-					} catch(...) {
-						if (player != seller)
-							seller->unlock();
-						error("unreported1 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
-					}
-				} else {
-					if (!pman->modifyRecipientOfflineBank(item->getOwnerName(), price1)) {
-						item->unlock();
-						player->unlock();
-						unlock();
-						return;
-					}
-				}
-			} catch (DatabaseException& e) {
-				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
-				player->sendMessage(msg);
-
-				stringstream err;
-				err << "Can't update bazaar_item " << item->getID();
-				error(err);
-				error(e.getMessage());
-
-				item->unlock();
-				player->unlock();
-				unlock();
-				return;
+				item->updateToDatabase();
 			}
-		} else { // For Auction Bids
-			// don't allow owner or last bidder bid on the item.  don't allow old auction info
-			// send auctioner invalid message
-			if (playername == item->getBidderName() || playername == item->getOwnerName() || price1 <= item->getPrice()) {
-				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 1);
-				player->sendMessage(msg);
-
-				item->unlock();
-				player->unlock();
-				unlock();
-				return;
-			}
-
-			// send prior bidder their money back
-			if (item->getBidderName().length() > 0) {
-				stringstream body;
-
-				Player* priorBidder = pman->getPlayer(item->getBidderName());
-				body << playername << " outbid you on " << item->getItemName() << ".";
-
-				if (priorBidder != NULL) {
-					try {
-						if (priorBidder != player)
-							priorBidder->wlock(player);
-
-						priorBidder->sendSystemMessage(body.str());
-						priorBidder->addBankCredits(item->getPrice());
-
-						if (priorBidder != player)
-							priorBidder->unlock();
-					} catch (...) {
-						if (priorBidder != player)
-							priorBidder->unlock();
-
-						error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
-					}
-				} else {
-					if (!pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice())) {
-						item->unlock();
-						player->unlock();
-						unlock();
-
-						return;
-					}
-				}
-
-				// mail prior bidder with outcome
-				unicode subject("Outbid");
-				unicode ubody(body.str());
-
-				cman->sendMail("Bazaar", subject, ubody, item->getBidderName());
-				item->setPrice(price1);
-				item->setBuyerID(player->getObjectID());
-				item->setBidderName(playername);
-
-				// take money from high bidder
-				player->subtractBankCredits(price1);
-
-				// no prior bidder, just take the money
-			} else {
-				item->setPrice(price1);
-				item->setBuyerID(player->getObjectID());
-				item->setBidderName(playername);
-
-				player->subtractBankCredits(price1);
-			}
-
-			stringstream update;
-			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID() << " where objectid = " << objectid << ";";
-			try {
-
-				ServerDatabase::instance()->executeStatement(update);
-
-			} catch (DatabaseException& e) {
-				stringstream err;
-				err << "Can't update bazaar_item " << item->getID();
-				error(err);
-				error(e.getMessage());
-
-				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
-				player->sendMessage(msg);
-
-				item->unlock();
-				player->unlock();
-				unlock();
-				return;
-			}
-
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0);
-			player->sendMessage(msg);
 		}
 
-		item->unlock();
-		player->unlock();
-		unlock();
+		if (item->isRemovedByOwner()) {
+			//If this condition has been reached, the item has been removed from the db in retriveItem()
+			auctionMap->dropAuction(objectId);
+			BazaarTerminal* terminal = item->getBazaarTerminal();
+			terminal->dropAuction(objectId);
 
-	} catch (Exception& e) {
-		if (item != NULL)
-			item->unlock();
-
-		player->unlock();
-		unlock();
-
-		error("Unreported3 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
-		e.printStackTrace();
-	} catch (...) {
-		if (item != NULL)
-			item->unlock();
-		player->unlock();
-		unlock();
-
-		error("Unreported3 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
+			ObjectManager::instance()->destroyObject(item->_getObjectID());
+		}
 	}
+
+	CheckAuctionsTask* task = new CheckAuctionsTask(_this);
+	task->schedule(CHECKEVERY * 60000);
 }
 
-void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, uint64 bazaarid) {
-	BaseMessage* msg;
-	AuctionItem* item = NULL;
+int BazaarManagerImplementation::checkSaleItem(PlayerCreature* player, SceneObject* object, int price) {
+	if (auctionMap->getPlayerAuctionCount(player->getObjectID()) >= MAXSALES)
+		return ItemSoldMessage::TOOMANYITEMS;
+
+	if (auctionMap->containsAuction(object->getObjectID()))
+		return ItemSoldMessage::ALREADYFORSALE;
+
+	if (price > MAXPRICE)
+		return ItemSoldMessage::OVER20000;
+
+	if (price < 1)
+		return ItemSoldMessage::INVALIDSALEPRICE;
+
+	if (player->getBankCredits() < SALESFEE)
+		return ItemSoldMessage::NOTENOUGHCREDITS;
+
+	return 0;
+}
+
+void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 objectid, uint64 bazaarid, const UnicodeString& description, int price, uint32 duration, bool auction) {
+	Locker _locker(_this);
+
+	Locker _locker2(player); // no cross lock because we never lock bazaar manager after locking player?
+
+	ManagedReference<SceneObject*> bazaar = zoneServer->getObject(bazaarid);
+
+	if (!bazaar->isBazaarTerminal()) {
+		error("bazaar is not a bazaar terminal");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::VENDORNOTWORKING);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	BazaarTerminal* terminal = (BazaarTerminal*) bazaar.get();
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (!inventory->hasObjectInContainer(objectid)) {
+		error("trying to add object to the bazaar that is not in the inventory");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::NOTOWN);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	ManagedReference<SceneObject*> objectToSell = inventory->getContainerObject(objectid);
+
+	if (!objectToSell->isTangibleObject()) {
+		error("trying to add a non tangible object to the bazaar");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	Zone* zone = terminal->getZone();
+
+	if (zone == NULL) {
+		error("null bazaar zone");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::UNKNOWNERROR);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	int res = checkSaleItem(player, objectToSell, price);
+
+	if (res != 0) {
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, res);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	AuctionItem* item = createAuctionItem(player, objectToSell.get(), terminal, description, price, duration, auction);
+
+	terminal->addAuction(item);
+	auctionMap->addAuction(objectid, item);
+	terminal->updateToDatabase();
+
+	objectToSell->sendDestroyTo(player);
+	inventory->removeObject(objectToSell, true);
+
+	player->substractBankCredits(SALESFEE);
+
+	inventory->updateToDatabase();
+
+	ParameterizedStringId str("base_player", "sale_fee");
+	str.setDI(SALESFEE);
+	str.setUnknownByte(1);
+	BaseMessage* cmsg = new ChatSystemMessage(str);
+	player->sendMessage(cmsg);
+
+	BaseMessage* msg = new ItemSoldMessage(objectid, 0);
+	player->sendMessage(msg);
+}
+
+int BazaarManagerImplementation::checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
+	if (price1 > MAXPRICE || price2 > MAXPRICE) {
+		return BidAuctionResponseMessage::PRICEOVERFLOW;
+	}
+
+	if (price1 < 1 || price2 < 1) {
+		return BidAuctionResponseMessage::INVALIDPRICE;
+	}
+
+	if (player->getBankCredits() < price1) { // Credit Check
+		return BidAuctionResponseMessage::NOTENOUGHCREDITS;
+	}
+
+	return 0;
+}
+
+void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
+	String playername = player->getFirstName().toLowerCase();
+
+	ChatManager *cman = zoneServer->getChatManager();
+	PlayerManager *pman = zoneServer->getPlayerManager();
+
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
+	uint64 availableTime = currentTime + 2592000;
+
+	item->setSold(true);
+	item->setExpireTime(availableTime);
+	item->setBuyerID(player->getObjectID());
+	item->setBidderName(playername);
+
+	item->updateToDatabase();
+
+	player->substractBankCredits(price1);
+
+	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
+	player->sendMessage(msg);
+
+	// send the bidder a message
+	StringBuffer body;
+
+	body << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << price1 << " credits.\n"
+			"The sale took place at " << item->getLocation();
+	UnicodeString subject1("Instant Sale Item, Puchased");
+	UnicodeString ubody1(body.toString());
+
+	player->sendSystemMessage(body.toString());
+	cman->sendMail("Auctioner", subject1, ubody1, item->getBidderName());
+
+	// send the seller a message
+	StringBuffer body2;
+
+	body2 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
+											<< " for " << price1 << " credits.";
+	UnicodeString subject2("Instant Sale Complete");
+	UnicodeString ubody2(body2.toString());
+	cman->sendMail("Auctioner", subject2, ubody2, item->getOwnerName());
+
+	// pay the seller
+	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
 
 	try {
-		lock();
-		player->wlock();
+		if (seller != player)
+			seller->wlock(player);
 
-		// Check player is at correct bazaar
-		item = getItem(objectid, false);
-		string playername = player->getFirstName().c_str();
+		seller->sendSystemMessage(body2.toString());
+		seller->addBankCredits(price1);
 
-		// object was probably already retrieved
-		if (item == NULL) {
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
-			player->sendMessage(msg);
+		seller->updateToDatabaseWithoutChildren();
 
-			player->unlock();
-			unlock();
-			return;
-		}
+		if (seller != player)
+			seller->unlock();
+	} catch (...) {
+		if (seller != player)
+			seller->unlock();
+	}
 
-		item->wlock();
+}
 
-		// only the owner can yank his own auction off the bazaar
-		if (!item->isSold() && item->getOwnerName() != playername ) {
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
-			player->sendMessage(msg);
+void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
+	String playername = player->getFirstName().toLowerCase();
 
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
+	ChatManager *cman = zoneServer->getChatManager();
+	PlayerManager *pman = zoneServer->getPlayerManager();
+	// don't allow owner or last bidder bid on the item.  don't allow old auction info
+	// send auctioner invalid message
+	if (playername == item->getBidderName() || playername == item->getOwnerName() || price1 <= item->getPrice()) {
+		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 1);
+		player->sendMessage(msg);
 
-		// the bidder is the only one who can get his auction after expiration
-		if (item->isSold() && item->getBuyerID() != player->getObjectID()) {
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
-			player->sendMessage(msg);
+		return;
+	}
 
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
+	// send prior bidder their money back
+	if (item->getBidderName().length() > 0) {
+		StringBuffer body;
 
-		BazaarTerminalDetails* location = bazaarTerminals->getBazaarMap()->get(bazaarid);
-		string region = location->getRegion();
-
-		if (item->getLocation().find(region) == string::npos) {
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
-			player->sendMessage(msg);
-
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
-
-		// Check if inventory is full
-		Inventory * inventory = player->getInventory();
-
-		if (inventory->objectsSize() > 79) {
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 12);
-
-			item->unlock();
-			player->sendMessage(msg);
-			player->unlock();
-			unlock();
-			return;
-		}
+		ManagedReference<PlayerCreature*> priorBidder = pman->getPlayer(item->getBidderName());
+		body << playername << " outbid you on " << item->getItemName() << ".";
 
 		try {
-			stringstream update;
-			update << "UPDATE `character_items` SET character_id = " << player->getCharacterID() << " WHERE item_id = " << objectid;
-			stringstream delBazaar;
-			delBazaar << "DELETE FROM `bazaar_items` WHERE objectid = " << objectid;
+			if (priorBidder != player)
+				priorBidder->wlock(player);
 
-			ServerDatabase::instance()->executeStatement(update);
-			ServerDatabase::instance()->executeStatement(delBazaar);
+			priorBidder->sendSystemMessage(body.toString());
+			priorBidder->addBankCredits(item->getPrice());
 
-		} catch (DatabaseException& e) {
-			stringstream err;
-			err << "Can't remove bazaar_item " << objectid;
-			error(err);
-			error(e.getMessage());
-			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
+			priorBidder->updateToDatabaseWithoutChildren();
 
-			item->unlock();
-			player->sendMessage(msg);
-			player->unlock();
-			unlock();
-			return;
+			if (priorBidder != player)
+				priorBidder->unlock();
+		} catch (...) {
+			if (priorBidder != player)
+				priorBidder->unlock();
+
+			error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 		}
 
-		// refund money to bidder for sniping the auction
-		if (!item->isSold() && item->getBidderName().length() > 0) {
-			PlayerManager* pman = processServer->getPlayerManager();
-			Player* bidder = pman->getPlayer(item->getBidderName());
-			ChatManager* cman = processServer->getChatManager();
 
-			// send the player a mail and system message
-			unicode subject("Auction Cancelled");
-			stringstream mess;
-			mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
-			unicode body(mess.str());
+		// mail prior bidder with outcome
+		UnicodeString subject("Outbid");
+		UnicodeString ubody(body.toString());
 
-			if (bidder != NULL) {
-				try {
-					if (bidder != player)
-						bidder->wlock(player);
+		cman->sendMail("Bazaar", subject, ubody, item->getBidderName());
+		item->setPrice(price1);
+		item->setBuyerID(player->getObjectID());
+		item->setBidderName(playername);
 
-					bidder->addBankCredits(item->getPrice());
-					bidder->sendSystemMessage(mess.str());
+		// take money from high bidder
+		player->substractBankCredits(price1);
 
-					if (bidder != player)
-						bidder->unlock();
-				} catch (...) {
-					if (bidder != player)
-						bidder->unlock();
-					error("Unreporeted1 exception caught in BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, uint64 bazaarid)");
-				}
-			} else
-				pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice());
+		// no prior bidder, just take the money
+	} else {
+		item->setPrice(price1);
+		item->setBuyerID(player->getObjectID());
+		item->setBidderName(playername);
 
-			cman->sendMail("auctioner", subject, body, item->getBidderName());
-			bazaarPlanets[item->getPlanet()]->removeBazaarItem(item->getID());
-		}
+		player->substractBankCredits(price1);
+	}
 
-		ItemManager* itemManager = processServer->getItemManager();
-		TangibleObject* tano = itemManager->getPlayerItem(player, objectid);
+	item->updateToDatabase();
 
-		// TODO: handle this case
-		if (tano == NULL) {
-			stringstream err;
-			err << "retrieveItem NULL pointer for bazaar_item " << objectid;
-			error(err);
+	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
+	player->sendMessage(msg);
+}
 
-			if (removeItem(objectid, false)) {
-				//item->finalize();  the reference is still stored somewhere else
-			} else {
-				stringstream errMsg;
-				errMsg << "retrieveItem cannot remove bazaar item from items " << objectid;
-				error(errMsg);
-			}
+void BazaarManagerImplementation::buyItem(PlayerCreature* player, uint64 objectid, int price1, int price2) {
+	Locker _locker(_this);
+	Locker _locker2(player);
 
-			item->unlock();
-			player->unlock();
-			unlock();
-			return;
-		}
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectid);
 
-		tano->sendTo(player);
-
-		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
-
-		item->unlock();
+	if (item == NULL) { // send invalid item message
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
-		player->unlock();
 
-		if (removeItem(objectid, false)) {
-			//item->finalize();  the reference is still stored somewhere else
-		} else {
-			stringstream errMsg;
-			errMsg << "retrieveItem cannot remove bazaar item from items " << objectid;
-			error(errMsg);
+		return;
+	}
+
+	int res = checkBidAuction(player, item, price1, price2);
+
+	if (res != 0) {
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, res);
+		player->sendMessage(msg);
+		return;
+	}
+
+	if (!item->isAuction()) { // Instant buy
+		doInstantBuy(player, item, price1, price2);
+	} else { // For Auction Bids
+		doAuctionBid(player, item, price1, price2);
+	}
+
+}
+
+
+int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 objectIdToRetrieve, BazaarTerminal* terminal) {
+	if (!auctionMap->containsAuction(objectIdToRetrieve))
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	if (inventory->hasFullContainerObjects())
+		return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
+
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectIdToRetrieve);
+
+	String playername = player->getFirstName();
+
+	// only the owner can yank his own auction off the bazaar
+	if (!item->isSold() && (playername.toLowerCase() != item->getOwnerName().toLowerCase()))
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+
+	// the bidder is the only one who can get his auction after expiration
+	if (item->isSold() && item->getBuyerID() != player->getObjectID())
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+
+	String region = terminal->getBazaarRegion();
+
+	if (item->getLocation().indexOf(region) == -1)
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+
+	return 0;
+}
+
+void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
+	PlayerManager* pman = zoneServer->getPlayerManager();
+	ManagedReference<PlayerCreature*> bidder = pman->getPlayer(item->getBidderName());
+	ChatManager* cman = zoneServer->getChatManager();
+
+	// send the player a mail and system message
+	UnicodeString subject("Auction Canceled");
+	StringBuffer mess;
+	mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
+	UnicodeString body(mess.toString());
+
+	int bankCredits = bidder->getBankCredits();
+	bidder->setBankCredits(bankCredits + item->getPrice());
+	bidder->sendSystemMessage(mess.toString());
+
+	cman->sendMail("auctioner", subject, body, item->getBidderName());
+}
+
+void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 objectid, uint64 bazaarid) {
+	BaseMessage* msg = NULL;
+	ManagedReference<AuctionItem*> item = NULL;
+
+	ManagedReference<SceneObject*> bazaarScene = zoneServer->getObject(bazaarid);
+
+	if (bazaarScene == NULL || !bazaarScene->isBazaarTerminal()) {
+		msg = new RetrieveAuctionItemResponseMessage(objectid, RetrieveAuctionItemResponseMessage::NOTALLOWED);
+		player->sendMessage(msg);
+		return;
+	}
+
+	BazaarTerminal* terminal = (BazaarTerminal*) bazaarScene.get();
+
+	Locker _locker(_this);
+	Locker _locker2(player);
+
+	int res = checkRetrieve(player, objectid, terminal);
+
+	if (res != 0) {
+		msg = new RetrieveAuctionItemResponseMessage(objectid, res);
+		player->sendMessage(msg);
+		return;
+	}
+
+	// Check player is at correct bazaar
+	item = auctionMap->getAuction(objectid);
+
+	// refund money to bidder for sniping the auction
+	if (!item->isSold() && item->getBidderName().length() > 0) {
+		refundAuction(item);
+	}
+
+	ManagedReference<SceneObject*> objectToRetrieve = zoneServer->getObject(objectid);
+
+	objectToRetrieve->sendTo(player);
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	inventory->addObject(objectToRetrieve, 4, true);
+	inventory->updateToDatabase();
+
+	item->setRemovedByOwner(true);
+
+	BazaarTerminal* ownedTerminal = item->getBazaarTerminal();
+	ownedTerminal->dropAuction(objectid);
+	auctionMap->dropAuction(objectid);
+	ObjectManager::instance()->destroyObject(item->_getObjectID());
+
+	msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
+	player->sendMessage(msg);
+}
+
+AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* player, SceneObject* objectToSell, BazaarTerminal* terminal, const UnicodeString& description, int price, unsigned int duration, bool auction) {
+	Zone* zone = terminal->getZone();
+
+	Time expireTime;
+	expireTime.addMiliTime(duration * 1000);
+	uint64 expire = expireTime.getMiliTime() / 1000;
+
+	int planet = zone->getZoneID();
+
+	String playername = player->getFirstName().toLowerCase();
+	String descr = description.toString();
+
+	AuctionItem* item  = new AuctionItem(objectToSell->getObjectID());
+
+	item->setPlanet(planet);
+	item->setBazaarTerminal(terminal);
+
+	String region = terminal->getBazaarRegion();
+	String planetStr = Planet::getPlanetName(planet);
+
+	StringId* objectName = objectToSell->getObjectName();
+
+	String name = objectName->getCustomString().toString();
+
+	if (name.length() < 2)
+		objectName->getFullPath(name);
+
+	item->setLocation(planetStr, region, terminal->getObjectID(), terminal->getPositionX(), terminal->getPositionY(), false);
+	item->setOwnerID(player->getObjectID());
+	item->setOwnerName(playername);
+	item->setItemName(name);
+	item->setItemDescription(description.toString());
+	item->setItemType(objectToSell->getGameObjectType());
+	item->setPrice(price);
+	item->setAuction(auction);
+	item->setSold(false);
+	item->setRemovedByOwner(false);
+	item->setExpireTime(expire);
+	item->setBuyerID(0);
+	item->setBidderName("");
+
+	ObjectManager::instance()->persistObject(item, 1, "auctions");
+
+	return item;
+}
+
+AuctionQueryHeadersResponseMessage* BazaarManagerImplementation::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem*> >* items, int screen, uint32 category, int count, int offset) {
+	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
+
+	int displaying = 0;
+	String pname = player->getFirstName().toLowerCase();
+
+	switch(screen) {
+	case 2: // All Auctions
+		for (int i = 0; (i < items->size()) && (displaying < (offset + 100)); i++) {
+			AuctionItem* item = items->get(i);
+
+			if (!item->isSold() && !item->isRemovedByOwner()) {
+				if (category & 255) { // Searching a sub category
+					if (item->getItemType() == category) {
+						if (displaying >= offset)
+							reply->addItemToList(items->get(i));
+
+						displaying++;
+					}
+				} else if (item->getItemType() & category) {
+					if (displaying >= offset)
+						reply->addItemToList(items->get(i));
+
+					displaying++;
+				} else if ((category == 8192) && (item->getItemType() < 256)) {
+					if (displaying >= offset)
+						reply->addItemToList(items->get(i));
+
+					displaying++;
+				}
+			}
 		}
 
-		unlock();
-	} catch (...) {
-		if (item != NULL)
-			item->unlock();
-		player->unlock();
-		unlock();
+		break;
+	case 3: // My auctions/sales
+		for (int i = 0; i < items->size(); i++) {
+			if ((items->get(i)->getOwnerID() == player->getObjectID()) && !items->get(i)->isSold())
+				reply->addItemToList(items->get(i));
+		}
 
-		error("Unreported2 exception caught in BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, uint64 bazaarid)");
+		break;
+	case 4: // My Bids
+		for (int i = 0; i < items->size(); i++) {
+			if ((items->get(i)->getBidderName() == pname) && !items->get(i)->isSold())
+				reply->addItemToList(items->get(i));
+		}
+
+		break;
+	case 5: // Retrieve items screen
+		for (int i = 0; i < items->size(); i++) {
+			if (items->get(i)->isSold() && items->get(i)->getBuyerID() == player->getObjectID())
+				reply->addItemToList(items->get(i));
+		}
+
+		break;
+	}
+
+	if (displaying == (offset + 100))
+		reply->createMessage(offset, true);
+	else
+		reply->createMessage(offset);
+
+	return reply;
+}
+
+void BazaarManagerImplementation::getBazaarData(PlayerCreature* player, int extent, uint64 bazaarObjectid, int screen, unsigned int category, int count, int offset) {
+	ManagedReference<SceneObject*> bazaar = zoneServer->getObject(bazaarObjectid);
+
+	if (bazaar == NULL) {
+		error("null bazaar in getRegionBazaarData");
+		return;
+	}
+
+	if (!bazaar->isBazaarTerminal()) {
+		error("bazaar is not a bazaar terminal");
+		return;
+	}
+
+	BazaarTerminal* terminal = (BazaarTerminal*) bazaar.get();
+
+	switch (extent) {
+	case 0:
+		getAllBazaarData(player, terminal, screen, category, count, offset);
+		break;
+	case 1:
+		getPlanetBazaarData(player, terminal, screen, category, count, offset);
+		break;
+	case 2:
+		getRegionBazaarData(player, terminal, screen, category, count, offset);
+		break;
+	default:
+		break;
 	}
 }
 
-void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objectid) {
-	if (player == NULL)
-		return;
+void BazaarManagerImplementation::getAllBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, uint32 category, int count, int offset) {
+	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, auctionMap->getAuctions(), screen, category, count, offset);
+	player->sendMessage(msg);
+}
 
-	lock();
-	player->wlock();
+void BazaarManagerImplementation::getPlanetBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, uint32 category, int count, int offset) {
+	Zone* zone = terminal->getZone();
 
-	ItemManager* itemManager = zoneServer->getItemManager();
-	TangibleObject* object = itemManager->getPlayerItem(NULL, objectid);
-
-	if (object == NULL) {
-		player->unlock();
-		unlock();
+	if (zone == NULL) {
+		error("null zone int getRegionBazaarData");
 		return;
 	}
 
-	unicode description;
-	AuctionItem* item = getItem(objectid, false);
-	if (item == NULL)
-		description = unicode("");
-	else
-		description = unicode(item->getItemDescription());
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
+
+	for (int u = 0; u < planetManager->getRegionCount(); ++u) {
+		ManagedReference<Region*> regionObject = planetManager->getRegion(u);
+
+		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
+			BazaarTerminal* term = regionObject->getBazaar(i);
+
+			VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
+
+			for (int j = 0; j < regionItems->size(); ++j) {
+				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+			}
+		}
+	}
+
+	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, &items, screen, category, count, offset);
+	player->sendMessage(msg);
+}
+
+void BazaarManagerImplementation::getRegionBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, uint32 category, int count, int offset) {
+	Zone* zone = terminal->getZone();
+
+	if (zone == NULL) {
+		error("null zone int getRegionBazaarData");
+		return;
+	}
+
+	String region = terminal->getBazaarRegion();
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	ManagedReference<Region*> regionObject = planetManager->getRegion(region);
+
+	if (regionObject == NULL) {
+		error("null regionObject in getRegionBazaarData");
+		return;
+	}
+
+	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
+
+	for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
+		BazaarTerminal* term = regionObject->getBazaar(i);
+
+		VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
+
+		for (int j = 0; j < regionItems->size(); ++j) {
+			items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+		}
+	}
+
+	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, &items, screen, category, count, offset);
+	player->sendMessage(msg);
+}
+
+void BazaarManagerImplementation::getItemAttributes(PlayerCreature* player, uint64 objectid) {
+	Locker _locker(_this);
+
+	UnicodeString description;
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectid);
+
+	_locker.release();
+
+	ManagedReference<SceneObject*> object = zoneServer->getObject(objectid);
+
+	if (!object->isTangibleObject()) {
+		error("non tangible object");
+		return;
+	}
+
+	TangibleObject* tano = (TangibleObject*) object.get();
+
+	if (item == NULL) {
+		error("null auction item in bazaar manager");
+		return;
+	}
+
+	if (object == NULL) {
+		error("null object retrieved from database");
+		return;
+	}
+
+	description = item->getItemDescription();
 
 	AttributeListMessage* msg = new AttributeListMessage(objectid, description);
 
-	object->addAttributes(msg);
-	msg->insertInt(0);
+	object->fillAttributeList(msg, player);
+	//msg->insertInt(0);
+	String cust = TemplateManager::instance()->getTemplateFile(object->getClientObjectCRC());
+	msg->insertAscii(cust);
+	tano->getCustomizationString(cust);
+	msg->insertAscii(cust);
+
 	player->sendMessage(msg);
 
-	object->finalize();
-	player->unlock();
-	unlock();
 }
+
+

@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -113,51 +113,3 @@ spawnCreatures(nightsisterProtector, 2, -5000, 5000, 3000, 10)
 spawnCreatures(nightsisterSpellWeaver, 2, -5000, 5000, 3000, 20)
 spawnCreatures(nightsisterStalker, 2, -5000, 5000, 3000, 10)
 spawnCreatures(nightsisterElder, 2, -5000, 5000, 2000, 2)
-
--- Nightsister Stronghold POI
-spawnCreatures(nightsisterElder, 2, -3976, -175, 1, 1)
-spawnCreatures(nightsisterElder, 2, -4007, -267, 1, 1)
-spawnCreatures(nightsisterElder, 2, -4154, -97, 1, 1)
-spawnCreatures(nightsisterRancorTamer, 2, -4107, -100, 25, 2)
-spawnCreatures(nightsisterProtector, 2, -4107, -100, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, -4107, -100, 25, 2)
-spawnCreatures(nightsisterRancorTamer, 2, -4016, -139, 25, 2)
-spawnCreatures(nightsisterProtector, 2, -4016, -139, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, -4016, -139, 25, 2)
-spawnCreatures(nightsisterRancorTamer, 2, -3984, -231, 25, 2)
-spawnCreatures(nightsisterProtector, 2, -3984, -231, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, -3984, -231, 25, 2)
-spawnCreatures(nightsisterSentinal, 2, -4059, -157, 800, 20)
-spawnCreatures(nightsisterSentry, 2, -4059, -157, 800, 20)
-spawnCreatures(nightsisterStalker, 2, -4059, -157, 800, 20)
-spawnCreatures(nightsisterInitiate, 2, -4059, -157, 800, 20)
-spawnCreatures(nightsisterRancorTamer, 2, -4059, -157, 800, 16)
-spawnCreatures(nightsisterSpellWeaver, 2, -4059, -157, 800, 16)
-spawnCreatures(nightsisterProtector, 2, -4059, -157, 800, 12)
-spawnCreatures(nightsisterSpellWeaver, 2, -4059, -157, 1000, 20)
-spawnCreatures(nightsisterRanger, 2, -4059, -157, 1500, 50)
-spawnCreatures(nightsisterOutcast, 2, -4059, -157, 1000, 20)
-
-
--- Nightsister Forced Labor Camp
-spawnCreatures(nightsisterProtector, 2, 2546, -1669, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, 2547, -1667, 25, 2)
-spawnCreatures(nightsisterProtector, 2, 2546, -1619, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, 2545, -1618, 25, 2)
-spawnCreatures(nightsisterProtector, 2, 2550, -1572, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, 2552, -1571, 25, 2)
-spawnCreatures(nightsisterProtector, 2, 2607, -1627, 25, 2)
-spawnCreatures(nightsisterSpellWeaver, 2, 2609, -1627, 25, 2)
-spawnCreatures(nightsisterRancorTamer, 2, 2545, -1624, 200, 5)
-spawnCreatures(nightsisterOutcast, 2, 2545, -1625, 100, 25)
-spawnCreatures(nightsisterSentry, 2, 2545, -1625, 500, 30)
-spawnCreatures(nightsisterRanger, 2, 2545, -1625, 1000, 30)
-spawnCreatures(nightsisterSentinal, 2, 2545, -1625, 500, 25)
-spawnCreatures(nightsisterInitiate, 2, 2546, -1624, 100, 25)
-spawnCreatures(nightsisterElder, 2, 2545, -1624, 25, 2)
-spawnCreatures(rancor, 2, 2546, -1624, 1500, 10)
-spawnCreatures(bazNitch, 2, 2546, -1624, 1000, 5)
-spawnCreatures(kwi, 2, 2546, -1624, 1000, 10)
-spawnCreatures(malkloc, 2, 2546, -1624, 1000, 10)
-spawnCreatures(purbole, 2, 2546, -1624, 1000, 5)
-spawnCreatures(verne, 2, 2546, -1624, 1000, 5)

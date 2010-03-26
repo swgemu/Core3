@@ -1,14 +1,21 @@
 #ifndef CREATUREOBJECT_H_
 #define CREATUREOBJECT_H_
 
-#include "../scene/SceneObject.h"
+#include "../tangible/TangibleObject.h"
 
-class CreatureObject : public SceneObject {
+class CreatureObject : public TangibleObject {
 protected:
-	string name;
+	uint32 actionCount;
 
 public:
-	CreatureObject(sys::uint64 oid);
+	CreatureObject(LuaObject* templateData);
+
+	void parseBaseline3(Message* message);
+
+	uint32 getNewActionCount() {
+		return ++actionCount;
+	}
+
 };
 
 #endif /*CREATUREOBJECT_H_*/

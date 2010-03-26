@@ -67,13 +67,26 @@ which carries forward this exception.
 class ItemSoldMessage : public BaseMessage {
 
 public:
-	ItemSoldMessage(long long objectid, int status) {
+
+	const static int INVALIDAUCTIONER = 1;
+	const static int INVALIDITEM = 2;
+	const static int VENDORNOTWORKING = 3;
+	const static int INVALIDSALEPRICE = 4;
+	const static int INVALIDSALEDURATION = 5;
+	const static int ALREADYFORSALE = 6;
+	const static int UNKNOWNERROR = 7;
+	const static int NOTOWN = 8;
+	const static int NOTENOUGHCREDITS = 9;
+	const static int TOOMANYITEMS = 13;
+	const static int OVER20000 = 14;
+
+public:
+	ItemSoldMessage(uint64 objectid, int status) {
 		insertShort(3);
 		insertInt(0x0E61CC92);
 		
 		insertLong(objectid);
 		insertInt(status); 
-		
 	}
 };
 

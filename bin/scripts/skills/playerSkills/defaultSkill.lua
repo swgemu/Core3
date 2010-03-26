@@ -46,7 +46,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = NONE,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 1,
 	speedRatio = 1,
 	areaRange = 0,
@@ -68,3 +68,44 @@ RandPoolAtt = {
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
+ThrowSkill = { 
+	attackname = "throwgrenade",
+	animation = "throw_grenade_medium_fragmentation",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8.0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_fragmentation_block",
+	CbtSpamCounter = "throw_fragmentation_counter",
+	CbtSpamEvade = "throw_fragmentation_evade",
+	CbtSpamHit = "throw_fragmentation_hit",
+	CbtSpamMiss = "throw_fragmentation_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+

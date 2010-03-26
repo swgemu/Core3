@@ -39,9 +39,12 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- Dathomir
+ -- Load files
 
-RunSkillsFile("creatureSkills/dathomir/npcs/nightsisterAttacks.lua")
-RunSkillsFile("creatureSkills/dathomir/npcs/singingMountainClanAttacks.lua")
+ -- Dathomir
+ RunSkillsFile("creatureSkills/dathomir/npcs/nightsisterAttacks.lua")
+ RunSkillsFile("creatureSkills/dathomir/npcs/singingMountainClanAttacks.lua")
+ RunSkillsFile("creatureSkills/dathomir/npcs/spiderNightsisterAttacks.lua")
+ RunSkillsFile("creatureSkills/dathomir/npcs/sithShadowAttacks.lua")
+ RunSkillsFile("creatureSkills/dathomir/npcs/villageAttacks.lua")

@@ -42,19 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
+package server.zone.objects.tangible.terminal;
 
-import "../../player/Player";
+import engine.lua.LuaObject;
+import server.zone.objects.tangible.TangibleObject;
 
-import "../TangibleObject";
-
-interface Terminal implements TangibleObject {
-	Terminal(unsigned int objCRC, unsigned long oid, const unicode n, const string tempn, 
-			float x, float z, float y, int TerminalType) {
-		super(oid, int tp);
+class Terminal extends TangibleObject {
+	
+	public Terminal() {		
+		Logger.setLoggingName("Terminal");
 	}
 	
-	int useObject(Player player);
-	
-	int getTerminalType();
+	public native void initializeTransientMembers();
 }

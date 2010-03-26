@@ -45,13 +45,13 @@ squillAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 35,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -70,19 +70,21 @@ squillAttack1 = {
 }
 AddRandomPoolAttackTargetSkill(squillAttack1)
 
+-----------------------------------------------
+
 squillAttack2 = {
 	attackname = "squillAttack2",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 35,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -101,19 +103,21 @@ squillAttack2 = {
 }
 AddRandomPoolAttackTargetSkill(squillAttack2)
 
+-----------------------------------------------
+
 squillAttack3 = {
 	attackname = "squillAttack3",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 35,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 20,
@@ -132,28 +136,30 @@ squillAttack3 = {
 }
 AddRandomPoolAttackTargetSkill(squillAttack3)
 
+-----------------------------------------------
+
 squillAttack4 = {
 	attackname = "squillAttack4",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 35,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 20,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -172,13 +178,13 @@ squillAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 35,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,

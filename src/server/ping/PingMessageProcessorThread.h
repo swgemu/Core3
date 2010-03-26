@@ -53,45 +53,37 @@ which carries forward this exception.
 #include "PingClient.h"
 
 class PingMessageProcessorThread : public ServiceProcessThread {
-	//LoginPacketHandler* phandler;
 
 public:
-	PingMessageProcessorThread(string s) : ServiceProcessThread(s) {
-		//phandler = phand;
+	PingMessageProcessorThread(String s) : ServiceProcessThread(s) {
 	}
 
 	void run() {
 		Message* msg;
 
 		while ((msg = server->getMessage()) != NULL) {
-			//ServerCore::workLock.lock();
-			//info("processing login message");
-
 			try {
-				//phandler->handleMessage(msg);
 				PingClient* client = (PingClient*) msg->getClient();
 
 				client->sendMessage(msg);
 			} catch (PacketIndexOutOfBoundsException& e) {
-				cout << e.getMessage();
+				System::out << e.getMessage();
 
-				stringstream str;
-				str << "incorrect packet - " << msg->toString();
+				StringBuffer str;
+				str << "incorrect packet - " << msg->toStringData();
 				error(str);
 			} catch (DatabaseException& e) {
-				stringstream msg;
+				StringBuffer msg;
 				msg << e.getMessage();
 				error(msg);
 			} catch (ArrayIndexOutOfBoundsException& e) {
-				stringstream msg;
+				StringBuffer msg;
 				msg << e.getMessage();
 				error(msg);
 			} catch (...) {
-				cout << "[LoginMessageProcessor] unreported Exception caught\n";
+				System::out << "[PingMessageProcessor] unreported Exception caught\n";
 			}
 
-			//info("finished processing login message");
-			//ServerCore::workLock.unlock();
 			delete msg;
 		}
 

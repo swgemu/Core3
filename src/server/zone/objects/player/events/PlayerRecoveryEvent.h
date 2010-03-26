@@ -45,21 +45,34 @@ which carries forward this exception.
 #ifndef PLAYERRECOVERYEVENT_H_
 #define PLAYERRECOVERYEVENT_H_
 
-#include "../PlayerImplementation.h"
+#include "../PlayerCreature.h"
 
-class PlayerRecoveryEvent : public Event {
-	PlayerImplementation* player;
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
+class PlayerRecoveryEvent : public Task {
+	ManagedReference<PlayerCreature*> player;
 
 public:
-	PlayerRecoveryEvent(PlayerImplementation* pl) : Event(2000) {
+	PlayerRecoveryEvent(PlayerCreature* pl) : Task(2000) {
 		player = pl;
-
-		setKeeping(true);
 	}
 
-	bool activate() {
+	~PlayerRecoveryEvent() {
+		/*if (enQueued) {
+			System::out << "ERROR: PlayerRecoveryEvent scheduled event deleted\n";
+			raise(SIGSEGV);
+		}*/
+	}
+
+	void run() {
 		try {
 			player->wlock();
+
+			player->clearRecoveryEvent();
 
 			if (player->isOnline() || player->isLinkDead())
 				player->doRecovery();
@@ -67,12 +80,17 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
+
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };
+
+}
+}
+}
+}
+}
 
 #endif /*PLAYERRECOVERYEVENT_H_*/

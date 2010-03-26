@@ -59,15 +59,15 @@ which carries forward this exception.
 class Account {
 	uint32 stationID;
 
-	string username;
-	string password;
-	string version;
+	String username;
+	String password;
+	String version;
 
-	string forumUserID;
-	string forumUserGroupID;
-	string forumUser;
-	string forumPass;
-	string forumSalt;
+	String forumUserID;
+	String forumUserGroupID;
+	String forumUser;
+	String forumPass;
+	String forumSalt;
 	bool isBanned;
 
 public:
@@ -80,15 +80,14 @@ public:
 	static const int ACCOUNTDOESNTEXIST = 5;
 	static const int ACCOUNTNOTACTIVE = 6;
 
-
 public:
 	int accountID;
 
 	Account(Packet* pack) {
 		AccountVersionMessage::parse(pack, username, password, version);
 
-		MySqlDatabase::escapeString(username);
-		MySqlDatabase::escapeString(password);
+		Database::escapeString(username);
+		Database::escapeString(password);
 	}
 
 	//Checks for publish 14 clients. To disable: have the function return true all the time.
@@ -101,26 +100,21 @@ public:
 	}
 
 	int validate(ConfigManager* configManager) {
-
-		if(configManager->getUseVBIngeration() == 1){
+		if (configManager->getUseVBIngeration() == 1){
 
 			int validateResult = validateForumAccount(configManager);
 
-			if(validateResult != 0)
+			if (validateResult != 0)
 				return validateResult;
 
-		} else if(configManager->getAutoReg() == 0 && !validateForumAccount(configManager)){
+		} else if (configManager->getAutoReg() == 0 && !validateForumAccount(configManager)){
 			return ACCOUNTAUTOREGDISABLED;
 		}
 
-		string query = "SELECT * FROM account WHERE username = \'" + username +
-					   "\'";
+		String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
 
-		if(configManager->getUseVBIngeration() == 0){
-
+		if (configManager->getUseVBIngeration() == 0)
 			query += " and password = sha1(\'" + password + "\')";
-
-		}
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -132,50 +126,44 @@ public:
 
 		delete res;
 
-		if( accountID != -1)
+		if ( accountID != -1)
 			return ACCOUNTOK;
 		else
 			return ACCOUNTINUSE;
 	}
 
 	int create(ConfigManager* configManager) {
-
 		try {
-
-			if(configManager->getUseVBIngeration() == 1){
-
+			if (configManager->getUseVBIngeration() == 1){
 				int validateResult = validateForumAccount(configManager);
 
-				if(validateResult != 0)
+				if (validateResult != 0)
 					return validateResult;
-
-
-			} else if(configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
+			} else if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
 				return ACCOUNTAUTOREGDISABLED; // Auto Reg Disabled
 			}
 
-			stringstream query;
+			StringBuffer query;
 
 			query << "INSERT INTO `account` (username,password,station_id,gm,banned,email,joindate,lastlogin) "
-               	  << "VALUES ('" << username.c_str() << "',SHA1('" << password.c_str() << "'),"
+               	  << "VALUES ('" << username.toCharArray() << "',SHA1('" << password.toCharArray() << "'),"
                	  << System::random() << ",0,0,'ChangeMe@email.com',NOW(),NOW())";
 
 			ServerDatabase::instance()->executeStatement(query);
 
 			return ACCOUNTOK;
 		} catch(DatabaseException& e) {
-			cout << e.getMessage() << endl;
+			System::out << e.getMessage() << endl;
 			return ACCOUNTINUSE;
 		}
 	}
 
 	int validateForumAccount(ConfigManager* configManager){
-
-		if(configManager->getUseVBIngeration() == 0 || configManager->getAutoReg() == 1)
+		if (configManager->getUseVBIngeration() == 0 || configManager->getAutoReg() == 1)
 			return 0;
 
 		try {
-			stringstream query, query2;
+			StringBuffer query, query2;
 
 			query << "SELECT "
 				  << ForumsDatabase::userTable() << ".userid, "
@@ -188,13 +176,13 @@ public:
 			      << " WHERE userid = (SELECT "
 			      << ForumsDatabase::userTable() << ".userid "
 			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\') ) as banned, "
+			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as banned, "
 				  << "(SELECT userid FROM "
 				  << ForumsDatabase::newActivationTable()
 			      << " WHERE userid = (SELECT "
 			      << ForumsDatabase::userTable() << ".userid "
 			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\') ) as newuser "
+			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as newuser "
 				  << " FROM " << ForumsDatabase::userTable()
 			      << " WHERE "
 			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";
@@ -202,7 +190,6 @@ public:
 			ResultSet* res = ForumsDatabase::instance()->executeQuery(query);
 
 			if (res->next()){
-
 				forumUserID = res->getString(0);
 				forumUserGroupID = res->getString(1);
 				forumUser = res->getString(2);
@@ -210,44 +197,40 @@ public:
 				forumSalt = res->getString(4);
 
 				try {
-					string test = res->getString(5);
+					String test = res->getString(5);
 					isBanned = true;
 				} catch (...) {
-
 					isBanned = false;
-
 				}
 
-				if(isBanned){
+				if (isBanned){
 					delete res;
 					return ACCOUNTBANNED;
 				}
 
+
 				try {
-					string test = res->getString(6);
+					String test = res->getString(6);
 					isBanned = true;
 				} catch (...) {
-
 					isBanned = false;
-
 				}
 
-				if(isBanned){
+				if (isBanned){
 					delete res;
 					return ACCOUNTNOTACTIVE;
 				}
 
-				string forSalt = forumSalt;
-				MySqlDatabase::escapeString(forSalt);
+				String forSalt = forumSalt;
+				Database::escapeString(forSalt);
 
 				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forSalt + "\'))";
 				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
 
-				if(res2->next()){
+				if (res2->next()){
+					String tempPass = res2->getString(0);
 
-					string tempPass = res2->getString(0);
-
-					if(tempPass == forumPass){
+					if (tempPass == forumPass){
 						delete res;
 						delete res2;
 						return ACCOUNTOK; // Good Account
@@ -262,7 +245,7 @@ public:
 
 			return ACCOUNTDOESNTEXIST;
 		} catch(DatabaseException& e) {
-			cout << e.getMessage() << endl;
+			System::out << e.getMessage() << endl;
 			return ACCOUNTINUSE;
 		}
 
@@ -270,8 +253,13 @@ public:
 
 	void login(LoginClient* client) {
 		if (accountID > 0) {
-			Message* lct = new LoginClientToken(username, accountID, stationID);
+			//uint32 sessionKey = System::random();
+			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
+			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
+
+			//System::out << "send client token" << endl;
+			//send the sessionkey to the DB here
 
 			loadGalaxies(client);
 
@@ -279,6 +267,8 @@ public:
 
 			Message* eci = new EnumerateCharacterID(&characters);
 			client->sendMessage(eci);
+
+			//System::out << "sent character list" << endl;
 		}
 	}
 
@@ -292,12 +282,12 @@ public:
 	    while (galaxies.next()) {
 	    	uint32 galaxyID = galaxies.getGalaxyID();
 
-	    	string name;
+	    	String name;
 	    	galaxies.getGalaxyName(name);
 
 	    	lec->addGalaxy(galaxyID, name);
 
-   		    string address;
+   		    String address;
 	    	galaxies.getGalaxyAddress(address);
 
 	    	lcs->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());

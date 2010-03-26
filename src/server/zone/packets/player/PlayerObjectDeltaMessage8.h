@@ -47,8 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/player/PlayerObjectImplementation.h"
-#include "../../objects/waypoint/WaypointObject.h"
+#include "../../objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage8 : public DeltaMessage {
 	PlayerObjectImplementation* play;
@@ -59,7 +58,7 @@ public:
 		play = pl;
 	}
 
-	void startWaypointUpdate() {
+	/*void startWaypointUpdate() {
 		startUpdate(0x01);
 		startList(1, play->getNewWaypointListCount(1));
 	}
@@ -75,7 +74,7 @@ public:
 		insertLong(0); //?
 		insertInt(wp->getPlanetCRC()); //21 91 27 57 planet crc
 
-		unicode name = wp->getName();
+		UnicodeString name = wp->getName();
 		insertUnicode(name);
 
 		insertLong(wp->getObjectID());
@@ -96,17 +95,17 @@ public:
 		startList(typesOfExp, play->getNewExperienceListCount(typesOfExp));
 	}
 
-	void addExperience(const string& name, int xp) {
+	void addExperience(const String& name, int xp) {
 		insertByte(0);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 		insertInt(xp);
 	}
 
-	void removeExperience(const string& name) {
+	void removeExperience(const String& name) {
 		insertByte(1);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 		insertInt(0);
-	}
+	}*/
 };
 
 #endif /*PLAYEROBJECTDELTAMESSAGE8_H_*/

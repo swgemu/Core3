@@ -1,107 +1,58 @@
-/*
-Copyright (C) 2007 <SWGEmu>
- 
-This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
-General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
-or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-See the GNU Lesser General Public License for
-more details.
- 
-You should have received a copy of the GNU Lesser General 
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
-cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
-and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
-which carries forward this exception.
-*/
+package server.zone.managers.creature;
 
-include "engine/util/Coordinate";
+import engine.log.Logger;
 
-import "server/zone/Zone";
-include "server/zone/ZoneProcessServerImplementation";
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.object.ObjectManager;
+import server.zone.packets.MessageCallback;
+import server.zone.objects.tangible.TangibleObject;
+import engine.core.ManagedObject;
+import server.zone.ZoneServer;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.Zone;
 
-import "../../objects/creature/Creature";
-import "../../objects/creature/CreatureObject";
-import "../../objects/creature/CreatureGroup";
-import "../../objects/attackable/lair/LairObject";
+include server.zone.managers.creature.CreatureMap;
 
-import "../../objects/creature/action/ActionCreature";
-import "../../objects/creature/action/Action";
-import "../../objects/creature/trainer/TrainerCreature";
-import "../../objects/creature/recruiter/RecruiterCreature";
-import "../../objects/creature/shuttle/ShuttleCreature";
+class CreatureManager extends ManagedObject implements Logger {
+	protected transient ZoneProcessServerImplementation processor;
+	protected ZoneServer server;
+	
+	@weakReference
+	protected Zone zone;
+	
+	@dereferenced
+	protected CreatureMap creatureMap;
 
-interface CreatureManager {
-	CreatureManager(Zone zone, ZoneProcessServerImplementation processor) {
-		super(zone, processor);
+	public CreatureManager(Zone planet, ZoneProcessServerImplementation impl) {
+		server = planet.getZoneServer();
+		processor = impl;
+		zone = planet;
+		
+		Logger.setLoggingName("CreatureManager");
+		Logger.setGlobalLogging(true);
+		Logger.setLogging(false);
 	}
 	
-	void init();
+	/**
+	 * Spawns the specified creature into zone
+	 * @pre { this unlocked }
+	 * @post { creature is in zone }
+	 * @param templateCRC template string crc of the creature to spawn
+	 * @param x position x
+	 * @param y position y
+	 * @param parentID cell object id (optional)
+	 * @return returns creature object that has been spawned, NULL on error
+	 */
+	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float y, unsigned long parentID = 0);
 	
-	void loadCreatures();
-
-	void start();
+	private native boolean createCreatureChildrenObjects(CreatureObject creature);
 	
-	void stop();
-
-	// creature loading methods
-	void loadTrainers();
-	void loadRecruiters();
-	void loadBlueFrogs();
-	void loadMissionCreatures();
-
-	void load(Creature creature);
-	void unloadCreature(Creature creature);
+	public synchronized void addCreatureToMap(CreatureObject creature) {
+		creatureMap.put(creature.getObjectID(), creature);
+	}
 	
-	// creation methods
-	//Creature spawnCreature(string objname, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
-	boolean verifyCreatureSpawn(string name);
-	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
-	TrainerCreature spawnTrainer(const string profession, const string stfname, const string name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
-	ShuttleCreature spawnShuttle(const string Planet, const string City, Coordinate playerSpawnPoint, unsigned long cellid, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);
-	RecruiterCreature spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long cellid = 0, boolean doLock = true);
-	LairObject spawnLair(const string type, float x, float y, float z, boolean doLock = true);
-	ActionCreature spawnActionCreature(string name, string stfname, unsigned int objCrc, string misoKey, float x, float y, float oY, float oW, unsigned long cellid = 0, boolean doLock = true);
-	//CreatureGroup spawnCreatureGroup(int count, const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, int layout = 1);
-
-	unsigned int getCreatureCrc(string name);
-	boolean hotLoadCreature(string name);
-
-	void registerFunctions();
-	void registerGlobals();
+	public synchronized void removeCreatureFromMap(unsigned long oid) {
+		creatureMap.remove(oid);
+	}
 	
-	void loadCreatureFile();
-
-	//void queueActivity(Creature creature, unsigned int time = 1000);
-
-	// setters and getters
-	Creature getCreature(unsigned long oid);
-	void addCreature(Creature creature);
 }

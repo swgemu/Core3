@@ -42,55 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "managers/user/UserManager.h"
-#include "managers/user/UserManagerImplementation.h"
-
-#include "managers/player/PlayerManager.h"
-#include "managers/player/PlayerManagerImplementation.h"
-
-#include "managers/player/ProfessionManager.h"
-
-#include "managers/crafting/CraftingManager.h"
-#include "managers/crafting/CraftingManagerImplementation.h"
-
-#include "managers/item/ItemManager.h"
-#include "managers/item/ItemManagerImplementation.h"
-
-#include "managers/combat/CombatManager.h"
-#include "../chat/ChatManager.h"
-#include "../chat/ChatManagerImplementation.h"
-
-#include "managers/radial/RadialManager.h"
-#include "managers/guild/GuildManager.h"
-#include "managers/guild/GuildManagerImplementation.h"
-#include "managers/group/GroupManager.h"
-
-#include "managers/resource/ResourceManager.h"
-#include "managers/resource/ResourceManagerImplementation.h"
-
-#include "managers/loot/LootTableManager.h"
-#include "managers/loot/LootTableManagerImplementation.h"
-
-#include "managers/bazaar/BazaarManager.h"
-#include "managers/bazaar/BazaarManagerImplementation.h"
-
-#include "managers/bank/BankManager.h"
-#include "managers/bank/BankManagerImplementation.h"
-
-#include "managers/mission/MissionManager.h"
-#include "managers/mission/MissionManagerImplementation.h"
+#include "ZoneServer.h"
 
 #include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
 
-#include "ZoneServerImplementation.h"
+#include "Zone.h"
 
-#include "ZoneImplementation.h"
+#include "../db/ServerDatabase.h"
 
-#include "../ServerCore.h"
+#include "managers/object/ObjectManager.h"
+#include "managers/objectcontroller/ObjectController.h"
+#include "managers/player/PlayerManager.h"
+#include "managers/radial/RadialManager.h"
+#include "managers/resource/ResourceManager.h"
+#include "managers/professions/ProfessionManager.h"
+#include "managers/bazaar/BazaarManager.h"
 
-ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
-		DatagramServiceThread("ZoneServer"), ZoneServerServant() {
+#include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "ZoneProcessServerImplementation.h"
+
+ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
+		ManagedObjectImplementation(), DatagramServiceThread("ZoneServer") {
+	galaxyID = galaxyid;
+
 	name = "Core3";
 
 	phandler = NULL;
@@ -98,7 +74,11 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	processor = NULL;
 	procThreadCount = processingThreads;
 
-	objectManager = new ObjectManager(this);
+	objectManager = NULL;
+	playerManager = NULL;
+	chatManager = NULL;
+	radialManager = NULL;
+	resourceManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -108,16 +88,150 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	totalPlayers = 0;
 	totalDeletedPlayers = 0;
 
-	nextCreatureID = 0x10000000;
-	nextCellID = 9995371; // last objectid in static objects // 0x00;
+	serverState = OFFLINE;
 
 	setLogging(false);
-	setLockName("ZoneServerLock");
+	DatagramServiceThread::setLockName("ZoneServerLock");
 
-	scheduler->setLogging(false);
+	taskManager = TaskManager::instance();
+	taskManager->setLogging(false);
 }
 
-ZoneServerImplementation::~ZoneServerImplementation() {
+void ZoneServerImplementation::initializeTransientMembers() {
+	phandler = NULL;
+
+	processor = NULL;
+
+	taskManager = TaskManager::instance();
+	taskManager->setLogging(false);
+
+	objectManager = NULL;
+
+	ManagedObjectImplementation::initializeTransientMembers();
+}
+
+void ZoneServerImplementation::start(int a, int b) {
+	DatagramServiceThread::start(a, b);
+}
+
+void ZoneServerImplementation::stop() {
+	DatagramServiceThread::stop();
+}
+
+/*void ZoneServerImplementation::lock() {
+	DatagramServiceThread::lock();
+}
+
+void ZoneServerImplementation::unlock() {
+	DatagramServiceThread::unlock();
+}*/
+
+void ZoneServerImplementation::lock(bool doLock) {
+	DatagramServiceThread::lock(doLock);
+}
+
+void ZoneServerImplementation::unlock(bool doLock) {
+	DatagramServiceThread::unlock(doLock);
+}
+
+String ZoneServerImplementation::getServerName() {
+	return name;
+}
+
+void ZoneServerImplementation::setServerName(const String& na) {
+	name = na;
+}
+
+void ZoneServerImplementation::setServerStateLocked() {
+	Locker locker(this);
+
+	serverState = LOCKED;
+
+	StringBuffer msg;
+	msg << dec << "server locked";
+	info(msg, true);
+}
+
+void ZoneServerImplementation::setServerStateOnline() {
+	Locker locker(this);
+
+	serverState = ONLINE;
+
+	StringBuffer msg;
+	msg << dec << "server unlocked";
+	info(msg, true);
+}
+
+String ZoneServerImplementation::getMessageoftheDay() {
+	return messageoftheDay;
+}
+
+void ZoneServerImplementation::loadMessageoftheDay() {
+	Locker locker(this);
+
+	File* file;
+	FileReader* reader;
+
+	try {
+		file = new File("conf/motd.txt");
+		reader = new FileReader(file);
+
+		String line;
+		while(reader->readLine(line)) {
+			messageoftheDay += line;
+		}
+
+		reader->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		reader = NULL;
+	}
+}
+
+void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
+	Locker locker(this);
+
+	File* file;
+	FileWriter* writer;
+
+	String finalMOTD = "";
+
+	try {
+		file = new File("conf/motd.txt");
+		writer = new FileWriter(file);
+
+		for(int i = 0; i < newMOTD.length(); i++) {
+			if(i+1 < newMOTD.length()) {
+				char currentLetter = newMOTD.charAt(i);
+				char nextLetter = newMOTD.charAt(i+1);
+				if(currentLetter == '\\' && nextLetter == 'n') {
+					finalMOTD += "\n";
+					i++;
+				} else {
+					finalMOTD += currentLetter;
+				}
+			} else {
+				finalMOTD += newMOTD.charAt(i);
+			}
+		}
+
+		writer->write(finalMOTD);
+
+		writer->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		writer = NULL;
+	}
+
+	messageoftheDay = finalMOTD;
+}
+
+/*ZoneServerImplementation::~ZoneServerImplementation() {
+	if (missionManager != NULL) {
+		missionManager->finalize();
+		missionManager = NULL;
+	}
+
 	if (phandler != NULL) {
 		delete phandler;
 		phandler = NULL;
@@ -131,6 +245,11 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	if (itemManager != NULL) {
 		itemManager->finalize();
 		itemManager = NULL;
+	}
+
+	if (itemConfigManager != NULL) {
+		itemConfigManager->finalize();
+		itemConfigManager = NULL;
 	}
 
 	if (bazaarManager != NULL) {
@@ -183,39 +302,58 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager = NULL;
 	}
 
-	if (missionManager != NULL) {
-		missionManager->finalize();
-		missionManager = NULL;
-	}
-
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->finalize();
+
+		if (zone != NULL)
+			zone->finalize();
 	}
 
 	zones.removeAll();
-}
+}*/
 
 void ZoneServerImplementation::init() {
+	serverState = LOADING;
+
+	//Load the galaxy name from the galaxy table.
+	try {
+		info("Loading galaxy name from the database.");
+		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + galaxyID;
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		if (result->next())
+			name = result->getString(0);
+
+		delete result;
+
+	} catch (DatabaseException& e) {
+		info("Unhandled exception when getting galaxy name from database.");
+	} catch (...) {
+		info("Unhandled exception initializing galaxy name.");
+	}
+
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
+
+	objectManager = ObjectManager::instance();
+	objectManager->setZoneProcessServerImplementation(processor);
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
 
-	info("initializing zones", true);
+	info("Initializing chat manager...", true);
 
-	for (int i = 0; i < 50; ++i) {
-		Zone* zone = new Zone(_this, processor, i);
-		zone->deploy("Zone", i);
+	chatManager = new ChatManager(_this, 10000);
+	chatManager->deploy("ChatManager");
+	chatManager->initiateRooms();
 
-		zone->startManagers();
+	startZones();
 
-		zones.add(zone);
-	}
-
+	startManagers();
+/*
 	userManager = NULL;
 	itemManager = NULL;
+	itemConfigManager = NULL;
 	playerManager = NULL;
 	guildManager = NULL;
 	resourceManager = NULL;
@@ -226,22 +364,68 @@ void ZoneServerImplementation::init() {
 
 	startManagers();
 
-	startTimestamp = time(NULL);
+	loadMessageoftheDay();*/
+
+	//startTimestamp = time(NULL);
+
+	//serverState = LOCKED;
+	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	return;
+}
+
+void ZoneServerImplementation::startZones() {
+	info("Initializing zones", true);
+
+	for (int i = 0; i < 45; ++i) {
+		Zone* zone = NULL;
+
+		if (i <= 10 || i == 42) {
+			zone = new Zone(_this, processor, i);
+			uint64 zoneObjectID = 0;
+
+			zoneObjectID = ~zoneObjectID;
+			zoneObjectID -= i;
+			zone->_setObjectID(zoneObjectID);
+
+			zone->deploy("Zone", i);
+
+			zone->startManagers();
+		}
+
+		zones.add(zone);
+	}
+
 }
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	userManager = new UserManager(_this);
+	objectManager->loadStaticObjects();
+
+	playerManager = new PlayerManager(_this, processor);
+	playerManager->deploy("PlayerManager");
+
+	chatManager->setPlayerManager(playerManager);
+
+	bazaarManager = new BazaarManager(_this);
+	bazaarManager->deploy();
+	bazaarManager->initialize();
+
+	radialManager = new RadialManager(_this);
+	radialManager->deploy("RadialManager");
+
+	resourceManager = new ResourceManager(_this, processor);
+	resourceManager->deploy("ResourceManager");
+
+	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
 	itemManager = new ItemManager(_this, processor);
 	itemManager->deploy("ItemManager");
 
-	playerManager = new PlayerManager(itemManager, processor);
-	playerManager->deploy("PlayerManager");
+	itemConfigManager = new ItemConfigManager();
+	itemConfigManager->deploy("ItemConfigManager");
 
 	guildManager = new GuildManager(_this);
 	guildManager->deploy("GuildManager");
@@ -249,8 +433,6 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	resourceManager = new ResourceManager(_this, processor);
-	resourceManager->deploy("ResourceManager");
 
 	lootTableManager = new LootTableManager(_this, processor);
 	lootTableManager->deploy("LootTableManager");
@@ -258,8 +440,7 @@ void ZoneServerImplementation::startManagers() {
 	craftingManager = new CraftingManager(_this, processor);
 	craftingManager->deploy("CraftingManager");
 
-	chatManager = new ChatManager(_this, 10000);
-	chatManager->deploy("ChatManager");
+
 
 	bazaarManager = new BazaarManager(_this, processor);
 	bazaarManager->deploy("BazaarManager");
@@ -268,12 +449,10 @@ void ZoneServerImplementation::startManagers() {
 	bankManager->deploy("BankManager");
 
 	missionManager = new MissionManager(_this, processor);
-	missionManager->deploy("MissionManager");
+	missionManager->deploy("MissionManager");*/
 }
 
 void ZoneServerImplementation::run() {
-	scheduler->start();
-
 	processor->start();
 
 	receiveMessages();
@@ -282,7 +461,7 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
@@ -292,7 +471,7 @@ void ZoneServerImplementation::shutdown() {
 	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleep(5000);
+	Thread::sleep(5000);*/
 
 	processor->stop();
 
@@ -300,41 +479,50 @@ void ZoneServerImplementation::shutdown() {
 
 	info("shutting down zones", true);
 
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->stopManagers();
+		if (zone != NULL)
+			zone->stopManagers();
 	}
 
-	scheduler->stop();
+	info("zones shut down", true);
 
 	printInfo(true);
+
+	info("shut down complete", true);
 }
 
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..");
 
+	//info("saving objects...");
+
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
-	if(missionManager != NULL)
+	/*if (missionManager != NULL)
 		missionManager->unloadManager();
 
 	if (resourceManager != NULL)
-		resourceManager->stop();
+		resourceManager->stop();*/
 
 	info("managers stopped", true);
 }
 
 ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
-	if (!userManager->checkUser(addr.getIPID()))
-		return NULL;
+	/*if (!userManager->checkUser(addr.getIPID()))
+		return NULL;*/
 
-	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
+	ZoneClientSession* client = new ZoneClientSession(sock, &addr);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
-	info("client connected from \'" + client->getAddress() + "\'");
-
 	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
+	clientImpl->init(this);
+
+	String address = client->getAddress();
+
+	info("client connected from \'" + address + "\'");
+
 	return clientImpl;
 }
 
@@ -351,7 +539,7 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 	} catch (PacketIndexOutOfBoundsException& e) {
 		error(e.getMessage());
 
-		error("incorrect packet - " + message->toString());
+		error("incorrect packet - " + message->toStringData());
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (ArrayIndexOutOfBoundsException& e) {
@@ -370,11 +558,20 @@ bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) 
 	return true;
 }
 
-void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
+/*void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	try {
 		lock(doLock);
 
-		if (objectManager->add(obj) == NULL && obj->isPlayer()) {
+		SceneObject* conflictedObj = objectManager->add(obj);
+
+		if (conflictedObj != NULL && conflictedObj != obj) {
+			error("Object id conflict");
+			StackTrace::printStackTrace();
+		}
+
+		obj->setZoneProcessServer(processor);
+
+		if (conflictedObj == NULL && obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
 			chatManager->addPlayer(player);
@@ -389,24 +586,95 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	} catch (...) {
 		unlock(doLock);
 	}
-}
+}*/
 
 SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
 	try {
-		lock(doLock);
+		//lock(doLock); ObjectManager has its own mutex
 
-		obj = objectManager->get(oid);
+		DistributedObject* distributedObject = DistributedObjectBroker::instance()->lookUp(oid);
 
-		unlock(doLock);
+		if (distributedObject != NULL) {
+			obj = dynamic_cast<SceneObject*>(distributedObject); // only for debug purposes
+
+			if (obj == NULL) {
+				error("trying to lookup object that is not an SceneObject");
+				StackTrace::printStackTrace();
+			}
+		}
+
+		//unlock(doLock);
+	} catch (Exception& e) {
+		//unlock(doLock);
+		error(e.getMessage());
+		e.printStackTrace();
 	} catch (...) {
-		unlock(doLock);
+		//unlock(doLock);
+		error("unreported exception caught in ZoneServerImplementation::getObject");
 	}
 
 	return obj;
 }
 
+void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
+	objectManager->updatePersistentObject(object);
+}
+
+void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
+	objectManager->updatePersistentObject(object);
+}
+
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
+	SceneObject* obj = NULL;
+
+	try {
+		//lock(); ObjectManager has its own mutex
+
+		obj = objectManager->createObject(templateCRC, persistenceLevel, "sceneobjects", oid);
+
+		//unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		//unlock();
+	} catch (...) {
+		error("unreported exception caught in ZoneServerImplementation::createObject");
+		//unlock();
+	}
+
+	return obj;
+}
+
+SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, uint64 oid) {
+	SceneObject* obj = NULL;
+
+	try {
+		//lock(); ObjectManager has its own mutex
+
+		obj = objectManager->createObject(templateCRC, 1, "staticobjects", oid);
+
+		//unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		//unlock();
+	} catch (...) {
+		error("unreported exception caught in ZoneServerImplementation::createObject");
+		//unlock();
+	}
+
+	return obj;
+}
+
+void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
+	objectManager->destroyObject(objectID);
+}
+
+/*
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
@@ -421,7 +689,7 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 
 		if (obj->isPlayer()) {
 			Player* player = (Player*) obj;
-			string& name = player->getFirstName();
+			String& name = player->getFirstName();
 
 			chatManager->removePlayer(name);
 
@@ -475,7 +743,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
-	cout << "removeCachedObject OID = " << oid << endl;
+	System::out << "removeCachedObject OID = " << oid << endl;
 	try {
 		lock(doLock);
 
@@ -493,7 +761,23 @@ SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool
 	return removeCachedObject(obj->getObjectID(), doLock);
 }
 
-bool ZoneServerImplementation::banUser(string& name, string& admin) {
+SceneObject* ZoneServerImplementation::createObject(uint32 objectCRC, bool doLock) {
+	SceneObject* obj = NULL;
+
+	try {
+		lock(doLock);
+
+		obj = objectManager->createObject(objectCRC);
+
+		unlock(doLock);
+	} catch (...) {
+		unlock(doLock);
+	}
+
+	return obj;
+}
+
+bool ZoneServerImplementation::banUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->banUserByName(name, admin);
@@ -503,7 +787,7 @@ bool ZoneServerImplementation::banUser(string& name, string& admin) {
 	return result;
 }
 
-bool ZoneServerImplementation::kickUser(string& name, string& admin) {
+bool ZoneServerImplementation::kickUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->kickUser(name, admin);
@@ -511,12 +795,12 @@ bool ZoneServerImplementation::kickUser(string& name, string& admin) {
 	unlock();
 
 	return result;
-}
+}*/
 
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
-	userManager->changeUserCap(amount);
+	//userManager->changeUserCap(amount);
 
 	unlock();
 }
@@ -544,13 +828,9 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, forcedLog);
-
-	stringstream msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
-	info(msg2, forcedLog);
 
 	float packetloss;
 	if (totalSentPackets + totalSentPackets == 0)
@@ -558,12 +838,12 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	else
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
 
-	stringstream msg3;
+	StringBuffer msg3;
 	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
 		<< totalResentPackets << " [" << packetloss << "%]";
 	info(msg3, forcedLog);
 
-	stringstream msg4;
+	StringBuffer msg4;
 	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);
@@ -574,37 +854,7 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 void ZoneServerImplementation::printEvents() {
 	lock();
 
-	scheduler->printEvents();
+	//scheduler->printEvents();
 
 	unlock();
-}
-
-uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCreatureID += 0x10000);
-
-	unlock(doLock);
-
-	return nextID;
-}
-
-uint64 ZoneServerImplementation::getNextID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCreatureID += 0x01);
-
-	unlock(doLock);
-
-	return nextID;
-}
-
-uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCellID += 0x1);
-
-	unlock(doLock);
-
-	return nextID;
 }

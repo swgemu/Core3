@@ -67,7 +67,7 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7();
-		initializeExperimentalValues(draftSchematic);
+		//initializeExperimentalValues(draftSchematic);
 		update14();
 	}
 
@@ -100,10 +100,19 @@ public:
 	}
 
 	void updateForAssembly(DraftSchematic* draftSchematic){
-		update9(draftSchematic);
+		initializeExperimentalValues(draftSchematic);  // Temp
+		update9(draftSchematic, true);
 		update0B(draftSchematic);
 		update0C(draftSchematic);
 		update12(draftSchematic);
+	}
+
+	void updateCustomizationOptions(DraftSchematic* draftSchematic, int custpoints){
+		update0D(draftSchematic);
+		update0E(draftSchematic);
+		update0F(draftSchematic);
+		update10(draftSchematic, custpoints);
+		update11();
 	}
 
 	void updateIngredientList(DraftSchematic* draftSchematic) {
@@ -123,7 +132,7 @@ public:
 				insertInt(0);
 				insertAscii(dsi->getTitleName());
 			} else {
-				cerr << "\n\nError DMSCO7: line 65\n";
+				System::out << "\n\nError DMSCO7: line 65\n";
 			}
 		}
 	}
@@ -173,7 +182,7 @@ public:
 		startList(size, counter);
 
 		for (int i = 0; i < size; i++) {
-			if(i == 0){
+			if (i == 0){
 				addListIntElement(i, 0);
 			} else {
 				addListFloatElement(i, 1.0f);
@@ -216,21 +225,20 @@ public:
 
 		startUpdate(8);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 		int counter = draftSchematic->getExpCounter();
 
 		insertInt(titleCount);
 		insertInt(titleCount);
 
-		for(int i = 0; i < titleCount; i++) {
-			string title = craftingValues->getExperimentalPropertyTitle(i);
+		for (int i = 0; i < titleCount; i++) {
+			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
 
 			insertByte(1);
 			insertShort(i);
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
-
 		}
 
 		// Initialize update 9************
@@ -272,15 +280,16 @@ public:
 
 	}
 
-	// This should send the experimental values shown in the Screen after hitting assemble
-	void update9(DraftSchematic* draftSchematic) {
+	// This sends the experimental values shown in the Screen after hitting assemble
+	void update9(DraftSchematic* draftSchematic, bool initial) {
 		startUpdate(9);
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 		int count, linenum;
-		string title, subtitle;
+		String title, subtitle;
 		float value;
-		VectorMap<string, int> updatedLines;
+		bool hidden;
+		VectorMap<int, String> updatedLines;
 
 		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
 
@@ -290,17 +299,32 @@ public:
 
 			linenum = craftingValues->getTitleLine(title);
 
-			if(!updatedLines.contains(title) && linenum != -1)
-				updatedLines.put(title, linenum);
+			hidden = craftingValues->isHidden(subtitle);
+
+			if (((!initial && !hidden) || initial) && linenum != -1 && !updatedLines.contains(linenum)
+					&& title != "" && title != "null") {
+//System::out << "dmsco7 End: " << linenum << " " << title << endl;
+				updatedLines.put(linenum, title);
+			}
 		}
 
-		startList(updatedLines.size(), draftSchematic->getExpCounter());
+		if (initial) {
+			draftSchematic->setExpCounter(updatedLines.size() * 2);
+			count = updatedLines.size() * 2;
+		} else {
+			count = draftSchematic->getExpCounter();
+		}
 
+		startList(updatedLines.size(), count);
+//System::out << "dmsco7 updateLines: " << updatedLines.size() << " counter " << draftSchematic->getExpCounter() << " props " << craftingValues->getVisibleExperimentalPropertyTitleSize() << " count sent " << count << endl;
 		for (int i = 0; i < updatedLines.size(); ++i) {
-			value = craftingValues->getCurrentPercentageAverage(updatedLines.get(i));
 
-			removeListFloatElement(updatedLines.get(i), value);
+			linenum = (&(updatedLines.elementAt(i)))->getKey();
 
+			value = craftingValues->getCurrentPercentageAverage((&(updatedLines.elementAt(i)))->getValue());
+
+			removeListFloatElement(linenum, value);
+//System::out << "dmsco7 End: " << linenum << " " << value << endl;
 		}
 
 		updatedLines.removeAll();
@@ -312,9 +336,9 @@ public:
 
 		startUpdate(0x0A);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
@@ -327,9 +351,9 @@ public:
 
 		startUpdate(0x0B);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
@@ -342,9 +366,9 @@ public:
 
 		startUpdate(0x0C);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		float value;
 
@@ -355,6 +379,77 @@ public:
 			removeListFloatElement(i, value);
 
 		}
+	}
+
+	void update0D(DraftSchematic* draftSchematic) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0D);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+
+			insertByte(0x01);
+			insertShort(i);
+			insertAscii(draftSchematic->getCustomizationOption(i));
+		}
+
+	}
+
+	// Starting COlor chooser position
+	void update0E(DraftSchematic* draftSchematic) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0E);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(draftSchematic->getCustomizationDefaultValue(i));
+		}
+	}
+
+	void update0F(DraftSchematic* draftSchematic) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0F);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(0);
+		}
+	}
+
+	// Number of palette colors
+	void update10(DraftSchematic* draftSchematic, int custpoints) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x10);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(custpoints);
+		}
+	}
+
+	void update11() {
+
+		startUpdate(0x11);
+		insertByte(1);
 	}
 
 	void update12(DraftSchematic* draftSchematic){

@@ -45,16 +45,84 @@ malklocAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 50,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(malklocAttack1)
+
+-----------------------------------------------
+
+malklocAttack2 = {
+	attackname = "malklocAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 3,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(malklocAttack2)
+
+-----------------------------------------------
+
+malklocAttack3 = {
+	attackname = "malklocAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 3,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -69,6 +137,40 @@ malklocAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(malklocAttack1)
+AddRandomPoolAttackTargetSkill(malklocAttack3)
+
+-----------------------------------------------
+
+malklocAttack4 = {
+	attackname = "malklocAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 3,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 50,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(malklocAttack4)
 
 -----------------------------------------------

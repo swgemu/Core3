@@ -50,17 +50,18 @@ which carries forward this exception.
 
 #include "conf/ConfigManager.h"
 
-#include "db/ServerDatabase.h"
-#include "db/ForumsDatabase.h"
+namespace server {
+	namespace zone{
+		class ZoneServer;
+	}
+}
 
-#include "login/LoginServer.h"
-
-#include "ping/PingServer.h"
-
-#include "status/StatusServer.h"
-
-#include "zone/ZoneServer.h"
-#include "zone/ZoneServerImplementation.h"
+class ServerDatabase;
+class ForumsDatabase;
+class LoginServer;
+class StatusServer;
+class Features;
+class PingServer;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager configManager;
@@ -73,11 +74,13 @@ class ServerCore : public Core, public Logger {
 
 	LoginServer* loginServer;
 
-	StatusServer * statusServer;
+	//StatusServer * statusServer;
+
+	Features* features;
 
 	PingServer* pingServer;
 
-	static ZoneServer* zoneServer;
+	static ManagedReference<server::zone::ZoneServer*> zoneServer;
 
 public:
 	ServerCore();
@@ -93,7 +96,7 @@ public:
 	void processConfig();
 
 	// getters
-	static ZoneServer* getZoneServer() {
+	static server::zone::ZoneServer* getZoneServer() {
 		return zoneServer;
 	}
 

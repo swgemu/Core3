@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -42,7 +42,6 @@
 -- Load files
 
 -- Yavin 4
-RunSkillsFile("creatureSkills/yavin4/creatures/acklayAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/anglerAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/chokuAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/crystalSnakeAttacks.lua")
@@ -53,5 +52,11 @@ RunSkillsFile("creatureSkills/yavin4/creatures/skreegAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/spinedPucAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/stintarilAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/tancMiteAttacks.lua")
-RunSkillsFile("creatureSkills/yavin4/creatures/TybisAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/tybisAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/whisperBirdAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/geonosianAcklayAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/geonosianEnhancedKliknikAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/geonosianEnhancedKwiAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/geonosianFBSAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/geonosianCaveSpiderAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/woolamanderAttacks.lua")

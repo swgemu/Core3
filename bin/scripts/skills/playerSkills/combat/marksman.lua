@@ -47,11 +47,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
-	damageRatio = 5.0,
+	range = 0,
+	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -78,11 +83,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 10,
 	damageRatio = 1.5,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -109,11 +119,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 10,
 	damageRatio = 1.75,
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -141,11 +156,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -183,11 +203,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 1.75,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -225,11 +250,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 1.50,
 	speedRatio = 1.80,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -239,9 +269,9 @@ DotPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 50,
-	focusAttackChance = 25,
-	willpowerAttackChance = 25,
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
 		
 	dotChance = 30,
 	tickStrengthOfHit = 1,
@@ -249,7 +279,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = MIND,
 
 	poisonStrength = 0,
@@ -275,11 +305,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.2,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -317,11 +352,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.1,
 	speedRatio = 1.8,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -359,15 +399,20 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 50,
-	strengthAttackChance = 25,
-	constitutionAttackChance = 25,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
 
 	actionAttackChance = 0,
 	quicknessAttackChance = 0,
@@ -383,7 +428,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -401,6 +446,173 @@ DotPoolAtt = {
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
 
+Attack = { 
+	attackname = "kipupshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_kneeling",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = UPRIGHT_POSTURE,
+	
+	CbtSpamBlock = "kipup_block",
+	CbtSpamCounter = "kipup_counter",
+	CbtSpamEvade = "kipup_evade",
+	CbtSpamHit = "kipup_hit",
+	CbtSpamMiss = "kipup_miss",
+}
+
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+
+Attack = { 
+	attackname = "diveshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_kneeling",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.8,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = PRONE_POSTURE,
+	
+	CbtSpamBlock = "diveshot_block",
+	CbtSpamCounter = "diveshot_counter",
+	CbtSpamEvade = "diveshot_evade",
+	CbtSpamHit = "diveshot_hit",
+	CbtSpamMiss = "diveshot_miss",
+}
+
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+
+Attack = { 
+	attackname = "rollshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_kneeling",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = CROUCHED_POSTURE,
+	
+	CbtSpamBlock = "rollshot_block",
+	CbtSpamCounter = "rollshot_counter",
+	CbtSpamEvade = "rollshot_evade",
+	CbtSpamHit = "rollshot_hit",
+	CbtSpamMiss = "rollshot_miss",
+}
+
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
 ----------------------------CARBINES--------------------------------
 
 DirectPoolAtt = { 
@@ -409,11 +621,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 1.45,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -451,11 +668,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 1.35,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 40,
 	strengthAttackChance = 0,
@@ -494,11 +716,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 0.6,
+	actionCostMultiplier = 1.7,
+	mindCostMultiplier = 1.6,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -536,17 +763,22 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 0,
 	
-	actionAttackChance = 50,
-	quicknessAttackChance = 25,
-	staminaAttackChance = 25,
+	actionAttackChance = 100,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
 	
 	mindAttackChance = 0,
 
@@ -556,7 +788,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -582,12 +814,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
 	postureUpChance = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -603,7 +840,7 @@ RandPoolAtt = {
 	CbtSpamMiss = "threatenshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddThreatenAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
@@ -623,7 +860,7 @@ AddChangePostureSelfSkill(ChangePost)
 
 ChangePost = {
 	skillname = "tumbletoprone",
-	animation = "tumble_to_prone",
+	animation = "tumble_to_kneeling",
 
 	posture = PRONE_POSTURE,
 
@@ -636,7 +873,7 @@ AddChangePostureSelfSkill(ChangePost)
 
 ChangePost = {
 	skillname = "tumbletostanding",
-	animation = "tumble_to_standing",
+	animation = "tumble_to_kneeling",
 
 	posture = UPRIGHT_POSTURE,
 
@@ -653,11 +890,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -684,11 +926,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.3,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 33,
@@ -715,11 +962,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 5.3,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -737,6 +989,23 @@ RandPoolAtt = {
 }
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
+Aim = {
+	skillname = "aim",
+	animation = "",
+
+	requiredWeaponType = RANGED
+}
+
+AddAimTargetSkill(Aim)
+
+TakeCover = {
+	skillname = "takecover",
+	animation = "",
+
+	requiredWeaponType = RIFLE
+}
+
+AddCoverSelfSkill(TakeCover)
 
 
 

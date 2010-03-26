@@ -46,29 +46,30 @@ which carries forward this exception.
 #define ZONECLIENT_H_
 
 #include "engine/engine.h"
+#include "objects/player/PlayerCreature.h"
+
 
 class Zone;
 
-class Player;
-
-class ZoneClient : public BaseClient, public Thread {
+class ZoneClient : public BaseClient {
 	Zone* zone;
 
-	Player* player;
+	Reference<PlayerCreature*> player;
 
 	uint32 key;
+	uint32 accountID;
+
+	//bool doRun;
+	//bool disconnecting;
+
+	BasePacketHandler* basePacketHandler;
 
 	MessageQueue messageQueue;
 
-	bool doRun;
-	bool disconnecting;
-
 public:
-	ZoneClient(const string& addr, int port);
+	ZoneClient(int port);
 
 	~ZoneClient();
-
-	void run();
 
 	void sendMessage(Message* msg) {
 		BaseClient::sendPacket((BasePacket*) msg);
@@ -78,13 +79,27 @@ public:
 		BaseClient::sendPacket((BasePacket*) msg);
 	}
 
-	void disconnect(bool doLock = true);
+	void handleMessage(Packet* message);
+
+	bool hasMessages() {
+		return !messageQueue.isEmpty();
+	}
+
+	Message* getMessage() {
+		return messageQueue.pop();
+	}
+
+	//void disconnect(bool doLock = true);
 
 	void setZone(Zone* zone) {
 		ZoneClient::zone = zone;
 	}
 
-	void setPlayer(Player* p) {
+	void setAccountID(uint32 id) {
+		accountID = id;
+	}
+
+	void setPlayer(PlayerCreature* p) {
 		player = p;
 	}
 
@@ -92,13 +107,22 @@ public:
 		ZoneClient::key = key;
 	}
 
-	Player* getPlayer() {
+	PlayerCreature* getPlayer() {
 		return player;
+	}
+
+	Zone* getZone() {
+		return zone;
 	}
 
 	uint32 getKey(){
 		return key;
 	}
+
+	uint32 getAccountID() {
+		return accountID;
+	}
+
 };
 
 #endif /* ZONECLIENT_H_ */

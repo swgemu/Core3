@@ -1,94 +1,25 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ * GroupObjectImplementation.cpp
+ *
+ *  Created on: 29/12/2009
+ *      Author: victor
+ */
 
-This File is part of Core3.
+#include "GroupObject.h"
+#include "server/zone/packets/group/GroupObjectMessage3.h"
+#include "server/zone/packets/group/GroupObjectMessage6.h"
+#include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/chat/room/ChatRoom.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
-
-#include "../../Zone.h"
-#include "../../ZoneClientSession.h"
-#include "../creature/CreatureObject.h"
-
-#include "../../packets.h"
-
-#include "GroupObjectImplementation.h"
-
-#include "../../../chat/ChatManager.h"
-
-GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader, bool mode) : GroupObjectServant(oid, GROUP) {
-	objectCRC = 0x788CF998; //0x98, 0xF9, 0x8C, 0x78,
-
-	objectType = SceneObjectImplementation::GROUP;
-
-	listCount = 0;
-
-	leader = Leader;
-
-	groupMembers.add(Leader);
-
-	modus = mode;
-
-	stringstream name;
-	name << "Group :" << oid;
-	setLoggingName(name.str());
-
-	setLogging(false);
-	setGlobalLogging(true);
-
-	startChannel();
-}
-
-void GroupObjectImplementation::startChannel() {
-	ChatManager* chatManager = leader->getZone()->getChatManager();
-
-	//Modus: False = Standard group, TRUE = Guild-Group (Pseudo Object)
-	groupChannel = chatManager->createGroupRoom(objectID, leader, modus);
-
-}
-
-void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
+void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
-
-	create(client);
 
 	BaseMessage* grup3 = new GroupObjectMessage3((GroupObject*) _this);
 	client->sendMessage(grup3);
@@ -96,125 +27,35 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 	BaseMessage* grup6 = new GroupObjectMessage6((GroupObject*) _this);
 	client->sendMessage(grup6);
 
-	if (doClose)
-		close(client);
-
-	if (!modus) {
-		if (groupChannel != NULL)
-			groupChannel->sendTo(player);
-	}
-
-	//Dirty hack: Remove/destroy everything of the groupObject not needed for guild chat creation
-	if (modus) { //Guild modus
-		player->wlock((GroupObject*) _this);
-		player->removeChatRoom(groupChannel);
-
-		player->setGroup(NULL);
-		player->updateGroupId(0);
-
-		BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
-		player->sendMessage(msg);
-		player->unlock();
-
-		ChatRoom* room = groupChannel->getParent();
-		ChatRoom* parent = room->getParent();
-
-		ChatManager* chatManager = getZone()->getChatManager();
-
-		chatManager->destroyRoom(groupChannel);
-		chatManager->destroyRoom(room);
-
-		groupChannel = NULL;
-		groupMembers.removeAll();
-	}
+	if (player->isPlayerCreature() && chatRoom != NULL)
+		chatRoom->sendTo((PlayerCreature*) player);
 }
 
-void GroupObjectImplementation::addPlayer(Player* player) {
-	int index = groupMembers.size();
+void GroupObjectImplementation::startChatRoom() {
+	PlayerCreature* leader = (PlayerCreature*) ((SceneObject*) groupMembers.get(0));
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
-	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-	grp->addMember(player, index);
-	grp->close();
-
-	broadcastMessage(grp);
-
-	groupMembers.add(player);
-
-	sendTo(player);
+	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
 }
 
-void GroupObjectImplementation::removePlayer(Player* player) {
-	int size = groupMembers.size();
+void GroupObjectImplementation::destroyChatRoom() {
+	if (chatRoom == NULL)
+		return;
 
-	for (int i = 0; i < size; i++) {
-		Player* play = groupMembers.get(i);
+	ManagedReference<ChatRoom*> room = chatRoom->getParent();
+	ManagedReference<ChatRoom*> parent = room->getParent();
 
-		if (play == player) {
-			groupMembers.remove(i);
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-			grp->removeMember(i);
-			grp->close();
-
-			broadcastMessage(grp);
-
-			break;
-		}
-	}
-
-	if ((player == leader) && groupMembers.size() > 0)
-		leader = groupMembers.get(0);
-}
-
-bool GroupObjectImplementation::hasMember(Player* player) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
-
-		if (play == player)
-			return true;
-	}
-	return false;
-}
-
-void GroupObjectImplementation::disband() {
-	// this locked
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
-		try {
-			play->wlock((GroupObject*) _this);
-
-			play->removeChatRoom(groupChannel);
-
-			play->setGroup(NULL);
-			play->updateGroupId(0);
-
-			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
-			play->sendMessage(msg);
-
-			play->unlock();
-
-		} catch (...) {
-			cout << "Exception in GroupObject::disband(Player* player)\n";
-			play->unlock();
-		}
-	}
-
-	ChatRoom* room = groupChannel->getParent();
-	ChatRoom* parent = room->getParent();
-
-	ChatManager* chatManager = getZone()->getChatManager();
-
-	chatManager->destroyRoom(groupChannel);
+	chatManager->destroyRoom(chatRoom);
 	chatManager->destroyRoom(room);
 
-	groupChannel = NULL;
-
-	groupMembers.removeAll();
+	chatRoom = NULL;
 }
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		SceneObject* play = groupMembers.get(i);
 
 		play->sendMessage(msg->clone());
 	}
@@ -222,69 +63,120 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
-void GroupObjectImplementation::makeLeader(Player* player) {
-	if (groupMembers.size() < 2)
-		return;
-
-	Player* temp = leader;
-	leader = player;
-
-	int i = 0;
-	for (; i < groupMembers.size(); i++) {
-		if (groupMembers.get(i) == player) {
-			groupMembers.set(0, player);
-			groupMembers.set(i, temp);
-			break;
-		}
-	}
-
+void GroupObjectImplementation::addMember(SceneObject* player) {
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-	grp->updateLeader(player, temp, i);
+	grp->startUpdate(1);
+	groupMembers.add(player, grp);
 	grp->close();
 
 	broadcastMessage(grp);
+
+	sendTo(player);
 }
 
-float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
-	Player* temp;
-	string skillBox = "outdoors_ranger_novice";
-	string skillBox2 = "outdoors_ranger_master";
+void GroupObjectImplementation::removeMember(SceneObject* player) {
+	ManagedReference<SceneObject*> obj = player;
 
-	float bonus = .2f;
-	bool closeEnough = false;
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
 
-	int i = 0;
-	for (; i < groupMembers.size(); i++) {
+		if (play == player) {
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
+			grp->startUpdate(1);
+			groupMembers.remove(i, grp);
+			grp->close();
 
-		temp = groupMembers.get(i);
+			broadcastMessage(grp);
 
-		try {
-			if (temp != player)
-				temp->wlock(player);
-
-			if (temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
-					player->getZoneID() == temp->getZoneID())
-				closeEnough = true;
-
-			if (temp->hasSkillBox(skillBox))
-				bonus = .3f;
-
-			if (temp->hasSkillBox(skillBox2))
-				bonus = .4f;
-
-			if (temp != player)
-				temp->unlock();
-		} catch (...) {
-			temp->error("unreported exception caught in GroupObjectImplementation::getRangerBonusForHarvesting");
-
-			if (temp != player)
-				temp->unlock();
+			return;
 		}
+	}
+}
 
+bool GroupObjectImplementation::hasMember(SceneObject* player) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
+
+		if (play == player)
+			return true;
 	}
 
-	if (closeEnough)
-		return bonus;
-	else
-		return 0.0f;
+	return false;
 }
+
+
+void GroupObjectImplementation::makeLeader(SceneObject* player) {
+	if (groupMembers.size() < 2)
+		return;
+
+	//SceneObject* obj = groupMembers.get();
+
+	ManagedReference<SceneObject*> temp = (SceneObject*) groupMembers.get(0);
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		if (groupMembers.get(i) == player) {
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
+			grp->startUpdate(1);
+
+			groupMembers.set(0, player, grp, 2);
+			groupMembers.set(i, temp.get(), grp, 0);
+
+			grp->close();
+
+			broadcastMessage(grp);
+
+			return;
+		}
+	}
+}
+
+void GroupObjectImplementation::disband() {
+	// this locked
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* play = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
+		try {
+			play->wlock((GroupObject*) _this);
+
+			if (play->isPlayerCreature()) {
+				chatRoom->removePlayer((PlayerCreature*) play, false);
+				chatRoom->sendDestroyTo((PlayerCreature*) play);
+
+				ChatRoom* room = chatRoom->getParent();
+				room->sendDestroyTo((PlayerCreature*) play);
+			}
+
+			//sendClosestWaypointDestroyTo(play);
+
+			play->updateGroup(NULL);
+			//play->updateGroupId(0);
+
+			/*if (play->getTeacher() != NULL) {
+				play->getTeacher()->setStudent(NULL);
+				play->setTeacher(NULL);
+			}
+
+			if (play->getStudent() != NULL) {
+				play->getStudent()->setTeacher(NULL);
+				play->setStudent(NULL);
+			}*/
+
+			//removeSquadLeaderBonuses(play);
+
+			sendDestroyTo(play);
+
+			play->unlock();
+
+		} catch (...) {
+			System::out << "Exception in GroupObject::disband(Player* player)\n";
+			play->unlock();
+		}
+	}
+
+	destroyChatRoom();
+
+	groupMembers.removeAll();
+
+	//The mission waypoints should not be destroyed. They belong to the players.
+	//missionWaypoints.removeAll();
+}
+

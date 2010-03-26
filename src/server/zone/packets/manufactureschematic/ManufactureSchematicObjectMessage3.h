@@ -49,18 +49,19 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/manufacture/ManufactureSchematic.h"
 
 class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, unicode& playerName)
+	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, UnicodeString& playerName)
 			: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
 
 		insertFloat(complexity);
-		insertAscii("string_id_table");
+		insertAscii("String_id_table");
 		insertInt(0);
 
 		insertAscii("");
-		unicode empty = "";
+		UnicodeString empty = "";
 		insertUnicode(empty);
 
 		insertInt(0);
@@ -74,9 +75,67 @@ public:
 		insertAscii("complexity");
 		insertFloat(complexity);
 
-		//unicode playerName = "Link";
+		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
-		insertInt(50);
+		insertInt(25);
+		insertFloat(8.0f);
+
+		setSize();
+	}
+
+	ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
+			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
+
+		insertFloat(draftSchematic->getComplexity());
+		insertAscii(draftSchematic->getStfFile());
+		insertInt(0);
+		insertAscii(draftSchematic->getStfName());
+
+		insertUnicode(draftSchematic->getCustomName());
+
+		insertInt(0);  // Unknown
+		insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("complexity");
+		insertFloat(draftSchematic->getComplexity());
+
+		//UnicodeString playerName = "Link";
+		insertUnicode(playerName);
+		insertInt(25);
+		insertFloat(8.0f);
+
+		setSize();
+	}
+
+	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, UnicodeString& playerName)
+			: BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
+
+		insertFloat(manufactureSchematic->getComplexity());
+		insertAscii(manufactureSchematic->getStfFile());
+		insertInt(0);
+		insertAscii(manufactureSchematic->getStfName());
+
+		insertUnicode(manufactureSchematic->getCustomName());
+
+		insertInt(0);  // Unknown
+		insertInt(0x0A); // Unknown
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("complexity");
+		insertFloat(manufactureSchematic->getComplexity());
+
+		//UnicodeString playerName = "Link";
+		insertUnicode(playerName);
+		insertInt(25);
 		insertFloat(8.0f);
 
 		setSize();

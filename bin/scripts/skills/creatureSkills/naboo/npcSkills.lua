@@ -42,4 +42,10 @@
 -- Load files
 
 -- Naboo
-
+ RunSkillsFile("creatureSkills/naboo/npcs/gunganAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/maulerAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/mummerAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/nabooAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/rsfAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/skaakTipperAttacks.lua")
+ RunSkillsFile("creatureSkills/naboo/npcs/tradeFederationAttacks.lua")

@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "ConfigManager.h"
 
 bool ConfigManager::loadConfigData() {
-	if(!loadConfigFile())
+	if (!loadConfigFile())
 		return false;
 
 	makeLogin = getGlobalByte("MakeLogin");
@@ -84,6 +84,7 @@ bool ConfigManager::loadConfigData() {
 
 	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
+	zoneGalaxyID = getGlobalInt("ZoneGalaxyID");
 
 	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
 	statusInterval = getGlobalInt("StatusInterval");

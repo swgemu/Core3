@@ -78,7 +78,7 @@ function spawnLair(lair, Planet, PositionX, PositionY, PositionZ)
 end
 
 -- Creature objects
-RunObjectFile("objects/lairs/corelliaLairs.lua")
+-- RunObjectFile("objects/lairs/corelliaLairs.lua")
 -- RunObjectFile("objects/lairs/dantooineLairs.lua")
 -- RunObjectFile("objects/lairs/dathomirLairs.lua")
 -- RunObjectFile("objects/lairs/endorLairs.lua")

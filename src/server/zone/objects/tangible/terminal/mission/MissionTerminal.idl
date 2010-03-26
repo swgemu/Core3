@@ -42,22 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
+package server.zone.objects.tangible.terminal.mission;
 
-import "../../../player/Player";
+import server.zone.objects.tangible.terminal.Terminal;
+import server.zone.objects.scene.SceneObject;
+import engine.lua.LuaObject;
+import server.zone.objects.player.PlayerCreature;
 
-import "../../../creature/shuttle/ShuttleCreature";
-
-import "../Terminal";
-
-interface MissionTerminal implements Terminal {
-	MissionTerminal(unsigned long objid, float x, float z, float y, int pId, int tmsk) {
-		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType); 
+class MissionTerminal extends Terminal {
+	public MissionTerminal() {
+		Logger.setLoggingName("MissionTerminal");
 	}
 	
-	int getPlanetId();
-	int getTerminalMask();
-			
-	int useObject(Player player);
-
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("MissionTerminal");
+	}
 }

@@ -59,6 +59,13 @@ which carries forward this exception.
 
 class BidAuctionResponseMessage : public BaseMessage {
 public:
+	const static int SUCCEDED = 0;
+	const static int INVALIDAUCTIONER = 1;
+	const static int INVALIDITEM = 2;
+	const static int INVALIDPRICE = 4;
+	const static int NOTENOUGHCREDITS = 9;
+	const static int PRICEOVERFLOW = 14;
+public:
     BidAuctionResponseMessage(uint64 objectid, int status) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x8FCBEF4A);  // opcode
@@ -68,4 +75,5 @@ public:
 	}
 	
 };
+
 #endif /*BIDAUCTIONRESPONSEMESSAGE_H_*/

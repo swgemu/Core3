@@ -45,13 +45,13 @@ goraxAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 25,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ goraxAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 25,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
@@ -113,13 +113,13 @@ goraxAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1.5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -147,13 +147,13 @@ goraxAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1.5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
@@ -172,3 +172,39 @@ goraxAttack4 = {
 }
 
 AddRandomPoolAttackTargetSkill(goraxAttack4)
+
+-----------------------------------------------
+
+goraxAttack5 = {
+	attackname = "goraxAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 1.5,
+
+	arearange = 7,
+	accuracyBonus = 500,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(goraxAttack5)
+
+-----------------------------------------------

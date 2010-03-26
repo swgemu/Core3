@@ -45,27 +45,29 @@ which carries forward this exception.
 #include "GroupManager.h"
 
 #include "../../ZoneServer.h"
+#include "../../Zone.h"
 
 #include "../../../chat/room/ChatRoom.h"
 
-#include "../../packets.h"
+#include "../../objects/creature/CreatureObject.h"
+#include "../../objects/player/PlayerCreature.h"
 
-#include "../../objects/group/GroupObjectImplementation.h"
-
-#include "../../objects/player/Player.h"
 #include "../../objects/group/GroupObject.h"
+#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "../../managers/object/ObjectManager.h"
+
 
 GroupManager::GroupManager() {
 }
 
-void GroupManager::inviteToGroup(Player* leader, Player* player) {
+void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player) {
 	// Pre: leader locked
 	// Post: player invited to leader's group, leader locked
 	try {
 		player->wlock(leader);
 
-		if (leader->isInAGroup()) {
-			GroupObject* group = leader->getGroupObject();
+		if (leader->isGroupped()) {
+			ManagedReference<GroupObject*> group = leader->getGroup();
 
 			if (group->getLeader() != leader) {
 				leader->sendSystemMessage("group", "must_be_leader");
@@ -74,55 +76,71 @@ void GroupManager::inviteToGroup(Player* leader, Player* player) {
 			}
 		}
 
-		if (player->isInAGroup()) {
-			leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
+		if (player->isGroupped()) {
+			ParameterizedStringId stringId;
+			stringId.setStringId("group", "already_grouped");
+			stringId.setTT(player);
+			leader->sendSystemMessage(stringId);
+			//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
+
 			player->unlock();
 			return;
 		}
 
 		if (player->getGroupInviterID() == leader->getObjectID()) {
-			leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
+			ParameterizedStringId stringId;
+			stringId.setStringId("group", "considering_your_group");
+			stringId.setTT(player);
+			leader->sendSystemMessage(stringId);
+			//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
+
 			player->unlock();
 			return;
 		} else if (player->getGroupInviterID() != 0) {
-			stringstream msg;
-			msg << player->getCharacterName().c_str() << " is considering joining another group.";
-			leader->sendSystemMessage(msg.str());
+			StringBuffer msg;
+			msg << player->getCreatureName().toString() << " is considering joining another group.";
+			leader->sendSystemMessage(msg.toString());
+
 			player->unlock();
-			msg.str("");
 			return;
 		}
 
-		player->updateGroupInviterId(leader->getObjectID());
+		player->updateGroupInviterID(leader->getObjectID());
 
-		player->sendSystemMessage("group", "invite_target", leader->getObjectID());
-		leader->sendSystemMessage("group", "invite_leader", player->getObjectID());
+		ParameterizedStringId stringId;
+		stringId.setStringId("group", "invite_target");
+		stringId.setTT(leader);
+		player->sendSystemMessage(stringId);
+
+		stringId.setStringId("group", "invite_leader");
+		stringId.setTT(player);
+		leader->sendSystemMessage(stringId);
 
 		player->unlock();
 	} catch (...) {
-		cout << "Exception in GroupManager::inviteToGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::inviteToGroup(GroupObject* group, CreatureObject* player)\n";
 		player->unlock();
 	}
 }
 
-void GroupManager::joinGroup(Player* player) {
+void GroupManager::joinGroup(CreatureObject* player) {
 	//Pre: player locked
 	//Post: player locked
 	uint64 inviterID = player->getGroupInviterID();
 
 	ZoneServer* server = player->getZone()->getZoneServer();
-	SceneObject* object = server->getObject(inviterID);
+	ManagedReference<SceneObject*> object = server->getObject(inviterID);
 
-	if (object == NULL || !object->isPlayer() || object == player)
+	if (object == NULL || !object->isPlayerCreature() || object == player)
 		return;
 
-	Player* inviter = (Player*)object;
+	CreatureObject* inviter = (CreatureObject*) object.get();
 	GroupObject* group = NULL;
 
 	try {
 		inviter->wlock(player);
 
-		group = inviter->getGroupObject();
+		group = inviter->getGroup();
 
 		if (group == NULL)
 			group = createGroup(inviter);
@@ -134,7 +152,7 @@ void GroupManager::joinGroup(Player* player) {
 
 		return;
 	} catch (...) {
-		cout << "Exception in GroupManager::joinGroup(Player* player)\n";
+		System::out << "Exception in GroupManager::joinGroup(CreatureObject* player)\n";
 		inviter->unlock();
 
 		return;
@@ -146,7 +164,7 @@ void GroupManager::joinGroup(Player* player) {
 		if (group->getGroupSize() == 20) {
 			group->unlock();
 
-			player->updateGroupInviterId(0);
+			player->updateGroupInviterID(0);
 
 			player->sendSystemMessage("group", "full");
 			return;
@@ -154,142 +172,108 @@ void GroupManager::joinGroup(Player* player) {
 
 		player->info("joining group");
 
-		group->addPlayer(player);
-		player->setGroup(group);
-		player->updateGroupId(group->getObjectID());
+		group->addMember(player);
+		player->updateGroup(group);
 		player->sendSystemMessage("group", "joined_self");
 
+		ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
-		ChatRoom* groupChannel = group->getGroupChannel();
+		if (groupChannel != NULL && player->isPlayerCreature()) {
+			groupChannel->sendTo((PlayerCreature*) player);
+			groupChannel->addPlayer((PlayerCreature*) player, false);
+		}
 
-		groupChannel->sendTo(player);
-		groupChannel->addPlayer(player, false);
-
-		player->updateGroupInviterId(0);
+		player->updateGroupInviterID(0);
 
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::joinGroup(Player* player)\n";
+		System::out << "Exception in GroupManager::joinGroup(CreatureObject* player)\n";
 	}
 }
 
-GroupObject* GroupManager::createGroup(Player* leader) {
+GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	// Pre: leader locked
 	// Post: GroupObject is a new group with leader, leader locked.
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader, false);
-
+	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(0x13dcb432, 0, "");
+	group->initializeLeader(leader);
+	group->startChatRoom();
 	group->setZone(leader->getZone());
 
 	group->sendTo(leader);
 
-	leader->setGroup(group);
-	leader->updateGroupId(group->getObjectID());
+	leader->updateGroup(group);
 	leader->sendSystemMessage("group", "formed_self");
 
 	if (leader->getGroupInviterID() != 0)
-		leader->updateGroupInviterId(0);
+		leader->updateGroupInviterID(0);
 
 	return group;
 }
 
-void GroupManager::joinGuildGroup(Player* player) {
-	//Pre: player locked
-	//Post: player locked
-
-	if (player->getGuildID() == 0)
-		return;
-
-	Guild* playerGuild = player->getGuild();
-	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
-
-	playerGuild->wlock();
-
-	ChatRoom* guildchat = playerGuild->getGuildChat();
-
-	playerGuild->unlock();
-
-	if (guildchat == 0) {
-		GroupObject* group = createGuildGroup(player);
-	} else {
-		guildchat->sendTo(player);
-		guildchat->addPlayer(player, false);
-	}
-}
-
-GroupObject* GroupManager::createGuildGroup(Player* play) {
-	// Pre: play locked
-	// Post: GroupObject is a new group with play, play locked.
-
-	ZoneServer* server = play->getZone()->getZoneServer();
-
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), play, true);
-	group->setZone(play->getZone());
-
-	return group;
-}
-
-void GroupManager::leaveGroup(GroupObject* group, Player* player) {
+void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player) {
 	// Pre: player locked
 	// Post: player locked
 	if (group == NULL)
 		return;
 
-	bool destroyGroup = false;
+	try {
+		group->wlock(player);
 
-	ChatRoom* groupChannel = group->getGroupChannel();
-	groupChannel->removePlayer(player, false);
-	groupChannel->sendDestroyTo(player);
+		ChatRoom* groupChannel = group->getGroupChannel();
+		if (groupChannel != NULL && player->isPlayerCreature()) {
+			PlayerCreature* playerCreature = (PlayerCreature*) player;
+			groupChannel->removePlayer(playerCreature, false);
+			groupChannel->sendDestroyTo(playerCreature);
 
-	ChatRoom* room = groupChannel->getParent();
-	room->sendDestroyTo(player);
+			ChatRoom* room = groupChannel->getParent();
+			room->sendDestroyTo(playerCreature);
+		}
 
-	player->setGroup(NULL);
-	player->updateGroupId(0);
+		player->updateGroup(NULL);
 
-	if (player != NULL && player->isOnline() && !player->isLoggingOut())
+		//if (player != NULL && player->isOnline() && !player->isLoggingOut())
 		player->sendSystemMessage("group", "removed");
 
-	player->unlock();
+		player->unlock();
 
-	try {
-		group->wlock();
+		group->removeMember(player);
 
-		group->removePlayer(player);
-
-		BaseMessage* msg = new SceneObjectDestroyMessage(group);
-		player->sendMessage(msg);
+		group->sendDestroyTo(player);
 
 		player->info("leaving group");
 
 		if (group->getGroupSize() < 2) {
 			group->disband();
-			destroyGroup = true;
 		}
 
 		group->unlock();
+	} catch (Exception& e) {
+		System::out << e.getMessage();
+		e.printStackTrace();
+		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::leaveGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::leaveGroup(GroupObject* group, CreatureObject* player)\n";
 	}
 
 	player->wlock();
-
-	if (destroyGroup)
-		group->finalize();
 }
 
-void GroupManager::disbandGroup(GroupObject* group, Player* player) {
+void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player) {
 	//Pre: player locked
 	//Post: player locked
 	player->unlock();
 
 	try {
 		group->wlock();
-
+		//The following should never happen, as a check is made in
+		//ObjectControlMessage.cpp and removes the player from the group
+		//if he's not the leader. Remove?
+		//After Fix 13 feb 2009 - Bankler
 		if (group->getLeader() != player) {
 			player->sendSystemMessage("group", "must_be_leader");
 			group->unlock();
@@ -297,12 +281,10 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 			return;
 		}
 
-
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			Player* play = group->getGroupMember(i);
+			CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
 
-			if (play != NULL && play->isOnline() && !play->isLoggingOut())
-				play->sendSystemMessage("group", "disbanded");
+			play->sendSystemMessage("group", "disbanded");
 		}
 
 		group->disband();
@@ -310,15 +292,13 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::disbandGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::disbandGroup(GroupObject* group, CreatureObject* player)\n";
 	}
 
 	player->wlock();
-
-	group->finalize();
 }
 
-void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick) {
+void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* playerToKick) {
 	// Pre: player is locked, group != NULL
 	// Post: playerToKick kicked from group
 
@@ -335,7 +315,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 			return;
 		}
 
-		Player* leader = group->getLeader();
+		CreatureObject* leader = (CreatureObject*) group->getLeader();
 
 		if (player != leader) {
 			player->sendSystemMessage("group", "must_be_leader");
@@ -348,17 +328,16 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 
 		if (group->getGroupSize() - 1 < 2) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				Player* play = group->getGroupMember(i);
+				CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
 
-				if (play != NULL && play->isOnline() && !play->isLoggingOut())
-					play->sendSystemMessage("group", "disbanded");
+				play->sendSystemMessage("group", "disbanded");
 			}
 			group->disband();
 			disbanded = true;
 		} else {
-			group->removePlayer(playerToKick);
-			if (playerToKick != NULL && playerToKick->isOnline() && !playerToKick->isLoggingOut())
-				playerToKick->sendSystemMessage("group", "removed");
+			group->removeMember(playerToKick);
+
+			playerToKick->sendSystemMessage("group", "removed");
 
 			playerToKick->info("kicking from group");
 		}
@@ -366,7 +345,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		group->unlock();
 
 	} catch (...) {
-		cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
+		System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, CreatureObject* player, CreatureObject* playerToKick)\n";
 		group->unlock();
 	}
 
@@ -374,33 +353,32 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		try {
 			playerToKick->wlock();
 
-			ChatRoom* groupChannel = group->getGroupChannel();
-			groupChannel->removePlayer(playerToKick, false);
-			groupChannel->sendDestroyTo(playerToKick);
+			if (playerToKick->isPlayerCreature()) {
+				PlayerCreature* pl = (PlayerCreature*) playerToKick;
+				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
+				groupChannel->removePlayer(pl, false);
+				groupChannel->sendDestroyTo(pl);
 
-			ChatRoom* room = groupChannel->getParent();
-			room->sendDestroyTo(playerToKick);
+				ManagedReference<ChatRoom*> room = groupChannel->getParent();
+				room->sendDestroyTo(pl);
+			}
 
-			playerToKick->setGroup(NULL);
-			playerToKick->updateGroupId(0);
+			playerToKick->updateGroup(NULL);
 
-			ZoneClientSession* client = playerToKick->getClient();
-			if (client != NULL)
-				group->destroy(client);
+			group->sendDestroyTo(playerToKick);
 
 			playerToKick->unlock();
 		} catch (...) {
-			cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
+			System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, CreatureObject* player, CreatureObject* playerToKick)\n";
 			playerToKick->unlock();
 
 		}
-	} else
-		group->finalize();
+	}
 
 	player->wlock();
 }
 
-void GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLeader) {
+void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader) {
 	// Pre: player locked
 	// Post: player locked
 	player->unlock();
@@ -423,26 +401,28 @@ void GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLea
 
 		group->makeLeader(newLeader);
 
-		string firstNameLeader;
+		String firstNameLeader;
 		firstNameLeader = "[Offline player]";
 
-		if (newLeader != NULL && newLeader->isOnline() && !newLeader->isLoggingOut())
-			firstNameLeader= newLeader->getFirstName();
+		if (newLeader->isPlayerCreature()) {
+			PlayerCreature* playerLeader = (PlayerCreature*) newLeader;
+			if (playerLeader->isOnline() && !playerLeader->isLoggingOut())
+				firstNameLeader= playerLeader->getFirstName();
+		}
 
-		stringstream message;
+		StringBuffer message;
 		message << firstNameLeader << " is now the group leader.\n";
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			Player* play = group->getGroupMember(i);
+			CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
 
-			if (play != NULL && play->isOnline() && !play->isLoggingOut())
-				play->sendSystemMessage(message.str());
+			play->sendSystemMessage(message.toString());
 		}
 
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLeader)\n";
+		System::out << "Exception in GroupManager::makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader)\n";
 	}
 	player->wlock();
 }

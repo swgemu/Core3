@@ -41,4 +41,13 @@
 --which carries forward this exception.
 -- Load files
 
--- Rori
+ -- Rori
+ RunSkillsFile("creatureSkills/rori/npcs/brigadeAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/cobralAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/garynAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/gundarkAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/kobolaAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/miscAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/narmleAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/roriGunganAttacks.lua")
+ RunSkillsFile("creatureSkills/rori/npcs/spiceCollectiveAttacks.lua")

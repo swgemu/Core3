@@ -46,6 +46,10 @@ which carries forward this exception.
 #define COMMANDQUEUEENQUEUE_H_
 
 #include "ObjectControllerMessage.h"
+#include "../MessageCallback.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
@@ -54,9 +58,48 @@ public:
 		insertInt(actioncnt);
 		insertInt(actionCRC);
 		insertLong(creo->getTargetID());
-		insertInt(0); // unicode shit
+		insertInt(0); // UnicodeString shit
 	}
 
+};
+
+class CommandQueueEnqueueCallback : public MessageCallback {
+	uint32 size;
+	uint32 actionCount;
+	uint32 actionCRC;
+	uint64 targetID;
+
+	UnicodeString arguments;
+
+	ObjectControllerMessageCallback* objectControllerMain;
+
+public:
+	CommandQueueEnqueueCallback(ObjectControllerMessageCallback* objectControllerCallback) :
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+
+		objectControllerMain = objectControllerCallback;
+	}
+
+	void parse(Message* message) {
+		size = message->parseInt(); //?
+
+		actionCount = message->parseInt();
+		actionCRC = message->parseInt();
+
+		targetID = message->parseLong();
+
+		message->parseUnicode(arguments);
+	}
+
+	void run() {
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+
+		if (player == NULL)
+			return;
+
+		//ObjectController* objectController = server->getZoneServer()->getObjectController();
+		player->enqueueCommand(actionCRC, actionCount, targetID, arguments);
+	}
 };
 
 #endif /*COMMANDQUEUEENQUEUE_H_*/

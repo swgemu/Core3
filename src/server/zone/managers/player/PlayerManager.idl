@@ -42,68 +42,57 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../item/ItemManager";
-import "../guild/GuildManager";
+package server.zone.managers.player;
 
-import "../../objects/player/Player";
-import "../../objects/tangible/TangibleObject";
+import engine.log.Logger;
+import engine.lua.Lua;
+import system.util.VectorMap;
 
-import "server/zone/ZoneClientSession";
-include "server/zone/ZoneProcessServerImplementation";
-
-import "PlayerMap";
-
-include "engine/service/proto/BaseMessage";
+include server.zone.objects.player.PlayerCreature;
+include server.zone.managers.player.PlayerMap;
+include server.zone.managers.player.CharacterNameMap;
 
 
-interface PlayerManager {
-	PlayerManager(ItemManager itemManager, ZoneProcessServerImplementation processor) {
-		super(itemManager, processor);
-	}
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.object.ObjectManager;
+import server.zone.packets.MessageCallback;
+import server.zone.objects.tangible.TangibleObject;
+import engine.core.ManagedObject;
+import server.zone.ZoneServer;
 
-	void stop();
+include server.zone.managers.player.StartingItemList;
 
-	boolean create(Player player, unsigned int sessionkey);
-	boolean validateName(string name);
-
-	BaseMessage checkPlayerName(const string name, const string species);
-	BaseMessage attemptPlayerCreation(Player player, ZoneClientSession client);
-
-	Player load(unsigned long charid);
-
-	void unload(Player player);
-	void save(Player player);
-
-	void handleAbortTradeMessage(Player player);
-	void handleAddItemMessage(Player player, unsigned long itemID);
-	void handleGiveMoneyMessage(Player player, unsigned int value);
-	void handleAcceptTransactionMessage(Player player);
-	void handleUnAcceptTransactionMessage(Player player);
-	void handleVerifyTradeMessage(Player player);
-
-	void moveItem(Player sender, Player receiver, TangibleObject item);
-
-	void doBankTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
-	void doCashTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
-	boolean modifyOfflineBank(Player sender, string receiverName, int creditAmount);
-	boolean modifyRecipientOfflineBank(string recipient, int creditAmount);
-	void updatePlayerCreditsFromDatabase(Player player);
-	void updatePlayerCreditsToDatabase(Player player);
-
-	void updatePlayerAppearanceToDatabase(Player player);
-	void updatePlayerBaseHAMToDatabase(Player player);
-
-	void updateOtherFriendlists(Player player, boolean status);
+class PlayerManager extends ManagedObject implements Logger {
+	transient ZoneProcessServerImplementation processor;
+	private ZoneServer server;
 	
-	void updateGuildStatus(Player player);
-
-	void setGuildManager(GuildManager gmanager);
-
-	Player putPlayer(Player player);
-
-	Player getPlayer(string name);
-
-	GuildManager getGuildManager();
-
-	PlayerMap getPlayerMap();
+	transient PlayerMap playerMap;
+	transient CharacterNameMap nameMap;
+	
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
+	public native void loadNameMap();
+	private native void loadStartingItems();
+	
+	public native void finalize();
+	
+	public transient StartingItemList startingItemList;
+	
+	@local
+	public native boolean createPlayer(MessageCallback callback);
+		
+	@local
+	public native boolean checkPlayerName(MessageCallback callback);
+	
+	public native boolean checkExistentNameInDatabase(final string firstName);
+	
+	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
+	public native boolean createAllPlayerObjects(PlayerCreature player);
+	public native void createDefaultPlayerItems(PlayerCreature player, final string profession, final string templateFile);
+	
+	public native void createTutorialBuilding(PlayerCreature player);
+	public native void createSkippedTutorialBuilding(PlayerCreature player);
+	
+	public native boolean existsName(final string name);
+	public native unsigned long getObjectID(final string name);
+	public native PlayerCreature getPlayer(final string name);
 }

@@ -48,27 +48,23 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
-#include "../../objects/player/IgnoreList.h"
 
 class IgnoreListMessage : public BaseMessage {
 public:
-	IgnoreListMessage(Player* play) : BaseMessage() {
-	
-		IgnoreList* ignoreList = play->getPlayerObject()->getIgnoreList();
-
+	IgnoreListMessage(PlayerObject* ghost) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xF8C275B0); // CRC
-		
-		insertLong(play->getObjectID());
-		insertInt(ignoreList->getCount()+1);
 
-		for (int i = 0; i < ignoreList->getCount(); ++i) {
+		insertLong(ghost->getParentID());
+
+		DeltaVector<String>* ignoreList = ghost->getIgnoreList();
+		insertInt(ignoreList->size());
+
+		for (int i = 0; i < ignoreList->size(); ++i) {
 			insertAscii("SWG");
-			insertAscii(ignoreList->getIgnoreServer(i));
-			insertAscii(ignoreList->getIgnoreName(i));
+			insertAscii("Core3");
+			insertAscii(ignoreList->get(i));
 		}
-		insertByte(0);		
 	}
 };
 

@@ -48,92 +48,92 @@ which carries forward this exception.
 #include "../../packets/BaseLineMessage.h"
 
 #include "../../objects/creature/CreatureObject.h"
+#include "../tangible/TangibleObjectMessage6.h"
 
-class CreatureObjectMessage6 : public BaseLineMessage {
+class CreatureObjectMessage6 : public TangibleObjectMessage6 {
 public:
 	CreatureObjectMessage6(CreatureObject* creo)
-			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 6, 0x16) {
-		insertInt(0x3D);
-
-		/*uint64 defid = creo->getDefenderID();
-
-		if (!defid) {
-			insertInt(0);
-			insertInt(creo->getDefenderUpdateCounter());
-		} else {
-			insertInt(1);
-			insertInt(creo->getDefenderUpdateCounter());
-			insertLong(defid);
-		}*/
-
-		insertDefenders(creo);
+			: TangibleObjectMessage6(creo, 0x4352454F, 0x16) {
 
 		insertShort((uint16)creo->getLevel());
-
-		insertAscii(creo->getPerformanceName());
-
-		insertAscii(creo->getMood());
-
+		insertAscii(creo->getPerformanceAnimation());
+		insertAscii(creo->getMoodString());
 		insertLong(creo->getWeaponID());
-
 		insertLong(creo->getGroupID());
-
 		insertLong(creo->getGroupInviterID());
 		insertLong(creo->getGroupInviteCounter());
-
 		insertInt(creo->getGuildID());
-		//0x50, 0xC3, 0x00, 0x00,   // #08
-
 		insertLong(creo->getTargetID());
-
 		insertByte(creo->getMoodID());
-
 		insertInt(creo->getPerformanceCounter()); //might be switched
 		insertInt(creo->getInstrumentID()); //might be switched
 
-		insertInt(9);
-		insertInt(creo->getHAMUpdateCounter());
-		insertInt(creo->getHealth());
-		insertInt(creo->getStrength());
-		insertInt(creo->getConstitution());
-		insertInt(creo->getAction());
-		insertInt(creo->getQuickness());
-		insertInt(creo->getStamina());
-		insertInt(creo->getMind());
-		insertInt(creo->getFocus());
-		insertInt(creo->getWillpower());
+		DeltaVector<int>* ham = creo->getHAM();
+		ham->insertToMessage(this);
 
-		insertInt(9);
-		insertInt(creo->getHAMMaxUpdateCounter());
-		insertInt(creo->getHealthMax());
-		insertInt(creo->getStrengthMax());
-		insertInt(creo->getConstitutionMax());
-		insertInt(creo->getActionMax());
-		insertInt(creo->getQuicknessMax());
-		insertInt(creo->getStaminaMax());
-		insertInt(creo->getMindMax());
-		insertInt(creo->getFocusMax());
-		insertInt(creo->getWillpowerMax());
+		DeltaVector<int>* maxHam = creo->getMaxHAM();
+		maxHam->insertToMessage(this);
 
-		insertInt(0);
-		insertInt(0);
+		insertEquipmentList(creo);
 
-		insertShort(0);
-		insertByte(0);
+		/*
+		insertShort(0); //Customization String
+		insertInt(0x04); //Equipped
+		insertLong(creo->getObjectID() + 1); //Inventory ID
+		insertInt(0x2110791C); //CRC of Inventory
+
+
+		insertShort(0); //Customization String
+		insertInt(0x04); //Equipped
+		insertLong(creo->getWeaponID()); //Weapon ID
+		insertInt(0xC470AE12); //CRC of the weapon
+	*/
+
+
+		insertAscii("");//insertAscii(creo->getTemplateString());
+
+
+		insertByte(creo->getFrozen());
+
+
 
 		setSize();
 	}
 
-	void insertDefenders(CreatureObject* creo) {
-		int size = creo->getDefenderListSize();
+	inline void insertEquipmentList(CreatureObject* creo) {
+		/*VectorMap<String, SceneObject*> equipmentList;
+		creo->getContainmentObjects(equipmentList);
 
-		insertInt(size);
-		insertInt(creo->getDefenderUpdateCounter());
+		StringBuffer msg;
+		msg << "size of equipment list " << equipmentList.size();
+		creo->info(msg.toString());
 
-		for (int i = 0; i < size; ++i)
-			insertLong(creo->getDefender(i)->getObjectID());
+		SortedVector<SceneObject*> uniqueObjects;
+
+		for (int i = 0; i < equipmentList.size(); ++i) {
+			SceneObject* object = equipmentList.get(i);
+
+			if (!uniqueObjects.contains(object))
+				uniqueObjects.put(object);
+		}
+
+		int size = uniqueObjects.size();
+
+		StringBuffer msg2;
+		msg2 << "unique size :" << size;
+		creo->info(msg2.toString());*/
+
+		insertInt(0); //Equipment list
+		insertInt(0); //Equipment update count
+		/*for (int i = 0; i < size; ++i) {
+			SceneObject* object = uniqueObjects.get(i);
+
+			insertAscii("");
+			insertInt(0x04); //Equipped
+			insertLong(object->getObjectID()); //Weapon ID
+			insertInt(object->getObjectCRC()); //CRC of the weapon
+		}*/
 	}
-
 };
 
 #endif /*CREATUREOBJECTMESSAGE6_H_*/

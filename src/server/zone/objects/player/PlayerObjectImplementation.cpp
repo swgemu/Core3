@@ -42,188 +42,143 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../packets.h"
-#include "../../objects.h"
-#include "../../ZoneClientSession.h"
-
-#include "../scene/SceneObject.h"
-
-#include "Player.h"
-
 #include "PlayerObject.h"
 
-#include "PlayerObjectImplementation.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/chat/ChatManager.h"
 
-#include "FriendsList.h"
-#include "FriendsListImplementation.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/packets/player/PlayerObjectMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
+#include "server/zone/packets/player/FriendListMessage.h"
+#include "server/zone/packets/player/IgnoreListMessage.h"
+#include "server/zone/packets/player/AddFriendInitiateMessage.h"
+#include "server/zone/packets/player/AddFriendMessage.h"
+#include "server/zone/packets/player/AddIgnoreMessage.h"
+#include "server/zone/packets/player/FriendStatusChangeMessage.h"
 
-#include "IgnoreList.h"
-#include "IgnoreListImplementation.h"
+#include "server/zone/packets/player/PlayerObjectMessage6.h"
+#include "server/zone/packets/player/PlayerObjectMessage8.h"
+#include "server/zone/packets/player/PlayerObjectMessage9.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/professions/Certification.h"
+#include "server/zone/objects/player/variables/PlayerList.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
 
-PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYEROBJECT) {
-	player = pl;
+void PlayerObjectImplementation::initializeTransientMembers() {
+	IntangibleObjectImplementation::initializeTransientMembers();
 
-	objectCRC = 0x619BAE21;
+	setLoggingName("PlayerObject");
+}
 
-	// PLAY8 operands
-	forcePower = player->getSkillMod("jedi_force_power_max");
-	forcePowerMax = player->getSkillMod("jedi_force_power_max");
-	experienceListCount = 0;
-	waypointListCount = 0;
-	waypointList.setNullValue(NULL);
-	waypointList.setInsertPlan(SortedVector<WaypointObject*>::NO_DUPLICATE);
-
-	forceRegen = player->getSkillMod("jedi_force_power_regen");
-
-	// PLAY9 operands
-	jediState = 0x08;
-
-	drinkFilling = 0;
-	drinkFillingMax = 100;
-
-	foodFilling = 0;
-	foodFillingMax = 100;
+void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	IntangibleObjectImplementation::loadTemplateData(templateData);
 
 	characterBitmask = ANONYMOUS;
 
-	friendsList = new FriendsList(player);
-	ignoreList = new IgnoreList(player);
+	adminLevel = 0;
+
+	forcePower = 0;
+	forcePowerMax = 0;
+
+	foodFilling = 0;
+	foodFillingMax = 0;
+
+	drinkFilling = 0;
+	drinkFillingMax = 0;
+
+	jediState = 4;
+
+	languageID = 0;
+
+	adminLevel = 0;
+
+	/*skillList.add(new QueueCommand("admin", server));
+	skillList.add(new QueueCommand("hidden", server));
+	skillList.add(new QueueCommand("addbannedplayer", server));*/
 }
 
-PlayerObjectImplementation::~PlayerObjectImplementation() {
-	for (int i = 0; i < waypointList.size(); ++i) {
-		WaypointObject* waypoint = waypointList.get(i);
-		waypoint->finalize();
-	}
+void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending player object baselines");
 
-	if (friendsList != NULL) {
-		friendsList->finalize();
-		friendsList = NULL;
-	}
+	BaseMessage* play3 = new PlayerObjectMessage3(_this);
+	player->sendMessage(play3);
 
-	if (ignoreList != NULL) {
-		ignoreList->finalize();
-		ignoreList = NULL;
-	}
-}
+	BaseMessage* play6 = new PlayerObjectMessage6(_this);
+	player->sendMessage(play6);
 
-void PlayerObjectImplementation::sendToOwner() {
-	ZoneClientSession* client = player->getClient();
-
-	create(client);
-	link(client, player);
-
-	BaseMessage* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
-	client->sendMessage(play3);
-
-	BaseMessage* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
-	client->sendMessage(play6);
-
-	BaseMessage* play8 = new PlayerObjectMessage8(this);
-	client->sendMessage(play8);
-
-	BaseMessage* play9 = new PlayerObjectMessage9(this);
-	client->sendMessage(play9);
-
-	close(client);
-}
-
-void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
-	ZoneClientSession* client = targetPlayer->getClient();
-	if (client == NULL)
-		return;
-
-	create(client);
-	link(client, player);
-
-	// add dplays here for others
-	//Message* play8 = new PlayerObjectMessage8(this);
-	//client->sendMessage(play8);
-
-	BaseMessage* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
-	client->sendMessage(play3);
-
-	BaseMessage* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
-	client->sendMessage(play6);
-
-	if (targetPlayer == player) {
+	if (player == parent) {
 		BaseMessage* play8 = new PlayerObjectMessage8(this);
-		client->sendMessage(play8);
+		player->sendMessage(play8);
 
 		BaseMessage* play9 = new PlayerObjectMessage9(this);
-		client->sendMessage(play9);
-	}
-
-	if (doClose)
-		close(client);
-}
-
-void PlayerObjectImplementation::addExperience(const string& xpType, int xp, bool updateClient) {
-	if (experienceList.containsKey(xpType)) {
-		xp += experienceList.get(xpType);
-		if (xp <= 0) {
-			removeExperience(xpType, xp, updateClient);
-			return;
-		}
-		experienceList.remove(xpType);
-	}
-	experienceList.put(xpType, xp);
-
-	if (updateClient) {
-		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-
-		dplay8->startExperienceUpdate(1);
-		dplay8->addExperience(xpType, xp);
-		dplay8->close();
-
-		player->sendMessage(dplay8);
+		player->sendMessage(play9);
 	}
 }
 
-void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, bool updateClient) {
-	if (experienceList.containsKey(xpType)) {
-		experienceList.remove(xpType);
-	} else
-		return;
+void PlayerObjectImplementation::sendFriendLists() {
+	info("sending friendslist message  size " + String::valueOf(friendList.size()));
 
-	if (updateClient) {
-		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+	ChatManager* chatManager = server->getChatManager();
 
-		dplay8->startExperienceUpdate(1);
-		dplay8->removeExperience(xpType);
-		dplay8->close();
+	friendList.resetUpdateCounter();
+	ignoreList.resetUpdateCounter();
 
-		player->sendMessage(dplay8);
-	}
+	FriendsListMessage* flist = new FriendsListMessage(_this);
+	parent->sendMessage(flist);
+
+	IgnoreListMessage* ilist = new IgnoreListMessage(_this);
+	parent->sendMessage(ilist);
+
+	DeltaMessage* delta = new PlayerObjectDeltaMessage9(_this);
+	friendList.insertToDeltaMessage(delta);
+	ignoreList.insertToDeltaMessage(delta);
+	delta->close();
+
+	parent->sendMessage(delta);
 }
 
-bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool updateClient) {
+void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
+	if (parent == NULL)
+		delete msg;
+
+	parent->sendMessage(msg);
+}
+
+bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) {
 	if (!(characterBitmask & bit)) {
 		characterBitmask |= bit;
 
-		if (updateClient && player != NULL) {
+		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
-			player->broadcastMessage(delta);
+			broadcastMessage(delta, true);
 		}
 		return true;
 	} else
 		return false;
 }
 
-bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool updateClient) {
+bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient) {
 	if (characterBitmask & bit) {
 		characterBitmask &= ~bit;
 
-		if (updateClient && player != NULL) {
+		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
-			player->broadcastMessage(delta);
+			broadcastMessage(delta, true);
 		}
 
 		return true;
@@ -231,216 +186,425 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool updateClient
 		return false;
 }
 
-void PlayerObjectImplementation::setAdminLevel(uint32 level, bool updateClient) {
-	adminLevel = level;
 
-	if (updateClient) {
-		PlayerObjectDeltaMessage6* dplay6 = new PlayerObjectDeltaMessage6((PlayerObject*) _this);
-		dplay6->setAdminLevel(level);
-		dplay6->close();
-		player->broadcastMessage(dplay6);
+void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
+	if (experienceList.contains(xpType)) {
+		xp += experienceList.get(xpType);
+
+		if (xp <= 0) {
+			removeExperience(xpType, notifyClient);
+			return;
+		}
+	}
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->startUpdate(0);
+		experienceList.set(xpType, xp, dplay8, 1);
+		dplay8->close();
+
+		sendMessage(dplay8);
+	} else {
+		experienceList.set(xpType, xp);
 	}
 }
 
-void PlayerObjectImplementation::setCurrentTitle(string& nTitle, bool updateClient) {
-  	title = nTitle;
-
-	if (updateClient) {
-		PlayerObjectDeltaMessage3* dplay3 = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
-		dplay3->setCurrentTitle(nTitle);
-		dplay3->close();
-		player->broadcastMessage(dplay3); //update the zone.
-	}
-}
-
-void PlayerObjectImplementation::setForcePowerBar(uint32 fp) {
-	if (fp == forcePower)
+void PlayerObjectImplementation::removeExperience(const String& xpType, bool notifyClient) {
+	if (!experienceList.contains(xpType))
 		return;
-	forcePower = fp;
 
-
-	PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-	dplay8->updateForcePower();
-	dplay8->close();
-
-	// TODO: broadcastMessage ?
-	player->sendMessage(dplay8);
-}
-
-
-void PlayerObjectImplementation::updateMaxForcePowerBar(bool updateClient) {
-	if(updateClient && player != NULL) {
+	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		dplay8->updateForcePowerMax();
+		dplay8->startUpdate(0);
+		experienceList.drop(xpType, dplay8, 1);
 		dplay8->close();
 
-		player->sendMessage(dplay8);
+		sendMessage(dplay8);
+	} else {
+		experienceList.drop(xpType);
+	}
+}
+
+void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
+	uint64 waypointID = waypoint->getObjectID();
+
+	if (waypointList.contains(waypointID)) {
+		error("this contains this waypoint ID");
+		return;
 	}
 
-	if(getForcePower() > getForcePowerMax())
-	{
-		if(updateClient)
-			setForcePowerBar(getForcePowerMax());
-		else
-			setForcePower(getForcePowerMax());
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+		msg->startUpdate(1);
+		waypointList.set(waypointID, waypoint, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		waypointList.set(waypointID, waypoint);
+	}
+
+	waypoint->updateToDatabase();
+}
+
+void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient) {
+	ManagedReference<WaypointObject*> waypoint = waypointList.get(waypointID);
+
+	if (waypoint == NULL)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+		msg->startUpdate(1);
+		waypointList.drop(waypointID, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		waypointList.drop(waypointID);
+	}
+
+}
+
+
+void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
+	ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+	obj->setPlanetCRC(planet.hashCode());
+	obj->setPosition(positionX, 0, positionY);
+	obj->setActive(true);
+
+	addWaypoint(obj, notifyClient);
+}
+
+void PlayerObjectImplementation::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.add(skills.get(0), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.add(skills.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.add(skills.get(i));
+	}
+}
+
+void PlayerObjectImplementation::addSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.add(skills.get(0), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.add(skills.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.add(skills.get(i));
+	}
+}
+
+bool PlayerObjectImplementation::hasSkill(const String& skillName) {
+	ProfessionManager* professionManager = server->getProfessionManager();
+
+	Skill* skill = professionManager->getSkill(skillName);
+
+	if (skill == NULL)
+		return false;
+
+	return hasSkill(skill);
+}
+
+void PlayerObjectImplementation::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)));
+	}
+}
+
+void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)));
+	}
+}
+
+void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	PlayerManager* playerManager = server->getPlayerManager();
+
+	uint64 objID = playerManager->getObjectID(nameLower);
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	ManagedReference<PlayerCreature*> playerToAdd;
+	playerToAdd = (PlayerCreature*) zoneServer->getObject(objID);
+
+	if (playerToAdd == NULL || playerToAdd == parent) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerObject* playerToAddGhost = playerToAdd->getPlayerObject();
+	playerToAddGhost->addReverseFriend(((PlayerCreature*) parent.get())->getFirstName());
+	playerToAddGhost->updateToDatabase();
+
+	if (notifyClient) {
+		AddFriendInitiateMessage* init = new AddFriendInitiateMessage();
+		parent->sendMessage(init);
+
+		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, "Core3", true);
+		parent->sendMessage(add);
+
+		if (playerToAdd->isOnline()) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(nameLower, "Core3", true);
+			parent->sendMessage(notifyStatus);
+		}
+
+		friendList.add(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		friendList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "friend_added");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		friendList.add(nameLower);
+	}
+}
+
+void PlayerObjectImplementation::removeFriend(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (!friendList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerManager* playerManager = server->getPlayerManager();
+	uint64 objID = playerManager->getObjectID(nameLower);
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	ManagedReference<PlayerCreature*> playerToRemove;
+	playerToRemove = (PlayerCreature*) zoneServer->getObject(objID);
+
+	if (playerToRemove == NULL) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "friend_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+	playerToRemoveGhost->removeReverseFriend(((PlayerCreature*) parent.get())->getFirstName());
+	playerToRemoveGhost->updateToDatabase();
+
+	if (notifyClient) {
+		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		parent->sendMessage(add);
+
+		friendList.removePlayer(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		friendList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "friend_removed");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		friendList.removePlayer(nameLower);
 	}
 }
 
 
-void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClient) {
-	wlock();
+void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
 
-	if (waypointList.put(wp->getObjectID(), wp) != -1) {
-		if (updateClient && player != NULL) {
-			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+	if (notifyClient) {
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", true);
+		parent->sendMessage(add);
 
-			dplay8->startWaypointUpdate();
-			dplay8->addWaypoint(0, wp);
-			dplay8->close();
-			player->sendMessage(dplay8);
+		ignoreList.add(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		ignoreList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "ignore_added");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		ignoreList.add(nameLower);
+	}
+}
+
+
+void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyClient) {
+	String nameLower = name.toLowerCase();
+
+	if (!ignoreList.contains(nameLower)) {
+		if (notifyClient) {
+			ParameterizedStringId param("cmnty", "ignore_not_found");
+			param.setTT(nameLower);
+			((CreatureObject*) parent.get())->sendSystemMessage(param);
+		}
+
+		return;
+	}
+
+	if (notifyClient) {
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		parent->sendMessage(add);
+
+		ignoreList.removePlayer(nameLower);
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this);
+		ignoreList.insertToDeltaMessage(delta);
+		delta->close();
+
+		parent->sendMessage(delta);
+
+		ParameterizedStringId param("cmnty", "ignore_removed");
+		param.setTT(nameLower);
+		((CreatureObject*) parent.get())->sendSystemMessage(param);
+
+	} else {
+		ignoreList.removePlayer(nameLower);
+	}
+}
+
+void PlayerObjectImplementation::notifyOnline() {
+	ChatManager* chatManager = server->getChatManager();
+
+	Vector<String>* reverseTable = friendList.getReverseTable();
+
+	String firstName = ((PlayerCreature*) parent.get())->getFirstName();
+	firstName = firstName.toLowerCase();
+
+	for (int i = 0; i < reverseTable->size(); ++i) {
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", true);
+			player->sendMessage(notifyStatus);
 		}
 	}
-	unlock();
-}
 
-bool PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateClient) {
-	wlock();
+	for (int i = 0; i < friendList.size(); ++i) {
+		String name = friendList.get(i);
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(name);
 
-	if (waypointList.drop(wp->getObjectID())) {
-
-		if (updateClient && player != NULL) {
-			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-
-			dplay8->startWaypointUpdate();
-			dplay8->addWaypoint(1, wp);
-			dplay8->close();
-			player->sendMessage(dplay8);
-		}
-		unlock();
-		return true;
-	}
-	unlock();
-	return false;
-}
-
-WaypointObject* PlayerObjectImplementation::getWaypoint(uint64 id) {
-	WaypointObject* waypoint = NULL;
-
-	wlock();
-
-	waypoint = waypointList.get(id);
-
-	unlock();
-
-	return waypoint;
-}
-
-int PlayerObjectImplementation::getWaypointListSize() {
-	int size = 0;
-	wlock();
-
-	size = waypointList.size();
-
-	unlock();
-
-	return size;
-}
-
-void PlayerObjectImplementation::updateWaypoint(WaypointObject* wp) {
-	wlock();
-
-	if (waypointList.contains(wp->getObjectID())) {
-		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-
-		dplay8->startWaypointUpdate();
-		dplay8->addWaypoint(0, wp);
-		dplay8->close();
-
-		player->sendMessage(dplay8);
-	}
-
-	unlock();
-}
-
-void PlayerObjectImplementation::saveWaypoints(Player* player) {
-	wlock();
-	stringstream query;
-
-	try {
-		query.str( "" );
-		query << "DELETE FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
-		ServerDatabase::instance()->executeStatement(query);
-
-		string name;
-
-		for (int i = 0; i < waypointList.size() ; ++i) {
-			WaypointObject* wpl = waypointList.get(i);
-
-			name = wpl->getName();
-			MySqlDatabase::escapeString(name);
-
-			query.str( "" );
-			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`internal_note`,`active`)"
-			<< " VALUES ('"
-			<< wpl->getObjectID() << "','"
-			<< player->getCharacterID() << "','"
-			<< name << "','"
-			<< wpl->getPositionX() << "','"
-			<< wpl->getPositionY() << "','"
-			<< wpl->getPlanetName() << "','"
-			<< wpl->getInternalNote() << "',"
-			<< wpl->getStatus() << ");" ;
-
-			ServerDatabase::instance()->executeStatement(query);
-		}
-	} catch (DatabaseException& e) {
-		cout << "exception in PlayerObject::saveWaypoints()\n" << e.getMessage();
-	} catch (...) {
-		cout << "exception in PlayerObject::saveWaypoints\n";
-	}
-
-	unlock();
-}
-
-WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const string& name, int mode) {
-	wlock();
-
-	WaypointObject* waypoint = NULL;
-	WaypointObject* returnWP = NULL;
-	int i = 0;
-	string sName;
-
-	if (mode == 1 ) {
-		//Lookup InternalNote field
-		for (int i = 0; i < waypointList.size(); ++i) {
-			waypoint = waypointList.get(i);
-
-			if (waypoint->getInternalNote() == name) {
-				//string wpName = waypoint->getName();
-				returnWP = waypoint;
-				break;
-			}
-		}
-	} else if (mode == 2 ) {
-		//Lookup WaypointName field
-		sName = name.c_str();
-		String::toLower(sName);
-
-		for (int i = 0; i < waypointList.size(); ++i) {
-			waypoint = waypointList.get(i);
-			string wpName = waypoint->getName();
-			String::toLower(wpName);
-
-			if (wpName == sName) {
-				//string wpName = waypoint->getName();
-				returnWP = waypoint;
-				break;
-			}
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", true);
+			parent->sendMessage(notifyStatus);
+		} else {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", false);
+			parent->sendMessage(notifyStatus);
 		}
 	}
-
-	unlock();
-	return returnWP;
 }
 
+void PlayerObjectImplementation::notifyOffline() {
+	//info("notifyOffline", true);
+	ChatManager* chatManager = server->getChatManager();
 
+	Vector<String>* reverseTable = friendList.getReverseTable();
+
+	String firstName = ((PlayerCreature*) parent.get())->getFirstName();
+	firstName = firstName.toLowerCase();
+
+	for (int i = 0; i < reverseTable->size(); ++i) {
+		ManagedReference<PlayerCreature*> player = chatManager->getPlayer(reverseTable->get(i));
+
+		if (player != NULL) {
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", false);
+			player->sendMessage(notifyStatus);
+		}
+	}
+}
+
+void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {
+	if (languageID == language)
+		return;
+
+	languageID = language;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(_this);
+		dplay9->setLanguageID(languageID);
+		dplay9->close();
+		parent->sendMessage(dplay9);
+	}
+
+}

@@ -1,816 +1,719 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
-include "engine/service/proto/StandaloneBaseMessage";
-include "../../packets/object/StfParameter";
+package server.zone.objects.creature;
 
-import "../scene/SceneObject";
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.zone.objects.creature.professions.SkillBox;
+import server.zone.objects.group.GroupObject;
 
-import "../tangible/Inventory";
+//import server.zone.objects.player.professions.SkillBox;
 
-import "../tangible/Container";
+import server.zone.objects.scene.SceneObject;
+include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.creature.variables.SkillBoxList;
+include server.zone.objects.creature.variables.CommandQueueAction;
 
-import "../tangible/TangibleObject";
+import engine.core.ManagedObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.lang.Time;
 
-import "../tangible/weapons/Weapon";
+class CreatureObject extends TangibleObject {
+	protected int bankCredits;
+	protected int cashCredits;
+	
+	protected int gender;
+	protected int species;
+	
+	protected int faction;
+	
+	@dereferenced
+	protected DeltaVector<int> baseHAM;
+	
+	protected byte posture;
+	protected byte factionRank;
+	
+	protected unsigned long creatureLinkID;
+	protected float shockWounds;
+	
+	@dereferenced
+	protected DeltaVector<int> wounds;
+	
+	protected unsigned long stateBitmask;
+		
+	@dereferenced
+	protected DeltaVector<int> encumbrances;
+		
+	protected float runSpeed;
+	protected float walkSpeed;
+	protected float terrainNegotiation;
+	protected float runAcceleration;
+	protected float walkAcceleration;
+	protected float height;
+	protected float swimHeight;
+	protected float slopeModPercent;
+	protected float slopeModAngle;
+	
+	protected unsigned long listenToID;
+	
+	protected short level;
+	
+	protected string performanceAnimation;
+	protected string moodString;
+	
+	protected unsigned long weaponID;
+	
+	protected GroupObject group;
+	protected unsigned long groupInviterID;
+	protected unsigned long groupInviteCounter;
+	
+	protected int guildID;
+	protected unsigned long targetID;
+	protected byte moodID;
+	protected int performanceCounter;
+	protected int instrumentID;
+	
+	@dereferenced
+	protected DeltaVector<int> hamList;
+	
+	@dereferenced
+	protected DeltaVector<int> maxHamList;
+	
+	protected byte frozen;
+	
+	protected string templateString;
+	
+	// Profession stuff
+	@dereferenced
+	protected SkillBoxList skillBoxList;
+		
+	@dereferenced
+	protected DeltaVectorMap<string, long> skillModList;
+	
+	@dereferenced
+	protected Vector<CommandQueueAction> commandQueue;
+	
+	@dereferenced
+	protected Time nextAction;
+	
+	public static final int HUMAN = 0;
+	public static final int RODIAN = 1;
+	public static final int TRANDOSHAN = 2;
+	public static final int MONCAL = 3;
+	public static final int WOOKIE = 4;
+	public static final int BOTHAN = 5;
+	public static final int TWILEK = 6;
+	public static final int ZABRAK = 7;
+	public static final int ITHORIAN = 0x21;
+	public static final int SULLUSTAN = 0x31;
+	
+	public static final int MALE = 0;
+	public static final int FEMALE = 1;
 
-import "../tangible/wearables/Armor";
-
-import "../group/GroupObject";
-
-import "../player/Player";
-
-import "../building/BuildingObject";
-
-import "../creature/mount/MountCreature";
-import "../creature/Creature";
-
-import "../guild/Guild";
-
-import "skills/Skill";
-
-import "buffs/BuffObject";
-
-import "../tangible/resource/ResourceContainer";
-
-interface CreatureObject implements SceneObject {
-	CreatureObject(unsigned long oid) {
-		super(oid, int type);
+	/**
+	 * CreatureObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedCreatureObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { CreatureObject is initialized } 
+	 * @param templateData templateData points to the SharedCreatureObjectTemplate LuaObject that is used to initialize CreatureObject members
+	 */
+	public CreatureObject() {
+		Logger.setLoggingName("CreatureObject");
 	}
 	
-	void info(const string message, boolean forcedLog = false);
-	
-	void sendItemsTo(Player player);
-	void sendTo(Player player, boolean doClose = true);
+	public native void finalize();
 
-	void sendDestroyTo(Player player);
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre { transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
+	 * @pre { }
+	 * @post { client received the CommandQueueRemove message }
+	 * @param actioncntr action id that will be cleared from clients queue
+	 * @param timer how many seconds will the action take to execute
+	 * @param tab1 message 1
+	 * @param tab2 message 2 
+	 */
+	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
-	// combat
-	void doCombatAnimation(CreatureObject defender, unsigned int animcrc, boolean hit = false);
-	void doAnimation(const string anim);
-	void playEffect(const string file, const string aux);
-	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
-	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill, boolean areaSpam = true);
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native void sendBaselinesTo(SceneObject player);
 	
-	void addDamage(CreatureObject creature, unsigned int damage);
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param message string message to send
+	 */
+	public native void sendSystemMessage(final string message);
 	
-	unsigned int getDamage(CreatureObject creature);
-	void removeFromDamageMap(CreatureObject target);
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param message unicode message to send
+	 */
+	public native void sendSystemMessage(unicode message);
 	
-	boolean isLootOwner(CreatureObject creature);
-	CreatureObject getLootOwner();
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param file stf file name of the message
+	 * @param stringid stf stringid of the message
+	 */
+	public native void sendSystemMessage(final string file, final string stringid);
 	
-	unsigned int getMitigation(const string mit);
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre { }
+	 * @post { this object received the message }
+	 * @param message ParameterizedStringId message to send
+	 */
+	@local
+	public native void sendSystemMessage(@dereferenced ParameterizedStringId stringid);
 	
-	boolean isIncapacitated();
-	boolean isDead();
-	boolean isKnockedDown();
-	boolean isKneeled();
-	boolean isProne();
-	boolean isInCombat();
-	boolean isDizzied();
-	boolean isStunned();
-	boolean isBlinded();
-	boolean isIntimidated();
-	boolean isDiseased();
-	boolean isPoisoned();
-	boolean isBleeding();
-	boolean isOnFire();
-	boolean isMounted();
-	boolean isRidingCreature();
-	boolean isMeditating();
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	public native void sendSlottedObjectsTo(SceneObject player);
 	
-	void updateKnockdownRecovery();
+	/**
+	 * Sets the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
+	public native void setCombatState();
 	
-	void updateMood(const string md);
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
+	public native void clearCombatState(boolean clearDefenders = true);
 	
-	boolean checkKnockdownRecovery();
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
 	
-	void updatePostureDownRecovery();
+	/**
+	 * Updates a specific type of the HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the HAM type updated to the new value }
+	 * @param type specifies which HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setHAM(int type, int value, boolean notifyClient = true);
 	
-	void updatePostureUpRecovery();
+	/**
+	 * Updates a specific type of the Base HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Base HAM type updated to the new value }
+	 * @param type specifies which Base HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setBaseHAM(int type, int value, boolean notifyClient = true);
 	
-	boolean checkPostureDownRecovery();
+	/**
+	 * Updates a specific type of the Wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Wounds type updated to the new value }
+	 * @param type specifies which Wounds type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setWounds(int type, int value, boolean notifyClient = true);
 	
-	boolean checkPostureUpRecovery();
+	/**
+	 * Updates a specific type of the Max HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Max HAM type updated to the new value }
+	 * @param type specifies which Max HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the Encumbrance
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Encumbrance type updated to the new value }
+	 * @param type specifies which Encumbrance type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates the weapon id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param objectID the new weapon id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
+	
+	/**
+	 * Updates the instrument id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param instrumentid the new instrument id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setInstrumentID(int instrumentid, boolean notifyClient = false);
+	
+	/**
+	 * Updates the target id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param objectID the new target id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
+	
+	/**
+	 * Updates the bank credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified bank credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setBankCredits(int credits, boolean notifyClient = true);
+	
+	public void addBankCredits(int credits, boolean notifyClient = true) {
+		int newCredits = bankCredits + credits;
+		setBankCredits(newCredits);
+	}
+	
+	public void substractBankCredits(int credits) {
+		int newCredits = bankCredits - credits;
+		setBankCredits(newCredits);
+	}
+	
+	/**
+	 * Update the cash credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified cash credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setCashCredits(int credits, boolean notifyClient = true);
+	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void addSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox name to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void removeSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to substract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/substract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	
+	/**
+	 * Removes skill mod from the list (same as setting to 0)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillMod(final string skillMod, boolean notifyCLient = true);
+	
+	/**
+	 * Sets a new group inviter id
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param id object id of the inviter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroupInviterID(unsigned long id, boolean notifyClient = true);
+	
+	/**
+	 * Sets the group of this object
+	 * @pre { this object is locked }
+	 * @post {this object is locked }
+	 * @param group GroupObject to update
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroup(GroupObject group, boolean notifyClient = true);
+	
+	/**
+	 * Enqueues a command action
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCRC queue command crc
+	 * @param actionCount command count
+	 * @param targetID target
+	 * @param arguments arguments
+	 */
+	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
+	
+	/**
+	 * Sets characters mood
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param moodID mood to set
+	 */
+	public native void setMood(byte moodID, boolean notifyClient = true);
+	
+	/**
+	 * Removes a command from queue
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCount the action count to remove
+	 */
+	public native void deleteQueueAction(unsigned int actionCount);
+	
+	/**
+	 * Sets a new state to the statebitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask has the new state }
+	 * @param state state to add
+	 */
+	public native void setState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Cleares a state from the state bitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked , stateBitmask doesnt have the specified state }
+	 * @param state state to clear
+	 */
+	public native void clearState(unsigned long state, boolean notifyClient = true);
+	
+	/**
+	 * Returns character mask to check against wearable player use mask
+	 * @pre { }
+	 * @post { }
+	 * 
+	 */
+	public native unsigned int getWearableMask();
+	
+	public native int canAddObject(SceneObject object);
 
-	boolean setState(unsigned long state);
-	boolean clearState(unsigned long state);
-	void updateStates();
-	void clearStates();
-	float calculateBFRatio();
-
-	// HAM methods
-	void resetHAMBars(boolean doUpdateClient);
-	
-	boolean changeHAMBars(int hp, int ap, int mp, boolean forcedChange = false);
-	boolean changeHAMWounds(int hpwnd, int apwnd, int mpwnd, boolean forcedChange = false);
-	void changeMaxHAMBars(int hp, int ap, int mp);
-	
-	boolean takeHealthDamage(int damage); // Instead of having to pass negative damage values
-	boolean takeActionDamage(int damage); // we can now pass damage to a damage function 
-	boolean takeMindDamage(int damage);   // using positive values for damage
-
-	// Change Current HAM
-	boolean changeHealthBar(int hp, boolean forcedChange = false);
-	boolean changeStrengthBar(int st, boolean forcedChange = false);
-	boolean changeConstitutionBar(int cs, boolean forcedChange = false);
-	boolean changeActionBar(int ap, boolean forcedChange = false);
-	boolean changeQuicknessBar(int qc, boolean forcedChange = false);
-	boolean changeStaminaBar(int st, boolean forcedChange = false);
-	boolean changeMindBar(int mp, boolean forcedChange = false);
-	boolean changeFocusBar(int fc, boolean forcedChange = false);
-	boolean changeWillpowerBar(int wl, boolean forcedChange = false);
-
-	// Change Max HAM
-	void changeMaxHealthBar(int hp, boolean updateClient = true);
-	void changeMaxStrengthBar(int st, boolean updateClient = true);
-	void changeMaxConstitutionBar(int cs, boolean updateClient = true);
-	void changeMaxActionBar(int ap, boolean updateClient = true);
-	void changeMaxQuicknessBar(int qc, boolean updateClient = true);
-	void changeMaxStaminaBar(int st, boolean updateClient = true);
-	void changeMaxMindBar(int mp, boolean updateClient = true);
-	void changeMaxFocusBar(int fc, boolean updateClient = true);
-	void changeMaxWillpowerBar(int wl, boolean updateClient = true);
-
-	// Change HAM Wounds
-	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeStrengthWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeConstitutionWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeActionWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeQuicknessWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeStaminaWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeMindWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeFocusWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeWillpowerWoundsBar(int wounds, boolean forcedChange = false);
-
-	void changeShockWounds(int bf);
-	
-	// Set Current HAM
-	void setHealthBar(unsigned int hp);
-	void setStrengthBar(unsigned int st);
-	void setConstitutionBar(unsigned int cst);
-	void setActionBar(unsigned int ap);
-	void setQuicknessBar(unsigned int qck);
-	void setStaminaBar(unsigned int sta);
-	void setMindBar(unsigned int mp);
-	void setFocusBar(unsigned int fc);
-	void setWillpowerBar(unsigned int will);
-
-	// Set Base HAM
-	void setBaseHealthBar(unsigned int hp, boolean updateClient = true);
-	void setBaseStrengthBar(unsigned int st, boolean updateClient = true);
-	void setBaseConstitutionBar(unsigned int cst, boolean updateClient = true);	
-	void setBaseActionBar(unsigned int ap, boolean updateClient = true);
-	void setBaseQuicknessBar(unsigned int qck, boolean updateClient = true);
-	void setBaseStaminaBar(unsigned int sta, boolean updateClient = true);	
-	void setBaseMindBar(unsigned int mp, boolean updateClient = true);
-	void setBaseFocusBar(unsigned int fc, boolean updateClient = true);
-	void setBaseWillpowerBar(unsigned int will, boolean updateClient = true);
-
-	// Set Max HAM
-	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
-	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
-	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);	
-	void setMaxActionBar(unsigned int ap, boolean updateClient = true);
-	void setMaxQuicknessBar(unsigned int qck, boolean updateClient = true);
-	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);	
-	void setMaxMindBar(unsigned int mp, boolean updateClient = true);
-	void setMaxFocusBar(unsigned int fc, boolean updateClient = true);
-	void setMaxWillpowerBar(unsigned int will, boolean updateClient = true);
-	
-	// Set HAM Wounds
-	void setHealthWoundsBar(unsigned int  wnds);
-	void setStrengthWoundsBar(unsigned int  wnds);
-	void setConstitutionWoundsBar(unsigned int  wnds);
-	void setActionWoundsBar(unsigned int  wnds);
-	void setQuicknessWoundsBar(unsigned int  wnds);
-	void setStaminaWoundsBar(unsigned int  wnds);
-	void setMindWoundsBar(unsigned int  wnds);
-	void setFocusWoundsBar(unsigned int  wnds);
-	void setWillpowerWoundsBar(unsigned int  wnds);
-
-	void handleDeath();
-	
-	boolean hasAttackDelay();
-	void clearAttackDelay();
-	
-	void activateBurstRun();
 	
-	boolean hasQueuedState(unsigned int skillCRC);
-	boolean removeQueuedState(unsigned int skillCRC);
-	boolean addQueuedState(unsigned int skillCRC);
+	/**
+	 * Is called when this object has moved to a new position
+	 */
+	public native int onPositionUpdate();
+	
+	public native void activateQueueAction();
 	
-	void setMeditateState();
-
-	boolean isGuilded();
+	public native unicode getCreatureName();
+	
+	public boolean isRebel() {
+		return faction == 0x16148850;
+	}
+	
+	public boolean isImperial() {
+		return faction == 0xDB4ACC54;
+	}
+	
+	public boolean isNeurtral() {
+		return faction == 0;
+	}
+	
+	public boolean isGroupped() {
+		return group != null;
+	}
+	
+	public int getBankCredits() {
+		return bankCredits;
+	}
+	
+	public int getCashCredits() {
+		return cashCredits;
+	}
+	
+	public int getBaseHAM(int idx) {
+		return baseHAM.get(idx);
+	}
+	
+	public int getWounds(int idx) {
+		return wounds.get(idx);
+	}
+	
+	@local
+	public DeltaVector<int> getWounds() {
+		return wounds;
+	}
+	
+	public int getHAM(int idx) {
+		return hamList.get(idx);
+	}
+	
+	@local
+	public DeltaVector<int> getHAM() {
+		return hamList;
+	}
+	
+	public int getMaxHAM(int idx) {
+		return maxHamList.get(idx);
+	}
+	
+	@local
+	public DeltaVector<int> getMaxHAM() {
+		return maxHamList;
+	}
+	
+	public int getEncumbrance(int idx) {
+		return encumbrances.get(idx);
+	}
+	
+	@local
+	public DeltaVector<int> getEncumbrances() {
+		return encumbrances;
+	}
+	
+	public byte getPosture() {
+		return posture;
+	}
+	
+	public byte getFactionRank() {
+		return factionRank;
+	}
+	
+	public unsigned long getCreatureLinkID() {
+		return creatureLinkID;
+	}
+	
+	public float getShockWounds() {
+		return shockWounds;
+	}
+	
+	public unsigned long getStateBitmask() {
+		return stateBitmask;
+	}
+	
+	public boolean hasState(unsigned long state) {
+		return stateBitmask & state;
+	}
+	
+	public unsigned long getListenID() {
+		return listenToID;
+	}
+	
+	public float getRunSpeed() {
+		return runSpeed;
+	}
+	
+	public float getWalkSpeed() {
+		return walkSpeed;
+	}
+	
+	public float getTerrainNegotiation() {
+		return terrainNegotiation;	
+	}
+	
+	public float getRunAcceleration() {
+		return runAcceleration;
+	}
+	
+	public float getWalkAcceleration() {
+		return walkAcceleration;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public string getPerformanceAnimation() {
+		return performanceAnimation;
+	}
+	
+	public string getMoodString() {
+		return moodString;
+	}
+	
+	public unsigned long getWeaponID() {
+		return weaponID;
+	}
+	
+	public unsigned long getGroupID() {
+		if (group != null)
+			return group.getObjectID();
+		else
+			return 0;
+	}
+	
+	public unsigned long getGroupInviterID() {
+		return groupInviterID;
+	}
+	
+	public GroupObject getGroup() {
+		return group;
+	}
+	
+	public unsigned long getGroupInviteCounter() {
+		return groupInviteCounter;
+	}
+	
+	public int getGuildID() {
+		return guildID;
+	}
+	
+	public unsigned long getTargetID() {
+		return targetID;
+	}
+	
+	public byte getMoodID() {
+		return moodID;
+	}
+	
+	public float getSlopeModPercent() {
+		return slopeModPercent;
+	}
+	
+	public int getPerformanceCounter() {
+		return performanceCounter;
+	}
+	
+	public int getInstrumentID() {
+		return instrumentID;
+	}
+	
+	public byte getFrozen() {
+		return frozen;
+	}
+	
+	public float getHeight() {
+		return height;
+	}
+	
+	public int getSpecies() {
+		return species;
+	}
+	
+	public int getFaction() {
+		return faction;
+	}
+	
+	@local
+	public DeltaVector<int> getBaseHAM() {
+		return baseHAM;
+	}
+	
+	@local
+	public SkillBoxList getSkillBoxList() {
+		return skillBoxList;
+	}
+	
+	@local
+	public DeltaVectorMap<string, long> getSkillModList() {
+		return skillModList;
+	}
+	
+	public void setHeight(float heigh) {
+		height = heigh;
+	}
 	
-	void removeGroup();
-	
-	boolean isInAGroup();
-	
-	void setGroupID(unsigned long gid);
-	
-	void updateGroupId(unsigned long id);
-	void updateGroupInviterId(unsigned long id);
-
-	void setDefenderID(long did);
-	
-	void updateTarget(unsigned long targ);
-	void updateTarget(SceneObject targ);
-	
-	void setActionCounter(unsigned int actioncntr);
-	
-	void setWeapon(Weapon wep);
-	
-	void setCreatureLinkID(unsigned long creatureID);
-	
-	void setAccuracy(int acc);
-	void setDamageBonus(int bonus);
-	void setDefenseBonus(int bonus);
-	
-	void setLastMovementUpdateStamp(unsigned int tme);
-	void setIgnoreMovementTests(int times);
-	
-	void setLevel(unsigned int lvl);
-
-	void updateServerMovementStamp();
-	
-	SceneObject getInventoryItem(unsigned long oid);
-	void removeInventoryItem(unsigned long oid);
-
-	SceneObject getLootItem(unsigned long oid);
-	void removeLootItem(unsigned long oid);
-			
-	Inventory getInventory();
-
-	Container getLootContainer();
-	
-	unsigned long getNewItemID(); // should be virtual
-	
-	Weapon getWeapon();
-	
-	Armor getArmor(int type);
-	
-	local void addSkill(Skill skill);
-	
-	void addSkillMod(const string name, int mod, boolean updateClient = false);
-	
-	int getSkillMod(const string name);
-	
-	boolean hasSkillMod(const string name);
-
-	int getSkillModBonus(const string name);
-	
-	boolean hasSkillModBonus(const string name);
-	
-	int getAccuracy();
-	int getDefenseBonus();
-	int getDamageBonus();
-	
-	int getConditionDamage();
-	int getMaxCondition();
-	int getCondition();
-	MountCreature getMount();
-
-	unsigned long getLastServerMovementStamp();
-	
-	unsigned long getCreatureLinkID();
-	
-	float getDistanceTo(CreatureObject targetCreature); // temp
-	float getHeight();
-	
-	unsigned int getCreatureSkillsCount();
-	unsigned int getNewCreatureSkillsCount(int cnt);
-	
-	unsigned int getLastMovementUpdateStamp();
-	int getIgnoreMovementTests();
-	
-	unsigned int getLevel();
-	
-	int getCenteredBonus();
-	
-	void sendSystemMessage(const string message);
-	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
-	void updateSpeed(float speed, float acceleration);
-	
-	void addInventoryItem(TangibleObject item);
-	void addInventoryResource(ResourceContainer rcno);
-	
-	void addLootItem(TangibleObject item);
-	
-	// Ent methods
-	void startDancing(const string anim, boolean changeDance = false);
-	void startPlayingMusic(const string anim, boolean changeDance = false);
-	
-	void startWatch(unsigned long entid);
-	void startListen(unsigned long entid);
-	
-	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
-	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
-	
-	boolean isPlayingMusic();
-	boolean isDancing();
-	
-	void stopDancing();
-	void stopPlayingMusic();
-	
-	void addListener(CreatureObject creature);
-	void addWatcher(CreatureObject creature);
-	
-	void removeListener(CreatureObject creature);
-	void removeWatcher(CreatureObject creature);
-	
-	void doFlourish(const string modifier);
-	/*void doHealShockWounds();
-	void doHealMindWounds();*/
-	void doPerformanceAction();
-	
-	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);	
-	void addEntertainerFlourishBuff();
-
-	void addEntertainerBuffDuration(int performanceType, float duration);
-	void setEntertainerBuffDuration(int performanceType, float duration);
-	float getEntertainerBuffDuration(int performanceType);
-	
-	void setEntertainerBuffStrength(int performanceType, float strength);
-	float getEntertainerBuffStrength(int performanceType);
-	
-	void activateRecovery();
-	
-	// Skill methods
-	int getCreatureSkillsSize();
-	string getSkill(int idx);
-	boolean hasSkill(unsigned int skillCRC);
-	
-	// mount methods
-	void mountCreature(MountCreature mnt, boolean lockMount = true);
-	void dismount(boolean lockMount = true, boolean ignoreCooldown = true);
-	
-	//tip methods
-	void addCashCredits(unsigned int credits);
-	void addBankCredits(unsigned int credits);
-	void updateCashCredits(unsigned int credits);
-	void updateBankCredits(unsigned int credits);
-	void subtractCashCredits(unsigned int credits);
-	void subtractBankCredits(unsigned int credits);
-	
-	void setCashCredits(int credits);
-	void setBankCredits(int credits);
-	
-	// Buff method
-	void addBuff(int buffCRC, float duration);
-	void applyBuff(BuffObject buff);
-	
-	void removeBuff(const unsigned int buffCRC, boolean remove = true);
-	
-	boolean hasSpice();
-	
-	boolean verifyCashCredits(unsigned int creditsToRemove);
-	boolean verifyBankCredits(unsigned int creditsToRemove);
-
-	// getters
-	boolean isOnFullHealth();
-	boolean hasStates();
-	boolean hasState(unsigned long state);
-	
-	boolean hasWounds();
-	boolean hasShockWounds();
-
-	boolean isAttackable();
-	boolean isAttackableBy(CreatureObject attacker);
-	
-	boolean isListening();
-	boolean isWatching();
-
-	unicode getCharacterName();
-	
-	string getStfName();
-	string getSpeciesName();
-	string getRaceName();
-	string getGender();
-	
-	string getTerrainName();
-
-	void getCharacterAppearance(string appearance);
-	void getHairAppearance(string appearance);
-	
-	boolean isOvert();
-	
-	unsigned long getStateBitmask();
-	
-	unsigned int getCreatureBitmask();
-	
-	unsigned char getPosture();
-	
-	unsigned int getFaction();
-	boolean isRebel();
-	boolean isNeutral();
-	boolean isImperial();
-	
-	unsigned int getPvpStatusBitmask();
-	
-	unsigned int getBankCredits();
-	unsigned int getCashCredits();
-	
-	unsigned int getWoundsUpdateCounter();
-	unsigned int getNewWoundsUpdateCounter(int upd);
-	
-	void updateHAMBars();
-	void updateBaseStats();
-	
-	unsigned int getBaseHealth();
-	unsigned int getBaseStrength();
-	unsigned int getBaseConstitution();
-	unsigned int getBaseAction();
-	unsigned int getBaseQuickness();
-	unsigned int getBaseStamina();
-	unsigned int getBaseMind();
-	unsigned int getBaseFocus();
-	unsigned int getBaseWillpower();
-
-	unsigned int getHealth();
-	unsigned int getStrength();
-	unsigned int getConstitution();
-	unsigned int getAction();
-	unsigned int getQuickness();
-	unsigned int getStamina();
-	unsigned int getMind();
-	unsigned int getFocus();
-	unsigned int getWillpower();
-
-	unsigned int getHealthMax();
-	unsigned int getStrengthMax();
-	unsigned int getConstitutionMax();
-	unsigned int getActionMax();
-	unsigned int getQuicknessMax();
-	unsigned int getStaminaMax();
-	unsigned int getMindMax();
-	unsigned int getFocusMax();
-	unsigned int getWillpowerMax();
-	
-	unsigned int getArmor();
-	float getArmorResist(int resistType);
-	
-	unsigned int getHealthWounds();
-	unsigned int getStrengthWounds();
-	unsigned int getConstitutionWounds();
-	unsigned int getActionWounds();
-	unsigned int getQuicknessWounds();
-	unsigned int getStaminaWounds();
-	unsigned int getMindWounds();
-	unsigned int getFocusWounds();
-	unsigned int getWillpowerWounds();
-
-	unsigned int getShockWounds();
-	
-	unsigned int getHAMUpdateCounter();
-	unsigned int getNewHAMUpdateCounter(int cnt);
-	unsigned int getHAMMaxUpdateCounter();
-	unsigned int getNewHAMMaxUpdateCounter(int cnt);
-	unsigned int getHAMBaseUpdateCounter();
-	unsigned int getNewHAMBaseUpdateCounter(int cnt);
-	unsigned int getHAMEncumbUpdateCounter();
-	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
-	
-	unsigned int getHealthEncumbrance();
-	unsigned int getActionEncumbrance();
-	unsigned int getMindEncumbrance();
-	
-	unsigned long getTargetID();
-	
-	SceneObject getTarget();
-	
-	unsigned long getWeaponID();
-	
-	unsigned long getGroupID();
-	unsigned long getGuildID();
-	Guild getGuild();
-
-	unsigned float getSpeed();
-	unsigned float getAcceleration();
-	
-	unsigned long getDefenderID();
-	unsigned int getDefenderUpdateCounter();
-	unsigned int getNewDefenderUpdateCounter(int cnt);
-	
-
-	string getPerformanceAnimation();
-	unsigned int getPerformanceCounter();
-	
-	unsigned int getInstrumentID();
-	
-	string getPerformanceName();
-	
-	string getMood();
-	unsigned char getMoodID();
-	
-	unsigned long getGroupInviterID();
-	unsigned long getGroupInviteCounter();
-	unsigned long getNewGroupInviteCounter();
-
-	unsigned long getWatchID();
-	unsigned long getListenID();
-	
-	boolean isInBuilding();
-	int getBuildingType();
-	SceneObject getBuilding();
-
-	string getGuildName();
-	
-	int getWeaponSpeedModifier();
-	
-	unsigned int getSkillBoxesUpdateCounter();
-	unsigned int getSkillModsCounter();
-	unsigned int getNewSkillModsCounter(int cnt);
-	
-	string getHideType();
-	string getBoneType();
-	string getMeatType();
-
-	int getBoneMax();
-	int getHideMax();
-	int getMeatMax();
-	int getMilk();
-	boolean hasOrganics();
-	
-	int getXP();
-	
-	int isHealer();	
-	int isPack();	
-	int isHerd();	
-	int isStalker();	
-	int isKiller();	
-	int isAggressive();	
-	
-	string getBehaviorScript();	
-		
-	string getCreatureFaction();
-	
-	string getCreatureWeapon();
-	string getCreatureWeaponName();
-	string getCreatureWeaponTemp();
-	string getCreatureWeaponClass();
-	int getCreatureWeaponEquipped();
-	int getCreatureWeaponMinDamage();
-	int getCreatureWeaponMaxDamage();
-	float getCreatureWeaponAttackSpeed();
-	string getCreatureWeaponDamageType();
-	string getCreatureWeaponArmorPiercing();	
-	
-	float getInternalNPCDamageModifier();
-	
-	float getTame();
-	
-	string getLootGroup();
-
-	// setters
-	void setBaseHealth(unsigned int health);
-	void setBaseStrength(unsigned int strength);
-	void setBaseConstitution(unsigned int constituition);
-	void setBaseAction(unsigned int action);
-	void setBaseQuickness(unsigned int quickness);
-	void setBaseStamina(unsigned int stamina);
-	void setBaseMind(unsigned int mind);
-	void setBaseFocus(unsigned int focus);
-	void setBaseWillpower(unsigned int willpower);
-	
-	void setHealth(unsigned int health);
-	void setStrength(unsigned int strength);
-	void setConstitution(unsigned int constituition);
-	void setAction(unsigned int action);
-	void setQuickness(unsigned int quickness);
-	void setStamina(unsigned int stamina);
-	void setMind(unsigned int mind);
-	void setFocus(unsigned int focus);
-	void setWillpower(unsigned int willpower);
-
-	void setHealthMax(unsigned int health);
-	void setStrengthMax(unsigned int strength);
-	void setConstitutionMax(unsigned int constituition);
-	void setActionMax(unsigned int action);
-	void setQuicknessMax(unsigned int quickness);
-	void setStaminaMax(unsigned int stamina);
-	void setMindMax(unsigned int mind);
-	void setFocusMax(unsigned int focus);
-	void setWillpowerMax(unsigned int willpower);
-
-	void setArmor(unsigned int ar);
-
-	void setHealthWounds(unsigned int wounds);
-	void setStrengthWounds(unsigned int wounds);
-	void setConstitutionWounds(unsigned int wounds);
-	void setActionWounds(unsigned int wounds);
-	void setQuicknessWounds(unsigned int wounds);
-	void setStaminaWounds(unsigned int wounds);
-	void setMindWounds(unsigned int wounds);
-	void setFocusWounds(unsigned int wounds);
-	void setWillpowerWounds(unsigned int wounds);
-
-	void setShockWounds(unsigned int wounds);
-
-	void setWoundsUpdateCounter(unsigned int count);
-	
-	void changeHealthMax(int health);
-	void changeStrengthMax(int strength);
-	void changeConstitutionMax(int constituition);
-	void changeActionMax(int action);
-	void changeQuicknessMax(int quickness);
-	void changeStaminaMax(int stamina);
-	void changeMindMax(int mind);
-	void changeFocusMax(int focus);
-	void changeWillpowerMax(int willpower);
-	
-	void changeHealth(int health);
-	void changeStrength(int strength);
-	void changeConstitution(int constituition);
-	void changeAction(int action);
-	void changeQuickness(int quickness);
-	void changeStamina(int stamina);
-	void changeMind(int mind);
-	void changeFocus(int focus);
-	void changeWillpower(int willpower);
-
-	void setSpeed(float spd);
-	void setAcceleration(float acc);
-
-	void setKinetic(float kin);
-	void setEnergy(float ene);
-	void setElectricity(float ele);
-	void setStun(float stu);
-	void setBlast(float bla);
-	void setHeat(float hea);
-	void setCold(float col);
-	void setAcid(float aci);
-	void setLightSaber(float lig);
-
-	void changeConditionDamage(int amount);
-	
-	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
-
-	void setPvpStatusBitmask(unsigned int mask);
-
-	void setDizziedState();
-	void setStunnedState();
-	void setBlindedState();
-	void setIntimidatedState();
-	
-	void setPoisonedState(int str, int type, int duration);
-	void setBleedingState(int str, int type, int duration);
-	void setDiseasedState(int str, int type, int duration);
-	void setOnFireState(int str, int type, int duration);
-	
-	boolean setNextAttackDelay(int del);
-	
-	void setCharacterName(const string name);
-	void setCharacterName(const unicode name);
-	
-	void setTerrainName(const string name);
-
-	void setCharacterAppearance(string cust);
-	void setAppearanceAttribute(unsigned char type, unsigned char value);
-	void setAppearanceAttribute(string type, unsigned char value);
-	void updateCharacterAppearance();
-	
-	void setHairAppearance(string cust);
-	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
-	void setHairAppearanceAttribute(string type, unsigned char value);
-	
-	void setRaceName(const string name);
-	void setSpeciesName(const string name);
-	void setGender(const string name);
-	
-	void setFaction(unsigned int fac);
-	
-	void setHeight(float h);
-	
-	void setMood(unsigned char mdid);
-	
-	void setMood(const string m);
-	
-	void setGroup(GroupObject Group);
-	
-	void setMount(MountCreature mount);
-	
-	void explode(int level = 1, boolean destroy = true);
-	
-	BuffObject getBuffObject(const unsigned int buffCRC);
-	
-	boolean hasBuff(const unsigned int buffCRC);
-	
-	/*
-	 Clean up later
-	*/
-	void deactivateWoundTreatment();
-	void activateWoundTreatment();
-	
-	void deactivateInjuryTreatment();
-	void activateInjuryTreatment();
-	
-	void deactivateStateTreatment();
-	void activateStateTreatment();
-	
-	void deactivateConditionTreatment();
-	void activateConditionTreatment();
-	
-	boolean canTreatWounds();
-	boolean canTreatInjuries();
-	boolean canTreatStates();
-	boolean canTreatConditions();
-	
-	int getMedicalFacilityRating();
-	
-	void setBoneType(const string bone);
-	
-	void setBoneMax(int bonemax);
-	
-	void setHideType(const string hide);
-	void setHideMax(int hidemax);
-	
-	void setMeatType(const string meat);
-	void setMeatMax(int meatmax);
-	
-	void setMilk(int milkamt);
-	
-	void setXP(int xp);
-	
-	void setHealer(int heale);
-	
-	void setPack(int pack);
-	
-	void setHerd(int herd);
-	
-	void setStalker(int stalker);
-	
-	void setKiller(int killer);
-	
-	void setAggressive(int aggressive);
-	
-	void setBehaviorScript(const string behaviorScript);
-	
-	void setLootGroup(const string lootgroup);
-	
-	void setTame(float tme);
-	
-	void setCreatureFaction(const string cfac);
-	
-	void setInternalNPCDamageModifier(float indm);
-	
-	// NPC weapons
-	void setCreatureWeapon(const string wpon);
-	void setCreatureWeaponName(const string weaponname);
-	void setCreatureWeaponTemp(const string weapontemp);
-	void setCreatureWeaponClass(const string weaponclass);
-	void setCreatureWeaponEquipped(int weaponequ);
-	void setCreatureWeaponMinDamage(int weaponmindam);
-	void setCreatureWeaponMaxDamage(int weaponmaxdam);
-	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
-	void setCreatureWeaponDamageType(const string weapondamtype);
-	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);	
-	
-	void say(unicode message, unsigned int moodid = 0, unsigned int mood2 = 0);
-
-	void say(const string file, const string str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
 }

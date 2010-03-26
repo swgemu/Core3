@@ -41,105 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 piket = Creature:new {
-      objectName = "piket",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Piket",
-      gender = "",
+	objectName = "piket",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	gender = "",
 
-      stfName = "a Piket",
-      objectCRC = 228250912, 
-      socialGroup = "Piket",
-      named = FALSE, 
+	speciesName = "piket",
+	stfName = "mob/creature_names",
+	objectCRC = 228250912, 
+	socialGroup = "Piket",
+	level = 30,
 
-      level = 30,
-      xp = 3005,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	healthMax = 10200,
+	healthMin = 8400,
+	strength = 0,
+	constitution = 0,
 
-      healthMax = 10200,
-      healthMin = 8400,
-      strength = 0,
-      constitution = 0,
+	actionMax = 10200,
+	actionMin = 8400,
+	quickness = 0,
+	stamina = 0,
 
-      actionMax = 10200,
-      actionMin = 8400,
-      quickness = 0,
-      stamina = 0,
+	mindMax = 10200,
+	mindMin = 8400,
+	focus = 0,
+	willpower = 0,
 
-      mindMax = 10200,
-      mindMin = 8400,
-      focus = 0,
-      willpower = 0,
+	height = 1, -- Size of creature
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = -1,
+	cold = 0,
+	acid = -1,
+	lightsaber = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = -1,
-      cold = 0,
-      acid = -1,
-      lightsaber = 0,
+	accuracy = 200,
 
-      accuracy = 200,
+	healer = 0,
 
-      healer = 0,
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	ferocity = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 290,
+	weaponMaxDamage = 300,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 1,
+	milk = 1,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_dantooine",
-      hideMax = 0,
+	hideType = "hide_scaley_dantooine",
+	hideMax = 20,
 
-      meatType = "meat_herbivore_dantooine",
-      meatMax = 0,
+	meatType = "meat_herbivore_dantooine",
+	meatMax = 35,
 
-      skills = { "picketAttack1" },
-	  -- skills = { " Stun attack", "", "" },
-       respawnTimer = 60,
+	skills = { "picketAttack1" },
+	-- skills = { " Stun attack", "", "" },
+	respawnTimer = 60,
 
-      behaviorScript = "" -- Link to the behavior script for this object
+	behaviorScript = "" -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(piket, 228250912) --  Add to Global Table

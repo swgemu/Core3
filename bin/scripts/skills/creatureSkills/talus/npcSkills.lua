@@ -41,4 +41,11 @@
 --which carries forward this exception.
 -- Load files
 
--- Talus
+ -- Talus
+ RunSkillsFile("creatureSkills/talus/npcs/aakuanAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/binayreAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/chunkerAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/fedDubAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/liberationAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/lostAqualishAttacks.lua")
+ RunSkillsFile("creatureSkills/talus/npcs/sleemoAttacks.lua")

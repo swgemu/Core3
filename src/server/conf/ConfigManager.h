@@ -54,24 +54,24 @@ class ConfigManager : public Lua {
 	bool makePing;
 	bool makeStatus;
 
-	string orbNamingDirectoryAddress;
+	String orbNamingDirectoryAddress;
 
-	string forumsdBHost;
+	String forumsdBHost;
 	uint16 forumsdBPort;
-	string forumsdBName;
-	string forumsdBUser;
-	string forumsdBPass;
-	string forumsBannedGroupID;
-	string forumsStandardGroupID;
-	string forumsUserTable;
-	string forumsBannedTable;
-	string forumsNewActivationTable;
+	String forumsdBName;
+	String forumsdBUser;
+	String forumsdBPass;
+	String forumsBannedGroupID;
+	String forumsStandardGroupID;
+	String forumsUserTable;
+	String forumsBannedTable;
+	String forumsNewActivationTable;
 
-	string dBHost;
+	String dBHost;
 	uint16 dBPort;
-	string dBName;
-	string dBUser;
-	string dBPass;
+	String dBName;
+	String dBUser;
+	String dBPass;
 
 	uint16 statusPort;
 	uint16 loginPort;
@@ -83,6 +83,7 @@ class ConfigManager : public Lua {
 
 	int zoneProcessingThreads;
 	int zoneAllowedConnections;
+	int zoneGalaxyID;
 
 	int statusAllowedConnections;
 	unsigned int statusInterval;
@@ -127,6 +128,7 @@ public:
 
 		zoneProcessingThreads = 10;
 		zoneAllowedConnections = 300;
+		zoneGalaxyID = 2;
 
 		statusAllowedConnections = 100;
 		statusInterval = 60;
@@ -138,7 +140,7 @@ public:
 	}
 
 	bool loadConfigFile() {
-		return runFile("config.lua");
+		return runFile("conf/config.lua");
 	}
 
 	bool loadConfigData();
@@ -161,11 +163,11 @@ public:
 		return makeStatus;
 	}
 
-	inline string& getORBNamingDirectoryAddress() {
+	inline String& getORBNamingDirectoryAddress() {
 		return orbNamingDirectoryAddress;
 	}
 
-	inline string& getDBHost() {
+	inline String& getDBHost() {
 		return dBHost;
 	}
 
@@ -173,19 +175,19 @@ public:
 		return dBPort;
 	}
 
-	inline string& getDBName() {
+	inline String& getDBName() {
 		return dBName;
 	}
 
-	inline string& getDBUser() {
+	inline String& getDBUser() {
 		return dBUser;
 	}
 
-	inline string& getDBPass() {
+	inline String& getDBPass() {
 		return dBPass;
 	}
 
-	inline string& getForumsDBHost() {
+	inline String& getForumsDBHost() {
 		return forumsdBHost;
 	}
 
@@ -193,35 +195,35 @@ public:
 		return forumsdBPort;
 	}
 
-	inline string& getForumsDBName() {
+	inline String& getForumsDBName() {
 		return forumsdBName;
 	}
 
-	inline string& getForumsDBUser() {
+	inline String& getForumsDBUser() {
 		return forumsdBUser;
 	}
 
-	inline string& getForumsDBPass() {
+	inline String& getForumsDBPass() {
 		return forumsdBPass;
 	}
 
-	inline string& getForumsBannedGroup() {
+	inline String& getForumsBannedGroup() {
 		return forumsBannedGroupID;
 	}
 
-	inline string& getForumsStandardGroup() {
+	inline String& getForumsStandardGroup() {
 		return forumsStandardGroupID;
 	}
 
-	inline string& getForumsUserTable() {
+	inline String& getForumsUserTable() {
 		return forumsUserTable;
 	}
 
-	inline string& getForumsBannedTable() {
+	inline String& getForumsBannedTable() {
 		return forumsBannedTable;
 	}
 
-	inline string& getForumsNewActivationTable() {
+	inline String& getForumsNewActivationTable() {
 		return forumsNewActivationTable;
 	}
 
@@ -267,6 +269,10 @@ public:
 
 	inline int getZoneAllowedConnections() {
 		return zoneAllowedConnections;
+	}
+
+	inline int getZoneGalaxyID() {
+		return zoneGalaxyID;
 	}
 
 };

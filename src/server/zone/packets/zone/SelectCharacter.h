@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+
 class SelectCharacter : public BaseMessage {
 public:
 	SelectCharacter(uint64 charid) {
@@ -57,9 +58,11 @@ public:
 	}
 
 	static uint64 parse(Packet* pack) {
-		return pack->parseLong(6);
+		return pack->parseInt(10);
 	}
 
 };
+
+
 
 #endif /*SELECTCHARACTER_H_*/

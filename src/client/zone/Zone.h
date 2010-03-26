@@ -49,52 +49,75 @@
 
 #include "ZoneClient.h"
 
+#include "objects/player/PlayerCreature.h"
 #include "objects/ObjectMap.h"
 
-#include "objects/player/Player.h"
-
 class LoginSession;
+class ZoneClientThread;
+class ZoneMessageProcessorThread;
+class ObjectController;
+class ObjectManager;
 
 class Zone : public Thread, public Mutex, public Logger {
-	ScheduleManager* scheduler;
+	//LoginSession* loginSession;
 
-	ObjectMap objectMap;
-
-	LoginSession* loginSession;
+	//ObjectMap objectMap;
 
 	uint64 characterID;
+	uint32 accountID;
+	uint32 sessionID;
 
 	ZoneClient* client;
+	ZoneClientThread* clientThread;
+	ZoneMessageProcessorThread* processor;
 
-	Player* player;
+	Reference<PlayerCreature*> player;
+	ObjectController* objectController;
 
 	Condition characterCreatedCondition;
 
-	Vector<Player*> playerArray;
+	Vector<PlayerCreature*> playerArray;
+
+	ObjectManager* objectManager;
+
+	int instance;
 
 public:
-	Zone(ScheduleManager* sched, LoginSession* login);
+	Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session);
+	~Zone();
 
 	void run();
+	//void initConnection();
 
-	Player* createPlayer(uint64 pid);
+	void disconnect();
+
+	void follow(const String& name);
+	void stopFollow();
+
+	bool doCommand(const String& command, const String& arguments);
+
 	//LocalPlayer* createLocalPlayer(uint64 pid);
 
 	void insertPlayer();
-	void insertPlayer(Player* player);
+	void insertPlayer(PlayerCreature* player);
 
-	void waitFor();
+	//void waitFor();
 
-	inline void addEvent(Event* event, uint64 time) {
+	/*inline void addEvent(Event* event, uint64 time) {
 		scheduler->addEvent(event, time);
-	}
+	}*/
 
-	bool isSelfPlayer(Player* pl) {
-		return player == pl;
+	PlayerCreature* getSelfPlayer();
+
+	bool isSelfPlayer(SceneObject* pl) {
+		if (characterID == 0)
+			return false;
+
+		return pl->getObjectID() == characterID;
 	}
 
 	bool hasSelfPlayer() {
-		return player != NULL;
+		return characterID != 0;
 	}
 
 	SceneObject* getObject(uint64 objid);
@@ -112,7 +135,15 @@ public:
 		return client;
 	}
 
-	Vector<Player*>* getNotInitiatedPlayers() {
+	inline ObjectManager* getObjectManager() {
+		return objectManager;
+	}
+
+	inline ObjectController* getObjectController() {
+		return objectController;
+	}
+
+	Vector<PlayerCreature*>* getNotInitiatedPlayers() {
 		return &playerArray;
 	}
 };

@@ -45,60 +45,27 @@ which carries forward this exception.
 #ifndef CREATUREOBJECTMESSAGE3_H_
 #define CREATUREOBJECTMESSAGE3_H_
 
-#include "../../packets/BaseLineMessage.h"
+#include "../tangible/TangibleObjectMessage3.h"
 
 #include "../../objects/creature/CreatureObject.h"
 
-class CreatureObjectMessage3 : public BaseLineMessage {
+class CreatureObjectMessage3 : public TangibleObjectMessage3 {
 public:
 	CreatureObjectMessage3(CreatureObject* creo)
-			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 3, 0x12) {
-		insertFloat(10);
+			: TangibleObjectMessage3(creo, 0x4352454F, 0x12) {
 
-		insertAscii(creo->getStfName());
-		insertInt(0);
-		insertAscii(creo->getSpeciesName());
-
-		insertUnicode(creo->getCharacterName());
-
-		insertInt(0x0085E5CA);
-
-		string appearance;
-		creo->getCharacterAppearance(appearance);
-		insertAscii(appearance);
-
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(creo->getCreatureBitmask());
-
-		insertInt(0);
-
-		insertInt(creo->getConditionDamage());
-		insertInt(creo->getMaxCondition());
-
-		insertByte(1);
 		insertByte(creo->getPosture());
-		insertByte(0x00); // faction rank
+		insertByte(creo->getFactionRank()); // faction rank
 
 		insertLong(creo->getCreatureLinkID()); // creature link id/ mount
 
 		insertFloat(creo->getHeight());
-		insertInt(creo->getShockWounds());
+		insertInt((int)creo->getShockWounds()); // BF
 
 		insertLong(creo->getStateBitmask());
 
-		insertInt(9);
-		insertInt(creo->getWoundsUpdateCounter());
-		insertInt(creo->getHealthWounds());
-		insertInt(creo->getStrengthWounds());
-		insertInt(creo->getConstitutionWounds());
-		insertInt(creo->getActionWounds());
-		insertInt(creo->getQuicknessWounds());
-		insertInt(creo->getStaminaWounds());
-		insertInt(creo->getMindWounds());
-		insertInt(creo->getFocusWounds());
-		insertInt(creo->getWillpowerWounds());
+		DeltaVector<int>* wounds = creo->getWounds();
+		wounds->insertToMessage(this);
 
 		setSize();
 	}

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/scene/SceneObjectImplementation.h"
+#include "../../objects/scene/SceneObject.h"
 
 class LightUpdateTransformMessage : public StandaloneBaseMessage {
 public:
@@ -67,9 +67,9 @@ public:
 		insertByte(0); // unknown
 		
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		insertByte((byte) scno->getDirectionAngle());
 		
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
+		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
 			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
@@ -90,9 +90,9 @@ public:
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		insertByte((byte) scno->getDirectionAngle());
 
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
+		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
 				 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
 				 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}

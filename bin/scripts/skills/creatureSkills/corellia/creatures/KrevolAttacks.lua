@@ -1,5 +1,5 @@
 --Copyright (C) 2007 <SWGEmu>
- 
+
 --This File is part of Core3.
  
 --This program is free software; you can redistribute 
@@ -45,13 +45,13 @@ hornedKrevolAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -70,5 +70,3 @@ hornedKrevolAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(hornedKrevolAttack1)
-
------------------------------------------------

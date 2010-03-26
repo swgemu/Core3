@@ -49,22 +49,17 @@ which carries forward this exception.
 
 class ClientIDMessage : public BaseMessage {
 public:
-	ClientIDMessage(uint32 accid) {
+	ClientIDMessage(uint32 accid, uint32 session) : BaseMessage() {
 		insertShort(0x03);
-		insertInt(0xD5899226); //opcode: ClientCreateCharacterSuccess
+		insertInt(0xD5899226);
 
+		insertInt(0); // unk
+		insertInt(0); // dataLen
+		insertInt(session); // session key
 		insertInt(accid);
 	}
 
-	static uint32 parse(Packet* pack) {
-		pack->shiftOffset(4);
-
-		uint32 dataLen = pack->parseInt();
-		pack->shiftOffset(dataLen - 4);
-
-		return pack->parseInt();
-	}
-
 };
+
 
 #endif /*CLIENTIDMESSAGE_H_*/

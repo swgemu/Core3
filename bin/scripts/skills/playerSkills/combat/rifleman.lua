@@ -48,11 +48,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -79,11 +84,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 0,
 	actionAttackChance = 0,
@@ -95,7 +105,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = MIND,
 
 	poisonStrength = 0,
@@ -121,11 +131,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -163,11 +178,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -194,11 +214,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -225,11 +250,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -256,11 +286,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -287,11 +322,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 4.0,
 	speedRatio = 2.6,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -318,11 +358,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 4.0,
 	speedRatio = 2.6,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -349,11 +394,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 1.5,
+	range = 0,
+	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -380,11 +430,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.3,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -411,11 +466,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 0,
 	damageRatio = 5.0,
 	speedRatio = 3.5,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

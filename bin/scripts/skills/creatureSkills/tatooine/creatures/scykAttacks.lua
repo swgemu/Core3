@@ -45,13 +45,13 @@ scykAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 20,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 	
 	healthAttackChance = 50,
@@ -91,3 +91,4 @@ scykAttack1 = {
 AddRandomPoolAttackTargetSkill(scykAttack1)
 
 -----------------------------------------------
+

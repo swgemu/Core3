@@ -49,16 +49,16 @@ which carries forward this exception.
 
 class CellObjectMessage3 : public BaseLineMessage {
 public:
-	CellObjectMessage3(uint64 coId, uint32 cellID)
+	CellObjectMessage3(uint64 coId, int cellNumber)
 			: BaseLineMessage(coId, 0x53434C54, 3, 0x05) {
-
+		//BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt) {
 		insertInt(0);
 		insertShort(0); // STFName
 		insertInt(0);
 		insertShort(0); // STF
 		insertInt(0); // custom name
 		insertInt(0);
-		insertInt(cellID); //Cell Id, like 1,2,3,4 etc. NOT Object id.
+		insertInt(cellNumber); //Cell Number, like 1,2,3,4 etc. NOT Object id.
 
 		setSize();
 
@@ -77,15 +77,15 @@ public:
 		00 00  // STFName
 		00 00 00 00  // something
 		00 00 // stf
-		00 00 00 00 // unicode custom name
+		00 00 00 00 // UnicodeString custom name
 		00 00 00 00 //something
 		01 // extra bit on live?
 		01 00 00 00 // Cell Number
 		*/
 
-		//stringstream msg;
+		//StringBuffer msg;
 		//msg << hex << "CellObjectMessage3 [Object = " << coId << "]" << " cellID to (" << cellID <<  ")\n";
-		//cout << msg.str();
+		//System::out << msg.toString();
 
 	}
 };

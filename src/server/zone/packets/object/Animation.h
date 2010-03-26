@@ -49,10 +49,10 @@ which carries forward this exception.
 
 class Animation : public ObjectControllerMessage {
 public:
-	Animation(CreatureObject* creo, const string& anim) 
+	Animation(CreatureObject* creo, const String& anim) 
 			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF2, false) {
 				
-			insertAscii(anim.c_str());
+			insertAscii(anim.toCharArray());
 	}
 
 };

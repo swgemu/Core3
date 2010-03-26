@@ -46,6 +46,8 @@ which carries forward this exception.
 #define COMMANDQUEUEREMOVE_H_
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "ObjectControllerMessageCallback.h"
 
 class CommandQueueRemove : public ObjectControllerMessage {
 public:
@@ -55,6 +57,40 @@ public:
 		insertFloat(timer);
 		insertInt(tab1);
 		insertInt(tab2);
+	}
+
+};
+
+class CommandQueueRemoveCallback : public MessageCallback {
+	uint32 size;
+	uint32 actionCount;
+	uint32 actionCRC;
+
+	ObjectControllerMessageCallback* objectControllerMain;
+
+public:
+
+	CommandQueueRemoveCallback(ObjectControllerMessageCallback* objectControllerCallback) :
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+
+		objectControllerMain = objectControllerCallback;
+	}
+
+	void parse(Message* message) {
+		size = message->parseInt(); //?
+
+		actionCount = message->parseInt();
+		actionCRC = message->parseInt();
+	}
+
+	void run() {
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+
+		if (player == NULL)
+			return;
+
+		//ObjectController* objectController = server->getZoneServer()->getObjectController();
+		player->deleteQueueAction(actionCount);
 	}
 
 };

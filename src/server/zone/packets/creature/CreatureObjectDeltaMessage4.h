@@ -47,8 +47,6 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
-
 class CreatureObjectDeltaMessage4 : public DeltaMessage {
 	CreatureObjectImplementation* creo;
 
@@ -58,7 +56,7 @@ public:
 		creo = cr;
 	}
 
-	void updateSpeed() {
+	/*void updateSpeed() {
 		addFloatUpdate(0x07, creo->speed);
 	}
 
@@ -75,16 +73,16 @@ public:
 		startList(skillModsToUpdate, creo->skillModsCounter += skillModsToUpdate);
 	}
 
-	void addSkillMod(const string& skillMod, int value) {
+	void addSkillMod(const String& skillMod, int value) {
 		insertByte(0);
-		insertAscii(skillMod.c_str());
+		insertAscii(skillMod.toCharArray());
 		insertInt(value);
 		insertInt(0);
 	}
 
-	void removeSkillMod(const string& skillMod, int value) {
+	void removeSkillMod(const String& skillMod, int value) {
 		insertByte(1);
-		insertAscii(skillMod.c_str());
+		insertAscii(skillMod.toCharArray());
 		insertInt(value);
 		insertInt(0);
 	}
@@ -97,25 +95,7 @@ public:
 	void updateListenToID(uint64 objectid) {
 		startUpdate(0x06);
 		insertLong(objectid);
-	}
-
-	void updateEncumberances(uint32 health, uint32 action, uint32 mind) {
-		//TODO: Finish this
-		startUpdate(0x02);
-
-		int h = (creo->getHealthEncumbrance() != health) ? 1 : 0;
-		int a = (creo->getActionEncumbrance() != action) ? 1 : 0;
-		int m = (creo->getMindEncumbrance() != mind) ? 1 : 0;
-
-		int updates = h + a + m;
-
-		insertInt(updates);
-		insertInt(creo->getNewHAMEncumbUpdateCounter(updates));
-
-		insertInt(health);
-		insertInt(action);
-		insertInt(mind);
-	}
+	}*/
 
 };
 

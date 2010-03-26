@@ -5,8 +5,8 @@
 
 #include "HeightMapPlane.h"
 
-class HeightMap {
-	Reader* reader;
+class HeightMap : public ReadWriteLock, public Logger {
+	FileInputStream* reader;
 
 	HeightMapPlane** planes;
 
@@ -16,7 +16,7 @@ class HeightMap {
 
 	static const int PLANEWIDTH = 256;
 
-	static const int PLANELIMIT = 1;
+	static const int PLANELIMIT = 300;
 
 	static const int HEIGHTSIZE = sizeof(float);
 
@@ -27,15 +27,15 @@ public:
 
 	~HeightMap();
 
-	void load(const string& path);
+	void load(const String& path);
 
 	float getHeight(float x, float y);
 
-	static float getHeightFrom(Reader* file, float x, float y);
+	static float getHeightFrom(FileInputStream* file, float x, float y);
 
-	static void convert(const string& path);
+	static void convert(const String& path);
 
-	static void readPlaneForConversion(Reader* file, float* buffer, int planeX, int planeY);
+	static void readPlaneForConversion(FileInputStream* file, float* buffer, int planeX, int planeY);
 
 protected:
 	HeightMapPlane* streamPlaneAt(float x, float y);

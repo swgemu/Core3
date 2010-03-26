@@ -41,3 +41,10 @@
 --which carries forward this exception.
 -- Load files
 
+ RunSkillsFile("creatureSkills/yavin4/npcs/geonosianAlertDroidekaAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/geonosianCrazedAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/geonosianImperialObserverAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/geonosianMercenaryAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/geonosianTechAssistantAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/huttExpeditionAttacks.lua")
+ RunSkillsFile("creatureSkills/yavin4/npcs/strandedAttacks.lua")

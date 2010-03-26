@@ -42,27 +42,9 @@
 
 --global clusters
 
---Mining outpost
-spawnCreature(moJediMaster, 1, -741, 2102)
+spawnCreatures(graulMarauder, 1, 0, 0, 3000, 2)
+spawnCreatures(graulMarauder, 1, 5000, -5000, 3000, 2)
 
---Random
-spawnCreature(jediMaster, 1, 886, 4387)
-spawnCreature(jediKnight, 1, 1750, 4154)
-spawnCreature(jediMaster, 1, 2894, 3384)
-spawnCreature(jediKnight, 1, 1423, 3430)
-spawnCreature(jediMaster, 1, -1050, 4037)
-spawnCreature(jediKnight, 1, -2987, 5157)
-spawnCreature(jediMaster, 1, -2777, 3804)
-spawnCreature(jediKnight, 1, -554, 2021)
-spawnCreature(jediMaster, 1, 5718, 3967)
-spawnCreature(jediKnight, 1, -723, 6021)
-spawnCreature(jediMaster, 1, -6044, 3407)
-spawnCreature(jediKnight, 1, -5274, 4994)
-spawnCreature(jediMaster, 1, -3967, 3594)
-spawnCreature(jediKnight, 1, 5157, 3384)
-spawnCreature(jediMaster, 1, 2800, -2403)
-spawnCreature(jediKnight, 1, -4831, -3360)
-spawnCreature(jediMaster, 1, -1517, -6021)
-spawnCreature(jediKnight, 1, 4574, -6908)
-spawnCreature(jediMaster, 1, 3920, -6815)
-spawnCreature(jediKnight, 1, 5064, 1213)
+
+
+

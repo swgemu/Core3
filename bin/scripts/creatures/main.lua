@@ -43,6 +43,7 @@
 -- utils
 -- creatures lua files
 RunCreatureFile("objects/object.lua") -- basic object
+RunCreatureFile("objects/conversation.lua") -- Optional conversation object
 RunCreatureFile("objects/creature.lua") -- Creature Object
 
 local sin, cos = math.sin, math.cos
@@ -61,18 +62,33 @@ function getCreature(crc)
 	return Creatures[crc]
 end
 
+-- Standard Creature Spawning
 function spawnCreature(creature, Planet, PositionX, PositionY)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
 	AddCreatureToServer(newCreature)
 end
 
+-- Spawning with Respawn Time
 function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
 	AddCreatureToServer(newCreature)
 end
 
+-- Spawning With Direction
+function spawnCreatureDir(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW }
+	AddCreatureToServer(newCreature)
+end
+
+-- Spawning Inside Cells
 function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
+	AddCreatureToServer(newCreature)
+end
+
+-- Spawning Inside Cells With Direction
+function spawnCreatureDirInCell(creature, Planet, PositionX, PositionZ, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW, cellid)
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW, cellID = cellid }
 	AddCreatureToServer(newCreature)
 end
 
@@ -81,6 +97,7 @@ function spawnBlueFrog(x, y, oy, ow, bftype, cellid)
 	AddBlueFrogToServer(bluefrog)
 end
 
+-- Spawning Mutiple Creatures with Radius
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
 	for i=1,number do
 		angle = math.random(359)
@@ -93,6 +110,7 @@ function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
 	end	
 end
 
+-- Spawning Mutiple Creatures with Radius and Respawn time
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number, respawnTime)
 	for i=1,number do
 		angle = math.random(359)
@@ -109,4 +127,4 @@ end
 RunCreatureFile("creatureObjects.lua")
 
 -- Spawns
-RunCreatureFile("spawns.lua")
+--RunCreatureFile("spawns.lua")

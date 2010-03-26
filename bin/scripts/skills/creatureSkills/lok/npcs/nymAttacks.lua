@@ -39,6 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 nymAttack1 = {
 	attackname = "nymAttack1",
 	animation = "combo_2d_medium",
@@ -47,7 +48,7 @@ nymAttack1 = {
 
 	range = 25,
 
-	damageRatio = 4,3,
+	damageRatio = 1.2,
 
 	speedRatio = 1.2,
 	coneAngle = 30,
@@ -71,6 +72,9 @@ nymAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack1)
+
+-----------------------------------------------------------------------
+
 nymAttack2 = {
 	attackname = "nymAttack2",
 	animation = "combo_4b_medium",
@@ -79,7 +83,7 @@ nymAttack2 = {
 
 	range = 15,
 
-	damageRatio = 3,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 	coneAngle = 30,
@@ -104,6 +108,38 @@ nymAttack2 = {
 
 AddRandomPoolAttackTargetSkill(nymAttack2)
 
+-----------------------------------------------------------------------
+
+nymAttack3 = {
+	attackname = "nymAttack3",
+	animation = "droid_attack_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 64,
+	damageRatio = 1.2,
+	speedRatio = 1,
+	coneAngle = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(nymAttack3)
+-----------------------------------------------------------------------
+
 nymAttack10 = { 
 	attackname = "nymAttack10",
 	animation = "fire_area_medium",
@@ -111,7 +147,7 @@ nymAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.9,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -121,12 +157,12 @@ nymAttack10 = {
 	mindAttackChance = 0,
 
 	dotChance = 50,
-	tickStrengthOfHit = 100,
+	tickStrengthOfHit = 3,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 100,
+	bleedingStrength = 3,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -153,7 +189,7 @@ nymAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.6,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -177,7 +213,6 @@ AddRandomPoolAttackTargetSkill(nymAttack11)
 
 -----------------------------------------------------------------------
 
-
 nymAttack12 = { 
 	attackname = "nymAttack12",
 	animation = "fire_5_single_medium",
@@ -185,7 +220,7 @@ nymAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.00,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -227,7 +262,7 @@ nymAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.6,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -258,7 +293,7 @@ nymAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.80,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -300,7 +335,7 @@ nymAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.50,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -331,7 +366,7 @@ nymAttack16 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.40,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -372,7 +407,7 @@ nymAttack17 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.50,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -403,7 +438,7 @@ nymAttack18 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.10,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -434,7 +469,7 @@ nymAttack19 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -465,7 +500,7 @@ nymAttack20 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -496,7 +531,7 @@ nymAttack21 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -527,7 +562,7 @@ nymAttack22 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -558,7 +593,7 @@ nymAttack23 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -589,7 +624,7 @@ nymAttack24 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -608,4 +643,4 @@ nymAttack24 = {
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
 }
-RandomPoolAttackTargetSkill(nymAttack24)
+AddRandomPoolAttackTargetSkill(nymAttack24)

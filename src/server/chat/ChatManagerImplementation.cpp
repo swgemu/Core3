@@ -1,96 +1,48 @@
 /*
-Copyright (C) 2007 <SWGEmu>
-
-This File is part of Core3.
-
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
-#include <iostream>
-#include <fstream>
-
-#include "../zone/Zone.h"
-#include "../zone/ZoneClientSession.h"
-#include "../zone/ZoneServer.h"
-
-#include "../zone/packets.h"
-#include "../zone/objects.h"
-
-#include "../zone/managers/creature/CreatureManager.h"
-#include "../zone/managers/player/ProfessionManager.h"
-#include "../zone/managers/resource/ResourceManager.h"
-
-#include "../zone/managers/player/PlayerManager.h"
-#include "../zone/managers/user/UserManager.h"
-
-#include "../zone/managers/item/ItemManager.h"
-
-#include "../zone/managers/guild/GuildManager.h"
+ * ChatManagerImplementation.cpp
+ *
+ *  Created on: 28/07/2009
+ *      Author: victor
+ */
 
 #include "ChatManager.h"
-#include "ChatManagerImplementation.h"
-
-#include "room/ChatRoomImplementation.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/player/PlayerMap.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/packets/chat/ChatRoomList.h"
+#include "server/zone/packets/chat/ChatRoomMessage.h"
+#include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/packets/object/Emote.h"
+#include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
+#include "server/zone/packets/chat/ChatInstantMessageToClient.h"
+#include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
+#include "server/zone/packets/chat/ChatOnSendRoomMessage.h"
+#include "server/zone/packets/chat/ChatOnDestroyRoom.h"
+#include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "PersistentMessage.h"
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
 
-#include "../zone/managers/player/PlayerMapImplementation.h"
-
-#include "../zone/objects/player/sui/listbox/SuiListBoxImplementation.h"
-#include "../zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
-
-#include "../zone/objects/tangible/CustomizationVariables.h"
-
-#include "../zone/managers/planet/PlanetManager.h"
-
-ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ChatManagerServant(), Mutex("ChatManager") {
+ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedObjectImplementation() {
 	server = serv;
 
-	userManager = server->getUserManager();
+	//userManager = server->getUserManager();
 
-	playerManager = serv->getPlayerManager();
-	guildManager = playerManager->getGuildManager();
+	playerManager = NULL;
+	//guildManager = playerManager->getGuildManager();
 
-	resourceManager = server->getResourceManager();
+	//resourceManager = server->getResourceManager();
+
+	ObjectDatabaseManager::instance()->loadDatabase("mail", true);
 
 	playerMap = new PlayerMap(initsize);
-	playerMap->deploy("ChatPlayerMap");
+	//playerMap->deploy("ChatPlayerMap");
 
 	roomMap = new ChatRoomMap(10000);
 
@@ -98,829 +50,67 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	roomID = 0;
 
-	gameCommandHandler = new GameCommandHandler();
+	setLoggingName("ChatManager");
 
-	initiateRooms();
+	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
+	//gameCommandHandler = new GameCommandHandler();
 }
 
-ChatManagerImplementation::~ChatManagerImplementation() {
-	destroyRooms();
-
-	playerMap->finalize();
+void ChatManagerImplementation::finalize() {
+	delete playerMap;
 	playerMap = NULL;
 
 	delete roomMap;
 	roomMap = NULL;
+}
 
-	delete gameCommandHandler;
-	gameCommandHandler = NULL;
+ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
+	ManagedReference<ChatRoom*> room = (ChatRoom*) ObjectManager::instance()->createObject("ChatRoom", 0 , "");
+	room->init(server, parent, roomName, getNextRoomID());
+
+	addRoom(room);
+
+	return room;
 }
 
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 
-	ChatRoom* mainRoom = new ChatRoom(server, "SWG", getNextRoomID());
-	mainRoom->deploy();
+	ChatRoom* mainRoom = createRoom("SWG");
 	mainRoom->setPrivate();
-	addRoom(mainRoom);
 	gameRooms.put("SWG", mainRoom);
 
-	ChatRoom* core3Room = new ChatRoom(server, mainRoom, server->getServerName(), getNextRoomID());
-	core3Room->deploy();
+	ChatRoom* core3Room = createRoom(server->getServerName(), mainRoom);
 	core3Room->setPrivate();
 	mainRoom->addSubRoom(core3Room);
-	addRoom(core3Room);
 
-	groupRoom = new ChatRoom(server, core3Room, "group", getNextRoomID());
-	groupRoom->deploy();
+	groupRoom = createRoom("group", core3Room);
 	groupRoom->setPrivate();
 	core3Room->addSubRoom(groupRoom);
-	addRoom(groupRoom);
 
-	guildRoom = new ChatRoom(server, core3Room, "guild", getNextRoomID());
-	guildRoom->deploy();
+	guildRoom = createRoom("guild", core3Room);
 	guildRoom->setPrivate();
 	core3Room->addSubRoom(guildRoom);
-	addRoom(guildRoom);
 
-	ChatRoom* generalRoom = new ChatRoom(server, core3Room, "general", getNextRoomID());
-	generalRoom->deploy();
+	ChatRoom* generalRoom = createRoom("general", core3Room);
 	core3Room->addSubRoom(generalRoom);
-	addRoom(generalRoom);
 
 	// Planet Chat
 
 	// Naboo
-	ChatRoom* nabooRoom = new ChatRoom(server, core3Room, "naboo", getNextRoomID());
-	nabooRoom->deploy();
+	ChatRoom* nabooRoom = createRoom("naboo", core3Room);
 	core3Room->addSubRoom(nabooRoom);
-	addRoom(nabooRoom);
 
-	ChatRoom* nabooPlanetary = new ChatRoom(server, nabooRoom, "chat", getNextRoomID());
-	nabooPlanetary->deploy();
+	ChatRoom* nabooPlanetary = createRoom("chat", nabooRoom);
 	nabooRoom->addSubRoom(nabooPlanetary);
-	addRoom(nabooPlanetary);
 }
 
-void ChatManagerImplementation::destroyRooms() {
-	lock();
-
-	roomMap->resetIterator();
-
-	while (roomMap->hasNext()) {
-		ChatRoom* room = roomMap->next();
-		room->finalize();
-	}
-
-	roomMap->removeAll();
-
-	gameRooms.removeAll();
-
-	unlock();
-}
-
-void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack) {
-	if (sender->isChatMuted())
-		return;
-
-	string game, galaxy, name;
-	unicode message;
-
-
-	uint32 seq = ChatInstantMessageToCharacter::parse(pack, game, galaxy, name, message);
-
-	Player* receiver = getPlayer(name);
-
-	if (receiver == NULL || !receiver->isOnline() || receiver->isLoggingOut()) {
-		BaseMessage* amsg = new ChatOnSendInstantMessage(seq, true);
-		sender->sendMessage(amsg);
-
-		return;
-	}
-
-	BaseMessage* msg = new ChatInstantMessageToClient(game, galaxy, sender->getFirstName(), message);
-	receiver->sendMessage(msg);
-
-	BaseMessage* amsg = new ChatOnSendInstantMessage(seq, false);
-	sender->sendMessage(amsg);
-}
-
-void ChatManagerImplementation::sendSystemMessage(Player* player, unicode& message) {
-	ChatSystemMessage* smsg = new ChatSystemMessage(message);
-	player->sendMessage(smsg);
-}
-
-void ChatManagerImplementation::sendSystemMessage(Player* player, const string& file, const string& str, StfParameter * param) {
-	ChatSystemMessage* smsg = new ChatSystemMessage(file, str, param);
-	player->sendMessage(smsg);
-}
-
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter * param, uint64 target, uint32 moodid, uint32 mood2) {
-	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
-		Zone* zone = player->getZone();
-
-		/*if (message.c_str() == "LAG") {
-			ZoneClientSession* client = player->getClient();
-
-			client->reportStats(true);
-
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
-			return;
-		} else if (message.c_str() == "QUEUE") {
-			ZoneClientSession* client = player->getClient();
-
-			client->reportStats(true);
-
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
-			return;
-		}*/
-
-		try {
-			zone->lock();
-
-			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
-
-				if (object->isPlayer()) {
-					Player* creature = (Player*) object;
-
-					if (player->isInRange(creature, 128)) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), file, str, param, target, moodid, mood2);
-						creature->sendMessage(cmsg);
-					}
-				}
-			}
-			delete param;
-			zone->unlock();
-		} catch (...) {
-
-			zone->unlock();
-
-			cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
-		}
-	}
-}
-
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
-	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
-		Zone* zone = player->getZone();
-
-		/*if (message.c_str() == "LAG") {
-			ZoneClientSession* client = player->getClient();
-
-			client->reportStats(true);
-
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
-			return;
-		} else if (message.c_str() == "QUEUE") {
-			ZoneClientSession* client = player->getClient();
-
-			client->reportStats(true);
-
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
-			return;
-		}*/
-
-		try {
-			zone->lock();
-
-			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
-
-				if (object->isPlayer()) {
-					Player* creature = (Player*) object;
-
-					if (player->isInRange(creature, 128)) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
-						creature->sendMessage(cmsg);
-					}
-				}
-			}
-
-			zone->unlock();
-		} catch (...) {
-
-			zone->unlock();
-
-			cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
-		}
-	}
-}
-
-void ChatManagerImplementation::broadcastMessage(const string& message) {
-	lock();
-
-	playerMap->resetIterator(false);
-
-	while (playerMap->hasNext(false)) {
-		Player* player = playerMap->getNextValue(false);
-
-		player->sendSystemMessage(message);
-	}
-
-	unlock();
-}
-
-void ChatManagerImplementation::broadcastMessageRange(Player* player, const string& message, float range) {
-	try {
-		lock();
-
-		//TODO make it polling the spatial indexer instead of iterating the whole hash table
-		playerMap->resetIterator(false);
-
-		while (playerMap->hasNext(false)) {
-			Player* trgplayer = playerMap->getNextValue(false);
-
-			if(player->isInRange((SceneObject*)trgplayer, range)) {
-				trgplayer->sendSystemMessage(message);
-			}
-		}
-
-		unlock();
-	} catch (...) {
-
-		unlock();
-
-		cout << "exception ChatManagerImplementation::broadcastMessageRange(const string& message)\n";
-	}
-}
-
-void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
-	try {
-		pack->parseLong();
-		string msg;
-
-		unicode text;
-		pack->parseUnicode(text);
-
-		StringTokenizer tokenizer(text.c_str());
-
-		uint64 targetid = tokenizer.getLongToken();
-		uint32 mood2 = tokenizer.getIntToken();
-		uint32 moodid = tokenizer.getIntToken();
-		uint32 unk2 = tokenizer.getIntToken();
-		uint32 unk3 = tokenizer.getIntToken();
-
-		tokenizer.finalToken(msg);
-
-		if (msg[0] == '@') {
-			handleGameCommand(player, msg.c_str());
-		} else {
-			if(isMute()) {
-				if(player->getAdminLevel() & PlayerImplementation::ADMIN) {
-					unicode mess = msg;
-					broadcastMessage(player, mess, targetid, moodid, mood2);
-				} else {
-					((CreatureObject*) player)->sendSystemMessage("Chat has been muted by the admins");
-				}
-			} else {
-				unicode mess = msg;
-				broadcastMessage(player, mess, targetid, moodid, mood2);
-			}
-		}
-	} catch (PacketIndexOutOfBoundsException& e) {
-		cout << e.getMessage() << "\n" << pack->toString() << "\n";
-	} catch (Exception& e) {
-		stringstream msg;
-		msg << "Exception in ChatManagerImplementation::handleMessage " << e.getMessage() << "\n";
-		cout << msg.str();
-		e.printStackTrace();
-	} catch (...) {
-		cout << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
-	}
-
-}
-
-void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
-	if (player->isChatMuted()) {
-		player->sendSystemMessage("Chat has been muted by the admins");
-		return;
-	}
-
-	unicode emote;
-	Zone* zone = player->getZone();
-
-	pack->parseLong();
-	pack->parseUnicode(emote);
-
-	StringTokenizer tokenizer(emote.c_str());
-
-	try {
-		zone->lock();
-
-		uint64 targetid = tokenizer.getLongToken();
-		uint32 emoteid = tokenizer.getIntToken();
-		uint32 unkint = tokenizer.getIntToken();
-		uint32 unkint2 = tokenizer.getIntToken();
-
-		bool showtext = true;
-
-		if(unkint2 == 0)
-			showtext = false;
-
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
-
-			if (object->isPlayer()) {
-				Player* creature = (Player*) object;
-
-				Emote* emsg = new Emote(creature, player, targetid, emoteid, showtext);
-				creature->sendMessage(emsg);
-			}
-		}
-
-		zone->unlock();
-	} catch (...) {
-
-		zone->unlock();
-
-		cout << "exception ChatManagerImplementation::handleEmote(Player* player, Message* pack)\n";
-	}
-}
-
-void ChatManagerImplementation::handleMood(Player* player, Message* pack) {
-	unicode mood;
-
-	pack->parseLong();
-	pack->parseUnicode(mood);
-
-	StringTokenizer tokenizer(mood.c_str());
-
-	if (!tokenizer.hasMoreTokens())
-		return;
-
-	uint8 moodid = (uint8)tokenizer.getIntToken();
-
-	player->setMood(moodid);
-
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(player);
-	dcreo6->updateMoodID();
-	dcreo6->updateMoodStr();
-	dcreo6->close();
-
-	player->broadcastMessage(dcreo6);
-}
-
-void ChatManagerImplementation::handleGameCommand(Player* player, const string& command) {
-	StringTokenizer tokenizer(command);
-
-	string cmd;
-	tokenizer.getStringToken(cmd);
-
-	cmd = cmd.substr(1, cmd.length() - 1);
-	gameCommandHandler->handleCommand(cmd, tokenizer, player);
-}
-
-void ChatManagerImplementation::addPlayer(Player* player) {
-	lock();
-
-	string& name = player->getFirstName();
-	String::toLower(name);
-	playerMap->put(name, player, false);
-
-	unlock();
-}
-
-Player* ChatManagerImplementation::getPlayer(string& name) {
-	lock();
-
-	String::toLower(name);
-	Player* player = playerMap->get(name, false);
-
-	unlock();
-	return player;
-}
-
-Player* ChatManagerImplementation::removePlayer(string& name) {
-	lock();
-
-	String::toLower(name);
-	Player* player = playerMap->remove(name, false);
-
-	unlock();
-	return player;
-}
-
-void ChatManagerImplementation::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
-	Player* receiver = NULL;
-
-	Time expireTime;
-	uint64 currentTime = expireTime.getMiliTime() / 1000;
-
-	string Name = name;
-  	String::toLower(Name);
-  	receiver = getPlayer(Name);
-
-
-
-  	//guild mail?
-  	string checkReceiver = Name;
-  	String::toLower(checkReceiver);
-  	string guildSender = sendername;
-
-  	if (checkReceiver == "guild") {
-		Player* sender = getPlayer(guildSender);
-
-		if (sender == NULL)
-			return;
-
-  		if ( ! ( ( sender->getGuildPermissions() ) & (PlayerImplementation::GUILDMAIL) ) ) {
-			sender->sendSystemMessage("@guild:generic_fail_no_permission");
-			return;
-		}
-
-  		GuildManager* gm = server->getGuildManager();
-
-  		if (gm == NULL)
-  			return;
-
-  		stringstream mySender;
-  		mySender << "Guildmail: " << sendername;
-
-  		gm->sendGuildMail(sender, mySender.str(), header.c_str() , body.c_str(), false);
-
-  		return;
-  	}
-  	//end guildmail
-
-
-  	try {
-		MySqlDatabase::escapeString(Name);
-
-		uint64 receiverObjId;
-
-		//receiver = valid player?
-		stringstream idqry;
-		idqry << "SELECT character_id FROM characters WHERE lower(firstname) = '" << Name << "';";
-
-		ResultSet* rescid = ServerDatabase::instance()->executeQuery(idqry);
-		if (rescid->next())
-			receiverObjId = rescid->getInt(0);
-		else {
-			delete rescid;
-			return;
-		}
-
-		delete rescid;
-
-		//Receiver is valid: Insert mail into db.
-
-	  	string headerString = header.c_str();
-	  	MySqlDatabase::escapeString(headerString);
-
-	  	string bodyString = body.c_str();
-	  	MySqlDatabase::escapeString(bodyString);
-
-	  	string senderName = sendername;
-	  	MySqlDatabase::escapeString(senderName);
-
-		stringstream inmqry;
-	    inmqry << "INSERT INTO `mail` "
-	        << "(`sender_name`,`recv_name`,`subject`,`body`,`time`,`read`)"
-		    << "VALUES ('" << senderName << "','" << Name << "','" << headerString << "','" << bodyString << "',"
-		    << currentTime << ",0);" ;
-
-		ServerDatabase::instance()->executeStatement(inmqry);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-
-		return;
-	}
-
-	if (receiver == NULL)
-		return;
-
-	try {
-		//receiver->wlock();
-
-		stringstream query;
-		query << "SELECT mail_id FROM mail WHERE time = " << currentTime << " and lower(recv_name) = '" << Name << "';";
-
-		ResultSet* mail = ServerDatabase::instance()->executeQuery(query);
-
-		while (mail->next()) {
-			int mailid = mail->getInt(0);
-
-			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body, currentTime, 'N');
-			receiver->sendMessage(mmsg);
-
-
-			stringstream update;
-			update << "UPDATE `mail` SET `read` = 1 WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeStatement(update);
-
-		}
-
-		delete mail;
-
-		//receiver->unlock();
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-
-		//receiver->unlock();
-		return;
-	}
-}
-
-void ChatManagerImplementation::sendMailBody(Player* receiver, uint32 mailid) {
-	if (!receiver->isOnline())
-		return;
-
-	try {
-
-		stringstream query;
-		query << "SELECT * FROM mail WHERE mail_id = " << mailid << ";";
-
-		ResultSet* mail = ServerDatabase::instance()->executeQuery(query);
-
-		if (mail->next()) {
-			string sender = mail->getString(1);
-			unicode subject = mail->getString(3);
-			unicode body = mail->getString(4);
-
-			BaseMessage* mmsg = new ChatPersistentMessageToClient(sender, mailid, 0, subject, body);
-			receiver->sendMessage(mmsg);
-
-			stringstream update;
-			update << "UPDATE `mail` SET `read` = 2 WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeStatement(update);
-		}
-
-
-		delete mail;
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ChatManagerImplementation::listMail(Player* ply) {
-	try {
-		string name = ply->getFirstName();
-		MySqlDatabase::escapeString(name);
-		stringstream query;
-		query << "SELECT * FROM mail WHERE recv_name = '" << name <<"';";
-
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-
-		while (res->next()) {
-			uint32 mailid = res->getInt(0);
-			string sendername = res->getString(1);
-			unicode header = res->getString(3);
-			unicode body = res->getString(4);
-			uint32 mailTime = res->getUnsignedInt(5);
-			short read = res->getInt(7);
-
-			char status;
-			if (read == 2)
-				status = 'R';
-			else if (read == 1)
-				status = 'U';
-			else {
-				status = 'N';
-				read++;
-			}
-
-			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body, mailTime, status);
-			ply->sendMessage(mmsg);
-
-			stringstream update;
-			update << "UPDATE `mail` SET `read` = " << read << " WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeStatement(update);
-		}
-
-		delete res;
-	} catch(DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ChatManagerImplementation::deleteMail(uint32 mailid) {
-	try {
-		stringstream query;
-		query << "DELETE FROM mail WHERE mail_id = '" << mailid <<"';";
-
-		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* pack) {
-	if (sender->isChatMuted()) {
-		sender->sendSystemMessage("Chat has been muted by the admins");
-		return;
-	}
-
-	string name = sender->getFirstName();
-
-	unicode message;
-	pack->parseUnicode(message);
-
-	string adminmsg = message.c_str();
-
-	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.c_str());
-		return;
-	}
-
-	pack->shiftOffset(4);
-
-	uint32 channelid = pack->parseInt();
-
-	uint32 counter = pack->parseInt();
-
-	ChatRoom* channel = getChatRoom(channelid);
-
-	if (channel == NULL)
-		return;
-
-	if (!channel->hasPlayer(sender))
-		return;
-
-	BaseMessage* msg = new ChatRoomMessage(name, message, channelid);
-	channel->broadcastMessage(msg);
-
-	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
-	channel->broadcastMessage(amsg);
-
-	/*Vector<Message*> messages;
-	messages.add(msg);
-	messages.add(amsg);
-
-	channel->broadcastMessage(messages);*/
-}
-
-void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
-	if (sender->isChatMuted()) {
-		sender->sendSystemMessage("Chat has been muted by the admins");
-		return;
-	}
-
-	string name = sender->getFirstName();
-	pack->shiftOffset(8);
-
-	unicode message;
-	pack->parseUnicode(message);
-
-
-	string adminmsg = message.c_str();
-
-	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.c_str());
-		return;
-	}
-
-
-	GroupObject* group = sender->getGroupObject();
-	if (group == NULL)
-		return;
-
-	sender->unlock();
-
-	try {
-		group->wlock();
-
-		BaseMessage* msg = new ChatRoomMessage(name, message, group->getGroupChannel()->getRoomID());
-		group->broadcastMessage(msg);
-
-		group->unlock();
-	} catch (...) {
-		cout << "Exception in ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack)\n";
-		group->unlock();
-	}
-	sender->wlock();
-}
-
-void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
-	string name = sender->getFirstName();
-	pack->shiftOffset(8);
-
-	unicode message;
-	pack->parseUnicode(message);
-
-
-	string adminmsg = message.c_str();
-
-	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.c_str());
-		return;
-	}
-
-
-	Guild* kuild;
-	kuild = sender->getGuild();
-
-	if (kuild == NULL) {
-		return;
-	}
-
-	ChatRoom* guildChat = kuild->getGuildChat();
-
-	if (guildChat == NULL) {
-		return;
-	}
-
-	sender->unlock();
-
-	try {
-		kuild->wlock();
-
-		BaseMessage* msg = new ChatRoomMessage(name, message, guildChat->getRoomID());
-		guildChat->broadcastMessage(msg);
-
-		kuild->unlock();
-	} catch (...) {
-		cout << "Exception in ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack)\n";
-		kuild->unlock();
-	}
-
-	sender->wlock();
-}
-
-void ChatManagerImplementation::handleChatEnterRoomById(Player* player, Message* pack) {
-	uint32 counter = pack->parseInt();
-	uint32 roomID = pack->parseInt();
-
-	ChatRoom* room = getChatRoom(roomID);
-
-	if (room == NULL)
-		return;
-
-	if (room->isPublic())
-		room->addPlayer(player);
-}
-
-void ChatManagerImplementation::handleCreateRoom(Player* player, Message* pack) {
-	pack->shiftOffset(4); // Unknown
-
-	string fullPath;
-	pack->parseAscii(fullPath);
-
-	ChatRoom* newRoom = createRoomByFullPath(fullPath);
-
-	if (newRoom == NULL)
-		return;
-
-	string title;
-	pack->parseAscii(title);
-
-	uint32 counter = pack->parseInt();
-
-	newRoom->setTitle(title);
-	newRoom->setCreator(player->getFirstName());
-	newRoom->setOwner(player->getFirstName());
-
-	addRoom(newRoom);
-
-	ChatOnCreateRoom* msg = new ChatOnCreateRoom(newRoom, counter);
-	player->sendMessage(msg);
-}
-
-void ChatManagerImplementation::handleChatDestroyRoom(Player* player, Message* pack) {
-	uint32 id = pack->parseInt();
-	uint32 counter = pack->parseInt();
-
-	ChatRoom* room = getChatRoom(id);
-
-	if (room == NULL)
-		return;
-
-	if (room->getOwner() != player->getFirstName())
-		return;
-
-	destroyRoom(room);
-}
-
-void ChatManagerImplementation::handleChatRemoveAvatarFromRoom(Player* player, Message* pack) {
-	string game;
-	pack->parseAscii(game);
-
-	string Server;
-	pack->parseAscii(Server);
-
-	string Player;
-	pack->parseAscii(Player);
-
-	string chanPath;
-	pack->parseAscii(chanPath);
-
-	ChatRoom* room = getChatRoomByFullPath(chanPath);
-	if (room == NULL)
-		return;
-
-	if (!room->hasPlayer(Player))
-		return;
-
-	if ((player->getFirstName() == Player) ||  player->getFirstName() == room->getOwner())
-		room->removePlayer(Player);
-}
-
-ChatRoom* ChatManagerImplementation::createRoomByFullPath(const string& path) {
+ChatRoom* ChatManagerImplementation::createRoomByFullPath(const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
-	string game;
+	String game;
 	tokenizer.getStringToken(game);
 
 	ChatRoom* gameRoom = getGameRoom(game);
@@ -928,7 +118,7 @@ ChatRoom* ChatManagerImplementation::createRoomByFullPath(const string& path) {
 	if (gameRoom == NULL)
 		return NULL;
 
-	string channel;
+	String channel;
 
 	ChatRoom* room = gameRoom;
 	while (tokenizer.hasMoreTokens()) {
@@ -946,81 +136,17 @@ ChatRoom* ChatManagerImplementation::createRoomByFullPath(const string& path) {
 	if (room->isPrivate())
 		return NULL;
 
-	ChatRoom* newRoom = new ChatRoom(server, room, channel, getNextRoomID());
-	newRoom->deploy();
-
+	ChatRoom* newRoom = createRoom(channel, room);
 	room->addSubRoom(newRoom);
 
 	return newRoom;
 }
 
-ChatRoom* ChatManagerImplementation::getChatRoom(uint32 id) {
-	lock();
-
-	ChatRoom* channel = roomMap->get(id);
-
-	unlock();
-
-	return channel;
-}
-
-void ChatManagerImplementation::addRoom(ChatRoom* channel) {
-	lock();
-
-	roomMap->put(channel->getRoomID(), channel);
-
-	unlock();
-}
-
-void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
-	lock();
-
-	roomMap->remove(channel->getRoomID());
-
-	unlock();
-}
-
-void ChatManagerImplementation::sendRoomList(Player* player) {
-	ChatRoomList* crl = new ChatRoomList();
-
-	string game = "SWG";
-	populateRoomListMessage(gameRooms.get(game), crl);
-
- 	crl->insertChannelListCount();
- 	player->sendMessage(crl);
-}
-
-
-void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	if (channel->isPublic())
-		msg->addChannel(channel);
-
-	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
-		ChatRoom* chan = channel->getSubRoom(i);
-
-		populateRoomListMessage(chan, msg);
-	}
-}
-
-void ChatManagerImplementation::printRoomTree(ChatRoom* channel, string name) {
-	if (channel == NULL)
-		return;
-
-	name = name + channel->getName();
-
-	cout << "Name: " << name << "\n" << endl;
-
-	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
-		ChatRoom* chan = channel->getSubRoom(i);
-		printRoomTree(chan, name + ".");
-	}
-}
-
-ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const string& path) {
+ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
-	string channel;
+	String channel;
 	ChatRoom* room = game;
 
 	while (tokenizer.hasMoreTokens()) {
@@ -1037,14 +163,14 @@ ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const
 		return room;
 }
 
-ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const string& path) {
+ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
 	if (!tokenizer.hasMoreTokens())
 		return NULL;
 
-	string game;
+	String game;
 	tokenizer.getStringToken(game);
 
 	ChatRoom* gameRoom = getGameRoom(game);
@@ -1052,114 +178,477 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const string& path) {
 	if (gameRoom == NULL)
 		return NULL;
 
-	string gamePath;
+	String gamePath;
 	tokenizer.finalToken(gamePath);
 
 	return getChatRoomByGamePath(gameRoom, gamePath);
 }
 
-ChatRoom* ChatManagerImplementation::getGameRoom(const string& game) {
-	return gameRooms.get(game);
+
+void ChatManagerImplementation::destroyRooms() {
+	Locker _locker(_this);
+
+	roomMap->resetIterator();
+
+	while (roomMap->hasNext()) {
+		ChatRoom* room = roomMap->next();
+		room->finalize();
+	}
+
+	roomMap->removeAll();
+
+	gameRooms.removeAll();
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator,bool mode) {
+void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
+	if (channel->isPublic())
+		msg->addChannel(channel);
+
+	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
+		ChatRoom* chan = channel->getSubRoom(i);
+
+		populateRoomListMessage(chan, msg);
+	}
+}
+
+void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
+	/*if (sender->isChatMuted() && !sender->isPrivileged()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	ChatRoom* channel = getChatRoom(roomID);
+
+	if (channel == NULL)
+		return;
+
+	if (!channel->hasPlayer(sender))
+		return;
+
+	BaseMessage* msg = new ChatRoomMessage(name, message, roomID);
+	channel->broadcastMessage(msg);
+
+	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
+	channel->broadcastMessage(amsg);
+
+	/*Vector<Message*> messages;
+	messages.add(msg);
+	messages.add(amsg);
+
+	channel->broadcastMessage(messages);*/
+}
+
+void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
+	Zone* zone = sender->getZone();
+
+	if (zone == NULL)
+		return;
+
+	StringTokenizer tokenizer(arguments.toString());
+	uint64 targetid;
+	uint32 emoteid, unkint, unkint2;
+
+	try {
+		targetid = tokenizer.getLongToken();
+		emoteid = tokenizer.getIntToken();
+		unkint = tokenizer.getIntToken();
+		unkint2 = tokenizer.getIntToken();
+	} catch (...) {
+		return;
+	}
+
+	Locker _zone(zone);
+
+	bool showtext = true;
+
+	if (unkint2 == 0)
+		showtext = false;
+
+	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) sender->getInRangeObject(i))->_this);
+
+		if (object->isPlayerCreature()) {
+			PlayerCreature* creature = (PlayerCreature*) object;
+
+			//if (!creature->isIgnoring(player)) {
+				Emote* emsg = new Emote(creature, sender, targetid,
+						emoteid, showtext);
+				creature->sendMessage(emsg);
+			//}
+		}
+	}
+
+}
+
+void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
+	ChatRoomList* crl = new ChatRoomList();
+
+	String game = "SWG";
+	populateRoomListMessage(gameRooms.get(game), crl);
+
+ 	crl->insertChannelListCount();
+ 	player->sendMessage(crl);
+}
+
+void ChatManagerImplementation::addPlayer(PlayerCreature* player) {
+	Locker _locker(_this);
+
+	String name = player->getFirstName().toLowerCase();
+	playerMap->put(name, player, false);
+}
+
+PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
+	Locker _locker(_this);
+
+	PlayerCreature* player = NULL;
+
+	try {
+		String lName = name.toLowerCase();
+
+		player = playerMap->get(lName, false);
+	} catch (Exception& e) {
+		System::out << e.getMessage();
+		e.printStackTrace();
+	} catch (...) {
+		System::out << "unreported exception caught in ChatManagerImplementation::getPlayer";
+	}
+
+	return player;
+}
+
+PlayerCreature* ChatManagerImplementation::removePlayer(const String& name) {
+	Locker _locker(_this);
+
+	String lName = name.toLowerCase();
+
+	PlayerCreature* player = playerMap->remove(lName, false);
+
+	return player;
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
+	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
+		PlayerCreature* playerCreature = (PlayerCreature*) player;
+		Zone* zone = player->getZone();
+
+		/*if (message.toCharArray() == "LAG") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
+			return;
+		} else if (message.toCharArray() == "QUEUE") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
+			return;
+		}*/
+
+		if (zone == NULL)
+			return;
+
+		String firstName = playerCreature->getFirstName().toLowerCase();
+		PlayerObject* myGhost = playerCreature->getPlayerObject();
+
+		Locker zoneLocker(zone);
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+			if (object->isPlayerCreature()) {
+				PlayerCreature* creature = (PlayerCreature*) object;
+
+				if (player->isInRange(creature, 128) || creature->getParent() != NULL) {
+
+					PlayerObject* ghost = creature->getPlayerObject();
+
+					if (!ghost->isIgnoring(firstName)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());
+						creature->sendMessage(cmsg);
+					}
+				}
+			}
+		}
+
+	}
+}
+
+void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
+	try {
+		UnicodeTokenizer tokenizer(args);
+
+		uint64 targetid = tokenizer.getLongToken();
+		uint32 mood2 = tokenizer.getIntToken();
+		uint32 moodid = tokenizer.getIntToken();
+		uint32 unk2 = tokenizer.getIntToken();
+		uint32 unk3 = tokenizer.getIntToken();
+
+		UnicodeString msg;
+
+		tokenizer.finalToken(msg);
+
+		/*if (msg[0] == '@') {
+			handleGameCommand(player, msg.toString());
+		} else {
+			if (isMute()) {
+				if (player->getAdminLevel() & PlayerImplementation::ADMIN) {
+					broadcastMessage(player, msg, targetid, moodid, mood2);
+				} else {
+					((CreatureObject*) player)->sendSystemMessage("Chat has been muted by the admins");
+				}
+			} else {
+				broadcastMessage(player, msg, targetid, moodid, mood2);
+			}
+		}*/
+		broadcastMessage(player, msg, targetid, moodid, mood2);
+
+	} catch (Exception& e) {
+		StringBuffer msg;
+		msg << "Exception in ChatManagerImplementation::handleMessage " << e.getMessage() << "\n";
+		System::out << msg.toString();
+		e.printStackTrace();
+	} catch (...) {
+		System::out << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
+	}
+}
+
+void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
+	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
+	PlayerCreature* receiver = getPlayer(message->getName());
+
+	if (receiver == NULL || !receiver->isOnline()) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), true);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), message->getMessage());
+	receiver->sendMessage(msg);
+
+	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), false);
+	sender->sendMessage(amsg);
+}
+
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreature* creator) {
 	// Pre: creator locked;
 	// Post: creator locked.
 
+	ManagedReference<ChatRoom*> groupChatRoom;
 
-	ChatRoom* groupChatRoom;
-
-	stringstream name;
+	StringBuffer name;
 	name << groupID;
 
-	ChatRoom* newGroupRoom = new ChatRoom(server, groupRoom, name.str(), getNextRoomID());
-	newGroupRoom->deploy();
-
+	ChatRoom* newGroupRoom = createRoom(name.toString(), groupRoom);
 	newGroupRoom->setPrivate();
 	groupRoom->addSubRoom(newGroupRoom);
-	addRoom(newGroupRoom);
 
-	groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
-	groupChatRoom->deploy();
+	groupChatRoom = createRoom("GroupChat", newGroupRoom);
 
-	groupChatRoom->setTitle(name.str());
+	groupChatRoom->setTitle(name.toString());
 	groupChatRoom->setPrivate();
 
-	if (!mode) { //Standard group
-		groupChatRoom->sendTo(creator);
-		groupChatRoom->addPlayer(creator, false);
-	}
+	groupChatRoom->sendTo(creator);
+	groupChatRoom->addPlayer(creator, false);
 
 	newGroupRoom->addSubRoom(groupChatRoom);
-	addRoom(groupChatRoom);
-
-	if (mode) {
-		uint32 guildid = creator->getGuildID();
-		initGuildChannel(creator,guildid);
-	}
 
 	return groupChatRoom;
 }
 
-void ChatManagerImplementation::initGuildChannel(Player* creator, uint32 gid) {
-	// Pre: creator locked;
-	// Post: creator locked.
-
-	Guild* kuild;
-	kuild = creator->getGuild();
-
-	kuild->wlock();
-
-	if (kuild->getGuildChat() != NULL) {
-		kuild->unlock();
-		return;
-	}
-
-	stringstream name;
-	name.str("");
-
-	uint32 guildID = gid;
-
-	ChatRoom* newGuildRoom = new ChatRoom(server, guildRoom, name.str(), getNextRoomID());
-	newGuildRoom->deploy();
-
-	newGuildRoom->setPrivate();
-	guildRoom->addSubRoom(newGuildRoom);
-	addRoom(newGuildRoom);
-
-	ChatRoom* guildChatRoom = new ChatRoom(server, newGuildRoom, "GuildChat", getNextRoomID());
-	guildChatRoom->deploy();
-
-	guildChatRoom->setTitle(name.str());
-	guildChatRoom->setPrivate();
-
-
-	guildChatRoom->sendTo(creator);
-	guildChatRoom->addPlayer(creator, false);
-
-	newGuildRoom->addSubRoom(guildChatRoom);
-	addRoom(guildChatRoom);
-
-	kuild->setGuildChat(guildChatRoom);
-
-	kuild->unlock();
-}
-
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
-	lock();
-
-	roomMap->remove(room->getRoomID());
+	Locker _locker(_this);
 
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
 
-	ChatRoom* parent = room->getParent();
+	ManagedReference<ChatRoom*> parent = room->getParent();
 
 	if (parent != NULL)
 		parent->removeSubRoom(room);
 
-	room->finalize();
+	roomMap->remove(room->getRoomID());
+}
 
-	unlock();
+
+void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const UnicodeString& message) {
+	/*if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	ManagedReference<GroupObject*> group = sender->getGroup();
+	if (group == NULL)
+		return;
+
+	sender->unlock();
+
+	try {
+		group->wlock();
+
+		ManagedReference<ChatRoom*> room = group->getGroupChannel();
+
+		if (room != NULL) {
+			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+			group->broadcastMessage(msg);
+		}
+
+		group->unlock();
+	} catch (...) {
+		System::out << "Exception in ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack)\n";
+		group->unlock();
+	}
+
+	sender->wlock();
+}
+
+void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
+	uint64 receiverObjectID = playerManager->getObjectID(name);
+
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
+
+	if (receiverObjectID == 0) {
+		error("unexistent name for persistent message");
+		return;
+	}
+
+	ManagedReference<SceneObject*> receiver = server->getObject(receiverObjectID);
+
+	if (receiver == NULL) {
+		error("NULL receiver in send mail");
+
+		return;
+	}
+
+	if (!receiver->isPlayerCreature()) {
+		error("not player in send mail");
+
+		return;
+	}
+
+	PlayerCreature* player = (PlayerCreature*) receiver.get();
+
+	/*ParameterizedStringId test("base_player", "sale_fee");
+	test.setDI(100);
+	test.setUnknownByte(1);*/
+
+	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
+	mail->setSenderName(sendername);
+	mail->setSubject(header);
+	mail->setBody(body);
+	//mail->setParameterizedBody(test);
+	mail->setReceiverObjectID(receiverObjectID);
+	mail->setTimeStamp(currentTime);
+
+	ObjectManager::instance()->persistObject(mail, 1, "mail");
+
+	Locker _locker(player);
+
+	player->addPersistentMessage(mail->getObjectID());
+
+	if (player->isOnline()) {
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
+		player->sendMessage(mmsg);
+	}
+
+	player->updateToDatabaseWithoutChildren();
+}
+
+void ChatManagerImplementation::loadMail(PlayerCreature* player) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	for (int i = 0; i < messages->size(); ++i) {
+		uint64 messageObjectID = messages->get(i);
+
+		ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+
+		if (mail == NULL) {
+			messages->drop(messageObjectID);
+			continue;
+		}
+
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x01, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	}
+}
+
+void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* player, uint32 mailID) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	uint64 messageObjectID = -1;
+
+	for (int i = 0; i < messages->size(); ++i) {
+		messageObjectID = messages->get(i);
+
+		if (Long::hashCode(messageObjectID) == mailID)
+			break;
+	}
+
+	if (messageObjectID == -1) {
+		error("could not find mail in handleRequestPersistentMsg");
+		return;
+	}
+
+	ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+
+	if (mail == NULL) {
+		messages->drop(messageObjectID);
+		return;
+	}
+
+	_locker.release();
+
+	mail->setStatus('R');
+	mail->updateToDatabase();
+
+	UnicodeString mailBody = mail->getBody();
+
+	if (mailBody.length() > 0) {
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	} else {
+		ParameterizedStringId* body = mail->getParameterizedBody();
+
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), *body, mail->getTimeStamp(), (char) mail->getStatus());
+		player->sendMessage(mmsg);
+	}
+}
+
+void ChatManagerImplementation::deletePersistentMessage(PlayerCreature* player, uint32 mailID) {
+	Locker _locker(player);
+
+	SortedVector<uint64>* messages = player->getPersistentMessages();
+
+	uint64 messageObjectID = -1;
+
+	for (int i = 0; i < messages->size(); ++i) {
+		messageObjectID = messages->get(i);
+
+		if (Long::hashCode(messageObjectID) == mailID)
+			break;
+	}
+
+	if (messageObjectID == -1) {
+		error("could not find mail in deletePersistentMessage");
+		return;
+	}
+
+	messages->drop(messageObjectID);
+
+	_locker.release();
+
+	ObjectManager::instance()->destroyObject(messageObjectID);
 }

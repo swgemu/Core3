@@ -47,58 +47,33 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-#include "objects/player/Player.h"
 
-ZoneClient::ZoneClient(const string& addr, int port) : BaseClient(addr, port), Thread () {
+#include "engine/service/proto/packets/SessionIDRequestMessage.h"
+#include "../../server/zone/packets/zone/ClientIDMessage.h"
+
+
+ZoneClient::ZoneClient(int port) : BaseClient("localhost", port) {
 	setLogging(false);
-	setLoggingName("ZoneClient " + ip);
+	setLoggingName("ZoneClient");
 
 	player = NULL;
 
 	key = 0;
+	accountID = 0;
 
-	doRun = true;
-	disconnecting = false;
+	basePacketHandler = new BasePacketHandler("ZoneClient", &messageQueue);
 }
 
 ZoneClient::~ZoneClient() {
 	if (player != NULL)
 		delete player;
+
+	player = NULL;
+
+	delete basePacketHandler,
+	basePacketHandler = NULL;
 }
 
-void ZoneClient::run() {
-	BasePacketHandler phandler("ZoneClient", &messageQueue);
-
-	ZonePacketHandler* zonePackethandler = new ZonePacketHandler("ZonePackethandler", zone);
-
-	Packet pack;
-	SocketAddress fromAddr;
-
-	while (doRun) {
-		try {
-			if (socket->recieveFrom(&pack, &fromAddr)) {
-   				phandler.handlePacket(this, &pack);
-
-				while (!messageQueue.isEmpty()) {
-					Message* msg = messageQueue.get(0);
-
-					zonePackethandler->handleMessage(msg);
-				}
-			}
-		} catch (PacketIndexOutOfBoundsException& e) {
-			cout << e.getMessage();
-
-			error("incorrect packet - " + pack.toString());
-		} catch (ArrayIndexOutOfBoundsException& e) {
-			error(e.getMessage());
-		} catch (SocketException& e) {
-			cout << "socket exception\n";
-		} catch (...) {
-			cout << "[ZoneClient] unreported Exception caught\n";
-		}
-	}
-}
-
-void ZoneClient::disconnect(bool doLock) {
-	BaseClient::disconnect();
+void ZoneClient::handleMessage(Packet* message) {
+	basePacketHandler->handlePacket(this, message);
 }

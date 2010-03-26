@@ -44,26 +44,43 @@ which carries forward this exception.
 
 #include "ServerCore.h"
 
-#include "zone/ZoneServerImplementation.h"
+#include "db/ServerDatabase.h"
+#include "db/ForumsDatabase.h"
 
-#include "zone/objects.h"
+#include "login/LoginServer.h"
 
-#include "zone/managers/combat/CombatManager.h"
-#include "zone/managers/player/ProfessionManager.h"
-#include "zone/managers/radial/RadialManager.h"
-#include "zone/managers/group/GroupManager.h"
+#include "features/Features.h"
 
-ZoneServer* ServerCore::zoneServer;
+#include "ping/PingServer.h"
 
-ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
+//#include "status/StatusServer.h"
+
+#include "zone/ZoneServer.h"
+
+#include "zone/managers/object/ObjectManager.h"
+
+#include "zone/objects/creature/CreatureObject.h"
+
+class TestManager : public ThreadLocal<ZoneServer> {
+public:
+	ZoneServer* initValue() {
+		return new ZoneServer(0, 0);
+	}
+};
+
+ManagedReference<ZoneServer*> ServerCore::zoneServer = NULL;
+
+ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
 	zoneServer = NULL;
-	statusServer = NULL;
+	//statusServer = NULL;
 	pingServer = NULL;
 	forumDatabase = NULL;
 	database = NULL;
+
+	features = NULL;
 }
 
 void ServerCore::init() {
@@ -72,33 +89,29 @@ void ServerCore::init() {
 	processConfig();
 
 	try {
-
 		database = new ServerDatabase(&configManager);
 
-		if(configManager.getUseVBIngeration() == 1)
+		if (configManager.getUseVBIngeration() == 1)
 			forumDatabase = new ForumsDatabase(&configManager);
 
-		if (configManager.getMakeZone()) {
-			string& orbaddr = configManager.getORBNamingDirectoryAddress();
-			orb = DistributedObjectBroker::initialize(orbaddr);
-		}
+		String& orbaddr = configManager.getORBNamingDirectoryAddress();
+		orb = DistributedObjectBroker::initialize(orbaddr);
+
+		orb->setCustomObjectManager(ObjectManager::instance());
 
 		if (configManager.getMakeLogin()) {
 			loginServer = new LoginServer(&configManager);
 		}
 
 		if (configManager.getMakeZone()) {
-			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads());
+			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
 			zoneServer->deploy("ZoneServer");
-		}
-
-		if (configManager.getMakeStatus()) {
-			statusServer = new StatusServer(&configManager, zoneServer);
 		}
 
 		if (configManager.getMakePing()) {
 			pingServer = new PingServer();
 		}
+
 
 	} catch (ServiceException& e) {
 		shutdown();
@@ -123,12 +136,12 @@ void ServerCore::run() {
 		zoneServer->start(44463, zoneAllowedConnections);
 	}
 
-	if (statusServer != NULL) {
+	/*if (statusServer != NULL) {
 		int statusPort = configManager.getStatusPort();
 		int statusAllowedConnections = configManager.getStatusAllowedConnections();
 
-		statusServer->start();
-	}
+		statusServer->start(statusPort);
+	}*/
 
 	if (pingServer != NULL) {
 		int pingPort = configManager.getPingPort();
@@ -147,10 +160,12 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
-	if (statusServer != NULL) {
+	/*if (statusServer != NULL) {
+		statusServer->stop();
+
 		delete statusServer;
 		statusServer = NULL;
-	}
+	}*/
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
@@ -173,30 +188,44 @@ void ServerCore::shutdown() {
 		pingServer = NULL;
 	}
 
-	if (database != NULL) {
-		delete database;
-		database = NULL;
-	}
-
 	if (forumDatabase != NULL) {
 		delete forumDatabase;
 		forumDatabase = NULL;
 	}
 
+	if (features != NULL) {
+		delete features;
+		features = NULL;
+	}
+
+	if (database != NULL) {
+		delete database;
+		database = NULL;
+	}
+
+	ObjectManager::finalize();
+
 	DistributedObjectBroker::finalize();
 
 	info("server closed");
+
+	//exit(1);
 }
 
 void ServerCore::handleCommands() {
 	while (true) {
 		try {
-			string command;
+			String command;
 
 			Thread::sleep(500);
 
-			cout << "> ";
-			cin >> command;
+			System::out << "> ";
+
+			char line[256];
+			fgets(line, sizeof(line), stdin);
+
+			command = line;
+			command = command.replaceFirst("\n", "");
 
 			if (command == "exit") {
 				return;
@@ -207,17 +236,25 @@ void ServerCore::handleCommands() {
 			} else if (command == "logQuadTree") {
 				QuadTree::setLogging(!QuadTree::doLog());
 			} else if (command == "info") {
+				//TaskManager::instance()->printInfo();
+
 				if (loginServer != NULL)
 					loginServer->printInfo();
 
 				if (zoneServer != NULL)
-					zoneServer->printInfo();
+					zoneServer->printInfo(true);
 
 				if (pingServer != NULL)
 					pingServer->printInfo();
+			} else if (command == "lock") {
+				if (zoneServer != NULL)
+					zoneServer->setServerStateLocked();
+			} else if (command == "unlock") {
+				if (zoneServer != NULL)
+					zoneServer->setServerStateOnline();
 			} else if (command == "icap") {
 				if (zoneServer != NULL)
-					zoneServer->changeUserCap();
+					zoneServer->changeUserCap(50);
 			} else if (command == "dcap") {
 				if (zoneServer != NULL)
 					zoneServer->changeUserCap(-50);
@@ -229,18 +266,18 @@ void ServerCore::handleCommands() {
 
 				zoneServer->fixScheduler();
 			} else if (command == "help") {
-				cout << "available commands:\n";
-				cout << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
+				System::out << "available commands:\n";
+				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
 			} else if (command == "about") {
-				cout << "Core3 Uber Edition. Ultyma pwns you.\n";
+				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
 			} else
-				cout << "unknown command (" << command << ")\n";
+				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {
-			cout << "[ServerCore] " << e.getMessage();
+			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
-			cout << "[ServerCore] " << e.getMessage() << "\n";
+			System::out << "[ServerCore] " << e.getMessage() << "\n";
 		} catch (...) {
-			cout << "[ServerCore] unreported Exception caught\n";
+			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 	}
 }
@@ -248,4 +285,7 @@ void ServerCore::handleCommands() {
 void ServerCore::processConfig() {
 	if (!configManager.loadConfigData())
 		info("missing config file.. loading default values\n");
+
+	//if (!features->loadFeatures())
+		//info("Problem occurred trying to load features.lua");
 }

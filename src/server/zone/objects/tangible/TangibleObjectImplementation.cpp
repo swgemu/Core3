@@ -42,349 +42,173 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClientSession.h"
-#include "../creature/CreatureObject.h"
+#include "TangibleObject.h"
 
-#include "../player/Player.h"
-#include "../scene/SceneObjectImplementation.h"
+#include "../../managers/object/ObjectManager.h"
+#include "../scene/variables/CustomizationVariables.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage3.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "../../Zone.h"
 
-#include "../../packets.h"
+void TangibleObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
 
-#include "TangibleObjectImplementation.h"
-
-#include "../building/BuildingObject.h"
-#include "../building/cell/CellObject.h"
-
-#include "../player/sui/inputbox/SuiInputBoxImplementation.h"
-
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
-		: TangibleObjectServant(oid, TANGIBLE) {
-	initialize();
-
-	objectSubType = tp;
-
-	pvpStatusBitmask = 0;
-
-	playerUseMask = ALL;
+	setLoggingName("TangibleObject");
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
-		: TangibleObjectServant(oid, TANGIBLE) {
-	initialize();
+void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::loadTemplateData(templateData);
 
-	objectCRC = tempCRC;
+	targetable = templateData->getByteField("targetable");
 
-	name = n;
+	playerUseMask = templateData->getShortField("playerUseMask");
 
-	templateName = tempname;
+	complexity = 100.f;
 
-	objectSubType = tp;
+	volume = 1;
 
-	pvpStatusBitmask = 0;
-
-	playerUseMask = ALL;
-}
-
-TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
-		: TangibleObjectServant() {
-	initialize();
-
-	name = n;
-
-	objectCRC = tempCRC;
-	templateName = tempname;
-	objectID = creature->getNewItemID();
-
-	objectType = TANGIBLE;
-
-	objectSubType = tp;
-
-	playerUseMask = ALL;
-}
-
-TangibleObjectImplementation::~TangibleObjectImplementation() {
-	if (container != NULL) {
-		error(_this->getTemplateName() + "item still in container on delete");
-
-		//raise(SIGSEGV);
-	}
-
-	delete itemAttributes;
-
-	itemAttributes = NULL;
-}
-
-void TangibleObjectImplementation::initialize() {
-	stringstream name;
-	name << "TangibleObject :" << objectID;
-	setLoggingName(name.str());
-
-	setLogging(false);
-	setGlobalLogging(true);
-
-
-	container = NULL;
-	zone = NULL;
-
-	persistent = false;
-	updated = false;
-
-	building = NULL;
+	unknownByte = 1;
 
 	objectCount = 0;
 
 	conditionDamage = 0;
 	maxCondition = 6000;
 
-	objectType = SceneObjectImplementation::TANGIBLE;
+	sliced = false;
 
-	equipped = false;
-
+	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
-
-	itemAttributes = new ItemAttributes();
-
 }
 
-void TangibleObjectImplementation::parseAttributes() {
-	maxCondition = itemAttributes->getMaxCondition();
+void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending tano baselines");
 
-	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
+	BaseMessage* tano3 = new TangibleObjectMessage3(_this);
+	player->sendMessage(tano3);
+
+	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
+	player->sendMessage(tano6);
 }
 
-void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
-	switch (skillModType) {
-	case 1:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:melee_defense", skillModValue);
-		break;
-	case 2:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:ranged_defense", skillModValue);
-		break;
-	case 3:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:stun_defense", skillModValue);
-		break;
-	case 4:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dizzy_defense", skillModValue);
-		break;
-	case 5:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:blind_defense", skillModValue);
-		break;
-	case 6:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:knockdown_defense", skillModValue);
-		break;
-	case 7:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:intimidate_defense", skillModValue);
-		break;
-	case 8:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_speed", skillModValue);
-		break;
-	case 9:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_speed", skillModValue);
-		break;
-	case 10:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_speed", skillModValue);
-		break;
-	case 11:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_speed", skillModValue);
-		break;
-	case 12:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_speed", skillModValue);
-		break;
-	case 13:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_speed", skillModValue);
-		break;
-	case 14:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_speed", skillModValue);
-		break;
-	case 15:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_accuracy", skillModValue);
-		break;
-	case 16:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_accuracy", skillModValue);
-		break;
-	case 17:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_accuracy", skillModValue);
-		break;
-	case 18:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_accuracy", skillModValue);
-		break;
-	case 19:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_accuracy", skillModValue);
-		break;
-	case 20:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_accuracy", skillModValue);
-		break;
-	case 21:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_accuracy", skillModValue);
-		break;
-	case 22:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dodge", skillModValue);
-		break;
-	case 23:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:block", skillModValue);
-		break;
-	case 24:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
-		break;
-	case 25:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_bleeding", skillModValue);
-		break;
-	case 26:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_disease", skillModValue);
-		break;
-	case 27:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_fire", skillModValue);
-		break;
-	case 28:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
-		break;
-	case 29:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:slope_move", skillModValue);
-		break;
-	case 30:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_speed", skillModValue);
-		break;
-	case 31:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_accuracy", skillModValue);
-		break;
+void TangibleObjectImplementation::setDefender(SceneObject* defender) {
+	if (defender == _this)
+		return;
+
+	setCombatState();
+
+	if (defenderList.size() == 0) {
+		addDefender(defender);
+		return;
+	}
+
+	ManagedReference<SceneObject*> temp = NULL;
+
+	int i = 0;
+	for (; i < defenderList.size(); i++) {
+		if (defenderList.get(i) == defender) {
+			if (i == 0)
+				return;
+
+			temp = defenderList.get(0);
+
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+			dtano6->startUpdate(0x01);
+
+			defenderList.set(0, defender, dtano6, 2);
+			defenderList.set(i, temp, dtano6, 0);
+
+			dtano6->close();
+
+			broadcastMessage(dtano6, true);
+
+			break;
+		}
 	}
 }
 
-
-
-void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
+void TangibleObjectImplementation::addDefender(SceneObject* defender) {
+	if (defender == _this)
 		return;
 
-	SceneObjectImplementation::create(client);
+	setCombatState();
 
-	if(parent != NULL)
-		client->sendMessage(link(parent));
-
-	if (container != NULL)
-		link(client, container);
-
-	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
-	client->sendMessage(tano3);
-
-	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
-	client->sendMessage(tano6);
-
-	if (pvpStatusBitmask != 0) {
-		UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		client->sendMessage(msg);
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defender == defenderList.get(i))
+			return;
 	}
 
-	if (doClose)
-		SceneObjectImplementation::close(client);
+	//info("adding defender");
 
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startUpdate(0x01);
+
+	defenderList.add(defender, dtano6);
+
+	dtano6->close();
+
+	broadcastMessage(dtano6, true);
 }
 
-void TangibleObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
+void TangibleObjectImplementation::removeDefenders() {
+	//info("removing all defenders");
+	if (defenderList.size() == 0) {
+		//info("no defenders in list");
 		return;
-
-	destroy(client);
-}
-
-void TangibleObjectImplementation::sendDeltas(Player* player) {
-
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-
-	dtano3->setQuantity(_this->getObjectCount());
-	dtano3->close();
-
-	client->sendMessage(dtano3);
-
-}
-
-void TangibleObjectImplementation::close(Player* player) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	SceneObjectImplementation::close(client);
-}
-
-
-void TangibleObjectImplementation::repairItem(Player* player) {
-	int roll = System::random(100);
-
-	int decayRate = 100;
-
-	stringstream txt;
-
-	if (roll < 10) {
-		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
-		maxCondition = 1;
-		conditionDamage = 1;
-		updated = true;
-		return;
-	} else if (roll < 75) {
-		txt << "You have repaired the item, however the items maximum condition has been reduced.";
-		decayRate = 20;
-	} else {
-		txt << "You have completely repaired the item.";
-		decayRate = 0;
 	}
 
-	player->sendSystemMessage(txt.str());
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startUpdate(0x01);
 
-	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
-	conditionDamage = 0;
+	defenderList.removeAll(dtano6);
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->updateConditionDamage();
-	dtano3->updateMaxCondition();
-	dtano3->close();
-	player->broadcastMessage(dtano3);
+	dtano6->close();
 
-	updated = true;
+	broadcastMessage(dtano6, true);
+
+	//info("removed all defenders");
 }
 
-void TangibleObjectImplementation::setObjectName(Player * player) {
-	try {
-		//player->wlock();
-		player->setCurrentStructureID(this->getObjectID());
-		//player->unlock();
+void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
+		//info("trying to remove defender");
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defenderList.get(i) == defender) {
+			info("removing defender");
 
-		SuiInputBox * setTheName = new SuiInputBox(player, 0x7283, 0x00);
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
 
-		setTheName->setPromptTitle("Name the Object");
-		setTheName->setPromptText("Please enter the new name you would like for this object");
+			dtano6->startUpdate(0x01);
 
-		player->addSuiBox(setTheName);
-		player->sendMessage(setTheName->generateMessage());
+			if (defenderList.size() == 1)
+				defenderList.removeAll(dtano6);
+			else
+				defenderList.remove(i, dtano6);
 
+			dtano6->close();
+
+			broadcastMessage(dtano6, true);
+
+			//info("defender found and removed");
+			break;
+		}
 	}
-	catch(...) {
-		cout << "Unreported exception in TangibleObjectImplementation::setObjectName\n";
-		//player->unlock();
+
+	if (defenderList.size() == 0)
+		clearCombatState(false);
+
+	//info("finished removing defender");
+}
+
+void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	SceneObjectImplementation::fillAttributeList(alm, object);
+
+	if (maxCondition > 0) {
+		StringBuffer cond;
+		cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+
+		alm->insertAttribute("condition", cond);
 	}
-}
 
-void TangibleObjectImplementation::decay(int decayRate) {
-	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
-
-	if (conditionDamage > maxCondition)
-		conditionDamage = maxCondition;
-
-	updated = true;
-}
-
-void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
-	stringstream cond;
-	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
-
-	alm->insertAttribute("condition", cond);
-
-	alm->insertAttribute("volume", "1");
+	alm->insertAttribute("volume", volume);
 }

@@ -42,99 +42,273 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-/*import "objects/ObjectMap";*/
+package server.zone;
 
-import "objects/scene/SceneObject";
+import server.zone.objects.scene.SceneObject;
+import engine.service.proto.BasePacketHandler;
+import engine.service.DatagramServiceThread;
+import system.net.Socket;
+import system.net.SocketAddress;
+import system.net.Packet;
+import engine.service.ServiceClient;
+import engine.core.ManagedObject;
+import engine.core.TaskManager;
+import system.lang.Exception;
+import system.util.Vector;
+import engine.log.Logger;
 
-import "managers/user/UserManager";
-import "managers/guild/GuildManager";
-import "managers/player/PlayerManager";
-import "managers/crafting/CraftingManager";
-import "managers/item/ItemManager";
-import "managers/resource/ResourceManager";
-import "managers/loot/LootTableManager";
-import "managers/bazaar/BazaarManager";
-import "managers/bank/BankManager";
-import "managers/mission/MissionManager";
-import "managers/creature/CreatureManager";
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.object.ObjectManager;
+import server.zone.managers.player.PlayerManager;
+import server.zone.Zone;
+import server.chat.ChatManager;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.radial.RadialManager;
+import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.resource.ResourceManager;
+import server.zone.managers.bazaar.BazaarManager;
 
-import "../chat/ChatManager";
+class ZoneServer extends ManagedObject implements DatagramServiceThread {
+	private transient BasePacketHandler phandler;
+	
+	private transient ZoneProcessServerImplementation processor;
 
-import "Zone";
+	private int procThreadCount;
+	
+	private native transient TaskManager taskManager;
+	
+	@dereferenced
+	private Vector<Zone> zones;
+	
+	private transient ObjectManager objectManager;
+	private PlayerManager playerManager;
+	private ChatManager chatManager;
+	private RadialManager radialManager;
 
-include "../db/ServerDatabase";
+	private ResourceManager resourceManager;
+	private BazaarManager bazaarManager;
 
-interface ZoneServer {
-	ZoneServer(int threadcount) {
-		super(threadcount);
+	private int totalSentPackets;
+	
+	private int totalResentPackets;
+
+	private int currentPlayers;
+	private int maximumPlayers;
+	private int totalPlayers;
+	private int totalDeletedPlayers;
+	
+	private int serverState;
+
+	private string name;
+	private string messageoftheDay;
+
+	private int galaxyID;
+	
+	public static final int OFFLINE = 0;
+	public static final int LOADING = 1;
+	public static final int ONLINE = 2;
+	public static final int LOCKED = 3;
+	
+	public void test() {
+		Zone zone = new Zone(null, null, 0);
+		zone.getHeight(0, 1);
+	}
+	
+	public native ZoneServer(int processingThreads, int galaxyid = 2);/* {
+		//super(Dat)
+		galaxyID = galaxyid;
+
+		name = "Core3";
+
+		phandler = null;
+
+		processor = null;
+		procThreadCount = processingThreads;
+
+		objectManager = null;
+		playerManager = null;
+		chatManager = null;
+		objectController = null;
+		radialManager = null;
+
+		totalSentPackets = 0;
+		totalResentPackets = 0;
+
+		currentPlayers = 0;
+		maximumPlayers = 0;
+		totalPlayers = 0;
+		totalDeletedPlayers = 0;
+
+		serverState = OFFLINE;
+
+		Logger.setLogging(false);
+		DatagramServiceThread.setLockName("ZoneServerLock");
+
+		taskManager = TaskManager.instance();
+		taskManager.setLogging(false);
+	}*/
+	
+	public native void initializeTransientMembers();
+	
+	@local
+	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
+	
+	public native void init();
+
+	public native void run();
+
+	public native void shutdown();
+
+	public native void startManagers();
+	
+	public native void startZones();
+
+	public native void stopManagers();
+	
+	public native void start(int p, int mconn = 10);
+	
+	public native void stop();
+
+	@local
+	public native void handleMessage(ServiceClient client, Packet message);
+
+	@local
+	public native boolean handleError(ServiceClient client, @dereferenced Exception e);
+	
+	public native void addTotalSentPacket(int count);
+	public native void addTotalResentPacket(int count);
+	
+	public native void printInfo(boolean forcedLog = true);
+	public native void printEvents();
+	
+	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
+	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
+	public native SceneObject createStaticObject(unsigned int templateCRC, unsigned long objectID = 0);
+	public native void updateObjectToDatabase(SceneObject object);
+	public native void updateObjectToStaticDatabase(SceneObject object);
+	public native void destroyObjectFromDatabase(unsigned long objectID);
+
+	
+	public native void lock(boolean doLock = true);
+	public native void unlock(boolean doLock = true);
+	
+	/*public native void lock();
+	public native void unlock();*/
+
+	public void fixScheduler() {
+		//scheduler.fixQueue();
+	}
+	
+	public native void changeUserCap(int amount = 50);
+
+	public native int getConnectionCount();
+	
+	public synchronized void increaseOnlinePlayers() {
+		if (++currentPlayers > maximumPlayers)
+			maximumPlayers = currentPlayers;
+
+		++totalPlayers;
+	}
+	
+	public synchronized void decreaseOnlinePlayers() {
+		currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
 	}
 
-	void start(int port, int conn);
+	public synchronized void increaseTotalDeletedPlayers() {
+		++totalDeletedPlayers;
+	}
 
-	void stop();
-
-	void startManagers();
-
-	// object methods	
-	void addObject(SceneObject obj, boolean doLock = true);
-
-	SceneObject getObject(unsigned long oid, boolean doLock = true);
-
-	SceneObject removeObject(unsigned long oid, boolean doLock = true);
-	SceneObject removeObject(SceneObject obj, boolean doLock = true);
-
-	boolean destroyObject(SceneObject obj, boolean doLock = true);
-
-	SceneObject getCachedObject(unsigned long oid, boolean doLock = true);
-
-	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
-	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
-
-	// administration methods
-	boolean banUser(string name, string admin);
+	public int getGalaxyID() {
+		return galaxyID;
+	}
 	
-	boolean kickUser(string name, string admin);
-
-	void changeUserCap(int amount = 50);
-
-	void addTotalSentPacket(int count);
-	void addTotalResentPacket(int count);
-
-	void lock();
-	void unlock();
+	public native string getServerName();
 	
-	void increaseTotalDeletedPlayers();
+	public boolean isServerLocked() {
+		return serverState == LOCKED;
+	}
 
-	void printInfo();
-	
-	void fixScheduler();
+	public boolean isServerOnline() {
+		return serverState == ONLINE;
+	}
 
-	// getters
-	ChatManager getChatManager();
-	GuildManager getGuildManager();
-	PlayerManager getPlayerManager();
-	UserManager getUserManager();
-	CraftingManager getCraftingManager();
-	ItemManager getItemManager();
-	ResourceManager getResourceManager();
-	LootTableManager getLootTableManager();
-	BazaarManager getBazaarManager();
-	BankManager getBankManager();
-	MissionManager getMissionManager();
-	CreatureManager getCreatureManager(int zone);
-	
-	Zone getZone(int index);
-	
-	string getServerName();
-	
-	int getConnectionCount();
-	int getTotalPlayers();
-	int getMaxPlayers();
-	int getDeletedPlayers();
+	public boolean isServerOffline() {
+		return serverState == OFFLINE;
+	}
 
-	unsigned long getStartTimestamp();
+	public boolean isServerLoading() {
+		return serverState == LOADING;
+	}
+
+	public int getServerState() {
+		return serverState;
+	}
+
+	public synchronized Zone getZone(int index) {
+		return zones.get(index);
+	}
+
+	public int getMaxPlayers() {
+		return maximumPlayers;
+	}
+
+	public int getTotalPlayers() {
+		return totalPlayers;
+	}
+
+	public int getDeletedPlayers() {
+		return totalDeletedPlayers;
+	}
 	
-	unsigned long getNextCreatureID(boolean doLock = true);
-	unsigned long getNextID(boolean doLock = true);
-	unsigned long getNextCellID(boolean doLock = true);
+	public PlayerManager getPlayerManager() {
+		return playerManager;
+	}
+	
+	public ChatManager getChatManager() {
+		return chatManager;
+	}
+	
+	public ObjectController getObjectController() {
+		return processor.getObjectController();
+	}
+	
+	public RadialManager getRadialManager() {
+		return radialManager;
+	}
+	
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
+	public BazaarManager getBazaarManager() {
+		return bazaarManager;
+	}
+	
+	@local
+	public ProfessionManager getProfessionManager() {
+		return processor.getProfessionManager();
+	}
+
+	/*public time_t getStartTimestamp() {
+		return startTimestamp;
+	}*/
+	
+	public native void setServerName(final string servername);
+
+	public synchronized void setGalaxyID(int galaxyid) {
+		galaxyID = galaxyid;
+	}
+
+	public synchronized void setServerState(int state) {
+		serverState = state;
+	}
+	
+	public native void setServerStateLocked();
+
+	public native void setServerStateOnline();
+	
+	public native void loadMessageoftheDay();
+
+	public native void changeMessageoftheDay(final string newMOTD);
+	public native string getMessageoftheDay();
 }

@@ -50,7 +50,7 @@ which carries forward this exception.
 class UpdateCellPermissionsMessage : public BaseMessage {
 public:
     UpdateCellPermissionsMessage(uint64 coId) : BaseMessage() {
-		insertShort(0x04);
+		insertShort(0x03); // insertShort(0x04);
 		insertInt(0xF612499C);  // CRC
 
         insertByte(1); //0 denies, 1 allows.
@@ -58,9 +58,9 @@ public:
 
         //setSize();
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "UpdateCellPermissionsMessage [CellObjectID = " << coId << "]\n";
-		cout << msg.str();*/
+		System::out << msg.toString();*/
 	}
 };
 #endif /*UPDATECELLPERMISSIONSMESSAGE_H_*/

@@ -42,48 +42,126 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
+package server.zone.objects.building;
 
-include "engine/util/QuadTreeEntry";
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import engine.util.QuadTree;
+import engine.util.QuadTreeEntry;
+import server.zone.objects.cell.CellObject;
+import system.util.SortedVector;
+import system.util.Vector;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.ZoneServer;
 
-import "cell/CellObject";
 
-import "../scene/SceneObject";
-import "../player/Player";
-import "../creature/CreatureObject";
+class BuildingObject extends TangibleObject implements QuadTree {
+	@dereferenced
+	protected Vector<CellObject> cells;
+	
+	protected int totalCellNumber;
+	
+	public BuildingObject() {
+		Logger.setLoggingName("BuildingObject");
 
-import "../../Zone";
+		QuadTree.setSize(-1024, -1024, 1024, 1024);
 
-interface BuildingObject implements SceneObject {
-	BuildingObject(unsigned long oid, boolean staticBuilding) {
-		super(oid, int type);
+		super.staticObject = false;
+		
+		super.containerVolumeLimit = 0xFFFFFFFF;
+
+		super.containerType = 2;
+		
+		totalCellNumber = 0;
 	}
 	
-	//void sendTo(Player* player);
-	//void sendDestroyTo(Player* player);
-		
-	void addCell(CellObject cell);
-		
-	void notifyInsertToZone(SceneObject object);
-		
-	boolean isStatic();
-	
-	int getBuildingType();
-	void setBuildingType(int type);
-	
-	string getName();
-	void setName(string name);
-	
-	string getDefaultName();
-	
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
+	public void createCellObjects() {
+		for (int i = 0; i < totalCellNumber; ++i) {
+			SceneObject newCell = getZoneServer().createObject(206832110, 2);
 
+			addCell((CellObject)newCell);
+		}
+	}
+	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+		
+	public native void initializeTransientMembers();
+	
+	public void removeFromZone() {
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject cell = cells.get(i);
+			
+			for (int j = 0; j < cell.getContainerObjectsSize(); ++j) {
+				SceneObject obj = cell.getContainerObject(j);
+				obj.removeFromZone();
+			}
+		}
+		
+		super.removeFromZone();
+	}
+	
+	@local
+	public native void notifyInsert(QuadTreeEntry obj);
+	
+	@local
+	public native void notifyDissapear(QuadTreeEntry obj);
+
+	public native void notifyInsertToZone(SceneObject object);
+	
+	@local
+	public native void insert(QuadTreeEntry obj);
+	
+	@local
+	public native void remove(QuadTreeEntry obj);
+	
+	@local
+	public native void update(QuadTreeEntry obj);
+	
+	@local
+	public native void inRange(QuadTreeEntry obj, float range);
+	
+	public native void sendTo(SceneObject player, boolean doClose = true);
+	public native void sendBaselinesTo(SceneObject player);
+	public native void sendDestroyTo(SceneObject player);
+	
+	public native void addCell(CellObject cell);
+	
+	public boolean isStaticBuilding() {
+		return super.staticObject;
+	}
+	
+	public CellObject getCell(int idx) {
+		return cells.get(idx);
+	}
+	
+	public void setStaticBuilding(boolean value) {
+		super.staticObject = value;
+	}
+	
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from PlayerCreature::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that entered the building
+	 */
+	public abstract void onEnter(PlayerCreature player) { 
+
+	}
+	
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from PlayerCreature::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that exited the building
+	 */
+	public abstract void onExit(PlayerCreature player) {
+		
+	}
+	
 }

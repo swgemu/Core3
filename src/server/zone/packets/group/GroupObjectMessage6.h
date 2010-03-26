@@ -62,7 +62,7 @@ public:
 		groupLists();
 		
 		insertAscii("");
-		insertShort(0);
+		insertShort((uint16)gr->getGroupLevel());
 		insertInt(0);
 		insertLong(0);
 		insertInt(0);
@@ -71,16 +71,8 @@ public:
 	}
 	
 	void groupLists() {
-		int groupSize = grup->getGroupSize();
-		
-		insertInt(groupSize);
-		insertInt(grup->getListCount());
-		
-		for (int i = 0; i < groupSize; i++) {
-			Player* player = grup->getGroupMember(i);
-			insertLong(player->getObjectID());
-			insertAscii(player->getCharacterName().c_str());
-		}
+		GroupList* list = grup->getGroupList();
+		list->insertToMessage(this);
 		
 		insertInt(0); // uses the same method as above to parse this
 		insertInt(0);

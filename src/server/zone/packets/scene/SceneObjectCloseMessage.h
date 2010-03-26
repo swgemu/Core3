@@ -56,9 +56,9 @@ public:
 		insertInt(0x2C436037);  // CRC
 		insertLong(scno->getObjectID());  // ObjectID
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "SceneObjectCloseMessage [Object = " << scno->getObjectID() << "]" << " of (" << scno->getObjectCRC() << ")\n";
-		cout << msg.str();*/
+		System::out << msg.toString();*/
 	}
 
 	SceneObjectCloseMessage(uint64 oid) : BaseMessage() {
@@ -66,9 +66,9 @@ public:
 		insertInt(0x2C436037);  // CRC
 		insertLong(oid);  // ObjectID
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "SceneObjectCloseMessage [Object = " << oid  << "]\n";
-		cout << msg.str(); */
+		System::out << msg.toString(); */
 
 	}
 

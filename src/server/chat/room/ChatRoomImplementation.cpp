@@ -42,63 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ChatRoomImplementation.h"
+#include "ChatRoom.h"
 
-#include "../../zone/objects.h"
+#include "../../zone/objects/player/PlayerCreature.h"
+#include "../../zone/objects/creature/CreatureObject.h"
+
 #include "../../zone/ZoneServer.h"
 
-#include "../../zone/packets.h"
+#include "../../zone/packets/chat/ChatRoomList.h"
+#include "../../zone/packets/chat/ChatOnDestroyRoom.h"
+#include "../../zone/packets/chat/ChatOnLeaveRoom.h"
+#include "../../zone/packets/chat/ChatOnEnteredRoom.h"
 
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const string& Name, uint32 channelId)
-		: ChatRoomServant(), Mutex("ChatRoom") {
-	server = serv;
-
-	name = Name;
-	roomID = channelId;
-
-	owner = "system";
-	creator = "system";
-	title = unicode("");
-	fullPath = Name;
-
-	parent = NULL;
-
-	isPublicRoom = true;
-
-	subRooms.setNullValue(NULL);
-	playerList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
-	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
-}
-
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent,
-		const string& Name, uint32 channelId) : ChatRoomServant(), Mutex("ChatRoom") {
-	server = serv;
-
-	name = Name;
-	fullPath = Parent->getFullPath() + "." + Name;
-
-	roomID = channelId;
-
-	owner = "system";
-	creator = "system";
-	title = unicode("");
-
-	parent = Parent;
-
-	isPublicRoom = true;
-
-	subRooms.setNullValue(NULL);
-	playerList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
-	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
-
-	//parent->addSubRoom((ChatRoom*) _this);
-}
-
-ChatRoomImplementation::~ChatRoomImplementation() {
-	//subRooms.removeAll();
-}
-
-void ChatRoomImplementation::sendTo(Player* player) {
+void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
 	crl->addChannel((ChatRoom*) _this);
 
@@ -106,13 +62,13 @@ void ChatRoomImplementation::sendTo(Player* player) {
 	player->sendMessage(crl);
 }
 
-void ChatRoomImplementation::sendDestroyTo(Player* player) {
+void ChatRoomImplementation::sendDestroyTo(PlayerCreature* player) {
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), roomID);
 	player->sendMessage(msg);
 }
 
-void ChatRoomImplementation::addPlayer(Player* player, bool doLock) {
-	lock();
+void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
+	wlock();
 
 	if (playerList.put(player->getFirstName(), player) == -1) {
 		unlock();
@@ -136,8 +92,14 @@ void ChatRoomImplementation::addPlayer(Player* player, bool doLock) {
 
 }
 
-void ChatRoomImplementation::removePlayer(Player* player, bool doLock) {
-	lock();
+void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
+	player->wlock(doLock);
+
+	player->removeChatRoom((ChatRoom*) _this);
+
+	player->unlock(doLock);
+
+	wlock();
 
 	playerList.drop(player->getFirstName());
 
@@ -145,19 +107,13 @@ void ChatRoomImplementation::removePlayer(Player* player, bool doLock) {
 	player->sendMessage(msg);
 
 	unlock();
-
-	player->wlock(doLock);
-
-	player->removeChatRoom((ChatRoom*) _this);
-
-	player->unlock(doLock);
 }
 
-void ChatRoomImplementation::removePlayer(const string& player) {
+void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
-	lock();
+	wlock();
 
-	Player* play = playerList.get(player);
+	PlayerCreature* play = playerList.get(player);
 	playerList.drop(player);
 
 	unlock();
@@ -175,45 +131,34 @@ void ChatRoomImplementation::removePlayer(const string& player) {
 
 		play->unlock();
 	} catch (...) {
-		cout << "unreported Exception in ChatRoom::removePlayer(const string& player)\n";
+		System::out << "unreported Exception in ChatRoom::removePlayer(const String& player)\n";
 		play->unlock();
 	}
 }
 
-bool ChatRoomImplementation::hasPlayer(Player* player) {
-	lock();
+void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
+	for (int i = 0; i < playerList.size(); ++i) {
+		PlayerCreature* player = playerList.get(i);
+		player->sendMessage(msg->clone());
+	}
 
-	bool result = playerList.contains(player->getFirstName());
-
-	unlock();
-
-	return result;
-}
-
-bool ChatRoomImplementation::hasPlayer(const string& name) {
-	lock();
-
-	bool result = playerList.contains(name);
-
-	unlock();
-
-	return result;
+	delete msg;
 }
 
 void ChatRoomImplementation::removeAllPlayers() {
-	lock();
+	wlock();
 
 	for (int i = 0; i < playerList.size(); i++) {
-		Player* player = playerList.get(i);
+		PlayerCreature* player = playerList.get(i);
 
 		try {
-			player->wlock();
+			player->wlock(_this);
 
 			player->removeChatRoom((ChatRoom*) _this);
 
 			player->unlock();
 		} catch (...) {
-			cout << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
+			System::out << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
 			player->unlock();
 		}
 
@@ -224,77 +169,6 @@ void ChatRoomImplementation::removeAllPlayers() {
 }
 
 
-ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
-	lock();
-
-	ChatRoom* channel = subRooms.get(i);
-
-	unlock();
-
-	return channel;
-}
-
-ChatRoom* ChatRoomImplementation::getSubRoom(const string& name) {
-	lock();
-
-	ChatRoom* channel = subRooms.get(name);
-
-	unlock();
-
-	return channel;
-}
-
-void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
-	lock();
-
-	subRooms.put(channel->getName(), channel);
-
-	unlock();
-}
-
-void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
-	lock();
-
-	subRooms.drop(channel->getName());
-
-	unlock();
-}
-
-void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
-	lock();
-
-	for (int i = 0; i < playerList.size(); i++) {
-		Player* player = playerList.get(i);
-		player->sendMessage(msg->clone());
-	}
-
-	delete msg;
-
-	unlock();
-}
-
-void ChatRoomImplementation::broadcastMessage(Vector<BaseMessage*>& messages) {
-	lock();
-
-	for (int i = 0; i < playerList.size(); ++i) {
-		Player* player = playerList.get(i);
-
-		for (int j = 0; j < messages.size(); ++j) {
-			BaseMessage* msg = messages.get(j);
-			player->sendMessage(msg->clone());
-		}
-	}
-
-	for (int j = 0; j < messages.size(); ++j) {
-		Message* msg = messages.get(j);
-		delete msg;
-	}
-
-	messages.removeAll();
-
-	unlock();
-}
-
-string& ChatRoomImplementation::getServerName() {
+String ChatRoomImplementation::getServerName() {
 	return server->getServerName();
 }

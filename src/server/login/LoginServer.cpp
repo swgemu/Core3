@@ -83,25 +83,23 @@ void LoginServer::init() {
 	phandler = new LoginPacketHandler("LoginPacketHandler", this, configManager);
 	phandler->setLogging(false);
 
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 
 	procThreadCount = 1;
 
 	processors = (LoginMessageProcessorThread**) malloc(procThreadCount * sizeof(LoginMessageProcessorThread*));
 
 	for (int i = 0; i < procThreadCount; ++i) {
-		stringstream name;
+		StringBuffer name;
 		name << "LoginProcessor" << i;
 
-		processors[i] = new LoginMessageProcessorThread(name.str(), phandler);
+		processors[i] = new LoginMessageProcessorThread(name.toString(), phandler);
 	}
 
 	return;
 }
 
 void LoginServer::run() {
-	scheduler->start();
-
 	for (int i = 0; i < procThreadCount; ++i) {
 		LoginMessageProcessorThread* processor = processors[i];
 		processor->start(this);
@@ -123,8 +121,6 @@ void LoginServer::shutdown() {
 
 		delete processor;
 	}
-
-	scheduler->stop();
 }
 
 LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
@@ -143,15 +139,15 @@ void LoginServer::handleMessage(ServiceClient* client, Packet* message) {
 			phand->handlePacket(lclient, message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {
-		cout << e.getMessage();
+		System::out << e.getMessage();
 
-		error("incorrect packet - " + message->toString());
+		error("incorrect packet - " + message->toStringData());
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (ArrayIndexOutOfBoundsException& e) {
 		error(e.getMessage());
 	} catch (...) {
-		cout << "[LoginServer] unreported Exception caught\n";
+		System::out << "[LoginServer] unreported Exception caught\n";
 	}
 }
 
@@ -167,13 +163,9 @@ bool LoginServer::handleError(ServiceClient* client, Exception& e) {
 void LoginServer::printInfo() {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, true);
-
-	stringstream msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
-	info(msg2, true);
 
 	unlock();
 }

@@ -50,11 +50,12 @@ which carries forward this exception.
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"
 #include "../../objects/player/Races.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
 	server = serv;
 
-	profaneNames = new Vector<string>(55, 5); //based on the original number of banned words
+	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
 	developerNames = new BannedNameSet();
 	reservedNames = new BannedNameSet();
 	fictionNames = new BannedNameSet();
@@ -72,96 +73,93 @@ NameManager::~NameManager() {
 }
 
 void NameManager::fillNames() {
-	ifstream restrictedFile("restrictednames.lst");
+	File* restrictedFile = new File("conf/restrictednames.lst");
 
-	if (!restrictedFile)
-		return;
-	else
+	try {
+		FileReader restrictedReader(restrictedFile);
+
 		info("parsing restricted names list: restrictednames.lst", true);
 
-	char line[256];
+		BannedNameSet* setp;
 
-	BannedNameSet * setp;
-	bool isset = false;
+		String line;
+		bool isset = false;
 
-	while (restrictedFile.getline(line, 256)) {
-		string name = string(line);
-		String::toLower(name);
+		while (restrictedReader.readLine(line)) {
+			String name = line.trim().toLowerCase();
 
-		//trim whitespace
-		int swhite = name.find_first_not_of(" \t\n\r\f");
-		int ewhite = name.find_last_not_of(" \t\n\r\f");
-
-		if (swhite == string::npos)
-			name = "";
-		else
-			name = name.substr(swhite, ewhite - swhite + 1);
-
-		if (name.substr(0,2).compare("--") == 0 || name == "") {
-			continue; //skip it
-		} else if (name.find("[profane]") != string::npos) {
-			isset = false;
-			continue;
-		} else if (name.find("[developer]") != string::npos) {
-			isset = true;
-			setp = developerNames;
-			continue;
-		} else if (name.find("[fiction]") != string::npos) {
-			isset = true;
-			setp = fictionNames;
-			continue;
-		} else if (name.find("[reserved]") != string::npos) {
-			isset = true;
-			setp = reservedNames;
-			continue;
-		} else if (isset) {
-			setp->add(name);
-			continue;
-		} else {
-			profaneNames->add(name);
-			continue;
+			if ((name.length() >= 2 && name.subString(0, 2).compareTo("--") == 0)
+					|| name == "") {
+				continue; //skip it
+			} else if (name.indexOf("[profane]") != -1) {
+				isset = false;
+				continue;
+			} else if (name.indexOf("[developer]") != -1) {
+				isset = true;
+				setp = developerNames;
+				continue;
+			} else if (name.indexOf("[fiction]") != -1) {
+				isset = true;
+				setp = fictionNames;
+				continue;
+			} else if (name.indexOf("[reserved]") != -1) {
+				isset = true;
+				setp = reservedNames;
+				continue;
+			} else if (isset) {
+				setp->add(name);
+				continue;
+			} else {
+				profaneNames->add(name);
+				continue;
+			}
 		}
+	} catch (FileNotFoundException&e ) {
 	}
+
+	delete restrictedFile;
 }
 
 
-inline bool NameManager::isProfane(string name) {
+inline bool NameManager::isProfane(String name) {
 	uint16 i;
-	String::toLower(name);
+
+	name = name.toLowerCase();
 
 	for (i = 0; i < profaneNames->size(); i++) {
-		if (name.find(profaneNames->get(i)) != string::npos)
+		if (name.indexOf(profaneNames->get(i)) != -1)
 			return true;
 	}
 
 	return false;
 }
 
-inline bool NameManager::isDeveloper(string name) {
-	String::toLower(name);
-	return developerNames->contains(name);
+inline bool NameManager::isDeveloper(String name) {
+	return developerNames->contains(name.toLowerCase());
 }
 
-inline bool NameManager::isFiction(string name) {
-	String::toLower(name);
-	return fictionNames->contains(name);
+inline bool NameManager::isFiction(String name) {
+	return fictionNames->contains(name.toLowerCase());
 }
 
-inline bool NameManager::isReserved(string name) {
-	String::toLower(name);
-	return reservedNames->contains(name);
+inline bool NameManager::isReserved(String name) {
+	return reservedNames->contains(name.toLowerCase());
 }
 
 int NameManager::validateName(CreatureObject* obj) {
-	string name = (obj->getCharacterName()).c_str();
-	string species = obj->getSpeciesName();
+	StringId* objectName = obj->getObjectName();
+	UnicodeString name = objectName->getCustomString();
+	int species = obj->getSpecies();
 
-	return validateName(name, species);
+	return validateName(name.toString(), species);
 }
 
-int NameManager::validateName(const string& name, const string& species) {
-	if (name == "")
+int NameManager::validateName(const String& name, int species) {
+	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() < 3)
+		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	if (isProfane(name))
 		return NameManagerResult::DECLINED_PROFANE;
@@ -175,15 +173,17 @@ int NameManager::validateName(const string& name, const string& species) {
 	if (isReserved(name))
 		return NameManagerResult::DECLINED_RESERVED;
 
-	if (strspn(name.c_str(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+	//Make sure that only valid characters are allowed in the name.
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	string fname, lname;
+	String fname, lname;
 
-	int spc = name.find(" ");
-	if (spc != string::npos) {
-		fname = name.substr(0,spc);
-		lname = name.substr(spc + 1, name.length() - spc + 1);
+	//Split the name into first and last
+	int spc = name.indexOf(" ");
+	if (spc != -1) {
+		fname = name.subString(0, spc);
+		lname = name.subString(spc + 1, name.length());
 	} else {
 		fname = name;
 		lname = "";
@@ -192,31 +192,33 @@ int NameManager::validateName(const string& name, const string& species) {
 	if (fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if (lname != "" && species == "wookiee")
+	//Wookies are not allowed to have last names.
+	if (!lname.isEmpty() && species == CreatureObjectImplementation::WOOKIE)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if (name.find("'") != string::npos || name.find("-") != string::npos) {
-		if(species != "human" && species != "twilek" && species != "moncalamari")
-			return NameManagerResult::DECLINED_RACE_INAPP;
-		if(species == "moncalamari" && name.find("-") != string::npos)
+	//If the name has a hyphen or apostrophe, make sure they are the proper species.
+	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
+		//Must be a human, twilek, or moncal to have a hyphen or apostrophe.
+		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
-		if(fname.find("'") != fname.rfind("'") || fname.find("-") != fname.rfind("-") ||
-				lname.find("'") != lname.rfind("'") || lname.find("-") != lname.rfind("-")) {
+		//Moncal's aren't allowed to have apostrophes.
+		if (species == CreatureObjectImplementation::MONCAL && name.indexOf("'") != -1)
 			return NameManagerResult::DECLINED_RACE_INAPP;
-		}
+
+		//Make sure they only have one hyphen and apostrophe in firstname.
+		if (fname.indexOf('\'') != fname.lastIndexOf('\'') || fname.indexOf('-') != fname.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Make sure they only have one hyphen and apostrophe in lastname.
+		if (lname.indexOf('\'') != lname.lastIndexOf('\'') || lname.indexOf('-') != lname.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
-
-	//I am disabling ' in names.  It's allowed by the rules, but it messes with most of the sql queries
-	if (name.find("'") != string::npos)
-		return NameManagerResult::DECLINED_RACE_INAPP;
-	//THE ABOVE SHOULD BE REMOVED AFTER ALL THE QUERIES ARE UPDATED
-
 
 	return NameManagerResult::ACCEPTED;
 }
 
-const string NameManager::makeCreatureName(bool surname) {
+const String NameManager::makeCreatureName(bool surname) {
 	bool lastName = surname;
 	bool inLastName = false;
 	int nameLength = 3 + System::random(3);
@@ -233,7 +235,7 @@ const string NameManager::makeCreatureName(bool surname) {
 		for (; x < nameLength + 1; x++) {
 			if (x < nameLength) {
 				if (inLastName) {
-					name[x] = toupper(chooseNextLetter(name[x-1], name[x-2]));
+					name[x] = Character::toUpperCase(chooseNextLetter(name[x-1], name[x-2]));
 					inLastName = false;
 				} else
 					name[x] = chooseNextLetter(name[x-1], name[x-2]);
@@ -256,10 +258,10 @@ const string NameManager::makeCreatureName(bool surname) {
 			break;
 	}
 
-	return string(name);
+	return String(name);
 }
 
-const string NameManager::makeResourceName(bool isOrganic) {
+const String NameManager::makeResourceName(bool isOrganic) {
 	int nameLength = 4 + System::random(6);
 	char name[nameLength];
 
@@ -294,7 +296,7 @@ const string NameManager::makeResourceName(bool isOrganic) {
 			break;
 	}
 
-	return string(name);
+	return String(name);
 }
 
 char NameManager::chooseNextLetter(const char lastLetter, const char letterBeforeLast) {

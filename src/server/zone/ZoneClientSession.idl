@@ -42,42 +42,90 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "system/net/Socket";
-include "system/net/SocketAddress";
+package server.zone;
 
-include "engine/service/DatagramServiceThread";
-include "engine/service/proto/BaseMessage";
-include "engine/service/proto/StandaloneBaseMessage";
+import engine.service.proto.BaseClientProxy;
+import engine.service.proto.BasePacket;
+import engine.core.ManagedObject;
+import system.net.SocketAddress;
+import system.net.Socket;
+import server.zone.objects.scene.SceneObject;
+import server.zone.ZoneServer;
 
-import "ZoneServer";
+class ZoneClientSession extends ManagedObject implements BaseClientProxy {
+	@weakReference
+	protected SceneObject player;
+	
+	protected unsigned int sessionKey;
+	protected unsigned int accountID;
+	
+	boolean disconnecting;
+	
+	public native ZoneClientSession(Socket sock, SocketAddress addr);
+		
+	public native void disconnect();
+	public native void disconnect(boolean doLock);
+	
+	public native void sendMessage(BasePacket msg);
 
-import "objects/player/Player";
-
-interface ZoneClientSession {
-	ZoneClientSession(DatagramServiceThread server, Socket sock, SocketAddress addr) {
-		super(server, sock, addr);
+	public void balancePacketCheckupTime() {
+		BaseClientProxy.balancePacketCheckupTime();
 	}
 	
-	void disconnect(boolean doLock = true);
+	public void resetPacketCheckupTime() {
+		BaseClientProxy.resetPacketCheckupTime();
+	}
 
-	void closeConnection(boolean doLock = true);
+	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 
-	void sendMessage(BaseMessage msg);
-	void sendMessage(StandaloneBaseMessage msg);
+	public native void lock(boolean doLock = true);
+	public native void unlock(boolean doLock = true);
 
-	void resetPacketCheckupTime();
-	void balancePacketCheckupTime();
+	@nativeStub
+	public native void acquire();
 
-	void info(const string msg, boolean foredLog = false);
+	@nativeStub
+	public native void release();
 
+	public string getAddress() {
+		return BaseClientProxy.getAddress();
+	}
+	
 	// setters and getters
-	void setPlayer(Player player);
-	
-	Player getPlayer();
+	public void setPlayer(SceneObject playerCreature) {
+		if (playerCreature != player) {
+			if (playerCreature == null && player != null) {
+				ZoneServer zoneServer = player.getZoneServer();
+				
+				zoneServer.decreaseOnlinePlayers();
+			} else if (playerCreature != player) {
+				ZoneServer zoneServer = playerCreature.getZoneServer();
+				
+				zoneServer.increaseOnlinePlayers();
+			}
+		}
+		
+		player = playerCreature;
+	}
 
-	boolean isAvailable();
+	public void setSessionKey(unsigned int key) {
+		sessionKey = key;
+	}
 	
-	string getAddress();	
+	public void setAccountID(unsigned int id) {
+		accountID = id;
+	}
 
-	unsigned int getSessionKey();
+	public SceneObject getPlayer() {
+		return player;
+	}
+
+	public unsigned int getSessionKey() {
+		return sessionKey;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;
+	}
+
 }

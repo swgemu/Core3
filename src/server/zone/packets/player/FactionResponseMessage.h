@@ -50,7 +50,7 @@ which carries forward this exception.
 class FactionResponseMessage : public BaseMessage {
 public:
 
-	FactionResponseMessage(string rank, uint32 rebpts, uint32 imppts) : BaseMessage() {
+	FactionResponseMessage(String rank, uint32 rebpts, uint32 imppts) : BaseMessage() {
 		insertShort(0x07);
 		insertInt(0x5DD53957);  // CRC
 
@@ -65,12 +65,12 @@ public:
 	/*
 	void addFactionLists(Player* plyobj) {
 		insertInt(plyobj->getFactionListSize());
-		for(int i = 0; i < plyobj->getFactionListSize(); i++) {
+		for (int i = 0; i < plyobj->getFactionListSize(); i++) {
 			insertAscii(plyobj->getFactionListMember(i));
 		}
 		
 		insertInt(plyobj->getFactionListSize());
-		for(int i = 0; i < plyobj->getFactionListSize(); i++) {
+		for (int i = 0; i < plyobj->getFactionListSize(); i++) {
 			insertInt(plyobj->getFactionPointsListMember(i));
 		}
 	}
@@ -80,7 +80,7 @@ public:
 		insertInt(factionCount);
 	}
 	
-	void addFactionName(string name) {
+	void addFactionName(String name) {
 		insertAscii(name);
 	}
 	

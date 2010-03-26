@@ -62,7 +62,7 @@ public:
 		insertFloat(scno->getPositionX());
 		insertFloat(scno->getPositionZ());
 		insertFloat(scno->getPositionY());
-		insertInt(scno->getObjectCRC());  // ObjectCRC
+		insertInt(scno->getClientObjectCRC());  // ObjectCRC
 		insertByte(0);
 	}
 

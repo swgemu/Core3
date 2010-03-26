@@ -42,73 +42,29 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "IntangibleObjectImplementation.h"
 #include "IntangibleObject.h"
 
-#include "../../packets.h"
-#include "../../objects.h"
+#include "../../managers/object/ObjectManager.h"
+#include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
+#include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
 
-#include "../../ZoneClientSession.h"
+void IntangibleObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
 
-
-IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id) : IntangibleObjectServant(id, INTANGIBLE) {
-	objectType = SceneObjectImplementation::INTANGIBLE;
-	objectCRC = objCRC;
-
-	linkType = 0xFFFFFFFF;
-	parent = container;
-
-	worldObject = NULL;
-
-	status = 0;
+	setLoggingName("IntangibleObject");
 }
 
-IntangibleObjectImplementation::~IntangibleObjectImplementation() {
-	if (worldObject != NULL) {
-		worldObject->finalize();
-		worldObject = NULL;
-	}
+void IntangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+	SceneObjectImplementation::loadTemplateData(templateData);
+
 }
 
-void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
+void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending intangible object baselines");
 
-	SceneObjectImplementation::create(client);
-
-	if (parent != NULL)
-		client->sendMessage(link(parent));
-
-	IntangibleObjectMessage3* itno3 = new IntangibleObjectMessage3(_this);
-	client->sendMessage(itno3);
-
-	IntangibleObjectMessage6* itno6 = new IntangibleObjectMessage6(_this);
-	client->sendMessage(itno6);
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
-}
-
-void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
-	SceneObjectImplementation::destroy(player->getClient());
-}
-
-void IntangibleObjectImplementation::updateStatus(uint32 stat) {
-	status = stat;
-
-	SceneObject* object = parent->getParent();
-	if (object == NULL)
-		return;
-
-	if (!object->isPlayer())
-		return;
-
-	Player* player = (Player*) object;
-
-	IntangibleObjectDeltaMessage3* itno3 = new IntangibleObjectDeltaMessage3(_this);
-	itno3->updateStatus(status);
-	itno3->close();
-
+	BaseMessage* itno3 = new IntangibleObjectMessage3(_this);
 	player->sendMessage(itno3);
+
+	BaseMessage* itno6 = new IntangibleObjectMessage6(_this);
+	player->sendMessage(itno6);
 }

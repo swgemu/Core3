@@ -41,105 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 quenker = Creature:new {
-      objectName = "quenker",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Quenker",
-      gender = "",
+	objectName = "quenker",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	gender = "",
 
-      stfName = "a Quenker",
-      objectCRC = 894437668, 
-      socialGroup = "Quenker",
-      named = FALSE, 
+	speciesName = "quenker",
+	stfName = "mob/creature_names",
+	objectCRC = 894437668, 
+	socialGroup = "Quenker",
+	level = 23,
 
-      level = 23,
-      xp = 2219,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	healthMax = 5000,
+	healthMin = 4100,
+	strength = 0,
+	constitution = 0,
 
-      healthMax = 5000,
-      healthMin = 4100,
-      strength = 0,
-      constitution = 0,
+	actionMax = 5000,
+	actionMin = 4100,
+	quickness = 0,
+	stamina = 0,
 
-      actionMax = 5000,
-      actionMin = 4100,
-      quickness = 0,
-      stamina = 0,
+	mindMax = 5000,
+	mindMin = 4100,
+	focus = 0,
+	willpower = 0,
 
-      mindMax = 5000,
-      mindMin = 4100,
-      focus = 0,
-      willpower = 0,
+	height = 1, -- Size of creature
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 25,
+	energy = 25,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 25,
-      energy = 25,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	accuracy = 200,
 
-      accuracy = 200,
+	healer = 0,
 
-      healer = 0,
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	ferocity = 0,
+	aggressive = 1,
+	invincible = 0, 
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 210,
+	weaponMaxDamage = 220,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_dantooine",
-      hideMax = 0,
+	hideType = "hide_scaley_dantooine",
+	hideMax = 20,
 
-      meatType = "meat_wild_dantooine",
-      meatMax = 0,
+	meatType = "meat_wild_dantooine",
+	meatMax = 35,
 
-      skills = { "quenkerAttack1" },
-	  -- skills = { " Intimidation attack", " Knockdown attack", "" },
-       respawnTimer = 60,
+	skills = { "quenkerAttack1", "quenkerAttack2" },
+	-- skills = { " Intimidation attack", " Knockdown attack", "" },
+	respawnTimer = 60,
 
-      behaviorScript = "" -- Link to the behavior script for this object
+	behaviorScript = "" -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(quenker, 894437668) --  Add to Global Table

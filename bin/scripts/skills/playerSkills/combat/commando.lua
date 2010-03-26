@@ -50,6 +50,11 @@ DotPoolAtt = {
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -59,14 +64,14 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle1_block",
@@ -91,6 +96,11 @@ DotPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -100,14 +110,14 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone1_block",
@@ -132,6 +142,11 @@ DotPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -141,14 +156,14 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle2_block",
@@ -173,6 +188,11 @@ DotPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -181,16 +201,16 @@ DotPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-	rezChance = 100,
+	rezChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone2_block",
@@ -215,6 +235,11 @@ RandPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -223,6 +248,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidsingle1_block",
 	CbtSpamCounter = "fireacidsingle1_counter",
@@ -246,6 +275,11 @@ RandPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -254,6 +288,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidcone1_block",
 	CbtSpamCounter = "fireacidcone1_counter",
@@ -277,6 +315,11 @@ RandPoolAtt = {
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -285,6 +328,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidsingle2_block",
 	CbtSpamCounter = "fireacidsingle2_counter",
@@ -308,6 +355,15 @@ RandPoolAtt = {
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -328,3 +384,398 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
+FireHWWeapon = {
+	attackname = "firerocketlauncher",
+	animation = "fire_heavy_rocket_launcher_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 75,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "rocket_launcher_block",
+	CbtSpamCounter = "rocket_launcher_counter",
+	CbtSpamEvade = "rocket_launcher_evade",
+	CbtSpamHit = "rocket_launcher_hit",
+	CbtSpamMiss = "rocket_launcher_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "firelightningbeam",
+	animation = "fire_heavy_lightning_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "lightning_beam_block",
+	CbtSpamCounter = "lightning_beam_counter",
+	CbtSpamEvade = "lightning_beam_evade",
+	CbtSpamHit = "lightning_beam_hit",
+	CbtSpamMiss = "lightning_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "fireacidbeam",
+	animation = "fire_heavy_acid_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "acid_beam_block",
+	CbtSpamCounter = "acid_beam_counter",
+	CbtSpamEvade = "acid_beam_evade",
+	CbtSpamHit = "acid_beam_hit",
+	CbtSpamMiss = "acid_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "fireparticlebeam",
+	animation = "fire_heavy_patricle_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "particle_beam_block",
+	CbtSpamCounter = "particle_beam_counter",
+	CbtSpamEvade = "particle_beam_evade",
+	CbtSpamHit = "particle_beam_hit",
+	CbtSpamMiss = "particle_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+--- Fragment Grenade (Novice Commando)ThrowSkill = { 
+	attackname = "throwgrenadefragmentation",
+	animation = "throw_grenade_medium_fragmentation",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_fragmentation_block",
+	CbtSpamCounter = "throw_fragmentation_counter",
+	CbtSpamEvade = "throw_fragmentation_evade",
+	CbtSpamHit = "throw_fragmentation_hit",
+	CbtSpamMiss = "throw_fragmentation_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Glop Grenade (Field Tactics 1)ThrowSkill = { 
+	attackname = "throwgrenadecryoban",
+	animation = "throw_grenade_medium_cryoban",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_cryoban_block",
+	CbtSpamCounter = "throw_cryoban_counter",
+	CbtSpamEvade = "throw_cryoban_evade",
+	CbtSpamHit = "throw_cryoban_hit",
+	CbtSpamMiss = "throw_cryoban_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Glop Grenade (Field Tactics 2)ThrowSkill = { 
+	attackname = "throwgrenadeglop",
+	animation = "throw_grenade_medium_glop",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_glop_block",
+	CbtSpamCounter = "throw_glop_counter",
+	CbtSpamEvade = "throw_glop_evade",
+	CbtSpamHit = "throw_glop_hit",
+	CbtSpamMiss = "throw_glop_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Imperial Detonator (Field Tactics 3)ThrowSkill = { 
+	attackname = "throwimperialdetonator",
+	animation = "throw_grenade_medium_imperial_detonator",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_imperial_detonator_block",
+	CbtSpamCounter = "throw_imperial_detonator_counter",
+	CbtSpamEvade = "throw_imperial_detonator_evade",
+	CbtSpamHit = "throw_imperial_detonator_hit",
+	CbtSpamMiss = "throw_imperial_detonator_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Thermal Detonator (Field Tactics 4)ThrowSkill = { 
+	attackname = "throwthermaldetonator",
+	animation = "throw_grenade_medium_thermal_detonator",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_thermal_detonator_block",
+	CbtSpamCounter = "throw_thermal_detonator_counter",
+	CbtSpamEvade = "throw_thermal_detonator_evade",
+	CbtSpamHit = "throw_thermal_detonator_hit",
+	CbtSpamMiss = "throw_thermal_detonator_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Proton Grenade (Master Commando)ThrowSkill = { 
+	attackname = "throwgrenadeproton",
+	animation = "throw_grenade_medium_proton",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_proton_block",
+	CbtSpamCounter = "throw_proton_counter",
+	CbtSpamEvade = "throw_proton_evade",
+	CbtSpamHit = "throw_proton_hit",
+	CbtSpamMiss = "throw_proton_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)

@@ -42,60 +42,83 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/util/Coordinate";
+package server.zone.managers.planet;
 
-import "server/zone/Zone";
-include "server/zone/ZoneProcessServerImplementation";
+import engine.core.ManagedObject;
+import server.zone.Zone;
+import server.zone.ZoneProcessServerImplementation;
+import engine.log.Logger;
+import server.zone.objects.building.BuildingObject;
+import system.thread.Thread;
+import server.zone.objects.scene.variables.StringId;
+import server.zone.managers.structure.StructureManager;
+include server.zone.objects.region.Region;
 
-import "../../objects/player/Player";
+include server.zone.managers.planet.RegionMap;
+include server.zone.objects.terrain.PlanetNames;
+include server.zone.managers.terrain.TerrainManager;
 
-import "../../objects/creature/shuttle/ShuttleCreature";
-
-import "../../objects/building/BuildingObject";
-import "../../objects/building/cell/CellObject";
-import "../../objects/tangible/deed/DeedObject";
-import "../../objects/tangible/terminal/mission/MissionTerminal";
-import "../../objects/area/NoBuildArea";
-
-interface PlanetManager {
-	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
-		super(zone, processor);
+class PlanetManager extends ManagedObject implements Logger {
+	@weakReference
+	protected Zone zone;
+	
+	@dereferenced
+	protected RegionMap regionMap;
+	
+	protected StructureManager structureManager;
+	
+	protected transient ZoneProcessServerImplementation server;
+	
+	protected transient TerrainManager terrainManager;
+	
+	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
+		zone = planet;
+		server = srv;
+				
+		Logger.setLoggingName("PlanetManager");
+		Logger.setLogging("false");
+		Logger.setGlobalLogging("true");
+		
+		terrainManager = null;
+		
+		structureManager = null;
 	}
-
-	void init();
 	
-	void start();
+	public native void initializeTransientMembers();
 	
-	void stop();
+	public native void finalize();
+	
+	public native void initialize();
+	public native void loadRegions();
+	
+	@local
+	public boolean getRegion(@dereferenced StringId name, float x, float y) {
+		return regionMap.getRegion(name, x, y);
+	}
+	
+	public StructureManager getStructureManager() {
+		return structureManager;
+	}
+	
+	@local
+	public TerrainManager getTerrainManager() {
+		return terrainManager;
+	}
+	
+	public Region getRegion(float x, float y) {
+		return regionMap.getRegion(x, y);
+	}
+	
+	public int getRegionCount() {
+		return regionMap.size();
+	}
+	
+	public Region getRegion(int index) {
+		return regionMap.getRegion(index);
+	}
+	
+	public Region getRegion(final string regionName) {
+		return regionMap.getRegion(regionName);
+	}
 		
-	unsigned long getNextStaticObjectID(boolean doLock = true);
-	
-	void landShuttles();
-	void takeOffShuttles();
-	
-	BuildingObject findBuildingType(const string word, float targetX, float targetY);
-		
-	ShuttleCreature getShuttle(const string Shuttle);
-	
-	void sendPlanetTravelPointListResponse(Player player);
-	
-	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnHarvester(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
-	void spawnBuilding(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	
-	CellObject getCell(unsigned long id);
-	BuildingObject getBuilding(unsigned long id);
-	
-	MissionTerminal getMissionTerminal(unsigned long oid);
-	
-	unsigned long getLandingTime();
-
-	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);
-	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
-
-	boolean isNoBuildArea(boolean x, boolean y);
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long uid, unsigned char reason = 0);
-	void addNoBuildArea(NoBuildArea area);
-	NoBuildArea createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
 }

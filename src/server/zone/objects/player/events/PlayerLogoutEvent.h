@@ -47,19 +47,19 @@ which carries forward this exception.
 
 #include "../PlayerImplementation.h"
 
-class PlayerLogoutEvent : public Event {
+class PlayerLogoutEvent : public Task {
 	ManagedReference<Player> player;
 
 	int msgCounter;
 
 public:
-	PlayerLogoutEvent(Player* pl, int counter) : Event(2000) {
+	PlayerLogoutEvent(Player* pl, int counter) : Task(2000) {
 		player = pl;
 
 		msgCounter = --counter;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 			
@@ -71,12 +71,11 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PlayerLogoutEvent::activate");
+
 			player->clearLogoutEvent();
 
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };

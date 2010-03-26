@@ -39,21 +39,20 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
 kraytAttack1 = {
 	attackname = "kraytAttack1",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 720,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 50,
 	postureDownChance = 10,
@@ -72,7 +71,7 @@ kraytAttack1 = {
 
 AddRandomPoolAttackTargetSkill(kraytAttack1)
 
------------------------------------------------
+-------------------------------------------------------------------------------
 
 kraytAttack2 = {
 	attackname = "kraytAttack2",
@@ -80,13 +79,13 @@ kraytAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 720,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
+	arearange = 14,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -106,7 +105,7 @@ kraytAttack2 = {
 
 AddRandomPoolAttackTargetSkill(kraytAttack2)
 
------------------------------------------------
+-------------------------------------------------------------------------------
 
 kraytAttack3 = {
 	attackname = "kraytAttack3",
@@ -114,14 +113,14 @@ kraytAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 760,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -140,7 +139,7 @@ kraytAttack3 = {
 
 AddRandomPoolAttackTargetSkill(kraytAttack3)
 
------------------------------------------------
+-------------------------------------------------------------------------------
 
 kraytAttack4 = {
 	attackname = "kraytAttack4",
@@ -148,14 +147,14 @@ kraytAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 800,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -174,7 +173,7 @@ kraytAttack4 = {
 
 AddRandomPoolAttackTargetSkill(kraytAttack4)
 
------------------------------------------------
+-------------------------------------------------------------------------------
 
 kraytAttack5 = {
 	attackname = "kraytAttack5",
@@ -182,14 +181,14 @@ kraytAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 740,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 10,
 	postureDownChance = 25,
@@ -208,7 +207,7 @@ kraytAttack5 = {
 
 AddRandomPoolAttackTargetSkill(kraytAttack5)
 
------------------------------------------------
+-------------------------------------------------------------------------------
 
 kraytAttack6 = {
 	attackname = "kraytAttack6",
@@ -216,14 +215,14 @@ kraytAttack6 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 840,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 80,
 	postureDownChance = 80,
@@ -250,14 +249,14 @@ kraytAttack7 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 14,
 
-	damageRatio = 840,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	arearange = 15,
-	accuracyBonus = 300,
+	arearange = 14,
+	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

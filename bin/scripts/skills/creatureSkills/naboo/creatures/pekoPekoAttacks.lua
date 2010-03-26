@@ -43,15 +43,15 @@ pekoPekoAttack1 = {
 	attackname = "pekoPekoAttack1",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -70,5 +70,209 @@ pekoPekoAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack1)
+
+-----------------------------------------------
+
+pekoPekoAttack2 = {
+	attackname = "pekoPekoAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack2)
+
+-----------------------------------------------
+
+pekoPekoAttack3 = {
+	attackname = "pekoPekoAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack3)
+
+-----------------------------------------------
+
+pekoPekoAttack4 = {
+	attackname = "pekoPekoAttack4",
+	animation = "creature_attack_medium",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack4)
+
+-----------------------------------------------
+
+pekoPekoAttack5 = {
+	attackname = "pekoPekoAttack5",
+	animation = "creature_attack_medium",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 75,
+	blindChance = 75,
+	stunChance = 75,
+	intimidateChance = 75,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack5)
+
+-----------------------------------------------
+
+pekoPekoAttack6 = {
+	attackname = "pekoPekoAttack6",
+	animation = "creature_attack_medium",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack6)
+
+-----------------------------------------------
+
+pekoPekoAttack7 = {
+	attackname = "pekoPekoAttack7",
+	animation = "creature_attack_medium",
+	
+	requiredWeaponType = MELEE,
+
+	range = 7,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 75,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(pekoPekoAttack7)
 
 -----------------------------------------------

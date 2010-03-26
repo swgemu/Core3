@@ -47,28 +47,54 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class Player;
-class GroupObject;
-class ZoneServer;
+namespace server {
+ namespace zone {
+  class ZoneServer;
+ }
+}
 
-class GroupManager {
+using namespace server::zone;
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace group {
+	   class GroupObject;
+   }
+  }
+ }
+}
+
+using namespace server::zone::objects::group;
+
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace creature {
+	   class CreatureObject;
+   }
+  }
+ }
+}
+
+using namespace server::zone::objects::creature;
+
+class GroupManager : public Singleton<GroupManager> {
 
 public:
 	GroupManager();
 
-	void inviteToGroup(Player* leader, Player* player);
-	void joinGroup(Player* player);
+	void inviteToGroup(CreatureObject* leader, CreatureObject* player);
+	void joinGroup(CreatureObject* player);
 
-	void joinGuildGroup(Player* player);
+	void kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* playerToKick);
+	void leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
+	void makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader);
 
-	void kickFromGroup(GroupObject* group, Player* player, Player* playerToKick);
-	void leaveGroup(GroupObject* group, Player* player);
-	void makeLeader(GroupObject* group, Player* player, Player* newLeader);
+	void disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 
-	void disbandGroup(GroupObject* group, Player* player);
-
-	GroupObject* createGroup(Player* leader);
-	GroupObject* createGuildGroup(Player* leader);
+	GroupObject* createGroup(CreatureObject* leader);
 
 };
 
