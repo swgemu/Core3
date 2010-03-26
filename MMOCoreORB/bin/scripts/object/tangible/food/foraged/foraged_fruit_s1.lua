@@ -1,4 +1,0 @@
-object_tangible_food_foraged_foraged_fruit_s1 = object_tangible_food_foraged_shared_foraged_fruit_s1:new {
-}
-
-ObjectTemplates:addTemplate(object_tangible_food_foraged_foraged_fruit_s1, "object/tangible/food/foraged/foraged_fruit_s1.iff")
