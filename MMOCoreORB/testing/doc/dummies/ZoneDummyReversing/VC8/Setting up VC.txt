@@ -1,1 +1,0 @@
-Make sure your Working Directory is the "[SWG Emu Path]\ZoneDummy\" folder if you wish to debug the program.

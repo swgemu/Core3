@@ -1,1 +1,0 @@
-copy "C:\SWGEmu\SWGEmu-Dummy\ZoneDummy\Zone Server.exe" y:\Dummy
