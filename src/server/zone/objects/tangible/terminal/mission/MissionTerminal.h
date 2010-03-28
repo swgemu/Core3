@@ -74,7 +74,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class MissionTerminalHelper;
-	friend class TransactionalObjectHandle<MissionTerminal>;
+	friend class TransactionalObjectHandle<MissionTerminal*>;
 };
 
 } // namespace mission

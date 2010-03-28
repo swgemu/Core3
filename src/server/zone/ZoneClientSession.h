@@ -108,7 +108,7 @@ protected:
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
-	friend class TransactionalObjectHandle<ZoneClientSession>;
+	friend class TransactionalObjectHandle<ZoneClientSession*>;
 };
 
 } // namespace zone
@@ -121,7 +121,7 @@ namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
 protected:
-	ManagedWeakReference<SceneObject > player;
+	ManagedWeakReference<SceneObject* > player;
 
 	unsigned int sessionKey;
 

@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class UndeploySceneObjectEvent : public Event {
-	ManagedReference<SceneObject> object;
+	ManagedReference<SceneObject*> object;
 
 public:
 	UndeploySceneObjectEvent(SceneObject* obj) : Event(300000) {

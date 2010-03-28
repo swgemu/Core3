@@ -803,7 +803,7 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 }
 
 void ZoneServerImplementation::test() {
-	ManagedReference<Zone> _ref0;
+	ManagedReference<Zone*> _ref0;
 	// server/zone/ZoneServer.idl(113):  		Zone zone = new Zone(null, null, 0);
 	Zone* zone = _ref0 = new Zone(NULL, NULL, 0);
 	// server/zone/ZoneServer.idl(114):  		zone.getHeight(0, 1);

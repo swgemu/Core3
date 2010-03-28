@@ -61,7 +61,7 @@ public:
 	}
 
 	void insertDefenders(TangibleObject* tano) {
-		DeltaVector<ManagedReference<SceneObject> >* defenderList = tano->getDefenderList();
+		DeltaVector<ManagedReference<SceneObject*> >* defenderList = tano->getDefenderList();
 		defenderList->insertToMessage(this);
 	}
 

@@ -76,7 +76,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class StartingLocationTerminalHelper;
-	friend class TransactionalObjectHandle<StartingLocationTerminal>;
+	friend class TransactionalObjectHandle<StartingLocationTerminal*>;
 };
 
 } // namespace startinglocation

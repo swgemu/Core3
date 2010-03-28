@@ -122,7 +122,7 @@ protected:
 	UnicodeString _return_getCreatorName;
 
 	friend class MissionObjectHelper;
-	friend class TransactionalObjectHandle<MissionObject>;
+	friend class TransactionalObjectHandle<MissionObject*>;
 };
 
 } // namespace mission
@@ -139,7 +139,7 @@ namespace mission {
 
 class MissionObjectImplementation : public IntangibleObjectImplementation {
 protected:
-	ManagedReference<WaypointObject > waypointToMission;
+	ManagedReference<WaypointObject* > waypointToMission;
 
 	unsigned int typeCRC;
 

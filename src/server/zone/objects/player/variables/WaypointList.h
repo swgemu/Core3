@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
-class WaypointList : public DeltaVectorMap<uint64, ManagedReference<WaypointObject> > {
+class WaypointList : public DeltaVectorMap<uint64, ManagedReference<WaypointObject*> > {
 public:
 
 	int set(uint64 key, WaypointObject* value, DeltaMessage* message = NULL, int updates = 1) {
@@ -72,7 +72,7 @@ public:
 		if (!vectorMap.contains(key))
 			return false;
 
-		ManagedReference<WaypointObject> value = vectorMap.get(key);
+		ManagedReference<WaypointObject*> value = vectorMap.get(key);
 
 		vectorMap.drop(key);
 
@@ -95,7 +95,7 @@ public:
 
 		for (int i = 0; i < size(); ++i) {
 			uint64& key = getKeyAt(i);
-			ManagedReference<WaypointObject> value = getValueAt(i);
+			ManagedReference<WaypointObject*> value = getValueAt(i);
 
 			msg->insertByte(0);
 			msg->insertLong(key);

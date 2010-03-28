@@ -68,7 +68,7 @@ protected:
 	UnicodeString _return_getSubject;
 
 	friend class PersistentMessageHelper;
-	friend class TransactionalObjectHandle<PersistentMessage>;
+	friend class TransactionalObjectHandle<PersistentMessage*>;
 };
 
 } // namespace chat

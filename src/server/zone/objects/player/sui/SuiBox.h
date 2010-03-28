@@ -147,7 +147,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class SuiBoxHelper;
-	friend class TransactionalObjectHandle<SuiBox>;
+	friend class TransactionalObjectHandle<SuiBox*>;
 };
 
 } // namespace sui
@@ -166,7 +166,7 @@ namespace sui {
 
 class SuiBoxImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedWeakReference<PlayerCreature > player;
+	ManagedWeakReference<PlayerCreature* > player;
 
 	unsigned int boxID;
 

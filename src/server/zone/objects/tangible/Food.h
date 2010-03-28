@@ -58,7 +58,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class FoodHelper;
-	friend class TransactionalObjectHandle<Food>;
+	friend class TransactionalObjectHandle<Food*>;
 };
 
 } // namespace tangible

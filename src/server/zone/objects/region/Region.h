@@ -72,7 +72,7 @@ protected:
 	String _return_getRegionName;
 
 	friend class RegionHelper;
-	friend class TransactionalObjectHandle<Region>;
+	friend class TransactionalObjectHandle<Region*>;
 };
 
 } // namespace bazaar
@@ -93,7 +93,7 @@ protected:
 
 	RegionCenterPointList points;
 
-	VectorMap<unsigned long long, ManagedReference<BazaarTerminal > > bazaars;
+	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
 public:
 	RegionImplementation(const String& fullName, float posX, float posY, float radi);

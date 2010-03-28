@@ -268,7 +268,7 @@ protected:
 	String _return_getTitle;
 
 	friend class PlayerObjectHelper;
-	friend class TransactionalObjectHandle<PlayerObject>;
+	friend class TransactionalObjectHandle<PlayerObject*>;
 };
 
 } // namespace player

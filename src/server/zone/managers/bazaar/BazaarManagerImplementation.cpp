@@ -56,7 +56,7 @@ void BazaarManagerImplementation::checkAuctions() {
 	uint64 availableTime = currentTime + 2592000;
 
 	for (int i = 0; i < auctionMap->getAuctionCount(); ++i) {
-		ManagedReference<AuctionItem> item = auctionMap->getAuction(i);
+		ManagedReference<AuctionItem*> item = auctionMap->getAuction(i);
 		uint64 objectId = item->getAuctionedItemObjectID();
 
 		Locker _ilocker(item);
@@ -88,7 +88,7 @@ void BazaarManagerImplementation::checkAuctions() {
 					// bidder won auction. handle transactions and send messages
 				} else {
 					PlayerManager* pman = zoneServer->getPlayerManager();
-					ManagedReference<PlayerCreature> player = pman->getPlayer(item->getOwnerName());
+					ManagedReference<PlayerCreature*> player = pman->getPlayer(item->getOwnerName());
 
 					Locker _locker(player);
 					player->addBankCredits(item->getPrice());
@@ -164,7 +164,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 
 	Locker _locker2(player); // no cross lock because we never lock bazaar manager after locking player?
 
-	ManagedReference<SceneObject> bazaar = zoneServer->getObject(bazaarid);
+	ManagedReference<SceneObject*> bazaar = zoneServer->getObject(bazaarid);
 
 	if (!bazaar->isBazaarTerminal()) {
 		error("bazaar is not a bazaar terminal");
@@ -175,7 +175,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 
 	BazaarTerminal* terminal = (BazaarTerminal*) bazaar.get();
 
-	ManagedReference<SceneObject> inventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 	if (!inventory->hasObjectInContainer(objectid)) {
 		error("trying to add object to the bazaar that is not in the inventory");
@@ -184,7 +184,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 		return;
 	}
 
-	ManagedReference<SceneObject> objectToSell = inventory->getContainerObject(objectid);
+	ManagedReference<SceneObject*> objectToSell = inventory->getContainerObject(objectid);
 
 	if (!objectToSell->isTangibleObject()) {
 		error("trying to add a non tangible object to the bazaar");
@@ -292,7 +292,7 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	cman->sendMail("Auctioner", subject2, ubody2, item->getOwnerName());
 
 	// pay the seller
-	ManagedReference<PlayerCreature> seller = pman->getPlayer(item->getOwnerName());
+	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
 
 	try {
 		if (seller != player)
@@ -330,7 +330,7 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 	if (item->getBidderName().length() > 0) {
 		StringBuffer body;
 
-		ManagedReference<PlayerCreature> priorBidder = pman->getPlayer(item->getBidderName());
+		ManagedReference<PlayerCreature*> priorBidder = pman->getPlayer(item->getBidderName());
 		body << playername << " outbid you on " << item->getItemName() << ".";
 
 		try {
@@ -383,7 +383,7 @@ void BazaarManagerImplementation::buyItem(PlayerCreature* player, uint64 objecti
 	Locker _locker(_this);
 	Locker _locker2(player);
 
-	ManagedReference<AuctionItem> item = auctionMap->getAuction(objectid);
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectid);
 
 	if (item == NULL) { // send invalid item message
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
@@ -418,7 +418,7 @@ int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 ob
 	if (inventory->hasFullContainerObjects())
 		return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
 
-	ManagedReference<AuctionItem> item = auctionMap->getAuction(objectIdToRetrieve);
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectIdToRetrieve);
 
 	String playername = player->getFirstName();
 
@@ -440,7 +440,7 @@ int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 ob
 
 void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
 	PlayerManager* pman = zoneServer->getPlayerManager();
-	ManagedReference<PlayerCreature> bidder = pman->getPlayer(item->getBidderName());
+	ManagedReference<PlayerCreature*> bidder = pman->getPlayer(item->getBidderName());
 	ChatManager* cman = zoneServer->getChatManager();
 
 	// send the player a mail and system message
@@ -458,9 +458,9 @@ void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
 
 void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 objectid, uint64 bazaarid) {
 	BaseMessage* msg = NULL;
-	ManagedReference<AuctionItem> item = NULL;
+	ManagedReference<AuctionItem*> item = NULL;
 
-	ManagedReference<SceneObject> bazaarScene = zoneServer->getObject(bazaarid);
+	ManagedReference<SceneObject*> bazaarScene = zoneServer->getObject(bazaarid);
 
 	if (bazaarScene == NULL || !bazaarScene->isBazaarTerminal()) {
 		msg = new RetrieveAuctionItemResponseMessage(objectid, RetrieveAuctionItemResponseMessage::NOTALLOWED);
@@ -489,7 +489,7 @@ void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 ob
 		refundAuction(item);
 	}
 
-	ManagedReference<SceneObject> objectToRetrieve = zoneServer->getObject(objectid);
+	ManagedReference<SceneObject*> objectToRetrieve = zoneServer->getObject(objectid);
 
 	objectToRetrieve->sendTo(player);
 
@@ -554,7 +554,7 @@ AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* play
 	return item;
 }
 
-AuctionQueryHeadersResponseMessage* BazaarManagerImplementation::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem> >* items, int screen, uint32 category, int count, int offset) {
+AuctionQueryHeadersResponseMessage* BazaarManagerImplementation::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem*> >* items, int screen, uint32 category, int count, int offset) {
 	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
 	int displaying = 0;
@@ -620,7 +620,7 @@ AuctionQueryHeadersResponseMessage* BazaarManagerImplementation::fillAuctionQuer
 }
 
 void BazaarManagerImplementation::getBazaarData(PlayerCreature* player, int extent, uint64 bazaarObjectid, int screen, unsigned int category, int count, int offset) {
-	ManagedReference<SceneObject> bazaar = zoneServer->getObject(bazaarObjectid);
+	ManagedReference<SceneObject*> bazaar = zoneServer->getObject(bazaarObjectid);
 
 	if (bazaar == NULL) {
 		error("null bazaar in getRegionBazaarData");
@@ -664,15 +664,15 @@ void BazaarManagerImplementation::getPlanetBazaarData(PlayerCreature* player, Ba
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
-	VectorMap<uint64, ManagedReference<AuctionItem> > items;
+	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
 	for (int u = 0; u < planetManager->getRegionCount(); ++u) {
-		ManagedReference<Region> regionObject = planetManager->getRegion(u);
+		ManagedReference<Region*> regionObject = planetManager->getRegion(u);
 
 		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
 			BazaarTerminal* term = regionObject->getBazaar(i);
 
-			VectorMap<uint64, ManagedReference<AuctionItem> >* regionItems = term->getAuctions();
+			VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
 
 			for (int j = 0; j < regionItems->size(); ++j) {
 				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
@@ -695,19 +695,19 @@ void BazaarManagerImplementation::getRegionBazaarData(PlayerCreature* player, Ba
 	String region = terminal->getBazaarRegion();
 	PlanetManager* planetManager = zone->getPlanetManager();
 
-	ManagedReference<Region> regionObject = planetManager->getRegion(region);
+	ManagedReference<Region*> regionObject = planetManager->getRegion(region);
 
 	if (regionObject == NULL) {
 		error("null regionObject in getRegionBazaarData");
 		return;
 	}
 
-	VectorMap<uint64, ManagedReference<AuctionItem> > items;
+	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
 	for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
 		BazaarTerminal* term = regionObject->getBazaar(i);
 
-		VectorMap<uint64, ManagedReference<AuctionItem> >* regionItems = term->getAuctions();
+		VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
 
 		for (int j = 0; j < regionItems->size(); ++j) {
 			items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
@@ -722,11 +722,11 @@ void BazaarManagerImplementation::getItemAttributes(PlayerCreature* player, uint
 	Locker _locker(_this);
 
 	UnicodeString description;
-	ManagedReference<AuctionItem> item = auctionMap->getAuction(objectid);
+	ManagedReference<AuctionItem*> item = auctionMap->getAuction(objectid);
 
 	_locker.release();
 
-	ManagedReference<SceneObject> object = zoneServer->getObject(objectid);
+	ManagedReference<SceneObject*> object = zoneServer->getObject(objectid);
 
 	if (!object->isTangibleObject()) {
 		error("non tangible object");

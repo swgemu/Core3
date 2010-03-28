@@ -88,11 +88,11 @@ public:
 	void inviteToGroup(CreatureObject* leader, CreatureObject* player);
 	void joinGroup(CreatureObject* player);
 
-	void kickFromGroup(ManagedReference<GroupObject> group, CreatureObject* player, CreatureObject* playerToKick);
-	void leaveGroup(ManagedReference<GroupObject> group, CreatureObject* player);
+	void kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* playerToKick);
+	void leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 	void makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader);
 
-	void disbandGroup(ManagedReference<GroupObject> group, CreatureObject* player);
+	void disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 
 	GroupObject* createGroup(CreatureObject* leader);
 

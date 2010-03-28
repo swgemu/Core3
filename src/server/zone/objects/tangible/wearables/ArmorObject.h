@@ -59,7 +59,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class ArmorObjectHelper;
-	friend class TransactionalObjectHandle<ArmorObject>;
+	friend class TransactionalObjectHandle<ArmorObject*>;
 };
 
 } // namespace wearables

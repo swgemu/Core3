@@ -68,7 +68,7 @@ public:
 
 		creature->info("serverdestroy arguments: " + arguments.toString(), true);
 
-		ManagedReference<SceneObject> object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
 			return false;

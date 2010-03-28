@@ -205,7 +205,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class WeaponObjectHelper;
-	friend class TransactionalObjectHandle<WeaponObject>;
+	friend class TransactionalObjectHandle<WeaponObject*>;
 };
 
 } // namespace weapon

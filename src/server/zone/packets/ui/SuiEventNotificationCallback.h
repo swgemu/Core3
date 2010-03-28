@@ -40,7 +40,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject> playerClient = client->getPlayer();
+		ManagedReference<SceneObject*> playerClient = client->getPlayer();
 		if (playerClient == NULL)
 			return;
 

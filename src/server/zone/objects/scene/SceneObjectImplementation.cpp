@@ -173,13 +173,13 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	server->updateObjectToDatabase(_this);
 
 	for (int i = 0; i < slottedObjects.size(); ++i) {
-		ManagedReference<SceneObject> object = slottedObjects.get(i);
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
 		object->updateToDatabaseAllObjects(false);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
-		ManagedReference<SceneObject> object = containerObjects.get(j);
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
 		object->updateToDatabaseAllObjects(false);
 	}
@@ -201,13 +201,13 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 		return;
 
 	for (int i = 0; i < slottedObjects.size(); ++i) {
-		ManagedReference<SceneObject> object = slottedObjects.get(i);
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
 		object->destroyObjectFromDatabase(true);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
-		ManagedReference<SceneObject> object = containerObjects.get(j);
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
 		object->destroyObjectFromDatabase(true);
 	}
@@ -221,7 +221,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
 		return;
 
-	ManagedReference<ZoneClientSession> client = player->getClient();
+	ManagedReference<ZoneClientSession*> client = player->getClient();
 
 	if (client == NULL)
 		return;
@@ -579,7 +579,7 @@ void SceneObjectImplementation::removeFromZone() {
 
 	Locker zoneLocker(zone);
 
-	ManagedReference<SceneObject> par = parent.get();
+	ManagedReference<SceneObject*> par = parent.get();
 
 	if (parent != NULL && parent->isCellObject()) {
 		BuildingObject* building = (BuildingObject*)parent->getParent();
@@ -678,7 +678,7 @@ void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
 	player->sendMessage(cont);
 }
 
-void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject> >& objects) {
+void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
 	objects = slottedObjects;
 }
 

@@ -92,7 +92,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class GroupObjectHelper;
-	friend class TransactionalObjectHandle<GroupObject>;
+	friend class TransactionalObjectHandle<GroupObject*>;
 };
 
 } // namespace group
@@ -110,7 +110,7 @@ namespace group {
 class GroupObjectImplementation : public SceneObjectImplementation {
 	GroupList groupMembers;
 
-	ManagedReference<ChatRoom > chatRoom;
+	ManagedReference<ChatRoom* > chatRoom;
 
 	int groupLevel;
 

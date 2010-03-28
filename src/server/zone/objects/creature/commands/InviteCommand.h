@@ -70,7 +70,7 @@ public:
 
 		GroupManager* groupManager = GroupManager::instance();
 
-		ManagedReference<SceneObject> object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
 			return false;

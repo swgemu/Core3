@@ -53,7 +53,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	setLoggingName("ChatManager");
 
-	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom> >();
+	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
 }
@@ -67,7 +67,7 @@ void ChatManagerImplementation::finalize() {
 }
 
 ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
-	ManagedReference<ChatRoom> room = (ChatRoom*) ObjectManager::instance()->createObject("ChatRoom", 0 , "");
+	ManagedReference<ChatRoom*> room = (ChatRoom*) ObjectManager::instance()->createObject("ChatRoom", 0 , "");
 	room->init(server, parent, roomName, getNextRoomID());
 
 	addRoom(room);
@@ -419,7 +419,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 }
 
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ManagedReference<PlayerCreature> sender = (PlayerCreature*) message->getClient()->getPlayer();
+	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
 	PlayerCreature* receiver = getPlayer(message->getName());
 
 	if (receiver == NULL || !receiver->isOnline()) {
@@ -440,7 +440,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreat
 	// Pre: creator locked;
 	// Post: creator locked.
 
-	ManagedReference<ChatRoom> groupChatRoom;
+	ManagedReference<ChatRoom*> groupChatRoom;
 
 	StringBuffer name;
 	name << groupID;
@@ -469,7 +469,7 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
 
-	ManagedReference<ChatRoom> parent = room->getParent();
+	ManagedReference<ChatRoom*> parent = room->getParent();
 
 	if (parent != NULL)
 		parent->removeSubRoom(room);
@@ -486,7 +486,7 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 
 	String name = sender->getFirstName();
 
-	ManagedReference<GroupObject> group = sender->getGroup();
+	ManagedReference<GroupObject*> group = sender->getGroup();
 	if (group == NULL)
 		return;
 
@@ -495,7 +495,7 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 	try {
 		group->wlock();
 
-		ManagedReference<ChatRoom> room = group->getGroupChannel();
+		ManagedReference<ChatRoom*> room = group->getGroupChannel();
 
 		if (room != NULL) {
 			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
@@ -522,7 +522,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 		return;
 	}
 
-	ManagedReference<SceneObject> receiver = server->getObject(receiverObjectID);
+	ManagedReference<SceneObject*> receiver = server->getObject(receiverObjectID);
 
 	if (receiver == NULL) {
 		error("NULL receiver in send mail");
@@ -542,7 +542,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 	test.setDI(100);
 	test.setUnknownByte(1);*/
 
-	ManagedReference<PersistentMessage> mail = new PersistentMessage();
+	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(header);
 	mail->setBody(body);
@@ -572,7 +572,7 @@ void ChatManagerImplementation::loadMail(PlayerCreature* player) {
 	for (int i = 0; i < messages->size(); ++i) {
 		uint64 messageObjectID = messages->get(i);
 
-		ManagedReference<PersistentMessage> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+		ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
 
 		if (mail == NULL) {
 			messages->drop(messageObjectID);
@@ -603,7 +603,7 @@ void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* playe
 		return;
 	}
 
-	ManagedReference<PersistentMessage> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
+	ManagedReference<PersistentMessage*> mail = (PersistentMessage*) DistributedObjectBroker::instance()->lookUp(messageObjectID);
 
 	if (mail == NULL) {
 		messages->drop(messageObjectID);

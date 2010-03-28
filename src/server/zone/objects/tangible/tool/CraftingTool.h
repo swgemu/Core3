@@ -59,7 +59,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class CraftingToolHelper;
-	friend class TransactionalObjectHandle<CraftingTool>;
+	friend class TransactionalObjectHandle<CraftingTool*>;
 };
 
 } // namespace tool

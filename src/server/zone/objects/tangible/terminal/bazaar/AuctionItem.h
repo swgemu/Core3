@@ -127,7 +127,7 @@ protected:
 	String _return_getTerminalTitle;
 
 	friend class AuctionItemHelper;
-	friend class TransactionalObjectHandle<AuctionItem>;
+	friend class TransactionalObjectHandle<AuctionItem*>;
 };
 
 } // namespace bazaar
@@ -148,7 +148,7 @@ namespace bazaar {
 
 class AuctionItemImplementation : public ManagedObjectImplementation {
 protected:
-	ManagedWeakReference<BazaarTerminal > bazaarTerminal;
+	ManagedWeakReference<BazaarTerminal* > bazaarTerminal;
 
 	unsigned long long auctionedItemObjectID;
 

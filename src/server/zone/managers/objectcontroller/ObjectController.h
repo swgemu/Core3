@@ -142,7 +142,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class ObjectControllerHelper;
-	friend class TransactionalObjectHandle<ObjectController>;
+	friend class TransactionalObjectHandle<ObjectController*>;
 };
 
 } // namespace objectcontroller

@@ -379,7 +379,7 @@ protected:
 	UnicodeString _return_getCreatureName;
 
 	friend class CreatureObjectHelper;
-	friend class TransactionalObjectHandle<CreatureObject>;
+	friend class TransactionalObjectHandle<CreatureObject*>;
 };
 
 } // namespace creature
@@ -448,9 +448,9 @@ protected:
 
 	String moodString;
 
-	ManagedReference<WeaponObject > weapon;
+	ManagedReference<WeaponObject* > weapon;
 
-	ManagedReference<GroupObject > group;
+	ManagedReference<GroupObject* > group;
 
 	unsigned long long groupInviterID;
 

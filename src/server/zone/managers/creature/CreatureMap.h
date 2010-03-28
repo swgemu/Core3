@@ -49,21 +49,21 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-class CreatureMap : public HashTable<uint64, ManagedReference<CreatureObject>  >
-		, public HashTableIterator<uint64, ManagedReference<CreatureObject> > {
+class CreatureMap : public HashTable<uint64, ManagedReference<CreatureObject*>  >
+		, public HashTableIterator<uint64, ManagedReference<CreatureObject*> > {
 
 	int hash(const uint64& key) {
         return Long::hashCode(key);
 	}
 
 public:
-	CreatureMap() : HashTable<uint64, ManagedReference<CreatureObject> >(3000)
-			, HashTableIterator<uint64, ManagedReference<CreatureObject> >(this) {
+	CreatureMap() : HashTable<uint64, ManagedReference<CreatureObject*> >(3000)
+			, HashTableIterator<uint64, ManagedReference<CreatureObject*> >(this) {
 		setNullValue(NULL);
 	}
 
 	void put(uint64 oid, CreatureObject* creature) {
-		CreatureObject* creo = HashTable<uint64, ManagedReference<CreatureObject> >::put(oid, creature);
+		CreatureObject* creo = HashTable<uint64, ManagedReference<CreatureObject*> >::put(oid, creature);
 		if (creo != NULL && creo != creature)
 			System::out << "CREATUREMAP OID CONFLICT\n";
 	}

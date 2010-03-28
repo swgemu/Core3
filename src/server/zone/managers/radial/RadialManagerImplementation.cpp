@@ -23,7 +23,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player
 	//Pre: Player is WLOCKED
 	//Post: Player is WLOCKED
 
-	ManagedReference<SceneObject> menuObject = zoneServer->getObject(objectID);
+	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
 
 	if (menuObject != NULL) {
 		try {
@@ -49,7 +49,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 	//System::out << "entering radial call 1" << endl;
 
-	ManagedReference<SceneObject> selectedObject = zoneServer->getObject(objectID);
+	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == NULL) {
 		StringBuffer infoMsg;

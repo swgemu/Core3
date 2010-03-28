@@ -57,7 +57,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class RecreationBuildingObjectHelper;
-	friend class TransactionalObjectHandle<RecreationBuildingObject>;
+	friend class TransactionalObjectHandle<RecreationBuildingObject*>;
 };
 
 } // namespace recreation

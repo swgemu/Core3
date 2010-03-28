@@ -68,7 +68,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class ResourceManagerHelper;
-	friend class TransactionalObjectHandle<ResourceManager>;
+	friend class TransactionalObjectHandle<ResourceManager*>;
 };
 
 } // namespace resource
@@ -86,7 +86,7 @@ namespace resource {
 class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua {
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer > zoneServer;
+	ManagedReference<ZoneServer* > zoneServer;
 
 public:
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl);

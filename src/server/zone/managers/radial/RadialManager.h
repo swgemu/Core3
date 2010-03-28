@@ -88,7 +88,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class RadialManagerHelper;
-	friend class TransactionalObjectHandle<RadialManager>;
+	friend class TransactionalObjectHandle<RadialManager*>;
 };
 
 } // namespace radial
@@ -104,7 +104,7 @@ namespace managers {
 namespace radial {
 
 class RadialManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<ZoneServer > zoneServer;
+	ManagedReference<ZoneServer* > zoneServer;
 
 public:
 	RadialManagerImplementation(ZoneServer* server);

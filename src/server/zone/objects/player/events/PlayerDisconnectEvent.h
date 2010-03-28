@@ -54,7 +54,7 @@ namespace player {
 namespace events {
 
 class PlayerDisconnectEvent : public Task {
-	ManagedReference<PlayerCreature> player;
+	ManagedReference<PlayerCreature*> player;
 
 public:
 	PlayerDisconnectEvent(PlayerCreature* pl) : Task(2000) {

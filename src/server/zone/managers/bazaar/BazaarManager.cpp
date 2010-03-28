@@ -303,7 +303,7 @@ int BazaarManager::checkBidAuction(PlayerCreature* player, AuctionItem* item, in
 		return ((BazaarManagerImplementation*) _impl)->checkBidAuction(player, item, price1, price2);
 }
 
-AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset) {
+AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

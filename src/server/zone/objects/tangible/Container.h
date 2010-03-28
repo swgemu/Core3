@@ -62,7 +62,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class ContainerHelper;
-	friend class TransactionalObjectHandle<Container>;
+	friend class TransactionalObjectHandle<Container*>;
 };
 
 } // namespace tangible

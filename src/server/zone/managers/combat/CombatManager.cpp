@@ -29,10 +29,10 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
-	DeltaVector<ManagedReference<SceneObject> >* defenderList = attacker->getDefenderList();
+	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
 	for (int i = 0; i < defenderList->size(); ++i) {
-		ManagedReference<SceneObject> object = defenderList->get(i);
+		ManagedReference<SceneObject*> object = defenderList->get(i);
 
 		if (!object->isCreatureObject())
 			continue;
@@ -214,7 +214,7 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 }
 
 int CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender) {
-	ManagedReference<WeaponObject> weapon = attacker->getWeapon();
+	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 
 	int damageType = weapon->getDamageType();

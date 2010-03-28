@@ -122,7 +122,7 @@ AuctionItem* BazaarAuctionsMap::getAuction(int index) {
 		return ((BazaarAuctionsMapImplementation*) _impl)->getAuction(index);
 }
 
-VectorMap<unsigned long long, ManagedReference<AuctionItem > >* BazaarAuctionsMap::getAuctions() {
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsMap::getAuctions() {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -265,7 +265,7 @@ AuctionItem* BazaarAuctionsMapImplementation::getAuction(int index) {
 	return (&auctions)->get(index);
 }
 
-VectorMap<unsigned long long, ManagedReference<AuctionItem > >* BazaarAuctionsMapImplementation::getAuctions() {
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsMapImplementation::getAuctions() {
 	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(111):  		return auctions;
 	return (&auctions);
 }

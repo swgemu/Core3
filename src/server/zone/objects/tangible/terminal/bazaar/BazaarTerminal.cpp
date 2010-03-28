@@ -91,7 +91,7 @@ void BazaarTerminal::dropAuction(unsigned long long auctionItemID) {
 		((BazaarTerminalImplementation*) _impl)->dropAuction(auctionItemID);
 }
 
-VectorMap<unsigned long long, ManagedReference<AuctionItem > >* BazaarTerminal::getAuctions() {
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminal::getAuctions() {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -230,7 +230,7 @@ void BazaarTerminalImplementation::dropAuction(unsigned long long auctionItemID)
 }
 }
 
-VectorMap<unsigned long long, ManagedReference<AuctionItem > >* BazaarTerminalImplementation::getAuctions() {
+VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminalImplementation::getAuctions() {
 	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(96):  		return auctions;
 	return (&auctions);
 }

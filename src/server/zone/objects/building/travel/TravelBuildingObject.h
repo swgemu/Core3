@@ -57,7 +57,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class TravelBuildingObjectHelper;
-	friend class TransactionalObjectHandle<TravelBuildingObject>;
+	friend class TransactionalObjectHandle<TravelBuildingObject*>;
 };
 
 } // namespace travel

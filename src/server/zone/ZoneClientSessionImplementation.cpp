@@ -139,7 +139,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		if (player != NULL) {
 			ZoneServer* srv = NULL;
 
-			ManagedReference<PlayerCreature> play = (PlayerCreature*)player.get();
+			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
 			if (lockPlayer)
 				unlock(true);

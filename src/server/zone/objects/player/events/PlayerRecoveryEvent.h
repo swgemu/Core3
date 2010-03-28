@@ -54,7 +54,7 @@ namespace player {
 namespace events {
 
 class PlayerRecoveryEvent : public Task {
-	ManagedReference<PlayerCreature> player;
+	ManagedReference<PlayerCreature*> player;
 
 public:
 	PlayerRecoveryEvent(PlayerCreature* pl) : Task(2000) {

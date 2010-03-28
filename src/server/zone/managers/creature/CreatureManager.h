@@ -138,7 +138,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class CreatureManagerHelper;
-	friend class TransactionalObjectHandle<CreatureManager>;
+	friend class TransactionalObjectHandle<CreatureManager*>;
 };
 
 } // namespace creature
@@ -157,9 +157,9 @@ class CreatureManagerImplementation : public ManagedObjectImplementation, public
 protected:
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer > server;
+	ManagedReference<ZoneServer* > server;
 
-	ManagedWeakReference<Zone > zone;
+	ManagedWeakReference<Zone* > zone;
 
 	CreatureMap creatureMap;
 

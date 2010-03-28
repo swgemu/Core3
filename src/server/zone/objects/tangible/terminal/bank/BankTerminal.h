@@ -128,7 +128,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class BankTerminalHelper;
-	friend class TransactionalObjectHandle<BankTerminal>;
+	friend class TransactionalObjectHandle<BankTerminal*>;
 };
 
 } // namespace bank

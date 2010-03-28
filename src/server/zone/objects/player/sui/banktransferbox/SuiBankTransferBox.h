@@ -78,7 +78,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class SuiBankTransferBoxHelper;
-	friend class TransactionalObjectHandle<SuiBankTransferBox>;
+	friend class TransactionalObjectHandle<SuiBankTransferBox*>;
 };
 
 } // namespace banktransferbox
@@ -115,7 +115,7 @@ protected:
 
 	String convertRatioTo;
 
-	ManagedReference<SceneObject > bank;
+	ManagedReference<SceneObject* > bank;
 
 public:
 	SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype);

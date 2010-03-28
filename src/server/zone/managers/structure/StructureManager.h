@@ -84,7 +84,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class StructureManagerHelper;
-	friend class TransactionalObjectHandle<StructureManager>;
+	friend class TransactionalObjectHandle<StructureManager*>;
 };
 
 } // namespace structure
@@ -100,7 +100,7 @@ namespace managers {
 namespace structure {
 
 class StructureManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<Zone > zone;
+	ManagedReference<Zone* > zone;
 
 	ZoneProcessServerImplementation* server;
 

@@ -57,7 +57,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class CloningBuildingObjectHelper;
-	friend class TransactionalObjectHandle<CloningBuildingObject>;
+	friend class TransactionalObjectHandle<CloningBuildingObject*>;
 };
 
 } // namespace cloning

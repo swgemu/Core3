@@ -19,7 +19,6 @@ class ClientRandomNameRequest : public MessageCallback {
 public:
 	ClientRandomNameRequest(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
 		MessageCallback(client, server) {
-
 	}
 
 	void parse(Message* message) {

@@ -142,7 +142,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class PlayerManagerHelper;
-	friend class TransactionalObjectHandle<PlayerManager>;
+	friend class TransactionalObjectHandle<PlayerManager*>;
 };
 
 } // namespace player
@@ -160,7 +160,7 @@ namespace player {
 class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer > server;
+	ManagedReference<ZoneServer* > server;
 
 	PlayerMap* playerMap;
 

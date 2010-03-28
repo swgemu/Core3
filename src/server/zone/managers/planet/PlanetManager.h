@@ -140,7 +140,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class PlanetManagerHelper;
-	friend class TransactionalObjectHandle<PlanetManager>;
+	friend class TransactionalObjectHandle<PlanetManager*>;
 };
 
 } // namespace planet
@@ -157,11 +157,11 @@ namespace planet {
 
 class PlanetManagerImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedWeakReference<Zone > zone;
+	ManagedWeakReference<Zone* > zone;
 
 	RegionMap regionMap;
 
-	ManagedReference<StructureManager > structureManager;
+	ManagedReference<StructureManager* > structureManager;
 
 	ZoneProcessServerImplementation* server;
 

@@ -14,7 +14,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public Serializable {
-	VectorMap<String, ManagedReference<Region> > regions;
+	VectorMap<String, ManagedReference<Region*> > regions;
 
 public:
 	RegionMap() {

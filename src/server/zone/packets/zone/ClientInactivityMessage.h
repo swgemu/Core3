@@ -24,7 +24,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject> player = client->getPlayer();
+		ManagedReference<SceneObject*> player = client->getPlayer();
 
 		if (player != NULL) {
 			StringBuffer msg;

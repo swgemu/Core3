@@ -77,14 +77,14 @@ public:
 		float unknown2 = tokenizer.getFloatToken();
 		float unknown3 = tokenizer.getFloatToken();
 
-		ManagedReference<SceneObject> objectToTransfer = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transfermisc command");
 			return false;
 		}
 
-		ManagedReference<SceneObject> destinationObject = server->getZoneServer()->getObject(destinationID);
+		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
 			creature->error("destinationObject NULL in tansfermisc command");
@@ -259,7 +259,7 @@ public:
 							player->lootObject(creature, object);
 						} else {
 							//Current target is a dead creature but player is moving stuff in inventory (because creature->getLootItem returned NULL)
-							ManagedReference<TangibleObject> item = validateDropAction(player, target);
+							ManagedReference<TangibleObject*> item = validateDropAction(player, target);
 
 							if (item != NULL)
 								transferItemToContainer(player, item, destinationID);
@@ -269,7 +269,7 @@ public:
 
 					} else {
 						//Player has no dead creature as target and dropping an item from a cell or container to the inventory
-						ManagedReference<TangibleObject> item = validateDropAction(player, target);
+						ManagedReference<TangibleObject*> item = validateDropAction(player, target);
 
 						if (item != NULL)
 							transferItemToContainer(player, item, destinationID);
@@ -279,7 +279,7 @@ public:
 
 					//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
 				} else {
-					ManagedReference<TangibleObject> item = validateDropAction(player, target);
+					ManagedReference<TangibleObject*> item = validateDropAction(player, target);
 
 					//Here we check to see if the player is staff, and if not, we check to see if they have permission to drop the item in the structure they are in.
 					if (player->getAdminLevel() == PlayerCreature* player->isInBuilding()) {

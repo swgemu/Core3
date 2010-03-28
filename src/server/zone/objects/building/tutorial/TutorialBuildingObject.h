@@ -97,7 +97,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class TutorialBuildingObjectHelper;
-	friend class TransactionalObjectHandle<TutorialBuildingObject>;
+	friend class TransactionalObjectHandle<TutorialBuildingObject*>;
 };
 
 } // namespace tutorial

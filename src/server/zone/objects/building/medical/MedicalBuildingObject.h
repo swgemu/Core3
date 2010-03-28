@@ -57,7 +57,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class MedicalBuildingObjectHelper;
-	friend class TransactionalObjectHandle<MedicalBuildingObject>;
+	friend class TransactionalObjectHandle<MedicalBuildingObject*>;
 };
 
 } // namespace medical

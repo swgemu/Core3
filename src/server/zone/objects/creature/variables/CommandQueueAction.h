@@ -86,7 +86,7 @@ namespace commands {
 using namespace server::zone::objects::creature::commands;
 
 class CommandQueueAction {
-	ManagedReference<CreatureObject> creature;
+	ManagedReference<CreatureObject*> creature;
 	uint64 target;
 	uint32 queueCommand;
 

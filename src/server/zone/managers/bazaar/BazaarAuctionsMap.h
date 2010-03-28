@@ -56,7 +56,7 @@ public:
 
 	AuctionItem* getAuction(int index);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 protected:
 	BazaarAuctionsMap(DummyConstructorParameter* param);
@@ -66,7 +66,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class BazaarAuctionsMapHelper;
-	friend class TransactionalObjectHandle<BazaarAuctionsMap>;
+	friend class TransactionalObjectHandle<BazaarAuctionsMap*>;
 };
 
 } // namespace bazaar
@@ -83,7 +83,7 @@ namespace bazaar {
 
 class BazaarAuctionsMapImplementation : public ManagedObjectImplementation {
 protected:
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > > auctions;
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
 
 	VectorMap<unsigned long long, int> playerAuctionCount;
 
@@ -106,7 +106,7 @@ public:
 
 	AuctionItem* getAuction(int index);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 	BazaarAuctionsMap* _this;
 

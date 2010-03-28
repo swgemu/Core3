@@ -33,7 +33,7 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		//ObjectManager* objectManager = zoneServer->getObjectManager();
 
-		ManagedReference<SceneObject> obj = zoneServer->getObject(characterID, true);
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
 			PlayerCreature* player = (PlayerCreature*) obj.get();
@@ -54,7 +54,7 @@ public:
 				int zoneID = player->getSavedZoneID();
 				uint64 savedParentID = player->getSavedParentID();
 
-				ManagedReference<SceneObject> parent = zoneServer->getObject(savedParentID, true);
+				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
 
 				if (parent != NULL) {
 					try {

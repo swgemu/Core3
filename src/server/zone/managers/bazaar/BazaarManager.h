@@ -180,7 +180,7 @@ public:
 
 	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
 protected:
 	BazaarManager(DummyConstructorParameter* param);
@@ -190,7 +190,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class BazaarManagerHelper;
-	friend class TransactionalObjectHandle<BazaarManager>;
+	friend class TransactionalObjectHandle<BazaarManager*>;
 };
 
 } // namespace bazaar
@@ -207,9 +207,9 @@ namespace bazaar {
 
 class BazaarManagerImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedReference<BazaarAuctionsMap > auctionMap;
+	ManagedReference<BazaarAuctionsMap* > auctionMap;
 
-	ManagedWeakReference<ZoneServer > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 public:
 	static const int MAXPRICE = 20000;
@@ -260,7 +260,7 @@ public:
 
 	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
 	BazaarManager* _this;
 

@@ -63,7 +63,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		ManagedReference<SceneObject> object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
 			return false;

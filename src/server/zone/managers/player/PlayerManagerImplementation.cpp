@@ -251,7 +251,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
-	ManagedReference<SceneObject> player = server->createObject(serverObjectCRC, 2); // player
+	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
 
 	if (player == NULL) {
 		error("could not create player... could not create player object");

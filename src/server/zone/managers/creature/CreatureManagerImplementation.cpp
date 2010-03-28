@@ -9,7 +9,7 @@
 #include "server/zone/ZoneServer.h"
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float y, uint64 parentID) {
-	ManagedReference<SceneObject> object = server->createObject(templateCRC, 0);
+	ManagedReference<SceneObject*> object = server->createObject(templateCRC, 0);
 
 	if (object == NULL) {
 		StringBuffer errMsg;

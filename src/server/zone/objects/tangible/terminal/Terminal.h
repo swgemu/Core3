@@ -45,7 +45,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class TerminalHelper;
-	friend class TransactionalObjectHandle<Terminal>;
+	friend class TransactionalObjectHandle<Terminal*>;
 };
 
 } // namespace terminal

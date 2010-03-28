@@ -180,7 +180,7 @@ public:
 
 	void getCustomizationString(String& variables);
 
-	DeltaVector<ManagedReference<SceneObject > >* getDefenderList();
+	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
 	unsigned int getPlayerUseMask();
 
@@ -196,7 +196,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class TangibleObjectHelper;
-	friend class TransactionalObjectHandle<TangibleObject>;
+	friend class TransactionalObjectHandle<TangibleObject*>;
 };
 
 } // namespace tangible
@@ -235,7 +235,7 @@ protected:
 
 	String craftersName;
 
-	DeltaVector<ManagedReference<SceneObject > > defenderList;
+	DeltaVector<ManagedReference<SceneObject* > > defenderList;
 
 	unsigned short playerUseMask;
 
@@ -356,7 +356,7 @@ public:
 
 	void getCustomizationString(String& variables);
 
-	DeltaVector<ManagedReference<SceneObject > >* getDefenderList();
+	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
 	unsigned int getPlayerUseMask();
 

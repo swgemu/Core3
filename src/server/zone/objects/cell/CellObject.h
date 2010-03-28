@@ -54,7 +54,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class CellObjectHelper;
-	friend class TransactionalObjectHandle<CellObject>;
+	friend class TransactionalObjectHandle<CellObject*>;
 };
 
 } // namespace cell

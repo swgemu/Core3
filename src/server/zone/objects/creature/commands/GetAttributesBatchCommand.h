@@ -87,7 +87,7 @@ public:
 			if (objid == 0)
 				continue;
 
-			ManagedReference<SceneObject> object = zone->getZoneServer()->getObject(objid);
+			ManagedReference<SceneObject*> object = zone->getZoneServer()->getObject(objid);
 
 			if (object != NULL) {
 				object->sendAttributeListTo((PlayerCreature*)creature);

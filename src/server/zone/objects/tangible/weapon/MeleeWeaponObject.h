@@ -47,7 +47,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class MeleeWeaponObjectHelper;
-	friend class TransactionalObjectHandle<MeleeWeaponObject>;
+	friend class TransactionalObjectHandle<MeleeWeaponObject*>;
 };
 
 } // namespace weapon

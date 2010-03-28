@@ -178,7 +178,7 @@ int BankTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 
 	else 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(92):  
 	if (selectedID == 20){
-	ManagedReference<SuiBankTransferBox> _ref0;
+	ManagedReference<SuiBankTransferBox*> _ref0;
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(93):  			SuiBankTransferBox sui = new SuiBankTransferBox(this, player, SuiWindowType.BANK_TRANSFER);
 	SuiBankTransferBox* sui = _ref0 = new SuiBankTransferBox(_this, player, SuiWindowType::BANK_TRANSFER);
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(95):  			sui.addCash(player.getCashCredits());

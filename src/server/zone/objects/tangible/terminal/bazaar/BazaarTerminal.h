@@ -104,7 +104,7 @@ public:
 
 	void dropAuction(unsigned long long auctionItemID);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 
@@ -120,7 +120,7 @@ protected:
 	String _return_getBazaarRegion;
 
 	friend class BazaarTerminalHelper;
-	friend class TransactionalObjectHandle<BazaarTerminal>;
+	friend class TransactionalObjectHandle<BazaarTerminal*>;
 };
 
 } // namespace bazaar
@@ -143,7 +143,7 @@ class BazaarTerminalImplementation : public TerminalImplementation {
 protected:
 	String bazaarRegion;
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > > auctions;
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
 
 public:
 	BazaarTerminalImplementation();
@@ -158,7 +158,7 @@ public:
 
 	void dropAuction(unsigned long long auctionItemID);
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem > >* getAuctions();
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
 	void setBazaarRegion(const String& region);
 

@@ -12,7 +12,7 @@
 #include "../scene/variables/StringId.h"
 
 class GroupMember : public Variable {
-	ManagedReference<SceneObject> creature;
+	ManagedReference<SceneObject*> creature;
 
 public:
 	GroupMember() {

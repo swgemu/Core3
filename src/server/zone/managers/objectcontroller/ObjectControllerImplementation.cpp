@@ -58,7 +58,7 @@ void ObjectControllerImplementation::finalize() {
 }
 
 bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	ManagedReference<SceneObject> parent = objectToTransfer->getParent();
+	ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
 
 	if (parent == NULL) {
 		error("objectToTransfer parent is NULL in ObjectManager::transferObject");

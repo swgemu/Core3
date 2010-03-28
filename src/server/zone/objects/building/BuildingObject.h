@@ -142,7 +142,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class BuildingObjectHelper;
-	friend class TransactionalObjectHandle<BuildingObject>;
+	friend class TransactionalObjectHandle<BuildingObject*>;
 };
 
 } // namespace building
@@ -159,7 +159,7 @@ namespace building {
 
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
 protected:
-	Vector<ManagedReference<CellObject > > cells;
+	Vector<ManagedReference<CellObject* > > cells;
 
 	int totalCellNumber;
 

@@ -226,7 +226,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class ChatManagerHelper;
-	friend class TransactionalObjectHandle<ChatManager>;
+	friend class TransactionalObjectHandle<ChatManager*>;
 };
 
 } // namespace chat
@@ -238,17 +238,17 @@ namespace server {
 namespace chat {
 
 class ChatManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<ZoneServer > server;
+	ManagedReference<ZoneServer* > server;
 
-	ManagedReference<PlayerManager > playerManager;
+	ManagedReference<PlayerManager* > playerManager;
 
 	PlayerMap* playerMap;
 
-	VectorMap<String, ManagedReference<ChatRoom > > gameRooms;
+	VectorMap<String, ManagedReference<ChatRoom* > > gameRooms;
 
-	ManagedReference<ChatRoom > groupRoom;
+	ManagedReference<ChatRoom* > groupRoom;
 
-	ManagedReference<ChatRoom > guildRoom;
+	ManagedReference<ChatRoom* > guildRoom;
 
 	ChatRoomMap* roomMap;
 

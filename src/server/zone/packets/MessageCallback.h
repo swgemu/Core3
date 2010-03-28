@@ -19,7 +19,8 @@ namespace packets {
 
 	class MessageCallback : public Task {
 	protected:
-		Reference<ZoneClientSession> client;
+		Reference<ZoneClientSession*> client;
+
 		ZoneProcessServerImplementation* server;
 
 	public:

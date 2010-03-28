@@ -50,7 +50,7 @@ protected:
 	TransactionalObject* clone();
 
 	friend class IntangibleObjectHelper;
-	friend class TransactionalObjectHandle<IntangibleObject>;
+	friend class TransactionalObjectHandle<IntangibleObject*>;
 };
 
 } // namespace intangible

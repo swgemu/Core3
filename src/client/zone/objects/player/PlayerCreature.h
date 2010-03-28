@@ -7,7 +7,7 @@ class Zone;
 
 class PlayerCreature : public CreatureObject {
 protected:
-	Reference<SceneObject> follow;
+	Reference<SceneObject*> follow;
 
 public:
 	PlayerCreature(LuaObject* templateData);
