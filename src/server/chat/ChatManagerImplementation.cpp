@@ -537,15 +537,15 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 
 	PlayerCreature* player = (PlayerCreature*) receiver.get();
 
-	/*ParameterizedStringId test("base_player", "sale_fee");
+	ParameterizedStringId test("base_player", "sale_fee");
 	test.setDI(100);
-	test.setUnknownByte(1);*/
+	test.setUnknownByte(1);
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(header);
-	mail->setBody(body);
-	//mail->setParameterizedBody(test);
+	//mail->setBody(body);
+	mail->setParameterizedBody(test);
 	mail->setReceiverObjectID(receiverObjectID);
 	mail->setTimeStamp(currentTime);
 
@@ -556,7 +556,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 	player->addPersistentMessage(mail->getObjectID());
 
 	if (player->isOnline()) {
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, test, currentTime, 'N');
 		player->sendMessage(mmsg);
 	}
 
