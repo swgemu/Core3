@@ -72,7 +72,7 @@ public:
 		
 		insertUnicode(subject);
 		
-		insertInt(0); //sequence?
+		insertInt(0); //ParamertizedStringID
 		
 		insertByte(status); // status 'N' 'U' or 'R'
 		
@@ -98,14 +98,14 @@ public:
 
 		insertByte(type);
 
+		insertInt(0);
+
+		insertUnicode(subject);
+
 		if (type == 0x00)
 			body.addToPacketStream(this);
 		else
 			insertInt(0);
-
-		insertUnicode(subject);
-
-		insertInt(0); //sequence?
 
 		insertByte(status); // status 'N' 'U' or 'R'
 
