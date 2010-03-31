@@ -13,23 +13,14 @@
  */
 
 CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CloningBuildingObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new CloningBuildingObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 CloningBuildingObject::CloningBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
 }
 
 CloningBuildingObject::~CloningBuildingObject() {
-}
-
-
-TransactionalObject* CloningBuildingObject::clone() {
-	CloningBuildingObject* objectCopy = new CloningBuildingObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new CloningBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*((CloningBuildingObjectImplementation*) objectCopy->_impl) = *((CloningBuildingObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
 }
 
 
@@ -66,6 +57,13 @@ DistributedObjectStub* CloningBuildingObjectImplementation::_getStub() {
 CloningBuildingObjectImplementation::operator const CloningBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* CloningBuildingObjectImplementation::clone() {
+	CloningBuildingObjectImplementation* objectCopy = new CloningBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*((CloningBuildingObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void CloningBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

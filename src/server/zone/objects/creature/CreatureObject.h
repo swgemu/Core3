@@ -371,15 +371,12 @@ protected:
 
 	virtual ~CreatureObject();
 
-	TransactionalObject* clone();
-
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
 
 	UnicodeString _return_getCreatureName;
 
 	friend class CreatureObjectHelper;
-	friend class TransactionalObjectHandle<CreatureObject*>;
 };
 
 } // namespace creature
@@ -721,6 +718,8 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -742,6 +741,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CreatureObject;
+	friend class TransactionalObjectHandle<CreatureObjectImplementation*>;
 };
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {

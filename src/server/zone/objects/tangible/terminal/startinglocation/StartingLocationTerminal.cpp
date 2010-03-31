@@ -15,8 +15,8 @@
  */
 
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StartingLocationTerminalImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new StartingLocationTerminalImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -26,17 +26,8 @@ StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
 
-TransactionalObject* StartingLocationTerminal::clone() {
-	StartingLocationTerminal* objectCopy = new StartingLocationTerminal(DummyConstructorParameter::instance());
-	objectCopy->_impl = new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
-	*((StartingLocationTerminalImplementation*) objectCopy->_impl) = *((StartingLocationTerminalImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void StartingLocationTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,11 +35,11 @@ void StartingLocationTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StartingLocationTerminalImplementation*) _impl)->initializeTransientMembers();
+		((StartingLocationTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,7 +49,7 @@ int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StartingLocationTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StartingLocationTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -94,6 +85,13 @@ DistributedObjectStub* StartingLocationTerminalImplementation::_getStub() {
 StartingLocationTerminalImplementation::operator const StartingLocationTerminal*() {
 	return _this;
 }
+
+TransactionalObject* StartingLocationTerminalImplementation::clone() {
+	StartingLocationTerminalImplementation* objectCopy = new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
+	*((StartingLocationTerminalImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void StartingLocationTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

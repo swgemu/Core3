@@ -11,8 +11,8 @@
  */
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new CellObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -22,25 +22,16 @@ CellObject::~CellObject() {
 }
 
 
-TransactionalObject* CellObject::clone() {
-	CellObject* objectCopy = new CellObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new CellObjectImplementation(DummyConstructorParameter::instance());
-	*((CellObjectImplementation*) objectCopy->_impl) = *((CellObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void CellObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CellObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((CellObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void CellObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,11 +39,11 @@ void CellObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->initializeTransientMembers();
+		((CellObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void CellObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +52,11 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((CellObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 int CellObject::getCellNumber() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +64,11 @@ int CellObject::getCellNumber() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->getCellNumber();
+		return ((CellObjectImplementation*) _getImplementation())->getCellNumber();
 }
 
 void CellObject::setCellNumber(int number) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,7 +77,7 @@ void CellObject::setCellNumber(int number) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->setCellNumber(number);
+		((CellObjectImplementation*) _getImplementation())->setCellNumber(number);
 }
 
 /*
@@ -120,6 +111,13 @@ DistributedObjectStub* CellObjectImplementation::_getStub() {
 CellObjectImplementation::operator const CellObject*() {
 	return _this;
 }
+
+TransactionalObject* CellObjectImplementation::clone() {
+	CellObjectImplementation* objectCopy = new CellObjectImplementation(DummyConstructorParameter::instance());
+	*((CellObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void CellObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -94,10 +94,7 @@ protected:
 
 	virtual ~TutorialBuildingObject();
 
-	TransactionalObject* clone();
-
 	friend class TutorialBuildingObjectHelper;
-	friend class TransactionalObjectHandle<TutorialBuildingObject*>;
 };
 
 } // namespace tutorial
@@ -145,6 +142,8 @@ public:
 protected:
 	virtual ~TutorialBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -168,6 +167,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TutorialBuildingObject;
+	friend class TransactionalObjectHandle<TutorialBuildingObjectImplementation*>;
 };
 
 class TutorialBuildingObjectAdapter : public BuildingObjectAdapter {

@@ -15,8 +15,8 @@
  */
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new MissionObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new MissionObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 MissionObject::MissionObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -26,17 +26,8 @@ MissionObject::~MissionObject() {
 }
 
 
-TransactionalObject* MissionObject::clone() {
-	MissionObject* objectCopy = new MissionObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new MissionObjectImplementation(DummyConstructorParameter::instance());
-	*((MissionObjectImplementation*) objectCopy->_impl) = *((MissionObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void MissionObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,11 +35,11 @@ void MissionObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->initializeTransientMembers();
+		((MissionObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void MissionObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +48,11 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((MissionObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 WaypointObject* MissionObject::getWaypointToMission() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +60,11 @@ WaypointObject* MissionObject::getWaypointToMission() {
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getWaypointToMission();
+		return ((MissionObjectImplementation*) _getImplementation())->getWaypointToMission();
 }
 
 unsigned int MissionObject::getTypeCRC() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -81,11 +72,11 @@ unsigned int MissionObject::getTypeCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getTypeCRC();
+		return ((MissionObjectImplementation*) _getImplementation())->getTypeCRC();
 }
 
 int MissionObject::getRewardCredits() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +84,11 @@ int MissionObject::getRewardCredits() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getRewardCredits();
+		return ((MissionObjectImplementation*) _getImplementation())->getRewardCredits();
 }
 
 UnicodeString MissionObject::getCreatorName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,11 +97,11 @@ UnicodeString MissionObject::getCreatorName() {
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
 	} else
-		return ((MissionObjectImplementation*) _impl)->getCreatorName();
+		return ((MissionObjectImplementation*) _getImplementation())->getCreatorName();
 }
 
 int MissionObject::getDifficultyLevel() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,27 +109,27 @@ int MissionObject::getDifficultyLevel() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getDifficultyLevel();
+		return ((MissionObjectImplementation*) _getImplementation())->getDifficultyLevel();
 }
 
 StringId* MissionObject::getMissionDescription() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((MissionObjectImplementation*) _impl)->getMissionDescription();
+		return ((MissionObjectImplementation*) _getImplementation())->getMissionDescription();
 }
 
 StringId* MissionObject::getMissionTitle() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((MissionObjectImplementation*) _impl)->getMissionTitle();
+		return ((MissionObjectImplementation*) _getImplementation())->getMissionTitle();
 }
 
 String MissionObject::getTargetName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -147,11 +138,11 @@ String MissionObject::getTargetName() {
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
 	} else
-		return ((MissionObjectImplementation*) _impl)->getTargetName();
+		return ((MissionObjectImplementation*) _getImplementation())->getTargetName();
 }
 
 int MissionObject::getRefreshCounter() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,11 +150,11 @@ int MissionObject::getRefreshCounter() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getRefreshCounter();
+		return ((MissionObjectImplementation*) _getImplementation())->getRefreshCounter();
 }
 
 unsigned int MissionObject::getTargetTemplateCRC() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -171,7 +162,7 @@ unsigned int MissionObject::getTargetTemplateCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getTargetTemplateCRC();
+		return ((MissionObjectImplementation*) _getImplementation())->getTargetTemplateCRC();
 }
 
 /*
@@ -205,6 +196,13 @@ DistributedObjectStub* MissionObjectImplementation::_getStub() {
 MissionObjectImplementation::operator const MissionObject*() {
 	return _this;
 }
+
+TransactionalObject* MissionObjectImplementation::clone() {
+	MissionObjectImplementation* objectCopy = new MissionObjectImplementation(DummyConstructorParameter::instance());
+	*((MissionObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void MissionObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

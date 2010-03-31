@@ -56,10 +56,7 @@ protected:
 
 	virtual ~CraftingTool();
 
-	TransactionalObject* clone();
-
 	friend class CraftingToolHelper;
-	friend class TransactionalObjectHandle<CraftingTool*>;
 };
 
 } // namespace tool
@@ -93,6 +90,8 @@ public:
 protected:
 	virtual ~CraftingToolImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -116,6 +115,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingTool;
+	friend class TransactionalObjectHandle<CraftingToolImplementation*>;
 };
 
 class CraftingToolAdapter : public ToolTangibleObjectAdapter {

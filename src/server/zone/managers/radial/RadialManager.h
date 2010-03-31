@@ -85,10 +85,7 @@ protected:
 
 	virtual ~RadialManager();
 
-	TransactionalObject* clone();
-
 	friend class RadialManagerHelper;
-	friend class TransactionalObjectHandle<RadialManager*>;
 };
 
 } // namespace radial
@@ -123,6 +120,8 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -146,6 +145,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RadialManager;
+	friend class TransactionalObjectHandle<RadialManagerImplementation*>;
 };
 
 class RadialManagerAdapter : public ManagedObjectAdapter {

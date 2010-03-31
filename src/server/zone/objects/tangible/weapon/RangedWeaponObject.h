@@ -44,10 +44,7 @@ protected:
 
 	virtual ~RangedWeaponObject();
 
-	TransactionalObject* clone();
-
 	friend class RangedWeaponObjectHelper;
-	friend class TransactionalObjectHandle<RangedWeaponObject*>;
 };
 
 } // namespace weapon
@@ -83,6 +80,8 @@ public:
 protected:
 	virtual ~RangedWeaponObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -106,6 +105,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RangedWeaponObject;
+	friend class TransactionalObjectHandle<RangedWeaponObjectImplementation*>;
 };
 
 class RangedWeaponObjectAdapter : public WeaponObjectAdapter {

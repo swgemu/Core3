@@ -56,10 +56,7 @@ protected:
 
 	virtual ~SurveyTool();
 
-	TransactionalObject* clone();
-
 	friend class SurveyToolHelper;
-	friend class TransactionalObjectHandle<SurveyTool*>;
 };
 
 } // namespace tool
@@ -93,6 +90,8 @@ public:
 protected:
 	virtual ~SurveyToolImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -116,6 +115,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SurveyTool;
+	friend class TransactionalObjectHandle<SurveyToolImplementation*>;
 };
 
 class SurveyToolAdapter : public ToolTangibleObjectAdapter {

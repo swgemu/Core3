@@ -21,8 +21,8 @@
  */
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new PlanetManagerImplementation(planet, srv);
-	_impl->_setStub(this);
+	_setImplementation(new PlanetManagerImplementation(planet, srv));
+	_getImplementation()->_setStub(this);
 }
 
 PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -32,17 +32,8 @@ PlanetManager::~PlanetManager() {
 }
 
 
-TransactionalObject* PlanetManager::clone() {
-	PlanetManager* objectCopy = new PlanetManager(DummyConstructorParameter::instance());
-	objectCopy->_impl = new PlanetManagerImplementation(DummyConstructorParameter::instance());
-	*((PlanetManagerImplementation*) objectCopy->_impl) = *((PlanetManagerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void PlanetManager::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +41,11 @@ void PlanetManager::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->initializeTransientMembers();
+		((PlanetManagerImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void PlanetManager::initialize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +53,11 @@ void PlanetManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->initialize();
+		((PlanetManagerImplementation*) _getImplementation())->initialize();
 }
 
 void PlanetManager::loadRegions() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,19 +65,19 @@ void PlanetManager::loadRegions() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->loadRegions();
+		((PlanetManagerImplementation*) _getImplementation())->loadRegions();
 }
 
 bool PlanetManager::getRegion(StringId& name, float x, float y) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(name, x, y);
+		return ((PlanetManagerImplementation*) _getImplementation())->getRegion(name, x, y);
 }
 
 StructureManager* PlanetManager::getStructureManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,19 +85,19 @@ StructureManager* PlanetManager::getStructureManager() {
 
 		return (StructureManager*) method.executeWithObjectReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getStructureManager();
+		return ((PlanetManagerImplementation*) _getImplementation())->getStructureManager();
 }
 
 TerrainManager* PlanetManager::getTerrainManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getTerrainManager();
+		return ((PlanetManagerImplementation*) _getImplementation())->getTerrainManager();
 }
 
 Region* PlanetManager::getRegion(float x, float y) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +107,11 @@ Region* PlanetManager::getRegion(float x, float y) {
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(x, y);
+		return ((PlanetManagerImplementation*) _getImplementation())->getRegion(x, y);
 }
 
 int PlanetManager::getRegionCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +119,11 @@ int PlanetManager::getRegionCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegionCount();
+		return ((PlanetManagerImplementation*) _getImplementation())->getRegionCount();
 }
 
 Region* PlanetManager::getRegion(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -141,11 +132,11 @@ Region* PlanetManager::getRegion(int index) {
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(index);
+		return ((PlanetManagerImplementation*) _getImplementation())->getRegion(index);
 }
 
 Region* PlanetManager::getRegion(const String& regionName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -154,7 +145,7 @@ Region* PlanetManager::getRegion(const String& regionName) {
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(regionName);
+		return ((PlanetManagerImplementation*) _getImplementation())->getRegion(regionName);
 }
 
 /*
@@ -188,6 +179,13 @@ DistributedObjectStub* PlanetManagerImplementation::_getStub() {
 PlanetManagerImplementation::operator const PlanetManager*() {
 	return _this;
 }
+
+TransactionalObject* PlanetManagerImplementation::clone() {
+	PlanetManagerImplementation* objectCopy = new PlanetManagerImplementation(DummyConstructorParameter::instance());
+	*((PlanetManagerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void PlanetManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

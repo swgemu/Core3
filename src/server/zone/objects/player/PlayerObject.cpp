@@ -23,8 +23,8 @@
  */
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new PlayerObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new PlayerObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -34,25 +34,16 @@ PlayerObject::~PlayerObject() {
 }
 
 
-TransactionalObject* PlayerObject::clone() {
-	PlayerObject* objectCopy = new PlayerObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new PlayerObjectImplementation(DummyConstructorParameter::instance());
-	*((PlayerObjectImplementation*) objectCopy->_impl) = *((PlayerObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void PlayerObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((PlayerObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void PlayerObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,11 +51,11 @@ void PlayerObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->initializeTransientMembers();
+		((PlayerObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void PlayerObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +64,11 @@ void PlayerObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((PlayerObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void PlayerObject::sendMessage(BasePacket* msg) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +77,11 @@ void PlayerObject::sendMessage(BasePacket* msg) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->sendMessage(msg);
+		((PlayerObjectImplementation*) _getImplementation())->sendMessage(msg);
 }
 
 void PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,11 +92,11 @@ void PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->addExperience(xpType, xp, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addExperience(xpType, xp, notifyClient);
 }
 
 void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,19 +106,19 @@ void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeExperience(xpType, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeExperience(xpType, notifyClient);
 }
 
 void PlayerObject::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->addWaypoint(waypoint, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addWaypoint(waypoint, notifyClient);
 }
 
 void PlayerObject::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,11 +130,11 @@ void PlayerObject::addWaypoint(const String& planet, float positionX, float posi
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->addWaypoint(planet, positionX, positionY, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addWaypoint(planet, positionX, positionY, notifyClient);
 }
 
 void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,43 +144,43 @@ void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClie
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeWaypoint(waypointID, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeWaypoint(waypointID, notifyClient);
 }
 
 void PlayerObject::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->addSkills(skills, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addSkills(skills, notifyClient);
 }
 
 void PlayerObject::addSkills(Vector<Certification*>& skills, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->addSkills(skills, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addSkills(skills, notifyClient);
 }
 
 void PlayerObject::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->removeSkills(skills, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeSkills(skills, notifyClient);
 }
 
 void PlayerObject::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerObjectImplementation*) _impl)->removeSkills(skills, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeSkills(skills, notifyClient);
 }
 
 void PlayerObject::setLanguageID(byte language, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -199,11 +190,11 @@ void PlayerObject::setLanguageID(byte language, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->setLanguageID(language, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->setLanguageID(language, notifyClient);
 }
 
 void PlayerObject::addFriend(const String& name, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -213,11 +204,11 @@ void PlayerObject::addFriend(const String& name, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->addFriend(name, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addFriend(name, notifyClient);
 }
 
 void PlayerObject::removeFriend(const String& name, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -227,11 +218,11 @@ void PlayerObject::removeFriend(const String& name, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeFriend(name, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeFriend(name, notifyClient);
 }
 
 void PlayerObject::addIgnore(const String& name, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -241,11 +232,11 @@ void PlayerObject::addIgnore(const String& name, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->addIgnore(name, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->addIgnore(name, notifyClient);
 }
 
 void PlayerObject::removeIgnore(const String& name, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -255,11 +246,11 @@ void PlayerObject::removeIgnore(const String& name, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeIgnore(name, notifyClient);
+		((PlayerObjectImplementation*) _getImplementation())->removeIgnore(name, notifyClient);
 }
 
 void PlayerObject::notifyOnline() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -267,11 +258,11 @@ void PlayerObject::notifyOnline() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->notifyOnline();
+		((PlayerObjectImplementation*) _getImplementation())->notifyOnline();
 }
 
 void PlayerObject::notifyOffline() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -279,11 +270,11 @@ void PlayerObject::notifyOffline() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->notifyOffline();
+		((PlayerObjectImplementation*) _getImplementation())->notifyOffline();
 }
 
 bool PlayerObject::hasFriend(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -292,11 +283,11 @@ bool PlayerObject::hasFriend(const String& name) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->hasFriend(name);
+		return ((PlayerObjectImplementation*) _getImplementation())->hasFriend(name);
 }
 
 bool PlayerObject::isIgnoring(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -305,11 +296,11 @@ bool PlayerObject::isIgnoring(const String& name) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->isIgnoring(name);
+		return ((PlayerObjectImplementation*) _getImplementation())->isIgnoring(name);
 }
 
 void PlayerObject::addReverseFriend(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -318,11 +309,11 @@ void PlayerObject::addReverseFriend(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->addReverseFriend(name);
+		((PlayerObjectImplementation*) _getImplementation())->addReverseFriend(name);
 }
 
 void PlayerObject::removeReverseFriend(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -331,11 +322,11 @@ void PlayerObject::removeReverseFriend(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeReverseFriend(name);
+		((PlayerObjectImplementation*) _getImplementation())->removeReverseFriend(name);
 }
 
 void PlayerObject::sendFriendLists() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -343,11 +334,11 @@ void PlayerObject::sendFriendLists() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->sendFriendLists();
+		((PlayerObjectImplementation*) _getImplementation())->sendFriendLists();
 }
 
 bool PlayerObject::hasWaypoint(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -356,19 +347,19 @@ bool PlayerObject::hasWaypoint(unsigned long long objectID) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->hasWaypoint(objectID);
+		return ((PlayerObjectImplementation*) _getImplementation())->hasWaypoint(objectID);
 }
 
 bool PlayerObject::hasSkill(Skill* skill) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->hasSkill(skill);
+		return ((PlayerObjectImplementation*) _getImplementation())->hasSkill(skill);
 }
 
 bool PlayerObject::hasSkill(const String& skillName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -377,11 +368,11 @@ bool PlayerObject::hasSkill(const String& skillName) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->hasSkill(skillName);
+		return ((PlayerObjectImplementation*) _getImplementation())->hasSkill(skillName);
 }
 
 unsigned int PlayerObject::getCharacterBitmask() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -389,11 +380,11 @@ unsigned int PlayerObject::getCharacterBitmask() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getCharacterBitmask();
+		return ((PlayerObjectImplementation*) _getImplementation())->getCharacterBitmask();
 }
 
 String PlayerObject::getTitle() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -402,11 +393,11 @@ String PlayerObject::getTitle() {
 		method.executeWithAsciiReturn(_return_getTitle);
 		return _return_getTitle;
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getTitle();
+		return ((PlayerObjectImplementation*) _getImplementation())->getTitle();
 }
 
 unsigned int PlayerObject::getAdminLevel() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -414,11 +405,11 @@ unsigned int PlayerObject::getAdminLevel() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getAdminLevel();
+		return ((PlayerObjectImplementation*) _getImplementation())->getAdminLevel();
 }
 
 void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -427,11 +418,11 @@ void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->setCharacterBitmask(bitmask);
+		((PlayerObjectImplementation*) _getImplementation())->setCharacterBitmask(bitmask);
 }
 
 bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -441,11 +432,11 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->setCharacterBit(bit, notifyClient);
+		return ((PlayerObjectImplementation*) _getImplementation())->setCharacterBit(bit, notifyClient);
 }
 
 bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -455,11 +446,11 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->clearCharacterBit(bit, notifyClient);
+		return ((PlayerObjectImplementation*) _getImplementation())->clearCharacterBit(bit, notifyClient);
 }
 
 void PlayerObject::setTitle(const String& characterTitle) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -468,19 +459,19 @@ void PlayerObject::setTitle(const String& characterTitle) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->setTitle(characterTitle);
+		((PlayerObjectImplementation*) _getImplementation())->setTitle(characterTitle);
 }
 
 DeltaVectorMap<String, int>* PlayerObject::getExperienceList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getExperienceList();
+		return ((PlayerObjectImplementation*) _getImplementation())->getExperienceList();
 }
 
 int PlayerObject::getForcePower() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -488,11 +479,11 @@ int PlayerObject::getForcePower() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getForcePower();
+		return ((PlayerObjectImplementation*) _getImplementation())->getForcePower();
 }
 
 int PlayerObject::getForcePowerMax() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -500,27 +491,27 @@ int PlayerObject::getForcePowerMax() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getForcePowerMax();
+		return ((PlayerObjectImplementation*) _getImplementation())->getForcePowerMax();
 }
 
 WaypointList* PlayerObject::getWaypointList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getWaypointList();
+		return ((PlayerObjectImplementation*) _getImplementation())->getWaypointList();
 }
 
 SkillList* PlayerObject::getSkills() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getSkills();
+		return ((PlayerObjectImplementation*) _getImplementation())->getSkills();
 }
 
 int PlayerObject::getFoodFilling() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -528,11 +519,11 @@ int PlayerObject::getFoodFilling() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getFoodFilling();
+		return ((PlayerObjectImplementation*) _getImplementation())->getFoodFilling();
 }
 
 int PlayerObject::getFoodFillingMax() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -540,11 +531,11 @@ int PlayerObject::getFoodFillingMax() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getFoodFillingMax();
+		return ((PlayerObjectImplementation*) _getImplementation())->getFoodFillingMax();
 }
 
 int PlayerObject::getDrinkFilling() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -552,11 +543,11 @@ int PlayerObject::getDrinkFilling() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getDrinkFilling();
+		return ((PlayerObjectImplementation*) _getImplementation())->getDrinkFilling();
 }
 
 int PlayerObject::getDrinkFillingMax() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -564,11 +555,11 @@ int PlayerObject::getDrinkFillingMax() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getDrinkFillingMax();
+		return ((PlayerObjectImplementation*) _getImplementation())->getDrinkFillingMax();
 }
 
 int PlayerObject::getJediState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -576,11 +567,11 @@ int PlayerObject::getJediState() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getJediState();
+		return ((PlayerObjectImplementation*) _getImplementation())->getJediState();
 }
 
 byte PlayerObject::getLanguageID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -588,23 +579,23 @@ byte PlayerObject::getLanguageID() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getLanguageID();
+		return ((PlayerObjectImplementation*) _getImplementation())->getLanguageID();
 }
 
 DeltaVector<String>* PlayerObject::getFriendList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getFriendList();
+		return ((PlayerObjectImplementation*) _getImplementation())->getFriendList();
 }
 
 DeltaVector<String>* PlayerObject::getIgnoreList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getIgnoreList();
+		return ((PlayerObjectImplementation*) _getImplementation())->getIgnoreList();
 }
 
 /*
@@ -638,6 +629,13 @@ DistributedObjectStub* PlayerObjectImplementation::_getStub() {
 PlayerObjectImplementation::operator const PlayerObject*() {
 	return _this;
 }
+
+TransactionalObject* PlayerObjectImplementation::clone() {
+	PlayerObjectImplementation* objectCopy = new PlayerObjectImplementation(DummyConstructorParameter::instance());
+	*((PlayerObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void PlayerObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -13,23 +13,14 @@
  */
 
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new MedicalBuildingObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new MedicalBuildingObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 MedicalBuildingObject::MedicalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
 }
 
 MedicalBuildingObject::~MedicalBuildingObject() {
-}
-
-
-TransactionalObject* MedicalBuildingObject::clone() {
-	MedicalBuildingObject* objectCopy = new MedicalBuildingObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new MedicalBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*((MedicalBuildingObjectImplementation*) objectCopy->_impl) = *((MedicalBuildingObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
 }
 
 
@@ -66,6 +57,13 @@ DistributedObjectStub* MedicalBuildingObjectImplementation::_getStub() {
 MedicalBuildingObjectImplementation::operator const MedicalBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* MedicalBuildingObjectImplementation::clone() {
+	MedicalBuildingObjectImplementation* objectCopy = new MedicalBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*((MedicalBuildingObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void MedicalBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

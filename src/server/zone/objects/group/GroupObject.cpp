@@ -13,8 +13,8 @@
  */
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new GroupObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new GroupObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 GroupObject::GroupObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -24,17 +24,8 @@ GroupObject::~GroupObject() {
 }
 
 
-TransactionalObject* GroupObject::clone() {
-	GroupObject* objectCopy = new GroupObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new GroupObjectImplementation(DummyConstructorParameter::instance());
-	*((GroupObjectImplementation*) objectCopy->_impl) = *((GroupObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void GroupObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +34,11 @@ void GroupObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((GroupObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void GroupObject::broadcastMessage(BaseMessage* msg) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,11 +47,11 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->broadcastMessage(msg);
+		((GroupObjectImplementation*) _getImplementation())->broadcastMessage(msg);
 }
 
 void GroupObject::addMember(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +60,11 @@ void GroupObject::addMember(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->addMember(player);
+		((GroupObjectImplementation*) _getImplementation())->addMember(player);
 }
 
 void GroupObject::removeMember(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +73,11 @@ void GroupObject::removeMember(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->removeMember(player);
+		((GroupObjectImplementation*) _getImplementation())->removeMember(player);
 }
 
 void GroupObject::disband() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +85,11 @@ void GroupObject::disband() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->disband();
+		((GroupObjectImplementation*) _getImplementation())->disband();
 }
 
 void GroupObject::makeLeader(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +98,11 @@ void GroupObject::makeLeader(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->makeLeader(player);
+		((GroupObjectImplementation*) _getImplementation())->makeLeader(player);
 }
 
 bool GroupObject::hasMember(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +111,11 @@ bool GroupObject::hasMember(SceneObject* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->hasMember(player);
+		return ((GroupObjectImplementation*) _getImplementation())->hasMember(player);
 }
 
 void GroupObject::startChatRoom() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +123,11 @@ void GroupObject::startChatRoom() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->startChatRoom();
+		((GroupObjectImplementation*) _getImplementation())->startChatRoom();
 }
 
 void GroupObject::destroyChatRoom() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +135,11 @@ void GroupObject::destroyChatRoom() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->destroyChatRoom();
+		((GroupObjectImplementation*) _getImplementation())->destroyChatRoom();
 }
 
 int GroupObject::getGroupLevel() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -156,11 +147,11 @@ int GroupObject::getGroupLevel() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->getGroupLevel();
+		return ((GroupObjectImplementation*) _getImplementation())->getGroupLevel();
 }
 
 ChatRoom* GroupObject::getGroupChannel() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -168,11 +159,11 @@ ChatRoom* GroupObject::getGroupChannel() {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->getGroupChannel();
+		return ((GroupObjectImplementation*) _getImplementation())->getGroupChannel();
 }
 
 int GroupObject::getGroupSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,11 +171,11 @@ int GroupObject::getGroupSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->getGroupSize();
+		return ((GroupObjectImplementation*) _getImplementation())->getGroupSize();
 }
 
 SceneObject* GroupObject::getGroupMember(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +184,11 @@ SceneObject* GroupObject::getGroupMember(int index) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->getGroupMember(index);
+		return ((GroupObjectImplementation*) _getImplementation())->getGroupMember(index);
 }
 
 void GroupObject::initializeLeader(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -206,11 +197,11 @@ void GroupObject::initializeLeader(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->initializeLeader(player);
+		((GroupObjectImplementation*) _getImplementation())->initializeLeader(player);
 }
 
 SceneObject* GroupObject::getLeader() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -218,15 +209,15 @@ SceneObject* GroupObject::getLeader() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->getLeader();
+		return ((GroupObjectImplementation*) _getImplementation())->getLeader();
 }
 
 GroupList* GroupObject::getGroupList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GroupObjectImplementation*) _impl)->getGroupList();
+		return ((GroupObjectImplementation*) _getImplementation())->getGroupList();
 }
 
 /*
@@ -262,6 +253,13 @@ DistributedObjectStub* GroupObjectImplementation::_getStub() {
 GroupObjectImplementation::operator const GroupObject*() {
 	return _this;
 }
+
+TransactionalObject* GroupObjectImplementation::clone() {
+	GroupObjectImplementation* objectCopy = new GroupObjectImplementation(DummyConstructorParameter::instance());
+	*((GroupObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void GroupObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

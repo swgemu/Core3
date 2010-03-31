@@ -13,8 +13,8 @@
  */
 
 SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new SurveyToolImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new SurveyToolImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 SurveyTool::SurveyTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -24,17 +24,8 @@ SurveyTool::~SurveyTool() {
 }
 
 
-TransactionalObject* SurveyTool::clone() {
-	SurveyTool* objectCopy = new SurveyTool(DummyConstructorParameter::instance());
-	objectCopy->_impl = new SurveyToolImplementation(DummyConstructorParameter::instance());
-	*((SurveyToolImplementation*) objectCopy->_impl) = *((SurveyToolImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void SurveyTool::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,7 +33,7 @@ void SurveyTool::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->initializeTransientMembers();
+		((SurveyToolImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -78,6 +69,13 @@ DistributedObjectStub* SurveyToolImplementation::_getStub() {
 SurveyToolImplementation::operator const SurveyTool*() {
 	return _this;
 }
+
+TransactionalObject* SurveyToolImplementation::clone() {
+	SurveyToolImplementation* objectCopy = new SurveyToolImplementation(DummyConstructorParameter::instance());
+	*((SurveyToolImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void SurveyToolImplementation::lock(bool doLock) {
 	_this->lock(doLock);

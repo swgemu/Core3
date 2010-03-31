@@ -54,10 +54,7 @@ protected:
 
 	virtual ~MedicalBuildingObject();
 
-	TransactionalObject* clone();
-
 	friend class MedicalBuildingObjectHelper;
-	friend class TransactionalObjectHandle<MedicalBuildingObject*>;
 };
 
 } // namespace medical
@@ -89,6 +86,8 @@ public:
 protected:
 	virtual ~MedicalBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -112,6 +111,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MedicalBuildingObject;
+	friend class TransactionalObjectHandle<MedicalBuildingObjectImplementation*>;
 };
 
 class MedicalBuildingObjectAdapter : public BuildingObjectAdapter {

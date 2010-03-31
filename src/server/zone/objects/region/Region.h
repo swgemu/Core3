@@ -67,12 +67,9 @@ protected:
 
 	virtual ~Region();
 
-	TransactionalObject* clone();
-
 	String _return_getRegionName;
 
 	friend class RegionHelper;
-	friend class TransactionalObjectHandle<Region*>;
 };
 
 } // namespace bazaar
@@ -122,6 +119,8 @@ public:
 protected:
 	virtual ~RegionImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -145,6 +144,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Region;
+	friend class TransactionalObjectHandle<RegionImplementation*>;
 };
 
 class RegionAdapter : public ManagedObjectAdapter {

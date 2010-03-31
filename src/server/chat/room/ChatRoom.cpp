@@ -15,8 +15,8 @@
  */
 
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ChatRoomImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new ChatRoomImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -26,17 +26,8 @@ ChatRoom::~ChatRoom() {
 }
 
 
-TransactionalObject* ChatRoom::clone() {
-	ChatRoom* objectCopy = new ChatRoom(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ChatRoomImplementation(DummyConstructorParameter::instance());
-	*((ChatRoomImplementation*) objectCopy->_impl) = *((ChatRoomImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,11 +39,11 @@ void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, uns
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->init(serv, par, roomName, channelID);
+		((ChatRoomImplementation*) _getImplementation())->init(serv, par, roomName, channelID);
 }
 
 void ChatRoom::sendTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +52,11 @@ void ChatRoom::sendTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->sendTo(player);
+		((ChatRoomImplementation*) _getImplementation())->sendTo(player);
 }
 
 void ChatRoom::sendDestroyTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +65,11 @@ void ChatRoom::sendDestroyTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->sendDestroyTo(player);
+		((ChatRoomImplementation*) _getImplementation())->sendDestroyTo(player);
 }
 
 void ChatRoom::addSubRoom(ChatRoom* channel) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +78,11 @@ void ChatRoom::addSubRoom(ChatRoom* channel) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->addSubRoom(channel);
+		((ChatRoomImplementation*) _getImplementation())->addSubRoom(channel);
 }
 
 void ChatRoom::removeSubRoom(ChatRoom* channel) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +91,11 @@ void ChatRoom::removeSubRoom(ChatRoom* channel) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->removeSubRoom(channel);
+		((ChatRoomImplementation*) _getImplementation())->removeSubRoom(channel);
 }
 
 ChatRoom* ChatRoom::getSubRoom(int i) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -113,11 +104,11 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getSubRoom(i);
+		return ((ChatRoomImplementation*) _getImplementation())->getSubRoom(i);
 }
 
 ChatRoom* ChatRoom::getSubRoom(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -126,11 +117,11 @@ ChatRoom* ChatRoom::getSubRoom(const String& name) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getSubRoom(name);
+		return ((ChatRoomImplementation*) _getImplementation())->getSubRoom(name);
 }
 
 void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +131,11 @@ void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->addPlayer(player, doLock);
+		((ChatRoomImplementation*) _getImplementation())->addPlayer(player, doLock);
 }
 
 void ChatRoom::removePlayer(PlayerCreature* player, bool doLock) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -154,11 +145,11 @@ void ChatRoom::removePlayer(PlayerCreature* player, bool doLock) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->removePlayer(player, doLock);
+		((ChatRoomImplementation*) _getImplementation())->removePlayer(player, doLock);
 }
 
 void ChatRoom::removePlayer(const String& player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -167,11 +158,11 @@ void ChatRoom::removePlayer(const String& player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->removePlayer(player);
+		((ChatRoomImplementation*) _getImplementation())->removePlayer(player);
 }
 
 void ChatRoom::broadcastMessage(BaseMessage* msg) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,19 +171,19 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->broadcastMessage(msg);
+		((ChatRoomImplementation*) _getImplementation())->broadcastMessage(msg);
 }
 
 void ChatRoom::broadcastMessages(Vector<BaseMessage*>* messages) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ChatRoomImplementation*) _impl)->broadcastMessages(messages);
+		((ChatRoomImplementation*) _getImplementation())->broadcastMessages(messages);
 }
 
 bool ChatRoom::hasPlayer(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -201,11 +192,11 @@ bool ChatRoom::hasPlayer(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->hasPlayer(player);
+		return ((ChatRoomImplementation*) _getImplementation())->hasPlayer(player);
 }
 
 bool ChatRoom::hasPlayer(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -214,11 +205,11 @@ bool ChatRoom::hasPlayer(const String& name) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->hasPlayer(name);
+		return ((ChatRoomImplementation*) _getImplementation())->hasPlayer(name);
 }
 
 void ChatRoom::removeAllPlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -226,11 +217,11 @@ void ChatRoom::removeAllPlayers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->removeAllPlayers();
+		((ChatRoomImplementation*) _getImplementation())->removeAllPlayers();
 }
 
 void ChatRoom::setPrivate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -238,11 +229,11 @@ void ChatRoom::setPrivate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setPrivate();
+		((ChatRoomImplementation*) _getImplementation())->setPrivate();
 }
 
 void ChatRoom::setPublic() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -250,11 +241,11 @@ void ChatRoom::setPublic() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setPublic();
+		((ChatRoomImplementation*) _getImplementation())->setPublic();
 }
 
 bool ChatRoom::isPublic() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -262,11 +253,11 @@ bool ChatRoom::isPublic() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->isPublic();
+		return ((ChatRoomImplementation*) _getImplementation())->isPublic();
 }
 
 bool ChatRoom::isPrivate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -274,11 +265,11 @@ bool ChatRoom::isPrivate() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->isPrivate();
+		return ((ChatRoomImplementation*) _getImplementation())->isPrivate();
 }
 
 PlayerCreature* ChatRoom::getPlayer(int idx) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -287,11 +278,11 @@ PlayerCreature* ChatRoom::getPlayer(int idx) {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getPlayer(idx);
+		return ((ChatRoomImplementation*) _getImplementation())->getPlayer(idx);
 }
 
 int ChatRoom::getPlayerSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -299,11 +290,11 @@ int ChatRoom::getPlayerSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getPlayerSize();
+		return ((ChatRoomImplementation*) _getImplementation())->getPlayerSize();
 }
 
 void ChatRoom::setName(const String& Name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -312,11 +303,11 @@ void ChatRoom::setName(const String& Name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setName(Name);
+		((ChatRoomImplementation*) _getImplementation())->setName(Name);
 }
 
 String ChatRoom::getName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +316,11 @@ String ChatRoom::getName() {
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getName();
+		return ((ChatRoomImplementation*) _getImplementation())->getName();
 }
 
 String ChatRoom::getFullPath() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -338,11 +329,11 @@ String ChatRoom::getFullPath() {
 		method.executeWithAsciiReturn(_return_getFullPath);
 		return _return_getFullPath;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getFullPath();
+		return ((ChatRoomImplementation*) _getImplementation())->getFullPath();
 }
 
 String ChatRoom::getOwner() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -351,11 +342,11 @@ String ChatRoom::getOwner() {
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getOwner();
+		return ((ChatRoomImplementation*) _getImplementation())->getOwner();
 }
 
 String ChatRoom::getCreator() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -364,11 +355,11 @@ String ChatRoom::getCreator() {
 		method.executeWithAsciiReturn(_return_getCreator);
 		return _return_getCreator;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getCreator();
+		return ((ChatRoomImplementation*) _getImplementation())->getCreator();
 }
 
 UnicodeString ChatRoom::getTitle() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -377,11 +368,11 @@ UnicodeString ChatRoom::getTitle() {
 		method.executeWithUnicodeReturn(_return_getTitle);
 		return _return_getTitle;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getTitle();
+		return ((ChatRoomImplementation*) _getImplementation())->getTitle();
 }
 
 String ChatRoom::getServerName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -390,11 +381,11 @@ String ChatRoom::getServerName() {
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
 	} else
-		return ((ChatRoomImplementation*) _impl)->getServerName();
+		return ((ChatRoomImplementation*) _getImplementation())->getServerName();
 }
 
 void ChatRoom::setOwner(const String& Owner) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -403,11 +394,11 @@ void ChatRoom::setOwner(const String& Owner) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setOwner(Owner);
+		((ChatRoomImplementation*) _getImplementation())->setOwner(Owner);
 }
 
 void ChatRoom::setCreator(const String& Creator) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -416,11 +407,11 @@ void ChatRoom::setCreator(const String& Creator) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setCreator(Creator);
+		((ChatRoomImplementation*) _getImplementation())->setCreator(Creator);
 }
 
 void ChatRoom::setTitle(const String& Title) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -429,11 +420,11 @@ void ChatRoom::setTitle(const String& Title) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setTitle(Title);
+		((ChatRoomImplementation*) _getImplementation())->setTitle(Title);
 }
 
 void ChatRoom::setRoomID(int id) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -442,11 +433,11 @@ void ChatRoom::setRoomID(int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatRoomImplementation*) _impl)->setRoomID(id);
+		((ChatRoomImplementation*) _getImplementation())->setRoomID(id);
 }
 
 unsigned int ChatRoom::getRoomID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -454,11 +445,11 @@ unsigned int ChatRoom::getRoomID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getRoomID();
+		return ((ChatRoomImplementation*) _getImplementation())->getRoomID();
 }
 
 int ChatRoom::getSubRoomsSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -466,11 +457,11 @@ int ChatRoom::getSubRoomsSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getSubRoomsSize();
+		return ((ChatRoomImplementation*) _getImplementation())->getSubRoomsSize();
 }
 
 ChatRoom* ChatRoom::getParent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -478,11 +469,11 @@ ChatRoom* ChatRoom::getParent() {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->getParent();
+		return ((ChatRoomImplementation*) _getImplementation())->getParent();
 }
 
 int ChatRoom::compareTo(ChatRoom* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -491,7 +482,7 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ChatRoomImplementation*) _impl)->compareTo(obj);
+		return ((ChatRoomImplementation*) _getImplementation())->compareTo(obj);
 }
 
 /*
@@ -527,6 +518,13 @@ DistributedObjectStub* ChatRoomImplementation::_getStub() {
 ChatRoomImplementation::operator const ChatRoom*() {
 	return _this;
 }
+
+TransactionalObject* ChatRoomImplementation::clone() {
+	ChatRoomImplementation* objectCopy = new ChatRoomImplementation(DummyConstructorParameter::instance());
+	*((ChatRoomImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ChatRoomImplementation::lock(bool doLock) {
 	_this->lock(doLock);

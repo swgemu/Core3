@@ -139,10 +139,7 @@ protected:
 
 	virtual ~BuildingObject();
 
-	TransactionalObject* clone();
-
 	friend class BuildingObjectHelper;
-	friend class TransactionalObjectHandle<BuildingObject*>;
 };
 
 } // namespace building
@@ -216,6 +213,8 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -239,6 +238,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BuildingObject;
+	friend class TransactionalObjectHandle<BuildingObjectImplementation*>;
 };
 
 class BuildingObjectAdapter : public TangibleObjectAdapter {

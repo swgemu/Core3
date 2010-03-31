@@ -327,15 +327,12 @@ protected:
 
 	virtual ~PlayerCreature();
 
-	TransactionalObject* clone();
-
 	String _return_getFirstName;
 	String _return_getLastName;
 
 	UnicodeString _return_getBiography;
 
 	friend class PlayerCreatureHelper;
-	friend class TransactionalObjectHandle<PlayerCreature*>;
 };
 
 } // namespace player
@@ -552,6 +549,8 @@ public:
 protected:
 	virtual ~PlayerCreatureImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -573,6 +572,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerCreature;
+	friend class TransactionalObjectHandle<PlayerCreatureImplementation*>;
 };
 
 class PlayerCreatureAdapter : public CreatureObjectAdapter {

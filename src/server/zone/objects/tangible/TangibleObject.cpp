@@ -15,8 +15,8 @@
  */
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new TangibleObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new TangibleObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -26,25 +26,16 @@ TangibleObject::~TangibleObject() {
 }
 
 
-TransactionalObject* TangibleObject::clone() {
-	TangibleObject* objectCopy = new TangibleObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new TangibleObjectImplementation(DummyConstructorParameter::instance());
-	*((TangibleObjectImplementation*) objectCopy->_impl) = *((TangibleObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void TangibleObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((TangibleObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void TangibleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -52,11 +43,11 @@ void TangibleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->initializeTransientMembers();
+		((TangibleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void TangibleObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +56,11 @@ void TangibleObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((TangibleObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void TangibleObject::setDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +69,11 @@ void TangibleObject::setDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->setDefender(defender);
+		((TangibleObjectImplementation*) _getImplementation())->setDefender(defender);
 }
 
 void TangibleObject::addDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +82,11 @@ void TangibleObject::addDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->addDefender(defender);
+		((TangibleObjectImplementation*) _getImplementation())->addDefender(defender);
 }
 
 void TangibleObject::removeDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +95,11 @@ void TangibleObject::removeDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->removeDefender(defender);
+		((TangibleObjectImplementation*) _getImplementation())->removeDefender(defender);
 }
 
 void TangibleObject::removeDefenders() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +107,11 @@ void TangibleObject::removeDefenders() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->removeDefenders();
+		((TangibleObjectImplementation*) _getImplementation())->removeDefenders();
 }
 
 void TangibleObject::setCombatState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,19 +119,19 @@ void TangibleObject::setCombatState() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->setCombatState();
+		((TangibleObjectImplementation*) _getImplementation())->setCombatState();
 }
 
 void TangibleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TangibleObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((TangibleObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void TangibleObject::clearCombatState(bool clearDefenders) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,11 +140,11 @@ void TangibleObject::clearCombatState(bool clearDefenders) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->clearCombatState(clearDefenders);
+		((TangibleObjectImplementation*) _getImplementation())->clearCombatState(clearDefenders);
 }
 
 bool TangibleObject::hasDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,11 +153,11 @@ bool TangibleObject::hasDefender(SceneObject* defender) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->hasDefender(defender);
+		return ((TangibleObjectImplementation*) _getImplementation())->hasDefender(defender);
 }
 
 byte TangibleObject::getUnknownByte() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -174,19 +165,19 @@ byte TangibleObject::getUnknownByte() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getUnknownByte();
+		return ((TangibleObjectImplementation*) _getImplementation())->getUnknownByte();
 }
 
 CustomizationVariables* TangibleObject::getCustomizationVariables() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getCustomizationVariables();
+		return ((TangibleObjectImplementation*) _getImplementation())->getCustomizationVariables();
 }
 
 int TangibleObject::getObjectCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -194,11 +185,11 @@ int TangibleObject::getObjectCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getObjectCount();
+		return ((TangibleObjectImplementation*) _getImplementation())->getObjectCount();
 }
 
 int TangibleObject::getMaxCondition() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -206,11 +197,11 @@ int TangibleObject::getMaxCondition() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getMaxCondition();
+		return ((TangibleObjectImplementation*) _getImplementation())->getMaxCondition();
 }
 
 int TangibleObject::getConditionDamage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -218,11 +209,11 @@ int TangibleObject::getConditionDamage() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getConditionDamage();
+		return ((TangibleObjectImplementation*) _getImplementation())->getConditionDamage();
 }
 
 int TangibleObject::getVolume() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -230,11 +221,11 @@ int TangibleObject::getVolume() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getVolume();
+		return ((TangibleObjectImplementation*) _getImplementation())->getVolume();
 }
 
 float TangibleObject::getComplexity() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -242,11 +233,11 @@ float TangibleObject::getComplexity() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getComplexity();
+		return ((TangibleObjectImplementation*) _getImplementation())->getComplexity();
 }
 
 unsigned int TangibleObject::getOptionsBitmask() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -254,11 +245,11 @@ unsigned int TangibleObject::getOptionsBitmask() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getOptionsBitmask();
+		return ((TangibleObjectImplementation*) _getImplementation())->getOptionsBitmask();
 }
 
 unsigned int TangibleObject::getPvpStatusBitmask() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -266,11 +257,11 @@ unsigned int TangibleObject::getPvpStatusBitmask() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getPvpStatusBitmask();
+		return ((TangibleObjectImplementation*) _getImplementation())->getPvpStatusBitmask();
 }
 
 bool TangibleObject::isTangibleObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -278,11 +269,11 @@ bool TangibleObject::isTangibleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->isTangibleObject();
+		return ((TangibleObjectImplementation*) _getImplementation())->isTangibleObject();
 }
 
 void TangibleObject::getCustomizationString(String& variables) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -291,19 +282,19 @@ void TangibleObject::getCustomizationString(String& variables) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->getCustomizationString(variables);
+		((TangibleObjectImplementation*) _getImplementation())->getCustomizationString(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getDefenderList();
+		return ((TangibleObjectImplementation*) _getImplementation())->getDefenderList();
 }
 
 unsigned int TangibleObject::getPlayerUseMask() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -311,11 +302,11 @@ unsigned int TangibleObject::getPlayerUseMask() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->getPlayerUseMask();
+		return ((TangibleObjectImplementation*) _getImplementation())->getPlayerUseMask();
 }
 
 bool TangibleObject::isSliced() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -323,11 +314,11 @@ bool TangibleObject::isSliced() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->isSliced();
+		return ((TangibleObjectImplementation*) _getImplementation())->isSliced();
 }
 
 void TangibleObject::setCustomizationString(const String& vars) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -336,7 +327,7 @@ void TangibleObject::setCustomizationString(const String& vars) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->setCustomizationString(vars);
+		((TangibleObjectImplementation*) _getImplementation())->setCustomizationString(vars);
 }
 
 /*
@@ -372,6 +363,13 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 TangibleObjectImplementation::operator const TangibleObject*() {
 	return _this;
 }
+
+TransactionalObject* TangibleObjectImplementation::clone() {
+	TangibleObjectImplementation* objectCopy = new TangibleObjectImplementation(DummyConstructorParameter::instance());
+	*((TangibleObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void TangibleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

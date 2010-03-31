@@ -17,8 +17,8 @@
  */
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WeaponObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new WeaponObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -28,25 +28,16 @@ WeaponObject::~WeaponObject() {
 }
 
 
-TransactionalObject* WeaponObject::clone() {
-	WeaponObject* objectCopy = new WeaponObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new WeaponObjectImplementation(DummyConstructorParameter::instance());
-	*((WeaponObjectImplementation*) objectCopy->_impl) = *((WeaponObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void WeaponObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WeaponObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((WeaponObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void WeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +45,11 @@ void WeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((WeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((WeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void WeaponObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,19 +58,19 @@ void WeaponObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WeaponObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((WeaponObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void WeaponObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WeaponObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((WeaponObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 bool WeaponObject::isCertifiedFor(PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,43 +79,43 @@ bool WeaponObject::isCertifiedFor(PlayerCreature* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isCertifiedFor(object);
+		return ((WeaponObjectImplementation*) _getImplementation())->isCertifiedFor(object);
 }
 
 Vector<String>* WeaponObject::getDamageModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getDamageModifiers();
+		return ((WeaponObjectImplementation*) _getImplementation())->getDamageModifiers();
 }
 
 Vector<String>* WeaponObject::getSpeedModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getSpeedModifiers();
+		return ((WeaponObjectImplementation*) _getImplementation())->getSpeedModifiers();
 }
 
 Vector<String>* WeaponObject::getCreatureAccuracyModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getCreatureAccuracyModifiers();
+		return ((WeaponObjectImplementation*) _getImplementation())->getCreatureAccuracyModifiers();
 }
 
 Vector<String>* WeaponObject::getDefenderDefenseModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getDefenderDefenseModifiers();
+		return ((WeaponObjectImplementation*) _getImplementation())->getDefenderDefenseModifiers();
 }
 
 void WeaponObject::setCertified(bool cert) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -133,11 +124,11 @@ void WeaponObject::setCertified(bool cert) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WeaponObjectImplementation*) _impl)->setCertified(cert);
+		((WeaponObjectImplementation*) _getImplementation())->setCertified(cert);
 }
 
 int WeaponObject::getAttackType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -145,11 +136,11 @@ int WeaponObject::getAttackType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getAttackType();
+		return ((WeaponObjectImplementation*) _getImplementation())->getAttackType();
 }
 
 bool WeaponObject::isCertified() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -157,11 +148,11 @@ bool WeaponObject::isCertified() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isCertified();
+		return ((WeaponObjectImplementation*) _getImplementation())->isCertified();
 }
 
 int WeaponObject::getPointBlankAccuracy() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -169,11 +160,11 @@ int WeaponObject::getPointBlankAccuracy() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getPointBlankAccuracy();
+		return ((WeaponObjectImplementation*) _getImplementation())->getPointBlankAccuracy();
 }
 
 int WeaponObject::getPointBlankRange() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -181,11 +172,11 @@ int WeaponObject::getPointBlankRange() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getPointBlankRange();
+		return ((WeaponObjectImplementation*) _getImplementation())->getPointBlankRange();
 }
 
 int WeaponObject::getIdealRange() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +184,11 @@ int WeaponObject::getIdealRange() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getIdealRange();
+		return ((WeaponObjectImplementation*) _getImplementation())->getIdealRange();
 }
 
 int WeaponObject::getMaxRange() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +196,11 @@ int WeaponObject::getMaxRange() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getMaxRange();
+		return ((WeaponObjectImplementation*) _getImplementation())->getMaxRange();
 }
 
 int WeaponObject::getIdealAccuracy() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,11 +208,11 @@ int WeaponObject::getIdealAccuracy() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getIdealAccuracy();
+		return ((WeaponObjectImplementation*) _getImplementation())->getIdealAccuracy();
 }
 
 int WeaponObject::getArmorPiercing() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +220,11 @@ int WeaponObject::getArmorPiercing() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getArmorPiercing();
+		return ((WeaponObjectImplementation*) _getImplementation())->getArmorPiercing();
 }
 
 int WeaponObject::getMaxRangeAccuracy() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -241,11 +232,11 @@ int WeaponObject::getMaxRangeAccuracy() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getMaxRangeAccuracy();
+		return ((WeaponObjectImplementation*) _getImplementation())->getMaxRangeAccuracy();
 }
 
 float WeaponObject::getAttackSpeed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -253,11 +244,11 @@ float WeaponObject::getAttackSpeed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getAttackSpeed();
+		return ((WeaponObjectImplementation*) _getImplementation())->getAttackSpeed();
 }
 
 float WeaponObject::getMaxDamage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -265,11 +256,11 @@ float WeaponObject::getMaxDamage() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getMaxDamage();
+		return ((WeaponObjectImplementation*) _getImplementation())->getMaxDamage();
 }
 
 float WeaponObject::getMinDamage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -277,11 +268,11 @@ float WeaponObject::getMinDamage() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getMinDamage();
+		return ((WeaponObjectImplementation*) _getImplementation())->getMinDamage();
 }
 
 float WeaponObject::getWoundsRatio() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -289,11 +280,11 @@ float WeaponObject::getWoundsRatio() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getWoundsRatio();
+		return ((WeaponObjectImplementation*) _getImplementation())->getWoundsRatio();
 }
 
 int WeaponObject::getHealthAttackCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -301,11 +292,11 @@ int WeaponObject::getHealthAttackCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getHealthAttackCost();
+		return ((WeaponObjectImplementation*) _getImplementation())->getHealthAttackCost();
 }
 
 int WeaponObject::getActionAttackCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -313,11 +304,11 @@ int WeaponObject::getActionAttackCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getActionAttackCost();
+		return ((WeaponObjectImplementation*) _getImplementation())->getActionAttackCost();
 }
 
 int WeaponObject::getMindAttackCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +316,11 @@ int WeaponObject::getMindAttackCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getMindAttackCost();
+		return ((WeaponObjectImplementation*) _getImplementation())->getMindAttackCost();
 }
 
 int WeaponObject::getForceCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -337,11 +328,11 @@ int WeaponObject::getForceCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getForceCost();
+		return ((WeaponObjectImplementation*) _getImplementation())->getForceCost();
 }
 
 int WeaponObject::getDamageType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -349,11 +340,11 @@ int WeaponObject::getDamageType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->getDamageType();
+		return ((WeaponObjectImplementation*) _getImplementation())->getDamageType();
 }
 
 bool WeaponObject::hasMeleeAttack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -361,11 +352,11 @@ bool WeaponObject::hasMeleeAttack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->hasMeleeAttack();
+		return ((WeaponObjectImplementation*) _getImplementation())->hasMeleeAttack();
 }
 
 bool WeaponObject::hasRangedAttack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -373,11 +364,11 @@ bool WeaponObject::hasRangedAttack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->hasRangedAttack();
+		return ((WeaponObjectImplementation*) _getImplementation())->hasRangedAttack();
 }
 
 bool WeaponObject::isUnarmedWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -385,11 +376,11 @@ bool WeaponObject::isUnarmedWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isUnarmedWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isUnarmedWeapon();
 }
 
 bool WeaponObject::isMeleeWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -397,11 +388,11 @@ bool WeaponObject::isMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isMeleeWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isMeleeWeapon();
 }
 
 bool WeaponObject::isRangedWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -409,11 +400,11 @@ bool WeaponObject::isRangedWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isRangedWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isRangedWeapon();
 }
 
 bool WeaponObject::isRifleWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -421,11 +412,11 @@ bool WeaponObject::isRifleWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isRifleWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isRifleWeapon();
 }
 
 bool WeaponObject::isPistolWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -433,11 +424,11 @@ bool WeaponObject::isPistolWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isPistolWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isPistolWeapon();
 }
 
 bool WeaponObject::isOneHandMeleeWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -445,7 +436,7 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WeaponObjectImplementation*) _impl)->isOneHandMeleeWeapon();
+		return ((WeaponObjectImplementation*) _getImplementation())->isOneHandMeleeWeapon();
 }
 
 /*
@@ -481,6 +472,13 @@ DistributedObjectStub* WeaponObjectImplementation::_getStub() {
 WeaponObjectImplementation::operator const WeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* WeaponObjectImplementation::clone() {
+	WeaponObjectImplementation* objectCopy = new WeaponObjectImplementation(DummyConstructorParameter::instance());
+	*((WeaponObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void WeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

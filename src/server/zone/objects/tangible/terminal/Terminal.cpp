@@ -11,8 +11,8 @@
  */
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TerminalImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new TerminalImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -22,17 +22,8 @@ Terminal::~Terminal() {
 }
 
 
-TransactionalObject* Terminal::clone() {
-	Terminal* objectCopy = new Terminal(DummyConstructorParameter::instance());
-	objectCopy->_impl = new TerminalImplementation(DummyConstructorParameter::instance());
-	*((TerminalImplementation*) objectCopy->_impl) = *((TerminalImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void Terminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,7 +31,7 @@ void Terminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TerminalImplementation*) _impl)->initializeTransientMembers();
+		((TerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -76,6 +67,13 @@ DistributedObjectStub* TerminalImplementation::_getStub() {
 TerminalImplementation::operator const Terminal*() {
 	return _this;
 }
+
+TransactionalObject* TerminalImplementation::clone() {
+	TerminalImplementation* objectCopy = new TerminalImplementation(DummyConstructorParameter::instance());
+	*((TerminalImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void TerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

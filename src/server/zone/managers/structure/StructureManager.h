@@ -81,10 +81,7 @@ protected:
 
 	virtual ~StructureManager();
 
-	TransactionalObject* clone();
-
 	friend class StructureManagerHelper;
-	friend class TransactionalObjectHandle<StructureManager*>;
 };
 
 } // namespace structure
@@ -135,6 +132,8 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -158,6 +157,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureManager;
+	friend class TransactionalObjectHandle<StructureManagerImplementation*>;
 };
 
 class StructureManagerAdapter : public ManagedObjectAdapter {

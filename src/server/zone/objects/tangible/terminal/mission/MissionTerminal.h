@@ -71,10 +71,7 @@ protected:
 
 	virtual ~MissionTerminal();
 
-	TransactionalObject* clone();
-
 	friend class MissionTerminalHelper;
-	friend class TransactionalObjectHandle<MissionTerminal*>;
 };
 
 } // namespace mission
@@ -110,6 +107,8 @@ public:
 protected:
 	virtual ~MissionTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -133,6 +132,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionTerminal;
+	friend class TransactionalObjectHandle<MissionTerminalImplementation*>;
 };
 
 class MissionTerminalAdapter : public TerminalAdapter {

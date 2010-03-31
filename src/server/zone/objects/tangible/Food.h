@@ -55,10 +55,7 @@ protected:
 
 	virtual ~Food();
 
-	TransactionalObject* clone();
-
 	friend class FoodHelper;
-	friend class TransactionalObjectHandle<Food*>;
 };
 
 } // namespace tangible
@@ -90,6 +87,8 @@ public:
 protected:
 	virtual ~FoodImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -113,6 +112,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Food;
+	friend class TransactionalObjectHandle<FoodImplementation*>;
 };
 
 class FoodAdapter : public TangibleObjectAdapter {

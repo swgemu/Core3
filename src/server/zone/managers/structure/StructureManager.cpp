@@ -17,8 +17,8 @@
  */
 
 StructureManager::StructureManager(Zone* zone, ZoneProcessServerImplementation* processor) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new StructureManagerImplementation(zone, processor);
-	_impl->_setStub(this);
+	_setImplementation(new StructureManagerImplementation(zone, processor));
+	_getImplementation()->_setStub(this);
 }
 
 StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -28,17 +28,8 @@ StructureManager::~StructureManager() {
 }
 
 
-TransactionalObject* StructureManager::clone() {
-	StructureManager* objectCopy = new StructureManager(DummyConstructorParameter::instance());
-	objectCopy->_impl = new StructureManagerImplementation(DummyConstructorParameter::instance());
-	*((StructureManagerImplementation*) objectCopy->_impl) = *((StructureManagerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void StructureManager::loadStructures() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,7 +37,7 @@ void StructureManager::loadStructures() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _impl)->loadStructures();
+		((StructureManagerImplementation*) _getImplementation())->loadStructures();
 }
 
 /*
@@ -82,6 +73,13 @@ DistributedObjectStub* StructureManagerImplementation::_getStub() {
 StructureManagerImplementation::operator const StructureManager*() {
 	return _this;
 }
+
+TransactionalObject* StructureManagerImplementation::clone() {
+	StructureManagerImplementation* objectCopy = new StructureManagerImplementation(DummyConstructorParameter::instance());
+	*((StructureManagerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void StructureManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

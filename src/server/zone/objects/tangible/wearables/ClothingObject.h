@@ -42,10 +42,7 @@ protected:
 
 	virtual ~ClothingObject();
 
-	TransactionalObject* clone();
-
 	friend class ClothingObjectHelper;
-	friend class TransactionalObjectHandle<ClothingObject*>;
 };
 
 } // namespace wearables
@@ -79,6 +76,8 @@ public:
 protected:
 	virtual ~ClothingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -102,6 +101,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ClothingObject;
+	friend class TransactionalObjectHandle<ClothingObjectImplementation*>;
 };
 
 class ClothingObjectAdapter : public WearableObjectAdapter {

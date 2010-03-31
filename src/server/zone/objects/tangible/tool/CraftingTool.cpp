@@ -13,8 +13,8 @@
  */
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CraftingToolImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new CraftingToolImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 CraftingTool::CraftingTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -24,17 +24,8 @@ CraftingTool::~CraftingTool() {
 }
 
 
-TransactionalObject* CraftingTool::clone() {
-	CraftingTool* objectCopy = new CraftingTool(DummyConstructorParameter::instance());
-	objectCopy->_impl = new CraftingToolImplementation(DummyConstructorParameter::instance());
-	*((CraftingToolImplementation*) objectCopy->_impl) = *((CraftingToolImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void CraftingTool::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,7 +33,7 @@ void CraftingTool::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->initializeTransientMembers();
+		((CraftingToolImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -78,6 +69,13 @@ DistributedObjectStub* CraftingToolImplementation::_getStub() {
 CraftingToolImplementation::operator const CraftingTool*() {
 	return _this;
 }
+
+TransactionalObject* CraftingToolImplementation::clone() {
+	CraftingToolImplementation* objectCopy = new CraftingToolImplementation(DummyConstructorParameter::instance());
+	*((CraftingToolImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void CraftingToolImplementation::lock(bool doLock) {
 	_this->lock(doLock);

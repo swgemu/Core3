@@ -13,8 +13,8 @@
  */
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ContainerImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new ContainerImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -24,25 +24,16 @@ Container::~Container() {
 }
 
 
-TransactionalObject* Container::clone() {
-	Container* objectCopy = new Container(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ContainerImplementation(DummyConstructorParameter::instance());
-	*((ContainerImplementation*) objectCopy->_impl) = *((ContainerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void Container::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ContainerImplementation*) _impl)->loadTemplateData(templateData);
+		((ContainerImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void Container::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +41,11 @@ void Container::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->initializeTransientMembers();
+		((ContainerImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Container::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,7 +54,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
+		((ContainerImplementation*) _getImplementation())->sendContainerObjectsTo(player);
 }
 
 /*
@@ -99,6 +90,13 @@ DistributedObjectStub* ContainerImplementation::_getStub() {
 ContainerImplementation::operator const Container*() {
 	return _this;
 }
+
+TransactionalObject* ContainerImplementation::clone() {
+	ContainerImplementation* objectCopy = new ContainerImplementation(DummyConstructorParameter::instance());
+	*((ContainerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ContainerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

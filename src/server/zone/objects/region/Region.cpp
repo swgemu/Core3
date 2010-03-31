@@ -11,8 +11,8 @@
  */
 
 Region::Region(const String& fullName, float posX, float posY, float radi) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RegionImplementation(fullName, posX, posY, radi);
-	_impl->_setStub(this);
+	_setImplementation(new RegionImplementation(fullName, posX, posY, radi));
+	_getImplementation()->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -22,17 +22,8 @@ Region::~Region() {
 }
 
 
-TransactionalObject* Region::clone() {
-	Region* objectCopy = new Region(DummyConstructorParameter::instance());
-	objectCopy->_impl = new RegionImplementation(DummyConstructorParameter::instance());
-	*((RegionImplementation*) objectCopy->_impl) = *((RegionImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 bool Region::containsPoint(float px, float py) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +33,11 @@ bool Region::containsPoint(float px, float py) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RegionImplementation*) _impl)->containsPoint(px, py);
+		return ((RegionImplementation*) _getImplementation())->containsPoint(px, py);
 }
 
 void Region::addPoint(float px, float py, float radius) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +48,11 @@ void Region::addPoint(float px, float py, float radius) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->addPoint(px, py, radius);
+		((RegionImplementation*) _getImplementation())->addPoint(px, py, radius);
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -70,11 +61,11 @@ void Region::addBazaar(BazaarTerminal* ter) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->addBazaar(ter);
+		((RegionImplementation*) _getImplementation())->addBazaar(ter);
 }
 
 BazaarTerminal* Region::getBazaar(int idx) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +74,11 @@ BazaarTerminal* Region::getBazaar(int idx) {
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaar(idx);
+		return ((RegionImplementation*) _getImplementation())->getBazaar(idx);
 }
 
 int Region::getBazaarCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,19 +86,19 @@ int Region::getBazaarCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaarCount();
+		return ((RegionImplementation*) _getImplementation())->getBazaarCount();
 }
 
 StringId* Region::getName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((RegionImplementation*) _impl)->getName();
+		return ((RegionImplementation*) _getImplementation())->getName();
 }
 
 String Region::getRegionName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,7 +107,7 @@ String Region::getRegionName() {
 		method.executeWithAsciiReturn(_return_getRegionName);
 		return _return_getRegionName;
 	} else
-		return ((RegionImplementation*) _impl)->getRegionName();
+		return ((RegionImplementation*) _getImplementation())->getRegionName();
 }
 
 /*
@@ -152,6 +143,13 @@ DistributedObjectStub* RegionImplementation::_getStub() {
 RegionImplementation::operator const Region*() {
 	return _this;
 }
+
+TransactionalObject* RegionImplementation::clone() {
+	RegionImplementation* objectCopy = new RegionImplementation(DummyConstructorParameter::instance());
+	*((RegionImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void RegionImplementation::lock(bool doLock) {
 	_this->lock(doLock);

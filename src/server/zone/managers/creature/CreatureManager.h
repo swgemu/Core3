@@ -135,10 +135,7 @@ protected:
 
 	virtual ~CreatureManager();
 
-	TransactionalObject* clone();
-
 	friend class CreatureManagerHelper;
-	friend class TransactionalObjectHandle<CreatureManager*>;
 };
 
 } // namespace creature
@@ -186,6 +183,8 @@ public:
 protected:
 	virtual ~CreatureManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -209,6 +208,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CreatureManager;
+	friend class TransactionalObjectHandle<CreatureManagerImplementation*>;
 };
 
 class CreatureManagerAdapter : public ManagedObjectAdapter {

@@ -749,8 +749,6 @@ protected:
 
 	virtual ~SceneObject();
 
-	TransactionalObject* clone();
-
 	String _return_getArrangementDescriptor;
 	String _return_getLoggingName;
 	String _return_getSlotDescriptor;
@@ -758,7 +756,6 @@ protected:
 	UnicodeString _return_getCustomObjectName;
 
 	friend class SceneObjectHelper;
-	friend class TransactionalObjectHandle<SceneObject*>;
 };
 
 } // namespace scene
@@ -1408,6 +1405,8 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1429,6 +1428,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SceneObject;
+	friend class TransactionalObjectHandle<SceneObjectImplementation*>;
 };
 
 class SceneObjectAdapter : public ManagedObjectAdapter {

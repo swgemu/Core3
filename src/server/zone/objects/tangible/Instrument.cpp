@@ -13,8 +13,8 @@
  */
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InstrumentImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new InstrumentImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -24,17 +24,8 @@ Instrument::~Instrument() {
 }
 
 
-TransactionalObject* Instrument::clone() {
-	Instrument* objectCopy = new Instrument(DummyConstructorParameter::instance());
-	objectCopy->_impl = new InstrumentImplementation(DummyConstructorParameter::instance());
-	*((InstrumentImplementation*) objectCopy->_impl) = *((InstrumentImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void Instrument::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,7 +33,7 @@ void Instrument::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstrumentImplementation*) _impl)->initializeTransientMembers();
+		((InstrumentImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -78,6 +69,13 @@ DistributedObjectStub* InstrumentImplementation::_getStub() {
 InstrumentImplementation::operator const Instrument*() {
 	return _this;
 }
+
+TransactionalObject* InstrumentImplementation::clone() {
+	InstrumentImplementation* objectCopy = new InstrumentImplementation(DummyConstructorParameter::instance());
+	*((InstrumentImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void InstrumentImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -11,8 +11,8 @@
  */
 
 IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new IntangibleObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -22,25 +22,16 @@ IntangibleObject::~IntangibleObject() {
 }
 
 
-TransactionalObject* IntangibleObject::clone() {
-	IntangibleObject* objectCopy = new IntangibleObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new IntangibleObjectImplementation(DummyConstructorParameter::instance());
-	*((IntangibleObjectImplementation*) objectCopy->_impl) = *((IntangibleObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void IntangibleObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((IntangibleObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void IntangibleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,11 +39,11 @@ void IntangibleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->initializeTransientMembers();
+		((IntangibleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void IntangibleObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +52,11 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((IntangibleObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 unsigned int IntangibleObject::getStatus() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,7 +64,7 @@ unsigned int IntangibleObject::getStatus() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((IntangibleObjectImplementation*) _impl)->getStatus();
+		return ((IntangibleObjectImplementation*) _getImplementation())->getStatus();
 }
 
 /*
@@ -107,6 +98,13 @@ DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 IntangibleObjectImplementation::operator const IntangibleObject*() {
 	return _this;
 }
+
+TransactionalObject* IntangibleObjectImplementation::clone() {
+	IntangibleObjectImplementation* objectCopy = new IntangibleObjectImplementation(DummyConstructorParameter::instance());
+	*((IntangibleObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void IntangibleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

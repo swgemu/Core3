@@ -65,10 +65,7 @@ protected:
 
 	virtual ~ResourceManager();
 
-	TransactionalObject* clone();
-
 	friend class ResourceManagerHelper;
-	friend class TransactionalObjectHandle<ResourceManager*>;
 };
 
 } // namespace resource
@@ -109,6 +106,8 @@ public:
 protected:
 	virtual ~ResourceManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -132,6 +131,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceManager;
+	friend class TransactionalObjectHandle<ResourceManagerImplementation*>;
 };
 
 class ResourceManagerAdapter : public ManagedObjectAdapter {

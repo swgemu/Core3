@@ -23,8 +23,8 @@
  */
 
 ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ObjectControllerImplementation(srv);
-	_impl->_setStub(this);
+	_setImplementation(new ObjectControllerImplementation(srv));
+	_getImplementation()->_setStub(this);
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -34,17 +34,8 @@ ObjectController::~ObjectController() {
 }
 
 
-TransactionalObject* ObjectController::clone() {
-	ObjectController* objectCopy = new ObjectController(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ObjectControllerImplementation(DummyConstructorParameter::instance());
-	*((ObjectControllerImplementation*) objectCopy->_impl) = *((ObjectControllerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void ObjectController::loadCommands() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -52,11 +43,11 @@ void ObjectController::loadCommands() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObjectControllerImplementation*) _impl)->loadCommands();
+		((ObjectControllerImplementation*) _getImplementation())->loadCommands();
 }
 
 bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +59,11 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+		return ((ObjectControllerImplementation*) _getImplementation())->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,31 +76,31 @@ float ObjectController::activateCommand(CreatureObject* object, unsigned int act
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ObjectControllerImplementation*) _impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
+		return ((ObjectControllerImplementation*) _getImplementation())->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ObjectControllerImplementation*) _impl)->addQueueCommand(command);
+		((ObjectControllerImplementation*) _getImplementation())->addQueueCommand(command);
 }
 
 QueueCommand* ObjectController::getQueueCommand(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(name);
+		return ((ObjectControllerImplementation*) _getImplementation())->getQueueCommand(name);
 }
 
 QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(crc);
+		return ((ObjectControllerImplementation*) _getImplementation())->getQueueCommand(crc);
 }
 
 /*
@@ -143,6 +134,13 @@ DistributedObjectStub* ObjectControllerImplementation::_getStub() {
 ObjectControllerImplementation::operator const ObjectController*() {
 	return _this;
 }
+
+TransactionalObject* ObjectControllerImplementation::clone() {
+	ObjectControllerImplementation* objectCopy = new ObjectControllerImplementation(DummyConstructorParameter::instance());
+	*((ObjectControllerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ObjectControllerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

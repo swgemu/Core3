@@ -21,8 +21,8 @@
  */
 
 BankTerminal::BankTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new BankTerminalImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new BankTerminalImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 BankTerminal::BankTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -32,17 +32,8 @@ BankTerminal::~BankTerminal() {
 }
 
 
-TransactionalObject* BankTerminal::clone() {
-	BankTerminal* objectCopy = new BankTerminal(DummyConstructorParameter::instance());
-	objectCopy->_impl = new BankTerminalImplementation(DummyConstructorParameter::instance());
-	*((BankTerminalImplementation*) objectCopy->_impl) = *((BankTerminalImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void BankTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +41,11 @@ void BankTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->initializeTransientMembers();
+		((BankTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,11 +54,11 @@ void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse);
+		((BankTerminalImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse);
 }
 
 int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,7 +68,7 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BankTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((BankTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -113,6 +104,13 @@ DistributedObjectStub* BankTerminalImplementation::_getStub() {
 BankTerminalImplementation::operator const BankTerminal*() {
 	return _this;
 }
+
+TransactionalObject* BankTerminalImplementation::clone() {
+	BankTerminalImplementation* objectCopy = new BankTerminalImplementation(DummyConstructorParameter::instance());
+	*((BankTerminalImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void BankTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

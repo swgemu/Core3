@@ -17,8 +17,8 @@
  */
 
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RadialManagerImplementation(server);
-	_impl->_setStub(this);
+	_setImplementation(new RadialManagerImplementation(server));
+	_getImplementation()->_setStub(this);
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -28,17 +28,8 @@ RadialManager::~RadialManager() {
 }
 
 
-TransactionalObject* RadialManager::clone() {
-	RadialManager* objectCopy = new RadialManager(DummyConstructorParameter::instance());
-	objectCopy->_impl = new RadialManagerImplementation(DummyConstructorParameter::instance());
-	*((RadialManagerImplementation*) objectCopy->_impl) = *((RadialManagerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +40,11 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuSelect(player, selectID, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,7 +55,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
 /*
@@ -100,6 +91,13 @@ DistributedObjectStub* RadialManagerImplementation::_getStub() {
 RadialManagerImplementation::operator const RadialManager*() {
 	return _this;
 }
+
+TransactionalObject* RadialManagerImplementation::clone() {
+	RadialManagerImplementation* objectCopy = new RadialManagerImplementation(DummyConstructorParameter::instance());
+	*((RadialManagerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void RadialManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

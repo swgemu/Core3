@@ -15,8 +15,8 @@
  */
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new MissionTerminalImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new MissionTerminalImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 MissionTerminal::MissionTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -26,17 +26,8 @@ MissionTerminal::~MissionTerminal() {
 }
 
 
-TransactionalObject* MissionTerminal::clone() {
-	MissionTerminal* objectCopy = new MissionTerminal(DummyConstructorParameter::instance());
-	objectCopy->_impl = new MissionTerminalImplementation(DummyConstructorParameter::instance());
-	*((MissionTerminalImplementation*) objectCopy->_impl) = *((MissionTerminalImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void MissionTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,7 +35,7 @@ void MissionTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionTerminalImplementation*) _impl)->initializeTransientMembers();
+		((MissionTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -80,6 +71,13 @@ DistributedObjectStub* MissionTerminalImplementation::_getStub() {
 MissionTerminalImplementation::operator const MissionTerminal*() {
 	return _this;
 }
+
+TransactionalObject* MissionTerminalImplementation::clone() {
+	MissionTerminalImplementation* objectCopy = new MissionTerminalImplementation(DummyConstructorParameter::instance());
+	*((MissionTerminalImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void MissionTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

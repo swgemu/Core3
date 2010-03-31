@@ -15,23 +15,14 @@
  */
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceManagerImplementation(server, impl);
-	_impl->_setStub(this);
+	_setImplementation(new ResourceManagerImplementation(server, impl));
+	_getImplementation()->_setStub(this);
 }
 
 ResourceManager::ResourceManager(DummyConstructorParameter* param) : ManagedObject(param) {
 }
 
 ResourceManager::~ResourceManager() {
-}
-
-
-TransactionalObject* ResourceManager::clone() {
-	ResourceManager* objectCopy = new ResourceManager(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ResourceManagerImplementation(DummyConstructorParameter::instance());
-	*((ResourceManagerImplementation*) objectCopy->_impl) = *((ResourceManagerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
 }
 
 
@@ -68,6 +59,13 @@ DistributedObjectStub* ResourceManagerImplementation::_getStub() {
 ResourceManagerImplementation::operator const ResourceManager*() {
 	return _this;
 }
+
+TransactionalObject* ResourceManagerImplementation::clone() {
+	ResourceManagerImplementation* objectCopy = new ResourceManagerImplementation(DummyConstructorParameter::instance());
+	*((ResourceManagerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ResourceManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

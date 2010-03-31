@@ -75,10 +75,7 @@ protected:
 
 	virtual ~SuiBankTransferBox();
 
-	TransactionalObject* clone();
-
 	friend class SuiBankTransferBoxHelper;
-	friend class TransactionalObjectHandle<SuiBankTransferBox*>;
 };
 
 } // namespace banktransferbox
@@ -138,6 +135,8 @@ public:
 protected:
 	virtual ~SuiBankTransferBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -161,6 +160,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiBankTransferBox;
+	friend class TransactionalObjectHandle<SuiBankTransferBoxImplementation*>;
 };
 
 class SuiBankTransferBoxAdapter : public SuiBoxAdapter {

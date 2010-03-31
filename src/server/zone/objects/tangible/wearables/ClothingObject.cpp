@@ -11,8 +11,8 @@
  */
 
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ClothingObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new ClothingObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 ClothingObject::ClothingObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -22,17 +22,8 @@ ClothingObject::~ClothingObject() {
 }
 
 
-TransactionalObject* ClothingObject::clone() {
-	ClothingObject* objectCopy = new ClothingObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ClothingObjectImplementation(DummyConstructorParameter::instance());
-	*((ClothingObjectImplementation*) objectCopy->_impl) = *((ClothingObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void ClothingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,7 +31,7 @@ void ClothingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ClothingObjectImplementation*) _impl)->initializeTransientMembers();
+		((ClothingObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -76,6 +67,13 @@ DistributedObjectStub* ClothingObjectImplementation::_getStub() {
 ClothingObjectImplementation::operator const ClothingObject*() {
 	return _this;
 }
+
+TransactionalObject* ClothingObjectImplementation::clone() {
+	ClothingObjectImplementation* objectCopy = new ClothingObjectImplementation(DummyConstructorParameter::instance());
+	*((ClothingObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ClothingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

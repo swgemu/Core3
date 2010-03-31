@@ -55,10 +55,7 @@ protected:
 
 	virtual ~Instrument();
 
-	TransactionalObject* clone();
-
 	friend class InstrumentHelper;
-	friend class TransactionalObjectHandle<Instrument*>;
 };
 
 } // namespace tangible
@@ -90,6 +87,8 @@ public:
 protected:
 	virtual ~InstrumentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -113,6 +112,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Instrument;
+	friend class TransactionalObjectHandle<InstrumentImplementation*>;
 };
 
 class InstrumentAdapter : public TangibleObjectAdapter {

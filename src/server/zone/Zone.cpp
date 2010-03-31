@@ -23,8 +23,8 @@
  */
 
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ZoneImplementation(zserv, processor, zoneid);
-	_impl->_setStub(this);
+	_setImplementation(new ZoneImplementation(zserv, processor, zoneid));
+	_getImplementation()->_setStub(this);
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -34,17 +34,8 @@ Zone::~Zone() {
 }
 
 
-TransactionalObject* Zone::clone() {
-	Zone* objectCopy = new Zone(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ZoneImplementation(DummyConstructorParameter::instance());
-	*((ZoneImplementation*) objectCopy->_impl) = *((ZoneImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void Zone::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -52,43 +43,43 @@ void Zone::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->initializeTransientMembers();
+		((ZoneImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Zone::insert(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ZoneImplementation*) _impl)->insert(entry);
+		((ZoneImplementation*) _getImplementation())->insert(entry);
 }
 
 void Zone::remove(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ZoneImplementation*) _impl)->remove(entry);
+		((ZoneImplementation*) _getImplementation())->remove(entry);
 }
 
 void Zone::update(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ZoneImplementation*) _impl)->update(entry);
+		((ZoneImplementation*) _getImplementation())->update(entry);
 }
 
 void Zone::inRange(QuadTreeEntry* entry, float range) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ZoneImplementation*) _impl)->inRange(entry, range);
+		((ZoneImplementation*) _getImplementation())->inRange(entry, range);
 }
 
 void Zone::startManagers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +87,11 @@ void Zone::startManagers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->startManagers();
+		((ZoneImplementation*) _getImplementation())->startManagers();
 }
 
 void Zone::stopManagers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +99,11 @@ void Zone::stopManagers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->stopManagers();
+		((ZoneImplementation*) _getImplementation())->stopManagers();
 }
 
 float Zone::getHeight(float x, float y) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +113,11 @@ float Zone::getHeight(float x, float y) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getHeight(x, y);
+		return ((ZoneImplementation*) _getImplementation())->getHeight(x, y);
 }
 
 void Zone::addSceneObject(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +126,11 @@ void Zone::addSceneObject(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->addSceneObject(object);
+		((ZoneImplementation*) _getImplementation())->addSceneObject(object);
 }
 
 void Zone::dropSceneObject(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +139,11 @@ void Zone::dropSceneObject(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->dropSceneObject(objectID);
+		((ZoneImplementation*) _getImplementation())->dropSceneObject(objectID);
 }
 
 int Zone::getZoneID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +151,11 @@ int Zone::getZoneID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getZoneID();
+		return ((ZoneImplementation*) _getImplementation())->getZoneID();
 }
 
 PlanetManager* Zone::getPlanetManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +163,11 @@ PlanetManager* Zone::getPlanetManager() {
 
 		return (PlanetManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getPlanetManager();
+		return ((ZoneImplementation*) _getImplementation())->getPlanetManager();
 }
 
 ZoneServer* Zone::getZoneServer() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -184,11 +175,11 @@ ZoneServer* Zone::getZoneServer() {
 
 		return (ZoneServer*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getZoneServer();
+		return ((ZoneImplementation*) _getImplementation())->getZoneServer();
 }
 
 CreatureManager* Zone::getCreatureManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -196,11 +187,11 @@ CreatureManager* Zone::getCreatureManager() {
 
 		return (CreatureManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getCreatureManager();
+		return ((ZoneImplementation*) _getImplementation())->getCreatureManager();
 }
 
 unsigned long long Zone::getGalacticTime() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,11 +199,11 @@ unsigned long long Zone::getGalacticTime() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getGalacticTime();
+		return ((ZoneImplementation*) _getImplementation())->getGalacticTime();
 }
 
 unsigned int Zone::getWeatherID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +211,11 @@ unsigned int Zone::getWeatherID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getWeatherID();
+		return ((ZoneImplementation*) _getImplementation())->getWeatherID();
 }
 
 void Zone::setWeatherID(unsigned int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +224,11 @@ void Zone::setWeatherID(unsigned int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->setWeatherID(value);
+		((ZoneImplementation*) _getImplementation())->setWeatherID(value);
 }
 
 void Zone::changeWeatherID(int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -246,11 +237,11 @@ void Zone::changeWeatherID(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->changeWeatherID(value);
+		((ZoneImplementation*) _getImplementation())->changeWeatherID(value);
 }
 
 bool Zone::isWeatherEnabled() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -258,11 +249,11 @@ bool Zone::isWeatherEnabled() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->isWeatherEnabled();
+		return ((ZoneImplementation*) _getImplementation())->isWeatherEnabled();
 }
 
 void Zone::setWeatherEnabled(bool value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -271,11 +262,11 @@ void Zone::setWeatherEnabled(bool value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->setWeatherEnabled(value);
+		((ZoneImplementation*) _getImplementation())->setWeatherEnabled(value);
 }
 
 void Zone::setWeatherWindX(float value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -284,11 +275,11 @@ void Zone::setWeatherWindX(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->setWeatherWindX(value);
+		((ZoneImplementation*) _getImplementation())->setWeatherWindX(value);
 }
 
 void Zone::setWeatherWindY(float value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -297,11 +288,11 @@ void Zone::setWeatherWindY(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneImplementation*) _impl)->setWeatherWindY(value);
+		((ZoneImplementation*) _getImplementation())->setWeatherWindY(value);
 }
 
 float Zone::getWeatherWindX() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -309,11 +300,11 @@ float Zone::getWeatherWindX() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getWeatherWindX();
+		return ((ZoneImplementation*) _getImplementation())->getWeatherWindX();
 }
 
 float Zone::getWeatherWindY() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -321,7 +312,7 @@ float Zone::getWeatherWindY() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ZoneImplementation*) _impl)->getWeatherWindY();
+		return ((ZoneImplementation*) _getImplementation())->getWeatherWindY();
 }
 
 /*
@@ -357,6 +348,13 @@ DistributedObjectStub* ZoneImplementation::_getStub() {
 ZoneImplementation::operator const Zone*() {
 	return _this;
 }
+
+TransactionalObject* ZoneImplementation::clone() {
+	ZoneImplementation* objectCopy = new ZoneImplementation(DummyConstructorParameter::instance());
+	*((ZoneImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ZoneImplementation::lock(bool doLock) {
 	_this->lock(doLock);

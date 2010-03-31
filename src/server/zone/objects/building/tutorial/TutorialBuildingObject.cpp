@@ -17,8 +17,8 @@
  */
 
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new TutorialBuildingObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new TutorialBuildingObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -28,17 +28,8 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
 
-TransactionalObject* TutorialBuildingObject::clone() {
-	TutorialBuildingObject* objectCopy = new TutorialBuildingObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new TutorialBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*((TutorialBuildingObjectImplementation*) objectCopy->_impl) = *((TutorialBuildingObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void TutorialBuildingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +37,11 @@ void TutorialBuildingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->initializeTransientMembers();
+		((TutorialBuildingObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void TutorialBuildingObject::onEnter(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +50,11 @@ void TutorialBuildingObject::onEnter(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->onEnter(player);
+		((TutorialBuildingObjectImplementation*) _getImplementation())->onEnter(player);
 }
 
 void TutorialBuildingObject::onExit(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +63,11 @@ void TutorialBuildingObject::onExit(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->onExit(player);
+		((TutorialBuildingObjectImplementation*) _getImplementation())->onExit(player);
 }
 
 void TutorialBuildingObject::clearUnloadEvent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,7 +75,7 @@ void TutorialBuildingObject::clearUnloadEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->clearUnloadEvent();
+		((TutorialBuildingObjectImplementation*) _getImplementation())->clearUnloadEvent();
 }
 
 /*
@@ -120,6 +111,13 @@ DistributedObjectStub* TutorialBuildingObjectImplementation::_getStub() {
 TutorialBuildingObjectImplementation::operator const TutorialBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* TutorialBuildingObjectImplementation::clone() {
+	TutorialBuildingObjectImplementation* objectCopy = new TutorialBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*((TutorialBuildingObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void TutorialBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

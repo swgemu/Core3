@@ -223,10 +223,7 @@ protected:
 
 	virtual ~ChatManager();
 
-	TransactionalObject* clone();
-
 	friend class ChatManagerHelper;
-	friend class TransactionalObjectHandle<ChatManager*>;
 };
 
 } // namespace chat
@@ -331,6 +328,8 @@ public:
 protected:
 	virtual ~ChatManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -352,6 +351,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ChatManager;
+	friend class TransactionalObjectHandle<ChatManagerImplementation*>;
 };
 
 class ChatManagerAdapter : public ManagedObjectAdapter {

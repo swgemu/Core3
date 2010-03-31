@@ -309,13 +309,10 @@ protected:
 
 	virtual ~ZoneServer();
 
-	TransactionalObject* clone();
-
 	String _return_getMessageoftheDay;
 	String _return_getServerName;
 
 	friend class ZoneServerHelper;
-	friend class TransactionalObjectHandle<ZoneServer*>;
 };
 
 } // namespace zone
@@ -502,6 +499,8 @@ public:
 protected:
 	virtual ~ZoneServerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -511,6 +510,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ZoneServer;
+	friend class TransactionalObjectHandle<ZoneServerImplementation*>;
 };
 
 class ZoneServerAdapter : public ManagedObjectAdapter {

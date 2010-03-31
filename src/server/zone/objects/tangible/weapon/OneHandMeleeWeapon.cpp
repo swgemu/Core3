@@ -11,8 +11,8 @@
  */
 
 OneHandMeleeWeapon::OneHandMeleeWeapon() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new OneHandMeleeWeaponImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new OneHandMeleeWeaponImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 OneHandMeleeWeapon::OneHandMeleeWeapon(DummyConstructorParameter* param) : MeleeWeaponObject(param) {
@@ -22,17 +22,8 @@ OneHandMeleeWeapon::~OneHandMeleeWeapon() {
 }
 
 
-TransactionalObject* OneHandMeleeWeapon::clone() {
-	OneHandMeleeWeapon* objectCopy = new OneHandMeleeWeapon(DummyConstructorParameter::instance());
-	objectCopy->_impl = new OneHandMeleeWeaponImplementation(DummyConstructorParameter::instance());
-	*((OneHandMeleeWeaponImplementation*) objectCopy->_impl) = *((OneHandMeleeWeaponImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void OneHandMeleeWeapon::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,7 +31,7 @@ void OneHandMeleeWeapon::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((OneHandMeleeWeaponImplementation*) _impl)->initializeTransientMembers();
+		((OneHandMeleeWeaponImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -76,6 +67,13 @@ DistributedObjectStub* OneHandMeleeWeaponImplementation::_getStub() {
 OneHandMeleeWeaponImplementation::operator const OneHandMeleeWeapon*() {
 	return _this;
 }
+
+TransactionalObject* OneHandMeleeWeaponImplementation::clone() {
+	OneHandMeleeWeaponImplementation* objectCopy = new OneHandMeleeWeaponImplementation(DummyConstructorParameter::instance());
+	*((OneHandMeleeWeaponImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void OneHandMeleeWeaponImplementation::lock(bool doLock) {
 	_this->lock(doLock);

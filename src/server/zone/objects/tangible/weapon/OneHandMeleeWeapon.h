@@ -42,10 +42,7 @@ protected:
 
 	virtual ~OneHandMeleeWeapon();
 
-	TransactionalObject* clone();
-
 	friend class OneHandMeleeWeaponHelper;
-	friend class TransactionalObjectHandle<OneHandMeleeWeapon*>;
 };
 
 } // namespace weapon
@@ -79,6 +76,8 @@ public:
 protected:
 	virtual ~OneHandMeleeWeaponImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -102,6 +101,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class OneHandMeleeWeapon;
+	friend class TransactionalObjectHandle<OneHandMeleeWeaponImplementation*>;
 };
 
 class OneHandMeleeWeaponAdapter : public MeleeWeaponObjectAdapter {

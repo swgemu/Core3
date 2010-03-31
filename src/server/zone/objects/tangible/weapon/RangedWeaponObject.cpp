@@ -11,8 +11,8 @@
  */
 
 RangedWeaponObject::RangedWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RangedWeaponObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new RangedWeaponObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 RangedWeaponObject::RangedWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -22,17 +22,8 @@ RangedWeaponObject::~RangedWeaponObject() {
 }
 
 
-TransactionalObject* RangedWeaponObject::clone() {
-	RangedWeaponObject* objectCopy = new RangedWeaponObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new RangedWeaponObjectImplementation(DummyConstructorParameter::instance());
-	*((RangedWeaponObjectImplementation*) objectCopy->_impl) = *((RangedWeaponObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void RangedWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +31,11 @@ void RangedWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RangedWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((RangedWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool RangedWeaponObject::isRangedWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -52,7 +43,7 @@ bool RangedWeaponObject::isRangedWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedWeaponObjectImplementation*) _impl)->isRangedWeapon();
+		return ((RangedWeaponObjectImplementation*) _getImplementation())->isRangedWeapon();
 }
 
 /*
@@ -88,6 +79,13 @@ DistributedObjectStub* RangedWeaponObjectImplementation::_getStub() {
 RangedWeaponObjectImplementation::operator const RangedWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* RangedWeaponObjectImplementation::clone() {
+	RangedWeaponObjectImplementation* objectCopy = new RangedWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*((RangedWeaponObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void RangedWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

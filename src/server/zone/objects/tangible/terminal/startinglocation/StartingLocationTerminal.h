@@ -73,10 +73,7 @@ protected:
 
 	virtual ~StartingLocationTerminal();
 
-	TransactionalObject* clone();
-
 	friend class StartingLocationTerminalHelper;
-	friend class TransactionalObjectHandle<StartingLocationTerminal*>;
 };
 
 } // namespace startinglocation
@@ -114,6 +111,8 @@ public:
 protected:
 	virtual ~StartingLocationTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -137,6 +136,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StartingLocationTerminal;
+	friend class TransactionalObjectHandle<StartingLocationTerminalImplementation*>;
 };
 
 class StartingLocationTerminalAdapter : public TerminalAdapter {

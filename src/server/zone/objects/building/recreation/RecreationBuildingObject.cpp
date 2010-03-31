@@ -13,23 +13,14 @@
  */
 
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new RecreationBuildingObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new RecreationBuildingObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
 }
 
 RecreationBuildingObject::~RecreationBuildingObject() {
-}
-
-
-TransactionalObject* RecreationBuildingObject::clone() {
-	RecreationBuildingObject* objectCopy = new RecreationBuildingObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new RecreationBuildingObjectImplementation(DummyConstructorParameter::instance());
-	*((RecreationBuildingObjectImplementation*) objectCopy->_impl) = *((RecreationBuildingObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
 }
 
 
@@ -66,6 +57,13 @@ DistributedObjectStub* RecreationBuildingObjectImplementation::_getStub() {
 RecreationBuildingObjectImplementation::operator const RecreationBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* RecreationBuildingObjectImplementation::clone() {
+	RecreationBuildingObjectImplementation* objectCopy = new RecreationBuildingObjectImplementation(DummyConstructorParameter::instance());
+	*((RecreationBuildingObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void RecreationBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

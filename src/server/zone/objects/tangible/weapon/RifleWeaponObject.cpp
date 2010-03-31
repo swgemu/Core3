@@ -11,8 +11,8 @@
  */
 
 RifleWeaponObject::RifleWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RifleWeaponObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new RifleWeaponObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 RifleWeaponObject::RifleWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -22,17 +22,8 @@ RifleWeaponObject::~RifleWeaponObject() {
 }
 
 
-TransactionalObject* RifleWeaponObject::clone() {
-	RifleWeaponObject* objectCopy = new RifleWeaponObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new RifleWeaponObjectImplementation(DummyConstructorParameter::instance());
-	*((RifleWeaponObjectImplementation*) objectCopy->_impl) = *((RifleWeaponObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void RifleWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,7 +31,7 @@ void RifleWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RifleWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((RifleWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -76,6 +67,13 @@ DistributedObjectStub* RifleWeaponObjectImplementation::_getStub() {
 RifleWeaponObjectImplementation::operator const RifleWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* RifleWeaponObjectImplementation::clone() {
+	RifleWeaponObjectImplementation* objectCopy = new RifleWeaponObjectImplementation(DummyConstructorParameter::instance());
+	*((RifleWeaponObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void RifleWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

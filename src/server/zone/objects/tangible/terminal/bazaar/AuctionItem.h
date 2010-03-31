@@ -117,8 +117,6 @@ protected:
 
 	virtual ~AuctionItem();
 
-	TransactionalObject* clone();
-
 	String _return_getBidderName;
 	String _return_getItemDescription;
 	String _return_getItemName;
@@ -127,7 +125,6 @@ protected:
 	String _return_getTerminalTitle;
 
 	friend class AuctionItemHelper;
-	friend class TransactionalObjectHandle<AuctionItem*>;
 };
 
 } // namespace bazaar
@@ -265,6 +262,8 @@ public:
 protected:
 	virtual ~AuctionItemImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -288,6 +287,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class AuctionItem;
+	friend class TransactionalObjectHandle<AuctionItemImplementation*>;
 };
 
 class AuctionItemAdapter : public ManagedObjectAdapter {

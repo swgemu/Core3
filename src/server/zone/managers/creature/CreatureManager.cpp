@@ -25,8 +25,8 @@
  */
 
 CreatureManager::CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new CreatureManagerImplementation(planet, impl);
-	_impl->_setStub(this);
+	_setImplementation(new CreatureManagerImplementation(planet, impl));
+	_getImplementation()->_setStub(this);
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -36,17 +36,8 @@ CreatureManager::~CreatureManager() {
 }
 
 
-TransactionalObject* CreatureManager::clone() {
-	CreatureManager* objectCopy = new CreatureManager(DummyConstructorParameter::instance());
-	objectCopy->_impl = new CreatureManagerImplementation(DummyConstructorParameter::instance());
-	*((CreatureManagerImplementation*) objectCopy->_impl) = *((CreatureManagerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +49,11 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, y, parentID);
+		return ((CreatureManagerImplementation*) _getImplementation())->spawnCreature(templateCRC, x, y, parentID);
 }
 
 void CreatureManager::addCreatureToMap(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +62,11 @@ void CreatureManager::addCreatureToMap(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->addCreatureToMap(creature);
+		((CreatureManagerImplementation*) _getImplementation())->addCreatureToMap(creature);
 }
 
 void CreatureManager::removeCreatureFromMap(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,7 +75,7 @@ void CreatureManager::removeCreatureFromMap(unsigned long long oid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->removeCreatureFromMap(oid);
+		((CreatureManagerImplementation*) _getImplementation())->removeCreatureFromMap(oid);
 }
 
 /*
@@ -120,6 +111,13 @@ DistributedObjectStub* CreatureManagerImplementation::_getStub() {
 CreatureManagerImplementation::operator const CreatureManager*() {
 	return _this;
 }
+
+TransactionalObject* CreatureManagerImplementation::clone() {
+	CreatureManagerImplementation* objectCopy = new CreatureManagerImplementation(DummyConstructorParameter::instance());
+	*((CreatureManagerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void CreatureManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

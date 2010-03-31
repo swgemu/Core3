@@ -11,8 +11,8 @@
  */
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ArmorObjectImplementation();
-	_impl->_setStub(this);
+	_setImplementation(new ArmorObjectImplementation());
+	_getImplementation()->_setStub(this);
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -22,17 +22,8 @@ ArmorObject::~ArmorObject() {
 }
 
 
-TransactionalObject* ArmorObject::clone() {
-	ArmorObject* objectCopy = new ArmorObject(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ArmorObjectImplementation(DummyConstructorParameter::instance());
-	*((ArmorObjectImplementation*) objectCopy->_impl) = *((ArmorObjectImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void ArmorObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,19 +31,19 @@ void ArmorObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->initializeTransientMembers();
+		((ArmorObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ArmorObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((ArmorObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 bool ArmorObject::isSpecial(const String& special) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +52,11 @@ bool ArmorObject::isSpecial(const String& special) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isSpecial(special);
+		return ((ArmorObjectImplementation*) _getImplementation())->isSpecial(special);
 }
 
 bool ArmorObject::isVulnerable(const String& vulnerability) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,7 +65,7 @@ bool ArmorObject::isVulnerable(const String& vulnerability) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isVulnerable(vulnerability);
+		return ((ArmorObjectImplementation*) _getImplementation())->isVulnerable(vulnerability);
 }
 
 /*
@@ -110,6 +101,13 @@ DistributedObjectStub* ArmorObjectImplementation::_getStub() {
 ArmorObjectImplementation::operator const ArmorObject*() {
 	return _this;
 }
+
+TransactionalObject* ArmorObjectImplementation::clone() {
+	ArmorObjectImplementation* objectCopy = new ArmorObjectImplementation(DummyConstructorParameter::instance());
+	*((ArmorObjectImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ArmorObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

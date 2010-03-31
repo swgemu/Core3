@@ -115,14 +115,11 @@ protected:
 
 	virtual ~MissionObject();
 
-	TransactionalObject* clone();
-
 	String _return_getTargetName;
 
 	UnicodeString _return_getCreatorName;
 
 	friend class MissionObjectHelper;
-	friend class TransactionalObjectHandle<MissionObject*>;
 };
 
 } // namespace mission
@@ -220,6 +217,8 @@ public:
 protected:
 	virtual ~MissionObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -241,6 +240,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionObject;
+	friend class TransactionalObjectHandle<MissionObjectImplementation*>;
 };
 
 class MissionObjectAdapter : public IntangibleObjectAdapter {

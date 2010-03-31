@@ -31,8 +31,8 @@
  */
 
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ZoneServerImplementation(processingThreads, galaxyid);
-	_impl->_setStub(this);
+	_setImplementation(new ZoneServerImplementation(processingThreads, galaxyid));
+	_getImplementation()->_setStub(this);
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -42,17 +42,8 @@ ZoneServer::~ZoneServer() {
 }
 
 
-TransactionalObject* ZoneServer::clone() {
-	ZoneServer* objectCopy = new ZoneServer(DummyConstructorParameter::instance());
-	objectCopy->_impl = new ZoneServerImplementation(DummyConstructorParameter::instance());
-	*((ZoneServerImplementation*) objectCopy->_impl) = *((ZoneServerImplementation*) _impl);
-	objectCopy->_impl->_setStub(objectCopy);
-	return (TransactionalObject*) objectCopy;
-}
-
-
 void ZoneServer::test() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,11 +51,11 @@ void ZoneServer::test() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->test();
+		((ZoneServerImplementation*) _getImplementation())->test();
 }
 
 void ZoneServer::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,19 +63,19 @@ void ZoneServer::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->initializeTransientMembers();
+		((ZoneServerImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 ServiceClient* ZoneServer::createConnection(Socket* sock, SocketAddress& addr) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ZoneServerImplementation*) _impl)->createConnection(sock, addr);
+		return ((ZoneServerImplementation*) _getImplementation())->createConnection(sock, addr);
 }
 
 void ZoneServer::init() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +83,11 @@ void ZoneServer::init() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->init();
+		((ZoneServerImplementation*) _getImplementation())->init();
 }
 
 void ZoneServer::run() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +95,11 @@ void ZoneServer::run() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->run();
+		((ZoneServerImplementation*) _getImplementation())->run();
 }
 
 void ZoneServer::shutdown() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +107,11 @@ void ZoneServer::shutdown() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->shutdown();
+		((ZoneServerImplementation*) _getImplementation())->shutdown();
 }
 
 void ZoneServer::startManagers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +119,11 @@ void ZoneServer::startManagers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->startManagers();
+		((ZoneServerImplementation*) _getImplementation())->startManagers();
 }
 
 void ZoneServer::startZones() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +131,11 @@ void ZoneServer::startZones() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->startZones();
+		((ZoneServerImplementation*) _getImplementation())->startZones();
 }
 
 void ZoneServer::stopManagers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -152,11 +143,11 @@ void ZoneServer::stopManagers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->stopManagers();
+		((ZoneServerImplementation*) _getImplementation())->stopManagers();
 }
 
 void ZoneServer::start(int p, int mconn) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,11 +157,11 @@ void ZoneServer::start(int p, int mconn) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->start(p, mconn);
+		((ZoneServerImplementation*) _getImplementation())->start(p, mconn);
 }
 
 void ZoneServer::stop() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -178,27 +169,27 @@ void ZoneServer::stop() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->stop();
+		((ZoneServerImplementation*) _getImplementation())->stop();
 }
 
 void ZoneServer::handleMessage(ServiceClient* client, Packet* message) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ZoneServerImplementation*) _impl)->handleMessage(client, message);
+		((ZoneServerImplementation*) _getImplementation())->handleMessage(client, message);
 }
 
 bool ZoneServer::handleError(ServiceClient* client, Exception& e) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ZoneServerImplementation*) _impl)->handleError(client, e);
+		return ((ZoneServerImplementation*) _getImplementation())->handleError(client, e);
 }
 
 void ZoneServer::addTotalSentPacket(int count) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -207,11 +198,11 @@ void ZoneServer::addTotalSentPacket(int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->addTotalSentPacket(count);
+		((ZoneServerImplementation*) _getImplementation())->addTotalSentPacket(count);
 }
 
 void ZoneServer::addTotalResentPacket(int count) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +211,11 @@ void ZoneServer::addTotalResentPacket(int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->addTotalResentPacket(count);
+		((ZoneServerImplementation*) _getImplementation())->addTotalResentPacket(count);
 }
 
 void ZoneServer::printInfo(bool forcedLog) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +224,11 @@ void ZoneServer::printInfo(bool forcedLog) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->printInfo(forcedLog);
+		((ZoneServerImplementation*) _getImplementation())->printInfo(forcedLog);
 }
 
 void ZoneServer::printEvents() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -245,11 +236,11 @@ void ZoneServer::printEvents() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->printEvents();
+		((ZoneServerImplementation*) _getImplementation())->printEvents();
 }
 
 SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -259,11 +250,11 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getObject(objectID, doLock);
+		return ((ZoneServerImplementation*) _getImplementation())->getObject(objectID, doLock);
 }
 
 SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -274,11 +265,11 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceL
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistenceLevel, objectID);
+		return ((ZoneServerImplementation*) _getImplementation())->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -288,11 +279,11 @@ SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned l
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createStaticObject(templateCRC, objectID);
+		return ((ZoneServerImplementation*) _getImplementation())->createStaticObject(templateCRC, objectID);
 }
 
 void ZoneServer::updateObjectToDatabase(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -301,11 +292,11 @@ void ZoneServer::updateObjectToDatabase(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->updateObjectToDatabase(object);
+		((ZoneServerImplementation*) _getImplementation())->updateObjectToDatabase(object);
 }
 
 void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -314,11 +305,11 @@ void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->updateObjectToStaticDatabase(object);
+		((ZoneServerImplementation*) _getImplementation())->updateObjectToStaticDatabase(object);
 }
 
 void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -327,11 +318,11 @@ void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->destroyObjectFromDatabase(objectID);
+		((ZoneServerImplementation*) _getImplementation())->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServer::lock(bool doLock) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -340,11 +331,11 @@ void ZoneServer::lock(bool doLock) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->lock(doLock);
+		((ZoneServerImplementation*) _getImplementation())->lock(doLock);
 }
 
 void ZoneServer::unlock(bool doLock) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -353,11 +344,11 @@ void ZoneServer::unlock(bool doLock) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->unlock(doLock);
+		((ZoneServerImplementation*) _getImplementation())->unlock(doLock);
 }
 
 void ZoneServer::fixScheduler() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -365,11 +356,11 @@ void ZoneServer::fixScheduler() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->fixScheduler();
+		((ZoneServerImplementation*) _getImplementation())->fixScheduler();
 }
 
 void ZoneServer::changeUserCap(int amount) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -378,11 +369,11 @@ void ZoneServer::changeUserCap(int amount) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->changeUserCap(amount);
+		((ZoneServerImplementation*) _getImplementation())->changeUserCap(amount);
 }
 
 int ZoneServer::getConnectionCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -390,11 +381,11 @@ int ZoneServer::getConnectionCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getConnectionCount();
+		return ((ZoneServerImplementation*) _getImplementation())->getConnectionCount();
 }
 
 void ZoneServer::increaseOnlinePlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -402,11 +393,11 @@ void ZoneServer::increaseOnlinePlayers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->increaseOnlinePlayers();
+		((ZoneServerImplementation*) _getImplementation())->increaseOnlinePlayers();
 }
 
 void ZoneServer::decreaseOnlinePlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -414,11 +405,11 @@ void ZoneServer::decreaseOnlinePlayers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->decreaseOnlinePlayers();
+		((ZoneServerImplementation*) _getImplementation())->decreaseOnlinePlayers();
 }
 
 void ZoneServer::increaseTotalDeletedPlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -426,11 +417,11 @@ void ZoneServer::increaseTotalDeletedPlayers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->increaseTotalDeletedPlayers();
+		((ZoneServerImplementation*) _getImplementation())->increaseTotalDeletedPlayers();
 }
 
 int ZoneServer::getGalaxyID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -438,11 +429,11 @@ int ZoneServer::getGalaxyID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getGalaxyID();
+		return ((ZoneServerImplementation*) _getImplementation())->getGalaxyID();
 }
 
 String ZoneServer::getServerName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -451,11 +442,11 @@ String ZoneServer::getServerName() {
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
 	} else
-		return ((ZoneServerImplementation*) _impl)->getServerName();
+		return ((ZoneServerImplementation*) _getImplementation())->getServerName();
 }
 
 bool ZoneServer::isServerLocked() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -463,11 +454,11 @@ bool ZoneServer::isServerLocked() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->isServerLocked();
+		return ((ZoneServerImplementation*) _getImplementation())->isServerLocked();
 }
 
 bool ZoneServer::isServerOnline() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -475,11 +466,11 @@ bool ZoneServer::isServerOnline() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->isServerOnline();
+		return ((ZoneServerImplementation*) _getImplementation())->isServerOnline();
 }
 
 bool ZoneServer::isServerOffline() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -487,11 +478,11 @@ bool ZoneServer::isServerOffline() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->isServerOffline();
+		return ((ZoneServerImplementation*) _getImplementation())->isServerOffline();
 }
 
 bool ZoneServer::isServerLoading() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -499,11 +490,11 @@ bool ZoneServer::isServerLoading() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->isServerLoading();
+		return ((ZoneServerImplementation*) _getImplementation())->isServerLoading();
 }
 
 int ZoneServer::getServerState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -511,11 +502,11 @@ int ZoneServer::getServerState() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getServerState();
+		return ((ZoneServerImplementation*) _getImplementation())->getServerState();
 }
 
 Zone* ZoneServer::getZone(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -524,11 +515,11 @@ Zone* ZoneServer::getZone(int index) {
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getZone(index);
+		return ((ZoneServerImplementation*) _getImplementation())->getZone(index);
 }
 
 int ZoneServer::getMaxPlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -536,11 +527,11 @@ int ZoneServer::getMaxPlayers() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getMaxPlayers();
+		return ((ZoneServerImplementation*) _getImplementation())->getMaxPlayers();
 }
 
 int ZoneServer::getTotalPlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -548,11 +539,11 @@ int ZoneServer::getTotalPlayers() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getTotalPlayers();
+		return ((ZoneServerImplementation*) _getImplementation())->getTotalPlayers();
 }
 
 int ZoneServer::getDeletedPlayers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -560,11 +551,11 @@ int ZoneServer::getDeletedPlayers() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getDeletedPlayers();
+		return ((ZoneServerImplementation*) _getImplementation())->getDeletedPlayers();
 }
 
 PlayerManager* ZoneServer::getPlayerManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -572,11 +563,11 @@ PlayerManager* ZoneServer::getPlayerManager() {
 
 		return (PlayerManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getPlayerManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getPlayerManager();
 }
 
 ChatManager* ZoneServer::getChatManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -584,11 +575,11 @@ ChatManager* ZoneServer::getChatManager() {
 
 		return (ChatManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getChatManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getChatManager();
 }
 
 ObjectController* ZoneServer::getObjectController() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -596,11 +587,11 @@ ObjectController* ZoneServer::getObjectController() {
 
 		return (ObjectController*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getObjectController();
+		return ((ZoneServerImplementation*) _getImplementation())->getObjectController();
 }
 
 RadialManager* ZoneServer::getRadialManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -608,11 +599,11 @@ RadialManager* ZoneServer::getRadialManager() {
 
 		return (RadialManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getRadialManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getRadialManager();
 }
 
 ResourceManager* ZoneServer::getResourceManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -620,11 +611,11 @@ ResourceManager* ZoneServer::getResourceManager() {
 
 		return (ResourceManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getResourceManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getResourceManager();
 }
 
 BazaarManager* ZoneServer::getBazaarManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -632,19 +623,19 @@ BazaarManager* ZoneServer::getBazaarManager() {
 
 		return (BazaarManager*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getBazaarManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getBazaarManager();
 }
 
 ProfessionManager* ZoneServer::getProfessionManager() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ZoneServerImplementation*) _impl)->getProfessionManager();
+		return ((ZoneServerImplementation*) _getImplementation())->getProfessionManager();
 }
 
 void ZoneServer::setServerName(const String& servername) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -653,11 +644,11 @@ void ZoneServer::setServerName(const String& servername) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->setServerName(servername);
+		((ZoneServerImplementation*) _getImplementation())->setServerName(servername);
 }
 
 void ZoneServer::setGalaxyID(int galaxyid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -666,11 +657,11 @@ void ZoneServer::setGalaxyID(int galaxyid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->setGalaxyID(galaxyid);
+		((ZoneServerImplementation*) _getImplementation())->setGalaxyID(galaxyid);
 }
 
 void ZoneServer::setServerState(int state) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -679,11 +670,11 @@ void ZoneServer::setServerState(int state) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->setServerState(state);
+		((ZoneServerImplementation*) _getImplementation())->setServerState(state);
 }
 
 void ZoneServer::setServerStateLocked() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -691,11 +682,11 @@ void ZoneServer::setServerStateLocked() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->setServerStateLocked();
+		((ZoneServerImplementation*) _getImplementation())->setServerStateLocked();
 }
 
 void ZoneServer::setServerStateOnline() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -703,11 +694,11 @@ void ZoneServer::setServerStateOnline() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->setServerStateOnline();
+		((ZoneServerImplementation*) _getImplementation())->setServerStateOnline();
 }
 
 void ZoneServer::loadMessageoftheDay() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -715,11 +706,11 @@ void ZoneServer::loadMessageoftheDay() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->loadMessageoftheDay();
+		((ZoneServerImplementation*) _getImplementation())->loadMessageoftheDay();
 }
 
 void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -728,11 +719,11 @@ void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->changeMessageoftheDay(newMOTD);
+		((ZoneServerImplementation*) _getImplementation())->changeMessageoftheDay(newMOTD);
 }
 
 String ZoneServer::getMessageoftheDay() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -741,7 +732,7 @@ String ZoneServer::getMessageoftheDay() {
 		method.executeWithAsciiReturn(_return_getMessageoftheDay);
 		return _return_getMessageoftheDay;
 	} else
-		return ((ZoneServerImplementation*) _impl)->getMessageoftheDay();
+		return ((ZoneServerImplementation*) _getImplementation())->getMessageoftheDay();
 }
 
 /*
@@ -777,6 +768,13 @@ DistributedObjectStub* ZoneServerImplementation::_getStub() {
 ZoneServerImplementation::operator const ZoneServer*() {
 	return _this;
 }
+
+TransactionalObject* ZoneServerImplementation::clone() {
+	ZoneServerImplementation* objectCopy = new ZoneServerImplementation(DummyConstructorParameter::instance());
+	*((ZoneServerImplementation*) objectCopy) = *this;
+	return (TransactionalObject*) objectCopy;
+}
+
 
 void ZoneServerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
