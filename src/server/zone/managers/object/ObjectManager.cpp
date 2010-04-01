@@ -514,8 +514,8 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 
 		object->_setObjectID(oid);
 		object->_setImplementation(servant);
-		object->setPersistent(persistenceLevel);
 
+		((ManagedObjectImplementation*)servant)->setPersistent(persistenceLevel);
 		servant->_setStub(object);
 		servant->_setClassHelper(helper);
 		servant->_serializationHelperMethod();
