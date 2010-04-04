@@ -417,6 +417,7 @@ void ZoneServerImplementation::startManagers() {
 
 	resourceManager = new ResourceManager(_this, processor);
 	resourceManager->deploy("ResourceManager");
+	resourceManager->initialize();
 
 	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
@@ -495,16 +496,16 @@ void ZoneServerImplementation::shutdown() {
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..");
 
+	if (resourceManager != NULL)
+		resourceManager->stop();
+
 	//info("saving objects...");
 
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
 	/*if (missionManager != NULL)
-		missionManager->unloadManager();
-
-	if (resourceManager != NULL)
-		resourceManager->stop();*/
+		missionManager->unloadManager();*/
 
 	info("managers stopped", true);
 }

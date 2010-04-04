@@ -31,6 +31,8 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/Lua.h"
@@ -45,6 +47,10 @@ namespace resource {
 class ResourceManager : public ManagedObject {
 public:
 	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl);
+
+	void stop();
+
+	void initialize();
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -71,17 +77,23 @@ class ResourceManagerImplementation : public ManagedObjectImplementation, public
 
 	ManagedReference<ZoneServer* > zoneServer;
 
+	ResourceSpawner* resourceSpawner;
+
 public:
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl);
 
 	ResourceManagerImplementation(DummyConstructorParameter* param);
 
-private:
-	void init();
+	void stop();
 
+	void initialize();
+
+private:
 	bool loadConfigFile();
 
 	bool loadConfigData();
+
+	void startResourceSpawner();
 
 public:
 	ResourceManager* _this;
@@ -122,6 +134,10 @@ public:
 	ResourceManagerAdapter(ResourceManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void stop();
+
+	void initialize();
 
 };
 

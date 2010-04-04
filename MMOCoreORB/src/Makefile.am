@@ -139,6 +139,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
+		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
+		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
@@ -183,7 +187,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
-		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
