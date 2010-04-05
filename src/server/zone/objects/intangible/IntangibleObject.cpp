@@ -11,8 +11,8 @@
  */
 
 IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new IntangibleObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new IntangibleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {

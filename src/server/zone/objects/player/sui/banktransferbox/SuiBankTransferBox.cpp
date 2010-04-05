@@ -13,8 +13,8 @@
  */
 
 SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_setImplementation(new SuiBankTransferBoxImplementation(bankObject, player, windowtype));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new SuiBankTransferBoxImplementation(bankObject, player, windowtype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiBankTransferBox::SuiBankTransferBox(DummyConstructorParameter* param) : SuiBox(param) {

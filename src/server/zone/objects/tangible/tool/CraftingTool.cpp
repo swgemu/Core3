@@ -13,8 +13,8 @@
  */
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new CraftingToolImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new CraftingToolImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CraftingTool::CraftingTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {

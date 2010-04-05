@@ -11,8 +11,8 @@
  */
 
 RifleWeaponObject::RifleWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new RifleWeaponObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new RifleWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RifleWeaponObject::RifleWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {

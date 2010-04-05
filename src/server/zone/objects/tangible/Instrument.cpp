@@ -13,8 +13,8 @@
  */
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new InstrumentImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new InstrumentImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {

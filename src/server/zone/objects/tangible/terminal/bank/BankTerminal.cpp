@@ -21,8 +21,8 @@
  */
 
 BankTerminal::BankTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_setImplementation(new BankTerminalImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new BankTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BankTerminal::BankTerminal(DummyConstructorParameter* param) : Terminal(param) {

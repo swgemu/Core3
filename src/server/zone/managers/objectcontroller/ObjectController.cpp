@@ -23,8 +23,8 @@
  */
 
 ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ObjectControllerImplementation(srv));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ObjectControllerImplementation(srv));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedObject(param) {

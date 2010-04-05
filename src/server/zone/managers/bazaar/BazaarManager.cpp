@@ -25,8 +25,8 @@
  */
 
 BazaarManager::BazaarManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new BazaarManagerImplementation(server));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new BazaarManagerImplementation(server));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BazaarManager::BazaarManager(DummyConstructorParameter* param) : ManagedObject(param) {

@@ -9,8 +9,8 @@
  */
 
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new PersistentMessageImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new PersistentMessageImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PersistentMessage::PersistentMessage(DummyConstructorParameter* param) : ManagedObject(param) {

@@ -19,8 +19,8 @@
  */
 
 BazaarTerminal::BazaarTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_setImplementation(new BazaarTerminalImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new BazaarTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BazaarTerminal::BazaarTerminal(DummyConstructorParameter* param) : Terminal(param) {

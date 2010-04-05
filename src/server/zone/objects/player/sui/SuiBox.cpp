@@ -13,8 +13,8 @@
  */
 
 SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new SuiBoxImplementation(play, windowtype, boxtype));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new SuiBoxImplementation(play, windowtype, boxtype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiBox::SuiBox(DummyConstructorParameter* param) : ManagedObject(param) {

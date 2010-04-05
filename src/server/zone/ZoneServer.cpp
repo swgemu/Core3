@@ -31,8 +31,8 @@
  */
 
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ZoneServerImplementation(processingThreads, galaxyid));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ZoneServerImplementation(processingThreads, galaxyid));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedObject(param) {

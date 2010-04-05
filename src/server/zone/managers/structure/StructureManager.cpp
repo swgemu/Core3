@@ -17,8 +17,8 @@
  */
 
 StructureManager::StructureManager(Zone* zone, ZoneProcessServerImplementation* processor) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new StructureManagerImplementation(zone, processor));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new StructureManagerImplementation(zone, processor));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedObject(param) {

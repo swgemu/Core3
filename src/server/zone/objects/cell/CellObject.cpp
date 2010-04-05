@@ -11,8 +11,8 @@
  */
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new CellObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new CellObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {

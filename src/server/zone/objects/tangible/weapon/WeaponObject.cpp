@@ -17,8 +17,8 @@
  */
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new WeaponObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new WeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(param) {

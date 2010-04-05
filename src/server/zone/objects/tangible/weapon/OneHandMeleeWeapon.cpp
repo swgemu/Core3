@@ -11,8 +11,8 @@
  */
 
 OneHandMeleeWeapon::OneHandMeleeWeapon() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new OneHandMeleeWeaponImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new OneHandMeleeWeaponImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 OneHandMeleeWeapon::OneHandMeleeWeapon(DummyConstructorParameter* param) : MeleeWeaponObject(param) {

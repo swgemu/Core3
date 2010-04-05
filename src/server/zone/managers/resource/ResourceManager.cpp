@@ -15,8 +15,8 @@
  */
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ResourceManagerImplementation(server, impl));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ResourceManagerImplementation(server, impl));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ResourceManager::ResourceManager(DummyConstructorParameter* param) : ManagedObject(param) {

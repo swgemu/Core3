@@ -25,8 +25,8 @@
  */
 
 CreatureManager::CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new CreatureManagerImplementation(planet, impl));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new CreatureManagerImplementation(planet, impl));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ManagedObject(param) {

@@ -85,7 +85,7 @@ class ServerCore : public Core, public Logger {
 public:
 	ServerCore();
 
-	void init();
+	void initialize();
 
 	void run();
 

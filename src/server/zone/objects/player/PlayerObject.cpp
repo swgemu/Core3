@@ -23,8 +23,8 @@
  */
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new PlayerObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new PlayerObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {

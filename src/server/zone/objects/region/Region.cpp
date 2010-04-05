@@ -11,8 +11,8 @@
  */
 
 Region::Region(const String& fullName, float posX, float posY, float radi) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new RegionImplementation(fullName, posX, posY, radi));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new RegionImplementation(fullName, posX, posY, radi));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ManagedObject(param) {

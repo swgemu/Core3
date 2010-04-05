@@ -29,8 +29,8 @@
  */
 
 ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ChatManagerImplementation(serv, initsize));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ChatManagerImplementation(serv, initsize));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedObject(param) {

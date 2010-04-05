@@ -17,8 +17,8 @@
  */
 
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new TutorialBuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new TutorialBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {

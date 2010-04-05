@@ -13,8 +13,8 @@
  */
 
 Food::Food() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new FoodImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new FoodImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Food::Food(DummyConstructorParameter* param) : TangibleObject(param) {

@@ -21,8 +21,8 @@
  */
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new PlanetManagerImplementation(planet, srv));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new PlanetManagerImplementation(planet, srv));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedObject(param) {

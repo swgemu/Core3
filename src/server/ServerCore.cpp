@@ -83,12 +83,12 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	features = NULL;
 }
 
-void ServerCore::init() {
-	info("starting up server..");
-
-	processConfig();
-
+void ServerCore::initialize() {
 	try {
+		info("starting up server..");
+
+		processConfig();
+
 		database = new ServerDatabase(&configManager);
 
 		if (configManager.getUseVBIngeration() == 1)
@@ -97,9 +97,9 @@ void ServerCore::init() {
 		String& orbaddr = configManager.getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr);
 
-		orb->setCustomObjectManager(ObjectManager::instance());
+		//orb->setCustomObjectManager(ObjectManager::instance());
 
-		if (configManager.getMakeLogin()) {
+		/*if (configManager.getMakeLogin()) {
 			loginServer = new LoginServer(&configManager);
 		}
 
@@ -110,9 +110,38 @@ void ServerCore::init() {
 
 		if (configManager.getMakePing()) {
 			pingServer = new PingServer();
+		}*/
+
+		/*if (loginServer != NULL) {
+			int loginPort = configManager.getLoginPort();
+			int loginAllowedConnections = configManager.getLoginAllowedConnections();
+
+			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
+		if (zoneServer != NULL) {
+			int zoneAllowedConnections = configManager.getZoneAllowedConnections();
 
+			zoneServer->start(44463, zoneAllowedConnections);
+		}*/
+
+		/*if (statusServer != NULL) {
+			int statusPort = configManager.getStatusPort();
+			int statusAllowedConnections = configManager.getStatusAllowedConnections();
+
+			statusServer->start(statusPort);
+		}*/
+
+		/*if (pingServer != NULL) {
+			int pingPort = configManager.getPingPort();
+			int pingAllowedConnections = configManager.getPingAllowedConnections();
+
+			pingServer->start(pingPort, pingAllowedConnections);
+		}*/
+
+		info("initialized", true);
+
+		Core::initialize();
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -123,35 +152,6 @@ void ServerCore::init() {
 }
 
 void ServerCore::run() {
-	if (loginServer != NULL) {
-		int loginPort = configManager.getLoginPort();
-		int loginAllowedConnections = configManager.getLoginAllowedConnections();
-
-		loginServer->start(loginPort, loginAllowedConnections);
-	}
-
-	if (zoneServer != NULL) {
-		int zoneAllowedConnections = configManager.getZoneAllowedConnections();
-
-		zoneServer->start(44463, zoneAllowedConnections);
-	}
-
-	/*if (statusServer != NULL) {
-		int statusPort = configManager.getStatusPort();
-		int statusAllowedConnections = configManager.getStatusAllowedConnections();
-
-		statusServer->start(statusPort);
-	}*/
-
-	if (pingServer != NULL) {
-		int pingPort = configManager.getPingPort();
-		int pingAllowedConnections = configManager.getPingAllowedConnections();
-
-		pingServer->start(pingPort, pingAllowedConnections);
-	}
-
-	info("initialized", true);
-
 	handleCommands();
 
 	shutdown();

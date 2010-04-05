@@ -13,8 +13,8 @@
  */
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ContainerImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ContainerImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {

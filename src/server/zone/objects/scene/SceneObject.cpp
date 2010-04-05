@@ -27,8 +27,8 @@
  */
 
 SceneObject::SceneObject() : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new SceneObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new SceneObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param) {

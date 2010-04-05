@@ -11,8 +11,8 @@
  */
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new WaypointObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new WaypointObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {

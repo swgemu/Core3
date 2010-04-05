@@ -13,8 +13,8 @@
  */
 
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new RecreationBuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new RecreationBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {

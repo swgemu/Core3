@@ -21,8 +21,8 @@
  */
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new PlayerManagerImplementation(zoneServer, impl));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new PlayerManagerImplementation(zoneServer, impl));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(param) {

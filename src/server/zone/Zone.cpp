@@ -23,8 +23,8 @@
  */
 
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ZoneImplementation(zserv, processor, zoneid));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ZoneImplementation(zserv, processor, zoneid));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {

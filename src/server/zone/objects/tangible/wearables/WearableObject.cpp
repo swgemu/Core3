@@ -11,8 +11,8 @@
  */
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new WearableObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new WearableObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {

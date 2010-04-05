@@ -31,8 +31,8 @@
  */
 
 PlayerCreature::PlayerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new PlayerCreatureImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new PlayerCreatureImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObject(param) {

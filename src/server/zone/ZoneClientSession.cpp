@@ -13,8 +13,8 @@
  */
 
 ZoneClientSession::ZoneClientSession(Socket* sock, SocketAddress* addr) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ZoneClientSessionImplementation(sock, addr));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ZoneClientSessionImplementation(sock, addr));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ZoneClientSession::ZoneClientSession(DummyConstructorParameter* param) : ManagedObject(param) {

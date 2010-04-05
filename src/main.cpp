@@ -58,19 +58,14 @@ int main(int argc, char* argv[]) {
 
 		ServerCore core;
 
-		core.init();
+		core.initialize();
 
-		core.run();
-
-		engine::stm::Transaction::currentTransaction()->commit();
+		//core.run();
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();
 	} catch (...) {
 		System::out << "unreported exception caught main()\n";
 	}
-
-
-	return 0;
 }
 

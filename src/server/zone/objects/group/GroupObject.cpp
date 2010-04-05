@@ -13,8 +13,8 @@
  */
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new GroupObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new GroupObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 GroupObject::GroupObject(DummyConstructorParameter* param) : SceneObject(param) {

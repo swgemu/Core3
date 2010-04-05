@@ -13,8 +13,8 @@
  */
 
 TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new TravelBuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new TravelBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TravelBuildingObject::TravelBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {

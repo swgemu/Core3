@@ -13,8 +13,8 @@
  */
 
 ToolTangibleObject::ToolTangibleObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ToolTangibleObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ToolTangibleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ToolTangibleObject::ToolTangibleObject(DummyConstructorParameter* param) : TangibleObject(param) {

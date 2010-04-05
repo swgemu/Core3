@@ -11,8 +11,8 @@
  */
 
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ClothingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ClothingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ClothingObject::ClothingObject(DummyConstructorParameter* param) : WearableObject(param) {

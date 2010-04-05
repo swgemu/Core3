@@ -13,8 +13,8 @@
  */
 
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new MedicalBuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new MedicalBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MedicalBuildingObject::MedicalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {

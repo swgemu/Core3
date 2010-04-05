@@ -19,8 +19,8 @@
  */
 
 BuildingObject::BuildingObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new BuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new BuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObject(param) {

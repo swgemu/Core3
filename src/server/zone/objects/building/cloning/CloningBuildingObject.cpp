@@ -13,8 +13,8 @@
  */
 
 CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new CloningBuildingObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new CloningBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CloningBuildingObject::CloningBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {

@@ -11,8 +11,8 @@
  */
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new TerminalImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new TerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {

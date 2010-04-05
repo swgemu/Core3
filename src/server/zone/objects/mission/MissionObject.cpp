@@ -15,8 +15,8 @@
  */
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new MissionObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new MissionObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MissionObject::MissionObject(DummyConstructorParameter* param) : IntangibleObject(param) {

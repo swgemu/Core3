@@ -11,8 +11,8 @@
  */
 
 BazaarAuctionsMap::BazaarAuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new BazaarAuctionsMapImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new BazaarAuctionsMapImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BazaarAuctionsMap::BazaarAuctionsMap(DummyConstructorParameter* param) : ManagedObject(param) {

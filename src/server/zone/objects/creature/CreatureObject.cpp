@@ -23,8 +23,8 @@
  */
 
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new CreatureObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new CreatureObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObject(param) {

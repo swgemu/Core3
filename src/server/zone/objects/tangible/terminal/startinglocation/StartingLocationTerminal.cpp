@@ -15,8 +15,8 @@
  */
 
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_setImplementation(new StartingLocationTerminalImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new StartingLocationTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {

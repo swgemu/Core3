@@ -11,8 +11,8 @@
  */
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new AuctionItemImplementation(objectid));
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new AuctionItemImplementation(objectid));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {

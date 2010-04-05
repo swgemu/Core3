@@ -15,8 +15,8 @@
  */
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_setImplementation(new MissionTerminalImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new MissionTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MissionTerminal::MissionTerminal(DummyConstructorParameter* param) : Terminal(param) {

@@ -15,8 +15,8 @@
  */
 
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ChatRoomImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ChatRoomImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {

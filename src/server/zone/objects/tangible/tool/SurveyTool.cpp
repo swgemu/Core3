@@ -13,8 +13,8 @@
  */
 
 SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new SurveyToolImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new SurveyToolImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SurveyTool::SurveyTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {

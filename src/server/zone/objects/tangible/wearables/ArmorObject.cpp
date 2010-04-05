@@ -11,8 +11,8 @@
  */
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new ArmorObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new ArmorObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {

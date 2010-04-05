@@ -11,8 +11,8 @@
  */
 
 MeleeWeaponObject::MeleeWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new MeleeWeaponObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new MeleeWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {

@@ -15,8 +15,8 @@
  */
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_setImplementation(new TangibleObjectImplementation());
-	_getImplementation()->_setStub(this);
+	ManagedObject::_setImplementation(new TangibleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
