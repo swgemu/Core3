@@ -22,6 +22,8 @@
 
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 /*
  *	ChatManagerStub
  */
@@ -514,41 +516,41 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(97):  		roomMap.put(channel.getRoomID(), channel);
+	// server/chat/ChatManager.idl(98):  		roomMap.put(channel.getRoomID(), channel);
 	roomMap->put(channel->getRoomID(), channel);
 }
 
 void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(101):  		roomMap.remove(channel.getRoomID());
+	// server/chat/ChatManager.idl(102):  		roomMap.remove(channel.getRoomID());
 	roomMap->remove(channel->getRoomID());
 }
 
 void ChatManagerImplementation::setPlayerManager(PlayerManager* manager) {
-	// server/chat/ChatManager.idl(171):  		playerManager = manager;
+	// server/chat/ChatManager.idl(172):  		playerManager = manager;
 	playerManager = manager;
 }
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(175):  		return roomMap.get(id);
+	// server/chat/ChatManager.idl(176):  		return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(179):  		return gameRooms.get(game);
+	// server/chat/ChatManager.idl(180):  		return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(183):  		return ++roomID;
+	// server/chat/ChatManager.idl(184):  		return ++roomID;
 	return  ++roomID;
 }
 
 int ChatManagerImplementation::getPlayerCount() {
-	// server/chat/ChatManager.idl(187):  		return playerMap.size();
+	// server/chat/ChatManager.idl(188):  		return playerMap.size();
 	return playerMap->size();
 }
 

@@ -52,6 +52,11 @@ import system.net.Socket;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
+import engine.service.proto.events.BaseClientNetStatusCheckupEvent;
+import engine.service.proto.events.BaseClientCleanupEvent;
+import engine.service.proto.events.BaseClientNetStatusRequestEvent;
+import engine.service.proto.events.BaseClientEvent;
+
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	@weakReference
 	protected SceneObject player;

@@ -45,6 +45,14 @@ using namespace server::zone;
 
 #include "system/net/Socket.h"
 
+#include "engine/service/proto/events/BaseClientNetStatusCheckupEvent.h"
+
+#include "engine/service/proto/events/BaseClientCleanupEvent.h"
+
+#include "engine/service/proto/events/BaseClientNetStatusRequestEvent.h"
+
+#include "engine/service/proto/events/BaseClientEvent.h"
+
 namespace server {
 namespace zone {
 

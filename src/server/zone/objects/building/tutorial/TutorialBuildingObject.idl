@@ -48,6 +48,8 @@ import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
+import server.zone.Zone;
+import server.zone.objects.cell.CellObject;
 
 class TutorialBuildingObject extends BuildingObject {
 	

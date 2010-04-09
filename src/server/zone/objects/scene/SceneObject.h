@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
+namespace server {
+namespace zone {
 
 class ZoneProcessServerImplementation;
 
@@ -595,6 +609,8 @@ public:
 	unsigned long long getParentID();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	float getDistanceTo(SceneObject* object);
 
 	int onPositionUpdate();
 
@@ -1247,6 +1263,8 @@ public:
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	float getDistanceTo(SceneObject* object);
+
 	virtual int onPositionUpdate();
 
 	bool hasNotifiedObject(SceneObject* object);
@@ -1495,6 +1513,8 @@ public:
 	unsigned long long getParentID();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	float getDistanceTo(SceneObject* object);
 
 	int onPositionUpdate();
 

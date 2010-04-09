@@ -11,6 +11,16 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -26,6 +36,8 @@ public:
 	MeleeWeaponObject();
 
 	void initializeTransientMembers();
+
+	bool isMeleeWeapon();
 
 protected:
 	MeleeWeaponObject(DummyConstructorParameter* param);
@@ -57,6 +69,8 @@ public:
 	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isMeleeWeapon();
 
 	MeleeWeaponObject* _this;
 
@@ -98,6 +112,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isMeleeWeapon();
 
 };
 

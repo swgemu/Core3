@@ -1,6 +1,14 @@
 object_weapon_melee_knife_knife_survival = object_weapon_melee_knife_shared_knife_survival:new {
 
-	certificationsRequired = { "cert_knife_survival" }
+	attackType = MELEEATTACK,
+	damageType = KINETIC,
+	
+	certificationsRequired = { "cert_knife_survival" },
+	
+	creatureAccuracyModifiers = { "onehandmelee_accuracy" }, 
+	defenderDefenseModifiers = { "melee_defense" },
+	speedModifiers = { "onehandmelee_speed" },
+	damageModifiers = { }
 	
 }
 

@@ -4,6 +4,8 @@
 
 #include "RangedWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	RangedWeaponObjectStub
  */
@@ -30,6 +32,18 @@ void RangedWeaponObject::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		((RangedWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+bool RangedWeaponObject::isRangedWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((RangedWeaponObjectImplementation*) _impl)->isRangedWeapon();
 }
 
 /*
@@ -103,15 +117,20 @@ void RangedWeaponObjectImplementation::_serializationHelperMethod() {
 
 RangedWeaponObjectImplementation::RangedWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(53):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(54):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
 }
 
 void RangedWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(58):  		super.initializeTransientMembers();
 	WeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(59):  		Logger.setLoggingName("RangedWeaponObject");
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(60):  		Logger.setLoggingName("RangedWeaponObject");
 	Logger::setLoggingName("RangedWeaponObject");
+}
+
+bool RangedWeaponObjectImplementation::isRangedWeapon() {
+	// server/zone/objects/tangible/weapon/RangedWeaponObject.idl(64):  		return true;
+	return true;
 }
 
 /*
@@ -128,6 +147,9 @@ Packet* RangedWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isRangedWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -137,6 +159,10 @@ Packet* RangedWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 void RangedWeaponObjectAdapter::initializeTransientMembers() {
 	((RangedWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool RangedWeaponObjectAdapter::isRangedWeapon() {
+	return ((RangedWeaponObjectImplementation*) impl)->isRangedWeapon();
 }
 
 /*

@@ -94,6 +94,24 @@ using namespace server::zone::objects::tangible::terminal::bazaar;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace terminal {
+namespace bazaar {
+
+class AuctionItem;
+
+} // namespace bazaar
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::bazaar;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -110,6 +128,8 @@ using namespace server::zone::objects::scene;
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedObject.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

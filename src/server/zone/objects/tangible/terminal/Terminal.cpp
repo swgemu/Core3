@@ -4,6 +4,8 @@
 
 #include "Terminal.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	TerminalStub
  */
@@ -103,7 +105,7 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 TerminalImplementation::TerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(53):  		Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(54):  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
 }
 

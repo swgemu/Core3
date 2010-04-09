@@ -50,6 +50,7 @@ import server.zone.ZoneProcessServerImplementation;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
+import server.zone.managers.objectcontroller.ObjectController;
 
 class StructureManager extends ManagedObject implements Logger {
 	private Zone zone;

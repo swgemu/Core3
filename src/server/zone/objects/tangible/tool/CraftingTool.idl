@@ -47,6 +47,7 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
 
 class CraftingTool extends ToolTangibleObject {
 	public CraftingTool() {

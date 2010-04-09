@@ -87,6 +87,16 @@ class SuiBox;
 
 using namespace server::zone::objects::player::sui;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 
 #include "server/zone/objects/tangible/terminal/Terminal.h"

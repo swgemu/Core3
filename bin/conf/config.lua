@@ -50,11 +50,11 @@ MakeStatus = 1
 ORB = ""
 
 
-DBHost = "127.0.0.1"
+DBHost = "172.26.0.3"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "swgemu"
-DBPass = "123456"
+DBUser = "root"
+DBPass = "swgemu"
 
 -- vBulletin 3 integration
 ForumsDBHost = ""

@@ -46,6 +46,7 @@ package server.zone.objects.tangible.weapon;
 
 import server.zone.objects.tangible.weapon.WeaponObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 
 class MeleeWeaponObject extends WeaponObject {
@@ -54,4 +55,8 @@ class MeleeWeaponObject extends WeaponObject {
 	}
 	
 	public native void initializeTransientMembers();
+	
+	public boolean isMeleeWeapon() {
+		return true;
+	}
 }

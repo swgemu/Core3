@@ -53,6 +53,16 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -65,6 +75,54 @@ namespace weapon {
 
 class WeaponObject : public TangibleObject {
 public:
+	static const int NONE = 0;
+
+	static const int LIGHT = 1;
+
+	static const int MEDIUM = 2;
+
+	static const int HEAVY = 3;
+
+	static const int KINETIC = 1;
+
+	static const int ENERGY = 2;
+
+	static const int ELECTRICITY = 3;
+
+	static const int STUN = 4;
+
+	static const int BLAST = 5;
+
+	static const int HEAT = 6;
+
+	static const int COLD = 7;
+
+	static const int ACID = 8;
+
+	static const int LIGHTSABER = 9;
+
+	static const int FORCE = 10;
+
+	static const int MELEEATTACK = 0;
+
+	static const int RANGEDATTACK = 1;
+
+	static const int FORCEATTACK = 2;
+
+	static const int TRAPATTACK = 3;
+
+	static const int GRENADEATTACK = 4;
+
+	static const int HEAVYACIDBEAMATTACK = 14;
+
+	static const int HEAVYLIGHTNINGBEAMATTACK = 15;
+
+	static const int HEAVYPARTICLEBEAMATTACK = 17;
+
+	static const int HEAVYROCKETLAUNCHERATTACK = 18;
+
+	static const int HEAVYLAUNCHERATTACK = 19;
+
 	WeaponObject();
 
 	void loadTemplateData(LuaObject* templateData);
@@ -77,11 +135,67 @@ public:
 
 	bool isCertifiedFor(PlayerCreature* object);
 
+	Vector<String>* getDamageModifiers();
+
+	Vector<String>* getSpeedModifiers();
+
+	Vector<String>* getCreatureAccuracyModifiers();
+
+	Vector<String>* getDefenderDefenseModifiers();
+
 	void setCertified(bool cert);
 
 	int getAttackType();
 
 	bool isCertified();
+
+	int getPointBlankAccuracy();
+
+	int getPointBlankRange();
+
+	int getIdealRange();
+
+	int getMaxRange();
+
+	int getIdealAccuracy();
+
+	int getArmorPiercing();
+
+	int getMaxRangeAccuracy();
+
+	float getAttackSpeed();
+
+	float getMaxDamage();
+
+	float getMinDamage();
+
+	float getWoundsRatio();
+
+	int getHealthAttackCost();
+
+	int getActionAttackCost();
+
+	int getMindAttackCost();
+
+	int getForceCost();
+
+	int getDamageType();
+
+	bool hasMeleeAttack();
+
+	bool hasRangedAttack();
+
+	bool isUnarmedWeapon();
+
+	bool isMeleeWeapon();
+
+	bool isRangedWeapon();
+
+	bool isRifleWeapon();
+
+	bool isPistolWeapon();
+
+	bool isOneHandMeleeWeapon();
 
 protected:
 	WeaponObject(DummyConstructorParameter* param);
@@ -115,9 +229,99 @@ protected:
 
 	bool certified;
 
+	int armorPiercing;
+
+	int pointBlankAccuracy;
+
+	int pointBlankRange;
+
+	int idealRange;
+
+	int idealAccuracy;
+
+	int maxRange;
+
+	int maxRangeAccuracy;
+
+	int damageType;
+
+	float attackSpeed;
+
+	float minDamage;
+
+	float maxDamage;
+
+	float area;
+
+	float woundsRatio;
+
+	int healthAttackCost;
+
+	int actionAttackCost;
+
+	int mindAttackCost;
+
+	int forceCost;
+
+	Vector<String> damageModifiers;
+
+	Vector<String> speedModifiers;
+
+	Vector<String> creatureAccuracyModifiers;
+
+	Vector<String> defenderDefenseModifiers;
+
 	Vector<String> certificationsRequired;
 
 public:
+	static const int NONE = 0;
+
+	static const int LIGHT = 1;
+
+	static const int MEDIUM = 2;
+
+	static const int HEAVY = 3;
+
+	static const int KINETIC = 1;
+
+	static const int ENERGY = 2;
+
+	static const int ELECTRICITY = 3;
+
+	static const int STUN = 4;
+
+	static const int BLAST = 5;
+
+	static const int HEAT = 6;
+
+	static const int COLD = 7;
+
+	static const int ACID = 8;
+
+	static const int LIGHTSABER = 9;
+
+	static const int FORCE = 10;
+
+	static const int MELEEATTACK = 0;
+
+	static const int RANGEDATTACK = 1;
+
+	static const int FORCEATTACK = 2;
+
+	static const int TRAPATTACK = 3;
+
+	static const int GRENADEATTACK = 4;
+
+	static const int HEAVYACIDBEAMATTACK = 14;
+
+	static const int HEAVYLIGHTNINGBEAMATTACK = 15;
+
+	static const int HEAVYPARTICLEBEAMATTACK = 17;
+
+	static const int HEAVYROCKETLAUNCHERATTACK = 18;
+
+	static const int HEAVYLAUNCHERATTACK = 19;
+
 	WeaponObjectImplementation();
 
 	WeaponObjectImplementation(DummyConstructorParameter* param);
@@ -132,11 +336,67 @@ public:
 
 	bool isCertifiedFor(PlayerCreature* object);
 
+	Vector<String>* getDamageModifiers();
+
+	Vector<String>* getSpeedModifiers();
+
+	Vector<String>* getCreatureAccuracyModifiers();
+
+	Vector<String>* getDefenderDefenseModifiers();
+
 	void setCertified(bool cert);
 
 	int getAttackType();
 
 	bool isCertified();
+
+	int getPointBlankAccuracy();
+
+	int getPointBlankRange();
+
+	int getIdealRange();
+
+	int getMaxRange();
+
+	int getIdealAccuracy();
+
+	int getArmorPiercing();
+
+	int getMaxRangeAccuracy();
+
+	float getAttackSpeed();
+
+	float getMaxDamage();
+
+	float getMinDamage();
+
+	float getWoundsRatio();
+
+	int getHealthAttackCost();
+
+	int getActionAttackCost();
+
+	int getMindAttackCost();
+
+	int getForceCost();
+
+	int getDamageType();
+
+	bool hasMeleeAttack();
+
+	bool hasRangedAttack();
+
+	bool isUnarmedWeapon();
+
+	virtual bool isMeleeWeapon();
+
+	virtual bool isRangedWeapon();
+
+	virtual bool isRifleWeapon();
+
+	virtual bool isPistolWeapon();
+
+	virtual bool isOneHandMeleeWeapon();
 
 	WeaponObject* _this;
 
@@ -188,6 +448,54 @@ public:
 	int getAttackType();
 
 	bool isCertified();
+
+	int getPointBlankAccuracy();
+
+	int getPointBlankRange();
+
+	int getIdealRange();
+
+	int getMaxRange();
+
+	int getIdealAccuracy();
+
+	int getArmorPiercing();
+
+	int getMaxRangeAccuracy();
+
+	float getAttackSpeed();
+
+	float getMaxDamage();
+
+	float getMinDamage();
+
+	float getWoundsRatio();
+
+	int getHealthAttackCost();
+
+	int getActionAttackCost();
+
+	int getMindAttackCost();
+
+	int getForceCost();
+
+	int getDamageType();
+
+	bool hasMeleeAttack();
+
+	bool hasRangedAttack();
+
+	bool isUnarmedWeapon();
+
+	bool isMeleeWeapon();
+
+	bool isRangedWeapon();
+
+	bool isRifleWeapon();
+
+	bool isPistolWeapon();
+
+	bool isOneHandMeleeWeapon();
 
 };
 

@@ -25,6 +25,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "PersistentMessage.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
@@ -536,11 +537,11 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 	}
 
 	PlayerCreature* player = (PlayerCreature*) receiver.get();
-/*
-	ParameterizedStringId test("base_player", "sale_fee");
+
+	/*ParameterizedStringId test("base_player", "sale_fee");
 	test.setDI(100);
-	test.setUnknownByte(1);
-*/
+	test.setUnknownByte(1);*/
+
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(header);

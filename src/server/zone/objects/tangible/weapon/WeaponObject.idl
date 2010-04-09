@@ -49,6 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.Zone;
 
 
 class WeaponObject extends TangibleObject {
@@ -58,10 +59,104 @@ class WeaponObject extends TangibleObject {
 	
 	protected boolean certified;
 	
+	protected int armorPiercing;
+	
+	protected int pointBlankAccuracy;
+	protected int pointBlankRange;
+
+	protected int idealRange;
+	protected int idealAccuracy;
+
+	protected int maxRange;
+	protected int maxRangeAccuracy;
+	
+	protected int damageType;
+	
+	protected float attackSpeed;
+	
+	protected float minDamage;
+	protected float maxDamage;
+	
+	protected float area;
+	
+	protected float woundsRatio;
+	
+	protected int healthAttackCost;
+	protected int actionAttackCost;
+	protected int mindAttackCost;
+	protected int forceCost;
+	
+	@dereferenced
+	protected Vector<string> damageModifiers;
+	
+	@dereferenced
+	protected Vector<string> speedModifiers;
+	
+	@dereferenced
+	protected Vector<string> creatureAccuracyModifiers;
+	
+	@dereferenced
+	protected Vector<string> defenderDefenseModifiers;
+	
 	@dereferenced
 	protected Vector<string> certificationsRequired;
+	
+	public static final int NONE = 0;
+	public static final int LIGHT = 1;
+	public static final int MEDIUM = 2;
+	public static final int HEAVY = 3;
+
+	public static final int KINETIC = 1;
+	public static final int ENERGY = 2;
+	public static final int ELECTRICITY = 3;
+	public static final int STUN = 4;
+	public static final int BLAST = 5;
+	public static final int HEAT = 6;
+	public static final int COLD = 7;
+	public static final int ACID = 8;
+	public static final int LIGHTSABER = 9;
+	public static final int FORCE = 10;
+
+	public static final int MELEEATTACK = 0;
+	public static final int RANGEDATTACK = 1;
+	public static final int FORCEATTACK = 2;
+	public static final int TRAPATTACK = 3;
+	public static final int GRENADEATTACK = 4;
+	public static final int HEAVYACIDBEAMATTACK = 14;
+	public static final int HEAVYLIGHTNINGBEAMATTACK = 15;
+	public static final int HEAVYPARTICLEBEAMATTACK = 17;
+	public static final int HEAVYROCKETLAUNCHERATTACK = 18;
+	public static final int HEAVYLAUNCHERATTACK = 19;
 		
 	public WeaponObject() {
+		certified = false;
+		armorPiercing = 0;
+		
+		healthAttackCost = 0;
+		actionAttackCost = 0;
+		mindAttackCost = 0;
+		forceCost = 0;
+		
+		pointBlankAccuracy = 0;
+		pointBlankRange = 0;
+		
+		idealRange = 0;
+		idealAccuracy = 0;
+		
+		maxRange = 0;
+		maxRangeAccuracy = 0;
+		
+		damageType = 0;
+		
+		minDamage = 0;
+		maxDamage = 10;
+		
+		woundsRatio = 0;
+		
+		area = 0;
+		
+		attackSpeed = 1;
+		
 		Logger.setLoggingName("WeaponObject");
 	}
 	
@@ -90,6 +185,26 @@ class WeaponObject extends TangibleObject {
 	 */
 	public native boolean isCertifiedFor(PlayerCreature object);
 	
+	@local
+	public Vector<string> getDamageModifiers() {
+		return damageModifiers;
+	}
+	
+	@local
+	public Vector<string> getSpeedModifiers() {
+		return speedModifiers;
+	}
+	
+	@local
+	public Vector<string> getCreatureAccuracyModifiers() {
+		return creatureAccuracyModifiers;
+	}
+	
+	@local
+	public Vector<string> getDefenderDefenseModifiers() {
+		return defenderDefenseModifiers;
+	}
+	
 	public void setCertified(boolean cert) {
 		certified = cert;
 	}
@@ -101,4 +216,101 @@ class WeaponObject extends TangibleObject {
 	public boolean isCertified() {
 		return certified;
 	}
+	
+	public int getPointBlankAccuracy() {
+		return pointBlankAccuracy;
+	}
+	
+	public int getPointBlankRange() {
+		return pointBlankRange;
+	}
+	
+	public int getIdealRange() {
+		return idealRange;
+	}
+	
+	public int getMaxRange() {
+		return maxRange;
+	}
+	
+	public int getIdealAccuracy() {
+		return idealAccuracy;
+	}
+	
+	public int getArmorPiercing() {
+		return armorPiercing;
+	}
+	
+	public int getMaxRangeAccuracy() {
+		return maxRangeAccuracy;
+	}
+	
+	public float getAttackSpeed() {
+		return attackSpeed;
+	}
+	
+	public float getMaxDamage() {
+		return maxDamage;
+	}
+	
+	public float getMinDamage() {
+		return minDamage;
+	}
+	
+	public float getWoundsRatio() {
+		return woundsRatio;
+	}
+	
+	public int getHealthAttackCost() {
+		return healthAttackCost;
+	}
+	
+	public int getActionAttackCost() {
+		return actionAttackCost;
+	}
+	
+	public int getMindAttackCost() {
+		return mindAttackCost;
+	}
+	
+	public int getForceCost() {
+		return forceCost;
+	}
+	
+	public int getDamageType() {
+		return damageType;
+	}
+	
+	public boolean hasMeleeAttack() {
+		return attackType == MELEEATTACK;
+	}
+	
+	public boolean hasRangedAttack() {
+		return attackType == RANGEDATTACK;
+	}
+	
+	public boolean isUnarmedWeapon() {
+		return super.gameObjectType == SceneObject.WEAPON;
+	}
+	
+	public abstract boolean isMeleeWeapon() {
+		return false;
+	}
+	
+	public abstract boolean isRangedWeapon() {
+		return false;
+	}
+	
+	public abstract boolean isRifleWeapon() {
+		return false;
+	}
+	
+	public abstract boolean isPistolWeapon() {
+		return false;
+	}
+	
+	public abstract boolean isOneHandMeleeWeapon() {
+		return false;
+	}
+
 }

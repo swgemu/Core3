@@ -4,6 +4,8 @@
 
 #include "OneHandMeleeWeapon.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	OneHandMeleeWeaponStub
  */
@@ -103,14 +105,14 @@ void OneHandMeleeWeaponImplementation::_serializationHelperMethod() {
 
 OneHandMeleeWeaponImplementation::OneHandMeleeWeaponImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(53):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(54):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	Logger::setLoggingName("OneHandMeleeWeaponObject");
 }
 
 void OneHandMeleeWeaponImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(58):  		super.initializeTransientMembers();
 	MeleeWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(59):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(60):  		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	Logger::setLoggingName("OneHandMeleeWeaponObject");
 }
 

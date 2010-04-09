@@ -4,6 +4,7 @@ import engine.lua.LuaObject;
 import engine.core.ManagedReference;
 import server.zone.objects.intangible.IntangibleObject;
 import engine.service.proto.BaseMessage;
+import server.zone.Zone;
 
 
 class WaypointObject extends IntangibleObject {
