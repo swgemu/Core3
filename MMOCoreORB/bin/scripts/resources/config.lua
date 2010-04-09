@@ -39,8 +39,6 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Core3 Config File
--- 0 = false, 1 = true
 
 --  These indicate zone ID's where resources spawn
 activeZones = "0,1,2,3,4,5,6,7,8,9"
@@ -56,15 +54,15 @@ aveduration = 86400 -- In seconds
   -- Organics are in shift between (6 * aveduration) and  (22 * aveduration)
   -- Inorganics are in shift between (6 * aveduration) and (11 * aveduration)
   -- JTL resources are in shift between (13 * aveduration) and (22 * aveduration)
-  --  *** Default is 1 day (86400) ***
-  --  *** Good testing period is (40) ***
+  -- Set to 86400 for standard SOE behavior
 
 spawnThrottling = 50 -- *** 10-90 ***
   -- This will add a throttle to the spawner so
   -- that 90% of resources will have stats less than
   -- x * maxGate.  So if a resource has stat 0-1000
   -- and this is set at 70, 90% of resources will have 
-  -- a value of < 700 and 10% > 700
+  -- a value of < 700 and 10% > 700.
+  -- Set to 90 for standard SOE behavior
 
 lowerGateOverride = 1000 -- 1-1000  
   -- This will manually set the lower gate to this 
@@ -73,7 +71,21 @@ lowerGateOverride = 1000 -- 1-1000
   -- of 850-950, and the number is set at 300, it will
   -- change the gate to 300-950.  This allows for resource
   -- quality control, especially for resources with 
-  -- very high gates.  Set to 1000 for standard gates.
+  -- very high gates.  
+  -- Set to 1000 for standard SOE behavior.
+  
+maxSpawnQuantity = 0 
+  -- This value specifies the quantity that a specific resource
+  -- will spawn before automatically despawning.  This value
+  -- is disabled (0) by default as it is NOT standard behavior, 
+  -- but it is an option for admins to have more control over resources.
+  -- Set to 0 for standard SOE behavior
 
-minimumpool = "Steel,Copper,Aluminum,Extrusive Ore,Intrusive Ore,Carbonate Ore,Crystalline Gemstone,Amorphous Gemstone,Known Radioactive,Solid Petrochem Fuel,Liquid Petrochem Fuel,Polymer,Polymer,Lubricating Oil,Lubricating Oil"
+--  Resources included in the JTL update
+jtlresources = "steel_bicorbantium,steel_arveshian,aluminum_perovskitic,copper_borocarbitic,fiberplast_gravitonic,gas_reactive_organometallic,ore_siliclastic_fermionic,radioactive_polymetric"
+
+minimumpoolincludes = "steel,copper,aluminium,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_amorphous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,polymer,polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
+minimumpoolexcludes = jtlresources
+  -- The minimum pool must have one of each of the items listed above spawned at all times.
+  -- The minimum pool must never include the items in the excludes
 

@@ -45,11 +45,18 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ResourceManager.h"
-#include "server/zone/ZoneServer.h"
 
 
-void ResourceManagerImplementation::init() {
+void ResourceManagerImplementation::initialize() {
 	Lua::init();
+
+	resourceSpawner = new ResourceSpawner(zoneServer);
+
+	if(!loadConfigData()) {
+
+	}
+
+	startResourceSpawner();
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
@@ -104,5 +111,30 @@ bool ResourceManagerImplementation::loadConfigData() {
 		planets.add(token);
 	}*/
 
+	String minpoolinc = getGlobalString("minimumpoolincludes");
+	String minpoolexc = getGlobalString("minimumpoolexcludes");
+	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
+
+	String fixedpoolinc = getGlobalString("fixedpoolincludes");
+	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
+	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
+
+	String randpoolinc = getGlobalString("randompoolincludes");
+	String randpoolexc = getGlobalString("randompoolexcludes");
+	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc);
+
+	String natpoolinc = getGlobalString("nativepoolincludes");
+	String natpoolexc = getGlobalString("nativepoolexcludes");
+	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
+
 	return true;
+}
+
+void ResourceManagerImplementation::stop() {
+
+
+}
+
+void ResourceManagerImplementation::startResourceSpawner() {
+
 }
