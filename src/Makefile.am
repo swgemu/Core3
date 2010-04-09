@@ -86,6 +86,10 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
+				server/zone/objects/resource/ResourceSpawn.cpp \
+				server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
+				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
+				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
 				server/zone/objects/tangible/weapon/RangedWeaponObject.cpp \
@@ -155,6 +159,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
+		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \

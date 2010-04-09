@@ -1,0 +1,355 @@
+/*
+Copyright (C) 2010 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.resource;
+
+import engine.log.Logger;
+
+include engine.core.ManagedObject;
+include server.zone.objects.player.PlayerCreature;
+include server.zone.packets.scene.AttributeListMessage;
+
+class ResourceSpawn extends ManagedObject implements Logger {
+
+	protected string spawnType;
+	protected string spawnName;
+	
+	protected string spawnClass1;
+	protected string spawnClass2;
+	protected string spawnClass3;
+	protected string spawnClass4;
+	protected string spawnClass5;
+	protected string spawnClass6;
+	protected string spawnClass7;
+
+
+    public ResourceSpawn(string inType) {
+       	spawnType = inType;
+       	Logger.setLoggingName("ResourceSpawnObject");
+    }
+        
+   /**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+        
+    /**
+	 * Sets the resource spawn with the system generated name
+	 * @pre { }
+	 * @post { }
+	 * @param name generated name to set this object with
+	 */
+    void setName(string name) {
+    	spawnName = name;
+    }
+
+    /**
+	 * Sets the first class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class1 set this object with class name
+	 */
+    void setClass1(string class1) {
+    	spawnClass1 = class1;
+    }
+
+    /**
+	 * Sets the second class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class2 set this object with class name
+	 */   
+    void setClass2(string class2) {
+    	spawnClass2 = class2;    
+    }
+    
+    /**
+	 * Sets the third class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class3 set this object with class name
+	 */
+    void setClass3(string class3) {
+     	spawnClass3 = class3;   
+    }
+    
+    /**
+	 * Sets the fourth class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class4 set this object with class name
+	 */
+    void setClass4(string class4) {
+    	spawnClass4 = class4;    
+    }
+    
+    /**
+	 * Sets the fifth class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class5 set this object with class name
+	 */
+    void setClass5(string class5) {
+     	spawnClass5 = class5;   
+    }
+    
+    /**
+	 * Sets the sixth class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class6 set this object with class name
+	 */
+    void setClass6(string class6) {
+    	spawnClass6 = class6;    
+    }
+    
+    /**
+	 * Sets the seventh class (if applicable to resource)
+	 * @pre { }
+	 * @post { }
+	 * @param class7 set this object with class name
+	 */
+    void setClass7(string class7) {
+     	spawnClass7 = class7;   
+    }
+
+
+	void setAtt1( string instring) {
+
+}
+    void setAtt2( string instring) {
+
+}
+    void setAtt3( string instring) {
+
+}
+    void setAtt4( string instring) {
+
+}
+    void setAtt5( string instring) {
+
+}
+    void setAtt6( string instring) {
+
+}
+    void setAtt7( string instring) {
+
+}
+    void setAtt8( string instring) {
+
+}
+    void setAtt9( string instring) {
+
+}
+    void setAtt10( string instring) {
+
+}
+    void setAtt11( string instring) {
+
+}
+
+    void setAtt1Stat(int inInt) {
+
+}
+    void setAtt2Stat(int inInt) {
+
+}
+    void setAtt3Stat(int inInt) {
+
+}
+    void setAtt4Stat(int inInt) {
+
+}
+    void setAtt5Stat(int inInt) {
+
+}
+    void setAtt6Stat(int inInt) {
+
+}
+    void setAtt7Stat(int inInt) {
+
+}
+    void setAtt8Stat(int inInt) {
+
+}
+    void setAtt9Stat(int inInt) {
+
+}
+    void setAtt10Stat(int inInt) {
+
+}
+    void setAtt11Stat(int inInt) {
+
+}
+
+        void setContainerName( string instring) {
+    
+    }
+
+        // getters
+	string getName() {
+		return spawnName;
+	}
+
+    string getType() {
+    	return spawnType;
+    }
+
+        string getClass1() {
+    
+    }
+        string getClass2() {
+    
+    }
+        string getClass3() {
+    
+    }
+        string getClass4() {
+    
+    }
+        string getClass5() {
+    
+    }
+        string getClass6() {
+    
+    }
+        string getClass7() {
+    
+    }
+        
+        string getAtt1() {
+    
+    }
+        string getAtt2() {
+    
+    }
+        string getAtt3() {
+    
+    }
+        string getAtt4() {
+    
+    }
+        string getAtt5() {
+    
+    }
+        string getAtt6() {
+    
+    }
+        string getAtt7() {
+    
+    }
+        string getAtt8() {
+    
+    }
+        string getAtt9() {
+    
+    }
+        string getAtt10() {
+    
+    }
+        string getAtt11() {
+    
+    }
+        
+        int getAtt1Stat() {
+    
+    }
+        int getAtt2Stat() {
+    
+    }
+        int getAtt3Stat() {
+    
+    }
+        int getAtt4Stat() {
+    
+    }
+        int getAtt5Stat() {
+    
+    }
+        int getAtt6Stat() {
+    
+    }
+        int getAtt7Stat() {
+    
+    }
+        int getAtt8Stat() {
+    
+    }
+        int getAtt9Stat() {
+    
+    }
+        int getAtt10Stat() {
+    
+    }
+        int getAtt11Stat() {
+    
+    }
+        
+        int getMaxType() {
+    
+    }
+        int getMinType() {
+    
+    }
+
+        int getMaxPool() {
+    
+    }
+        int getMinPool() {
+    
+    }
+
+        string getContainerName() {
+    
+    }
+
+        void toString() {
+    
+    } 
+}
