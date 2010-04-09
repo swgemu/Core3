@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "StructureManager.h"
 
@@ -363,7 +364,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 	ZoneServer * zoneServer = zone->getZoneServer();
 
 	try {
-		ManagedWeakReference<SceneObject *> obj = zoneServer->getObject(oid);
+		ManagedWeakReference<SceneObject*> obj = zoneServer->getObject(oid);
 
 		if (obj != NULL && obj->isBuildingObject()) {
 			info("loading building (" + String::valueOf(oid) + ") from static object db");

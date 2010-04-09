@@ -46,6 +46,7 @@ package server.zone.objects.tangible.weapon;
 
 import server.zone.objects.tangible.weapon.RangedWeaponObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 
 class PistolWeaponObject extends RangedWeaponObject {

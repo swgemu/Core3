@@ -51,6 +51,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.sui.banktransferbox.SuiBankTransferBox;
 import server.zone.objects.player.sui.SuiBox;
+import server.zone.Zone;
 
 
 include server.zone.objects.player.sui.SuiWindowType;

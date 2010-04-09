@@ -4,6 +4,8 @@
 
 #include "PistolWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	PistolWeaponObjectStub
  */
@@ -103,14 +105,14 @@ void PistolWeaponObjectImplementation::_serializationHelperMethod() {
 
 PistolWeaponObjectImplementation::PistolWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(53):  		Logger.setLoggingName("PistolWeaponObject");
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(54):  		Logger.setLoggingName("PistolWeaponObject");
 	Logger::setLoggingName("PistolWeaponObject");
 }
 
 void PistolWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(58):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(59):  		Logger.setLoggingName("PistolWeaponObject");
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(60):  		Logger.setLoggingName("PistolWeaponObject");
 	Logger::setLoggingName("PistolWeaponObject");
 }
 

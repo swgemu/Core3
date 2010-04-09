@@ -4,6 +4,10 @@
 
 #include "MedicalBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	MedicalBuildingObjectStub
  */
@@ -91,7 +95,7 @@ void MedicalBuildingObjectImplementation::_serializationHelperMethod() {
 
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/medical/MedicalBuildingObject.idl(53):  		Logger.setLoggingName("MedicalBuildingObject");
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl(55):  		Logger.setLoggingName("MedicalBuildingObject");
 	Logger::setLoggingName("MedicalBuildingObject");
 }
 

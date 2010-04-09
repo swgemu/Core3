@@ -4,6 +4,8 @@
 
 #include "WearableObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	WearableObjectStub
  */
@@ -166,34 +168,34 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 WearableObjectImplementation::WearableObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl(58):  		socketCount = 0;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(59):  		socketCount = 0;
 	socketCount = 0;
-	// server/zone/objects/tangible/wearables/WearableObject.idl(60):  		Logger.setLoggingName("WearableObject");
+	// server/zone/objects/tangible/wearables/WearableObject.idl(61):  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }
 
 bool WearableObjectImplementation::isWearableObject() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(66):  		return true;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(67):  		return true;
 	return true;
 }
 
 int WearableObjectImplementation::getMaxSockets() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(70):  		return socketCount;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(71):  		return socketCount;
 	return socketCount;
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(74):  		return wearableSkillModMap.getUsedSocketCount();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(75):  		return wearableSkillModMap.getUsedSocketCount();
 	return (&wearableSkillModMap)->getUsedSocketCount();
 }
 
 int WearableObjectImplementation::socketsLeft() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(78):  		return socketCount - socketsUsed();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(79):  		return socketCount - socketsUsed();
 	return socketCount - socketsUsed();
 }
 
 void WearableObjectImplementation::setMaxSockets(int sockets) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(82):  		socketCount = sockets;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(83):  		socketCount = sockets;
 	socketCount = sockets;
 }
 

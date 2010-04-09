@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ToolTangibleObjectStub
  */
@@ -105,14 +107,14 @@ void ToolTangibleObjectImplementation::_serializationHelperMethod() {
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(53):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(54):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 
 void ToolTangibleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(58):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(59):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(60):  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 

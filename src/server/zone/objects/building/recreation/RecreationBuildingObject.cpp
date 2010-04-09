@@ -4,6 +4,10 @@
 
 #include "RecreationBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	RecreationBuildingObjectStub
  */
@@ -91,7 +95,7 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 
 RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(53):  		Logger.setLoggingName("RecreationBuildingObject");
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  		Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");
 }
 

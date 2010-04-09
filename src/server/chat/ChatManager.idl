@@ -57,6 +57,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
+import server.zone.managers.objectcontroller.ObjectController;
 
 
 class ChatManager extends ManagedObject implements Logger {

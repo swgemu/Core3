@@ -51,6 +51,7 @@ import server.chat.room.ChatRoom;
 import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 include server.zone.objects.group.GroupList;
+import server.zone.Zone;
 
 class GroupObject extends SceneObject {	
 	@dereferenced

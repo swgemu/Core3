@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "../../zone/packets/chat/ChatOnDestroyRoom.h"
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();

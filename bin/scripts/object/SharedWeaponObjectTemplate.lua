@@ -43,5 +43,12 @@
 SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	weaponEffect = "",
 	weaponEffectIndex = 0,
-	attackType = 0
+	attackType = 0,
+	
+	damageType = KINETIC,
+	
+	creatureAccuracyModifiers = { },
+	defenderDefenseModifiers = { },
+	speedModifiers = { },
+	damageModifiers = { }
 }

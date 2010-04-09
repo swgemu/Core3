@@ -49,6 +49,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -297,8 +298,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
 		object = objectFactory.createObject(gameObjectType);
-		object->loadTemplateData(&result);
 		object->setServerObjectCRC(objectCRC);
+		object->loadTemplateData(&result);
 
 	} catch (Exception& e) {
 		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
@@ -513,8 +514,8 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 
 		object->_setObjectID(oid);
 		object->_setImplementation(servant);
-		object->setPersistent(persistenceLevel);
 
+		((ManagedObjectImplementation*)servant)->setPersistent(persistenceLevel);
 		servant->_setStub(object);
 		servant->_setClassHelper(helper);
 		servant->_serializationHelperMethod();
@@ -636,6 +637,29 @@ void ObjectManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalShort("WOOKIEES", WearableObject::WOOKIEES);
 	luaTemplatesInstance->setGlobalShort("ITHORIANS", WearableObject::ITHORIANS);
 	luaTemplatesInstance->setGlobalShort("TWILEKS", WearableObject::TWILEKS);
+
+	luaTemplatesInstance->setGlobalInt("KINETIC", WeaponObject::KINETIC);
+	luaTemplatesInstance->setGlobalInt("ENERGY", WeaponObject::ENERGY);
+	luaTemplatesInstance->setGlobalInt("ELECTRICITY", WeaponObject::ELECTRICITY);
+	luaTemplatesInstance->setGlobalInt("STUN", WeaponObject::STUN);
+	luaTemplatesInstance->setGlobalInt("BLAST", WeaponObject::BLAST);
+	luaTemplatesInstance->setGlobalInt("HEAT", WeaponObject::HEAT);
+	luaTemplatesInstance->setGlobalInt("COLD", WeaponObject::COLD);
+	luaTemplatesInstance->setGlobalInt("ACID", WeaponObject::ACID);
+	luaTemplatesInstance->setGlobalInt("LIGHTSABER", WeaponObject::LIGHTSABER);
+	luaTemplatesInstance->setGlobalInt("FORCE", WeaponObject::FORCE);
+
+
+	luaTemplatesInstance->setGlobalInt("MELEEATTACK", WeaponObject::MELEEATTACK);
+	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", WeaponObject::RANGEDATTACK);
+	luaTemplatesInstance->setGlobalInt("FORCEATTACK", WeaponObject::FORCEATTACK);
+	luaTemplatesInstance->setGlobalInt("TRAPATTACK", WeaponObject::TRAPATTACK);
+	luaTemplatesInstance->setGlobalInt("GRENADEATTACK", WeaponObject::GRENADEATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYACIDBEAMATTACK", WeaponObject::HEAVYACIDBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYLIGHTNINGBEAMATTACK", WeaponObject::HEAVYLIGHTNINGBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYPARTICLEBEAMATTACK", WeaponObject::HEAVYPARTICLEBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
 }
 
 int ObjectManager::includeFile(lua_State* L) {

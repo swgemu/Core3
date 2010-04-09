@@ -4,6 +4,8 @@
 
 #include "MeleeWeaponObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MeleeWeaponObjectStub
  */
@@ -30,6 +32,18 @@ void MeleeWeaponObject::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		((MeleeWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+bool MeleeWeaponObject::isMeleeWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MeleeWeaponObjectImplementation*) _impl)->isMeleeWeapon();
 }
 
 /*
@@ -103,8 +117,13 @@ void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(53):  		Logger.setLoggingName("MeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(54):  		Logger.setLoggingName("MeleeWeaponObject");
 	Logger::setLoggingName("MeleeWeaponObject");
+}
+
+bool MeleeWeaponObjectImplementation::isMeleeWeapon() {
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(60):  		return true;
+	return true;
 }
 
 /*
@@ -121,6 +140,9 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isMeleeWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -130,6 +152,10 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 void MeleeWeaponObjectAdapter::initializeTransientMembers() {
 	((MeleeWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool MeleeWeaponObjectAdapter::isMeleeWeapon() {
+	return ((MeleeWeaponObjectImplementation*) impl)->isMeleeWeapon();
 }
 
 /*

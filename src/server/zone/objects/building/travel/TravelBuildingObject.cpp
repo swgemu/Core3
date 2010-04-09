@@ -4,6 +4,10 @@
 
 #include "TravelBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	TravelBuildingObjectStub
  */
@@ -91,7 +95,7 @@ void TravelBuildingObjectImplementation::_serializationHelperMethod() {
 
 TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/travel/TravelBuildingObject.idl(53):  		Logger.setLoggingName("TravelBuildingObject");
+	// server/zone/objects/building/travel/TravelBuildingObject.idl(55):  		Logger.setLoggingName("TravelBuildingObject");
 	Logger::setLoggingName("TravelBuildingObject");
 }
 

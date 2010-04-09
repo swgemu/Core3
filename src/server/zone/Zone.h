@@ -87,6 +87,20 @@ class CreatureManager;
 
 using namespace server::zone::managers::creature;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "server/zone/managers/object/ObjectMap.h"

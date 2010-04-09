@@ -4,6 +4,8 @@
 
 #include "ClothingObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ClothingObjectStub
  */
@@ -103,14 +105,14 @@ void ClothingObjectImplementation::_serializationHelperMethod() {
 
 ClothingObjectImplementation::ClothingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(53):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(54):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(58):  		super.initializeTransientMembers();
 	WearableObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(59):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(60):  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 

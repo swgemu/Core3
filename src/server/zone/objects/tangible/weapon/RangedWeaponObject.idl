@@ -46,6 +46,7 @@ package server.zone.objects.tangible.weapon;
 
 import server.zone.objects.tangible.weapon.WeaponObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 
 class RangedWeaponObject extends WeaponObject {
@@ -57,5 +58,9 @@ class RangedWeaponObject extends WeaponObject {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("RangedWeaponObject");
+	}
+	
+	public boolean isRangedWeapon() {
+		return true;
 	}
 }

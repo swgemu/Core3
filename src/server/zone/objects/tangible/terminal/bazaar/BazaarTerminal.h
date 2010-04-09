@@ -71,7 +71,19 @@ class AuctionItem;
 
 using namespace server::zone::objects::tangible::terminal::bazaar;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

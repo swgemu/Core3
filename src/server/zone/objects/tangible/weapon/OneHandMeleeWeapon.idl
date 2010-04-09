@@ -46,6 +46,7 @@ package server.zone.objects.tangible.weapon;
 
 import server.zone.objects.tangible.weapon.MeleeWeaponObject;
 import engine.lua.LuaObject;
+import server.zone.Zone;
 
 
 class OneHandMeleeWeapon extends MeleeWeaponObject {

@@ -35,6 +35,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "engine/core/ManagedObject.h"
 
 #include "system/util/VectorMap.h"

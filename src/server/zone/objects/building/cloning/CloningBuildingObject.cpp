@@ -4,6 +4,10 @@
 
 #include "CloningBuildingObject.h"
 
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	CloningBuildingObjectStub
  */
@@ -91,7 +95,7 @@ void CloningBuildingObjectImplementation::_serializationHelperMethod() {
 
 CloningBuildingObjectImplementation::CloningBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl(53):  		Logger.setLoggingName("CloningBuildingObject");
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  		Logger.setLoggingName("CloningBuildingObject");
 	Logger::setLoggingName("CloningBuildingObject");
 }
 

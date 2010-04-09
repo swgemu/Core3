@@ -95,6 +95,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "server/zone/managers/creature/CreatureMap.h"
 
 #include "engine/log/Logger.h"

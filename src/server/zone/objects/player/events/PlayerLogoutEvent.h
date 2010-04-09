@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../PlayerImplementation.h"
 
 class PlayerLogoutEvent : public Task {
-	ManagedReference<Player> player;
+	ManagedReference<Player*> player;
 
 	int msgCounter;
 
