@@ -15,6 +15,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();

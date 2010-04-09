@@ -60,6 +60,7 @@ import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
 import system.util.SortedVector;
 import system.lang.StackTrace;
+import server.zone.managers.objectcontroller.ObjectController;
 
 
 import server.zone.ZoneProcessServerImplementation;
@@ -760,6 +761,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		return 0;
 	}
+	
+	public native float getDistanceTo(SceneObject object);
 	
 	/**
 	 * Is called when this object has moved to a new position

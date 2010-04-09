@@ -11,6 +11,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void SkillBoxList::getStringList(Vector<String>& skillBoxes) {
 	for (int i = 0; i < vector.size(); ++i) {

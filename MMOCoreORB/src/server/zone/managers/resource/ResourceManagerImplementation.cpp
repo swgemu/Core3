@@ -48,14 +48,8 @@ which carries forward this exception.
 #include "server/zone/ZoneServer.h"
 
 
-void ResourceManagerImplementation::initialize() {
+void ResourceManagerImplementation::init() {
 	Lua::init();
-
-	if(!loadConfigData()) {
-
-	}
-
-	startResourceSpawner();
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
@@ -111,15 +105,4 @@ bool ResourceManagerImplementation::loadConfigData() {
 	}*/
 
 	return true;
-}
-
-void ResourceManagerImplementation::stop() {
-
-
-}
-
-void ResourceManagerImplementation::startResourceSpawner() {
-
-	resourceSpawner = new ResourceSpawner();
-
 }

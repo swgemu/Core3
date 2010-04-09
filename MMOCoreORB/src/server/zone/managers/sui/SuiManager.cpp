@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 
 /*#include "../item/ItemManager.h"
@@ -293,7 +294,7 @@ void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
 		if (sui->isListBox() && cancel != 1) {
 			Zone * zone = player->getZone();
 
-			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno.get();
 
@@ -342,7 +343,7 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 		if (sui->isInputBox() && cancel != 1) {
 			Zone * zone = player->getZone();
 
-			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno.get();
 
@@ -398,7 +399,7 @@ void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
 		if (sui->isListBox() && cancel != 1) {
 			Zone * zone = player->getZone();
 
-			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno.get();
 
@@ -486,7 +487,7 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 
 			Zone * zone = player->getZone();
 
-			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno.get();
 
@@ -550,7 +551,7 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 
 			Zone * zone = player->getZone();
 
-			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno.get();
 
@@ -1930,7 +1931,7 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 c
 					uint64 oid = listBox->getMenuObjectID(index);
 
 					Datapad* datapad = player->getDatapad();
-					ManagedReference<SceneObject> scno2 = datapad->getObject(oid);
+					ManagedReference<SceneObject*> scno2 = datapad->getObject(oid);
 					if(scno2->isManufactureSchematic()){
 						ManufactureSchematic* manSchem = (ManufactureSchematic*) scno2.get();
 						if(manSchem == NULL){
@@ -1942,7 +1943,7 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 c
 
 						if (server != NULL){
 							uint64 factOid = listBox->getUsingObjectID();
-							ManagedReference<SceneObject> scno = server->getZoneServer()->getObject(factOid);
+							ManagedReference<SceneObject*> scno = server->getZoneServer()->getObject(factOid);
 							if (scno == NULL){
 								player->removeSuiBox(boxID);
 								sui->finalize();

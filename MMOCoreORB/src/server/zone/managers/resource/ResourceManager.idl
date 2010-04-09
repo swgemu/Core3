@@ -49,15 +49,13 @@ import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
-
-include server.zone.managers.resource.resourcespawner.ResourceSpawner;
+import server.zone.managers.objectcontroller.ObjectController;
 
 class ResourceManager extends ManagedObject implements Lua {
-	private transient ZoneProcessServerImplementation processor;
-	private ZoneServer zoneServer;
-	private transient ResourceSpawner resourceSpawner;
+	transient ZoneProcessServerImplementation processor;
+	ZoneServer zoneServer;
 	
-	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl) {
+	public native ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl) {
 
 		Logger.setLoggingName("ResourceManager");
 		
@@ -68,12 +66,9 @@ class ResourceManager extends ManagedObject implements Lua {
 		processor = impl;
 	}
 	
-	public native void stop();
-	public native void initialize();
 	
+	
+	private native void init();
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
-	private native void startResourceSpawner();
-	
 }
-

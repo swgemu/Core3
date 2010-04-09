@@ -54,6 +54,7 @@ import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.ZoneServer;
+import server.zone.Zone;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {

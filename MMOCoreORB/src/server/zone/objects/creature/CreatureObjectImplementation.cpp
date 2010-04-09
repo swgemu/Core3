@@ -74,6 +74,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/managers/template/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
@@ -83,6 +84,8 @@ which carries forward this exception.
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
+
+	skillModList.setNullValue(0);
 
 	groupInviterID = 0;
 	groupInviteCounter = 0;
@@ -121,7 +124,7 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	level = 0;
 
-	weaponID = 0;
+	weapon = NULL;
 	group = NULL;
 	groupInviterID = 0;
 	groupInviteCounter = 0;
@@ -273,11 +276,11 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr, float tim
 	sendMessage(queuemsg);
 }
 
-void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClient) {
-	if (weaponID == objectID)
+void CreatureObjectImplementation::setWeapon(WeaponObject* weao, bool notifyClient) {
+	if (weapon == weao)
 		return;
 
-	weaponID = objectID;
+	weapon = weao;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);

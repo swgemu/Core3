@@ -15,6 +15,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 
 void ClientCreateCharacterCallback::parse(Message* message) {

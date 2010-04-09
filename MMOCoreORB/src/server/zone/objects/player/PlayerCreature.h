@@ -121,6 +121,46 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace group {
+
+class GroupObject;
+
+} // namespace group
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::group;
+
 #include "server/zone/objects/player/sui/SuiBox.h"
 
 #include "server/zone/objects/creature/CreatureFlag.h"

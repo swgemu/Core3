@@ -8,6 +8,8 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -23,30 +25,6 @@ ResourceManager::ResourceManager(DummyConstructorParameter* param) : ManagedObje
 ResourceManager::~ResourceManager() {
 }
 
-
-void ResourceManager::stop() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		method.executeWithVoidReturn();
-	} else
-		((ResourceManagerImplementation*) _impl)->stop();
-}
-
-void ResourceManager::initialize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
-		((ResourceManagerImplementation*) _impl)->initialize();
-}
 
 /*
  *	ResourceManagerImplementation
@@ -120,15 +98,15 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(62):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(60):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(64):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(62):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(65):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(63):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(67):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(65):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(68):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(66):  		processor = impl;
 	processor = impl;
 }
 
@@ -143,25 +121,11 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		stop();
-		break;
-	case 7:
-		initialize();
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void ResourceManagerAdapter::stop() {
-	((ResourceManagerImplementation*) impl)->stop();
-}
-
-void ResourceManagerAdapter::initialize() {
-	((ResourceManagerImplementation*) impl)->initialize();
 }
 
 /*

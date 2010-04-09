@@ -16,6 +16,8 @@
 
 #include "server/zone/managers/creature/CreatureManager.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 /*
  *	ZoneStub
  */
@@ -393,96 +395,96 @@ void ZoneImplementation::_serializationHelperMethod() {
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
-	// server/zone/Zone.idl(116):  		objectMap.put(object.getObjectID(), object);
+	// server/zone/Zone.idl(117):  		objectMap.put(object.getObjectID(), object);
 	(&objectMap)->put(object->getObjectID(), object);
 }
 
 void ZoneImplementation::dropSceneObject(unsigned long long objectID) {
-	// server/zone/Zone.idl(120):  		objectMap.remove(objectID);
+	// server/zone/Zone.idl(121):  		objectMap.remove(objectID);
 	(&objectMap)->remove(objectID);
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(125):  		return zoneID;
+	// server/zone/Zone.idl(126):  		return zoneID;
 	return zoneID;
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
-	// server/zone/Zone.idl(131):  		return planetManager;
+	// server/zone/Zone.idl(132):  		return planetManager;
 	return planetManager;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(135):  		return server;
+	// server/zone/Zone.idl(136):  		return server;
 	return server;
 }
 
 CreatureManager* ZoneImplementation::getCreatureManager() {
-	// server/zone/Zone.idl(139):  		return creatureManager;
+	// server/zone/Zone.idl(140):  		return creatureManager;
 	return creatureManager;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(143):  		return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(144):  		return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(147):  		return weatherID;
+	// server/zone/Zone.idl(148):  		return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(151):  		weatherID = value;
+	// server/zone/Zone.idl(152):  		weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(155):  		weatherID 
+	// server/zone/Zone.idl(156):  		weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(156):  			weatherID = 0;
+	// server/zone/Zone.idl(157):  			weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(157):  			return;
+	// server/zone/Zone.idl(158):  			return;
 	return;
 }
-	// server/zone/Zone.idl(160):  += value;
+	// server/zone/Zone.idl(161):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(162):  	}
+	// server/zone/Zone.idl(163):  	}
 	if (weatherID > 4){
-	// server/zone/Zone.idl(163):  			weatherID = 4;
+	// server/zone/Zone.idl(164):  			weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(164):  			return;
+	// server/zone/Zone.idl(165):  			return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(169):  		return weatherEnabled;
+	// server/zone/Zone.idl(170):  		return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(173):  		weatherEnabled = value;
+	// server/zone/Zone.idl(174):  		weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(177):  		weatherWindX = value;
+	// server/zone/Zone.idl(178):  		weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(181):  		weatherWindY = value;
+	// server/zone/Zone.idl(182):  		weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(185):  		return weatherWindX;
+	// server/zone/Zone.idl(186):  		return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(189):  		return weatherWindY;
+	// server/zone/Zone.idl(190):  		return weatherWindY;
 	return weatherWindY;
 }
 

@@ -129,6 +129,20 @@ class ChatInstantMessageToCharacter;
 
 using namespace server::zone::packets::chat;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseMessage.h"

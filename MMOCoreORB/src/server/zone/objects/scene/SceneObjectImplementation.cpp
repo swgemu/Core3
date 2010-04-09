@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "SceneObject.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
@@ -104,7 +105,6 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	gameObjectType = templateData->getIntField("gameObjectType");
 
 	clientObjectCRC = templateData->getIntField("clientObjectCRC");
-	serverObjectCRC = 0;
 
 	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
 
@@ -711,4 +711,15 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	}
 
 	return false;
+}
+
+float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
+	// TEMP till
+	float x = targetCreature->getPositionX();
+	float y = targetCreature->getPositionY();
+
+	float deltaX = x - positionX;
+	float deltaY = y - positionY;
+
+	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }

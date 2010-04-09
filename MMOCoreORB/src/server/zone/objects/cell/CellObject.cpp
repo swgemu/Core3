@@ -4,6 +4,8 @@
 
 #include "CellObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	CellObjectStub
  */
@@ -148,9 +150,9 @@ void CellObjectImplementation::_serializationHelperMethod() {
 
 CellObjectImplementation::CellObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/cell/CellObject.idl(55):  		Logger.setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl(56):  		Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");
-	// server/zone/objects/cell/CellObject.idl(57):  		cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl(58):  		cellNumber = 0;
 	cellNumber = 0;
 }
 
@@ -158,12 +160,12 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(71):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(72):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(75):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(76):  		cellNumber = number;
 	cellNumber = number;
 }
 

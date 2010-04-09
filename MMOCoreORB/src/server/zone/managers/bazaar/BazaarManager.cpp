@@ -16,6 +16,8 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
+#include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 /*
@@ -373,9 +375,9 @@ void BazaarManagerImplementation::_serializationHelperMethod() {
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/bazaar/BazaarManager.idl(72):  		zoneServer = server;
+	// server/zone/managers/bazaar/BazaarManager.idl(74):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/bazaar/BazaarManager.idl(74):  		Logger.setLoggingName("BazaarManager");
+	// server/zone/managers/bazaar/BazaarManager.idl(76):  		Logger.setLoggingName("BazaarManager");
 	Logger::setLoggingName("BazaarManager");
 }
 

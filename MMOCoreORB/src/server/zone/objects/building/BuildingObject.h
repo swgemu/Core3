@@ -63,6 +63,16 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"

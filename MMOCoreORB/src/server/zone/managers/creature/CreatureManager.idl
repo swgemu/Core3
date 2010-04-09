@@ -10,6 +10,7 @@ import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
+import server.zone.managers.objectcontroller.ObjectController;
 
 include server.zone.managers.creature.CreatureMap;
 

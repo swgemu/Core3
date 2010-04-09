@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ContainerStub
  */
@@ -126,7 +128,7 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(53):  		Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl(54):  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
 }
 

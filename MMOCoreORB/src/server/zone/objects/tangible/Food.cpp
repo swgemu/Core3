@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	FoodStub
  */
@@ -105,14 +107,14 @@ void FoodImplementation::_serializationHelperMethod() {
 
 FoodImplementation::FoodImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Food.idl(53):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(54):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 
 void FoodImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Food.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Food.idl(58):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Food.idl(59):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/Food.idl(60):  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 

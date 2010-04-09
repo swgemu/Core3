@@ -46,6 +46,7 @@ package server.zone.objects.intangible;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
 
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;

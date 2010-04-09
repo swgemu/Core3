@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MissionObjectStub
  */
@@ -242,17 +244,17 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(89):  		typeCRC = MUSICIAN;
+	// server/zone/objects/mission/MissionObject.idl(90):  		typeCRC = MUSICIAN;
 	typeCRC = MUSICIAN;
-	// server/zone/objects/mission/MissionObject.idl(91):  		refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl(92):  		refreshCounter = 0;
 	refreshCounter = 0;
-	// server/zone/objects/mission/MissionObject.idl(93):  		targetTemplateCRC = 0;
+	// server/zone/objects/mission/MissionObject.idl(94):  		targetTemplateCRC = 0;
 	targetTemplateCRC = 0;
-	// server/zone/objects/mission/MissionObject.idl(95):  		rewardCredits = 0;
+	// server/zone/objects/mission/MissionObject.idl(96):  		rewardCredits = 0;
 	rewardCredits = 0;
-	// server/zone/objects/mission/MissionObject.idl(97):  		difficultyLevel = 0;
+	// server/zone/objects/mission/MissionObject.idl(98):  		difficultyLevel = 0;
 	difficultyLevel = 0;
-	// server/zone/objects/mission/MissionObject.idl(99):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl(100):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
@@ -260,52 +262,52 @@ void MissionObjectImplementation::finalize() {
 }
 
 WaypointObject* MissionObjectImplementation::getWaypointToMission() {
-	// server/zone/objects/mission/MissionObject.idl(110):  		return waypointToMission;
+	// server/zone/objects/mission/MissionObject.idl(111):  		return waypointToMission;
 	return waypointToMission;
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
-	// server/zone/objects/mission/MissionObject.idl(114):  		return typeCRC;
+	// server/zone/objects/mission/MissionObject.idl(115):  		return typeCRC;
 	return typeCRC;
 }
 
 int MissionObjectImplementation::getRewardCredits() {
-	// server/zone/objects/mission/MissionObject.idl(118):  		return rewardCredits;
+	// server/zone/objects/mission/MissionObject.idl(119):  		return rewardCredits;
 	return rewardCredits;
 }
 
 UnicodeString MissionObjectImplementation::getCreatorName() {
-	// server/zone/objects/mission/MissionObject.idl(122):  		return creatorName;
+	// server/zone/objects/mission/MissionObject.idl(123):  		return creatorName;
 	return creatorName;
 }
 
 int MissionObjectImplementation::getDifficultyLevel() {
-	// server/zone/objects/mission/MissionObject.idl(126):  		return difficultyLevel;
+	// server/zone/objects/mission/MissionObject.idl(127):  		return difficultyLevel;
 	return difficultyLevel;
 }
 
 StringId* MissionObjectImplementation::getMissionDescription() {
-	// server/zone/objects/mission/MissionObject.idl(131):  		return missionDescription;
+	// server/zone/objects/mission/MissionObject.idl(132):  		return missionDescription;
 	return (&missionDescription);
 }
 
 StringId* MissionObjectImplementation::getMissionTitle() {
-	// server/zone/objects/mission/MissionObject.idl(136):  		return missionTitle;
+	// server/zone/objects/mission/MissionObject.idl(137):  		return missionTitle;
 	return (&missionTitle);
 }
 
 String MissionObjectImplementation::getTargetName() {
-	// server/zone/objects/mission/MissionObject.idl(140):  		return targetName;
+	// server/zone/objects/mission/MissionObject.idl(141):  		return targetName;
 	return targetName;
 }
 
 int MissionObjectImplementation::getRefreshCounter() {
-	// server/zone/objects/mission/MissionObject.idl(144):  		return refreshCounter;
+	// server/zone/objects/mission/MissionObject.idl(145):  		return refreshCounter;
 	return refreshCounter;
 }
 
 unsigned int MissionObjectImplementation::getTargetTemplateCRC() {
-	// server/zone/objects/mission/MissionObject.idl(148):  		return targetTemplateCRC;
+	// server/zone/objects/mission/MissionObject.idl(149):  		return targetTemplateCRC;
 	return targetTemplateCRC;
 }
 

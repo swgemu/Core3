@@ -57,6 +57,7 @@ import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
+import server.zone.managers.objectcontroller.ObjectController;
 
 
 include server.zone.managers.planet.HeightMap;

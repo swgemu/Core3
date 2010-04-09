@@ -284,65 +284,65 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 }
 
 void ZoneClientSessionImplementation::balancePacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(72):  		BaseClientProxy.balancePacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(77):  		BaseClientProxy.balancePacketCheckupTime();
 	BaseClientProxy::balancePacketCheckupTime();
 }
 
 void ZoneClientSessionImplementation::resetPacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(76):  		BaseClientProxy.resetPacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(81):  		BaseClientProxy.resetPacketCheckupTime();
 	BaseClientProxy::resetPacketCheckupTime();
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(91):  		return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(96):  		return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl(96):  		player 
+	// server/zone/ZoneClientSession.idl(101):  		player 
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(97):  
+	// server/zone/ZoneClientSession.idl(102):  
 	if (playerCreature == NULL && player != NULL){
-	// server/zone/ZoneClientSession.idl(98):  				ZoneServer zoneServer = player.getZoneServer();
+	// server/zone/ZoneClientSession.idl(103):  				ZoneServer zoneServer = player.getZoneServer();
 	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl(100):  				zoneServer.decreaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(105):  				zoneServer.decreaseOnlinePlayers();
 	zoneServer->decreaseOnlinePlayers();
 }
 
-	else 	// server/zone/ZoneClientSession.idl(101):  		}
+	else 	// server/zone/ZoneClientSession.idl(106):  		}
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(102):  				ZoneServer zoneServer = playerCreature.getZoneServer();
+	// server/zone/ZoneClientSession.idl(107):  				ZoneServer zoneServer = playerCreature.getZoneServer();
 	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl(104):  				zoneServer.increaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(109):  				zoneServer.increaseOnlinePlayers();
 	zoneServer->increaseOnlinePlayers();
 }
 }
-	// server/zone/ZoneClientSession.idl(108):  = playerCreature;
+	// server/zone/ZoneClientSession.idl(113):  = playerCreature;
 	player = playerCreature;
 }
 
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(112):  		sessionKey = key;
+	// server/zone/ZoneClientSession.idl(117):  		sessionKey = key;
 	sessionKey = key;
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int id) {
-	// server/zone/ZoneClientSession.idl(116):  		accountID = id;
+	// server/zone/ZoneClientSession.idl(121):  		accountID = id;
 	accountID = id;
 }
 
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
-	// server/zone/ZoneClientSession.idl(120):  		return player;
+	// server/zone/ZoneClientSession.idl(125):  		return player;
 	return player;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(124):  		return sessionKey;
+	// server/zone/ZoneClientSession.idl(129):  		return sessionKey;
 	return sessionKey;
 }
 
 unsigned int ZoneClientSessionImplementation::getAccountID() {
-	// server/zone/ZoneClientSession.idl(128):  		return accountID;
+	// server/zone/ZoneClientSession.idl(133):  		return accountID;
 	return accountID;
 }
 

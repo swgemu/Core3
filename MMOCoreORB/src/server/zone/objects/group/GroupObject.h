@@ -23,6 +23,16 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/group/GroupList.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
