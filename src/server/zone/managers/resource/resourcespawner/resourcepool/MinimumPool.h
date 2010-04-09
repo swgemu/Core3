@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,39 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.resource;
+#ifndef MINIMUMPOOL_H_
+#define MINIMUMPOOL_H_
 
-import engine.core.ManagedObject;
-import engine.lua.Lua;
-import engine.log.Logger;
-import server.zone.ZoneServer;
-import server.zone.ZoneProcessServerImplementation;
+#include "engine/engine.h"
+#include "ResourcePool.h"
 
-include server.zone.managers.resource.resourcespawner.ResourceSpawner;
+class ResourceSpawner;
+class ResourceTree;
 
-class ResourceManager extends ManagedObject implements Lua {
-	private transient ZoneProcessServerImplementation processor;
-	private ZoneServer zoneServer;
-	private transient ResourceSpawner resourceSpawner;
-	
-	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl) {
+class MinimumPool : public ResourcePool {
+private:
 
-		Logger.setLoggingName("ResourceManager");
-		
-		Logger.setLogging(true);
-		Logger.setGlobalLogging(true);
-		
-		zoneServer = server;
-		processor = impl;
+public:
+	MinimumPool(ResourceSpawner* spawner, ResourceTree* tree) : ResourcePool(spawner, tree) {
+
 	}
-	
 
-	public native void stop();
-	public native void initialize();
-	
-	private native boolean loadConfigFile();
-	private native boolean loadConfigData();
-	private native void startResourceSpawner();
-	
-}
+	~MinimumPool() {
 
+	}
+
+	bool update() {
+
+		return true;
+	}
+
+private:
+
+};
+
+#endif /* MINIMUMPOOL_H_ */
