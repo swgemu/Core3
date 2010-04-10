@@ -45,10 +45,9 @@ which carries forward this exception.
 #include "../../../../../db/ServerDatabase.h"
 #include "ResourceTree.h"
 #include "ResourceTreeEntry.h"
+#include "ResourceAttribute.h"
 
-ResourceTree::ResourceTree(ZoneServer* serv) {
-
-	server = serv;
+ResourceTree::ResourceTree() {
 
 	if(!buildTreeFromDatabase()) {
 
@@ -63,7 +62,7 @@ ResourceTree::~ResourceTree() {
 
 bool ResourceTree::buildTreeFromDatabase() {
 
-	baseNode = new ResourceTreeNode("resource");
+	baseNode = new ResourceTreeNode("resource", 0);
 
 	String query = "SELECT resource_tree.`Index`,resource_tree.stfname, resource_tree.class1, "
 			"resource_tree.class2, resource_tree.class3, resource_tree.class4, resource_tree.class5, "
@@ -88,13 +87,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 				String type = res->getString(1);
 				ResourceTreeEntry* entry = new ResourceTreeEntry(type);
 
-				entry->setClass1(res->getString(2));
-				entry->setClass2(res->getString(3));
-				entry->setClass3(res->getString(4));
-				entry->setClass4(res->getString(5));
-				entry->setClass5(res->getString(6));
-				entry->setClass6(res->getString(7));
-				entry->setClass7(res->getString(8));
+				for(int i = 2; i <= 8; ++i)
+					entry->addClass(res->getString(i));
 
 				entry->setMaxtype(res->getInt(9));
 				entry->setMintype(res->getInt(10));
@@ -103,40 +97,13 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				entry->setRecycled(res->getBoolean(13));
 
-				entry->setAtt1(res->getString(14));
-				entry->setAtt2(res->getString(15));
-				entry->setAtt3(res->getString(16));
-				entry->setAtt4(res->getString(17));
-				entry->setAtt5(res->getString(18));
-				entry->setAtt6(res->getString(19));
-				entry->setAtt7(res->getString(20));
-				entry->setAtt8(res->getString(21));
-				entry->setAtt9(res->getString(22));
-				entry->setAtt10(res->getString(23));
-				entry->setAtt11(res->getString(24));
+				for(int i = 14; i <= 24; ++i) {
+					String attribname = res->getString(i);
+					int min = res->getInt(i + 11 + (i - 14));
+					int max = res->getInt(i + 12 + (i - 14));
 
-				entry->setAtt1min(res->getInt(25));
-				entry->setAtt1max(res->getInt(26));
-				entry->setAtt2min(res->getInt(27));
-				entry->setAtt2max(res->getInt(28));
-				entry->setAtt3min(res->getInt(29));
-				entry->setAtt3max(res->getInt(30));
-				entry->setAtt4min(res->getInt(31));
-				entry->setAtt4max(res->getInt(32));
-				entry->setAtt5min(res->getInt(33));
-				entry->setAtt5max(res->getInt(34));
-				entry->setAtt6min(res->getInt(35));
-				entry->setAtt6max(res->getInt(36));
-				entry->setAtt7min(res->getInt(37));
-				entry->setAtt7max(res->getInt(38));
-				entry->setAtt8min(res->getInt(39));
-				entry->setAtt8max(res->getInt(40));
-				entry->setAtt9min(res->getInt(41));
-				entry->setAtt9max(res->getInt(42));
-				entry->setAtt10min(res->getInt(43));
-				entry->setAtt10max(res->getInt(44));
-				entry->setAtt11min(res->getInt(45));
-				entry->setAtt11max(res->getInt(46));
+					entry->addAttribute(new ResourceAttribute(attribname, min, max));
+				}
 
 				entry->setResourceContainerType(res->getString(47));
 				//entry->setResourceContainerTypeCRC(res->getUnsignedInt(47));
@@ -146,9 +113,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				entry->toString();
 
-				//baseNode->addEntry(entry);
-
-				//server->addObject(entry);
+				baseNode->addEntry(entry);
 			}
 		}
 		delete res;
@@ -159,4 +124,9 @@ bool ResourceTree::buildTreeFromDatabase() {
 		System::out << "unreported exception caught in ResourceTree::buildTreeFromDatabase()\n";
 	}
 	return true;
+}
+
+void ResourceTree::toString() {
+
+	baseNode->toString();
 }

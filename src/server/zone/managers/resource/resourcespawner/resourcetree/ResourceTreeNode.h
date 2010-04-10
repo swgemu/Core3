@@ -50,12 +50,24 @@ which carries forward this exception.
 
 class ResourceTreeNode {
 private:
-	String name;
+	String nodeClass;
 	int maxtype, mintype, maxpool, minpool;
 
+	int depth;
+	Vector<ResourceTreeEntry* > entries;
+	Vector<ResourceTreeNode* > nodes;
+
 public:
-	ResourceTreeNode(const String& n);
+	ResourceTreeNode(const String& n, const int d);
 	~ResourceTreeNode();
+
+	void addEntry(ResourceTreeEntry* entry);
+
+	String getNodeClass() {
+		return nodeClass;
+	}
+
+	void toString();
 
 };
 

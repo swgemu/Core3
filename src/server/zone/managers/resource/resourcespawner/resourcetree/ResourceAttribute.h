@@ -42,59 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ResourceTreeNode.h"
+#ifndef RESOURCEATTRIBUTE_H_
+#define RESOURCEATTRIBUTE_H_
 
-ResourceTreeNode::ResourceTreeNode(const String& n, const int d) {
+class ResourceAttribute {
+private:
+	String name;
+	int minimum;
+	int maximum;
 
-	nodeClass = n;
-	depth = d;
-
-}
-ResourceTreeNode::~ResourceTreeNode() {
-	for(int i = 0; i < nodes.size(); ++i)
-		delete nodes.get(i);
-
-	for(int i = 0; i < entries.size(); ++i)
-		delete entries.get(i);
-}
-
-void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
-
-	/**
-	 * Find out which child node this entry belongs to, and
-	 * if it doesn't exist, create it
-	 */
-	for(int ii = 0; ii < nodes.size(); ++ii) {
-
-		ResourceTreeNode* node = nodes.get(ii);
-		if(node->getNodeClass() == entry->getClass(depth)) {
-			node->addEntry(entry);
-			return;
-		}
+public:
+	ResourceAttribute(const String& n, const int min, const int max) {
+		name = n;
+		minimum = min;
+		maximum = max;
 	}
-	/**
-	 * The entry doesn't belong to an existing child node, now we
-	 * determine if it belong on this node, or on a new child node.
-	 */
-	if(entry->getClassCount() > depth + 1) {
-		ResourceTreeNode* newnode = new ResourceTreeNode(entry->getClass(depth), depth + 1);
-		newnode->addEntry(entry);
-	} else {
-		entries.add(entry);
+
+	~ResourceAttribute() {
+
 	}
-}
 
-void ResourceTreeNode::toString() {
-	System::out << "--- Node " << depth << " : " << nodeClass << "---" << endl;
+	String getName() {
+		return name;
+	}
 
-	System::out << "NODES" << endl;
-	for(int i = 0; i < nodes.size(); ++i)
-		System::out << nodes.get(i)->getNodeClass() << endl;
+	int getMinimum() {
+		return minimum;
+	}
 
-	System::out << "ENTRIES" << endl;
-	for(int i = 0; i < entries.size(); ++i)
-		System::out << entries.get(i)->getName() << endl;
+	int getMaximum() {
+		return maximum;
+	}
+};
 
-	for(int i = 0; i < nodes.size(); ++i)
-		nodes.get(i)->toString();
-}
+
+#endif /* RESOURCEATTRIBUTE_H_ */
