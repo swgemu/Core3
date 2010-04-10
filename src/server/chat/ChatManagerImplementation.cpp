@@ -564,6 +564,58 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 	player->updateToDatabaseWithoutChildren();
 }
 
+void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name) {
+	uint64 receiverObjectID = playerManager->getObjectID(name);
+
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
+
+	if (receiverObjectID == 0) {
+		error("unexistent name for persistent message");
+		return;
+	}
+
+	ManagedReference<SceneObject*> receiver = server->getObject(receiverObjectID);
+
+	if (receiver == NULL) {
+		error("NULL receiver in send mail");
+
+		return;
+	}
+
+	if (!receiver->isPlayerCreature()) {
+		error("not player in send mail");
+
+		return;
+	}
+
+	PlayerCreature* player = (PlayerCreature*) receiver.get();
+
+	/*ParameterizedStringId test("base_player", "sale_fee");
+		test.setDI(100);
+		test.setUnknownByte(1);*/
+
+	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
+	mail->setSenderName(sendername);
+	mail->setSubject(header);
+	mail->setParameterizedBody(body);
+	mail->setReceiverObjectID(receiverObjectID);
+	mail->setTimeStamp(currentTime);
+
+	ObjectManager::instance()->persistObject(mail, 1, "mail");
+
+	Locker _locker(player);
+
+	player->addPersistentMessage(mail->getObjectID());
+
+	if (player->isOnline()) {
+		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
+		player->sendMessage(mmsg);
+	}
+
+	player->updateToDatabaseWithoutChildren();
+}
+
 void ChatManagerImplementation::loadMail(PlayerCreature* player) {
 	Locker _locker(player);
 

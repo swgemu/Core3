@@ -349,6 +349,14 @@ void ChatManager::sendMail(const String& sendername, UnicodeString& header, Unic
 		((ChatManagerImplementation*) _impl)->sendMail(sendername, header, body, name);
 }
 
+void ChatManager::sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ChatManagerImplementation*) _impl)->sendMail(sendername, header, body, name);
+}
+
 void ChatManager::handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -516,41 +524,41 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(98):  		roomMap.put(channel.getRoomID(), channel);
+	// server/chat/ChatManager.idl(99):  		roomMap.put(channel.getRoomID(), channel);
 	roomMap->put(channel->getRoomID(), channel);
 }
 
 void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(102):  		roomMap.remove(channel.getRoomID());
+	// server/chat/ChatManager.idl(103):  		roomMap.remove(channel.getRoomID());
 	roomMap->remove(channel->getRoomID());
 }
 
 void ChatManagerImplementation::setPlayerManager(PlayerManager* manager) {
-	// server/chat/ChatManager.idl(172):  		playerManager = manager;
+	// server/chat/ChatManager.idl(176):  		playerManager = manager;
 	playerManager = manager;
 }
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(176):  		return roomMap.get(id);
+	// server/chat/ChatManager.idl(180):  		return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(180):  		return gameRooms.get(game);
+	// server/chat/ChatManager.idl(184):  		return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(184):  		return ++roomID;
+	// server/chat/ChatManager.idl(188):  		return ++roomID;
 	return  ++roomID;
 }
 
 int ChatManagerImplementation::getPlayerCount() {
-	// server/chat/ChatManager.idl(188):  		return playerMap.size();
+	// server/chat/ChatManager.idl(192):  		return playerMap.size();
 	return playerMap->size();
 }
 

@@ -19,6 +19,7 @@
 #include "server/zone/packets/auction/RetrieveAuctionItemResponseMessage.h"
 #include "server/zone/packets/auction/BidAuctionResponseMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
@@ -76,12 +77,14 @@ void BazaarManagerImplementation::checkAuctions() {
 					item->setBuyerID(item->getOwnerID());
 					item->setBidderName(item->getOwnerName());
 
-					StringBuffer message;
-					UnicodeString subject("Auction Unsuccessful");
+					UnicodeString subject("@auction:subject_auction_unsuccessful");
+					ParameterizedStringId body("auction", "seller_fail");
+					body.setTO(item->getItemName());
 
+					/*StringBuffer message;
 					message << "Your auction of " << item->getItemName() <<
 							" has been completed and has not been purchased.";
-					UnicodeString body(message.toString());
+					UnicodeString body(message.toString());*/
 
 					cman->sendMail("Auctioner", subject, body, item->getOwnerName());
 
@@ -95,22 +98,31 @@ void BazaarManagerImplementation::checkAuctions() {
 					player->updateToDatabaseWithoutChildren();
 
 					String sender = "Auctioner";
-					StringBuffer message1;
-					UnicodeString subject1("Auction Sale Complete");
-					UnicodeString subject2("Auction Won");
+					//StringBuffer message1;
+					UnicodeString subject1("@auction:subject_auction_seller");
+					UnicodeString subject2("@auction:subject_auction_buyer");
 
-					message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
+					ParameterizedStringId body1("auction", "seller_success");
+					body1.setTO(item->getItemName());
+					body1.setTT(item->getBidderName());
+					body1.setDI(item->getPrice());
+					/*message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
 											<< " for " << item->getPrice() << " credits.";
 
-					UnicodeString body1(message1.toString());
+					UnicodeString body1(message1.toString());*/
 
 					cman->sendMail(sender, subject1, body1, item->getOwnerName());
 
-					StringBuffer message2;
+					ParameterizedStringId body2("auction", "buyer_success");
+					body2.setTO(item->getItemName());
+					body2.setTT(item->getBidderName());
+					body2.setDI(item->getPrice());
+					/*StringBuffer message2;
 
 					message2 << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << item->getPrice() << " credits.\n"
 							<< "The sale took place at " << item->getLocation();
-					UnicodeString body2(message2.toString());
+					UnicodeString body2(message2.toString());*/
+
 					cman->sendMail(sender, subject2, body2, item->getBidderName());
 
 					item->setOwnerID(item->getBuyerID());
@@ -271,25 +283,34 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
 
+	ParameterizedStringId body("auction", "buyer_success");
+	body.setTO(item->getItemName());
+	body.setTT(item->getOwnerName());
+	body.setDI(price1);
 	// send the bidder a message
-	StringBuffer body;
+	/*StringBuffer body;
 
 	body << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << price1 << " credits.\n"
-			"The sale took place at " << item->getLocation();
-	UnicodeString subject1("Instant Sale Item, Puchased");
-	UnicodeString ubody1(body.toString());
+			"The sale took place at " << item->getLocation();*/
+	UnicodeString subject1("@auction:subject_instant_buyer");
+	//UnicodeString ubody1(body.toString());
 
-	player->sendSystemMessage(body.toString());
-	cman->sendMail("Auctioner", subject1, ubody1, item->getBidderName());
+	player->sendSystemMessage(body);
+	cman->sendMail("Auctioner", subject1, body, item->getBidderName());
 
 	// send the seller a message
-	StringBuffer body2;
+
+	ParameterizedStringId body2("auction", "seller_success");
+	body2.setTO(item->getItemName());
+	body2.setTT(item->getBidderName());
+	body2.setDI(price1);
+	/*StringBuffer body2;
 
 	body2 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
-											<< " for " << price1 << " credits.";
-	UnicodeString subject2("Instant Sale Complete");
-	UnicodeString ubody2(body2.toString());
-	cman->sendMail("Auctioner", subject2, ubody2, item->getOwnerName());
+											<< " for " << price1 << " credits.";*/
+	UnicodeString subject2("@auction:subject_instant_seller");
+	//UnicodeString ubody2(body2.toString());
+	cman->sendMail("Auctioner", subject2, body2, item->getOwnerName());
 
 	// pay the seller
 	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
@@ -298,7 +319,7 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 		if (seller != player)
 			seller->wlock(player);
 
-		seller->sendSystemMessage(body2.toString());
+		seller->sendSystemMessage(body2);
 		seller->addBankCredits(price1);
 
 		seller->updateToDatabaseWithoutChildren();
@@ -328,16 +349,18 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 
 	// send prior bidder their money back
 	if (item->getBidderName().length() > 0) {
-		StringBuffer body;
+		//StringBuffer body;
 
 		ManagedReference<PlayerCreature*> priorBidder = pman->getPlayer(item->getBidderName());
-		body << playername << " outbid you on " << item->getItemName() << ".";
+		//body << playername << " outbid you on " << item->getItemName() << ".";
+		ParameterizedStringId body("auction", "bidder_outbid");
+		body.setTO(item->getItemName());
 
 		try {
 			if (priorBidder != player)
 				priorBidder->wlock(player);
 
-			priorBidder->sendSystemMessage(body.toString());
+			priorBidder->sendSystemMessage(body);
 			priorBidder->addBankCredits(item->getPrice());
 
 			priorBidder->updateToDatabaseWithoutChildren();
@@ -353,10 +376,9 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 
 
 		// mail prior bidder with outcome
-		UnicodeString subject("Outbid");
-		UnicodeString ubody(body.toString());
+		UnicodeString subject("@auction:subject_auction_outbid");
 
-		cman->sendMail("Bazaar", subject, ubody, item->getBidderName());
+		cman->sendMail("Bazaar", subject, body, item->getBidderName());
 		item->setPrice(price1);
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
@@ -444,14 +466,17 @@ void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
 	ChatManager* cman = zoneServer->getChatManager();
 
 	// send the player a mail and system message
-	UnicodeString subject("Auction Canceled");
-	StringBuffer mess;
+	UnicodeString subject("@auction:subject_auction_cancelled");
+	ParameterizedStringId body("auction", "buyer_canceled" );
+	body.setTO(item->getItemName());
+	body.setTT(item->getOwnerName());
+	/*StringBuffer mess;
 	mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
-	UnicodeString body(mess.toString());
+	UnicodeString body(mess.toString());*/
 
 	int bankCredits = bidder->getBankCredits();
 	bidder->setBankCredits(bankCredits + item->getPrice());
-	bidder->sendSystemMessage(mess.toString());
+	bidder->sendSystemMessage(body);
 
 	cman->sendMail("auctioner", subject, body, item->getBidderName());
 }
