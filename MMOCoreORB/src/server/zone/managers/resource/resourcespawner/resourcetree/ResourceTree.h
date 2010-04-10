@@ -45,18 +45,18 @@ which carries forward this exception.
 #ifndef RESOURCETREE_H_
 #define RESOURCETREE_H_
 
-#include "server/zone/ZoneServer.h"
 #include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
 
 class ResourceTree {
 private:
-	ZoneServer* server;
 	ResourceTreeNode* baseNode;
 
 public:
-	ResourceTree(ZoneServer* serv);
+	ResourceTree();
 	~ResourceTree();
+
+	void toString();
 
 private:
 	/*

@@ -47,7 +47,7 @@ which carries forward this exception.
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv) {
 
 	server = serv;
-	resourceTree = new ResourceTree(server);
+	resourceTree = new ResourceTree();
 
 	minimumPool = new MinimumPool(this, resourceTree);
 	fixedPool = new FixedPool(this, resourceTree);
