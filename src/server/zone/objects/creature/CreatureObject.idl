@@ -764,4 +764,8 @@ class CreatureObject extends TangibleObject {
 	public boolean isBerserked() {
 		return stateBitmask & CreatureState.BERSERK;
 	}
+	
+	public boolean isSwimming() {
+		return stateBitmask & CreatureState.SWIMMING;
+	}
 }
