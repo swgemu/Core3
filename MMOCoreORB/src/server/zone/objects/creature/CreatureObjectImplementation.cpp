@@ -878,7 +878,7 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 
 int CreatureObjectImplementation::canAddObject(SceneObject* object) {
 	if (object->isTangibleObject()) {
-		TangibleObject* wearable = (WearableObject*) object;
+		TangibleObject* wearable = (TangibleObject*) object;
 
 		uint16 charMask = getWearableMask();
 		uint16 objMask = wearable->getPlayerUseMask();

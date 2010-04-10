@@ -58,6 +58,7 @@ import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.managers.objectcontroller.ObjectController;
+include server.zone.objects.scene.variables.ParameterizedStringId;
 
 
 class ChatManager extends ManagedObject implements Logger {
@@ -132,6 +133,9 @@ class ChatManager extends ManagedObject implements Logger {
 
 	public native void loadMail(PlayerCreature player);
 	public native void sendMail(final string sendername, unicode header, unicode body, final string name);
+	
+	@local
+	public native void sendMail(final string sendername, unicode header, @dereferenced ParameterizedStringId body, final string name);
 	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
 	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
 	
