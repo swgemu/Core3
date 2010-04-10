@@ -143,6 +143,8 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseMessage.h"
@@ -203,6 +205,8 @@ public:
 	void loadMail(PlayerCreature* player);
 
 	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+
+	void sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
@@ -305,6 +309,8 @@ public:
 	void loadMail(PlayerCreature* player);
 
 	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+
+	void sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
