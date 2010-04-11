@@ -68,7 +68,7 @@ public:
 		insertByte(0); // unknown
 		
 		// add direction
-		insertByte((byte) object->getDirectionAngle());
+		insertByte((byte) object->getSpecialDirectionAngle());
 		
 		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
 			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
