@@ -900,6 +900,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getDirectionAngle() {
 		return direction.getDegrees();
 	}
+	
+	public float getSpecialDirectionAngle() {
+		return direction.getSpecialDegrees();
+	}
 
 	public unsigned int getMovementCounter() {
 		return movementCounter;

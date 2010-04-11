@@ -676,6 +676,8 @@ public:
 
 	float getDirectionAngle();
 
+	float getSpecialDirectionAngle();
+
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
@@ -1339,6 +1341,8 @@ public:
 
 	float getDirectionAngle();
 
+	float getSpecialDirectionAngle();
+
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
@@ -1593,6 +1597,8 @@ public:
 	Zone* getZone();
 
 	float getDirectionAngle();
+
+	float getSpecialDirectionAngle();
 
 	unsigned int getMovementCounter();
 
