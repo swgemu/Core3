@@ -67,7 +67,7 @@ public:
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte((byte)scno->getDirectionAngle());
+		insertByte((byte)scno->getSpecialDirectionAngle());
 	}
 
 	UpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : BaseMessage(50) {
@@ -86,7 +86,7 @@ public:
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte((byte) scno->getDirectionAngle());
+		insertByte((byte) scno->getSpecialDirectionAngle());
 	}
 
 	static void parse(Packet* pack, SceneObject* scno) {

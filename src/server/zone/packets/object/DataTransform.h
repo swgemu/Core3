@@ -143,7 +143,13 @@ public:
 		object->info(slopeMsg.toString(), true);*/
 
 		object->setMovementCounter(movementCounter);
-		object->setDirection(directionW, directionX, directionY, directionZ);
+		object->setDirection(directionZ, directionX, directionY, directionW);
+
+		StringBuffer degrees;
+		degrees << "angle: " << object->getDirectionAngle();
+		degrees << " special angle: " << object->getSpecialDirectionAngle();
+		object->info(degrees.toString(), true);
+
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
 
