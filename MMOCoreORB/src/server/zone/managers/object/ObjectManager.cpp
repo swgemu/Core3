@@ -8,7 +8,9 @@
 #include "ObjectManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
@@ -167,9 +169,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObject::SKIRT);
 	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
 
+	objectFactory.registerObject<VehicleControlDevice>(SceneObject::VEHICLECONTROLDEVICE);
 
-	//temporary
-	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);
+	objectFactory.registerObject<VehicleObject>(SceneObject::VEHICLE);
+	objectFactory.registerObject<VehicleObject>(SceneObject::HOVERVEHICLE);
 }
 
 

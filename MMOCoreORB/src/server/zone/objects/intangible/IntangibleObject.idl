@@ -66,6 +66,7 @@ class IntangibleObject extends SceneObject {
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
+	public native void updateStatus(int newStatus, boolean notifyClient = true);
 	
 	public unsigned int getStatus() {
 		return status;

@@ -142,7 +142,7 @@ class TangibleObject extends SceneObject {
 	
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
-	 * @pre {�transient members are not initialized }
+	 * @pre {transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();

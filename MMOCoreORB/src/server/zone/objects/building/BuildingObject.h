@@ -134,6 +134,12 @@ public:
 
 	void onExit(PlayerCreature* player);
 
+	bool isStaticGarage();
+
+	void setStaticGarage(bool val);
+
+	bool isBuildingObject();
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -159,6 +165,8 @@ protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
 	int totalCellNumber;
+
+	bool staticGarage;
 
 public:
 	BuildingObjectImplementation();
@@ -204,6 +212,12 @@ public:
 	virtual void onEnter(PlayerCreature* player);
 
 	virtual void onExit(PlayerCreature* player);
+
+	bool isStaticGarage();
+
+	void setStaticGarage(bool val);
+
+	bool isBuildingObject();
 
 	BuildingObject* _this;
 
@@ -269,6 +283,12 @@ public:
 	void onEnter(PlayerCreature* player);
 
 	void onExit(PlayerCreature* player);
+
+	bool isStaticGarage();
+
+	void setStaticGarage(bool val);
+
+	bool isBuildingObject();
 
 };
 

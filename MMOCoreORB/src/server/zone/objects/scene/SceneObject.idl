@@ -329,7 +329,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public void finalize() {
-		Logger.info("deleting object", true);
+		Logger.info("deleting object from memory", true);
 		//StackTrace.printStackTrace();
 	}
 
@@ -487,6 +487,17 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
 	/**
+	 * Checks if the object can be destroyed
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @param player Player that attempts to destroy this object
+	 * @returns 0 on succes, != 0 on error
+	 */
+	public abstract int canBeDestroyed(PlayerCreature player) {
+		return 0;
+	}
+	
+	/**
 	 * Sends a SceneObjectCreateMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post {this object is locked, client received the SceneObjectCreateMessage message }
@@ -606,7 +617,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse) {
+	@local
+	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player) {
 	}
 	
 	/**
@@ -763,6 +775,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public native float getDistanceTo(SceneObject object);
+	
+	public native void updateVehiclePosition();
 	
 	/**
 	 * Is called when this object has moved to a new position
@@ -932,12 +946,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == PLAYERCREATURE;
 	}
 
-	public boolean isCreatureObject() {
-		return gameObjectType & CREATURE;
+	public abstract boolean isCreatureObject() {
+		return false;
+	}
+	
+	public abstract boolean isVehicleObject() {
+		return false;
 	}
 
-	public boolean isBuildingObject() {
-		return gameObjectType & BUILDING;
+	public abstract boolean isBuildingObject() {
+		return false;
 	}
 
 	public boolean isWeaponObject() {
@@ -1012,6 +1030,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void setMovementCounter(unsigned int count) {
 		movementCounter = count;
 	}
+	
+	public void incrementMovementCounter() {
+		movementCounter++;
+	}
 
 	public void setContainmentType(unsigned int type) {
 		containmentType = type;
@@ -1040,6 +1062,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public boolean isStaticObject() {
 		return staticObject;
+	}
+	
+	public abstract boolean isControlDevice() {
+		return false;
 	}
 
 }

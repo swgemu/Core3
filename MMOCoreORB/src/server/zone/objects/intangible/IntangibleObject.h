@@ -40,6 +40,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void updateStatus(int newStatus, bool notifyClient = true);
+
 	unsigned int getStatus();
 
 protected:
@@ -78,6 +80,8 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void updateStatus(int newStatus, bool notifyClient = true);
 
 	unsigned int getStatus();
 
@@ -123,6 +127,8 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void updateStatus(int newStatus, bool notifyClient);
 
 	unsigned int getStatus();
 

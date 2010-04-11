@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef DISMOUNTCOMMAND_H_
 #define DISMOUNTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 
 class DismountCommand : public QueueCommand {
 public:
@@ -62,6 +63,28 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		ManagedReference<SceneObject*> mount = creature->getParent();
+
+		if (mount == NULL || !mount->isCreatureObject())
+			return false;
+
+		CreatureObject* vehicle = (CreatureObject*) mount.get();
+
+		try {
+			vehicle->wlock(creature);
+
+			vehicle->clearState(CreatureState::MOUNTEDCREATURE);
+
+			if (!vehicle->removeObject(creature, true))
+				vehicle->error("could not remove creature from mount creature");
+
+			creature->clearState(CreatureState::RIDINGMOUNT);
+
+			vehicle->unlock();
+		} catch (...) {
+			vehicle->unlock();
+		}
 
 		return true;
 	}

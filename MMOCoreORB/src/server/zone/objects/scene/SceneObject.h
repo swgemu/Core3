@@ -550,6 +550,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	int canBeDestroyed(PlayerCreature* player);
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -576,7 +578,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	void openContainerTo(PlayerCreature* player);
 
@@ -611,6 +613,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
+
+	void updateVehiclePosition();
 
 	int onPositionUpdate();
 
@@ -692,6 +696,8 @@ public:
 
 	bool isCreatureObject();
 
+	bool isVehicleObject();
+
 	bool isBuildingObject();
 
 	bool isWeaponObject();
@@ -730,6 +736,8 @@ public:
 
 	void setMovementCounter(unsigned int count);
 
+	void incrementMovementCounter();
+
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
@@ -743,6 +751,8 @@ public:
 	SceneObject* getContainerObject(unsigned long long objectID);
 
 	bool isStaticObject();
+
+	bool isControlDevice();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -1203,6 +1213,8 @@ public:
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	virtual int canBeDestroyed(PlayerCreature* player);
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -1229,7 +1241,7 @@ public:
 
 	virtual void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	virtual void openContainerTo(PlayerCreature* player);
 
@@ -1264,6 +1276,8 @@ public:
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
+
+	void updateVehiclePosition();
 
 	virtual int onPositionUpdate();
 
@@ -1343,9 +1357,11 @@ public:
 
 	bool isPlayerCreature();
 
-	bool isCreatureObject();
+	virtual bool isCreatureObject();
 
-	bool isBuildingObject();
+	virtual bool isVehicleObject();
+
+	virtual bool isBuildingObject();
 
 	bool isWeaponObject();
 
@@ -1383,6 +1399,8 @@ public:
 
 	void setMovementCounter(unsigned int count);
 
+	void incrementMovementCounter();
+
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
@@ -1396,6 +1414,8 @@ public:
 	SceneObject* getContainerObject(unsigned long long objectID);
 
 	bool isStaticObject();
+
+	virtual bool isControlDevice();
 
 	SceneObject* _this;
 
@@ -1460,6 +1480,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
+	int canBeDestroyed(PlayerCreature* player);
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -1483,8 +1505,6 @@ public:
 	void sendToOwner(bool doClose);
 
 	void sendAttributeListTo(PlayerCreature* object);
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
 	void openContainerTo(PlayerCreature* player);
 
@@ -1515,6 +1535,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
+
+	void updateVehiclePosition();
 
 	int onPositionUpdate();
 
@@ -1592,6 +1614,8 @@ public:
 
 	bool isCreatureObject();
 
+	bool isVehicleObject();
+
 	bool isBuildingObject();
 
 	bool isWeaponObject();
@@ -1628,6 +1652,8 @@ public:
 
 	void setMovementCounter(unsigned int count);
 
+	void incrementMovementCounter();
+
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
@@ -1639,6 +1665,8 @@ public:
 	SceneObject* getContainerObject(unsigned long long objectID);
 
 	bool isStaticObject();
+
+	bool isControlDevice();
 
 protected:
 	String _param0_info__String_bool_;
