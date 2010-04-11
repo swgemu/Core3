@@ -55,12 +55,26 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 		((IntangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-unsigned int IntangibleObject::getStatus() {
+void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addSignedIntParameter(newStatus);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((IntangibleObjectImplementation*) _impl)->updateStatus(newStatus, notifyClient);
+}
+
+unsigned int IntangibleObject::getStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -147,7 +161,7 @@ void IntangibleObjectImplementation::finalize() {
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(71):  		return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(72):  		return status;
 	return status;
 }
 
@@ -172,6 +186,9 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
+		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 10:
 		resp->insertInt(getStatus());
 		break;
 	default:
@@ -191,6 +208,10 @@ void IntangibleObjectAdapter::initializeTransientMembers() {
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void IntangibleObjectAdapter::updateStatus(int newStatus, bool notifyClient) {
+	((IntangibleObjectImplementation*) impl)->updateStatus(newStatus, notifyClient);
 }
 
 unsigned int IntangibleObjectAdapter::getStatus() {

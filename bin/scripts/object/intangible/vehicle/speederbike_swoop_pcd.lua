@@ -1,0 +1,4 @@
+object_intangible_vehicle_speederbike_swoop_pcd = object_intangible_vehicle_shared_speederbike_swoop_pcd:new {
+}
+
+ObjectTemplates:addTemplate(object_intangible_vehicle_speederbike_swoop_pcd, "object/intangible/vehicle/speederbike_swoop_pcd.iff")

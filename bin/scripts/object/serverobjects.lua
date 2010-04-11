@@ -128,6 +128,8 @@ includeFile("tangible/instrument/slitherhorn.lua")
 includeFile("tangible/food/foraged/foraged_fruit_s1.lua")
 includeFile("tangible/wearables/vest/vest_s09.lua")
 includeFile("tangible/wearables/vest/vest_s10.lua")
+includeFile("mobile/vehicle/speederbike_swoop.lua")
+includeFile("intangible/vehicle/speederbike_swoop_pcd.lua")
 
 
 

@@ -167,6 +167,13 @@ class PlayerCreature extends CreatureObject {
 		
 	}
 	
+	@local 
+	public void loadTemplateData(LuaObject templateData) {
+		super.loadTemplateData(templateData);
+		
+		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+	}
+	
 	public native void initializeTransientMembers();
 	
 	@local
@@ -230,6 +237,11 @@ class PlayerCreature extends CreatureObject {
 	 * @param player PlayerCreature to receive badges response message
 	 */
 	public native void sendBadgesResponseTo(PlayerCreature player);
+	
+	/**
+	 * Unloads all the spawned creatures from the datapad control devices
+	 */
+	public native void unloadSpawnedChildren();
 	
 	public native void notifySceneReady();
 	

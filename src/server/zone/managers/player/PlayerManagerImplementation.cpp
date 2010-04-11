@@ -22,6 +22,8 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
 #include "server/zone/Zone.h"
@@ -460,6 +462,12 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
 	inventory->addObject(backpackObject, -1);*/
+
+	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
+	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
+	vehicleControlDevice->setControlledObject(vehicle);
+
+	datapad->addObject(vehicleControlDevice, -1);
 
 	SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
 	datapad->addObject(mission, -1);

@@ -62,11 +62,14 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
+				server/zone/objects/intangible/ControlDevice.cpp \
+				server/zone/objects/intangible/VehicleControlDevice.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
 				server/zone/objects/tangible/Container.cpp \
 				server/zone/objects/tangible/Instrument.cpp \
 				server/zone/objects/tangible/Food.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
+				server/zone/objects/creature/VehicleObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
@@ -151,6 +154,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
@@ -158,6 +162,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
+		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \

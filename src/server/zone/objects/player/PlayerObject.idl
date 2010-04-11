@@ -230,7 +230,7 @@ class PlayerObject extends IntangibleObject {
 	
 	/**
 	 * Adds a friend to the friend list
-	 * @pre { this is locked�}
+	 * @pre { this is locked}
 	 * @post { this is locked }
 	 * @param name friends name
 	 * @param notifyClient determines whether to update the client with the changes
@@ -240,7 +240,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Removes the specified friend from the friend list
 	 * @pre { this is locked }
-	 * @post { this is locked�}
+	 * @post { this is locked}
 	 * @param name friend name to remove
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
@@ -248,7 +248,7 @@ class PlayerObject extends IntangibleObject {
 	
 	/**
 	 * Adds a player to the ignore list
-	 * @pre { this is locked�}
+	 * @pre { this is locked}
 	 * @post { this is locked }
 	 * @param name player name
 	 * @param notifyClient determines whether to update the client with the changes
@@ -258,7 +258,7 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * Removes the specified player from the ignore list
 	 * @pre { this is locked }
-	 * @post { this is locked�}
+	 * @post { this is locked}
 	 * @param name player name to remove
 	 * @param notifyClient determines whether to update the client with the changes
 	 */

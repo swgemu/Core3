@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -174,12 +175,32 @@ void PlayerCreatureImplementation::activateRecovery() {
 	}
 }
 
+void PlayerCreatureImplementation::unloadSpawnedChildren() {
+	SceneObject* datapad = getSlottedObject("datapad");
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		SceneObject* object = datapad->getContainerObject(i);
+
+		if (object->isControlDevice()) {
+			ControlDevice* device = (ControlDevice*) object;
+
+			device->storeObject(_this);
+		}
+	}
+}
+
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
 	ManagedReference<SceneObject*> savedParent = NULL;
 
 	getPlayerObject()->notifyOffline();
+
+	if (isRidingMount()) {
+		executeObjectControllerAction(String("dismount").hashCode());
+	}
+
+	unloadSpawnedChildren();
 
 	if (parent != NULL) {
 		savedParentID = parent->getObjectID();

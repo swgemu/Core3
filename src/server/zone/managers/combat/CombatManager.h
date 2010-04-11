@@ -53,6 +53,11 @@ public:
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
 
+	//TODO
+	int calculateDamage(CreatureObject* attacker, TangibleObject* defender) {
+		return 0;
+	}
+
 	/**
 	 * Damage random pool target
 	 * @pre { defender locked }

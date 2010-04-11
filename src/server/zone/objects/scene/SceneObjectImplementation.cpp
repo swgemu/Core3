@@ -191,6 +191,8 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	info("deleting from database", true);
+
 	ZoneServer* server = getZoneServer();
 
 	server->destroyObjectFromDatabase(getObjectID());
@@ -405,9 +407,33 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     building->removeNotifiedObject(_this);
 }
 
+void SceneObjectImplementation::updateVehiclePosition() {
+	if (parent == NULL || !parent->isVehicleObject())
+		return;
+
+	try {
+		parent->wlock();
+
+		parent->setDirection(direction.getW(), direction.getZ(), direction.getY(), direction.getW());
+		parent->setPosition(positionX, positionZ, positionY);
+
+		parent->incrementMovementCounter();
+
+		parent->updateZone(true);
+
+		parent->unlock();
+	} catch (...) {
+		error("Unreported exception in SceneObjectImplementation::updateVehiclePosition()");
+		parent->unlock();
+	}
+}
+
 void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL)
 		return;
+
+	if (parent != NULL && parent->isVehicleObject())
+		updateVehiclePosition();
 
 	Locker zoneLocker(zone);
 
@@ -424,12 +450,14 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 	zone->inRange(this, 128);
 
-	if (lightUpdate) {
-		LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-		broadcastMessage(message, false);
-	} else {
-		UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-		broadcastMessage(message, false);
+	if (parent == NULL || !parent->isVehicleObject()) {
+		if (lightUpdate) {
+			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
+			broadcastMessage(message, false);
+		} else {
+			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
+			broadcastMessage(message, false);
+		}
 	}
 
 	zoneLocker.release();
@@ -439,6 +467,9 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
 	if (zone == NULL)
+		return;
+
+	if (parent != NULL && parent->isVehicleObject())
 		return;
 
 	bool insert = false;
@@ -607,7 +638,7 @@ void SceneObjectImplementation::removeFromZone() {
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (containerType == 1) {
+	if (containerType == 1 || containerType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -643,7 +674,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
-	if (containerType == 1) {
+	if (containerType == 1 || containerType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -667,8 +698,8 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	object->setParent(NULL);
 
-	/*if (notifyClient)
-		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
+	if (notifyClient)
+		broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
 
 	return true;
 }

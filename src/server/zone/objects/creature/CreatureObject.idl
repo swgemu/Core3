@@ -54,6 +54,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 //import server.zone.objects.player.professions.SkillBox;
 
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.intangible.ControlDevice;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
@@ -82,7 +83,12 @@ class CreatureObject extends TangibleObject {
 	protected byte posture;
 	protected byte factionRank;
 	
-	protected unsigned long creatureLinkID;
+	@weakReference
+	protected CreatureObject linkedCreature;
+	
+	@weakReference
+	protected ControlDevice controlDevice;
+	
 	protected float shockWounds;
 	
 	@dereferenced
@@ -168,6 +174,9 @@ class CreatureObject extends TangibleObject {
 	public CreatureObject() {
 		Logger.setLoggingName("CreatureObject");
 		
+		linkedCreature = null;
+		controlDevice = null;
+		
 		skillModList.setNullValue(0);
 	}
 	
@@ -184,7 +193,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
-	 * @pre {�transient members are not initialized }
+	 * @pre {transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
@@ -210,7 +219,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {�}
+	 * @pre {}
 	 * @post { this object received the message }
 	 * @param message string message to send
 	 */
@@ -218,7 +227,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {�}
+	 * @pre {}
 	 * @post { this object received the message }
 	 * @param message unicode message to send
 	 */
@@ -226,7 +235,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {�}
+	 * @pre {}
 	 * @post { this object received the message }
 	 * @param file stf file name of the message
 	 * @param stringid stf stringid of the message
@@ -235,7 +244,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends a system message to the client of this object
-	 * @pre {�}
+	 * @pre {}
 	 * @post { this object received the message }
 	 * @param message ParameterizedStringId message to send
 	 */
@@ -268,7 +277,7 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Sets a new posture
 	 * @pre { this object is locked }
-	 * @post {�this object is locked, this object has the new posture set }
+	 * @post {this object is locked, this object has the new posture set }
 	 * @param newPosture posture to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
@@ -484,7 +493,7 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Sets a new state to the statebitmask
 	 * @pre { this object is locked }
-	 * @post { this object is locked�, stateBitmask has the new state }
+	 * @post { this object is locked, stateBitmask has the new state }
 	 * @param state state to add
 	 */
 	public native void setState(unsigned long state, boolean notifyClient = true);
@@ -492,18 +501,34 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Cleares a state from the state bitmask
 	 * @pre { this object is locked }
-	 * @post { this object is locked�, stateBitmask doesnt have the specified state }
+	 * @post { this object is locked, stateBitmask doesnt have the specified state }
 	 * @param state state to clear
 	 */
 	public native void clearState(unsigned long state, boolean notifyClient = true);
 	
+	public void setControlDevice(ControlDevice device) {
+		controlDevice = device;
+	}
+	
 	/**
 	 * Returns character mask to check against wearable player use mask
-	 * @pre {�}
-	 * @post {�}
+	 * @pre {}
+	 * @post {}
 	 * 
 	 */
 	public native unsigned int getWearableMask();
+	
+	/**
+	 * Updates creatureLinkID with specified object
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	public native void setCreatureLink(CreatureObject object, boolean notifyClient = true);
+	
+	/**
+	 * Executes an object controller command
+	 */
+	public native void executeObjectControllerAction(unsigned int actionCRC);
 	
 	public native int canAddObject(SceneObject object);
 
@@ -589,8 +614,15 @@ class CreatureObject extends TangibleObject {
 		return factionRank;
 	}
 	
+	public CreatureObject getLinkedCreature() {
+		return linkedCreature;
+	}
+	
 	public unsigned long getCreatureLinkID() {
-		return creatureLinkID;
+		if (linkedCreature != null)
+			return linkedCreature.getObjectID();
+		else
+			return 0;
 	}
 	
 	public float getShockWounds() {
@@ -765,7 +797,19 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.BERSERK;
 	}
 	
+	public boolean isCreatureObject() {
+		return true;
+	}
+	
 	public boolean isSwimming() {
 		return stateBitmask & CreatureState.SWIMMING;
+	}
+	
+	public boolean isRidingMount() {
+		return stateBitmask & CreatureState.RIDINGMOUNT;
+	}
+	
+	public ControlDevice getControlDevice() {
+		return controlDevice;
 	}
 }

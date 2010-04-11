@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef MOUNTCOMMAND_H_
 #define MOUNTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class MountCommand : public QueueCommand {
 public:
@@ -56,12 +58,50 @@ public:
 	}
 
 	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+		if (creature->isRidingMount()) {
+			ZoneServer* zoneServer = server->getZoneServer();
+
+			ObjectController* objectController = zoneServer->getObjectController();
+			objectController->activateCommand(creature, String("dismount").hashCode(), 0, 0, "");
+
+			return false;
+		}
 
 		if (!checkStateMask(creature))
 			return false;
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
+
+		if (!object->isVehicleObject() /* && !object->isPetObject() */)
+			return false;
+
+		CreatureObject* vehicle = (CreatureObject*) object.get();
+
+		if (vehicle->getCreatureLinkID() != creature->getObjectID())
+			return false;
+
+		if (!vehicle->isInRange(creature, 5))
+			return false;
+
+		try {
+			vehicle->wlock(creature);
+
+			vehicle->setState(CreatureState::MOUNTEDCREATURE);
+
+			if (!vehicle->addObject(creature, 4, true))
+				vehicle->error("could not add creature");
+
+			creature->setState(CreatureState::RIDINGMOUNT);
+
+			vehicle->unlock();
+		} catch (...) {
+			vehicle->unlock();
+		}
 
 		return true;
 	}

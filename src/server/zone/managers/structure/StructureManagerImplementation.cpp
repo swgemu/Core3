@@ -36,6 +36,65 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 	setLogging(false);
 }
 
+void StructureManagerImplementation::loadStaticGarages() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file LIKE '%garage%' AND type = 512;";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		BuildingObject* building = NULL;
+		uint64 objectID;
+		String templateFile;
+		float positionX, positionZ, positionY;
+		int i = 0;
+
+		while (result->next()) {
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			templateFile = result->getString(3);
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			building = (BuildingObject*) zoneServer->createStaticObject(templateFile.hashCode(), objectID);
+			building->setStaticObject(true);
+			building->setStaticGarage(true);
+
+			building->initializePosition(positionX, positionZ, positionY);
+			building->insertToZone(zone);
+
+			building->updateToDatabase();
+
+			++i;
+		}
+
+		if (i > 0)
+			info(String::valueOf(i) + " garages loaded", true);
+
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+}
+
 void StructureManagerImplementation::loadStaticMissionTerminals() {
 	int planetid = zone->getZoneID();
 	ZoneServer* zoneServer = zone->getZoneServer();
