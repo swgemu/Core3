@@ -73,6 +73,12 @@ public:
 		if (object == NULL)
 			return false;
 
+		if (!creature->isPlayerCreature())
+			return false;
+
+		if (object->canBeDestroyed((PlayerCreature*) creature) != 0)
+			return false;
+
 		// need to add checks.. inventory, datapad, bank, waypoint
 
 		if (object->isWaypointObject()) {

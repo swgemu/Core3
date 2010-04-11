@@ -204,6 +204,8 @@ public:
 
 	PlayerCreature();
 
+	void loadTemplateData(LuaObject* templateData);
+
 	void initializeTransientMembers();
 
 	void notifyInsert(QuadTreeEntry* entry);
@@ -231,6 +233,8 @@ public:
 	void sendToOwner(bool doClose = true);
 
 	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void unloadSpawnedChildren();
 
 	void notifySceneReady();
 
@@ -423,6 +427,8 @@ public:
 
 	void finalize();
 
+	void loadTemplateData(LuaObject* templateData);
+
 	void initializeTransientMembers();
 
 	void notifyInsert(QuadTreeEntry* entry);
@@ -450,6 +456,8 @@ public:
 	void sendToOwner(bool doClose = true);
 
 	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void unloadSpawnedChildren();
 
 	void notifySceneReady();
 
@@ -603,6 +611,8 @@ public:
 	void sendToOwner(bool doClose);
 
 	void sendBadgesResponseTo(PlayerCreature* player);
+
+	void unloadSpawnedChildren();
 
 	void notifySceneReady();
 

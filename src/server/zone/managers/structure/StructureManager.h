@@ -117,6 +117,8 @@ private:
 
 	void loadPlayerStructures();
 
+	void loadStaticGarages();
+
 	BuildingObject* loadStaticBuilding(unsigned long long oid);
 
 	void loadStaticCells(BuildingObject* building);

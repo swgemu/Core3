@@ -103,6 +103,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace intangible {
+
+class ControlDevice;
+
+} // namespace intangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::intangible;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -240,7 +254,13 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
+	void setControlDevice(ControlDevice* device);
+
 	unsigned int getWearableMask();
+
+	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
+
+	void executeObjectControllerAction(unsigned int actionCRC);
 
 	int canAddObject(SceneObject* object);
 
@@ -283,6 +303,8 @@ public:
 	byte getPosture();
 
 	byte getFactionRank();
+
+	CreatureObject* getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -366,6 +388,14 @@ public:
 
 	bool isBerserked();
 
+	bool isCreatureObject();
+
+	bool isSwimming();
+
+	bool isRidingMount();
+
+	ControlDevice* getControlDevice();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -409,7 +439,9 @@ protected:
 
 	byte factionRank;
 
-	unsigned long long creatureLinkID;
+	ManagedWeakReference<CreatureObject* > linkedCreature;
+
+	ManagedWeakReference<ControlDevice* > controlDevice;
 
 	float shockWounds;
 
@@ -584,7 +616,13 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
+	void setControlDevice(ControlDevice* device);
+
 	unsigned int getWearableMask();
+
+	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
+
+	void executeObjectControllerAction(unsigned int actionCRC);
 
 	int canAddObject(SceneObject* object);
 
@@ -627,6 +665,8 @@ public:
 	byte getPosture();
 
 	byte getFactionRank();
+
+	CreatureObject* getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -709,6 +749,14 @@ public:
 	bool isInCover();
 
 	bool isBerserked();
+
+	bool isCreatureObject();
+
+	bool isSwimming();
+
+	bool isRidingMount();
+
+	ControlDevice* getControlDevice();
 
 	CreatureObject* _this;
 
@@ -815,7 +863,13 @@ public:
 
 	void clearState(unsigned long long state, bool notifyClient);
 
+	void setControlDevice(ControlDevice* device);
+
 	unsigned int getWearableMask();
+
+	void setCreatureLink(CreatureObject* object, bool notifyClient);
+
+	void executeObjectControllerAction(unsigned int actionCRC);
 
 	int canAddObject(SceneObject* object);
 
@@ -850,6 +904,8 @@ public:
 	byte getPosture();
 
 	byte getFactionRank();
+
+	CreatureObject* getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -926,6 +982,14 @@ public:
 	bool isInCover();
 
 	bool isBerserked();
+
+	bool isCreatureObject();
+
+	bool isSwimming();
+
+	bool isRidingMount();
+
+	ControlDevice* getControlDevice();
 
 protected:
 	String _param0_sendSystemMessage__String_;

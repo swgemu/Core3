@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "../../managers/object/ObjectManager.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
+#include "server/zone/packets/intangible/IntangibleObjectDeltaMessage3.h"
 
 void IntangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -67,4 +68,27 @@ void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* itno6 = new IntangibleObjectMessage6(_this);
 	player->sendMessage(itno6);
+}
+
+void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClient) {
+	if (status == newStatus)
+		return;
+
+	status = newStatus;
+
+	if (!notifyClient)
+		return;
+
+	if (parent == NULL)
+		return;
+
+	SceneObject* player = parent->getParent();
+
+	if (player == NULL)
+		return;
+
+	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this);
+	delta->updateStatus(newStatus);
+	delta->close();
+	player->sendMessage(delta);
 }

@@ -56,12 +56,19 @@ public:
 	}
 
 	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return false;
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		/*ManagedReference<CreatureObject*> mount = NULL;
+
+		if (creature->isRidingMount()) {
+			mount = (CreatureObject*) creature->getParent();
+
+			creature->executeObjectControllerAction(String("dismount").hashCode());
+		}*/
 
 		return true;
 	}

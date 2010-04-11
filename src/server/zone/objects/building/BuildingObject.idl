@@ -62,6 +62,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	protected Vector<CellObject> cells;
 	
 	protected int totalCellNumber;
+	protected boolean staticGarage;
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
@@ -75,6 +76,8 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		super.containerType = 2;
 		
 		totalCellNumber = 0;
+		
+		staticGarage = false;
 	}
 	
 	public void createCellObjects() {
@@ -163,6 +166,18 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	 */
 	public abstract void onExit(PlayerCreature player) {
 		
+	}
+	
+	public boolean isStaticGarage() {
+		return staticGarage;
+	}
+	
+	public void setStaticGarage(boolean val) {
+		staticGarage = val;
+	}
+	
+	public boolean isBuildingObject() {
+		return true;
 	}
 	
 }

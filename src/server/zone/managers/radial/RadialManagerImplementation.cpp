@@ -29,7 +29,8 @@ void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player
 		try {
 			menuObject->wlock(player);
 
-			menuObject->fillObjectMenuResponse(defaultMenuResponse);
+			info("entering object menu request ", true);
+			menuObject->fillObjectMenuResponse(defaultMenuResponse, player);
 
 			menuObject->unlock();
 		} catch (...) {
@@ -65,7 +66,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 		try {
 			selectedObject->wlock(player);
 
-			//System::out << "entering radial call" << endl;
+			info("entering radial call " + String::valueOf(selectID), true);
 			selectedObject->handleObjectMenuSelect(player, selectID);
 
 			selectedObject->unlock();

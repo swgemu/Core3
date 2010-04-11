@@ -252,6 +252,43 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		((BuildingObjectImplementation*) _impl)->onExit(player);
 }
 
+bool BuildingObject::isStaticGarage() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isStaticGarage();
+}
+
+void BuildingObject::setStaticGarage(bool val) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setStaticGarage(val);
+}
+
+bool BuildingObject::isBuildingObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isBuildingObject();
+}
+
 /*
  *	BuildingObjectImplementation
  */
@@ -321,72 +358,75 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("cells", &cells);
 	addSerializableVariable("totalCellNumber", &totalCellNumber);
+	addSerializableVariable("staticGarage", &staticGarage);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(67):  		Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(68):  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(69):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(70):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(1024, 1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(71):  		super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl(72):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(73):  		super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(74):  		super.containerVolumeLimit = 0xFFFFFFFF;
 	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(75):  		super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(76):  		super.containerType = 2;
 	TangibleObjectImplementation::containerType = 2;
-	// server/zone/objects/building/BuildingObject.idl(77):  		totalCellNumber = 0;
+	// server/zone/objects/building/BuildingObject.idl(78):  		totalCellNumber = 0;
 	totalCellNumber = 0;
+	// server/zone/objects/building/BuildingObject.idl(80):  		staticGarage = false;
+	staticGarage = false;
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-	// server/zone/objects/building/BuildingObject.idl(81):  
-	for (	// server/zone/objects/building/BuildingObject.idl(81):  		for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl(84):  
+	for (	// server/zone/objects/building/BuildingObject.idl(84):  		for (int i = 0;
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(82):  			SceneObject newCell = getZoneServer().createObject(206832110, 2);
+	// server/zone/objects/building/BuildingObject.idl(85):  			SceneObject newCell = getZoneServer().createObject(206832110, 2);
 	SceneObject* newCell = getZoneServer()->createObject(206832110, 2);
-	// server/zone/objects/building/BuildingObject.idl(84):  			addCell((CellObject)newCell);
+	// server/zone/objects/building/BuildingObject.idl(87):  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }
 }
 
 void BuildingObjectImplementation::removeFromZone() {
-	// server/zone/objects/building/BuildingObject.idl(94):  
-	for (	// server/zone/objects/building/BuildingObject.idl(94):  		for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl(97):  
+	for (	// server/zone/objects/building/BuildingObject.idl(97):  		for (int i = 0;
 	int i = 0;
 	i < (&cells)->size();
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(95):  			CellObject cell = cells.get(i);
+	// server/zone/objects/building/BuildingObject.idl(98):  			CellObject cell = cells.get(i);
 	CellObject* cell = (&cells)->get(i);
-	// server/zone/objects/building/BuildingObject.idl(97):  
-	for (	// server/zone/objects/building/BuildingObject.idl(97):  			for (int j = 0;
+	// server/zone/objects/building/BuildingObject.idl(100):  
+	for (	// server/zone/objects/building/BuildingObject.idl(100):  			for (int j = 0;
 	int j = 0;
 	j < cell->getContainerObjectsSize();
  ++j) {
-	// server/zone/objects/building/BuildingObject.idl(98):  				SceneObject obj = cell.getContainerObject(j);
+	// server/zone/objects/building/BuildingObject.idl(101):  				SceneObject obj = cell.getContainerObject(j);
 	SceneObject* obj = cell->getContainerObject(j);
-	// server/zone/objects/building/BuildingObject.idl(99):  				obj.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(102):  				obj.removeFromZone();
 	obj->removeFromZone();
 }
 }
-	// server/zone/objects/building/BuildingObject.idl(103):  		super.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(106):  		super.removeFromZone();
 	TangibleObjectImplementation::removeFromZone();
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(133):  		return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(136):  		return super.staticObject;
 	return TangibleObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(137):  		return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(140):  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(141):  		super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(144):  		super.staticObject = value;
 	TangibleObjectImplementation::staticObject = value;
 }
 
@@ -394,6 +434,21 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 }
 
 void BuildingObjectImplementation::onExit(PlayerCreature* player) {
+}
+
+bool BuildingObjectImplementation::isStaticGarage() {
+	// server/zone/objects/building/BuildingObject.idl(172):  		return staticGarage;
+	return staticGarage;
+}
+
+void BuildingObjectImplementation::setStaticGarage(bool val) {
+	// server/zone/objects/building/BuildingObject.idl(176):  		staticGarage = val;
+	staticGarage = val;
+}
+
+bool BuildingObjectImplementation::isBuildingObject() {
+	// server/zone/objects/building/BuildingObject.idl(180):  		return true;
+	return true;
 }
 
 /*
@@ -445,6 +500,15 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 18:
 		onExit((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
+		resp->insertBoolean(isStaticGarage());
+		break;
+	case 20:
+		setStaticGarage(inv->getBooleanParameter());
+		break;
+	case 21:
+		resp->insertBoolean(isBuildingObject());
 		break;
 	default:
 		return NULL;
@@ -503,6 +567,18 @@ void BuildingObjectAdapter::onEnter(PlayerCreature* player) {
 
 void BuildingObjectAdapter::onExit(PlayerCreature* player) {
 	((BuildingObjectImplementation*) impl)->onExit(player);
+}
+
+bool BuildingObjectAdapter::isStaticGarage() {
+	return ((BuildingObjectImplementation*) impl)->isStaticGarage();
+}
+
+void BuildingObjectAdapter::setStaticGarage(bool val) {
+	((BuildingObjectImplementation*) impl)->setStaticGarage(val);
+}
+
+bool BuildingObjectAdapter::isBuildingObject() {
+	return ((BuildingObjectImplementation*) impl)->isBuildingObject();
 }
 
 /*

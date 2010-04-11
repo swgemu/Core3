@@ -107,8 +107,6 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	height = 1;
 
-	creatureLinkID = 0;
-
 	shockWounds = 0.f;
 
 	gender = templateData->getIntField("gender");
@@ -894,4 +892,27 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object) {
 	}
 
 	return SceneObjectImplementation::canAddObject(object);
+}
+
+void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool notifyClient) {
+	if (linkedCreature == object)
+		return;
+
+	linkedCreature = object;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage3* delta = new CreatureObjectDeltaMessage3(_this);
+	delta->updateCreatureLinkID();
+	delta->close();
+
+	broadcastMessage(delta, true);
+}
+
+
+void CreatureObjectImplementation::executeObjectControllerAction(unsigned int actionCRC) {
+	ObjectController* objectController = getZoneServer()->getObjectController();
+
+	objectController->activateCommand(_this, actionCRC, 0, 0, "");
 }

@@ -42,74 +42,55 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTDELTAMESSAGE3_H_
-#define CREATUREOBJECTDELTAMESSAGE3_H_
+package server.zone.objects.creature;
 
-#include "../../packets/DeltaMessage.h"
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.scene.SceneObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.intangible.VehicleControlDevice;
+import engine.core.ManagedObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import server.zone.Zone;
 
-#include "../../objects/creature/CreatureObject.h"
-
-#include "../../objects/creature/CreatureAttribute.h"
-
-class CreatureObjectDeltaMessage3 : public DeltaMessage {
-	CreatureObject* creo;
-
-public:
-	CreatureObjectDeltaMessage3(CreatureObject* cr)
-			: DeltaMessage(cr->getObjectID(), 0x4352454F, 3) {
-		creo = cr;
+class VehicleObject extends CreatureObject {
+	protected int vehicleType;
+	
+	public VehicleObject() {
+		vehicleType = SceneObject.HOVERVEHICLE;
+		
+		Logger.setLoggingName("VehicleObject");
+		Logger.setLogging("true");
+		Logger.setGlobalLogging("true");
 	}
-
-	/*void updateCharacterAppearance() {
-		String appearance;
-		creo->getCustomizationString(appearance);
-		addAsciiUpdate(4, appearance);
-	}*/
-
-	void updateCreatureBitmask(uint32 value) {
-		addIntUpdate(0x06, value);
+	
+	@local
+	public void loadTemplateData(LuaObject templateData) {
+		super.loadTemplateData(templateData);
+		
+		super.optionsBitmask = 0x1080;
+		super.pvpStatusBitmask = 0;
 	}
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	public native boolean checkInRangeGarage();
+	
 
-	void updatePosture() {
-		addByteUpdate(0x0B, creo->getPosture());
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public boolean isVehicleObject() {
+		return true;
 	}
-
-	/*void updateIncapacitationRecoveryTime(uint32 dur) {
-		addIntUpdate(0x07, dur);
-
-
-	void updateFactionRank() {
-		addByteUpdate(0x0C, creo->getFactionRank());
-	}*/
-
-	void updateState() {
-		addLongUpdate(0x10, creo->getStateBitmask());
-	}
-
-	/*void updateCreatureBitmask() {
-		addIntUpdate(0x06, creo->getOptionsBitmask());
-	}
-
-	void updateConditionDamage() {
-		addIntUpdate(8, creo->getConditionDamage());
-	}
-
-	void updateMaxCondition() {
-		addIntUpdate(9, creo->getMaxCondition());
-	}
-
-	void updateHeight() {
-		addFloatUpdate(14, creo->getHeight());
-	}
-
-	void updateShockWounds() {
-		addIntUpdate(15, creo->getShockWounds());
-	} */
-
-	void updateCreatureLinkID() {
-		addLongUpdate(0x0D, creo->getCreatureLinkID());
-	}
-
-};
-
-#endif /*CREATUREOBJECTDELTAMESSAGE3_H_*/
+}
