@@ -62,7 +62,7 @@ ResourceTree::~ResourceTree() {
 
 bool ResourceTree::buildTreeFromDatabase() {
 
-	baseNode = new ResourceTreeNode("resource", 0);
+	baseNode = new ResourceTreeNode("Resource", 0);
 
 	String query = "SELECT resource_tree.`Index`,resource_tree.stfname, resource_tree.class1, "
 			"resource_tree.class2, resource_tree.class3, resource_tree.class4, resource_tree.class5, "
@@ -87,8 +87,11 @@ bool ResourceTree::buildTreeFromDatabase() {
 				String type = res->getString(1);
 				ResourceTreeEntry* entry = new ResourceTreeEntry(type);
 
-				for(int i = 2; i <= 8; ++i)
-					entry->addClass(res->getString(i));
+				for(int i = 2; i <= 8; ++i) {
+					String newclass = res->getString(i);
+					if(newclass != "")
+						entry->addClass(newclass);
+				}
 
 				entry->setMaxtype(res->getInt(9));
 				entry->setMintype(res->getInt(10));
@@ -99,10 +102,13 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				for(int i = 14; i <= 24; ++i) {
 					String attribname = res->getString(i);
-					int min = res->getInt(i + 11 + (i - 14));
-					int max = res->getInt(i + 12 + (i - 14));
+					if (attribname != "") {
+						int min = res->getInt(i + 11 + (i - 14));
+						int max = res->getInt(i + 12 + (i - 14));
 
-					entry->addAttribute(new ResourceAttribute(attribname, min, max));
+						entry->addAttribute(new ResourceAttribute(attribname,
+								min, max));
+					}
 				}
 
 				entry->setResourceContainerType(res->getString(47));
@@ -110,8 +116,6 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				entry->setRandomNameClass(res->getString(48));
 				entry->setWeight(res->getFloat(49));
-
-				entry->toString();
 
 				baseNode->addEntry(entry);
 			}
@@ -123,6 +127,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 	} catch (...) {
 		System::out << "unreported exception caught in ResourceTree::buildTreeFromDatabase()\n";
 	}
+	toString();
 	return true;
 }
 

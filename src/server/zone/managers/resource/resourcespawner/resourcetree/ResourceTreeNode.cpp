@@ -48,7 +48,6 @@ ResourceTreeNode::ResourceTreeNode(const String& n, const int d) {
 
 	nodeClass = n;
 	depth = d;
-
 }
 ResourceTreeNode::~ResourceTreeNode() {
 	for(int i = 0; i < nodes.size(); ++i)
@@ -60,10 +59,9 @@ ResourceTreeNode::~ResourceTreeNode() {
 
 void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
 
-	/**
-	 * Find out which child node this entry belongs to, and
-	 * if it doesn't exist, create it
-	 */
+
+	 //Find out which child node this entry belongs to, and
+	 //if it doesn't exist, create it
 	for(int ii = 0; ii < nodes.size(); ++ii) {
 
 		ResourceTreeNode* node = nodes.get(ii);
@@ -72,12 +70,12 @@ void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
 			return;
 		}
 	}
-	/**
-	 * The entry doesn't belong to an existing child node, now we
-	 * determine if it belong on this node, or on a new child node.
-	 */
+
+	//The entry doesn't belong to an existing child node, now we
+	//determine if it belong on this node, or on a new child node.
 	if(entry->getClassCount() > depth + 1) {
 		ResourceTreeNode* newnode = new ResourceTreeNode(entry->getClass(depth), depth + 1);
+		nodes.add(newnode);
 		newnode->addEntry(entry);
 	} else {
 		entries.add(entry);

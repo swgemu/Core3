@@ -67,6 +67,7 @@ public:
 		return nodeClass;
 	}
 
+
 	void toString();
 
 };
