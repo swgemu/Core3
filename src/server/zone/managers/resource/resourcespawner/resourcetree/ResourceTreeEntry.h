@@ -106,11 +106,7 @@ public:
 	}
 
 	String getFinalClass() {
-		for(int i = 7; i > 0; ++i) {
-			if(getClass(i) != "")
-				return getClass(i);
-		}
-		return "";
+		return classList.get(classList.size());
 	}
 
 	void addAttribute(ResourceAttribute* attrib) {
