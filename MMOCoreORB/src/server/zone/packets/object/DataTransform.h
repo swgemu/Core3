@@ -145,10 +145,10 @@ public:
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionZ, directionX, directionY, directionW);
 
-		StringBuffer degrees;
+		/*StringBuffer degrees;
 		degrees << "angle: " << object->getDirectionAngle();
 		degrees << " special angle: " << object->getSpecialDirectionAngle();
-		object->info(degrees.toString(), true);
+		object->info(degrees.toString(), true);*/
 
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
