@@ -115,7 +115,6 @@ bool ResourceTree::buildTreeFromDatabase() {
 				//entry->setResourceContainerTypeCRC(res->getUnsignedInt(47));
 
 				entry->setRandomNameClass(res->getString(48));
-				entry->setWeight(res->getFloat(49));
 
 				baseNode->addEntry(entry);
 			}
