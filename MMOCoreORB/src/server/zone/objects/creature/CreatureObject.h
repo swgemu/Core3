@@ -264,6 +264,14 @@ public:
 
 	int canAddObject(SceneObject* object);
 
+	void doAnimation(const String& animation);
+
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+
+	void playEffect(const String& file, const String& aux);
+
+	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
+
 	int onPositionUpdate();
 
 	void activateQueueAction();
@@ -626,7 +634,15 @@ public:
 
 	int canAddObject(SceneObject* object);
 
-	virtual int onPositionUpdate();
+	void doAnimation(const String& animation);
+
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+
+	void playEffect(const String& file, const String& aux);
+
+	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
+
+	int onPositionUpdate();
 
 	void activateQueueAction();
 
@@ -873,6 +889,14 @@ public:
 
 	int canAddObject(SceneObject* object);
 
+	void doAnimation(const String& animation);
+
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+
+	void playEffect(const String& file, const String& aux);
+
+	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
+
 	int onPositionUpdate();
 
 	void activateQueueAction();
@@ -1001,6 +1025,11 @@ protected:
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
+	String _param0_doAnimation__String_;
+	String _param0_playEffect__String_String_;
+	String _param1_playEffect__String_String_;
+	String _param0_showFlyText__String_String_byte_byte_byte_;
+	String _param1_showFlyText__String_String_byte_byte_byte_;
 	String _param0_getSkillMod__String_;
 };
 

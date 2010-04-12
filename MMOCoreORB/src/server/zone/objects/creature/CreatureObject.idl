@@ -531,12 +531,18 @@ class CreatureObject extends TangibleObject {
 	public native void executeObjectControllerAction(unsigned int actionCRC);
 	
 	public native int canAddObject(SceneObject object);
+	
+	public native void doAnimation(final string animation);
+	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit);
+	
+	public native void playEffect(final string file, final string aux);
+	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
 
 	
 	/**
 	 * Is called when this object has moved to a new position
 	 */
-	public abstract native int onPositionUpdate();
+	public native int onPositionUpdate();
 	
 	public native void activateQueueAction();
 	
