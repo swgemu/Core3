@@ -61,6 +61,10 @@ which carries forward this exception.
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/packets/object/ShowFlyText.h"
+#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
+#include "server/zone/packets/object/Animation.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
@@ -910,9 +914,34 @@ void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool 
 	broadcastMessage(delta, true);
 }
 
-
 void CreatureObjectImplementation::executeObjectControllerAction(unsigned int actionCRC) {
 	ObjectController* objectController = getZoneServer()->getObjectController();
 
 	objectController->activateCommand(_this, actionCRC, 0, 0, "");
+}
+
+
+void CreatureObjectImplementation::doCombatAnimation(CreatureObject* defender, uint32 animcrc, byte hit) {
+	CombatAction* action = new CombatAction(_this, defender, animcrc, hit);
+
+	broadcastMessage(action, true);
+}
+
+void CreatureObjectImplementation::doAnimation(const String& anim) {
+	Animation* msg = new Animation(_this, anim);
+
+	broadcastMessage(msg, true);
+}
+
+
+void CreatureObjectImplementation::playEffect(const String& file, const String& aux) {
+	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(_this, file, aux);
+
+	broadcastMessage(effect, true);
+}
+
+void CreatureObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
+	ShowFlyText* fly = new ShowFlyText(_this, file, aux, red, green, blue);
+
+	broadcastMessage(fly, true);
 }
