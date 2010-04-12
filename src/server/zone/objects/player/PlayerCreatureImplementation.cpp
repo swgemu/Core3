@@ -235,7 +235,7 @@ void PlayerCreatureImplementation::unload() {
 void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 	if (disconnectEvent != NULL) {
 		disconnectEvent->cancel();
-		delete disconnectEvent;
+		//delete disconnectEvent;
 		disconnectEvent = NULL;
 	}
 
@@ -383,4 +383,16 @@ void PlayerCreatureImplementation::notifySceneReady() {
 
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
 	playerObject->sendFriendLists();
+}
+
+void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
+	if (closeWindowToClient == true) {
+		SuiBox* sui = suiBoxes.get(boxID);
+
+		if (sui != NULL) {
+			sendMessage(sui->generateCloseMessage());
+		}
+	}
+
+	suiBoxes.drop(boxID);
 }
