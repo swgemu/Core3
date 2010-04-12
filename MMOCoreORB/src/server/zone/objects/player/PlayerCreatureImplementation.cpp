@@ -396,3 +396,7 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 
 	suiBoxes.drop(boxID);
 }
+
+int PlayerCreatureImplementation::onPositionUpdate() {
+	return CreatureObjectImplementation::onPositionUpdate();
+}

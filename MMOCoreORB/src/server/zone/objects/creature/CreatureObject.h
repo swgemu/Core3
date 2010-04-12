@@ -626,7 +626,7 @@ public:
 
 	int canAddObject(SceneObject* object);
 
-	int onPositionUpdate();
+	virtual int onPositionUpdate();
 
 	void activateQueueAction();
 

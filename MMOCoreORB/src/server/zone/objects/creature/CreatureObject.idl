@@ -536,7 +536,7 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Is called when this object has moved to a new position
 	 */
-	public native int onPositionUpdate();
+	public abstract native int onPositionUpdate();
 	
 	public native void activateQueueAction();
 	
