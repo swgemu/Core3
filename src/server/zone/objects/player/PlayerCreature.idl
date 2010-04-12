@@ -243,6 +243,8 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native void unloadSpawnedChildren();
 	
+	public native int onPositionUpdate();
+	
 	public native void notifySceneReady();
 	
 	@local
