@@ -63,6 +63,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
+				server/zone/objects/staticobject/StaticObject.cpp \
 				server/zone/objects/intangible/VehicleControlDevice.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
 				server/zone/objects/tangible/Container.cpp \
@@ -154,6 +155,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \

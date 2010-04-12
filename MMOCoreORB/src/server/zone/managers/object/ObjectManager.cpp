@@ -18,6 +18,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
@@ -95,6 +96,7 @@ ObjectManager::~ObjectManager() {
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
+	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
@@ -295,12 +297,20 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 
 		LuaObject result(luaTemplatesInstance->getLuaState());
 
-		if (!result.isValidTable())
+		if (!result.isValidTable()) {
+			error("unknown template " + String::valueOf(objectCRC));
 			return NULL;
+		}
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
 		object = objectFactory.createObject(gameObjectType);
+
+		if (object == NULL) {
+			error("creating object unknown gameObjectType " + String::valueOf(gameObjectType));
+			return NULL;
+		}
+
 		object->setServerObjectCRC(objectCRC);
 		object->loadTemplateData(&result);
 

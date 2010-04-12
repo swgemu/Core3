@@ -314,7 +314,7 @@ public:
 
 	SuiBox* getSuiBox(unsigned int boxID);
 
-	void removeSuiBox(unsigned int boxID);
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
 	void addSuiBox(SuiBox* sui);
 
@@ -537,7 +537,7 @@ public:
 
 	SuiBox* getSuiBox(unsigned int boxID);
 
-	void removeSuiBox(unsigned int boxID);
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
 	void addSuiBox(SuiBox* sui);
 
@@ -690,7 +690,7 @@ public:
 
 	SuiBox* getSuiBox(unsigned int boxID);
 
-	void removeSuiBox(unsigned int boxID);
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient);
 
 	void addSuiBox(SuiBox* sui);
 
