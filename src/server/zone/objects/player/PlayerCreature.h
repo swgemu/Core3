@@ -236,6 +236,8 @@ public:
 
 	void unloadSpawnedChildren();
 
+	int onPositionUpdate();
+
 	void notifySceneReady();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
@@ -459,6 +461,8 @@ public:
 
 	void unloadSpawnedChildren();
 
+	int onPositionUpdate();
+
 	void notifySceneReady();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
@@ -613,6 +617,8 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
+
+	int onPositionUpdate();
 
 	void notifySceneReady();
 
