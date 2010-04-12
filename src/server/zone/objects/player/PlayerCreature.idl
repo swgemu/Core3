@@ -391,9 +391,10 @@ class PlayerCreature extends CreatureObject {
 		return suiBoxes.get(boxID);
 	}
 	
-	public void removeSuiBox(unsigned int boxID) {
-		suiBoxes.drop(boxID);
-	}
+	/**
+	 * Removes the specified box id and optionally closes the client sui
+	 */
+	public native void removeSuiBox(unsigned int boxID, boolean closeWindowToClient = false);
 	
 	public void addSuiBox(SuiBox sui) {
 		unsigned int key = sui.getBoxID();

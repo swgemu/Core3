@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/static/StaticObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
 
 class StaticObjectMessage3 : public BaseLineMessage {
 public:
@@ -55,10 +55,7 @@ public:
 			: BaseLineMessage(stao->getObjectID(), 0x4F415453, 3, 4) {
 
 		insertInt(0);
-		insertAscii("obj_n");
-		insertInt(0);
-		insertAscii("unknown_object"); 
-		insertInt(0);
+		insertStringId(stao->getObjectName());
 		insertInt(0xFF);
 
 		setSize();

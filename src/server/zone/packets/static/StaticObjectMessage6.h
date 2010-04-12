@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/static/StaticObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
 
 class StaticObjectMessage6 : public BaseLineMessage {
 public:

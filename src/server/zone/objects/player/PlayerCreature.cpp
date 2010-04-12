@@ -713,17 +713,18 @@ SuiBox* PlayerCreature::getSuiBox(unsigned int boxID) {
 		return ((PlayerCreatureImplementation*) _impl)->getSuiBox(boxID);
 }
 
-void PlayerCreature::removeSuiBox(unsigned int boxID) {
+void PlayerCreature::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 57);
 		method.addUnsignedIntParameter(boxID);
+		method.addBooleanParameter(closeWindowToClient);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerCreatureImplementation*) _impl)->removeSuiBox(boxID);
+		((PlayerCreatureImplementation*) _impl)->removeSuiBox(boxID, closeWindowToClient);
 }
 
 void PlayerCreature::addSuiBox(SuiBox* sui) {
@@ -1091,35 +1092,30 @@ SuiBox* PlayerCreatureImplementation::getSuiBox(unsigned int boxID) {
 	return (&suiBoxes)->get(boxID);
 }
 
-void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID) {
-	// server/zone/objects/player/PlayerCreature.idl(395):  		suiBoxes.drop(boxID);
-	(&suiBoxes)->drop(boxID);
-}
-
 void PlayerCreatureImplementation::addSuiBox(SuiBox* sui) {
-	// server/zone/objects/player/PlayerCreature.idl(399):  		unsigned int key = sui.getBoxID();
+	// server/zone/objects/player/PlayerCreature.idl(400):  		unsigned int key = sui.getBoxID();
 	unsigned int key = sui->getBoxID();
-	// server/zone/objects/player/PlayerCreature.idl(400):  		suiBoxes.put(key, sui);
+	// server/zone/objects/player/PlayerCreature.idl(401):  		suiBoxes.put(key, sui);
 	(&suiBoxes)->put(key, sui);
 }
 
 int PlayerCreatureImplementation::getLotsRemaining() {
-	// server/zone/objects/player/PlayerCreature.idl(404):  		return lotsRemaining;
+	// server/zone/objects/player/PlayerCreature.idl(405):  		return lotsRemaining;
 	return lotsRemaining;
 }
 
 int PlayerCreatureImplementation::getFactionStatus() {
-	// server/zone/objects/player/PlayerCreature.idl(408):  		return factionStatus;
+	// server/zone/objects/player/PlayerCreature.idl(409):  		return factionStatus;
 	return factionStatus;
 }
 
 UnicodeString PlayerCreatureImplementation::getBiography() {
-	// server/zone/objects/player/PlayerCreature.idl(412):  		return biography;
+	// server/zone/objects/player/PlayerCreature.idl(413):  		return biography;
 	return biography;
 }
 
 unsigned int PlayerCreatureImplementation::getClientLastMovementStamp() {
-	// server/zone/objects/player/PlayerCreature.idl(416):  		return clientLastMovementStamp;
+	// server/zone/objects/player/PlayerCreature.idl(417):  		return clientLastMovementStamp;
 	return clientLastMovementStamp;
 }
 
@@ -1291,7 +1287,7 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 58:
-		removeSuiBox(inv->getUnsignedIntParameter());
+		removeSuiBox(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 59:
 		addSuiBox((SuiBox*) inv->getObjectParameter());
@@ -1523,8 +1519,8 @@ SuiBox* PlayerCreatureAdapter::getSuiBox(unsigned int boxID) {
 	return ((PlayerCreatureImplementation*) impl)->getSuiBox(boxID);
 }
 
-void PlayerCreatureAdapter::removeSuiBox(unsigned int boxID) {
-	((PlayerCreatureImplementation*) impl)->removeSuiBox(boxID);
+void PlayerCreatureAdapter::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
+	((PlayerCreatureImplementation*) impl)->removeSuiBox(boxID, closeWindowToClient);
 }
 
 void PlayerCreatureAdapter::addSuiBox(SuiBox* sui) {
