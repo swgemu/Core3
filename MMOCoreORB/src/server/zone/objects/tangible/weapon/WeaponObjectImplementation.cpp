@@ -68,6 +68,12 @@ void WeaponObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	speedMods.pop();
 
+	LuaObject secMods = templateData->getObjectField("defenderSecondaryDefenseModifiers");
+
+	for (int i = 1; i <= secMods.getTableSize(); ++i)
+		defenderSecondaryDefenseModifiers.add(secMods.getStringAt(i));
+
+	secMods.pop();
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {

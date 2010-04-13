@@ -7,6 +7,7 @@ object_weapon_melee_knife_knife_survival = object_weapon_melee_knife_shared_knif
 	
 	creatureAccuracyModifiers = { "onehandmelee_accuracy" }, 
 	defenderDefenseModifiers = { "melee_defense" },
+	defenderSecondaryDefenseModifiers = { "dodge" },
 	speedModifiers = { "onehandmelee_speed" },
 	damageModifiers = { }
 	

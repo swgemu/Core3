@@ -8,6 +8,7 @@ object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pis
 	
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 	defenderDefenseModifiers = { "ranged_defense" },
+	defenderSecondaryDefenseModifiers = { "dodge" },
 	speedModifiers = { "pistol_speed" },
 	damageModifiers = { }
 	
