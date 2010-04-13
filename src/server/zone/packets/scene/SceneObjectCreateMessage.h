@@ -57,8 +57,8 @@ public:
 		insertLong(scno->getObjectID());  // ObjectID
 		insertFloat(scno->getDirectionX());
 		insertFloat(scno->getDirectionY());
-		insertFloat(scno->getDirectionW());
 		insertFloat(scno->getDirectionZ());
+		insertFloat(scno->getDirectionW());
 		insertFloat(scno->getPositionX());
 		insertFloat(scno->getPositionZ());
 		insertFloat(scno->getPositionY());
