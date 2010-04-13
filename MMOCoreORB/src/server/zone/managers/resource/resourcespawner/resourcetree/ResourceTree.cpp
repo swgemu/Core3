@@ -76,7 +76,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 			"resource_tree.attrib6min, resource_tree.attrib6max, resource_tree.attrib7min, resource_tree.attrib7max, "
 			"resource_tree.attrib8min, resource_tree.attrib8max, resource_tree.attrib9min, resource_tree.attrib9max, "
 			"resource_tree.attrib10min, resource_tree.attrib10max, resource_tree.attrib11min, resource_tree.attrib11max, "
-			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.weight FROM resource_tree";
+			"resource_tree.resourcecontainer, resource_tree.randomname FROM resource_tree";
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -106,8 +106,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 						int min = res->getInt(i + 11 + (i - 14));
 						int max = res->getInt(i + 12 + (i - 14));
 
-						entry->addAttribute(new ResourceAttribute(attribname,
-								min, max));
+						entry->addAttribute(new ResourceAttribute(attribname, min, max));
 					}
 				}
 
@@ -123,10 +122,12 @@ bool ResourceTree::buildTreeFromDatabase() {
 	} catch (DatabaseException& e) {
 		System::out << "Database error in buildTreeFromDatabase\n";
 		System::out << e.getMessage() << endl;
+		return false;
 	} catch (...) {
 		System::out << "unreported exception caught in ResourceTree::buildTreeFromDatabase()\n";
+		return false;
 	}
-	toString();
+
 	return true;
 }
 

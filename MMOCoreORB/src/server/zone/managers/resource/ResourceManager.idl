@@ -51,11 +51,14 @@ import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
+include server.zone.managers.resource.ResourceShiftTask;
+
 
 class ResourceManager extends ManagedObject implements Lua {
 	private transient ZoneProcessServerImplementation processor;
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
+	private transient ResourceShiftTask resourceShift;
 	
 	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl) {
 
@@ -74,7 +77,11 @@ class ResourceManager extends ManagedObject implements Lua {
 	
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
+	private native void loadDefaultConfig();
+	
 	private native void startResourceSpawner();
+	
+	private native void shiftResources();
 	
 }
 

@@ -48,7 +48,11 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "ResourceAttribute.h"
 
+class ResourceTreeNode;
+
 class ResourceTreeEntry {
+
+	ResourceTreeNode* myNode;
 
 	String name;
 
@@ -88,6 +92,10 @@ public:
 		classList.removeAll();
 		for(int i = 0; i < attributeList.size(); ++i)
 			delete attributeList.get(i);
+	}
+
+	void setMyNode(ResourceTreeNode* node) {
+		myNode = node;
 	}
 
 	void addClass(const String newclass) {
