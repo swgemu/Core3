@@ -674,6 +674,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+	ManagedReference<SceneObject*> objectKeeper = object;
+
 	if (containerType == 1 || containerType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
