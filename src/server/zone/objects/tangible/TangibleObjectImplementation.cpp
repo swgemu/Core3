@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -211,4 +212,17 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	}
 
 	alm->insertAttribute("volume", volume);
+}
+
+void TangibleObjectImplementation::setCustomizationVariable(byte type, byte value, bool notifyClient) {
+	customizationVariables.setVariable(type, value);
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateCustomizationString();
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
 }

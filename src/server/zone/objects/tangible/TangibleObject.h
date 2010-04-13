@@ -158,6 +158,8 @@ public:
 
 	bool hasDefender(SceneObject* defender);
 
+	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
+
 	byte getUnknownByte();
 
 	CustomizationVariables* getCustomizationVariables();
@@ -331,6 +333,8 @@ public:
 
 	bool hasDefender(SceneObject* defender);
 
+	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
+
 	byte getUnknownByte();
 
 	CustomizationVariables* getCustomizationVariables();
@@ -417,6 +421,8 @@ public:
 	void clearCombatState(bool clearDefenders);
 
 	bool hasDefender(SceneObject* defender);
+
+	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
 	byte getUnknownByte();
 
