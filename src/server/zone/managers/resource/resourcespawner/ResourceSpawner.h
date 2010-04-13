@@ -59,10 +59,15 @@ private:
 	ManagedReference<ZoneServer* > server;
 	ResourceTree* resourceTree;
 
+	Vector<int> resourceZones;
+
 	MinimumPool* minimumPool;
 	FixedPool* fixedPool;
 	RandomPool* randomPool;
 	NativePool* nativePool;
+
+	int shiftInterval, shiftDuration, lowerGateOverride, maxSpawnAmount;
+	float spawnThrottling;
 
 public:
 	ResourceSpawner(ManagedReference<ZoneServer* > serv);
@@ -70,9 +75,14 @@ public:
 
 	void initializeMinimumPool(const String& includes, const String& excludes);
 	void initializeFixedPool(const String& includes, const String& excludes);
-	void initializeRandomPool(const String& includes, const String& excludes);
+	void initializeRandomPool(const String& includes, const String& excludes, const int size);
 	void initializeNativePool(const String& includes, const String& excludes);
 
+	void addPlanet(const int planetid);
+	void setSpawningParameters(const int shiftint, const int dur, const float throt,
+			const int override, const int spawnquantity);
+
+	void shiftResources();
 };
 
 #endif /* RESOURCESPAWNER_H_ */

@@ -33,6 +33,8 @@ using namespace server::zone;
 
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
+#include "server/zone/managers/resource/ResourceShiftTask.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/Lua.h"
@@ -79,6 +81,8 @@ class ResourceManagerImplementation : public ManagedObjectImplementation, public
 
 	ResourceSpawner* resourceSpawner;
 
+	ResourceShiftTask* resourceShift;
+
 public:
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl);
 
@@ -93,7 +97,11 @@ private:
 
 	bool loadConfigData();
 
+	void loadDefaultConfig();
+
 	void startResourceSpawner();
+
+	void shiftResources();
 
 public:
 	ResourceManager* _this;

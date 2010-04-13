@@ -54,6 +54,8 @@ class ResourceTree;
 class RandomPool : public ResourcePool {
 private:
 
+	int poolCount;
+
 public:
 	RandomPool(ResourceSpawner* spawner, ResourceTree* tree) : ResourcePool(spawner, tree) {
 
@@ -66,6 +68,11 @@ public:
 	bool update() {
 
 		return true;
+	}
+
+	void initialize(const String& includes, const String& excludes, const int size) {
+		ResourcePool::initialize(includes, excludes);
+		poolCount = size;
 	}
 
 private:
