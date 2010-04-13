@@ -143,6 +143,8 @@ public:
 
 	Vector<String>* getDefenderDefenseModifiers();
 
+	Vector<String>* getDefenderSecondaryDefenseModifiers();
+
 	void setCertified(bool cert);
 
 	int getAttackType();
@@ -273,6 +275,8 @@ protected:
 
 	Vector<String> certificationsRequired;
 
+	Vector<String> defenderSecondaryDefenseModifiers;
+
 public:
 	static const int NONE = 0;
 
@@ -343,6 +347,8 @@ public:
 	Vector<String>* getCreatureAccuracyModifiers();
 
 	Vector<String>* getDefenderDefenseModifiers();
+
+	Vector<String>* getDefenderSecondaryDefenseModifiers();
 
 	void setCertified(bool cert);
 

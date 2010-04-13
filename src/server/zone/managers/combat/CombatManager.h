@@ -14,12 +14,16 @@
 
 class CombatManager : public Singleton<CombatManager>, public Logger {
 
+public:
+	const static int BLOCK = 1;
+	const static int DODGE = 2;
+	const static int COUNTER = 3;
 
 public:
 	CombatManager() {
 		setLoggingName("CombatManager");
 		setGlobalLogging(true);
-		setLogging(false);
+		setLogging(true);
 	}
 
 	/**
@@ -41,17 +45,34 @@ public:
 	 */
 	bool attemptPeace(CreatureObject* attacker);
 
+	//all the combat math will go here
+
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
+	int applyDefensePenalties(CreatureObject* defender, int attackType, int defense);
+	int applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy);
+
+	/**
+	 * @returns % to hit
+	 */
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int accuracyBonus);
+
+	/**
+	 * returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack
+	 */
+	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon);
+
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus);
 	int calculatePostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
 
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
+	int getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
+
+	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 
 	//TODO
 	int calculateDamage(CreatureObject* attacker, TangibleObject* defender) {
@@ -65,7 +86,7 @@ public:
 	 */
 	//void damageRandomPool(CreatureObject* defender, int damage, int healthPoolAttackChance = 50, int actionPoolAttackChance = 35, int mindPoolAttackChance = 15);
 
-	//all the combat math will go here
+
 };
 
 
