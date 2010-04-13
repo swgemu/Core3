@@ -231,6 +231,11 @@ class TangibleObject extends SceneObject {
 		return false;
 	}
 	
+	/**
+	 * Updates a customization variable
+	 */
+	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
+	
 	public byte getUnknownByte() {
 		return unknownByte;
 	}
