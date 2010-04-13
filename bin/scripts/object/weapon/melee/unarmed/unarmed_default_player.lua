@@ -7,7 +7,8 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	certificationsRequired = {  },
 	
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
-	defenderDefenseModifiers = { "melee_defense" },
+	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
+	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
 	speedModifiers = { "unarmed_speed" },
 	damageModifiers = { "unarmed_damage" }
 	

@@ -49,6 +49,7 @@ SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	creatureAccuracyModifiers = { },
 	defenderDefenseModifiers = { },
+	defenderSecondaryDefenseModifiers = { },
 	speedModifiers = { },
 	damageModifiers = { }
 }

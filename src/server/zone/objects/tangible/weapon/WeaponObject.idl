@@ -101,6 +101,9 @@ class WeaponObject extends TangibleObject {
 	@dereferenced
 	protected Vector<string> certificationsRequired;
 	
+	@dereferenced
+	protected Vector<string> defenderSecondaryDefenseModifiers;
+	
 	public static final int NONE = 0;
 	public static final int LIGHT = 1;
 	public static final int MEDIUM = 2;
@@ -143,12 +146,12 @@ class WeaponObject extends TangibleObject {
 		idealRange = 0;
 		idealAccuracy = 0;
 		
-		maxRange = 0;
+		maxRange = 5;
 		maxRangeAccuracy = 0;
 		
 		damageType = 0;
 		
-		minDamage = 0;
+		minDamage = 1;
 		maxDamage = 10;
 		
 		woundsRatio = 0;
@@ -203,6 +206,11 @@ class WeaponObject extends TangibleObject {
 	@local
 	public Vector<string> getDefenderDefenseModifiers() {
 		return defenderDefenseModifiers;
+	}
+	
+	@local
+	public Vector<string> getDefenderSecondaryDefenseModifiers() {
+		return defenderSecondaryDefenseModifiers;
 	}
 	
 	public void setCertified(boolean cert) {

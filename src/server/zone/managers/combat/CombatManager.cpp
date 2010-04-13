@@ -7,7 +7,10 @@
 
 #include "CombatManager.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/packets/object/CombatSpam.h"
+#include "server/zone/Zone.h"
 
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender) {
 	defender->wlock(attacker);
@@ -173,6 +176,18 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 	return targetDefense;
 }
 
+int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
+	int targetDefense = 0;
+
+	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
+
+	for (int i = 0; i < defenseAccMods->size(); ++i) {
+		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+	}
+
+	return targetDefense;
+}
+
 float CombatManager::hitChanceEquation(float attackerAccuracy,
 		float accuracyBonus, float targetDefense, float defenseBonus) {
 
@@ -241,6 +256,26 @@ int CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* def
 	return damage;
 }
 
+int CombatManager::applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy) {
+	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK)
+		accuracy -= 10;
+
+	if (creature->isBlinded())
+		accuracy -= 50;
+
+	return accuracy;
+}
+
+int CombatManager::applyDefensePenalties(CreatureObject* defender, int attackType, int defense) {
+	if (defender->isInCover())
+		defense += 10;
+
+	if (defender->isStunned())
+		defense -= 50;
+
+	return defense;
+}
+
 int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int accuracyBonus) {
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
@@ -261,22 +296,13 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
 
-	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK) {
-		attackerAccuracy -= 10;
-	}
-
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
 	info("Base target defense is " + String::valueOf(targetDefense));
 
-	if (targetCreature->isInCover())
-		targetDefense += 10;
+	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
 
-	if (creature->isBlinded())
-		attackerAccuracy -= 50;
-
-	if (targetCreature->isStunned())
-		targetDefense -= 50;
+	attackerAccuracy = applyAccuracyPenalties(creature, attackType, attackerAccuracy);
 
 	/*if (creature->isAiming() && creature->getAimMod() > 0) {
 		aimMod = (float) creature->getAimMod();
@@ -315,6 +341,86 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	hitChance = (int) accTotal;
 
 	return hitChance;
+}
+
+int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon) {
+	int hitChance = 0;
+	int attackType = weapon->getAttackType();
+
+	info("Calculating secondary hit chance");
+
+	float weaponAccuracy = 0;
+	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
+		// Get the weapon mods for range and add the mods for stance
+		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
+		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
+	}
+
+	info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
+
+	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
+
+	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
+
+	int targetDefense = getDefenderSecondaryDefenseModifier(targetCreature, weapon);
+
+	info("Base target secondary defense is " + String::valueOf(targetDefense));
+
+	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
+
+	attackerAccuracy = applyAccuracyPenalties(creature, attackType, attackerAccuracy);
+
+	if (targetDefense > 125)
+		targetDefense = 125;
+
+	info("Target secondary defense after state affects and cap is " +  String::valueOf(targetDefense));
+
+	if (targetDefense <= 0)
+		return 0;
+
+	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy, targetDefense, 0);
+
+	int rand = System::random(100);
+
+	if (rand <= (int) accTotal) // Hit, not defended
+		return 0;
+
+	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
+
+	int selectOption = defenseAccMods->size();
+
+	if (selectOption > 1)
+		selectOption = System::random(selectOption - 1);
+	else
+		selectOption = 0;
+
+	String def = defenseAccMods->get(selectOption);
+
+	if (def == "block") {
+		return BLOCK;
+	} else if (def == "dodge") {
+		return DODGE;
+	} else if (def == "counterattack") {
+		return COUNTER;
+	} else
+		return COUNTER;
+}
+
+void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
+	Zone* zone = attacker->getZone();
+
+	Locker _locker(zone);
+
+	for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) attacker->getInRangeObject(i))->_this);
+
+		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
+			PlayerCreature* player = (PlayerCreature*) object;
+
+			CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
+			player->sendMessage(msg);
+		}
+	}
 }
 /*
 void CombatManager::damageRandomPool(CreatureObject* defender, int damage, int healthPoolAttackChance = 50, int actionPoolAttackChance = 35, int mindPoolAttackChance = 15) {

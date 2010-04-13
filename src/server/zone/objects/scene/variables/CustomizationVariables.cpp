@@ -391,7 +391,7 @@ void CustomizationVariables::parseFromClientString(const String& custString) {
 
 			uint8 value1 = (uint8) custString.charAt(++offset);
 
-			if (value1 == 0xFF) 				{
+			if (value1 == 0xFF) {
 				value1 = custString.charAt(++offset);
 
 				if (value1 == 0x01)

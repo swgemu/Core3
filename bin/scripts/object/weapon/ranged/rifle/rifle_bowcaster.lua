@@ -7,6 +7,7 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 	defenderDefenseModifiers = { "ranged_defense" },
+	defenderSecondaryDefenseModifiers = { "block" },
 	speedModifiers = { "rifle_speed" },
 	damageModifiers = { }
 	
