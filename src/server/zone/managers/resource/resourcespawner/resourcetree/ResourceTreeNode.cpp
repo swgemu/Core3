@@ -50,11 +50,11 @@ ResourceTreeNode::ResourceTreeNode(const String& n, const int d) {
 	depth = d;
 }
 ResourceTreeNode::~ResourceTreeNode() {
-	for(int i = 0; i < nodes.size(); ++i)
-		delete nodes.get(i);
+	while (nodes.size() > 0)
+		delete nodes.remove(0);
 
-	for(int i = 0; i < entries.size(); ++i)
-		delete entries.get(i);
+	while (entries.size() > 0)
+		delete entries.remove(0);
 }
 
 void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
@@ -78,6 +78,7 @@ void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
 		nodes.add(newnode);
 		newnode->addEntry(entry);
 	} else {
+		entry->setMyNode(this);
 		entries.add(entry);
 	}
 }

@@ -50,12 +50,18 @@ which carries forward this exception.
 void ResourceManagerImplementation::initialize() {
 	Lua::init();
 
+	info("building resource tree");
 	resourceSpawner = new ResourceSpawner(zoneServer);
 
+	info("loading configuration");
 	if(!loadConfigData()) {
 
+		loadDefaultConfig();
+
+		info("***** ERROR in configuration, using default values");
 	}
 
+	info("starting spawner");
 	startResourceSpawner();
 }
 
@@ -67,67 +73,55 @@ bool ResourceManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
-	/*averageShiftTime = getGlobalInt("averageShiftTime");
-	aveduration = getGlobalInt("aveduration");
-	spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
-
-	if(spawnThrottling > .9f)
-		spawnThrottling = .9f;
-	if(spawnThrottling < .1f)
-			spawnThrottling = .1f;
-
-	lowerGateOverride = getGlobalInt("lowerGateOverride");
-
-	if(lowerGateOverride < 1)
-		lowerGateOverride = 1;
-	if(lowerGateOverride > 1000)
-		lowerGateOverride = 1000;
-
-	maxspawns = getGlobalInt("maxspawns");
-	minspawns = getGlobalInt("minspawns");
-	maxradius = getGlobalInt("maxradius");
-	minradius = getGlobalInt("minradius");
-
-	String minimumpoolstring = getGlobalString("minimumpool");
-
-	StringTokenizer minimumPoolTokens(minimumpoolstring);
-	minimumPoolTokens.setDelimeter(",");
-
-	while(minimumPoolTokens.hasMoreTokens()) {
-		String token;
-		minimumPoolTokens.getStringToken(token);
-		if(token != "")
-			minimumpool->add(token);
-	}
-
-	String zonesString = getGlobalString("spawnZones");
+	String zonesString = getGlobalString("activeZones");
 
 	StringTokenizer zonesTokens(zonesString);
 	zonesTokens.setDelimeter(",");
 
 	while(zonesTokens.hasMoreTokens()) {
 		int token = zonesTokens.getIntToken();
+		resourceSpawner->addPlanet(token);
+	}
 
-		planets.add(token);
-	}*/
+	int averageShiftTime = getGlobalInt("averageShiftTime");
+	int aveduration = getGlobalInt("aveduration");
+	float spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
+	int lowerGateOverride = getGlobalInt("lowerGateOverride");
+	int maxSpawnQuantity = getGlobalInt("maxSpawnQuantity");
+
+	resourceSpawner->setSpawningParameters(averageShiftTime, aveduration,
+			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
 	String minpoolinc = getGlobalString("minimumpoolincludes");
 	String minpoolexc = getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
 
-	String fixedpoolinc = getGlobalString("fixedpoolincludes");
-	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
-	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
+	System::out << minpoolinc << endl << endl << minpoolexc << endl;
 
 	String randpoolinc = getGlobalString("randompoolincludes");
 	String randpoolexc = getGlobalString("randompoolexcludes");
-	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc);
+	int randpoolsize = getGlobalInt("randompoolsize");
+	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc, randpoolsize);
+
+	/*String fixedpoolinc = getGlobalString("fixedpoolincludes");
+	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
+	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
+
+
 
 	String natpoolinc = getGlobalString("nativepoolincludes");
 	String natpoolexc = getGlobalString("nativepoolexcludes");
-	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
+	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);*/
 
 	return true;
+}
+
+void ResourceManagerImplementation::loadDefaultConfig() {
+	for(int i = 0;i < 10; ++i) {
+		resourceSpawner->addPlanet(i);
+	}
+
+	resourceSpawner->setSpawningParameters(7200000, 86400, 90, 1000, 0);
 }
 
 void ResourceManagerImplementation::stop() {
@@ -136,5 +130,9 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
+
+}
+
+void ResourceManagerImplementation::shiftResources() {
 
 }

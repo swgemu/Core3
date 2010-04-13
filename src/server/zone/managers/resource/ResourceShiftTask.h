@@ -42,71 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ResourceSpawner.h"
+#ifndef RESOURCESHIFTTASK_H_
+#define RESOURCESHIFTTASK_H_
 
-ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv) {
+#include "engine/engine.h"
 
-	server = serv;
-	resourceTree = new ResourceTree();
+#include "ResourceManager.h"
 
-	minimumPool = new MinimumPool(this, resourceTree);
-	fixedPool = new FixedPool(this, resourceTree);
-	randomPool = new RandomPool(this, resourceTree);
-	nativePool = new NativePool(this, resourceTree);
-}
+class ResourceShiftTask : public Task {
+	ManagedWeakReference<ResourceManager*> resourceManager;
 
-ResourceSpawner::~ResourceSpawner() {
+public:
+	ResourceShiftTask(ResourceManager* resManager) {
+		resourceManager = resManager;
+	}
 
-	delete resourceTree;
-	delete minimumPool;
-	delete fixedPool;
-	delete randomPool;
-	delete nativePool;
+	void run() {
+		//resourceManager->shiftResources();
+	}
+};
 
-	resourceZones.removeAll();
-}
-
-void ResourceSpawner::initializeMinimumPool(const String& includes, const String& excludes) {
-	minimumPool->initialize(includes, excludes);
-}
-
-void ResourceSpawner::initializeFixedPool(const String& includes, const String& excludes) {
-	fixedPool->initialize(includes, excludes);
-}
-
-void ResourceSpawner::initializeRandomPool(const String& includes, const String& excludes, const int size) {
-	randomPool->initialize(includes, excludes, size);
-}
-
-void ResourceSpawner::initializeNativePool(const String& includes, const String& excludes) {
-	nativePool->initialize(includes, excludes);
-}
-
-void ResourceSpawner::addPlanet(const int planetid) {
-	resourceZones.add(planetid);
-}
-
-void ResourceSpawner::setSpawningParameters(const int shiftint, const int dur,
-		const float throt, const int override, const int spawnquantity) {
-
-	shiftInterval = shiftint;
-	shiftDuration = dur;
-	lowerGateOverride = override;
-	maxSpawnAmount = spawnquantity;
-
-	spawnThrottling = throt;
-
-	if (spawnThrottling > .9f)
-		spawnThrottling = .9f;
-	if (spawnThrottling < .1f)
-		spawnThrottling = .1f;
-
-	if (lowerGateOverride < 1)
-		lowerGateOverride = 1;
-	if (lowerGateOverride > 1000)
-		lowerGateOverride = 1000;
-}
-
-void ResourceSpawner::shiftResources() {
-
-}
+#endif /* RESOURCESHIFTTASK_H_ */

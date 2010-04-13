@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "../resourcetree/ResourceTree.h"
 #include "../../../../objects/resource/ResourceSpawn.h"
-
+//#include "../ResourceSpawner.h"
 class ResourceSpawner;
 
 /**
