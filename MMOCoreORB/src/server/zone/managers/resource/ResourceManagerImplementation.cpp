@@ -46,12 +46,11 @@ which carries forward this exception.
 
 #include "ResourceManager.h"
 
-
 void ResourceManagerImplementation::initialize() {
 	Lua::init();
 
 	info("building resource tree");
-	resourceSpawner = new ResourceSpawner(zoneServer);
+	resourceSpawner = new ResourceSpawner(_this, zoneServer);
 
 	info("loading configuration");
 	if(!loadConfigData()) {
@@ -61,8 +60,8 @@ void ResourceManagerImplementation::initialize() {
 		info("***** ERROR in configuration, using default values");
 	}
 
-	info("starting spawner");
 	startResourceSpawner();
+	info("started resource spawner");
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
@@ -96,8 +95,6 @@ bool ResourceManagerImplementation::loadConfigData() {
 	String minpoolexc = getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
 
-	System::out << minpoolinc << endl << endl << minpoolexc << endl;
-
 	String randpoolinc = getGlobalString("randompoolincludes");
 	String randpoolexc = getGlobalString("randompoolexcludes");
 	int randpoolsize = getGlobalInt("randompoolsize");
@@ -130,9 +127,5 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
-
-}
-
-void ResourceManagerImplementation::shiftResources() {
-
+	resourceSpawner->start();
 }
