@@ -43,10 +43,13 @@ which carries forward this exception.
 */
 
 #include "ResourceSpawner.h"
+#include "ResourceShiftTask.h"
 
-ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv) {
+ResourceSpawner::ResourceSpawner(ManagedReference<ResourceManager* > resManager,
+		ManagedReference<ZoneServer* > serv) {
 
 	server = serv;
+	resourceManager = resManager;
 	resourceTree = new ResourceTree();
 
 	minimumPool = new MinimumPool(this, resourceTree);
@@ -107,6 +110,13 @@ void ResourceSpawner::setSpawningParameters(const int shiftint, const int dur,
 		lowerGateOverride = 1000;
 }
 
+void ResourceSpawner::start() {
+	shiftResources();
+}
+
 void ResourceSpawner::shiftResources() {
 
+
+	//ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
+	//resourceShift->schedule(shiftInterval);
 }
