@@ -58,7 +58,6 @@ which carries forward this exception.
 class ResourceSpawner {
 private:
 	ManagedReference<ZoneServer* > server;
-	ManagedReference<ResourceManager* > resourceManager;
 	ResourceTree* resourceTree;
 
 	Vector<int> resourceZones;
@@ -72,8 +71,7 @@ private:
 	float spawnThrottling;
 
 public:
-	ResourceSpawner(ManagedReference<ResourceManager* > resManager,
-			ManagedReference<ZoneServer* > serv);
+	ResourceSpawner(ManagedReference<ZoneServer* > serv);
 	~ResourceSpawner();
 
 	void initializeMinimumPool(const String& includes, const String& excludes);
