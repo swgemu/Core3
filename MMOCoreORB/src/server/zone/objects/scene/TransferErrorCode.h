@@ -12,6 +12,8 @@ class TransferErrorCode {
 public:
 	const static int SLOTOCCUPIED = 1;
 	const static int PLAYERUSEMASKERROR = 2;
+	const static int INVALIDTYPE = 3;
+	const static int BAITONLY = 4;
 };
 
 

@@ -46,6 +46,9 @@ which carries forward this exception.
 #define FISHCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../player/PlayerCreature.h"
+#include "../../../managers/minigames/FishingManager.h"
+#include "../../../ZoneServer.h"
 
 class FishCommand : public QueueCommand {
 public:
@@ -63,6 +66,31 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		if (creature->isPlayerCreature()) {
+			FishingManager* manager = server->getZoneServer()->getFishingManager();
+			PlayerCreature* player = (PlayerCreature*) creature;
+			manager->freeBait(player);
+
+			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
+				player->sendSystemMessage("You are already fishing.");
+				manager->setFishingState(player, FishingManager::NOTFISHING);
+				return false;
+			}
+
+			manager->startFishing(player);
+			int x = 0;
+
+			for (int i = 31; i >= 0; --i) {
+				if (arguments.indexOf(String::valueOf(i))) {
+					x = i;
+					break;
+				}
+			}
+
+			if (arguments.indexOf("suc")!=-1) {
+				manager->cheat(player,x);
+			}
+		}
 		return true;
 	}
 

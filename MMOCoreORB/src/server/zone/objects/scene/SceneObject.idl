@@ -630,6 +630,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player PlayerCreature to open the container to   
 	 */
 	public abstract native void openContainerTo(PlayerCreature player);
+	
+	/**
+	 * Is executed when the client closes the opened container
+	 * @pre { player locked }
+	 * @post { player locked }
+	 * @param player PlayerCreature that closed this container
+	 */
+	public abstract void notifyCloseContainer(PlayerCreature player) {
+		
+	}
 
 	/**
 	 * Inserts this object into zone
@@ -988,8 +998,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == INSTRUMENT;
 	}
 	
+	public boolean isFishingPoleObject() {
+		return gameObjectType == FISHINGPOLE;
+	}
+	
 	public boolean isBazaarTerminal() {
 		return gameObjectType == BAZAAR;
+	}
+
+	public boolean isFishingBait() {
+		return gameObjectType == FISHINGBAIT;
 	}
 
 	public void setPosition(float x, float z, float y) {

@@ -153,6 +153,20 @@ class BazaarManager;
 
 using namespace server::zone::managers::bazaar;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class FishingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -286,6 +300,8 @@ public:
 
 	BazaarManager* getBazaarManager();
 
+	FishingManager* getFishingManager();
+
 	ProfessionManager* getProfessionManager();
 
 	void setServerName(const String& servername);
@@ -343,6 +359,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<ResourceManager* > resourceManager;
 
 	ManagedReference<BazaarManager* > bazaarManager;
+
+	ManagedReference<FishingManager* > fishingManager;
 
 	int totalSentPackets;
 
@@ -472,6 +490,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	BazaarManager* getBazaarManager();
+
+	FishingManager* getFishingManager();
 
 	ProfessionManager* getProfessionManager();
 
@@ -605,6 +625,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	BazaarManager* getBazaarManager();
+
+	FishingManager* getFishingManager();
 
 	void setServerName(const String& servername);
 

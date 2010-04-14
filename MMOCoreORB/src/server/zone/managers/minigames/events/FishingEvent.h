@@ -42,40 +42,109 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CLOSECONTAINERCOMMAND_H_
-#define CLOSECONTAINERCOMMAND_H_
+#ifndef FISHINGEVENT_H_
+#define FISHINGEVENT_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
-#include "../../../managers/minigames/FishingManager.h"
 
-class CloseContainerCommand : public QueueCommand {
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/ZoneServer.h"
+#include "../FishingManager.h"
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class FishingEvent : public Task {
+	ManagedReference<PlayerCreature*> player;
+	int nextAction;
+	ManagedReference<ZoneServer*> zoneServer;
+	ManagedReference<SceneObject*> marker;
+	int fish;
+	uint32 boxID;
+	int fishingState;
+
 public:
-
-	CloseContainerCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+	FishingEvent(PlayerCreature* pl, int next, ZoneServer* server, SceneObject* mark, int fishType, uint32 box, int state) : Task(7000) {
+		player = pl;
+		nextAction = next;
+		zoneServer = server;
+		marker = mark;
+		fish = fishType;
+		boxID = box;
+		fishingState = state;
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
+		try {
+			Locker _locker(player);
 
-		if (!checkStateMask(creature))
-			return false;
+			//player->info("activating command queue action");
 
-		if (!checkInvalidPostures(creature))
-			return false;
+			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
 
-		/*StringBuffer msg; //target is the container
-		msg << "target of container: 0x" << hex << target;
-		creature->info(msg.toString(), true);*/
+			if (fishingState != FishingManagerImplementation::NOTFISHING) {
+				manager->fishingStep(player, nextAction, marker, fish, boxID);
+			} else if (marker != NULL) {
+					// new event
+				manager->createFishingEvent(player, nextAction, zoneServer, marker, fish, boxID, fishingState);
+			} else {
+				manager->stopFishingEvent(player);
+			}
 
-		if (creature->isPlayerCreature()) { // TODO: implement observer pattern
-			server->getZoneServer()->getFishingManager()->removeMarker((PlayerCreature*)creature);
+			//player->info("command queue action activated");
+
+
+		} catch (...) {
+			player->error("unreported exception on FishingEvent::fishingStep()");
 		}
 
-		return true;
+		player = NULL;
+
 	}
 
+	void setNextAction(int next) {
+		nextAction = next;
+	}
+
+	int getNextAction() {
+		return nextAction;
+	}
+
+	void setFishBoxID(uint32 box) {
+		boxID = box;
+	}
+
+	uint32 getFishBoxID() {
+		return boxID;
+	}
+
+	SceneObject* getMarker() {
+		return marker;
+	}
+
+	void setMarker(SceneObject* mark) {
+		marker = mark;
+	}
+
+	int getFish() {
+		return fish;
+	}
+
+	int getFishingState() {
+		return fishingState;
+	}
+
+	void setFishingState(int state) {
+		fishingState = state;
+	}
 };
 
-#endif //CLOSECONTAINERCOMMAND_H_
+}
+}
+}
+}
+}
+
+#endif /* FISHINGEVENT_H_ */

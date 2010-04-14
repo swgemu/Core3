@@ -584,6 +584,8 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
+	void notifyCloseContainer(PlayerCreature* player);
+
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -716,7 +718,11 @@ public:
 
 	bool isInstrument();
 
+	bool isFishingPoleObject();
+
 	bool isBazaarTerminal();
+
+	bool isFishingBait();
 
 	void setPosition(float x, float z, float y);
 
@@ -1251,6 +1257,8 @@ public:
 
 	virtual void openContainerTo(PlayerCreature* player);
 
+	virtual void notifyCloseContainer(PlayerCreature* player);
+
 	virtual void insertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
@@ -1383,7 +1391,11 @@ public:
 
 	bool isInstrument();
 
+	bool isFishingPoleObject();
+
 	bool isBazaarTerminal();
+
+	bool isFishingBait();
 
 	void setPosition(float x, float z, float y);
 
@@ -1516,6 +1528,8 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
+	void notifyCloseContainer(PlayerCreature* player);
+
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -1640,7 +1654,11 @@ public:
 
 	bool isInstrument();
 
+	bool isFishingPoleObject();
+
 	bool isBazaarTerminal();
+
+	bool isFishingBait();
 
 	void setPosition(float x, float z, float y);
 

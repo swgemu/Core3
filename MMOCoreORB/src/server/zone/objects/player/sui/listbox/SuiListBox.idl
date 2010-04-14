@@ -82,7 +82,7 @@ class SuiListBox extends SuiBox {
 	/**
 	 * Use to add Menu Item to the ListBox Sui class. List will be looped through in generateBody
 	 */
-	public void addMenuItem(final string name, unsigned long objectID = 0) {
+	public void addMenuItem(final string name, unsigned long objectID) {
 		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
 		menuItems.add(item);
 	}

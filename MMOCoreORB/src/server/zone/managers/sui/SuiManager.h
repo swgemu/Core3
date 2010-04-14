@@ -101,6 +101,7 @@ namespace server {
 	  	void handleColorPicker(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, int var);
 
 	  	void handleBankTransfer(uint32 boxID, PlayerCreature* player, int cash, int bank);
+	  	void handleFishingAction(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
 
 	  	void handleBlueFrogItemRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
 	  	void handleWoundTerminalRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
