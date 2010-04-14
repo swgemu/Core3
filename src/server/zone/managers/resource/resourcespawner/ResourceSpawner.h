@@ -54,9 +54,11 @@ which carries forward this exception.
 #include "resourcepool/RandomPool.h"
 #include "resourcepool/NativePool.h"
 
+
 class ResourceSpawner {
 private:
 	ManagedReference<ZoneServer* > server;
+	ManagedReference<ResourceManager* > resourceManager;
 	ResourceTree* resourceTree;
 
 	Vector<int> resourceZones;
@@ -70,7 +72,8 @@ private:
 	float spawnThrottling;
 
 public:
-	ResourceSpawner(ManagedReference<ZoneServer* > serv);
+	ResourceSpawner(ManagedReference<ResourceManager* > resManager,
+			ManagedReference<ZoneServer* > serv);
 	~ResourceSpawner();
 
 	void initializeMinimumPool(const String& includes, const String& excludes);
@@ -82,6 +85,7 @@ public:
 	void setSpawningParameters(const int shiftint, const int dur, const float throt,
 			const int override, const int spawnquantity);
 
+	void start();
 	void shiftResources();
 };
 

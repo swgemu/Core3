@@ -47,18 +47,18 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ResourceManager.h"
+#include "ResourceSpawner.h"
 
 class ResourceShiftTask : public Task {
-	ManagedWeakReference<ResourceManager*> resourceManager;
+	ResourceSpawner* resourceSpawner;
 
 public:
-	ResourceShiftTask(ResourceManager* resManager) {
-		resourceManager = resManager;
+	ResourceShiftTask(ResourceSpawner* resSpawner) {
+		resourceSpawner = resSpawner;
 	}
 
 	void run() {
-		//resourceManager->shiftResources();
+		//resourceSpawner->shiftResources();
 	}
 };
 
