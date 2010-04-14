@@ -66,6 +66,11 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.player.badges.Badges;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.group.GroupObject;
+import server.zone.managers.minigames.events.FishingEvent;
+import server.zone.managers.minigames.events.FishingSplashEvent;
+import system.lang.ref.Reference;
+
+
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -97,6 +102,12 @@ class PlayerCreature extends CreatureObject {
 	protected transient PlayerDisconnectEvent disconnectEvent;
 	protected transient PlayerRecoveryEvent recoveryEvent;
 	
+	@dereferenced
+	protected transient Reference<FishingEvent> fishingEvent;
+	
+	@dereferenced
+	protected transient Reference<FishingSplashEvent> fishingSplashEvent;
+		
 	protected int skillPoints;
 
 	@dereferenced
@@ -141,7 +152,6 @@ class PlayerCreature extends CreatureObject {
 
 		disconnectEvent = null;
 		recoveryEvent = null;
-
 		accountID = 0;
 
 		savedZoneID = -1;
@@ -183,6 +193,18 @@ class PlayerCreature extends CreatureObject {
 	public native void notifyDissapear(QuadTreeEntry entry);
 	
 	public native void disconnect(boolean closeClient, boolean doLock);
+	
+	@local
+	public native FishingEvent getFishingEvent();
+
+	@local
+	public native void setFishingEvent(FishingEvent event);
+	
+	@local
+	public native FishingSplashEvent getFishingSplashEvent();
+	
+	@local
+	public native void setFishingSplashEvent(FishingSplashEvent event);
 	
 	public native void unload();
 	
@@ -242,6 +264,14 @@ class PlayerCreature extends CreatureObject {
 	 * Unloads all the spawned creatures from the datapad control devices
 	 */
 	public native void unloadSpawnedChildren();
+	
+	/**
+	 * Is executed when the client closes the opened container
+	 * @pre { player locked }
+	 * @post { player locked }
+	 * @param player PlayerCreature that closed this container
+	 */
+	public native void notifyCloseContainer(PlayerCreature player);
 	
 	public native int onPositionUpdate();
 	
@@ -418,5 +448,7 @@ class PlayerCreature extends CreatureObject {
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
 	}
+	
+
 	
 }

@@ -20,6 +20,8 @@
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
+#include "server/zone/managers/minigames/events/FishingEvent.h"
+#include "server/zone/managers/minigames/events/FishingSplashEvent.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -385,6 +387,27 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	playerObject->sendFriendLists();
 }
 
+FishingEvent* PlayerCreatureImplementation::getFishingEvent() {
+	return fishingEvent;
+}
+
+void PlayerCreatureImplementation::setFishingEvent(FishingEvent* event) {
+	if (event != NULL) {
+		fishingEvent = event;
+	} else {
+		fishingEvent = NULL;
+	}
+}
+
+FishingSplashEvent* PlayerCreatureImplementation::getFishingSplashEvent() {
+	return fishingSplashEvent;
+}
+
+void PlayerCreatureImplementation::setFishingSplashEvent(FishingSplashEvent* event) {
+	fishingSplashEvent = event;
+}
+
+
 void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
 	if (closeWindowToClient == true) {
 		SuiBox* sui = suiBoxes.get(boxID);
@@ -397,6 +420,17 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 	suiBoxes.drop(boxID);
 }
 
+void PlayerCreatureImplementation::notifyCloseContainer(PlayerCreature* player) {
+
+}
+
 int PlayerCreatureImplementation::onPositionUpdate() {
-	return CreatureObjectImplementation::onPositionUpdate();
+	int creature = CreatureObjectImplementation::onPositionUpdate();
+
+	if (zone != NULL) { // TODO: implement observer pattern for events
+		ManagedReference<FishingManager*> manager = zone->getZoneServer()->getFishingManager();
+		manager->checkFishingOnPositionUpdate(_this);
+	}
+
+	return creature;
 }

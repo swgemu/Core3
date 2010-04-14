@@ -42,40 +42,61 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CLOSECONTAINERCOMMAND_H_
-#define CLOSECONTAINERCOMMAND_H_
+#ifndef FISHINGSPLASHEVENT_H_
+#define FISHINGSPLASHEVENT_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
-#include "../../../managers/minigames/FishingManager.h"
 
-class CloseContainerCommand : public QueueCommand {
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/ZoneServer.h"
+#include "../FishingManager.h"
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class FishingSplashEvent : public Task {
+	ManagedReference<PlayerCreature*> player;
+	ManagedReference<ZoneServer*> zoneServer;
+	ManagedReference<SceneObject*> splash;
+
 public:
+	FishingSplashEvent(PlayerCreature* pl, ZoneServer* server, SceneObject* spl) : Task(1000) {
+		player = pl;
+		zoneServer = server;
+		splash = spl;
+	}
 
-	CloseContainerCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+	void run() {
+		try {
+			Locker _locker(player);
+
+			//player->info("activating command queue action");
+
+			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
+			manager->removeSplash(splash);
+
+			//player->info("command queue action activated");
+
+		} catch (...) {
+			player->error("unreported exception on FishingSplashEvent::removeSplash()");
+		}
+
+		player = NULL;
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return false;
-
-		if (!checkInvalidPostures(creature))
-			return false;
-
-		/*StringBuffer msg; //target is the container
-		msg << "target of container: 0x" << hex << target;
-		creature->info(msg.toString(), true);*/
-
-		if (creature->isPlayerCreature()) { // TODO: implement observer pattern
-			server->getZoneServer()->getFishingManager()->removeMarker((PlayerCreature*)creature);
-		}
-
-		return true;
+	SceneObject* getSplash() {
+		return splash;
 	}
 
 };
 
-#endif //CLOSECONTAINERCOMMAND_H_
+}
+}
+}
+}
+}
+
+#endif /* FISHINGSPLASHEVENT_H_ */
