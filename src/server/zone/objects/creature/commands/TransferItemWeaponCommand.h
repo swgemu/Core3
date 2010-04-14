@@ -85,8 +85,8 @@ public:
 			return false;
 		}
 
-		if (!objectToTransfer->isWeaponObject() && !objectToTransfer->isInstrument()) {
-			creature->error("objectToTransfer is neither a weapon object nor an instrument in transferitemweapon");
+		if (!objectToTransfer->isWeaponObject() && !objectToTransfer->isInstrument() && !objectToTransfer->isFishingPoleObject()) {
+			creature->error("objectToTransfer is neither a weapon object nor an instrument/fishing pole in transferitemweapon");
 			return false;
 		}
 

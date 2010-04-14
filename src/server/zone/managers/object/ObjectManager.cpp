@@ -44,6 +44,8 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
+#include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
 
 #include "server/db/ServerDatabase.h"
 
@@ -170,11 +172,14 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObject::MISCCLOTHING);
 	objectFactory.registerObject<ClothingObject>(SceneObject::SKIRT);
 	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
-
+	objectFactory.registerObject<FishingPoleObject>(SceneObject::FISHINGPOLE);
+	objectFactory.registerObject<FishingBaitObject>(SceneObject::FISHINGBAIT);
+	objectFactory.registerObject<TangibleObject>(SceneObject::TANGIBLE);
 	objectFactory.registerObject<VehicleControlDevice>(SceneObject::VEHICLECONTROLDEVICE);
 
 	objectFactory.registerObject<VehicleObject>(SceneObject::VEHICLE);
 	objectFactory.registerObject<VehicleObject>(SceneObject::HOVERVEHICLE);
+
 }
 
 

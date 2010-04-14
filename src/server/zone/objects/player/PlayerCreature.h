@@ -161,6 +161,38 @@ class GroupObject;
 
 using namespace server::zone::objects::group;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class FishingEvent;
+
+} // namespace events
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames::events;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class FishingSplashEvent;
+
+} // namespace events
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames::events;
+
 #include "server/zone/objects/player/sui/SuiBox.h"
 
 #include "server/zone/objects/creature/CreatureFlag.h"
@@ -182,6 +214,8 @@ using namespace server::zone::objects::group;
 #include "engine/service/proto/BasePacket.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace zone {
@@ -214,6 +248,14 @@ public:
 
 	void disconnect(bool closeClient, bool doLock);
 
+	FishingEvent* getFishingEvent();
+
+	void setFishingEvent(FishingEvent* event);
+
+	FishingSplashEvent* getFishingSplashEvent();
+
+	void setFishingSplashEvent(FishingSplashEvent* event);
+
 	void unload();
 
 	void reload(ZoneClientSession* client);
@@ -235,6 +277,8 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
+
+	void notifyCloseContainer(PlayerCreature* player);
 
 	int onPositionUpdate();
 
@@ -387,6 +431,10 @@ protected:
 
 	PlayerRecoveryEvent* recoveryEvent;
 
+	Reference<FishingEvent*> fishingEvent;
+
+	Reference<FishingSplashEvent*> fishingSplashEvent;
+
 	int skillPoints;
 
 	Badges badges;
@@ -439,6 +487,14 @@ public:
 
 	void disconnect(bool closeClient, bool doLock);
 
+	FishingEvent* getFishingEvent();
+
+	void setFishingEvent(FishingEvent* event);
+
+	FishingSplashEvent* getFishingSplashEvent();
+
+	void setFishingSplashEvent(FishingSplashEvent* event);
+
 	void unload();
 
 	void reload(ZoneClientSession* client);
@@ -460,6 +516,8 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
+
+	void notifyCloseContainer(PlayerCreature* player);
 
 	int onPositionUpdate();
 
@@ -617,6 +675,8 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
+
+	void notifyCloseContainer(PlayerCreature* player);
 
 	int onPositionUpdate();
 

@@ -67,6 +67,7 @@ import server.zone.managers.radial.RadialManager;
 import server.zone.managers.professions.ProfessionManager;
 import server.zone.managers.resource.ResourceManager;
 import server.zone.managers.bazaar.BazaarManager;
+import server.zone.managers.minigames.FishingManager;
 
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
@@ -87,6 +88,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	private ResourceManager resourceManager;
 	private BazaarManager bazaarManager;
+	
+	private FishingManager fishingManager;
 
 	private int totalSentPackets;
 	
@@ -282,6 +285,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	public BazaarManager getBazaarManager() {
 		return bazaarManager;
+	}
+	
+	public FishingManager getFishingManager() {
+		return fishingManager;
 	}
 	
 	@local

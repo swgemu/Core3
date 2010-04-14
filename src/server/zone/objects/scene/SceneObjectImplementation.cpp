@@ -528,6 +528,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		broadcastMessage(message, false);
 	}
 
+	onPositionUpdate();
 }
 
 void SceneObjectImplementation::insertToZone(Zone* newZone) {

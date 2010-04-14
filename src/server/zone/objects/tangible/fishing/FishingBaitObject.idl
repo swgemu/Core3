@@ -42,40 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CLOSECONTAINERCOMMAND_H_
-#define CLOSECONTAINERCOMMAND_H_
+package server.zone.objects.tangible.fishing;
 
-#include "../../scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
-#include "../../../managers/minigames/FishingManager.h"
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
 
-class CloseContainerCommand : public QueueCommand {
-public:
-
-	CloseContainerCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+class FishingBaitObject extends TangibleObject {	
+	protected int freshness;
+	
+	public FishingBaitObject() {
+		Logger.setLoggingName("FishingBaitObject");
+		freshness = 0;
 	}
-
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return false;
-
-		if (!checkInvalidPostures(creature))
-			return false;
-
-		/*StringBuffer msg; //target is the container
-		msg << "target of container: 0x" << hex << target;
-		creature->info(msg.toString(), true);*/
-
-		if (creature->isPlayerCreature()) { // TODO: implement observer pattern
-			server->getZoneServer()->getFishingManager()->removeMarker((PlayerCreature*)creature);
-		}
-
-		return true;
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("FishingBaitObject");
 	}
-
-};
-
-#endif //CLOSECONTAINERCOMMAND_H_
+	
+	public int getFreshness() {
+		return freshness;
+	}
+	
+	public void lessFresh() {
+		freshness += 1;
+	}
+	
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+}

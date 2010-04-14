@@ -96,6 +96,9 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
 				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
 				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
+				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
+				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
+				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
 				server/zone/objects/tangible/weapon/RangedWeaponObject.cpp \
@@ -149,6 +152,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
+		server/zone/managers/minigames/FishingManagerImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
@@ -157,6 +161,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
+		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
+		server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \

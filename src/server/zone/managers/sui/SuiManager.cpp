@@ -55,6 +55,10 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/minigames/FishingManager.h"
 
 
 /*#include "../item/ItemManager.h"
@@ -200,6 +204,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;*/
 	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(boxID, player, atoi(value.toCharArray()), atoi(value2.toCharArray()));
+		break;
+	case SuiWindowType::FISHING:
+		handleFishingAction(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	/*case SuiWindowType::BLUE_FROG_ITEM_REQUEST:
 		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.toCharArray()));
@@ -1137,6 +1144,40 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 		player->setBankCredits(bank);
 	}
 
+}
+void SuiManager::handleFishingAction(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+	//player->info("boxID: "+String::valueOf(boxID)+" Index: "+String::valueOf(index),true);
+	if (player->hasSuiBox(boxID)) {
+		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+		if (sui != NULL) {
+			FishingManager* manager = player->getZone()->getZoneServer()->getFishingManager();
+			manager->setNextAction(player,index + 1);
+			uint32 newBoxID;
+			switch (index+1) {
+				case FishingManager::TUGUP:
+					newBoxID = manager->createWindow(player,boxID);
+					break;
+				case FishingManager::TUGRIGHT:
+					newBoxID = manager->createWindow(player,boxID);
+					break;
+				case FishingManager::TUGLEFT:
+					newBoxID = manager->createWindow(player,boxID);
+					break;
+				case FishingManager::REEL:
+					newBoxID = manager->createWindow(player,boxID);
+					break;
+				case FishingManager::STOPFISHING:
+					player->sendSystemMessage("You give up and reel in your line!");
+					manager->stopFishing(player, boxID, true);
+					return;
+					break;
+				default:
+					newBoxID = manager->createWindow(player,boxID);
+					break;
+			}
+			manager->setFishBoxID(player,newBoxID);
+		}
+	}
 }
 /*
 void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int index) {

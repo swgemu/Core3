@@ -1,0 +1,249 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.managers.minigames;
+
+import engine.core.ManagedObject;
+import engine.log.Logger;
+import engine.lua.Lua;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.ZoneServer;
+import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.fishing.FishingPoleObject;
+import server.zone.objects.tangible.fishing.FishingBaitObject;
+import server.zone.managers.minigames.events.FishingEvent;
+import server.zone.managers.minigames.events.FishingSplashEvent;
+
+class FishingManager extends ManagedObject implements Logger {
+
+	protected ZoneServer zoneServer;
+	
+	@dereferenced
+	protected Vector<string> miscLoot;
+	
+	@dereferenced
+	protected Vector<string> rareLoot;
+	
+	@dereferenced
+	protected Vector<int> color;
+	
+	@dereferenced
+	protected Vector<string> fishType;
+	
+	@dereferenced
+	protected Vector<string> state;
+	
+	@dereferenced
+	protected Vector<string> action;
+	
+	@dereferenced
+	protected Vector<string> property;
+	
+	@dereferenced
+	protected Vector<string> baitStatus;
+
+	public static final int NOTFISHING = 0;
+	public static final int WAITING = 1;
+	public static final int SNAGGED = 2;
+	public static final int NIBBLE = 3;
+	public static final int BITE = 4;
+	public static final int CATCH = 5;
+	public static final int REELING = 6;
+	
+	public static final int BLACKFISH = 0;
+	public static final int BLOWFISH = 1;
+	public static final int BLUEFISH = 2;
+	public static final int FAA = 3;
+	public static final int LAA = 4;
+	public static final int RAY = 5;
+	public static final int STRIPED = 6;
+	
+	public static final int FRESH = 0;
+	public static final int SOGGY = 2;
+	public static final int MUSH = 5;
+	
+	public static final int DONOTHING = 0;
+	public static final int TUGUP = 1;
+	public static final int TUGRIGHT = 2;
+	public static final int TUGLEFT = 3;
+	public static final int REEL = 4;
+	public static final int STOPFISHING = 5;
+	
+	public static final int NOEVENT = 0;
+	public static final int PROCEED = 2;
+	public static final int MISHAP = 5;
+	
+	public FishingManager(ZoneServer server) {
+		zoneServer = server;
+		
+		initializeFishType();
+		initializeLoot();
+		initializeColor();
+		initializeBaitStatus();
+		initializeProperty();
+		initializeAction();
+		initializeState();
+		
+		Logger.setLoggingName("FishingManager");
+		Logger.setLogging(true);
+	}
+	
+	public void initializeBaitStatus() {
+		baitStatus.add("Fresh");
+		baitStatus.add("Soggy");
+		baitStatus.add("Mush");
+	}
+	
+	public void initializeProperty() {
+		property.add(" ");
+		property.add("*");
+		property.add("**");
+		property.add("***");
+		property.add("****");
+		property.add("*****");
+	}
+	
+	public void initializeAction() {
+		action.add("None");
+		action.add("Tug Up");
+		action.add("Tug Right");
+		action.add("Tug Left");
+		action.add("Small Reel");
+		action.add("Stop Fishing");
+	}
+	
+	public void initializeState() {
+		state.add("Nothing");
+		state.add("Wating...");
+		state.add("Line snagged!");
+		state.add("Nibble...");
+		state.add("BITE!");
+		state.add("CAUGHT SOMETHING!");
+		state.add("CAUGHT SOMETHING!");	
+	}
+	
+	public void initializeFishType() {
+		fishType.add("blackfish");
+		fishType.add("blowfish");
+		fishType.add("bluefish");
+		fishType.add("faa");
+		fishType.add("laa");
+		fishType.add("ray");
+		fishType.add("striped");
+	}
+	
+	public void initializeLoot() {
+		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
+		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
+		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
+		
+		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
+	}
+	
+	public void initializeColor() {
+		color.add(61);
+		color.add(51);
+		color.add(21);
+		color.add(32);
+		color.add(8);
+		color.add(14);
+		color.add(55);
+		color.add(0);
+		color.add(7);
+		color.add(41);
+	}
+	
+	public native void checkFishingOnPositionUpdate(PlayerCreature player);
+	
+	public native int startFishing(PlayerCreature player);
+	public native void stopFishing(PlayerCreature player, unsigned int boxID, boolean rem);
+	public native void fishingStep(PlayerCreature player, int nextAction, SceneObject marker, int fish, unsigned int boxID);
+	public native void success(PlayerCreature player, int fish, SceneObject marker, unsigned int boxID);
+	
+	public native unsigned int createWindow(PlayerCreature player, unsigned int boxID);
+	public native void closeMenu(PlayerCreature player, unsigned int boxID);
+	
+	public native int vegetation(SceneObject marker);
+	public native int density(SceneObject marker);
+	
+	public native int getFish(PlayerCreature player);
+	
+	public native int getNextAction(PlayerCreature player);
+	public native void setNextAction(PlayerCreature player, int next);
+	
+	public native FishingPoleObject getPole(PlayerCreature player);
+	public native FishingBaitObject getBait(PlayerCreature player);
+	
+	public native unsigned int getFishBoxID(PlayerCreature player);
+	public native void setFishBoxID(PlayerCreature player, unsigned int boxID);
+	
+	public native int getFishingState(PlayerCreature player);
+	public native void setFishingState(PlayerCreature player, int state);
+	
+	public native SceneObject getFishMarker(PlayerCreature player);
+	public native void setFishMarker(PlayerCreature player, SceneObject marker);
+	
+	public native void cheat(PlayerCreature player,int value);
+	public native void freeBait(PlayerCreature player);
+
+	public native void fishingProceed(PlayerCreature player, int nextAction, SceneObject marker, int fish, unsigned int boxID, int newstate, boolean notifyClient);
+	public native void mishapEvent(final string text, PlayerCreature player, unsigned int boxID, boolean losebait);
+	public native boolean loseBait(PlayerCreature player);
+	 
+	public native void animate(PlayerCreature player, int nextAction);
+	
+	public native SceneObject createMarker(float x, float y, float z, Zone zone);
+	public native void createSplash(float x, float y, float z, Zone zone, PlayerCreature player);
+	
+	public native void updateMarker(PlayerCreature player, int nextAction, SceneObject marker);
+	
+	public native void removeMarker(PlayerCreature player);
+	public native void removeSplash(SceneObject splash);
+	
+	public native void createFishingSplashEvent(PlayerCreature player, ZoneServer zoneServer, SceneObject splash);
+	public native void createFishingEvent(PlayerCreature player, int nextAction, ZoneServer zoneServer, SceneObject marker, int sum, unsigned int boxID, int state);
+	public native void stopFishingEvent(PlayerCreature player);
+	
+}

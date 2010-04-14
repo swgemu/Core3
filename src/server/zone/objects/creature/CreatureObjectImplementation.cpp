@@ -782,11 +782,11 @@ int CreatureObjectImplementation::onPositionUpdate() {
 
 		float result = waterHeight - swimHeight;
 		/*StringBuffer msg;
-		msg << "rounding:" << roundingPositionZ << " positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
+		msg << "swimHeight: " << swimHeight << " rounding:" << roundingPositionZ << " positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
 		info(msg.toString(), true);*/
 
-		if (roundingPositionZ == (waterHeight - swimHeight)) {
-			//info("trying to set swimming state");
+		if (roundingPositionZ + 0.1f == result || roundingPositionZ - 0.1f == result) {
+			//info("trying to set swimming state", true);
 			setState(CreatureState::SWIMMING);
 		} else {
 			clearState(CreatureState::SWIMMING);

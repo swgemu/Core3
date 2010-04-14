@@ -132,6 +132,8 @@ public:
 	static const int BANLIST = 81;
 	static const int ACCOUNTLIST = 82;
 	static const int CHARACTERLIST = 83;
+
+	static const int FISHING = 90;
 };
 
 #endif /*SuiWindowType_H_*/
