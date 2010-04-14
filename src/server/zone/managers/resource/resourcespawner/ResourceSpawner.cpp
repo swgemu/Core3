@@ -45,11 +45,9 @@ which carries forward this exception.
 #include "ResourceSpawner.h"
 #include "ResourceShiftTask.h"
 
-ResourceSpawner::ResourceSpawner(ManagedReference<ResourceManager* > resManager,
-		ManagedReference<ZoneServer* > serv) {
+ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv) {
 
 	server = serv;
-	resourceManager = resManager;
 	resourceTree = new ResourceTree();
 
 	minimumPool = new MinimumPool(this, resourceTree);
@@ -117,6 +115,6 @@ void ResourceSpawner::start() {
 void ResourceSpawner::shiftResources() {
 
 
-	//ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
-	//resourceShift->schedule(shiftInterval);
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
+	resourceShift->schedule(shiftInterval);
 }
