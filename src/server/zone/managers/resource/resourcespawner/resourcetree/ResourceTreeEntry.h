@@ -54,7 +54,7 @@ class ResourceTreeEntry {
 
 	ResourceTreeNode* myNode;
 
-	String name;
+	String type;
 
 	Vector<String> classList;
 	Vector<ResourceAttribute* > attributeList;
@@ -73,7 +73,7 @@ class ResourceTreeEntry {
 
 public:
 	ResourceTreeEntry(const String& inType) {
-		name = inType;
+		type = inType;
 
 		classList.removeAll();
 		attributeList.removeAll();
@@ -114,7 +114,17 @@ public:
 	}
 
 	String getFinalClass() {
-		return classList.get(classList.size());
+		if(classList.size() > 0)
+			return classList.get(classList.size());
+		else
+			return "";
+	}
+
+	bool isOrganic() {
+		if(classList.size() > 0)
+			return classList.get(0) == "Organic";
+		else
+			return false;
 	}
 
 	void addAttribute(ResourceAttribute* attrib) {
@@ -148,9 +158,9 @@ public:
         return mintype;
     }
 
-    String getName() const
+    String getType() const
     {
-        return name;
+        return type;
     }
 
     String getRandomNameClass() const
@@ -188,9 +198,9 @@ public:
         this->mintype = mintype;
     }
 
-    void setName(String name)
+    void setType(String name)
     {
-        this->name = name;
+        this->type = name;
     }
 
     void setRandomNameClass(String randomNameClass)
@@ -212,7 +222,7 @@ public:
 	void toString(){
 
 		System::out << "************ Resource Tree Entry ********************\n";
-		System::out << "ENUM = " << name << endl;
+		System::out << "ENUM = " << type << endl;
 		for(int i = 0; i < classList.size(); ++i)
 			System::out << "Class" << i << " = " << classList.get(i) << endl;
 

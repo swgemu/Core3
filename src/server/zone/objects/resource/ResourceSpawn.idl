@@ -45,6 +45,8 @@ which carries forward this exception.
 package server.zone.objects.resource;
 
 import engine.log.Logger;
+import system.util.VectorMap;
+import system.util.Vector;
 
 include engine.core.ManagedObject;
 include server.zone.objects.player.PlayerCreature;
@@ -54,19 +56,19 @@ class ResourceSpawn extends ManagedObject implements Logger {
 
 	protected string spawnType;
 	protected string spawnName;
+	protected string spawnContainer;
 	
-	protected string spawnClass1;
-	protected string spawnClass2;
-	protected string spawnClass3;
-	protected string spawnClass4;
-	protected string spawnClass5;
-	protected string spawnClass6;
-	protected string spawnClass7;
-
+	@dereferenced
+	protected Vector<string> spawnClasses;
+	
+	@dereferenced
+	protected VectorMap<string, int> spawnAttributes;
 
     public ResourceSpawn(string inType) {
        	spawnType = inType;
        	Logger.setLoggingName("ResourceSpawnObject");
+       	
+       	spawnAttributes.setNoDuplicateInsertPlan() ;
     }
         
    /**
@@ -85,271 +87,59 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	 * @post { }
 	 * @param name generated name to set this object with
 	 */
-    void setName(string name) {
+    public void setName(string name) {
     	spawnName = name;
     }
 
     /**
-	 * Sets the first class (if applicable to resource)
+	 * adds a class to the resource
 	 * @pre { }
 	 * @post { }
-	 * @param class1 set this object with class name
+	 * @param class string added to spawn
 	 */
-    void setClass1(string class1) {
-    	spawnClass1 = class1;
+    public void addClass(string newclass) {
+    	spawnClasses.add(newclass);
     }
 
-    /**
-	 * Sets the second class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class2 set this object with class name
-	 */   
-    void setClass2(string class2) {
-    	spawnClass2 = class2;    
-    }
-    
-    /**
-	 * Sets the third class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class3 set this object with class name
-	 */
-    void setClass3(string class3) {
-     	spawnClass3 = class3;   
-    }
-    
-    /**
-	 * Sets the fourth class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class4 set this object with class name
-	 */
-    void setClass4(string class4) {
-    	spawnClass4 = class4;    
-    }
-    
-    /**
-	 * Sets the fifth class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class5 set this object with class name
-	 */
-    void setClass5(string class5) {
-     	spawnClass5 = class5;   
-    }
-    
-    /**
-	 * Sets the sixth class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class6 set this object with class name
-	 */
-    void setClass6(string class6) {
-    	spawnClass6 = class6;    
-    }
-    
-    /**
-	 * Sets the seventh class (if applicable to resource)
-	 * @pre { }
-	 * @post { }
-	 * @param class7 set this object with class name
-	 */
-    void setClass7(string class7) {
-     	spawnClass7 = class7;   
+	public void addAttribute(string attribute, int value) {
+		spawnAttributes.put(attribute, value);
+	}
+	
+	
+    public void setContainerName(string name) {
+    	spawnContainer = name;
     }
 
-
-	void setAtt1( string instring) {
-
-}
-    void setAtt2( string instring) {
-
-}
-    void setAtt3( string instring) {
-
-}
-    void setAtt4( string instring) {
-
-}
-    void setAtt5( string instring) {
-
-}
-    void setAtt6( string instring) {
-
-}
-    void setAtt7( string instring) {
-
-}
-    void setAtt8( string instring) {
-
-}
-    void setAtt9( string instring) {
-
-}
-    void setAtt10( string instring) {
-
-}
-    void setAtt11( string instring) {
-
-}
-
-    void setAtt1Stat(int inInt) {
-
-}
-    void setAtt2Stat(int inInt) {
-
-}
-    void setAtt3Stat(int inInt) {
-
-}
-    void setAtt4Stat(int inInt) {
-
-}
-    void setAtt5Stat(int inInt) {
-
-}
-    void setAtt6Stat(int inInt) {
-
-}
-    void setAtt7Stat(int inInt) {
-
-}
-    void setAtt8Stat(int inInt) {
-
-}
-    void setAtt9Stat(int inInt) {
-
-}
-    void setAtt10Stat(int inInt) {
-
-}
-    void setAtt11Stat(int inInt) {
-
-}
-
-        void setContainerName( string instring) {
-    
-    }
-
-        // getters
-	string getName() {
+    // getters
+	public string getName() {
 		return spawnName;
 	}
 
-    string getType() {
+    public string getType() {
     	return spawnType;
     }
 
-        string getClass1() {
-    
+    public string getClass(int index) {
+    	if(index < spawnClasses.size()) {
+    		return spawnClasses.get(index);
+    	} else {
+    		return "";
+    	}
     }
-        string getClass2() {
     
+    public int getAttributeAndValue(string attribute, int index) {
+    	if(index < spawnAttributes.size()) {
+    		return spawnAttributes.get(index);
+    	} else {
+    		return 0;
+    	}
     }
-        string getClass3() {
-    
-    }
-        string getClass4() {
-    
-    }
-        string getClass5() {
-    
-    }
-        string getClass6() {
-    
-    }
-        string getClass7() {
-    
-    }
-        
-        string getAtt1() {
-    
-    }
-        string getAtt2() {
-    
-    }
-        string getAtt3() {
-    
-    }
-        string getAtt4() {
-    
-    }
-        string getAtt5() {
-    
-    }
-        string getAtt6() {
-    
-    }
-        string getAtt7() {
-    
-    }
-        string getAtt8() {
-    
-    }
-        string getAtt9() {
-    
-    }
-        string getAtt10() {
-    
-    }
-        string getAtt11() {
-    
-    }
-        
-        int getAtt1Stat() {
-    
-    }
-        int getAtt2Stat() {
-    
-    }
-        int getAtt3Stat() {
-    
-    }
-        int getAtt4Stat() {
-    
-    }
-        int getAtt5Stat() {
-    
-    }
-        int getAtt6Stat() {
-    
-    }
-        int getAtt7Stat() {
-    
-    }
-        int getAtt8Stat() {
-    
-    }
-        int getAtt9Stat() {
-    
-    }
-        int getAtt10Stat() {
-    
-    }
-        int getAtt11Stat() {
-    
-    }
-        
-        int getMaxType() {
-    
-    }
-        int getMinType() {
-    
+  
+    public string getContainerName() {
+    	return spawnContainer;
     }
 
-        int getMaxPool() {
-    
-    }
-        int getMinPool() {
-    
-    }
-
-        string getContainerName() {
-    
-    }
-
-        void toString() {
-    
+    public void toString() {
+       System.out << "test\n";
     } 
 }

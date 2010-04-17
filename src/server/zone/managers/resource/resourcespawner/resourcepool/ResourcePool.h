@@ -97,9 +97,7 @@ public:
 	   *  Remove expired resources and spawn replacements.
 	   * \return Whether update completed successfully
 	   */
-	virtual bool update() {
-		return false;
-	}
+	virtual bool update() = 0;
 
 	/**
 	 * Initialize pool to contain needed resources

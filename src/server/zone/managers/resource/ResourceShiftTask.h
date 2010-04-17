@@ -58,7 +58,7 @@ public:
 	}
 
 	void run() {
-		resourceSpawner->shiftResources();
+		//resourceSpawner->shiftResources();
 	}
 };
 

@@ -45,10 +45,19 @@ which carries forward this exception.
 #include "ResourceSpawner.h"
 #include "ResourceShiftTask.h"
 
-ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv) {
+ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
+		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
 
 	server = serv;
+	processor = impl;
+	databaseManager = ObjectDatabaseManager::instance();
+
+	nameManager = processor->getNameManager();
+	objectManager = objMan;
+
 	resourceTree = new ResourceTree();
+
+	loadResourceSpawns();
 
 	minimumPool = new MinimumPool(this, resourceTree);
 	fixedPool = new FixedPool(this, resourceTree);
@@ -112,9 +121,73 @@ void ResourceSpawner::start() {
 	shiftResources();
 }
 
+void ResourceSpawner::loadResourceSpawns() {
+
+	/*ObjectDatabase* resourceSpawnDatabase = databaseManager->loadDatabase("resourcespawns", true, 0);
+
+	ObjectDatabaseIterator iterator(resourceSpawnDatabase);
+
+	uint64 objectID;
+
+	ObjectInputStream objectData(2000);
+
+	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+		SceneObject* object = (SceneObject*) getObject(objectID);
+
+		if (object != NULL)
+			continue;
+
+		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+			error("unknown scene object in static database");
+			continue;
+		}
+
+		if (object == NULL) {
+			object = createObject(serverObjectCRC, 0, "staticobjects", objectID);
+
+			if (object == NULL) {
+				error("could not load object from static database");
+
+				continue;
+			}
+
+			deSerializeObject(object, &objectData);
+
+			objectData.reset();
+		}
+	}*/
+}
+
 void ResourceSpawner::shiftResources() {
 
+	minimumPool->update();
+	fixedPool->update();
+	randomPool->update();
+	nativePool->update();
+
+	createResourceSpawn("steel");
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
+}
+
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
+
+	ResourceTreeEntry* resourceTemplate = resourceTree->getRandomResource(type);
+
+	resourceTemplate->toString();
+
+	String name = nameManager->makeResourceName(resourceTemplate->isOrganic());
+
+	System::out << "test" << endl;
+
+	ResourceSpawn* newSpawn = (ResourceSpawn*) objectManager->createObject(741847407, 2, "resourcespawns");
+
+	System::out << "test" << endl;
+
+
+
+	System::out << name << endl;
+
+	return newSpawn;
 }

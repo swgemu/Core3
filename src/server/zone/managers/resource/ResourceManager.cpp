@@ -8,12 +8,14 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
+
 /*
  *	ResourceManagerStub
  */
 
-ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceManagerImplementation(server, impl);
+ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceManagerImplementation(server, impl, objectMan);
 	_impl->_setStub(this);
 }
 
@@ -118,18 +120,20 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("zoneServer", &zoneServer);
 }
 
-ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl) {
+ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(62):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(65):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(64):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(67):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(65):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(68):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(67):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(70):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(68):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(71):  		processor = impl;
 	processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(72):  		objectManager = objectMan;
+	objectManager = objectMan;
 }
 
 /*
