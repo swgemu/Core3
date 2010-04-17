@@ -31,6 +31,20 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace object {
+
+class ObjectManager;
+
+} // namespace object
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::object;
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 #include "engine/core/ManagedObject.h"
@@ -46,7 +60,7 @@ namespace resource {
 
 class ResourceManager : public ManagedObject {
 public:
-	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl);
+	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
 	void stop();
 
@@ -79,8 +93,10 @@ class ResourceManagerImplementation : public ManagedObjectImplementation, public
 
 	ResourceSpawner* resourceSpawner;
 
+	ObjectManager* objectManager;
+
 public:
-	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl);
+	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
 	ResourceManagerImplementation(DummyConstructorParameter* param);
 

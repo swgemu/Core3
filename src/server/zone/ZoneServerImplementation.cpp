@@ -416,9 +416,9 @@ void ZoneServerImplementation::startManagers() {
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
 
-	resourceManager = new ResourceManager(_this, processor);
+	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
-	resourceManager->initialize();
+	//resourceManager->initialize();
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();

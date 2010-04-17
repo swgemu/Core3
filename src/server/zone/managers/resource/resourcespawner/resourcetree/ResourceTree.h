@@ -56,6 +56,10 @@ public:
 	ResourceTree();
 	~ResourceTree();
 
+	ResourceTreeEntry* getResource(const String& type);
+	ResourceTreeEntry* getRandomResource(const String& type);
+
+
 	void toString();
 
 private:
