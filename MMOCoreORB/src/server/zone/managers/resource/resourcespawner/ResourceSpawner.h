@@ -45,20 +45,28 @@ which carries forward this exception.
 #ifndef RESOURCESPAWNER_H_
 #define RESOURCESPAWNER_H_
 
-#include "engine/engine.h"
+#include "engine/db/ObjectDatabase.h"
 
 #include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "resourcetree/ResourceTree.h"
 #include "resourcepool/MinimumPool.h"
 #include "resourcepool/FixedPool.h"
 #include "resourcepool/RandomPool.h"
 #include "resourcepool/NativePool.h"
 
-
 class ResourceSpawner {
 private:
 	ManagedReference<ZoneServer* > server;
+	ZoneProcessServerImplementation* processor;
+
+	NameManager* nameManager;
+	ObjectManager* objectManager;
+
 	ResourceTree* resourceTree;
+	ObjectDatabaseManager* databaseManager;
 
 	Vector<int> resourceZones;
 
@@ -71,7 +79,8 @@ private:
 	float spawnThrottling;
 
 public:
-	ResourceSpawner(ManagedReference<ZoneServer* > serv);
+	ResourceSpawner(ManagedReference<ZoneServer* > serv,
+			ZoneProcessServerImplementation* impl, ObjectManager* objMan);
 	~ResourceSpawner();
 
 	void initializeMinimumPool(const String& includes, const String& excludes);
@@ -85,6 +94,12 @@ public:
 
 	void start();
 	void shiftResources();
+
+	ResourceSpawn* createResourceSpawn(const String& type);
+
+private:
+
+	void loadResourceSpawns();
 };
 
 #endif /* RESOURCESPAWNER_H_ */

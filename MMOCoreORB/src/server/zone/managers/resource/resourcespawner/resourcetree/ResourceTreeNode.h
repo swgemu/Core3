@@ -51,6 +51,7 @@ which carries forward this exception.
 class ResourceTreeNode {
 private:
 	String nodeClass;
+	String stfType;
 	int maxtype, mintype, maxpool, minpool;
 
 	int depth;
@@ -58,17 +59,27 @@ private:
 	Vector<ResourceTreeNode* > nodes;
 
 public:
-	ResourceTreeNode(const String& n, const int d);
+	ResourceTreeNode(const String& t, const String& n, const int d);
 	~ResourceTreeNode();
 
 	void addEntry(ResourceTreeEntry* entry);
 
+	ResourceTreeEntry* getEntry(ResourceTreeEntry* entry,
+			const String& type, const bool random = 0);
+
 	String getNodeClass() {
 		return nodeClass;
 	}
-
+	String getType() {
+		return stfType;
+	}
 
 	void toString();
+
+private:
+
+	ResourceTreeEntry* getRandomEntry(const String& type);
+	void getEntryPool(Vector<ResourceTreeEntry*>& candidates);
 
 };
 

@@ -62,7 +62,7 @@ ResourceTree::~ResourceTree() {
 
 bool ResourceTree::buildTreeFromDatabase() {
 
-	baseNode = new ResourceTreeNode("Resource", 0);
+	baseNode = new ResourceTreeNode("resource", "Resource", 0);
 
 	String query = "SELECT resource_tree.`Index`,resource_tree.stfname, resource_tree.class1, "
 			"resource_tree.class2, resource_tree.class3, resource_tree.class4, resource_tree.class5, "
@@ -129,6 +129,26 @@ bool ResourceTree::buildTreeFromDatabase() {
 	}
 
 	return true;
+}
+
+ResourceTreeEntry* ResourceTree::getResource(const String& type) {
+	ResourceTreeEntry* entry = NULL;
+	Time expireTime;
+	uint64 start = expireTime.currentNanoTime();
+	entry = baseNode->getEntry(entry, type);
+	uint64 finish = expireTime.currentNanoTime();
+	System::out << finish - start << " nano's" << endl;
+	return entry;
+}
+
+ResourceTreeEntry* ResourceTree::getRandomResource(const String& type) {
+	ResourceTreeEntry* entry = NULL;
+	Time expireTime;
+	uint64 start = expireTime.currentNanoTime();
+	entry = baseNode->getEntry(entry, type, 1);
+	uint64 finish = expireTime.currentNanoTime();
+	System::out << finish - start << " nano's" << endl;
+	return entry;
 }
 
 void ResourceTree::toString() {

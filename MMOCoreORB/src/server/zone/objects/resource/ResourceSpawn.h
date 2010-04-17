@@ -19,6 +19,10 @@
 
 #include "engine/log/Logger.h"
 
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -30,10 +34,35 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void setName(String& name);
+
+	void addClass(String& newclass);
+
+	void addAttribute(String& attribute, int value);
+
+	void setContainerName(String& name);
+
+	String getName();
+
+	String getType();
+
+	String getClass(int index);
+
+	int getAttributeAndValue(String& attribute, int index);
+
+	String getContainerName();
+
+	void toString();
+
 protected:
 	ResourceSpawn(DummyConstructorParameter* param);
 
 	virtual ~ResourceSpawn();
+
+	String _return_getClass;
+	String _return_getContainerName;
+	String _return_getName;
+	String _return_getType;
 
 	friend class ResourceSpawnHelper;
 };
@@ -56,19 +85,11 @@ protected:
 
 	String spawnName;
 
-	String spawnClass1;
+	String spawnContainer;
 
-	String spawnClass2;
+	Vector<String> spawnClasses;
 
-	String spawnClass3;
-
-	String spawnClass4;
-
-	String spawnClass5;
-
-	String spawnClass6;
-
-	String spawnClass7;
+	VectorMap<String, int> spawnAttributes;
 
 public:
 	ResourceSpawnImplementation(String& inType);
@@ -77,144 +98,26 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-private:
 	void setName(String& name);
 
-	void setClass1(String& class1);
+	void addClass(String& newclass);
 
-	void setClass2(String& class2);
+	void addAttribute(String& attribute, int value);
 
-	void setClass3(String& class3);
-
-	void setClass4(String& class4);
-
-	void setClass5(String& class5);
-
-	void setClass6(String& class6);
-
-	void setClass7(String& class7);
-
-	void setAtt1(String& instring);
-
-	void setAtt2(String& instring);
-
-	void setAtt3(String& instring);
-
-	void setAtt4(String& instring);
-
-	void setAtt5(String& instring);
-
-	void setAtt6(String& instring);
-
-	void setAtt7(String& instring);
-
-	void setAtt8(String& instring);
-
-	void setAtt9(String& instring);
-
-	void setAtt10(String& instring);
-
-	void setAtt11(String& instring);
-
-	void setAtt1Stat(int inInt);
-
-	void setAtt2Stat(int inInt);
-
-	void setAtt3Stat(int inInt);
-
-	void setAtt4Stat(int inInt);
-
-	void setAtt5Stat(int inInt);
-
-	void setAtt6Stat(int inInt);
-
-	void setAtt7Stat(int inInt);
-
-	void setAtt8Stat(int inInt);
-
-	void setAtt9Stat(int inInt);
-
-	void setAtt10Stat(int inInt);
-
-	void setAtt11Stat(int inInt);
-
-	void setContainerName(String& instring);
+	void setContainerName(String& name);
 
 	String getName();
 
 	String getType();
 
-	String getClass1();
+	String getClass(int index);
 
-	String getClass2();
-
-	String getClass3();
-
-	String getClass4();
-
-	String getClass5();
-
-	String getClass6();
-
-	String getClass7();
-
-	String getAtt1();
-
-	String getAtt2();
-
-	String getAtt3();
-
-	String getAtt4();
-
-	String getAtt5();
-
-	String getAtt6();
-
-	String getAtt7();
-
-	String getAtt8();
-
-	String getAtt9();
-
-	String getAtt10();
-
-	String getAtt11();
-
-	int getAtt1Stat();
-
-	int getAtt2Stat();
-
-	int getAtt3Stat();
-
-	int getAtt4Stat();
-
-	int getAtt5Stat();
-
-	int getAtt6Stat();
-
-	int getAtt7Stat();
-
-	int getAtt8Stat();
-
-	int getAtt9Stat();
-
-	int getAtt10Stat();
-
-	int getAtt11Stat();
-
-	int getMaxType();
-
-	int getMinType();
-
-	int getMaxPool();
-
-	int getMinPool();
+	int getAttributeAndValue(String& attribute, int index);
 
 	String getContainerName();
 
 	void toString();
 
-public:
 	ResourceSpawn* _this;
 
 	operator const ResourceSpawn*();
@@ -254,6 +157,32 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setName(String& name);
+
+	void addClass(String& newclass);
+
+	void addAttribute(String& attribute, int value);
+
+	void setContainerName(String& name);
+
+	String getName();
+
+	String getType();
+
+	String getClass(int index);
+
+	int getAttributeAndValue(String& attribute, int index);
+
+	String getContainerName();
+
+	void toString();
+
+protected:
+	String _param0_setName__String_;
+	String _param0_addClass__String_;
+	String _param0_addAttribute__String_int_;
+	String _param0_setContainerName__String_;
+	String _param0_getAttributeAndValue__String_int_;
 };
 
 class ResourceSpawnHelper : public DistributedObjectClassHelper, public Singleton<ResourceSpawnHelper> {

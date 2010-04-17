@@ -44,8 +44,9 @@ which carries forward this exception.
 
 #include "ResourceTreeNode.h"
 
-ResourceTreeNode::ResourceTreeNode(const String& n, const int d) {
+ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d) {
 
+	stfType = t;
 	nodeClass = n;
 	depth = d;
 }
@@ -74,12 +75,59 @@ void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
 	//The entry doesn't belong to an existing child node, now we
 	//determine if it belong on this node, or on a new child node.
 	if(entry->getClassCount() > depth + 1) {
-		ResourceTreeNode* newnode = new ResourceTreeNode(entry->getClass(depth), depth + 1);
+		ResourceTreeNode* newnode = new ResourceTreeNode(entry->getType(), entry->getClass(depth), depth + 1);
 		nodes.add(newnode);
 		newnode->addEntry(entry);
 	} else {
 		entry->setMyNode(this);
 		entries.add(entry);
+	}
+}
+
+ResourceTreeEntry* ResourceTreeNode::getEntry(ResourceTreeEntry* entry,
+		const String& type, const bool random) {
+
+	if (entry != NULL)
+		return entry;
+
+	for(int i = 0; i < entries.size(); ++i) {
+		ResourceTreeEntry* ent = entries.get(i);
+		if(ent->getType() == type && !random)
+			return ent;
+		else if(ent->getType() == type && random)
+			return getRandomEntry(type);
+	}
+
+	for(int i = 0; i < nodes.size(); ++i) {
+		ResourceTreeNode* node = nodes.get(i);
+		entry = node->getEntry(entry, type, random);
+	}
+
+	return entry;
+}
+
+ResourceTreeEntry* ResourceTreeNode::getRandomEntry(const String& type) {
+	Vector<ResourceTreeEntry*> candidates;
+
+	for(int i = 0; i < nodes.size(); ++i) {
+		ResourceTreeNode* node = nodes.get(i);
+		if(node->getType() == type) {
+			node->getEntryPool(candidates);
+			break;
+		}
+	}
+}
+
+void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates) {
+	for(int i = 0; i < entries.size(); ++i) {
+		ResourceTreeEntry* ent = entries.get(i);
+		candidates.add(ent);
+		System::out << "Added " << ent->getType() << endl;
+	}
+
+	for(int i = 0; i < nodes.size(); ++i) {
+		ResourceTreeNode* node = nodes.get(i);
+		node->getEntryPool(candidates);
 	}
 }
 
@@ -92,7 +140,7 @@ void ResourceTreeNode::toString() {
 
 	System::out << "ENTRIES" << endl;
 	for(int i = 0; i < entries.size(); ++i)
-		System::out << entries.get(i)->getName() << endl;
+		System::out << entries.get(i)->getType() << endl;
 
 	for(int i = 0; i < nodes.size(); ++i)
 		nodes.get(i)->toString();
