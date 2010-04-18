@@ -123,6 +123,8 @@ class FishingSplashEvent;
 
 using namespace server::zone::managers::minigames::events;
 
+#include "server/zone/managers/minigames/FishingEventsMap.h"
+
 #include "server/zone/objects/scene/SceneObjectObserver.h"
 
 #include "engine/core/ManagedObject.h"
@@ -130,6 +132,10 @@ using namespace server::zone::managers::minigames::events;
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace zone {
@@ -276,6 +282,8 @@ public:
 
 	void stopFishingEvent(PlayerCreature* player);
 
+	FishingEvent* getFishingEvent(PlayerCreature* player);
+
 protected:
 	FishingManager(DummyConstructorParameter* param);
 
@@ -315,6 +323,8 @@ protected:
 	Vector<String> property;
 
 	Vector<String> baitStatus;
+
+	FishingEventsMap events;
 
 public:
 	static const int NOTFISHING = 0;
@@ -456,6 +466,8 @@ public:
 	void createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state);
 
 	void stopFishingEvent(PlayerCreature* player);
+
+	FishingEvent* getFishingEvent(PlayerCreature* player);
 
 	FishingManager* _this;
 
