@@ -344,6 +344,8 @@ public:
 
 	static const int NEWBIETUTORIALTERMINAL = 0x400F;
 
+	static const int CHARACTERBUILDERTERMINAL = 0x4010;
+
 	static const int TOOL = 0x8000;
 
 	static const int CRAFTINGTOOL = 0x8001;
@@ -1012,6 +1014,8 @@ public:
 	static const int INTERACTIVETERMINAL = 0x400C;
 
 	static const int NEWBIETUTORIALTERMINAL = 0x400F;
+
+	static const int CHARACTERBUILDERTERMINAL = 0x4010;
 
 	static const int TOOL = 0x8000;
 

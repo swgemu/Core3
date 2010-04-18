@@ -414,7 +414,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 	try {
 		parent->wlock();
 
-		parent->setDirection(direction.getW(), direction.getZ(), direction.getY(), direction.getW());
+		parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
 		parent->setPosition(positionX, positionZ, positionY);
 
 		parent->incrementMovementCounter();
