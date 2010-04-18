@@ -102,15 +102,13 @@ bool ResourceManagerImplementation::loadConfigData() {
 	int randpoolsize = getGlobalInt("randompoolsize");
 	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc, randpoolsize);
 
-	/*String fixedpoolinc = getGlobalString("fixedpoolincludes");
+	String fixedpoolinc = getGlobalString("fixedpoolincludes");
 	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
 	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
 
-
-
 	String natpoolinc = getGlobalString("nativepoolincludes");
 	String natpoolexc = getGlobalString("nativepoolexcludes");
-	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);*/
+	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
 
 	return true;
 }

@@ -50,8 +50,8 @@ which carries forward this exception.
 
 class ResourceTreeNode {
 private:
-	String nodeClass;
-	String stfType;
+	String name;
+	String stfName;
 	int maxtype, mintype, maxpool, minpool;
 
 	int depth;
@@ -64,23 +64,16 @@ public:
 	ResourceTreeNode(const String& t, const String& n, const int d);
 	~ResourceTreeNode();
 
+	String getName();
+	String getStfName();
+
 	void setParentNode(ResourceTreeNode* parent);
+	ResourceTreeNode* getParentNode();
 
-	void addEntry(ResourceTreeEntry* entry);
+	void add(ResourceTreeEntry* entry);
 
-	ResourceTreeEntry* getEntry(ResourceTreeEntry* entry,
-			const String& type, const bool random = 0);
-
-	String getNodeClass() {
-		return nodeClass;
-	}
-	String getType() {
-		return stfType;
-	}
-
-	ResourceTreeNode* getParentNode() {
-		return parentNode;
-	}
+	ResourceTreeEntry* getEntry(const String& type,
+			Vector<String> excludes, bool organic);
 
 	void updateEntries();
 
@@ -88,8 +81,11 @@ public:
 
 private:
 
-	ResourceTreeEntry* getRandomEntry(const String& type);
-	void getEntryPool(Vector<ResourceTreeEntry*>& candidates);
+	void find(ResourceTreeEntry* entry, const String& type);
+	void find(ResourceTreeNode* node, const String& type);
+
+	void getEntryPool(Vector<ResourceTreeEntry*>& candidates,
+			const Vector<String> excludes);
 
 };
 
