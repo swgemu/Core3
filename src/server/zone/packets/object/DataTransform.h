@@ -143,7 +143,7 @@ public:
 		object->info(slopeMsg.toString(), true);*/
 
 		object->setMovementCounter(movementCounter);
-		object->setDirection(directionZ, directionX, directionY, directionW);
+		object->setDirection(directionW, directionX, directionY, directionZ);
 
 		/*StringBuffer degrees;
 		degrees << "angle: " << object->getDirectionAngle();
