@@ -537,12 +537,6 @@ class CreatureObject extends TangibleObject {
 	
 	public native void playEffect(final string file, final string aux);
 	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
-
-	
-	/**
-	 * Is called when this object has moved to a new position
-	 */
-	public native int onPositionUpdate();
 	
 	public native void activateQueueAction();
 	
@@ -817,5 +811,9 @@ class CreatureObject extends TangibleObject {
 	
 	public ControlDevice getControlDevice() {
 		return controlDevice;
+	}
+	
+	public float getSwimHeight() {
+		return swimHeight;
 	}
 }

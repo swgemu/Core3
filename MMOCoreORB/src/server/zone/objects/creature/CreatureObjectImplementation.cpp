@@ -770,33 +770,6 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
-int CreatureObjectImplementation::onPositionUpdate() {
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-
-	float waterHeight;
-
-	if (parent == NULL && terrainManager->getWaterHeight(positionX, positionY, waterHeight)) {
-		//info("detected water height " + String::valueOf(waterHeight), true);
-
-		float roundingPositionZ = floor(positionZ * 10) / 10;
-
-		float result = waterHeight - swimHeight;
-		/*StringBuffer msg;
-		msg << "swimHeight: " << swimHeight << " rounding:" << roundingPositionZ << " positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
-		info(msg.toString(), true);*/
-
-		if (roundingPositionZ + 0.1f == result || roundingPositionZ - 0.1f == result) {
-			//info("trying to set swimming state", true);
-			setState(CreatureState::SWIMMING);
-		} else {
-			clearState(CreatureState::SWIMMING);
-		}
-	} else
-		clearState(CreatureState::SWIMMING);
-
-	return 0;
-}
-
 uint32 CreatureObjectImplementation::getWearableMask() {
 	uint16 characterMask = 0;
 

@@ -55,8 +55,9 @@ import server.zone.objects.tangible.fishing.FishingPoleObject;
 import server.zone.objects.tangible.fishing.FishingBaitObject;
 import server.zone.managers.minigames.events.FishingEvent;
 import server.zone.managers.minigames.events.FishingSplashEvent;
+include server.zone.objects.scene.SceneObjectObserver;
 
-class FishingManager extends ManagedObject implements Logger {
+class FishingManager extends ManagedObject implements Logger, SceneObjectObserver {
 
 	protected ZoneServer zoneServer;
 	
@@ -193,6 +194,13 @@ class FishingManager extends ManagedObject implements Logger {
 		color.add(0);
 		color.add(7);
 		color.add(41);
+	}
+	
+	public int notify(SceneObject sceneObject) {
+		if (sceneObject.isPlayerCreature())
+			checkFishingOnPositionUpdate((PlayerCreature) sceneObject);
+		
+		return 0;
 	}
 	
 	public native void checkFishingOnPositionUpdate(PlayerCreature player);

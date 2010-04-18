@@ -272,8 +272,6 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
-	int onPositionUpdate();
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -403,6 +401,8 @@ public:
 	bool isRidingMount();
 
 	ControlDevice* getControlDevice();
+
+	float getSwimHeight();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -642,8 +642,6 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
-	int onPositionUpdate();
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -774,6 +772,8 @@ public:
 
 	ControlDevice* getControlDevice();
 
+	float getSwimHeight();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -897,8 +897,6 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
-	int onPositionUpdate();
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -1014,6 +1012,8 @@ public:
 	bool isRidingMount();
 
 	ControlDevice* getControlDevice();
+
+	float getSwimHeight();
 
 protected:
 	String _param0_sendSystemMessage__String_;
