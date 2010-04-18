@@ -113,7 +113,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 				entry->setResourceContainerType(res->getString(47));
 				entry->setRandomNameClass(res->getString(48));
 
-				baseNode->addEntry(entry);
+				baseNode->add(entry);
 			}
 			baseNode->updateEntries();
 		}
@@ -130,21 +130,10 @@ bool ResourceTree::buildTreeFromDatabase() {
 	return true;
 }
 
-ResourceTreeEntry* ResourceTree::getResource(const String& type) {
-	ResourceTreeEntry* entry = NULL;
-
-	entry = baseNode->getEntry(entry, type);
-
-	return entry;
+ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> excludes, bool organic) {
+	return baseNode->getEntry(type, excludes, organic);
 }
 
-ResourceTreeEntry* ResourceTree::getRandomResource(const String& type, Vector<String> excludes) {
-	ResourceTreeEntry* entry = NULL;
-
-	entry = baseNode->getEntry(entry, type, 1);
-
-	return entry;
-}
 
 void ResourceTree::toString() {
 
