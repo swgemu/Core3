@@ -70,8 +70,6 @@ import server.zone.managers.minigames.events.FishingEvent;
 import server.zone.managers.minigames.events.FishingSplashEvent;
 import system.lang.ref.Reference;
 
-
-
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
 	
@@ -272,8 +270,6 @@ class PlayerCreature extends CreatureObject {
 	 * @param player PlayerCreature that closed this container
 	 */
 	public native void notifyCloseContainer(PlayerCreature player);
-	
-	public native int onPositionUpdate();
 	
 	public native void notifySceneReady();
 	

@@ -127,6 +127,8 @@ using namespace server::zone::packets::scene;
 
 #include "server/zone/objects/scene/TransferErrorCode.h"
 
+#include "server/zone/objects/scene/SceneObjectObserver.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -618,6 +620,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void attachPositionChangedObserver(SceneObjectObserver* observer);
+
+	void deattachPositionChangedObserver(SceneObjectObserver* observer);
+
 	float getDistanceTo(SceneObject* object);
 
 	void updateVehiclePosition();
@@ -821,6 +827,8 @@ protected:
 	StringId detailedDescription;
 
 	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
+
+	SortedVector<SceneObjectObserver*> positionChangedObservers;
 
 	bool staticObject;
 
@@ -1292,6 +1300,10 @@ public:
 	unsigned long long getParentID();
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void attachPositionChangedObserver(SceneObjectObserver* observer);
+
+	void deattachPositionChangedObserver(SceneObjectObserver* observer);
 
 	float getDistanceTo(SceneObject* object);
 

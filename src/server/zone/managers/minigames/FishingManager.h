@@ -123,6 +123,8 @@ class FishingSplashEvent;
 
 using namespace server::zone::managers::minigames::events;
 
+#include "server/zone/objects/scene/SceneObjectObserver.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -203,6 +205,8 @@ public:
 	void initializeLoot();
 
 	void initializeColor();
+
+	int notify(SceneObject* sceneObject);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 
@@ -292,7 +296,7 @@ namespace zone {
 namespace managers {
 namespace minigames {
 
-class FishingManagerImplementation : public ManagedObjectImplementation, public Logger {
+class FishingManagerImplementation : public ManagedObjectImplementation, public Logger, public SceneObjectObserver {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
 
@@ -382,6 +386,8 @@ public:
 	void initializeLoot();
 
 	void initializeColor();
+
+	int notify(SceneObject* sceneObject);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 
@@ -503,6 +509,8 @@ public:
 	void initializeLoot();
 
 	void initializeColor();
+
+	int notify(SceneObject* sceneObject);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 

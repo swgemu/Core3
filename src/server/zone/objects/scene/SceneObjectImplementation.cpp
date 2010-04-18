@@ -80,6 +80,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	slottedObjects.setNoDuplicateInsertPlan();
 	containerObjects.setNullValue(NULL);
 	containerObjects.setNoDuplicateInsertPlan();
+	positionChangedObservers.setNoDuplicateInsertPlan();
 
 	server = ZoneProcessServerImplementation::instance;
 
@@ -561,6 +562,9 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		insertToBuilding(building);
 	}
 
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	positionChangedObservers.put(terrainManager);
+
 	movementCounter = 0;
 }
 
@@ -632,6 +636,9 @@ void SceneObjectImplementation::removeFromZone() {
 	removeInRangeObjects();
 
 	zone->dropSceneObject(getObjectID());
+
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	positionChangedObservers.drop(terrainManager);
 
 	zone = NULL;
 

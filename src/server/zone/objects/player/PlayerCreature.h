@@ -280,8 +280,6 @@ public:
 
 	void notifyCloseContainer(PlayerCreature* player);
 
-	int onPositionUpdate();
-
 	void notifySceneReady();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
@@ -519,8 +517,6 @@ public:
 
 	void notifyCloseContainer(PlayerCreature* player);
 
-	int onPositionUpdate();
-
 	void notifySceneReady();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
@@ -677,8 +673,6 @@ public:
 	void unloadSpawnedChildren();
 
 	void notifyCloseContainer(PlayerCreature* player);
-
-	int onPositionUpdate();
 
 	void notifySceneReady();
 
