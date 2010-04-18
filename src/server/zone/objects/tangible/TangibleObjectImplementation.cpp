@@ -75,12 +75,12 @@ void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	objectCount = 0;
 
 	conditionDamage = 0;
-	maxCondition = 6000;
+	maxCondition = templateData->getIntField("maxCondition");
 
 	sliced = false;
 
-	optionsBitmask = 0;
-	pvpStatusBitmask = 0;
+	optionsBitmask = templateData->getIntField("optionsBitmask");
+	pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {

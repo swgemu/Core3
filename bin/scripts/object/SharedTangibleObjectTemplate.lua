@@ -70,6 +70,11 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	targetable = 0,
 	
 	playerUseMask = ALL,
+	
+	maxCondition = 1000,
+	
+	optionsBitmask = 0,
+	pvpStatusBitmask = 0,
 
 	certificationsRequired = { },
 	customizationVariableMapping = { }

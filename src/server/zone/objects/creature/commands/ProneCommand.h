@@ -46,6 +46,7 @@ which carries forward this exception.
 #define PRONECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 
 class ProneCommand : public QueueCommand {
 public:
@@ -63,8 +64,28 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		creature->setPosture(CreaturePosture::PRONE);
+		StringTokenizer args(arguments.toString());
+		args.setDelimeter(" ");
 
+		if (args.hasMoreTokens()) {
+			ZoneServer* zserv = server->getZoneServer();
+
+			String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
+			CharacterBuilderTerminal* blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 1);
+
+			if (blueFrog == NULL)
+				return false;
+
+			float x = creature->getPositionX();
+			float y = creature->getPositionY();
+			float z = creature->getZone()->getHeight(x, y);
+
+			blueFrog->initializePosition(x, z, y);
+			blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+			blueFrog->insertToZone(creature->getZone());
+		} else {
+			creature->setPosture(CreaturePosture::PRONE);
+		}
 
 		return true;
 	}

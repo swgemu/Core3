@@ -254,8 +254,16 @@ class TangibleObject extends SceneObject {
 		return maxCondition;
 	}
 	
+	public void setMaxCondition(int maxCond) {
+		maxCondition = maxCond;
+	}
+	
 	public int getConditionDamage() {
 		return conditionDamage;
+	}
+	
+	public void setConditionDamage(int condDamage) {
+		conditionDamage = condDamage;
 	}
 	
 	public int getVolume() {
@@ -268,6 +276,10 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
+	}
+	
+	public void setOptionsBitmask(unsigned int bitmask) {
+		optionsBitmask = bitmask;
 	}
 	
 	public unsigned int getPvpStatusBitmask() {

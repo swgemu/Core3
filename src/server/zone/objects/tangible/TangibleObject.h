@@ -168,13 +168,19 @@ public:
 
 	int getMaxCondition();
 
+	void setMaxCondition(int maxCond);
+
 	int getConditionDamage();
+
+	void setConditionDamage(int condDamage);
 
 	int getVolume();
 
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
+
+	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 
@@ -343,13 +349,19 @@ public:
 
 	int getMaxCondition();
 
+	void setMaxCondition(int maxCond);
+
 	int getConditionDamage();
+
+	void setConditionDamage(int condDamage);
 
 	int getVolume();
 
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
+
+	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 
@@ -430,13 +442,19 @@ public:
 
 	int getMaxCondition();
 
+	void setMaxCondition(int maxCond);
+
 	int getConditionDamage();
+
+	void setConditionDamage(int condDamage);
 
 	int getVolume();
 
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
+
+	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 
