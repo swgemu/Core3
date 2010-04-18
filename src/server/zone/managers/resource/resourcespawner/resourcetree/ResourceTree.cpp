@@ -111,12 +111,11 @@ bool ResourceTree::buildTreeFromDatabase() {
 				}
 
 				entry->setResourceContainerType(res->getString(47));
-				//entry->setResourceContainerTypeCRC(res->getUnsignedInt(47));
-
 				entry->setRandomNameClass(res->getString(48));
 
 				baseNode->addEntry(entry);
 			}
+			baseNode->updateEntries();
 		}
 		delete res;
 	} catch (DatabaseException& e) {
@@ -133,21 +132,17 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 ResourceTreeEntry* ResourceTree::getResource(const String& type) {
 	ResourceTreeEntry* entry = NULL;
-	Time expireTime;
-	uint64 start = expireTime.currentNanoTime();
+
 	entry = baseNode->getEntry(entry, type);
-	uint64 finish = expireTime.currentNanoTime();
-	System::out << finish - start << " nano's" << endl;
+
 	return entry;
 }
 
-ResourceTreeEntry* ResourceTree::getRandomResource(const String& type) {
+ResourceTreeEntry* ResourceTree::getRandomResource(const String& type, Vector<String> excludes) {
 	ResourceTreeEntry* entry = NULL;
-	Time expireTime;
-	uint64 start = expireTime.currentNanoTime();
+
 	entry = baseNode->getEntry(entry, type, 1);
-	uint64 finish = expireTime.currentNanoTime();
-	System::out << finish - start << " nano's" << endl;
+
 	return entry;
 }
 

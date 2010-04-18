@@ -57,7 +57,7 @@ public:
 	~ResourceTree();
 
 	ResourceTreeEntry* getResource(const String& type);
-	ResourceTreeEntry* getRandomResource(const String& type);
+	ResourceTreeEntry* getRandomResource(const String& type, Vector<String> excludes);
 
 
 	void toString();

@@ -165,29 +165,48 @@ void ResourceSpawner::shiftResources() {
 	randomPool->update();
 	nativePool->update();
 
-	createResourceSpawn("steel");
+	createResourceSpawn("metal");
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
 }
 
-ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
 
-	ResourceTreeEntry* resourceTemplate = resourceTree->getRandomResource(type);
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
+		const Vector<String> excludes) {
+
+	ResourceTreeEntry* resourceTemplate = resourceTree->getRandomResource(type, excludes);
 
 	resourceTemplate->toString();
 
-	String name = nameManager->makeResourceName(resourceTemplate->isOrganic());
+	resourceTemplate = resourceTree->getRandomResource(type, excludes);
 
-	System::out << "test" << endl;
+	resourceTemplate->toString();
+
+	resourceTemplate = resourceTree->getRandomResource(type, excludes);
+
+	resourceTemplate->toString();
+
+ 	String name = nameManager->makeResourceName(resourceTemplate->isOrganic());
 
 	ResourceSpawn* newSpawn = (ResourceSpawn*) objectManager->createObject(741847407, 2, "resourcespawns");
-
-	System::out << "test" << endl;
-
-
 
 	System::out << name << endl;
 
 	return newSpawn;
+}
+
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
+
+	Vector<String> excludes;
+
+	return createResourceSpawn(type, excludes);
+}
+
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes,
+		const Vector<String> excludes) {
+
+	String type = includes.get(System::random(includes.size() - 1));
+
+	return createResourceSpawn(type, excludes);
 }
