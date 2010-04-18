@@ -134,6 +134,8 @@ namespace server {
 	  	void handleCommandsListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleAccountListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleCharacterListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+
+	  	void handleCharacterBuilderSelectItem(uint32 boxid, PlayerCreature* player, int cancel, int index);
 	  };
 	  }
   }
