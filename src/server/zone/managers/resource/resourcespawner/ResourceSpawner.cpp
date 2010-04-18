@@ -175,15 +175,15 @@ void ResourceSpawner::shiftResources() {
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		const Vector<String> excludes) {
 
-	ResourceTreeEntry* resourceTemplate = resourceTree->getRandomResource(type, excludes);
+	ResourceTreeEntry* resourceTemplate = resourceTree->getEntry(type, excludes, false);
 
 	resourceTemplate->toString();
 
-	resourceTemplate = resourceTree->getRandomResource(type, excludes);
+	resourceTemplate = resourceTree->getEntry(type, excludes, false);
 
 	resourceTemplate->toString();
 
-	resourceTemplate = resourceTree->getRandomResource(type, excludes);
+	resourceTemplate = resourceTree->getEntry(type, excludes, false);
 
 	resourceTemplate->toString();
 
