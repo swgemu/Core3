@@ -174,7 +174,7 @@ public:
 		*/
 
 		object->setMovementCounter(movementCounter);
-		object->setDirection(directionZ, directionX, directionY, directionW);
+		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
 
