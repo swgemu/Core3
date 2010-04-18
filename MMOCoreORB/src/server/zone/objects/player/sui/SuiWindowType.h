@@ -134,6 +134,8 @@ public:
 	static const int CHARACTERLIST = 83;
 
 	static const int FISHING = 90;
+
+	static const int CHARACTERBUILDERITEMSELECT = 100;
 };
 
 #endif /*SuiWindowType_H_*/

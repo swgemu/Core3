@@ -208,6 +208,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::FISHING:
 		handleFishingAction(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
+	case SuiWindowType::CHARACTERBUILDERITEMSELECT:
+		handleCharacterBuilderSelectItem(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	/*case SuiWindowType::BLUE_FROG_ITEM_REQUEST:
 		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -1178,6 +1181,39 @@ void SuiManager::handleFishingAction(uint32 boxID, PlayerCreature* player, uint3
 			manager->setFishBoxID(player,newBoxID);
 		}
 	}
+}
+
+void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* player, int cancel, int index) {
+	Locker _locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+	player->removeSuiBox(boxID);
+
+	if (cancel > 0)
+		return;
+
+	if (!sui->isListBox())
+		return;
+
+	SuiListBox* listBox = (SuiListBox*) sui.get();
+	uint32 itemCRC = (uint32) listBox->getMenuObjectID(index);
+
+	ZoneServer* zserv = player->getZoneServer();
+
+	if (zserv == NULL)
+		return;
+
+	SceneObject* item = zserv->createObject(itemCRC, 1);
+
+	if (item == NULL)
+		return;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	item->sendTo(player);
+	inventory->addObject(item, -1, true);
 }
 /*
 void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int index) {

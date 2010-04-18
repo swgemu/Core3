@@ -35,9 +35,12 @@
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
@@ -150,6 +153,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BazaarTerminal>(SceneObject::BAZAAR);
 	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
+	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObject::CHARACTERBUILDERTERMINAL);
+
+	objectFactory.registerObject<Deed>(SceneObject::DEED);
+	objectFactory.registerObject<PlayerHouseDeed>(SceneObject::BUILDINGDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 
