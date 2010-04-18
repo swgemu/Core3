@@ -97,6 +97,9 @@ int FishingManagerImplementation::startFishing(PlayerCreature* player) {
 	}
 
 	player->doAnimation("fishing_cast");
+
+	player->attachPositionChangedObserver(this);
+
 	return 0;
 }
 
@@ -125,6 +128,8 @@ void FishingManagerImplementation::stopFishing(PlayerCreature* player, uint32 bo
 		removeMarker(player);
 		stopFishingEvent(player);
 	}
+
+	player->deattachPositionChangedObserver(this);
 }
 
 void FishingManagerImplementation::fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, uint32 boxID) {
@@ -320,11 +325,11 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 			lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(i), true);
 			lootFishObject->sendTo(player);
 
-			marker->addObject(lootFishObject,-1,true);
+			marker->addObject(lootFishObject, -1, true);
 		}
 
 		marker->openContainerTo(player);
-		stopFishing(player,boxID,false);
+		stopFishing(player, boxID, false);
 	}
 }
 
@@ -432,7 +437,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(PlayerCreature* player)
 	ManagedReference<FishingPoleObject*> pole = getPole(player);
 
 	if (pole != NULL) {
-		if (pole->isFishingPoleObject()&&pole->hasFullContainerObjects()) {
+		if (pole->isFishingPoleObject() && pole->hasFullContainerObjects()) {
 			ManagedReference<FishingBaitObject*> bait = (FishingBaitObject*)pole->getContainerObject(0);
 
 			if (bait != NULL) {
@@ -508,9 +513,9 @@ void FishingManagerImplementation::cheat(PlayerCreature* player, int value) {
 
 	removeMarker(player);
 
-	ManagedReference<SceneObject*> newMarker = createMarker(x,y,z,zone);
+	ManagedReference<SceneObject*> newMarker = createMarker(x, y, z, zone);
 	setFishMarker(player,newMarker);
-	success(player,-1,newMarker,getFishBoxID(player));
+	success(player, -1, newMarker, getFishBoxID(player));
 }
 
 void FishingManagerImplementation::freeBait(PlayerCreature* player) {
@@ -540,18 +545,18 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 			if (oldstate == SNAGGED) { // line just got unsnagged
 				player->sendSystemMessage("@fishing:line_free");
 			}
-			player->showFlyText("fishing","fly_nibble",20,200,20);
+			player->showFlyText("fishing","fly_nibble", 20, 200, 20);
 			createSplash(marker->getPositionX(),marker->getPositionY(),marker->getPositionZ(),player->getZone(),player);
 			break;
 		case BITE:
-			player->showFlyText("fishing","fly_bite",200,20,20);
+			player->showFlyText("fishing","fly_bite", 200, 20, 20);
 			createSplash(marker->getPositionX(),marker->getPositionY(),marker->getPositionZ(),player->getZone(),player);
 			break;
 		case CATCH:
 			if (oldstate != BITE) { // fish is trying to get away
 				player->sendSystemMessage("@fishing:fish_run");
 			} else {
-				player->showFlyText("fishing","fly_catch",20,20,200);
+				player->showFlyText("fishing","fly_catch", 20, 20, 200);
 				createSplash(marker->getPositionX(),marker->getPositionY(),marker->getPositionZ(),player->getZone(),player);
 			}
 			break;
@@ -629,17 +634,17 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 void FishingManagerImplementation::createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player) {
 	String splash = "object/tangible/fishing/shared_splash.iff";
 	ManagedReference<SceneObject*> splashObject = zoneServer->createObject(splash.hashCode(), 0);
-	splashObject->initializePosition(x,z+0.5,y);
+	splashObject->initializePosition(x, z + 0.5, y);
 	splashObject->insertToZone(zone);
-	createFishingSplashEvent(player,zoneServer,splashObject);
+	createFishingSplashEvent(player, zoneServer, splashObject);
 }
 
 void FishingManagerImplementation::updateMarker(PlayerCreature* player, int nextAction, SceneObject* marker) {
 
 	// CALCULATING BOBBER POS
 	Zone* zone = player->getZone();
-	float x = (player->getPositionX()+marker->getPositionX())/2;
-	float y = (player->getPositionY()+marker->getPositionY())/2;
+	float x = (player->getPositionX() + marker->getPositionX()) / 2;
+	float y = (player->getPositionY() + marker->getPositionY()) / 2;
 	float z = marker->getPositionZ();
 
 	removeMarker(player);

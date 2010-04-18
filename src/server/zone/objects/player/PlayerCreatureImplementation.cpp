@@ -423,14 +423,3 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 void PlayerCreatureImplementation::notifyCloseContainer(PlayerCreature* player) {
 
 }
-
-int PlayerCreatureImplementation::onPositionUpdate() {
-	int creature = CreatureObjectImplementation::onPositionUpdate();
-
-	if (zone != NULL) { // TODO: implement observer pattern for events
-		ManagedReference<FishingManager*> manager = zone->getZoneServer()->getFishingManager();
-		manager->checkFishingOnPositionUpdate(_this);
-	}
-
-	return creature;
-}

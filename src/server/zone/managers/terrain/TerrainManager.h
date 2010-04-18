@@ -11,24 +11,25 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/scene/SceneObjectObserver.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-class TerrainManager {
+class TerrainManager : public SceneObjectObserver {
 	ProceduralTerrainAppearance terrainData;
 
 	//Zone* zone;
 
 public:
-	TerrainManager(/*Zone* planet*/) {
-		//zone = planet;
-	}
+	TerrainManager(/*Zone* planet*/);
 
-	void initialize(const String& terrainFile) {
-		terrainData.load(terrainFile);
-	}
+	void initialize(const String& terrainFile);
 
 	inline bool getWaterHeight(float x, float y, float& waterHeight) {
 		return terrainData.getWater(x, y, waterHeight);
 	}
+
+	int notify(SceneObject* object);
 };
 
 

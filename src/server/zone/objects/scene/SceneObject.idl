@@ -74,6 +74,7 @@ import server.zone.packets.scene.AttributeListMessage;
 
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
+include server.zone.objects.scene.SceneObjectObserver;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -115,6 +116,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected SortedVector<SceneObject> notifiedObjects;
+	
+	@dereferenced
+	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
 	
 	protected boolean staticObject;
 
@@ -787,6 +791,22 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return 0;
 	}
 	
+	/**
+	 * Registers attaches an observer for the position changed event
+	 */
+	@local
+	public void attachPositionChangedObserver(SceneObjectObserver observer) {
+		positionChangedObservers.put(observer);
+	}
+	
+	/**
+	 * Drops a positionChangedObserver
+	 */
+	@local
+	public void deattachPositionChangedObserver(SceneObjectObserver observer) {
+		positionChangedObservers.drop(observer);
+	}
+	
 	public native float getDistanceTo(SceneObject object);
 	
 	public native void updateVehiclePosition();
@@ -795,6 +815,12 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * Is called when this object has moved to a new position
 	 */
 	public abstract int onPositionUpdate() {
+		for (int i = 0; i < positionChangedObservers.size(); ++i) {
+			SceneObjectObserver observer = positionChangedObservers.get(i);
+			
+			observer.notify(this);
+		}
+		
 		return 0;
 	}
 	
