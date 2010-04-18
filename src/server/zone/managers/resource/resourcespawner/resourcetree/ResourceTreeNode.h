@@ -58,9 +58,13 @@ private:
 	Vector<ResourceTreeEntry* > entries;
 	Vector<ResourceTreeNode* > nodes;
 
+	ResourceTreeNode* parentNode;
+
 public:
 	ResourceTreeNode(const String& t, const String& n, const int d);
 	~ResourceTreeNode();
+
+	void setParentNode(ResourceTreeNode* parent);
 
 	void addEntry(ResourceTreeEntry* entry);
 
@@ -73,6 +77,12 @@ public:
 	String getType() {
 		return stfType;
 	}
+
+	ResourceTreeNode* getParentNode() {
+		return parentNode;
+	}
+
+	void updateEntries();
 
 	void toString();
 

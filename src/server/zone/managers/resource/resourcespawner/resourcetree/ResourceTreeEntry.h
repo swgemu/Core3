@@ -47,16 +47,18 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "ResourceAttribute.h"
+#include "ResourceTreeNode.h"
 
 class ResourceTreeNode;
 
 class ResourceTreeEntry {
-
+private:
 	ResourceTreeNode* myNode;
 
 	String type;
 
 	Vector<String> classList;
+	Vector<String> stfClassList;
 	Vector<ResourceAttribute* > attributeList;
 
 	int maxtype;
@@ -65,18 +67,17 @@ class ResourceTreeEntry {
 	int maxpool;
 
 	bool recycled;
+	bool children;
 
 	String resourceContainerType;
-	uint32 resourceContainerTypeCRC;
 	String randomNameClass;
-	float weight;
 
 public:
 	ResourceTreeEntry(const String& inType) {
 		type = inType;
 
-		classList.removeAll();
-		attributeList.removeAll();
+		recycled = false;
+		children = false;
 
 		maxtype = 0;
 		mintype = 0;
@@ -90,6 +91,7 @@ public:
 
 	~ResourceTreeEntry() {
 		classList.removeAll();
+		stfClassList.removeAll();
 		for(int i = 0; i < attributeList.size(); ++i)
 			delete attributeList.get(i);
 	}
@@ -98,13 +100,29 @@ public:
 		myNode = node;
 	}
 
+	ResourceTreeNode* getMyNode() {
+		return myNode;
+	}
+
 	void addClass(const String newclass) {
 		classList.add(newclass);
+	}
+
+	void addStfClass(const String newclass) {
+
+		stfClassList.add(0, newclass);
 	}
 
 	String getClass(const int classNum) {
 		if(classNum <= classList.size())
 			return classList.get(classNum);
+		else
+			return "";
+	}
+
+	String getStfClass(const int classNum) {
+		if(classNum <= stfClassList.size())
+			return stfClassList.get(classNum);
 		else
 			return "";
 	}
@@ -115,7 +133,7 @@ public:
 
 	String getFinalClass() {
 		if(classList.size() > 0)
-			return classList.get(classList.size());
+			return classList.get(classList.size() - 1);
 		else
 			return "";
 	}
@@ -168,9 +186,9 @@ public:
         return randomNameClass;
     }
 
-    bool getRecycled() const
+    bool isRecycled() const
     {
-        return recycled;
+        return recycled == true;
     }
 
     String getResourceContainerType() const
@@ -218,13 +236,24 @@ public:
         this->resourceContainerType = resourceContainerType;
     }
 
+    bool hasChildren() {
+    	return children;
+    }
+
+    void setChildren(bool child) {
+    	children = child;
+    }
+
 
 	void toString(){
 
 		System::out << "************ Resource Tree Entry ********************\n";
-		System::out << "ENUM = " << type << endl;
+		System::out << "Type = " << type << endl;
 		for(int i = 0; i < classList.size(); ++i)
 			System::out << "Class" << i << " = " << classList.get(i) << endl;
+
+		for(int i = 0; i < stfClassList.size(); ++i)
+			System::out << "STFClass" << i << " = " << stfClassList.get(i) << endl;
 
 
 		System::out << "Max Types = " << maxtype << endl;
@@ -241,26 +270,6 @@ public:
 		System::out << "Resource Container Type = " << resourceContainerType  << endl;
 		System::out << "Random Name Class = " << randomNameClass  << endl;
 	}
-    uint32 getResourceContainerTypeCRC() const
-    {
-        return resourceContainerTypeCRC;
-    }
-
-    void setResourceContainerTypeCRC(uint32 resourceContainerTypeCRC)
-    {
-        this->resourceContainerTypeCRC = resourceContainerTypeCRC;
-    }
-
-    float getWeight() const
-    {
-        return weight;
-    }
-
-    void setWeight(float weight)
-    {
-        this->weight = weight;
-    }
-
 };
 
 #endif /*RESOURCETREEENTRY_H_*/

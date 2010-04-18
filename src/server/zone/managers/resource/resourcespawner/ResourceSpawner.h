@@ -96,6 +96,10 @@ public:
 	void shiftResources();
 
 	ResourceSpawn* createResourceSpawn(const String& type);
+	ResourceSpawn* createResourceSpawn(const String& type,
+			const Vector<String> excludes);
+	ResourceSpawn* createResourceSpawn(const Vector<String> includes,
+			const Vector<String> excludes);
 
 private:
 
