@@ -49,13 +49,20 @@ ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d
 	stfType = t;
 	nodeClass = n;
 	depth = d;
+
+	parentNode = NULL;
 }
+
 ResourceTreeNode::~ResourceTreeNode() {
 	while (nodes.size() > 0)
 		delete nodes.remove(0);
 
 	while (entries.size() > 0)
 		delete entries.remove(0);
+}
+
+void ResourceTreeNode::setParentNode(ResourceTreeNode* parent) {
+	parentNode = parent;
 }
 
 void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
@@ -75,10 +82,25 @@ void ResourceTreeNode::addEntry(ResourceTreeEntry* entry) {
 	//The entry doesn't belong to an existing child node, now we
 	//determine if it belong on this node, or on a new child node.
 	if(entry->getClassCount() > depth + 1) {
-		ResourceTreeNode* newnode = new ResourceTreeNode(entry->getType(), entry->getClass(depth), depth + 1);
+
+		String stfType = "";
+
+		for(int i = 0; i < entries.size(); ++i) {
+			ResourceTreeEntry* ent = entries.get(i);
+			if(ent->getFinalClass() == entry->getClass(depth)) {
+				stfType = ent->getType();
+				ent->setChildren(true);
+				break;
+			}
+		}
+
+		ResourceTreeNode* newnode = new ResourceTreeNode(stfType, entry->getClass(depth), depth + 1);
 		nodes.add(newnode);
 		newnode->addEntry(entry);
+		newnode->setParentNode(this);
+
 	} else {
+
 		entry->setMyNode(this);
 		entries.add(entry);
 	}
@@ -107,6 +129,7 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(ResourceTreeEntry* entry,
 }
 
 ResourceTreeEntry* ResourceTreeNode::getRandomEntry(const String& type) {
+
 	Vector<ResourceTreeEntry*> candidates;
 
 	for(int i = 0; i < nodes.size(); ++i) {
@@ -116,13 +139,16 @@ ResourceTreeEntry* ResourceTreeNode::getRandomEntry(const String& type) {
 			break;
 		}
 	}
+
+	int random = System::random(candidates.size() - 1);
+	return candidates.get(random);
 }
 
 void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates) {
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
-		candidates.add(ent);
-		System::out << "Added " << ent->getType() << endl;
+		if(!ent->isRecycled() && !ent->hasChildren())
+			candidates.add(ent);
 	}
 
 	for(int i = 0; i < nodes.size(); ++i) {
@@ -131,16 +157,35 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates) {
 	}
 }
 
+void ResourceTreeNode::updateEntries() {
+	for(int i = 0; i < entries.size(); ++i) {
+		ResourceTreeEntry* ent = entries.get(i);
+		ResourceTreeNode* node = ent->getMyNode();
+		while(node->getParentNode() != NULL) {
+			ent->addStfClass(node->getType());
+			node = node->getParentNode();
+		}
+		//ent->makeStfClassList();
+	}
+
+	for(int i = 0; i < nodes.size(); ++i) {
+		ResourceTreeNode* node = nodes.get(i);
+		node->updateEntries();
+	}
+}
+
 void ResourceTreeNode::toString() {
-	System::out << "--- Node " << depth << " : " << nodeClass << "---" << endl;
+	System::out << "--- Node " << depth << " : " << nodeClass << "---" << stfType << endl;
 
 	System::out << "NODES" << endl;
 	for(int i = 0; i < nodes.size(); ++i)
-		System::out << nodes.get(i)->getNodeClass() << endl;
+		System::out << nodes.get(i)->getNodeClass() << " " <<
+				nodes.get(i)->getType() << endl;
 
 	System::out << "ENTRIES" << endl;
 	for(int i = 0; i < entries.size(); ++i)
-		System::out << entries.get(i)->getType() << endl;
+		//System::out << entries.get(i)->getType() << " Has Children = " << entries.get(i)->hasChildren() << endl;
+		entries.get(i)->toString();
 
 	for(int i = 0; i < nodes.size(); ++i)
 		nodes.get(i)->toString();
