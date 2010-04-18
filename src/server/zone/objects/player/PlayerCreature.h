@@ -161,38 +161,6 @@ class GroupObject;
 
 using namespace server::zone::objects::group;
 
-namespace server {
-namespace zone {
-namespace managers {
-namespace minigames {
-namespace events {
-
-class FishingEvent;
-
-} // namespace events
-} // namespace minigames
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::minigames::events;
-
-namespace server {
-namespace zone {
-namespace managers {
-namespace minigames {
-namespace events {
-
-class FishingSplashEvent;
-
-} // namespace events
-} // namespace minigames
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::minigames::events;
-
 #include "server/zone/objects/player/sui/SuiBox.h"
 
 #include "server/zone/objects/creature/CreatureFlag.h"
@@ -247,14 +215,6 @@ public:
 	void notifyDissapear(QuadTreeEntry* entry);
 
 	void disconnect(bool closeClient, bool doLock);
-
-	FishingEvent* getFishingEvent();
-
-	void setFishingEvent(FishingEvent* event);
-
-	FishingSplashEvent* getFishingSplashEvent();
-
-	void setFishingSplashEvent(FishingSplashEvent* event);
 
 	void unload();
 
@@ -429,10 +389,6 @@ protected:
 
 	PlayerRecoveryEvent* recoveryEvent;
 
-	Reference<FishingEvent*> fishingEvent;
-
-	Reference<FishingSplashEvent*> fishingSplashEvent;
-
 	int skillPoints;
 
 	Badges badges;
@@ -484,14 +440,6 @@ public:
 	void notifyDissapear(QuadTreeEntry* entry);
 
 	void disconnect(bool closeClient, bool doLock);
-
-	FishingEvent* getFishingEvent();
-
-	void setFishingEvent(FishingEvent* event);
-
-	FishingSplashEvent* getFishingSplashEvent();
-
-	void setFishingSplashEvent(FishingSplashEvent* event);
 
 	void unload();
 

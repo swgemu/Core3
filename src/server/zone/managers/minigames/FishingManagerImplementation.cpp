@@ -18,6 +18,7 @@
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/managers/minigames/events/FishingEvent.h"
 #include "server/zone/managers/minigames/events/FishingSplashEvent.h"
+#include "system/util/VectorMap.h"
 
 /*
  * startFishing checks for Fishing Pole, Fishing Bait and Water at the position of the bobber,
@@ -90,10 +91,10 @@ int FishingManagerImplementation::startFishing(PlayerCreature* player) {
 	createFishingEvent(player, DONOTHING, zoneServer, markerObject, 0, 0, WAITING);
 	uint32 boxID = createWindow(player, 0);
 
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
-		fishingEvent->setFishBoxID(boxID);
+		setFishBoxID(player, boxID);
 	}
 
 	player->doAnimation("fishing_cast");
@@ -116,8 +117,7 @@ void FishingManagerImplementation::stopFishing(PlayerCreature* player, uint32 bo
 	uint32 id = boxID;
 
 	if (boxID == 0) {
-		Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
-		id = fishingEvent->getFishBoxID();
+		id = getFishBoxID(player);
 	}
 
 	// close windows
@@ -404,7 +404,7 @@ int FishingManagerImplementation::getFish(PlayerCreature* player) {
 }
 
 int FishingManagerImplementation::getNextAction(PlayerCreature* player) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		return fishingEvent->getNextAction();
@@ -414,7 +414,7 @@ int FishingManagerImplementation::getNextAction(PlayerCreature* player) {
 }
 
 void FishingManagerImplementation::setNextAction(PlayerCreature* player, int next) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		fishingEvent->setNextAction(next);
@@ -452,7 +452,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(PlayerCreature* player)
 }
 
 uint32 FishingManagerImplementation::getFishBoxID(PlayerCreature* player) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		return fishingEvent->getFishBoxID();
@@ -462,7 +462,7 @@ uint32 FishingManagerImplementation::getFishBoxID(PlayerCreature* player) {
 }
 
 void FishingManagerImplementation::setFishBoxID(PlayerCreature* player, uint32 boxID) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		fishingEvent->setFishBoxID(boxID);
@@ -470,7 +470,7 @@ void FishingManagerImplementation::setFishBoxID(PlayerCreature* player, uint32 b
 }
 
 int FishingManagerImplementation::getFishingState(PlayerCreature* player) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		return fishingEvent->getFishingState();
@@ -480,7 +480,7 @@ int FishingManagerImplementation::getFishingState(PlayerCreature* player) {
 }
 
 void FishingManagerImplementation::setFishingState(PlayerCreature* player, int state) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		fishingEvent->setFishingState(state);
@@ -488,7 +488,7 @@ void FishingManagerImplementation::setFishingState(PlayerCreature* player, int s
 }
 
 SceneObject* FishingManagerImplementation::getFishMarker(PlayerCreature* player) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		return fishingEvent->getMarker();
@@ -498,7 +498,7 @@ SceneObject* FishingManagerImplementation::getFishMarker(PlayerCreature* player)
 }
 
 void FishingManagerImplementation::setFishMarker(PlayerCreature* player, SceneObject* marker) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
 		fishingEvent->setMarker(marker);
@@ -572,7 +572,7 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 
 	createFishingEvent(player, DONOTHING, zoneServer, marker, fish, boxID, newstate);
 
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 	if (fishingEvent != NULL) {
 		fishingEvent->setFishBoxID(createWindow(player, boxID));
 	}
@@ -689,33 +689,39 @@ void FishingManagerImplementation::removeSplash(SceneObject* splash) {
 void FishingManagerImplementation::createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) {
 	Reference<FishingSplashEvent*> fishingSplashEvent = new FishingSplashEvent(player, zoneServer, splash);
 	fishingSplashEvent->schedule(1000);
-	player->setFishingSplashEvent(fishingSplashEvent);
-
 	return;
 }
 
 void FishingManagerImplementation::createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, uint32 boxID, int state) {
+	Locker _locker(_this);
 	Reference<FishingEvent*> fishingEvent = new FishingEvent(player, nextAction, zoneServer, marker, sum, boxID, state);
 	fishingEvent->schedule(7000);
-	player->setFishingEvent(fishingEvent);
+	events.put(player->getObjectID(), fishingEvent);
 
 	return;
 }
 
 void FishingManagerImplementation::stopFishingEvent(PlayerCreature* player) {
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 
 	if (fishingEvent != NULL) {
+		Locker _locker(_this);
 		fishingEvent->cancel();
-		player->setFishingEvent(NULL);
+		events.drop(player->getObjectID());
 		fishingEvent = NULL;
 	}
+}
+
+FishingEvent* FishingManagerImplementation::getFishingEvent(PlayerCreature* player) {
+	Locker _locker(_this);
+	Reference<FishingEvent*> fishingEvent = events.get(player->getObjectID());
+	return fishingEvent;
 }
 
 void FishingManagerImplementation::checkFishingOnPositionUpdate(PlayerCreature* player) {
 	//info("running on pos update on manager", true);
 
-	Reference<FishingEvent*> fishingEvent = player->getFishingEvent();
+	Reference<FishingEvent*> fishingEvent = getFishingEvent(player);
 	int fishingState = getFishingState(player);
 
 	if ((fishingState != FishingManager::NOTFISHING) && (fishingEvent != NULL)) {

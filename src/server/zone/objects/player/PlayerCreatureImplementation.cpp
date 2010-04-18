@@ -20,14 +20,12 @@
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
-#include "server/zone/managers/minigames/events/FishingEvent.h"
-#include "server/zone/managers/minigames/events/FishingSplashEvent.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
-
+#include "server/zone/managers/minigames/FishingManager.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/ZoneServer.h"
@@ -386,27 +384,6 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
 	playerObject->sendFriendLists();
 }
-
-FishingEvent* PlayerCreatureImplementation::getFishingEvent() {
-	return fishingEvent;
-}
-
-void PlayerCreatureImplementation::setFishingEvent(FishingEvent* event) {
-	if (event != NULL) {
-		fishingEvent = event;
-	} else {
-		fishingEvent = NULL;
-	}
-}
-
-FishingSplashEvent* PlayerCreatureImplementation::getFishingSplashEvent() {
-	return fishingSplashEvent;
-}
-
-void PlayerCreatureImplementation::setFishingSplashEvent(FishingSplashEvent* event) {
-	fishingSplashEvent = event;
-}
-
 
 void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
 	if (closeWindowToClient == true) {
