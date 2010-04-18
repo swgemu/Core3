@@ -618,6 +618,14 @@ void FishingManager::stopFishingEvent(PlayerCreature* player) {
 		((FishingManagerImplementation*) _impl)->stopFishingEvent(player);
 }
 
+FishingEvent* FishingManager::getFishingEvent(PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((FishingManagerImplementation*) _impl)->getFishingEvent(player);
+}
+
 /*
  *	FishingManagerImplementation
  */
@@ -694,144 +702,145 @@ void FishingManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("action", &action);
 	addSerializableVariable("property", &property);
 	addSerializableVariable("baitStatus", &baitStatus);
+	addSerializableVariable("events", &events);
 }
 
 FishingManagerImplementation::FishingManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/minigames/FishingManager.idl(120):  		zoneServer = server;
+	// server/zone/managers/minigames/FishingManager.idl(126):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/minigames/FishingManager.idl(122):  		initializeFishType();
+	// server/zone/managers/minigames/FishingManager.idl(128):  		initializeFishType();
 	initializeFishType();
-	// server/zone/managers/minigames/FishingManager.idl(123):  		initializeLoot();
+	// server/zone/managers/minigames/FishingManager.idl(129):  		initializeLoot();
 	initializeLoot();
-	// server/zone/managers/minigames/FishingManager.idl(124):  		initializeColor();
+	// server/zone/managers/minigames/FishingManager.idl(130):  		initializeColor();
 	initializeColor();
-	// server/zone/managers/minigames/FishingManager.idl(125):  		initializeBaitStatus();
+	// server/zone/managers/minigames/FishingManager.idl(131):  		initializeBaitStatus();
 	initializeBaitStatus();
-	// server/zone/managers/minigames/FishingManager.idl(126):  		initializeProperty();
+	// server/zone/managers/minigames/FishingManager.idl(132):  		initializeProperty();
 	initializeProperty();
-	// server/zone/managers/minigames/FishingManager.idl(127):  		initializeAction();
+	// server/zone/managers/minigames/FishingManager.idl(133):  		initializeAction();
 	initializeAction();
-	// server/zone/managers/minigames/FishingManager.idl(128):  		initializeState();
+	// server/zone/managers/minigames/FishingManager.idl(134):  		initializeState();
 	initializeState();
-	// server/zone/managers/minigames/FishingManager.idl(130):  		Logger.setLoggingName("FishingManager");
+	// server/zone/managers/minigames/FishingManager.idl(136):  		Logger.setLoggingName("FishingManager");
 	Logger::setLoggingName("FishingManager");
-	// server/zone/managers/minigames/FishingManager.idl(131):  		Logger.setLogging(true);
+	// server/zone/managers/minigames/FishingManager.idl(137):  		Logger.setLogging(true);
 	Logger::setLogging(true);
 }
 
 void FishingManagerImplementation::initializeBaitStatus() {
-	// server/zone/managers/minigames/FishingManager.idl(135):  		baitStatus.add("Fresh");
+	// server/zone/managers/minigames/FishingManager.idl(141):  		baitStatus.add("Fresh");
 	(&baitStatus)->add("Fresh");
-	// server/zone/managers/minigames/FishingManager.idl(136):  		baitStatus.add("Soggy");
+	// server/zone/managers/minigames/FishingManager.idl(142):  		baitStatus.add("Soggy");
 	(&baitStatus)->add("Soggy");
-	// server/zone/managers/minigames/FishingManager.idl(137):  		baitStatus.add("Mush");
+	// server/zone/managers/minigames/FishingManager.idl(143):  		baitStatus.add("Mush");
 	(&baitStatus)->add("Mush");
 }
 
 void FishingManagerImplementation::initializeProperty() {
-	// server/zone/managers/minigames/FishingManager.idl(141):  		property.add(" ");
+	// server/zone/managers/minigames/FishingManager.idl(147):  		property.add(" ");
 	(&property)->add(" ");
-	// server/zone/managers/minigames/FishingManager.idl(142):  		property.add("*");
+	// server/zone/managers/minigames/FishingManager.idl(148):  		property.add("*");
 	(&property)->add("*");
-	// server/zone/managers/minigames/FishingManager.idl(143):  		property.add("**");
+	// server/zone/managers/minigames/FishingManager.idl(149):  		property.add("**");
 	(&property)->add("**");
-	// server/zone/managers/minigames/FishingManager.idl(144):  		property.add("***");
+	// server/zone/managers/minigames/FishingManager.idl(150):  		property.add("***");
 	(&property)->add("***");
-	// server/zone/managers/minigames/FishingManager.idl(145):  		property.add("****");
+	// server/zone/managers/minigames/FishingManager.idl(151):  		property.add("****");
 	(&property)->add("****");
-	// server/zone/managers/minigames/FishingManager.idl(146):  		property.add("*****");
+	// server/zone/managers/minigames/FishingManager.idl(152):  		property.add("*****");
 	(&property)->add("*****");
 }
 
 void FishingManagerImplementation::initializeAction() {
-	// server/zone/managers/minigames/FishingManager.idl(150):  		action.add("None");
+	// server/zone/managers/minigames/FishingManager.idl(156):  		action.add("None");
 	(&action)->add("None");
-	// server/zone/managers/minigames/FishingManager.idl(151):  		action.add("Tug Up");
+	// server/zone/managers/minigames/FishingManager.idl(157):  		action.add("Tug Up");
 	(&action)->add("Tug Up");
-	// server/zone/managers/minigames/FishingManager.idl(152):  		action.add("Tug Right");
+	// server/zone/managers/minigames/FishingManager.idl(158):  		action.add("Tug Right");
 	(&action)->add("Tug Right");
-	// server/zone/managers/minigames/FishingManager.idl(153):  		action.add("Tug Left");
+	// server/zone/managers/minigames/FishingManager.idl(159):  		action.add("Tug Left");
 	(&action)->add("Tug Left");
-	// server/zone/managers/minigames/FishingManager.idl(154):  		action.add("Small Reel");
+	// server/zone/managers/minigames/FishingManager.idl(160):  		action.add("Small Reel");
 	(&action)->add("Small Reel");
-	// server/zone/managers/minigames/FishingManager.idl(155):  		action.add("Stop Fishing");
+	// server/zone/managers/minigames/FishingManager.idl(161):  		action.add("Stop Fishing");
 	(&action)->add("Stop Fishing");
 }
 
 void FishingManagerImplementation::initializeState() {
-	// server/zone/managers/minigames/FishingManager.idl(159):  		state.add("Nothing");
+	// server/zone/managers/minigames/FishingManager.idl(165):  		state.add("Nothing");
 	(&state)->add("Nothing");
-	// server/zone/managers/minigames/FishingManager.idl(160):  		state.add("Wating...");
+	// server/zone/managers/minigames/FishingManager.idl(166):  		state.add("Wating...");
 	(&state)->add("Wating...");
-	// server/zone/managers/minigames/FishingManager.idl(161):  		state.add("Line snagged!");
+	// server/zone/managers/minigames/FishingManager.idl(167):  		state.add("Line snagged!");
 	(&state)->add("Line snagged!");
-	// server/zone/managers/minigames/FishingManager.idl(162):  		state.add("Nibble...");
+	// server/zone/managers/minigames/FishingManager.idl(168):  		state.add("Nibble...");
 	(&state)->add("Nibble...");
-	// server/zone/managers/minigames/FishingManager.idl(163):  		state.add("BITE!");
+	// server/zone/managers/minigames/FishingManager.idl(169):  		state.add("BITE!");
 	(&state)->add("BITE!");
-	// server/zone/managers/minigames/FishingManager.idl(164):  		state.add("CAUGHT SOMETHING!");
+	// server/zone/managers/minigames/FishingManager.idl(170):  		state.add("CAUGHT SOMETHING!");
 	(&state)->add("CAUGHT SOMETHING!");
-	// server/zone/managers/minigames/FishingManager.idl(165):  		state.add("CAUGHT SOMETHING!");
+	// server/zone/managers/minigames/FishingManager.idl(171):  		state.add("CAUGHT SOMETHING!");
 	(&state)->add("CAUGHT SOMETHING!");
 }
 
 void FishingManagerImplementation::initializeFishType() {
-	// server/zone/managers/minigames/FishingManager.idl(169):  		fishType.add("blackfish");
+	// server/zone/managers/minigames/FishingManager.idl(175):  		fishType.add("blackfish");
 	(&fishType)->add("blackfish");
-	// server/zone/managers/minigames/FishingManager.idl(170):  		fishType.add("blowfish");
+	// server/zone/managers/minigames/FishingManager.idl(176):  		fishType.add("blowfish");
 	(&fishType)->add("blowfish");
-	// server/zone/managers/minigames/FishingManager.idl(171):  		fishType.add("bluefish");
+	// server/zone/managers/minigames/FishingManager.idl(177):  		fishType.add("bluefish");
 	(&fishType)->add("bluefish");
-	// server/zone/managers/minigames/FishingManager.idl(172):  		fishType.add("faa");
+	// server/zone/managers/minigames/FishingManager.idl(178):  		fishType.add("faa");
 	(&fishType)->add("faa");
-	// server/zone/managers/minigames/FishingManager.idl(173):  		fishType.add("laa");
+	// server/zone/managers/minigames/FishingManager.idl(179):  		fishType.add("laa");
 	(&fishType)->add("laa");
-	// server/zone/managers/minigames/FishingManager.idl(174):  		fishType.add("ray");
+	// server/zone/managers/minigames/FishingManager.idl(180):  		fishType.add("ray");
 	(&fishType)->add("ray");
-	// server/zone/managers/minigames/FishingManager.idl(175):  		fishType.add("striped");
+	// server/zone/managers/minigames/FishingManager.idl(181):  		fishType.add("striped");
 	(&fishType)->add("striped");
 }
 
 void FishingManagerImplementation::initializeLoot() {
-	// server/zone/managers/minigames/FishingManager.idl(179):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
+	// server/zone/managers/minigames/FishingManager.idl(185):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
 	(&miscLoot)->add("object/tangible/wearables/shoes/shoes_s07.iff");
-	// server/zone/managers/minigames/FishingManager.idl(180):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
+	// server/zone/managers/minigames/FishingManager.idl(186):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
 	(&miscLoot)->add("object/tangible/wearables/shoes/shoes_s02.iff");
-	// server/zone/managers/minigames/FishingManager.idl(181):  		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
+	// server/zone/managers/minigames/FishingManager.idl(187):  		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
 	(&miscLoot)->add("object/tangible/food/foraged/foraged_fruit_s1.iff");
-	// server/zone/managers/minigames/FishingManager.idl(183):  		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
+	// server/zone/managers/minigames/FishingManager.idl(189):  		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
 	(&rareLoot)->add("object/weapon/ranged/pistol/pistol_cdef.iff");
 }
 
 void FishingManagerImplementation::initializeColor() {
-	// server/zone/managers/minigames/FishingManager.idl(187):  		color.add(61);
+	// server/zone/managers/minigames/FishingManager.idl(193):  		color.add(61);
 	(&color)->add(61);
-	// server/zone/managers/minigames/FishingManager.idl(188):  		color.add(51);
+	// server/zone/managers/minigames/FishingManager.idl(194):  		color.add(51);
 	(&color)->add(51);
-	// server/zone/managers/minigames/FishingManager.idl(189):  		color.add(21);
+	// server/zone/managers/minigames/FishingManager.idl(195):  		color.add(21);
 	(&color)->add(21);
-	// server/zone/managers/minigames/FishingManager.idl(190):  		color.add(32);
+	// server/zone/managers/minigames/FishingManager.idl(196):  		color.add(32);
 	(&color)->add(32);
-	// server/zone/managers/minigames/FishingManager.idl(191):  		color.add(8);
+	// server/zone/managers/minigames/FishingManager.idl(197):  		color.add(8);
 	(&color)->add(8);
-	// server/zone/managers/minigames/FishingManager.idl(192):  		color.add(14);
+	// server/zone/managers/minigames/FishingManager.idl(198):  		color.add(14);
 	(&color)->add(14);
-	// server/zone/managers/minigames/FishingManager.idl(193):  		color.add(55);
+	// server/zone/managers/minigames/FishingManager.idl(199):  		color.add(55);
 	(&color)->add(55);
-	// server/zone/managers/minigames/FishingManager.idl(194):  		color.add(0);
+	// server/zone/managers/minigames/FishingManager.idl(200):  		color.add(0);
 	(&color)->add(0);
-	// server/zone/managers/minigames/FishingManager.idl(195):  		color.add(7);
+	// server/zone/managers/minigames/FishingManager.idl(201):  		color.add(7);
 	(&color)->add(7);
-	// server/zone/managers/minigames/FishingManager.idl(196):  		color.add(41);
+	// server/zone/managers/minigames/FishingManager.idl(202):  		color.add(41);
 	(&color)->add(41);
 }
 
 int FishingManagerImplementation::notify(SceneObject* sceneObject) {
-	// server/zone/managers/minigames/FishingManager.idl(200):  		return 
-	if (sceneObject->isPlayerCreature())	// server/zone/managers/minigames/FishingManager.idl(201):  			checkFishingOnPositionUpdate((PlayerCreature) sceneObject);
+	// server/zone/managers/minigames/FishingManager.idl(206):  		return 
+	if (sceneObject->isPlayerCreature())	// server/zone/managers/minigames/FishingManager.idl(207):  			checkFishingOnPositionUpdate((PlayerCreature) sceneObject);
 	checkFishingOnPositionUpdate((PlayerCreature*) sceneObject);
-	// server/zone/managers/minigames/FishingManager.idl(203):  0;
+	// server/zone/managers/minigames/FishingManager.idl(209):  0;
 	return 0;
 }
 
