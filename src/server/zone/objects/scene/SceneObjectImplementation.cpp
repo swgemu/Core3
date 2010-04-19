@@ -75,7 +75,7 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	notifiedObjects.setNoDuplicateInsertPlan();
+	notifiedSentObjects.setNoDuplicateInsertPlan();
 	slottedObjects.setNullValue(NULL);
 	slottedObjects.setNoDuplicateInsertPlan();
 	containerObjects.setNullValue(NULL);
@@ -405,7 +405,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     parent->removeObject(_this);
 
     building->remove(this);
-    building->removeNotifiedObject(_this);
+    building->removeNotifiedSentObject(_this);
 }
 
 void SceneObjectImplementation::updateVehiclePosition() {
@@ -716,6 +716,11 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
 	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
+	player->sendMessage(cont);
+}
+
+void SceneObjectImplementation::closeContainerTo(PlayerCreature* player) {
+	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this, true);
 	player->sendMessage(cont);
 }
 

@@ -588,6 +588,8 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
+	void closeContainerTo(PlayerCreature* player);
+
 	void notifyCloseContainer(PlayerCreature* player);
 
 	void insertToZone(Zone* zone);
@@ -630,11 +632,11 @@ public:
 
 	int onPositionUpdate();
 
-	bool hasNotifiedObject(SceneObject* object);
+	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedObject(SceneObject* object);
+	void addNotifiedSentObject(SceneObject* object);
 
-	void removeNotifiedObject(SceneObject* object);
+	void removeNotifiedSentObject(SceneObject* object);
 
 	unsigned long long getObjectID();
 
@@ -826,7 +828,7 @@ protected:
 
 	StringId detailedDescription;
 
-	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
+	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
 	SortedVector<SceneObjectObserver*> positionChangedObservers;
 
@@ -1269,6 +1271,8 @@ public:
 
 	virtual void openContainerTo(PlayerCreature* player);
 
+	virtual void closeContainerTo(PlayerCreature* player);
+
 	virtual void notifyCloseContainer(PlayerCreature* player);
 
 	virtual void insertToZone(Zone* zone);
@@ -1311,11 +1315,11 @@ public:
 
 	virtual int onPositionUpdate();
 
-	bool hasNotifiedObject(SceneObject* object);
+	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedObject(SceneObject* object);
+	void addNotifiedSentObject(SceneObject* object);
 
-	void removeNotifiedObject(SceneObject* object);
+	void removeNotifiedSentObject(SceneObject* object);
 
 	unsigned long long getObjectID();
 
@@ -1544,6 +1548,8 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
+	void closeContainerTo(PlayerCreature* player);
+
 	void notifyCloseContainer(PlayerCreature* player);
 
 	void insertToZone(Zone* zone);
@@ -1578,11 +1584,11 @@ public:
 
 	int onPositionUpdate();
 
-	bool hasNotifiedObject(SceneObject* object);
+	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedObject(SceneObject* object);
+	void addNotifiedSentObject(SceneObject* object);
 
-	void removeNotifiedObject(SceneObject* object);
+	void removeNotifiedSentObject(SceneObject* object);
 
 	unsigned long long getObjectID();
 
