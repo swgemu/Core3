@@ -232,81 +232,85 @@ void ResourceSpawnImplementation::_serializationHelperMethod() {
 	addSerializableVariable("spawnContainer", &spawnContainer);
 	addSerializableVariable("spawnClasses", &spawnClasses);
 	addSerializableVariable("spawnAttributes", &spawnAttributes);
+	addSerializableVariable("resourcePool", &resourcePool);
+	addSerializableVariable("spawned", &spawned);
+	addSerializableVariable("despawned", &despawned);
+	addSerializableVariable("inShift", &inShift);
 }
 
 ResourceSpawnImplementation::ResourceSpawnImplementation(String& inType) {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceSpawn.idl(68):   	spawnType = inType;
+	// server/zone/objects/resource/ResourceSpawn.idl(73):   	spawnType = inType;
 	spawnType = inType;
-	// server/zone/objects/resource/ResourceSpawn.idl(69):   	Logger.setLoggingName("ResourceSpawnObject");
+	// server/zone/objects/resource/ResourceSpawn.idl(74):   	Logger.setLoggingName("ResourceSpawnObject");
 	Logger::setLoggingName("ResourceSpawnObject");
-	// server/zone/objects/resource/ResourceSpawn.idl(71):   	spawnAttributes.setNoDuplicateInsertPlan() ;
+	// server/zone/objects/resource/ResourceSpawn.idl(76):   	spawnAttributes.setNoDuplicateInsertPlan() ;
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
 }
 
 void ResourceSpawnImplementation::setName(String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(91):   	spawnName = name;
+	// server/zone/objects/resource/ResourceSpawn.idl(96):   	spawnName = name;
 	spawnName = name;
 }
 
 void ResourceSpawnImplementation::addClass(String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(101):   	spawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(106):   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addAttribute(String& attribute, int value) {
-	// server/zone/objects/resource/ResourceSpawn.idl(105):  		spawnAttributes.put(attribute, value);
+	// server/zone/objects/resource/ResourceSpawn.idl(110):  		spawnAttributes.put(attribute, value);
 	(&spawnAttributes)->put(attribute, value);
 }
 
 void ResourceSpawnImplementation::setContainerName(String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(110):   	spawnContainer = name;
+	// server/zone/objects/resource/ResourceSpawn.idl(115):   	spawnContainer = name;
 	spawnContainer = name;
 }
 
 String ResourceSpawnImplementation::getName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(115):  		return spawnName;
+	// server/zone/objects/resource/ResourceSpawn.idl(120):  		return spawnName;
 	return spawnName;
 }
 
 String ResourceSpawnImplementation::getType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(119):   	return spawnType;
+	// server/zone/objects/resource/ResourceSpawn.idl(124):   	return spawnType;
 	return spawnType;
 }
 
 String ResourceSpawnImplementation::getClass(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(123):  
+	// server/zone/objects/resource/ResourceSpawn.idl(128):  
 	if (index < (&spawnClasses)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(124):   		return spawnClasses.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(129):   		return spawnClasses.get(index);
 	return (&spawnClasses)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(126):   		return "";
+	// server/zone/objects/resource/ResourceSpawn.idl(131):   		return "";
 	return "";
 }
 }
 
 int ResourceSpawnImplementation::getAttributeAndValue(String& attribute, int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(131):  
+	// server/zone/objects/resource/ResourceSpawn.idl(136):  
 	if (index < (&spawnAttributes)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(132):   		return spawnAttributes.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(137):   		return spawnAttributes.get(index);
 	return (&spawnAttributes)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(134):   		return 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(139):   		return 0;
 	return 0;
 }
 }
 
 String ResourceSpawnImplementation::getContainerName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(139):   	return spawnContainer;
+	// server/zone/objects/resource/ResourceSpawn.idl(144):   	return spawnContainer;
 	return spawnContainer;
 }
 
 void ResourceSpawnImplementation::toString() {
-	// server/zone/objects/resource/ResourceSpawn.idl(143):   System.out << "test\n";
+	// server/zone/objects/resource/ResourceSpawn.idl(148):   System.out << "test\n";
 	System::out << "test\n";
 }
 

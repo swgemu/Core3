@@ -45,8 +45,8 @@ which carries forward this exception.
 #ifndef RESOURCETREENODE_H_
 #define RESOURCETREENODE_H_
 
-#include "engine/engine.h"
 #include "ResourceTreeEntry.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
 
 class ResourceTreeNode {
 private:
@@ -72,17 +72,18 @@ public:
 
 	void add(ResourceTreeEntry* entry);
 
-	ResourceTreeEntry* getEntry(const String& type,
-			Vector<String> excludes, bool organic);
+	ResourceTreeEntry* getEntry(const String& type, Vector<String> excludes = 0, int zoneid = -1);
+
+	ResourceTreeEntry* find(ResourceTreeEntry* entry, const String& type);
+	ResourceTreeNode* find(ResourceTreeNode* node, const String& type);
+
+	ResourceTreeEntry* getPlanetSpecificEntry(const String& planet);
 
 	void updateEntries();
 
 	void toString();
 
 private:
-
-	void find(ResourceTreeEntry* entry, const String& type);
-	void find(ResourceTreeNode* node, const String& type);
 
 	void getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 			const Vector<String> excludes);

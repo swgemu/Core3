@@ -91,6 +91,14 @@ protected:
 
 	VectorMap<String, int> spawnAttributes;
 
+	String resourcePool;
+
+	unsigned long long spawned;
+
+	unsigned long long despawned;
+
+	bool inShift;
+
 public:
 	ResourceSpawnImplementation(String& inType);
 

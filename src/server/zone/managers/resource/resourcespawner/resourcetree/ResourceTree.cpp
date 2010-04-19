@@ -130,8 +130,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 	return true;
 }
 
-ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> excludes, bool organic) {
-	return baseNode->getEntry(type, excludes, organic);
+ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> excludes, int zoneid) {
+	return baseNode->getEntry(type, excludes, zoneid);
 }
 
 

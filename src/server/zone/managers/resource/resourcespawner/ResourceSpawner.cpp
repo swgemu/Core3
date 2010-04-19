@@ -165,7 +165,7 @@ void ResourceSpawner::shiftResources() {
 	randomPool->update();
 	nativePool->update();
 
-	createResourceSpawn("metal");
+	createResourceSpawn("softwood", 0);
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
@@ -173,23 +173,15 @@ void ResourceSpawner::shiftResources() {
 
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		const Vector<String> excludes) {
+		int zoneid, const Vector<String> excludes) {
 
-	ResourceTreeEntry* resourceTemplate = resourceTree->getEntry(type, excludes, false);
-
-	resourceTemplate->toString();
-
-	resourceTemplate = resourceTree->getEntry(type, excludes, false);
-
-	resourceTemplate->toString();
-
-	resourceTemplate = resourceTree->getEntry(type, excludes, false);
-
-	resourceTemplate->toString();
+	ResourceTreeEntry* resourceTemplate = resourceTree->getEntry(type, excludes, zoneid);
 
  	String name = nameManager->makeResourceName(resourceTemplate->isOrganic());
 
-	ResourceSpawn* newSpawn = (ResourceSpawn*) objectManager->createObject(741847407, 2, "resourcespawns");
+ 	ResourceSpawn* newSpawn = (ResourceSpawn*) objectManager->createObject(0xf1636e70, 2, "resourcespawns");
+
+
 
 	System::out << name << endl;
 
@@ -200,13 +192,13 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
 
 	Vector<String> excludes;
 
-	return createResourceSpawn(type, excludes);
+	return createResourceSpawn(type, -1, excludes);
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes,
-		const Vector<String> excludes) {
+		int zoneid, const Vector<String> excludes) {
 
 	String type = includes.get(System::random(includes.size() - 1));
 
-	return createResourceSpawn(type, excludes);
+	return createResourceSpawn(type, zoneid, excludes);
 }
