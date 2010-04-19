@@ -115,7 +115,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected StringId detailedDescription;
 	
 	@dereferenced
-	protected SortedVector<SceneObject> notifiedObjects;
+	protected SortedVector<SceneObject> notifiedSentObjects;
 	
 	@dereferenced
 	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
@@ -637,6 +637,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract native void openContainerTo(PlayerCreature player);
 	
 	/**
+	 * Closes the container of a player
+	 */
+	public abstract native void closeContainerTo(PlayerCreature player);
+	
+	/**
 	 * Is executed when the client closes the opened container
 	 * @pre { player locked }
 	 * @post { player locked }
@@ -824,16 +829,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return 0;
 	}
 	
-	public boolean hasNotifiedObject(SceneObject object) {
-		return notifiedObjects.contains(object);
+	public boolean hasNotifiedSentObject(SceneObject object) {
+		return notifiedSentObjects.contains(object);
 	}
 	
-	public void addNotifiedObject(SceneObject object) {
-		notifiedObjects.put(object);
+	public void addNotifiedSentObject(SceneObject object) {
+		notifiedSentObjects.put(object);
 	}
 	
-	public void removeNotifiedObject(SceneObject object) {
-		notifiedObjects.drop(object);
+	public void removeNotifiedSentObject(SceneObject object) {
+		notifiedSentObjects.drop(object);
 	}
 
 	public native unsigned long getObjectID();

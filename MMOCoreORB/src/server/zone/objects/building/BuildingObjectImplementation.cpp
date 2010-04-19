@@ -101,7 +101,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 	SceneObject* scnoStub = (SceneObject*) scno->_getStub();
 
-	removeNotifiedObject(scnoStub);
+	removeNotifiedSentObject(scnoStub);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
