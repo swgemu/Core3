@@ -57,7 +57,7 @@ public:
 	~ResourceTree();
 
 	ResourceTreeEntry* getEntry(const String& type,
-			Vector<String> excludes = 0, bool organic = false);
+			Vector<String> excludes = 0, int zoneid = -1);
 
 	void toString();
 

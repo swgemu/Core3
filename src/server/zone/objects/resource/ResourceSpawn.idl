@@ -64,6 +64,11 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	@dereferenced
 	protected VectorMap<string, int> spawnAttributes;
 
+	protected string resourcePool;
+	protected unsigned long spawned;
+	protected unsigned long despawned;
+	protected boolean inShift;
+
     public ResourceSpawn(string inType) {
        	spawnType = inType;
        	Logger.setLoggingName("ResourceSpawnObject");

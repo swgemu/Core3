@@ -120,70 +120,84 @@ void ResourceTreeNode::add(ResourceTreeEntry* entry) {
 	}
 }
 
-void ResourceTreeNode::find(ResourceTreeEntry* entry, const String& type) {
+ResourceTreeEntry* ResourceTreeNode::find(ResourceTreeEntry* entry, const String& type) {
 	if (entry != NULL)
-		return;
+		return entry;
 
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
 		if(ent->getType() == type) {
-			entry = ent;
-			return;
+			return ent;
 		}
 	}
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
-		node->find(entry, type);
+		entry = node->find(entry, type);
 	}
+	return entry;
 }
 
-void ResourceTreeNode::find(ResourceTreeNode* node, const String& type) {
+ResourceTreeNode* ResourceTreeNode::find(ResourceTreeNode* node, const String& type) {
 	if (node != NULL)
-		return;
-
-	for(int i = 0; i < entries.size(); ++i) {
-		ResourceTreeEntry* ent = entries.get(i);
-		if(ent->getType() == type) {
-			node = this;
-			return;
-		}
-	}
+		return node;
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* n = nodes.get(i);
-		n->find(node, type);
+System::out << n->getStfName() << " " <<  type << endl;
+		if(n->getStfName() == type)
+			return n;
+		else
+			node = n->find(node, type);
 	}
+	return node;
 }
 
 ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
-		Vector<String> excludes, bool organic) {
+		Vector<String> excludes, int zoneid) {
 
 	ResourceTreeEntry* entry = NULL;
-	find(entry, type);
+	entry = find(entry, type);
 
+	// If the entry has no childen, it means
+	// that a specific resource was requested
+	//
 	if(!entry->hasChildren())
 		return entry;
 
+	ResourceTreeNode* node = NULL;
+	node = entry->getMyNode()->find(node, type);
 
+	if(node == NULL)
+		return NULL;
+
+	if (zoneid >= 0) {
+
+		String planet = Planet::getPlanetName(zoneid);
+
+		return node->getPlanetSpecificEntry(planet);
+
+	} else {
+
+		Vector<ResourceTreeEntry*> candidates;
+
+		node->getEntryPool(candidates, excludes);
+
+		int random = System::random(candidates.size() - 1);
+
+		return candidates.get(random);
+	}
 }
 
-/*ResourceTreeEntry* ResourceTreeNode::getRandom(const String& type,
-		const Vector<String> excludes) {
-
-	Vector<ResourceTreeEntry*> candidates;
-
-	for(int i = 0; i < nodes.size(); ++i) {
-		ResourceTreeNode* node = nodes.get(i);
-		if(node->getStfName() == type) {
-			node->getEntryPool(candidates, excludes);
-			break;
+ResourceTreeEntry* ResourceTreeNode::getPlanetSpecificEntry(const String& planet) {
+	for(int i = 0; i < entries.size(); ++i) {
+		ResourceTreeEntry* ent = entries.get(i);
+		if(ent->getType().indexOf(planet) != -1) {
+			return ent;
 		}
 	}
-
-	int random = System::random(candidates.size() - 1);
-	return candidates.get(random);
-}*/
+	return NULL;
+}
 
 void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 		const Vector<String> excludes) {
@@ -201,10 +215,8 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 				}
 			}
 
-			if(valid) {
+			if(valid)
 				candidates.add(ent);
-System::out << ent->getFinalClass() << endl;
-			}
 		}
 	}
 

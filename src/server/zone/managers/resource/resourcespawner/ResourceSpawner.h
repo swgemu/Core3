@@ -96,10 +96,10 @@ public:
 	void shiftResources();
 
 	ResourceSpawn* createResourceSpawn(const String& type);
-	ResourceSpawn* createResourceSpawn(const String& type,
-			const Vector<String> excludes);
+	ResourceSpawn* createResourceSpawn(const String& type, int zoneid = -1,
+			const Vector<String> excludes = 0);
 	ResourceSpawn* createResourceSpawn(const Vector<String> includes,
-			const Vector<String> excludes);
+			int zoneid = -1, const Vector<String> excludes = 0);
 
 private:
 

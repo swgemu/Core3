@@ -65,7 +65,15 @@ public:
 
 	bool update() {
 
+
 		return true;
+	}
+
+	void initialize(const String& includes, const String& excludes) {
+		ResourcePool::initialize(includes, excludes);
+
+
+
 	}
 
 private:
