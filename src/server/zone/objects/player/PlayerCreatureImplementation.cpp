@@ -84,7 +84,7 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 		if (grandParent == scno) { // we already should have sent our grandParent to owner
 
 			if (grandParent->isBuildingObject())
-				((BuildingObject*)grandParent)->addNotifiedObject(_this);
+				((BuildingObject*)grandParent)->addNotifiedSentObject(_this);
 
 			return;
 		}
@@ -102,14 +102,14 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 		if (scnoGrandParent->isBuildingObject()) {
 			BuildingObject* building = (BuildingObject*)scnoGrandParent;
 
-			if (!building->hasNotifiedObject(_this))
+			if (!building->hasNotifiedSentObject(_this))
 				return;
 		} else // we wait for the Objects parent to get sent
 			return;
 	}
 
 	if (scno->isBuildingObject())
-		((BuildingObject*)scno)->addNotifiedObject(_this);
+		((BuildingObject*)scno)->addNotifiedSentObject(_this);
 
 	scno->sendTo(_this, true);
 }
