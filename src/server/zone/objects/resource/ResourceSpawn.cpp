@@ -8,8 +8,8 @@
  *	ResourceSpawnStub
  */
 
-ResourceSpawn::ResourceSpawn(String& inType) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceSpawnImplementation(inType);
+ResourceSpawn::ResourceSpawn() : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceSpawnImplementation();
 	_impl->_setStub(this);
 }
 
@@ -41,12 +41,25 @@ void ResourceSpawn::setName(String& name) {
 		((ResourceSpawnImplementation*) _impl)->setName(name);
 }
 
-void ResourceSpawn::addClass(String& newclass) {
+void ResourceSpawn::setType(String& type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addAsciiParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceSpawnImplementation*) _impl)->setType(type);
+}
+
+void ResourceSpawn::addClass(String& newclass) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(newclass);
 
 		method.executeWithVoidReturn();
@@ -59,26 +72,13 @@ void ResourceSpawn::addAttribute(String& attribute, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(attribute);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
 		((ResourceSpawnImplementation*) _impl)->addAttribute(attribute, value);
-}
-
-void ResourceSpawn::setContainerName(String& name) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((ResourceSpawnImplementation*) _impl)->setContainerName(name);
 }
 
 String ResourceSpawn::getName() {
@@ -121,41 +121,65 @@ String ResourceSpawn::getClass(int index) {
 		return ((ResourceSpawnImplementation*) _impl)->getClass(index);
 }
 
-int ResourceSpawn::getAttributeAndValue(String& attribute, int index) {
+String ResourceSpawn::getFinalClass() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
-		method.addAsciiParameter(attribute);
-		method.addSignedIntParameter(index);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getFinalClass);
+		return _return_getFinalClass;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getAttributeAndValue(attribute, index);
+		return ((ResourceSpawnImplementation*) _impl)->getFinalClass();
 }
 
-String ResourceSpawn::getContainerName() {
+void ResourceSpawn::setSpawned(unsigned long long t) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addUnsignedLongParameter(t);
 
-		method.executeWithAsciiReturn(_return_getContainerName);
-		return _return_getContainerName;
+		method.executeWithVoidReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getContainerName();
+		((ResourceSpawnImplementation*) _impl)->setSpawned(t);
 }
 
-void ResourceSpawn::toString() {
+void ResourceSpawn::setDespawned(unsigned long long t) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addUnsignedLongParameter(t);
 
 		method.executeWithVoidReturn();
+	} else
+		((ResourceSpawnImplementation*) _impl)->setDespawned(t);
+}
+
+bool ResourceSpawn::inShift() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->inShift();
+}
+
+int ResourceSpawn::getAttributeAndValue(String& attribute, int index) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->getAttributeAndValue(attribute, index);
+}
+
+void ResourceSpawn::toString() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
 	} else
 		((ResourceSpawnImplementation*) _impl)->toString();
 }
@@ -229,89 +253,83 @@ void ResourceSpawnImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("spawnType", &spawnType);
 	addSerializableVariable("spawnName", &spawnName);
-	addSerializableVariable("spawnContainer", &spawnContainer);
 	addSerializableVariable("spawnClasses", &spawnClasses);
 	addSerializableVariable("spawnAttributes", &spawnAttributes);
 	addSerializableVariable("resourcePool", &resourcePool);
 	addSerializableVariable("spawned", &spawned);
 	addSerializableVariable("despawned", &despawned);
-	addSerializableVariable("inShift", &inShift);
+	addSerializableVariable("totalUnitsSpawned", &totalUnitsSpawned);
+	addSerializableVariable("unitsInCirculation", &unitsInCirculation);
 }
 
-ResourceSpawnImplementation::ResourceSpawnImplementation(String& inType) {
+ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceSpawn.idl(73):   	spawnType = inType;
-	spawnType = inType;
-	// server/zone/objects/resource/ResourceSpawn.idl(74):   	Logger.setLoggingName("ResourceSpawnObject");
-	Logger::setLoggingName("ResourceSpawnObject");
-	// server/zone/objects/resource/ResourceSpawn.idl(76):   	spawnAttributes.setNoDuplicateInsertPlan() ;
+	// server/zone/objects/resource/ResourceSpawn.idl(74):   	spawnType = "";
+	spawnType = "";
+	// server/zone/objects/resource/ResourceSpawn.idl(75):   	spawnAttributes.setNoDuplicateInsertPlan();
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
 }
 
 void ResourceSpawnImplementation::setName(String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(96):   	spawnName = name;
+	// server/zone/objects/resource/ResourceSpawn.idl(95):   	spawnName = name;
 	spawnName = name;
 }
 
+void ResourceSpawnImplementation::setType(String& type) {
+	// server/zone/objects/resource/ResourceSpawn.idl(99):   	spawnType = type;
+	spawnType = type;
+}
+
 void ResourceSpawnImplementation::addClass(String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(106):   	spawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(109):   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addAttribute(String& attribute, int value) {
-	// server/zone/objects/resource/ResourceSpawn.idl(110):  		spawnAttributes.put(attribute, value);
+	// server/zone/objects/resource/ResourceSpawn.idl(113):  		spawnAttributes.put(attribute, value);
 	(&spawnAttributes)->put(attribute, value);
 }
 
-void ResourceSpawnImplementation::setContainerName(String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(115):   	spawnContainer = name;
-	spawnContainer = name;
-}
-
 String ResourceSpawnImplementation::getName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(120):  		return spawnName;
+	// server/zone/objects/resource/ResourceSpawn.idl(119):  		return spawnName;
 	return spawnName;
 }
 
 String ResourceSpawnImplementation::getType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(124):   	return spawnType;
+	// server/zone/objects/resource/ResourceSpawn.idl(123):   	return spawnType;
 	return spawnType;
 }
 
 String ResourceSpawnImplementation::getClass(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(128):  
+	// server/zone/objects/resource/ResourceSpawn.idl(127):  
 	if (index < (&spawnClasses)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(129):   		return spawnClasses.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(128):   		return spawnClasses.get(index);
 	return (&spawnClasses)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(131):   		return "";
+	// server/zone/objects/resource/ResourceSpawn.idl(130):   		return "";
 	return "";
 }
 }
 
-int ResourceSpawnImplementation::getAttributeAndValue(String& attribute, int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(136):  
-	if (index < (&spawnAttributes)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(137):   		return spawnAttributes.get(index);
-	return (&spawnAttributes)->get(index);
+String ResourceSpawnImplementation::getFinalClass() {
+	// server/zone/objects/resource/ResourceSpawn.idl(135):  
+	if ((&spawnClasses)->size() > 0)	// server/zone/objects/resource/ResourceSpawn.idl(136):   		return spawnClasses.get(spawnClasses.size() - 1);
+	return (&spawnClasses)->get((&spawnClasses)->size() - 1);
+
+	else 	// server/zone/objects/resource/ResourceSpawn.idl(138):   		return "";
+	return "";
 }
 
-	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(139):   		return 0;
-	return 0;
-}
-}
-
-String ResourceSpawnImplementation::getContainerName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(144):   	return spawnContainer;
-	return spawnContainer;
+void ResourceSpawnImplementation::setSpawned(unsigned long long t) {
+	// server/zone/objects/resource/ResourceSpawn.idl(142):   	spawned = t;
+	spawned = t;
 }
 
-void ResourceSpawnImplementation::toString() {
-	// server/zone/objects/resource/ResourceSpawn.idl(148):   System.out << "test\n";
-	System::out << "test\n";
+void ResourceSpawnImplementation::setDespawned(unsigned long long t) {
+	// server/zone/objects/resource/ResourceSpawn.idl(146):   	despawned = t;
+	despawned = t;
 }
 
 /*
@@ -329,13 +347,13 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 7:
-		addClass(inv->getAsciiParameter(_param0_addClass__String_));
+		setType(inv->getAsciiParameter(_param0_setType__String_));
 		break;
 	case 8:
-		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
+		addClass(inv->getAsciiParameter(_param0_addClass__String_));
 		break;
 	case 9:
-		setContainerName(inv->getAsciiParameter(_param0_setContainerName__String_));
+		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
 		break;
 	case 10:
 		resp->insertAscii(getName());
@@ -347,13 +365,13 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertAscii(getClass(inv->getSignedIntParameter()));
 		break;
 	case 13:
-		resp->insertSignedInt(getAttributeAndValue(inv->getAsciiParameter(_param0_getAttributeAndValue__String_int_), inv->getSignedIntParameter()));
+		resp->insertAscii(getFinalClass());
 		break;
 	case 14:
-		resp->insertAscii(getContainerName());
+		setSpawned(inv->getUnsignedLongParameter());
 		break;
 	case 15:
-		toString();
+		setDespawned(inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -366,16 +384,16 @@ void ResourceSpawnAdapter::setName(String& name) {
 	((ResourceSpawnImplementation*) impl)->setName(name);
 }
 
+void ResourceSpawnAdapter::setType(String& type) {
+	((ResourceSpawnImplementation*) impl)->setType(type);
+}
+
 void ResourceSpawnAdapter::addClass(String& newclass) {
 	((ResourceSpawnImplementation*) impl)->addClass(newclass);
 }
 
 void ResourceSpawnAdapter::addAttribute(String& attribute, int value) {
 	((ResourceSpawnImplementation*) impl)->addAttribute(attribute, value);
-}
-
-void ResourceSpawnAdapter::setContainerName(String& name) {
-	((ResourceSpawnImplementation*) impl)->setContainerName(name);
 }
 
 String ResourceSpawnAdapter::getName() {
@@ -390,16 +408,16 @@ String ResourceSpawnAdapter::getClass(int index) {
 	return ((ResourceSpawnImplementation*) impl)->getClass(index);
 }
 
-int ResourceSpawnAdapter::getAttributeAndValue(String& attribute, int index) {
-	return ((ResourceSpawnImplementation*) impl)->getAttributeAndValue(attribute, index);
+String ResourceSpawnAdapter::getFinalClass() {
+	return ((ResourceSpawnImplementation*) impl)->getFinalClass();
 }
 
-String ResourceSpawnAdapter::getContainerName() {
-	return ((ResourceSpawnImplementation*) impl)->getContainerName();
+void ResourceSpawnAdapter::setSpawned(unsigned long long t) {
+	((ResourceSpawnImplementation*) impl)->setSpawned(t);
 }
 
-void ResourceSpawnAdapter::toString() {
-	((ResourceSpawnImplementation*) impl)->toString();
+void ResourceSpawnAdapter::setDespawned(unsigned long long t) {
+	((ResourceSpawnImplementation*) impl)->setDespawned(t);
 }
 
 /*
