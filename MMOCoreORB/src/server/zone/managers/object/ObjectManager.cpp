@@ -82,6 +82,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
 	databaseManager->loadDatabase("staticobjects", true, 0);
+	databaseManager->loadDatabase("sceneobjects", true);
 
 	loadLastUsedObjectID();
 

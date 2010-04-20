@@ -22,6 +22,7 @@ void ObjectControllerImplementation::loadCommands() {
 
 	info("loading queue commands...", true);
 	configManager->loadSlashCommandsFile(queueCommands);
+	configManager->registerSpecialCommands();
 
 	StringBuffer infoMsg;
 	infoMsg << "loaded " << queueCommands->size() << " commands";
@@ -30,7 +31,6 @@ void ObjectControllerImplementation::loadCommands() {
 	// LUA
 	init();
 	Luna<LuaCreatureObject>::Register(L);
-
 }
 
 void ObjectControllerImplementation::finalize() {
