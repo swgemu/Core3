@@ -144,7 +144,6 @@ ResourceTreeNode* ResourceTreeNode::find(ResourceTreeNode* node, const String& t
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* n = nodes.get(i);
-System::out << n->getStfName() << " " <<  type << endl;
 		if(n->getStfName() == type)
 			return n;
 		else

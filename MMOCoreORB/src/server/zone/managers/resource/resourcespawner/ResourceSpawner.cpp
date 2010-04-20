@@ -52,6 +52,8 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 	processor = impl;
 	databaseManager = ObjectDatabaseManager::instance();
 
+	Logger::setLoggingName("ResourceSpawner");
+
 	nameManager = processor->getNameManager();
 	objectManager = objMan;
 
@@ -123,39 +125,20 @@ void ResourceSpawner::start() {
 
 void ResourceSpawner::loadResourceSpawns() {
 
-	/*ObjectDatabase* resourceSpawnDatabase = databaseManager->loadDatabase("resourcespawns", true, 0);
+	info("Building Resource Map");
+
+	ObjectDatabase* resourceSpawnDatabase = databaseManager->loadDatabase("resourcespawns", true);
 
 	ObjectDatabaseIterator iterator(resourceSpawnDatabase);
 
 	uint64 objectID;
 
-	ObjectInputStream objectData(2000);
+	while (iterator.getNextKey(objectID)) {
+		ResourceSpawn* object = (ResourceSpawn*)objectManager->loadPersistentObject(objectID);
+		object->toString();
+	}
 
-	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-		SceneObject* object = (SceneObject*) getObject(objectID);
-
-		if (object != NULL)
-			continue;
-
-		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
-			error("unknown scene object in static database");
-			continue;
-		}
-
-		if (object == NULL) {
-			object = createObject(serverObjectCRC, 0, "staticobjects", objectID);
-
-			if (object == NULL) {
-				error("could not load object from static database");
-
-				continue;
-			}
-
-			deSerializeObject(object, &objectData);
-
-			objectData.reset();
-		}
-	}*/
+	info("Resource Map Complete");
 }
 
 void ResourceSpawner::shiftResources() {
@@ -164,8 +147,6 @@ void ResourceSpawner::shiftResources() {
 	fixedPool->update();
 	randomPool->update();
 	nativePool->update();
-
-	createResourceSpawn("softwood", 0);
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
@@ -177,13 +158,33 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
 	ResourceTreeEntry* resourceTemplate = resourceTree->getEntry(type, excludes, zoneid);
 
- 	String name = nameManager->makeResourceName(resourceTemplate->isOrganic());
+	if(resourceTemplate == NULL)
+		return NULL;
 
- 	ResourceSpawn* newSpawn = (ResourceSpawn*) objectManager->createObject(0xf1636e70, 2, "resourcespawns");
+ 	String name = makeResourceName(resourceTemplate->isOrganic());
 
+ 	ResourceSpawn* newSpawn = new ResourceSpawn();
 
+ 	String resType = resourceTemplate->getType();
+ 	newSpawn->setType(resType);
 
-	System::out << name << endl;
+ 	newSpawn->setName(name);
+
+ 	for(int i = 0; i < resourceTemplate->getClassCount(); ++i) {
+ 		String resClass = resourceTemplate->getClass(i);
+ 		newSpawn->addClass(resClass);
+ 	}
+
+ 	for(int i = 0; i < resourceTemplate->getAttributeCount(); ++i) {
+ 		ResourceAttribute* attrib = resourceTemplate->getAttribute(i);
+ 		int randomValue = randomizeValue(attrib->getMinimum(), attrib->getMaximum());
+ 		String attribName = attrib->getName();
+ 		newSpawn->addAttribute(attribName, randomValue);
+ 	}
+
+ 	objectManager->persistObject(newSpawn,3,"resourcespawns");
+
+ 	newSpawn->toString();
 
 	return newSpawn;
 }
@@ -201,4 +202,43 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> include
 	String type = includes.get(System::random(includes.size() - 1));
 
 	return createResourceSpawn(type, zoneid, excludes);
+}
+
+String ResourceSpawner::makeResourceName(bool isOrganic) {
+
+	String randname;
+
+	//while (true) {
+
+		randname = nameManager->makeResourceName(isOrganic);
+
+	//	if (checkResourceName(randname))
+	//		break;
+	//}
+
+	return randname;
+}
+int ResourceSpawner::randomizeValue(int min, int max) {
+    if (min == 0 && max == 0)
+    	return 0;
+
+    if(min > lowerGateOverride)
+        min = lowerGateOverride;
+
+	int breakpoint = (int)(spawnThrottling * (max - min)) + min;
+	int randomStat = System::random(max - min) + min;
+	bool aboveBreakpoint = System::random(10) == 7;
+
+	if (!(aboveBreakpoint && randomStat > breakpoint)
+		|| (!aboveBreakpoint && randomStat < breakpoint)) {
+
+		if (aboveBreakpoint) {
+			while (randomStat < breakpoint)
+				randomStat = System::random(max - min) + min;
+		} else {
+			while (randomStat > breakpoint)
+	        randomStat = System::random(max - min) + min;
+		}
+	}
+	return randomStat;
 }

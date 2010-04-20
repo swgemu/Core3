@@ -30,17 +30,17 @@ namespace resource {
 
 class ResourceSpawn : public ManagedObject {
 public:
-	ResourceSpawn(String& inType);
+	ResourceSpawn();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void setName(String& name);
 
+	void setType(String& type);
+
 	void addClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
-
-	void setContainerName(String& name);
 
 	String getName();
 
@@ -48,9 +48,15 @@ public:
 
 	String getClass(int index);
 
-	int getAttributeAndValue(String& attribute, int index);
+	String getFinalClass();
 
-	String getContainerName();
+	void setSpawned(unsigned long long t);
+
+	void setDespawned(unsigned long long t);
+
+	bool inShift();
+
+	int getAttributeAndValue(String& attribute, int index);
 
 	void toString();
 
@@ -60,7 +66,7 @@ protected:
 	virtual ~ResourceSpawn();
 
 	String _return_getClass;
-	String _return_getContainerName;
+	String _return_getFinalClass;
 	String _return_getName;
 	String _return_getType;
 
@@ -85,8 +91,6 @@ protected:
 
 	String spawnName;
 
-	String spawnContainer;
-
 	Vector<String> spawnClasses;
 
 	VectorMap<String, int> spawnAttributes;
@@ -97,10 +101,12 @@ protected:
 
 	unsigned long long despawned;
 
-	bool inShift;
+	unsigned long long totalUnitsSpawned;
+
+	unsigned long long unitsInCirculation;
 
 public:
-	ResourceSpawnImplementation(String& inType);
+	ResourceSpawnImplementation();
 
 	ResourceSpawnImplementation(DummyConstructorParameter* param);
 
@@ -108,11 +114,11 @@ public:
 
 	void setName(String& name);
 
+	void setType(String& type);
+
 	void addClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
-
-	void setContainerName(String& name);
 
 	String getName();
 
@@ -120,9 +126,15 @@ public:
 
 	String getClass(int index);
 
-	int getAttributeAndValue(String& attribute, int index);
+	String getFinalClass();
 
-	String getContainerName();
+	void setSpawned(unsigned long long t);
+
+	void setDespawned(unsigned long long t);
+
+	bool inShift();
+
+	int getAttributeAndValue(String& attribute, int index);
 
 	void toString();
 
@@ -167,11 +179,11 @@ public:
 
 	void setName(String& name);
 
+	void setType(String& type);
+
 	void addClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
-
-	void setContainerName(String& name);
 
 	String getName();
 
@@ -179,18 +191,17 @@ public:
 
 	String getClass(int index);
 
-	int getAttributeAndValue(String& attribute, int index);
+	String getFinalClass();
 
-	String getContainerName();
+	void setSpawned(unsigned long long t);
 
-	void toString();
+	void setDespawned(unsigned long long t);
 
 protected:
 	String _param0_setName__String_;
+	String _param0_setType__String_;
 	String _param0_addClass__String_;
 	String _param0_addAttribute__String_int_;
-	String _param0_setContainerName__String_;
-	String _param0_getAttributeAndValue__String_int_;
 };
 
 class ResourceSpawnHelper : public DistributedObjectClassHelper, public Singleton<ResourceSpawnHelper> {

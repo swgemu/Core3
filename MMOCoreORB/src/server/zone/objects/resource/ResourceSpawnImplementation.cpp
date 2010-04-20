@@ -48,3 +48,32 @@ which carries forward this exception.
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
 }
+
+bool ResourceSpawnImplementation::inShift() {
+	return despawned > time(0);
+}
+
+int ResourceSpawnImplementation::getAttributeAndValue(String& attribute, int index) {
+	if (index < spawnAttributes.size()) {
+		attribute = spawnAttributes.elementAt(index).getKey();
+		return spawnAttributes.get(index);
+	} else {
+		return 0;
+	}
+}
+
+void ResourceSpawnImplementation::toString()  {
+    System::out << "**** Resource Data ****\n";
+    System::out << "Class: " << getFinalClass() << "\n";
+    System::out << "Name: " << spawnName << "\n";
+    System::out << "--------Classes--------\n";
+    for(int i = 0; i < spawnClasses.size(); ++i)
+    		System::out << spawnClasses.get(i) << "\n";
+    System::out << "------Attributes-------\n";
+    for(int i = 0; i < spawnAttributes.size(); ++i) {
+    	String attrib;
+    	int value = getAttributeAndValue(attrib, i);
+    	System::out << attrib << " " << value << "\n";
+    }
+    System::out << "***********************\n";
+ }
