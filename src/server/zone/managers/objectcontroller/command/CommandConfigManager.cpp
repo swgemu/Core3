@@ -64,6 +64,11 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServerImplementation* serv
 	registerGlobals();
 }
 
+void CommandConfigManager::registerSpecialCommands() {
+	QueueCommand* admin = new QueueCommand("admin", server);
+	slashCommands->put(admin);
+}
+
 void CommandConfigManager::registerFunctions() {
 	//lua generic
 	lua_register(getLuaState(), "RunSlashCommandsFile", runSlashCommandsFile);
