@@ -89,3 +89,17 @@ minimumpoolexcludes = jtlresources
   -- The minimum pool must have one of each of the items listed above spawned at all times.
   -- The minimum pool must never include the items in the excludes
 
+randompoolincludes = "mineral,gas,chemical,water"
+randompoolexcludes = jtlresources..",iron,fiberplast"
+randompoolsize = 27
+  -- The random pool must have one of each of the items listed above spawned at all times.
+  -- The random pool must never include the items in the excludes
+
+fixedpoolincludes = jtlresources.."iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron"
+fixedpoolexcludes = ""
+  -- The fixed pool must have one of each of the items listed above spawned at all times.
+
+nativepoolincludes = ""
+nativepoolexcludes = ""
+  -- The native pool must have one of each of the items listed above spawned at all times, but planet restricted.
+
