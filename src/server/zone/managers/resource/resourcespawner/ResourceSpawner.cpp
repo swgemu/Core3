@@ -127,15 +127,15 @@ void ResourceSpawner::loadResourceSpawns() {
 
 	info("Building Resource Map");
 
-	ObjectDatabase* resourceSpawnDatabase = databaseManager->loadDatabase("resourcespawns", true);
+	ObjectDatabase* resourceDatabase = ObjectDatabaseManager::instance()->loadDatabase("resourcespawns", true);
 
-	ObjectDatabaseIterator iterator(resourceSpawnDatabase);
+	ObjectDatabaseIterator iterator(resourceDatabase);
 
-	uint64 objectID;
+	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
-		ResourceSpawn* object = (ResourceSpawn*)objectManager->loadPersistentObject(objectID);
-		object->toString();
+		ResourceSpawn* resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
+		resourceSpawn->toString();
 	}
 
 	info("Resource Map Complete");
@@ -147,6 +147,8 @@ void ResourceSpawner::shiftResources() {
 	fixedPool->update();
 	randomPool->update();
 	nativePool->update();
+
+	createResourceSpawn("steel", -1);
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
