@@ -23,6 +23,7 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
@@ -462,6 +463,13 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
 	inventory->addObject(backpackObject, -1);*/
+
+	//admin
+	ObjectController* objController = server->getObjectController();
+	QueueCommand* admin = objController->getQueueCommand("admin");
+	Vector<QueueCommand*> skills;
+	skills.add(admin);
+	((PlayerObject*)playerObject)->addSkills(skills, false);
 
 	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);

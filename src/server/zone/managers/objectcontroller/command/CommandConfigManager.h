@@ -75,6 +75,8 @@ public:
 	void registerFunctions();
 	void registerGlobals();
 
+	void registerSpecialCommands();
+
 	bool loadSlashCommandsFile(CommandList* sCommands) {
 		slashCommands = sCommands;
 		//info("Loading commands...");
