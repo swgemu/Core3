@@ -611,6 +611,8 @@ void SceneObjectImplementation::removeFromZone() {
 	if (zone == NULL)
 		return;
 
+	ManagedReference<SceneObject*> thisLocker = _this;
+
 	info("removing from zone");
 
 	Locker zoneLocker(zone);
