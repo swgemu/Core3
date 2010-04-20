@@ -57,7 +57,7 @@ which carries forward this exception.
 #include "resourcepool/RandomPool.h"
 #include "resourcepool/NativePool.h"
 
-class ResourceSpawner {
+class ResourceSpawner : public Logger {
 private:
 	ManagedReference<ZoneServer* > server;
 	ZoneProcessServerImplementation* processor;
@@ -67,6 +67,8 @@ private:
 
 	ResourceTree* resourceTree;
 	ObjectDatabaseManager* databaseManager;
+
+	VectorMap<String, ResourceSpawn*> resourceSpawns;
 
 	Vector<int> resourceZones;
 
@@ -104,6 +106,8 @@ public:
 private:
 
 	void loadResourceSpawns();
+	String makeResourceName(bool isOrganic);
+	int randomizeValue(int min, int max);
 };
 
 #endif /* RESOURCESPAWNER_H_ */

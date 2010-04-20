@@ -156,6 +156,10 @@ public:
 			return NULL;
 	}
 
+	int getAttributeCount() {
+		return attributeList.size();
+	}
+
     int getMaxpool() const
     {
         return maxpool;
