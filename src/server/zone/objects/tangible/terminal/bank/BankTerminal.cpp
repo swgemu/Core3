@@ -44,17 +44,18 @@ void BankTerminal::initializeTransientMembers() {
 		((BankTerminalImplementation*) _impl)->initializeTransientMembers();
 }
 
-void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
+void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(menuResponse);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse);
+		((BankTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -153,7 +154,7 @@ void BankTerminalImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("BankTerminal");
 }
 
-void BankTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
+void BankTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(79):  		menuResponse.addRadialMenuItem(245, 3, "@sui:bank_items");
 	menuResponse->addRadialMenuItem(245, 3, "@sui:bank_items");
 }
@@ -203,7 +204,7 @@ Packet* BankTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case 7:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter());
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
@@ -219,8 +220,8 @@ void BankTerminalAdapter::initializeTransientMembers() {
 	((BankTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-void BankTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
-	((BankTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse);
+void BankTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	((BankTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 int BankTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

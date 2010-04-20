@@ -116,7 +116,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -153,7 +153,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -198,7 +198,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
