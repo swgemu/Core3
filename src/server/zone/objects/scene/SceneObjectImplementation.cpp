@@ -463,7 +463,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 	zoneLocker.release();
 
-	onPositionUpdate();
+	notifySelfPositionUpdate();
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
@@ -529,7 +529,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		broadcastMessage(message, false);
 	}
 
-	onPositionUpdate();
+	notifySelfPositionUpdate();
 }
 
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
@@ -679,6 +679,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	if (notifyClient)
 		broadcastMessage(object->link(getObjectID(), containmentType), true);
+
+	notifyObjectInserted(object);
 
 	return true;
 }
