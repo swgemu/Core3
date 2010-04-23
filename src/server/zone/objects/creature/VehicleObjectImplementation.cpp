@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/Zone.h"
 
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -31,6 +32,11 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
+	if (zone == NULL)
+		return false;
+
+	Locker _locker(zone);
+
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
 

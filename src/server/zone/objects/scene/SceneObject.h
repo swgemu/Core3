@@ -630,7 +630,9 @@ public:
 
 	void updateVehiclePosition();
 
-	int onPositionUpdate();
+	int notifySelfPositionUpdate();
+
+	int notifyObjectInserted(SceneObject* object);
 
 	bool hasNotifiedSentObject(SceneObject* object);
 
@@ -1313,7 +1315,9 @@ public:
 
 	void updateVehiclePosition();
 
-	virtual int onPositionUpdate();
+	virtual int notifySelfPositionUpdate();
+
+	virtual int notifyObjectInserted(SceneObject* object);
 
 	bool hasNotifiedSentObject(SceneObject* object);
 
@@ -1582,7 +1586,9 @@ public:
 
 	void updateVehiclePosition();
 
-	int onPositionUpdate();
+	int notifySelfPositionUpdate();
+
+	int notifyObjectInserted(SceneObject* object);
 
 	bool hasNotifiedSentObject(SceneObject* object);
 

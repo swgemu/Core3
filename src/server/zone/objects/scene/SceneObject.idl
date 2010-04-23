@@ -819,13 +819,21 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	/**
 	 * Is called when this object has moved to a new position
 	 */
-	public abstract int onPositionUpdate() {
+	public abstract int notifySelfPositionUpdate() {
 		for (int i = 0; i < positionChangedObservers.size(); ++i) {
 			SceneObjectObserver observer = positionChangedObservers.get(i);
 			
 			observer.notify(this);
 		}
 		
+		return 0;
+	}
+	
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
+	public abstract int notifyObjectInserted(SceneObject object) {
 		return 0;
 	}
 	
