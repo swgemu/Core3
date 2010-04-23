@@ -530,7 +530,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void executeObjectControllerAction(unsigned int actionCRC);
 	
-	public native int canAddObject(SceneObject object);
+	public native int canAddObject(SceneObject object, string errorDescription);
 	
 	public native void doAnimation(final string animation);
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit);

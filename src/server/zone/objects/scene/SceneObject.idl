@@ -449,9 +449,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
 	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
-	public abstract int canAddObject(SceneObject object) {
+	public abstract int canAddObject(SceneObject object, string errorDescription) {
 		int arrangementSize = object.getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {

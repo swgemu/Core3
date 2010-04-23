@@ -81,7 +81,7 @@ public:
 
 	int getQuality();
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -120,7 +120,7 @@ public:
 
 	int getQuality();
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -167,10 +167,12 @@ public:
 
 	int getQuality();
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+protected:
+	String _param1_canAddObject__SceneObject_String_;
 };
 
 class FishingPoleObjectHelper : public DistributedObjectClassHelper, public Singleton<FishingPoleObjectHelper> {
