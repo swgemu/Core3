@@ -262,7 +262,7 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
 
@@ -632,7 +632,7 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
 
@@ -887,7 +887,7 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
 
@@ -1025,6 +1025,7 @@ protected:
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
+	String _param1_canAddObject__SceneObject_String_;
 	String _param0_doAnimation__String_;
 	String _param0_playEffect__String_String_;
 	String _param1_playEffect__String_String_;

@@ -6,15 +6,24 @@
  */
 
 #include "FishingPoleObject.h"
-#include "../TangibleObject.h"
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "../../scene/variables/CustomizationVariables.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
 
 void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
-	StringBuffer qual;
-	qual << quality;
-	alm->insertAttribute("quality", qual);
+	alm->insertAttribute("quality", String::valueOf(quality));
+}
+
+
+int FishingPoleObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
+	if (object->isFishingBait()) {
+		return TangibleObjectImplementation::canAddObject(object, errorDescription);
+	}
+
+	errorDescription = "@fishing:bait_only";
+
+	return TransferErrorCode::BAITONLY;
 }

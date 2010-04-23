@@ -113,7 +113,8 @@ public:
 			ZoneServer* zoneServer = server->getZoneServer();
 			ObjectController* objectController = zoneServer->getObjectController();
 
-			int transferPreProcess = destinationObject->canAddObject(objectToTransfer);
+			String errorDescription;
+			int transferPreProcess = destinationObject->canAddObject(objectToTransfer, errorDescription);
 
 			if (transferPreProcess == TransferErrorCode::SLOTOCCUPIED) {
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
@@ -126,8 +127,12 @@ public:
 					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 						return false;
 				}
-			} else if (transferPreProcess != 0)
+			} else if (transferPreProcess != 0) {
+				if (errorDescription.length() > 1)
+					creature->sendSystemMessage(errorDescription);
+
 				return false;
+			}
 
 			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 				return false;

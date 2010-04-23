@@ -581,17 +581,18 @@ void CreatureObject::executeObjectControllerAction(unsigned int actionCRC) {
 		((CreatureObjectImplementation*) _impl)->executeObjectControllerAction(actionCRC);
 }
 
-int CreatureObject::canAddObject(SceneObject* object) {
+int CreatureObject::canAddObject(SceneObject* object, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 43);
 		method.addObjectParameter(object);
+		method.addAsciiParameter(errorDescription);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->canAddObject(object);
+		return ((CreatureObjectImplementation*) _impl)->canAddObject(object, errorDescription);
 }
 
 void CreatureObject::doAnimation(const String& animation) {
@@ -2034,7 +2035,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		executeObjectControllerAction(inv->getUnsignedIntParameter());
 		break;
 	case 44:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
 		break;
 	case 45:
 		doAnimation(inv->getAsciiParameter(_param0_doAnimation__String_));
@@ -2384,8 +2385,8 @@ void CreatureObjectAdapter::executeObjectControllerAction(unsigned int actionCRC
 	((CreatureObjectImplementation*) impl)->executeObjectControllerAction(actionCRC);
 }
 
-int CreatureObjectAdapter::canAddObject(SceneObject* object) {
-	return ((CreatureObjectImplementation*) impl)->canAddObject(object);
+int CreatureObjectAdapter::canAddObject(SceneObject* object, String& errorDescription) {
+	return ((CreatureObjectImplementation*) impl)->canAddObject(object, errorDescription);
 }
 
 void CreatureObjectAdapter::doAnimation(const String& animation) {
