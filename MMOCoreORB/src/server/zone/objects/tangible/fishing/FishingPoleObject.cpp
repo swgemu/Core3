@@ -52,17 +52,18 @@ int FishingPoleObject::getQuality() {
 		return ((FishingPoleObjectImplementation*) _impl)->getQuality();
 }
 
-int FishingPoleObject::canAddObject(SceneObject* object) {
+int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
 		method.addObjectParameter(object);
+		method.addAsciiParameter(errorDescription);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->canAddObject(object);
+		return ((FishingPoleObjectImplementation*) _impl)->canAddObject(object, errorDescription);
 }
 
 void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
@@ -169,16 +170,6 @@ int FishingPoleObjectImplementation::getQuality() {
 	return quality;
 }
 
-int FishingPoleObjectImplementation::canAddObject(SceneObject* object) {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(73):  		return 
-	if (object->isFishingBait()){
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(74):  			return super.canAddObject(object);
-	return TangibleObjectImplementation::canAddObject(object);
-}
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(76):  4;
-	return 4;
-}
-
 /*
  *	FishingPoleObjectAdapter
  */
@@ -197,7 +188,7 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(getQuality());
 		break;
 	case 8:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
 		break;
 	case 9:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
@@ -217,8 +208,8 @@ int FishingPoleObjectAdapter::getQuality() {
 	return ((FishingPoleObjectImplementation*) impl)->getQuality();
 }
 
-int FishingPoleObjectAdapter::canAddObject(SceneObject* object) {
-	return ((FishingPoleObjectImplementation*) impl)->canAddObject(object);
+int FishingPoleObjectAdapter::canAddObject(SceneObject* object, String& errorDescription) {
+	return ((FishingPoleObjectImplementation*) impl)->canAddObject(object, errorDescription);
 }
 
 void FishingPoleObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {

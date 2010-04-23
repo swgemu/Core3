@@ -851,7 +851,7 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 	return characterMask;
 }
 
-int CreatureObjectImplementation::canAddObject(SceneObject* object) {
+int CreatureObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
 	if (object->isTangibleObject()) {
 		TangibleObject* wearable = (TangibleObject*) object;
 
@@ -868,7 +868,7 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object) {
 		}
 	}
 
-	return SceneObjectImplementation::canAddObject(object);
+	return SceneObjectImplementation::canAddObject(object, errorDescription);
 }
 
 void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool notifyClient) {

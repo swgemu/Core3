@@ -546,7 +546,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void updateToDatabase();
 
@@ -1231,7 +1231,7 @@ public:
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	virtual int canAddObject(SceneObject* object);
+	virtual int canAddObject(SceneObject* object, String& errorDescription);
 
 	void updateToDatabase();
 
@@ -1514,7 +1514,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient);
 
-	int canAddObject(SceneObject* object);
+	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void updateToDatabase();
 
@@ -1727,6 +1727,7 @@ public:
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
+	String _param1_canAddObject__SceneObject_String_;
 	String _param0_getSlottedObject__String_;
 	UnicodeString _param0_setObjectName__UnicodeString_;
 	String _param0_setLoggingName__String_;

@@ -91,8 +91,13 @@ public:
 			return false;
 		}
 
-		if (destinationObject->canAddObject(objectToTransfer) != 0) {
+		String errorDescription;
+
+		if (destinationObject->canAddObject(objectToTransfer, errorDescription) != 0) {
 			creature->error("cannot add objectToTransfer to destinationObject");
+
+			if (errorDescription.length() > 1)
+				creature->sendSystemMessage(errorDescription);
 			return false;
 		}
 
