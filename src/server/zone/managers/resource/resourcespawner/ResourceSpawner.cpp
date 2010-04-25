@@ -184,7 +184,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  		newSpawn->addAttribute(attribName, randomValue);
  	}
 
- 	objectManager->persistObject(newSpawn,3,"resourcespawns");
+ 	objectManager->persistObject(newSpawn,2,"resourcespawns");
 
  	newSpawn->toString();
 
