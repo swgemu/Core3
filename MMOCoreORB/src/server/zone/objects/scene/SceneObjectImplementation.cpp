@@ -569,6 +569,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
+	ManagedReference<SceneObject*> thisLocker = _this;
+
 	if (zone == NULL)
 		return;
 
