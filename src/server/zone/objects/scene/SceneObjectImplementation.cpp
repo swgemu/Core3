@@ -562,10 +562,14 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		insertToBuilding(building);
 	}
 
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-	positionChangedObservers.put(terrainManager);
-
 	movementCounter = 0;
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager != NULL) {
+		TerrainManager* terrainManager = planetManager->getTerrainManager();
+		positionChangedObservers.put(terrainManager);
+	}
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
@@ -641,8 +645,12 @@ void SceneObjectImplementation::removeFromZone() {
 
 	zone->dropSceneObject(getObjectID());
 
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-	positionChangedObservers.drop(terrainManager);
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager != NULL) {
+		TerrainManager* terrainManager = planetManager->getTerrainManager();
+		positionChangedObservers.drop(terrainManager);
+	}
 
 	zone = NULL;
 
