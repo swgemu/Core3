@@ -61,6 +61,8 @@ import engine.service.proto.BaseMessage;
 import system.util.SortedVector;
 import system.lang.StackTrace;
 import server.zone.managers.objectcontroller.ObjectController;
+import system.lang.ref.Reference;
+import engine.core.Task;
 
 
 import server.zone.ZoneProcessServerImplementation;
@@ -75,6 +77,7 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.SceneObjectObserver;
+include server.zone.objects.scene.variables.PendingTasksMap;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -119,6 +122,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
+	
+	@dereferenced
+	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
 
@@ -783,6 +789,40 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return parent.getObjectID();
 		} else
 			return 0;
+	}
+	
+	/**
+	 * Adds a pending task of this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task
+	 * @param task Task to add
+	 */
+	@local
+	public void addPendingTask(final string name, Task task) {
+		pendingTasks.put(name, task);
+	}
+	
+	/**
+	 * Removes a pending task from this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to drop
+	 */
+	@local
+	public void removePendingTask(final string name) {
+		pendingTasks.drop(name);
+	}
+	
+	/**
+	 * Looks up a specific pending tasks by the name
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to lookup
+	 */
+	@local
+	public Task getPendingTask(final string name) {
+		return pendingTasks.get(name);
 	}
 	
 	/**

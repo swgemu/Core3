@@ -129,6 +129,8 @@ using namespace server::zone::packets::scene;
 
 #include "server/zone/objects/scene/SceneObjectObserver.h"
 
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -156,6 +158,10 @@ using namespace server::zone::packets::scene;
 #include "system/util/SortedVector.h"
 
 #include "system/lang/StackTrace.h"
+
+#include "system/lang/ref/Reference.h"
+
+#include "engine/core/Task.h"
 
 namespace server {
 namespace zone {
@@ -620,6 +626,12 @@ public:
 
 	unsigned long long getParentID();
 
+	void addPendingTask(const String& name, Task* task);
+
+	void removePendingTask(const String& name);
+
+	Task* getPendingTask(const String& name);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void attachPositionChangedObserver(SceneObjectObserver* observer);
@@ -833,6 +845,8 @@ protected:
 	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
 	SortedVector<SceneObjectObserver*> positionChangedObservers;
+
+	PendingTasksMap pendingTasks;
 
 	bool staticObject;
 
@@ -1304,6 +1318,12 @@ public:
 	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
+
+	void addPendingTask(const String& name, Task* task);
+
+	void removePendingTask(const String& name);
+
+	Task* getPendingTask(const String& name);
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
