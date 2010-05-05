@@ -678,6 +678,18 @@ void CreatureObjectImplementation::setMood(byte mood, bool notifyClient) {
 	}
 }
 
+void CreatureObjectImplementation::setMoodString(const String& moodAnimationString, bool notifyClient) {
+	moodString = moodAnimationString;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMoodStr();
+		dcreo6->close();
+
+		broadcastMessage(dcreo6, true);
+	}
+}
+
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
 	ObjectController* objectController = getZoneServer()->getObjectController();
 

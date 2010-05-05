@@ -483,6 +483,14 @@ class CreatureObject extends TangibleObject {
 	public native void setMood(byte moodID, boolean notifyClient = true);
 	
 	/**
+	 * Sets a new mood animation
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param mood mood animation string
+	 */
+	public native void setMoodString(final string animation, boolean notifyClient = true);
+	
+	/**
 	 * Removes a command from queue
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
