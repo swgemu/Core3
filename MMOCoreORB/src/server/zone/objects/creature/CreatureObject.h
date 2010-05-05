@@ -248,6 +248,8 @@ public:
 
 	void setMood(byte moodID, bool notifyClient = true);
 
+	void setMoodString(const String& animation, bool notifyClient = true);
+
 	void deleteQueueAction(unsigned int actionCount);
 
 	void setState(unsigned long long state, bool notifyClient = true);
@@ -618,6 +620,8 @@ public:
 
 	void setMood(byte moodID, bool notifyClient = true);
 
+	void setMoodString(const String& animation, bool notifyClient = true);
+
 	void deleteQueueAction(unsigned int actionCount);
 
 	void setState(unsigned long long state, bool notifyClient = true);
@@ -873,6 +877,8 @@ public:
 
 	void setMood(byte moodID, bool notifyClient);
 
+	void setMoodString(const String& animation, bool notifyClient);
+
 	void deleteQueueAction(unsigned int actionCount);
 
 	void setState(unsigned long long state, bool notifyClient);
@@ -1025,6 +1031,7 @@ protected:
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
+	String _param0_setMoodString__String_bool_;
 	String _param1_canAddObject__SceneObject_String_;
 	String _param0_doAnimation__String_;
 	String _param0_playEffect__String_String_;
