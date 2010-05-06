@@ -73,5 +73,7 @@ SharedObjectTemplate = Object:new {
 	 locationReservationRadius = 0,
 	 totalCellNumber = 0,
 
-	 clientObjectCRC = 0
+	 clientObjectCRC = 0,
+	 
+	 templateType = SHOT
 }

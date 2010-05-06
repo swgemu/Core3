@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedResourceContainerObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = RCCT
 }

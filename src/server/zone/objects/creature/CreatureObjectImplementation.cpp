@@ -84,6 +84,8 @@ which carries forward this exception.
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
+#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
+
 #include "professions/SkillBox.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -97,8 +99,10 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CreatureObject");
 }
 
-void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	SharedCreatureObjectTemplate* creoData = dynamic_cast<SharedCreatureObjectTemplate*>(templateData);
 
 	bankCredits = 1000;
 	cashCredits = 100;
@@ -113,11 +117,11 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	shockWounds = 0.f;
 
-	gender = templateData->getIntField("gender");
-	species = templateData->getIntField("species");
-	slopeModPercent = templateData->getFloatField("slopeModPercent");
-	slopeModAngle = templateData->getFloatField("slopeModAngle");
-	swimHeight = templateData->getFloatField("swimHeight");
+	gender = creoData->getGender();
+	species = creoData->getSpecies();
+	slopeModPercent = creoData->getSlopeModPercent();
+	slopeModAngle = creoData->getSlopeModAngle();
+	swimHeight = creoData->getSwimHeight();
 
 	stateBitmask = 0;
 	terrainNegotiation = 0.f;
@@ -142,13 +146,10 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 		encumbrances.add(0);
 	}
 
-	LuaObject hams = templateData->getObjectField("baseHAM");
+	Vector<int> base = creoData->getBaseHAM();
 
-	for (int i = 1; i <= hams.getTableSize(); ++i) {
-		baseHAM.add(hams.getIntAt(i));
-	}
-
-	hams.pop();
+	for (int i = 0; i < base.size(); ++i)
+		baseHAM.add(base.get(i));
 
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
@@ -164,29 +165,25 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	frozen = 0;
 
-	LuaObject accel = templateData->getObjectField("acceleration");
+	Vector<float> accel = creoData->getAcceleration();
 
-	if (accel.getTableSize() > 0) {
-		runAcceleration = accel.getFloatAt(1);
-		walkAcceleration = accel.getFloatAt(2);
+	if (accel.size() > 0) {
+		runAcceleration = accel.get(0);
+		walkAcceleration = accel.get(1);
 	} else {
 		runAcceleration = 0;
 		walkAcceleration = 0;
 	}
 
-	accel.pop();
+	Vector<float> speedTempl = creoData->getSpeed();
 
-	LuaObject speedTempl = templateData->getObjectField("speed");
-
-	if (speedTempl.getTableSize() > 0) {
-		runSpeed = speedTempl.getFloatAt(1);
-		walkSpeed = speedTempl.getFloatAt(2);
+	if (speedTempl.size() > 0) {
+		runSpeed = speedTempl.get(0);
+		walkSpeed = speedTempl.get(1);
 	} else {
 		runSpeed = 0;
 		walkSpeed = 0;
 	}
-
-	speedTempl.pop();
 
 }
 

@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedShipObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = SSHP
 }

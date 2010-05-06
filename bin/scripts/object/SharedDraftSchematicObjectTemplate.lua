@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedDraftSchematicObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SDSC
 }

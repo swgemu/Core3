@@ -58,6 +58,7 @@
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/template/TemplateManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -304,18 +305,14 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	SceneObject* object = NULL;
 
 	try {
-		LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
-		getTemplate << objectCRC; // push first argument
-		luaTemplatesInstance->callFunction(&getTemplate);
+		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objectCRC);
 
-		LuaObject result(luaTemplatesInstance->getLuaState());
-
-		if (!result.isValidTable()) {
-			error("unknown template " + String::valueOf(objectCRC));
+		if (templateData == NULL) {
+			error("trying to create object with unknown objectcrc 0x" + String::hexvalueOf((int)objectCRC));
 			return NULL;
 		}
 
-		uint32 gameObjectType = result.getIntField("gameObjectType");
+		uint32 gameObjectType = templateData->getGameObjectType();
 
 		object = objectFactory.createObject(gameObjectType);
 
@@ -325,7 +322,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		}
 
 		object->setServerObjectCRC(objectCRC);
-		object->loadTemplateData(&result);
+		object->loadTemplateData(templateData);
 
 	} catch (Exception& e) {
 		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
@@ -686,6 +683,35 @@ void ObjectManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("HEAVYPARTICLEBEAMATTACK", WeaponObject::HEAVYPARTICLEBEAMATTACK);
 	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
 	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
+
+	luaTemplatesInstance->setGlobalInt("SHOT", SharedObjectTemplate::SHOT);
+	luaTemplatesInstance->setGlobalInt("STOT", SharedObjectTemplate::STOT);
+	luaTemplatesInstance->setGlobalInt("SBMK", SharedObjectTemplate::SBMK);
+	luaTemplatesInstance->setGlobalInt("SBOT", SharedObjectTemplate::SBOT);
+	luaTemplatesInstance->setGlobalInt("STAT", SharedObjectTemplate::STAT);
+	luaTemplatesInstance->setGlobalInt("SIOT", SharedObjectTemplate::SIOT);
+	luaTemplatesInstance->setGlobalInt("CCLT", SharedObjectTemplate::CCLT);
+	luaTemplatesInstance->setGlobalInt("SCOU", SharedObjectTemplate::SCOU);
+	luaTemplatesInstance->setGlobalInt("SDSC", SharedObjectTemplate::SDSC);
+	luaTemplatesInstance->setGlobalInt("SFOT", SharedObjectTemplate::SFOT);
+	luaTemplatesInstance->setGlobalInt("SGRP", SharedObjectTemplate::SGRP);
+	luaTemplatesInstance->setGlobalInt("SITN", SharedObjectTemplate::SITN);
+	luaTemplatesInstance->setGlobalInt("SGLD", SharedObjectTemplate::SGLD);
+	luaTemplatesInstance->setGlobalInt("SJED", SharedObjectTemplate::SJED);
+	luaTemplatesInstance->setGlobalInt("SMSC", SharedObjectTemplate::SMSC);
+	luaTemplatesInstance->setGlobalInt("SMSO", SharedObjectTemplate::SMSO);
+	luaTemplatesInstance->setGlobalInt("SMSD", SharedObjectTemplate::SMSD);
+	luaTemplatesInstance->setGlobalInt("SMLE", SharedObjectTemplate::SMLE);
+	luaTemplatesInstance->setGlobalInt("SPLY", SharedObjectTemplate::SPLY);
+	luaTemplatesInstance->setGlobalInt("RCCT", SharedObjectTemplate::RCCT);
+	luaTemplatesInstance->setGlobalInt("SSHP", SharedObjectTemplate::SSHP);
+	luaTemplatesInstance->setGlobalInt("SUNI", SharedObjectTemplate::SUNI);
+	luaTemplatesInstance->setGlobalInt("SWAY", SharedObjectTemplate::SWAY);
+	luaTemplatesInstance->setGlobalInt("STOK", SharedObjectTemplate::STOK);
+	luaTemplatesInstance->setGlobalInt("SWOT", SharedObjectTemplate::SWOT);
+	luaTemplatesInstance->setGlobalInt("SCNC", SharedObjectTemplate::SCNC);
+	luaTemplatesInstance->setGlobalInt("SCOT", SharedObjectTemplate::SCOT);
+	luaTemplatesInstance->setGlobalInt("CHARACTERBUILDERTERMINAL", SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
@@ -708,11 +734,14 @@ int ObjectManager::crcString(lua_State* L) {
 
 int ObjectManager::addTemplateCRC(lua_State* L) {
 	String ascii =  lua_tostring(L, -2);
-	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	LuaObject obj(L);
 
 	uint32 crc = (uint32) ascii.hashCode();
 
-	TemplateManager::instance()->addTemplate(crc, ascii);
+	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
+
+	//System::out << ascii << endl;
 
 	return 0;
 }

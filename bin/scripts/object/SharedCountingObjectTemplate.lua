@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedCountingObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = SCOU
 }

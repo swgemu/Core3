@@ -61,8 +61,6 @@ class IntangibleObject extends SceneObject {
 		
 	}
 	
-	@local
-	public native void loadTemplateData(LuaObject templateData);
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);

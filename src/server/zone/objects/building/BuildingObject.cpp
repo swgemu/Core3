@@ -42,7 +42,7 @@ void BuildingObject::createCellObjects() {
 		((BuildingObjectImplementation*) _impl)->createCellObjects();
 }
 
-void BuildingObject::loadTemplateData(LuaObject* templateData) {
+void BuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

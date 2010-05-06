@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedWaypointObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SWAY
 }

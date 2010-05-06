@@ -131,6 +131,8 @@ using namespace server::zone::packets::scene;
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -532,7 +534,7 @@ public:
 
 	SceneObject();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -1225,7 +1227,7 @@ public:
 
 	void finalize();
 
-	virtual void loadTemplateData(LuaObject* templateData);
+	virtual void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

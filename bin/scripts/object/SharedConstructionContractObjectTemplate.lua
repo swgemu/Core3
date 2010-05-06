@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedConstructionContractObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SCNC
 }

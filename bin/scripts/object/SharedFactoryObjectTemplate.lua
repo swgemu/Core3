@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedFactoryObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = SFOT
 }

@@ -50,7 +50,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
-
+include server.zone.templates.SharedObjectTemplate;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;
@@ -164,7 +164,7 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	public native void initializeTransientMembers();
 	

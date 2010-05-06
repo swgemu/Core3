@@ -55,11 +55,6 @@ void IntangibleObjectImplementation::initializeTransientMembers() {
 	setLoggingName("IntangibleObject");
 }
 
-void IntangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
-	SceneObjectImplementation::loadTemplateData(templateData);
-
-}
-
 void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending intangible object baselines");
 

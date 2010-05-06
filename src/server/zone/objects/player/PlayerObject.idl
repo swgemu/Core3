@@ -62,7 +62,7 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 import server.zone.Zone;
-
+include server.zone.templates.SharedObjectTemplate;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -123,7 +123,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);

@@ -137,6 +137,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/CreatureState.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -180,7 +182,7 @@ public:
 
 	CreatureObject();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -552,7 +554,7 @@ public:
 
 	void finalize();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

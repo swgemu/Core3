@@ -34,8 +34,6 @@ class IntangibleObject : public SceneObject {
 public:
 	IntangibleObject();
 
-	void loadTemplateData(LuaObject* templateData);
-
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -74,8 +72,6 @@ public:
 	IntangibleObjectImplementation(DummyConstructorParameter* param);
 
 	void finalize();
-
-	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
 

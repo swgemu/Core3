@@ -199,6 +199,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
+		server/zone/managers/template/TemplateManager.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
@@ -214,5 +215,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
+		server/zone/templates/SharedTangibleObjectTemplate.cpp \
+		server/zone/templates/SharedObjectTemplate.cpp \
+		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
+		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
+		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp
 		

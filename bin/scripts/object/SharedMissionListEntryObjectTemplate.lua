@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedMissionListEntryObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SMLE
 }
