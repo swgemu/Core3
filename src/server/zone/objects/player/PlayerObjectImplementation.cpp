@@ -80,7 +80,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	setLoggingName("PlayerObject");
 }
 
-void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	IntangibleObjectImplementation::loadTemplateData(templateData);
 
 	characterBitmask = ANONYMOUS;

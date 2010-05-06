@@ -16,7 +16,7 @@ void CellObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CellObject");
 }
 
-void CellObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::loadTemplateData(templateData);
 
 	containerVolumeLimit = 0xFFFFFFFF;

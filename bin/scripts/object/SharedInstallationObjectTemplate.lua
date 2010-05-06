@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = SITN
 }

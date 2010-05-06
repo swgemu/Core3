@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedManufactureSchematicObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SMSC
 }

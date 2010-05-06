@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedMissionDataObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SMSD
 }

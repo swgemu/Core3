@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
+	templateType = SWOT,
 	weaponEffect = "",
 	weaponEffectIndex = 0,
 	attackType = 0,

@@ -42,5 +42,5 @@
 
 
 SharedUniverseObjectTemplate = SharedObjectTemplate:new {
- 	 
+ 	 templateType = SUNI
 }

@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedPlayerObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = SPLY
 }

@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedGroupObjectTemplate = SharedUniverseObjectTemplate:new {
-
+	templateType = SGRP
 }

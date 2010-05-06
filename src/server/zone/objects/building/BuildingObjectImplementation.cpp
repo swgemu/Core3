@@ -20,10 +20,10 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 }
 
-void BuildingObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	totalCellNumber = templateData->getIntField("totalCellNumber");
+	totalCellNumber = templateData->getTotalCellNumber();
 
 	containerVolumeLimit = 0xFFFFFFFF;
 

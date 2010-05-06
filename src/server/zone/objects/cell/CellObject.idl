@@ -48,6 +48,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.Zone;
+include server.zone.templates.SharedObjectTemplate;
 
 class CellObject extends SceneObject {
 	protected int cellNumber;
@@ -59,7 +60,7 @@ class CellObject extends SceneObject {
 	}
 	
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	public native void initializeTransientMembers();
 	

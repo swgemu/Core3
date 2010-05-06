@@ -28,7 +28,7 @@ WeaponObject::~WeaponObject() {
 }
 
 
-void WeaponObject::loadTemplateData(LuaObject* templateData) {
+void WeaponObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

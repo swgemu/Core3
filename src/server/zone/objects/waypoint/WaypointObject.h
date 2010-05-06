@@ -21,6 +21,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "engine/core/ManagedReference.h"
@@ -50,7 +52,7 @@ public:
 
 	WaypointObject();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void insertToMessage(BaseMessage* msg);
 
@@ -117,7 +119,7 @@ public:
 
 	WaypointObjectImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void insertToMessage(BaseMessage* msg);
 

@@ -3,6 +3,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			
 	maxCondition = 0,
 	
+	templateType = CHARACTERBUILDERTERMINAL,
+	
 	deedsList = {
 			"Large Corellian House Deed", "object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff"
 	}

@@ -24,7 +24,7 @@ Container::~Container() {
 }
 
 
-void Container::loadTemplateData(LuaObject* templateData) {
+void Container::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -128,7 +128,7 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(54):  		Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl(55):  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
 }
 

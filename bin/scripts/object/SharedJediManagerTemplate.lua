@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedJediManagerTemplate = SharedUniverseObjectTemplate:new {
-
+	templateType = SJED
 }

@@ -22,7 +22,7 @@ CellObject::~CellObject() {
 }
 
 
-void CellObject::loadTemplateData(LuaObject* templateData) {
+void CellObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -150,9 +150,9 @@ void CellObjectImplementation::_serializationHelperMethod() {
 
 CellObjectImplementation::CellObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/cell/CellObject.idl(56):  		Logger.setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl(57):  		Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");
-	// server/zone/objects/cell/CellObject.idl(58):  		cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl(59):  		cellNumber = 0;
 	cellNumber = 0;
 }
 
@@ -160,12 +160,12 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(72):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(73):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(76):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(77):  		cellNumber = number;
 	cellNumber = number;
 }
 

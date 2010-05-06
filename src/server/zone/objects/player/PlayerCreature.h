@@ -169,6 +169,8 @@ using namespace server::zone::objects::group;
 
 #include "server/zone/objects/player/badges/Badges.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -206,7 +208,7 @@ public:
 
 	PlayerCreature();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -431,7 +433,7 @@ public:
 
 	void finalize();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

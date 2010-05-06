@@ -91,6 +91,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -108,7 +110,7 @@ class VehicleObject : public CreatureObject {
 public:
 	VehicleObject();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -147,7 +149,7 @@ public:
 
 	VehicleObjectImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 

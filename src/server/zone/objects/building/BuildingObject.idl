@@ -55,7 +55,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.ZoneServer;
 import server.zone.Zone;
-
+include server.zone.templates.SharedObjectTemplate;
 
 class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
@@ -89,7 +89,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	}
 	
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 		
 	public native void initializeTransientMembers();
 	

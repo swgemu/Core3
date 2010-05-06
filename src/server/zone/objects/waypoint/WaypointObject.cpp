@@ -22,7 +22,7 @@ WaypointObject::~WaypointObject() {
 }
 
 
-void WaypointObject::loadTemplateData(LuaObject* templateData) {
+void WaypointObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

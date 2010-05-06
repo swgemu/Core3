@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -17,63 +18,25 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 	setLoggingName("WeaponObject");
 }
 
-void WeaponObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	SharedWeaponObjectTemplate* weaoData = dynamic_cast<SharedWeaponObjectTemplate*>(templateData);
 
 	certified = false;
 
-	attackType = templateData->getIntField("attackType");
-	weaponEffect =  templateData->getStringField("weaponEffect");
-	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
+	attackType = weaoData->getAttackType();
+	weaponEffect =  weaoData->getWeaponEffect();
+	weaponEffectIndex = weaoData->getWeaponEffectIndex();
 
-	damageType = templateData->getIntField("damageType");
+	damageType = weaoData->getDamageType();
 
-	LuaObject certifications = templateData->getObjectField("certificationsRequired");
-
-	for (int i = 1; i <= certifications.getTableSize(); ++i) {
-		certificationsRequired.add(certifications.getStringAt(i));
-	}
-
-	certifications.pop();
-
-	LuaObject accMods = templateData->getObjectField("creatureAccuracyModifiers");
-
-	for (int i = 1; i <= accMods.getTableSize(); ++i) {
-		creatureAccuracyModifiers.add(accMods.getStringAt(i));
-	}
-
-	accMods.pop();
-
-	LuaObject defMods = templateData->getObjectField("defenderDefenseModifiers");
-
-	for (int i = 1; i <= defMods.getTableSize(); ++i) {
-		defenderDefenseModifiers.add(defMods.getStringAt(i));
-	}
-
-	defMods.pop();
-
-	LuaObject dmgMods = templateData->getObjectField("damageModifiers");
-
-	for (int i = 1; i <= dmgMods.getTableSize(); ++i) {
-		damageModifiers.add(dmgMods.getStringAt(i));
-	}
-
-	dmgMods.pop();
-
-	LuaObject speedMods = templateData->getObjectField("speedModifiers");
-
-	for (int i = 1; i <= speedMods.getTableSize(); ++i) {
-		speedModifiers.add(speedMods.getStringAt(i));
-	}
-
-	speedMods.pop();
-
-	LuaObject secMods = templateData->getObjectField("defenderSecondaryDefenseModifiers");
-
-	for (int i = 1; i <= secMods.getTableSize(); ++i)
-		defenderSecondaryDefenseModifiers.add(secMods.getStringAt(i));
-
-	secMods.pop();
+	certificationsRequired = weaoData->getCertificationsRequired();
+	creatureAccuracyModifiers = weaoData->getCreatureAccuracyModifiers();
+	defenderDefenseModifiers = weaoData->getDefenderDefenseModifiers();
+	damageModifiers = weaoData->getDamageModifiers();
+	speedModifiers = weaoData->getSpeedModifiers();
+	defenderSecondaryDefenseModifiers = weaoData->getDefenderSecondaryDefenseModifiers();
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -140,8 +103,8 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 	alm->insertAttribute("wpn_attack_speed", spdtxt.toString());
 
-	if (area != 0.0f)
-		alm->insertAttribute("area", Math::getPrecision(area, 0));
+	/*if (area != 0.0f)
+		alm->insertAttribute("area", Math::getPrecision(area, 0));*/
 
 	//Damage Information
 	StringBuffer dmgtxt;

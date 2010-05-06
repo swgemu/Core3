@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedGuildObjectTemplate = SharedUniverseObjectTemplate:new {
-
+	templateType = SGLD
 }
