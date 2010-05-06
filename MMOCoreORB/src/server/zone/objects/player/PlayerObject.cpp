@@ -34,7 +34,7 @@ PlayerObject::~PlayerObject() {
 }
 
 
-void PlayerObject::loadTemplateData(LuaObject* templateData) {
+void PlayerObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

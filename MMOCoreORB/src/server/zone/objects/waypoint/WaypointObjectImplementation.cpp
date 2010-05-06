@@ -7,7 +7,7 @@
 
 #include "WaypointObject.h"
 
-void WaypointObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	IntangibleObjectImplementation::loadTemplateData(templateData);
 
 	cellID = 0; //?

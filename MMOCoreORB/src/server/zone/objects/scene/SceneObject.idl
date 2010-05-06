@@ -78,6 +78,7 @@ include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.SceneObjectObserver;
 include server.zone.objects.scene.variables.PendingTasksMap;
+include server.zone.templates.SharedObjectTemplate;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -353,7 +354,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
 	 */
 	@local
-	public abstract native void loadTemplateData(LuaObject templateData);
+	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.

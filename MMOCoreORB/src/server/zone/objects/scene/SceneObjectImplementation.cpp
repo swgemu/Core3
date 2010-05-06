@@ -93,36 +93,24 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLoggingName("SceneObject");
 }
 
-void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::parent = NULL;
 
 	slottedObjects.setNullValue(NULL);
-	objectName.setStringId(String(templateData->getStringField("objectName")));
+	objectName.setStringId(templateData->getObjectName());
 
-	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
+	detailedDescription.setStringId(templateData->getDetailedDescription());
 
-	containerType = templateData->getIntField("containerType");
-	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
+	containerType = templateData->getContainerType();
+	containerVolumeLimit = templateData->getContainerVolumeLimit();
 
-	gameObjectType = templateData->getIntField("gameObjectType");
+	gameObjectType = templateData->getGameObjectType();
 
-	clientObjectCRC = templateData->getIntField("clientObjectCRC");
+	clientObjectCRC = templateData->getClientObjectCRC();
 
-	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
+	arrangementDescriptors = templateData->getArrangementDescriptors();
 
-	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
-		arrangementDescriptors.add(arrangements.getStringAt(i));
-	}
-
-	arrangements.pop();
-
-	LuaObject slots = templateData->getObjectField("slotDescriptors");
-
-	for (int i = 1; i <= slots.getTableSize(); ++i) {
-		slotDescriptors.add(slots.getStringAt(i));
-	}
-
-	slots.pop();
+	slotDescriptors = templateData->getSlotDescriptors();
 
 	zone = NULL;
 

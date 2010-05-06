@@ -50,7 +50,7 @@ void ContainerImplementation::initializeTransientMembers() {
 	setLoggingName("Container");
 }
 
-void ContainerImplementation::loadTemplateData(LuaObject* templateData) {
+void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 }
 

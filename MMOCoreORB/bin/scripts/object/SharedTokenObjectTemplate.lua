@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedTokenObjectTemplate = SharedIntangibleObjectTemplate:new {
-
+	templateType = STOK
 }

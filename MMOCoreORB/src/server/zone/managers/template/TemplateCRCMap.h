@@ -10,14 +10,16 @@
 
 #include "engine/engine.h"
 
-class TemplateCRCMap : public HashTable<uint32, String> {
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+class TemplateCRCMap : public HashTable<uint32, SharedObjectTemplate*> {
 	int hash(const uint32& k) {
 		return k;
 	}
 
 public:
-	TemplateCRCMap() : HashTable<uint32, String>(16000) {
-
+	TemplateCRCMap() : HashTable<uint32, SharedObjectTemplate*>(16000) {
+		setNullValue(NULL);
 	}
 };
 

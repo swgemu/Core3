@@ -35,6 +35,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -48,7 +50,7 @@ class Container : public TangibleObject {
 public:
 	Container();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -81,7 +83,7 @@ public:
 
 	ContainerImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

@@ -11,19 +11,32 @@
 #include "engine/engine.h"
 #include "TemplateCRCMap.h"
 
-class TemplateManager : public Singleton<TemplateManager> {
+#include "engine/util/ObjectFactory.h"
+
+class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap templateCRCMap;
 
+	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;
+
 public:
-	TemplateManager() {
+	TemplateManager();
 
-	}
+	~TemplateManager();
 
-	void addTemplate(uint32 key, const String& templateFile) {
-		templateCRCMap.put(key, templateFile);
-	}
+	void registerTemplateObjects();
+
+	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
 	String getTemplateFile(uint32 key) {
+		SharedObjectTemplate* templateData = templateCRCMap.get(key);
+
+		if (templateData == NULL)
+			throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));
+
+		return templateData->getFullTemplateString();
+	}
+
+	SharedObjectTemplate* getTemplate(uint32 key) {
 		return templateCRCMap.get(key);
 	}
 

@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
 
 void TangibleObjectImplementation::initializeTransientMembers() {
@@ -59,12 +60,14 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 	setLoggingName("TangibleObject");
 }
 
-void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::loadTemplateData(templateData);
 
-	targetable = templateData->getByteField("targetable");
+	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
 
-	playerUseMask = templateData->getShortField("playerUseMask");
+	targetable = tanoData->getTargetable();
+
+	playerUseMask = tanoData->getPlayerUseMask();
 
 	complexity = 100.f;
 
@@ -75,12 +78,12 @@ void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	objectCount = 0;
 
 	conditionDamage = 0;
-	maxCondition = templateData->getIntField("maxCondition");
+	maxCondition = tanoData->getMaxCondition();
 
 	sliced = false;
 
-	optionsBitmask = templateData->getIntField("optionsBitmask");
-	pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");
+	optionsBitmask = tanoData->getOptionsBitmask();
+	pvpStatusBitmask = tanoData->getPvpStatusBitmask();
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {

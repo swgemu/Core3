@@ -59,6 +59,7 @@ CustomizationVariableMap = {
 }
 
 SharedTangibleObjectTemplate = SharedObjectTemplate:new {
+	templateType = STOT,
 	paletteColorCustomizationVariables = { },
 	rangedIntCustomizationVariables = { },
 

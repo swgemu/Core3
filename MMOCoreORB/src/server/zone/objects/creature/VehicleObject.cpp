@@ -32,7 +32,7 @@ VehicleObject::~VehicleObject() {
 }
 
 
-void VehicleObject::loadTemplateData(LuaObject* templateData) {
+void VehicleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -158,27 +158,27 @@ void VehicleObjectImplementation::_serializationHelperMethod() {
 
 VehicleObjectImplementation::VehicleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/VehicleObject.idl(62):  		vehicleType = SceneObject.HOVERVEHICLE;
+	// server/zone/objects/creature/VehicleObject.idl(63):  		vehicleType = SceneObject.HOVERVEHICLE;
 	vehicleType = SceneObject::HOVERVEHICLE;
-	// server/zone/objects/creature/VehicleObject.idl(64):  		Logger.setLoggingName("VehicleObject");
+	// server/zone/objects/creature/VehicleObject.idl(65):  		Logger.setLoggingName("VehicleObject");
 	Logger::setLoggingName("VehicleObject");
-	// server/zone/objects/creature/VehicleObject.idl(65):  		Logger.setLogging("true");
+	// server/zone/objects/creature/VehicleObject.idl(66):  		Logger.setLogging("true");
 	Logger::setLogging("true");
-	// server/zone/objects/creature/VehicleObject.idl(66):  		Logger.setGlobalLogging("true");
+	// server/zone/objects/creature/VehicleObject.idl(67):  		Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
 }
 
-void VehicleObjectImplementation::loadTemplateData(LuaObject* templateData) {
-	// server/zone/objects/creature/VehicleObject.idl(71):  		super.loadTemplateData(templateData);
+void VehicleObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/creature/VehicleObject.idl(72):  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/creature/VehicleObject.idl(73):  		super.optionsBitmask = 0x1080;
+	// server/zone/objects/creature/VehicleObject.idl(74):  		super.optionsBitmask = 0x1080;
 	CreatureObjectImplementation::optionsBitmask = 0x1080;
-	// server/zone/objects/creature/VehicleObject.idl(74):  		super.pvpStatusBitmask = 0;
+	// server/zone/objects/creature/VehicleObject.idl(75):  		super.pvpStatusBitmask = 0;
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {
-	// server/zone/objects/creature/VehicleObject.idl(94):  		return true;
+	// server/zone/objects/creature/VehicleObject.idl(95):  		return true;
 	return true;
 }
 

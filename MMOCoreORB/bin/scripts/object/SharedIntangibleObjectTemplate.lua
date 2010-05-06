@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedIntangibleObjectTemplate = SharedObjectTemplate:new {
- 	 
+ 	 templateType = SITN
 }

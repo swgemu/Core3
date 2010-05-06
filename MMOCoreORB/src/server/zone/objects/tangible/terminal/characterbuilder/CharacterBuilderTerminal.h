@@ -49,6 +49,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -66,7 +68,7 @@ class CharacterBuilderTerminal : public Terminal {
 public:
 	CharacterBuilderTerminal();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -106,7 +108,7 @@ public:
 
 	CharacterBuilderTerminalImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

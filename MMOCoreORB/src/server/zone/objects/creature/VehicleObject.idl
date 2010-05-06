@@ -54,6 +54,7 @@ import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import server.zone.Zone;
+include server.zone.templates.SharedObjectTemplate;
 
 class VehicleObject extends CreatureObject {
 	protected int vehicleType;
@@ -67,7 +68,7 @@ class VehicleObject extends CreatureObject {
 	}
 	
 	@local
-	public void loadTemplateData(LuaObject templateData) {
+	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
 		
 		super.optionsBitmask = 0x1080;

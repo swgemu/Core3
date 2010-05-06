@@ -42,5 +42,6 @@
 
 SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	terrainModificationFileName = "",
-	interiorLayoutFileName = ""
+	interiorLayoutFileName = "",
+	templateType = SBOT
 }

@@ -42,5 +42,5 @@
 
 
 SharedStaticObjectTemplate = SharedObjectTemplate:new {
- 	 
+ 	 templateType = STAT
 }

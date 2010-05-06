@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
+	templateType = SCOT,
 	gender = 0,
 	niche = 0,
 	species = 0,

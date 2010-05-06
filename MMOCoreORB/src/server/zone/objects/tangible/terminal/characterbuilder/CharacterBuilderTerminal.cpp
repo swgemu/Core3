@@ -26,7 +26,7 @@ CharacterBuilderTerminal::~CharacterBuilderTerminal() {
 }
 
 
-void CharacterBuilderTerminal::loadTemplateData(LuaObject* templateData) {
+void CharacterBuilderTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -145,7 +145,7 @@ void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {
 
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(60):  		Logger.setLoggingName("CharacterBuilderTerminal");
+	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(61):  		Logger.setLoggingName("CharacterBuilderTerminal");
 	Logger::setLoggingName("CharacterBuilderTerminal");
 }
 

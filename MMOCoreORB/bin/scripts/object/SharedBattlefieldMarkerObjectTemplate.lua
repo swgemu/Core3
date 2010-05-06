@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedBattlefieldMarkerObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	templateType = SBMK
 }

@@ -119,6 +119,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/player/variables/IgnoreList.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -162,7 +164,7 @@ public:
 
 	PlayerObject();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -351,7 +353,7 @@ public:
 
 	void finalize();
 
-	void loadTemplateData(LuaObject* templateData);
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 

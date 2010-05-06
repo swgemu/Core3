@@ -50,6 +50,7 @@ import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
+include server.zone.templates.SharedObjectTemplate;
 
 class CharacterBuilderTerminal extends Terminal {
 	
@@ -67,7 +68,7 @@ class CharacterBuilderTerminal extends Terminal {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
 	 */
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	public native void initializeTransientMembers();
 	

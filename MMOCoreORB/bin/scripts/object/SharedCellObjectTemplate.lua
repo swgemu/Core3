@@ -41,5 +41,5 @@
 --which carries forward this exception.
 
 SharedCellObjectTemplate = SharedObjectTemplate:new {
- 	
+ 	templateType = CCLT
 }

@@ -67,6 +67,7 @@ include server.zone.objects.player.badges.Badges;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.group.GroupObject;
 import system.lang.ref.Reference;
+include server.zone.templates.SharedObjectTemplate;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -168,7 +169,7 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	@local 
-	public void loadTemplateData(LuaObject templateData) {
+	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
 		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;

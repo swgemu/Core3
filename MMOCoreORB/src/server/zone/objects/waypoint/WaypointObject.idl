@@ -5,7 +5,7 @@ import engine.core.ManagedReference;
 import server.zone.objects.intangible.IntangibleObject;
 import engine.service.proto.BaseMessage;
 import server.zone.Zone;
-
+include server.zone.templates.SharedObjectTemplate;
 
 class WaypointObject extends IntangibleObject {
 	protected unsigned int cellID; //?
@@ -30,7 +30,7 @@ class WaypointObject extends IntangibleObject {
 	}
 	
 	@local
-	public native void loadTemplateData(LuaObject templateData);
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
 	public native void insertToMessage(BaseMessage msg);

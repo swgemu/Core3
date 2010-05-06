@@ -22,14 +22,6 @@ IntangibleObject::~IntangibleObject() {
 }
 
 
-void IntangibleObject::loadTemplateData(LuaObject* templateData) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
-}
-
 void IntangibleObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -161,7 +153,7 @@ void IntangibleObjectImplementation::finalize() {
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(72):  		return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(70):  		return status;
 	return status;
 }
 
