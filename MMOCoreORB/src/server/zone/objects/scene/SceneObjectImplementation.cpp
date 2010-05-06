@@ -81,6 +81,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	containerObjects.setNullValue(NULL);
 	containerObjects.setNoDuplicateInsertPlan();
 	positionChangedObservers.setNoDuplicateInsertPlan();
+	pendingTasks.setNoDuplicateInsertPlan();
 
 	server = ZoneProcessServerImplementation::instance;
 
