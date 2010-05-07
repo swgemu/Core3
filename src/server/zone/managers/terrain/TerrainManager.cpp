@@ -7,7 +7,7 @@
 
 #include "TerrainManager.h"
 
-TerrainManager::TerrainManager(/*Zone* planet*/) {
+TerrainManager::TerrainManager(/*Zone* planet*/) : Logger("TerrainManager") {
 	//zone = planet;
 }
 
@@ -26,14 +26,16 @@ int TerrainManager::notify(SceneObject* object) {
 	if (creature->getParent() == NULL && getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
 		//info("detected water height " + String::valueOf(waterHeight), true);
 
-		float roundingPositionZ = floor(creature->getPositionZ() * 10) / 10;
+		//float roundingPositionZ = floor(creature->getPositionZ() * 10) / 10;
 
 		float result = waterHeight - creature->getSwimHeight();
 		/*StringBuffer msg;
-				msg << "swimHeight: " << swimHeight << " rounding:" << roundingPositionZ << " positionZ :" << positionZ << " waterHeight - swimHeight:" << result;
+				msg << "swimHeight: " << creature->getSwimHeight() << " rounding:" << roundingPositionZ << " positionZ :" << creature->getPositionZ() << " waterHeight - swimHeight:" << result;
 				info(msg.toString(), true);*/
 
-		if (roundingPositionZ + 0.1f == result || roundingPositionZ - 0.1f == result) {
+		float err = fabs(creature->getPositionZ() - result);
+
+		if (err < 0.2) {
 			//info("trying to set swimming state", true);
 			creature->setState(CreatureState::SWIMMING);
 		} else {
