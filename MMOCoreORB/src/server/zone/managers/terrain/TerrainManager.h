@@ -15,7 +15,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-class TerrainManager : public SceneObjectObserver {
+class TerrainManager : public SceneObjectObserver, public Logger {
 	ProceduralTerrainAppearance terrainData;
 
 	//Zone* zone;
