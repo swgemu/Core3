@@ -121,6 +121,25 @@ public:
 		return returnItem;
 	}
 
+	RadialMenuItem* getItemByRadialID(int index) {
+		RadialMenuItem* returnItem = NULL;
+
+		for (int i = 0; i < children.size(); ++i) {
+			RadialMenuItem* item = children.get(i);
+
+			if (item->getRadialID() == index)
+				return item;
+			else {
+				returnItem = item->getItem(index);
+
+				if (returnItem != NULL)
+					return returnItem;
+			}
+		}
+
+		return returnItem;
+	}
+
 	//Setters
 	inline void setRadialID(uint8 radialid) {
 		radialID = radialid;

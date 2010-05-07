@@ -113,13 +113,36 @@ public:
 			return root->getItem(index);
 	}
 
+	RadialMenuItem* getRadialItemByRadialID(int id) {
+		if (id == root->getRadialID())
+			return root;
+		else
+			return root->getItemByRadialID(id);
+	}
+
 	void addRadialMenuItem(uint8 parentid, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
 		RadialMenuItem* parent = getRadialItem(parentid);
 
-		if (parent == NULL)
+		if (parent == NULL) {
 			System::out << "error parent radial menu item null" << "\n";
+			throw Exception("null parent radial menu specified");
+		}
 
 		parent->addRadialMenuItem(++indexCount, radialid, callback, text);
+	}
+
+	/**
+	 * Adds an object menu item to the specified parent radial id, not parent index with callback
+	 */
+	void addRadialMenuItemToRadialID(uint8 parentRadialID, uint8 newRadialID, uint8 callback, const UnicodeString& text = "") {
+		RadialMenuItem* parent = getRadialItemByRadialID(parentRadialID);
+
+		if (parent == NULL) {
+			System::out << "error parent radial id menu item null" << "\n";
+			throw Exception("error parent radial id menu item null");
+		}
+
+		parent->addRadialMenuItem(++indexCount, newRadialID, callback, text);
 	}
 
 	void addRadialMenuItem(uint8 radialid, uint8 callback, const UnicodeString& text = "") {
