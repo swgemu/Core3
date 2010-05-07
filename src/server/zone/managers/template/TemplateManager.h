@@ -19,11 +19,18 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;
 
 public:
-	TemplateManager();
+	static Lua* luaTemplatesInstance;
 
+public:
+	TemplateManager();
 	~TemplateManager();
 
 	void registerTemplateObjects();
+
+	void loadLuaTemplates() {
+		info("loading object templates...", true);
+		luaTemplatesInstance->runFile("scripts/object/main.lua");
+	}
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
@@ -43,6 +50,13 @@ public:
 	bool existsTemplate(uint32 key) {
 		return templateCRCMap.containsKey(key);
 	}
+
+	// LUA
+	void registerFunctions();
+	void registerGlobals();
+	static int includeFile(lua_State* L);
+	static int crcString(lua_State* L);
+	static int addTemplateCRC(lua_State* L);
 
 };
 
