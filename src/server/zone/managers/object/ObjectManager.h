@@ -73,8 +73,6 @@ namespace zone {
 	public:
 		ObjectFactory<SceneObject* (), uint32> objectFactory;
 
-		static Lua* luaTemplatesInstance;
-
 	private:
 		/**
 		 * Loads the highest object id without the highest 16 bits that specify the table.
@@ -117,13 +115,6 @@ namespace zone {
 		inline void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;
 		}
-
-		// LUA
-		void registerFunctions();
-		void registerGlobals();
-		static int includeFile(lua_State* L);
-		static int crcString(lua_State* L);
-		static int addTemplateCRC(lua_State* L);
 
 	};
 

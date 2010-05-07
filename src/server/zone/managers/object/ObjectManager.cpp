@@ -64,23 +64,14 @@
 
 using namespace engine::db;
 
-Lua* ObjectManager::luaTemplatesInstance = NULL;
-
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
 
 	databaseManager = ObjectDatabaseManager::instance();
 	templateManager = TemplateManager::instance();
+	templateManager->loadLuaTemplates();
 
 	registerObjectTypes();
-
-	luaTemplatesInstance = new Lua();
-	luaTemplatesInstance->init();
-
-	info("loading object templates...", true);
-	registerFunctions();
-	registerGlobals();
-	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
 	databaseManager->loadDatabase("staticobjects", true, 0);
 	databaseManager->loadDatabase("sceneobjects", true);
@@ -95,9 +86,6 @@ ObjectManager::~ObjectManager() {
 	info("closing databases...", true);
 
 	ObjectDatabaseManager::instance()->finalize();
-
-	delete luaTemplatesInstance;
-	luaTemplatesInstance = NULL;
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -305,7 +293,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	SceneObject* object = NULL;
 
 	try {
-		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objectCRC);
+		SharedObjectTemplate* templateData = templateManager->getTemplate(objectCRC);
 
 		if (templateData == NULL) {
 			error("trying to create object with unknown objectcrc 0x" + String::hexvalueOf((int)objectCRC));
@@ -619,130 +607,3 @@ int ObjectManager::destroyObject(uint64 objectID) {
 
 	return 1;
 }
-
-void ObjectManager::registerFunctions() {
-	//lua generic
-	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
-	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
-	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
-}
-
-void ObjectManager::registerGlobals() {
-	//ItemMasks
-	luaTemplatesInstance->setGlobalShort("MALE", WearableObject::MALE);
-	luaTemplatesInstance->setGlobalShort("FEMALE", WearableObject::FEMALE);
-
-	luaTemplatesInstance->setGlobalShort("HUMAN", WearableObject::HUMAN);
-	luaTemplatesInstance->setGlobalShort("TRANDOSHAN", WearableObject::TRANDOSHAN);
-	luaTemplatesInstance->setGlobalShort("TWILEK", WearableObject::TWILEK);
-	luaTemplatesInstance->setGlobalShort("BOTHAN", WearableObject::BOTHAN);
-	luaTemplatesInstance->setGlobalShort("ZABRAK", WearableObject::ZABRAK);
-	luaTemplatesInstance->setGlobalShort("RODIAN", WearableObject::RODIAN);
-	luaTemplatesInstance->setGlobalShort("MONCALAMARI", WearableObject::MONCALAMARI);
-	luaTemplatesInstance->setGlobalShort("WOOKIEE", WearableObject::WOOKIEE);
-	luaTemplatesInstance->setGlobalShort("SULLUSTAN", WearableObject::SULLUSTAN);
-	luaTemplatesInstance->setGlobalShort("ITHORIAN", WearableObject::ITHORIAN);
-
-	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
-	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
-	luaTemplatesInstance->setGlobalShort("REBEL", WearableObject::REBEL);
-	luaTemplatesInstance->setGlobalShort("COVERT", WearableObject::COVERT);
-
-	luaTemplatesInstance->setGlobalShort("ALL", WearableObject::ALL);
-	luaTemplatesInstance->setGlobalShort("ALLSEXES",  WearableObject::ALLSEXES);
-	luaTemplatesInstance->setGlobalShort("ALLFACTIONS", WearableObject::ALLFACTIONS);
-	luaTemplatesInstance->setGlobalShort("HUMANOIDS", WearableObject::HUMANOIDS);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_FOOTWEAR", WearableObject::HUMANOID_FOOTWEAR);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_MALES", WearableObject::HUMANOID_MALES);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_FEMALES", WearableObject::HUMANOID_FEMALES);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_IMPERIALS", WearableObject::HUMANOID_IMPERIALS);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_REBELS", WearableObject::HUMANOID_REBELS);
-	luaTemplatesInstance->setGlobalShort("WOOKIEES", WearableObject::WOOKIEES);
-	luaTemplatesInstance->setGlobalShort("ITHORIANS", WearableObject::ITHORIANS);
-	luaTemplatesInstance->setGlobalShort("TWILEKS", WearableObject::TWILEKS);
-
-	luaTemplatesInstance->setGlobalInt("KINETIC", WeaponObject::KINETIC);
-	luaTemplatesInstance->setGlobalInt("ENERGY", WeaponObject::ENERGY);
-	luaTemplatesInstance->setGlobalInt("ELECTRICITY", WeaponObject::ELECTRICITY);
-	luaTemplatesInstance->setGlobalInt("STUN", WeaponObject::STUN);
-	luaTemplatesInstance->setGlobalInt("BLAST", WeaponObject::BLAST);
-	luaTemplatesInstance->setGlobalInt("HEAT", WeaponObject::HEAT);
-	luaTemplatesInstance->setGlobalInt("COLD", WeaponObject::COLD);
-	luaTemplatesInstance->setGlobalInt("ACID", WeaponObject::ACID);
-	luaTemplatesInstance->setGlobalInt("LIGHTSABER", WeaponObject::LIGHTSABER);
-	luaTemplatesInstance->setGlobalInt("FORCE", WeaponObject::FORCE);
-
-
-	luaTemplatesInstance->setGlobalInt("MELEEATTACK", WeaponObject::MELEEATTACK);
-	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", WeaponObject::RANGEDATTACK);
-	luaTemplatesInstance->setGlobalInt("FORCEATTACK", WeaponObject::FORCEATTACK);
-	luaTemplatesInstance->setGlobalInt("TRAPATTACK", WeaponObject::TRAPATTACK);
-	luaTemplatesInstance->setGlobalInt("GRENADEATTACK", WeaponObject::GRENADEATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYACIDBEAMATTACK", WeaponObject::HEAVYACIDBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYLIGHTNINGBEAMATTACK", WeaponObject::HEAVYLIGHTNINGBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYPARTICLEBEAMATTACK", WeaponObject::HEAVYPARTICLEBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
-
-	luaTemplatesInstance->setGlobalInt("SHOT", SharedObjectTemplate::SHOT);
-	luaTemplatesInstance->setGlobalInt("STOT", SharedObjectTemplate::STOT);
-	luaTemplatesInstance->setGlobalInt("SBMK", SharedObjectTemplate::SBMK);
-	luaTemplatesInstance->setGlobalInt("SBOT", SharedObjectTemplate::SBOT);
-	luaTemplatesInstance->setGlobalInt("STAT", SharedObjectTemplate::STAT);
-	luaTemplatesInstance->setGlobalInt("SIOT", SharedObjectTemplate::SIOT);
-	luaTemplatesInstance->setGlobalInt("CCLT", SharedObjectTemplate::CCLT);
-	luaTemplatesInstance->setGlobalInt("SCOU", SharedObjectTemplate::SCOU);
-	luaTemplatesInstance->setGlobalInt("SDSC", SharedObjectTemplate::SDSC);
-	luaTemplatesInstance->setGlobalInt("SFOT", SharedObjectTemplate::SFOT);
-	luaTemplatesInstance->setGlobalInt("SGRP", SharedObjectTemplate::SGRP);
-	luaTemplatesInstance->setGlobalInt("SITN", SharedObjectTemplate::SITN);
-	luaTemplatesInstance->setGlobalInt("SGLD", SharedObjectTemplate::SGLD);
-	luaTemplatesInstance->setGlobalInt("SJED", SharedObjectTemplate::SJED);
-	luaTemplatesInstance->setGlobalInt("SMSC", SharedObjectTemplate::SMSC);
-	luaTemplatesInstance->setGlobalInt("SMSO", SharedObjectTemplate::SMSO);
-	luaTemplatesInstance->setGlobalInt("SMSD", SharedObjectTemplate::SMSD);
-	luaTemplatesInstance->setGlobalInt("SMLE", SharedObjectTemplate::SMLE);
-	luaTemplatesInstance->setGlobalInt("SPLY", SharedObjectTemplate::SPLY);
-	luaTemplatesInstance->setGlobalInt("RCCT", SharedObjectTemplate::RCCT);
-	luaTemplatesInstance->setGlobalInt("SSHP", SharedObjectTemplate::SSHP);
-	luaTemplatesInstance->setGlobalInt("SUNI", SharedObjectTemplate::SUNI);
-	luaTemplatesInstance->setGlobalInt("SWAY", SharedObjectTemplate::SWAY);
-	luaTemplatesInstance->setGlobalInt("STOK", SharedObjectTemplate::STOK);
-	luaTemplatesInstance->setGlobalInt("SWOT", SharedObjectTemplate::SWOT);
-	luaTemplatesInstance->setGlobalInt("SCNC", SharedObjectTemplate::SCNC);
-	luaTemplatesInstance->setGlobalInt("SCOT", SharedObjectTemplate::SCOT);
-	luaTemplatesInstance->setGlobalInt("CHARACTERBUILDERTERMINAL", SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
-}
-
-int ObjectManager::includeFile(lua_State* L) {
-	String filename = Lua::getStringParameter(L);
-
-	Lua::runFile("scripts/object/" + filename, L);
-
-	return 0;
-}
-
-int ObjectManager::crcString(lua_State* L) {
-	String ascii = Lua::getStringParameter(L);
-
-	uint32 crc = ascii.hashCode();
-
-	lua_pushnumber(L, crc);
-
-	return 1;
-}
-
-int ObjectManager::addTemplateCRC(lua_State* L) {
-	String ascii =  lua_tostring(L, -2);
-
-	LuaObject obj(L);
-
-	uint32 crc = (uint32) ascii.hashCode();
-
-	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
-
-	//System::out << ascii << endl;
-
-	return 0;
-}
-
