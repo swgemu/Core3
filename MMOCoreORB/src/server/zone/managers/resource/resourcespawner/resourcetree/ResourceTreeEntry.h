@@ -69,6 +69,9 @@ private:
 	bool recycled;
 	bool children;
 
+	short zoneRestriction;
+	bool jtl;
+
 	String resourceContainerType;
 	String randomNameClass;
 
@@ -87,6 +90,7 @@ public:
 		resourceContainerType = "";
 		randomNameClass = "";
 
+		zoneRestriction = -1;
 	}
 
 	~ResourceTreeEntry() {
@@ -190,6 +194,10 @@ public:
         return randomNameClass;
     }
 
+    int getZoneRestriction() {
+    	return zoneRestriction;
+    }
+
     bool isRecycled() const
     {
         return recycled == true;
@@ -248,6 +256,22 @@ public:
     	children = child;
     }
 
+    void setZoneRestriction(int zone) {
+    	zoneRestriction = zone;
+    }
+
+    bool isZoneRestricted() {
+    	return zoneRestriction != -1;
+    }
+
+    void setJTL(bool j) {
+    	jtl = j;
+    }
+
+    bool isJTL() {
+    	return jtl;
+    }
+
 
 	void toString(){
 
@@ -273,6 +297,7 @@ public:
 		System::out << "Recycled = " << recycled  << endl;
 		System::out << "Resource Container Type = " << resourceContainerType  << endl;
 		System::out << "Random Name Class = " << randomNameClass  << endl;
+		System::out << "Zone Restriction = " << zoneRestriction  << endl;
 	}
 };
 

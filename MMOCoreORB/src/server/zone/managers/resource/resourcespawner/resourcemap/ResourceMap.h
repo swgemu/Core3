@@ -42,84 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCEPOOL_H_
-#define RESOURCEPOOL_H_
+#ifndef RESOURCEMAP_H_
+#define RESOURCEMAP_H_
 
 #include "engine/engine.h"
 #include "../../../../objects/resource/ResourceSpawn.h"
 
-class ResourceSpawner;
-class ResourceTree;
 
-/**
- * Abstract parent of all ResourcePool objects
- */
-class ResourcePool {
-protected:
-	/**
-	 * This VectorMap contains the classes that the pool is required to spawn
-	 * If the key is a specific type ie. "steel_kiirium" it will spawn the specific resource
-	 * If the key is a group ie. "steel, ore, etc" it will get a random member of that family.
-	 */
-	VectorMap<String, ManagedReference<ResourceSpawn*> > spawnedResources;
-
-	Vector<String> includedResources;
-	Vector<String> excludedResources;
-
-	/**
-	 * resourceSpawner is a pointer to the ResourceSpawner object defined in ResourceManager.
-	 */
-	ResourceSpawner* resourceSpawner;
-
-	/**
-	 * resourceTree is a pointer to the ResourceTree object defined in ResourceManager.
-	 */
-	ResourceTree* resourceTree;
-
+class ZoneResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 public:
-	  /** Constructor
-	   * \param spawner pointer to the ResourceSpawner object defined in ResourceManager
-	   * \param tree pointer to the ResourceTree object defined in ResourceManager
-	   */
-	ResourcePool(ResourceSpawner* spawner, ResourceTree* tree) {
-		resourceSpawner = spawner;
-		resourceTree = tree;
-	}
-	/**
-	 * Deconstructor
-	 */
-	~ResourcePool() {
-		resourceSpawner = NULL;
-		resourceTree = NULL;
-	}
-
-	  /**
-	   *  Remove expired resources and spawn replacements.
-	   * \return Whether update completed successfully
-	   */
-	virtual bool update() = 0;
-
-	/**
-	 * Initialize pool to contain needed resources
-	 */
-	void initialize(const String& includes, const String& excludes) {
-		StringTokenizer includeTokens(includes);
-		includeTokens.setDelimeter(",");
-
-		String token;
-		while (includeTokens.hasMoreTokens()) {
-			includeTokens.getStringToken(token);
-			includedResources.add(token);
-		}
-
-		StringTokenizer excludeTokens(excludes);
-		excludeTokens.setDelimeter(",");
-
-		while (excludeTokens.hasMoreTokens()) {
-			excludeTokens.getStringToken(token);
-			excludedResources.add(token);
-		}
-	}
+	ZoneResourceMap();
+	~ZoneResourceMap();
 };
 
-#endif /* RESOURCEPOOL_H_ */
+class ResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
+private:
+
+	VectorMap<int, ZoneResourceMap*> zoneResourceMap;
+
+public:
+	ResourceMap();
+	~ResourceMap();
+
+	/**
+	 * Adds the resource spawn to the global spawn map
+	 * and if spawned, it add it to the individual region
+	 * map for surveying and sampling/.
+	 * \param resname The unique name of the resource spawn
+	 * \param resourceSpawn The ResourceSpawn object to be added
+	*/
+	void add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn);
+
+	float getDensityAt(String resourcename, int zoneid, float x, float y);
+
+private:
+
+};
+
+
+#endif /* RESOURCEMAP_H_ */

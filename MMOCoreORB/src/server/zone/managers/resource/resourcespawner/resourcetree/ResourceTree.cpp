@@ -76,7 +76,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 			"resource_tree.attrib6min, resource_tree.attrib6max, resource_tree.attrib7min, resource_tree.attrib7max, "
 			"resource_tree.attrib8min, resource_tree.attrib8max, resource_tree.attrib9min, resource_tree.attrib9max, "
 			"resource_tree.attrib10min, resource_tree.attrib10max, resource_tree.attrib11min, resource_tree.attrib11max, "
-			"resource_tree.resourcecontainer, resource_tree.randomname FROM resource_tree";
+			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.zoneRestriction, resource_tree.jtl "
+			"FROM resource_tree";
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -112,6 +113,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				entry->setResourceContainerType(res->getString(47));
 				entry->setRandomNameClass(res->getString(48));
+				entry->setZoneRestriction(res->getInt(49));
+				entry->setJTL(res->getInt(50));
 
 				baseNode->add(entry);
 			}
