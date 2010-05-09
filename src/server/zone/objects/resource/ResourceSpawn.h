@@ -17,6 +17,8 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/objects/resource/SpawnDensityMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "system/util/VectorMap.h"
@@ -42,6 +44,8 @@ public:
 
 	void addAttribute(String& attribute, int value);
 
+	bool isType(String& ore);
+
 	String getName();
 
 	String getType();
@@ -54,11 +58,21 @@ public:
 
 	void setDespawned(unsigned long long t);
 
+	bool isUnknownType();
+
+	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+
+	int getConcentration(bool jtl);
+
+	Vector<unsigned int> getSpawnZones(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+
+	float getDensityAt(int zoneid, float x, float y);
+
 	bool inShift();
 
 	int getAttributeAndValue(String& attribute, int index);
 
-	void toString();
+	void print();
 
 protected:
 	ResourceSpawn(DummyConstructorParameter* param);
@@ -101,6 +115,8 @@ protected:
 
 	unsigned long long despawned;
 
+	VectorMap<unsigned int, SpawnDensityMap*> spawnMaps;
+
 	unsigned long long totalUnitsSpawned;
 
 	unsigned long long unitsInCirculation;
@@ -120,6 +136,8 @@ public:
 
 	void addAttribute(String& attribute, int value);
 
+	bool isType(String& ore);
+
 	String getName();
 
 	String getType();
@@ -132,11 +150,21 @@ public:
 
 	void setDespawned(unsigned long long t);
 
+	bool isUnknownType();
+
+	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+
+	int getConcentration(bool jtl);
+
+	Vector<unsigned int> getSpawnZones(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+
+	float getDensityAt(int zoneid, float x, float y);
+
 	bool inShift();
 
 	int getAttributeAndValue(String& attribute, int index);
 
-	void toString();
+	void print();
 
 	ResourceSpawn* _this;
 
@@ -185,6 +213,8 @@ public:
 
 	void addAttribute(String& attribute, int value);
 
+	bool isType(String& ore);
+
 	String getName();
 
 	String getType();
@@ -202,6 +232,7 @@ protected:
 	String _param0_setType__String_;
 	String _param0_addClass__String_;
 	String _param0_addAttribute__String_int_;
+	String _param0_isType__String_;
 };
 
 class ResourceSpawnHelper : public DistributedObjectClassHelper, public Singleton<ResourceSpawnHelper> {

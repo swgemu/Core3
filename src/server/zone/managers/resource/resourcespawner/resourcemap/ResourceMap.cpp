@@ -42,62 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MINIMUMPOOL_H_
-#define MINIMUMPOOL_H_
+#include "ResourceMap.h"
 
-#include "engine/engine.h"
-#include "ResourcePool.h"
+ResourceMap::ResourceMap() {
 
-class ResourceSpawner;
+}
 
-class MinimumPool : public ResourcePool {
-private:
+ResourceMap::~ResourceMap() {
+	removeAll();
+}
 
-public:
-	MinimumPool(ResourceSpawner* spawner, ResourceTree* tree) : ResourcePool(spawner, tree) {
+float ResourceMap::getDensityAt(String resourcename, int zoneid, float x, float y) {
+	ManagedReference<ResourceSpawn* > resourceSpawn = get(resourcename);
+	return resourceSpawn->getDensityAt(zoneid, x, y);
+}
 
-	}
-
-	~MinimumPool() {
-
-	}
-	/**
-	 * The update function checks the ResourceSpawn items
-	 * in spawnedResources to see if they have expired.
-	 * If they have not expired, no action is taken, but if
-	 * they have expired, we replace them according to the
-	 * rules.
-	 */
-	bool update() {
-
-		for(int ii = 0; ii < spawnedResources.size(); ++ii) {
-			ManagedReference<ResourceSpawn* > spawn = spawnedResources.get(ii);
-			if(!spawn->inShift()) {
-				String type = spawnedResources.elementAt(ii).getKey();
-				spawnedResources.drop(type);
-				/*ManagedReference<ResourceSpawn* > newSpawn =
-						resourceSpawner->getFromRandomPool(type);
-				if(newSpawn != NULL) {
-					spawnedResources.put(type, newSpawn);
-					//newSpawn->setSpawnPool("minimum");
-					continue;
-				}*/
-				//resourceSpawner->info("test");
-				//newSpawn = resourceSpawner->createResourceSpawn(type, excludedResources);
-			}
-		}
-
-
-		return true;
-	}
-
-	void initialize(const String& includes, const String& excludes) {
-		ResourcePool::initialize(includes, excludes);
-
-	}
-
-private:
-
-};
-
-#endif /* MINIMUMPOOL_H_ */
+void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn) {
+	put(resname, resourceSpawn);
+}

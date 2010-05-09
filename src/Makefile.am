@@ -93,9 +93,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
-				server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
-				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
-				server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
@@ -156,6 +153,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
+		server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
+		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
+		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
+		server/zone/managers/resource/resourcespawner/resourcemap/ResourceMap.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
@@ -179,6 +180,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
+		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \
