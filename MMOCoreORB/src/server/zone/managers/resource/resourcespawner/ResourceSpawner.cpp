@@ -157,12 +157,16 @@ void ResourceSpawner::shiftResources() {
 
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		int zoneid, const Vector<String> excludes) {
+		const Vector<String> excludes) {
 
-	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes, zoneid);
+	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes);
 
-	if(resourceEntry == NULL)
+	if(resourceEntry == NULL) {
+		info("Resource type not found: " + type);
 		return NULL;
+	}
+
+	resourceEntry->toString();
 
  	String name = makeResourceName(resourceEntry->isOrganic());
 
@@ -195,8 +199,6 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	resourceMap->add(name, newSpawn);
 
- 	newSpawn->print();
-
 	return newSpawn;
 }
 
@@ -204,15 +206,14 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
 
 	Vector<String> excludes;
 
-	return createResourceSpawn(type, -1, excludes);
+	return createResourceSpawn(type, excludes);
 }
 
-ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes,
-		int zoneid, const Vector<String> excludes) {
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes, const Vector<String> excludes) {
 
 	String type = includes.get(System::random(includes.size() - 1));
 
-	return createResourceSpawn(type, zoneid, excludes);
+	return createResourceSpawn(type, excludes);
 }
 
 String ResourceSpawner::makeResourceName(bool isOrganic) {
