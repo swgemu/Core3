@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ResourceSpawner.h"
+class ResourceSpawner;
 
 class ResourceShiftTask : public Task {
 	ResourceSpawner* resourceSpawner;

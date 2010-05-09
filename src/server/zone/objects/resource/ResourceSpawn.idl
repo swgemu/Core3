@@ -52,6 +52,8 @@ include engine.core.ManagedObject;
 include server.zone.objects.player.PlayerCreature;
 include server.zone.packets.scene.AttributeListMessage;
 
+include server.zone.objects.resource.SpawnDensityMap;
+
 class ResourceSpawn extends ManagedObject implements Logger {
 
 	protected string spawnType;
@@ -66,7 +68,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	protected string resourcePool;
 	protected unsigned long spawned;
 	protected unsigned long despawned;
-	
+
+	@dereferenced 
+	protected VectorMap<unsigned int, SpawnDensityMap> spawnMaps;
+		
 	protected unsigned long totalUnitsSpawned;
 	protected unsigned long unitsInCirculation;
 
@@ -113,6 +118,13 @@ class ResourceSpawn extends ManagedObject implements Logger {
 		spawnAttributes.put(attribute, value);
 	}
 	
+	public boolean isType(string ore) {
+		for(int i = 0; i < spawnClasses.size(); ++i) {
+			if(spawnClasses.get(i) == ore)
+				return true;	
+		}
+		return false;
+	}
 
     // getters
 	public string getName() {
@@ -146,6 +158,22 @@ class ResourceSpawn extends ManagedObject implements Logger {
     	despawned = t;
     }
     
+    @local 	
+	public native boolean isUnknownType();
+    
+    @local
+    public native void createSpawnMaps(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+    
+    @local 	
+	public native int getConcentration(boolean jtl);
+	
+	@local 	
+	@dereferenced
+	public native Vector<unsigned int> getSpawnZones(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+    
+    @local
+    public native float getDensityAt(int zoneid, float x, float y);
+    
     @local
     public native boolean inShift();
     
@@ -153,5 +181,5 @@ class ResourceSpawn extends ManagedObject implements Logger {
     public native int getAttributeAndValue(string attribute, int index);
 
 	@local
-    public native void toString();
+    public native void print();
 }

@@ -44,6 +44,7 @@ which carries forward this exception.
 
 
 #include "ResourceSpawn.h"
+#include "../terrain/PlanetNames.h"
 
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
@@ -62,7 +63,118 @@ int ResourceSpawnImplementation::getAttributeAndValue(String& attribute, int ind
 	}
 }
 
-void ResourceSpawnImplementation::toString()  {
+bool ResourceSpawnImplementation::isUnknownType() {
+	String unknown = "unknown";
+	for (int i = 0; i < spawnClasses.size(); ++i) {
+		if (spawnClasses.get(i).indexOf(unknown) != -1)
+			return true;
+	}
+	return false;
+}
+
+void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int zonerestriction,
+		Vector<uint32>& activeZones) {
+
+	String ore = "ore";
+
+	int concentration = getConcentration(jtl);
+	Vector<uint32> zoneids = getSpawnZones(jtl, zonerestriction, activeZones);
+
+	for(int i = 0; i < zoneids.size(); ++i) {
+
+		SpawnDensityMap* newMap = new SpawnDensityMap(isType(ore), concentration);
+		spawnMaps.put((uint32) zoneids.get(i), newMap);
+	}
+}
+
+int ResourceSpawnImplementation::getConcentration(bool jtl) {
+
+	String ore = "ore";
+	String chemical = "chemical";
+	String inertgas = "gas_inert";
+	String water = "water";
+	String solar = "energy_renewable_unlimited_solar";
+	String wind = "energy_renewable_unlimited_wind";
+
+	/**
+	 * Here we are using defined rules to set the max
+	 * density of this specific spawn
+	 */
+
+	if(jtl || isType(chemical) || isType(inertgas))
+		return SpawnDensityMap::HIGHDENSITY;
+
+	else if(isType(ore) || isType(water) || isType(solar) || isType(wind))
+		return SpawnDensityMap::LOWDENSITY;
+
+	else
+		return SpawnDensityMap::MEDIUMDENSITY;
+}
+
+Vector<uint32> ResourceSpawnImplementation::getSpawnZones(bool jtl,
+		int zonerestriction, Vector<uint32>& activeZones) {
+
+	String ore = "ore";
+	String iron = "iron";
+	String intrusiveore = "ore_intrusive";
+	String extrusiveore = "ore_extrusive";
+	String solidpetro = "fuel_petrochem_solid";
+	String liquidpetro = "fuel_petrochem_liquid";
+
+	/**
+	 * Here we are using defined rules to set the number
+	 * of zones and specific zones of this specific spawn
+	 */
+
+	Vector<uint32> zoneids;
+	int zonecount = 0;
+
+	/// If resource is zone restricted, add only the restricted zone
+	if (zonerestriction != -1)
+		zoneids.add((uint32) zonerestriction);
+
+	/// If resource is JTL, it spawns on 1 random planet
+	else if (jtl)
+		zoneids.add((uint32) System::random(9));
+
+	/// If resource is the types below, it spawns on 1-3 planets
+	else if (isUnknownType() || isType(iron) || isType(intrusiveore) || isType(
+			extrusiveore) || isType(iron) || isType(solidpetro) || isType(
+			liquidpetro))
+
+		zonecount = System::random(2) + 1;
+
+	/// All other resources spawn on 8 planets
+	else
+		zonecount = 8;
+
+	/// If there are no more zones to add exit function
+	if(zonecount == 0)
+		return zoneids;
+
+	/// Randomly remove entries until the Vector contains
+	/// a number of elements equal to zonecount
+	while(activeZones.size() > zonecount)
+		activeZones.remove(System::random(activeZones.size() - 1));
+
+	/// Add all the remaining items in activeZones to the
+	/// zoneids vector
+	while(activeZones.size() > 0)
+		zoneids.add(activeZones.remove(0));
+
+	return zoneids;
+}
+
+float ResourceSpawnImplementation::getDensityAt(int zoneid, float x, float y) {
+	SpawnDensityMap* map = spawnMaps.get((uint32)zoneid);
+
+	if(map == NULL)
+	   return 0;
+
+	return map->getDensityAt(x, y);
+}
+
+void ResourceSpawnImplementation::print()  {
     System::out << "**** Resource Data ****\n";
     System::out << "Class: " << getFinalClass() << "\n";
     System::out << "Name: " << spawnName << "\n";
@@ -74,6 +186,10 @@ void ResourceSpawnImplementation::toString()  {
     	String attrib;
     	int value = getAttributeAndValue(attrib, i);
     	System::out << attrib << " " << value << "\n";
+    }
+    for(int i = 0; i < spawnMaps.size(); ++i) {
+    	System::out << Planet::getPlanetName(spawnMaps.elementAt(i).getKey()) << ": ";
+    	spawnMaps.get(i)->print();
     }
     System::out << "***********************\n";
  }

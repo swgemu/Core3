@@ -52,6 +52,8 @@ which carries forward this exception.
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "resourcetree/ResourceTree.h"
+#include "resourcemap/ResourceMap.h"
+
 #include "resourcepool/MinimumPool.h"
 #include "resourcepool/FixedPool.h"
 #include "resourcepool/RandomPool.h"
@@ -68,9 +70,9 @@ private:
 	ResourceTree* resourceTree;
 	ObjectDatabaseManager* databaseManager;
 
-	VectorMap<String, ResourceSpawn*> resourceSpawns;
+	ResourceMap* resourceMap;
 
-	Vector<int> resourceZones;
+	Vector<uint32> activeResourceZones;
 
 	MinimumPool* minimumPool;
 	FixedPool* fixedPool;
@@ -108,6 +110,13 @@ private:
 	void loadResourceSpawns();
 	String makeResourceName(bool isOrganic);
 	int randomizeValue(int min, int max);
+	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
+	long getRandomUnixTimestamp(int min, int max);
+
+
+	friend class ResourcePool;
+	friend class MinimumPool;
+	friend class ResourceManager;
 };
 
 #endif /* RESOURCESPAWNER_H_ */

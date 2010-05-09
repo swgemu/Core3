@@ -58,6 +58,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 	objectManager = objMan;
 
 	resourceTree = new ResourceTree();
+	resourceMap = new ResourceMap();
 
 	loadResourceSpawns();
 
@@ -75,7 +76,9 @@ ResourceSpawner::~ResourceSpawner() {
 	delete randomPool;
 	delete nativePool;
 
-	resourceZones.removeAll();
+	delete resourceMap;
+
+	activeResourceZones.removeAll();
 }
 
 void ResourceSpawner::initializeMinimumPool(const String& includes, const String& excludes) {
@@ -95,7 +98,7 @@ void ResourceSpawner::initializeNativePool(const String& includes, const String&
 }
 
 void ResourceSpawner::addPlanet(const int planetid) {
-	resourceZones.add(planetid);
+	activeResourceZones.add(planetid);
 }
 
 void ResourceSpawner::setSpawningParameters(const int shiftint, const int dur,
@@ -134,11 +137,11 @@ void ResourceSpawner::loadResourceSpawns() {
 	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
-		ResourceSpawn* resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
-		resourceSpawn->toString();
+		ManagedReference<ResourceSpawn* > resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
+		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 	}
-
-	info("Resource Map Complete");
+    String built = "Resource Map Built with " + String::valueOf(resourceMap->size()) + " resources";
+	info(built);
 }
 
 void ResourceSpawner::shiftResources() {
@@ -148,8 +151,6 @@ void ResourceSpawner::shiftResources() {
 	randomPool->update();
 	nativePool->update();
 
-	createResourceSpawn("steel", -1);
-
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
 }
@@ -158,35 +159,43 @@ void ResourceSpawner::shiftResources() {
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		int zoneid, const Vector<String> excludes) {
 
-	ResourceTreeEntry* resourceTemplate = resourceTree->getEntry(type, excludes, zoneid);
+	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes, zoneid);
 
-	if(resourceTemplate == NULL)
+	if(resourceEntry == NULL)
 		return NULL;
 
- 	String name = makeResourceName(resourceTemplate->isOrganic());
+ 	String name = makeResourceName(resourceEntry->isOrganic());
 
  	ResourceSpawn* newSpawn = new ResourceSpawn();
 
- 	String resType = resourceTemplate->getType();
+ 	String resType = resourceEntry->getType();
  	newSpawn->setType(resType);
 
  	newSpawn->setName(name);
 
- 	for(int i = 0; i < resourceTemplate->getClassCount(); ++i) {
- 		String resClass = resourceTemplate->getClass(i);
+ 	for(int i = 0; i < resourceEntry->getClassCount(); ++i) {
+ 		String resClass = resourceEntry->getClass(i);
  		newSpawn->addClass(resClass);
  	}
 
- 	for(int i = 0; i < resourceTemplate->getAttributeCount(); ++i) {
- 		ResourceAttribute* attrib = resourceTemplate->getAttribute(i);
+ 	for(int i = 0; i < resourceEntry->getAttributeCount(); ++i) {
+ 		ResourceAttribute* attrib = resourceEntry->getAttribute(i);
  		int randomValue = randomizeValue(attrib->getMinimum(), attrib->getMaximum());
  		String attribName = attrib->getName();
  		newSpawn->addAttribute(attribName, randomValue);
  	}
 
+ 	long expires = getRandomExpirationTime(resourceEntry);
+
+ 	Vector<uint32> activeZones;
+ 	activeResourceZones.clone(activeZones);
+ 	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
+
  	objectManager->persistObject(newSpawn,2,"resourcespawns");
 
- 	newSpawn->toString();
+ 	resourceMap->add(name, newSpawn);
+
+ 	newSpawn->print();
 
 	return newSpawn;
 }
@@ -210,16 +219,17 @@ String ResourceSpawner::makeResourceName(bool isOrganic) {
 
 	String randname;
 
-	//while (true) {
+	while (true) {
 
 		randname = nameManager->makeResourceName(isOrganic);
 
-	//	if (checkResourceName(randname))
-	//		break;
-	//}
+		if (!resourceMap->contains(randname))
+			break;
+	}
 
 	return randname;
 }
+
 int ResourceSpawner::randomizeValue(int min, int max) {
     if (min == 0 && max == 0)
     	return 0;
@@ -243,4 +253,23 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 		}
 	}
 	return randomStat;
+}
+
+long ResourceSpawner::getRandomExpirationTime(ResourceTreeEntry* resourceEntry) {
+
+	if(resourceEntry->isOrganic())
+		return getRandomUnixTimestamp(6, 22);
+
+	else if(resourceEntry->isJTL())
+		return getRandomUnixTimestamp(13, 22);
+
+	else
+		return getRandomUnixTimestamp(6, 11);
+}
+
+long ResourceSpawner::getRandomUnixTimestamp(int min, int max) {
+
+	return time(0) + (System::random((max * shiftDuration) -
+			(min * shiftDuration)) + min * shiftDuration);
+
 }
