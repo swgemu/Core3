@@ -42,33 +42,57 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MINIMUMPOOL_H_
-#define MINIMUMPOOL_H_
+#include "MinimumPool.h"
+#include "../ResourceSpawner.h"
 
-#include "engine/engine.h"
-#include "ResourcePool.h"
+MinimumPool::MinimumPool(ResourceSpawner* spawner, ResourceTree* tree) : ResourcePool(spawner, tree) {
 
-class ResourceSpawner;
+}
 
-class MinimumPool : public ResourcePool {
-private:
+MinimumPool::~MinimumPool() {
 
-public:
-	MinimumPool(ResourceSpawner* spawner, ResourceTree* tree);
+}
 
-	~MinimumPool();
+void MinimumPool::initialize(const String& includes, const String& excludes) {
+	ResourcePool::initialize(includes, excludes);
 
-	void initialize(const String& includes, const String& excludes);
+}
+
+bool MinimumPool::update() {
+	/**
+	 * Create resources for any included type that doesn't exist in
+	 * the VectorMap
+	 */
+	for(int ii = 0; ii < includedResources.size(); ++ii) {
+		String type = includedResources.get(ii);
+		System::out << "Checking type " << type << endl;
+		if(!spawnedResources.contains(type)) {
+			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(type, excludedResources);
+			spawnedResources.put(type, newSpawn);
+			System::out << "Spawning " << type << endl;
+		}
+	}
 
 	/**
-	 * The update function checks the ResourceSpawn items
-	 * in spawnedResources to see if they have expired.
-	 * If they have not expired, no action is taken, but if
-	 * they have expired, we replace them according to the
-	 * rules.
+	 * We remove any resources that have despawned from the
+	 * pool
 	 */
-	bool update();
-
-};
-
-#endif /* MINIMUMPOOL_H_ */
+	for(int ii = 0; ii < spawnedResources.size(); ++ii) {
+		ManagedReference<ResourceSpawn* > spawn = spawnedResources.get(ii);
+		if(!spawn->inShift()) {
+			String type = spawnedResources.elementAt(ii).getKey();
+			spawnedResources.drop(type);
+			ManagedReference<ResourceSpawn* > newSpawn;// =
+					//resourceSpawner->getFromRandomPool(type);
+			if(newSpawn != NULL) {
+				spawnedResources.put(type, newSpawn);
+				//newSpawn->setSpawnPool("minimum");
+				continue;
+			}
+			newSpawn = resourceSpawner->createResourceSpawn(type, excludedResources);
+			spawnedResources.put(type, newSpawn);
+			newSpawn->print();
+		}
+	}
+	return true;
+}
