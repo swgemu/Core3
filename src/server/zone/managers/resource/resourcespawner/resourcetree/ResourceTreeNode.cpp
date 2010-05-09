@@ -170,7 +170,7 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 	if(node == NULL)
 		return NULL;
 
-	if (zoneid >= 0) {
+	if (zoneid != -1) {
 
 		String planet = Planet::getPlanetName(zoneid);
 
@@ -181,6 +181,9 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 		Vector<ResourceTreeEntry*> candidates;
 
 		node->getEntryPool(candidates, excludes);
+
+		if(candidates.size() == 0)
+			return NULL;
 
 		int random = System::random(candidates.size() - 1);
 
