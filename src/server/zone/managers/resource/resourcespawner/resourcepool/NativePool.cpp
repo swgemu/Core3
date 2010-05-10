@@ -42,43 +42,47 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RANDOMPOOL_H_
-#define RANDOMPOOL_H_
+#include "NativePool.h"
+#include "../ResourceSpawner.h"
 
-#include "engine/engine.h"
-#include "ResourcePool.h"
+NativePool::NativePool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 
-class ResourceSpawner;
+}
 
-class RandomPool : public ResourcePool {
-private:
+NativePool::~NativePool() {
 
-	int poolSize;
+}
 
-public:
-	RandomPool(ResourceSpawner* spawner);
+void NativePool::initialize(const String& includes, const String& excludes) {
+	ResourcePool::initialize(includes, excludes);
+	for(int ii = 0; ii < includedResources.size(); ++ii)
+		this->add(NULL);
+}
 
-	~RandomPool();
+void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
-	void initialize(const String& includes, const String& excludes, int size);
+	for (int ii = 0; ii < includedResources.size(); ++ii) {
 
-	void print();
+		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
 
-private:
+		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
+				== NULL) {
+			this->setElementAt(ii, resourceSpawn);
+			break;
+		}
+	}
 
-	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
+}
 
-	/**
-	 * The update function checks the ResourceSpawn items
-	 * in spawnedResources to see if they have expired.
-	 * If they have not expired, no action is taken, but if
-	 * they have expired, we replace them according to the
-	 * rules.
-	 */
-	bool update();
+bool NativePool::update() {
 
+	resourceSpawner->log("Native Pool Update Successful");
+	return true;
+}
 
-	friend class ResourceSpawner;
-};
+void NativePool::print() {
 
-#endif /* RANDOMPOOL_H_ */
+	System::out << "**** Native Pool ****" << endl;
+	ResourcePool::print();
+	System::out << "**********************" << endl;
+}

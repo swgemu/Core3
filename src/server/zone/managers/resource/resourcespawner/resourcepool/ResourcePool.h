@@ -49,19 +49,13 @@ which carries forward this exception.
 #include "../../../../objects/resource/ResourceSpawn.h"
 
 class ResourceSpawner;
-class ResourceTree;
 
 /**
  * Abstract parent of all ResourcePool objects
  */
-class ResourcePool {
+class ResourcePool : public Vector<ManagedReference<ResourceSpawn*> > {
+
 protected:
-	/**
-	 * This VectorMap contains the classes that the pool is required to spawn
-	 * If the key is a specific type ie. "steel_kiirium" it will spawn the specific resource
-	 * If the key is a group ie. "steel, ore, etc" it will get a random member of that family.
-	 */
-	VectorMap<String, ManagedReference<ResourceSpawn*> > spawnedResources;
 
 	Vector<String> includedResources;
 	Vector<String> excludedResources;
@@ -71,33 +65,28 @@ protected:
 	 */
 	ResourceSpawner* resourceSpawner;
 
-	/**
-	 * resourceTree is a pointer to the ResourceTree object defined in ResourceManager.
-	 */
-	ResourceTree* resourceTree;
+public:
+
+	static const short NOPOOL = 0;
+	static const short MINIMUMPOOL = 1;
+	static const short RANDOMPOOL = 2;
+	static const short FIXEDPOOL = 3;
+	static const short NATIVEPOOL = 4;
 
 public:
 	  /** Constructor
 	   * \param spawner pointer to the ResourceSpawner object defined in ResourceManager
 	   * \param tree pointer to the ResourceTree object defined in ResourceManager
 	   */
-	ResourcePool(ResourceSpawner* spawner, ResourceTree* tree) {
+	ResourcePool(ResourceSpawner* spawner) {
 		resourceSpawner = spawner;
-		resourceTree = tree;
 	}
 	/**
 	 * Deconstructor
 	 */
 	~ResourcePool() {
 		resourceSpawner = NULL;
-		resourceTree = NULL;
 	}
-
-	  /**
-	   *  Remove expired resources and spawn replacements.
-	   * \return Whether update completed successfully
-	   */
-	virtual bool update() = 0;
 
 	/**
 	 * Initialize pool to contain needed resources
@@ -120,6 +109,37 @@ public:
 			excludedResources.add(token);
 		}
 	}
+
+	void print() {
+
+		for(int ii = 0; ii < this->size(); ++ii) {
+
+			ManagedReference<ResourceSpawn* > spawn = this->get(ii);
+
+			if(spawn != NULL)
+				System::out << spawn->getName() << " : " << spawn->getType() << endl;
+			else
+				System::out << "EMPTY : " << includedResources.get(ii) << endl;
+		}
+	}
+
+private:
+	/**
+	 * Remove expired resources and spawn replacements.
+	 * \return Whether update completed successfully
+	 */
+	virtual bool update() = 0;
+
+
+	/**
+	 * Get the position of incoming resource type
+	 * This function should only be used when loading
+	 * from database.
+	 * \param resourceSpawn The resource to add to this pool
+	 */
+	virtual void addResource(ManagedReference<ResourceSpawn*> resourceSpawn) = 0;
+
+	friend class ResourceSpawner;
 };
 
 #endif /* RESOURCEPOOL_H_ */

@@ -111,9 +111,6 @@ private:
 	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
 	long getRandomUnixTimestamp(int min, int max);
 
-
-	friend class ResourcePool;
-	friend class MinimumPool;
 	friend class ResourceManager;
 };
 

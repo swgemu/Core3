@@ -60,12 +60,10 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 	resourceTree = new ResourceTree();
 	resourceMap = new ResourceMap();
 
-	loadResourceSpawns();
-
-	minimumPool = new MinimumPool(this, resourceTree);
-	fixedPool = new FixedPool(this, resourceTree);
-	randomPool = new RandomPool(this, resourceTree);
-	nativePool = new NativePool(this, resourceTree);
+	minimumPool = new MinimumPool(this);
+	fixedPool = new FixedPool(this);
+	randomPool = new RandomPool(this);
+	nativePool = new NativePool(this);
 }
 
 ResourceSpawner::~ResourceSpawner() {
@@ -123,6 +121,7 @@ void ResourceSpawner::setSpawningParameters(const int shiftint, const int dur,
 }
 
 void ResourceSpawner::start() {
+	loadResourceSpawns();
 	shiftResources();
 }
 
@@ -137,19 +136,44 @@ void ResourceSpawner::loadResourceSpawns() {
 	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
+
 		ManagedReference<ResourceSpawn* > resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
+
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
+
+		if(resourceSpawn->getSpawnPool() != 0) {
+
+			switch(resourceSpawn->getSpawnPool()) {
+			case 1:
+				minimumPool->addResource(resourceSpawn);
+				break;
+			case 2:
+				randomPool->addResource(resourceSpawn);
+				break;
+			case 3:
+				fixedPool->addResource(resourceSpawn);
+				break;
+			case 4:
+				nativePool->addResource(resourceSpawn);
+				break;
+			}
+		}
 	}
+
     String built = "Resource Map Built with " + String::valueOf(resourceMap->size()) + " resources";
 	info(built);
 }
 
 void ResourceSpawner::shiftResources() {
 
+	randomPool->print();
+
 	minimumPool->update();
-	fixedPool->update();
 	randomPool->update();
+	fixedPool->update();
 	nativePool->update();
+
+	randomPool->print();
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
@@ -166,8 +190,6 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		return NULL;
 	}
 
-	resourceEntry->toString();
-
  	String name = makeResourceName(resourceEntry->isOrganic());
 
  	ResourceSpawn* newSpawn = new ResourceSpawn();
@@ -182,6 +204,11 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  		newSpawn->addClass(resClass);
  	}
 
+ 	for(int i = 0; i < resourceEntry->getStfClassCount(); ++i) {
+ 		String resClass = resourceEntry->getStfClass(i);
+ 		newSpawn->addStfClass(resClass);
+ 	}
+
  	for(int i = 0; i < resourceEntry->getAttributeCount(); ++i) {
  		ResourceAttribute* attrib = resourceEntry->getAttribute(i);
  		int randomValue = randomizeValue(attrib->getMinimum(), attrib->getMaximum());
@@ -190,13 +217,14 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  	}
 
  	long expires = getRandomExpirationTime(resourceEntry);
+ 	newSpawn->setDespawned(expires);
 
  	Vector<uint32> activeZones;
  	activeResourceZones.clone(activeZones);
  	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
 
- 	objectManager->persistObject(newSpawn,2,"resourcespawns");
-
+ 	objectManager->persistObject(newSpawn, 1, "resourcespawns");
+System::out << "Created " << name << endl;
  	resourceMap->add(name, newSpawn);
 
 	return newSpawn;

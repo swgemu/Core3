@@ -158,9 +158,11 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 	ResourceTreeEntry* entry = NULL;
 	entry = find(entry, type);
 
+	if(entry == NULL)
+		return NULL;
+
 	// If the entry has no childen, it means
 	// that a specific resource was requested
-	//
 	if(!entry->hasChildren())
 		return entry;
 
@@ -211,7 +213,7 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 		if(!ent->isRecycled() && !ent->hasChildren()) {
 
 			for(int ii = 0; ii < excludes.size(); ++ii) {
-				if(excludes.get(ii) == ent->getType()) {
+				if(ent->isType(excludes.get(ii))) {
 					valid = false;
 					break;
 				}
@@ -232,6 +234,7 @@ void ResourceTreeNode::updateEntries() {
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
 		ResourceTreeNode* node = ent->getMyNode();
+		ent->addStfClass(ent->getType());
 		while(node->getParentNode() != NULL) {
 			ent->addStfClass(node->getStfName());
 			node = node->getParentNode();

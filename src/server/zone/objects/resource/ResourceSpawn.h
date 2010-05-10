@@ -40,11 +40,15 @@ public:
 
 	void setType(String& type);
 
+	void setSpawnPool(int pool);
+
 	void addClass(String& newclass);
+
+	void addStfClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
 
-	bool isType(String& ore);
+	bool isType(String& type);
 
 	String getName();
 
@@ -57,6 +61,8 @@ public:
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	int getSpawnPool();
 
 	bool isUnknownType();
 
@@ -107,9 +113,11 @@ protected:
 
 	Vector<String> spawnClasses;
 
+	Vector<String> stfSpawnClasses;
+
 	VectorMap<String, int> spawnAttributes;
 
-	String resourcePool;
+	int spawnPool;
 
 	unsigned long long spawned;
 
@@ -132,11 +140,15 @@ public:
 
 	void setType(String& type);
 
+	void setSpawnPool(int pool);
+
 	void addClass(String& newclass);
+
+	void addStfClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
 
-	bool isType(String& ore);
+	bool isType(String& type);
 
 	String getName();
 
@@ -149,6 +161,8 @@ public:
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	int getSpawnPool();
 
 	bool isUnknownType();
 
@@ -209,11 +223,15 @@ public:
 
 	void setType(String& type);
 
+	void setSpawnPool(int pool);
+
 	void addClass(String& newclass);
+
+	void addStfClass(String& newclass);
 
 	void addAttribute(String& attribute, int value);
 
-	bool isType(String& ore);
+	bool isType(String& type);
 
 	String getName();
 
@@ -227,10 +245,13 @@ public:
 
 	void setDespawned(unsigned long long t);
 
+	int getSpawnPool();
+
 protected:
 	String _param0_setName__String_;
 	String _param0_setType__String_;
 	String _param0_addClass__String_;
+	String _param0_addStfClass__String_;
 	String _param0_addAttribute__String_int_;
 	String _param0_isType__String_;
 };
