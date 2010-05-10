@@ -42,24 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "MinimumPool.h"
+#include "FixedPool.h"
 #include "../ResourceSpawner.h"
 
-MinimumPool::MinimumPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
+FixedPool::FixedPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 
 }
 
-MinimumPool::~MinimumPool() {
+FixedPool::~FixedPool() {
 
 }
 
-void MinimumPool::initialize(const String& includes, const String& excludes) {
+void FixedPool::initialize(const String& includes, const String& excludes) {
 	ResourcePool::initialize(includes, excludes);
 	for(int ii = 0; ii < includedResources.size(); ++ii)
 		this->add(NULL);
 }
 
-void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+void FixedPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
 	for (int ii = 0; ii < includedResources.size(); ++ii) {
 
@@ -74,7 +74,7 @@ void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
 }
 
-bool MinimumPool::update() {
+bool FixedPool::update() {
 	/**
 	 * Create resources for any included type that doesn't exist in
 	 * the VectorMap
@@ -84,10 +84,9 @@ bool MinimumPool::update() {
 		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
 
 		if(resourceSpawn == NULL) {
-
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
@@ -104,7 +103,7 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
 		if(!spawn->inShift()) {
 			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the MinimumPool" << endl;
+					<< " is shifting from the FixedPool" << endl;
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
@@ -115,20 +114,20 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 			if(newSpawn == NULL)
 				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
 
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
 		}
 	}
 
-	resourceSpawner->log("Minimum Pool Update Successful");
+	resourceSpawner->log("Fixed Pool Update Successful");
 	return true;
 }
 
-void MinimumPool::print() {
+void FixedPool::print() {
 
-	System::out << "**** Minimum Pool ****" << endl;
+	System::out << "**** Fixed Pool ****" << endl;
 	ResourcePool::print();
 	System::out << "**********************" << endl;
 }

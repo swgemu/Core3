@@ -181,6 +181,8 @@ void ResourceSpawnImplementation::print()  {
     System::out << "--------Classes--------\n";
     for(int i = 0; i < spawnClasses.size(); ++i)
     		System::out << spawnClasses.get(i) << "\n";
+    for(int i = 0; i < stfSpawnClasses.size(); ++i)
+    		System::out << stfSpawnClasses.get(i) << "\n";
     System::out << "------Attributes-------\n";
     for(int i = 0; i < spawnAttributes.size(); ++i) {
     	String attrib;

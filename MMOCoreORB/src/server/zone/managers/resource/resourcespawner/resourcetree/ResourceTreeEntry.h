@@ -135,6 +135,10 @@ public:
 		return classList.size();
 	}
 
+	int getStfClassCount() {
+		return stfClassList.size();
+	}
+
 	String getFinalClass() {
 		if(classList.size() > 0)
 			return classList.get(classList.size() - 1);
@@ -271,6 +275,19 @@ public:
     bool isJTL() {
     	return jtl;
     }
+
+
+	bool isType(String type) {
+		for (int i = 0; i < stfClassList.size(); ++i) {
+			if (stfClassList.get(i) == type)
+				return true;
+		}
+		for (int i = 0; i < classList.size(); ++i) {
+			if (classList.get(i) == type)
+				return true;
+		}
+		return false;
+	}
 
 
 	void toString(){
