@@ -49,27 +49,33 @@ which carries forward this exception.
 #include "ResourcePool.h"
 
 class ResourceSpawner;
-class ResourceTree;
 
 class NativePool : public ResourcePool {
 private:
 
 public:
-	NativePool(ResourceSpawner* spawner, ResourceTree* tree) : ResourcePool(spawner, tree) {
+	NativePool(ResourceSpawner* spawner);
 
-	}
+	~NativePool();
 
-	~NativePool() {
+	void initialize(const String& includes, const String& excludes);
 
-	}
+	void print();
 
-	bool update() {
+	private:
 
-		return true;
-	}
+		void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
-private:
+		/**
+		 * The update function checks the ResourceSpawn items
+		 * in spawnedResources to see if they have expired.
+		 * If they have not expired, no action is taken, but if
+		 * they have expired, we replace them according to the
+		 * rules.
+		 */
+		bool update();
 
+		friend class ResourceSpawner;
 };
 
 #endif /* NATIVEPOOL_H_ */

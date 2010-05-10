@@ -63,9 +63,12 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	protected Vector<string> spawnClasses;
 	
 	@dereferenced
+	protected Vector<string> stfSpawnClasses;
+	
+	@dereferenced
 	protected VectorMap<string, int> spawnAttributes;
 
-	protected string resourcePool;
+	protected int spawnPool;
 	protected unsigned long spawned;
 	protected unsigned long despawned;
 
@@ -77,6 +80,7 @@ class ResourceSpawn extends ManagedObject implements Logger {
 
     public ResourceSpawn() {
        	spawnType = "";
+       	spawnPool = 0;
        	spawnAttributes.setNoDuplicateInsertPlan();
     }
         
@@ -103,6 +107,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
     public void setType(string type) {
     	spawnType = type;
     }
+    
+    public void setSpawnPool(int pool) {
+    	spawnPool = pool;
+    }
 
     /**
 	 * adds a class to the resource
@@ -113,14 +121,22 @@ class ResourceSpawn extends ManagedObject implements Logger {
     public void addClass(string newclass) {
     	spawnClasses.add(newclass);
     }
+    
+    public void addStfClass(string newclass) {
+    	stfSpawnClasses.add(newclass);
+    }
 
 	public void addAttribute(string attribute, int value) {
 		spawnAttributes.put(attribute, value);
 	}
 	
-	public boolean isType(string ore) {
+	public boolean isType(string type) {
+		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
+			if(stfSpawnClasses.get(i) == type)
+				return true;	
+		}
 		for(int i = 0; i < spawnClasses.size(); ++i) {
-			if(spawnClasses.get(i) == ore)
+			if(spawnClasses.get(i) == type)
 				return true;	
 		}
 		return false;
@@ -156,6 +172,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
     
     public void setDespawned(unsigned long t) {
     	despawned = t;
+    }
+    
+    public int getSpawnPool() {
+    	return spawnPool;
     }
     
     @local 	

@@ -51,14 +51,19 @@ which carries forward this exception.
 class ResourceSpawner;
 
 class MinimumPool : public ResourcePool {
-private:
 
 public:
-	MinimumPool(ResourceSpawner* spawner, ResourceTree* tree);
+	MinimumPool(ResourceSpawner* spawner);
 
 	~MinimumPool();
 
 	void initialize(const String& includes, const String& excludes);
+
+	void print();
+
+private:
+
+	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
 	/**
 	 * The update function checks the ResourceSpawn items
@@ -69,6 +74,8 @@ public:
 	 */
 	bool update();
 
+
+	friend class ResourceSpawner;
 };
 
 #endif /* MINIMUMPOOL_H_ */

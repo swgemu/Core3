@@ -42,39 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "MinimumPool.h"
+#include "RandomPool.h"
 #include "../ResourceSpawner.h"
 
-MinimumPool::MinimumPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
+RandomPool::RandomPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 
 }
 
-MinimumPool::~MinimumPool() {
+RandomPool::~RandomPool() {
 
 }
 
-void MinimumPool::initialize(const String& includes, const String& excludes) {
+void RandomPool::initialize(const String& includes, const String& excludes, int size) {
 	ResourcePool::initialize(includes, excludes);
-	for(int ii = 0; ii < includedResources.size(); ++ii)
+	poolSize = size;
+	for(int ii = 0; ii < poolSize; ++ii)
 		this->add(NULL);
 }
 
-void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+void RandomPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+System::out << "RAndom pool size = " << this->size() << endl;
+	for (int ii = 0; ii < this->size(); ++ii) {
 
-	for (int ii = 0; ii < includedResources.size(); ++ii) {
-
-		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
-
-		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
-				== NULL) {
+		ManagedReference<ResourceSpawn* > spawninpool = this->get(ii);
+System::out << "Random Adding" << endl;
+		if(spawninpool == NULL) {
 			this->setElementAt(ii, resourceSpawn);
 			break;
 		}
 	}
-
 }
 
-bool MinimumPool::update() {
+bool RandomPool::update() {
 	/**
 	 * Create resources for any included type that doesn't exist in
 	 * the VectorMap
@@ -84,14 +83,13 @@ bool MinimumPool::update() {
 		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
 
 		if(resourceSpawn == NULL) {
-
 			ManagedReference<ResourceSpawn* > newSpawn =
-					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
+					resourceSpawner->createResourceSpawn(includedResources, excludedResources);
 			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
-System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+System::out << "Random pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
 
 		}
 	}
@@ -103,8 +101,8 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 	for(int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
 		if(!spawn->inShift()) {
-			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the MinimumPool" << endl;
+System::out << spawn->getName() << " of type " << spawn->getFinalClass()
+		<< " is shifting from the RandomPool" << endl;
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
@@ -113,9 +111,9 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 					//resourceSpawner->getFromRandomPool(type);
 
 			if(newSpawn == NULL)
-				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
+				newSpawn = resourceSpawner->createResourceSpawn(includedResources, excludedResources);
 
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
@@ -126,9 +124,17 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 	return true;
 }
 
-void MinimumPool::print() {
+void RandomPool::print() {
 
-	System::out << "**** Minimum Pool ****" << endl;
-	ResourcePool::print();
+	System::out << "**** Random Pool ****" << endl;
+	for(int ii = 0; ii < this->size(); ++ii) {
+
+		ManagedReference<ResourceSpawn* > spawn = this->get(ii);
+
+		if(spawn != NULL)
+			System::out << spawn->getName() << " : " << spawn->getType() << endl;
+		else
+			System::out << "EMPTY" << endl;
+	}
 	System::out << "**********************" << endl;
 }
