@@ -84,7 +84,7 @@ maxSpawnQuantity = 0
 --  Resources included in the JTL update
 jtlresources = "steel_bicorbantium,steel_arveshian,aluminum_perovskitic,copper_borocarbitic,fiberplast_gravitonic,gas_reactive_organometallic,ore_siliclastic_fermionic,radioactive_polymetric"
 
-minimumpoolincludes = "steel,copper,aluminium,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_amorphous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,polymer,polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
+minimumpoolincludes = "steel,copper,aluminum,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_armophous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,petrochem_inert_polymer,petrochem_inert_polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
 minimumpoolexcludes = jtlresources
   -- The minimum pool must have one of each of the items listed above spawned at all times.
   -- The minimum pool must never include the items in the excludes
@@ -95,7 +95,7 @@ randompoolsize = 27
   -- The random pool must have one of each of the items listed above spawned at all times.
   -- The random pool must never include the items in the excludes
 
-fixedpoolincludes = jtlresources.."iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron"
+fixedpoolincludes = jtlresources..",iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron"
 fixedpoolexcludes = ""
   -- The fixed pool must have one of each of the items listed above spawned at all times.
 
