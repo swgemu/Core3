@@ -648,6 +648,11 @@ void SceneObjectImplementation::removeFromZone() {
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	if (object->getParent() != NULL) {
+		error("trying to add an object with a parent already");
+		return false;
+	}
+
 	if (containerType == 1 || containerType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
@@ -687,6 +692,11 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
 	ManagedReference<SceneObject*> objectKeeper = object;
+
+	if (object->getParent() != _this) {
+		error("trying to remove an object but i am not the parent");
+		return false;
+	}
 
 	if (containerType == 1 || containerType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
