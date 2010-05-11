@@ -154,6 +154,8 @@ public:
 
 	void setCombatState();
 
+	void setObjectCount(unsigned int newObjectCount, bool notifyClient = true);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void clearCombatState(bool clearDefenders = true);
@@ -335,6 +337,8 @@ public:
 
 	virtual void setCombatState();
 
+	void setObjectCount(unsigned int newObjectCount, bool notifyClient = true);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void clearCombatState(bool clearDefenders = true);
@@ -431,6 +435,8 @@ public:
 	void removeDefenders();
 
 	void setCombatState();
+
+	void setObjectCount(unsigned int newObjectCount, bool notifyClient);
 
 	void clearCombatState(bool clearDefenders);
 

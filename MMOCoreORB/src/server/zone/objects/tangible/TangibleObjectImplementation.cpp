@@ -229,3 +229,19 @@ void TangibleObjectImplementation::setCustomizationVariable(byte type, byte valu
 
 	broadcastMessage(dtano3, true);
 }
+
+void TangibleObjectImplementation::setObjectCount(uint32 newObjectCount, bool notifyClient) {
+	if (objectCount == newObjectCount)
+		return;
+
+	objectCount = newObjectCount;
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->setQuantity(newObjectCount);
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
+}
