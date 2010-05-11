@@ -77,6 +77,7 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.SceneObjectObserver;
+include server.zone.objects.scene.CloseContainerObserver;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -123,6 +124,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
+	
+	@dereferenced
+	protected transient SortedVector<CloseContainerObserver> closeContainerObservers;
 	
 	@dereferenced
 	protected transient PendingTasksMap pendingTasks;
@@ -221,6 +225,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int TURRETACCESSLADDER = 0x2026;
 	public static final int CONTAINER2 = 0x2027;
 	public static final int CAMOKIT = 0x2028;
+	//public static final int LOOTKIT = 0x2029;
+	public static final int FISH = 0x2030;
 
 	public static final int TERMINAL = 0x4000;
 	public static final int BANK = 0x4001;
@@ -651,12 +657,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	/**
 	 * Is executed when the client closes the opened container
-	 * @pre { player locked }
-	 * @post { player locked }
+	 * @pre { this locked, player locked }
+	 * @post { this locked, player locked }
 	 * @param player PlayerCreature that closed this container
 	 */
 	public abstract void notifyCloseContainer(PlayerCreature player) {
-		
+		for (int i = 0; i < closeContainerObservers.size(); ++i) {
+			CloseContainerObserver observer = closeContainerObservers.get(i);
+			
+			observer.notifyCloseContainer(player, this);
+		}
 	}
 
 	/**
@@ -839,11 +849,27 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	/**
-	 * Registers attaches an observer for the position changed event
+	 * Registers an observer for the position changed event
 	 */
 	@local
 	public void attachPositionChangedObserver(SceneObjectObserver observer) {
 		positionChangedObservers.put(observer);
+	}
+	
+	/**
+	 * Register an observer for the close container event
+	 */
+	@local
+	public void attachCloseContainerObserver(CloseContainerObserver observer) {
+		closeContainerObservers.put(observer);
+	}
+	
+	/**
+	 * Drops a close container observer
+	 */
+	@local
+	public void deattachCloseContainerObserver(CloseContainerObserver observer) {
+		closeContainerObservers.drop(observer);
 	}
 	
 	/**

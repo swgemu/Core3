@@ -69,8 +69,22 @@ public:
 		msg << "target of container: 0x" << hex << target;
 		creature->info(msg.toString(), true);*/
 
-		if (creature->isPlayerCreature()) { // TODO: implement observer pattern
-			server->getZoneServer()->getFishingManager()->removeMarker((PlayerCreature*)creature);
+		if (!creature->isPlayerCreature())
+			return false;
+
+		ManagedReference<SceneObject*> container = server->getZoneServer()->getObject(target);
+
+		if (container == NULL)
+			return false;
+
+		try {
+			container->wlock(creature);
+
+			container->notifyCloseContainer((PlayerCreature*)creature);
+
+			container->unlock();
+		} catch (...) {
+			container->unlock();
 		}
 
 		return true;
