@@ -197,6 +197,14 @@ class TangibleObject extends SceneObject {
 	}
 	
 	/**
+	 * Updates the object count delta
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newObjectCount new value to update
+	 */
+	public native void setObjectCount(unsigned int newObjectCount, boolean notifyClient = true);
+	
+	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
 	 * @post { }
