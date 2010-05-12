@@ -43,12 +43,15 @@
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
+ 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
+#include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
+ 
 
 #include "server/db/ServerDatabase.h"
 
@@ -171,6 +174,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
 	objectFactory.registerObject<FishingPoleObject>(SceneObject::FISHINGPOLE);
 	objectFactory.registerObject<FishingBaitObject>(SceneObject::FISHINGBAIT);
+	objectFactory.registerObject<FishObject>(SceneObject::FISH);
 	objectFactory.registerObject<TangibleObject>(SceneObject::TANGIBLE);
 	objectFactory.registerObject<VehicleControlDevice>(SceneObject::VEHICLECONTROLDEVICE);
 

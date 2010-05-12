@@ -62,10 +62,10 @@ class FishingSplashEvent : public Task {
 	ManagedReference<SceneObject*> splash;
 
 public:
-	FishingSplashEvent(PlayerCreature* pl, ZoneServer* server, SceneObject* spl) : Task(1000) {
-		player = pl;
-		zoneServer = server;
-		splash = spl;
+	FishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) : Task(1000) {
+		this->player = player;
+		this->zoneServer = zoneServer;
+		this->splash = splash;
 	}
 
 	void run() {
@@ -75,6 +75,7 @@ public:
 			//player->info("activating command queue action");
 
 			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
+
 			manager->removeSplash(splash);
 
 			//player->info("command queue action activated");
@@ -98,5 +99,7 @@ public:
 }
 }
 }
+
+using namespace server::zone::managers::minigames::events;
 
 #endif /* FISHINGSPLASHEVENT_H_ */

@@ -1148,12 +1148,75 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 	}
 
 }
+
+/*void SuiManager::handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
+	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
+	if (cancel) {
+		manager->leaveTerminal(player, 0);
+	} else {
+		manager->refreshRouletteMenu(player);
+	}
+}
+void SuiManager::handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, int value, const String& value2) {
+	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
+
+	if (cancel) {
+		manager->leaveTerminal(player, 1);
+	} else {
+		manager->startGame(player, 1);
+	}
+}
+
+void SuiManager::handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
+	if (player->hasSuiBox(boxID)) {
+		player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
+		player->removeSuiBox(boxID);
+	}
+}
+
+void SuiManager::handleGamblingStartSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, int index, const String& value2) {
+	if (!cancel) {
+		String sabacc[] = {"Bespin Standard", "Empress Teta Preferred", "Cloud City Casino", "Random Sabacc", "Bespin Standard Variety", "Random Sabacc Variety"};
+		String game;
+		if ((index >= 0) && (index < 4)) {
+			game = sabacc[index];
+		} else {
+			game = "None";
+		}
+		player->sendSystemMessage("Start Game: " + game + " " + *value2);
+	}
+}
+
+
+void SuiManager::handleGamblingSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
+	if (cancel) {
+		if (player->hasSuiBox(boxID)) {
+			SuiSlotMachineBox* suiTableBox = (SuiSlotMachineBox*)player->getSuiBox(boxID);
+			uint32 tableBox = suiTableBox->getPayoutBoxID();
+			if (player->hasSuiBox(tableBox)) {
+				player->sendMessage(player->getSuiBox(tableBox)->generateCloseMessage());
+				player->removeSuiBox(tableBox);
+			}
+			uint32 handBox = suiTableBox->getAnotherBoxID();
+			if (player->hasSuiBox(handBox)) {
+				player->sendMessage(player->getSuiBox(handBox)->generateCloseMessage());
+				player->removeSuiBox(handBox);
+			}
+			player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
+			player->removeSuiBox(boxID);
+		}
+	}
+}*/
+
 void SuiManager::handleFishingAction(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+	Locker _locker(player);
+
 	//player->info("boxID: "+String::valueOf(boxID)+" Index: "+String::valueOf(index),true);
 	if (player->hasSuiBox(boxID)) {
 		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
 		if (sui != NULL) {
 			FishingManager* manager = player->getZone()->getZoneServer()->getFishingManager();
+			//Locker lockerManager(manager);
 			manager->setNextAction(player,index + 1);
 			uint32 newBoxID;
 			switch (index+1) {
