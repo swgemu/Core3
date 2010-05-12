@@ -46,5 +46,5 @@ which carries forward this exception.
 #include "ResourceContainer.h"
 
 void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	spawnObject->fillAttributeList(alm, object);
+	//spawnObject->fillAttributeList(alm, object);
 }

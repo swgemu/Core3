@@ -63,12 +63,6 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		ManagedReference<ResourceManager* > resourceManager = server->getZoneServer()->getResourceManager();
-
-		String resourceName = "seafood_fish";
-
-		resourceManager->harvestResource(creature, resourceName, 5);
-
 		return true;
 	}
 
