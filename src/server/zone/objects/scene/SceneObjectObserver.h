@@ -22,6 +22,10 @@ using namespace server::zone::objects::scene;
 
 class SceneObjectObserver {
 public:
+	/**
+	 * @return 0 to not deattach the observer after running
+	 * @return 1 to deattach the observer after running
+	 */
 	virtual int notify(SceneObject* object) = 0;
 
 	int compareTo(SceneObjectObserver* obj) {
