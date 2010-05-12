@@ -109,6 +109,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
 				server/zone/managers/bazaar/BazaarManager.cpp \
 				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
+				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
@@ -185,6 +186,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/variables/SkillList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
 		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
+		server/zone/objects/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \

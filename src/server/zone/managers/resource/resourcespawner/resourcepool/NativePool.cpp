@@ -54,27 +54,81 @@ NativePool::~NativePool() {
 }
 
 void NativePool::initialize(const String& includes, const String& excludes) {
+
+	activeResourceZones = resourceSpawner->getActiveResourceZones();
+
 	ResourcePool::initialize(includes, excludes);
-	for(int ii = 0; ii < includedResources.size(); ++ii)
-		this->add(NULL);
+
+	for(int ii = 0; ii < activeResourceZones.size(); ++ii)
+		for(int jj = 0; jj < includedResources.size(); ++jj)
+			this->add(NULL);
 }
 
 void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
-	for (int ii = 0; ii < includedResources.size(); ++ii) {
+	for (int ii = 0; ii < activeResourceZones.size(); ++ii) {
+			for (int jj = 0; jj < includedResources.size(); ++jj) {
 
-		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
+				int indexoffset = jj + (ii * includedResources.size());
 
-		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
-				== NULL) {
-			this->setElementAt(ii, resourceSpawn);
-			break;
+				ManagedReference<ResourceSpawn*> spawninpool = get(indexoffset);
+
+				if (spawninpool == NULL && resourceSpawn->isType(includedResources.get(jj)) &&
+						activeResourceZones.get(ii) == resourceSpawn->getZoneRestriction()) {
+					this->setElementAt(indexoffset, resourceSpawn);
+					return;
+				}
+			}
 		}
 	}
 
-}
-
 bool NativePool::update() {
+
+	for(int ii = 0; ii < activeResourceZones.size(); ++ii) {
+		for(int jj = 0; jj < includedResources.size(); ++jj) {
+
+			int indexoffset = jj + (ii * includedResources.size());
+
+			ManagedReference<ResourceSpawn* > resourceSpawn = get(indexoffset);
+
+			if(resourceSpawn == NULL) {
+
+				ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(
+						includedResources.get(jj), excludedResources, activeResourceZones.get(ii));
+
+				if (newSpawn != NULL) {
+
+					newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
+					newSpawn->updateToDatabase();
+
+					setElementAt(indexoffset, newSpawn);
+System::out << "Native pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+				} else {
+System::out << includedResources.get(jj) << " is a bad resource type" << endl;
+					resourceSpawner->info("Resource not valid for Native Pool: " + includedResources.get(jj));
+				}
+			}
+		}
+	}
+
+	for(int ii = 0; ii < size(); ++ii) {
+		ManagedReference<ResourceSpawn* > spawn = get(ii);
+		if(spawn != NULL && !spawn->inShift()) {
+			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
+					<< " is shifting from the NativePool" << endl;
+			setElementAt(ii, NULL);
+			spawn->setSpawnPool(ResourcePool::NOPOOL);
+			spawn->updateToDatabase();
+
+			ManagedReference<ResourceSpawn* > newSpawn =
+					resourceSpawner->createResourceSpawn(spawn->getType(), excludedResources);
+
+			newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
+			newSpawn->updateToDatabase();
+
+			setElementAt(ii, newSpawn);
+		}
+	}
 
 	resourceSpawner->log("Native Pool Update Successful");
 	return true;
@@ -83,6 +137,21 @@ bool NativePool::update() {
 void NativePool::print() {
 
 	System::out << "**** Native Pool ****" << endl;
-	ResourcePool::print();
+	for(int ii = 0; ii < activeResourceZones.size(); ++ii) {
+
+		System::out << "Zone " << activeResourceZones.get(ii) << endl;
+
+		for(int jj = 0; jj < includedResources.size(); ++jj) {
+
+			int indexoffset = jj + (ii * includedResources.size());
+
+			ManagedReference<ResourceSpawn* > spawn = get(indexoffset);
+
+			if(spawn != NULL)
+				System::out <<  get(indexoffset)->getName() << " : "<< get(indexoffset)->getType() << endl;
+			else
+				System::out << "EMPTY" << endl;
+		}
+	}
 	System::out << "**********************" << endl;
 }

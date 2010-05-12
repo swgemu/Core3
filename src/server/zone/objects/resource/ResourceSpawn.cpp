@@ -67,12 +67,25 @@ void ResourceSpawn::setSpawnPool(int pool) {
 		((ResourceSpawnImplementation*) _impl)->setSpawnPool(pool);
 }
 
-void ResourceSpawn::addClass(String& newclass) {
+void ResourceSpawn::setZoneRestriction(int zone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addSignedIntParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceSpawnImplementation*) _impl)->setZoneRestriction(zone);
+}
+
+void ResourceSpawn::addClass(String& newclass) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(newclass);
 
 		method.executeWithVoidReturn();
@@ -85,7 +98,7 @@ void ResourceSpawn::addStfClass(String& newclass) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(newclass);
 
 		method.executeWithVoidReturn();
@@ -98,7 +111,7 @@ void ResourceSpawn::addAttribute(String& attribute, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(attribute);
 		method.addSignedIntParameter(value);
 
@@ -112,7 +125,7 @@ bool ResourceSpawn::isType(String& type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -125,7 +138,7 @@ String ResourceSpawn::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -138,7 +151,7 @@ String ResourceSpawn::getType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getType);
 		return _return_getType;
@@ -151,7 +164,7 @@ String ResourceSpawn::getClass(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getClass);
@@ -165,7 +178,7 @@ String ResourceSpawn::getFinalClass() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		method.executeWithAsciiReturn(_return_getFinalClass);
 		return _return_getFinalClass;
@@ -178,7 +191,7 @@ void ResourceSpawn::setSpawned(unsigned long long t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addUnsignedLongParameter(t);
 
 		method.executeWithVoidReturn();
@@ -191,7 +204,7 @@ void ResourceSpawn::setDespawned(unsigned long long t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addUnsignedLongParameter(t);
 
 		method.executeWithVoidReturn();
@@ -204,11 +217,23 @@ int ResourceSpawn::getSpawnPool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ResourceSpawnImplementation*) _impl)->getSpawnPool();
+}
+
+int ResourceSpawn::getZoneRestriction() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->getZoneRestriction();
 }
 
 bool ResourceSpawn::isUnknownType() {
@@ -348,6 +373,7 @@ void ResourceSpawnImplementation::_serializationHelperMethod() {
 	addSerializableVariable("stfSpawnClasses", &stfSpawnClasses);
 	addSerializableVariable("spawnAttributes", &spawnAttributes);
 	addSerializableVariable("spawnPool", &spawnPool);
+	addSerializableVariable("zoneRestriction", &zoneRestriction);
 	addSerializableVariable("spawned", &spawned);
 	addSerializableVariable("despawned", &despawned);
 	addSerializableVariable("spawnMaps", &spawnMaps);
@@ -357,112 +383,122 @@ void ResourceSpawnImplementation::_serializationHelperMethod() {
 
 ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceSpawn.idl(82):   	spawnType = "";
+	// server/zone/objects/resource/ResourceSpawn.idl(84):   	spawnType = "";
 	spawnType = "";
-	// server/zone/objects/resource/ResourceSpawn.idl(83):   	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(85):   	spawnPool = 0;
 	spawnPool = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(84):   	spawnAttributes.setNoDuplicateInsertPlan();
+	// server/zone/objects/resource/ResourceSpawn.idl(86):   	spawnAttributes.setNoDuplicateInsertPlan();
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
 }
 
 void ResourceSpawnImplementation::setName(String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(104):   	spawnName = name;
+	// server/zone/objects/resource/ResourceSpawn.idl(106):   	spawnName = name;
 	spawnName = name;
 }
 
 void ResourceSpawnImplementation::setType(String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(108):   	spawnType = type;
+	// server/zone/objects/resource/ResourceSpawn.idl(110):   	spawnType = type;
 	spawnType = type;
 }
 
 void ResourceSpawnImplementation::setSpawnPool(int pool) {
-	// server/zone/objects/resource/ResourceSpawn.idl(112):   	spawnPool = pool;
+	// server/zone/objects/resource/ResourceSpawn.idl(114):   	spawnPool = pool;
 	spawnPool = pool;
 }
 
+void ResourceSpawnImplementation::setZoneRestriction(int zone) {
+	// server/zone/objects/resource/ResourceSpawn.idl(118):   	zoneRestriction = zone;
+	zoneRestriction = zone;
+}
+
 void ResourceSpawnImplementation::addClass(String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(122):   	spawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(128):   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addStfClass(String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(126):   	stfSpawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(132):   	stfSpawnClasses.add(newclass);
 	(&stfSpawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addAttribute(String& attribute, int value) {
-	// server/zone/objects/resource/ResourceSpawn.idl(130):  		spawnAttributes.put(attribute, value);
+	// server/zone/objects/resource/ResourceSpawn.idl(136):  		spawnAttributes.put(attribute, value);
 	(&spawnAttributes)->put(attribute, value);
 }
 
 bool ResourceSpawnImplementation::isType(String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(134):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(134):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(140):  
+	for (	// server/zone/objects/resource/ResourceSpawn.idl(140):  		for(int i = 0;
 	int i = 0;
 	i < (&stfSpawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(135):  		}
-	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(136):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl(141):  		}
+	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(142):  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(138):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(138):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(144):  
+	for (	// server/zone/objects/resource/ResourceSpawn.idl(144):  		for(int i = 0;
 	int i = 0;
 	i < (&spawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(139):  		}
-	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(140):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl(145):  		}
+	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(146):  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(142):  		return false;
+	// server/zone/objects/resource/ResourceSpawn.idl(148):  		return false;
 	return false;
 }
 
 String ResourceSpawnImplementation::getName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(147):  		return spawnName;
+	// server/zone/objects/resource/ResourceSpawn.idl(153):  		return spawnName;
 	return spawnName;
 }
 
 String ResourceSpawnImplementation::getType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(151):   	return spawnType;
+	// server/zone/objects/resource/ResourceSpawn.idl(157):   	return spawnType;
 	return spawnType;
 }
 
 String ResourceSpawnImplementation::getClass(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(155):  
+	// server/zone/objects/resource/ResourceSpawn.idl(161):  
 	if (index < (&spawnClasses)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(156):   		return spawnClasses.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(162):   		return spawnClasses.get(index);
 	return (&spawnClasses)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(158):   		return "";
+	// server/zone/objects/resource/ResourceSpawn.idl(164):   		return "";
 	return "";
 }
 }
 
 String ResourceSpawnImplementation::getFinalClass() {
-	// server/zone/objects/resource/ResourceSpawn.idl(163):  
-	if ((&spawnClasses)->size() > 0)	// server/zone/objects/resource/ResourceSpawn.idl(164):   		return spawnClasses.get(spawnClasses.size() - 1);
+	// server/zone/objects/resource/ResourceSpawn.idl(169):  
+	if ((&spawnClasses)->size() > 0)	// server/zone/objects/resource/ResourceSpawn.idl(170):   		return spawnClasses.get(spawnClasses.size() - 1);
 	return (&spawnClasses)->get((&spawnClasses)->size() - 1);
 
-	else 	// server/zone/objects/resource/ResourceSpawn.idl(166):   		return "";
+	else 	// server/zone/objects/resource/ResourceSpawn.idl(172):   		return "";
 	return "";
 }
 
 void ResourceSpawnImplementation::setSpawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(170):   	spawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl(176):   	spawned = t;
 	spawned = t;
 }
 
 void ResourceSpawnImplementation::setDespawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(174):   	despawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl(180):   	despawned = t;
 	despawned = t;
 }
 
 int ResourceSpawnImplementation::getSpawnPool() {
-	// server/zone/objects/resource/ResourceSpawn.idl(178):   	return spawnPool;
+	// server/zone/objects/resource/ResourceSpawn.idl(184):   	return spawnPool;
 	return spawnPool;
+}
+
+int ResourceSpawnImplementation::getZoneRestriction() {
+	// server/zone/objects/resource/ResourceSpawn.idl(188):   	return zoneRestriction;
+	return zoneRestriction;
 }
 
 /*
@@ -486,37 +522,43 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setSpawnPool(inv->getSignedIntParameter());
 		break;
 	case 9:
-		addClass(inv->getAsciiParameter(_param0_addClass__String_));
+		setZoneRestriction(inv->getSignedIntParameter());
 		break;
 	case 10:
-		addStfClass(inv->getAsciiParameter(_param0_addStfClass__String_));
+		addClass(inv->getAsciiParameter(_param0_addClass__String_));
 		break;
 	case 11:
-		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
+		addStfClass(inv->getAsciiParameter(_param0_addStfClass__String_));
 		break;
 	case 12:
-		resp->insertBoolean(isType(inv->getAsciiParameter(_param0_isType__String_)));
+		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
 		break;
 	case 13:
-		resp->insertAscii(getName());
+		resp->insertBoolean(isType(inv->getAsciiParameter(_param0_isType__String_)));
 		break;
 	case 14:
-		resp->insertAscii(getType());
+		resp->insertAscii(getName());
 		break;
 	case 15:
-		resp->insertAscii(getClass(inv->getSignedIntParameter()));
+		resp->insertAscii(getType());
 		break;
 	case 16:
-		resp->insertAscii(getFinalClass());
+		resp->insertAscii(getClass(inv->getSignedIntParameter()));
 		break;
 	case 17:
-		setSpawned(inv->getUnsignedLongParameter());
+		resp->insertAscii(getFinalClass());
 		break;
 	case 18:
-		setDespawned(inv->getUnsignedLongParameter());
+		setSpawned(inv->getUnsignedLongParameter());
 		break;
 	case 19:
+		setDespawned(inv->getUnsignedLongParameter());
+		break;
+	case 20:
 		resp->insertSignedInt(getSpawnPool());
+		break;
+	case 21:
+		resp->insertSignedInt(getZoneRestriction());
 		break;
 	default:
 		return NULL;
@@ -535,6 +577,10 @@ void ResourceSpawnAdapter::setType(String& type) {
 
 void ResourceSpawnAdapter::setSpawnPool(int pool) {
 	((ResourceSpawnImplementation*) impl)->setSpawnPool(pool);
+}
+
+void ResourceSpawnAdapter::setZoneRestriction(int zone) {
+	((ResourceSpawnImplementation*) impl)->setZoneRestriction(zone);
 }
 
 void ResourceSpawnAdapter::addClass(String& newclass) {
@@ -579,6 +625,10 @@ void ResourceSpawnAdapter::setDespawned(unsigned long long t) {
 
 int ResourceSpawnAdapter::getSpawnPool() {
 	return ((ResourceSpawnImplementation*) impl)->getSpawnPool();
+}
+
+int ResourceSpawnAdapter::getZoneRestriction() {
+	return ((ResourceSpawnImplementation*) impl)->getZoneRestriction();
 }
 
 /*

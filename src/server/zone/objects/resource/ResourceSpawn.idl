@@ -69,6 +69,8 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	protected VectorMap<string, int> spawnAttributes;
 
 	protected int spawnPool;
+	protected int zoneRestriction;
+	
 	protected unsigned long spawned;
 	protected unsigned long despawned;
 
@@ -110,6 +112,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
     
     public void setSpawnPool(int pool) {
     	spawnPool = pool;
+    }
+    
+    public void setZoneRestriction(int zone) {
+    	zoneRestriction = zone;
     }
 
     /**
@@ -176,6 +182,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
     
     public int getSpawnPool() {
     	return spawnPool;
+    }
+    
+    public int getZoneRestriction() {
+    	return zoneRestriction;
     }
     
     @local 	

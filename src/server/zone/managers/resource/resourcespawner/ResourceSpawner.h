@@ -99,9 +99,9 @@ public:
 	void start();
 	void shiftResources();
 
-	ResourceSpawn* createResourceSpawn(const String& type);
-	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes = 0);
-	ResourceSpawn* createResourceSpawn(const Vector<String> includes, const Vector<String> excludes = 0);
+	ResourceSpawn* createResourceSpawn(const String& type, int zonerestriction = -1);
+	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes = 0, int zonerestriction = -1);
+	ResourceSpawn* createResourceSpawn(const Vector<String> includes, const Vector<String> excludes = 0, int zonerestriction = -1);
 
 private:
 
@@ -110,8 +110,10 @@ private:
 	int randomizeValue(int min, int max);
 	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
 	long getRandomUnixTimestamp(int min, int max);
+	Vector<uint32> getActiveResourceZones();
 
 	friend class ResourceManager;
+	friend class NativePool;
 };
 
 #endif /* RESOURCESPAWNER_H_ */
