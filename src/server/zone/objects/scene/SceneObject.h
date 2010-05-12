@@ -129,6 +129,8 @@ using namespace server::zone::packets::scene;
 
 #include "server/zone/objects/scene/SceneObjectObserver.h"
 
+#include "server/zone/objects/scene/CloseContainerObserver.h"
+
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
@@ -331,6 +333,8 @@ public:
 	static const int CONTAINER2 = 0x2027;
 
 	static const int CAMOKIT = 0x2028;
+
+	static const int FISH = 0x2030;
 
 	static const int TERMINAL = 0x4000;
 
@@ -638,6 +642,10 @@ public:
 
 	void attachPositionChangedObserver(SceneObjectObserver* observer);
 
+	void attachCloseContainerObserver(CloseContainerObserver* observer);
+
+	void deattachCloseContainerObserver(CloseContainerObserver* observer);
+
 	void deattachPositionChangedObserver(SceneObjectObserver* observer);
 
 	float getDistanceTo(SceneObject* object);
@@ -848,6 +856,8 @@ protected:
 
 	SortedVector<SceneObjectObserver*> positionChangedObservers;
 
+	SortedVector<CloseContainerObserver*> closeContainerObservers;
+
 	PendingTasksMap pendingTasks;
 
 	bool staticObject;
@@ -1020,6 +1030,8 @@ public:
 	static const int CONTAINER2 = 0x2027;
 
 	static const int CAMOKIT = 0x2028;
+
+	static const int FISH = 0x2030;
 
 	static const int TERMINAL = 0x4000;
 
@@ -1330,6 +1342,10 @@ public:
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void attachPositionChangedObserver(SceneObjectObserver* observer);
+
+	void attachCloseContainerObserver(CloseContainerObserver* observer);
+
+	void deattachCloseContainerObserver(CloseContainerObserver* observer);
 
 	void deattachPositionChangedObserver(SceneObjectObserver* observer);
 
