@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	ResourceContainerStub
  */
@@ -102,7 +104,7 @@ void ResourceContainerImplementation::_serializationHelperMethod() {
 
 ResourceContainerImplementation::ResourceContainerImplementation(ResourceSpawn* spawn) {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceContainer.idl(60):   	spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl(61):   	spawnObject = spawn;
 	spawnObject = spawn;
 }
 

@@ -25,6 +25,20 @@ class ResourceSpawn;
 
 using namespace server::zone::objects::resource;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "engine/log/Logger.h"
