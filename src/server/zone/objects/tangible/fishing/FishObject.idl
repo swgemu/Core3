@@ -49,34 +49,65 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.ZoneServer;
 
-class FishingBaitObject extends TangibleObject {	
-	protected int freshness;
+class FishObject extends TangibleObject {	
+		
+	protected string player;
+	protected int planet;
+	protected string timeCaught;
+	protected float length;
 	
-	public FishingBaitObject() {
-		Logger.setLoggingName("FishingBaitObject");
-		freshness = 0;
+	public FishObject() {
+		Logger.setLoggingName("FishObject");
+		
+		player = "";
+		planet = 0;
+		timeCaught = "";
+		length = 0.0;
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
-		Logger.setLoggingName("FishingBaitObject");
+		Logger.setLoggingName("FishObject");
 	}
 	
-	public int getFreshness() {
-		return freshness;
+	
+	public void setAttributes(string playerName, int planetID, string timestamp, float fishLength) {
+		player = playerName;
+		planet = planetID;
+		timeCaught = timestamp;
+		length = fishLength;
 	}
 	
-	public void setFreshness(int value) {
-		if ((value > -1) && (value < 10)) // 10 being a reasonable upper bound since that would never be usable in fishing
-			freshness = value;
-	}
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player); 
 	
-	public void lessFresh() {
-		freshness += 1;
-	}
-	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+		
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Filet a fish
+	 * Takes objects in the Container and sends them to the player invenvotry
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player to whom to send the items
+	 */
+	public native void filet(PlayerCreature player);
+	 
 }

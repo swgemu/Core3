@@ -131,7 +131,12 @@ includeFile("tangible/wearables/vest/vest_s09.lua")
 includeFile("tangible/wearables/vest/vest_s10.lua")
 includeFile("mobile/vehicle/speederbike_swoop.lua")
 includeFile("intangible/vehicle/speederbike_swoop_pcd.lua")
-
+includeFile("tangible/fishing/fish/fish.lua")
+includeFile("tangible/gambling/wheel/wheel_roulette.lua")
+includeFile("tangible/gambling/slot/slot_standard.lua")
+includeFile("tangible/gambling/table/table.lua")
+includeFile("tangible/loot/collectible/kits/kits.lua")
+includeFile("tangible/loot/simple_kit/simple_kit.lua")
 
 
 

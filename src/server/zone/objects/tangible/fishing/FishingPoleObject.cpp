@@ -10,7 +10,11 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneServer.h"
 
 /*
  *	FishingPoleObjectStub
@@ -52,12 +56,53 @@ int FishingPoleObject::getQuality() {
 		return ((FishingPoleObjectImplementation*) _impl)->getQuality();
 }
 
-int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescription) {
+void FishingPoleObject::setQuality(int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((FishingPoleObjectImplementation*) _impl)->setQuality(value);
+}
+
+void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(menuResponse);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FishingPoleObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FishingPoleObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescription) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(object);
 		method.addAsciiParameter(errorDescription);
 
@@ -71,13 +116,40 @@ void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
 		((FishingPoleObjectImplementation*) _impl)->fillAttributeList(msg, object);
+}
+
+void FishingPoleObject::doFishing(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FishingPoleObjectImplementation*) _impl)->doFishing(player);
+}
+
+String FishingPoleObject::getText(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(player);
+
+		method.executeWithAsciiReturn(_return_getText);
+		return _return_getText;
+	} else
+		return ((FishingPoleObjectImplementation*) _impl)->getText(player);
 }
 
 /*
@@ -152,22 +224,35 @@ void FishingPoleObjectImplementation::_serializationHelperMethod() {
 
 FishingPoleObjectImplementation::FishingPoleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(58):  		Logger.setLoggingName("FishingPoleObject");
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(60):  		Logger.setLoggingName("FishingPoleObject");
 	Logger::setLoggingName("FishingPoleObject");
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(59):  		quality = 50;
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(61):  		quality = 50;
 	quality = 50;
 }
 
 void FishingPoleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(63):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(65):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(65):  		Logger.setLoggingName("FishingPoleObject");
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(67):  		Logger.setLoggingName("FishingPoleObject");
 	Logger::setLoggingName("FishingPoleObject");
 }
 
 int FishingPoleObjectImplementation::getQuality() {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(69):  		return quality;
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(71):  		return quality;
 	return quality;
+}
+
+void FishingPoleObjectImplementation::setQuality(int value) {
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(75):  	}
+	if ((value > 1) && (value < 101))	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(76):  			quality = value;
+	quality = value;
+}
+
+void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(86):  		string text = getText(player);
+	String text = getText(player);
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(87):  		menuResponse.addRadialMenuItem(245, 3, text);
+	menuResponse->addRadialMenuItem(245, 3, text);
 }
 
 /*
@@ -188,10 +273,25 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(getQuality());
 		break;
 	case 8:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
+		setQuality(inv->getSignedIntParameter());
 		break;
 	case 9:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 10:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 11:
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
+		break;
+	case 12:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 13:
+		doFishing((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 14:
+		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -208,12 +308,32 @@ int FishingPoleObjectAdapter::getQuality() {
 	return ((FishingPoleObjectImplementation*) impl)->getQuality();
 }
 
+void FishingPoleObjectAdapter::setQuality(int value) {
+	((FishingPoleObjectImplementation*) impl)->setQuality(value);
+}
+
+void FishingPoleObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	((FishingPoleObjectImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int FishingPoleObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((FishingPoleObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
 int FishingPoleObjectAdapter::canAddObject(SceneObject* object, String& errorDescription) {
 	return ((FishingPoleObjectImplementation*) impl)->canAddObject(object, errorDescription);
 }
 
 void FishingPoleObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
 	((FishingPoleObjectImplementation*) impl)->fillAttributeList(msg, object);
+}
+
+void FishingPoleObjectAdapter::doFishing(PlayerCreature* player) {
+	((FishingPoleObjectImplementation*) impl)->doFishing(player);
+}
+
+String FishingPoleObjectAdapter::getText(PlayerCreature* player) {
+	return ((FishingPoleObjectImplementation*) impl)->getText(player);
 }
 
 /*
