@@ -86,12 +86,18 @@ bool FixedPool::update() {
 		if(resourceSpawn == NULL) {
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
-			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
-			newSpawn->updateToDatabase();
 
-			setElementAt(ii, newSpawn);
+			if (newSpawn != NULL) {
+
+				newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
+				newSpawn->updateToDatabase();
+
+				setElementAt(ii, newSpawn);
 System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
-
+			} else {
+System::out << includedResources.get(ii) << " is a bad resource type" << endl;
+				resourceSpawner->info("Resource not valid for Fixed Pool: " + includedResources.get(ii));
+			}
 		}
 	}
 
@@ -101,7 +107,7 @@ System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << n
 	 */
 	for(int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
-		if(!spawn->inShift()) {
+		if(spawn != NULL && !spawn->inShift()) {
 			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
 					<< " is shifting from the FixedPool" << endl;
 			setElementAt(ii, NULL);

@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,36 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef HARVESTCORPSECOMMAND_H_
-#define HARVESTCORPSECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "ResourceContainer.h"
 
-class HarvestCorpseCommand : public QueueCommand {
-public:
-
-	HarvestCorpseCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
-	}
-
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return false;
-
-		if (!checkInvalidPostures(creature))
-			return false;
-
-		ManagedReference<ResourceManager* > resourceManager = server->getZoneServer()->getResourceManager();
-
-		String resourceName = "seafood_fish";
-
-		resourceManager->harvestResource(creature, resourceName, 5);
-
-		return true;
-	}
-
-};
-
-#endif //HARVESTCORPSECOMMAND_H_
+void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	spawnObject->fillAttributeList(alm, object);
+}

@@ -61,11 +61,10 @@ void RandomPool::initialize(const String& includes, const String& excludes, int 
 }
 
 void RandomPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
-System::out << "RAndom pool size = " << this->size() << endl;
 	for (int ii = 0; ii < this->size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > spawninpool = this->get(ii);
-System::out << "Random Adding" << endl;
+
 		if(spawninpool == NULL) {
 			this->setElementAt(ii, resourceSpawn);
 			break;
@@ -85,11 +84,10 @@ bool RandomPool::update() {
 		if(resourceSpawn == NULL) {
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(includedResources, excludedResources);
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
-System::out << "Random pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
 
 		}
 	}
@@ -120,7 +118,7 @@ System::out << spawn->getName() << " of type " << spawn->getFinalClass()
 		}
 	}
 
-	resourceSpawner->log("Minimum Pool Update Successful");
+	resourceSpawner->log("Random Pool Update Successful");
 	return true;
 }
 

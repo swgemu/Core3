@@ -91,7 +91,7 @@ bool MinimumPool::update() {
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
-System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+System::out << "Minimum pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
 
 		}
 	}
