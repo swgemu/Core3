@@ -144,16 +144,16 @@ void ResourceSpawner::loadResourceSpawns() {
 		if(resourceSpawn->getSpawnPool() != 0) {
 
 			switch(resourceSpawn->getSpawnPool()) {
-			case 1:
+			case ResourcePool::MINIMUMPOOL:
 				minimumPool->addResource(resourceSpawn);
 				break;
-			case 2:
+			case ResourcePool::RANDOMPOOL:
 				randomPool->addResource(resourceSpawn);
 				break;
-			case 3:
+			case ResourcePool::FIXEDPOOL:
 				fixedPool->addResource(resourceSpawn);
 				break;
-			case 4:
+			case ResourcePool::NATIVEPOOL:
 				nativePool->addResource(resourceSpawn);
 				break;
 			}
@@ -166,14 +166,15 @@ void ResourceSpawner::loadResourceSpawns() {
 
 void ResourceSpawner::shiftResources() {
 
-	randomPool->print();
-
 	minimumPool->update();
 	randomPool->update();
 	fixedPool->update();
 	nativePool->update();
 
+	/*minimumPool->print();
 	randomPool->print();
+	fixedPool->print();
+	nativePool->print();*/
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
 	resourceShift->schedule(shiftInterval);
@@ -181,9 +182,9 @@ void ResourceSpawner::shiftResources() {
 
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		const Vector<String> excludes) {
+		const Vector<String> excludes, int zonerestriction) {
 
-	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes);
+	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes, zonerestriction);
 
 	if(resourceEntry == NULL) {
 		info("Resource type not found: " + type);
@@ -219,6 +220,8 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  	long expires = getRandomExpirationTime(resourceEntry);
  	newSpawn->setDespawned(expires);
 
+ 	newSpawn->setZoneRestriction(resourceEntry->getZoneRestriction());
+
  	Vector<uint32> activeZones;
  	activeResourceZones.clone(activeZones);
  	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
@@ -230,18 +233,19 @@ System::out << "Created " << name << endl;
 	return newSpawn;
 }
 
-ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type) {
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type, int zonerestriction) {
 
 	Vector<String> excludes;
 
-	return createResourceSpawn(type, excludes);
+	return createResourceSpawn(type, excludes, zonerestriction);
 }
 
-ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes, const Vector<String> excludes) {
+ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> includes,
+		const Vector<String> excludes, int zonerestriction) {
 
 	String type = includes.get(System::random(includes.size() - 1));
 
-	return createResourceSpawn(type, excludes);
+	return createResourceSpawn(type, excludes, zonerestriction);
 }
 
 String ResourceSpawner::makeResourceName(bool isOrganic) {
@@ -301,4 +305,8 @@ long ResourceSpawner::getRandomUnixTimestamp(int min, int max) {
 	return time(0) + (System::random((max * shiftDuration) -
 			(min * shiftDuration)) + min * shiftDuration);
 
+}
+
+Vector<uint32> ResourceSpawner::getActiveResourceZones() {
+	return activeResourceZones;
 }

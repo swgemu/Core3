@@ -53,6 +53,8 @@ class ResourceSpawner;
 class NativePool : public ResourcePool {
 private:
 
+	Vector<uint32> activeResourceZones;
+
 public:
 	NativePool(ResourceSpawner* spawner);
 

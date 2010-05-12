@@ -42,6 +42,8 @@ public:
 
 	void setSpawnPool(int pool);
 
+	void setZoneRestriction(int zone);
+
 	void addClass(String& newclass);
 
 	void addStfClass(String& newclass);
@@ -63,6 +65,8 @@ public:
 	void setDespawned(unsigned long long t);
 
 	int getSpawnPool();
+
+	int getZoneRestriction();
 
 	bool isUnknownType();
 
@@ -119,6 +123,8 @@ protected:
 
 	int spawnPool;
 
+	int zoneRestriction;
+
 	unsigned long long spawned;
 
 	unsigned long long despawned;
@@ -142,6 +148,8 @@ public:
 
 	void setSpawnPool(int pool);
 
+	void setZoneRestriction(int zone);
+
 	void addClass(String& newclass);
 
 	void addStfClass(String& newclass);
@@ -163,6 +171,8 @@ public:
 	void setDespawned(unsigned long long t);
 
 	int getSpawnPool();
+
+	int getZoneRestriction();
 
 	bool isUnknownType();
 
@@ -225,6 +235,8 @@ public:
 
 	void setSpawnPool(int pool);
 
+	void setZoneRestriction(int zone);
+
 	void addClass(String& newclass);
 
 	void addStfClass(String& newclass);
@@ -246,6 +258,8 @@ public:
 	void setDespawned(unsigned long long t);
 
 	int getSpawnPool();
+
+	int getZoneRestriction();
 
 protected:
 	String _param0_setName__String_;
