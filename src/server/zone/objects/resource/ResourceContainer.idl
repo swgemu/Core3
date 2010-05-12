@@ -49,6 +49,7 @@ import system.util.VectorMap;
 import system.util.Vector;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.resource.ResourceSpawn;
+import server.zone.objects.player.PlayerCreature;
 
 include server.zone.packets.scene.AttributeListMessage;
 
