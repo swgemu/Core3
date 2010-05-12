@@ -67,19 +67,26 @@ public:
 			return false;
 
 		if (creature->isPlayerCreature()) {
-			FishingManager* manager = server->getZoneServer()->getFishingManager();
+			ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+
 			PlayerCreature* player = (PlayerCreature*) creature;
+
+			// REMOVE WHEN TESTED
 			manager->freeBait(player);
+			// ENDREMOVE
 
 			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
 				player->sendSystemMessage("You are already fishing.");
-				manager->setFishingState(player, FishingManager::NOTFISHING);
+
 				return false;
 			}
 
-			manager->startFishing(player);
-			int x = 0;
+			player->sendSystemMessage("++DEBUG INFO: Use /fish suc to jump to fishing rewards ++");
 
+			manager->startFishing(player);
+
+			// REMOVE WHEN TESTED
+			int x = 0;
 			for (int i = 31; i >= 0; --i) {
 				if (arguments.indexOf(String::valueOf(i))) {
 					x = i;
@@ -90,6 +97,8 @@ public:
 			if (arguments.indexOf("suc")!=-1) {
 				manager->cheat(player,x);
 			}
+			// ENDREMOVE
+
 		}
 		return true;
 	}

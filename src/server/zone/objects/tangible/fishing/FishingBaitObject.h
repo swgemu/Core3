@@ -81,6 +81,8 @@ public:
 
 	int getFreshness();
 
+	void setFreshness(int value);
+
 	void lessFresh();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
@@ -119,6 +121,8 @@ public:
 	void initializeTransientMembers();
 
 	int getFreshness();
+
+	void setFreshness(int value);
 
 	void lessFresh();
 
@@ -166,6 +170,8 @@ public:
 	void initializeTransientMembers();
 
 	int getFreshness();
+
+	void setFreshness(int value);
 
 	void lessFresh();
 

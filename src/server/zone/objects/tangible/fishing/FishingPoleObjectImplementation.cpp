@@ -10,6 +10,10 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/managers/minigames/FishingManager.h"
+
 
 void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
@@ -26,4 +30,34 @@ int FishingPoleObjectImplementation::canAddObject(SceneObject* object, String& e
 	errorDescription = "@fishing:bait_only";
 
 	return TransferErrorCode::BAITONLY;
+}
+
+int FishingPoleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (selectedID == 245) {
+		doFishing(player);
+	}
+
+	return 0;
+}
+
+void FishingPoleObjectImplementation::doFishing(PlayerCreature* player) {
+	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+
+	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
+		manager->stopFishing(player, manager->getFishBoxID(player), true);
+	} else {
+		//manager->freeBait(player);
+		manager->startFishing(player);
+	}
+}
+
+String FishingPoleObjectImplementation::getText(PlayerCreature* player) {
+	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+	String text = "@fishing:mnu_start_fishing";
+
+	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
+		text = "@fishing:mnu_stop_fishing";
+	}
+
+	return text;
 }

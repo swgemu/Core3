@@ -334,7 +334,9 @@ public:
 
 	static const int CAMOKIT = 0x2028;
 
-	static const int FISH = 0x2030;
+	static const int LOOTKIT = 0x2029;
+
+	static const int FISH = 0x202A;
 
 	static const int TERMINAL = 0x4000;
 
@@ -1031,7 +1033,9 @@ public:
 
 	static const int CAMOKIT = 0x2028;
 
-	static const int FISH = 0x2030;
+	static const int LOOTKIT = 0x2029;
+
+	static const int FISH = 0x202A;
 
 	static const int TERMINAL = 0x4000;
 

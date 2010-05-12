@@ -52,12 +52,25 @@ int FishingBaitObject::getFreshness() {
 		return ((FishingBaitObjectImplementation*) _impl)->getFreshness();
 }
 
-void FishingBaitObject::lessFresh() {
+void FishingBaitObject::setFreshness(int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((FishingBaitObjectImplementation*) _impl)->setFreshness(value);
+}
+
+void FishingBaitObject::lessFresh() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -69,7 +82,7 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -168,8 +181,14 @@ int FishingBaitObjectImplementation::getFreshness() {
 	return freshness;
 }
 
+void FishingBaitObjectImplementation::setFreshness(int value) {
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(73):  	}
+	if ((value > 1) && (value < 10))	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(74):  			freshness = value;
+	freshness = value;
+}
+
 void FishingBaitObjectImplementation::lessFresh() {
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(73):  		freshness += 1;
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(78):  		freshness += 1;
 	freshness += 1;
 }
 
@@ -191,9 +210,12 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(getFreshness());
 		break;
 	case 8:
-		lessFresh();
+		setFreshness(inv->getSignedIntParameter());
 		break;
 	case 9:
+		lessFresh();
+		break;
+	case 10:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -209,6 +231,10 @@ void FishingBaitObjectAdapter::initializeTransientMembers() {
 
 int FishingBaitObjectAdapter::getFreshness() {
 	return ((FishingBaitObjectImplementation*) impl)->getFreshness();
+}
+
+void FishingBaitObjectAdapter::setFreshness(int value) {
+	((FishingBaitObjectImplementation*) impl)->setFreshness(value);
 }
 
 void FishingBaitObjectAdapter::lessFresh() {

@@ -225,8 +225,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int TURRETACCESSLADDER = 0x2026;
 	public static final int CONTAINER2 = 0x2027;
 	public static final int CAMOKIT = 0x2028;
-	//public static final int LOOTKIT = 0x2029;
-	public static final int FISH = 0x2030;
+	public static final int LOOTKIT = 0x2029;
+	public static final int FISH = 0x202A;
+
 
 	public static final int TERMINAL = 0x4000;
 	public static final int BANK = 0x4001;
@@ -810,7 +811,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	/**
 	 * Adds a pending task of this SceneObject
 	 * @pre { this locked }
-	 * @post { this lockedÊ}
+	 * @post { this lockedï¿½}
 	 * @param name Name of the task
 	 * @param task Task to add
 	 */

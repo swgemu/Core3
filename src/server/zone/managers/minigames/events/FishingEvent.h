@@ -64,16 +64,18 @@ class FishingEvent : public Task {
 	int fish;
 	uint32 boxID;
 	int fishingState;
+	String mood;
 
 public:
-	FishingEvent(PlayerCreature* pl, int next, ZoneServer* server, SceneObject* mark, int fishType, uint32 box, int state) : Task(7000) {
-		player = pl;
-		nextAction = next;
-		zoneServer = server;
-		marker = mark;
-		fish = fishType;
-		boxID = box;
-		fishingState = state;
+	FishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int fish, uint32 boxID, int fishingState, String mood) : Task(7000) {
+		this->player = player;
+		this->nextAction = nextAction;
+		this->zoneServer = zoneServer;
+		this->marker = marker;
+		this->fish = fish;
+		this->boxID = boxID;
+		this->fishingState = fishingState;
+		this->mood = mood;
 	}
 
 	void run() {
@@ -83,14 +85,19 @@ public:
 			//player->info("activating command queue action");
 
 			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
-
+			//Locker lockerManager(manager);
+			//player->removePendingTask("fishing");
 			if (fishingState != FishingManagerImplementation::NOTFISHING) {
-				manager->fishingStep(player, nextAction, marker, fish, boxID);
-			} else if (marker != NULL) {
+				manager->fishingStep(player, nextAction, marker, fish, boxID, mood);
+
+			} /*else if (marker != NULL) {
 					// new event
-				manager->createFishingEvent(player, nextAction, zoneServer, marker, fish, boxID, fishingState);
-			} else {
+				manager->createFishingEvent(player, nextAction, zoneServer, marker, fish, boxID, fishingState, mood);
+
+			}*/ else {
+
 				manager->stopFishingEvent(player);
+
 			}
 
 			//player->info("command queue action activated");
@@ -104,16 +111,16 @@ public:
 
 	}
 
-	void setNextAction(int next) {
-		nextAction = next;
+	void setNextAction(int nextAction) {
+		this->nextAction = nextAction;
 	}
 
 	int getNextAction() {
 		return nextAction;
 	}
 
-	void setFishBoxID(uint32 box) {
-		boxID = box;
+	void setFishBoxID(uint32 boxID) {
+		this->boxID = boxID;
 	}
 
 	uint32 getFishBoxID() {
@@ -124,8 +131,8 @@ public:
 		return marker;
 	}
 
-	void setMarker(SceneObject* mark) {
-		marker = mark;
+	void setMarker(SceneObject* marker) {
+		this->marker = marker;
 	}
 
 	int getFish() {
@@ -136,8 +143,12 @@ public:
 		return fishingState;
 	}
 
-	void setFishingState(int state) {
-		fishingState = state;
+	void setFishingState(int fishingState) {
+		this->fishingState = fishingState;
+	}
+
+	String getMoodString() {
+		return mood;
 	}
 };
 
@@ -146,5 +157,7 @@ public:
 }
 }
 }
+
+using namespace server::zone::managers::minigames::events;
 
 #endif /* FISHINGEVENT_H_ */
