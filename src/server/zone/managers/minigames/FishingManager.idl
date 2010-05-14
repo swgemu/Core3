@@ -96,6 +96,7 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 	public static final int BITE = 4;
 	public static final int CATCH = 5;
 	public static final int REELING = 6;
+	public static final int REELGAME = 7;
 	
 	public static final int BLACKFISH = 0;
 	public static final int BLOWFISH = 1;
@@ -106,8 +107,8 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 	public static final int STRIPED = 6;
 	
 	public static final int FRESH = 0;
-	public static final int SOGGY = 3;
-	public static final int MUSH = 6;
+	public static final int SOGGY = 4;
+	public static final int MUSH = 7;
 	
 	public static final int DONOTHING = 0;
 	public static final int TUGUP = 1;
@@ -117,8 +118,8 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 	public static final int STOPFISHING = 5;
 	
 	public static final int NOEVENT = 0;
-	public static final int PROCEED = 2;
-	public static final int MISHAP = 5;
+	public static final int PROCEED = 20;
+	public static final int MISHAP = 40;
 	
 	public FishingManager(ZoneServer server) {
 		zoneServer = server;
@@ -534,8 +535,9 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 	 * @param player PlayerCreature to which send message
 	 * @param boxID fishing window to close when calling stopFishing()
 	 * @param losebait If true the bait in the pole will be removed as an outcome of what happened
+	 * @param moodString String taken from player before fishing to return to after fishing 
 	 */
-	public native void mishapEvent(final string text, PlayerCreature player, unsigned int boxID, boolean losebait);
+	public native void mishapEvent(final string text, PlayerCreature player, unsigned int boxID, boolean losebait, string moodString);
 	
 	/**
 	 * Lose the Bait in the Container
