@@ -158,6 +158,8 @@ public:
 
 	static const int REELING = 6;
 
+	static const int REELGAME = 7;
+
 	static const int BLACKFISH = 0;
 
 	static const int BLOWFISH = 1;
@@ -174,9 +176,9 @@ public:
 
 	static const int FRESH = 0;
 
-	static const int SOGGY = 3;
+	static const int SOGGY = 4;
 
-	static const int MUSH = 6;
+	static const int MUSH = 7;
 
 	static const int DONOTHING = 0;
 
@@ -192,9 +194,9 @@ public:
 
 	static const int NOEVENT = 0;
 
-	static const int PROCEED = 2;
+	static const int PROCEED = 20;
 
-	static const int MISHAP = 5;
+	static const int MISHAP = 40;
 
 	FishingManager(ZoneServer* server);
 
@@ -268,7 +270,7 @@ public:
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait);
+	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
 
 	bool loseBait(PlayerCreature* player);
 
@@ -351,6 +353,8 @@ public:
 
 	static const int REELING = 6;
 
+	static const int REELGAME = 7;
+
 	static const int BLACKFISH = 0;
 
 	static const int BLOWFISH = 1;
@@ -367,9 +371,9 @@ public:
 
 	static const int FRESH = 0;
 
-	static const int SOGGY = 3;
+	static const int SOGGY = 4;
 
-	static const int MUSH = 6;
+	static const int MUSH = 7;
 
 	static const int DONOTHING = 0;
 
@@ -385,9 +389,9 @@ public:
 
 	static const int NOEVENT = 0;
 
-	static const int PROCEED = 2;
+	static const int PROCEED = 20;
 
-	static const int MISHAP = 5;
+	static const int MISHAP = 40;
 
 	FishingManagerImplementation(ZoneServer* server);
 
@@ -463,7 +467,7 @@ public:
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait);
+	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
 
 	bool loseBait(PlayerCreature* player);
 
@@ -596,7 +600,7 @@ public:
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait);
+	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
 
 	bool loseBait(PlayerCreature* player);
 
@@ -621,7 +625,8 @@ public:
 protected:
 	String _param5_fishingStep__PlayerCreature_int_SceneObject_int_int_String_;
 	String _param7_fishingProceed__PlayerCreature_int_SceneObject_int_int_int_bool_String_;
-	String _param0_mishapEvent__String_PlayerCreature_int_bool_;
+	String _param0_mishapEvent__String_PlayerCreature_int_bool_String_;
+	String _param4_mishapEvent__String_PlayerCreature_int_bool_String_;
 	String _param7_createFishingEvent__PlayerCreature_int_ZoneServer_SceneObject_int_int_int_String_;
 };
 
