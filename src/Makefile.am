@@ -95,6 +95,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
+				server/zone/objects/tangible/fishing/FishObject.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
@@ -172,6 +173,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.cpp \
+		server/zone/objects/tangible/fishing/FishObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
@@ -229,4 +231,3 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp
-		
