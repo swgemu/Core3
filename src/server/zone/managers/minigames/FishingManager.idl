@@ -108,7 +108,7 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 	
 	public static final int FRESH = 0;
 	public static final int SOGGY = 4;
-	public static final int MUSH = 7;
+	public static final int MUSH = 6;
 	
 	public static final int DONOTHING = 0;
 	public static final int TUGUP = 1;
