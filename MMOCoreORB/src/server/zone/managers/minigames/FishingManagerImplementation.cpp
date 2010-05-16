@@ -391,7 +391,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 							quality += (int)ceil(pole->getQuality() / 25);
 					}
 
-					lootFishObject->setAttributes(name, zone->getZoneID(), time, (float)System::random(999)/1000 + abs(System::random(10) - fish) + quality);
+					lootFishObject->setAttributes(name, zone->getZoneID(), time, (float)System::random(999)/1000 + abs((System::random(10) - fish) / 2) + quality);
 
 					lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneID()));
 
@@ -522,10 +522,10 @@ uint32 FishingManagerImplementation::createWindow(PlayerCreature* player, uint32
 		freshness = 0;
 	}
 
-	String prompt = "STATUS     : " + state.get(getFishingState(player)) + "\nBAIT STATUS : "
+	String prompt = "STATUS : " + state.get(getFishingState(player)) + "\nBAIT STATUS : "
 			+ baitStatus.get(freshness) + "\nLINE RANGE : "
 			+ String::valueOf( ceil( player->getDistanceTo(marker) * 100 ) / 100)
-			+ "\nFISH DENSITY: "+ property.get(den)
+			+ "\nFISH DENSITY : "+ property.get(den)
 			+ "\nVEGETATION : " + property.get(veg)
 			+ "\nNEXT ACTION : "
 			+ action.get( getNextAction(player) );
@@ -808,14 +808,14 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 				player->sendSystemMessage("@fishing:fs_nibble");
 			}
 
-			player->showFlyText("fishing","fly_nibble", 20, 200, 20);
+			player->showFlyText("fishing","fly_nibble", 50, 200, 50);
 
 			createSplash(marker->getPositionX(), marker->getPositionY(), marker->getPositionZ(), player->getZone(), player);
 
 			break;
 		}
 		case BITE: {
-			player->showFlyText("fishing","fly_bite", 200, 20, 20);
+			player->showFlyText("fishing","fly_bite", 230, 150, 30);
 			player->sendSystemMessage("@fishing:fs_bite");
 
 			createSplash(marker->getPositionX(), marker->getPositionY(), marker->getPositionZ(), player->getZone(), player);
@@ -824,7 +824,7 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 		}
 		case CATCH: {
 			if (oldstate == BITE) { // fish is trying to get away
-				player->showFlyText("fishing","fly_catch", 20, 20, 200);
+				player->showFlyText("fishing","fly_catch", 240, 240, 65);
 				player->sendSystemMessage("@fishing:fs_caught");
 
 				createSplash(marker->getPositionX(), marker->getPositionY(), marker->getPositionZ(), player->getZone(), player);
@@ -1192,7 +1192,7 @@ void FishingManagerImplementation::checkFishingOnPositionUpdate(PlayerCreature* 
 			ManagedReference<SceneObject*> marker = fishingEvent->getMarker();
 
 			if (marker != NULL) {
-				if (((player->isSwimming()) || (!player->isInRange(marker, 10.0))) && (fishingState <= FishingManager::CATCH)) {
+				if ((player->isSwimming()) || (!player->isInRange(marker, 10.0))) {
 					stopFishing(player, 0, true);
 				}
 
