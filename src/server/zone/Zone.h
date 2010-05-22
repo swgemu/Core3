@@ -172,6 +172,14 @@ public:
 
 	float getWeatherWindY();
 
+	float getMinX();
+
+	float getMaxX();
+
+	float getMinY();
+
+	float getMaxY();
+
 protected:
 	Zone(DummyConstructorParameter* param);
 
@@ -266,6 +274,14 @@ public:
 
 	float getWeatherWindY();
 
+	float getMinX();
+
+	float getMaxX();
+
+	float getMinY();
+
+	float getMaxY();
+
 	Zone* _this;
 
 	operator const Zone*();
@@ -344,6 +360,14 @@ public:
 	float getWeatherWindX();
 
 	float getWeatherWindY();
+
+	float getMinX();
+
+	float getMaxX();
+
+	float getMinY();
+
+	float getMaxY();
 
 };
 

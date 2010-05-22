@@ -1,54 +1,54 @@
 /*
-Copyright (C) 2010 <SWGEmu>
+ Copyright (C) 2010 <SWGEmu>
 
-This File is part of Core3.
+ This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 3 of the License,
-or (at your option) any later version.
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 3 of the License,
+ or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
-
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
+ */
 
 #include "ResourceSpawn.h"
 #include "../terrain/PlanetNames.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/Zone.h"
 
-void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
+		PlayerCreature* object) {
 
 }
 
@@ -56,7 +56,8 @@ bool ResourceSpawnImplementation::inShift() {
 	return despawned > time(0);
 }
 
-int ResourceSpawnImplementation::getAttributeAndValue(String& attribute, int index) {
+int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
+		int index) {
 	if (index < spawnAttributes.size()) {
 		attribute = spawnAttributes.elementAt(index).getKey();
 		return spawnAttributes.get(index);
@@ -74,20 +75,20 @@ bool ResourceSpawnImplementation::isUnknownType() {
 	return false;
 }
 
-void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int zonerestriction,
-		Vector<uint32>& activeZones) {
+void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
+		int zonerestriction, Vector<uint32>& activeZones) {
 
 	String ore = "ore";
 
 	int concentration = getConcentration(jtl);
 	Vector<uint32> zoneids = getSpawnZones(jtl, zonerestriction, activeZones);
 
-	for(int i = 0; i < zoneids.size(); ++i) {
+	for (int i = 0; i < zoneids.size(); ++i) {
 
 		Zone* zone = server->getZoneServer()->getZone(zoneids.get(i));
 
-		SpawnDensityMap* newMap = new SpawnDensityMap(isType(ore), concentration,
-				zone->getMinX(), zone->getMaxX(), zone->getMinY(), zone->getMaxY());
+		SpawnDensityMap newMap(isType(ore), concentration, zone->getMinX(),
+				zone->getMaxX(), zone->getMinY(), zone->getMaxY());
 
 		spawnMaps.put((uint32) zoneids.get(i), newMap);
 	}
@@ -107,10 +108,10 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 	 * density of this specific spawn
 	 */
 
-	if(jtl || isType(chemical) || isType(inertgas))
+	if (jtl || isType(chemical) || isType(inertgas))
 		return SpawnDensityMap::HIGHDENSITY;
 
-	else if(isType(ore) || isType(water) || isType(solar) || isType(wind))
+	else if (isType(ore) || isType(water) || isType(solar) || isType(wind))
 		return SpawnDensityMap::LOWDENSITY;
 
 	else
@@ -155,54 +156,59 @@ Vector<uint32> ResourceSpawnImplementation::getSpawnZones(bool jtl,
 		zonecount = 8;
 
 	/// If there are no more zones to add exit function
-	if(zonecount == 0)
+	if (zonecount == 0)
 		return zoneids;
 
 	/// Randomly remove entries until the Vector contains
 	/// a number of elements equal to zonecount
-	while(activeZones.size() > zonecount)
+	while (activeZones.size() > zonecount)
 		activeZones.remove(System::random(activeZones.size() - 1));
 
 	/// Add all the remaining items in activeZones to the
 	/// zoneids vector
-	while(activeZones.size() > 0)
+	while (activeZones.size() > 0)
 		zoneids.add(activeZones.remove(0));
 
 	return zoneids;
 }
 
 float ResourceSpawnImplementation::getDensityAt(int zoneid, float x, float y) {
-	SpawnDensityMap* map = spawnMaps.get((uint32)zoneid);
+	if (!spawnMaps.contains((uint32) zoneid))
+		return 0;
 
-	if(map == NULL)
-	   return 0;
+	SpawnDensityMap map = spawnMaps.get((uint32) zoneid);
 
-	return map->getDensityAt(x, y);
+	return map.getDensityAt(x, y);
 }
 
 int ResourceSpawnImplementation::getSpawnMapZone(int i) {
-    if(spawnMaps.size() > i)
-    	return spawnMaps.elementAt(i).getKey();
-    else
-    	return -1;
+	if (spawnMaps.size() > i)
+		return spawnMaps.elementAt(i).getKey();
+	else
+		return -1;
 }
 
-void ResourceSpawnImplementation::print()  {
-    System::out << "**** Resource Data ****\n";
-    System::out << "Class: " << getFinalClass() << "\n";
-    System::out << "Name: " << spawnName << "\n";
-    System::out << "--------Classes--------\n";
-    for(int i = 0; i < spawnClasses.size(); ++i)
-    		System::out << spawnClasses.get(i) << "(" << stfSpawnClasses.get(i) << ")" << "\n";
-    System::out << "------Attributes-------\n";
-    for(int i = 0; i < spawnAttributes.size(); ++i) {
-    	String attrib;
-    	int value = getAttributeAndValue(attrib, i);
-    	System::out << attrib << " " << value << "\n";
-    }
-    for(int i = 0; i < spawnMaps.size(); ++i) {
-    	System::out << Planet::getPlanetName(spawnMaps.elementAt(i).getKey()) << ": ";
-    	spawnMaps.get(i)->print();
-    }
-    System::out << "***********************\n";
- }
+void ResourceSpawnImplementation::print() {
+	System::out << "**** Resource Data ****\n";
+	System::out << "Class: " << getFinalClass() << "\n";
+	System::out << "Name: " << spawnName << "\n";
+	System::out << "--------Classes--------\n";
+	for (int i = 0; i < spawnClasses.size(); ++i)
+		System::out << spawnClasses.get(i) << "(" << stfSpawnClasses.get(i)
+				<< ")" << "\n";
+	System::out << "------Attributes-------\n";
+
+	for (int i = 0; i < spawnAttributes.size(); ++i) {
+		String attrib;
+		int value = getAttributeAndValue(attrib, i);
+		System::out << attrib << " " << value << "\n";
+	}
+
+	for (int i = 0; i < spawnMaps.size(); ++i) {
+		System::out << Planet::getPlanetName(spawnMaps.elementAt(i).getKey())
+				<< ": ";
+		spawnMaps.get(i).print();
+	}
+
+	System::out << "***********************\n";
+}

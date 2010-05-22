@@ -163,6 +163,10 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 	case INVALIDPOSTURE:
 		onPostureFail(creature, actioncntr);
 		break;
+	case INVALIDTARGET:
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr, 0, 3, 0);
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);

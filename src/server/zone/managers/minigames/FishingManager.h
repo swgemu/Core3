@@ -178,7 +178,7 @@ public:
 
 	static const int SOGGY = 4;
 
-	static const int MUSH = 7;
+	static const int MUSH = 6;
 
 	static const int DONOTHING = 0;
 
@@ -373,7 +373,7 @@ public:
 
 	static const int SOGGY = 4;
 
-	static const int MUSH = 7;
+	static const int MUSH = 6;
 
 	static const int DONOTHING = 0;
 

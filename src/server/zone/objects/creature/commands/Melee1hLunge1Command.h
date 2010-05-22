@@ -73,6 +73,18 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isTangibleObject())
+			return INVALIDTARGET;
+
+		CombatManager* combatManager = CombatManager::instance();
+
+		bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get());
+
+		if (!startCombat)
+			return INVALIDTARGET;
+
 		return SUCCESS;
 	}
 

@@ -266,6 +266,8 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
+	bool isAttackableBy(CreatureObject* object);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -638,6 +640,8 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
+	bool isAttackableBy(CreatureObject* object);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -894,6 +898,8 @@ public:
 	void setCreatureLink(CreatureObject* object, bool notifyClient);
 
 	void executeObjectControllerAction(unsigned int actionCRC);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
