@@ -80,6 +80,22 @@ using namespace server::zone::objects::tangible;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace tool {
+
+class SurveyTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 namespace events {
 
@@ -332,6 +348,10 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -413,6 +433,9 @@ protected:
 
 private:
 	SortedVector<unsigned long long> persistentMessages;
+
+protected:
+	ManagedReference<SurveyTool* > surveyTool;
 
 public:
 	static const int ONLINE = 1;
@@ -556,6 +579,10 @@ public:
 	UnicodeString getBiography();
 
 	unsigned int getClientLastMovementStamp();
+
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
 
 	PlayerCreature* _this;
 
@@ -711,6 +738,10 @@ public:
 	UnicodeString getBiography();
 
 	unsigned int getClientLastMovementStamp();
+
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

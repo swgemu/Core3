@@ -176,7 +176,6 @@
 #include "FeignDeathCommand.h"
 #include "FindCommand.h"
 #include "FindFriendCommand.h"
-#include "FindFriendCommand.h"
 #include "FindMyTrainerCommand.h"
 #include "FindObjectCommand.h"
 #include "FindPlayerCommand.h"

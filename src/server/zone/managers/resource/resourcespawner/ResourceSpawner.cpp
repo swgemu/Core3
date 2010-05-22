@@ -43,7 +43,10 @@ which carries forward this exception.
 */
 
 #include "ResourceSpawner.h"
-#include "ResourceShiftTask.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
+#include "server/zone/packets/resource/SurveyMessage.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
@@ -99,10 +102,9 @@ void ResourceSpawner::addPlanet(const int planetid) {
 	activeResourceZones.add(planetid);
 }
 
-void ResourceSpawner::setSpawningParameters(const int shiftint, const int dur,
-		const float throt, const int override, const int spawnquantity) {
+void ResourceSpawner::setSpawningParameters(const int dur, const float throt,
+		const int override, const int spawnquantity) {
 
-	shiftInterval = shiftint;
 	shiftDuration = dur;
 	lowerGateOverride = override;
 	maxSpawnAmount = spawnquantity;
@@ -170,14 +172,6 @@ void ResourceSpawner::shiftResources() {
 	randomPool->update();
 	fixedPool->update();
 	nativePool->update();
-
-	/*minimumPool->print();
-	randomPool->print();
-	fixedPool->print();
-	nativePool->print();*/
-
-	ResourceShiftTask* resourceShift = new ResourceShiftTask(this);
-	resourceShift->schedule(shiftInterval);
 }
 
 
@@ -193,7 +187,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	String name = makeResourceName(resourceEntry->isOrganic());
 
- 	ResourceSpawn* newSpawn = new ResourceSpawn();
+  	ResourceSpawn* newSpawn = (ResourceSpawn*)objectManager->createObject(0xb2825c5a, 1, "resourcespawns");
 
  	String resType = resourceEntry->getType();
  	newSpawn->setType(resType);
@@ -222,12 +216,12 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	newSpawn->setZoneRestriction(resourceEntry->getZoneRestriction());
 
+ 	newSpawn->setSurveyToolType(resourceEntry->getSurveyToolType());
+
  	Vector<uint32> activeZones;
  	activeResourceZones.clone(activeZones);
  	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
 
- 	objectManager->persistObject(newSpawn, 1, "resourcespawns");
-System::out << "Created " << name << endl;
  	resourceMap->add(name, newSpawn);
 
 	return newSpawn;
@@ -309,4 +303,108 @@ long ResourceSpawner::getRandomUnixTimestamp(int min, int max) {
 
 Vector<uint32> ResourceSpawner::getActiveResourceZones() {
 	return activeResourceZones;
+}
+
+void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(playerCreature->getZone()->getZoneID());
+	if(zoneMap == NULL) {
+		playerCreature->sendSystemMessage("The tool fails to locate any resources");
+		return;
+	}
+
+	ResourceListForSurveyMessage* message = new ResourceListForSurveyMessage();
+	ManagedReference<ResourceSpawn* > resourceSpawn;
+	Vector<ManagedReference<ResourceSpawn* > > matchingResources;
+
+	for(int i = 0; i < zoneMap->size(); ++i) {
+		resourceSpawn = zoneMap->get(i);
+		if(resourceSpawn->getSurveyToolType() == toolType) {
+			matchingResources.add(resourceSpawn);
+			message->addResource(resourceSpawn->getName(), resourceSpawn->getType(), resourceSpawn->_getObjectID());
+		}
+	}
+
+	message->finish(surveyType, playerCreature->getObjectID());
+
+	playerCreature->sendMessage(message);
+
+	for(int i = 0; i < matchingResources.size(); ++i) {
+
+	}
+}
+
+void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+
+	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+
+	if(surveyTool == NULL || !resourceMap->contains(resname))
+		return;
+
+	int zoneid = playerCreature->getZone()->getZoneID();
+
+	Survey* surveyMessage = new Survey();
+
+	//int toolRange = surveyTool->getRange();
+	//int points = surveyTool->getPoints();
+
+	int toolRange = 8192;
+	int points = 32;
+
+	float spacer = float(toolRange) / float(points);
+
+	float posX = playerCreature->getPositionX() - ((points / 2.0f) * spacer);
+	float posY = playerCreature->getPositionY() - ((points / 2.0f) * spacer);
+
+	float maxDensity;
+	float maxX, maxY;
+
+	for (int i = 0; i < points; i++) {
+		for (int j = 0; j < points; j++) {
+
+			float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
+
+			if (density > maxDensity) {
+				maxDensity = density;
+				maxX = posX;
+				maxY = posY;
+			}
+
+			surveyMessage->add(posX, posY, density);
+
+			posX += spacer;
+		}
+
+		posY += spacer;
+		posX -= (points * spacer);
+	}
+
+	// Send Survey Results
+	playerCreature->sendMessage(surveyMessage);
+
+	/*if (max_res_percent >= 0.1f) {
+		// Create Waypoint
+		if (player->getSurveyWaypoint() != NULL) {
+			ManagedReference<WaypointObject> wayobj = player->getSurveyWaypoint();
+			player->removeWaypoint(wayobj);
+			wayobj->finalize();
+			player->setSurveyWaypoint(NULL);
+		}
+
+		WaypointObject* waypoint = new WaypointObject(player->getZoneID(), player->getNewItemID());
+		waypoint->setCustomName(UnicodeString("Resource Survey"));
+		waypoint->setPosition(wp_x, 0.0f, wp_y);
+
+		waypoint->setActive(true);
+
+		player->setSurveyWaypoint(waypoint);
+		player->addWaypoint(waypoint);
+
+		// Send Waypoint System Message
+		UnicodeString ustr = "";
+		ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
+
+		player->sendMessage(endMessage);
+	}*/
+
 }

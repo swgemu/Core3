@@ -198,3 +198,19 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 /*ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
 }*/
+
+float ZoneImplementation::getMinX() {
+	return -8192;
+}
+
+float ZoneImplementation::getMaxX() {
+	return 8192;
+}
+
+float ZoneImplementation::getMinY() {
+	return -8192;
+}
+
+float ZoneImplementation::getMaxY() {
+	return 8192;
+}

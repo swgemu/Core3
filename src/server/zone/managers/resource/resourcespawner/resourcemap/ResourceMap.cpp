@@ -45,7 +45,11 @@ which carries forward this exception.
 #include "ResourceMap.h"
 
 ResourceMap::ResourceMap() {
+	setInsertPlan(VectorMap<String, ManagedReference<ResourceSpawn* > >::NO_DUPLICATE);
+	setNullValue(NULL);
 
+	zoneResourceMap.setInsertPlan(VectorMap<uint32, ZoneResourceMap*>::NO_DUPLICATE);
+	zoneResourceMap.setNullValue(NULL);
 }
 
 ResourceMap::~ResourceMap() {
@@ -59,4 +63,43 @@ float ResourceMap::getDensityAt(String resourcename, int zoneid, float x, float 
 
 void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn) {
 	put(resname, resourceSpawn);
+
+	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
+		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
+		if(zone != -1) {
+			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
+
+			if(map == NULL) {
+				map = new ZoneResourceMap();
+				zoneResourceMap.put(zone, map);
+			}
+
+			map->put(resourceSpawn->getName(), resourceSpawn);
+		}
+	}
+}
+/**
+ * Even though we want to drop items from the
+ * Zone maps, we need to keep all spawns in the
+ * ResourceMap for lookup.
+ */
+void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
+
+	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
+		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
+		if(zone != -1) {
+			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
+
+			if(map != NULL)
+				map->drop(resourceSpawn->getName());
+		}
+	}
+}
+
+void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid) {
+
+	ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneid));
+
+	if(map != NULL)
+		map->drop(resourceSpawn->getName());
 }

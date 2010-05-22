@@ -64,7 +64,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 	baseNode = new ResourceTreeNode("resource", "Resource", 0);
 
-	String query = "SELECT resource_tree.`Index`,resource_tree.stfname, resource_tree.class1, "
+	String query = "SELECT resource_tree.index,resource_tree.stfname, resource_tree.class1, "
 			"resource_tree.class2, resource_tree.class3, resource_tree.class4, resource_tree.class5, "
 			"resource_tree.class6, resource_tree.class7, resource_tree.maxtype, resource_tree.mintype, "
 			"resource_tree.minpool, resource_tree.maxpool, resource_tree.recycled, resource_tree.attrib1, "
@@ -76,8 +76,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 			"resource_tree.attrib6min, resource_tree.attrib6max, resource_tree.attrib7min, resource_tree.attrib7max, "
 			"resource_tree.attrib8min, resource_tree.attrib8max, resource_tree.attrib9min, resource_tree.attrib9max, "
 			"resource_tree.attrib10min, resource_tree.attrib10max, resource_tree.attrib11min, resource_tree.attrib11max, "
-			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.zoneRestriction, resource_tree.jtl "
-			"FROM resource_tree";
+			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.zoneRestriction, resource_tree.jtl, "
+			"resource_tree.toolType FROM resource_tree ORDER BY resource_tree.index ASC";
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -115,10 +115,12 @@ bool ResourceTree::buildTreeFromDatabase() {
 				entry->setRandomNameClass(res->getString(48));
 				entry->setZoneRestriction(res->getInt(49));
 				entry->setJTL(res->getInt(50));
+				entry->setSurveyToolType(res->getInt(51));
 
 				baseNode->add(entry);
 			}
 			baseNode->updateEntries();
+
 		}
 		delete res;
 	} catch (DatabaseException& e) {

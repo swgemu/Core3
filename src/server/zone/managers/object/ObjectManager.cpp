@@ -52,6 +52,8 @@
 #include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
  
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 #include "server/db/ServerDatabase.h"
 
@@ -180,6 +182,10 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<VehicleObject>(SceneObject::VEHICLE);
 	objectFactory.registerObject<VehicleObject>(SceneObject::HOVERVEHICLE);
+
+	objectFactory.registerObject<ResourceSpawn>(SceneObject::RESOURCESPAWN);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::RESOURCECONTAINER);
+
 
 }
 
