@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ResourceManager.h"
+#include "ResourceShiftTask.h"
 
 void ResourceManagerImplementation::initialize() {
 	Lua::init();
@@ -84,13 +85,14 @@ bool ResourceManagerImplementation::loadConfigData() {
 		resourceSpawner->addPlanet(token);
 	}
 
-	int averageShiftTime = getGlobalInt("averageShiftTime");
+	shiftInterval = getGlobalInt("averageShiftTime");
+
 	int aveduration = getGlobalInt("aveduration");
 	float spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
 	int lowerGateOverride = getGlobalInt("lowerGateOverride");
 	int maxSpawnQuantity = getGlobalInt("maxSpawnQuantity");
 
-	resourceSpawner->setSpawningParameters(averageShiftTime, aveduration,
+	resourceSpawner->setSpawningParameters(aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
 	String minpoolinc = getGlobalString("minimumpoolincludes");
@@ -118,7 +120,8 @@ void ResourceManagerImplementation::loadDefaultConfig() {
 		resourceSpawner->addPlanet(i);
 	}
 
-	resourceSpawner->setSpawningParameters(7200000, 86400, 90, 1000, 0);
+	shiftInterval = 7200000;
+	resourceSpawner->setSpawningParameters(86400, 90, 1000, 0);
 }
 
 void ResourceManagerImplementation::stop() {
@@ -127,5 +130,28 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
+	Locker _locker(_this);
+
 	resourceSpawner->start();
+
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this);
+	resourceShift->schedule(shiftInterval);
+}
+
+void ResourceManagerImplementation::shiftResources() {
+	Locker _locker(_this);
+
+	resourceSpawner->shiftResources();
+}
+
+void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+	rlock();
+
+	resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+
+	unlock();
+}
+
+void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+	resourceSpawner->sendSurvey(playerCreature, resname);
 }

@@ -54,6 +54,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.tangible.Container;
+import server.zone.objects.tangible.tool.SurveyTool;
 import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
@@ -124,6 +125,11 @@ class PlayerCreature extends CreatureObject {
 	
 	@dereferenced
 	SortedVector<unsigned long> persistentMessages;
+	
+	
+	/// Crafting and Surveying
+	/// Reference to last used Survey Tool
+	protected transient SurveyTool surveyTool;
 	
 	//Badges
 	
@@ -426,6 +432,19 @@ class PlayerCreature extends CreatureObject {
 		return clientLastMovementStamp;
 	}
 	
-
+	/**
+	 * Set active survey tool, this is set whenever
+	 * a SurveyTool is used
+	 */
+	public void setSurveyTool(SurveyTool tool) {
+		surveyTool = tool;
+	}
+	
+	/**
+	 * Returns the active SurveyTool
+	 */
+	public SurveyTool getSurveyTool() {
+		return surveyTool;
+	}
 	
 }

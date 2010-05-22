@@ -65,10 +65,10 @@ protected:
 	float modifier; /// Value to determine map type (ore, or other)
 	float density; /// Max density of map
 
+	float minX, maxX, minY, maxY;
+
 	uint32 totalUnits;  /// Total units that can be mined
 	uint32 unitsHarvested;  /// Number of units already mined
-
-	/// SpawnGrids
 
 public:
 	static const short HIGHDENSITY = 1;
@@ -80,8 +80,13 @@ public:
 
 	}
 
-	SpawnDensityMap(bool ore, short concentration) {
+	SpawnDensityMap(bool ore, short concentration,
+			float minx, float maxx, float miny, float maxy) {
 		initialize(ore, concentration);
+		minX = minx;
+		maxX = maxx;
+		minY = miny;
+		maxY = maxy;
 	}
 
 	~SpawnDensityMap() {
@@ -89,7 +94,13 @@ public:
 	}
 
 	float getDensityAt(float x, float y) {
-		float value = SimplexNoise::noise(x / modifier, y / modifier, seed / modifier);
+		print();
+System::out << x << " " << y << "  ";
+		x -= minX;
+		y = maxY - y;
+System::out << x << " " << y << "  ";
+		float value = SimplexNoise::noise(x * modifier, y * modifier, seed * modifier);
+System::out << value << endl;
 		return value * density;
 	}
 
@@ -140,6 +151,10 @@ private:
 		addSerializableVariable("density", &density);
 		addSerializableVariable("totalUnits", &totalUnits);
 		addSerializableVariable("unitsHarvested", &unitsHarvested);
+		addSerializableVariable("minX", &minX);
+		addSerializableVariable("maxX", &maxX);
+		addSerializableVariable("minY", &minY);
+		addSerializableVariable("maxY", &maxY);
 	}
 };
 

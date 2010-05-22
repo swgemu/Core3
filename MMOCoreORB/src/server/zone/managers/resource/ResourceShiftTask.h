@@ -47,18 +47,18 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ResourceSpawner.h"
+class ResourceSpawner;
 
 class ResourceShiftTask : public Task {
-	ResourceSpawner* resourceSpawner;
+	ManagedReference<ResourceManager* > resourceManager;
 
 public:
-	ResourceShiftTask(ResourceSpawner* resSpawner) {
-		resourceSpawner = resSpawner;
+	ResourceShiftTask(ManagedReference<ResourceManager* >  resMan) {
+		resourceManager = resMan;
 	}
 
 	void run() {
-		//resourceSpawner->shiftResources();
+		resourceManager->shiftResources();
 	}
 };
 

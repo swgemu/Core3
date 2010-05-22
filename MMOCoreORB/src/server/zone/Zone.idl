@@ -189,4 +189,13 @@ class Zone extends ManagedObject implements QuadTree {
 	public float getWeatherWindY() {
 		return weatherWindY;
 	}
+	
+	/**
+	 * Functions to return the size of the
+	 * trn file
+	 */
+	public native float getMinX();	
+	public native float getMaxX();
+	public native float getMinY();
+	public native float getMaxY();
 }

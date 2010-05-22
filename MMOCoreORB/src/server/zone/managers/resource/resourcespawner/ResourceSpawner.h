@@ -79,7 +79,7 @@ private:
 	RandomPool* randomPool;
 	NativePool* nativePool;
 
-	int shiftInterval, shiftDuration, lowerGateOverride, maxSpawnAmount;
+	int shiftDuration, lowerGateOverride, maxSpawnAmount;
 	float spawnThrottling;
 
 public:
@@ -93,7 +93,7 @@ public:
 	void initializeNativePool(const String& includes, const String& excludes);
 
 	void addPlanet(const int planetid);
-	void setSpawningParameters(const int shiftint, const int dur, const float throt,
+	void setSpawningParameters(const int dur, const float throt,
 			const int override, const int spawnquantity);
 
 	void start();
@@ -103,6 +103,9 @@ public:
 	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes = 0, int zonerestriction = -1);
 	ResourceSpawn* createResourceSpawn(const Vector<String> includes, const Vector<String> excludes = 0, int zonerestriction = -1);
 
+	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+
+	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 private:
 
 	void loadResourceSpawns();

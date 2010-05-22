@@ -45,6 +45,8 @@ which carries forward this exception.
 
 #include "ResourceSpawn.h"
 #include "../terrain/PlanetNames.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/Zone.h"
 
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
@@ -82,7 +84,11 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int zonerestriction,
 
 	for(int i = 0; i < zoneids.size(); ++i) {
 
-		SpawnDensityMap* newMap = new SpawnDensityMap(isType(ore), concentration);
+		Zone* zone = server->getZoneServer()->getZone(zoneids.get(i));
+
+		SpawnDensityMap* newMap = new SpawnDensityMap(isType(ore), concentration,
+				zone->getMinX(), zone->getMaxX(), zone->getMinY(), zone->getMaxY());
+
 		spawnMaps.put((uint32) zoneids.get(i), newMap);
 	}
 }
@@ -174,15 +180,20 @@ float ResourceSpawnImplementation::getDensityAt(int zoneid, float x, float y) {
 	return map->getDensityAt(x, y);
 }
 
+int ResourceSpawnImplementation::getSpawnMapZone(int i) {
+    if(spawnMaps.size() > i)
+    	return spawnMaps.elementAt(i).getKey();
+    else
+    	return -1;
+}
+
 void ResourceSpawnImplementation::print()  {
     System::out << "**** Resource Data ****\n";
     System::out << "Class: " << getFinalClass() << "\n";
     System::out << "Name: " << spawnName << "\n";
     System::out << "--------Classes--------\n";
     for(int i = 0; i < spawnClasses.size(); ++i)
-    		System::out << spawnClasses.get(i) << "\n";
-    for(int i = 0; i < stfSpawnClasses.size(); ++i)
-    		System::out << stfSpawnClasses.get(i) << "\n";
+    		System::out << spawnClasses.get(i) << "(" << stfSpawnClasses.get(i) << ")" << "\n";
     System::out << "------Attributes-------\n";
     for(int i = 0; i < spawnAttributes.size(); ++i) {
     	String attrib;

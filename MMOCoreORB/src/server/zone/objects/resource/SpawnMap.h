@@ -42,24 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCESHIFTTASK_H_
-#define RESOURCESHIFTTASK_H_
+/**
+ * \file SpawnMap.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
+#ifndef SPAWNMAP_H_
+#define SPAWNMAP_H_
 
 #include "engine/engine.h"
 
-class ResourceSpawner;
 
-class ResourceShiftTask : public Task {
-	ResourceSpawner* resourceSpawner;
+class SpawnMap : public VectorMap<uint32, SpawnDensityMap*> {
 
 public:
-	ResourceShiftTask(ResourceSpawner* resSpawner) {
-		resourceSpawner = resSpawner;
+	SpawnMap() {
+
 	}
 
-	void run() {
-		resourceSpawner->shiftResources();
+	~SpawnMap() {
+
 	}
+
+
 };
 
-#endif /* RESOURCESHIFTTASK_H_ */
+
+#endif /* SPAWNMAP_H_ */

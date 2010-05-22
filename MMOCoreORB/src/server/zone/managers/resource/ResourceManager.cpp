@@ -10,6 +10,8 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -48,6 +50,47 @@ void ResourceManager::initialize() {
 		method.executeWithVoidReturn();
 	} else
 		((ResourceManagerImplementation*) _impl)->initialize();
+}
+
+void ResourceManager::shiftResources() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->shiftResources();
+}
+
+void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(playerCreature);
+		method.addSignedIntParameter(toolType);
+		method.addAsciiParameter(surveyType);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+}
+
+void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(playerCreature);
+		method.addAsciiParameter(resname);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->sendSurvey(playerCreature, resname);
 }
 
 /*
@@ -122,17 +165,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(65):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(69):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(67):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(71):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(68):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(72):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(70):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(74):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(71):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(75):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(72):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(76):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
@@ -153,6 +196,15 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 7:
 		initialize();
 		break;
+	case 8:
+		shiftResources();
+		break;
+	case 9:
+		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
+		break;
+	case 10:
+		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
+		break;
 	default:
 		return NULL;
 	}
@@ -166,6 +218,18 @@ void ResourceManagerAdapter::stop() {
 
 void ResourceManagerAdapter::initialize() {
 	((ResourceManagerImplementation*) impl)->initialize();
+}
+
+void ResourceManagerAdapter::shiftResources() {
+	((ResourceManagerImplementation*) impl)->shiftResources();
+}
+
+void ResourceManagerAdapter::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+	((ResourceManagerImplementation*) impl)->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+}
+
+void ResourceManagerAdapter::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+	((ResourceManagerImplementation*) impl)->sendSurvey(playerCreature, resname);
 }
 
 /*

@@ -78,6 +78,8 @@ public:
 	const static int SCNC = 0x2000000;
 	const static int SCOT = 0x4000000;
 	const static int CHARACTERBUILDERTERMINAL = 0x4000001;
+	const static int SURVEYTOOL = 0x4000002;
+	const static int RESOURCESPAWN = 0x4000003;
 
 public:
 	SharedObjectTemplate() {

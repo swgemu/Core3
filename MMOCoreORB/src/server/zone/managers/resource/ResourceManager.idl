@@ -50,14 +50,18 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
+import server.zone.objects.player.PlayerCreature;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
+include server.zone.packets.resource.ResourceListForSurveyMessage;
+include server.zone.objects.resource.ResourceSpawn;
 
 class ResourceManager extends ManagedObject implements Lua {
 	private transient ZoneProcessServerImplementation processor;
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient ObjectManager objectManager;
+	private transient int shiftInterval;
 	
 	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl, 
 			ObjectManager objectMan) {
@@ -75,6 +79,10 @@ class ResourceManager extends ManagedObject implements Lua {
 
 	public native void stop();
 	public native void initialize();
+	public native void shiftResources();
+	
+	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
+	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
 	
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();

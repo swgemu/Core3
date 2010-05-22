@@ -59,7 +59,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
-
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -131,12 +131,14 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::CHANGE_DANCING: // changedance
 		handleStartDancing(boxID, player, cancel, value.toCharArray(), true);
-		break;
+		break;*/
 	case SuiWindowType::SURVEY_TOOL_RANGE:
 		range = (atoi(value.toCharArray()) * 64) + 64;
+		if(range == 576)
+			range = 1024;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
-	case SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
+	/*case SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
 		returnString = value;
 		pGuild->handleGuildTag(boxID, player, cancel, returnString);
 		if (!cancel)
@@ -673,50 +675,31 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 		error("Unreported exception caught in SuiManager::handleStartDancing(Player* player, const String& music)");
 		player->unlock();
 	}
-}
+}*/
 
-void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 cancel, int range) {
-	try {
-		player->wlock();
+void SuiManager::handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range) {
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
+	Locker _locker(player);
+
+	if (player->hasSuiBox(boxID)) {
+
+		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+		if (sui != NULL) {
+
+			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
+
+			if(surveyTool != NULL) {
+				Locker _locker2(surveyTool);
+				surveyTool->setRange(range);
+			}
+
+			player->removeSuiBox(boxID, true);
 		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			SurveyTool* surveyTool =  player->getSurveyTool();
-
-			if (surveyTool != NULL) {
-				surveyTool->wlock();
-
-				surveyTool->setSurveyToolRange(range);
-
-				surveyTool->unlock();
-			} else
-				player->sendSystemMessage("Error, invalid tool.");
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleSurveyToolRange " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, int range)");
-		player->unlock();
 	}
 }
 
-void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
+/*void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
 	try {
 		player->wlock();
 
