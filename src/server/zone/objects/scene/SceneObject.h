@@ -484,6 +484,8 @@ public:
 
 	static const int QUESTREOURCE = 0x40000C;
 
+	static const int RESOURCESPAWN = 0x410000;
+
 	static const int DEED = 0x800000;
 
 	static const int BUILDINGDEED = 0x800001;
@@ -1182,6 +1184,8 @@ public:
 	static const int ORGANICSTRUCTURAL = 0x40000B;
 
 	static const int QUESTREOURCE = 0x40000C;
+
+	static const int RESOURCESPAWN = 0x410000;
 
 	static const int DEED = 0x800000;
 

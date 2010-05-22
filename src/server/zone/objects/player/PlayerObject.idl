@@ -306,7 +306,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native boolean hasSkill(final string skillName);
-	
+
 	public unsigned int getCharacterBitmask() {
 		return characterBitmask;
 	}

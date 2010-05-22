@@ -46,6 +46,7 @@ which carries forward this exception.
 #define REQUESTSURVEYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../tangible/tool/SurveyTool.h"
 
 class RequestSurveyCommand : public QueueCommand {
 public:
@@ -55,13 +56,33 @@ public:
 
 	}
 
+	/**
+	 * Regardless of what is entered as arguments in the client, the client
+	 * sends the name of the resource surveyed for as the only argument.
+	 * This is always handled by the client as long as a tool has been
+	 * used during the current play session.
+	 */
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (creature->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> playerCreature =
+					(PlayerCreature*) creature;
+
+			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+
+			if(surveyTool != NULL)
+				surveyTool->sendSurveyTo(playerCreature, arguments.toString());
+
+		}
 
 		return SUCCESS;
 	}

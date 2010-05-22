@@ -57,8 +57,8 @@ class ResourceContainer extends TangibleObject {
 
 	ResourceSpawn spawnObject;
 	
-    public ResourceContainer(ResourceSpawn spawn) {
-    	spawnObject = spawn;
+    public ResourceContainer() {
+    	;
     }
         
    /**

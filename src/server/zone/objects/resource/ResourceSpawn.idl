@@ -53,8 +53,9 @@ include server.zone.objects.player.PlayerCreature;
 include server.zone.packets.scene.AttributeListMessage;
 
 include server.zone.objects.resource.SpawnDensityMap;
+include server.zone.objects.resource.SpawnMap;
 
-class ResourceSpawn extends ManagedObject implements Logger {
+class ResourceSpawn extends SceneObject {
 
 	protected string spawnType;
 	protected string spawnName;
@@ -71,11 +72,13 @@ class ResourceSpawn extends ManagedObject implements Logger {
 	protected int spawnPool;
 	protected int zoneRestriction;
 	
+	protected int surveyToolType;
+	
 	protected unsigned long spawned;
 	protected unsigned long despawned;
 
 	@dereferenced 
-	protected VectorMap<unsigned int, SpawnDensityMap> spawnMaps;
+	protected SpawnMap spawnMaps;
 		
 	protected unsigned long totalUnitsSpawned;
 	protected unsigned long unitsInCirculation;
@@ -147,6 +150,10 @@ class ResourceSpawn extends ManagedObject implements Logger {
 		}
 		return false;
 	}
+	
+	public void setSurveyToolType(int type) {
+		surveyToolType = type;
+	}
 
     // getters
 	public string getName() {
@@ -188,6 +195,17 @@ class ResourceSpawn extends ManagedObject implements Logger {
     	return zoneRestriction;
     }
     
+    public int getSurveyToolType() {
+    	return surveyToolType;
+    }
+    
+    public int getSpawnMapSize() {
+    	return spawnMaps.size();
+    }
+
+    @local
+    public native int getSpawnMapZone(int i);
+    
     @local 	
 	public native boolean isUnknownType();
     
@@ -195,11 +213,11 @@ class ResourceSpawn extends ManagedObject implements Logger {
     public native void createSpawnMaps(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
     
     @local 	
-	public native int getConcentration(boolean jtl);
+	private native int getConcentration(boolean jtl);
 	
 	@local 	
 	@dereferenced
-	public native Vector<unsigned int> getSpawnZones(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+	private native Vector<unsigned int> getSpawnZones(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
     
     @local
     public native float getDensityAt(int zoneid, float x, float y);

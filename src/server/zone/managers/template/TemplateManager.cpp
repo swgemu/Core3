@@ -35,6 +35,9 @@
 #include "server/zone/templates/SharedStaticObjectTemplate.h"
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/templates/SharedUniverseObjectTemplate.h"
+#include "server/zone/templates/tangible/survey_tool/SurveyToolTemplate.h"
+#include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
+
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -117,7 +120,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<SharedTangibleObjectTemplate>(SharedObjectTemplate::STOT);
 	templateFactory.registerObject<SharedUniverseObjectTemplate>(SharedObjectTemplate::SUNI);
 	templateFactory.registerObject<CharacterBuilderTerminalTemplate>(SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
-
+	templateFactory.registerObject<SurveyToolTemplate>(SharedObjectTemplate::SURVEYTOOL);
+	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
 }
 
 
@@ -213,6 +217,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("SCNC", SharedObjectTemplate::SCNC);
 	luaTemplatesInstance->setGlobalInt("SCOT", SharedObjectTemplate::SCOT);
 	luaTemplatesInstance->setGlobalInt("CHARACTERBUILDERTERMINAL", SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
+	luaTemplatesInstance->setGlobalInt("SURVEYTOOL", SharedObjectTemplate::SURVEYTOOL);
+	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
 }
 
 int TemplateManager::includeFile(lua_State* L) {

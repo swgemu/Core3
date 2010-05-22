@@ -79,6 +79,8 @@ bool MinimumPool::update() {
 	 * Create resources for any included type that doesn't exist in
 	 * the VectorMap
 	 */
+	int despawnedCount = 0, spawnedCount = 0;
+
 	for(int ii = 0; ii < size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
@@ -87,12 +89,18 @@ bool MinimumPool::update() {
 
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
-			newSpawn->updateToDatabase();
 
-			setElementAt(ii, newSpawn);
-System::out << "Minimum pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+			if(newSpawn != NULL) {
 
+				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+				newSpawn->updateToDatabase();
+
+				setElementAt(ii, newSpawn);
+
+				spawnedCount++;
+			} else {
+				resourceSpawner->info("Minimum Pool can't spawn " + includedResources.get(ii));
+			}
 		}
 	}
 
@@ -102,12 +110,15 @@ System::out << "Minimum pool spawning " << newSpawn->getName() << " of type " <<
 	 */
 	for(int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
-		if(!spawn->inShift()) {
+
+		if(spawn != NULL && !spawn->inShift()) {
 			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
 					<< " is shifting from the MinimumPool" << endl;
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
+			//resourceSpawner->despawn(spawn);
 			spawn->updateToDatabase();
+			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn = NULL;// =
 					//resourceSpawner->getFromRandomPool(type);
@@ -119,10 +130,12 @@ System::out << "Minimum pool spawning " << newSpawn->getName() << " of type " <<
 			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
+			spawnedCount++;
 		}
 	}
-
-	resourceSpawner->log("Minimum Pool Update Successful");
+	StringBuffer buffer;
+	buffer << "Minimum Pool Update Successful, Added " << spawnedCount << " and removed " << despawnedCount << " resources";
+	resourceSpawner->info(buffer.toString(), true);
 	return true;
 }
 

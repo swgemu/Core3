@@ -19,6 +19,8 @@
 
 #include "server/zone/objects/resource/SpawnDensityMap.h"
 
+#include "server/zone/objects/resource/SpawnMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "system/util/VectorMap.h"
@@ -30,7 +32,7 @@ namespace zone {
 namespace objects {
 namespace resource {
 
-class ResourceSpawn : public ManagedObject {
+class ResourceSpawn : public SceneObject {
 public:
 	ResourceSpawn();
 
@@ -52,6 +54,8 @@ public:
 
 	bool isType(String& type);
 
+	void setSurveyToolType(int type);
+
 	String getName();
 
 	String getType();
@@ -68,13 +72,15 @@ public:
 
 	int getZoneRestriction();
 
+	int getSurveyToolType();
+
+	int getSpawnMapSize();
+
+	int getSpawnMapZone(int i);
+
 	bool isUnknownType();
 
 	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
-
-	int getConcentration(bool jtl);
-
-	Vector<unsigned int> getSpawnZones(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
 
 	float getDensityAt(int zoneid, float x, float y);
 
@@ -109,7 +115,7 @@ namespace zone {
 namespace objects {
 namespace resource {
 
-class ResourceSpawnImplementation : public ManagedObjectImplementation, public Logger {
+class ResourceSpawnImplementation : public SceneObjectImplementation {
 protected:
 	String spawnType;
 
@@ -125,11 +131,13 @@ protected:
 
 	int zoneRestriction;
 
+	int surveyToolType;
+
 	unsigned long long spawned;
 
 	unsigned long long despawned;
 
-	VectorMap<unsigned int, SpawnDensityMap*> spawnMaps;
+	SpawnMap spawnMaps;
 
 	unsigned long long totalUnitsSpawned;
 
@@ -158,6 +166,8 @@ public:
 
 	bool isType(String& type);
 
+	void setSurveyToolType(int type);
+
 	String getName();
 
 	String getType();
@@ -174,14 +184,22 @@ public:
 
 	int getZoneRestriction();
 
+	int getSurveyToolType();
+
+	int getSpawnMapSize();
+
+	int getSpawnMapZone(int i);
+
 	bool isUnknownType();
 
 	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
 
+private:
 	int getConcentration(bool jtl);
 
 	Vector<unsigned int> getSpawnZones(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
 
+public:
 	float getDensityAt(int zoneid, float x, float y);
 
 	bool inShift();
@@ -223,7 +241,7 @@ protected:
 	friend class ResourceSpawn;
 };
 
-class ResourceSpawnAdapter : public ManagedObjectAdapter {
+class ResourceSpawnAdapter : public SceneObjectAdapter {
 public:
 	ResourceSpawnAdapter(ResourceSpawnImplementation* impl);
 
@@ -245,6 +263,8 @@ public:
 
 	bool isType(String& type);
 
+	void setSurveyToolType(int type);
+
 	String getName();
 
 	String getType();
@@ -260,6 +280,10 @@ public:
 	int getSpawnPool();
 
 	int getZoneRestriction();
+
+	int getSurveyToolType();
+
+	int getSpawnMapSize();
 
 protected:
 	String _param0_setName__String_;

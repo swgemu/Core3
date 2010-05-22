@@ -178,6 +178,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.cpp \
+		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \

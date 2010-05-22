@@ -45,13 +45,34 @@ which carries forward this exception.
 package server.zone.objects.tangible.tool;
 
 import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.player.PlayerCreature;
 import engine.lua.LuaObject;
+import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 
 class SurveyTool extends ToolTangibleObject {
+	
+	protected int range;
+	protected int points;
+	
+	protected int type;
+	
+	protected string surveyType;
+	
+	public static final int SOLAR = 1;
+	public static final int CHEMICAL = 2;
+	public static final int FLORA = 3;
+	public static final int GAS = 4;
+	public static final int GEOTHERMAL = 5;
+	public static final int MINERAL = 6;
+	public static final int WATER = 7;
+	public static final int WIND = 8;
+	public static final int FUSION = 9;
+	
 	public SurveyTool() {
 		Logger.setLoggingName("SurveyTool");
+		range = 0;
 	}
 	
 	public void initializeTransientMembers() {
@@ -59,5 +80,39 @@ class SurveyTool extends ToolTangibleObject {
 		
 		Logger.setLoggingName("SurveyTool");
 	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Set the surveying range on tool
+	 * Values should be:
+	 * 64, 128, 256, 512
+	 */
+	public native void setRange(int r);
+	
+	public int getRange() {
+		return range;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	public native void sendRangeSui(PlayerCreature playerCreature);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public native void sendResourceListTo(PlayerCreature playerCreature);
+	public native void sendSurveyTo(PlayerCreature playerCreature, final string resname);
 	
 }

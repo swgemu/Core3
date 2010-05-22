@@ -12,8 +12,8 @@
  *	ResourceContainerStub
  */
 
-ResourceContainer::ResourceContainer(ResourceSpawn* spawn) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceContainerImplementation(spawn);
+ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceContainerImplementation();
 	_impl->_setStub(this);
 }
 
@@ -102,10 +102,9 @@ void ResourceContainerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("spawnObject", &spawnObject);
 }
 
-ResourceContainerImplementation::ResourceContainerImplementation(ResourceSpawn* spawn) {
+ResourceContainerImplementation::ResourceContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceContainer.idl(61):   	spawnObject = spawn;
-	spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl(61):   	;
 }
 
 /*

@@ -42,16 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCELISTFORSURVEY_H_
-#define RESOURCELISTFORSURVEY_H_
+#ifndef RESOURCELISTFORSURVEYMESSAGE_H_
+#define RESOURCELISTFORSURVEYMESSAGE_H_
 
 #include "engine/engine.h"
 
-class ResourceListForSurvey : public BaseMessage {
+class ResourceListForSurveyMessage : public BaseMessage {
 public:
 	int listSize;
 
-	ResourceListForSurvey() : BaseMessage() {
+	ResourceListForSurveyMessage() : BaseMessage() {
 		/* Struct
 		 * 04 00 // Operand
 		 * D5 B1 64 8A // Opcode
@@ -72,18 +72,18 @@ public:
 		listSize = 0;
 	}
 
-	void addResource(String& resourceName, String& resourceType, uint64 objectID) {
+	void addResource(String resourceName, String resourceType, uint64 objectID) {
 		insertAscii(resourceName);
 		insertLong(objectID);
 		insertAscii(resourceType);
 		++listSize;
 	}
 
-	void finish(String& resourceType, long playerID) {
+	void finish(String resourceType, long playerID) {
 		insertAscii(resourceType);
 		insertLong(playerID);
 		insertInt(10,listSize);
 	}
 
 };
-#endif /*RESOURCELISTFORSURVEY_H_*/
+#endif /*RESOURCELISTFORSURVEYMESSAGE_H_*/

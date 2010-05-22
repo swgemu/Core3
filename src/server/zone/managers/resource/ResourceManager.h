@@ -45,7 +45,25 @@ class ObjectManager;
 
 using namespace server::zone::managers::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+
+#include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -65,6 +83,12 @@ public:
 	void stop();
 
 	void initialize();
+
+	void shiftResources();
+
+	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+
+	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -95,6 +119,8 @@ class ResourceManagerImplementation : public ManagedObjectImplementation, public
 
 	ObjectManager* objectManager;
 
+	int shiftInterval;
+
 public:
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
@@ -103,6 +129,12 @@ public:
 	void stop();
 
 	void initialize();
+
+	void shiftResources();
+
+	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+
+	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 private:
 	bool loadConfigFile();
@@ -157,6 +189,15 @@ public:
 
 	void initialize();
 
+	void shiftResources();
+
+	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+
+	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
+
+protected:
+	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
+	String _param1_sendSurvey__PlayerCreature_String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

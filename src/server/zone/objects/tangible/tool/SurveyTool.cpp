@@ -4,6 +4,10 @@
 
 #include "SurveyTool.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/Zone.h"
@@ -34,6 +38,113 @@ void SurveyTool::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		((SurveyToolImplementation*) _impl)->initializeTransientMembers();
+}
+
+void SurveyTool::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((SurveyToolImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((SurveyToolImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+void SurveyTool::setRange(int r) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(r);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->setRange(r);
+}
+
+int SurveyTool::getRange() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SurveyToolImplementation*) _impl)->getRange();
+}
+
+int SurveyTool::getPoints() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SurveyToolImplementation*) _impl)->getPoints();
+}
+
+void SurveyTool::sendRangeSui(PlayerCreature* playerCreature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(playerCreature);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->sendRangeSui(playerCreature);
+}
+
+int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SurveyToolImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void SurveyTool::sendResourceListTo(PlayerCreature* playerCreature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(playerCreature);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->sendResourceListTo(playerCreature);
+}
+
+void SurveyTool::sendSurveyTo(PlayerCreature* playerCreature, const String& resname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(playerCreature);
+		method.addAsciiParameter(resname);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->sendSurveyTo(playerCreature, resname);
 }
 
 /*
@@ -103,19 +214,35 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 	_setClassName("SurveyTool");
 
+	addSerializableVariable("range", &range);
+	addSerializableVariable("points", &points);
+	addSerializableVariable("type", &type);
+	addSerializableVariable("surveyType", &surveyType);
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(54):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(74):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(75):  		range = 0;
+	range = 0;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(79):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(60):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(81):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
+}
+
+int SurveyToolImplementation::getRange() {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(98):  		return range;
+	return range;
+}
+
+int SurveyToolImplementation::getPoints() {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(102):  		return points;
+	return points;
 }
 
 /*
@@ -132,6 +259,27 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		setRange(inv->getSignedIntParameter());
+		break;
+	case 8:
+		resp->insertSignedInt(getRange());
+		break;
+	case 9:
+		resp->insertSignedInt(getPoints());
+		break;
+	case 10:
+		sendRangeSui((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 11:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 12:
+		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 13:
+		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+		break;
 	default:
 		return NULL;
 	}
@@ -141,6 +289,34 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void SurveyToolAdapter::initializeTransientMembers() {
 	((SurveyToolImplementation*) impl)->initializeTransientMembers();
+}
+
+void SurveyToolAdapter::setRange(int r) {
+	((SurveyToolImplementation*) impl)->setRange(r);
+}
+
+int SurveyToolAdapter::getRange() {
+	return ((SurveyToolImplementation*) impl)->getRange();
+}
+
+int SurveyToolAdapter::getPoints() {
+	return ((SurveyToolImplementation*) impl)->getPoints();
+}
+
+void SurveyToolAdapter::sendRangeSui(PlayerCreature* playerCreature) {
+	((SurveyToolImplementation*) impl)->sendRangeSui(playerCreature);
+}
+
+int SurveyToolAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((SurveyToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void SurveyToolAdapter::sendResourceListTo(PlayerCreature* playerCreature) {
+	((SurveyToolImplementation*) impl)->sendResourceListTo(playerCreature);
+}
+
+void SurveyToolAdapter::sendSurveyTo(PlayerCreature* playerCreature, const String& resname) {
+	((SurveyToolImplementation*) impl)->sendSurveyTo(playerCreature, resname);
 }
 
 /*

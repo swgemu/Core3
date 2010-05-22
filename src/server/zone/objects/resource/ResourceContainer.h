@@ -56,7 +56,7 @@ namespace resource {
 
 class ResourceContainer : public TangibleObject {
 public:
-	ResourceContainer(ResourceSpawn* spawn);
+	ResourceContainer();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -84,7 +84,7 @@ class ResourceContainerImplementation : public TangibleObjectImplementation {
 	ManagedReference<ResourceSpawn* > spawnObject;
 
 public:
-	ResourceContainerImplementation(ResourceSpawn* spawn);
+	ResourceContainerImplementation();
 
 	ResourceContainerImplementation(DummyConstructorParameter* param);
 

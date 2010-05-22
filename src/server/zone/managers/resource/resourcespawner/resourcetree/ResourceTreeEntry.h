@@ -75,6 +75,8 @@ private:
 	String resourceContainerType;
 	String randomNameClass;
 
+	int surveyToolType;
+
 public:
 	ResourceTreeEntry(const String& inType) {
 		type = inType;
@@ -274,6 +276,14 @@ public:
 
     bool isJTL() {
     	return jtl;
+    }
+
+    void setSurveyToolType(int type) {
+    	surveyToolType = type;
+    }
+
+    int getSurveyToolType() {
+    	return surveyToolType;
     }
 
 

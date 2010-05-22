@@ -14,6 +14,34 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -47,9 +75,45 @@ namespace tool {
 
 class SurveyTool : public ToolTangibleObject {
 public:
+	static const int SOLAR = 1;
+
+	static const int CHEMICAL = 2;
+
+	static const int FLORA = 3;
+
+	static const int GAS = 4;
+
+	static const int GEOTHERMAL = 5;
+
+	static const int MINERAL = 6;
+
+	static const int WATER = 7;
+
+	static const int WIND = 8;
+
+	static const int FUSION = 9;
+
 	SurveyTool();
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	void setRange(int r);
+
+	int getRange();
+
+	int getPoints();
+
+	void sendRangeSui(PlayerCreature* playerCreature);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendResourceListTo(PlayerCreature* playerCreature);
+
+	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
 
 protected:
 	SurveyTool(DummyConstructorParameter* param);
@@ -74,13 +138,57 @@ namespace tangible {
 namespace tool {
 
 class SurveyToolImplementation : public ToolTangibleObjectImplementation {
+protected:
+	int range;
+
+	int points;
+
+	int type;
+
+	String surveyType;
 
 public:
+	static const int SOLAR = 1;
+
+	static const int CHEMICAL = 2;
+
+	static const int FLORA = 3;
+
+	static const int GAS = 4;
+
+	static const int GEOTHERMAL = 5;
+
+	static const int MINERAL = 6;
+
+	static const int WATER = 7;
+
+	static const int WIND = 8;
+
+	static const int FUSION = 9;
+
 	SurveyToolImplementation();
 
 	SurveyToolImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	void setRange(int r);
+
+	int getRange();
+
+	int getPoints();
+
+	void sendRangeSui(PlayerCreature* playerCreature);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendResourceListTo(PlayerCreature* playerCreature);
+
+	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
 
 	SurveyTool* _this;
 
@@ -123,6 +231,22 @@ public:
 
 	void initializeTransientMembers();
 
+	void setRange(int r);
+
+	int getRange();
+
+	int getPoints();
+
+	void sendRangeSui(PlayerCreature* playerCreature);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendResourceListTo(PlayerCreature* playerCreature);
+
+	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
+
+protected:
+	String _param1_sendSurveyTo__PlayerCreature_String_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {

@@ -51,14 +51,19 @@ which carries forward this exception.
 
 class ZoneResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 public:
-	ZoneResourceMap();
-	~ZoneResourceMap();
+	ZoneResourceMap() {
+		setInsertPlan(VectorMap<String, ManagedReference<ResourceSpawn* > >::NO_DUPLICATE);
+		setNullValue(NULL);
+	}
+	~ZoneResourceMap() {
+
+	}
 };
 
 class ResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 private:
 
-	VectorMap<int, ZoneResourceMap*> zoneResourceMap;
+	VectorMap<uint32, ZoneResourceMap*> zoneResourceMap;
 
 public:
 	ResourceMap();
@@ -73,7 +78,17 @@ public:
 	*/
 	void add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn);
 
+	void remove(ManagedReference<ResourceSpawn* > resourceSpawn);
+	void remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid);
+
 	float getDensityAt(String resourcename, int zoneid, float x, float y);
+
+	inline ZoneResourceMap* getZoneResourceList(uint32 zoneid) {
+		if(zoneResourceMap.contains(zoneid))
+			return zoneResourceMap.get(zoneid);
+		else
+			return NULL;
+	}
 
 private:
 
