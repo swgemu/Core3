@@ -34,6 +34,18 @@ void OneHandMeleeWeapon::initializeTransientMembers() {
 		((OneHandMeleeWeaponImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool OneHandMeleeWeapon::isOneHandMeleeWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((OneHandMeleeWeaponImplementation*) _impl)->isOneHandMeleeWeapon();
+}
+
 /*
  *	OneHandMeleeWeaponImplementation
  */
@@ -116,6 +128,11 @@ void OneHandMeleeWeaponImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("OneHandMeleeWeaponObject");
 }
 
+bool OneHandMeleeWeaponImplementation::isOneHandMeleeWeapon() {
+	// server/zone/objects/tangible/weapon/OneHandMeleeWeapon.idl(64):  		return true;
+	return true;
+}
+
 /*
  *	OneHandMeleeWeaponAdapter
  */
@@ -130,6 +147,9 @@ Packet* OneHandMeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isOneHandMeleeWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -139,6 +159,10 @@ Packet* OneHandMeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 void OneHandMeleeWeaponAdapter::initializeTransientMembers() {
 	((OneHandMeleeWeaponImplementation*) impl)->initializeTransientMembers();
+}
+
+bool OneHandMeleeWeaponAdapter::isOneHandMeleeWeapon() {
+	return ((OneHandMeleeWeaponImplementation*) impl)->isOneHandMeleeWeapon();
 }
 
 /*

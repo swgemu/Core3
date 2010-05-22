@@ -38,6 +38,7 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
+	owner = NULL;
 
 	persistentMessages.setNoDuplicateInsertPlan();
 

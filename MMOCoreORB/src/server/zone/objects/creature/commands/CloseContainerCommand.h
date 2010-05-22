@@ -57,25 +57,25 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		/*StringBuffer msg; //target is the container
 		msg << "target of container: 0x" << hex << target;
 		creature->info(msg.toString(), true);*/
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		ManagedReference<SceneObject*> container = server->getZoneServer()->getObject(target);
 
 		if (container == NULL)
-			return false;
+			return GENERALERROR;
 
 		try {
 			container->wlock(creature);
@@ -87,7 +87,7 @@ public:
 			container->unlock();
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

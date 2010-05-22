@@ -57,13 +57,13 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
@@ -81,24 +81,24 @@ public:
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transferitemarmor command");
-			return false;
+			return GENERALERROR;
 		}
 
 		if (!objectToTransfer->isArmorObject()) {
 			creature->error("objectToTransfer is not an armor object in transferitemarmor");
-			return false;
+			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
 			creature->error("destinationObject NULL in transferitemarmor command");
-			return false;
+			return GENERALERROR;
 		}
 
 		if (destinationObject != creature) {
 			creature->error("destinationObject is not player in transferitemarmor command");
-			return false;
+			return GENERALERROR;
 		}
 
 		if (transferType == 4) {
@@ -106,7 +106,7 @@ public:
 
 			if (parent == NULL) {
 				creature->error("objectToTransfer parent is NULL in transferitemarmor command");
-				return false;
+				return GENERALERROR;
 			}
 
 			ZoneServer* zoneServer = server->getZoneServer();
@@ -124,17 +124,17 @@ public:
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
 					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
-						return false;
+						return GENERALERROR;
 				}
 			} else if (transferPreProcess != 0) {
 				if (errorDescription.length() > 1)
 					creature->sendSystemMessage(errorDescription);
 
-				return false;
+				return GENERALERROR;
 			}
 
 			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
-				return false;
+				return GENERALERROR;
 
 		} /*else if (transferType == 4) {
 
@@ -158,7 +158,7 @@ public:
 					player->changeArmor(target, false);
 				}*/
 
-		return true;
+		return SUCCESS;
 	}
 
 };

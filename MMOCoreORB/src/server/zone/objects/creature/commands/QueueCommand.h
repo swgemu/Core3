@@ -63,7 +63,7 @@ namespace creature {
 namespace commands {
 
 
-class QueueCommand : public Skill {
+class QueueCommand : public Skill, public Logger {
 protected:
 	uint32 nameCRC;
 
@@ -88,39 +88,65 @@ protected:
 	int defaultPriority;
 
 public:
-	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) : Skill(name) {
-		server = serv;
-
-		nameCRC = name.hashCode();
-
-		animCRC = 0;
-
-		maxRangeToTarget = 0;
-
-		stateMask = 0;
-		target = 0;
-		targetType = 0;
-		disabled = false;
-		addToQueue = false;
-
-		defaultTime = 0.f;
-
-		cooldown = 0;
-
-		defaultPriority = NORMAL;
-
-		skillType = QUEUECOMMAND;
-	}
+	QueueCommand(const String& skillname, ZoneProcessServerImplementation* serv);
 
 	const static int NORMAL = 0;
 	const static int FRONT = 1;
 	const static int IMMEDIATE = 2;
 
+	const static int SUCCESS = 0;
+	const static int GENERALERROR = 1;
+	const static int INVALIDPOSTURE = 2;
+	const static int INVALIDSTATE = 3;
+
+
 	virtual ~QueueCommand() {
 	}
 
-	int compareTo(QueueCommand* command) {
-		return name.compareTo(command->name);
+	/*
+	 * Checks each invalid posture with the player's current posture
+	 */
+	bool checkInvalidPostures(CreatureObject* creature);
+
+	void onStateFail(CreatureObject* creature, uint32 actioncntr);
+	void onPostureFail(CreatureObject* creature, uint32 actioncntr);
+
+	/*
+	 * Unsuccessful command completion alerts the player of the invalid state, must clear the queue action from client queue
+	 */
+	virtual void onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber);
+
+	/*
+	 * Successful command completion, must clear the queue action from client queue
+	 */
+	virtual void onComplete(uint32 actioncntr, CreatureObject* creature, float commandDuration);
+
+	/*
+	 * Sets the invalid postures for this command.
+	 * Parses the string from LUA's. Format: "4,12,13,"
+	 */
+	void setInvalidPostures(const String& postureStr);
+
+	/*
+	 * Override me
+	 */
+	virtual int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+		return SUCCESS;
+	}
+
+	/*
+	 * Checks all states at once with a bitwise operation
+	 */
+	bool checkStateMask(CreatureObject* creature) {
+		return (creature->getStateBitmask() & stateMask) == 0;
+	}
+
+	/**
+	 * Returns duration of the command
+	 */
+
+	virtual float getCommandDuration(CreatureObject* object) {
+		return defaultTime;
 	}
 
 	//setters
@@ -135,22 +161,7 @@ public:
 		stateMask = mask;
 	}
 
-	/*
-	 * Sets the invalid postures for this command.
-	 * Parses the string from LUA's. Format: "4,12,13,"
-	 */
-	void setInvalidPostures(const String& postureStr) {
-		StringTokenizer tokenizer(postureStr);
-		tokenizer.setDelimeter(",");
 
-		String token = "";
-		while (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(token);
-
-			if(!token.isEmpty())
-				invalidPostures.add(Integer::valueOf(token));
-		}
-	}
 
 	inline void setTarget(int num) {
 		target = num;
@@ -235,7 +246,7 @@ public:
 	}
 
 	inline String& getQueueCommandName() {
-		return name;
+		return Skill::name;
 	}
 
 	inline String& getCharacterAbility() {
@@ -269,127 +280,7 @@ public:
 		return addToQueue;
 	}
 
-	/*
-	 * Override me
-	 */
-	virtual bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-		return false;
-	}
 
-	/*
-	 * Checks all states at once with a bitwise operation
-	 */
-	bool checkStateMask(CreatureObject* creature) {
-		return (creature->getStateBitmask() & stateMask) == 0;
-	}
-
-	/*
-	 * Checks each invalid posture with the player's current posture
-	 */
-	bool checkInvalidPostures(CreatureObject* creature) {
-		for (int i = 0; i < invalidPostures.size(); ++i) {
-			if (invalidPostures.get(i) == creature->getPosture())
-				return false;
-		}
-		return true;
-	}
-
-	/*
-	 * Unsuccessful command completion alerts the player of the invalid state
-	 */
-	virtual void onFail(uint32 actioncntr, CreatureObject* creature) {
-		uint64 states = stateMask & creature->getStateBitmask();
-
-		if (!checkStateMask(creature)) {
-
-			uint64 state = 1;
-			int num = 0;
-
-			while (num < 34) {
-				if (states & state) {
-
-					creature->clearQueueAction(actioncntr, 0, 5, num);
-					return;
-
-				}
-
-				state *= 2;
-				++num;
-			}
-		}
-
-		/*
-		 * SOE is stupid so player postures do NOT match up with their respective client error message
-		 * Because of this, we have to have this switch statement to match them up manually
-		 * */
-		if (!checkInvalidPostures(creature)) {
-			switch(creature->getPosture()) {
-			case(CreaturePosture::UPRIGHT):
-				creature->clearQueueAction(actioncntr, 0, 1, 0);
-			break;
-			case(CreaturePosture::CROUCHED):
-				creature->clearQueueAction(actioncntr, 0, 1, 4);
-			break;
-			case(CreaturePosture::PRONE):
-				creature->clearQueueAction(actioncntr, 0, 1, 7);
-			break;
-			case(CreaturePosture::SNEAKING):
-				creature->clearQueueAction(actioncntr, 0, 1, 5);
-			break;
-			case(CreaturePosture::BLOCKING):
-				creature->clearQueueAction(actioncntr, 0, 1, 21);
-			break;
-			case(CreaturePosture::CLIMBING):
-				creature->clearQueueAction(actioncntr, 0, 1, 10);
-			break;
-			case(CreaturePosture::FLYING):
-				creature->clearQueueAction(actioncntr, 0, 1, 12);
-			break;
-			case(CreaturePosture::LYINGDOWN):
-				creature->clearQueueAction(actioncntr, 0, 1, 13);
-			break;
-			case(CreaturePosture::SITTING):
-				creature->clearQueueAction(actioncntr, 0, 1, 14);
-			break;
-			case(CreaturePosture::SKILLANIMATING):
-				creature->clearQueueAction(actioncntr, 0, 1, 15);
-			break;
-			case(CreaturePosture::DRIVINGVEHICLE):
-				creature->clearQueueAction(actioncntr, 0, 1, 16);
-			break;
-			case(CreaturePosture::RIDINGCREATURE):
-				creature->clearQueueAction(actioncntr, 0, 1, 17);
-			break;
-			case(CreaturePosture::KNOCKEDDOWN):
-				creature->clearQueueAction(actioncntr, 0, 1, 18);
-			break;
-			case(CreaturePosture::INCAPACITATED):
-				creature->clearQueueAction(actioncntr, 0, 1, 19);
-			break;
-			case(CreaturePosture::DEAD):
-				creature->clearQueueAction(actioncntr, 0, 1, 20);
-			break;
-			default:
-				creature->clearQueueAction(actioncntr);
-				break;
-			}
-		}
-	}
-
-	/*
-	 * Successful command completion
-	 */
-	virtual void onComplete(uint32 actioncntr, CreatureObject* player) {
-
-	}
-
-	/**
-	 * Returns duration of the command
-	 */
-
-	virtual float getCommandDuration() {
-		return defaultTime;
-	}
 
 
 };

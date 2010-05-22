@@ -56,25 +56,25 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
 		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isCreatureObject()) {
-			return false;
+			return GENERALERROR;
 		}
 
 		CombatManager::instance()->startCombat(creature, (TangibleObject*) targetObject.get());
 
-		return true;
+		return SUCCESS;
 	}
 
 };

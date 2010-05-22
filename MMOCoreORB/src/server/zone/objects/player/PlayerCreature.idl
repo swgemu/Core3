@@ -70,7 +70,7 @@ import system.lang.ref.Reference;
 include server.zone.templates.SharedObjectTemplate;
 
 class PlayerCreature extends CreatureObject {
-	protected ZoneClientSession owner;
+	protected transient ZoneClientSession owner;
 	
 	protected int savedZoneID;
 	protected unsigned long savedParentID;

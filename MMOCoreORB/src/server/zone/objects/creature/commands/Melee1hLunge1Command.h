@@ -46,6 +46,8 @@ which carries forward this exception.
 #define MELEE1HLUNGE1COMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+
 
 class Melee1hLunge1Command : public QueueCommand {
 public:
@@ -55,16 +57,31 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
-		return true;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isOneHandMeleeWeapon()) {
+			creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
+
+			return GENERALERROR;
+		}
+
+		return SUCCESS;
 	}
+
+	float getCommandDuration(CreatureObject* object) {
+		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), defaultTime);
+
+		return duration;
+	}
+
 
 };
 

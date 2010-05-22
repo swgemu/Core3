@@ -59,31 +59,31 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		GroupManager* groupManager = GroupManager::instance();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* targetObject = (PlayerCreature*) object.get();
 
 		GroupObject* group = creature->getGroup();
 
 		if (group == NULL)
-			return false;
+			return GENERALERROR;
 
 		groupManager->makeLeader(group, creature, targetObject);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

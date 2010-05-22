@@ -55,18 +55,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ManagedReference<SceneObject*> cell = creature->getParent();
 
 		if (cell == NULL)
-			return false;
+			return GENERALERROR;
 
 		ManagedReference<SceneObject*> tutorial = cell->getParent();
 
@@ -116,7 +116,7 @@ public:
 		creature->updateToDatabase();
 		//tutorial->info("remaining references " + String::valueOf(tutorial->getReferenceCount()), true);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

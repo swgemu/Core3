@@ -57,19 +57,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		Zone* zone = creature->getZone();
 
 		if (zone == NULL)
-			return false;
-
+			return GENERALERROR;
 
 		float posX = creature->getPositionX(), posY = creature->getPositionY();
 		uint64 parID = creature->getParentID();
@@ -80,7 +79,7 @@ public:
 
 		CreatureObject* npc = creatureManager->spawnCreature(templ, posX, posY, parID);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

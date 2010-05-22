@@ -57,18 +57,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
 		chatManager->handleGroupChat((PlayerCreature*) creature, arguments);
 
-		return true;
+		return SUCCESS;
 	}
 
 };
