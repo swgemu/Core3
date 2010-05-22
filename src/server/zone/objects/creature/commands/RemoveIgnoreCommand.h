@@ -55,21 +55,21 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
 		ghost->removeIgnore(arguments.toString());
 
-		return true;
+		return SUCCESS;
 	}
 
 };

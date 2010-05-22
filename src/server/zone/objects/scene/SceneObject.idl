@@ -1093,8 +1093,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return false;
 	}
 
-	public boolean isWeaponObject() {
-		return gameObjectType & WEAPON;
+	public abstract boolean isWeaponObject() {
+		return false;
 	}
 	
 	public abstract boolean isWearableObject() {

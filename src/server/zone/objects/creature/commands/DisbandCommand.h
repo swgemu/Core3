@@ -57,20 +57,20 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		GroupManager* groupManager = GroupManager::instance();
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
 		if (group == NULL)
-			return false;
+			return GENERALERROR;
 
 		//If player not is leader, he will leave the group instead.
 		//Fix 13 feb 2009 - Bankler
@@ -79,7 +79,7 @@ public:
 		else
 			groupManager->disbandGroup(group.get(), creature);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

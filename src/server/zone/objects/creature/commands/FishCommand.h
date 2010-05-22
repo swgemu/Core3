@@ -58,13 +58,13 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (creature->isPlayerCreature()) {
 			ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
@@ -78,7 +78,7 @@ public:
 			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
 				player->sendSystemMessage("You are already fishing.");
 
-				return false;
+				return GENERALERROR;
 			}
 
 			player->sendSystemMessage("++DEBUG INFO: Use /fish suc to jump to fishing rewards ++");
@@ -100,7 +100,7 @@ public:
 			// ENDREMOVE
 
 		}
-		return true;
+		return SUCCESS;
 	}
 
 };

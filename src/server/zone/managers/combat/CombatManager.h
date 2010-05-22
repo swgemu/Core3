@@ -45,6 +45,10 @@ public:
 	 */
 	bool attemptPeace(CreatureObject* attacker);
 
+	/**
+	 * Attempt
+	 */
+
 	//all the combat math will go here
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
@@ -71,6 +75,7 @@ public:
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
+	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 

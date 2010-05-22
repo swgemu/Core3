@@ -201,6 +201,8 @@ public:
 
 	bool isOneHandMeleeWeapon();
 
+	bool isWeaponObject();
+
 protected:
 	WeaponObject(DummyConstructorParameter* param);
 
@@ -406,6 +408,8 @@ public:
 
 	virtual bool isOneHandMeleeWeapon();
 
+	bool isWeaponObject();
+
 	WeaponObject* _this;
 
 	operator const WeaponObject*();
@@ -504,6 +508,8 @@ public:
 	bool isPistolWeapon();
 
 	bool isOneHandMeleeWeapon();
+
+	bool isWeaponObject();
 
 };
 

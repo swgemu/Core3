@@ -58,19 +58,19 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		uint64 inviterID = creature->getGroupInviterID();
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(inviterID);
 
 		if (object == NULL || !object->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* inviter = (PlayerCreature*) object.get();
 
@@ -83,7 +83,7 @@ public:
 		inviter->sendSystemMessage(stringId);
 		creature->sendSystemMessage("group", "decline_self");
 
-		return true;
+		return SUCCESS;
 		/*DECLINE DUEL CODE
 				CombatManager* combatManager = server->getCombatManager();
 				if (combatManager == NULL)
@@ -91,8 +91,6 @@ public:
 
 				 uint64 target = packet->parseLong();
 				 combatManager->declineDuel(player, target);*/
-
-		return true;
 	}
 
 };

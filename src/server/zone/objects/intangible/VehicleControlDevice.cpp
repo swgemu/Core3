@@ -171,8 +171,8 @@ VehicleControlDeviceImplementation::VehicleControlDeviceImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/intangible/VehicleControlDevice.idl(60):  		Logger.setLoggingName("VehicleControlDevice");
 	Logger::setLoggingName("VehicleControlDevice");
-	// server/zone/objects/intangible/VehicleControlDevice.idl(61):  		Logger.setLogging(true);
-	Logger::setLogging(true);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(61):  		Logger.setLogging(false);
+	Logger::setLogging(false);
 	// server/zone/objects/intangible/VehicleControlDevice.idl(62):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }

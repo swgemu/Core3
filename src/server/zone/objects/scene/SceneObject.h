@@ -1445,7 +1445,7 @@ public:
 
 	virtual bool isBuildingObject();
 
-	bool isWeaponObject();
+	virtual bool isWeaponObject();
 
 	virtual bool isWearableObject();
 

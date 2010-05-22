@@ -2083,8 +2083,8 @@ bool SceneObjectImplementation::isBuildingObject() {
 }
 
 bool SceneObjectImplementation::isWeaponObject() {
-	// server/zone/objects/scene/SceneObject.idl(1097):  		return gameObjectType & WEAPON;
-	return gameObjectType & WEAPON;
+	// server/zone/objects/scene/SceneObject.idl(1097):  		return false;
+	return false;
 }
 
 bool SceneObjectImplementation::isWearableObject() {

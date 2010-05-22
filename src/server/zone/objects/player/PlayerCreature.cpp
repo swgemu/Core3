@@ -867,7 +867,6 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlayerCreature");
 
-	addSerializableVariable("owner", &owner);
 	addSerializableVariable("savedZoneID", &savedZoneID);
 	addSerializableVariable("savedParentID", &savedParentID);
 	addSerializableVariable("onlineStatus", &onlineStatus);

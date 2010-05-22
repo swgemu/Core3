@@ -62,13 +62,13 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		int counter = 0;
 		String dummy;
@@ -116,7 +116,7 @@ public:
 							y = atof(temp.toCharArray());
 						} else {
 							creature->sendSystemMessage(usageError);
-							return false;
+							return GENERALERROR;
 						}
 					}
 
@@ -138,7 +138,7 @@ public:
 
 					if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
 						creature->sendSystemMessage(usageError);
-						return false;
+						return GENERALERROR;
 					}
 
 					if (tokenizer.hasMoreTokens()) {
@@ -149,7 +149,7 @@ public:
 							x = Float::valueOf(temp);
 						} else {
 							creature->sendSystemMessage(usageError);
-							return false;
+							return GENERALERROR;
 						}
 					}
 
@@ -161,7 +161,7 @@ public:
 							z = Float::valueOf(temp);
 						} else {
 							creature->sendSystemMessage(usageError);
-							return false;
+							return GENERALERROR;
 						}
 					}
 
@@ -173,7 +173,7 @@ public:
 							y = Float::valueOf(temp);
 						} else {
 							creature->sendSystemMessage(usageError);
-							return false;
+							return GENERALERROR;
 						}
 					}
 				}
@@ -199,7 +199,7 @@ public:
 
 		playerObject->addWaypoint(obj, true);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

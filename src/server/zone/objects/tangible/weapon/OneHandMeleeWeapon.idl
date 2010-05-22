@@ -59,4 +59,8 @@ class OneHandMeleeWeapon extends MeleeWeaponObject {
 		
 		Logger.setLoggingName("OneHandMeleeWeaponObject");
 	}
+	
+	public boolean isOneHandMeleeWeapon() {
+		return true;
+	}
 }

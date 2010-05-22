@@ -58,26 +58,26 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		creature->info("serverdestroy arguments: " + arguments.toString(), true);
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
-			return false;
+			return GENERALERROR;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		if (object->canBeDestroyed((PlayerCreature*) creature) != 0)
-			return false;
+			return GENERALERROR;
 
 		// need to add checks.. inventory, datapad, bank, waypoint
 
@@ -90,7 +90,7 @@ public:
 			// delete from database
 			object->destroyObjectFromDatabase(true);
 
-			return true;
+			return SUCCESS;
 		}
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
@@ -104,7 +104,7 @@ public:
 				//destroy object from database
 				object->destroyObjectFromDatabase(true);
 
-				return true;
+				return SUCCESS;
 			}
 		}
 
@@ -119,7 +119,7 @@ public:
 				//destroy object from database
 				object->destroyObjectFromDatabase(true);
 
-				return true;
+				return SUCCESS;
 			}
 		}
 
@@ -132,11 +132,11 @@ public:
 				object->sendDestroyTo(creature);
 				object->destroyObjectFromDatabase(true);
 
-				return true;
+				return SUCCESS;
 			}
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

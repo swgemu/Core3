@@ -320,5 +320,9 @@ class WeaponObject extends TangibleObject {
 	public abstract boolean isOneHandMeleeWeapon() {
 		return false;
 	}
+	
+	public boolean isWeaponObject() {
+		return true;
+	}
 
 }

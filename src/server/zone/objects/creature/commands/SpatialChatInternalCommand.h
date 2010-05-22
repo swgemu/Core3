@@ -55,24 +55,24 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		ChatManager* chatManager = server->getChatManager();
 		if (chatManager == NULL)
-			return false;
+			return GENERALERROR;
 
 		chatManager->handleSpatialChatInternalMessage((PlayerCreature*)creature, arguments);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

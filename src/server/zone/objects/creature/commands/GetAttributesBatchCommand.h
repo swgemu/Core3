@@ -57,23 +57,23 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		StringTokenizer ids(arguments.toString());
 
 		Zone* zone = creature->getZone();
 
 		if (zone == NULL)
-			return false;
+			return GENERALERROR;
 
 		while (ids.hasMoreTokens()) {
 			uint64 objid = 0;
@@ -97,7 +97,7 @@ public:
 			}
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };
