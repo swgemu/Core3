@@ -98,6 +98,7 @@ public:
 	const static int GENERALERROR = 1;
 	const static int INVALIDPOSTURE = 2;
 	const static int INVALIDSTATE = 3;
+	const static int INVALIDTARGET = 4;
 
 
 	virtual ~QueueCommand() {

@@ -13,22 +13,28 @@
 #include "server/zone/Zone.h"
 
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender) {
+	if (attacker == defender)
+		return false;
+
+	bool success = true;
+
+	if (!defender->isAttackableBy(attacker))
+		return false;
+
 	defender->wlock(attacker);
 
-
 	try {
+
 		attacker->setDefender(defender);
-		defender->setDefender(attacker);
+		defender->addDefender(attacker);
 
-		attacker->setCombatState();
-		defender->setCombatState();
 	} catch (...) {
-
+		success = false;
 	}
 
 	defender->unlock();
 
-	return true;
+	return success;
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
@@ -37,7 +43,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 	for (int i = 0; i < defenderList->size(); ++i) {
 		ManagedReference<SceneObject*> object = defenderList->get(i);
 
-		if (!object->isCreatureObject())
+		if (!object->isTangibleObject())
 			continue;
 
 		TangibleObject* defender = (TangibleObject*) object.get();
@@ -83,6 +89,8 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 
 		return false;
 	} else {
+		attacker->clearCombatState(false);
+
 		return true;
 	}
 }
@@ -412,6 +420,17 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	float attackSpeed = (1.0f - ((float) speedMod / 100.0f)) * skillSpeedRatio * weapon->getAttackSpeed();
 
 	return MAX(attackSpeed, 1.0f);
+}
+
+int CombatManager::attemptCombatAction(CreatureObject* attacker, CreatureObject* defender) {
+	int rand = System::random(100);
+
+	if (rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
+		//doMiss(attacker, defender, creature->getWeapon(), 0);
+		return MISS;
+	}
+
+	return 0;
 }
 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {

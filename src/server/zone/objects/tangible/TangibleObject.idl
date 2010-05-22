@@ -51,6 +51,7 @@ import engine.log.Logger;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
 
 
 include server.zone.objects.scene.variables.CustomizationVariables;
@@ -237,6 +238,16 @@ class TangibleObject extends SceneObject {
 				return true;
 		}
 		
+		return false;
+	}
+	
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
+	public abstract boolean isAttackableBy(CreatureObject object) {
 		return false;
 	}
 	

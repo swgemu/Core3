@@ -932,7 +932,7 @@ PlayerCreatureImplementation::PlayerCreatureImplementation() {
 	// server/zone/objects/player/PlayerCreature.idl(152):  		accountID = 0;
 	accountID = 0;
 	// server/zone/objects/player/PlayerCreature.idl(154):  		savedZoneID = -1;
-	savedZoneID = 1;
+	savedZoneID = -1;
 	// server/zone/objects/player/PlayerCreature.idl(155):  		savedParentID = 0;
 	savedParentID = 0;
 	// server/zone/objects/player/PlayerCreature.idl(157):  		skillPoints = 0;

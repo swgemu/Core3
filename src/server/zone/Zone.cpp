@@ -315,6 +315,54 @@ float Zone::getWeatherWindY() {
 		return ((ZoneImplementation*) _impl)->getWeatherWindY();
 }
 
+float Zone::getMinX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getMinX();
+}
+
+float Zone::getMaxX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getMaxX();
+}
+
+float Zone::getMinY() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getMinY();
+}
+
+float Zone::getMaxY() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getMaxY();
+}
+
 /*
  *	ZoneImplementation
  */
@@ -559,6 +607,18 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 25:
 		resp->insertFloat(getWeatherWindY());
 		break;
+	case 26:
+		resp->insertFloat(getMinX());
+		break;
+	case 27:
+		resp->insertFloat(getMaxX());
+		break;
+	case 28:
+		resp->insertFloat(getMinY());
+		break;
+	case 29:
+		resp->insertFloat(getMaxY());
+		break;
 	default:
 		return NULL;
 	}
@@ -644,6 +704,22 @@ float ZoneAdapter::getWeatherWindX() {
 
 float ZoneAdapter::getWeatherWindY() {
 	return ((ZoneImplementation*) impl)->getWeatherWindY();
+}
+
+float ZoneAdapter::getMinX() {
+	return ((ZoneImplementation*) impl)->getMinX();
+}
+
+float ZoneAdapter::getMaxX() {
+	return ((ZoneImplementation*) impl)->getMaxX();
+}
+
+float ZoneAdapter::getMinY() {
+	return ((ZoneImplementation*) impl)->getMinY();
+}
+
+float ZoneAdapter::getMaxY() {
+	return ((ZoneImplementation*) impl)->getMaxY();
 }
 
 /*
