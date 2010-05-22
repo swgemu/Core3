@@ -76,12 +76,27 @@ public:
 	static const short LOWDENSITY = 3;
 
 public:
-	SpawnDensityMap() {
+	SpawnDensityMap() : Object(), Serializable() {
+		addSerializableVariables();
+	}
 
+	SpawnDensityMap(const SpawnDensityMap& map) : Object(), Serializable() {
+		seed = map.seed;
+		modifier = map.modifier;
+		density = map.density;
+		minX = map.minX;
+		maxX = map.maxX;
+		minY = map.minY;
+		maxY = map.maxY;
+
+		totalUnits = map.totalUnits;
+		unitsHarvested = map.unitsHarvested;
+
+		addSerializableVariables();
 	}
 
 	SpawnDensityMap(bool ore, short concentration,
-			float minx, float maxx, float miny, float maxy) {
+			float minx, float maxx, float miny, float maxy) : Object(), Serializable() {
 		initialize(ore, concentration);
 		minX = minx;
 		maxX = maxx;
@@ -92,6 +107,25 @@ public:
 	~SpawnDensityMap() {
 
 	}
+
+	SpawnDensityMap& operator=(const SpawnDensityMap& map) {
+		if (this == &map)
+			return *this;
+
+		seed = map.seed;
+		modifier = map.modifier;
+		density = map.density;
+		minX = map.minX;
+		maxX = map.maxX;
+		minY = map.minY;
+		maxY = map.maxY;
+
+		totalUnits = map.totalUnits;
+		unitsHarvested = map.unitsHarvested;
+
+		return *this;
+	}
+
 
 	float getDensityAt(float x, float y) {
 		print();

@@ -87,6 +87,8 @@ class ResourceSpawn extends SceneObject {
        	spawnType = "";
        	spawnPool = 0;
        	spawnAttributes.setNoDuplicateInsertPlan();
+       	
+       	setLoggingName("ResourceSpawn");
     }
         
    /**
