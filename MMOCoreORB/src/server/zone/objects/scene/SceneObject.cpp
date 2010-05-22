@@ -1803,7 +1803,7 @@ int SceneObjectImplementation::compareTo(SceneObject* obj) {
 
 	else 	// server/zone/objects/scene/SceneObject.idl(785):  
 	if (getObjectID() > obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(786):  			return -1;
-	return 1;
+	return -1;
 
 	else 	// server/zone/objects/scene/SceneObject.idl(788):  			return 0;
 	return 0;

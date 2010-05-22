@@ -366,7 +366,7 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	// server/zone/objects/building/BuildingObject.idl(68):  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
 	// server/zone/objects/building/BuildingObject.idl(70):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
-	QuadTree::setSize(1024, 1024, 1024, 1024);
+	QuadTree::setSize(-1024, -1024, 1024, 1024);
 	// server/zone/objects/building/BuildingObject.idl(72):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
 	// server/zone/objects/building/BuildingObject.idl(74):  		super.containerVolumeLimit = 0xFFFFFFFF;

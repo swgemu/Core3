@@ -18,6 +18,7 @@ public:
 	const static int BLOCK = 1;
 	const static int DODGE = 2;
 	const static int COUNTER = 3;
+	const static int MISS = 4;
 
 public:
 	CombatManager() {
@@ -46,8 +47,14 @@ public:
 	bool attemptPeace(CreatureObject* attacker);
 
 	/**
-	 * Attempt
+	 * Attempt combat action
+	 * @pre { attacker locked, defender locked }
+	 * @post { attacker locked, defender locked }
+	 * @param attacker Attacker trying the action
+	 * @param defender Defender of the action
+	 * @return 0 hit, 1 - block, 2 - dodge, 3 - counterattack, 4 - miss
 	 */
+	int attemptCombatAction(CreatureObject* attacker, CreatureObject* defender);
 
 	//all the combat math will go here
 
@@ -76,6 +83,8 @@ public:
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
+
+	void doMiss(CreatureObject* attacker, CreatureObject* defender);
 
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 

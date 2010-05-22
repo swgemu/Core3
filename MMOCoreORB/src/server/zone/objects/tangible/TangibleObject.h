@@ -49,6 +49,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -161,6 +175,8 @@ public:
 	void clearCombatState(bool clearDefenders = true);
 
 	bool hasDefender(SceneObject* defender);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
@@ -345,6 +361,8 @@ public:
 
 	bool hasDefender(SceneObject* defender);
 
+	virtual bool isAttackableBy(CreatureObject* object);
+
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
 	byte getUnknownByte();
@@ -441,6 +459,8 @@ public:
 	void clearCombatState(bool clearDefenders);
 
 	bool hasDefender(SceneObject* defender);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
