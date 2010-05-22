@@ -62,16 +62,16 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
@@ -80,25 +80,25 @@ public:
 		String name = arguments.toString().toLowerCase();
 
 		if (!ghost->hasFriend(name))
-			return false;
+			return GENERALERROR;
 
 		ChatManager* chatManager = server->getChatManager();
 
 		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == NULL)
-			return false;
+			return GENERALERROR;
 
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 		String myFirstName = player->getFirstName().toLowerCase();
 
 		if (!targetGhost->hasFriend(myFirstName))
-			return false;
+			return GENERALERROR;
 
 		Zone* zone = targetPlayer->getZone();
 
 		if (zone == NULL)
-			return false;
+			return GENERALERROR;
 
 		String planet = Planet::getPlanetName(zone->getZoneID());
 
@@ -124,7 +124,7 @@ public:
 
 		ghost->addWaypoint(obj, true);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

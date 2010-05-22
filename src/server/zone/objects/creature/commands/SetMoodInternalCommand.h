@@ -55,24 +55,24 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		StringTokenizer tokenizer(arguments.toString());
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		uint8 moodid = (uint8)tokenizer.getIntToken();
 
 		creature->setMood(moodid);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

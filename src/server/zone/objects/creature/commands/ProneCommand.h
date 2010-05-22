@@ -56,13 +56,13 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		StringTokenizer args(arguments.toString());
 		args.setDelimeter(" ");
@@ -74,7 +74,7 @@ public:
 			CharacterBuilderTerminal* blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 1);
 
 			if (blueFrog == NULL)
-				return false;
+				return GENERALERROR;
 
 			float x = creature->getPositionX();
 			float y = creature->getPositionY();
@@ -87,7 +87,7 @@ public:
 			creature->setPosture(CreaturePosture::PRONE);
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

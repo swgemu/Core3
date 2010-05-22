@@ -32,6 +32,10 @@ public:
 
 	}
 
+	int compareTo(Skill* command) {
+		return this->name.compareTo(command->name);
+	}
+
 	inline String& getName() {
 		return name;
 	}

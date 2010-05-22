@@ -59,18 +59,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* play = (PlayerCreature*) object.get();
 
@@ -80,7 +80,7 @@ public:
 			if (play->getGroupInviterID() != creature->getObjectID()) {
 				creature->sendSystemMessage("group", "must_be_leader");
 				play->unlock();
-				return false;
+				return GENERALERROR;
 			} else {
 				play->updateGroupInviterID(0);
 				play->sendSystemMessage("group", "uninvite_self");
@@ -96,10 +96,10 @@ public:
 		} catch (...) {
 			play->unlock();
 			System::out << "Exception in parseGroupUninvite(PlayerCreature* player, Message* pack)\n";
-			return false;
+			return GENERALERROR;
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

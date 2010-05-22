@@ -57,36 +57,36 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 		if (creature->isRidingMount()) {
 			ZoneServer* zoneServer = server->getZoneServer();
 
 			ObjectController* objectController = zoneServer->getObjectController();
 			objectController->activateCommand(creature, String("dismount").hashCode(), 0, 0, "");
 
-			return false;
+			return GENERALERROR;
 		}
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
 		if (!object->isVehicleObject() /* && !object->isPetObject() */)
-			return false;
+			return GENERALERROR;
 
 		CreatureObject* vehicle = (CreatureObject*) object.get();
 
 		if (vehicle->getCreatureLinkID() != creature->getObjectID())
-			return false;
+			return GENERALERROR;
 
 		if (!vehicle->isInRange(creature, 5))
-			return false;
+			return GENERALERROR;
 
 		try {
 			vehicle->wlock(creature);
@@ -103,7 +103,7 @@ public:
 			vehicle->unlock();
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

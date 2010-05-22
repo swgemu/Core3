@@ -447,6 +447,18 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 		return ((WeaponObjectImplementation*) _impl)->isOneHandMeleeWeapon();
 }
 
+bool WeaponObject::isWeaponObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isWeaponObject();
+}
+
 /*
  *	WeaponObjectImplementation
  */
@@ -745,6 +757,11 @@ bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
 	return false;
 }
 
+bool WeaponObjectImplementation::isWeaponObject() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(325):  		return true;
+	return true;
+}
+
 /*
  *	WeaponObjectAdapter
  */
@@ -845,6 +862,9 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 35:
 		resp->insertBoolean(isOneHandMeleeWeapon());
+		break;
+	case 36:
+		resp->insertBoolean(isWeaponObject());
 		break;
 	default:
 		return NULL;
@@ -971,6 +991,10 @@ bool WeaponObjectAdapter::isPistolWeapon() {
 
 bool WeaponObjectAdapter::isOneHandMeleeWeapon() {
 	return ((WeaponObjectImplementation*) impl)->isOneHandMeleeWeapon();
+}
+
+bool WeaponObjectAdapter::isWeaponObject() {
+	return ((WeaponObjectImplementation*) impl)->isWeaponObject();
 }
 
 /*

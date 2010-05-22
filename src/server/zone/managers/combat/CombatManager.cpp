@@ -406,6 +406,14 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		return COUNTER;
 }
 
+float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) {
+	int speedMod = getSpeedModifier(attacker, weapon);
+
+	float attackSpeed = (1.0f - ((float) speedMod / 100.0f)) * skillSpeedRatio * weapon->getAttackSpeed();
+
+	return MAX(attackSpeed, 1.0f);
+}
+
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 

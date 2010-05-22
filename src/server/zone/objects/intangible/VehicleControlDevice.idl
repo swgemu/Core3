@@ -58,7 +58,7 @@ include server.zone.managers.radial.RadialOptions;
 class VehicleControlDevice extends ControlDevice {
 	public VehicleControlDevice() {
 		Logger.setLoggingName("VehicleControlDevice");
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 	

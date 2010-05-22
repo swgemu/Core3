@@ -37,6 +37,8 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isOneHandMeleeWeapon();
+
 protected:
 	OneHandMeleeWeapon(DummyConstructorParameter* param);
 
@@ -67,6 +69,8 @@ public:
 	OneHandMeleeWeaponImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isOneHandMeleeWeapon();
 
 	OneHandMeleeWeapon* _this;
 
@@ -108,6 +112,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isOneHandMeleeWeapon();
 
 };
 

@@ -58,16 +58,16 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		String nameLower = arguments.toString().toLowerCase();
 
@@ -78,7 +78,7 @@ public:
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
-			return false;
+			return GENERALERROR;
 		}
 
 		if (ghost->hasFriend(nameLower)) {
@@ -86,7 +86,7 @@ public:
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
-			return false;
+			return GENERALERROR;
 		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
@@ -98,12 +98,12 @@ public:
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
-			return false;
+			return GENERALERROR;
 		}
 
 		ghost->addFriend(nameLower);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

@@ -56,18 +56,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ManagedReference<SceneObject*> mount = creature->getParent();
 
 		if (mount == NULL || !mount->isCreatureObject())
-			return false;
+			return GENERALERROR;
 
 		CreatureObject* vehicle = (CreatureObject*) mount.get();
 
@@ -86,7 +86,7 @@ public:
 			vehicle->unlock();
 		}
 
-		return true;
+		return SUCCESS;
 	}
 
 };

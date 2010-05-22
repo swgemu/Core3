@@ -57,18 +57,18 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
 		prof->surrenderSkillBox(arguments.toString(), (PlayerCreature*)creature, true);
 
-		return true;
+		return SUCCESS;
 	}
 
 };

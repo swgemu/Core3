@@ -57,13 +57,13 @@ public:
 
 	}
 
-	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
-			return false;
+			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
-			return false;
+			return INVALIDPOSTURE;
 
 		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
@@ -81,14 +81,14 @@ public:
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transfermisc command");
-			return false;
+			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
 			creature->error("destinationObject NULL in tansfermisc command");
-			return false;
+			return GENERALERROR;
 		}
 
 		String errorDescription;
@@ -98,16 +98,18 @@ public:
 
 			if (errorDescription.length() > 1)
 				creature->sendSystemMessage(errorDescription);
-			return false;
+			return GENERALERROR;
 		}
 
 		ZoneServer* zoneServer = server->getZoneServer();
 		ObjectController* objectController = zoneServer->getObjectController();
 
-		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
-			return false;
+		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent());
 
-		if (objectToTransfer->isWeaponObject() && creature == objectToTransfer->getParent())
+		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
+			return GENERALERROR;
+
+		if (clearWeapon)
 			creature->setWeapon(NULL, true);
 
 		/*
@@ -315,7 +317,7 @@ public:
 				}*/
 
 
-		return true;
+		return SUCCESS;
 	}
 
 };

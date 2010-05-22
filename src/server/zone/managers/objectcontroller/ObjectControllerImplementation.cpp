@@ -120,19 +120,16 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
-	bool completed = queueCommand->doQueueCommand(object, targetID, arguments);
+	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
-	if (!completed)
-		queueCommand->onFail(actionCount, object);
+	//onFail onComplete must clear the action from client queue
+	if (errorNumber != QueueCommand::SUCCESS)
+		queueCommand->onFail(actionCount, object, errorNumber);
 	else {
-		queueCommand->onComplete(actionCount, object);
-
 		if (queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE)
-			durationTime = queueCommand->getCommandDuration();
+			durationTime = queueCommand->getCommandDuration(object);
 
-		if (queueCommand->addToCombatQueue() && object->isPlayerCreature())
-			((PlayerCreature*)object)->clearQueueAction(actionCount, durationTime);
-
+		queueCommand->onComplete(actionCount, object, durationTime);
 	}
 
 	return durationTime;

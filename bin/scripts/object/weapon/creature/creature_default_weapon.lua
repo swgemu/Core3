@@ -8,7 +8,7 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
 	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
-	defenderSecondaryDefenseModifiers = { "dodge", "counter_attack" },
+	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
 	speedModifiers = { "unarmed_speed" },
 	damageModifiers = { "unarmed_damage" }
 	
