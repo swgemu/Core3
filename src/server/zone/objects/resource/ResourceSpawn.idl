@@ -107,11 +107,11 @@ class ResourceSpawn extends SceneObject {
 	 * @post { }
 	 * @param name generated name to set this object with
 	 */
-    public void setName(string name) {
+    public void setName(final string name) {
     	spawnName = name;
     }
     
-    public void setType(string type) {
+    public void setType(final string type) {
     	spawnType = type;
     }
     
@@ -129,19 +129,19 @@ class ResourceSpawn extends SceneObject {
 	 * @post { }
 	 * @param class string added to spawn
 	 */
-    public void addClass(string newclass) {
+    public void addClass(final string newclass) {
     	spawnClasses.add(newclass);
     }
     
-    public void addStfClass(string newclass) {
+    public void addStfClass(final string newclass) {
     	stfSpawnClasses.add(newclass);
     }
 
-	public void addAttribute(string attribute, int value) {
+	public void addAttribute(final string attribute, int value) {
 		spawnAttributes.put(attribute, value);
 	}
 	
-	public boolean isType(string type) {
+	public boolean isType(final string type) {
 		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
 			if(stfSpawnClasses.get(i) == type)
 				return true;	

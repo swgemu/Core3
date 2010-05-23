@@ -68,6 +68,7 @@ int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
 
 bool ResourceSpawnImplementation::isUnknownType() {
 	String unknown = "unknown";
+
 	for (int i = 0; i < spawnClasses.size(); ++i) {
 		if (spawnClasses.get(i).indexOf(unknown) != -1)
 			return true;
@@ -78,8 +79,6 @@ bool ResourceSpawnImplementation::isUnknownType() {
 void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
 		int zonerestriction, Vector<uint32>& activeZones) {
 
-	String ore = "ore";
-
 	int concentration = getConcentration(jtl);
 	Vector<uint32> zoneids = getSpawnZones(jtl, zonerestriction, activeZones);
 
@@ -87,7 +86,7 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
 
 		Zone* zone = server->getZoneServer()->getZone(zoneids.get(i));
 
-		SpawnDensityMap newMap(isType(ore), concentration, zone->getMinX(),
+		SpawnDensityMap newMap(isType("ore"), concentration, zone->getMinX(),
 				zone->getMaxX(), zone->getMinY(), zone->getMaxY());
 
 		spawnMaps.put((uint32) zoneids.get(i), newMap);
@@ -95,23 +94,15 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
 }
 
 int ResourceSpawnImplementation::getConcentration(bool jtl) {
-
-	String ore = "ore";
-	String chemical = "chemical";
-	String inertgas = "gas_inert";
-	String water = "water";
-	String solar = "energy_renewable_unlimited_solar";
-	String wind = "energy_renewable_unlimited_wind";
-
 	/**
 	 * Here we are using defined rules to set the max
 	 * density of this specific spawn
 	 */
 
-	if (jtl || isType(chemical) || isType(inertgas))
+	if (jtl || isType("chemical") || isType("gas_inert"))
 		return SpawnDensityMap::HIGHDENSITY;
 
-	else if (isType(ore) || isType(water) || isType(solar) || isType(wind))
+	else if (isType("ore") || isType("water") || isType("energy_renewable_unlimited_solar") || isType("energy_renewable_unlimited_wind"))
 		return SpawnDensityMap::LOWDENSITY;
 
 	else
@@ -120,13 +111,6 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 
 Vector<uint32> ResourceSpawnImplementation::getSpawnZones(bool jtl,
 		int zonerestriction, Vector<uint32>& activeZones) {
-
-	String ore = "ore";
-	String iron = "iron";
-	String intrusiveore = "ore_intrusive";
-	String extrusiveore = "ore_extrusive";
-	String solidpetro = "fuel_petrochem_solid";
-	String liquidpetro = "fuel_petrochem_liquid";
 
 	/**
 	 * Here we are using defined rules to set the number
@@ -145,9 +129,9 @@ Vector<uint32> ResourceSpawnImplementation::getSpawnZones(bool jtl,
 		zoneids.add((uint32) System::random(9));
 
 	/// If resource is the types below, it spawns on 1-3 planets
-	else if (isUnknownType() || isType(iron) || isType(intrusiveore) || isType(
-			extrusiveore) || isType(iron) || isType(solidpetro) || isType(
-			liquidpetro))
+	else if (isUnknownType() || isType("iron") || isType("ore_intrusive") || isType(
+			"ore_extrusive") /*|| isType("iron")  why is iron twice? should be ore? */|| isType("fuel_petrochem_solid") || isType(
+			"fuel_petrochem_liquid"))
 
 		zonecount = System::random(2) + 1;
 

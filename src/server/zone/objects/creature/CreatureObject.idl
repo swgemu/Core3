@@ -66,7 +66,9 @@ import engine.lua.LuaObject;
 import system.util.Vector;
 import system.lang.Time;
 import server.zone.Zone;
+import system.util.SortedVector;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.creature.PostureChangeObserver;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -151,6 +153,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time nextAction;
 	
+	@dereferenced
+	protected transient SortedVector<PostureChangeObserver> postureChangeObservers;
+	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -178,6 +183,7 @@ class CreatureObject extends TangibleObject {
 		controlDevice = null;
 		
 		skillModList.setNullValue(0);
+		postureChangeObservers.setNoDuplicateInsertPlan();
 	}
 	
 	public native void finalize();
@@ -546,6 +552,41 @@ class CreatureObject extends TangibleObject {
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
 		return true;
+	}
+	
+	/**
+	 * Is executed when this creature changes posture
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param newPosture new posture that will be set
+	 */
+	public abstract void notifyPostureChange(int newPosture) {
+		for (int i = 0; i < postureChangeObservers.size(); ++i) {
+			PostureChangeObserver observer = postureChangeObservers.get(i);
+			
+			int res = observer.notifyPostureChange(this, newPosture);
+			
+			if (res == 1) {
+				postureChangeObservers.drop(observer);
+				i = i - 1;
+			}
+		}
+	}
+	
+	/**
+	 * Registers an observer for the posture changed event
+	 */
+	@local
+	public void attachPostureChangeObserver(PostureChangeObserver observer) {
+		postureChangeObservers.put(observer);
+	}
+	
+	/**
+	 * Drops a positionChangedObserver
+	 */
+	@local
+	public void deattachPostureChangeObserver(PostureChangeObserver observer) {
+		postureChangeObservers.drop(observer);
 	}
 	
 	public native int canAddObject(SceneObject object, string errorDescription);

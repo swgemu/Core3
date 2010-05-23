@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../ResourceSpawner.h"
 
 NativePool::NativePool(ResourceSpawner* spawner) : ResourcePool(spawner) {
-
+	setLoggingName("NativePool");
 }
 
 NativePool::~NativePool() {
@@ -102,9 +102,14 @@ bool NativePool::update() {
 					newSpawn->updateToDatabase();
 
 					setElementAt(indexoffset, newSpawn);
-System::out << "Native pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+					StringBuffer msg;
+					msg << "Native pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass();
+					info(msg.toString());
 				} else {
-System::out << includedResources.get(jj) << " is a bad resource type" << endl;
+					StringBuffer msg;
+					msg << includedResources.get(jj) << " is a bad resource type";
+					info(msg.toString());
+
 					resourceSpawner->info("Resource not valid for Native Pool: " + includedResources.get(jj));
 				}
 			}
@@ -113,9 +118,14 @@ System::out << includedResources.get(jj) << " is a bad resource type" << endl;
 
 	for(int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
-		if(spawn != NULL && !spawn->inShift()) {
-			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the NativePool" << endl;
+
+		if (spawn != NULL && !spawn->inShift()) {
+			StringBuffer msg;
+			msg << spawn->getName() << " of type " << spawn->getFinalClass()
+					<< " is shifting from the NativePool";
+
+			info(msg.toString());
+
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
@@ -135,23 +145,30 @@ System::out << includedResources.get(jj) << " is a bad resource type" << endl;
 }
 
 void NativePool::print() {
+	info("**** Native Pool ****", true);
 
-	System::out << "**** Native Pool ****" << endl;
-	for(int ii = 0; ii < activeResourceZones.size(); ++ii) {
+	for (int ii = 0; ii < activeResourceZones.size(); ++ii) {
 
-		System::out << "Zone " << activeResourceZones.get(ii) << endl;
+		StringBuffer msg2;
+		msg2 << "Zone " << activeResourceZones.get(ii);
+		info(msg2.toString(), true);
 
-		for(int jj = 0; jj < includedResources.size(); ++jj) {
+		for (int jj = 0; jj < includedResources.size(); ++jj) {
 
 			int indexoffset = jj + (ii * includedResources.size());
 
 			ManagedReference<ResourceSpawn* > spawn = get(indexoffset);
 
-			if(spawn != NULL)
-				System::out <<  get(indexoffset)->getName() << " : "<< get(indexoffset)->getType() << endl;
+			StringBuffer msg3;
+
+			if (spawn != NULL)
+				msg3 <<  get(indexoffset)->getName() << " : "<< get(indexoffset)->getType();
 			else
-				System::out << "EMPTY" << endl;
+				msg3 << "EMPTY";
+
+			info(msg3.toString(), true);
 		}
 	}
-	System::out << "**********************" << endl;
+
+	info("**********************", true);
 }

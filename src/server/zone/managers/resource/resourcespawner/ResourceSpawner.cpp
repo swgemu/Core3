@@ -132,7 +132,6 @@ void ResourceSpawner::start() {
 }
 
 void ResourceSpawner::loadResourceSpawns() {
-
 	info("Building Resource Map");
 
 	ObjectDatabase* resourceDatabase = ObjectDatabaseManager::instance()->loadDatabase("resourcespawns", true);
@@ -147,7 +146,7 @@ void ResourceSpawner::loadResourceSpawns() {
 
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 
-		if(resourceSpawn->getSpawnPool() != 0) {
+		if (resourceSpawn->getSpawnPool() != 0) {
 
 			switch(resourceSpawn->getSpawnPool()) {
 			case ResourcePool::MINIMUMPOOL:
@@ -171,7 +170,6 @@ void ResourceSpawner::loadResourceSpawns() {
 }
 
 void ResourceSpawner::shiftResources() {
-
 	minimumPool->update();
 	randomPool->update();
 	fixedPool->update();
@@ -181,10 +179,9 @@ void ResourceSpawner::shiftResources() {
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		const Vector<String> excludes, int zonerestriction) {
-
 	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes, zonerestriction);
 
-	if(resourceEntry == NULL) {
+	if (resourceEntry == NULL) {
 		info("Resource type not found: " + type);
 		return NULL;
 	}
@@ -198,17 +195,17 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	newSpawn->setName(name);
 
- 	for(int i = 0; i < resourceEntry->getClassCount(); ++i) {
+ 	for (int i = 0; i < resourceEntry->getClassCount(); ++i) {
  		String resClass = resourceEntry->getClass(i);
  		newSpawn->addClass(resClass);
  	}
 
- 	for(int i = 0; i < resourceEntry->getStfClassCount(); ++i) {
+ 	for (int i = 0; i < resourceEntry->getStfClassCount(); ++i) {
  		String resClass = resourceEntry->getStfClass(i);
  		newSpawn->addStfClass(resClass);
  	}
 
- 	for(int i = 0; i < resourceEntry->getAttributeCount(); ++i) {
+ 	for (int i = 0; i < resourceEntry->getAttributeCount(); ++i) {
  		ResourceAttribute* attrib = resourceEntry->getAttribute(i);
  		int randomValue = randomizeValue(attrib->getMinimum(), attrib->getMaximum());
  		String attribName = attrib->getName();
@@ -232,7 +229,6 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type, int zonerestriction) {
-
 	Vector<String> excludes;
 
 	return createResourceSpawn(type, excludes, zonerestriction);
@@ -247,11 +243,9 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const Vector<String> include
 }
 
 String ResourceSpawner::makeResourceName(bool isOrganic) {
-
 	String randname;
 
 	while (true) {
-
 		randname = nameManager->makeResourceName(isOrganic);
 
 		if (!resourceMap->contains(randname))
@@ -265,7 +259,7 @@ int ResourceSpawner::randomizeValue(int min, int max) {
     if (min == 0 && max == 0)
     	return 0;
 
-    if(min > lowerGateOverride)
+    if (min > lowerGateOverride)
         min = lowerGateOverride;
 
 	int breakpoint = (int)(spawnThrottling * (max - min)) + min;
@@ -288,10 +282,10 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 
 long ResourceSpawner::getRandomExpirationTime(ResourceTreeEntry* resourceEntry) {
 
-	if(resourceEntry->isOrganic())
+	if (resourceEntry->isOrganic())
 		return getRandomUnixTimestamp(6, 22);
 
-	else if(resourceEntry->isJTL())
+	else if (resourceEntry->isJTL())
 		return getRandomUnixTimestamp(13, 22);
 
 	else
@@ -312,7 +306,7 @@ Vector<uint32> ResourceSpawner::getActiveResourceZones() {
 void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
 
 	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(playerCreature->getZone()->getZoneID());
-	if(zoneMap == NULL) {
+	if (zoneMap == NULL) {
 		playerCreature->sendSystemMessage("The tool fails to locate any resources");
 		return;
 	}
@@ -321,9 +315,10 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 	ManagedReference<ResourceSpawn* > resourceSpawn;
 	Vector<ManagedReference<ResourceSpawn* > > matchingResources;
 
-	for(int i = 0; i < zoneMap->size(); ++i) {
+	for (int i = 0; i < zoneMap->size(); ++i) {
 		resourceSpawn = zoneMap->get(i);
-		if(resourceSpawn->getSurveyToolType() == toolType) {
+
+		if (resourceSpawn->getSurveyToolType() == toolType) {
 			matchingResources.add(resourceSpawn);
 			message->addResource(resourceSpawn->getName(), resourceSpawn->getType(), resourceSpawn->_getObjectID());
 		}
@@ -333,9 +328,9 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 
 	playerCreature->sendMessage(message);
 
-	for(int i = 0; i < matchingResources.size(); ++i) {
+	/*for (int i = 0; i < matchingResources.size(); ++i) {
 
-	}
+	}*/
 }
 
 void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
@@ -388,8 +383,10 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 		ManagedReference<WaypointObject*> oldSurveyWaypoint = playerCreature->getSurveyWaypoint();
 
 		// Remove old survey waypoint
-		if(oldSurveyWaypoint != NULL)
+		if (oldSurveyWaypoint != NULL) {
 			playerCreature->getPlayerObject()->removeWaypoint(oldSurveyWaypoint->getObjectID(), true);
+			oldSurveyWaypoint->destroyObjectFromDatabase(true);
+		}
 
 		// Create new waypoint
 		waypoint = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
@@ -418,7 +415,7 @@ void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& r
 
 	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
 
-	if(!playerCreature->isKneeling())
+	if (!playerCreature->isKneeling())
 		playerCreature->setPosture(CreaturePosture::CROUCHED, true);
 
 	playerCreature->sendSystemMessage(String::valueOf(density));

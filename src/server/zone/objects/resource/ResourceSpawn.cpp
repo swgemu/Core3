@@ -28,7 +28,7 @@ void ResourceSpawn::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 		((ResourceSpawnImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
-void ResourceSpawn::setName(String& name) {
+void ResourceSpawn::setName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +41,7 @@ void ResourceSpawn::setName(String& name) {
 		((ResourceSpawnImplementation*) _impl)->setName(name);
 }
 
-void ResourceSpawn::setType(String& type) {
+void ResourceSpawn::setType(const String& type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +80,7 @@ void ResourceSpawn::setZoneRestriction(int zone) {
 		((ResourceSpawnImplementation*) _impl)->setZoneRestriction(zone);
 }
 
-void ResourceSpawn::addClass(String& newclass) {
+void ResourceSpawn::addClass(const String& newclass) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -93,7 +93,7 @@ void ResourceSpawn::addClass(String& newclass) {
 		((ResourceSpawnImplementation*) _impl)->addClass(newclass);
 }
 
-void ResourceSpawn::addStfClass(String& newclass) {
+void ResourceSpawn::addStfClass(const String& newclass) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +106,7 @@ void ResourceSpawn::addStfClass(String& newclass) {
 		((ResourceSpawnImplementation*) _impl)->addStfClass(newclass);
 }
 
-void ResourceSpawn::addAttribute(String& attribute, int value) {
+void ResourceSpawn::addAttribute(const String& attribute, int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +120,7 @@ void ResourceSpawn::addAttribute(String& attribute, int value) {
 		((ResourceSpawnImplementation*) _impl)->addAttribute(attribute, value);
 }
 
-bool ResourceSpawn::isType(String& type) {
+bool ResourceSpawn::isType(const String& type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -423,12 +423,12 @@ ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	setLoggingName("ResourceSpawn");
 }
 
-void ResourceSpawnImplementation::setName(String& name) {
+void ResourceSpawnImplementation::setName(const String& name) {
 	// server/zone/objects/resource/ResourceSpawn.idl(111):   	spawnName = name;
 	spawnName = name;
 }
 
-void ResourceSpawnImplementation::setType(String& type) {
+void ResourceSpawnImplementation::setType(const String& type) {
 	// server/zone/objects/resource/ResourceSpawn.idl(115):   	spawnType = type;
 	spawnType = type;
 }
@@ -443,22 +443,22 @@ void ResourceSpawnImplementation::setZoneRestriction(int zone) {
 	zoneRestriction = zone;
 }
 
-void ResourceSpawnImplementation::addClass(String& newclass) {
+void ResourceSpawnImplementation::addClass(const String& newclass) {
 	// server/zone/objects/resource/ResourceSpawn.idl(133):   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
-void ResourceSpawnImplementation::addStfClass(String& newclass) {
+void ResourceSpawnImplementation::addStfClass(const String& newclass) {
 	// server/zone/objects/resource/ResourceSpawn.idl(137):   	stfSpawnClasses.add(newclass);
 	(&stfSpawnClasses)->add(newclass);
 }
 
-void ResourceSpawnImplementation::addAttribute(String& attribute, int value) {
+void ResourceSpawnImplementation::addAttribute(const String& attribute, int value) {
 	// server/zone/objects/resource/ResourceSpawn.idl(141):  		spawnAttributes.put(attribute, value);
 	(&spawnAttributes)->put(attribute, value);
 }
 
-bool ResourceSpawnImplementation::isType(String& type) {
+bool ResourceSpawnImplementation::isType(const String& type) {
 	// server/zone/objects/resource/ResourceSpawn.idl(145):  
 	for (	// server/zone/objects/resource/ResourceSpawn.idl(145):  		for(int i = 0;
 	int i = 0;
@@ -623,11 +623,11 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	return resp;
 }
 
-void ResourceSpawnAdapter::setName(String& name) {
+void ResourceSpawnAdapter::setName(const String& name) {
 	((ResourceSpawnImplementation*) impl)->setName(name);
 }
 
-void ResourceSpawnAdapter::setType(String& type) {
+void ResourceSpawnAdapter::setType(const String& type) {
 	((ResourceSpawnImplementation*) impl)->setType(type);
 }
 
@@ -639,19 +639,19 @@ void ResourceSpawnAdapter::setZoneRestriction(int zone) {
 	((ResourceSpawnImplementation*) impl)->setZoneRestriction(zone);
 }
 
-void ResourceSpawnAdapter::addClass(String& newclass) {
+void ResourceSpawnAdapter::addClass(const String& newclass) {
 	((ResourceSpawnImplementation*) impl)->addClass(newclass);
 }
 
-void ResourceSpawnAdapter::addStfClass(String& newclass) {
+void ResourceSpawnAdapter::addStfClass(const String& newclass) {
 	((ResourceSpawnImplementation*) impl)->addStfClass(newclass);
 }
 
-void ResourceSpawnAdapter::addAttribute(String& attribute, int value) {
+void ResourceSpawnAdapter::addAttribute(const String& attribute, int value) {
 	((ResourceSpawnImplementation*) impl)->addAttribute(attribute, value);
 }
 
-bool ResourceSpawnAdapter::isType(String& type) {
+bool ResourceSpawnAdapter::isType(const String& type) {
 	return ((ResourceSpawnImplementation*) impl)->isType(type);
 }
 

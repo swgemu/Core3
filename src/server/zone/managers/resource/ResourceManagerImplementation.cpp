@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "ResourceManager.h"
 #include "ResourceShiftTask.h"
+#include "resourcespawner/SampleTask.h"
 
 void ResourceManagerImplementation::initialize() {
 	Lua::init();
@@ -69,6 +70,20 @@ void ResourceManagerImplementation::initialize() {
 
 bool ResourceManagerImplementation::loadConfigFile() {
 	return runFile("scripts/resources/config.lua");
+}
+
+int ResourceManagerImplementation::notifyPostureChange(CreatureObject* object, int newPosture) {
+	// Cancel Sampling on posture change
+	Reference<SampleTask*> task = (SampleTask*) object->getPendingTask("sample");
+
+	if (task != NULL) {
+		task->stopSampling();
+
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
+		object->sendSystemMessage("survey", "sample_cancel");
+	}
+
+	return 1;
 }
 
 bool ResourceManagerImplementation::loadConfigData() {
@@ -147,7 +162,11 @@ void ResourceManagerImplementation::shiftResources() {
 void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
 	rlock();
 
-	resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+	try {
+		resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+	} catch (...) {
+		error("unreported exception caught in ResourceManagerImplementation::sendResourceListForSurvey");
+	}
 
 	unlock();
 }
@@ -158,4 +177,6 @@ void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, c
 
 void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname) {
 	resourceSpawner->sendSample(playerCreature, resname);
+
+	playerCreature->attachPostureChangeObserver(this);
 }
