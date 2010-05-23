@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "../../tangible/tool/SurveyTool.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
 class RequestSurveyCommand : public QueueCommand {
 public:
@@ -73,6 +75,22 @@ public:
 			return INVALIDPOSTURE;
 
 		if (creature->isPlayerCreature()) {
+
+			Task* task = creature->getPendingTask("sample");
+
+			if (task != NULL) {
+				SampleTask* sampleTask = (SampleTask*) task;
+
+				if (sampleTask != NULL) {
+					if (!sampleTask->isCancelled()) {
+						ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "survey_sample");
+						creature->sendMessage(sysMessage);
+
+						return SUCCESS;
+					}
+				}
+			}
+
 
 			ManagedReference<PlayerCreature*> playerCreature =
 					(PlayerCreature*) creature;

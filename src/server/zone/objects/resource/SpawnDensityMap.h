@@ -128,13 +128,9 @@ public:
 
 
 	float getDensityAt(float x, float y) {
-		print();
-System::out << x << " " << y << "  ";
 		x -= minX;
 		y = maxY - y;
-System::out << x << " " << y << "  ";
 		float value = SimplexNoise::noise(x * modifier, y * modifier, seed * modifier);
-System::out << value << endl;
 		return value * density;
 	}
 

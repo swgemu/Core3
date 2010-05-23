@@ -80,22 +80,6 @@ using namespace server::zone::objects::tangible;
 namespace server {
 namespace zone {
 namespace objects {
-namespace tangible {
-namespace tool {
-
-class SurveyTool;
-
-} // namespace tool
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::tool;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 namespace events {
 
@@ -176,6 +160,22 @@ class GroupObject;
 } // namespace server
 
 using namespace server::zone::objects::group;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
@@ -352,6 +352,10 @@ public:
 
 	SurveyTool* getSurveyTool();
 
+	void setSurveyWaypoint(WaypointObject* waypoint);
+
+	WaypointObject* getSurveyWaypoint();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -436,6 +440,8 @@ private:
 
 protected:
 	ManagedReference<SurveyTool* > surveyTool;
+
+	ManagedReference<WaypointObject* > surveyWaypoint;
 
 public:
 	static const int ONLINE = 1;
@@ -583,6 +589,10 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
+
+	void setSurveyWaypoint(WaypointObject* waypoint);
+
+	WaypointObject* getSurveyWaypoint();
 
 	PlayerCreature* _this;
 
@@ -742,6 +752,10 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
+
+	void setSurveyWaypoint(WaypointObject* waypoint);
+
+	WaypointObject* getSurveyWaypoint();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;
