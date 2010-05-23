@@ -68,6 +68,7 @@ public:
 	}
 
 	void run() {
+		Locker playerLocker(playerCreature);
 
 		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
 			playerCreature->removePendingTask("sample");

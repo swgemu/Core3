@@ -69,14 +69,13 @@ public:
 		// Send Survey Results
 		playerCreature->sendMessage(surveyMessage);
 
-		if(waypoint != NULL) {
-
+		if (waypoint != NULL) {
+			Locker playerLocker(playerCreature);
 			// Add and display new waypoint
 			playerCreature->setSurveyWaypoint(waypoint);
 			playerCreature->getPlayerObject()->addWaypoint(waypoint);
 
 			// Send Waypoint System Message
-			UnicodeString ustr = "";
 			ChatSystemMessage* surveyWaypointMessage = new ChatSystemMessage("survey", "survey_waypoint");
 			playerCreature->sendMessage(surveyWaypointMessage);
 		}

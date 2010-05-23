@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../ResourceSpawner.h"
 
 MinimumPool::MinimumPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
-
+	setLoggingName("MinimumPool");
 }
 
 MinimumPool::~MinimumPool() {
@@ -55,6 +55,7 @@ MinimumPool::~MinimumPool() {
 
 void MinimumPool::initialize(const String& includes, const String& excludes) {
 	ResourcePool::initialize(includes, excludes);
+
 	for(int ii = 0; ii < includedResources.size(); ++ii)
 		this->add(NULL);
 }
@@ -62,7 +63,6 @@ void MinimumPool::initialize(const String& includes, const String& excludes) {
 void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
 	for (int ii = 0; ii < includedResources.size(); ++ii) {
-
 		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
 
 		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
@@ -112,8 +112,12 @@ bool MinimumPool::update() {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
 
 		if(spawn != NULL && !spawn->inShift()) {
-			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the MinimumPool" << endl;
+			StringBuffer msg;
+			msg << spawn->getName() << " of type " << spawn->getFinalClass()
+					<< " is shifting from the MinimumPool";
+
+			info(msg.toString());
+
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			//resourceSpawner->despawn(spawn);

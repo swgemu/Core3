@@ -93,6 +93,7 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	skillModList.setNullValue(0);
+	postureChangeObservers.setNoDuplicateInsertPlan();
 
 	groupInviterID = 0;
 	groupInviteCounter = 0;
@@ -617,6 +618,8 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 	posture = newPosture;
 
+	notifyPostureChange(newPosture);
+
 	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
 		clearState(CreatureState::SITTINGONCHAIR);
 
@@ -630,17 +633,6 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		dcreo3->updatePosture();
 		dcreo3->updateState();
 		dcreo3->close();
-
-		// Cancel Sampling on posture change
-		if (isPlayerCreature() && getPendingTask("sample") != NULL) {
-
-			SampleTask* task = (SampleTask*)getPendingTask("sample");
-
-			task->stopSampling();
-
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
-			messages.add(sysMessage);
-		}
 
 		messages.add(dcreo3);
 

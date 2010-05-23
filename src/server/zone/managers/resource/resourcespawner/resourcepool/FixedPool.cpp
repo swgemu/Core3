@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../ResourceSpawner.h"
 
 FixedPool::FixedPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
-
+	setLoggingName("FixedPool");
 }
 
 FixedPool::~FixedPool() {
@@ -55,7 +55,8 @@ FixedPool::~FixedPool() {
 
 void FixedPool::initialize(const String& includes, const String& excludes) {
 	ResourcePool::initialize(includes, excludes);
-	for(int ii = 0; ii < includedResources.size(); ++ii)
+
+	for (int ii = 0; ii < includedResources.size(); ++ii)
 		this->add(NULL);
 }
 
@@ -93,9 +94,15 @@ bool FixedPool::update() {
 				newSpawn->updateToDatabase();
 
 				setElementAt(ii, newSpawn);
-System::out << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass() << endl;
+
+				StringBuffer msg;
+				msg << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass();
+				info(msg.toString());
 			} else {
-System::out << includedResources.get(ii) << " is a bad resource type" << endl;
+				StringBuffer msg;
+				msg << includedResources.get(ii) << " is a bad resource type";
+				info(msg.toString());
+
 				resourceSpawner->info("Resource not valid for Fixed Pool: " + includedResources.get(ii));
 			}
 		}
@@ -107,9 +114,14 @@ System::out << includedResources.get(ii) << " is a bad resource type" << endl;
 	 */
 	for(int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
-		if(spawn != NULL && !spawn->inShift()) {
-			System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the FixedPool" << endl;
+
+		if (spawn != NULL && !spawn->inShift()) {
+			StringBuffer msg;
+			msg << spawn->getName() << " of type " << spawn->getFinalClass()
+					<< " is shifting from the FixedPool";
+
+			info(msg.toString());
+
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();

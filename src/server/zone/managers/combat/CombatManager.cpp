@@ -422,7 +422,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	return MAX(attackSpeed, 1.0f);
 }
 
-int CombatManager::attemptCombatAction(CreatureObject* attacker, CreatureObject* defender) {
+int CombatManager::attemptCombatAction(CreatureObject* attacker, CreatureObject* defender, int damageMultiplier, int speedMultiplier, const String& combatSpam) {
 	int rand = System::random(100);
 
 	if (rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {

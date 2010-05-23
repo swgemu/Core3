@@ -46,14 +46,14 @@ which carries forward this exception.
 #define RESOURCEPOOL_H_
 
 #include "engine/engine.h"
-#include "../../../../objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 
 class ResourceSpawner;
 
 /**
  * Abstract parent of all ResourcePool objects
  */
-class ResourcePool : public Vector<ManagedReference<ResourceSpawn*> > {
+class ResourcePool : public Vector<ManagedReference<ResourceSpawn*> >, public Logger {
 
 protected:
 
@@ -78,8 +78,11 @@ public:
 	   * \param spawner pointer to the ResourceSpawner object defined in ResourceManager
 	   * \param tree pointer to the ResourceTree object defined in ResourceManager
 	   */
-	ResourcePool(ResourceSpawner* spawner) {
+	ResourcePool(ResourceSpawner* spawner) : Logger("ResourcePool") {
 		resourceSpawner = spawner;
+
+		setGlobalLogging(true);
+		setLogging(true);
 	}
 	/**
 	 * Deconstructor
@@ -116,10 +119,15 @@ public:
 
 			ManagedReference<ResourceSpawn* > spawn = this->get(ii);
 
-			if(spawn != NULL)
-				System::out << spawn->getName() << " : " << spawn->getType() << endl;
-			else
-				System::out << "EMPTY : " << includedResources.get(ii) << endl;
+			StringBuffer msg;
+
+			if (spawn != NULL) {
+				msg << spawn->getName() << " : " << spawn->getType() << endl;
+			} else {
+				msg << "EMPTY : " << includedResources.get(ii) << endl;
+			}
+
+			info(msg.toString());
 		}
 	}
 

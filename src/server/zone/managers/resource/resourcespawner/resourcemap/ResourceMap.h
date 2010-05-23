@@ -46,13 +46,13 @@ which carries forward this exception.
 #define RESOURCEMAP_H_
 
 #include "engine/engine.h"
-#include "../../../../objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 
 
 class ZoneResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 public:
 	ZoneResourceMap() {
-		setInsertPlan(VectorMap<String, ManagedReference<ResourceSpawn* > >::NO_DUPLICATE);
+		setNoDuplicateInsertPlan();
 		setNullValue(NULL);
 	}
 	~ZoneResourceMap() {

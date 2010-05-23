@@ -67,9 +67,9 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			Task* task = creature->getPendingTask("sample");
+			Reference<Task*> task = creature->getPendingTask("sample");
 
-			if(task != NULL) {
+			if (task != NULL) {
 				int seconds = ((task->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
 				ParameterizedStringId message("survey","tool_recharge_time");
@@ -85,7 +85,7 @@ public:
 
 			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
 
-			if(surveyTool != NULL)
+			if (surveyTool != NULL)
 				surveyTool->sendSampleTo(playerCreature, arguments.toString());
 
 		}

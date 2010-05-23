@@ -59,11 +59,27 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/zone/objects/creature/PostureChangeObserver.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -85,6 +101,8 @@ public:
 	void initialize();
 
 	void shiftResources();
+
+	int notifyPostureChange(CreatureObject* object, int newPosture);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 
@@ -112,7 +130,7 @@ namespace zone {
 namespace managers {
 namespace resource {
 
-class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua {
+class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua, public PostureChangeObserver {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > zoneServer;
@@ -133,6 +151,8 @@ public:
 	void initialize();
 
 	void shiftResources();
+
+	int notifyPostureChange(CreatureObject* object, int newPosture);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 
@@ -194,6 +214,8 @@ public:
 	void initialize();
 
 	void shiftResources();
+
+	int notifyPostureChange(CreatureObject* object, int newPosture);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 

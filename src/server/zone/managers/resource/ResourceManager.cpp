@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -64,12 +66,26 @@ void ResourceManager::shiftResources() {
 		((ResourceManagerImplementation*) _impl)->shiftResources();
 }
 
-void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+int ResourceManager::notifyPostureChange(CreatureObject* object, int newPosture) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(object);
+		method.addSignedIntParameter(newPosture);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->notifyPostureChange(object, newPosture);
+}
+
+void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(playerCreature);
 		method.addSignedIntParameter(toolType);
 		method.addAsciiParameter(surveyType);
@@ -84,7 +100,7 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -98,7 +114,7 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -179,17 +195,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(69):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(71):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(71):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(73):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(72):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(74):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(74):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(76):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(75):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(77):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(76):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(78):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
@@ -214,12 +230,15 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		shiftResources();
 		break;
 	case 9:
-		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
+		resp->insertSignedInt(notifyPostureChange((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 10:
-		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
+		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
 		break;
 	case 11:
+		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
+		break;
+	case 12:
 		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_));
 		break;
 	default:
@@ -239,6 +258,10 @@ void ResourceManagerAdapter::initialize() {
 
 void ResourceManagerAdapter::shiftResources() {
 	((ResourceManagerImplementation*) impl)->shiftResources();
+}
+
+int ResourceManagerAdapter::notifyPostureChange(CreatureObject* object, int newPosture) {
+	return ((ResourceManagerImplementation*) impl)->notifyPostureChange(object, newPosture);
 }
 
 void ResourceManagerAdapter::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {

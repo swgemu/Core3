@@ -54,7 +54,7 @@ public:
 	 * @param defender Defender of the action
 	 * @return 0 hit, 1 - block, 2 - dodge, 3 - counterattack, 4 - miss
 	 */
-	int attemptCombatAction(CreatureObject* attacker, CreatureObject* defender);
+	int attemptCombatAction(CreatureObject* attacker, CreatureObject* defender, int damageMultiplier, int speedMultiplier, const String& combatSpam);
 
 	//all the combat math will go here
 

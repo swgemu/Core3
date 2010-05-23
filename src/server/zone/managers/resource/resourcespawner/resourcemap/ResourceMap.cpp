@@ -45,10 +45,10 @@ which carries forward this exception.
 #include "ResourceMap.h"
 
 ResourceMap::ResourceMap() {
-	setInsertPlan(VectorMap<String, ManagedReference<ResourceSpawn* > >::NO_DUPLICATE);
+	setNoDuplicateInsertPlan();
 	setNullValue(NULL);
 
-	zoneResourceMap.setInsertPlan(VectorMap<uint32, ZoneResourceMap*>::NO_DUPLICATE);
+	zoneResourceMap.setNoDuplicateInsertPlan();
 	zoneResourceMap.setNullValue(NULL);
 }
 
@@ -66,7 +66,8 @@ void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > r
 
 	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
 		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
-		if(zone != -1) {
+
+		if (zone != -1) {
 			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
 
 			if(map == NULL) {
@@ -87,19 +88,19 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
 
 	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
 		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
-		if(zone != -1) {
+
+		if (zone != -1) {
 			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
 
-			if(map != NULL)
+			if (map != NULL)
 				map->drop(resourceSpawn->getName());
 		}
 	}
 }
 
 void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid) {
-
 	ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneid));
 
-	if(map != NULL)
+	if (map != NULL)
 		map->drop(resourceSpawn->getName());
 }
