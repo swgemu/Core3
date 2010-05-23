@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,47 +42,45 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STANDCOMMAND_H_
-#define STANDCOMMAND_H_
+#ifndef SURVEYTASK_H_
+#define SURVEYTASK_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
+#include "engine/engine.h"
+#include "server/zone/packets/resource/SurveyMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
-class StandCommand : public QueueCommand {
+class ResourceSpawner;
+
+class SurveyTask : public Task {
+	ManagedReference<PlayerCreature* > playerCreature;
+	Survey* surveyMessage;
+	ManagedReference<WaypointObject*> waypoint;
+
 public:
-
-	StandCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+	SurveyTask(ManagedReference<PlayerCreature* > play, Survey* surveyM, ManagedReference<WaypointObject*> way) {
+		playerCreature = play;
+		surveyMessage = surveyM;
+		waypoint = way;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		// Send Survey Results
+		playerCreature->sendMessage(surveyMessage);
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if(waypoint != NULL) {
 
-		StringTokenizer args(arguments.toString());
+			// Add and display new waypoint
+			playerCreature->setSurveyWaypoint(waypoint);
+			playerCreature->getPlayerObject()->addWaypoint(waypoint);
 
-		if (args.hasMoreTokens()) {
-			int zoneid = args.getIntToken();
-			float posx = args.getFloatToken();
-			float posy = args.getFloatToken();
-
-			creature->switchZone(zoneid, posx, 0, posy);
-		} else {
-
-			creature->setPosture(CreaturePosture::UPRIGHT);
+			// Send Waypoint System Message
+			UnicodeString ustr = "";
+			ChatSystemMessage* surveyWaypointMessage = new ChatSystemMessage("survey", "survey_waypoint");
+			playerCreature->sendMessage(surveyWaypointMessage);
 		}
-
-
-		return SUCCESS;
 	}
-
 };
 
-#endif //STANDCOMMAND_H_
-
+#endif /* SURVEYTASK_H_ */

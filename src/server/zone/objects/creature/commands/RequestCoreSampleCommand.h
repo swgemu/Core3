@@ -46,6 +46,8 @@ which carries forward this exception.
 #define REQUESTCORESAMPLECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../tangible/tool/SurveyTool.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 class RequestCoreSampleCommand : public QueueCommand {
 public:
@@ -63,9 +65,33 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->isPlayerCreature()) {
+
+			Task* task = creature->getPendingTask("sample");
+
+			if(task != NULL) {
+				int seconds = ((task->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
+
+				ParameterizedStringId message("survey","tool_recharge_time");
+				message.setDI(seconds);
+				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+				creature->sendMessage(sysMessage);
+
+				return SUCCESS;
+			}
+
+			ManagedReference<PlayerCreature*> playerCreature =
+					(PlayerCreature*) creature;
+
+			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+
+			if(surveyTool != NULL)
+				surveyTool->sendSampleTo(playerCreature, arguments.toString());
+
+		}
+
 		return SUCCESS;
 	}
-
 };
 
 #endif //REQUESTCORESAMPLECOMMAND_H_

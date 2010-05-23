@@ -418,7 +418,7 @@ void ZoneServerImplementation::startManagers() {
 
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
-	//resourceManager->initialize();
+	resourceManager->initialize();
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();

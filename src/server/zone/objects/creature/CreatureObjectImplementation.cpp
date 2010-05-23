@@ -83,6 +83,7 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
@@ -629,6 +630,17 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		dcreo3->updatePosture();
 		dcreo3->updateState();
 		dcreo3->close();
+
+		// Cancel Sampling on posture change
+		if (isPlayerCreature() && getPendingTask("sample") != NULL) {
+
+			SampleTask* task = (SampleTask*)getPendingTask("sample");
+
+			task->stopSampling();
+
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
+			messages.add(sysMessage);
+		}
 
 		messages.add(dcreo3);
 

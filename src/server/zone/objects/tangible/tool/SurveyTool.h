@@ -115,6 +115,8 @@ public:
 
 	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
 
+	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
+
 protected:
 	SurveyTool(DummyConstructorParameter* param);
 
@@ -146,6 +148,12 @@ protected:
 	int type;
 
 	String surveyType;
+
+	String surveyAnimation;
+
+	String sampleAnimation;
+
+	String lastResourceSampleName;
 
 public:
 	static const int SOLAR = 1;
@@ -189,6 +197,8 @@ public:
 	void sendResourceListTo(PlayerCreature* playerCreature);
 
 	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
+
+	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
 
 	SurveyTool* _this;
 
@@ -245,8 +255,11 @@ public:
 
 	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
 
+	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
+
 protected:
 	String _param1_sendSurveyTo__PlayerCreature_String_;
+	String _param1_sendSampleTo__PlayerCreature_String_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {

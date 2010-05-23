@@ -155,3 +155,7 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
 	resourceSpawner->sendSurvey(playerCreature, resname);
 }
+
+void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname) {
+	resourceSpawner->sendSample(playerCreature, resname);
+}

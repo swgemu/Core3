@@ -43,10 +43,14 @@ which carries forward this exception.
 */
 
 #include "ResourceSpawner.h"
+#include "SurveyTask.h"
+#include "SampleTask.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
@@ -345,11 +349,8 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 	Survey* surveyMessage = new Survey();
 
-	//int toolRange = surveyTool->getRange();
-	//int points = surveyTool->getPoints();
-
-	int toolRange = 8192;
-	int points = 32;
+	int toolRange = surveyTool->getRange();
+	int points = surveyTool->getPoints();
 
 	float spacer = float(toolRange) / float(points);
 
@@ -379,32 +380,52 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 		posX -= (points * spacer);
 	}
 
-	// Send Survey Results
-	playerCreature->sendMessage(surveyMessage);
+	ManagedReference<WaypointObject*> waypoint = NULL;
 
-	/*if (max_res_percent >= 0.1f) {
-		// Create Waypoint
-		if (player->getSurveyWaypoint() != NULL) {
-			ManagedReference<WaypointObject> wayobj = player->getSurveyWaypoint();
-			player->removeWaypoint(wayobj);
-			wayobj->finalize();
-			player->setSurveyWaypoint(NULL);
-		}
+	if (maxDensity >= 0.1f) {
 
-		WaypointObject* waypoint = new WaypointObject(player->getZoneID(), player->getNewItemID());
+		// Get previous survey waypoint
+		ManagedReference<WaypointObject*> oldSurveyWaypoint = playerCreature->getSurveyWaypoint();
+
+		// Remove old survey waypoint
+		if(oldSurveyWaypoint != NULL)
+			playerCreature->getPlayerObject()->removeWaypoint(oldSurveyWaypoint->getObjectID(), true);
+
+		// Create new waypoint
+		waypoint = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
 		waypoint->setCustomName(UnicodeString("Resource Survey"));
-		waypoint->setPosition(wp_x, 0.0f, wp_y);
-
+		waypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(playerCreature->getZone()->getZoneID())));
+		waypoint->setPosition(posX, 0, posY);
+		waypoint->setColor(WaypointObject::COLOR_ORANGE);
 		waypoint->setActive(true);
+	}
 
-		player->setSurveyWaypoint(waypoint);
-		player->addWaypoint(waypoint);
-
-		// Send Waypoint System Message
-		UnicodeString ustr = "";
-		ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
-
-		player->sendMessage(endMessage);
-	}*/
-
+	SurveyTask* surveyTask = new SurveyTask(playerCreature, surveyMessage, waypoint);
+	surveyTask->schedule(4000);
 }
+
+void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& resname) {
+
+	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+
+	if(surveyTool == NULL || !resourceMap->contains(resname))
+		return;
+
+	int zoneid = playerCreature->getZone()->getZoneID();
+
+	float posX = playerCreature->getPositionX();
+	float posY = playerCreature->getPositionY();
+
+	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
+
+	if(!playerCreature->isKneeling())
+		playerCreature->setPosture(CreaturePosture::CROUCHED, true);
+
+	playerCreature->sendSystemMessage(String::valueOf(density));
+
+	// Add sampletask
+	SampleTask* sampleTask = new SampleTask(playerCreature, surveyTool);
+	sampleTask->schedule(30000);
+	playerCreature->addPendingTask("sample", sampleTask);
+}
+

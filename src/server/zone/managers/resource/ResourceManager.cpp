@@ -93,6 +93,20 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 		((ResourceManagerImplementation*) _impl)->sendSurvey(playerCreature, resname);
 }
 
+void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(playerCreature);
+		method.addAsciiParameter(resname);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname);
+}
+
 /*
  *	ResourceManagerImplementation
  */
@@ -205,6 +219,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 10:
 		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
 		break;
+	case 11:
+		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_));
+		break;
 	default:
 		return NULL;
 	}
@@ -230,6 +247,10 @@ void ResourceManagerAdapter::sendResourceListForSurvey(PlayerCreature* playerCre
 
 void ResourceManagerAdapter::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
 	((ResourceManagerImplementation*) impl)->sendSurvey(playerCreature, resname);
+}
+
+void ResourceManagerAdapter::sendSample(PlayerCreature* playerCreature, const String& resname) {
+	((ResourceManagerImplementation*) impl)->sendSample(playerCreature, resname);
 }
 
 /*
