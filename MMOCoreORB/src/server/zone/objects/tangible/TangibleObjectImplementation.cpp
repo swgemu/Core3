@@ -245,3 +245,27 @@ void TangibleObjectImplementation::setObjectCount(uint32 newObjectCount, bool no
 
 	broadcastMessage(dtano3, true);
 }
+
+void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notifyClient) {
+	if (conditionDamage == condDamage)
+		return;
+
+	conditionDamage = condDamage;
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateConditionDamage();
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
+}
+
+int TangibleObjectImplementation::inflictDamage(int damageType, int damage, bool notifyClient) {
+	int newConditionDamage = conditionDamage + damage;
+
+	setConditionDamage(newConditionDamage, notifyClient);
+
+	return 0;
+}

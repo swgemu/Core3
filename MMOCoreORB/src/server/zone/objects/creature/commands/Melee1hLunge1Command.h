@@ -45,9 +45,8 @@ which carries forward this exception.
 #ifndef MELEE1HLUNGE1COMMAND_H_
 #define MELEE1HLUNGE1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-
 
 class Melee1hLunge1Command : public QueueCommand {
 public:
@@ -68,22 +67,35 @@ public:
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
 		if (!weapon->isOneHandMeleeWeapon()) {
-			creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
-
-			return GENERALERROR;
+			return INVALIDWEAPON;
 		}
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isTangibleObject())
+		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
 			return INVALIDTARGET;
+
+		if (!targetObject->isInRange(creature, weapon->getMaxRange()))
+			return TOOFAR;
 
 		CombatManager* combatManager = CombatManager::instance();
 
-		bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get());
+		targetObject->wlock(creature);
 
-		if (!startCombat)
-			return INVALIDTARGET;
+		try {
+			bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get(), false);
+
+			if (!startCombat) {
+				targetObject->unlock();
+				return INVALIDTARGET;
+			}
+
+			combatManager->doCombatAction(creature, (TangibleObject*) targetObject.get(), 1, 1, CombatManager::RANDOM, String("lower_posture_1hmelee_1").hashCode() , "sword1_sweep");
+		} catch (...) {
+			error("unreported exception caught in Melee1hLunge1Command::doQueueCommand");
+		}
+
+		targetObject->unlock();
 
 		return SUCCESS;
 	}

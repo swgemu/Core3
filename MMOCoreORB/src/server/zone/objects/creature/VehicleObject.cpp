@@ -60,12 +60,40 @@ bool VehicleObject::checkInRangeGarage() {
 		return ((VehicleObjectImplementation*) _impl)->checkInRangeGarage();
 }
 
-int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleObject::inflictDamage(int damageType, int damage, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(damageType);
+		method.addSignedIntParameter(damage);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((VehicleObjectImplementation*) _impl)->inflictDamage(damageType, damage, notifyClient);
+}
+
+bool VehicleObject::isAttackableBy(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((VehicleObjectImplementation*) _impl)->isAttackableBy(object);
+}
+
+int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -79,7 +107,7 @@ bool VehicleObject::isVehicleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -177,8 +205,13 @@ void VehicleObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
+bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
+	// server/zone/objects/creature/VehicleObject.idl(98):  		return super.linkedCreature.isAttackableBy(object);
+	return CreatureObjectImplementation::linkedCreature->isAttackableBy(object);
+}
+
 bool VehicleObjectImplementation::isVehicleObject() {
-	// server/zone/objects/creature/VehicleObject.idl(95):  		return true;
+	// server/zone/objects/creature/VehicleObject.idl(113):  		return true;
 	return true;
 }
 
@@ -197,9 +230,15 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(checkInRangeGarage());
 		break;
 	case 7:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(inflictDamage(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 9:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 10:
 		resp->insertBoolean(isVehicleObject());
 		break;
 	default:
@@ -211,6 +250,14 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 bool VehicleObjectAdapter::checkInRangeGarage() {
 	return ((VehicleObjectImplementation*) impl)->checkInRangeGarage();
+}
+
+int VehicleObjectAdapter::inflictDamage(int damageType, int damage, bool notifyClient) {
+	return ((VehicleObjectImplementation*) impl)->inflictDamage(damageType, damage, notifyClient);
+}
+
+bool VehicleObjectAdapter::isAttackableBy(CreatureObject* object) {
+	return ((VehicleObjectImplementation*) impl)->isAttackableBy(object);
 }
 
 int VehicleObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

@@ -109,7 +109,7 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	bankCredits = 1000;
 	cashCredits = 100;
 
-	pvpStatusBitmask = CreatureFlag::ATTACKABLE;
+	pvpStatusBitmask = 0;
 
 	posture = 0;
 	factionRank = 0;
@@ -214,7 +214,28 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this);
 	player->sendMessage(msg6);
 
-	BaseMessage* pvp = new UpdatePVPStatusMessage(this, pvpStatusBitmask);
+	if (!player->isPlayerCreature())
+		return;
+
+	PlayerCreature* playerCreature = (PlayerCreature*) player;
+
+	sendPvpStatusTo(playerCreature);
+}
+
+void CreatureObjectImplementation::sendPvpStatusTo(PlayerCreature* player) {
+	uint32 newPvpStatusBitmask = pvpStatusBitmask;
+
+	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
+		if (isAttackableBy(player))
+			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
+	}
+
+	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
+		if (isAggressiveTo(player))
+			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
+	}
+
+	BaseMessage* pvp = new UpdatePVPStatusMessage(this, newPvpStatusBitmask);
 	player->sendMessage(pvp);
 }
 
@@ -409,6 +430,19 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 	} else {
 		hamList.set(type, value, NULL);
 	}
+}
+
+int CreatureObjectImplementation::inflictDamage(int damageType, int damage, bool notifyClient) {
+	if (damageType < 0 || damageType >= hamList.size()) {
+		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
+		return 0;
+	}
+
+	int currentValue = hamList.get(damageType);
+
+	setHAM(damageType, currentValue - damage, notifyClient);
+
+	return 0;
 }
 
 void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyClient) {
@@ -756,7 +790,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 	nextAction.updateToCurrentTime();
 
-	if (time != 0)
+	if (time > 0)
 		nextAction.addMiliTime((uint32) (time * 1000));
 
 	if (commandQueue.size() != 0) {

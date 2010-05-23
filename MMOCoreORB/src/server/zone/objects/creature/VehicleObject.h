@@ -116,6 +116,10 @@ public:
 
 	bool checkInRangeGarage();
 
+	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+
+	bool isAttackableBy(CreatureObject* object);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isVehicleObject();
@@ -154,6 +158,10 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	bool checkInRangeGarage();
+
+	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -199,6 +207,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool checkInRangeGarage();
+
+	int inflictDamage(int damageType, int damage, bool notifyClient);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

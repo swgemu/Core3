@@ -63,6 +63,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		CombatManager* combatManager = CombatManager::instance();
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature) {
+			combatManager->freeDuelList((PlayerCreature*)creature);
+		} else {
+			combatManager->requestEndDuel((PlayerCreature*)creature, (PlayerCreature*)targetObject.get());
+		}
+
 		return SUCCESS;
 	}
 

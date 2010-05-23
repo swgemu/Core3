@@ -64,17 +64,43 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ZoneServer* zoneServer = server->getZoneServer();
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
+		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
+			return INVALIDTARGET;
 
-		if (targetObject == NULL || !targetObject->isCreatureObject()) {
-			return GENERALERROR;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!targetObject->isInRange(creature, weapon->getMaxRange()))
+			return TOOFAR;
+
+		CombatManager* combatManager = CombatManager::instance();
+
+		targetObject->wlock(creature);
+
+		try {
+			bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get(), false);
+
+			if (!startCombat) {
+				targetObject->unlock();
+				return INVALIDTARGET;
+			}
+
+			combatManager->doCombatAction(creature, (TangibleObject*) targetObject.get(), 1, 1, CombatManager::RANDOM, 0x99476628 , "sword1_sweep");
+
+		} catch (...) {
+			error("unreported exception caught in Melee1hLunge1Command::doQueueCommand");
 		}
 
-		CombatManager::instance()->startCombat(creature, (TangibleObject*) targetObject.get());
+		targetObject->unlock();
 
 		return SUCCESS;
+	}
+
+	float getCommandDuration(CreatureObject* object) {
+		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), 1);
+
+		return duration;
 	}
 
 };

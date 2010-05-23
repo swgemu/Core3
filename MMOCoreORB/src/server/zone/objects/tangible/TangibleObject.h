@@ -178,6 +178,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+
+	void setConditionDamage(int condDamage, bool notifyClient = true);
+
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
 	byte getUnknownByte();
@@ -191,8 +195,6 @@ public:
 	void setMaxCondition(int maxCond);
 
 	int getConditionDamage();
-
-	void setConditionDamage(int condDamage);
 
 	int getVolume();
 
@@ -363,6 +365,10 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* object);
 
+	virtual int inflictDamage(int damageType, int damage, bool notifyClient = true);
+
+	void setConditionDamage(int condDamage, bool notifyClient = true);
+
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
 	byte getUnknownByte();
@@ -376,8 +382,6 @@ public:
 	void setMaxCondition(int maxCond);
 
 	int getConditionDamage();
-
-	void setConditionDamage(int condDamage);
 
 	int getVolume();
 
@@ -462,6 +466,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	int inflictDamage(int damageType, int damage, bool notifyClient);
+
+	void setConditionDamage(int condDamage, bool notifyClient);
+
 	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
 	byte getUnknownByte();
@@ -473,8 +481,6 @@ public:
 	void setMaxCondition(int maxCond);
 
 	int getConditionDamage();
-
-	void setConditionDamage(int condDamage);
 
 	int getVolume();
 

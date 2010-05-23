@@ -99,6 +99,8 @@ public:
 	const static int INVALIDPOSTURE = 2;
 	const static int INVALIDSTATE = 3;
 	const static int INVALIDTARGET = 4;
+	const static int INVALIDWEAPON = 5;
+	const static int TOOFAR = 6;
 
 
 	virtual ~QueueCommand() {
