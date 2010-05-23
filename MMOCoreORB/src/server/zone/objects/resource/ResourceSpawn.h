@@ -38,21 +38,21 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void setName(String& name);
+	void setName(const String& name);
 
-	void setType(String& type);
+	void setType(const String& type);
 
 	void setSpawnPool(int pool);
 
 	void setZoneRestriction(int zone);
 
-	void addClass(String& newclass);
+	void addClass(const String& newclass);
 
-	void addStfClass(String& newclass);
+	void addStfClass(const String& newclass);
 
-	void addAttribute(String& attribute, int value);
+	void addAttribute(const String& attribute, int value);
 
-	bool isType(String& type);
+	bool isType(const String& type);
 
 	void setSurveyToolType(int type);
 
@@ -150,21 +150,21 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void setName(String& name);
+	void setName(const String& name);
 
-	void setType(String& type);
+	void setType(const String& type);
 
 	void setSpawnPool(int pool);
 
 	void setZoneRestriction(int zone);
 
-	void addClass(String& newclass);
+	void addClass(const String& newclass);
 
-	void addStfClass(String& newclass);
+	void addStfClass(const String& newclass);
 
-	void addAttribute(String& attribute, int value);
+	void addAttribute(const String& attribute, int value);
 
-	bool isType(String& type);
+	bool isType(const String& type);
 
 	void setSurveyToolType(int type);
 
@@ -247,21 +247,21 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setName(String& name);
+	void setName(const String& name);
 
-	void setType(String& type);
+	void setType(const String& type);
 
 	void setSpawnPool(int pool);
 
 	void setZoneRestriction(int zone);
 
-	void addClass(String& newclass);
+	void addClass(const String& newclass);
 
-	void addStfClass(String& newclass);
+	void addStfClass(const String& newclass);
 
-	void addAttribute(String& attribute, int value);
+	void addAttribute(const String& attribute, int value);
 
-	bool isType(String& type);
+	bool isType(const String& type);
 
 	void setSurveyToolType(int type);
 

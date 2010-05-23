@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../ResourceSpawner.h"
 
 RandomPool::RandomPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
-
+	setLoggingName("RandomPool");
 }
 
 RandomPool::~RandomPool() {
@@ -96,11 +96,16 @@ bool RandomPool::update() {
 	 * We remove any resources that have despawned from the
 	 * pool
 	 */
-	for(int ii = 0; ii < size(); ++ii) {
+	for (int ii = 0; ii < size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
-		if(!spawn->inShift()) {
-System::out << spawn->getName() << " of type " << spawn->getFinalClass()
-		<< " is shifting from the RandomPool" << endl;
+
+		if (!spawn->inShift()) {
+			StringBuffer msg;
+			msg << spawn->getName() << " of type " << spawn->getFinalClass()
+				<< " is shifting from the RandomPool";
+
+			info(msg.toString());
+
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
@@ -123,16 +128,20 @@ System::out << spawn->getName() << " of type " << spawn->getFinalClass()
 }
 
 void RandomPool::print() {
+	info("**** Random Pool ****", true);
 
-	System::out << "**** Random Pool ****" << endl;
-	for(int ii = 0; ii < this->size(); ++ii) {
-
+	for (int ii = 0; ii < this->size(); ++ii) {
 		ManagedReference<ResourceSpawn* > spawn = this->get(ii);
 
-		if(spawn != NULL)
-			System::out << spawn->getName() << " : " << spawn->getType() << endl;
+		StringBuffer msg;
+
+		if (spawn != NULL)
+			msg << spawn->getName() << " : " << spawn->getType();
 		else
-			System::out << "EMPTY" << endl;
+			msg << "EMPTY";
+
+		info(msg.toString(), true);
 	}
-	System::out << "**********************" << endl;
+
+	info("**********************", true);
 }

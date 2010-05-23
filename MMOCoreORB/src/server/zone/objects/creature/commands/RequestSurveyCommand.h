@@ -76,10 +76,10 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			Task* task = creature->getPendingTask("sample");
+			Reference<Task*> task = creature->getPendingTask("sample");
 
 			if (task != NULL) {
-				SampleTask* sampleTask = (SampleTask*) task;
+				SampleTask* sampleTask = (SampleTask*) task.get();
 
 				if (sampleTask != NULL) {
 					if (!sampleTask->isCancelled()) {

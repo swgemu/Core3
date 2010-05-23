@@ -139,6 +139,8 @@ using namespace server::zone;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/creature/PostureChangeObserver.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -148,6 +150,8 @@ using namespace server::zone;
 #include "system/util/Vector.h"
 
 #include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -267,6 +271,12 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	void notifyPostureChange(int newPosture);
+
+	void attachPostureChangeObserver(PostureChangeObserver* observer);
+
+	void deattachPostureChangeObserver(PostureChangeObserver* observer);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -525,6 +535,8 @@ protected:
 
 	Time nextAction;
 
+	SortedVector<PostureChangeObserver*> postureChangeObservers;
+
 public:
 	static const int HUMAN = 0;
 
@@ -641,6 +653,12 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	virtual void notifyPostureChange(int newPosture);
+
+	void attachPostureChangeObserver(PostureChangeObserver* observer);
+
+	void deattachPostureChangeObserver(PostureChangeObserver* observer);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -900,6 +918,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	void notifyPostureChange(int newPosture);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 

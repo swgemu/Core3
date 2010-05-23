@@ -51,12 +51,14 @@ import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
+include server.zone.objects.creature.PostureChangeObserver;
 
-class ResourceManager extends ManagedObject implements Lua {
+class ResourceManager extends ManagedObject implements Lua, PostureChangeObserver {
 	private transient ZoneProcessServerImplementation processor;
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
@@ -80,6 +82,8 @@ class ResourceManager extends ManagedObject implements Lua {
 	public native void stop();
 	public native void initialize();
 	public native void shiftResources();
+	
+	public native int notifyPostureChange(CreatureObject object, int newPosture);
 	
 	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(PlayerCreature playerCreature, final string resname);

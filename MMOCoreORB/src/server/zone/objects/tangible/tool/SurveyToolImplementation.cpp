@@ -75,11 +75,9 @@ void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 }
 
 int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
-
-	String skill = "survey";
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
-	if (!playerObject->hasSkill(skill)) {
+	if (!playerObject->hasSkill("survey")) {
 		playerCreature->sendSystemMessage("error_message", "insufficient_skill");
 		return 0;
 	}
@@ -88,7 +86,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* playerCreat
 
 		playerCreature->setSurveyTool(_this);
 
-		if(range > 0)
+		if (range > 0)
 			sendResourceListTo(playerCreature);
 		else
 			sendRangeSui(playerCreature);
@@ -105,10 +103,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* playerCreat
 }
 
 void SurveyToolImplementation::sendRangeSui(PlayerCreature* playerCreature) {
-
-	String surveying = "surveying";
-
-	int surveyMod = playerCreature->getSkillMod(surveying);
+	int surveyMod = playerCreature->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiToolRangeBox = new SuiListBox(
 			playerCreature, SuiWindowType::SURVEY_TOOL_RANGE, 0);
@@ -168,7 +163,7 @@ void SurveyToolImplementation::sendResourceListTo(PlayerCreature* playerCreature
 	ManagedReference<ResourceManager* > resourceManager =
 			playerCreature->getZoneServer()->getResourceManager();
 
-	if(resourceManager == NULL) {
+	if (resourceManager == NULL) {
 		info("ResourceManager is NULL in SurveyToolImplementation::sendResourceListTo");
 		return;
 	}
@@ -181,7 +176,7 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* playerCreature, cons
 	ManagedReference<ResourceManager* > resourceManager =
 			playerCreature->getZoneServer()->getResourceManager();
 
-	if(resourceManager == NULL) {
+	if (resourceManager == NULL) {
 		info("ResourceManager is NULL in SurveyToolImplementation::sendSurveyTo");
 		return;
 	}
@@ -207,11 +202,10 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* playerCreature, cons
 }
 
 void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, const String& resname) {
-
 	ManagedReference<ResourceManager* > resourceManager =
 			playerCreature->getZoneServer()->getResourceManager();
 
-	if(resourceManager == NULL) {
+	if (resourceManager == NULL) {
 		info("ResourceManager is NULL in SurveyToolImplementation::sendSampleTo");
 		return;
 	}
@@ -233,7 +227,7 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, cons
 
 	playerCreature->broadcastMessage(effect, true);
 
-	if(resname.isEmpty())
+	if (resname.isEmpty())
 		resourceManager->sendSample(playerCreature, lastResourceSampleName);
 	else
 		resourceManager->sendSample(playerCreature, resname);
