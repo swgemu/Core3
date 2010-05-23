@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,47 +42,53 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STANDCOMMAND_H_
-#define STANDCOMMAND_H_
+#ifndef SAMPLETASK_H_
+#define SAMPLETASK_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
+#include "engine/engine.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
-class StandCommand : public QueueCommand {
+class ResourceSpawner;
+
+class SampleTask : public Task {
+
+protected:
+	ManagedReference<PlayerCreature*> playerCreature;
+	ManagedReference<SurveyTool* > surveyTool;
+	bool cancelled;
+
 public:
-
-	StandCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+	SampleTask(ManagedReference<PlayerCreature*> play, ManagedReference<SurveyTool* > tool) {
+		playerCreature = play;
+		surveyTool = tool;
+		cancelled = false;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
+			playerCreature->removePendingTask("sample");
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		StringTokenizer args(arguments.toString());
-
-		if (args.hasMoreTokens()) {
-			int zoneid = args.getIntToken();
-			float posx = args.getFloatToken();
-			float posy = args.getFloatToken();
-
-			creature->switchZone(zoneid, posx, 0, posy);
-		} else {
-
-			creature->setPosture(CreaturePosture::UPRIGHT);
+			// Activate requestcoresample command
+			playerCreature->getZoneServer()->getObjectController()->activateCommand(playerCreature, 0x9223c634, 0, 0, "");
+			return;
 		}
 
+		playerCreature->removePendingTask("sample");
+	}
 
-		return SUCCESS;
+
+	void stopSampling() {
+		cancelled = true;
+	}
+
+	bool isCancelled() {
+		return cancelled;
 	}
 
 };
 
-#endif //STANDCOMMAND_H_
-
+#endif /* SAMPLETASK_H_ */

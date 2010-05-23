@@ -63,6 +63,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> playerCreature =
+					(PlayerCreature*) creature;
+
+			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+
+			if(surveyTool == NULL)
+				//You must use a survey tool once from the Inventory before you can do this.
+				playerCreature->sendSystemMessage("ui", "survey_notool");
+
+		}
+
 		return SUCCESS;
 	}
 

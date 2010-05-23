@@ -54,7 +54,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.tangible.Container;
-import server.zone.objects.tangible.tool.SurveyTool;
+include server.zone.objects.tangible.tool.SurveyTool;
 import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
@@ -67,6 +67,7 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.player.badges.Badges;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.group.GroupObject;
+import server.zone.objects.waypoint.WaypointObject;
 import system.lang.ref.Reference;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -130,6 +131,7 @@ class PlayerCreature extends CreatureObject {
 	/// Crafting and Surveying
 	/// Reference to last used Survey Tool
 	protected transient SurveyTool surveyTool;
+	protected transient WaypointObject surveyWaypoint;
 	
 	//Badges
 	
@@ -445,6 +447,21 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public SurveyTool getSurveyTool() {
 		return surveyTool;
+	}
+	
+	/**
+	 * Set active survey waypoint, this is set whenever
+	 * a SurveyTool is used and a deposit > 10% is found
+	 */
+	public void setSurveyWaypoint(WaypointObject waypoint) {
+		surveyWaypoint = waypoint;
+	}
+	
+	/**
+	 * Returns the active SurveyWaypoint
+	 */
+	public WaypointObject getSurveyWaypoint() {
+		return surveyWaypoint;
 	}
 	
 }

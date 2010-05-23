@@ -147,6 +147,20 @@ void SurveyTool::sendSurveyTo(PlayerCreature* playerCreature, const String& resn
 		((SurveyToolImplementation*) _impl)->sendSurveyTo(playerCreature, resname);
 }
 
+void SurveyTool::sendSampleTo(PlayerCreature* playerCreature, const String& resname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(playerCreature);
+		method.addAsciiParameter(resname);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->sendSampleTo(playerCreature, resname);
+}
+
 /*
  *	SurveyToolImplementation
  */
@@ -218,30 +232,32 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("points", &points);
 	addSerializableVariable("type", &type);
 	addSerializableVariable("surveyType", &surveyType);
+	addSerializableVariable("surveyAnimation", &surveyAnimation);
+	addSerializableVariable("sampleAnimation", &sampleAnimation);
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(74):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(78):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
-	// server/zone/objects/tangible/tool/SurveyTool.idl(75):  		range = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(79):  		range = 0;
 	range = 0;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(79):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(83):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(81):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(85):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(98):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(102):  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(102):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(106):  		return points;
 	return points;
 }
 
@@ -280,6 +296,9 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 13:
 		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
 		break;
+	case 14:
+		sendSampleTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__PlayerCreature_String_));
+		break;
 	default:
 		return NULL;
 	}
@@ -317,6 +336,10 @@ void SurveyToolAdapter::sendResourceListTo(PlayerCreature* playerCreature) {
 
 void SurveyToolAdapter::sendSurveyTo(PlayerCreature* playerCreature, const String& resname) {
 	((SurveyToolImplementation*) impl)->sendSurveyTo(playerCreature, resname);
+}
+
+void SurveyToolAdapter::sendSampleTo(PlayerCreature* playerCreature, const String& resname) {
+	((SurveyToolImplementation*) impl)->sendSampleTo(playerCreature, resname);
 }
 
 /*

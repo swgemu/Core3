@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "SurveyTool.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -52,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/templates/tangible/survey_tool/SurveyToolTemplate.h"
 
 
@@ -62,6 +64,8 @@ void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	type = surveyToolData->getToolType();
 	surveyType = surveyToolData->getSurveyType();
+	surveyAnimation = surveyToolData->getSurveyAnimation();
+	sampleAnimation = surveyToolData->getSampleAnimation();
 }
 
 void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -178,9 +182,61 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* playerCreature, cons
 			playerCreature->getZoneServer()->getResourceManager();
 
 	if(resourceManager == NULL) {
-		info("ResourceManager is NULL in SurveyToolImplementation::sendResourceListTo");
+		info("ResourceManager is NULL in SurveyToolImplementation::sendSurveyTo");
 		return;
 	}
 
+	/*if (!playerCreature->changeMindBar(-50)) {
+		playerCreature->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You need to clear your head before you can survey again.
+		return;
+	}*/
+
+	if (playerCreature->getParent() != NULL && playerCreature->getParent()->isCellObject()) {
+		playerCreature->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
+		return;
+	}
+
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc
+			(surveyAnimation, playerCreature->getZone()->getZoneID(),
+			playerCreature->getPositionX(), playerCreature->getPositionZ(),
+			playerCreature->getPositionY());
+
+	playerCreature->broadcastMessage(effect, true);
+
 	resourceManager->sendSurvey(playerCreature, resname);
+}
+
+void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, const String& resname) {
+
+	ManagedReference<ResourceManager* > resourceManager =
+			playerCreature->getZoneServer()->getResourceManager();
+
+	if(resourceManager == NULL) {
+		info("ResourceManager is NULL in SurveyToolImplementation::sendSampleTo");
+		return;
+	}
+
+	/*if (!playerCreature->changeMindBar(-50)) {
+		playerCreature->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You need to clear your head before you can survey again.
+		return;
+	}*/
+
+	if (playerCreature->getParent() != NULL && playerCreature->getParent()->isCellObject()) {
+		playerCreature->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
+		return;
+	}
+
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc
+			(sampleAnimation, playerCreature->getZone()->getZoneID(),
+			playerCreature->getPositionX(), playerCreature->getPositionZ(),
+			playerCreature->getPositionY());
+
+	playerCreature->broadcastMessage(effect, true);
+
+	if(resname.isEmpty())
+		resourceManager->sendSample(playerCreature, lastResourceSampleName);
+	else
+		resourceManager->sendSample(playerCreature, resname);
+
+	lastResourceSampleName = resname;
 }

@@ -59,6 +59,10 @@ class SurveyTool extends ToolTangibleObject {
 	protected int type;
 	
 	protected string surveyType;
+	protected string surveyAnimation;
+	protected string sampleAnimation;
+	
+	protected transient string lastResourceSampleName;
 	
 	public static final int SOLAR = 1;
 	public static final int CHEMICAL = 2;
@@ -114,5 +118,6 @@ class SurveyTool extends ToolTangibleObject {
 	
 	public native void sendResourceListTo(PlayerCreature playerCreature);
 	public native void sendSurveyTo(PlayerCreature playerCreature, final string resname);
+	public native void sendSampleTo(PlayerCreature playerCreature, final string resname);
 	
 }

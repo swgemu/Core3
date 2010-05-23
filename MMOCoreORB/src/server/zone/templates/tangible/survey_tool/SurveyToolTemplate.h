@@ -15,6 +15,8 @@ private:
 
 	int toolType;
 	String surveyType;
+	String surveyAnimation;
+	String sampleAnimation;
 
 public:
 	SurveyToolTemplate() {
@@ -30,6 +32,8 @@ public:
 
 		toolType = templateData->getIntField("toolType");
 		surveyType = templateData->getStringField("surveyType");
+		surveyAnimation = templateData->getStringField("toolAnimation");
+		sampleAnimation = templateData->getStringField("sampleAnimation");
 	}
 
 	int getToolType() {
@@ -38,6 +42,14 @@ public:
 
 	String getSurveyType() {
 		return surveyType;
+	}
+
+	String getSurveyAnimation() {
+		return surveyAnimation;
+	}
+
+	String getSampleAnimation() {
+		return sampleAnimation;
 	}
 };
 
