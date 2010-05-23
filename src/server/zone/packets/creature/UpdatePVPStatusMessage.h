@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class UpdatePVPStatusMessage : public BaseMessage {
 public:

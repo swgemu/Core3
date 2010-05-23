@@ -90,6 +90,20 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -194,6 +208,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendPvpStatusTo(PlayerCreature* player);
+
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -211,6 +227,8 @@ public:
 	void setPosture(int newPosture, bool notifyClient = true);
 
 	void setHAM(int type, int value, bool notifyClient = true);
+
+	int inflictDamage(int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -271,6 +289,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(PlayerCreature* object);
 
 	void notifyPostureChange(int newPosture);
 
@@ -576,6 +596,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	virtual void sendPvpStatusTo(PlayerCreature* player);
+
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -593,6 +615,8 @@ public:
 	virtual void setPosture(int newPosture, bool notifyClient = true);
 
 	void setHAM(int type, int value, bool notifyClient = true);
+
+	int inflictDamage(int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -653,6 +677,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	virtual bool isAggressiveTo(PlayerCreature* object);
 
 	virtual void notifyPostureChange(int newPosture);
 
@@ -847,6 +873,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendPvpStatusTo(PlayerCreature* player);
+
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -862,6 +890,8 @@ public:
 	void setPosture(int newPosture, bool notifyClient);
 
 	void setHAM(int type, int value, bool notifyClient);
+
+	int inflictDamage(int damageType, int damage, bool notifyClient);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
 
@@ -918,6 +948,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(PlayerCreature* object);
 
 	void notifyPostureChange(int newPosture);
 

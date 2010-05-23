@@ -51,6 +51,7 @@ import server.zone.objects.group.GroupObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
 //import server.zone.objects.player.professions.SkillBox;
+import server.zone.objects.player.PlayerCreature;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
@@ -224,6 +225,13 @@ class CreatureObject extends TangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
+	 * Sends the pvp options bitmask
+	 * @pre { this object is lockedÊ}
+	 * @post { this object is locked }
+	 */
+	public abstract native void sendPvpStatusTo(PlayerCreature player);
+	
+	/**
 	 * Sends a system message to the client of this object
 	 * @pre {}
 	 * @post { this object received the message }
@@ -298,6 +306,14 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setHAM(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
+	public native int inflictDamage(int damageType, int damage, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Base HAM
@@ -547,11 +563,24 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
-	 * @post { this object is lockedï¿½}
+	 * @post { this object is locked }
 	 * @return returns true if the creature object can attack this 
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
+		if (object == this)
+			return false;
+		
 		return true;
+	}
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public abstract boolean isAggressiveTo(PlayerCreature object) {
+		return false;
 	}
 	
 	/**

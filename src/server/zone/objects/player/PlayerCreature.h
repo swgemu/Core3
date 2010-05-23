@@ -258,6 +258,20 @@ public:
 
 	void notifyCloseContainer(PlayerCreature* player);
 
+	bool isAggressiveTo(PlayerCreature* object);
+
+	void addToDuelList(PlayerCreature* targetPlayer);
+
+	void removeFromDuelList(PlayerCreature* targetPlayer);
+
+	PlayerCreature* getDuelListObject(int index);
+
+	bool requestedDuelTo(PlayerCreature* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
+
 	void notifySceneReady();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
@@ -427,18 +441,16 @@ protected:
 
 	Time firstIncapacitationTime;
 
-private:
 	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
 
-protected:
 	int pvpRating;
 
 	int factionStatus;
 
-private:
 	SortedVector<unsigned long long> persistentMessages;
 
-protected:
+	SortedVector<ManagedReference<PlayerCreature* > > duelList;
+
 	ManagedReference<SurveyTool* > surveyTool;
 
 	ManagedReference<WaypointObject* > surveyWaypoint;
@@ -459,8 +471,6 @@ public:
 	PlayerCreatureImplementation();
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
-
-	void finalize();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -495,6 +505,20 @@ public:
 	void unloadSpawnedChildren();
 
 	void notifyCloseContainer(PlayerCreature* player);
+
+	bool isAggressiveTo(PlayerCreature* object);
+
+	void addToDuelList(PlayerCreature* targetPlayer);
+
+	void removeFromDuelList(PlayerCreature* targetPlayer);
+
+	PlayerCreature* getDuelListObject(int index);
+
+	bool requestedDuelTo(PlayerCreature* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
 
 	void notifySceneReady();
 
@@ -602,6 +626,8 @@ public:
 protected:
 	virtual ~PlayerCreatureImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -631,8 +657,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void finalize();
-
 	void initializeTransientMembers();
 
 	void disconnect(bool closeClient, bool doLock);
@@ -660,6 +684,20 @@ public:
 	void unloadSpawnedChildren();
 
 	void notifyCloseContainer(PlayerCreature* player);
+
+	bool isAggressiveTo(PlayerCreature* object);
+
+	void addToDuelList(PlayerCreature* targetPlayer);
+
+	void removeFromDuelList(PlayerCreature* targetPlayer);
+
+	PlayerCreature* getDuelListObject(int index);
+
+	bool requestedDuelTo(PlayerCreature* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
 
 	void notifySceneReady();
 

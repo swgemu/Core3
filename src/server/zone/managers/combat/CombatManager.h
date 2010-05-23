@@ -20,22 +20,29 @@ public:
 	const static int COUNTER = 3;
 	const static int MISS = 4;
 
+
+	const static int HEALTH = 1;
+	const static int ACTION = 2;
+	const static int MIND = 4;
+	const static int RANDOM = 8;
+
 public:
 	CombatManager() {
 		setLoggingName("CombatManager");
-		setGlobalLogging(true);
-		setLogging(true);
+		setGlobalLogging(false);
+		setLogging(false);
 	}
 
 	/**
 	 * Attempts combat between 2 creature objects
-	 * @pre { attacker locked, defender unlocked }
-	 * @post { attacker locked, defender unlocked }
+	 * @pre { attacker locked }
+	 * @post { attacker locked }
 	 * @param attacker attacking object
 	 * @param defender defender object
+	 * @param lockDefender will crosslock with attacker if true
 	 * @return true on success
 	 */
-	bool startCombat(CreatureObject* attacker, TangibleObject* defender);
+	bool startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender = true);
 
 	/**
 	 * Attempts to stop combat
@@ -52,9 +59,46 @@ public:
 	 * @post { attacker locked, defender locked }
 	 * @param attacker Attacker trying the action
 	 * @param defender Defender of the action
-	 * @return 0 hit, 1 - block, 2 - dodge, 3 - counterattack, 4 - miss
+	 * @param poolsToDamage bitmask of what pool to damage (bit 1 health, 2 action, 4 mind, 8 random)
+	 * @return returns calculated damage to apply
 	 */
-	int attemptCombatAction(CreatureObject* attacker, CreatureObject* defender, int damageMultiplier, int speedMultiplier, const String& combatSpam);
+	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam);
+	int doCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam);
+
+	/**
+	 * Requests duel
+	 * @param player player that is trying to duel target
+	 * @param targetPlayer target
+	 * @pre { player != targetPlayer, player is locked }
+	 * @post { player is locked }
+	 */
+	void requestDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
+
+	/**
+	 * Requests end duel
+	 * @param player player that is trying to end duel to target
+	 * @param targetPlayer target
+	 * @pre { player != targetPlayer, player is locked }
+	 * @post { player is locked }
+	 */
+	void requestEndDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
+
+	/**
+	 * Clears duel list
+	 * @param player player to clear duel list
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
+	void freeDuelList(PlayerCreature* player, bool spam = false);
+
+	/**
+	 * Declines duel
+	 * @param player player that is trying to end duel to target
+	 * @param targetPlayer target
+	 * @pre { player != targetPlayer, player is locked }
+	 * @post { player is locked }
+	 */
+	void declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
 
 	//all the combat math will go here
 
@@ -82,16 +126,20 @@ public:
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
+	int calculateDamage(CreatureObject* attacker, TangibleObject* defender);
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 
-	void doMiss(CreatureObject* attacker, CreatureObject* defender);
+	void doMiss(CreatureObject* attacker, CreatureObject* defender, int damage, const String& cbtSpam);
+	void doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
+	void doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
+	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
+
+	void applyDamage(TangibleObject* defender, int damage, int poolsToDamage);
 
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 
 	//TODO
-	int calculateDamage(CreatureObject* attacker, TangibleObject* defender) {
-		return 0;
-	}
+
 
 	/**
 	 * Damage random pool target
