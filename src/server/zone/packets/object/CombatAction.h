@@ -49,10 +49,13 @@ which carries forward this exception.
 
 class CombatAction : public ObjectControllerMessage {
 	int defenderSize;
+
+
 public:
 	CombatAction(CreatureObject* attacker, CreatureObject* defender,
 			uint32 animcrc, uint8 hit) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
+
 		insertInt(animcrc);
 
 		insertLong(attacker->getObjectID());

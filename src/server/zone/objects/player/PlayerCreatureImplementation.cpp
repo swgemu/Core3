@@ -41,6 +41,7 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	owner = NULL;
 
 	persistentMessages.setNoDuplicateInsertPlan();
+	duelList.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerCreature");
 }
@@ -223,6 +224,8 @@ void PlayerCreatureImplementation::unload() {
 
 	if (savedParent != NULL)
 		getZoneServer()->updateObjectToDatabase(savedParent);
+
+	clearCombatState(true);
 
 	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
 

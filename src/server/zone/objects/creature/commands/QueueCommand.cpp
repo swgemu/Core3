@@ -167,6 +167,18 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 3, 0);
 		break;
+
+	case INVALIDWEAPON:
+		creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
+
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+		break;
+
+	case TOOFAR:
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr, 0, 4, 0);
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);

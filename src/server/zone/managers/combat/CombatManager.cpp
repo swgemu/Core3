@@ -9,10 +9,14 @@
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/packets/object/CombatSpam.h"
+#include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/Zone.h"
 
-bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender) {
+bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender) {
 	if (attacker == defender)
 		return false;
 
@@ -21,7 +25,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	defender->wlock(attacker);
+	if (lockDefender)
+		defender->wlock(attacker);
 
 	try {
 
@@ -32,7 +37,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 		success = false;
 	}
 
-	defender->unlock();
+	if (lockDefender)
+		defender->unlock();
 
 	return success;
 }
@@ -236,6 +242,10 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 	return speedMods;
 }
 
+int CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* defender) {
+	return System::random(1000);
+}
+
 int CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender) {
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
@@ -422,13 +432,131 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	return MAX(attackSpeed, 1.0f);
 }
 
-int CombatManager::attemptCombatAction(CreatureObject* attacker, CreatureObject* defender, int damageMultiplier, int speedMultiplier, const String& combatSpam) {
+void CombatManager::doMiss(CreatureObject* attacker, CreatureObject* defender, int damage, const String& cbtSpam) {
+	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
+
+	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, cbtSpam);
+}
+
+void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+	creature->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+}
+
+void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+	creature->showFlyText("combat_effects", "block", 0, 0xFF, 0);
+
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+}
+
+void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+	creature->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
+
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+}
+
+void CombatManager::applyDamage(TangibleObject* defender, int damage, int poolsToDamage) {
+	if (poolsToDamage == 0)
+		return;
+
+	if (poolsToDamage & RANDOM) {
+		poolsToDamage = 0;
+
+		int rand = System::random(100);
+
+		if (rand < 50) {
+			poolsToDamage = HEALTH;
+		} else if (rand < 85) {
+			poolsToDamage = ACTION;
+		} else {
+			poolsToDamage = MIND;
+		}
+	}
+
+	if (poolsToDamage & HEALTH) {
+		defender->inflictDamage(CreatureAttribute::HEALTH, damage, true);
+	}
+
+	if (poolsToDamage & ACTION) {
+		defender->inflictDamage(CreatureAttribute::ACTION, damage, true);
+	}
+
+	if (poolsToDamage & MIND) {
+		defender->inflictDamage(CreatureAttribute::MIND, damage, true);
+	}
+}
+
+int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam) {
+	int damage = 0;
+	if (defenderObject->isCreatureObject()) {
+		CreatureObject* defender = (CreatureObject*) defenderObject;
+
+		return doCombatAction(attacker, defender, damageMultiplier, speedMultiplier, poolsToDamage, animationCRC, combatSpam);
+	} else {
+		damage = calculateDamage(attacker, defenderObject);
+
+		if (damage > 0) {
+			applyDamage(defenderObject, damage, poolsToDamage);
+		}
+
+		CombatAction* combatAction = new CombatAction(attacker, animationCRC);
+		attacker->broadcastMessage(combatAction, true);
+
+		broadcastCombatSpam(attacker, defenderObject, attacker->getWeapon(), damage, combatSpam + "_hit");
+	}
+
+	return damage;
+}
+
+int CombatManager::doCombatAction(CreatureObject* attacker, CreatureObject* defender, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam) {
+	int damage = 0;
+
+	damage = calculateDamage(attacker, defender);
+
+	damage *= damageMultiplier;
+
 	int rand = System::random(100);
 
 	if (rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
-		//doMiss(attacker, defender, creature->getWeapon(), 0);
-		return MISS;
+		//better luck next time
+		doMiss(attacker, defender, damage, combatSpam + "_miss");
+		return 0;
 	}
+
+	int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
+
+	if (secondaryDefense != 0) {
+		switch (secondaryDefense) {
+		case BLOCK:
+			damage /= 2;
+			doBlock(attacker, defender, damage, combatSpam + "_block");
+			break;
+		case DODGE:
+			doDodge(attacker, defender, damage, combatSpam + "_evade");
+			return 0;
+			break;
+		case COUNTER:
+			doCounterAttack(attacker, defender, damage, combatSpam + "_counter");
+			return 0;
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (damage > 0)
+		applyDamage(defender, damage, poolsToDamage);
+
+	CombatAction* combatAction = new CombatAction(attacker, defender, animationCRC, 1);
+	attacker->broadcastMessage(combatAction, true);
+
+	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
 	return 0;
 }
@@ -449,8 +577,195 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 		}
 	}
 }
-/*
-void CombatManager::damageRandomPool(CreatureObject* defender, int damage, int healthPoolAttackChance = 50, int actionPoolAttackChance = 35, int mindPoolAttackChance = 15) {
 
+
+void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player requests duel to targetPlayer
+	 */
+
+	try {
+		targetPlayer->wlock(player);
+
+		if (player->requestedDuelTo(targetPlayer)) {
+			ParameterizedStringId stringId("duel", "already_challenged");
+			stringId.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId);
+
+			targetPlayer->unlock();
+			return;
+		}
+
+		player->info("requesting duel");
+
+		player->addToDuelList(targetPlayer);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
+					targetPlayer->getPvpStatusBitmask()
+							+ CreatureFlag::ATTACKABLE
+							+ CreatureFlag::AGGRESSIVE);
+			player->sendMessage(pvpstat);
+
+			ParameterizedStringId stringId("duel", "accept_self");
+			stringId.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId);
+
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player,
+					player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE
+							+ CreatureFlag::AGGRESSIVE);
+			targetPlayer->sendMessage(pvpstat2);
+
+			ParameterizedStringId stringId2("duel", "accept_target");
+			stringId2.setTT(player->getObjectID());
+			targetPlayer->sendSystemMessage(stringId2);
+		} else {
+			ParameterizedStringId stringId3("duel", "challenge_self");
+			stringId3.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId3);
+
+			ParameterizedStringId stringId4("duel", "challenge_target");
+			stringId4.setTT(player->getObjectID());
+			targetPlayer->sendSystemMessage(stringId3);
+		}
+
+		targetPlayer->unlock();
+	} catch (Exception& e) {
+		targetPlayer->unlock();
+
+		StringBuffer msg;
+		msg << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n"
+				<< e.getMessage();
+
+		error(msg.toString());
+	} catch (...) {
+		targetPlayer->unlock();
+
+		StringBuffer msg;
+		msg << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
+
+		error(msg.toString());
+	}
 }
-*/
+
+void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player requested to end the duel with targetPlayer
+	 */
+
+	try {
+		targetPlayer->wlock(player);
+
+		if (!player->requestedDuelTo(targetPlayer)) {
+			ParameterizedStringId stringId("duel", "not_dueling");
+			stringId.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId);
+
+			targetPlayer->unlock();
+			return;
+		}
+
+		player->info("ending duel");
+
+		player->removeFromDuelList(targetPlayer);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			targetPlayer->removeFromDuelList(player);
+
+			player->sendPvpStatusTo(targetPlayer);
+
+			ParameterizedStringId stringId("duel", "end_self");
+			stringId.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId);
+
+			targetPlayer->sendPvpStatusTo(player);
+
+			ParameterizedStringId stringId2("duel", "end_target");
+			stringId2.setTT(player->getObjectID());
+			targetPlayer->sendSystemMessage(stringId2);
+		}
+
+		targetPlayer->unlock();
+	} catch (...) {
+		targetPlayer->unlock();
+	}
+}
+
+void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
+	/* Pre: player not NULL and is locked
+	 * Post: player removed and warned all of the objects from its duel list
+	 */
+	if (player->isDuelListEmpty())
+		return;
+
+	player->info("freeing duel list");
+
+	while (player->getDuelListSize() != 0) {
+		ManagedReference<PlayerCreature*> targetPlayer = player->getDuelListObject(0);
+
+		if (targetPlayer != NULL && targetPlayer.get() != player) {
+			try {
+				targetPlayer->wlock(player);
+
+				player->removeFromDuelList(targetPlayer);
+
+				if (targetPlayer->requestedDuelTo(player)) {
+					targetPlayer->removeFromDuelList(player);
+
+					player->sendPvpStatusTo(targetPlayer);
+
+					if (spam) {
+						ParameterizedStringId stringId("duel", "end_self");
+						stringId.setTT(targetPlayer->getObjectID());
+						player->sendSystemMessage(stringId);
+					}
+
+					targetPlayer->sendPvpStatusTo(player);
+
+					if (spam) {
+						ParameterizedStringId stringId2("duel", "end_target");
+						stringId2.setTT(player->getObjectID());
+						targetPlayer->sendSystemMessage(stringId2);
+					}
+				}
+
+
+				targetPlayer->unlock();
+			} catch (ObjectNotDeployedException& e) {
+				player->removeFromDuelList(targetPlayer);
+
+				System::out << "Exception on CombatManager::freeDuelList()\n"
+						<< e.getMessage() << "\n";
+			} catch (...) {
+				targetPlayer->unlock();
+			}
+		}
+	}
+}
+
+void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player declined Duel to targetPlayer
+	 */
+
+	try {
+		targetPlayer->wlock(player);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			targetPlayer->removeFromDuelList(player);
+
+			ParameterizedStringId stringId("duel", "cancel_self");
+			stringId.setTT(targetPlayer->getObjectID());
+			player->sendSystemMessage(stringId);
+
+			ParameterizedStringId stringId2("duel", "cancel_target");
+			stringId2.setTT(player->getObjectID());
+			targetPlayer->sendSystemMessage(stringId2);
+		}
+
+		targetPlayer->unlock();
+	} catch (...) {
+		targetPlayer->unlock();
+	}
+}
+

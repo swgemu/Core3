@@ -118,23 +118,23 @@ class PlayerCreature extends CreatureObject {
 	protected Time firstIncapacitationTime;
 	
 	@dereferenced
-	VectorMap<unsigned int, SuiBox> suiBoxes;
+	protected VectorMap<unsigned int, SuiBox> suiBoxes;
 	
 	protected int pvpRating;
 
 	protected int factionStatus;
 	
 	@dereferenced
-	SortedVector<unsigned long> persistentMessages;
+	protected SortedVector<unsigned long> persistentMessages;
 	
+	@dereferenced
+	protected SortedVector<PlayerCreature> duelList;
 	
 	/// Crafting and Surveying
 	/// Reference to last used Survey Tool
 	protected transient SurveyTool surveyTool;
 	protected transient WaypointObject surveyWaypoint;
-	
-	//Badges
-	
+		
 	//protected BankTerminal registeredBank;
 	
 	public static final int ONLINE = 1;
@@ -168,12 +168,9 @@ class PlayerCreature extends CreatureObject {
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 		
 		persistentMessages.setNoDuplicateInsertPlan();
+		duelList.setNoDuplicateInsertPlan();
 
 		setOffline();
-	}
-	
-	public void finalize() {
-		
 	}
 	
 	@local 
@@ -259,6 +256,45 @@ class PlayerCreature extends CreatureObject {
 	 * @param player PlayerCreature that closed this container
 	 */
 	public native void notifyCloseContainer(PlayerCreature player);
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public boolean isAggressiveTo(PlayerCreature object) {
+		if (duelList.contains(object) && object.requestedDuelTo(this))
+			return true;
+		
+		return false;
+	}
+	
+	
+	//Duel list manipulation methods
+	public void addToDuelList(PlayerCreature targetPlayer) {
+		duelList.put(targetPlayer);
+	}
+
+	public void removeFromDuelList(PlayerCreature targetPlayer) {
+		duelList.drop(targetPlayer);
+	}
+
+	public PlayerCreature getDuelListObject(int index) {
+		return duelList.get(index);
+	}
+
+	public boolean requestedDuelTo(PlayerCreature targetPlayer) {
+		return duelList.contains(targetPlayer);
+	}
+
+	public boolean isDuelListEmpty() {
+		return duelList.isEmpty();
+	}
+
+	public int getDuelListSize() {
+		return duelList.size();
+	}
 	
 	public native void notifySceneReady();
 	

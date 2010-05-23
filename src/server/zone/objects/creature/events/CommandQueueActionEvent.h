@@ -57,7 +57,7 @@ public:
 
 	void run() {
 		try {
-			creature->wlock();
+			Locker creatureLocker(creature);
 			
 			//player->info("activating command queue action");
 
@@ -65,11 +65,11 @@ public:
 			
 			//player->info("command queue action activated");
 
-			creature->unlock();
+		} catch (Exception& e) {
+			creature->error(e.getMessage());
+			e.printStackTrace();
 		} catch (...) {
 			creature->error("unreported exception on CommandQueueActionEvent::activate()");
-			
-			creature->unlock();
 		}
 		
 		creature = NULL;

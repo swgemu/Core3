@@ -164,10 +164,15 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	ZoneServer* server = getZoneServer();
 	server->updateObjectToDatabase(_this);
 
+	SortedVector<SceneObject*> savedObjects(slottedObjects.size() + 1, 5);
+	savedObjects.setNoDuplicateInsertPlan();
+
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
-		object->updateToDatabaseAllObjects(false);
+		if (savedObjects.put(object) != -1) {
+			object->updateToDatabaseAllObjects(false);
+		}
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {

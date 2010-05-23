@@ -252,6 +252,23 @@ class TangibleObject extends SceneObject {
 	}
 	
 	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
+	public native abstract int inflictDamage(int damageType, int damage, boolean notifyClient = true);
+	
+	
+	/**
+	 * Sets the condition damage variable
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param condDamage new condition damage
+	 */
+	public native void setConditionDamage(int condDamage, boolean notifyClient = true);
+	
+	/**
 	 * Updates a customization variable
 	 */
 	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
@@ -280,10 +297,6 @@ class TangibleObject extends SceneObject {
 	
 	public int getConditionDamage() {
 		return conditionDamage;
-	}
-	
-	public void setConditionDamage(int condDamage) {
-		conditionDamage = condDamage;
 	}
 	
 	public int getVolume() {

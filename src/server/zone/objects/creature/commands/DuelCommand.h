@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DUELCOMMAND_H_
 #define DUELCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DuelCommand : public QueueCommand {
 public:
@@ -62,6 +62,21 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
+			return INVALIDTARGET;
+
+		if (!targetObject->isInRange(creature, 25))
+			return TOOFAR;
+
+		CombatManager* combatManager = CombatManager::instance();
+
+		combatManager->requestDuel((PlayerCreature*)creature, (PlayerCreature*)targetObject.get());
 
 		return SUCCESS;
 	}
