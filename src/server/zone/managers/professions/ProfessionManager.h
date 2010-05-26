@@ -125,7 +125,6 @@ namespace server {
 		SkillBox* loadBox(const String& name, Profession* profession);
 
 		bool checkPrerequisites(SkillBox* skillBox, PlayerCreature* player);
-		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
 		void awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		void removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 
@@ -150,6 +149,15 @@ namespace server {
 
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
+
+		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
+
+		inline void awardSkillBox(const String& skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
+			SkillBox* sBox = skillBoxMap.get(skillBox);
+
+			if (sBox != NULL)
+				awardSkillBox(skillBox, player, awardRequired, updateClient);
+		}
 
 		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);

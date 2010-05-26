@@ -47,13 +47,24 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Melee1hLunge1Command : public QueueCommand {
+class Melee1hLunge1Command : public CombatQueueCommand {
 public:
 
 	Melee1hLunge1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 1;
+		speedMultiplier = 1.25;
+
+		animationCRC = String("lower_posture_1hmelee_1").hashCode();
+
+		combatSpam = "sword1_sweep";
+
+		range = -1;
+
+		postureDownStateChance = 1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -70,40 +81,7 @@ public:
 			return INVALIDWEAPON;
 		}
 
-		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-
-		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
-			return INVALIDTARGET;
-
-		if (!targetObject->isInRange(creature, weapon->getMaxRange()))
-			return TOOFAR;
-
-		CombatManager* combatManager = CombatManager::instance();
-
-		targetObject->wlock(creature);
-
-		try {
-			bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get(), false);
-
-			if (!startCombat) {
-				targetObject->unlock();
-				return INVALIDTARGET;
-			}
-
-			combatManager->doCombatAction(creature, (TangibleObject*) targetObject.get(), 1, 1, CombatManager::RANDOM, String("lower_posture_1hmelee_1").hashCode() , "sword1_sweep");
-		} catch (...) {
-			error("unreported exception caught in Melee1hLunge1Command::doQueueCommand");
-		}
-
-		targetObject->unlock();
-
-		return SUCCESS;
-	}
-
-	float getCommandDuration(CreatureObject* object) {
-		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), defaultTime);
-
-		return duration;
+		return doCombatAction(creature, target);
 	}
 
 

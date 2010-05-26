@@ -12,6 +12,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+class CombatQueueCommand;
+
 class CombatManager : public Singleton<CombatManager>, public Logger {
 
 public:
@@ -54,16 +56,15 @@ public:
 	bool attemptPeace(CreatureObject* attacker);
 
 	/**
-	 * Attempt combat action
-	 * @pre { attacker locked, defender locked }
-	 * @post { attacker locked, defender locked }
+	 * Attempts combat action
+	 * @pre { attacker locked, defender unlocked }
+	 * @post { attacker locked, defender unlocked }
 	 * @param attacker Attacker trying the action
 	 * @param defender Defender of the action
 	 * @param poolsToDamage bitmask of what pool to damage (bit 1 health, 2 action, 4 mind, 8 random)
-	 * @return returns calculated damage to apply
+	 * @return returns -1 on failure to start combat or damage on succesfull combat
 	 */
-	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam);
-	int doCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, int damageMultiplier, int speedMultiplier, int poolsToDamage, uint32 animationCRC, const String& combatSpam);
+	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
 
 	/**
 	 * Requests duel
@@ -100,7 +101,13 @@ public:
 	 */
 	void declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
 
+	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
+
 	//all the combat math will go here
+protected:
+	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, CombatQueueCommand* command);
+	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
+	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
@@ -127,7 +134,10 @@ public:
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
 	int calculateDamage(CreatureObject* attacker, TangibleObject* defender);
-	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
+	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
 	void doMiss(CreatureObject* attacker, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
@@ -135,19 +145,14 @@ public:
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
 	void applyDamage(TangibleObject* defender, int damage, int poolsToDamage);
-
-	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
-
-	//TODO
-
+	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, CombatQueueCommand* tskill);
 
 	/**
-	 * Damage random pool target
-	 * @pre { defender locked }
-	 * @post { defender locked}
+	 * return false on insufficient
 	 */
-	//void damageRandomPool(CreatureObject* defender, int damage, int healthPoolAttackChance = 50, int actionPoolAttackChance = 35, int mindPoolAttackChance = 15);
+	bool applySpecialAttackCost(CreatureObject* attacker, CombatQueueCommand* command);
 
+	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 
 };
 

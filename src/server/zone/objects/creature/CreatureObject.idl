@@ -70,6 +70,7 @@ import server.zone.Zone;
 import system.util.SortedVector;
 include server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.creature.PostureChangeObserver;
+include server.zone.objects.creature.variables.CooldownTimerMap;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -153,6 +154,9 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected Time nextAction;
+	
+	@dereferenced
+	protected transient CooldownTimerMap cooldownTimerMap;
 	
 	@dereferenced
 	protected transient SortedVector<PostureChangeObserver> postureChangeObservers;
@@ -526,7 +530,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, stateBitmask has the new state }
 	 * @param state state to add
 	 */
-	public native void setState(unsigned long state, boolean notifyClient = true);
+	public native boolean setState(unsigned long state, boolean notifyClient = true);
 	
 	/**
 	 * Cleares a state from the state bitmask
@@ -570,6 +574,9 @@ class CreatureObject extends TangibleObject {
 		if (object == this)
 			return false;
 		
+		/*if (this.isIncapacitated() ||Êthis.isDead())
+			return false;*/
+		
 		return true;
 	}
 	
@@ -602,6 +609,34 @@ class CreatureObject extends TangibleObject {
 		}
 	}
 	
+	public native void dismount();
+	public native float calculateBFRatio();
+
+	public native void setDizziedState();
+	
+	public native void setAimingState();
+
+	public native void setCoverState();
+
+	public native void setBerserkedState(unsigned int duration);
+	
+	public native void setStunnedState();
+	
+	public native void setBlindedState();
+
+	public native void setIntimidatedState();
+
+	public native void setSnaredState();
+	
+	public native void setRootedState();
+
+	public native boolean setNextAttackDelay(int del);
+
+	public native void setMeditateState();
+	
+	public abstract native void activateHAMRegeneration();
+	public abstract native void activateStateRecovery();
+	
 	/**
 	 * Registers an observer for the posture changed event
 	 */
@@ -618,12 +653,50 @@ class CreatureObject extends TangibleObject {
 		postureChangeObservers.drop(observer);
 	}
 	
+	public void updateKnockdownRecovery() {
+		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
+	}
+
+	// misc methods
+	public void updateLastKnockdown() {
+		cooldownTimerMap.updateToCurrentAndAddMili("lastKnockdown", 60000);
+	}
+
+	public boolean checkKnockdownRecovery() {
+		return cooldownTimerMap.isPast("knockdownRecovery");
+	}
+
+	public boolean checkLastKnockdown() {
+		return cooldownTimerMap.isPast("lastKnockdown");
+	}
+
+	public void updatePostureDownRecovery() {
+		cooldownTimerMap.updateToCurrentAndAddMili("postureDownRecovery", 30000);
+	}
+
+	public void updatePostureUpRecovery() {
+		cooldownTimerMap.updateToCurrentAndAddMili("postureUpRecovery", 30000);
+	}
+
+	public boolean checkPostureDownRecovery() {
+		return cooldownTimerMap.isPast("postureDownRecovery");
+	}
+
+	public boolean checkPostureUpRecovery() {
+		return cooldownTimerMap.isPast("postureUpRecovery");
+	}
+	
 	public native int canAddObject(SceneObject object, string errorDescription);
 	
 	public native void doAnimation(final string animation);
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit);
 	
 	public native void playEffect(final string file, final string aux);
+	
+	public void playEffect(final string file) {
+		playEffect(file, "");
+	}
+	
 	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
 	
 	public native void activateQueueAction();
@@ -717,24 +790,16 @@ class CreatureObject extends TangibleObject {
 		return shockWounds;
 	}
 	
-	public boolean isBlinded() {
-		return CreatureState.BLINDED & stateBitmask;
-	}
-	
-	public boolean isStunned() {
-		return stateBitmask & CreatureState.STUNNED;
-	}
-	
-	public boolean isAiming() {
-		return stateBitmask & CreatureState.AIMING;
-	}
-	
 	public unsigned long getStateBitmask() {
 		return stateBitmask;
 	}
 	
 	public boolean hasState(unsigned long state) {
 		return stateBitmask & state;
+	}
+	
+	public boolean hasStates() {
+		return stateBitmask != 0;
 	}
 	
 	public unsigned long getListenID() {
@@ -869,22 +934,6 @@ class CreatureObject extends TangibleObject {
 		height = heigh;
 	}
 	
-	public boolean isKneeling() {
-		return posture == CreaturePosture.CROUCHED;
-	}
-	
-	public boolean isProne() {
-		return posture == CreaturePosture.PRONE;
-	}
-	
-	public boolean isInCover() {
-		return stateBitmask & CreatureState.COVER;
-	}
-	
-	public boolean isBerserked() {
-		return stateBitmask & CreatureState.BERSERK;
-	}
-	
 	public boolean isCreatureObject() {
 		return true;
 	}
@@ -904,4 +953,109 @@ class CreatureObject extends TangibleObject {
 	public float getSwimHeight() {
 		return swimHeight;
 	}
+	
+	public boolean isIncapacitated() {
+		return posture == CreaturePosture.INCAPACITATED;
+	}
+
+	public boolean isDead() {
+		return posture == CreaturePosture.DEAD;
+	}
+
+	public boolean isKnockedDown() {
+		return posture == CreaturePosture.KNOCKEDDOWN;
+	}
+
+	public boolean isKneeling() {
+		return posture == CreaturePosture.CROUCHED;
+	}
+
+	public boolean isProne() {
+		return posture == CreaturePosture.PRONE;
+	}
+
+	public boolean isStanding() {
+		return posture == CreaturePosture.UPRIGHT;
+	}
+
+	public boolean isSitting() {
+		return posture == CreaturePosture.SITTING;
+	}
+
+	public boolean isSkillAnimating() {
+		return posture == CreaturePosture.SKILLANIMATING;
+	}
+
+	public boolean isInCombat() {
+		return stateBitmask & CreatureState.COMBAT;
+	}
+
+	public boolean isDizzied() {
+		return stateBitmask & CreatureState.DIZZY;
+	}
+
+	public boolean isBerserked() {
+		return stateBitmask & CreatureState.BERSERK;
+	}
+
+	public boolean isStunned() {
+		return stateBitmask & CreatureState.STUNNED;
+	}
+
+	public boolean isBlinded() {
+		return stateBitmask & CreatureState.BLINDED;
+	}
+
+	public boolean isIntimidated() {
+		return stateBitmask & CreatureState.INTIMIDATED;
+	}
+
+	public boolean isSnared() {
+		return stateBitmask & CreatureState.SNARED;
+	}
+
+	public boolean isRooted() {
+		return stateBitmask & CreatureState.ROOTED;
+	}
+
+	public boolean isDiseased() {
+		return stateBitmask & CreatureState.DISEASED;
+	}
+
+	public boolean isPoisoned() {
+		return stateBitmask & CreatureState.POISONED;
+	}
+
+	public boolean isBleeding() {
+		return stateBitmask & CreatureState.BLEEDING;
+	}
+
+	public boolean isOnFire() {
+		return stateBitmask & CreatureState.ONFIRE;
+	}
+
+	public boolean isMounted() {
+		return stateBitmask & CreatureState.RIDINGMOUNT;
+	}
+
+	public boolean isRidingCreature() {
+		return stateBitmask & CreatureState.MOUNTEDCREATURE;
+	}
+
+	public boolean isPeaced() {
+		return stateBitmask & CreatureState.PEACE;
+	}
+
+	public boolean isMeditating() {
+		return stateBitmask & CreatureState.ALERT;
+	}
+
+	public boolean isAiming() {
+		return stateBitmask & CreatureState.AIMING;
+	}
+
+	public boolean isInCover() {
+		return stateBitmask & CreatureState.COVER;
+	}
+
 }

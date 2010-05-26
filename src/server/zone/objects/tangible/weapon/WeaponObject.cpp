@@ -447,12 +447,36 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 		return ((WeaponObjectImplementation*) _impl)->isOneHandMeleeWeapon();
 }
 
-bool WeaponObject::isWeaponObject() {
+bool WeaponObject::isPolearmWeaponObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 36);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isPolearmWeaponObject();
+}
+
+bool WeaponObject::isTwoHandMeleeWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isTwoHandMeleeWeapon();
+}
+
+bool WeaponObject::isWeaponObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -728,8 +752,8 @@ bool WeaponObjectImplementation::hasRangedAttack() {
 }
 
 bool WeaponObjectImplementation::isUnarmedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(301):  		return super.gameObjectType == SceneObject.WEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::WEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(301):  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::WEAPON || TangibleObjectImplementation::gameObjectType == SceneObject::MELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isMeleeWeapon() {
@@ -757,8 +781,18 @@ bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
 	return false;
 }
 
+bool WeaponObjectImplementation::isPolearmWeaponObject() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(325):  		return false;
+	return false;
+}
+
+bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(329):  		return false;
+	return false;
+}
+
 bool WeaponObjectImplementation::isWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(325):  		return true;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(333):  		return true;
 	return true;
 }
 
@@ -864,6 +898,12 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isOneHandMeleeWeapon());
 		break;
 	case 36:
+		resp->insertBoolean(isPolearmWeaponObject());
+		break;
+	case 37:
+		resp->insertBoolean(isTwoHandMeleeWeapon());
+		break;
+	case 38:
 		resp->insertBoolean(isWeaponObject());
 		break;
 	default:
@@ -991,6 +1031,14 @@ bool WeaponObjectAdapter::isPistolWeapon() {
 
 bool WeaponObjectAdapter::isOneHandMeleeWeapon() {
 	return ((WeaponObjectImplementation*) impl)->isOneHandMeleeWeapon();
+}
+
+bool WeaponObjectAdapter::isPolearmWeaponObject() {
+	return ((WeaponObjectImplementation*) impl)->isPolearmWeaponObject();
+}
+
+bool WeaponObjectAdapter::isTwoHandMeleeWeapon() {
+	return ((WeaponObjectImplementation*) impl)->isTwoHandMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isWeaponObject() {
