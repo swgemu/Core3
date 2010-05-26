@@ -201,6 +201,10 @@ public:
 
 	bool isOneHandMeleeWeapon();
 
+	bool isPolearmWeaponObject();
+
+	bool isTwoHandMeleeWeapon();
+
 	bool isWeaponObject();
 
 protected:
@@ -408,6 +412,10 @@ public:
 
 	virtual bool isOneHandMeleeWeapon();
 
+	virtual bool isPolearmWeaponObject();
+
+	virtual bool isTwoHandMeleeWeapon();
+
 	bool isWeaponObject();
 
 	WeaponObject* _this;
@@ -508,6 +516,10 @@ public:
 	bool isPistolWeapon();
 
 	bool isOneHandMeleeWeapon();
+
+	bool isPolearmWeaponObject();
+
+	bool isTwoHandMeleeWeapon();
 
 	bool isWeaponObject();
 

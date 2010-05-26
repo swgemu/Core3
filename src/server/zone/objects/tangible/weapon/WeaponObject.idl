@@ -298,7 +298,7 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isUnarmedWeapon() {
-		return super.gameObjectType == SceneObject.WEAPON;
+		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
 	}
 	
 	public abstract boolean isMeleeWeapon() {
@@ -318,6 +318,14 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public abstract boolean isOneHandMeleeWeapon() {
+		return false;
+	}
+	
+	public abstract boolean isPolearmWeaponObject() {
+		return false;
+	}
+	
+	public abstract boolean isTwoHandMeleeWeapon() {
 		return false;
 	}
 	

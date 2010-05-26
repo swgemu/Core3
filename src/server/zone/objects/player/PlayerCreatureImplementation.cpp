@@ -8,6 +8,7 @@
 #include "PlayerCreature.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/CmdSceneReady.h"
@@ -166,6 +167,9 @@ void PlayerCreatureImplementation::doRecovery() {
 		}
 	}
 
+	activateHAMRegeneration();
+	activateStateRecovery();
+
 	activateRecovery();
 }
 
@@ -228,6 +232,8 @@ void PlayerCreatureImplementation::unload() {
 	clearCombatState(true);
 
 	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
+
+	CombatManager::instance()->freeDuelList(_this);
 
 	/*StringBuffer msg;
 	msg << "remaining ref count: " << _this->getReferenceCount();

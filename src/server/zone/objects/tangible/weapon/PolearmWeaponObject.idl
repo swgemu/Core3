@@ -42,45 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INTIMIDATE1COMMAND_H_
-#define INTIMIDATE1COMMAND_H_
+package server.zone.objects.tangible.weapon;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+import server.zone.objects.tangible.weapon.MeleeWeaponObject;
+import engine.lua.LuaObject;
+import server.zone.Zone;
 
-class Intimidate1Command : public CombatQueueCommand {
-public:
 
-	Intimidate1Command(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 0;
-		speedMultiplier = 1;
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		intimidateStateChance = 1;
-
-		combatSpam = "";
-		animationCRC = String("intimidate").hashCode();
-		effectString = "clienteffect/combat_special_attacker_intimidate.cef";
-		range = -1;
-
-		poolsToDamage = 0;
+class PolearmWeaponObject extends MeleeWeaponObject {
+	public PolearmWeaponObject() {		
+		Logger.setLoggingName("PolearmWeaponObject");
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		return doCombatAction(creature, target);
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("PolearmWeaponObject");
 	}
-
-};
-
-#endif //INTIMIDATE1COMMAND_H_
+	
+	public boolean isPolearmWeaponObject() {
+		return true;
+	}
+}

@@ -935,10 +935,10 @@ void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* c
 	field = slashcommand.getStringField("invalidPostures");
 	command->setInvalidPostures(field);
 
-	int num = slashcommand.getIntField("target");
-	command->setTarget(num);
+	/*int num = slashcommand.getIntField("target");
+	command->setTarget(num);*/
 
-	num = slashcommand.getIntField("targetType");
+	int num = slashcommand.getIntField("targetType");
 	command->setTargetType(num);
 
 	num = slashcommand.getIntField("disabled");

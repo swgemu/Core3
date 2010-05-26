@@ -103,6 +103,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/weapon/PistolWeaponObject.cpp \
 				server/zone/objects/tangible/weapon/RifleWeaponObject.cpp \
 				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.cpp \
+				server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.cpp \
+				server/zone/objects/tangible/weapon/PolearmWeaponObject.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \

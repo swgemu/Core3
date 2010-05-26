@@ -99,7 +99,7 @@ public:
 	}
 		
 	inline SkillBox* getMasterBox() {
-		return skillBoxes.get(1);;
+		return skillBoxes.get(1);
 	}
 
 private:

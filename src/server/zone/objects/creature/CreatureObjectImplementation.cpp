@@ -383,7 +383,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 	//info("finished clearCombatState");
 }
 
-void CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
+bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 	if (!(stateBitmask & state)) {
 		stateBitmask |= state;
 
@@ -394,7 +394,11 @@ void CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 
 			broadcastMessage(dcreo3, true);
 		}
+
+		return true;
 	}
+
+	return false;
 }
 
 
@@ -408,6 +412,56 @@ void CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			dcreo3->close();
 
 			broadcastMessage(dcreo3, true);
+		}
+
+		switch (state) {
+		case CreatureState::STUNNED:
+			sendSystemMessage("cbt_spam", "no_stunned_single");
+			showFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
+			break;
+		case CreatureState::BLINDED:
+			sendSystemMessage("cbt_spam", "no_blind_single");
+			showFlyText("combat_effects", "no_blind", 0xFF, 0, 0);
+			break;
+		case CreatureState::DIZZY:
+			sendSystemMessage("cbt_spam", "no_dizzy_single");
+			showFlyText("combat_effects", "no_dizzy", 0xFF, 0, 0);
+			break;
+		case CreatureState::POISONED:
+			sendSystemMessage("dot_message", "stop_poisoned");
+			break;
+		case CreatureState::DISEASED:
+			sendSystemMessage("dot_message", "stop_diseased");
+			break;
+		case CreatureState::ONFIRE:
+			sendSystemMessage("dot_message", "stop_fire");
+			break;
+		case CreatureState::BLEEDING:
+			sendSystemMessage("dot_message", "stop_bleeding");
+			break;
+		case CreatureState::INTIMIDATED:
+			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
+			break;
+		case CreatureState::SNARED:
+			showFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
+			break;
+		case CreatureState::ROOTED:
+			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
+			break;
+		case CreatureState::RALLIED:
+			showFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
+			break;
+		case CreatureState::BERSERK:
+			showFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
+			break;
+		case CreatureState::AIMING:
+			break;
+		case CreatureState::COVER:
+			showFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
+			//resetMovementSpeed();
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -964,4 +1018,243 @@ void CreatureObjectImplementation::showFlyText(const String& file, const String&
 	ShowFlyText* fly = new ShowFlyText(_this, file, aux, red, green, blue);
 
 	broadcastMessage(fly, true);
+}
+
+void CreatureObjectImplementation::dismount() {
+	executeObjectControllerAction(String("dismount").hashCode());
+}
+
+
+float CreatureObjectImplementation::calculateBFRatio() {
+	if (shockWounds <= 250)
+		return 0;
+	else
+		return ((((float) shockWounds) - 250.0f) / 1000.0f);
+}
+
+void CreatureObjectImplementation::setDizziedState() {
+	if (setState(CreatureState::DIZZY)) {
+		playEffect("clienteffect/combat_special_defender_dizzy.cef");
+		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
+		sendSystemMessage("cbt_spam", "go_dizzy_single");
+
+		cooldownTimerMap.updateToCurrentAndAddMili("dizzyRecoveryTime", 5000 + System::random(20000));
+	}
+}
+
+void CreatureObjectImplementation::setAimingState() {
+	if (setState(CreatureState::AIMING)) {
+		playEffect("clienteffect/combat_special_attacker_aim.cef");
+
+		cooldownTimerMap.updateToCurrentAndAddMili("aimRecoveryTime", 5000);
+	}
+}
+
+void CreatureObjectImplementation::setCoverState() {
+	setPosture(CreaturePosture::PRONE);
+
+	if (setState(CreatureState::COVER)) {
+		playEffect("clienteffect/combat_special_attacker_cover.cef");
+		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
+		sendSystemMessage("cbt_spam", "cover_success_single");
+
+		uint32 sneakSkill = 0x3903080B;
+
+		/*if (hasSkill(sneakSkill)) {
+			float proneModifier = calculateProneSpeedModifier();
+
+			updateSpeed(0.35f * proneModifier, 0.7745f / proneModifier);
+		} else {
+			updateSpeed(0.0f,0.0f);
+		}*/
+	}
+}
+
+void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
+	if (setState(CreatureState::BERSERK)) {
+		playEffect("clienteffect/combat_special_attacker_berserk.cef");
+		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+	}
+}
+void CreatureObjectImplementation::setStunnedState() {
+	if (setState(CreatureState::STUNNED)) {
+		playEffect("clienteffect/combat_special_defender_stun.cef");
+		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
+		sendSystemMessage("cbt_spam", "go_stunned_single");
+
+		cooldownTimerMap.updateToCurrentAndAddMili("stunRecoveryTime", 5000 + System::random(20000));
+	}
+}
+
+void CreatureObjectImplementation::setBlindedState() {
+	if (setState(CreatureState::BLINDED)) {
+		playEffect("clienteffect/combat_special_defender_blind.cef");
+		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
+		sendSystemMessage("cbt_spam", "go_blind_single");
+
+		cooldownTimerMap.updateToCurrentAndAddMili("blindRecoveryTime", 5000 + System::random(20000));
+	}
+}
+
+void CreatureObjectImplementation::setIntimidatedState() {
+	if (setState(CreatureState::INTIMIDATED)) {
+		playEffect("clienteffect/combat_special_defender_intimidate.cef");
+		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+
+		int time = 15000 + System::random(5000);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("intimidateRecoveryTime", time);
+	}
+}
+
+void CreatureObjectImplementation::setSnaredState() {
+	if (setState(CreatureState::SNARED)) {
+		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+
+		int time = 20000 + System::random(10000);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("snareRecoveryTime", time);
+	}
+}
+
+void CreatureObjectImplementation::setRootedState() {
+	if (setState(CreatureState::ROOTED)) {
+		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+
+		int time = 20000 + System::random(10000);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("rootRecoveryTime", time);
+	}
+}
+
+bool CreatureObjectImplementation::setNextAttackDelay(int del) {
+	if (cooldownTimerMap.isPast("nextAttackDelayRecovery")) {
+		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelay", del);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + del);
+
+		if (isPlayerCreature()) {
+			ParameterizedStringId stringId("combat_effects", "delay_applied_self");
+			stringId.setDI(del / 1000);
+			sendSystemMessage(stringId);
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
+void CreatureObjectImplementation::setMeditateState() {
+	if (isInCombat())
+		return;
+
+	setMoodString("meditating");
+	setPosture(CreaturePosture::SITTING);
+	setState(CreatureState::ALERT);
+}
+
+void CreatureObjectImplementation::activateStateRecovery() {
+	if (isDizzied() && cooldownTimerMap.isPast("dizzyRecoveryTime"))
+		clearState(CreatureState::DIZZY);
+
+	if (isBlinded() && cooldownTimerMap.isPast("blindRecoveryTime"))
+		clearState(CreatureState::BLINDED);
+
+	if (isStunned() && cooldownTimerMap.isPast("stunRecoveryTime"))
+		clearState(CreatureState::STUNNED);
+
+	if (isIntimidated() && cooldownTimerMap.isPast("intimidateRecoveryTime"))
+		clearState(CreatureState::INTIMIDATED);
+
+	if (isBerserked() && cooldownTimerMap.isPast("berserkRecoveryTime")) {
+		clearState(CreatureState::BERSERK);
+		//setBerserkDamage(0);
+	}
+
+	if (isAiming() && cooldownTimerMap.isPast("aimRecoveryTime")) {
+		clearState(CreatureState::AIMING);
+	}
+
+	//applyDots();
+
+	//updateStates();
+}
+
+
+void CreatureObjectImplementation::activateHAMRegeneration() {
+	float modifier = 1.f;// (isInCombat()) ? 1.f : 1.f;
+
+	if (isKneeling())
+		modifier *= (1.5);
+	else if (isSitting())
+		modifier *= (2);
+
+	if (!isPlayerCreature()) {
+		modifier /= 3.0f;
+	}
+
+	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(CreatureAttribute::CONSTITUTION)) * 13.0f / 1200.0f * 3.0f * modifier);
+	uint32 actionTick = (uint32) ceil((float) MAX(0, getHAM(CreatureAttribute::STAMINA)) * 13.0f / 1200.0f * 3.0f * modifier);
+	uint32 mindTick = (uint32) ceil((float) MAX(0, getHAM(CreatureAttribute::WILLPOWER)) * 13.0f / 1200.0f * 3.0f * modifier);
+
+	if (healthTick < 1)
+		healthTick = 1;
+
+	if (actionTick < 1)
+		actionTick = 1;
+
+	if (mindTick < 1)
+		mindTick = 1;
+
+	inflictDamage(CreatureAttribute::HEALTH, -healthTick);
+	inflictDamage(CreatureAttribute::ACTION, -actionTick);
+	inflictDamage(CreatureAttribute::MIND, -mindTick);
+
+	//Check for passive wound healing
+	/*if (isInBuilding()) {
+		BuildingObject* building = (BuildingObject*) getBuilding();
+		passiveWoundHeal += building->getPassiveWoundHealRate();
+
+		if (passiveWoundHeal >= 100) {
+			healWound(_this, getNextWoundedAttribute(true, true, false), 1);
+			passiveWoundHeal = 0;
+		}
+	} else if (passiveWoundHeal > 0) {
+		//Reset passive wound heal if they leave the building.
+		passiveWoundHeal = 0;
+	}
+
+	//TODO: Refactor this with event handlers
+	if (isMeditating()) {
+		int meditateMod = getSkillMod("meditate");
+		float meditateBonus = 1 + ((float)meditateMod / 100);
+		healthTick *= (int)meditateBonus;
+		actionTick *= (int)meditateBonus;
+		mindTick *= (int)meditateBonus;
+		doMeditateHeals();
+	}
+
+	//TODO: Refactor this into an event handler
+	if (isPlayer()) {
+		Player* player = (Player*)_this;
+		if (player->getPowerboosted() && pbMind != 0) {
+			doPowerboostTick(player);
+		}
+	}
+
+	//TODO: Refactor this into an event handler
+	if (isPlayer()) {
+		Player* player = (Player*)_this;
+		if (channelForceHAM != 0) {
+			doChannelForceTick(player);
+		}
+	}
+
+	if(!returningHome)
+		changeHAMBars(healthTick, actionTick, mindTick, true);
+	else if(returningHome)
+		changeHAMBars(healthTick * 20, actionTick * 20, mindTick * 20, true);*/
 }

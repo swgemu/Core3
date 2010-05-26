@@ -155,6 +155,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/PostureChangeObserver.h"
 
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -276,7 +278,7 @@ public:
 
 	void deleteQueueAction(unsigned int actionCount);
 
-	void setState(unsigned long long state, bool notifyClient = true);
+	bool setState(unsigned long long state, bool notifyClient = true);
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
@@ -294,9 +296,55 @@ public:
 
 	void notifyPostureChange(int newPosture);
 
+	void dismount();
+
+	float calculateBFRatio();
+
+	void setDizziedState();
+
+	void setAimingState();
+
+	void setCoverState();
+
+	void setBerserkedState(unsigned int duration);
+
+	void setStunnedState();
+
+	void setBlindedState();
+
+	void setIntimidatedState();
+
+	void setSnaredState();
+
+	void setRootedState();
+
+	bool setNextAttackDelay(int del);
+
+	void setMeditateState();
+
+	void activateHAMRegeneration();
+
+	void activateStateRecovery();
+
 	void attachPostureChangeObserver(PostureChangeObserver* observer);
 
 	void deattachPostureChangeObserver(PostureChangeObserver* observer);
+
+	void updateKnockdownRecovery();
+
+	void updateLastKnockdown();
+
+	bool checkKnockdownRecovery();
+
+	bool checkLastKnockdown();
+
+	void updatePostureDownRecovery();
+
+	void updatePostureUpRecovery();
+
+	bool checkPostureDownRecovery();
+
+	bool checkPostureUpRecovery();
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -305,6 +353,8 @@ public:
 	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
 
 	void playEffect(const String& file, const String& aux);
+
+	void playEffect(const String& file);
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
@@ -352,15 +402,11 @@ public:
 
 	float getShockWounds();
 
-	bool isBlinded();
-
-	bool isStunned();
-
-	bool isAiming();
-
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
+
+	bool hasStates();
 
 	unsigned long long getListenID();
 
@@ -422,14 +468,6 @@ public:
 
 	void setHeight(float heigh);
 
-	bool isKneeling();
-
-	bool isProne();
-
-	bool isInCover();
-
-	bool isBerserked();
-
 	bool isCreatureObject();
 
 	bool isSwimming();
@@ -439,6 +477,58 @@ public:
 	ControlDevice* getControlDevice();
 
 	float getSwimHeight();
+
+	bool isIncapacitated();
+
+	bool isDead();
+
+	bool isKnockedDown();
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isStanding();
+
+	bool isSitting();
+
+	bool isSkillAnimating();
+
+	bool isInCombat();
+
+	bool isDizzied();
+
+	bool isBerserked();
+
+	bool isStunned();
+
+	bool isBlinded();
+
+	bool isIntimidated();
+
+	bool isSnared();
+
+	bool isRooted();
+
+	bool isDiseased();
+
+	bool isPoisoned();
+
+	bool isBleeding();
+
+	bool isOnFire();
+
+	bool isMounted();
+
+	bool isRidingCreature();
+
+	bool isPeaced();
+
+	bool isMeditating();
+
+	bool isAiming();
+
+	bool isInCover();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -555,6 +645,8 @@ protected:
 
 	Time nextAction;
 
+	CooldownTimerMap cooldownTimerMap;
+
 	SortedVector<PostureChangeObserver*> postureChangeObservers;
 
 public:
@@ -664,7 +756,7 @@ public:
 
 	void deleteQueueAction(unsigned int actionCount);
 
-	void setState(unsigned long long state, bool notifyClient = true);
+	bool setState(unsigned long long state, bool notifyClient = true);
 
 	void clearState(unsigned long long state, bool notifyClient = true);
 
@@ -682,9 +774,55 @@ public:
 
 	virtual void notifyPostureChange(int newPosture);
 
+	void dismount();
+
+	float calculateBFRatio();
+
+	void setDizziedState();
+
+	void setAimingState();
+
+	void setCoverState();
+
+	void setBerserkedState(unsigned int duration);
+
+	void setStunnedState();
+
+	void setBlindedState();
+
+	void setIntimidatedState();
+
+	void setSnaredState();
+
+	void setRootedState();
+
+	bool setNextAttackDelay(int del);
+
+	void setMeditateState();
+
+	virtual void activateHAMRegeneration();
+
+	virtual void activateStateRecovery();
+
 	void attachPostureChangeObserver(PostureChangeObserver* observer);
 
 	void deattachPostureChangeObserver(PostureChangeObserver* observer);
+
+	void updateKnockdownRecovery();
+
+	void updateLastKnockdown();
+
+	bool checkKnockdownRecovery();
+
+	bool checkLastKnockdown();
+
+	void updatePostureDownRecovery();
+
+	void updatePostureUpRecovery();
+
+	bool checkPostureDownRecovery();
+
+	bool checkPostureUpRecovery();
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -693,6 +831,8 @@ public:
 	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
 
 	void playEffect(const String& file, const String& aux);
+
+	void playEffect(const String& file);
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
@@ -740,15 +880,11 @@ public:
 
 	float getShockWounds();
 
-	bool isBlinded();
-
-	bool isStunned();
-
-	bool isAiming();
-
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
+
+	bool hasStates();
 
 	unsigned long long getListenID();
 
@@ -810,14 +946,6 @@ public:
 
 	void setHeight(float heigh);
 
-	bool isKneeling();
-
-	bool isProne();
-
-	bool isInCover();
-
-	bool isBerserked();
-
 	bool isCreatureObject();
 
 	bool isSwimming();
@@ -827,6 +955,58 @@ public:
 	ControlDevice* getControlDevice();
 
 	float getSwimHeight();
+
+	bool isIncapacitated();
+
+	bool isDead();
+
+	bool isKnockedDown();
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isStanding();
+
+	bool isSitting();
+
+	bool isSkillAnimating();
+
+	bool isInCombat();
+
+	bool isDizzied();
+
+	bool isBerserked();
+
+	bool isStunned();
+
+	bool isBlinded();
+
+	bool isIntimidated();
+
+	bool isSnared();
+
+	bool isRooted();
+
+	bool isDiseased();
+
+	bool isPoisoned();
+
+	bool isBleeding();
+
+	bool isOnFire();
+
+	bool isMounted();
+
+	bool isRidingCreature();
+
+	bool isPeaced();
+
+	bool isMeditating();
+
+	bool isAiming();
+
+	bool isInCover();
 
 	CreatureObject* _this;
 
@@ -935,7 +1115,7 @@ public:
 
 	void deleteQueueAction(unsigned int actionCount);
 
-	void setState(unsigned long long state, bool notifyClient);
+	bool setState(unsigned long long state, bool notifyClient);
 
 	void clearState(unsigned long long state, bool notifyClient);
 
@@ -953,6 +1133,52 @@ public:
 
 	void notifyPostureChange(int newPosture);
 
+	void dismount();
+
+	float calculateBFRatio();
+
+	void setDizziedState();
+
+	void setAimingState();
+
+	void setCoverState();
+
+	void setBerserkedState(unsigned int duration);
+
+	void setStunnedState();
+
+	void setBlindedState();
+
+	void setIntimidatedState();
+
+	void setSnaredState();
+
+	void setRootedState();
+
+	bool setNextAttackDelay(int del);
+
+	void setMeditateState();
+
+	void activateHAMRegeneration();
+
+	void activateStateRecovery();
+
+	void updateKnockdownRecovery();
+
+	void updateLastKnockdown();
+
+	bool checkKnockdownRecovery();
+
+	bool checkLastKnockdown();
+
+	void updatePostureDownRecovery();
+
+	void updatePostureUpRecovery();
+
+	bool checkPostureDownRecovery();
+
+	bool checkPostureUpRecovery();
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -960,6 +1186,8 @@ public:
 	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
 
 	void playEffect(const String& file, const String& aux);
+
+	void playEffect(const String& file);
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
@@ -999,15 +1227,11 @@ public:
 
 	float getShockWounds();
 
-	bool isBlinded();
-
-	bool isStunned();
-
-	bool isAiming();
-
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
+
+	bool hasStates();
 
 	unsigned long long getListenID();
 
@@ -1063,14 +1287,6 @@ public:
 
 	void setHeight(float heigh);
 
-	bool isKneeling();
-
-	bool isProne();
-
-	bool isInCover();
-
-	bool isBerserked();
-
 	bool isCreatureObject();
 
 	bool isSwimming();
@@ -1080,6 +1296,58 @@ public:
 	ControlDevice* getControlDevice();
 
 	float getSwimHeight();
+
+	bool isIncapacitated();
+
+	bool isDead();
+
+	bool isKnockedDown();
+
+	bool isKneeling();
+
+	bool isProne();
+
+	bool isStanding();
+
+	bool isSitting();
+
+	bool isSkillAnimating();
+
+	bool isInCombat();
+
+	bool isDizzied();
+
+	bool isBerserked();
+
+	bool isStunned();
+
+	bool isBlinded();
+
+	bool isIntimidated();
+
+	bool isSnared();
+
+	bool isRooted();
+
+	bool isDiseased();
+
+	bool isPoisoned();
+
+	bool isBleeding();
+
+	bool isOnFire();
+
+	bool isMounted();
+
+	bool isRidingCreature();
+
+	bool isPeaced();
+
+	bool isMeditating();
+
+	bool isAiming();
+
+	bool isInCover();
 
 protected:
 	String _param0_sendSystemMessage__String_;
@@ -1096,6 +1364,7 @@ protected:
 	String _param0_doAnimation__String_;
 	String _param0_playEffect__String_String_;
 	String _param1_playEffect__String_String_;
+	String _param0_playEffect__String_;
 	String _param0_showFlyText__String_String_byte_byte_byte_;
 	String _param1_showFlyText__String_String_byte_byte_byte_;
 	String _param0_getSkillMod__String_;
