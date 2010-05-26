@@ -45,14 +45,25 @@ which carries forward this exception.
 #ifndef UNARMEDBLIND1COMMAND_H_
 #define UNARMEDBLIND1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class UnarmedBlind1Command : public QueueCommand {
+class UnarmedBlind1Command : public CombatQueueCommand {
 public:
 
 	UnarmedBlind1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 1.5;
+		speedMultiplier = 2;
+
+		animationCRC = String("attack_high_center_light_1").hashCode();
+
+		combatSpam = "aryxslash";
+
+		blindStateChance = 1;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +74,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isUnarmedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -18,7 +18,6 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServerImplementat
 	maxRangeToTarget = 0;
 
 	stateMask = 0;
-	target = 0;
 	targetType = 0;
 	disabled = false;
 	addToQueue = false;
@@ -35,8 +34,6 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServerImplementat
 	setGlobalLogging("true");
 	setLoggingName("QueueCommand " + skillname);
 }
-
-
 
 /*
  * Sets the invalid postures for this command.

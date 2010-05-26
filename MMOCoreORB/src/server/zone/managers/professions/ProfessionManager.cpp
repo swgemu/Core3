@@ -143,8 +143,9 @@ void ProfessionManager::setStartingProfession(const String& startingProfession, 
 	Profession* profObj = getProfession(startingProfession);
 
 	if (profObj != NULL) {
-		SkillBox* novice = profObj->getNoviceBox();
-		trainSkillBox(novice, player, false);
+		SkillBox* novice = profObj->getMasterBox(); //profObj->getNoviceBox(); // TODO:remove master box learning
+		//trainSkillBox(novice, player, false);
+		awardSkillBox(novice, player, true, false);
 	}
 
 	String race = Races::getSpecies(raceID);
@@ -318,12 +319,9 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player
 bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
-	System::out << "trying to teach " << skillBox << endl;
-
 	if (sBox != NULL)
 		return trainSkillBox(sBox, player, updateClient);
 	else {
-		System::out << "NULL BOX " << endl;
 		return false;
 	}
 }

@@ -45,15 +45,24 @@ which carries forward this exception.
 #ifndef ATTACKCOMMAND_H_
 #define ATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class AttackCommand : public QueueCommand {
+class AttackCommand : public CombatQueueCommand {
 public:
 
 	AttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+		damageMultiplier = 1;
+		speedMultiplier = 1;
 
+		combatSpam = "";
+		animationCRC = 0;
+
+		range = -1;
+
+		poolsToDamage = CombatManager::RANDOM;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -64,43 +73,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-
-		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
-			return INVALIDTARGET;
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!targetObject->isInRange(creature, weapon->getMaxRange()))
-			return TOOFAR;
-
-		CombatManager* combatManager = CombatManager::instance();
-
-		targetObject->wlock(creature);
-
-		try {
-			bool startCombat = combatManager->startCombat(creature, (TangibleObject*) targetObject.get(), false);
-
-			if (!startCombat) {
-				targetObject->unlock();
-				return INVALIDTARGET;
-			}
-
-			combatManager->doCombatAction(creature, (TangibleObject*) targetObject.get(), 1, 1, CombatManager::RANDOM, 0x99476628 , "sword1_sweep");
-
-		} catch (...) {
-			error("unreported exception caught in Melee1hLunge1Command::doQueueCommand");
-		}
-
-		targetObject->unlock();
-
-		return SUCCESS;
-	}
-
-	float getCommandDuration(CreatureObject* object) {
-		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), 1);
-
-		return duration;
+		return doCombatAction(creature, target);
 	}
 
 };

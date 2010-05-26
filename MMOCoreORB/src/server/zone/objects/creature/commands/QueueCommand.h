@@ -70,7 +70,7 @@ protected:
 	uint32 animCRC;
 	uint64 stateMask;
 	Vector<int> invalidPostures;
-	int target;
+	//int target;
 	int targetType;
 	int maxRangeToTarget;
 
@@ -101,6 +101,7 @@ public:
 	const static int INVALIDTARGET = 4;
 	const static int INVALIDWEAPON = 5;
 	const static int TOOFAR = 6;
+	const static int INSUFFICIENTHAM = 7;
 
 
 	virtual ~QueueCommand() {
@@ -166,9 +167,9 @@ public:
 
 
 
-	inline void setTarget(int num) {
+	/*inline void setTarget(int num) {
 		target = num;
-	}
+	}*/
 
 	inline void setDefaultTime(float time) {
 		defaultTime = time;
@@ -224,9 +225,9 @@ public:
 		return stateMask;
 	}
 
-	inline int getTarget() {
+	/*inline int getTarget() {
 		return target;
-	}
+	}*/
 
 	inline int getTargetType() {
 		return targetType;
