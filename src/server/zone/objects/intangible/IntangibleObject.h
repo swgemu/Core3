@@ -21,6 +21,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -35,6 +37,8 @@ public:
 	IntangibleObject();
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -74,6 +78,8 @@ public:
 	void finalize();
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
 
