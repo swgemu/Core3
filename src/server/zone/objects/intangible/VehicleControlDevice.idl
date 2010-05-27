@@ -82,8 +82,6 @@ class VehicleControlDevice extends ControlDevice {
 		super.updateStatus(1);
 	}
 	
-	
-	
 	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		Logger.info("selected call", true);
 		

@@ -47,6 +47,7 @@ package server.zone.objects.intangible;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
+include server.zone.templates.SharedObjectTemplate;
 
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;
@@ -62,6 +63,17 @@ class IntangibleObject extends SceneObject {
 	}
 	
 	public native void initializeTransientMembers();
+	
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+	}
 	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void updateStatus(int newStatus, boolean notifyClient = true);

@@ -26,6 +26,10 @@ public:
 
 	}
 
+	void readObject(LuaObject* templateData) {
+		SharedObjectTemplate::readObject(templateData);
+	}
+
 };
 
 
