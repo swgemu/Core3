@@ -56,14 +56,31 @@ namespace resource {
 
 class ResourceContainer : public TangibleObject {
 public:
+	static const int MAXSIZE = 100000;
+
 	ResourceContainer();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void sendTo(SceneObject* player, bool doClose = true);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	void setSpawnObject(ResourceSpawn* spawn);
+
+	String getSpawnName();
+
+	String getSpawnType();
+
+	unsigned long long getSpawnID();
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
 
 	virtual ~ResourceContainer();
+
+	String _return_getSpawnName;
+	String _return_getSpawnType;
 
 	friend class ResourceContainerHelper;
 };
@@ -81,14 +98,29 @@ namespace objects {
 namespace resource {
 
 class ResourceContainerImplementation : public TangibleObjectImplementation {
+protected:
 	ManagedReference<ResourceSpawn* > spawnObject;
 
 public:
+	static const int MAXSIZE = 100000;
+
 	ResourceContainerImplementation();
 
 	ResourceContainerImplementation(DummyConstructorParameter* param);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void sendTo(SceneObject* player, bool doClose = true);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	void setSpawnObject(ResourceSpawn* spawn);
+
+	String getSpawnName();
+
+	String getSpawnType();
+
+	unsigned long long getSpawnID();
 
 	ResourceContainer* _this;
 
@@ -128,6 +160,18 @@ public:
 	ResourceContainerAdapter(ResourceContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendTo(SceneObject* player, bool doClose);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	void setSpawnObject(ResourceSpawn* spawn);
+
+	String getSpawnName();
+
+	String getSpawnType();
+
+	unsigned long long getSpawnID();
 
 };
 

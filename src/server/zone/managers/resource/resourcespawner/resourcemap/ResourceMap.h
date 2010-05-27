@@ -42,13 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceMap.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCEMAP_H_
 #define RESOURCEMAP_H_
 
 #include "engine/engine.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
-
+/**
+ * ZoneResourceMap is a container class for VectorMap<String, ManagedReference<ResourceSpawn* > >
+ */
 class ZoneResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 public:
 	ZoneResourceMap() {
@@ -60,6 +68,11 @@ public:
 	}
 };
 
+/**
+ * ResourceMap contains all resources ever spawned indexed
+ * by unique spawn name.  Also contains a map of active
+ * resources separated by a zone id
+ */
 class ResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 private:
 
@@ -78,20 +91,40 @@ public:
 	*/
 	void add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn);
 
+	/**
+	 * Removes resource from  global spawn map
+	 * \param resourceSpawn The ResourceSpawn object to be removed
+	*/
 	void remove(ManagedReference<ResourceSpawn* > resourceSpawn);
+
+	/**
+	 * Removes resource from the zone spawn map
+	 * \param resourceSpawn The ResourceSpawn object to be removed
+	 * \param zoneid The zone that is despawning resource
+	*/
 	void remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid);
 
+	/**
+	 * Get's the density value of resource at given point
+	 * \param resourcename The name of the resource
+	 * \param zoneid The zone map id
+	 * \param x The value of the x coordinate
+	 * \param y The value of the y coordinate
+	 * \return Value between -1 and 1 indicating density
+	*/
 	float getDensityAt(String resourcename, int zoneid, float x, float y);
 
+	/**
+	 * Get's the density value of resource at given point
+	 * \param zoneid ID of zone being requesting
+	 * \return ZoneResourceMap* value of the zoneid requested
+	*/
 	inline ZoneResourceMap* getZoneResourceList(uint32 zoneid) {
 		if(zoneResourceMap.contains(zoneid))
 			return zoneResourceMap.get(zoneid);
 		else
 			return NULL;
 	}
-
-private:
-
 };
 
 

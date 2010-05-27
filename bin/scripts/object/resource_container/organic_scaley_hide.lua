@@ -1,0 +1,5 @@
+object_resource_container_organic_scaley_hide = object_resource_container_shared_resource_container_organic_scaley_hide:new {
+	templateType = RESOURCECONTAINER
+}
+
+ObjectTemplates:addTemplate(object_resource_container_organic_scaley_hide, "object/resource_container/organic_scaley_hide.iff")

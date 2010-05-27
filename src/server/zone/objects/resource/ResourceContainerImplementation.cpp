@@ -44,7 +44,49 @@ which carries forward this exception.
 
 
 #include "ResourceContainer.h"
+#include "ResourceSpawn.h"
+#include "server/zone/packets/resource/ResourceContainerObjectMessage3.h"
+#include "server/zone/packets/resource/ResourceContainerObjectMessage6.h"
+#include "server/zone/ZoneClientSession.h"
 
 void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	//spawnObject->fillAttributeList(alm, object);
+
+	alm->insertAttribute("condition", "100/100");
+	alm->insertAttribute("volume", "1");
+
+	StringBuffer ssQuantity;
+	ssQuantity << getObjectCount() << "/" << ResourceContainer::MAXSIZE;
+
+	alm->insertAttribute("resource_name", getSpawnName());
+	alm->insertAttribute("resource_contents", ssQuantity);
+
+	spawnObject->fillAttributeList(alm, object);
+}
+
+void ResourceContainerImplementation::sendTo(SceneObject* player, bool doClose) {
+
+	ManagedReference<ZoneClientSession*> client = player->getClient();
+
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	if (parent != NULL)
+		link(client.get(), containmentType);
+
+	sendBaselinesTo(player);
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
+}
+
+void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending rnco baselines");
+
+	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this);
+	player->sendMessage(rnco3);
+
+	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this);
+	player->sendMessage(rnco6);
 }

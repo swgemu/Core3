@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESOURCECONTAINEROBJECTMESSAGE6_H_
 #define RESOURCECONTAINEROBJECTMESSAGE6_H_
 
-#include "../../objects/tangible/resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 #include "../BaseLineMessage.h"
 
 class ResourceContainerObjectMessage6 : public BaseLineMessage {
@@ -57,9 +57,9 @@ public:
 		insertAscii(""); // Resource Type: "organic_food_small"
 		UnicodeString u_str = UnicodeString("");
 		insertUnicode(u_str); // Container Name
-		insertInt(rcno->getMaxContents()); // Max stack size
-		insertAscii(rcno->getStfName()); // Resource Type: planet specific
-		insertUnicode(rcno->getCustomName());  // Resource name.
+		insertInt(ResourceContainer::MAXSIZE); // Max stack size
+		insertAscii(rcno->getSpawnName()); // Resource Type: planet specific
+		insertUnicode(rcno->getSpawnType());  // Resource name.
 		setSize();
 	}
 };

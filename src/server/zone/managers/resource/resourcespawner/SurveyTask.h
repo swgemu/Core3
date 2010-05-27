@@ -73,12 +73,15 @@ public:
 			Locker playerLocker(playerCreature);
 			// Add and display new waypoint
 			playerCreature->setSurveyWaypoint(waypoint);
-			playerCreature->getPlayerObject()->addWaypoint(waypoint);
+
+			playerCreature->getPlayerObject()->addWaypoint(waypoint, true);
 
 			// Send Waypoint System Message
 			ChatSystemMessage* surveyWaypointMessage = new ChatSystemMessage("survey", "survey_waypoint");
 			playerCreature->sendMessage(surveyWaypointMessage);
 		}
+
+		playerCreature->removePendingTask("survey");
 	}
 };
 

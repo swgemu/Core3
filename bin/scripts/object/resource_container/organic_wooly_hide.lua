@@ -1,0 +1,5 @@
+object_resource_container_organic_wooly_hide = object_resource_container_shared_resource_container_organic_wooly_hide:new {
+	templateType = RESOURCECONTAINER
+}
+
+ObjectTemplates:addTemplate(object_resource_container_organic_wooly_hide, "object/resource_container/organic_wooly_hide.iff")

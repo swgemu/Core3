@@ -76,6 +76,7 @@ private:
 	String randomNameClass;
 
 	int surveyToolType;
+	uint32 containerCRC;
 
 public:
 	ResourceTreeEntry(const String& inType) {
@@ -284,6 +285,14 @@ public:
 
     int getSurveyToolType() {
     	return surveyToolType;
+    }
+
+    void setContainerCRC(uint32 crc) {
+    	containerCRC = crc;
+    }
+
+    uint32 getContainerCRC() {
+    	return containerCRC;
     }
 
 

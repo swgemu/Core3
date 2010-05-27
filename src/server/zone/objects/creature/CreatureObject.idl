@@ -230,7 +230,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends the pvp options bitmask
-	 * @pre { this object is lockedÊ}
+	 * @pre { this object is lockedï¿½}
 	 * @post { this object is locked }
 	 */
 	public abstract native void sendPvpStatusTo(PlayerCreature player);
@@ -589,7 +589,7 @@ class CreatureObject extends TangibleObject {
 		if (object == this)
 			return false;
 		
-		if (this.isIncapacitated() ||Êthis.isDead())
+		if (this.isIncapacitated() || this.isDead())
 			return false;
 		
 		return true;
@@ -626,7 +626,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * sends the conversation list 
-	 * @pre {Êthis locked, player locked }
+	 * @pre {ï¿½this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
 	public abstract void sendConversationStartTo(SceneObject player) {
@@ -635,7 +635,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * sends the conversation list 
-	 * @pre {Êthis locked, player locked }
+	 * @pre {ï¿½this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
 	public abstract void selectConversationOption(int option, SceneObject obj) {

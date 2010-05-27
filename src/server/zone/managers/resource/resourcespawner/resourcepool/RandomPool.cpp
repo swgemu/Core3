@@ -127,6 +127,19 @@ bool RandomPool::update() {
 	return true;
 }
 
+ResourceSpawn* RandomPool::removeSpawn(const String& type) {
+	ManagedReference<ResourceSpawn* > spawn = NULL;
+
+	for(int i = 0; i < size(); ++i) {
+		spawn = get(i);
+		if(spawn->isType(type)) {
+			setElementAt(i, NULL);
+			return spawn;
+		}
+	}
+	return NULL;
+}
+
 void RandomPool::print() {
 	info("**** Random Pool ****", true);
 

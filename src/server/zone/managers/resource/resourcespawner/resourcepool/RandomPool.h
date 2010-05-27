@@ -62,6 +62,13 @@ public:
 
 	void initialize(const String& includes, const String& excludes, int size);
 
+	/**
+	 * The minimum pool likes to extract resource from
+	 * the random pool before spawning new resources
+	 * This function is only used int MinimumPool::update()
+	 */
+	ResourceSpawn* removeSpawn(const String& type);
+
 	void print();
 
 private:

@@ -45,9 +45,11 @@ which carries forward this exception.
 #include "ResourceSpawner.h"
 #include "SurveyTask.h"
 #include "SampleTask.h"
+#include "SampleResultsTask.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -219,6 +221,8 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	newSpawn->setSurveyToolType(resourceEntry->getSurveyToolType());
 
+ 	newSpawn->setContainerCRC(resourceEntry->getContainerCRC());
+
  	Vector<uint32> activeZones;
  	activeResourceZones.clone(activeZones);
  	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
@@ -347,10 +351,10 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 	int toolRange = surveyTool->getRange();
 	int points = surveyTool->getPoints();
 
-	float spacer = float(toolRange) / float(points);
+	float spacer = float(toolRange) / float(points - 1);
 
-	float posX = playerCreature->getPositionX() - ((points / 2.0f) * spacer);
-	float posY = playerCreature->getPositionY() - ((points / 2.0f) * spacer);
+	float posX = playerCreature->getPositionX() - (((points - 1) / 2.0f) * spacer);
+	float posY = playerCreature->getPositionY() + (((points - 1) / 2.0f) * spacer);
 
 	float maxDensity;
 	float maxX, maxY;
@@ -371,54 +375,61 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 			posX += spacer;
 		}
 
-		posY += spacer;
+		posY -= spacer;
 		posX -= (points * spacer);
 	}
 
-	ManagedReference<WaypointObject*> waypoint = NULL;
+	ManagedReference<WaypointObject*> newwaypoint = NULL;
 
 	if (maxDensity >= 0.1f) {
 
 		// Get previous survey waypoint
-		ManagedReference<WaypointObject*> oldSurveyWaypoint = playerCreature->getSurveyWaypoint();
-
-		// Remove old survey waypoint
-		if (oldSurveyWaypoint != NULL) {
-			playerCreature->getPlayerObject()->removeWaypoint(oldSurveyWaypoint->getObjectID(), true);
-			oldSurveyWaypoint->destroyObjectFromDatabase(true);
-		}
+		ManagedReference<WaypointObject*> waypoint = playerCreature->getSurveyWaypoint();
 
 		// Create new waypoint
-		waypoint = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
-		waypoint->setCustomName(UnicodeString("Resource Survey"));
-		waypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(playerCreature->getZone()->getZoneID())));
-		waypoint->setPosition(posX, 0, posY);
-		waypoint->setColor(WaypointObject::COLOR_ORANGE);
-		waypoint->setActive(true);
+		if (waypoint == NULL)
+			newwaypoint = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+		else {
+			playerCreature->getPlayerObject()->removeWaypoint(waypoint->getObjectID(), true);
+			newwaypoint = waypoint.get();
+		}
+
+		// Update new waypoint
+		newwaypoint->setCustomName(UnicodeString("Resource Survey"));
+		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(playerCreature->getZone()->getZoneID())));
+		newwaypoint->setPosition(maxX, 0, maxY);
+		newwaypoint->setColor(WaypointObject::COLOR_ORANGE);
+		newwaypoint->setActive(true);
 	}
 
-	SurveyTask* surveyTask = new SurveyTask(playerCreature, surveyMessage, waypoint);
+	SurveyTask* surveyTask = new SurveyTask(playerCreature, surveyMessage, newwaypoint);
 	surveyTask->schedule(4000);
+	playerCreature->addPendingTask("survey", surveyTask);
 }
 
 void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& resname) {
 
+	// Determine if survey tool is valid, and that resource actually exists
 	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
-
 	if(surveyTool == NULL || !resourceMap->contains(resname))
 		return;
 
+	// Obtain position information
 	int zoneid = playerCreature->getZone()->getZoneID();
-
 	float posX = playerCreature->getPositionX();
 	float posY = playerCreature->getPositionY();
 
+	// Get resource Density ay players position
 	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
 
+	// Player must be kneeling to sample
 	if (!playerCreature->isKneeling())
 		playerCreature->setPosture(CreaturePosture::CROUCHED, true);
 
-	playerCreature->sendSystemMessage(String::valueOf(density));
+	// Add sampleresultstask
+	SampleResultsTask* sampleResultsTask = new SampleResultsTask(playerCreature, this, density, resname);
+	sampleResultsTask->schedule(3000);
+	playerCreature->addPendingTask("sampleresults", sampleResultsTask);
 
 	// Add sampletask
 	SampleTask* sampleTask = new SampleTask(playerCreature, surveyTool);
@@ -426,3 +437,98 @@ void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& r
 	playerCreature->addPendingTask("sample", sampleTask);
 }
 
+void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const float density,
+		const String& resname) {
+
+	// Determine if survey tool is valid, and that resource actually exists
+	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+	if(surveyTool == NULL)
+		return;
+
+	Locker playerLocker(playerCreature);
+
+	int zoneid = playerCreature->getZone()->getZoneID();
+
+	// If density is too low, we can't obtain a sample
+	if (density < .10f) {
+		ParameterizedStringId message("survey", "efficiency_too_low");
+		message.setTO(resname);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		playerCreature->sendMessage(sysMessage);
+		return;
+	}
+
+	// Lower skill levels mean you can't sample lower concetrations
+	int surveySkill = playerCreature->getSkillMod("surveying");
+	if (density < .40 && surveySkill < 50) {
+		ParameterizedStringId message("survey", "density_below_threshold");
+		message.setTO(resname);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		playerCreature->sendMessage(sysMessage);
+		return;
+	}
+
+	// Was the sample successful or not
+	if (System::random(50) > surveySkill) {
+		ParameterizedStringId message("survey", "sample_failed");
+		message.setTO(resname);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		playerCreature->sendMessage(sysMessage);
+
+		// Add sampletask to continue
+		SampleTask* sampleTask = new SampleTask(playerCreature, surveyTool);
+		sampleTask->schedule(30000);
+		playerCreature->addPendingTask("sample", sampleTask);
+
+		return;
+	}
+
+	int unitsExtracted = 10 + System::random(surveySkill / 5);
+
+	// Send message to player about unit extraction
+	ParameterizedStringId message("survey", "sample_located");
+	message.setTO(resname);
+	message.setDI(unitsExtracted);
+	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+	playerCreature->sendMessage(sysMessage);
+
+	// We need the spawn object to track extraction
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
+
+	// Add resource to inventory
+	ManagedReference<SceneObject*> inventory =
+			playerCreature->getSlottedObject("inventory");
+
+	// Check inventory for resource and add if existing
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object =
+				inventory->getContainerObject(i);
+
+		if (object->isResourceContainer()) {
+			ManagedReference<ResourceContainer*> resource = (ResourceContainer*) object.get();
+
+			if (resource->getSpawnName() == resname) {
+				int totalStackSize = resource->getObjectCount() + unitsExtracted;
+
+				if (totalStackSize > ResourceContainer::MAXSIZE) {
+					unitsExtracted = totalStackSize - ResourceContainer::MAXSIZE;
+					resource->setObjectCount(totalStackSize, true);
+					break;
+				}
+			}
+		}
+	}
+
+	if (unitsExtracted > 0) {
+		ResourceContainer* harvestedResource = resourceSpawn->extractResource(zoneid, unitsExtracted);
+		inventory->addObject(harvestedResource, -1);
+		harvestedResource->sendTo(playerCreature);
+		harvestedResource->updateToDatabase();
+	}
+
+	playerCreature->removePendingTask("sampleresults");
+}
+
+ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
+	return randomPool->removeSpawn(type);
+}

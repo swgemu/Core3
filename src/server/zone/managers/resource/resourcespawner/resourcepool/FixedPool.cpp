@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file FixedPool.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "FixedPool.h"
 #include "../ResourceSpawner.h"
 
@@ -56,6 +62,7 @@ FixedPool::~FixedPool() {
 void FixedPool::initialize(const String& includes, const String& excludes) {
 	ResourcePool::initialize(includes, excludes);
 
+	/// We need to add a NULL item for each object the pool will fill
 	for (int ii = 0; ii < includedResources.size(); ++ii)
 		this->add(NULL);
 }
@@ -66,8 +73,8 @@ void FixedPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
 		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
 
-		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
-				== NULL) {
+		// If the
+		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool == NULL) {
 			this->setElementAt(ii, resourceSpawn);
 			break;
 		}
@@ -80,6 +87,9 @@ bool FixedPool::update() {
 	 * Create resources for any included type that doesn't exist in
 	 * the VectorMap
 	 */
+
+	int spawned = 0, despawned = 0;
+
 	for(int ii = 0; ii < size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
@@ -94,6 +104,8 @@ bool FixedPool::update() {
 				newSpawn->updateToDatabase();
 
 				setElementAt(ii, newSpawn);
+
+				spawned++;
 
 				StringBuffer msg;
 				msg << "Fixed pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass();
@@ -125,27 +137,29 @@ bool FixedPool::update() {
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
+			despawned++;
 
-			ManagedReference<ResourceSpawn* > newSpawn = NULL;// =
-					//resourceSpawner->getFromRandomPool(type);
+			ManagedReference<ResourceSpawn* > newSpawn = NULL;
 
 			if(newSpawn == NULL)
 				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
 			newSpawn->updateToDatabase();
+			spawned++;
 
 			setElementAt(ii, newSpawn);
 		}
 	}
-
-	resourceSpawner->log("Fixed Pool Update Successful");
+	StringBuffer buffer;
+	buffer << "Fixed Pool Update Successful, Added " << spawned << " and removed " << despawned << " resources";
+	resourceSpawner->info(buffer.toString(), true);
 	return true;
 }
 
 void FixedPool::print() {
 
-	System::out << "**** Fixed Pool ****" << endl;
+	info("**** Fixed Pool ****");
 	ResourcePool::print();
-	System::out << "**********************" << endl;
+	info("**********************");
 }
