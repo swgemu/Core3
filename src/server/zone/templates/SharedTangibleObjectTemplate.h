@@ -44,15 +44,15 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-    int getMaxCondition() const {
+	inline int getMaxCondition() const {
 		return maxCondition;
 	}
 
-	uint32 getOptionsBitmask() const {
+	inline uint32 getOptionsBitmask() const {
 		return optionsBitmask;
 	}
 
-	uint32 getPvpStatusBitmask() const {
+	inline uint32 getPvpStatusBitmask() const {
 		return pvpStatusBitmask;
 	}
 
@@ -68,23 +68,23 @@ public:
 		this->pvpStatusBitmask = pvpStatusBitmask;
 	}
 
-    Vector<String> getCertificationsRequired() const {
+	inline Vector<String> getCertificationsRequired() const {
 		return certificationsRequired;
 	}
 
-	uint16 getPlayerUseMask() const {
+    inline uint16 getPlayerUseMask() const {
 		return playerUseMask;
 	}
 
-	String getStructureFootprintFileName() const {
+	inline String getStructureFootprintFileName() const {
 		return structureFootprintFileName;
 	}
 
-	bool getTargetable() const {
+	inline bool getTargetable() const {
 		return targetable;
 	}
 
-	bool getUseStructureFootprintOutline() const {
+	inline bool getUseStructureFootprintOutline() const {
 		return useStructureFootprintOutline;
 	}
 

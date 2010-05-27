@@ -37,6 +37,31 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	damageModifiers = weaoData->getDamageModifiers();
 	speedModifiers = weaoData->getSpeedModifiers();
 	defenderSecondaryDefenseModifiers = weaoData->getDefenderSecondaryDefenseModifiers();
+
+	armorPiercing = weaoData->getArmorPiercing();
+
+	healthAttackCost = weaoData->getHealthAttackCost();
+	actionAttackCost = weaoData->getActionAttackCost();
+	mindAttackCost = weaoData->getMindAttackCost();
+	forceCost = weaoData->getForceCost();
+
+	pointBlankAccuracy = weaoData->getPointBlankAccuracy();
+	pointBlankRange = weaoData->getPointBlankRange();
+
+	idealRange = weaoData->getIdealRange();
+	idealAccuracy = weaoData->getIdealAccuracy();
+
+	maxRange = weaoData->getMaxRange();
+	maxRangeAccuracy = weaoData->getMaxRangeAccuracy();
+
+	minDamage = weaoData->getMinDamage();
+	maxDamage = weaoData->getMaxDamage();
+
+	woundsRatio = weaoData->getWoundsRatio();
+
+	area = weaoData->getArea();
+
+	attackSpeed = weaoData->getAttackSpeed();
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {

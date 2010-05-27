@@ -48,6 +48,31 @@ SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	damageType = KINETIC,
 	
+	armorPiercing = 0,
+		
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
+	forceCost = 0,
+		
+	pointBlankAccuracy = 0,
+	pointBlankRange = 0,
+		
+	idealRange = 0,
+	idealAccuracy = 0,
+		
+	maxRange = 5,
+	maxRangeAccuracy = 0,	
+		
+	minDamage = 1,
+	maxDamage = 10,
+		
+	woundsRatio = 0,
+		
+	area = 0,
+		
+	attackSpeed = 1,
+	
 	creatureAccuracyModifiers = { },
 	defenderDefenseModifiers = { },
 	defenderSecondaryDefenseModifiers = { },
