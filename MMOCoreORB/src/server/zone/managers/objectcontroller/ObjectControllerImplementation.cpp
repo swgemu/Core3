@@ -121,12 +121,6 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	}
 
 	return durationTime;
-
-	/*if (object->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) object;
-
-		player->clearQueueAction(actionCount, 0, 2, 0);
-	}*/
 }
 
 void ObjectControllerImplementation::addQueueCommand(QueueCommand* command) {

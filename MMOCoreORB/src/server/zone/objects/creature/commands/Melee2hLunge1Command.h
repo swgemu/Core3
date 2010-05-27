@@ -61,7 +61,7 @@ public:
 
 		combatSpam = "sword2_sweep";
 
-		range = -1;
+		range = 15;
 
 		postureDownStateChance = 1;
 

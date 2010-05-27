@@ -65,7 +65,7 @@ public:
 		combatSpam = "";
 		animationCRC = String("intimidate").hashCode();
 		effectString = "clienteffect/combat_special_attacker_intimidate.cef";
-		range = -1;
+		range = 15;
 
 		poolsToDamage = 0;
 	}
