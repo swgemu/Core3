@@ -106,7 +106,7 @@ public:
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
-	void sendSample(PlayerCreature* playerCreature, const String& resname);
+	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
 	void sendSampleResults(PlayerCreature* playerCreature, const float density, const String& resname);
 
 	ResourceSpawn* getFromRandomPool(const String& type);

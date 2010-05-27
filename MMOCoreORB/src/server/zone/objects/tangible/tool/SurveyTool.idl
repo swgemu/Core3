@@ -63,6 +63,7 @@ class SurveyTool extends ToolTangibleObject {
 	protected string sampleAnimation;
 	
 	protected transient string lastResourceSampleName;
+	protected transient boolean radioactiveOk;
 	
 	public static final int SOLAR = 1;
 	public static final int CHEMICAL = 2;
@@ -76,6 +77,7 @@ class SurveyTool extends ToolTangibleObject {
 	
 	public SurveyTool() {
 		Logger.setLoggingName("SurveyTool");
+		radioactiveOk = false;
 		range = 0;
 	}
 	
@@ -105,6 +107,16 @@ class SurveyTool extends ToolTangibleObject {
 	public int getPoints() {
 		return points;
 	}
+	
+	public boolean canSampleRadioactive() {
+		return radioactiveOk;
+	}
+	
+	public void consentRadioactiveSample() {
+		radioactiveOk = true;
+	}
+	
+	public native void sendRadioactiveWarning(PlayerCreature playerCreature);
 	
 	public native void sendRangeSui(PlayerCreature playerCreature);
 	

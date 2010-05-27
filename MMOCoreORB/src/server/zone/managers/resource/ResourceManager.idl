@@ -91,7 +91,7 @@ class ResourceManager extends ManagedObject implements Lua, PostureChangeObserve
 	
 	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
-	public native void sendSample(PlayerCreature playerCreature, final string resname);
+	public native void sendSample(PlayerCreature playerCreature, final string resname, final string sampleAnimation);
 	
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();

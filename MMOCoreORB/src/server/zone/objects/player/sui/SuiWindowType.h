@@ -136,6 +136,8 @@ public:
 	static const int FISHING = 90;
 
 	static const int CHARACTERBUILDERITEMSELECT = 100;
+
+	static const int SAMPLERADIOACTIVECONFIRM = 110;
 };
 
 #endif /*SuiWindowType_H_*/
