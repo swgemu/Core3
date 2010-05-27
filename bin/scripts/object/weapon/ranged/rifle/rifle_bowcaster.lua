@@ -2,6 +2,11 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 
 	attackType = RANGEDATTACK,
 	damageType = ENERGY,
+	
+	maxRange = 65,
+	
+	minDamage = 50,
+	maxDamage = 100,
 
 	certificationsRequired = { "cert_rifle_bowcaster" },
 	

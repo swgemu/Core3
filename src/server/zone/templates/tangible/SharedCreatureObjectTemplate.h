@@ -54,95 +54,95 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-	Vector<float> getAcceleration() const {
+	inline Vector<float> getAcceleration() const {
 		return acceleration;
 	}
 
-	String getAnimationMapFilename() const {
+	inline String getAnimationMapFilename() const {
 		return animationMapFilename;
 	}
 
-	Vector<int> getBaseHAM() const {
+	inline Vector<int> getBaseHAM() const {
 		return baseHAM;
 	}
 
-	float getCameraHeight() const {
+	inline float getCameraHeight() const {
 		return cameraHeight;
 	}
 
-	float getCollisionHeight() const {
+	inline float getCollisionHeight() const {
 		return collisionHeight;
 	}
 
-	float getCollisionLength() const {
+	inline float getCollisionLength() const {
 		return collisionLength;
 	}
 
-	float getCollisionOffsetX() const {
+	inline float getCollisionOffsetX() const {
 		return collisionOffsetX;
 	}
 
-	float getCollisionOffsetZ() const {
+	inline float getCollisionOffsetZ() const {
 		return collisionOffsetZ;
 	}
 
-	float getCollisionRadius() const {
+	inline float getCollisionRadius() const {
 		return collisionRadius;
 	}
 
-	int getGender() const {
+	inline int getGender() const {
 		return gender;
 	}
 
-	String getMovementDatatable() const {
+	inline String getMovementDatatable() const {
 		return movementDatatable;
 	}
 
-	int getNiche() const {
+	inline int getNiche() const {
 		return niche;
 	}
 
-	Vector<bool> getPostureAlignToTerrain() const {
+	inline Vector<bool> getPostureAlignToTerrain() const {
 		return postureAlignToTerrain;
 	}
 
-	int getRace() const {
+	inline int getRace() const {
 		return race;
 	}
 
-	float getSlopeModAngle() const {
+	inline float getSlopeModAngle() const {
 		return slopeModAngle;
 	}
 
-	float getSlopeModPercent() const {
+	inline float getSlopeModPercent() const {
 		return slopeModPercent;
 	}
 
-	int getSpecies() const {
+	inline int getSpecies() const {
 		return species;
 	}
 
-	Vector<float> getSpeed() const {
+	inline Vector<float> getSpeed() const {
 		return speed;
 	}
 
-	float getStepHeight() const {
+	inline float getStepHeight() const {
 		return stepHeight;
 	}
 
-	float getSwimHeight() const {
+	inline float getSwimHeight() const {
 		return swimHeight;
 	}
 
-	Vector<float> getTurnRate() const {
+	inline Vector<float> getTurnRate() const {
 		return turnRate;
 	}
 
-	float getWarpTolerance() const {
+	inline float getWarpTolerance() const {
 		return warpTolerance;
 	}
 
-	float getWaterModPercent() const {
+	inline float getWaterModPercent() const {
 		return waterModPercent;
 	}
 

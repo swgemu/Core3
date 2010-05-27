@@ -3,6 +3,11 @@ object_weapon_melee_knife_knife_survival = object_weapon_melee_knife_shared_knif
 	attackType = MELEEATTACK,
 	damageType = KINETIC,
 	
+	maxRange = 5,
+	
+	minDamage = 20,
+	maxDamage = 50,
+	
 	certificationsRequired = { "cert_knife_survival" },
 	
 	creatureAccuracyModifiers = { "onehandmelee_accuracy" }, 
