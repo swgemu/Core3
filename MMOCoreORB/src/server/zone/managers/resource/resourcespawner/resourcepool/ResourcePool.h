@@ -89,6 +89,7 @@ public:
 	 */
 	~ResourcePool() {
 		resourceSpawner = NULL;
+		removeAll();
 	}
 
 	/**

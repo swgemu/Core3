@@ -17,6 +17,8 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/objects/resource/ResourceContainer.h"
+
 #include "server/zone/objects/resource/SpawnDensityMap.h"
 
 #include "server/zone/objects/resource/SpawnMap.h"
@@ -64,9 +66,13 @@ public:
 
 	String getFinalClass();
 
+	String getFamilyName();
+
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	void setContainerCRC(unsigned int crc);
 
 	int getSpawnPool();
 
@@ -75,6 +81,8 @@ public:
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
+
+	ResourceContainer* extractResource(int zoneid, int units);
 
 	int getSpawnMapZone(int i);
 
@@ -96,6 +104,7 @@ protected:
 	virtual ~ResourceSpawn();
 
 	String _return_getClass;
+	String _return_getFamilyName;
 	String _return_getFinalClass;
 	String _return_getName;
 	String _return_getType;
@@ -133,13 +142,15 @@ protected:
 
 	int surveyToolType;
 
+	unsigned int containerCRC;
+
 	unsigned long long spawned;
 
 	unsigned long long despawned;
 
 	SpawnMap spawnMaps;
 
-	unsigned long long totalUnitsSpawned;
+	unsigned long long maxUnitsSpawned;
 
 	unsigned long long unitsInCirculation;
 
@@ -176,9 +187,13 @@ public:
 
 	String getFinalClass();
 
+	String getFamilyName();
+
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	void setContainerCRC(unsigned int crc);
 
 	int getSpawnPool();
 
@@ -187,6 +202,8 @@ public:
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
+
+	ResourceContainer* extractResource(int zoneid, int units);
 
 	int getSpawnMapZone(int i);
 
@@ -273,9 +290,13 @@ public:
 
 	String getFinalClass();
 
+	String getFamilyName();
+
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	void setContainerCRC(unsigned int crc);
 
 	int getSpawnPool();
 
@@ -284,6 +305,8 @@ public:
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
+
+	ResourceContainer* extractResource(int zoneid, int units);
 
 protected:
 	String _param0_setName__String_;

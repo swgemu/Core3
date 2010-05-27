@@ -55,7 +55,9 @@ include server.zone.packets.scene.AttributeListMessage;
 
 class ResourceContainer extends TangibleObject {
 
-	ResourceSpawn spawnObject;
+	protected ResourceSpawn spawnObject;
+	
+	public static final int MAXSIZE = 100000;
 	
     public ResourceContainer() {
     	;
@@ -70,4 +72,37 @@ class ResourceContainer extends TangibleObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	public native void sendTo(SceneObject player, boolean doClose = true);
+	
+	/**
+	 * Sends the baseline messages of this object to the specified player, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public void setSpawnObject(ResourceSpawn spawn) {
+		spawnObject = spawn;
+	}
+	
+	public string getSpawnName() {
+		return spawnObject.getName();
+	}
+	
+	public string getSpawnType() {
+		return spawnObject.getType();
+	}
+	
+	public unsigned long getSpawnID() {
+		return spawnObject.getObjectID();
+	}
 }

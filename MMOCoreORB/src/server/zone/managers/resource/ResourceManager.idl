@@ -58,6 +58,10 @@ include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
 include server.zone.objects.creature.PostureChangeObserver;
 
+/**
+ * The resource manager handles all aspects of in game resources
+ * within the Core3 environment
+ */
 class ResourceManager extends ManagedObject implements Lua, PostureChangeObserver {
 	private transient ZoneProcessServerImplementation processor;
 	private ZoneServer zoneServer;

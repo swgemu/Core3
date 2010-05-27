@@ -760,6 +760,8 @@ public:
 
 	bool isTangibleObject();
 
+	bool isResourceContainer();
+
 	bool isInstrument();
 
 	bool isFishingPoleObject();
@@ -1475,6 +1477,8 @@ public:
 
 	virtual bool isTangibleObject();
 
+	bool isResourceContainer();
+
 	bool isInstrument();
 
 	bool isFishingPoleObject();
@@ -1747,6 +1751,8 @@ public:
 	bool isCellObject();
 
 	bool isTangibleObject();
+
+	bool isResourceContainer();
 
 	bool isInstrument();
 

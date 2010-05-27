@@ -195,17 +195,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(71):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(75):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(73):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(77):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(74):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(78):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(76):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(80):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(77):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(81):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(78):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(82):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
