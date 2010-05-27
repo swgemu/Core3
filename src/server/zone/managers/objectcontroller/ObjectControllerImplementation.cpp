@@ -41,18 +41,6 @@ void ObjectControllerImplementation::finalize() {
 
 	CommandConfigManager::slashCommands = NULL;
 
-	queueCommands->resetIterator();
-
-	SortedVector<QueueCommand*> uniqueCommands;
-	uniqueCommands.setNoDuplicateInsertPlan();
-
-	while (queueCommands->hasNext()) {
-		uniqueCommands.put(queueCommands->getNextValue());
-	}
-
-	for (int i = 0; i < uniqueCommands.size(); ++i)
-		delete uniqueCommands.get(i);
-
 	delete queueCommands;
 	queueCommands = NULL;
 }

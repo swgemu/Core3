@@ -7,8 +7,12 @@
 
 #include "CreatureManager.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/objects/creature/trainer/TrainerCreature.h"
+#include "server/db/ServerDatabase.h"
 
-CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float y, uint64 parentID) {
+CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	ManagedReference<SceneObject*> object = server->createObject(templateCRC, 0);
 
 	if (object == NULL) {
@@ -58,7 +62,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 
 	Locker _locker(creature);
 
-	creature->initializePosition(x, 0, y);
+	creature->initializePosition(x, z, y);
 
 	creature->insertToZone(zone);
 
@@ -81,3 +85,104 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	return true;
 }
 
+void CreatureManagerImplementation::loadTrainers() {
+	info("loading trainers...", true);
+
+	ProfessionManager* professionManager = ProfessionManager::instance();
+
+	int planetid = zone->getZoneID();
+
+	ResultSet* result;
+	StringBuffer query;
+	query << "SELECT * FROM trainers WHERE Planet = " << planetid << ";";
+	result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		String location = result->getString(0);
+		String customname = result->getString(1);
+		String name = result->getString(2);
+		String profession = result->getString(3);
+
+		uint64 crc1 = strtoul(result->getString(4), NULL, 16);
+		uint64 crc2 = strtoul(result->getString(5), NULL, 16);
+		uint64 crc3 = strtoul(result->getString(6), NULL, 16);
+
+		uint64 cell = result->getUnsignedLong(8);
+		float worldx = result->getFloat(9);
+		float worldy = result->getFloat(10);
+		float worldz = result->getFloat(11);
+		float cellx = result->getFloat(12);
+		float celly = result->getFloat(13);
+		float cellz = result->getFloat(14);
+		float oY = result->getFloat(15);
+		float oW = result->getFloat(16);
+
+		uint8 planetmapid = result->getInt(18);
+
+		float x = worldx;
+		float y = worldy;
+		float z = worldz;
+
+		if (cell != 0) {
+			x = cellx;
+			y = celly;
+			z = cellz;
+		}
+
+		int trainerID = result->getInt(17);
+
+		int rand = System::random(2);
+
+		TrainerCreature* trainer = NULL;
+		Profession* professionObject = professionManager->getProfession(profession);
+
+
+		ManagedReference<CreatureObject*> trainerCreature = NULL;
+
+		//TODO: convert the trainer table crcs to server templates with appropiate game object type see object/mobile/dressed_merchant_trainer_01.lua
+		/*if (rand == 0 && crc1 != 0) {
+			trainerCreature = spawnCreature(crc1, x, z, y, cell);
+		} else if (rand == 1 && crc2 != 0) {
+			trainerCreature = spawnCreature(crc2, x, z, y, cell);
+		} else {
+			trainerCreature = spawnCreature(crc3, x, z, y, cell);
+		}*/
+
+		trainerCreature = spawnCreature(String("object/mobile/dressed_merchant_trainer_01.iff").hashCode(), x, z, y, cell);
+
+		//trainerCreature
+
+		if (trainerCreature->isTrainerCreature()) {
+			trainer = (TrainerCreature*) trainerCreature.get();
+			StringId nameId("creature_names", name);
+			trainer->setObjectName(nameId);
+
+			trainer->setProfession(professionObject);
+			trainer->setTrainerID(trainerID);
+
+			trainer->setDirection(oW, 0, oY, 0);
+
+			trainer->setLocation(location);
+		}
+
+
+		/*if (rand == 0 && crc1 != 0)
+			trainer = spawnTrainer(profession, name, "", crc1, cell, x, y, z, oY, oW, true, trainerID);
+		else if (rand == 1 && crc2 != 0)
+			trainer = spawnTrainer(profession, name, "", crc2, cell, x, y, z, oY, oW, true, trainerID);
+		else
+			trainer = spawnTrainer(profession, name, "", crc3, cell, x, y, z, oY, oW, true, trainerID);
+
+			*/
+
+
+		//TODO: Replace this once thoop commits his trainer fix.
+		//UnicodeString trainername = makeCreatureName(customname);
+		trainer->setObjectName(customname);
+
+		/*if (planetmapid > 0)
+			zone->addMapLocation(trainer->getObjectID(), trainername, worldx, worldy, 19, planetmapid, 0);*/
+	}
+
+	delete result;
+}

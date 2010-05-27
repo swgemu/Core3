@@ -789,3 +789,7 @@ float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }
+
+void SceneObjectImplementation::setObjectName(StringId& stringID) {
+	objectName = stringID;
+}

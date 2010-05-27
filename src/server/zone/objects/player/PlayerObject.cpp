@@ -598,6 +598,19 @@ DeltaVector<String>* PlayerObject::getIgnoreList() {
 		return ((PlayerObjectImplementation*) _impl)->getIgnoreList();
 }
 
+int PlayerObject::getExperience(const String& xp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+		method.addAsciiParameter(xp);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getExperience(xp);
+}
+
 /*
  *	PlayerObjectImplementation
  */
@@ -810,6 +823,11 @@ DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
 	return (&ignoreList);
 }
 
+int PlayerObjectImplementation::getExperience(const String& xp) {
+	// server/zone/objects/player/PlayerObject.idl(391):  		return experienceList.get(xp);
+	return (&experienceList)->get(xp);
+}
+
 /*
  *	PlayerObjectAdapter
  */
@@ -931,6 +949,9 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 42:
 		resp->insertByte(getLanguageID());
+		break;
+	case 43:
+		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
 	default:
 		return NULL;
@@ -1085,6 +1106,10 @@ int PlayerObjectAdapter::getJediState() {
 
 byte PlayerObjectAdapter::getLanguageID() {
 	return ((PlayerObjectImplementation*) impl)->getLanguageID();
+}
+
+int PlayerObjectAdapter::getExperience(const String& xp) {
+	return ((PlayerObjectImplementation*) impl)->getExperience(xp);
 }
 
 /*

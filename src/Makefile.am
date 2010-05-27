@@ -70,6 +70,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/Instrument.cpp \
 				server/zone/objects/tangible/Food.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
+				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
@@ -183,6 +184,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \

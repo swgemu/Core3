@@ -260,6 +260,8 @@ public:
 
 	DeltaVector<String>* getIgnoreList();
 
+	int getExperience(const String& xp);
+
 protected:
 	PlayerObject(DummyConstructorParameter* param);
 
@@ -449,6 +451,8 @@ public:
 
 	DeltaVector<String>* getIgnoreList();
 
+	int getExperience(const String& xp);
+
 	PlayerObject* _this;
 
 	operator const PlayerObject*();
@@ -560,6 +564,8 @@ public:
 
 	byte getLanguageID();
 
+	int getExperience(const String& xp);
+
 protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
@@ -574,6 +580,7 @@ protected:
 	String _param0_removeReverseFriend__String_;
 	String _param0_hasSkill__String_;
 	String _param0_setTitle__String_;
+	String _param0_getExperience__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

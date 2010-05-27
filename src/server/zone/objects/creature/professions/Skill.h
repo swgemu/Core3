@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class Skill {
+class Skill : public Object {
 protected:
 	String name;
 

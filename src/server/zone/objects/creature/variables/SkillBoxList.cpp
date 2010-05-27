@@ -13,6 +13,19 @@
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+bool SkillBoxList::containsSkillBox(const String& skillBox) {
+	for (int i = 0; i < vector.size(); ++i) {
+		SkillBox* box = vector.get(i);
+
+		String& name = box->getName();
+
+		if (name == skillBox)
+			return true;
+	}
+
+	return false;
+}
+
 void SkillBoxList::getStringList(Vector<String>& skillBoxes) {
 	for (int i = 0; i < vector.size(); ++i) {
 		SkillBox* box = vector.get(i);

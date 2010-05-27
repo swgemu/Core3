@@ -386,4 +386,8 @@ class PlayerObject extends IntangibleObject {
 	public DeltaVector<string> getIgnoreList() {
 		return ignoreList;
 	}
+	
+	public int getExperience(final string xp) {
+		return experienceList.get(xp);
+	}
 }

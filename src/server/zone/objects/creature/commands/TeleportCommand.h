@@ -63,6 +63,18 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		StringTokenizer args(arguments.toString());
+
+		try {
+			int zoneid = args.getIntToken();
+			float posx = args.getFloatToken();
+			float posy = args.getFloatToken();
+
+			creature->switchZone(zoneid, posx, 0, posy);
+		} catch (...) {
+			creature->sendSystemMessage("invalid arguments for teleport command");
+		}
+
 		return SUCCESS;
 	}
 

@@ -73,31 +73,19 @@ const int ProfessionManager::professionHams[7][9] = {
 		{ 800, 350, 350, 800, 350, 350, 800, 350, 350 }
 };
 
-ProfessionManager::ProfessionManager(ObjectController* controller)
+ProfessionManager::ProfessionManager()
 	: Mutex("Profession Manager"), Logger("ProfessionManager") {
 
-	objectController = controller;
+	objectController = NULL;
 
 	skillBoxMap.setNullValue(NULL);
 	certificationMap.setNullValue(NULL);
 
 	setGlobalLogging(true);
 	setLogging(false);
-
-	loadProfessionsFromDatabase();
 }
 
 ProfessionManager::~ProfessionManager() {
-	for (int i = 0; i < skillBoxMap.size(); ++i)
-		delete skillBoxMap.get(i);
-
-	for (int i = 0; i < certificationMap.size(); ++i)
-		delete certificationMap.get(i);
-
-	professionMap.resetIterator();
-
-	while (professionMap.hasNext())
-		delete professionMap.getNextValue();
 }
 /*
 void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
@@ -143,9 +131,9 @@ void ProfessionManager::setStartingProfession(const String& startingProfession, 
 	Profession* profObj = getProfession(startingProfession);
 
 	if (profObj != NULL) {
-		SkillBox* novice = profObj->getMasterBox(); //profObj->getNoviceBox(); // TODO:remove master box learning
-		//trainSkillBox(novice, player, false);
-		awardSkillBox(novice, player, true, false);
+		SkillBox* novice = profObj->getNoviceBox(); // TODO:remove master box learning
+		trainSkillBox(novice, player, false);
+		//awardSkillBox(novice, player, true, false);
 	}
 
 	String race = Races::getSpecies(raceID);

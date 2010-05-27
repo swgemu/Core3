@@ -168,6 +168,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int DROIDCREATURE = 0x402;
 	public static final int PROBOTCREATURE = 0x403;
 	public static final int PLAYERCREATURE = 0x409;
+	public static final int TRAINERCREATURE = 0x40A;
 
 	public static final int INTANGIBLE = 0x800;
 	public static final int DRAFTSCHEMATIC = 0x801;
@@ -976,6 +977,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public StringId getObjectName() {
 		return objectName;
 	}
+	
+	public string getObjectNameStringIdFile() {
+		return objectName.getFile();
+	}
+	
+	public string getObjectNameStringIdName() {
+		return objectName.getStringID();
+	}
 
 	@local
 	public StringId getDetailedDescription() {
@@ -1159,6 +1168,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void setZoneProcessServer(ZoneProcessServerImplementation srv) {
 		server = srv;
 	}
+	
+	@local
+	public native void setObjectName(@dereferenced StringId stringID);
 
 	public void setObjectName(final unicode name) {
 		objectName.setCustomString(name);

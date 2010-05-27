@@ -70,6 +70,8 @@ public:
 
 	void remove(SkillBox* skillBox, DeltaMessage* message = NULL);
 
+	bool containsSkillBox(const String& skillBox);
+
 	bool toString(String& str);
 	bool parseFromString(const String& str, int version = 0);
 
