@@ -84,7 +84,7 @@ public:
 
 	void init();
 
-	void addMenuItem(const String& name, unsigned long long objectID);
+	void addMenuItem(const String& name, unsigned long long objectID = 0);
 
 	String getMenuItemName(int index);
 
@@ -154,7 +154,7 @@ public:
 
 	void init();
 
-	void addMenuItem(const String& name, unsigned long long objectID);
+	void addMenuItem(const String& name, unsigned long long objectID = 0);
 
 	String getMenuItemName(int index);
 

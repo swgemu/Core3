@@ -138,8 +138,11 @@ includeFile("tangible/food/foraged/foraged_fruit_s1.lua")
 includeFile("tangible/wearables/vest/vest_s09.lua")
 includeFile("tangible/wearables/vest/vest_s10.lua")
 includeFile("mobile/vehicle/speederbike_swoop.lua")
+includeFile("mobile/dressed_merchant_trainer_01.lua")
 includeFile("intangible/vehicle/speederbike_swoop_pcd.lua")
 includeFile("tangible/fishing/fish/fish.lua")
+
+
 
 
 

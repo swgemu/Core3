@@ -405,6 +405,21 @@ class CreatureObject extends TangibleObject {
 		setBankCredits(newCredits);
 	}
 	
+	public void substractCashCredits(int credits) {
+		int newCredits = cashCredits - credits;
+		setCashCredits(newCredits);
+	}
+	
+	public boolean verifyCashCredits(int credits) {
+		if (credits < 0)
+			return false;
+		
+		if (cashCredits < credits)
+			return false;
+		
+		return true;
+	}
+	
 	/**
 	 * Update the cash credits of this object
 	 * @pre { this object is locked }
@@ -574,8 +589,8 @@ class CreatureObject extends TangibleObject {
 		if (object == this)
 			return false;
 		
-		/*if (this.isIncapacitated() ||Êthis.isDead())
-			return false;*/
+		if (this.isIncapacitated() ||Êthis.isDead())
+			return false;
 		
 		return true;
 	}
@@ -607,6 +622,24 @@ class CreatureObject extends TangibleObject {
 				i = i - 1;
 			}
 		}
+	}
+	
+	/**
+	 * sends the conversation list 
+	 * @pre {Êthis locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	public abstract void sendConversationStartTo(SceneObject player) {
+		
+	}
+	
+	/**
+	 * sends the conversation list 
+	 * @pre {Êthis locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	public abstract void selectConversationOption(int option, SceneObject obj) {
+		
 	}
 	
 	public native void dismount();
@@ -925,6 +958,10 @@ class CreatureObject extends TangibleObject {
 		return skillModList.get(skillmod);
 	}
 	
+	public boolean hasSkillBox(final string skillBox) {
+		return skillBoxList.containsSkillBox(skillBox);
+	}
+	
 	@local
 	public DeltaVectorMap<string, long> getSkillModList() {
 		return skillModList;
@@ -936,6 +973,10 @@ class CreatureObject extends TangibleObject {
 	
 	public boolean isCreatureObject() {
 		return true;
+	}
+	
+	public abstract boolean isTrainerCreature() {
+		return false;
 	}
 	
 	public boolean isSwimming() {

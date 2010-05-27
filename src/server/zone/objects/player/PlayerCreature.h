@@ -260,6 +260,22 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
+
 	void addToDuelList(PlayerCreature* targetPlayer);
 
 	void removeFromDuelList(PlayerCreature* targetPlayer);
@@ -322,6 +338,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setConversatingCreature(CreatureObject* creature);
+
 	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
@@ -370,6 +388,8 @@ public:
 
 	WaypointObject* getSurveyWaypoint();
 
+	CreatureObject* getConversatingCreature();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -377,6 +397,9 @@ protected:
 
 	String _return_getFirstName;
 	String _return_getLastName;
+	String _return_getLastNpcConvMessStr;
+	String _return_getLastNpcConvOption;
+	String _return_getLastNpcConvStr;
 
 	UnicodeString _return_getBiography;
 
@@ -455,6 +478,14 @@ protected:
 
 	ManagedReference<WaypointObject* > surveyWaypoint;
 
+	String lastNpcConvoMessage;
+
+	String lastNpcConvo;
+
+	Vector<String> lastNpcConvoOptions;
+
+	ManagedReference<CreatureObject* > conversatingCreature;
+
 public:
 	static const int ONLINE = 1;
 
@@ -507,6 +538,22 @@ public:
 	void notifyCloseContainer(PlayerCreature* player);
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
 
 	void addToDuelList(PlayerCreature* targetPlayer);
 
@@ -570,6 +617,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setConversatingCreature(CreatureObject* creature);
+
 	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
@@ -617,6 +666,8 @@ public:
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
 	WaypointObject* getSurveyWaypoint();
+
+	CreatureObject* getConversatingCreature();
 
 	PlayerCreature* _this;
 
@@ -687,6 +738,22 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
+
 	void addToDuelList(PlayerCreature* targetPlayer);
 
 	void removeFromDuelList(PlayerCreature* targetPlayer);
@@ -747,6 +814,8 @@ public:
 
 	void setRaceID(byte id);
 
+	void setConversatingCreature(CreatureObject* creature);
+
 	void setClientLastMovementStamp(unsigned int stamp);
 
 	void setOffline();
@@ -795,7 +864,12 @@ public:
 
 	WaypointObject* getSurveyWaypoint();
 
+	CreatureObject* getConversatingCreature();
+
 protected:
+	String _param0_setLastNpcConvStr__String_;
+	String _param0_setLastNpcConvMessStr__String_;
+	String _param0_addLastNpcConvOptions__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
 };
 

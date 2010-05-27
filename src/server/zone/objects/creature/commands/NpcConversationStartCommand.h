@@ -63,6 +63,36 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object != NULL && object->isCreatureObject()) {
+			CreatureObject* creatureObject = (CreatureObject*) object.get();
+
+			try {
+				if (creatureObject != creature)
+					creatureObject->wlock(creature);
+
+				if (creature->isInRange(object, 5)) {
+					player->setConversatingCreature(creatureObject);
+					creatureObject->sendConversationStartTo(creature);
+				}
+
+				if (creatureObject != creature)
+					creatureObject->unlock();
+			} catch (...) {
+				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
+
+				if (creatureObject != creature)
+					creatureObject->unlock();
+			}
+		} else
+			return INVALIDTARGET;
+
 		return SUCCESS;
 	}
 

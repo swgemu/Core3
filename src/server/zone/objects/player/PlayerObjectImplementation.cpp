@@ -189,6 +189,9 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 
 
 void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
+	if (xp == 0)
+		return;
+
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
 

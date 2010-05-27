@@ -61,6 +61,7 @@ which carries forward this exception.
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/professions/SkillBox.h"
 
 #include "ZoneProcessServerImplementation.h"
 

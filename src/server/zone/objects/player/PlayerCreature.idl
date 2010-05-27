@@ -134,6 +134,13 @@ class PlayerCreature extends CreatureObject {
 	/// Reference to last used Survey Tool
 	protected transient SurveyTool surveyTool;
 	protected transient WaypointObject surveyWaypoint;
+	
+	//npc conversation
+	protected transient string lastNpcConvoMessage;
+	protected transient string lastNpcConvo;
+	@dereferenced
+	protected transient Vector<string> lastNpcConvoOptions;
+	protected transient CreatureObject conversatingCreature;
 		
 	//protected BankTerminal registeredBank;
 	
@@ -166,6 +173,8 @@ class PlayerCreature extends CreatureObject {
 		clientLastMovementStamp = 0;
 		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+		
+		conversatingCreature = null;
 		
 		persistentMessages.setNoDuplicateInsertPlan();
 		duelList.setNoDuplicateInsertPlan();
@@ -268,6 +277,39 @@ class PlayerCreature extends CreatureObject {
 			return true;
 		
 		return false;
+	}
+	
+	//NPC Conversation Methods
+	public void setLastNpcConvStr(final string conv) {
+		lastNpcConvo = conv;
+	}
+
+	public void setLastNpcConvMessStr(final string mess) {
+		lastNpcConvoMessage = mess;
+	}
+
+	public string getLastNpcConvStr() {
+		return lastNpcConvo;
+	}
+
+	public string getLastNpcConvMessStr() {
+		return lastNpcConvoMessage;
+	}
+
+	public string getLastNpcConvOption(int idx) {
+		return lastNpcConvoOptions.get(idx);
+	}
+
+	public void addLastNpcConvOptions(final string option) {
+		lastNpcConvoOptions.add(option);
+	}
+
+	public int countLastNpcConvOptions() {
+		return lastNpcConvoOptions.size();
+	}
+
+	public void clearLastNpcConvOptions() {
+		lastNpcConvoOptions.removeAll();
 	}
 	
 	
@@ -390,6 +432,10 @@ class PlayerCreature extends CreatureObject {
 		raceID = id;
 	}
 	
+	public void setConversatingCreature(CreatureObject creature) {
+		conversatingCreature = creature;
+	}
+	
 	public void setClientLastMovementStamp(unsigned int stamp) {
 		clientLastMovementStamp = stamp;
 	}
@@ -498,6 +544,10 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public WaypointObject getSurveyWaypoint() {
 		return surveyWaypoint;
+	}
+	
+	public CreatureObject getConversatingCreature() {
+		return conversatingCreature;
 	}
 	
 }

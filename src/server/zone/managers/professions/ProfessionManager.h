@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "ProfessionMap.h"
 
-namespace server {
+/*namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
@@ -62,7 +62,9 @@ class SkillBox;
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature::professions;
+using namespace server::zone::objects::creature::professions;*/
+
+#include "server/zone/objects/creature/professions/SkillBox.h"
 
 namespace server {
 namespace zone {
@@ -96,15 +98,15 @@ namespace server {
   namespace managers {
    namespace professions {
 
-	class ProfessionManager : public Mutex, public Logger {
+	class ProfessionManager : public Mutex, public Logger, public Singleton<ProfessionManager> {
 		//ZoneProcessServerImplementation* server;
 
 		//SkillManager* skillManager;
 
 		ObjectController* objectController;
 
-		VectorMap<String, SkillBox*> skillBoxMap;
-		VectorMap<String, Certification*> certificationMap;
+		VectorMap<String, Reference<SkillBox*> > skillBoxMap;
+		VectorMap<String, Reference<Certification*> > certificationMap;
 
 		ProfessionMap professionMap;
 
@@ -133,15 +135,12 @@ namespace server {
 		uint8 getLangFromRace(int race);
 
 	public:
-		ProfessionManager(ObjectController* controller);
+		ProfessionManager();
 		~ProfessionManager();
 
-		// Player methods
-
-
-		//void loadDefaultSkills(PlayerImplementation* player);
-
-		//bool loseJediSkillBox(PlayerImplementation* player, bool updateClient = true);
+		void initialize() {
+			loadProfessionsFromDatabase();
+		}
 
 		//void surrenderAll(PlayerImplementation* player);
 
@@ -171,6 +170,10 @@ namespace server {
 
 		inline Profession* getProfession(const String& prof) {
 			return professionMap.get(prof);
+		}
+
+		inline void setObjectController(ObjectController* objectControl) {
+			objectController = objectControl;
 		}
 
 		friend class SkillManager;
