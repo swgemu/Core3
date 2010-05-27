@@ -80,6 +80,7 @@ public:
 	const static int CHARACTERBUILDERTERMINAL = 0x4000001;
 	const static int SURVEYTOOL = 0x4000002;
 	const static int RESOURCESPAWN = 0x4000003;
+	const static int RESOURCECONTAINER = 0x4000004;
 
 public:
 	SharedObjectTemplate() {

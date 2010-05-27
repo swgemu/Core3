@@ -191,6 +191,18 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<ResourceSpawn>(SceneObject::RESOURCESPAWN);
 	objectFactory.registerObject<ResourceContainer>(SceneObject::RESOURCECONTAINER);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYGAS);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYLIQUID);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYRADIOACTIVE);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYSOLID);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICCHEMICAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICGAS);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICMINERAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::WATER);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICFOOD);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICHIDE);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICSTRUCTURAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObject::QUESTREOURCE);
 
 
 }

@@ -77,7 +77,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 			"resource_tree.attrib8min, resource_tree.attrib8max, resource_tree.attrib9min, resource_tree.attrib9max, "
 			"resource_tree.attrib10min, resource_tree.attrib10max, resource_tree.attrib11min, resource_tree.attrib11max, "
 			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.zoneRestriction, resource_tree.jtl, "
-			"resource_tree.toolType FROM resource_tree ORDER BY resource_tree.index ASC";
+			"resource_tree.toolType, resource_tree.resourcecontainer FROM resource_tree ORDER BY resource_tree.index ASC";
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -116,6 +116,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 				entry->setZoneRestriction(res->getInt(49));
 				entry->setJTL(res->getInt(50));
 				entry->setSurveyToolType(res->getInt(51));
+				String containerFile = res->getString(52);
+				entry->setContainerCRC(containerFile.hashCode());
 
 				baseNode->add(entry);
 			}

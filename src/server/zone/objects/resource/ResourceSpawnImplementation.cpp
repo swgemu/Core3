@@ -46,10 +46,21 @@
 #include "../terrain/PlanetNames.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 		PlayerCreature* object) {
 
+		alm->insertAttribute("resource_class", getFinalClass());
+
+		for (int i = 0; i < spawnAttributes.size(); ++i) {
+			String attrib;
+			int value = getAttributeAndValue(attrib, i);
+			alm->insertAttribute(attrib, value);
+		}
+
+		alm->insertInt(0);
 }
 
 bool ResourceSpawnImplementation::inShift() {
@@ -67,13 +78,23 @@ int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
 }
 
 bool ResourceSpawnImplementation::isUnknownType() {
-	String unknown = "unknown";
-
-	for (int i = 0; i < spawnClasses.size(); ++i) {
-		if (spawnClasses.get(i).indexOf(unknown) != -1)
+	for (int i = 0; i < stfSpawnClasses.size(); ++i) {
+		if (stfSpawnClasses.get(i).indexOf("unknown") != -1)
 			return true;
 	}
 	return false;
+}
+
+String ResourceSpawnImplementation::getFamilyName() {
+   	int offset = 2;
+
+   	if(isUnknownType())
+   		offset = 1;
+
+   	if(spawnClasses.size() > offset)
+   		return spawnClasses.get(spawnClasses.size() - offset);
+   	else
+   		return "";
 }
 
 void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
@@ -172,27 +193,35 @@ int ResourceSpawnImplementation::getSpawnMapZone(int i) {
 		return -1;
 }
 
+ResourceContainer* ResourceSpawnImplementation::extractResource(int zoneid, int units) {
+	unitsInCirculation += units;
+   	ResourceContainer* newResource = (ResourceContainer*)getZoneServer()->createObject(containerCRC, 2);
+   	newResource->setSpawnObject(_this);
+   	newResource->setObjectCount(units);
+   	newResource->setObjectName(getFamilyName());
+
+   	return newResource;
+}
+
 void ResourceSpawnImplementation::print() {
-	System::out << "**** Resource Data ****\n";
-	System::out << "Class: " << getFinalClass() << "\n";
-	System::out << "Name: " << spawnName << "\n";
-	System::out << "--------Classes--------\n";
+	info("**** Resource Data ****\n");
+	info("Class: " + getFinalClass());
+	info("Name: " + spawnName);
+	info("--------Classes--------");
 	for (int i = 0; i < spawnClasses.size(); ++i)
-		System::out << spawnClasses.get(i) << "(" << stfSpawnClasses.get(i)
-				<< ")" << "\n";
-	System::out << "------Attributes-------\n";
+		info(spawnClasses.get(i) + "(" + stfSpawnClasses.get(i) + ")");
+	info("------Attributes-------");
 
 	for (int i = 0; i < spawnAttributes.size(); ++i) {
 		String attrib;
 		int value = getAttributeAndValue(attrib, i);
-		System::out << attrib << " " << value << "\n";
+		info(attrib + " " + value);
 	}
 
 	for (int i = 0; i < spawnMaps.size(); ++i) {
-		System::out << Planet::getPlanetName(spawnMaps.elementAt(i).getKey())
-				<< ": ";
+		info(Planet::getPlanetName(spawnMaps.elementAt(i).getKey()));
 		spawnMaps.get(i).print();
 	}
 
-	System::out << "***********************\n";
+	info("***********************");
 }

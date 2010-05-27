@@ -107,6 +107,9 @@ public:
 
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 	void sendSample(PlayerCreature* playerCreature, const String& resname);
+	void sendSampleResults(PlayerCreature* playerCreature, const float density, const String& resname);
+
+	ResourceSpawn* getFromRandomPool(const String& type);
 private:
 
 	void loadResourceSpawns();

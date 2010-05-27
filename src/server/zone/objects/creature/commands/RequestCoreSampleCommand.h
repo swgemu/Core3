@@ -67,14 +67,22 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			Reference<Task*> task = creature->getPendingTask("sample");
+			Reference<Task*> sampletask = creature->getPendingTask("sample");
+			Reference<Task*> surveytask = creature->getPendingTask("survey");
 
-			if (task != NULL) {
-				int seconds = ((task->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
+			if (sampletask != NULL) {
+				int seconds = ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
 				ParameterizedStringId message("survey","tool_recharge_time");
 				message.setDI(seconds);
 				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+				creature->sendMessage(sysMessage);
+
+				return SUCCESS;
+			}
+
+			if (surveytask != NULL) {
+				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_survey");
 				creature->sendMessage(sysMessage);
 
 				return SUCCESS;
