@@ -21,6 +21,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -33,6 +35,8 @@ namespace staticobject {
 class StaticObject : public SceneObject {
 public:
 	StaticObject();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -62,6 +66,8 @@ public:
 	StaticObjectImplementation();
 
 	StaticObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
 

@@ -22,6 +22,14 @@ StaticObject::~StaticObject() {
 }
 
 
+void StaticObject::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((StaticObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
 void StaticObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -106,12 +114,17 @@ void StaticObjectImplementation::_serializationHelperMethod() {
 
 StaticObjectImplementation::StaticObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/staticobject/StaticObject.idl(53):  		Logger.setLoggingName("StaticObject");
+	// server/zone/objects/staticobject/StaticObject.idl(54):  		Logger.setLoggingName("StaticObject");
 	Logger::setLoggingName("StaticObject");
-	// server/zone/objects/staticobject/StaticObject.idl(54):  		Logger.setLogging("false");
+	// server/zone/objects/staticobject/StaticObject.idl(55):  		Logger.setLogging("false");
 	Logger::setLogging("false");
-	// server/zone/objects/staticobject/StaticObject.idl(55):  		Logger.setGlobalLogging("true");
+	// server/zone/objects/staticobject/StaticObject.idl(56):  		Logger.setGlobalLogging("true");
 	Logger::setGlobalLogging("true");
+}
+
+void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/staticobject/StaticObject.idl(67):  		super.loadTemplateData(templateData);
+	SceneObjectImplementation::loadTemplateData(templateData);
 }
 
 /*
