@@ -45,13 +45,27 @@ which carries forward this exception.
 #ifndef MELEE1HLUNGE2COMMAND_H_
 #define MELEE1HLUNGE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Melee1hLunge2Command : public QueueCommand {
+
+class Melee1hLunge2Command : public CombatQueueCommand {
 public:
 
 	Melee1hLunge2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2;
+		speedMultiplier = 1.5;
+
+		animationCRC = String("melee1hlunge2").hashCode();
+
+		combatSpam = "sword1_knockdown";
+
+		range = 20;
+
+		knockdownStateChance = 1;
 
 	}
 
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isOneHandMeleeWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

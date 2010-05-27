@@ -132,7 +132,9 @@ class PlayerCreature extends CreatureObject {
 	
 	/// Crafting and Surveying
 	/// Reference to last used Survey Tool
+	@weakReference
 	protected transient SurveyTool surveyTool;
+	@weakReference
 	protected transient WaypointObject surveyWaypoint;
 	
 	//npc conversation
@@ -140,6 +142,7 @@ class PlayerCreature extends CreatureObject {
 	protected transient string lastNpcConvo;
 	@dereferenced
 	protected transient Vector<string> lastNpcConvoOptions;
+	@weakReference
 	protected transient CreatureObject conversatingCreature;
 		
 	//protected BankTerminal registeredBank;
@@ -257,14 +260,6 @@ class PlayerCreature extends CreatureObject {
 	 * Unloads all the spawned creatures from the datapad control devices
 	 */
 	public native void unloadSpawnedChildren();
-	
-	/**
-	 * Is executed when the client closes the opened container
-	 * @pre { player locked }
-	 * @post { player locked }
-	 * @param player PlayerCreature that closed this container
-	 */
-	public native void notifyCloseContainer(PlayerCreature player);
 	
 	/**
 	 * Evaluates if this creature is aggresive to the object

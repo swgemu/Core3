@@ -45,13 +45,25 @@ which carries forward this exception.
 #ifndef POLEARMHIT1COMMAND_H_
 #define POLEARMHIT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class PolearmHit1Command : public QueueCommand {
+
+class PolearmHit1Command : public CombatQueueCommand {
 public:
 
 	PolearmHit1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2;
+		speedMultiplier = 1.5;
+
+		animationCRC = String("combo_2b_light").hashCode();
+
+		combatSpam = "polearm_dam1";
+
+		range = -1;
 
 	}
 
@@ -63,7 +75,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPolearmWeaponObject()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
