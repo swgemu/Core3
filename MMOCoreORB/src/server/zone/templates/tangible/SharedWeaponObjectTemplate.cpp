@@ -62,4 +62,29 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 		defenderSecondaryDefenseModifiers.add(secMods.getStringAt(i));
 
 	secMods.pop();
+
+	armorPiercing = templateData->getIntField("armorPiercing");
+
+	healthAttackCost = templateData->getIntField("healthAttackCost");
+	actionAttackCost = templateData->getIntField("actionAttackCost");
+	mindAttackCost = templateData->getIntField("mindAttackCost");
+	forceCost = templateData->getIntField("forceCost");
+
+	pointBlankAccuracy = templateData->getIntField("pointBlankAccuracy");
+	pointBlankRange = templateData->getIntField("pointBlankRange");
+
+	idealRange = templateData->getIntField("idealRange");
+	idealAccuracy = templateData->getIntField("idealAccuracy");
+
+	maxRange = templateData->getIntField("maxRange");
+	maxRangeAccuracy = templateData->getIntField("maxRangeAccuracy");
+
+	minDamage = templateData->getIntField("minDamage");
+	maxDamage = templateData->getIntField("maxDamage");
+
+	woundsRatio = templateData->getFloatField("woundsRatio");
+
+	area = templateData->getIntField("area");
+
+	attackSpeed = templateData->getFloatField("attackSpeed");
 }

@@ -93,123 +93,123 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-    String getAppearanceFilename() const {
+    inline String getAppearanceFilename() const {
 		return appearanceFilename;
 	}
 
-	float getClearFloraRadius() const {
+    inline float getClearFloraRadius() const {
 		return clearFloraRadius;
 	}
 
-	String getClientDataFile() const {
+    inline String getClientDataFile() const {
 		return clientDataFile;
 	}
 
-	int getCollisionActionBlockFlags() const {
+    inline int getCollisionActionBlockFlags() const {
 		return collisionActionBlockFlags;
 	}
 
-	int getCollisionActionFlags() const {
+    inline int getCollisionActionFlags() const {
 		return collisionActionFlags;
 	}
 
-	int getCollisionActionPassFlags() const {
+    inline int getCollisionActionPassFlags() const {
 		return collisionActionPassFlags;
 	}
 
-	int getCollisionMaterialBlockFlags() const {
+    inline int getCollisionMaterialBlockFlags() const {
 		return collisionMaterialBlockFlags;
 	}
 
-	int getCollisionMaterialFlags() const {
+    inline int getCollisionMaterialFlags() const {
 		return collisionMaterialFlags;
 	}
 
-	int getCollisionMaterialPassFlags() const {
+    inline int getCollisionMaterialPassFlags() const {
 		return collisionMaterialPassFlags;
 	}
 
-	int getContainerType() const {
+    inline int getContainerType() const {
 		return containerType;
 	}
 
-	int getContainerVolumeLimit() const {
+    inline int getContainerVolumeLimit() const {
 		return containerVolumeLimit;
 	}
 
-	String getDetailedDescription() const {
+    inline String getDetailedDescription() const {
 		return detailedDescription;
 	}
 
-	int getGameObjectType() const {
+    inline int getGameObjectType() const {
 		return gameObjectType;
 	}
 
-	float getLocationReservationRadius() const {
+    inline float getLocationReservationRadius() const {
 		return locationReservationRadius;
 	}
 
-	String getLookAtText() const {
+    inline String getLookAtText() const {
 		return lookAtText;
 	}
 
-	float getNoBuildRadius() const {
+    inline float getNoBuildRadius() const {
 		return noBuildRadius;
 	}
 
-	String getObjectName() const {
+    inline String getObjectName() const {
 		return objectName;
 	}
 
-	bool getOnlyVisibleInTools() const {
+    inline bool getOnlyVisibleInTools() const {
 		return onlyVisibleInTools;
 	}
 
-	String getPortalLayoutFilename() const {
+    inline String getPortalLayoutFilename() const {
 		return portalLayoutFilename;
 	}
 
-	Vector<String> getArrangementDescriptors() const {
+    inline Vector<String> getArrangementDescriptors() const {
 		return arrangementDescriptors;
 	}
 
-	float getScale() const {
+    inline float getScale() const {
 		return scale;
 	}
 
-	float getScaleThresholdBeforeExtentTest() const {
+    inline float getScaleThresholdBeforeExtentTest() const {
 		return scaleThresholdBeforeExtentTest;
 	}
 
-	bool getSendToClient() const {
+    inline bool getSendToClient() const {
 		return sendToClient;
 	}
 
-	Vector<String> getSlotDescriptors() const {
+    inline Vector<String> getSlotDescriptors() const {
 		return slotDescriptors;
 	}
 
-	bool getSnapToTerrain() const {
+    inline bool getSnapToTerrain() const {
 		return snapToTerrain;
 	}
 
-	int getSurfaceType() const {
+    inline int getSurfaceType() const {
 		return surfaceType;
 	}
 
-	String getTintPallete() const {
+    inline String getTintPallete() const {
 		return tintPallete;
 	}
 
-	int getTotalCellNumber() const {
+    inline int getTotalCellNumber() const {
 		return totalCellNumber;
 	}
 
-	uint32 getClientObjectCRC() {
+    inline uint32 getClientObjectCRC() {
 		return clientObjectCRC;
 	}
 
-	String getFullTemplateString() {
+    inline String getFullTemplateString() {
 		return fullTemplateString;
 	}
 
