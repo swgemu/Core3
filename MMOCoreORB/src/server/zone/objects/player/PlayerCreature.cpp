@@ -259,12 +259,115 @@ bool PlayerCreature::isAggressiveTo(PlayerCreature* object) {
 		return ((PlayerCreatureImplementation*) _impl)->isAggressiveTo(object);
 }
 
-void PlayerCreature::addToDuelList(PlayerCreature* targetPlayer) {
+void PlayerCreature::setLastNpcConvStr(const String& conv) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
+		method.addAsciiParameter(conv);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->setLastNpcConvStr(conv);
+}
+
+void PlayerCreature::setLastNpcConvMessStr(const String& mess) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addAsciiParameter(mess);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->setLastNpcConvMessStr(mess);
+}
+
+String PlayerCreature::getLastNpcConvStr() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
+		return _return_getLastNpcConvStr;
+	} else
+		return ((PlayerCreatureImplementation*) _impl)->getLastNpcConvStr();
+}
+
+String PlayerCreature::getLastNpcConvMessStr() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
+		return _return_getLastNpcConvMessStr;
+	} else
+		return ((PlayerCreatureImplementation*) _impl)->getLastNpcConvMessStr();
+}
+
+String PlayerCreature::getLastNpcConvOption(int idx) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addSignedIntParameter(idx);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvOption);
+		return _return_getLastNpcConvOption;
+	} else
+		return ((PlayerCreatureImplementation*) _impl)->getLastNpcConvOption(idx);
+}
+
+void PlayerCreature::addLastNpcConvOptions(const String& option) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addAsciiParameter(option);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->addLastNpcConvOptions(option);
+}
+
+int PlayerCreature::countLastNpcConvOptions() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerCreatureImplementation*) _impl)->countLastNpcConvOptions();
+}
+
+void PlayerCreature::clearLastNpcConvOptions() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->clearLastNpcConvOptions();
+}
+
+void PlayerCreature::addToDuelList(PlayerCreature* targetPlayer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -277,7 +380,7 @@ void PlayerCreature::removeFromDuelList(PlayerCreature* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -290,7 +393,7 @@ PlayerCreature* PlayerCreature::getDuelListObject(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 31);
 		method.addSignedIntParameter(index);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -303,7 +406,7 @@ bool PlayerCreature::requestedDuelTo(PlayerCreature* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(targetPlayer);
 
 		return method.executeWithBooleanReturn();
@@ -316,7 +419,7 @@ bool PlayerCreature::isDuelListEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -328,7 +431,7 @@ int PlayerCreature::getDuelListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -340,7 +443,7 @@ void PlayerCreature::notifySceneReady() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 35);
 
 		method.executeWithVoidReturn();
 	} else
@@ -360,7 +463,7 @@ void PlayerCreature::addPersistentMessage(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -373,7 +476,7 @@ void PlayerCreature::dropPersistentMessage(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 37);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -386,7 +489,7 @@ PlayerObject* PlayerCreature::getPlayerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 38);
 
 		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
@@ -398,7 +501,7 @@ bool PlayerCreature::isOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -410,7 +513,7 @@ bool PlayerCreature::isOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -422,7 +525,7 @@ bool PlayerCreature::isLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -434,7 +537,7 @@ bool PlayerCreature::isLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -446,7 +549,7 @@ bool PlayerCreature::isLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -458,7 +561,7 @@ bool PlayerCreature::isLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -470,7 +573,7 @@ unsigned int PlayerCreature::getAccountID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -482,7 +585,7 @@ ZoneClientSession* PlayerCreature::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 46);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -494,7 +597,7 @@ byte PlayerCreature::getRaceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithByteReturn();
 	} else
@@ -506,7 +609,7 @@ unsigned long long PlayerCreature::getSavedParentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -518,7 +621,7 @@ int PlayerCreature::getSavedZoneID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -530,7 +633,7 @@ String PlayerCreature::getFirstName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 50);
 
 		method.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
@@ -543,7 +646,7 @@ String PlayerCreature::getLastName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 51);
 
 		method.executeWithAsciiReturn(_return_getLastName);
 		return _return_getLastName;
@@ -556,7 +659,7 @@ void PlayerCreature::setSavedParentID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 52);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -569,7 +672,7 @@ void PlayerCreature::setSavedZoneID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 53);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -582,7 +685,7 @@ void PlayerCreature::setSkillPoints(int points) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 54);
 		method.addSignedIntParameter(points);
 
 		method.executeWithVoidReturn();
@@ -595,7 +698,7 @@ void PlayerCreature::addSkillPoints(int points) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 55);
 		method.addSignedIntParameter(points);
 
 		method.executeWithVoidReturn();
@@ -608,7 +711,7 @@ void PlayerCreature::setClient(ZoneClientSession* cli) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 56);
 		method.addObjectParameter(cli);
 
 		method.executeWithVoidReturn();
@@ -621,7 +724,7 @@ void PlayerCreature::setBiography(const UnicodeString& bio) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 57);
 		method.addUnicodeParameter(bio);
 
 		method.executeWithVoidReturn();
@@ -634,7 +737,7 @@ void PlayerCreature::setRaceID(byte id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 58);
 		method.addByteParameter(id);
 
 		method.executeWithVoidReturn();
@@ -642,12 +745,25 @@ void PlayerCreature::setRaceID(byte id) {
 		((PlayerCreatureImplementation*) _impl)->setRaceID(id);
 }
 
+void PlayerCreature::setConversatingCreature(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->setConversatingCreature(creature);
+}
+
 void PlayerCreature::setClientLastMovementStamp(unsigned int stamp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 60);
 		method.addUnsignedIntParameter(stamp);
 
 		method.executeWithVoidReturn();
@@ -660,7 +776,7 @@ void PlayerCreature::setOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 61);
 
 		method.executeWithVoidReturn();
 	} else
@@ -672,7 +788,7 @@ void PlayerCreature::setLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 62);
 
 		method.executeWithVoidReturn();
 	} else
@@ -684,7 +800,7 @@ void PlayerCreature::setOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 63);
 
 		method.executeWithVoidReturn();
 	} else
@@ -696,7 +812,7 @@ void PlayerCreature::setLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 64);
 
 		method.executeWithVoidReturn();
 	} else
@@ -708,7 +824,7 @@ void PlayerCreature::setAccountID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 65);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -721,7 +837,7 @@ void PlayerCreature::clearDisconnectEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 66);
 
 		method.executeWithVoidReturn();
 	} else
@@ -733,7 +849,7 @@ void PlayerCreature::clearRecoveryEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 67);
 
 		method.executeWithVoidReturn();
 	} else
@@ -745,7 +861,7 @@ void PlayerCreature::addChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 68);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -758,7 +874,7 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 69);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -771,7 +887,7 @@ int PlayerCreature::getSkillPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 70);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -783,7 +899,7 @@ unsigned int PlayerCreature::getNewSuiBoxID(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 71);
 		method.addUnsignedIntParameter(type);
 
 		return method.executeWithUnsignedIntReturn();
@@ -796,7 +912,7 @@ bool PlayerCreature::hasSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 72);
 		method.addUnsignedIntParameter(boxID);
 
 		return method.executeWithBooleanReturn();
@@ -809,7 +925,7 @@ SuiBox* PlayerCreature::getSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 73);
 		method.addUnsignedIntParameter(boxID);
 
 		return (SuiBox*) method.executeWithObjectReturn();
@@ -822,7 +938,7 @@ void PlayerCreature::removeSuiBox(unsigned int boxID, bool closeWindowToClient) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 74);
 		method.addUnsignedIntParameter(boxID);
 		method.addBooleanParameter(closeWindowToClient);
 
@@ -836,7 +952,7 @@ void PlayerCreature::addSuiBox(SuiBox* sui) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 75);
 		method.addObjectParameter(sui);
 
 		method.executeWithVoidReturn();
@@ -849,7 +965,7 @@ int PlayerCreature::getLotsRemaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 76);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -861,7 +977,7 @@ int PlayerCreature::getFactionStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 77);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -873,7 +989,7 @@ UnicodeString PlayerCreature::getBiography() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 78);
 
 		method.executeWithUnicodeReturn(_return_getBiography);
 		return _return_getBiography;
@@ -886,7 +1002,7 @@ unsigned int PlayerCreature::getClientLastMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 79);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -898,7 +1014,7 @@ void PlayerCreature::setSurveyTool(SurveyTool* tool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 80);
 		method.addObjectParameter(tool);
 
 		method.executeWithVoidReturn();
@@ -911,7 +1027,7 @@ SurveyTool* PlayerCreature::getSurveyTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 81);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -923,7 +1039,7 @@ void PlayerCreature::setSurveyWaypoint(WaypointObject* waypoint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 82);
 		method.addObjectParameter(waypoint);
 
 		method.executeWithVoidReturn();
@@ -936,11 +1052,23 @@ WaypointObject* PlayerCreature::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 83);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerCreatureImplementation*) _impl)->getSurveyWaypoint();
+}
+
+CreatureObject* PlayerCreature::getConversatingCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 84);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerCreatureImplementation*) _impl)->getConversatingCreature();
 }
 
 /*
@@ -1038,298 +1166,350 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 
 PlayerCreatureImplementation::PlayerCreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerCreature.idl(148):  		Logger.setLoggingName("PlayerCreature");
+	// server/zone/objects/player/PlayerCreature.idl(155):  		Logger.setLoggingName("PlayerCreature");
 	Logger::setLoggingName("PlayerCreature");
-	// server/zone/objects/player/PlayerCreature.idl(150):  		owner = null;
+	// server/zone/objects/player/PlayerCreature.idl(157):  		owner = null;
 	owner = NULL;
-	// server/zone/objects/player/PlayerCreature.idl(152):  		disconnectEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(159):  		disconnectEvent = null;
 	disconnectEvent = NULL;
-	// server/zone/objects/player/PlayerCreature.idl(153):  		recoveryEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(160):  		recoveryEvent = null;
 	recoveryEvent = NULL;
-	// server/zone/objects/player/PlayerCreature.idl(154):  		accountID = 0;
+	// server/zone/objects/player/PlayerCreature.idl(161):  		accountID = 0;
 	accountID = 0;
-	// server/zone/objects/player/PlayerCreature.idl(156):  		savedZoneID = -1;
+	// server/zone/objects/player/PlayerCreature.idl(163):  		savedZoneID = -1;
 	savedZoneID = -1;
-	// server/zone/objects/player/PlayerCreature.idl(157):  		savedParentID = 0;
+	// server/zone/objects/player/PlayerCreature.idl(164):  		savedParentID = 0;
 	savedParentID = 0;
-	// server/zone/objects/player/PlayerCreature.idl(159):  		skillPoints = 0;
+	// server/zone/objects/player/PlayerCreature.idl(166):  		skillPoints = 0;
 	skillPoints = 0;
-	// server/zone/objects/player/PlayerCreature.idl(161):  		suiBoxNextID = 0;
+	// server/zone/objects/player/PlayerCreature.idl(168):  		suiBoxNextID = 0;
 	suiBoxNextID = 0;
-	// server/zone/objects/player/PlayerCreature.idl(163):  		factionStatus = 0;
+	// server/zone/objects/player/PlayerCreature.idl(170):  		factionStatus = 0;
 	factionStatus = 0;
-	// server/zone/objects/player/PlayerCreature.idl(164):  		lotsRemaining = 0;
+	// server/zone/objects/player/PlayerCreature.idl(171):  		lotsRemaining = 0;
 	lotsRemaining = 0;
-	// server/zone/objects/player/PlayerCreature.idl(166):  		clientLastMovementStamp = 0;
+	// server/zone/objects/player/PlayerCreature.idl(173):  		clientLastMovementStamp = 0;
 	clientLastMovementStamp = 0;
-	// server/zone/objects/player/PlayerCreature.idl(168):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+	// server/zone/objects/player/PlayerCreature.idl(175):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 	CreatureObjectImplementation::pvpStatusBitmask = CreatureFlag::PLAYER;
-	// server/zone/objects/player/PlayerCreature.idl(170):  		persistentMessages.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerCreature.idl(177):  		conversatingCreature = null;
+	conversatingCreature = NULL;
+	// server/zone/objects/player/PlayerCreature.idl(179):  		persistentMessages.setNoDuplicateInsertPlan();
 	(&persistentMessages)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerCreature.idl(171):  		duelList.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerCreature.idl(180):  		duelList.setNoDuplicateInsertPlan();
 	(&duelList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerCreature.idl(173):  		setOffline();
+	// server/zone/objects/player/PlayerCreature.idl(182):  		setOffline();
 	setOffline();
 }
 
 void PlayerCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/player/PlayerCreature.idl(178):  		super.loadTemplateData(templateData);
+	// server/zone/objects/player/PlayerCreature.idl(187):  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/player/PlayerCreature.idl(180):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+	// server/zone/objects/player/PlayerCreature.idl(189):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 	CreatureObjectImplementation::pvpStatusBitmask = CreatureFlag::PLAYER;
 }
 
 bool PlayerCreatureImplementation::isAggressiveTo(PlayerCreature* object) {
-	// server/zone/objects/player/PlayerCreature.idl(267):  		return 
-	if ((&duelList)->contains(object) && object->requestedDuelTo(_this))	// server/zone/objects/player/PlayerCreature.idl(268):  			return true;
+	// server/zone/objects/player/PlayerCreature.idl(276):  		return 
+	if ((&duelList)->contains(object) && object->requestedDuelTo(_this))	// server/zone/objects/player/PlayerCreature.idl(277):  			return true;
 	return true;
-	// server/zone/objects/player/PlayerCreature.idl(270):  false;
+	// server/zone/objects/player/PlayerCreature.idl(279):  false;
 	return false;
 }
 
+void PlayerCreatureImplementation::setLastNpcConvStr(const String& conv) {
+	// server/zone/objects/player/PlayerCreature.idl(284):  		lastNpcConvo = conv;
+	lastNpcConvo = conv;
+}
+
+void PlayerCreatureImplementation::setLastNpcConvMessStr(const String& mess) {
+	// server/zone/objects/player/PlayerCreature.idl(288):  		lastNpcConvoMessage = mess;
+	lastNpcConvoMessage = mess;
+}
+
+String PlayerCreatureImplementation::getLastNpcConvStr() {
+	// server/zone/objects/player/PlayerCreature.idl(292):  		return lastNpcConvo;
+	return lastNpcConvo;
+}
+
+String PlayerCreatureImplementation::getLastNpcConvMessStr() {
+	// server/zone/objects/player/PlayerCreature.idl(296):  		return lastNpcConvoMessage;
+	return lastNpcConvoMessage;
+}
+
+String PlayerCreatureImplementation::getLastNpcConvOption(int idx) {
+	// server/zone/objects/player/PlayerCreature.idl(300):  		return lastNpcConvoOptions.get(idx);
+	return (&lastNpcConvoOptions)->get(idx);
+}
+
+void PlayerCreatureImplementation::addLastNpcConvOptions(const String& option) {
+	// server/zone/objects/player/PlayerCreature.idl(304):  		lastNpcConvoOptions.add(option);
+	(&lastNpcConvoOptions)->add(option);
+}
+
+int PlayerCreatureImplementation::countLastNpcConvOptions() {
+	// server/zone/objects/player/PlayerCreature.idl(308):  		return lastNpcConvoOptions.size();
+	return (&lastNpcConvoOptions)->size();
+}
+
+void PlayerCreatureImplementation::clearLastNpcConvOptions() {
+	// server/zone/objects/player/PlayerCreature.idl(312):  		lastNpcConvoOptions.removeAll();
+	(&lastNpcConvoOptions)->removeAll();
+}
+
 void PlayerCreatureImplementation::addToDuelList(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(276):  		duelList.put(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(318):  		duelList.put(targetPlayer);
 	(&duelList)->put(targetPlayer);
 }
 
 void PlayerCreatureImplementation::removeFromDuelList(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(280):  		duelList.drop(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(322):  		duelList.drop(targetPlayer);
 	(&duelList)->drop(targetPlayer);
 }
 
 PlayerCreature* PlayerCreatureImplementation::getDuelListObject(int index) {
-	// server/zone/objects/player/PlayerCreature.idl(284):  		return duelList.get(index);
+	// server/zone/objects/player/PlayerCreature.idl(326):  		return duelList.get(index);
 	return (&duelList)->get(index);
 }
 
 bool PlayerCreatureImplementation::requestedDuelTo(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(288):  		return duelList.contains(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(330):  		return duelList.contains(targetPlayer);
 	return (&duelList)->contains(targetPlayer);
 }
 
 bool PlayerCreatureImplementation::isDuelListEmpty() {
-	// server/zone/objects/player/PlayerCreature.idl(292):  		return duelList.isEmpty();
+	// server/zone/objects/player/PlayerCreature.idl(334):  		return duelList.isEmpty();
 	return (&duelList)->isEmpty();
 }
 
 int PlayerCreatureImplementation::getDuelListSize() {
-	// server/zone/objects/player/PlayerCreature.idl(296):  		return duelList.size();
+	// server/zone/objects/player/PlayerCreature.idl(338):  		return duelList.size();
 	return (&duelList)->size();
 }
 
 SortedVector<unsigned long long>* PlayerCreatureImplementation::getPersistentMessages() {
-	// server/zone/objects/player/PlayerCreature.idl(303):  		return persistentMessages;
+	// server/zone/objects/player/PlayerCreature.idl(345):  		return persistentMessages;
 	return (&persistentMessages);
 }
 
 void PlayerCreatureImplementation::addPersistentMessage(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(307):  		persistentMessages.put(id);
+	// server/zone/objects/player/PlayerCreature.idl(349):  		persistentMessages.put(id);
 	(&persistentMessages)->put(id);
 }
 
 void PlayerCreatureImplementation::dropPersistentMessage(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(311):  		persistentMessages.drop(id);
+	// server/zone/objects/player/PlayerCreature.idl(353):  		persistentMessages.drop(id);
 	(&persistentMessages)->drop(id);
 }
 
 PlayerObject* PlayerCreatureImplementation::getPlayerObject() {
-	// server/zone/objects/player/PlayerCreature.idl(315):  		return (PlayerObject) super.getSlottedObject("ghost");
+	// server/zone/objects/player/PlayerCreature.idl(357):  		return (PlayerObject) super.getSlottedObject("ghost");
 	return (PlayerObject*) CreatureObjectImplementation::getSlottedObject("ghost");
 }
 
 bool PlayerCreatureImplementation::isOnline() {
-	// server/zone/objects/player/PlayerCreature.idl(319):  		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	// server/zone/objects/player/PlayerCreature.idl(361):  		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 	return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 }
 
 bool PlayerCreatureImplementation::isOffline() {
-	// server/zone/objects/player/PlayerCreature.idl(323):  		return onlineStatus == OFFLINE;
+	// server/zone/objects/player/PlayerCreature.idl(365):  		return onlineStatus == OFFLINE;
 	return onlineStatus == OFFLINE;
 }
 
 bool PlayerCreatureImplementation::isLoading() {
-	// server/zone/objects/player/PlayerCreature.idl(327):  		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(369):  		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 	return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 }
 
 bool PlayerCreatureImplementation::isLinkDead() {
-	// server/zone/objects/player/PlayerCreature.idl(331):  		return onlineStatus == LINKDEAD;
+	// server/zone/objects/player/PlayerCreature.idl(373):  		return onlineStatus == LINKDEAD;
 	return onlineStatus == LINKDEAD;
 }
 
 bool PlayerCreatureImplementation::isLoggingIn() {
-	// server/zone/objects/player/PlayerCreature.idl(335):  		return onlineStatus == LOGGINGIN;
+	// server/zone/objects/player/PlayerCreature.idl(377):  		return onlineStatus == LOGGINGIN;
 	return onlineStatus == LOGGINGIN;
 }
 
 bool PlayerCreatureImplementation::isLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(339):  		return onlineStatus == LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(381):  		return onlineStatus == LOGGINGOUT;
 	return onlineStatus == LOGGINGOUT;
 }
 
 unsigned int PlayerCreatureImplementation::getAccountID() {
-	// server/zone/objects/player/PlayerCreature.idl(343):  		return accountID;
+	// server/zone/objects/player/PlayerCreature.idl(385):  		return accountID;
 	return accountID;
 }
 
 ZoneClientSession* PlayerCreatureImplementation::getClient() {
-	// server/zone/objects/player/PlayerCreature.idl(347):  		return owner;
+	// server/zone/objects/player/PlayerCreature.idl(389):  		return owner;
 	return owner;
 }
 
 byte PlayerCreatureImplementation::getRaceID() {
-	// server/zone/objects/player/PlayerCreature.idl(351):  		return raceID;
+	// server/zone/objects/player/PlayerCreature.idl(393):  		return raceID;
 	return raceID;
 }
 
 unsigned long long PlayerCreatureImplementation::getSavedParentID() {
-	// server/zone/objects/player/PlayerCreature.idl(355):  		return savedParentID;
+	// server/zone/objects/player/PlayerCreature.idl(397):  		return savedParentID;
 	return savedParentID;
 }
 
 int PlayerCreatureImplementation::getSavedZoneID() {
-	// server/zone/objects/player/PlayerCreature.idl(359):  		return savedZoneID;
+	// server/zone/objects/player/PlayerCreature.idl(401):  		return savedZoneID;
 	return savedZoneID;
 }
 
 void PlayerCreatureImplementation::setSavedParentID(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(366):  		savedParentID = id;
+	// server/zone/objects/player/PlayerCreature.idl(408):  		savedParentID = id;
 	savedParentID = id;
 }
 
 void PlayerCreatureImplementation::setSavedZoneID(int id) {
-	// server/zone/objects/player/PlayerCreature.idl(370):  		savedZoneID = id;
+	// server/zone/objects/player/PlayerCreature.idl(412):  		savedZoneID = id;
 	savedZoneID = id;
 }
 
 void PlayerCreatureImplementation::setSkillPoints(int points) {
-	// server/zone/objects/player/PlayerCreature.idl(374):  		skillPoints = points;
+	// server/zone/objects/player/PlayerCreature.idl(416):  		skillPoints = points;
 	skillPoints = points;
 }
 
 void PlayerCreatureImplementation::addSkillPoints(int points) {
-	// server/zone/objects/player/PlayerCreature.idl(378):  		skillPoints += points;
+	// server/zone/objects/player/PlayerCreature.idl(420):  		skillPoints += points;
 	skillPoints += points;
 }
 
 void PlayerCreatureImplementation::setClient(ZoneClientSession* cli) {
-	// server/zone/objects/player/PlayerCreature.idl(382):  		owner = cli;
+	// server/zone/objects/player/PlayerCreature.idl(424):  		owner = cli;
 	owner = cli;
 }
 
 void PlayerCreatureImplementation::setBiography(const UnicodeString& bio) {
-	// server/zone/objects/player/PlayerCreature.idl(386):  		biography = bio;
+	// server/zone/objects/player/PlayerCreature.idl(428):  		biography = bio;
 	biography = bio;
 }
 
 void PlayerCreatureImplementation::setRaceID(byte id) {
-	// server/zone/objects/player/PlayerCreature.idl(390):  		raceID = id;
+	// server/zone/objects/player/PlayerCreature.idl(432):  		raceID = id;
 	raceID = id;
 }
 
+void PlayerCreatureImplementation::setConversatingCreature(CreatureObject* creature) {
+	// server/zone/objects/player/PlayerCreature.idl(436):  		conversatingCreature = creature;
+	conversatingCreature = creature;
+}
+
 void PlayerCreatureImplementation::setClientLastMovementStamp(unsigned int stamp) {
-	// server/zone/objects/player/PlayerCreature.idl(394):  		clientLastMovementStamp = stamp;
+	// server/zone/objects/player/PlayerCreature.idl(440):  		clientLastMovementStamp = stamp;
 	clientLastMovementStamp = stamp;
 }
 
 void PlayerCreatureImplementation::setOffline() {
-	// server/zone/objects/player/PlayerCreature.idl(398):  		onlineStatus 
+	// server/zone/objects/player/PlayerCreature.idl(444):  		onlineStatus 
 	if (isLinkDead()){
 }
-	// server/zone/objects/player/PlayerCreature.idl(402):  = OFFLINE;
+	// server/zone/objects/player/PlayerCreature.idl(448):  = OFFLINE;
 	onlineStatus = OFFLINE;
 }
 
 void PlayerCreatureImplementation::setLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(410):  		onlineStatus = LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(456):  		onlineStatus = LOGGINGOUT;
 	onlineStatus = LOGGINGOUT;
 }
 
 void PlayerCreatureImplementation::setAccountID(unsigned int id) {
-	// server/zone/objects/player/PlayerCreature.idl(414):  		accountID = id;
+	// server/zone/objects/player/PlayerCreature.idl(460):  		accountID = id;
 	accountID = id;
 }
 
 void PlayerCreatureImplementation::clearDisconnectEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(418):  		disconnectEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(464):  		disconnectEvent = null;
 	disconnectEvent = NULL;
 }
 
 void PlayerCreatureImplementation::clearRecoveryEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(422):  		recoveryEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(468):  		recoveryEvent = null;
 	recoveryEvent = NULL;
 }
 
 void PlayerCreatureImplementation::addChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(426):  		chatRooms.put(room);
+	// server/zone/objects/player/PlayerCreature.idl(472):  		chatRooms.put(room);
 	(&chatRooms)->put(room);
 }
 
 void PlayerCreatureImplementation::removeChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(430):  		chatRooms.drop(room);
+	// server/zone/objects/player/PlayerCreature.idl(476):  		chatRooms.drop(room);
 	(&chatRooms)->drop(room);
 }
 
 int PlayerCreatureImplementation::getSkillPoints() {
-	// server/zone/objects/player/PlayerCreature.idl(434):  		return skillPoints;
+	// server/zone/objects/player/PlayerCreature.idl(480):  		return skillPoints;
 	return skillPoints;
 }
 
 bool PlayerCreatureImplementation::hasSuiBox(unsigned int boxID) {
-	// server/zone/objects/player/PlayerCreature.idl(440):  		return suiBoxes.contains(boxID);
+	// server/zone/objects/player/PlayerCreature.idl(486):  		return suiBoxes.contains(boxID);
 	return (&suiBoxes)->contains(boxID);
 }
 
 SuiBox* PlayerCreatureImplementation::getSuiBox(unsigned int boxID) {
-	// server/zone/objects/player/PlayerCreature.idl(444):  		return suiBoxes.get(boxID);
+	// server/zone/objects/player/PlayerCreature.idl(490):  		return suiBoxes.get(boxID);
 	return (&suiBoxes)->get(boxID);
 }
 
 void PlayerCreatureImplementation::addSuiBox(SuiBox* sui) {
-	// server/zone/objects/player/PlayerCreature.idl(453):  		unsigned int key = sui.getBoxID();
+	// server/zone/objects/player/PlayerCreature.idl(499):  		unsigned int key = sui.getBoxID();
 	unsigned int key = sui->getBoxID();
-	// server/zone/objects/player/PlayerCreature.idl(454):  		suiBoxes.put(key, sui);
+	// server/zone/objects/player/PlayerCreature.idl(500):  		suiBoxes.put(key, sui);
 	(&suiBoxes)->put(key, sui);
 }
 
 int PlayerCreatureImplementation::getLotsRemaining() {
-	// server/zone/objects/player/PlayerCreature.idl(458):  		return lotsRemaining;
+	// server/zone/objects/player/PlayerCreature.idl(504):  		return lotsRemaining;
 	return lotsRemaining;
 }
 
 int PlayerCreatureImplementation::getFactionStatus() {
-	// server/zone/objects/player/PlayerCreature.idl(462):  		return factionStatus;
+	// server/zone/objects/player/PlayerCreature.idl(508):  		return factionStatus;
 	return factionStatus;
 }
 
 UnicodeString PlayerCreatureImplementation::getBiography() {
-	// server/zone/objects/player/PlayerCreature.idl(466):  		return biography;
+	// server/zone/objects/player/PlayerCreature.idl(512):  		return biography;
 	return biography;
 }
 
 unsigned int PlayerCreatureImplementation::getClientLastMovementStamp() {
-	// server/zone/objects/player/PlayerCreature.idl(470):  		return clientLastMovementStamp;
+	// server/zone/objects/player/PlayerCreature.idl(516):  		return clientLastMovementStamp;
 	return clientLastMovementStamp;
 }
 
 void PlayerCreatureImplementation::setSurveyTool(SurveyTool* tool) {
-	// server/zone/objects/player/PlayerCreature.idl(478):  		surveyTool = tool;
+	// server/zone/objects/player/PlayerCreature.idl(524):  		surveyTool = tool;
 	surveyTool = tool;
 }
 
 SurveyTool* PlayerCreatureImplementation::getSurveyTool() {
-	// server/zone/objects/player/PlayerCreature.idl(485):  		return surveyTool;
+	// server/zone/objects/player/PlayerCreature.idl(531):  		return surveyTool;
 	return surveyTool;
 }
 
 void PlayerCreatureImplementation::setSurveyWaypoint(WaypointObject* waypoint) {
-	// server/zone/objects/player/PlayerCreature.idl(493):  		surveyWaypoint = waypoint;
+	// server/zone/objects/player/PlayerCreature.idl(539):  		surveyWaypoint = waypoint;
 	surveyWaypoint = waypoint;
 }
 
 WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
-	// server/zone/objects/player/PlayerCreature.idl(500):  		return surveyWaypoint;
+	// server/zone/objects/player/PlayerCreature.idl(546):  		return surveyWaypoint;
 	return surveyWaypoint;
+}
+
+CreatureObject* PlayerCreatureImplementation::getConversatingCreature() {
+	// server/zone/objects/player/PlayerCreature.idl(550):  		return conversatingCreature;
+	return conversatingCreature;
 }
 
 /*
@@ -1389,166 +1569,196 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isAggressiveTo((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 21:
-		addToDuelList((PlayerCreature*) inv->getObjectParameter());
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__String_));
 		break;
 	case 22:
-		removeFromDuelList((PlayerCreature*) inv->getObjectParameter());
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__String_));
 		break;
 	case 23:
-		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertAscii(getLastNpcConvStr());
 		break;
 	case 24:
-		resp->insertBoolean(requestedDuelTo((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	case 25:
-		resp->insertBoolean(isDuelListEmpty());
+		resp->insertAscii(getLastNpcConvOption(inv->getSignedIntParameter()));
 		break;
 	case 26:
-		resp->insertSignedInt(getDuelListSize());
+		addLastNpcConvOptions(inv->getAsciiParameter(_param0_addLastNpcConvOptions__String_));
 		break;
 	case 27:
-		notifySceneReady();
+		resp->insertSignedInt(countLastNpcConvOptions());
 		break;
 	case 28:
-		addPersistentMessage(inv->getUnsignedLongParameter());
+		clearLastNpcConvOptions();
 		break;
 	case 29:
-		dropPersistentMessage(inv->getUnsignedLongParameter());
+		addToDuelList((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 30:
-		resp->insertLong(getPlayerObject()->_getObjectID());
+		removeFromDuelList((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 31:
-		resp->insertBoolean(isOnline());
+		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 32:
-		resp->insertBoolean(isOffline());
+		resp->insertBoolean(requestedDuelTo((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 33:
-		resp->insertBoolean(isLoading());
+		resp->insertBoolean(isDuelListEmpty());
 		break;
 	case 34:
-		resp->insertBoolean(isLinkDead());
+		resp->insertSignedInt(getDuelListSize());
 		break;
 	case 35:
-		resp->insertBoolean(isLoggingIn());
+		notifySceneReady();
 		break;
 	case 36:
-		resp->insertBoolean(isLoggingOut());
+		addPersistentMessage(inv->getUnsignedLongParameter());
 		break;
 	case 37:
-		resp->insertInt(getAccountID());
+		dropPersistentMessage(inv->getUnsignedLongParameter());
 		break;
 	case 38:
-		resp->insertLong(getClient()->_getObjectID());
+		resp->insertLong(getPlayerObject()->_getObjectID());
 		break;
 	case 39:
-		resp->insertByte(getRaceID());
+		resp->insertBoolean(isOnline());
 		break;
 	case 40:
-		resp->insertLong(getSavedParentID());
+		resp->insertBoolean(isOffline());
 		break;
 	case 41:
-		resp->insertSignedInt(getSavedZoneID());
+		resp->insertBoolean(isLoading());
 		break;
 	case 42:
-		resp->insertAscii(getFirstName());
+		resp->insertBoolean(isLinkDead());
 		break;
 	case 43:
-		resp->insertAscii(getLastName());
+		resp->insertBoolean(isLoggingIn());
 		break;
 	case 44:
-		setSavedParentID(inv->getUnsignedLongParameter());
+		resp->insertBoolean(isLoggingOut());
 		break;
 	case 45:
-		setSavedZoneID(inv->getSignedIntParameter());
+		resp->insertInt(getAccountID());
 		break;
 	case 46:
-		setSkillPoints(inv->getSignedIntParameter());
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case 47:
-		addSkillPoints(inv->getSignedIntParameter());
+		resp->insertByte(getRaceID());
 		break;
 	case 48:
-		setClient((ZoneClientSession*) inv->getObjectParameter());
+		resp->insertLong(getSavedParentID());
 		break;
 	case 49:
-		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
+		resp->insertSignedInt(getSavedZoneID());
 		break;
 	case 50:
-		setRaceID(inv->getByteParameter());
+		resp->insertAscii(getFirstName());
 		break;
 	case 51:
-		setClientLastMovementStamp(inv->getUnsignedIntParameter());
+		resp->insertAscii(getLastName());
 		break;
 	case 52:
-		setOffline();
+		setSavedParentID(inv->getUnsignedLongParameter());
 		break;
 	case 53:
-		setLinkDead();
+		setSavedZoneID(inv->getSignedIntParameter());
 		break;
 	case 54:
-		setOnline();
+		setSkillPoints(inv->getSignedIntParameter());
 		break;
 	case 55:
-		setLoggingOut();
+		addSkillPoints(inv->getSignedIntParameter());
 		break;
 	case 56:
-		setAccountID(inv->getUnsignedIntParameter());
+		setClient((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 57:
-		clearDisconnectEvent();
+		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
 		break;
 	case 58:
-		clearRecoveryEvent();
+		setRaceID(inv->getByteParameter());
 		break;
 	case 59:
-		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 60:
-		removeChatRoom((ChatRoom*) inv->getObjectParameter());
+		setClientLastMovementStamp(inv->getUnsignedIntParameter());
 		break;
 	case 61:
-		resp->insertSignedInt(getSkillPoints());
+		setOffline();
 		break;
 	case 62:
-		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
+		setLinkDead();
 		break;
 	case 63:
-		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
+		setOnline();
 		break;
 	case 64:
-		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
+		setLoggingOut();
 		break;
 	case 65:
-		removeSuiBox(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setAccountID(inv->getUnsignedIntParameter());
 		break;
 	case 66:
-		addSuiBox((SuiBox*) inv->getObjectParameter());
+		clearDisconnectEvent();
 		break;
 	case 67:
-		resp->insertSignedInt(getLotsRemaining());
+		clearRecoveryEvent();
 		break;
 	case 68:
-		resp->insertSignedInt(getFactionStatus());
+		addChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 69:
-		resp->insertUnicode(getBiography());
+		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 70:
-		resp->insertInt(getClientLastMovementStamp());
+		resp->insertSignedInt(getSkillPoints());
 		break;
 	case 71:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
 		break;
 	case 72:
-		resp->insertLong(getSurveyTool()->_getObjectID());
+		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
 		break;
 	case 73:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 74:
+		removeSuiBox(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 75:
+		addSuiBox((SuiBox*) inv->getObjectParameter());
+		break;
+	case 76:
+		resp->insertSignedInt(getLotsRemaining());
+		break;
+	case 77:
+		resp->insertSignedInt(getFactionStatus());
+		break;
+	case 78:
+		resp->insertUnicode(getBiography());
+		break;
+	case 79:
+		resp->insertInt(getClientLastMovementStamp());
+		break;
+	case 80:
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		break;
+	case 81:
+		resp->insertLong(getSurveyTool()->_getObjectID());
+		break;
+	case 82:
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		break;
+	case 83:
 		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		break;
+	case 84:
+		resp->insertLong(getConversatingCreature()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1615,6 +1825,38 @@ void PlayerCreatureAdapter::notifyCloseContainer(PlayerCreature* player) {
 
 bool PlayerCreatureAdapter::isAggressiveTo(PlayerCreature* object) {
 	return ((PlayerCreatureImplementation*) impl)->isAggressiveTo(object);
+}
+
+void PlayerCreatureAdapter::setLastNpcConvStr(const String& conv) {
+	((PlayerCreatureImplementation*) impl)->setLastNpcConvStr(conv);
+}
+
+void PlayerCreatureAdapter::setLastNpcConvMessStr(const String& mess) {
+	((PlayerCreatureImplementation*) impl)->setLastNpcConvMessStr(mess);
+}
+
+String PlayerCreatureAdapter::getLastNpcConvStr() {
+	return ((PlayerCreatureImplementation*) impl)->getLastNpcConvStr();
+}
+
+String PlayerCreatureAdapter::getLastNpcConvMessStr() {
+	return ((PlayerCreatureImplementation*) impl)->getLastNpcConvMessStr();
+}
+
+String PlayerCreatureAdapter::getLastNpcConvOption(int idx) {
+	return ((PlayerCreatureImplementation*) impl)->getLastNpcConvOption(idx);
+}
+
+void PlayerCreatureAdapter::addLastNpcConvOptions(const String& option) {
+	((PlayerCreatureImplementation*) impl)->addLastNpcConvOptions(option);
+}
+
+int PlayerCreatureAdapter::countLastNpcConvOptions() {
+	return ((PlayerCreatureImplementation*) impl)->countLastNpcConvOptions();
+}
+
+void PlayerCreatureAdapter::clearLastNpcConvOptions() {
+	((PlayerCreatureImplementation*) impl)->clearLastNpcConvOptions();
 }
 
 void PlayerCreatureAdapter::addToDuelList(PlayerCreature* targetPlayer) {
@@ -1737,6 +1979,10 @@ void PlayerCreatureAdapter::setRaceID(byte id) {
 	((PlayerCreatureImplementation*) impl)->setRaceID(id);
 }
 
+void PlayerCreatureAdapter::setConversatingCreature(CreatureObject* creature) {
+	((PlayerCreatureImplementation*) impl)->setConversatingCreature(creature);
+}
+
 void PlayerCreatureAdapter::setClientLastMovementStamp(unsigned int stamp) {
 	((PlayerCreatureImplementation*) impl)->setClientLastMovementStamp(stamp);
 }
@@ -1831,6 +2077,10 @@ void PlayerCreatureAdapter::setSurveyWaypoint(WaypointObject* waypoint) {
 
 WaypointObject* PlayerCreatureAdapter::getSurveyWaypoint() {
 	return ((PlayerCreatureImplementation*) impl)->getSurveyWaypoint();
+}
+
+CreatureObject* PlayerCreatureAdapter::getConversatingCreature() {
+	return ((PlayerCreatureImplementation*) impl)->getConversatingCreature();
 }
 
 /*

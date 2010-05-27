@@ -63,6 +63,30 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<CreatureObject*> object = player->getConversatingCreature();
+
+		if (object != NULL) {
+			if (!player->isInRange(object, 5))
+				return TOOFAR;
+
+			int option = Integer::valueOf(arguments.toString());
+
+			try {
+				object->wlock(creature);
+
+				object->selectConversationOption(option, player);
+
+				object->unlock();
+			} catch (...) {
+				object->unlock();
+			}
+		}
+
 		return SUCCESS;
 	}
 

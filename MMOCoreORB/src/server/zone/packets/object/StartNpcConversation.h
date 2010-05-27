@@ -45,6 +45,8 @@ which carries forward this exception.
 #ifndef STARTNPCCONVERSATION_H_
 #define STARTNPCCONVERSATION_H_
 
+#include "ObjectControllerMessage.h"
+
 class StartNpcConversation : public ObjectControllerMessage {
 	
 public:

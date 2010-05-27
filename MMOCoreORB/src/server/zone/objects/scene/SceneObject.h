@@ -226,6 +226,8 @@ public:
 
 	static const int PLAYERCREATURE = 0x409;
 
+	static const int TRAINERCREATURE = 0x40A;
+
 	static const int INTANGIBLE = 0x800;
 
 	static const int DRAFTSCHEMATIC = 0x801;
@@ -690,6 +692,10 @@ public:
 
 	StringId* getObjectName();
 
+	String getObjectNameStringIdFile();
+
+	String getObjectNameStringIdName();
+
 	StringId* getDetailedDescription();
 
 	int getArrangementDescriptorSize();
@@ -776,6 +782,8 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
+	void setObjectName(StringId& stringID);
+
 	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
@@ -809,6 +817,8 @@ protected:
 
 	String _return_getArrangementDescriptor;
 	String _return_getLoggingName;
+	String _return_getObjectNameStringIdFile;
+	String _return_getObjectNameStringIdName;
 	String _return_getSlotDescriptor;
 
 	UnicodeString _return_getCustomObjectName;
@@ -926,6 +936,8 @@ public:
 	static const int PROBOTCREATURE = 0x403;
 
 	static const int PLAYERCREATURE = 0x409;
+
+	static const int TRAINERCREATURE = 0x40A;
 
 	static const int INTANGIBLE = 0x800;
 
@@ -1395,6 +1407,10 @@ public:
 
 	StringId* getObjectName();
 
+	String getObjectNameStringIdFile();
+
+	String getObjectNameStringIdName();
+
 	StringId* getDetailedDescription();
 
 	int getArrangementDescriptorSize();
@@ -1480,6 +1496,8 @@ public:
 	void setParent(SceneObject* par);
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
+
+	void setObjectName(StringId& stringID);
 
 	void setObjectName(const UnicodeString& name);
 
@@ -1663,6 +1681,10 @@ public:
 	unsigned int getServerObjectCRC();
 
 	bool isWaypointObject();
+
+	String getObjectNameStringIdFile();
+
+	String getObjectNameStringIdName();
 
 	int getArrangementDescriptorSize();
 

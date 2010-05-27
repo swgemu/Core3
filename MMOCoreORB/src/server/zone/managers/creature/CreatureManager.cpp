@@ -36,20 +36,45 @@ CreatureManager::~CreatureManager() {
 }
 
 
-CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID) {
+void CreatureManager::initialize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->initialize();
+}
+
+CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addFloatParameter(x);
+		method.addFloatParameter(z);
 		method.addFloatParameter(y);
 		method.addUnsignedLongParameter(parentID);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, y, parentID);
+		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, z, y, parentID);
+}
+
+void CreatureManager::loadTrainers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->loadTrainers();
 }
 
 void CreatureManager::addCreatureToMap(CreatureObject* creature) {
@@ -57,7 +82,7 @@ void CreatureManager::addCreatureToMap(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -70,7 +95,7 @@ void CreatureManager::removeCreatureFromMap(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -166,15 +191,20 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneP
 	Logger::setLogging(false);
 }
 
+void CreatureManagerImplementation::initialize() {
+	// server/zone/managers/creature/CreatureManager.idl(38):  		loadTrainers();
+	loadTrainers();
+}
+
 void CreatureManagerImplementation::addCreatureToMap(CreatureObject* creature) {
 	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(52):  		creatureMap.put(creature.getObjectID(), creature);
+	// server/zone/managers/creature/CreatureManager.idl(58):  		creatureMap.put(creature.getObjectID(), creature);
 	(&creatureMap)->put(creature->getObjectID(), creature);
 }
 
 void CreatureManagerImplementation::removeCreatureFromMap(unsigned long long oid) {
 	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(56):  		creatureMap.remove(oid);
+	// server/zone/managers/creature/CreatureManager.idl(62):  		creatureMap.remove(oid);
 	(&creatureMap)->remove(oid);
 }
 
@@ -190,12 +220,18 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		initialize();
 		break;
 	case 7:
-		addCreatureToMap((CreatureObject*) inv->getObjectParameter());
+		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 8:
+		loadTrainers();
+		break;
+	case 9:
+		addCreatureToMap((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 10:
 		removeCreatureFromMap(inv->getUnsignedLongParameter());
 		break;
 	default:
@@ -205,8 +241,16 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID) {
-	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, x, y, parentID);
+void CreatureManagerAdapter::initialize() {
+	((CreatureManagerImplementation*) impl)->initialize();
+}
+
+CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
+	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, x, z, y, parentID);
+}
+
+void CreatureManagerAdapter::loadTrainers() {
+	((CreatureManagerImplementation*) impl)->loadTrainers();
 }
 
 void CreatureManagerAdapter::addCreatureToMap(CreatureObject* creature) {

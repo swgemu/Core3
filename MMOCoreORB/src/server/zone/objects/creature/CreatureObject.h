@@ -252,6 +252,10 @@ public:
 
 	void substractBankCredits(int credits);
 
+	void substractCashCredits(int credits);
+
+	bool verifyCashCredits(int credits);
+
 	void setCashCredits(int credits, bool notifyClient = true);
 
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
@@ -295,6 +299,10 @@ public:
 	bool isAggressiveTo(PlayerCreature* object);
 
 	void notifyPostureChange(int newPosture);
+
+	void sendConversationStartTo(SceneObject* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
 
 	void dismount();
 
@@ -464,11 +472,15 @@ public:
 
 	long long getSkillMod(const String& skillmod);
 
+	bool hasSkillBox(const String& skillBox);
+
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
 
 	bool isCreatureObject();
+
+	bool isTrainerCreature();
 
 	bool isSwimming();
 
@@ -730,6 +742,10 @@ public:
 
 	void substractBankCredits(int credits);
 
+	void substractCashCredits(int credits);
+
+	bool verifyCashCredits(int credits);
+
 	void setCashCredits(int credits, bool notifyClient = true);
 
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
@@ -773,6 +789,10 @@ public:
 	virtual bool isAggressiveTo(PlayerCreature* object);
 
 	virtual void notifyPostureChange(int newPosture);
+
+	virtual void sendConversationStartTo(SceneObject* player);
+
+	virtual void selectConversationOption(int option, SceneObject* obj);
 
 	void dismount();
 
@@ -942,11 +962,15 @@ public:
 
 	long long getSkillMod(const String& skillmod);
 
+	bool hasSkillBox(const String& skillBox);
+
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
 
 	bool isCreatureObject();
+
+	virtual bool isTrainerCreature();
 
 	bool isSwimming();
 
@@ -1093,6 +1117,10 @@ public:
 
 	void substractBankCredits(int credits);
 
+	void substractCashCredits(int credits);
+
+	bool verifyCashCredits(int credits);
+
 	void setCashCredits(int credits, bool notifyClient);
 
 	void addSkillBox(const String& skillBox, bool notifyClient);
@@ -1132,6 +1160,10 @@ public:
 	bool isAggressiveTo(PlayerCreature* object);
 
 	void notifyPostureChange(int newPosture);
+
+	void sendConversationStartTo(SceneObject* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
 
 	void dismount();
 
@@ -1285,9 +1317,13 @@ public:
 
 	long long getSkillMod(const String& skillmod);
 
+	bool hasSkillBox(const String& skillBox);
+
 	void setHeight(float heigh);
 
 	bool isCreatureObject();
+
+	bool isTrainerCreature();
 
 	bool isSwimming();
 
@@ -1368,6 +1404,7 @@ protected:
 	String _param0_showFlyText__String_String_byte_byte_byte_;
 	String _param1_showFlyText__String_String_byte_byte_byte_;
 	String _param0_getSkillMod__String_;
+	String _param0_hasSkillBox__String_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

@@ -124,7 +124,11 @@ class CreatureManager : public ManagedObject {
 public:
 	CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl);
 
-	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID = 0);
+	void initialize();
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	void loadTrainers();
 
 	void addCreatureToMap(CreatureObject* creature);
 
@@ -165,7 +169,11 @@ public:
 
 	CreatureManagerImplementation(DummyConstructorParameter* param);
 
-	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID = 0);
+	void initialize();
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	void loadTrainers();
 
 private:
 	bool createCreatureChildrenObjects(CreatureObject* creature);
@@ -214,7 +222,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float y, unsigned long long parentID);
+	void initialize();
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
+
+	void loadTrainers();
 
 	void addCreatureToMap(CreatureObject* creature);
 
