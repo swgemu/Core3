@@ -62,7 +62,7 @@ public:
 
 		combatSpam = "unarmed_sweep";
 
-		range = -1;
+		range = 15;
 
 		postureDownStateChance = 1;
 

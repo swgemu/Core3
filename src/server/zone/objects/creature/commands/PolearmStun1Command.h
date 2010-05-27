@@ -45,13 +45,27 @@ which carries forward this exception.
 #ifndef POLEARMSTUN1COMMAND_H_
 #define POLEARMSTUN1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class PolearmStun1Command : public QueueCommand {
+
+class PolearmStun1Command : public CombatQueueCommand {
 public:
 
 	PolearmStun1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 1.5;
+		speedMultiplier = 1.6;
+
+		animationCRC = String("combo_4a_light").hashCode();
+
+		combatSpam = "breathstealer";
+
+		stunStateChance = 1;
+
+		range = -1;
 
 	}
 
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPolearmWeaponObject()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -45,13 +45,27 @@ which carries forward this exception.
 #ifndef MELEE1HSPINATTACK1COMMAND_H_
 #define MELEE1HSPINATTACK1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Melee1hSpinAttack1Command : public QueueCommand {
+class Melee1hSpinAttack1Command : public CombatQueueCommand {
 public:
 
 	Melee1hSpinAttack1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2;
+		speedMultiplier = 1.45;
+
+		animationCRC = String("attack_high_right_medium_2").hashCode();
+
+		combatSpam = "slashspin";
+
+		areaAction = true;
+		areaRange = 7;
+
+		range = -1;
 
 	}
 
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isOneHandMeleeWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -256,8 +256,6 @@ public:
 
 	void unloadSpawnedChildren();
 
-	void notifyCloseContainer(PlayerCreature* player);
-
 	bool isAggressiveTo(PlayerCreature* object);
 
 	void setLastNpcConvStr(const String& conv);
@@ -474,9 +472,9 @@ protected:
 
 	SortedVector<ManagedReference<PlayerCreature* > > duelList;
 
-	ManagedReference<SurveyTool* > surveyTool;
+	ManagedWeakReference<SurveyTool* > surveyTool;
 
-	ManagedReference<WaypointObject* > surveyWaypoint;
+	ManagedWeakReference<WaypointObject* > surveyWaypoint;
 
 	String lastNpcConvoMessage;
 
@@ -484,7 +482,7 @@ protected:
 
 	Vector<String> lastNpcConvoOptions;
 
-	ManagedReference<CreatureObject* > conversatingCreature;
+	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
 public:
 	static const int ONLINE = 1;
@@ -534,8 +532,6 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
-
-	void notifyCloseContainer(PlayerCreature* player);
 
 	bool isAggressiveTo(PlayerCreature* object);
 
@@ -733,8 +729,6 @@ public:
 	void sendBadgesResponseTo(PlayerCreature* player);
 
 	void unloadSpawnedChildren();
-
-	void notifyCloseContainer(PlayerCreature* player);
 
 	bool isAggressiveTo(PlayerCreature* object);
 

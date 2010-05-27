@@ -406,7 +406,3 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 
 	suiBoxes.drop(boxID);
 }
-
-void PlayerCreatureImplementation::notifyCloseContainer(PlayerCreature* player) {
-
-}
