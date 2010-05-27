@@ -84,6 +84,7 @@ namespace server {
 	  	void handleStartDancing(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& dance, bool change = false);
 
 	  	void handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range);
+	  	void handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
 
 	  	void handleRepairWeapon(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 	  	void handleRepairArmor(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);

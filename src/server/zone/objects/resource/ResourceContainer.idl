@@ -72,16 +72,7 @@ class ResourceContainer extends TangibleObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
-	
-	/**
-	 * Sends the necessary messages to player in order to create this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received this object }
-	 * @param player SceneObject that will receive the messages
-	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
-	 */
-	public native void sendTo(SceneObject player, boolean doClose = true);
-	
+
 	/**
 	 * Sends the baseline messages of this object to the specified player, needs to be overriden
 	 * @pre { this object is locked }
