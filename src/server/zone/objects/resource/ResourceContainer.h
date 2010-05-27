@@ -62,8 +62,6 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void sendTo(SceneObject* player, bool doClose = true);
-
 	void sendBaselinesTo(SceneObject* player);
 
 	void setSpawnObject(ResourceSpawn* spawn);
@@ -109,8 +107,6 @@ public:
 	ResourceContainerImplementation(DummyConstructorParameter* param);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
-
-	void sendTo(SceneObject* player, bool doClose = true);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -160,8 +156,6 @@ public:
 	ResourceContainerAdapter(ResourceContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 

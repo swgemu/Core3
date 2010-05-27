@@ -1,5 +1,5 @@
 object_resource_container_organic_green_vegetables = object_resource_container_shared_resource_container_organic_green_vegetables:new {
-	templateType = RESOURCECONTAINER
+	
 }
 
 ObjectTemplates:addTemplate(object_resource_container_organic_green_vegetables, "object/resource_container/organic_green_vegetables.iff")

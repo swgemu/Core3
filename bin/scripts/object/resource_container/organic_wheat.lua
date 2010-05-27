@@ -1,5 +1,5 @@
 object_resource_container_organic_wheat = object_resource_container_shared_resource_container_organic_wheat:new {
-	templateType = RESOURCECONTAINER
+	
 }
 
 ObjectTemplates:addTemplate(object_resource_container_organic_wheat, "object/resource_container/organic_wheat.iff")

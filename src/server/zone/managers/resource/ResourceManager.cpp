@@ -109,7 +109,7 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 		((ResourceManagerImplementation*) _impl)->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname) {
+void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,10 +117,11 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		DistributedMethod method(this, 12);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
+		method.addAsciiParameter(sampleAnimation);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname);
+		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname, sampleAnimation);
 }
 
 /*
@@ -239,7 +240,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
 		break;
 	case 12:
-		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_));
+		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_sendSample__PlayerCreature_String_String_));
 		break;
 	default:
 		return NULL;
@@ -272,8 +273,8 @@ void ResourceManagerAdapter::sendSurvey(PlayerCreature* playerCreature, const St
 	((ResourceManagerImplementation*) impl)->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManagerAdapter::sendSample(PlayerCreature* playerCreature, const String& resname) {
-	((ResourceManagerImplementation*) impl)->sendSample(playerCreature, resname);
+void ResourceManagerAdapter::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
+	((ResourceManagerImplementation*) impl)->sendSample(playerCreature, resname, sampleAnimation);
 }
 
 /*

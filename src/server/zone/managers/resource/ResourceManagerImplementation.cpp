@@ -175,8 +175,8 @@ void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, c
 	resourceSpawner->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname) {
-	resourceSpawner->sendSample(playerCreature, resname);
+void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
+	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
 	playerCreature->attachPostureChangeObserver(this);
 }

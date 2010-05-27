@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
@@ -402,17 +403,36 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 		newwaypoint->setActive(true);
 	}
 
+	// Send survey start message
+	ParameterizedStringId message("survey","start_survey");
+	message.setTO(resname);
+	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+	playerCreature->sendMessage(sysMessage);
+
 	SurveyTask* surveyTask = new SurveyTask(playerCreature, surveyMessage, newwaypoint);
 	surveyTask->schedule(4000);
 	playerCreature->addPendingTask("survey", surveyTask);
 }
 
-void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& resname) {
+void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
 
 	// Determine if survey tool is valid, and that resource actually exists
 	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
 	if(surveyTool == NULL || !resourceMap->contains(resname))
 		return;
+
+	ManagedReference<ResourceSpawn* > resourceSpawn = resourceMap->get(resname);
+	if(resourceSpawn->isType("radioactive") && !surveyTool->canSampleRadioactive()) {
+		surveyTool->sendRadioactiveWarning(playerCreature);
+		return;
+	}
+
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc
+			(sampleAnimation, playerCreature->getZone()->getZoneID(),
+			playerCreature->getPositionX(), playerCreature->getPositionZ(),
+			playerCreature->getPositionY());
+
+	playerCreature->broadcastMessage(effect, true);
 
 	// Obtain position information
 	int zoneid = playerCreature->getZone()->getZoneID();

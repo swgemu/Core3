@@ -138,6 +138,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 			range = 1024;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
+	case SuiWindowType::SAMPLERADIOACTIVECONFIRM:
+		handleSampleRadioactiveConfirm(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	/*case SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
 		returnString = value;
 		pGuild->handleGuildTag(boxID, player, cancel, returnString);
@@ -692,6 +695,27 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uin
 			if(surveyTool != NULL) {
 				Locker _locker2(surveyTool);
 				surveyTool->setRange(range);
+			}
+
+			player->removeSuiBox(boxID, true);
+		}
+	}
+}
+
+void SuiManager::handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
+	Locker _locker(player);
+
+	if (player->hasSuiBox(boxID)) {
+
+		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+		if (sui != NULL) {
+
+			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
+
+			if(surveyTool != NULL && cancel == 0) {
+				Locker _locker2(surveyTool);
+				surveyTool->consentRadioactiveSample();
 			}
 
 			player->removeSuiBox(boxID, true);

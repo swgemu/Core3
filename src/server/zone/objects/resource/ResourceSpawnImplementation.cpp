@@ -198,7 +198,9 @@ ResourceContainer* ResourceSpawnImplementation::extractResource(int zoneid, int 
    	ResourceContainer* newResource = (ResourceContainer*)getZoneServer()->createObject(containerCRC, 2);
    	newResource->setSpawnObject(_this);
    	newResource->setObjectCount(units);
-   	newResource->setObjectName(getFamilyName());
+   	StringId customString;
+   	customString.setCustomString(getFamilyName());
+   	newResource->setObjectName(customString);
 
    	return newResource;
 }

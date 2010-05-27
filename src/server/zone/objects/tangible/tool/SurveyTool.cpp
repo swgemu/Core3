@@ -93,12 +93,49 @@ int SurveyTool::getPoints() {
 		return ((SurveyToolImplementation*) _impl)->getPoints();
 }
 
-void SurveyTool::sendRangeSui(PlayerCreature* playerCreature) {
+bool SurveyTool::canSampleRadioactive() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SurveyToolImplementation*) _impl)->canSampleRadioactive();
+}
+
+void SurveyTool::consentRadioactiveSample() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->consentRadioactiveSample();
+}
+
+void SurveyTool::sendRadioactiveWarning(PlayerCreature* playerCreature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(playerCreature);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->sendRadioactiveWarning(playerCreature);
+}
+
+void SurveyTool::sendRangeSui(PlayerCreature* playerCreature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(playerCreature);
 
 		method.executeWithVoidReturn();
@@ -111,7 +148,7 @@ int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -125,7 +162,7 @@ void SurveyTool::sendResourceListTo(PlayerCreature* playerCreature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(playerCreature);
 
 		method.executeWithVoidReturn();
@@ -138,7 +175,7 @@ void SurveyTool::sendSurveyTo(PlayerCreature* playerCreature, const String& resn
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -152,7 +189,7 @@ void SurveyTool::sendSampleTo(PlayerCreature* playerCreature, const String& resn
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -238,27 +275,39 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(78):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(79):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
-	// server/zone/objects/tangible/tool/SurveyTool.idl(79):  		range = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(80):  		radioactiveOk = false;
+	radioactiveOk = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(81):  		range = 0;
 	range = 0;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(83):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(85):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(85):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(87):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(102):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(104):  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(106):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(108):  		return points;
 	return points;
+}
+
+bool SurveyToolImplementation::canSampleRadioactive() {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(112):  		return radioactiveOk;
+	return radioactiveOk;
+}
+
+void SurveyToolImplementation::consentRadioactiveSample() {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(116):  		radioactiveOk = true;
+	radioactiveOk = true;
 }
 
 /*
@@ -285,18 +334,27 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getPoints());
 		break;
 	case 10:
-		sendRangeSui((PlayerCreature*) inv->getObjectParameter());
+		resp->insertBoolean(canSampleRadioactive());
 		break;
 	case 11:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		consentRadioactiveSample();
 		break;
 	case 12:
-		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+		sendRadioactiveWarning((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 13:
-		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+		sendRangeSui((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 14:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 15:
+		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 16:
+		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+		break;
+	case 17:
 		sendSampleTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__PlayerCreature_String_));
 		break;
 	default:
@@ -320,6 +378,18 @@ int SurveyToolAdapter::getRange() {
 
 int SurveyToolAdapter::getPoints() {
 	return ((SurveyToolImplementation*) impl)->getPoints();
+}
+
+bool SurveyToolAdapter::canSampleRadioactive() {
+	return ((SurveyToolImplementation*) impl)->canSampleRadioactive();
+}
+
+void SurveyToolAdapter::consentRadioactiveSample() {
+	((SurveyToolImplementation*) impl)->consentRadioactiveSample();
+}
+
+void SurveyToolAdapter::sendRadioactiveWarning(PlayerCreature* playerCreature) {
+	((SurveyToolImplementation*) impl)->sendRadioactiveWarning(playerCreature);
 }
 
 void SurveyToolAdapter::sendRangeSui(PlayerCreature* playerCreature) {

@@ -32,26 +32,12 @@ void ResourceContainer::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		((ResourceContainerImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
-void ResourceContainer::sendTo(SceneObject* player, bool doClose) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(player);
-		method.addBooleanParameter(doClose);
-
-		method.executeWithVoidReturn();
-	} else
-		((ResourceContainerImplementation*) _impl)->sendTo(player, doClose);
-}
-
 void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -64,7 +50,7 @@ void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(spawn);
 
 		method.executeWithVoidReturn();
@@ -77,7 +63,7 @@ String ResourceContainer::getSpawnName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
@@ -90,7 +76,7 @@ String ResourceContainer::getSpawnType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
@@ -103,7 +89,7 @@ unsigned long long ResourceContainer::getSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -186,22 +172,22 @@ ResourceContainerImplementation::ResourceContainerImplementation() {
 }
 
 void ResourceContainerImplementation::setSpawnObject(ResourceSpawn* spawn) {
-	// server/zone/objects/resource/ResourceContainer.idl(94):  		spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl(85):  		spawnObject = spawn;
 	spawnObject = spawn;
 }
 
 String ResourceContainerImplementation::getSpawnName() {
-	// server/zone/objects/resource/ResourceContainer.idl(98):  		return spawnObject.getName();
+	// server/zone/objects/resource/ResourceContainer.idl(89):  		return spawnObject.getName();
 	return spawnObject->getName();
 }
 
 String ResourceContainerImplementation::getSpawnType() {
-	// server/zone/objects/resource/ResourceContainer.idl(102):  		return spawnObject.getType();
+	// server/zone/objects/resource/ResourceContainer.idl(93):  		return spawnObject.getType();
 	return spawnObject->getType();
 }
 
 unsigned long long ResourceContainerImplementation::getSpawnID() {
-	// server/zone/objects/resource/ResourceContainer.idl(106):  		return spawnObject.getObjectID();
+	// server/zone/objects/resource/ResourceContainer.idl(97):  		return spawnObject.getObjectID();
 	return spawnObject->getObjectID();
 }
 
@@ -217,21 +203,18 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case 6:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
-		break;
-	case 7:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case 7:
 		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
 		break;
-	case 9:
+	case 8:
 		resp->insertAscii(getSpawnName());
 		break;
-	case 10:
+	case 9:
 		resp->insertAscii(getSpawnType());
 		break;
-	case 11:
+	case 10:
 		resp->insertLong(getSpawnID());
 		break;
 	default:
@@ -239,10 +222,6 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	}
 
 	return resp;
-}
-
-void ResourceContainerAdapter::sendTo(SceneObject* player, bool doClose) {
-	((ResourceContainerImplementation*) impl)->sendTo(player, doClose);
 }
 
 void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {

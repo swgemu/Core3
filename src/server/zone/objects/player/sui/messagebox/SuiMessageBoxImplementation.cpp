@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2010 <SWGEmu>
+Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 3 of the License,
+Foundation; either version 2 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,33 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "SuiMessageBox.h"
 
-#include "ResourceContainer.h"
-#include "ResourceSpawn.h"
-#include "server/zone/packets/resource/ResourceContainerObjectMessage3.h"
-#include "server/zone/packets/resource/ResourceContainerObjectMessage6.h"
-#include "server/zone/ZoneClientSession.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
+BaseMessage* SuiMessageBoxImplementation::generateMessage() {
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.messageBox");
 
-void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	//Declare Headers:
+	addHeader("Prompt.lblPrompt", "Text");
+	addHeader("bg.caption.lblTitle", "Text");
 
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+	//Set Body Options:
+	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
+	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
 
-	StringBuffer ssQuantity;
-	ssQuantity << getObjectCount() << "/" << ResourceContainer::MAXSIZE;
+	if (cancelButton) {
+		addSetting("3", "btnCancel", "Enabled", "True");
+		addSetting("3", "btnCancel", "Visible", "True");
+	} else {
+		addSetting("3", "btnCancel", "Enabled", "False");
+		addSetting("3", "btnCancel", "Visible", "False");
+	}
 
-	alm->insertAttribute("resource_name", getSpawnName());
-	alm->insertAttribute("resource_contents", ssQuantity);
+	addSetting("3", "btnRevert", "Enabled", "False");
+	addSetting("3", "btnRevert", "Visible", "False");
 
-	spawnObject->fillAttributeList(alm, object);
-}
+	//Generate Packet:
+	generateHeader(message, "handleSUI");
+	generateBody(message);
+	generateFooter(message);
+	hasGenerated = true;
 
-void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending rnco baselines");
-
-	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this);
-	player->sendMessage(rnco3);
-
-	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this);
-	player->sendMessage(rnco6);
+	return message;
 }

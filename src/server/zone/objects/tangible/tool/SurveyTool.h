@@ -107,6 +107,12 @@ public:
 
 	int getPoints();
 
+	bool canSampleRadioactive();
+
+	void consentRadioactiveSample();
+
+	void sendRadioactiveWarning(PlayerCreature* playerCreature);
+
 	void sendRangeSui(PlayerCreature* playerCreature);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -155,6 +161,8 @@ protected:
 
 	String lastResourceSampleName;
 
+	bool radioactiveOk;
+
 public:
 	static const int SOLAR = 1;
 
@@ -189,6 +197,12 @@ public:
 	int getRange();
 
 	int getPoints();
+
+	bool canSampleRadioactive();
+
+	void consentRadioactiveSample();
+
+	void sendRadioactiveWarning(PlayerCreature* playerCreature);
 
 	void sendRangeSui(PlayerCreature* playerCreature);
 
@@ -246,6 +260,12 @@ public:
 	int getRange();
 
 	int getPoints();
+
+	bool canSampleRadioactive();
+
+	void consentRadioactiveSample();
+
+	void sendRadioactiveWarning(PlayerCreature* playerCreature);
 
 	void sendRangeSui(PlayerCreature* playerCreature);
 

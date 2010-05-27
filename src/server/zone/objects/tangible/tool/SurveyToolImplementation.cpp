@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
@@ -220,17 +221,22 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, cons
 		return;
 	}
 
-	PlayClientEffectLoc* effect = new PlayClientEffectLoc
-			(sampleAnimation, playerCreature->getZone()->getZoneID(),
-			playerCreature->getPositionX(), playerCreature->getPositionZ(),
-			playerCreature->getPositionY());
-
-	playerCreature->broadcastMessage(effect, true);
-
 	if (resname.isEmpty())
-		resourceManager->sendSample(playerCreature, lastResourceSampleName);
+		resourceManager->sendSample(playerCreature, lastResourceSampleName, sampleAnimation);
 	else
-		resourceManager->sendSample(playerCreature, resname);
+		resourceManager->sendSample(playerCreature, resname, sampleAnimation);
 
 	lastResourceSampleName = resname;
+}
+
+void SurveyToolImplementation::sendRadioactiveWarning(PlayerCreature* playerCreature) {
+
+	ManagedReference<SuiMessageBox* > messageBox = new SuiMessageBox(playerCreature, SuiWindowType::SAMPLERADIOACTIVECONFIRM);
+	messageBox->setPromptTitle("Confirm Radioactive Sample");
+	messageBox->setPromptText("Sampling a radioactive material will result in harmful effects. Are you sure you wish to continue?");
+	messageBox->setCancelButton(true, "");
+
+	playerCreature->addSuiBox(messageBox);
+	playerCreature->sendMessage(messageBox->generateMessage());
+
 }

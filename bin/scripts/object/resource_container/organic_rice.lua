@@ -1,5 +1,5 @@
 object_resource_container_organic_rice = object_resource_container_shared_resource_container_organic_rice:new {
-	templateType = RESOURCECONTAINER
+	
 }
 
 ObjectTemplates:addTemplate(object_resource_container_organic_rice, "object/resource_container/organic_rice.iff")
