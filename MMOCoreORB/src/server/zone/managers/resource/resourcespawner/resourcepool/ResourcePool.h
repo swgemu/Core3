@@ -72,6 +72,7 @@ public:
 	static const short RANDOMPOOL = 2;
 	static const short FIXEDPOOL = 3;
 	static const short NATIVEPOOL = 4;
+	static const short MANUALPOOL = 5;
 
 public:
 	  /** Constructor

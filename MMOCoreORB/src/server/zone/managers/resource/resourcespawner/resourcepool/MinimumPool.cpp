@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file MinimumPool.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "MinimumPool.h"
 #include "../ResourceSpawner.h"
 
@@ -75,11 +81,11 @@ void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 }
 
 bool MinimumPool::update() {
-	/**
-	 * Create resources for any included type that doesn't exist in
-	 * the VectorMap
-	 */
+
 	int despawnedCount = 0, spawnedCount = 0;
+
+	StringBuffer buffer;
+	buffer << "Minimum pool updating: ";
 
 	for(int ii = 0; ii < size(); ++ii) {
 
@@ -94,13 +100,12 @@ bool MinimumPool::update() {
 
 				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
 				newSpawn->updateToDatabase();
+				spawnedCount++;
 
 				setElementAt(ii, newSpawn);
 
-				spawnedCount++;
-			} else {
-				resourceSpawner->info("Minimum Pool can't spawn " + includedResources.get(ii));
-			}
+			} else
+				resourceSpawner->info("Resource not valid for Minimum Pool:" + includedResources.get(ii));
 		}
 	}
 
@@ -112,11 +117,6 @@ bool MinimumPool::update() {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
 
 		if(spawn != NULL && !spawn->inShift()) {
-			StringBuffer msg;
-			msg << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the MinimumPool";
-
-			info(msg.toString());
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
@@ -135,15 +135,14 @@ bool MinimumPool::update() {
 			spawnedCount++;
 		}
 	}
-	StringBuffer buffer;
-	buffer << "Minimum Pool Update Successful, Added " << spawnedCount << " and removed " << despawnedCount << " resources";
+	buffer << "Spawned " << spawnedCount << " Despawned " << despawnedCount;
 	resourceSpawner->info(buffer.toString(), true);
 	return true;
 }
 
 void MinimumPool::print() {
 
-	System::out << "**** Minimum Pool ****" << endl;
+	info("**** Minimum Pool ****");
 	ResourcePool::print();
-	System::out << "**********************" << endl;
+	info("**********************");
 }
