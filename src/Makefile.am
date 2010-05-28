@@ -167,6 +167,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
+		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \

@@ -43,13 +43,13 @@ which carries forward this exception.
 */
 
 /**
- * \file MinimumPool.h
+ * \file ManualPool.h
  * \author Kyle Burkhardt
- * \date 5-03-10
+ * \date 5-27-10
  */
 
-#ifndef MINIMUMPOOL_H_
-#define MINIMUMPOOL_H_
+#ifndef MANUALPOOL_H_
+#define MANUALPOOL_H_
 
 #include "engine/engine.h"
 #include "ResourcePool.h"
@@ -57,42 +57,22 @@ which carries forward this exception.
 class ResourceSpawner;
 
 /**
- * The Minimum pool represents a fixed size pool
- * that spawns exactly the items included in the
- * scripts.
+ * The manual pool contains resources manually
+ * spawned by admins.  The pool should almost
+ * always be empty
  */
-class MinimumPool : public ResourcePool {
-
+class ManualPool : public ResourcePool {
 public:
-	/**
-	 * Ctor
-	 * \param spawner The pointer to the resource spawner object
-	 */
-	MinimumPool(ResourceSpawner* spawner);
+	ManualPool(ResourceSpawner* spawner);
 
-	/**
-	 * Dtor
-	 */
-	~MinimumPool();
+	~ManualPool();
 
-	/**
-	 * Initialized what the pool spawns, and what is excluded
-	 * \param includes Comma delimited list of resources to include
-	 * \param excludes Comma delimited list of resources to exclude
-	 */
-	void initialize(const String& includes, const String& excludes);
+	void initialize(const String& includes, const String& excludes, int size);
 
-	/**
-	 * Print the current state of the Resource Pool
-	 */
 	void print();
 
 private:
 
-	/**
-	 * Adds resource to this pool
-	 * \param resourceSpawn Spawn object to add to the pool
-	 */
 	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
 	/**
@@ -101,7 +81,6 @@ private:
 	 * If they have not expired, no action is taken, but if
 	 * they have expired, we replace them according to the
 	 * rules.
-	 * \return if update was successful
 	 */
 	bool update();
 
@@ -109,4 +88,4 @@ private:
 	friend class ResourceSpawner;
 };
 
-#endif /* MINIMUMPOOL_H_ */
+#endif /* MANUALPOOL_H_ */

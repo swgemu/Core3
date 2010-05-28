@@ -198,6 +198,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcepool/NativePool.$(OBJEXT) \
+	server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.$(OBJEXT) \
 	server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT) \
 	server/zone/objects/region/RegionImplementation.$(OBJEXT) \
 	server/zone/objects/terrain/ProceduralTerrainAppearance.$(OBJEXT) \
@@ -513,6 +514,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
+		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
@@ -1318,6 +1320,8 @@ server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.$(OBJEXT): 
 	server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/resource/resourcespawner/resourcepool/NativePool.$(OBJEXT): server/zone/managers/resource/resourcespawner/resourcepool/$(am__dirstamp) \
 	server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.$(OBJEXT): server/zone/managers/resource/resourcespawner/resourcepool/$(am__dirstamp) \
+	server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/scene/$(am__dirstamp) \
 	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
@@ -1682,6 +1686,7 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/resource/resourcespawner/ResourceSpawner.$(OBJEXT)
 	-rm -f server/zone/managers/resource/resourcespawner/resourcemap/ResourceMap.$(OBJEXT)
 	-rm -f server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.$(OBJEXT)
+	-rm -f server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.$(OBJEXT)
 	-rm -f server/zone/managers/resource/resourcespawner/resourcepool/MinimumPool.$(OBJEXT)
 	-rm -f server/zone/managers/resource/resourcespawner/resourcepool/NativePool.$(OBJEXT)
 	-rm -f server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.$(OBJEXT)
@@ -1866,6 +1871,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/$(DEPDIR)/ResourceSpawner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR)/ResourceMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/FixedPool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/ManualPool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/MinimumPool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/NativePool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/RandomPool.Po@am__quote@

@@ -74,6 +74,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 	fixedPool = new FixedPool(this);
 	randomPool = new RandomPool(this);
 	nativePool = new NativePool(this);
+	manualPool = new ManualPool(this);
 }
 
 ResourceSpawner::~ResourceSpawner() {
@@ -83,6 +84,7 @@ ResourceSpawner::~ResourceSpawner() {
 	delete fixedPool;
 	delete randomPool;
 	delete nativePool;
+	delete manualPool;
 
 	delete resourceMap;
 
@@ -164,6 +166,9 @@ void ResourceSpawner::loadResourceSpawns() {
 			case ResourcePool::NATIVEPOOL:
 				nativePool->addResource(resourceSpawn);
 				break;
+			case ResourcePool::MANUALPOOL:
+				manualPool->addResource(resourceSpawn);
+				break;
 			}
 		}
 	}
@@ -173,10 +178,11 @@ void ResourceSpawner::loadResourceSpawns() {
 }
 
 void ResourceSpawner::shiftResources() {
-	minimumPool->update();
 	randomPool->update();
 	fixedPool->update();
 	nativePool->update();
+	minimumPool->update();
+	manualPool->update();
 }
 
 
@@ -475,6 +481,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 		message.setTO(resname);
 		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 		playerCreature->sendMessage(sysMessage);
+		playerCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		return;
 	}
 
@@ -485,25 +492,24 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 		message.setTO(resname);
 		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 		playerCreature->sendMessage(sysMessage);
+		playerCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		return;
 	}
 
+	float sampleRate = (surveySkill * density) + System::random(100) + 50;
+
 	// Was the sample successful or not
-	if (System::random(50) > surveySkill) {
+	if (sampleRate < 100) {
 		ParameterizedStringId message("survey", "sample_failed");
 		message.setTO(resname);
 		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 		playerCreature->sendMessage(sysMessage);
 
-		// Add sampletask to continue
-		SampleTask* sampleTask = new SampleTask(playerCreature, surveyTool);
-		sampleTask->schedule(30000);
-		playerCreature->addPendingTask("sample", sampleTask);
-
 		return;
 	}
 
-	int unitsExtracted = 10 + System::random(surveySkill / 5);
+
+	int unitsExtracted = int((density * 25 + System::random(3)) * (float(surveySkill)/100.0f));
 
 	// Send message to player about unit extraction
 	ParameterizedStringId message("survey", "sample_located");
@@ -545,8 +551,6 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 		harvestedResource->sendTo(playerCreature);
 		harvestedResource->updateToDatabase();
 	}
-
-	playerCreature->removePendingTask("sampleresults");
 }
 
 ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
