@@ -132,7 +132,7 @@ ResourceSpawn* RandomPool::removeSpawn(const String& type) {
 
 	for(int i = 0; i < size(); ++i) {
 		spawn = get(i);
-		if(spawn->isType(type)) {
+		if(spawn != NULL && spawn->isType(type)) {
 			setElementAt(i, NULL);
 			return spawn;
 		}

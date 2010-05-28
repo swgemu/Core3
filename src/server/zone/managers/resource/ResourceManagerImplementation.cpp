@@ -157,6 +157,9 @@ void ResourceManagerImplementation::shiftResources() {
 	Locker _locker(_this);
 
 	resourceSpawner->shiftResources();
+
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this);
+	resourceShift->schedule(shiftInterval);
 }
 
 void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {

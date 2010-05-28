@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "resourcepool/FixedPool.h"
 #include "resourcepool/RandomPool.h"
 #include "resourcepool/NativePool.h"
+#include "resourcepool/ManualPool.h"
 
 class ResourceSpawner : public Logger {
 private:
@@ -78,6 +79,7 @@ private:
 	FixedPool* fixedPool;
 	RandomPool* randomPool;
 	NativePool* nativePool;
+	ManualPool* manualPool;
 
 	int shiftDuration, lowerGateOverride, maxSpawnAmount;
 	float spawnThrottling;

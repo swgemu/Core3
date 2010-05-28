@@ -221,12 +221,12 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, cons
 		return;
 	}
 
-	if (resname.isEmpty())
-		resourceManager->sendSample(playerCreature, lastResourceSampleName, sampleAnimation);
-	else
-		resourceManager->sendSample(playerCreature, resname, sampleAnimation);
+	if (!resname.isEmpty())
+		lastResourceSampleName = resname;
 
-	lastResourceSampleName = resname;
+	System::out << "Sample for '" << resname << "' or " << lastResourceSampleName << endl;
+	if (!lastResourceSampleName.isEmpty())
+		resourceManager->sendSample(playerCreature, lastResourceSampleName, sampleAnimation);
 }
 
 void SurveyToolImplementation::sendRadioactiveWarning(PlayerCreature* playerCreature) {
