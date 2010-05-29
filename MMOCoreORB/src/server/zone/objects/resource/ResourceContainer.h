@@ -64,6 +64,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void setQuantity(int quantity, SceneObject* player = NULL);
+
+	int getQuantity();
+
 	void setSpawnObject(ResourceSpawn* spawn);
 
 	String getSpawnName();
@@ -71,6 +75,8 @@ public:
 	String getSpawnType();
 
 	unsigned long long getSpawnID();
+
+	void split(PlayerCreature* player, int newStackSize);
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
@@ -99,6 +105,8 @@ class ResourceContainerImplementation : public TangibleObjectImplementation {
 protected:
 	ManagedReference<ResourceSpawn* > spawnObject;
 
+	int stackQuantity;
+
 public:
 	static const int MAXSIZE = 100000;
 
@@ -110,6 +118,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void setQuantity(int quantity, SceneObject* player = NULL);
+
+	int getQuantity();
+
 	void setSpawnObject(ResourceSpawn* spawn);
 
 	String getSpawnName();
@@ -117,6 +129,8 @@ public:
 	String getSpawnType();
 
 	unsigned long long getSpawnID();
+
+	void split(PlayerCreature* player, int newStackSize);
 
 	ResourceContainer* _this;
 
@@ -159,6 +173,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void setQuantity(int quantity, SceneObject* player);
+
+	int getQuantity();
+
 	void setSpawnObject(ResourceSpawn* spawn);
 
 	String getSpawnName();
@@ -166,6 +184,8 @@ public:
 	String getSpawnType();
 
 	unsigned long long getSpawnID();
+
+	void split(PlayerCreature* player, int newStackSize);
 
 };
 

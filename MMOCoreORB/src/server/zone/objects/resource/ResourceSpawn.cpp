@@ -313,6 +313,19 @@ ResourceContainer* ResourceSpawn::extractResource(int zoneid, int units) {
 		return ((ResourceSpawnImplementation*) _impl)->extractResource(zoneid, units);
 }
 
+ResourceContainer* ResourceSpawn::createResource(int units) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addSignedIntParameter(units);
+
+		return (ResourceContainer*) method.executeWithObjectReturn();
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->createResource(units);
+}
+
 int ResourceSpawn::getSpawnMapZone(int i) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -676,6 +689,9 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 27:
 		resp->insertLong(extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter())->_getObjectID());
 		break;
+	case 28:
+		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -769,6 +785,10 @@ int ResourceSpawnAdapter::getSpawnMapSize() {
 
 ResourceContainer* ResourceSpawnAdapter::extractResource(int zoneid, int units) {
 	return ((ResourceSpawnImplementation*) impl)->extractResource(zoneid, units);
+}
+
+ResourceContainer* ResourceSpawnAdapter::createResource(int units) {
+	return ((ResourceSpawnImplementation*) impl)->createResource(units);
 }
 
 /*

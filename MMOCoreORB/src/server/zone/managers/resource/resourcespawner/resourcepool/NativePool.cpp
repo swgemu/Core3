@@ -102,16 +102,9 @@ bool NativePool::update() {
 					newSpawn->updateToDatabase();
 
 					setElementAt(indexoffset, newSpawn);
-					StringBuffer msg;
-					msg << "Native pool spawning " << newSpawn->getName() << " of type " << newSpawn->getFinalClass();
-					info(msg.toString());
-				} else {
-					StringBuffer msg;
-					msg << includedResources.get(jj) << " is a bad resource type";
-					info(msg.toString());
 
+				} else
 					resourceSpawner->info("Resource not valid for Native Pool: " + includedResources.get(jj));
-				}
 			}
 		}
 	}
@@ -120,11 +113,6 @@ bool NativePool::update() {
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
 
 		if (spawn != NULL && !spawn->inShift()) {
-			StringBuffer msg;
-			msg << spawn->getName() << " of type " << spawn->getFinalClass()
-					<< " is shifting from the NativePool";
-
-			info(msg.toString());
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);

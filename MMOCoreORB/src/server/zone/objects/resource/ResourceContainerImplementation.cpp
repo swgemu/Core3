@@ -45,9 +45,11 @@ which carries forward this exception.
 
 #include "ResourceContainer.h"
 #include "ResourceSpawn.h"
+#include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage6.h"
 #include "server/zone/ZoneClientSession.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
@@ -55,7 +57,7 @@ void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* al
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	StringBuffer ssQuantity;
-	ssQuantity << getObjectCount() << "/" << ResourceContainer::MAXSIZE;
+	ssQuantity << stackQuantity << "/" << ResourceContainer::MAXSIZE;
 
 	alm->insertAttribute("resource_name", getSpawnName());
 	alm->insertAttribute("resource_contents", ssQuantity);
@@ -71,4 +73,38 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this);
 	player->sendMessage(rnco6);
+}
+
+void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* player) {;
+
+	Locker _locker(_this);
+
+	stackQuantity = quantity;
+
+	if(player == NULL)
+		return;
+
+	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
+
+	rcnod3->setQuantity(stackQuantity);
+	rcnod3->close();
+
+	player->sendMessage(rcnod3);
+}
+
+void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int newStackSize) {
+
+	ManagedReference<SceneObject*> inventory =
+			playerCreature->getSlottedObject("inventory");
+
+	ResourceContainer* newResource = spawnObject->createResource(newStackSize);
+
+	if(newResource == NULL)
+		return;
+
+	newResource->sendTo(playerCreature);
+	inventory->addObject(newResource, -1, true);
+	newResource->updateToDatabase();
+
+	setQuantity(getQuantity() - newStackSize);
 }

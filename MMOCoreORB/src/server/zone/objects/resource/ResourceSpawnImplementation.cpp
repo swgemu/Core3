@@ -195,9 +195,16 @@ int ResourceSpawnImplementation::getSpawnMapZone(int i) {
 
 ResourceContainer* ResourceSpawnImplementation::extractResource(int zoneid, int units) {
 	unitsInCirculation += units;
-   	ResourceContainer* newResource = (ResourceContainer*)getZoneServer()->createObject(containerCRC, 2);
+
+	return createResource(units);
+}
+
+ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
+   	ResourceContainer* newResource = NULL;
+
+   	newResource = (ResourceContainer*) getZoneServer()->createObject(containerCRC, 2);
    	newResource->setSpawnObject(_this);
-   	newResource->setObjectCount(units);
+   	newResource->setQuantity(units);
    	StringId customString;
    	customString.setCustomString(getFamilyName());
    	newResource->setObjectName(customString);

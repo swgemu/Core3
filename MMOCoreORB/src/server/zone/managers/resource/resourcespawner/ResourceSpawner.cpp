@@ -508,7 +508,6 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 		return;
 	}
 
-
 	int unitsExtracted = int((density * 25 + System::random(3)) * (float(surveySkill)/100.0f));
 
 	// Send message to player about unit extraction
@@ -534,21 +533,25 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 			ManagedReference<ResourceContainer*> resource = (ResourceContainer*) object.get();
 
 			if (resource->getSpawnName() == resname) {
-				int totalStackSize = resource->getObjectCount() + unitsExtracted;
+				int newStackSize = resource->getObjectCount() + unitsExtracted;
 
-				if (totalStackSize > ResourceContainer::MAXSIZE) {
-					unitsExtracted = totalStackSize - ResourceContainer::MAXSIZE;
-					resource->setObjectCount(totalStackSize, true);
-					break;
-				}
+				if (newStackSize > ResourceContainer::MAXSIZE) {
+
+					unitsExtracted = newStackSize - ResourceContainer::MAXSIZE;
+					newStackSize = ResourceContainer::MAXSIZE;
+				} else
+					unitsExtracted = 0;
+
+				resource->setQuantity(resource->getQuantity() + newStackSize, playerCreature);
+				break;
 			}
 		}
 	}
 
 	if (unitsExtracted > 0) {
 		ResourceContainer* harvestedResource = resourceSpawn->extractResource(zoneid, unitsExtracted);
-		inventory->addObject(harvestedResource, -1);
 		harvestedResource->sendTo(playerCreature);
+		inventory->addObject(harvestedResource, -1, true);
 		harvestedResource->updateToDatabase();
 	}
 }

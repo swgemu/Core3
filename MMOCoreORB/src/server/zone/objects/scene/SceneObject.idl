@@ -1126,7 +1126,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public boolean isResourceContainer() {
-		return gameObjectType == RESOURCECONTAINER;
+		return gameObjectType & RESOURCECONTAINER;
 	}
 	
 	public boolean isInstrument() {

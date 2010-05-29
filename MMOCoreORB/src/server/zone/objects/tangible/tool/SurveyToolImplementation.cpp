@@ -224,7 +224,6 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* playerCreature, cons
 	if (!resname.isEmpty())
 		lastResourceSampleName = resname;
 
-	System::out << "Sample for '" << resname << "' or " << lastResourceSampleName << endl;
 	if (!lastResourceSampleName.isEmpty())
 		resourceManager->sendSample(playerCreature, lastResourceSampleName, sampleAnimation);
 }
