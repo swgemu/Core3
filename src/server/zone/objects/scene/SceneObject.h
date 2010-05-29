@@ -844,7 +844,7 @@ class SceneObjectImplementation : public ManagedObjectImplementation, public Qua
 protected:
 	ZoneProcessServerImplementation* server;
 
-	ManagedReference<Zone* > zone;
+	ManagedWeakReference<Zone* > zone;
 
 	ManagedWeakReference<SceneObject* > parent;
 
@@ -1471,7 +1471,7 @@ public:
 
 	virtual bool isWearableObject();
 
-	bool isArmorObject();
+	virtual bool isArmorObject();
 
 	bool isCellObject();
 

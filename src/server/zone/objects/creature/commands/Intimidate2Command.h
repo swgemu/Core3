@@ -61,6 +61,8 @@ public:
 
 		intimidateStateChance = 1;
 
+		durationStateTime = 120;
+
 		combatSpam = "";
 		animationCRC = String("intimidate").hashCode();
 		effectString = "clienteffect/combat_special_attacker_intimidate.cef";

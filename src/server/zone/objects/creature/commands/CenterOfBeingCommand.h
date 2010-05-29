@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef CENTEROFBEINGCOMMAND_H_
 #define CENTEROFBEINGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
+
 
 class CenterOfBeingCommand : public QueueCommand {
 public:

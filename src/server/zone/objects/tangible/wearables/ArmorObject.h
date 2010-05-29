@@ -51,6 +51,28 @@ public:
 
 	bool isVulnerable(const String& vulnerability);
 
+	bool isArmorObject();
+
+	int getRating();
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
 protected:
 	ArmorObject(DummyConstructorParameter* param);
 
@@ -126,6 +148,28 @@ public:
 
 	bool isVulnerable(const String& vulnerability);
 
+	bool isArmorObject();
+
+	int getRating();
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
 	ArmorObject* _this;
 
 	operator const ArmorObject*();
@@ -170,6 +214,28 @@ public:
 	bool isSpecial(const String& special);
 
 	bool isVulnerable(const String& vulnerability);
+
+	bool isArmorObject();
+
+	int getRating();
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
 
 protected:
 	String _param0_isSpecial__String_;

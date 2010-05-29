@@ -230,7 +230,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Sends the pvp options bitmask
-	 * @pre { this object is locked�}
+	 * @pre { this object is locked}
 	 * @post { this object is locked }
 	 */
 	public abstract native void sendPvpStatusTo(PlayerCreature player);
@@ -626,7 +626,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * sends the conversation list 
-	 * @pre {�this locked, player locked }
+	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
 	public abstract void sendConversationStartTo(SceneObject player) {
@@ -635,7 +635,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * sends the conversation list 
-	 * @pre {�this locked, player locked }
+	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
 	public abstract void selectConversationOption(int option, SceneObject obj) {
@@ -645,23 +645,23 @@ class CreatureObject extends TangibleObject {
 	public native void dismount();
 	public native float calculateBFRatio();
 
-	public native void setDizziedState();
+	public native void setDizziedState(int durationSeconds = 5);
 	
-	public native void setAimingState();
+	public native void setAimingState(int durationSeconds = 5);
 
 	public native void setCoverState();
 
 	public native void setBerserkedState(unsigned int duration);
 	
-	public native void setStunnedState();
+	public native void setStunnedState(int durationSeconds = 5);
 	
-	public native void setBlindedState();
+	public native void setBlindedState(int durationSeconds = 5);
 
-	public native void setIntimidatedState();
+	public native void setIntimidatedState(int durationSeconds = 15);
 
-	public native void setSnaredState();
+	public native void setSnaredState(int durationSeconds = 20);
 	
-	public native void setRootedState();
+	public native void setRootedState(int durationSeconds = 20);
 
 	public native boolean setNextAttackDelay(int del);
 
@@ -669,6 +669,10 @@ class CreatureObject extends TangibleObject {
 	
 	public abstract native void activateHAMRegeneration();
 	public abstract native void activateStateRecovery();
+	
+	public boolean hasAttackDelay() {
+		return cooldownTimerMap.isPast("nextAttackDelay");
+	}
 	
 	/**
 	 * Registers an observer for the posture changed event

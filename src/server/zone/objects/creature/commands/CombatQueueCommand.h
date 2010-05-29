@@ -21,6 +21,7 @@ protected:
 	int healthCostMultiplier;
 	int actionCostMultiplier;
 	int mindCostMultiplier;
+	int forceCostMultiplier;
 
 	int knockdownStateChance;
 	int postureDownStateChance;
@@ -30,6 +31,8 @@ protected:
 	int blindStateChance;
 	int stunStateChance;
 	int intimidateStateChance;
+	int nextAttackDelayChance;
+	int durationStateTime;
 
 	int range;
 
@@ -52,6 +55,7 @@ public:
 		healthCostMultiplier = 1;
 		actionCostMultiplier = 1;
 		mindCostMultiplier = 1;
+		forceCostMultiplier = 1;
 
 		poolsToDamage = CombatManager::RANDOM;
 
@@ -62,6 +66,9 @@ public:
 		blindStateChance = 0;
 		stunStateChance = 0;
 		intimidateStateChance = 0;
+		nextAttackDelayChance = 0;
+
+		durationStateTime = 10;
 
 		coneAngle = 30;
 
@@ -98,10 +105,13 @@ public:
 		try {
 			int res = combatManager->doCombatAction(creature, (TangibleObject*) ((targetObject.get())), this);
 
-			if (res == -1) {
+			switch (res) {
+			case -1:
 				return INVALIDTARGET;
-			} else if (res == -2) {
+			case -2:
 				return INSUFFICIENTHAM;
+			default:
+				return GENERALERROR;
 			}
 
 		} catch (...) {
@@ -183,6 +193,18 @@ public:
 
 	inline int getAreaRange() const {
 		return areaRange;
+	}
+
+	inline int getDurationStateTime() const {
+		return durationStateTime;
+	}
+
+	inline int getForceCostMultiplier() const {
+		return forceCostMultiplier;
+	}
+
+	inline int getNextAttackDelayChance() const {
+		return nextAttackDelayChance;
 	}
 
 	void setBlindStateChance(int blindStateChance) {

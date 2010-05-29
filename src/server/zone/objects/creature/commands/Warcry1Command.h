@@ -45,14 +45,31 @@ which carries forward this exception.
 #ifndef WARCRY1COMMAND_H_
 #define WARCRY1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Warcry1Command : public QueueCommand {
+class Warcry1Command : public CombatQueueCommand {
 public:
 
 	Warcry1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 0;
+		speedMultiplier = 1;
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+
+		nextAttackDelayChance = 1;
+		durationStateTime = 30;
+
+		combatSpam = "";
+		animationCRC = String("warcry").hashCode();
+		effectString = "clienteffect/combat_special_attacker_warcry.cef";
+		range = 15;
+
+		poolsToDamage = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +80,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target);
 	}
 
 };
