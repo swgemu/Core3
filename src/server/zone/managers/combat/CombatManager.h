@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
 class CombatQueueCommand;
 
@@ -132,8 +133,8 @@ protected:
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
-	int calculateDamage(CreatureObject* attacker, CreatureObject* defender);
-	int calculateDamage(CreatureObject* attacker, TangibleObject* defender);
+	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage);
+	float calculateDamage(CreatureObject* attacker, TangibleObject* defender);
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
@@ -144,11 +145,23 @@ protected:
 	void doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
-	void applyDamage(TangibleObject* defender, int damage, int poolsToDamage);
+	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
+	int applyDamage(CreatureObject* attacker, CreatureObject* defender, float damageMultiplier, int poolsToDamage);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, CombatQueueCommand* tskill);
 
+	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
+	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
+	int getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender);
+	int getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender);
+	int getMindArmorReduction(CreatureObject* attacker, CreatureObject* defender);
+
 	/**
-	 * return false on insufficient
+	 * returns bitmask with what pools to damage
+	 */
+	int calculatePoolsToDamage(int poolsToDamage);
+
+	/**
+	 * returns false on insufficient
 	 */
 	bool applySpecialAttackCost(CreatureObject* attacker, CombatQueueCommand* command);
 

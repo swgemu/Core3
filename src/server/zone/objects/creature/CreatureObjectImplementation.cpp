@@ -1032,21 +1032,21 @@ float CreatureObjectImplementation::calculateBFRatio() {
 		return ((((float) shockWounds) - 250.0f) / 1000.0f);
 }
 
-void CreatureObjectImplementation::setDizziedState() {
+void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 	if (setState(CreatureState::DIZZY)) {
 		playEffect("clienteffect/combat_special_defender_dizzy.cef");
 		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_dizzy_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("dizzyRecoveryTime", 5000 + System::random(20000));
+		cooldownTimerMap.updateToCurrentAndAddMili("dizzyRecoveryTime", durationSeconds * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setAimingState() {
+void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 	if (setState(CreatureState::AIMING)) {
 		playEffect("clienteffect/combat_special_attacker_aim.cef");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("aimRecoveryTime", 5000);
+		cooldownTimerMap.updateToCurrentAndAddMili("aimRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1076,56 +1076,50 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
 	}
 }
-void CreatureObjectImplementation::setStunnedState() {
+void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	if (setState(CreatureState::STUNNED)) {
 		playEffect("clienteffect/combat_special_defender_stun.cef");
 		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_stunned_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("stunRecoveryTime", 5000 + System::random(20000));
+		cooldownTimerMap.updateToCurrentAndAddMili("stunRecoveryTime", durationSeconds * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setBlindedState() {
+void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	if (setState(CreatureState::BLINDED)) {
 		playEffect("clienteffect/combat_special_defender_blind.cef");
 		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_blind_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("blindRecoveryTime", 5000 + System::random(20000));
+		cooldownTimerMap.updateToCurrentAndAddMili("blindRecoveryTime", durationSeconds * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setIntimidatedState() {
+void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 	if (setState(CreatureState::INTIMIDATED)) {
 		playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
-		int time = 15000 + System::random(5000);
-
-		cooldownTimerMap.updateToCurrentAndAddMili("intimidateRecoveryTime", time);
+		cooldownTimerMap.updateToCurrentAndAddMili("intimidateRecoveryTime", durationSeconds * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setSnaredState() {
+void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
 	if (setState(CreatureState::SNARED)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 
-		int time = 20000 + System::random(10000);
-
-		cooldownTimerMap.updateToCurrentAndAddMili("snareRecoveryTime", time);
+		cooldownTimerMap.updateToCurrentAndAddMili("snareRecoveryTime", durationSeconds * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setRootedState() {
+void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 	if (setState(CreatureState::ROOTED)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 
-		int time = 20000 + System::random(10000);
-
-		cooldownTimerMap.updateToCurrentAndAddMili("rootRecoveryTime", time);
+		cooldownTimerMap.updateToCurrentAndAddMili("rootRecoveryTime", durationSeconds * 1000);
 	}
 }
 

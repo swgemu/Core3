@@ -84,6 +84,7 @@ include server.zone.templates.SharedObjectTemplate;
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 
+	@weakReference
 	protected Zone zone;
 
 	@weakReference
@@ -1112,8 +1113,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return false;
 	}
 
-	public boolean isArmorObject() {
-		return gameObjectType & ARMOR;
+	public abstract boolean isArmorObject() {
+		return false;
 	}
 
 	public boolean isCellObject() {

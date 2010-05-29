@@ -68,6 +68,138 @@ bool ArmorObject::isVulnerable(const String& vulnerability) {
 		return ((ArmorObjectImplementation*) _impl)->isVulnerable(vulnerability);
 }
 
+bool ArmorObject::isArmorObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->isArmorObject();
+}
+
+int ArmorObject::getRating() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getRating();
+}
+
+float ArmorObject::getKinetic() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getKinetic();
+}
+
+float ArmorObject::getEnergy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getEnergy();
+}
+
+float ArmorObject::getElectricity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getElectricity();
+}
+
+float ArmorObject::getStun() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getStun();
+}
+
+float ArmorObject::getBlast() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getBlast();
+}
+
+float ArmorObject::getHeat() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getHeat();
+}
+
+float ArmorObject::getCold() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getCold();
+}
+
+float ArmorObject::getAcid() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getAcid();
+}
+
+float ArmorObject::getLightSaber() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getLightSaber();
+}
+
 /*
  *	ArmorObjectImplementation
  */
@@ -195,6 +327,61 @@ bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
 	return (&vulnerabilitesVector)->contains(vulnerability);
 }
 
+bool ArmorObjectImplementation::isArmorObject() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(125):  		return true;
+	return true;
+}
+
+int ArmorObjectImplementation::getRating() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(129):  		return rating;
+	return rating;
+}
+
+float ArmorObjectImplementation::getKinetic() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(133):  		return kinetic;
+	return kinetic;
+}
+
+float ArmorObjectImplementation::getEnergy() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(137):  		return energy;
+	return energy;
+}
+
+float ArmorObjectImplementation::getElectricity() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(141):  		return electricity;
+	return electricity;
+}
+
+float ArmorObjectImplementation::getStun() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(145):  		return stun;
+	return stun;
+}
+
+float ArmorObjectImplementation::getBlast() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(149):  		return blast;
+	return blast;
+}
+
+float ArmorObjectImplementation::getHeat() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(153):  		return heat;
+	return heat;
+}
+
+float ArmorObjectImplementation::getCold() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(157):  		return cold;
+	return cold;
+}
+
+float ArmorObjectImplementation::getAcid() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(161):  		return acid;
+	return acid;
+}
+
+float ArmorObjectImplementation::getLightSaber() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(165):  		return lightSaber;
+	return lightSaber;
+}
+
 /*
  *	ArmorObjectAdapter
  */
@@ -215,6 +402,39 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 8:
 		resp->insertBoolean(isVulnerable(inv->getAsciiParameter(_param0_isVulnerable__String_)));
 		break;
+	case 9:
+		resp->insertBoolean(isArmorObject());
+		break;
+	case 10:
+		resp->insertSignedInt(getRating());
+		break;
+	case 11:
+		resp->insertFloat(getKinetic());
+		break;
+	case 12:
+		resp->insertFloat(getEnergy());
+		break;
+	case 13:
+		resp->insertFloat(getElectricity());
+		break;
+	case 14:
+		resp->insertFloat(getStun());
+		break;
+	case 15:
+		resp->insertFloat(getBlast());
+		break;
+	case 16:
+		resp->insertFloat(getHeat());
+		break;
+	case 17:
+		resp->insertFloat(getCold());
+		break;
+	case 18:
+		resp->insertFloat(getAcid());
+		break;
+	case 19:
+		resp->insertFloat(getLightSaber());
+		break;
 	default:
 		return NULL;
 	}
@@ -232,6 +452,50 @@ bool ArmorObjectAdapter::isSpecial(const String& special) {
 
 bool ArmorObjectAdapter::isVulnerable(const String& vulnerability) {
 	return ((ArmorObjectImplementation*) impl)->isVulnerable(vulnerability);
+}
+
+bool ArmorObjectAdapter::isArmorObject() {
+	return ((ArmorObjectImplementation*) impl)->isArmorObject();
+}
+
+int ArmorObjectAdapter::getRating() {
+	return ((ArmorObjectImplementation*) impl)->getRating();
+}
+
+float ArmorObjectAdapter::getKinetic() {
+	return ((ArmorObjectImplementation*) impl)->getKinetic();
+}
+
+float ArmorObjectAdapter::getEnergy() {
+	return ((ArmorObjectImplementation*) impl)->getEnergy();
+}
+
+float ArmorObjectAdapter::getElectricity() {
+	return ((ArmorObjectImplementation*) impl)->getElectricity();
+}
+
+float ArmorObjectAdapter::getStun() {
+	return ((ArmorObjectImplementation*) impl)->getStun();
+}
+
+float ArmorObjectAdapter::getBlast() {
+	return ((ArmorObjectImplementation*) impl)->getBlast();
+}
+
+float ArmorObjectAdapter::getHeat() {
+	return ((ArmorObjectImplementation*) impl)->getHeat();
+}
+
+float ArmorObjectAdapter::getCold() {
+	return ((ArmorObjectImplementation*) impl)->getCold();
+}
+
+float ArmorObjectAdapter::getAcid() {
+	return ((ArmorObjectImplementation*) impl)->getAcid();
+}
+
+float ArmorObjectAdapter::getLightSaber() {
+	return ((ArmorObjectImplementation*) impl)->getLightSaber();
 }
 
 /*

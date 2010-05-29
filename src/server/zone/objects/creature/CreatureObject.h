@@ -308,23 +308,23 @@ public:
 
 	float calculateBFRatio();
 
-	void setDizziedState();
+	void setDizziedState(int durationSeconds = 5);
 
-	void setAimingState();
+	void setAimingState(int durationSeconds = 5);
 
 	void setCoverState();
 
 	void setBerserkedState(unsigned int duration);
 
-	void setStunnedState();
+	void setStunnedState(int durationSeconds = 5);
 
-	void setBlindedState();
+	void setBlindedState(int durationSeconds = 5);
 
-	void setIntimidatedState();
+	void setIntimidatedState(int durationSeconds = 15);
 
-	void setSnaredState();
+	void setSnaredState(int durationSeconds = 20);
 
-	void setRootedState();
+	void setRootedState(int durationSeconds = 20);
 
 	bool setNextAttackDelay(int del);
 
@@ -333,6 +333,8 @@ public:
 	void activateHAMRegeneration();
 
 	void activateStateRecovery();
+
+	bool hasAttackDelay();
 
 	void attachPostureChangeObserver(PostureChangeObserver* observer);
 
@@ -798,23 +800,23 @@ public:
 
 	float calculateBFRatio();
 
-	void setDizziedState();
+	void setDizziedState(int durationSeconds = 5);
 
-	void setAimingState();
+	void setAimingState(int durationSeconds = 5);
 
 	void setCoverState();
 
 	void setBerserkedState(unsigned int duration);
 
-	void setStunnedState();
+	void setStunnedState(int durationSeconds = 5);
 
-	void setBlindedState();
+	void setBlindedState(int durationSeconds = 5);
 
-	void setIntimidatedState();
+	void setIntimidatedState(int durationSeconds = 15);
 
-	void setSnaredState();
+	void setSnaredState(int durationSeconds = 20);
 
-	void setRootedState();
+	void setRootedState(int durationSeconds = 20);
 
 	bool setNextAttackDelay(int del);
 
@@ -823,6 +825,8 @@ public:
 	virtual void activateHAMRegeneration();
 
 	virtual void activateStateRecovery();
+
+	bool hasAttackDelay();
 
 	void attachPostureChangeObserver(PostureChangeObserver* observer);
 
@@ -1169,23 +1173,23 @@ public:
 
 	float calculateBFRatio();
 
-	void setDizziedState();
+	void setDizziedState(int durationSeconds);
 
-	void setAimingState();
+	void setAimingState(int durationSeconds);
 
 	void setCoverState();
 
 	void setBerserkedState(unsigned int duration);
 
-	void setStunnedState();
+	void setStunnedState(int durationSeconds);
 
-	void setBlindedState();
+	void setBlindedState(int durationSeconds);
 
-	void setIntimidatedState();
+	void setIntimidatedState(int durationSeconds);
 
-	void setSnaredState();
+	void setSnaredState(int durationSeconds);
 
-	void setRootedState();
+	void setRootedState(int durationSeconds);
 
 	bool setNextAttackDelay(int del);
 
@@ -1194,6 +1198,8 @@ public:
 	void activateHAMRegeneration();
 
 	void activateStateRecovery();
+
+	bool hasAttackDelay();
 
 	void updateKnockdownRecovery();
 

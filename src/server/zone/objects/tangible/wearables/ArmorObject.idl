@@ -120,5 +120,48 @@ class ArmorObject extends WearableObject {
 	public boolean isVulnerable(final string vulnerability) {
 		return vulnerabilitesVector.contains(vulnerability);
 	}
+	
+	public boolean isArmorObject() {
+		return true;
+	}
+	
+	public int getRating() {
+		return rating;
+	}
 
+	public float getKinetic() {
+		return kinetic;
+	}
+
+	public float getEnergy() {
+		return energy;
+	}
+
+	public float getElectricity() {
+		return electricity;
+	}
+
+	public float getStun() {
+		return stun;
+	}
+
+	public float getBlast() {
+		return blast;
+	}
+
+	public float getHeat() {
+		return heat;
+	}
+
+	public float getCold() {
+		return cold;
+	}
+
+	public float getAcid() {
+		return acid;
+	}
+
+	public float getLightSaber() {
+		return lightSaber;
+	}
 }
