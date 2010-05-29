@@ -2164,8 +2164,8 @@ bool SceneObjectImplementation::isTangibleObject() {
 }
 
 bool SceneObjectImplementation::isResourceContainer() {
-	// server/zone/objects/scene/SceneObject.idl(1129):  		return gameObjectType == RESOURCECONTAINER;
-	return gameObjectType == RESOURCECONTAINER;
+	// server/zone/objects/scene/SceneObject.idl(1129):  		return gameObjectType & RESOURCECONTAINER;
+	return gameObjectType & RESOURCECONTAINER;
 }
 
 bool SceneObjectImplementation::isInstrument() {

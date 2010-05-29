@@ -46,6 +46,7 @@ which carries forward this exception.
 #define RESOURCECONTAINERSPLITCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../resource/ResourceContainer.h"
 
 class ResourceContainerSplitCommand : public QueueCommand {
 public:
@@ -62,6 +63,19 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer tokenizer(arguments.toString());
+		int newStackSize = tokenizer.getIntToken();
+		uint64 objectID = tokenizer.getLongToken();
+
+		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) DistributedObjectBroker::instance()->lookUp(objectID);
+
+		if((resourceContainer == NULL || !creature->isPlayerCreature()))
+			return INVALIDTARGET;
+
+		PlayerCreature* playerCreature = (PlayerCreature*) creature;
+
+		resourceContainer->split(playerCreature, newStackSize);
 
 		return SUCCESS;
 	}
