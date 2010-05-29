@@ -679,7 +679,7 @@ SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, ui
 }
 
 void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
-	objectManager->destroyObject(objectID);
+	objectManager->destroyObjectFromDatabase(objectID);
 }
 
 /*

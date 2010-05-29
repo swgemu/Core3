@@ -270,6 +270,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getProfession(profession);
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
+	playerCreature->attachObjectDestructionObserver(this);
 	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
 
@@ -661,4 +662,79 @@ void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* playe
 		}
 	}
 
+}
+
+uint8 PlayerManagerImplementation::calculateIncapacitationTimer(PlayerCreature* playerCreature, int condition) {
+	//Switch the sign of the value
+	int32 value = -condition;
+
+	if (value < 0)
+		return 0;
+
+	uint32 recoveryTime = (value / 5); //In seconds - 3 seconds is recoveryEvent timer
+
+	//Recovery time is gated between 10 and 60 seconds.
+	recoveryTime = MIN(MAX(recoveryTime, 10), 60);
+
+	//Check for incap recovery food buff - overrides recovery time gate.
+	/*if (hasBuff(BuffCRC::FOOD_INCAP_RECOVERY)) {
+		Buff* buff = getBuff(BuffCRC::FOOD_INCAP_RECOVERY);
+
+		if (buff != NULL) {
+			float percent = buff->getSkillModifierValue("incap_recovery");
+
+			recoveryTime = round(recoveryTime * ((100.0f - percent) / 100.0f));
+
+			StfParameter* params = new StfParameter();
+			params->addDI(percent);
+
+			sendSystemMessage("combat_effects", "incap_recovery", params); //Incapacitation recovery time reduced by %DI%.
+			delete params;
+
+			removeBuff(buff);
+		}
+	}*/
+
+	return recoveryTime;
+}
+
+int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+	if (!destructedObject->isPlayerCreature())
+		return 1;
+
+	PlayerCreature* playerCreature = (PlayerCreature*) destructedObject;
+
+	int AI = playerCreature->getSkillMod("avoid_incapacitation");
+
+	if (AI > 0)
+		return 0;
+
+	playerCreature->updateIncapacitationCounter();
+
+	playerCreature->clearCombatState();
+
+	if (playerCreature->getIncapacitationCounter() < 3) {
+		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
+
+		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
+		playerCreature->setUseCount(incapTime);
+
+		ParameterizedStringId stringId;
+
+		if (destructor != NULL) {
+			stringId.setStringId("base_player", "prose_victim_incap");
+			stringId.setTT(destructor->getObjectID());
+		} else {
+			stringId.setStringId("base_player", "victim_incapacitated");
+		}
+
+		playerCreature->sendSystemMessage(stringId);
+
+	} else {
+		if (!playerCreature->isFirstIncapacitationExpired()) {
+			playerCreature->setPosture(CreaturePosture::DEAD, true);
+		}
+	}
+
+	return 0;
 }

@@ -215,19 +215,20 @@ void CreatureObject::setHAM(int type, int value, bool notifyClient) {
 		((CreatureObjectImplementation*) _impl)->setHAM(type, value, notifyClient);
 }
 
-int CreatureObject::inflictDamage(int damageType, int damage, bool notifyClient) {
+int CreatureObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->inflictDamage(damageType, damage, notifyClient);
+		return ((CreatureObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
 void CreatureObject::setBaseHAM(int type, int value, bool notifyClient) {
@@ -2361,8 +2362,8 @@ void CreatureObjectImplementation::selectConversationOption(int option, SceneObj
 }
 
 bool CreatureObjectImplementation::hasAttackDelay() {
-	// server/zone/objects/creature/CreatureObject.idl(674):  		return cooldownTimerMap.isPast("nextAttackDelay");
-	return (&cooldownTimerMap)->isPast("nextAttackDelay");
+	// server/zone/objects/creature/CreatureObject.idl(674):  		return !cooldownTimerMap.isPast("nextAttackDelay");
+	return !(&cooldownTimerMap)->isPast("nextAttackDelay");
 }
 
 void CreatureObjectImplementation::attachPostureChangeObserver(PostureChangeObserver* observer) {
@@ -2919,7 +2920,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 19:
-		resp->insertSignedInt(inflictDamage(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 20:
 		setBaseHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -3415,8 +3416,8 @@ void CreatureObjectAdapter::setHAM(int type, int value, bool notifyClient) {
 	((CreatureObjectImplementation*) impl)->setHAM(type, value, notifyClient);
 }
 
-int CreatureObjectAdapter::inflictDamage(int damageType, int damage, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->inflictDamage(damageType, damage, notifyClient);
+int CreatureObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+	return ((CreatureObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
 void CreatureObjectAdapter::setBaseHAM(int type, int value, bool notifyClient) {

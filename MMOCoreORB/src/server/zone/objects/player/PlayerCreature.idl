@@ -107,15 +107,9 @@ class PlayerCreature extends CreatureObject {
 	protected Badges badges;
 	
 	@dereferenced
-	protected Time nextTip;
-	
-	@dereferenced
 	protected SortedVector<ChatRoom> chatRooms;
 
-	protected byte incapacitationCounter;
-	
-	@dereferenced
-	protected Time firstIncapacitationTime;
+	protected transient byte incapacitationCounter;
 	
 	@dereferenced
 	protected VectorMap<unsigned int, SuiBox> suiBoxes;
@@ -272,6 +266,29 @@ class PlayerCreature extends CreatureObject {
 			return true;
 		
 		return false;
+	}
+	
+	public native boolean isFirstIncapacitationExpired();
+
+	public void resetIncapacitationCounter() {
+		incapacitationCounter = 0;
+	}
+
+	public native void resetFirstIncapacitationTime();
+
+	public void updateIncapacitationCounter() {
+		incapacitationCounter++;
+
+		if (isFirstIncapacitation() || isFirstIncapacitationExpired())
+			resetFirstIncapacitationTime();
+	}
+
+	public boolean isFirstIncapacitation() {
+		return incapacitationCounter == 1;
+	}
+
+	public byte getIncapacitationCounter() {
+		return incapacitationCounter;
 	}
 	
 	//NPC Conversation Methods

@@ -258,6 +258,18 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
+
 	void setLastNpcConvStr(const String& conv);
 
 	void setLastNpcConvMessStr(const String& mess);
@@ -454,13 +466,9 @@ protected:
 
 	Badges badges;
 
-	Time nextTip;
-
 	SortedVector<ManagedReference<ChatRoom* > > chatRooms;
 
 	byte incapacitationCounter;
-
-	Time firstIncapacitationTime;
 
 	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
 
@@ -534,6 +542,18 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
 
 	void setLastNpcConvStr(const String& conv);
 
@@ -731,6 +751,18 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
 
 	void setLastNpcConvStr(const String& conv);
 
