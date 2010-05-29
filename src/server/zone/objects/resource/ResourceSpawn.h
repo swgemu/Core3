@@ -84,6 +84,8 @@ public:
 
 	ResourceContainer* extractResource(int zoneid, int units);
 
+	ResourceContainer* createResource(int units);
+
 	int getSpawnMapZone(int i);
 
 	bool isUnknownType();
@@ -205,6 +207,8 @@ public:
 
 	ResourceContainer* extractResource(int zoneid, int units);
 
+	ResourceContainer* createResource(int units);
+
 	int getSpawnMapZone(int i);
 
 	bool isUnknownType();
@@ -307,6 +311,8 @@ public:
 	int getSpawnMapSize();
 
 	ResourceContainer* extractResource(int zoneid, int units);
+
+	ResourceContainer* createResource(int units);
 
 protected:
 	String _param0_setName__String_;

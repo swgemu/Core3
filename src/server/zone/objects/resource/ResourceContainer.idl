@@ -56,11 +56,12 @@ include server.zone.packets.scene.AttributeListMessage;
 class ResourceContainer extends TangibleObject {
 
 	protected ResourceSpawn spawnObject;
+	protected int stackQuantity;
 	
 	public static final int MAXSIZE = 100000;
 	
     public ResourceContainer() {
-    	;
+    	stackQuantity = 0;
     }
         
    /**
@@ -81,6 +82,12 @@ class ResourceContainer extends TangibleObject {
 	 */
 	public native void sendBaselinesTo(SceneObject player);
 	
+	public native void setQuantity(int quantity, SceneObject player = null);
+	
+	public int getQuantity() {
+		return stackQuantity;
+	}
+	
 	public void setSpawnObject(ResourceSpawn spawn) {
 		spawnObject = spawn;
 	}
@@ -96,4 +103,6 @@ class ResourceContainer extends TangibleObject {
 	public unsigned long getSpawnID() {
 		return spawnObject.getObjectID();
 	}
+	
+	public native void split(PlayerCreature player, int newStackSize);
 }
