@@ -486,7 +486,7 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 	}
 }
 
-int CreatureObjectImplementation::inflictDamage(int damageType, int damage, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
 		return 0;
@@ -494,7 +494,12 @@ int CreatureObjectImplementation::inflictDamage(int damageType, int damage, bool
 
 	int currentValue = hamList.get(damageType);
 
-	setHAM(damageType, currentValue - damage, notifyClient);
+	int newValue = currentValue - damage;
+
+	setHAM(damageType, MIN(newValue, maxHamList.get(damageType)), notifyClient);
+
+	if (newValue <= 0)
+		notifyObjectDestructionObservers(attacker, newValue);
 
 	return 0;
 }
@@ -1203,9 +1208,9 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	if (mindTick < 1)
 		mindTick = 1;
 
-	inflictDamage(CreatureAttribute::HEALTH, -healthTick);
-	inflictDamage(CreatureAttribute::ACTION, -actionTick);
-	inflictDamage(CreatureAttribute::MIND, -mindTick);
+	inflictDamage(_this, CreatureAttribute::HEALTH, -healthTick);
+	inflictDamage(_this, CreatureAttribute::ACTION, -actionTick);
+	inflictDamage(_this, CreatureAttribute::MIND, -mindTick);
 
 	//Check for passive wound healing
 	/*if (isInBuilding()) {

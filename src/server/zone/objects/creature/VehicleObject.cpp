@@ -60,19 +60,20 @@ bool VehicleObject::checkInRangeGarage() {
 		return ((VehicleObjectImplementation*) _impl)->checkInRangeGarage();
 }
 
-int VehicleObject::inflictDamage(int damageType, int damage, bool notifyClient) {
+int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->inflictDamage(damageType, damage, notifyClient);
+		return ((VehicleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
 bool VehicleObject::isAttackableBy(CreatureObject* object) {
@@ -230,7 +231,7 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(checkInRangeGarage());
 		break;
 	case 7:
-		resp->insertSignedInt(inflictDamage(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
@@ -252,8 +253,8 @@ bool VehicleObjectAdapter::checkInRangeGarage() {
 	return ((VehicleObjectImplementation*) impl)->checkInRangeGarage();
 }
 
-int VehicleObjectAdapter::inflictDamage(int damageType, int damage, bool notifyClient) {
-	return ((VehicleObjectImplementation*) impl)->inflictDamage(damageType, damage, notifyClient);
+int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+	return ((VehicleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
 bool VehicleObjectAdapter::isAttackableBy(CreatureObject* object) {

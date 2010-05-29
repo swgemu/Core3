@@ -63,7 +63,7 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	owner->sendMessage(parameters);
 
 	if (parent != NULL) {
-		SceneObject* grandParent = getGrandParent();
+		SceneObject* grandParent = getRootParent();
 
 		grandParent->sendTo(_this);
 	} else
@@ -81,7 +81,7 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno == _this)
 		return;
 
-	SceneObject* grandParent = getGrandParent();
+	SceneObject* grandParent = getRootParent();
 
 	if (parent != NULL) {
 		if (grandParent == scno) { // we already should have sent our grandParent to owner
@@ -100,7 +100,7 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 		//if it hasnt me than dont send me and wait for the building to be sent
 		//TODO: check if we need this for every object or only for buildings
 
-		SceneObject* scnoGrandParent = scno->getGrandParent();
+		SceneObject* scnoGrandParent = scno->getRootParent();
 
 		if (scnoGrandParent->isBuildingObject()) {
 			BuildingObject* building = (BuildingObject*)scnoGrandParent;
@@ -405,4 +405,15 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 	}
 
 	suiBoxes.drop(boxID);
+}
+
+void PlayerCreatureImplementation::resetFirstIncapacitationTime() {
+	if (!isFirstIncapacitation())
+		resetIncapacitationCounter();
+
+	cooldownTimerMap.updateToCurrentAndAddMili("firstIncapacitationTime", 900000);
+}
+
+bool PlayerCreatureImplementation::isFirstIncapacitationExpired() {
+	return cooldownTimerMap.isPast("firstIncapacitationTime");
 }

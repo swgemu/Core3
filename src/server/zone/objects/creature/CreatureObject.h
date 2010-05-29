@@ -230,7 +230,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -722,7 +722,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -1099,7 +1099,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient);
 
-	int inflictDamage(int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
 

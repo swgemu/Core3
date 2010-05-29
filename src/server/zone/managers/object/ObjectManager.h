@@ -105,7 +105,7 @@ namespace zone {
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);
 
-		int destroyObject(uint64 objectID);
+		int destroyObjectFromDatabase(uint64 objectID);
 
 		uint64 getNextObjectID(const String& database);
 

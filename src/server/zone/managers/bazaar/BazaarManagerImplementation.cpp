@@ -68,7 +68,7 @@ void BazaarManagerImplementation::checkAuctions() {
 				BazaarTerminal* terminal = item->getBazaarTerminal();
 				terminal->dropAuction(objectId);
 
-				ObjectManager::instance()->destroyObject(item->_getObjectID());
+				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
 			} else {
 				ChatManager* cman = zoneServer->getChatManager();
 
@@ -144,7 +144,7 @@ void BazaarManagerImplementation::checkAuctions() {
 			BazaarTerminal* terminal = item->getBazaarTerminal();
 			terminal->dropAuction(objectId);
 
-			ObjectManager::instance()->destroyObject(item->_getObjectID());
+			ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
 		}
 	}
 
@@ -527,7 +527,7 @@ void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 ob
 	BazaarTerminal* ownedTerminal = item->getBazaarTerminal();
 	ownedTerminal->dropAuction(objectid);
 	auctionMap->dropAuction(objectid);
-	ObjectManager::instance()->destroyObject(item->_getObjectID());
+	ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
 
 	msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 	player->sendMessage(msg);

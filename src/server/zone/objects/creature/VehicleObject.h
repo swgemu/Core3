@@ -116,7 +116,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	bool isAttackableBy(CreatureObject* object);
 
@@ -159,7 +159,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	bool isAttackableBy(CreatureObject* object);
 
@@ -208,7 +208,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	int inflictDamage(int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
 
 	bool isAttackableBy(CreatureObject* object);
 

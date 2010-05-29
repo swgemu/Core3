@@ -288,7 +288,7 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 
 void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
 	if (zone == NULL) {
-		SceneObject* grandParent = getGrandParent();
+		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObject(object, sendSelf);
@@ -316,7 +316,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
 	if (zone == NULL) {
-		SceneObject* grandParent = getGrandParent();
+		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessage(message, sendSelf);
@@ -347,7 +347,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
 	if (zone == NULL) {
-		SceneObject* grandParent = getGrandParent();
+		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessages(messages, sendSelf);
@@ -748,7 +748,7 @@ void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedR
 	objects = slottedObjects;
 }
 
-SceneObject* SceneObjectImplementation::getGrandParent() {
+SceneObject* SceneObjectImplementation::getRootParent() {
 	if (parent == NULL)
 		return NULL;
 

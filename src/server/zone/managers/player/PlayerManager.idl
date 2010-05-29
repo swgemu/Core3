@@ -62,8 +62,9 @@ import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 
 include server.zone.managers.player.StartingItemList;
+include server.zone.objects.tangible.TangibleObjectDestructionObserver;
 
-class PlayerManager extends ManagedObject implements Logger {
+class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestructionObserver {
 	transient ZoneProcessServerImplementation processor;
 	private ZoneServer server;
 	
@@ -84,6 +85,19 @@ class PlayerManager extends ManagedObject implements Logger {
 	@local
 	public native boolean checkPlayerName(MessageCallback callback);
 	
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	@local
+	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition);
+	
+	/**
+	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
+	 * \return Returns the number of seconds until the player should recover from incapacitation.
+	 */
+	public native byte calculateIncapacitationTimer(PlayerCreature player, int condition);
+	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
@@ -92,6 +106,8 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	public native void createTutorialBuilding(PlayerCreature player);
 	public native void createSkippedTutorialBuilding(PlayerCreature player);
+	
+	
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);

@@ -533,7 +533,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 			ManagedReference<ResourceContainer*> resource = (ResourceContainer*) object.get();
 
 			if (resource->getSpawnName() == resname) {
-				int newStackSize = resource->getObjectCount() + unitsExtracted;
+				int newStackSize = resource->getUseCount() + unitsExtracted;
 
 				if (newStackSize > ResourceContainer::MAXSIZE) {
 

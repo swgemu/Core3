@@ -57,6 +57,8 @@ which carries forward this exception.
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
+	destructionObservers.setNoDuplicateInsertPlan();
+
 	setLoggingName("TangibleObject");
 }
 
@@ -75,7 +77,7 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	unknownByte = 1;
 
-	objectCount = 0;
+	useCount = 0;
 
 	conditionDamage = 0;
 	maxCondition = tanoData->getMaxCondition();
@@ -230,17 +232,17 @@ void TangibleObjectImplementation::setCustomizationVariable(byte type, byte valu
 	broadcastMessage(dtano3, true);
 }
 
-void TangibleObjectImplementation::setObjectCount(uint32 newObjectCount, bool notifyClient) {
-	if (objectCount == newObjectCount)
+void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {
+	if (useCount == newUseCount)
 		return;
 
-	objectCount = newObjectCount;
+	useCount = newUseCount;
 
 	if (!notifyClient)
 		return;
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->setQuantity(newObjectCount);
+	dtano3->setQuantity(newUseCount);
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);
@@ -262,10 +264,13 @@ void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notif
 	broadcastMessage(dtano3, true);
 }
 
-int TangibleObjectImplementation::inflictDamage(int damageType, int damage, bool notifyClient) {
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	int newConditionDamage = conditionDamage + damage;
 
 	setConditionDamage(newConditionDamage, notifyClient);
+
+	if (newConditionDamage <= 0)
+		notifyObjectDestructionObservers(attacker, newConditionDamage);
 
 	return 0;
 }

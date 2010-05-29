@@ -67,6 +67,6 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 	return 0;
 }
 
-int VehicleObjectImplementation::inflictDamage(int damageType, int damage, bool notifyClient) {
-	return TangibleObjectImplementation::inflictDamage(damageType, damage, notifyClient);
+int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, notifyClient);
 }

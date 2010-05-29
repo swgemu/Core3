@@ -70,7 +70,7 @@ public:
 
 		insertInt(tano->getOptionsBitmask());
 
-		int count = tano->getObjectCount();
+		int count = tano->getUseCount();
 
 		if (count <= 1)
 			count = 0;
