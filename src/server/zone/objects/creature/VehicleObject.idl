@@ -86,7 +86,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
-	public native int inflictDamage(int damageType, int damage, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
 	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object

@@ -620,7 +620,7 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 	return table;
 }
 
-int ObjectManager::destroyObject(uint64 objectID) {
+int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Locker _locker(this);
 
 	ObjectDatabase* table = getTable(objectID);

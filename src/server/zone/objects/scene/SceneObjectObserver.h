@@ -5,8 +5,10 @@
  *      Author: victor
  */
 
-#ifndef OBSERVER_H_
-#define OBSERVER_H_
+#ifndef SCENEOBJECTOBSERVER_H_
+#define SCENEOBJECTOBSERVER_H_
+
+#include "Observer.h"
 
 namespace server {
  namespace zone {
@@ -20,22 +22,13 @@ namespace server {
 
 using namespace server::zone::objects::scene;
 
-class SceneObjectObserver {
+class SceneObjectObserver : public Observer {
 public:
 	/**
 	 * @return 0 to not deattach the observer after running
 	 * @return 1 to deattach the observer after running
 	 */
 	virtual int notify(SceneObject* object) = 0;
-
-	int compareTo(SceneObjectObserver* obj) {
-		if (this < obj) {
-			return 1;
-		} else if (this > obj) {
-			return -1;
-		} else
-			return 0;
-	}
 };
 
 

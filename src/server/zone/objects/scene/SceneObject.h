@@ -732,7 +732,7 @@ public:
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getGrandParent();
+	SceneObject* getRootParent();
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1449,7 +1449,7 @@ public:
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getGrandParent();
+	SceneObject* getRootParent();
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1724,7 +1724,7 @@ public:
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getGrandParent();
+	SceneObject* getRootParent();
 
 	bool isASubChildOf(SceneObject* object);
 

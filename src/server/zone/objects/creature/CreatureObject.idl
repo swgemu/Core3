@@ -317,7 +317,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
-	public native int inflictDamage(int damageType, int damage, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Base HAM
@@ -671,7 +671,7 @@ class CreatureObject extends TangibleObject {
 	public abstract native void activateStateRecovery();
 	
 	public boolean hasAttackDelay() {
-		return cooldownTimerMap.isPast("nextAttackDelay");
+		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
 	
 	/**

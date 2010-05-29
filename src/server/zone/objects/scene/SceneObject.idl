@@ -105,8 +105,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient unsigned int movementCounter;
 
 	protected native float positionX;
+	protected native float previousPositionX;
 	protected native float positionZ;
+	protected native float previousPositionZ;
 	protected native float positionY;
+	protected native float previousPositionY;
 
 	@dereferenced
 	protected Vector<string> arrangementDescriptors;
@@ -1066,7 +1069,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { this object is locked }
 	 * @return returns the parent of all children in the object tree
 	 */
-	public native SceneObject getGrandParent();
+	public native SceneObject getRootParent();
 
 
 	/**

@@ -69,11 +69,15 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/tangible/TangibleObjectDestructionObserver.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
+
+#include "system/util/SortedVector.h"
 
 #include "engine/log/Logger.h"
 
@@ -168,7 +172,7 @@ public:
 
 	void setCombatState();
 
-	void setObjectCount(unsigned int newObjectCount, bool notifyClient = true);
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -178,17 +182,23 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	void setConditionDamage(int condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
+	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
+
+	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
 	byte getUnknownByte();
 
 	CustomizationVariables* getCustomizationVariables();
 
-	int getObjectCount();
+	int getUseCount();
 
 	int getMaxCondition();
 
@@ -252,7 +262,7 @@ protected:
 
 	int maxCondition;
 
-	int objectCount;
+	int useCount;
 
 	unsigned int optionsBitmask;
 
@@ -267,6 +277,8 @@ protected:
 	unsigned short playerUseMask;
 
 	bool sliced;
+
+	SortedVector<TangibleObjectDestructionObserver*> destructionObservers;
 
 public:
 	unsigned static const short MALE = 0x01;
@@ -355,7 +367,7 @@ public:
 
 	virtual void setCombatState();
 
-	void setObjectCount(unsigned int newObjectCount, bool notifyClient = true);
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -365,17 +377,23 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* object);
 
-	virtual int inflictDamage(int damageType, int damage, bool notifyClient = true);
+	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
 	void setConditionDamage(int condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
+	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
+
+	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
+
+	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
 	byte getUnknownByte();
 
 	CustomizationVariables* getCustomizationVariables();
 
-	int getObjectCount();
+	int getUseCount();
 
 	int getMaxCondition();
 
@@ -458,7 +476,7 @@ public:
 
 	void setCombatState();
 
-	void setObjectCount(unsigned int newObjectCount, bool notifyClient);
+	void setUseCount(unsigned int newUseCount, bool notifyClient);
 
 	void clearCombatState(bool clearDefenders);
 
@@ -466,15 +484,17 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int inflictDamage(int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
 
 	void setConditionDamage(int condDamage, bool notifyClient);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
 	byte getUnknownByte();
 
-	int getObjectCount();
+	int getUseCount();
 
 	int getMaxCondition();
 

@@ -703,5 +703,5 @@ void ChatManagerImplementation::deletePersistentMessage(PlayerCreature* player, 
 
 	_locker.release();
 
-	ObjectManager::instance()->destroyObject(messageObjectID);
+	ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
 }

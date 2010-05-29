@@ -93,6 +93,8 @@ using namespace server::zone;
 
 #include "server/zone/managers/player/StartingItemList.h"
 
+#include "server/zone/objects/tangible/TangibleObjectDestructionObserver.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -115,6 +117,10 @@ public:
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
+
+	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
+
+	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
@@ -154,7 +160,7 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
+class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger, public TangibleObjectDestructionObserver {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > server;
@@ -181,6 +187,10 @@ public:
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
+
+	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
+
+	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
@@ -240,6 +250,8 @@ public:
 	void loadNameMap();
 
 	void finalize();
+
+	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

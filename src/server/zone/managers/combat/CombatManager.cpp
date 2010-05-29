@@ -736,14 +736,14 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CombatQueue
 		if (attacker->getHAM(CreatureAttribute::ACTION) <= action)
 			return false;
 
-		attacker->inflictDamage(CreatureAttribute::ACTION, action, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true);
 	}
 
 	if (mind > 0) {
 		if (attacker->getHAM(CreatureAttribute::MIND) <= mind)
 			return false;
 
-		attacker->inflictDamage(CreatureAttribute::MIND, mind, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 	}
 
 	if (force > 0) {
@@ -973,17 +973,17 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	if (poolsToDamage & HEALTH) {
 		damage += calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
-		defender->inflictDamage(CreatureAttribute::HEALTH, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, damage, true);
 	}
 
 	if (poolsToDamage & ACTION) {
 		damage += calculateDamage(attacker, defender, ACTION) * damageMultiplier;
-		defender->inflictDamage(CreatureAttribute::ACTION, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, damage, true);
 	}
 
 	if (poolsToDamage & MIND) {
 		damage += calculateDamage(attacker, defender, MIND) * damageMultiplier;
-		defender->inflictDamage(CreatureAttribute::MIND, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, damage, true);
 	}
 
 	return damage;

@@ -110,7 +110,7 @@ public:
 				return INVALIDTARGET;
 			case -2:
 				return INSUFFICIENTHAM;
-			default:
+			case -3:
 				return GENERALERROR;
 			}
 
