@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file RandomPool.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "RandomPool.h"
 #include "../ResourceSpawner.h"
 

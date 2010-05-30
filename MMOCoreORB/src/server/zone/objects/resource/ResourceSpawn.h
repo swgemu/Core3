@@ -82,7 +82,7 @@ public:
 
 	int getSpawnMapSize();
 
-	ResourceContainer* extractResource(int zoneid, int units);
+	void extractResource(int zoneid, int units);
 
 	ResourceContainer* createResource(int units);
 
@@ -90,7 +90,7 @@ public:
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
 
 	float getDensityAt(int zoneid, float x, float y);
 
@@ -205,7 +205,7 @@ public:
 
 	int getSpawnMapSize();
 
-	ResourceContainer* extractResource(int zoneid, int units);
+	void extractResource(int zoneid, int units);
 
 	ResourceContainer* createResource(int units);
 
@@ -213,12 +213,12 @@ public:
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
 
 private:
 	int getConcentration(bool jtl);
 
-	Vector<unsigned int> getSpawnZones(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones);
+	Vector<unsigned int> getSpawnZones(int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
 
 public:
 	float getDensityAt(int zoneid, float x, float y);
@@ -310,7 +310,7 @@ public:
 
 	int getSpawnMapSize();
 
-	ResourceContainer* extractResource(int zoneid, int units);
+	void extractResource(int zoneid, int units);
 
 	ResourceContainer* createResource(int units);
 

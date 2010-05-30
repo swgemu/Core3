@@ -1477,7 +1477,7 @@ public:
 
 	virtual bool isTangibleObject();
 
-	bool isResourceContainer();
+	virtual bool isResourceContainer();
 
 	bool isInstrument();
 

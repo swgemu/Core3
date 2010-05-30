@@ -216,7 +216,7 @@ class ResourceSpawn extends SceneObject {
     	return spawnMaps.size();
     }
     
-    public native ResourceContainer extractResource(int zoneid, int units);
+    public native void extractResource(int zoneid, int units);
     
     public native ResourceContainer createResource(int units);
 
@@ -227,14 +227,14 @@ class ResourceSpawn extends SceneObject {
 	public native boolean isUnknownType();
     
     @local
-    public native void createSpawnMaps(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
     
     @local 	
 	private native int getConcentration(boolean jtl);
 	
 	@local 	
 	@dereferenced
-	private native Vector<unsigned int> getSpawnZones(boolean jtl, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+	private native Vector<unsigned int> getSpawnZones(int minpool, int maxpool, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
     
     @local
     public native float getDensityAt(int zoneid, float x, float y);

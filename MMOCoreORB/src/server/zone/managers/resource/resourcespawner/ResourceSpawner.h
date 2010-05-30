@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceSpawner.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCESPAWNER_H_
 #define RESOURCESPAWNER_H_
 
@@ -60,6 +66,9 @@ which carries forward this exception.
 #include "resourcepool/NativePool.h"
 #include "resourcepool/ManualPool.h"
 
+/**
+ *
+ */
 class ResourceSpawner : public Logger {
 private:
 	ManagedReference<ZoneServer* > server;
@@ -102,8 +111,10 @@ public:
 	void shiftResources();
 
 	ResourceSpawn* createResourceSpawn(const String& type, int zonerestriction = -1);
-	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes = 0, int zonerestriction = -1);
+	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes, int zonerestriction = -1);
 	ResourceSpawn* createResourceSpawn(const Vector<String> includes, const Vector<String> excludes = 0, int zonerestriction = -1);
+
+	ResourceSpawn* manualCreateResourceSpawn(const String& type);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 

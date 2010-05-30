@@ -69,6 +69,7 @@ bool ResourceSpawnImplementation::inShift() {
 
 int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
 		int index) {
+
 	if (index < spawnAttributes.size()) {
 		attribute = spawnAttributes.elementAt(index).getKey();
 		return spawnAttributes.get(index);
@@ -97,11 +98,11 @@ String ResourceSpawnImplementation::getFamilyName() {
    		return "";
 }
 
-void ResourceSpawnImplementation::createSpawnMaps(bool jtl,
+void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int maxpool,
 		int zonerestriction, Vector<uint32>& activeZones) {
 
 	int concentration = getConcentration(jtl);
-	Vector<uint32> zoneids = getSpawnZones(jtl, zonerestriction, activeZones);
+	Vector<uint32> zoneids = getSpawnZones(minpool, maxpool, zonerestriction, activeZones);
 
 	for (int i = 0; i < zoneids.size(); ++i) {
 
@@ -130,51 +131,33 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 		return SpawnDensityMap::MEDIUMDENSITY;
 }
 
-Vector<uint32> ResourceSpawnImplementation::getSpawnZones(bool jtl,
+Vector<uint32> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
 		int zonerestriction, Vector<uint32>& activeZones) {
 
 	/**
 	 * Here we are using defined rules to set the number
 	 * of zones and specific zones of this specific spawn
 	 */
-
 	Vector<uint32> zoneids;
 	int zonecount = 0;
 
-	/// If resource is zone restricted, add only the restricted zone
-	if (zonerestriction != -1)
-		zoneids.add((uint32) zonerestriction);
-
-	/// If resource is JTL, it spawns on 1 random planet
-	else if (jtl)
-		zoneids.add((uint32) System::random(9));
-
-	/// If resource is the types below, it spawns on 1-3 planets
-	else if (isUnknownType() || isType("iron") || isType("ore_intrusive") || isType(
-			"ore_extrusive") /*|| isType("iron")  why is iron twice? should be ore? */|| isType("fuel_petrochem_solid") || isType(
-			"fuel_petrochem_liquid"))
-
-		zonecount = System::random(2) + 1;
-
-	/// All other resources spawn on 8 planets
+	if(minpool == maxpool)
+		zonecount = maxpool;
 	else
-		zonecount = 8;
+		zonecount = System::random(maxpool - minpool) + minpool;
 
-	/// If there are no more zones to add exit function
-	if (zonecount == 0)
+	/// If resource is zone restricted, add only the restricted zone
+	if (zonerestriction != -1) {
+		zoneids.add((uint32) zonerestriction);
 		return zoneids;
+	}
 
 	/// Randomly remove entries until the Vector contains
 	/// a number of elements equal to zonecount
 	while (activeZones.size() > zonecount)
 		activeZones.remove(System::random(activeZones.size() - 1));
 
-	/// Add all the remaining items in activeZones to the
-	/// zoneids vector
-	while (activeZones.size() > 0)
-		zoneids.add(activeZones.remove(0));
-
-	return zoneids;
+	return activeZones;
 }
 
 float ResourceSpawnImplementation::getDensityAt(int zoneid, float x, float y) {
@@ -193,10 +176,9 @@ int ResourceSpawnImplementation::getSpawnMapZone(int i) {
 		return -1;
 }
 
-ResourceContainer* ResourceSpawnImplementation::extractResource(int zoneid, int units) {
+void ResourceSpawnImplementation::extractResource(int zoneid, int units) {
 	unitsInCirculation += units;
 
-	return createResource(units);
 }
 
 ResourceContainer* ResourceSpawnImplementation::createResource(int units) {

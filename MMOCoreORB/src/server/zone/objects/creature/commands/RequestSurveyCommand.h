@@ -101,7 +101,7 @@ public:
 
 			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
 
-			if(surveyTool != NULL)
+			if(surveyTool != NULL && playerCreature->getZone() != NULL)
 				surveyTool->sendSurveyTo(playerCreature, arguments.toString());
 
 		}

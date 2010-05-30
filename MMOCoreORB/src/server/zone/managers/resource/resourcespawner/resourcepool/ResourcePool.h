@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourcePool.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCEPOOL_H_
 #define RESOURCEPOOL_H_
 
@@ -57,7 +63,14 @@ class ResourcePool : public Vector<ManagedReference<ResourceSpawn*> >, public Lo
 
 protected:
 
+	/**
+	 * List of resources this pool can spawn
+	 */
 	Vector<String> includedResources;
+
+	/**
+	 * List of resources this pool can't spawn
+	 */
 	Vector<String> excludedResources;
 
 	/**
@@ -77,7 +90,6 @@ public:
 public:
 	  /** Constructor
 	   * \param spawner pointer to the ResourceSpawner object defined in ResourceManager
-	   * \param tree pointer to the ResourceTree object defined in ResourceManager
 	   */
 	ResourcePool(ResourceSpawner* spawner) : Logger("ResourcePool") {
 		resourceSpawner = spawner;

@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceTreeEntry.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCETREEENTRY_H_
 #define RESOURCETREEENTRY_H_
 
@@ -49,36 +55,70 @@ which carries forward this exception.
 #include "ResourceAttribute.h"
 #include "ResourceTreeNode.h"
 
+/**
+ * The ResourceTreeEntry class represents an
+ * entry on the ResourceTree node tree
+ */
 class ResourceTreeNode;
 
 class ResourceTreeEntry {
 private:
+
+	/// Node that this entry is on
 	ResourceTreeNode* myNode;
 
+	/// Stf type
 	String type;
 
+	/// List of Class names in plain english Format
 	Vector<String> classList;
+
+	/// List of Class names in swg stfname
 	Vector<String> stfClassList;
+
+	/// List of Attributes
 	Vector<ResourceAttribute* > attributeList;
 
+	/// Maximum of this type that can spawn
 	int maxtype;
+	/// Minimum of this type that can spawn
 	int mintype;
+
+	/// Minimum number of resource pools this spawns in
 	int minpool;
+
+	/// Maximum number of resource pools this spawns in
 	int maxpool;
 
+	/// If type is a recycled type
 	bool recycled;
+
+	/// Notates if this entry has children
 	bool children;
 
+	/// Notates id this resource is restricted to a zone
 	short zoneRestriction;
+
+	/// Lets us know if this resource was a JTL resource
 	bool jtl;
 
+	/// The script that explains the resource container type
 	String resourceContainerType;
+
+	/// Unused, but in the resource tree
 	String randomNameClass;
 
+	/// The type of survey tool that can survey this
 	int surveyToolType;
+
+	/// CRC of resourceContainerType
 	uint32 containerCRC;
 
 public:
+	/**
+	 * Constructor
+	 * \param inType The type of resource this in in stfname
+	 */
 	ResourceTreeEntry(const String& inType) {
 		type = inType;
 
@@ -96,6 +136,9 @@ public:
 		zoneRestriction = -1;
 	}
 
+	/**
+	 * Deconstructor
+	 */
 	~ResourceTreeEntry() {
 		classList.removeAll();
 		stfClassList.removeAll();
@@ -103,45 +146,83 @@ public:
 			delete attributeList.get(i);
 	}
 
+	/**
+	 * Sets the node this entry is on
+	 * \param node Tree Node
+	 */
 	void setMyNode(ResourceTreeNode* node) {
 		myNode = node;
 	}
 
+	/**
+	 * Gets the node this entry is on
+	 * \return Node this entry is on
+	 */
 	ResourceTreeNode* getMyNode() {
 		return myNode;
 	}
 
+	/**
+	 * Adds class to classList
+	 * \param newclass New class string to add
+	 */
 	void addClass(const String newclass) {
 		classList.add(newclass);
 	}
 
+	/**
+	 * Adds stfClass to stfClassList
+	 * \param newclass New class string to add
+	 */
 	void addStfClass(const String newclass) {
 
 		stfClassList.add(0, newclass);
 	}
 
-	String getClass(const int classNum) {
-		if(classNum <= classList.size())
-			return classList.get(classNum);
+	/**
+	 * Gets class based in Vector index
+	 * \param index index
+	 * \return Class at index
+	 */
+	String getClass(const int index) {
+		if(index <= classList.size())
+			return classList.get(index);
 		else
 			return "";
 	}
 
-	String getStfClass(const int classNum) {
-		if(classNum <= stfClassList.size())
-			return stfClassList.get(classNum);
+	/**
+	 * Gets stfClass based on vector index
+	 * \param index index
+	 * \return StfClass at index
+	 */
+	String getStfClass(const int index) {
+		if(index <= stfClassList.size())
+			return stfClassList.get(index);
 		else
 			return "";
 	}
 
+	/**
+	 * Gets size on classList
+	 * \return classList size
+	 */
 	int getClassCount() {
 		return classList.size();
 	}
 
+	/**
+	 * Gets size of stfClassList
+	 * \return stfClassList size
+	 */
 	int getStfClassCount() {
 		return stfClassList.size();
 	}
 
+	/**
+	 * Gets the Final Class name
+	 * \return Final name of entry
+	 */
 	String getFinalClass() {
 		if(classList.size() > 0)
 			return classList.get(classList.size() - 1);
@@ -149,6 +230,10 @@ public:
 			return "";
 	}
 
+	/**
+	 * Denotes if entry is organic
+	 * \return Is value organic
+	 */
 	bool isOrganic() {
 		if(classList.size() > 0)
 			return classList.get(0) == "Organic";
@@ -156,146 +241,270 @@ public:
 			return false;
 	}
 
+	/**
+	 * Adds an attribute to this entry
+	 * \param attrib ResourceAttribute to add
+	 */
 	void addAttribute(ResourceAttribute* attrib) {
 		attributeList.add(attrib);
 	}
 
-	ResourceAttribute* getAttribute(const int attribute) {
-		if(attribute <= attributeList.size())
-			return attributeList.get(attribute);
+	/**
+	 * Gets attribute
+	 * \param index index of attribute
+	 * \return ResourceAttibute at index
+	 */
+	ResourceAttribute* getAttribute(const int index) {
+		if(index <= attributeList.size())
+			return attributeList.get(index);
 		else
 			return NULL;
 	}
 
+	/**
+	 * Gets number of attributes
+	 * \return Number of attributes
+	 */
 	int getAttributeCount() {
 		return attributeList.size();
 	}
 
+	/**
+	 * Gets maxpool
+	 * \return maxpool
+	 */
     int getMaxpool() const
     {
         return maxpool;
     }
 
+	/**
+	 * Gets maxtype
+	 * \return maxtype
+	 */
     int getMaxtype() const
     {
         return maxtype;
     }
 
+	/**
+	 * Gets minpool
+	 * \return minpool
+	 */
     int getMinpool() const
     {
         return minpool;
     }
 
+	/**
+	 * Gets mintype
+	 * \return mintype
+	 */
     int getMintype() const
     {
         return mintype;
     }
 
+	/**
+	 * Gets type
+	 * \return type
+	 */
     String getType() const
     {
         return type;
     }
 
+	/**
+	 * Gets randomNameClass
+	 * \return randomNameClass
+	 */
     String getRandomNameClass() const
     {
         return randomNameClass;
     }
 
+	/**
+	 * Gets zoneRestriction
+	 * \return zoneRestriction
+	 */
     int getZoneRestriction() {
     	return zoneRestriction;
     }
 
+	/**
+	 * Gets recycled
+	 * \return recycled
+	 */
     bool isRecycled() const
     {
         return recycled == true;
     }
 
+	/**
+	 * Gets resourceContainerType
+	 * \return resourceContainerType
+	 */
     String getResourceContainerType() const
     {
         return resourceContainerType;
     }
 
+    /**
+     * sets maxpool
+     * \param maxpool
+     */
     void setMaxpool(int maxpool)
     {
         this->maxpool = maxpool;
     }
 
+    /**
+     * sets maxtype
+     * \param maxtype
+     */
     void setMaxtype(int maxtype)
     {
         this->maxtype = maxtype;
     }
 
+    /**
+     * sets minpool
+     * \param minpool
+     */
     void setMinpool(int minpool)
     {
         this->minpool = minpool;
     }
 
+    /**
+     * sets mintype
+     * \param mintype
+     */
     void setMintype(int mintype)
     {
         this->mintype = mintype;
     }
 
+    /**
+     * sets type
+     * \param type
+     */
     void setType(String name)
     {
         this->type = name;
     }
 
+    /**
+      * sets randomNameClass
+      * \param randomNameClass
+      */
     void setRandomNameClass(String randomNameClass)
     {
         this->randomNameClass = randomNameClass;
     }
 
+    /**
+      * sets recycled
+      * \param recycled
+      */
     void setRecycled(bool recycled)
     {
         this->recycled = recycled;
     }
 
+    /**
+      * sets resourceContainerType
+      * \param resourceContainerType
+      */
     void setResourceContainerType(String resourceContainerType)
     {
         this->resourceContainerType = resourceContainerType;
     }
 
+    /**
+      * Does entry have children
+      * \return children
+      */
     bool hasChildren() {
     	return children;
     }
 
+    /**
+      * sets children
+      * \param child
+      */
     void setChildren(bool child) {
     	children = child;
     }
 
+    /**
+      * sets zoneRestriction
+      * \param zone
+      */
     void setZoneRestriction(int zone) {
     	zoneRestriction = zone;
     }
 
+    /**
+      * Lets us know if it is zonerestricted type
+      * \return isZoneRestricted
+      */
     bool isZoneRestricted() {
     	return zoneRestriction != -1;
     }
 
+    /**
+      * sets jtl
+      * \param j
+      */
     void setJTL(bool j) {
     	jtl = j;
     }
 
+    /**
+      * Is JTL?
+      * \return is Jtl resource
+      */
     bool isJTL() {
     	return jtl;
     }
 
+    /**
+     * Sets surveyToolType
+     * \param type
+     */
     void setSurveyToolType(int type) {
     	surveyToolType = type;
     }
 
+    /**
+     * Gets surveyToolType
+     * \return surveyToolType
+     */
     int getSurveyToolType() {
     	return surveyToolType;
     }
 
+    /**
+     * Sets containerCRC
+     * \param crc
+     */
     void setContainerCRC(uint32 crc) {
     	containerCRC = crc;
     }
 
+    /**
+      * Gets containerCRC
+      * \return containerCRC
+      */
     uint32 getContainerCRC() {
     	return containerCRC;
     }
 
-
+    /**
+     * Tells us is Entry if of type
+     * \param type
+     */
 	bool isType(String type) {
 		for (int i = 0; i < stfClassList.size(); ++i) {
 			if (stfClassList.get(i) == type)
@@ -308,7 +517,9 @@ public:
 		return false;
 	}
 
-
+	/**
+	 * Outputs visual representation of class
+	 */
 	void toString(){
 
 		System::out << "************ Resource Tree Entry ********************\n";

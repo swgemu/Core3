@@ -183,3 +183,16 @@ void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, c
 
 	playerCreature->attachPostureChangeObserver(this);
 }
+
+void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
+	Locker _locker(_this);
+
+	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
+
+	StringBuffer buffer;
+	buffer << "Spawned " << resourceSpawn->getName() << " of type " << resourceSpawn->getType();
+
+	playerCreature->sendSystemMessage(buffer.toString());
+
+}
+

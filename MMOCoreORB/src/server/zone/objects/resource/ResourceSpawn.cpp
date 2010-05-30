@@ -299,7 +299,7 @@ int ResourceSpawn::getSpawnMapSize() {
 		return ((ResourceSpawnImplementation*) _impl)->getSpawnMapSize();
 }
 
-ResourceContainer* ResourceSpawn::extractResource(int zoneid, int units) {
+void ResourceSpawn::extractResource(int zoneid, int units) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -308,9 +308,9 @@ ResourceContainer* ResourceSpawn::extractResource(int zoneid, int units) {
 		method.addSignedIntParameter(zoneid);
 		method.addSignedIntParameter(units);
 
-		return (ResourceContainer*) method.executeWithObjectReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->extractResource(zoneid, units);
+		((ResourceSpawnImplementation*) _impl)->extractResource(zoneid, units);
 }
 
 ResourceContainer* ResourceSpawn::createResource(int units) {
@@ -342,12 +342,12 @@ bool ResourceSpawn::isUnknownType() {
 		return ((ResourceSpawnImplementation*) _impl)->isUnknownType();
 }
 
-void ResourceSpawn::createSpawnMaps(bool jtl, int zonerestriction, Vector<unsigned int>& activeZones) {
+void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceSpawnImplementation*) _impl)->createSpawnMaps(jtl, zonerestriction, activeZones);
+		((ResourceSpawnImplementation*) _impl)->createSpawnMaps(jtl, minpool, maxpool, zonerestriction, activeZones);
 }
 
 float ResourceSpawn::getDensityAt(int zoneid, float x, float y) {
@@ -687,7 +687,7 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(getSpawnMapSize());
 		break;
 	case 27:
-		resp->insertLong(extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter())->_getObjectID());
+		extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 28:
 		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
@@ -783,8 +783,8 @@ int ResourceSpawnAdapter::getSpawnMapSize() {
 	return ((ResourceSpawnImplementation*) impl)->getSpawnMapSize();
 }
 
-ResourceContainer* ResourceSpawnAdapter::extractResource(int zoneid, int units) {
-	return ((ResourceSpawnImplementation*) impl)->extractResource(zoneid, units);
+void ResourceSpawnAdapter::extractResource(int zoneid, int units) {
+	((ResourceSpawnImplementation*) impl)->extractResource(zoneid, units);
 }
 
 ResourceContainer* ResourceSpawnAdapter::createResource(int units) {

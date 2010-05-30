@@ -185,6 +185,14 @@ void ResourceSpawner::shiftResources() {
 	manualPool->update();
 }
 
+ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
+	ResourceSpawn* resourceSpawn = createResourceSpawn(type);
+
+	if(resourceSpawn != NULL)
+		manualPool->add(resourceSpawn);
+
+	return resourceSpawn;
+}
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		const Vector<String> excludes, int zonerestriction) {
@@ -232,7 +240,9 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	Vector<uint32> activeZones;
  	activeResourceZones.clone(activeZones);
- 	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getZoneRestriction(), activeZones);
+
+ 	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getMinpool(),
+ 			resourceEntry->getMaxpool(), resourceEntry->getZoneRestriction(), activeZones);
 
  	resourceMap->add(name, newSpawn);
 
@@ -452,6 +462,13 @@ void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& r
 	if (!playerCreature->isKneeling())
 		playerCreature->setPosture(CreaturePosture::CROUCHED, true);
 
+
+	// Send survey start message
+	ParameterizedStringId message("survey","start_sampling");
+	message.setTO(resname);
+	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+	playerCreature->sendMessage(sysMessage);
+
 	// Add sampleresultstask
 	SampleResultsTask* sampleResultsTask = new SampleResultsTask(playerCreature, this, density, resname);
 	sampleResultsTask->schedule(3000);
@@ -519,6 +536,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 
 	// We need the spawn object to track extraction
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
+	resourceSpawn->extractResource(zoneid, unitsExtracted);
 
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory =
@@ -533,27 +551,19 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 			ManagedReference<ResourceContainer*> resource = (ResourceContainer*) object.get();
 
 			if (resource->getSpawnName() == resname) {
-				int newStackSize = resource->getUseCount() + unitsExtracted;
+				int newStackSize = resource->getQuantity() + unitsExtracted;
 
-				if (newStackSize > ResourceContainer::MAXSIZE) {
-
-					unitsExtracted = newStackSize - ResourceContainer::MAXSIZE;
-					newStackSize = ResourceContainer::MAXSIZE;
-				} else
-					unitsExtracted = 0;
-
-				resource->setQuantity(resource->getQuantity() + newStackSize, playerCreature);
-				break;
+				resource->setQuantity(newStackSize, playerCreature);
+				return;
 			}
 		}
 	}
 
-	if (unitsExtracted > 0) {
-		ResourceContainer* harvestedResource = resourceSpawn->extractResource(zoneid, unitsExtracted);
-		harvestedResource->sendTo(playerCreature);
-		inventory->addObject(harvestedResource, -1, true);
-		harvestedResource->updateToDatabase();
-	}
+	// Create New resource container if one isn't found in inventory
+	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
+	harvestedResource->sendTo(playerCreature);
+	inventory->addObject(harvestedResource, -1, true);
+	harvestedResource->updateToDatabase();
 }
 
 ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
