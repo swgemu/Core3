@@ -42,28 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceTree.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCETREE_H_
 #define RESOURCETREE_H_
 
 #include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
 
+/**
+ * The ResourceTree class is a representation of the
+ * resource_tree table in MySQL
+ */
 class ResourceTree {
 private:
+
+	/// The tree's base node
 	ResourceTreeNode* baseNode;
 
 public:
+	/**
+	 * Constructor
+	 */
 	ResourceTree();
+
+	/**
+	 * Destructor
+	 */
 	~ResourceTree();
 
+	/**
+	 * Locates 'type' in Tree
+	 * \param type Resource Type
+	 * \param Excludes Vector of items that can't be chosen
+	 * \param zoneid If the resource is tied to a certain zone
+	 */
 	ResourceTreeEntry* getEntry(const String& type,
 			Vector<String> excludes = 0, int zoneid = -1);
 
+	/**
+	 * Prints the tree
+	 */
 	void toString();
 
 private:
 	/*
-	 *
+	 * Loads tree from database
 	 */
 	bool buildTreeFromDatabase();
 

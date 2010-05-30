@@ -66,6 +66,8 @@ public:
 
 	void setQuantity(int quantity, SceneObject* player = NULL);
 
+	bool isResourceContainer();
+
 	int getQuantity();
 
 	void setSpawnObject(ResourceSpawn* spawn);
@@ -77,6 +79,8 @@ public:
 	unsigned long long getSpawnID();
 
 	void split(PlayerCreature* player, int newStackSize);
+
+	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
@@ -120,6 +124,8 @@ public:
 
 	void setQuantity(int quantity, SceneObject* player = NULL);
 
+	bool isResourceContainer();
+
 	int getQuantity();
 
 	void setSpawnObject(ResourceSpawn* spawn);
@@ -131,6 +137,8 @@ public:
 	unsigned long long getSpawnID();
 
 	void split(PlayerCreature* player, int newStackSize);
+
+	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
 
 	ResourceContainer* _this;
 
@@ -175,6 +183,8 @@ public:
 
 	void setQuantity(int quantity, SceneObject* player);
 
+	bool isResourceContainer();
+
 	int getQuantity();
 
 	void setSpawnObject(ResourceSpawn* spawn);
@@ -186,6 +196,8 @@ public:
 	unsigned long long getSpawnID();
 
 	void split(PlayerCreature* player, int newStackSize);
+
+	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
 
 };
 

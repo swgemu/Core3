@@ -42,9 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceAttribute.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RESOURCEATTRIBUTE_H_
 #define RESOURCEATTRIBUTE_H_
 
+/**
+ * The resource attribute class stores the name
+ * of a resource attribute and the min / max value
+ */
 class ResourceAttribute {
 private:
 	String name;
@@ -52,24 +62,42 @@ private:
 	int maximum;
 
 public:
+	/**
+	 * Constructor
+	 * \param n Name of the Attribute
+	 * \param min Minimum Value
+	 * \param max Maximum Value
+	 */
 	ResourceAttribute(const String& n, const int min, const int max) {
 		name = n;
 		minimum = min;
 		maximum = max;
 	}
 
+	/**
+	 * Destructor
+	 */
 	~ResourceAttribute() {
 
 	}
 
+	/**
+	 * Returns the name of the Attribute
+	 */
 	String getName() {
 		return name;
 	}
 
+	/**
+	 * Returns the minimum value of the Attribute
+	 */
 	int getMinimum() {
 		return minimum;
 	}
 
+	/**
+	 * Returns the maximum value of the Attribute
+	 */
 	int getMaximum() {
 		return maximum;
 	}

@@ -84,6 +84,25 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 	if(player == NULL)
 		return;
 
+	int newStackSize = 0;
+
+	if(stackQuantity > ResourceContainer::MAXSIZE) {
+
+		newStackSize = stackQuantity - ResourceContainer::MAXSIZE;
+		stackQuantity = ResourceContainer::MAXSIZE;
+	}
+
+	if (newStackSize > 0) {
+
+		// Add resource to inventory
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+		ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
+		harvestedResource->sendTo(player);
+		inventory->addObject(harvestedResource, -1, true);
+		harvestedResource->updateToDatabase();
+	}
+
 	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
 
 	rcnod3->setQuantity(stackQuantity);
@@ -106,5 +125,20 @@ void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int 
 	inventory->addObject(newResource, -1, true);
 	newResource->updateToDatabase();
 
-	setQuantity(getQuantity() - newStackSize);
+	setQuantity(getQuantity() - newStackSize, playerCreature);
+}
+
+void ResourceContainerImplementation::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+
+		Locker _locker(_this);
+
+		ManagedReference<SceneObject*> inventory =
+				player->getSlottedObject("inventory");
+
+		setQuantity(getQuantity() + fromContainer->getQuantity(), player);
+		fromContainer->setQuantity(0);
+
+		Locker _inventorylocker(inventory);
+		inventory->removeObject(fromContainer, true);
+		fromContainer->destroyObjectFromDatabase(false);
 }

@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ManualPool.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "ManualPool.h"
 #include "../ResourceSpawner.h"
 
@@ -59,7 +65,10 @@ void ManualPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 }
 
 bool ManualPool::update() {
-
+	/**
+	 * The manual pool doesn't spawn anything on it's own
+	 * it just removes anything that happens to be expired
+	 */
 	for (int ii = 0; ii < size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > spawn = get(ii);

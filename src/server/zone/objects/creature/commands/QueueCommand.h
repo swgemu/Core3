@@ -102,6 +102,7 @@ public:
 	const static int INVALIDWEAPON = 5;
 	const static int TOOFAR = 6;
 	const static int INSUFFICIENTHAM = 7;
+	const static int INVALIDPARAMETERS = 7;
 
 
 	virtual ~QueueCommand() {

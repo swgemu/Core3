@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceTreeNode.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "ResourceTreeNode.h"
 
 ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d) {

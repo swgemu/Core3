@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file ResourceTree.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "../../../../../db/ServerDatabase.h"
 #include "ResourceTree.h"
 #include "ResourceTreeEntry.h"
@@ -49,15 +55,12 @@ which carries forward this exception.
 
 ResourceTree::ResourceTree() {
 
-	if(!buildTreeFromDatabase()) {
-
-	}
+	buildTreeFromDatabase();
 }
 
 ResourceTree::~ResourceTree() {
 
 	delete baseNode;
-
 }
 
 bool ResourceTree::buildTreeFromDatabase() {
@@ -84,6 +87,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 		if (res->size() != 0) {
 			while (res->next()) {
+
+				/// Build the ResourceTreeEntry
 
 				String type = res->getString(1);
 				ResourceTreeEntry* entry = new ResourceTreeEntry(type);
@@ -119,10 +124,11 @@ bool ResourceTree::buildTreeFromDatabase() {
 				String containerFile = res->getString(52);
 				entry->setContainerCRC(containerFile.hashCode());
 
+				/// Add entry to the tree
 				baseNode->add(entry);
 			}
+			/// Update the Stf Entries now that the tree is built
 			baseNode->updateEntries();
-
 		}
 		delete res;
 	} catch (DatabaseException& e) {
@@ -143,6 +149,5 @@ ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> exc
 
 
 void ResourceTree::toString() {
-
 	baseNode->toString();
 }

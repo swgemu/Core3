@@ -66,11 +66,10 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 		int newStackSize = tokenizer.getIntToken();
-		uint64 objectID = tokenizer.getLongToken();
 
-		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) DistributedObjectBroker::instance()->lookUp(objectID);
+		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) server->getZoneServer()->getObject(target);
 
-		if((resourceContainer == NULL || !creature->isPlayerCreature()))
+		if((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;
 
 		PlayerCreature* playerCreature = (PlayerCreature*) creature;

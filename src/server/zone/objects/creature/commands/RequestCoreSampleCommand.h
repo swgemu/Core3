@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file RequestCoreSampleCommand.h
+ * \author Kyle Burkhardt
+ * \date 5-27-10
+ */
+
 #ifndef REQUESTCORESAMPLECOMMAND_H_
 #define REQUESTCORESAMPLECOMMAND_H_
 
@@ -65,11 +71,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		// We don't do anything if for some reason it isn't a player
 		if (creature->isPlayerCreature()) {
 
 			Reference<Task*> sampletask = creature->getPendingTask("sample");
 			Reference<Task*> surveytask = creature->getPendingTask("survey");
 
+			// If the sample task exists, we can't sample again
 			if (sampletask != NULL) {
 				int seconds = ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
@@ -81,6 +89,7 @@ public:
 				return SUCCESS;
 			}
 
+			// If the survey task exists, we can't sample
 			if (surveytask != NULL) {
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_survey");
 				creature->sendMessage(sysMessage);
@@ -93,7 +102,7 @@ public:
 
 			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
 
-			if (surveyTool != NULL)
+			if (surveyTool != NULL && playerCreature->getZone() != NULL)
 				surveyTool->sendSampleTo(playerCreature, arguments.toString());
 
 		}

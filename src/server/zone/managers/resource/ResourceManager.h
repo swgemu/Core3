@@ -110,6 +110,8 @@ public:
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
 
+	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
@@ -159,6 +161,8 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
 private:
 	bool loadConfigFile();
@@ -223,11 +227,14 @@ public:
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
 
+	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+
 protected:
 	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
 	String _param1_sendSurvey__PlayerCreature_String_;
 	String _param1_sendSample__PlayerCreature_String_String_;
 	String _param2_sendSample__PlayerCreature_String_String_;
+	String _param1_createResourceSpawn__PlayerCreature_String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {
