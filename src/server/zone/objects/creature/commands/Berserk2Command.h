@@ -63,6 +63,38 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isMeleeWeapon() && !weapon->isUnarmedWeapon()) {
+			if (creature->isPlayerCreature())
+				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+
+			return INVALIDWEAPON;
+		}
+
+		if (!creature->isInCombat()) {
+			if (creature->isPlayerCreature())
+				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+
+			return GENERALERROR;
+		}
+
+		if (creature->getHAM(CreatureAttribute::ACTION) <= 50) {
+			if (creature->isPlayerCreature())
+				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+
+			return GENERALERROR;
+		}
+
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, -50);
+
+		creature->setBerserkedState(40 * 1000);
+		//creature->setBerserkDamage(25);
+
+		if (creature->isPlayerCreature())
+			((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_success_single");
+
+
 		return SUCCESS;
 	}
 
