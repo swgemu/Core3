@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file SampleTask.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef SAMPLETASK_H_
 #define SAMPLETASK_H_
 

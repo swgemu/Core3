@@ -46,6 +46,7 @@ which carries forward this exception.
 #define RESOURCECONTAINERTRANSFERCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../resource/ResourceContainer.h"
 
 class ResourceContainerTransferCommand : public QueueCommand {
 public:
@@ -62,6 +63,20 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer tokenizer(arguments.toString());
+		uint64 toContainerID = tokenizer.getLongToken();
+
+		ManagedReference<ResourceContainer* > fromContainer = (ResourceContainer*) server->getZoneServer()->getObject(target);
+		ManagedReference<ResourceContainer* > toContainer = (ResourceContainer*) server->getZoneServer()->getObject(toContainerID);
+
+		if((fromContainer == NULL || toContainer == NULL || !fromContainer->isResourceContainer()
+				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature()))
+			return INVALIDTARGET;
+
+		PlayerCreature* playerCreature = (PlayerCreature*) creature;
+
+		toContainer->combine(playerCreature, fromContainer);
 
 		return SUCCESS;
 	}

@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file RandomPool.h
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #ifndef RANDOMPOOL_H_
 #define RANDOMPOOL_H_
 
@@ -50,16 +56,36 @@ which carries forward this exception.
 
 class ResourceSpawner;
 
+/**
+ * The random pool consists of a pool of X size
+ * the spawns anything in the included list.  Unlike
+ * other pools that have a certain resource type
+ * this pool is completely random
+ */
 class RandomPool : public ResourcePool {
 private:
 
+	/// SIze of pool (From script)
 	int poolSize;
 
 public:
+	/**
+	 * Ctor
+	 * \param spawner The pointer to the resource spawner object
+	 */
 	RandomPool(ResourceSpawner* spawner);
 
+	/**
+	 * Dtor
+	 */
 	~RandomPool();
 
+	/**
+	 * Initialized what the pool spawns, and what is excluded
+	 * \param includes Comma delimited list of resources to include
+	 * \param excludes Comma delimited list of resources to exclude
+	 * \param size The size of the pool
+	 */
 	void initialize(const String& includes, const String& excludes, int size);
 
 	/**
@@ -69,10 +95,17 @@ public:
 	 */
 	ResourceSpawn* removeSpawn(const String& type);
 
+	/**
+	 * Print the current state of the Resource Pool
+	 */
 	void print();
 
 private:
 
+	/**
+	 * Adds resource to this pool
+	 * \param resourceSpawn Spawn object to add to the pool
+	 */
 	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
 	/**
@@ -83,7 +116,6 @@ private:
 	 * rules.
 	 */
 	bool update();
-
 
 	friend class ResourceSpawner;
 };

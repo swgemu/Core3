@@ -63,16 +63,35 @@ class ResourceSpawner;
  */
 class ManualPool : public ResourcePool {
 public:
+	/**
+	 * Ctor
+	 * \param spawner The pointer to the resource spawner object
+	 */
 	ManualPool(ResourceSpawner* spawner);
 
+	/**
+	 * Dtor
+	 */
 	~ManualPool();
 
+	/**
+	 * Initialized what the pool spawns, and what is excluded
+	 * \param includes Comma delimited list of resources to include
+	 * \param excludes Comma delimited list of resources to exclude
+	 */
 	void initialize(const String& includes, const String& excludes, int size);
 
+	/**
+	 * Print the current state of the Resource Pool
+	 */
 	void print();
 
 private:
 
+	/**
+	 * Adds resource to this pool
+	 * \param resourceSpawn Spawn object to add to the pool
+	 */
 	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
 	/**

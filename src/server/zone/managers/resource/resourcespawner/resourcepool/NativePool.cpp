@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \file NativePool.cpp
+ * \author Kyle Burkhardt
+ * \date 5-03-10
+ */
+
 #include "NativePool.h"
 #include "../ResourceSpawner.h"
 

@@ -59,12 +59,24 @@ void ResourceContainer::setQuantity(int quantity, SceneObject* player) {
 		((ResourceContainerImplementation*) _impl)->setQuantity(quantity, player);
 }
 
-int ResourceContainer::getQuantity() {
+bool ResourceContainer::isResourceContainer() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ResourceContainerImplementation*) _impl)->isResourceContainer();
+}
+
+int ResourceContainer::getQuantity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -76,7 +88,7 @@ void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(spawn);
 
 		method.executeWithVoidReturn();
@@ -89,7 +101,7 @@ String ResourceContainer::getSpawnName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
@@ -102,7 +114,7 @@ String ResourceContainer::getSpawnType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
@@ -115,7 +127,7 @@ unsigned long long ResourceContainer::getSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -127,13 +139,27 @@ void ResourceContainer::split(PlayerCreature* player, int newStackSize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
 	} else
 		((ResourceContainerImplementation*) _impl)->split(player, newStackSize);
+}
+
+void ResourceContainer::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+		method.addObjectParameter(fromContainer);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->combine(player, fromContainer);
 }
 
 /*
@@ -213,28 +239,33 @@ ResourceContainerImplementation::ResourceContainerImplementation() {
 	stackQuantity = 0;
 }
 
+bool ResourceContainerImplementation::isResourceContainer() {
+	// server/zone/objects/resource/ResourceContainer.idl(88):  		return true;
+	return true;
+}
+
 int ResourceContainerImplementation::getQuantity() {
-	// server/zone/objects/resource/ResourceContainer.idl(88):  		return stackQuantity;
+	// server/zone/objects/resource/ResourceContainer.idl(92):  		return stackQuantity;
 	return stackQuantity;
 }
 
 void ResourceContainerImplementation::setSpawnObject(ResourceSpawn* spawn) {
-	// server/zone/objects/resource/ResourceContainer.idl(92):  		spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl(96):  		spawnObject = spawn;
 	spawnObject = spawn;
 }
 
 String ResourceContainerImplementation::getSpawnName() {
-	// server/zone/objects/resource/ResourceContainer.idl(96):  		return spawnObject.getName();
+	// server/zone/objects/resource/ResourceContainer.idl(100):  		return spawnObject.getName();
 	return spawnObject->getName();
 }
 
 String ResourceContainerImplementation::getSpawnType() {
-	// server/zone/objects/resource/ResourceContainer.idl(100):  		return spawnObject.getType();
+	// server/zone/objects/resource/ResourceContainer.idl(104):  		return spawnObject.getType();
 	return spawnObject->getType();
 }
 
 unsigned long long ResourceContainerImplementation::getSpawnID() {
-	// server/zone/objects/resource/ResourceContainer.idl(104):  		return spawnObject.getObjectID();
+	// server/zone/objects/resource/ResourceContainer.idl(108):  		return spawnObject.getObjectID();
 	return spawnObject->getObjectID();
 }
 
@@ -256,22 +287,28 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setQuantity(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(getQuantity());
+		resp->insertBoolean(isResourceContainer());
 		break;
 	case 9:
-		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
+		resp->insertSignedInt(getQuantity());
 		break;
 	case 10:
-		resp->insertAscii(getSpawnName());
+		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertAscii(getSpawnType());
+		resp->insertAscii(getSpawnName());
 		break;
 	case 12:
-		resp->insertLong(getSpawnID());
+		resp->insertAscii(getSpawnType());
 		break;
 	case 13:
+		resp->insertLong(getSpawnID());
+		break;
+	case 14:
 		split((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 15:
+		combine((PlayerCreature*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -286,6 +323,10 @@ void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
 
 void ResourceContainerAdapter::setQuantity(int quantity, SceneObject* player) {
 	((ResourceContainerImplementation*) impl)->setQuantity(quantity, player);
+}
+
+bool ResourceContainerAdapter::isResourceContainer() {
+	return ((ResourceContainerImplementation*) impl)->isResourceContainer();
 }
 
 int ResourceContainerAdapter::getQuantity() {
@@ -310,6 +351,10 @@ unsigned long long ResourceContainerAdapter::getSpawnID() {
 
 void ResourceContainerAdapter::split(PlayerCreature* player, int newStackSize) {
 	((ResourceContainerImplementation*) impl)->split(player, newStackSize);
+}
+
+void ResourceContainerAdapter::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+	((ResourceContainerImplementation*) impl)->combine(player, fromContainer);
 }
 
 /*

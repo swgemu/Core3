@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GMCREATECLASSRESOURCECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 class GmCreateClassResourceCommand : public QueueCommand {
 public:
@@ -62,6 +63,17 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String restype;
+		tokenizer.getStringToken(restype);
+
+		ManagedReference<ResourceManager* > resourceManager = server->getZoneServer()->getResourceManager();
+		resourceManager->createResourceSpawn((PlayerCreature*)creature, restype);
 
 		return SUCCESS;
 	}
