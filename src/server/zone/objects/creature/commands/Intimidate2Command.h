@@ -63,7 +63,7 @@ public:
 
 		durationStateTime = 120;
 
-		combatSpam = "";
+		combatSpam = "intim";
 		animationCRC = String("intimidate").hashCode();
 		effectString = "clienteffect/combat_special_attacker_intimidate.cef";
 		range = 15;

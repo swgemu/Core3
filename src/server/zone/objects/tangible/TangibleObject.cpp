@@ -538,7 +538,6 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
 	addSerializableVariable("unknownByte", &unknownByte);
 	addSerializableVariable("craftersName", &craftersName);
-	addSerializableVariable("defenderList", &defenderList);
 	addSerializableVariable("playerUseMask", &playerUseMask);
 	addSerializableVariable("sliced", &sliced);
 }

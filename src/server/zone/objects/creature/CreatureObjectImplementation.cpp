@@ -803,7 +803,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 	}
 
 	if (commandQueue.size() > 15) {
-		clearQueueAction(actionCRC);
+		clearQueueAction(actionCount);
 
 		return;
 	}
@@ -1079,6 +1079,8 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 	if (setState(CreatureState::BERSERK)) {
 		playEffect("clienteffect/combat_special_attacker_berserk.cef");
 		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("berserkRecoveryTime", duration);
 	}
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {

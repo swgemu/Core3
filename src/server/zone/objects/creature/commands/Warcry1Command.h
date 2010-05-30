@@ -64,7 +64,7 @@ public:
 		nextAttackDelayChance = 1;
 		durationStateTime = 30;
 
-		combatSpam = "";
+		combatSpam = "warcry";
 		animationCRC = String("warcry").hashCode();
 		effectString = "clienteffect/combat_special_attacker_warcry.cef";
 		range = 15;

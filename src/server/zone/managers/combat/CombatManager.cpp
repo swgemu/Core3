@@ -113,6 +113,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (attacker->hasAttackDelay())
 		return -3;
 
+	if (attacker->isBerserked() && command->getNameCRC() != 0xA8FEF90A) //berserk only works with attack
+		return -3;
+
 	int damage = 0;
 
 	if (command->isAreaAction() || command->isConeAction())
@@ -167,7 +170,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender,  CombatQueueCommand* command) {
 	int rand = System::random(100);
 
-	if (rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
+	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
+
+	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
 		//better luck next time
 		doMiss(attacker, defender, 0, command->getCombatSpam() + "_miss");
 		return 0;
@@ -177,7 +182,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	String combatSpam = command->getCombatSpam();
 	float damageMultiplier = (float) command->getDamageMultiplier();
-	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
 
 	if (damageMultiplier != 0 && poolsToDamage != 0) {
 		int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
@@ -524,6 +528,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (armorReduction > 0)
 		damage *= (armorReduction /= 100.f);
 
+	if (defender->isBerserked()) {
+		damage += 50;
+	}
+
 	//damage = damage * ((float) getArmorReduction(attacker, defender, weapon, damage, poolToDamage) / 100.f);
 
 	return damage;
@@ -566,6 +574,10 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	float aimMod = 0.0;
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
+
+	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK) {
+		attackerAccuracy -= 10;
+	}
 
 	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
 
