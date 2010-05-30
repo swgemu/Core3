@@ -84,7 +84,7 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 		
 	@local
 	public native boolean checkPlayerName(MessageCallback callback);
-	
+		
 	/**
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }
@@ -106,8 +106,6 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	
 	public native void createTutorialBuilding(PlayerCreature player);
 	public native void createSkippedTutorialBuilding(PlayerCreature player);
-	
-	
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
