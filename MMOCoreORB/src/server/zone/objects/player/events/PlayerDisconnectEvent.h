@@ -90,4 +90,6 @@ public:
 }
 }
 
+using namespace server::zone::objects::player::events;
+
 #endif /*PLAYERDISCONNECTEVENT_H_*/

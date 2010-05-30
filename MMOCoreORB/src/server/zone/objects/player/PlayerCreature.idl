@@ -69,6 +69,7 @@ import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.group.GroupObject;
 import server.zone.objects.waypoint.WaypointObject;
 import system.lang.ref.Reference;
+import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.SharedObjectTemplate;
 
 class PlayerCreature extends CreatureObject {
@@ -267,6 +268,13 @@ class PlayerCreature extends CreatureObject {
 		
 		return false;
 	}
+	
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
 	public native boolean isFirstIncapacitationExpired();
 

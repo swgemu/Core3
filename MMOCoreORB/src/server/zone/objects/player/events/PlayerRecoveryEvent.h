@@ -93,4 +93,6 @@ public:
 }
 }
 
+using namespace server::zone::objects::player::events;
+
 #endif /*PLAYERRECOVERYEVENT_H_*/

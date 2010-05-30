@@ -26,7 +26,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
-#include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/ZoneServer.h"
@@ -416,4 +416,12 @@ void PlayerCreatureImplementation::resetFirstIncapacitationTime() {
 
 bool PlayerCreatureImplementation::isFirstIncapacitationExpired() {
 	return cooldownTimerMap.isPast("firstIncapacitationTime");
+}
+
+int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+
+	playerManager->notifyDestruction(attacker, _this, condition);
+
+	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }

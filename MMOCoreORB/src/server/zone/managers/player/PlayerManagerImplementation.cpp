@@ -24,6 +24,7 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
@@ -270,7 +271,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getProfession(profession);
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
-	playerCreature->attachObjectDestructionObserver(this);
 	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
 
@@ -719,6 +719,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setUseCount(incapTime);
 
+		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature);
+		task->schedule(incapTime * 1000);
+
 		ParameterizedStringId stringId;
 
 		if (destructor != NULL) {
@@ -733,6 +736,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	} else {
 		if (!playerCreature->isFirstIncapacitationExpired()) {
 			playerCreature->setPosture(CreaturePosture::DEAD, true);
+
+			Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature);
+			task->schedule(10 * 1000);
 		}
 	}
 
