@@ -175,6 +175,20 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
@@ -257,6 +271,8 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	bool isFirstIncapacitationExpired();
 
@@ -543,6 +559,8 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
 	bool isFirstIncapacitationExpired();
 
 	void resetIncapacitationCounter();
@@ -751,6 +769,8 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	bool isFirstIncapacitationExpired();
 

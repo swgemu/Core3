@@ -1184,6 +1184,9 @@ void CreatureObjectImplementation::activateStateRecovery() {
 
 
 void CreatureObjectImplementation::activateHAMRegeneration() {
+	if (isIncapacitated() || isDead())
+		return;
+
 	float modifier = 1.f;// (isInCombat()) ? 1.f : 1.f;
 
 	if (isKneeling())
