@@ -45,7 +45,11 @@ which carries forward this exception.
 #ifndef PURCHASETICKETCOMMAND_H_
 #define PURCHASETICKETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -62,6 +66,133 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		String departurePlanet;
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(departurePlanet);
+		else
+			return GENERALERROR;
+
+		String departurePoint;
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(departurePoint);
+		else
+			return GENERALERROR;
+
+		String arrivalPlanet;
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(arrivalPlanet);
+		else
+			return GENERALERROR;
+
+		String arrivalPoint;
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(arrivalPoint);
+		else
+			return GENERALERROR;
+
+		bool roundTrip;
+		if (tokenizer.hasMoreTokens())
+			roundTrip = tokenizer.getIntToken();
+		else
+			return GENERALERROR;
+
+		PlanetManager* planetManager = player->getZone()->getPlanetManager();
+
+		uint32 fare = planetManager->getTravelFare(departurePlanet, arrivalPlanet);
+
+		if (fare == 0) {
+			//Travel not allowed between these planets
+			return GENERALERROR;
+		}
+
+		//Replace Underscores with spaces
+		departurePoint = departurePoint.replaceAll("_", " ");
+		arrivalPoint = arrivalPoint.replaceAll("_", " ");
+
+		ShuttleCreature* shuttle = planetManager->getShuttle(departurePoint);
+
+		if (shuttle == NULL) {
+			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
+			sui->setPromptTitle("@base_player:swg");
+			sui->setPromptText("@travel:no_location_found");
+
+			player->addSuiBox(sui);
+
+			player->sendMessage(sui->generateMessage());
+			return GENERALERROR;
+		}
+
+		uint32 tax = shuttle->getTax();
+
+		uint32 totalFee = fare + tax;
+
+		if (roundTrip)
+			totalFee *= 2;
+
+		/*if (player->verifyCashCredits(totalFee)) {
+
+			player->substractCashCredits(totalFee);
+
+		} else if (player->verifyBankCredits(totalFee)) {
+
+			player->substractBankCredits(totalFee);
+
+		} else {
+
+			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
+			sui->setPromptTitle("@base_player:swg");
+			sui->setPromptText("@travel:short_funds");
+
+			player->addSuiBox(sui);
+
+			player->sendMessage(sui->generateMessage());
+			return SUCCESS;
+		}*/
+
+		//
+
+		uint32 crc = String("object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff").hashCode();
+
+		// create ticket item
+		ManagedReference<TicketObject*> ticket = (TicketObject*) server->getZoneServer()->createObject(crc, 1);
+		ticket->setDeparturePlanet(departurePlanet);
+		ticket->setDeparturePoint(departurePoint);
+		ticket->setArrivalPlanet(arrivalPlanet);
+		ticket->setArrivalPoint(arrivalPoint);
+
+		SceneObject* inventory = player->getSlottedObject("inventory");
+		inventory->addObject(ticket, -1);
+		ticket->sendTo(player);
+
+		ticket->updateToDatabase();
+
+		if (roundTrip) {
+			ManagedReference<TicketObject*> ticketObj = (TicketObject*) server->getZoneServer()->createObject(crc, 1);
+			ticketObj->setDeparturePlanet(arrivalPlanet);
+			ticketObj->setDeparturePoint(arrivalPoint);
+			ticketObj->setArrivalPlanet(departurePlanet);
+			ticketObj->setArrivalPoint(departurePoint);
+
+			inventory->addObject(ticketObj, -1);
+			ticketObj->sendTo(player);
+
+			ticketObj->updateToDatabase();
+		}
+
+		SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
+		sui->setPromptTitle("@base_player:swg");
+		sui->setPromptText("@travel:ticket_purchase_complete");
+
+		player->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
 
 		return SUCCESS;
 	}

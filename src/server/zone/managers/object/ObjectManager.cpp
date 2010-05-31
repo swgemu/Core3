@@ -8,7 +8,9 @@
 #include "ObjectManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/tangible/Container.h"
@@ -46,7 +48,9 @@
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
- 
+#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
+#include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
+#include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
@@ -101,7 +105,8 @@ void ObjectManager::registerObjectTypes() {
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
+	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObject::NPCCREATURE);
+	objectFactory.registerObject<ShuttleCreature>(SceneObject::SHUTTLECREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 	objectFactory.registerObject<TrainerCreature>(SceneObject::TRAINERCREATURE);
@@ -155,6 +160,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObject::CHARACTERBUILDERTERMINAL);
+	objectFactory.registerObject<TicketCollector>(SceneObject::TICKETCOLLECTOR);
+	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
+	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
 	objectFactory.registerObject<PlayerHouseDeed>(SceneObject::BUILDINGDEED);

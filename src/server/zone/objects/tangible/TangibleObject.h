@@ -196,6 +196,10 @@ public:
 
 	byte getUnknownByte();
 
+	bool isTicketCollector();
+
+	bool isTicketObject();
+
 	CustomizationVariables* getCustomizationVariables();
 
 	int getUseCount();
@@ -391,6 +395,10 @@ public:
 
 	byte getUnknownByte();
 
+	virtual bool isTicketCollector();
+
+	virtual bool isTicketObject();
+
 	CustomizationVariables* getCustomizationVariables();
 
 	int getUseCount();
@@ -493,6 +501,10 @@ public:
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	byte getUnknownByte();
+
+	bool isTicketCollector();
+
+	bool isTicketObject();
 
 	int getUseCount();
 

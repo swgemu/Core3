@@ -168,6 +168,12 @@ includeFile("mobile/vehicle/speederbike_swoop.lua")
 includeFile("mobile/dressed_merchant_trainer_01.lua")
 includeFile("intangible/vehicle/speederbike_swoop_pcd.lua")
 includeFile("tangible/fishing/fish/fish.lua")
+includeFile("creature/npc/theme_park/player_shuttle.lua")
+includeFile("creature/npc/theme_park/player_transport.lua")
+includeFile("creature/npc/theme_park/player_transport_theed_hangar.lua")
+includeFile("tangible/travel/ticket_collector/ticket_collector.lua")
+includeFile("tangible/terminal/terminal_travel.lua")
+
 
 
 

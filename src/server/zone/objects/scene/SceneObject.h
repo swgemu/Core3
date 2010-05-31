@@ -228,6 +228,8 @@ public:
 
 	static const int TRAINERCREATURE = 0x40A;
 
+	static const int SHUTTLECREATURE = 0x40B;
+
 	static const int INTANGIBLE = 0x800;
 
 	static const int DRAFTSCHEMATIC = 0x801;
@@ -363,6 +365,10 @@ public:
 	static const int NEWBIETUTORIALTERMINAL = 0x400F;
 
 	static const int CHARACTERBUILDERTERMINAL = 0x4010;
+
+	static const int TICKETCOLLECTOR = 0x4011;
+
+	static const int TRAVELTERMINAL = 0x4012;
 
 	static const int TOOL = 0x8000;
 
@@ -941,6 +947,8 @@ public:
 
 	static const int TRAINERCREATURE = 0x40A;
 
+	static const int SHUTTLECREATURE = 0x40B;
+
 	static const int INTANGIBLE = 0x800;
 
 	static const int DRAFTSCHEMATIC = 0x801;
@@ -1076,6 +1084,10 @@ public:
 	static const int NEWBIETUTORIALTERMINAL = 0x400F;
 
 	static const int CHARACTERBUILDERTERMINAL = 0x4010;
+
+	static const int TICKETCOLLECTOR = 0x4011;
+
+	static const int TRAVELTERMINAL = 0x4012;
 
 	static const int TOOL = 0x8000;
 

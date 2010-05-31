@@ -89,6 +89,36 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace shuttle {
+
+class ShuttleCreature;
+
+} // namespace shuttle
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::shuttle;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/region/Region.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
@@ -96,6 +126,8 @@ using namespace server::zone::managers::objectcontroller;
 #include "server/zone/objects/terrain/PlanetNames.h"
 
 #include "server/zone/managers/terrain/TerrainManager.h"
+
+#include "server/zone/managers/planet/ShuttleMap.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -117,6 +149,14 @@ public:
 	void initialize();
 
 	void loadRegions();
+
+	void loadShuttles();
+
+	ShuttleCreature* getShuttle(const String& arrivalPoint);
+
+	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+
+	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
 	bool getRegion(StringId& name, float x, float y);
 
@@ -164,6 +204,8 @@ protected:
 
 	TerrainManager* terrainManager;
 
+	ShuttleMap shuttleMap;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
 
@@ -176,6 +218,14 @@ public:
 	void initialize();
 
 	void loadRegions();
+
+	void loadShuttles();
+
+	ShuttleCreature* getShuttle(const String& arrivalPoint);
+
+	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+
+	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
 	bool getRegion(StringId& name, float x, float y);
 
@@ -236,6 +286,14 @@ public:
 
 	void loadRegions();
 
+	void loadShuttles();
+
+	ShuttleCreature* getShuttle(const String& arrivalPoint);
+
+	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+
+	void sendPlanetTravelPointListResponse(PlayerCreature* player);
+
 	StructureManager* getStructureManager();
 
 	Region* getRegion(float x, float y);
@@ -247,6 +305,9 @@ public:
 	Region* getRegion(const String& regionName);
 
 protected:
+	String _param0_getShuttle__String_;
+	String _param0_getTravelFare__String_String_;
+	String _param1_getTravelFare__String_String_;
 	String _param0_getRegion__String_;
 };
 

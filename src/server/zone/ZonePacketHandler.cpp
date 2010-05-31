@@ -85,6 +85,7 @@ which carries forward this exception.
 #include "packets/player/NewbieTutorialRequest.h"
 #include "packets/player/StomachRequestMessage.h"
 #include "packets/player/PlayerMoneyRequest.h"
+#include "packets/player/PlanetTravelPointListRequestCallback.h"
 
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
@@ -143,6 +144,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatDeletePersistentMessageCallback>(0x8F251641);
 	messageCallbackFactory.registerObject<RetrieveAuctionItemMessageCallback>(0x12B0D449);
 	messageCallbackFactory.registerObject<BidAuctionMessageCallback>(0x91125453);
+	messageCallbackFactory.registerObject<PlanetTravelPointListRequestCallback>(0x96405d4d);
 
 }
 
