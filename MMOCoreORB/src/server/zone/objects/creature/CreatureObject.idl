@@ -320,6 +320,14 @@ class CreatureObject extends TangibleObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
 	
 	/**
+	 * Heals damage
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
+	public native int healDamage(TangibleObject healer, int damageType, int damage, boolean notifyClient = true);
+	
+	/**
 	 * Updates a specific type of the Base HAM
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the Base HAM type updated to the new value }

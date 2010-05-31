@@ -201,12 +201,28 @@ int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int 
 		return ((TangibleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
-void TangibleObject::setConditionDamage(int condDamage, bool notifyClient) {
+int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addObjectParameter(healer);
+		method.addSignedIntParameter(damageType);
+		method.addSignedIntParameter(damageToHeal);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
+}
+
+void TangibleObject::setConditionDamage(int condDamage, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(condDamage);
 		method.addBooleanParameter(notifyClient);
 
@@ -220,7 +236,7 @@ void TangibleObject::setCustomizationVariable(byte type, byte value, bool notify
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addByteParameter(type);
 		method.addByteParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -251,7 +267,7 @@ int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -265,7 +281,7 @@ byte TangibleObject::getUnknownByte() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithByteReturn();
 	} else
@@ -277,7 +293,7 @@ bool TangibleObject::isTicketCollector() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -289,7 +305,7 @@ bool TangibleObject::isTicketObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -309,7 +325,7 @@ int TangibleObject::getUseCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -321,7 +337,7 @@ int TangibleObject::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -333,7 +349,7 @@ void TangibleObject::setMaxCondition(int maxCond) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addSignedIntParameter(maxCond);
 
 		method.executeWithVoidReturn();
@@ -346,7 +362,7 @@ int TangibleObject::getConditionDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -358,7 +374,7 @@ int TangibleObject::getVolume() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -370,7 +386,7 @@ float TangibleObject::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -382,7 +398,7 @@ unsigned int TangibleObject::getOptionsBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -394,7 +410,7 @@ void TangibleObject::setOptionsBitmask(unsigned int bitmask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addUnsignedIntParameter(bitmask);
 
 		method.executeWithVoidReturn();
@@ -407,7 +423,7 @@ unsigned int TangibleObject::getPvpStatusBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -419,7 +435,7 @@ bool TangibleObject::isTangibleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -431,7 +447,7 @@ void TangibleObject::getCustomizationString(String& variables) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addAsciiParameter(variables);
 
 		method.executeWithVoidReturn();
@@ -452,7 +468,7 @@ unsigned int TangibleObject::getPlayerUseMask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -464,7 +480,7 @@ bool TangibleObject::isSliced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -476,7 +492,7 @@ void TangibleObject::setCustomizationString(const String& vars) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 		method.addAsciiParameter(vars);
 
 		method.executeWithVoidReturn();
@@ -603,129 +619,129 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 void TangibleObjectImplementation::attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	// server/zone/objects/tangible/TangibleObject.idl(286):  		destructionObservers.put(observer);
+	// server/zone/objects/tangible/TangibleObject.idl(292):  		destructionObservers.put(observer);
 	(&destructionObservers)->put(observer);
 }
 
 void TangibleObjectImplementation::dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	// server/zone/objects/tangible/TangibleObject.idl(291):  		destructionObservers.drop(observer);
+	// server/zone/objects/tangible/TangibleObject.idl(297):  		destructionObservers.drop(observer);
 	(&destructionObservers)->drop(observer);
 }
 
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	// server/zone/objects/tangible/TangibleObject.idl(300):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(300):  		for (int i = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(306):  
+	for (	// server/zone/objects/tangible/TangibleObject.idl(306):  		for (int i = 0;
 	int i = 0;
 	i < (&destructionObservers)->size();
  ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(301):  			TangibleObjectDestructionObserver observer = destructionObservers.get(i);
+	// server/zone/objects/tangible/TangibleObject.idl(307):  			TangibleObjectDestructionObserver observer = destructionObservers.get(i);
 	TangibleObjectDestructionObserver* observer = (&destructionObservers)->get(i);
-	// server/zone/objects/tangible/TangibleObject.idl(303):  			int res = observer.notifyDestruction(attacker, this, condition);
+	// server/zone/objects/tangible/TangibleObject.idl(309):  			int res = observer.notifyDestruction(attacker, this, condition);
 	int res = observer->notifyDestruction(attacker, _this, condition);
-	// server/zone/objects/tangible/TangibleObject.idl(305):  		}
+	// server/zone/objects/tangible/TangibleObject.idl(311):  		}
 	if (res == 1){
-	// server/zone/objects/tangible/TangibleObject.idl(306):  				destructionObservers.drop(observer);
+	// server/zone/objects/tangible/TangibleObject.idl(312):  				destructionObservers.drop(observer);
 	(&destructionObservers)->drop(observer);
-	// server/zone/objects/tangible/TangibleObject.idl(307):  				i = i - 1;
+	// server/zone/objects/tangible/TangibleObject.idl(313):  				i = i - 1;
 	i = i - 1;
 }
 }
-	// server/zone/objects/tangible/TangibleObject.idl(311):  		return 0;
+	// server/zone/objects/tangible/TangibleObject.idl(317):  		return 0;
 	return 0;
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(315):  		return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(321):  		return unknownByte;
 	return unknownByte;
 }
 
 bool TangibleObjectImplementation::isTicketCollector() {
-	// server/zone/objects/tangible/TangibleObject.idl(319):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(325):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isTicketObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(323):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(329):  		return false;
 	return false;
 }
 
 CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(328):  		return customizationVariables;
+	// server/zone/objects/tangible/TangibleObject.idl(334):  		return customizationVariables;
 	return (&customizationVariables);
 }
 
 int TangibleObjectImplementation::getUseCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(332):  		return useCount;
+	// server/zone/objects/tangible/TangibleObject.idl(338):  		return useCount;
 	return useCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(336):  		return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(342):  		return maxCondition;
 	return maxCondition;
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond) {
-	// server/zone/objects/tangible/TangibleObject.idl(340):  		maxCondition = maxCond;
+	// server/zone/objects/tangible/TangibleObject.idl(346):  		maxCondition = maxCond;
 	maxCondition = maxCond;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(344):  		return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(350):  		return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(348):  		return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(354):  		return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(352):  		return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(358):  		return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(356):  		return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(362):  		return optionsBitmask;
 	return optionsBitmask;
 }
 
 void TangibleObjectImplementation::setOptionsBitmask(unsigned int bitmask) {
-	// server/zone/objects/tangible/TangibleObject.idl(360):  		optionsBitmask = bitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(366):  		optionsBitmask = bitmask;
 	optionsBitmask = bitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(364):  		return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(370):  		return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 bool TangibleObjectImplementation::isTangibleObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(368):  		return true;
+	// server/zone/objects/tangible/TangibleObject.idl(374):  		return true;
 	return true;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(372):  		customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(378):  		customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(377):  		return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl(383):  		return defenderList;
 	return (&defenderList);
 }
 
 unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl(381):  		return playerUseMask;
+	// server/zone/objects/tangible/TangibleObject.idl(387):  		return playerUseMask;
 	return playerUseMask;
 }
 
 bool TangibleObjectImplementation::isSliced() {
-	// server/zone/objects/tangible/TangibleObject.idl(385):  		return sliced;
+	// server/zone/objects/tangible/TangibleObject.idl(391):  		return sliced;
 	return sliced;
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(389):  		customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(395):  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
@@ -777,63 +793,66 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 18:
-		setConditionDamage(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 19:
-		setCustomizationVariable(inv->getByteParameter(), inv->getByteParameter(), inv->getBooleanParameter());
+		setConditionDamage(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 20:
-		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		setCustomizationVariable(inv->getByteParameter(), inv->getByteParameter(), inv->getBooleanParameter());
 		break;
 	case 21:
-		resp->insertByte(getUnknownByte());
+		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 22:
-		resp->insertBoolean(isTicketCollector());
+		resp->insertByte(getUnknownByte());
 		break;
 	case 23:
-		resp->insertBoolean(isTicketObject());
+		resp->insertBoolean(isTicketCollector());
 		break;
 	case 24:
-		resp->insertSignedInt(getUseCount());
+		resp->insertBoolean(isTicketObject());
 		break;
 	case 25:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getUseCount());
 		break;
 	case 26:
-		setMaxCondition(inv->getSignedIntParameter());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 27:
-		resp->insertSignedInt(getConditionDamage());
+		setMaxCondition(inv->getSignedIntParameter());
 		break;
 	case 28:
-		resp->insertSignedInt(getVolume());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 29:
-		resp->insertFloat(getComplexity());
+		resp->insertSignedInt(getVolume());
 		break;
 	case 30:
-		resp->insertInt(getOptionsBitmask());
+		resp->insertFloat(getComplexity());
 		break;
 	case 31:
-		setOptionsBitmask(inv->getUnsignedIntParameter());
+		resp->insertInt(getOptionsBitmask());
 		break;
 	case 32:
-		resp->insertInt(getPvpStatusBitmask());
+		setOptionsBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 33:
-		resp->insertBoolean(isTangibleObject());
+		resp->insertInt(getPvpStatusBitmask());
 		break;
 	case 34:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		resp->insertBoolean(isTangibleObject());
 		break;
 	case 35:
-		resp->insertInt(getPlayerUseMask());
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 36:
-		resp->insertBoolean(isSliced());
+		resp->insertInt(getPlayerUseMask());
 		break;
 	case 37:
+		resp->insertBoolean(isSliced());
+		break;
+	case 38:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	default:
@@ -889,6 +908,10 @@ bool TangibleObjectAdapter::isAttackableBy(CreatureObject* object) {
 
 int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	return ((TangibleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+}
+
+int TangibleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+	return ((TangibleObjectImplementation*) impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void TangibleObjectAdapter::setConditionDamage(int condDamage, bool notifyClient) {

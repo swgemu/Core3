@@ -6,6 +6,13 @@ object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pis
 	
 	certificationsRequired = { "cert_pistol_cdef" },
 	
+	maxRange = 45,
+	
+	minDamage = 50,
+	maxDamage = 100,
+	
+	xpType = "combat_rangedspecialize_pistol",
+	
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 	defenderDefenseModifiers = { "ranged_defense" },
 	defenderSecondaryDefenseModifiers = { "dodge" },

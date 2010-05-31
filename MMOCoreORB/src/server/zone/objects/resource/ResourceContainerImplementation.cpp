@@ -75,7 +75,7 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(rnco6);
 }
 
-void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* player) {;
+void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* player) {
 
 	Locker _locker(_this);
 

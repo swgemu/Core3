@@ -274,3 +274,11 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	return 0;
 }
+
+int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+	int newConditionDamage = conditionDamage - damageToHeal;
+
+	setConditionDamage(newConditionDamage, notifyClient);
+
+	return 0;
+}

@@ -15,7 +15,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
-#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
