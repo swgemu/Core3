@@ -60,6 +60,8 @@ public:
 
 	ResourceContainer();
 
+	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -117,6 +119,8 @@ public:
 	ResourceContainerImplementation();
 
 	ResourceContainerImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -178,6 +182,8 @@ public:
 	ResourceContainerAdapter(ResourceContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 

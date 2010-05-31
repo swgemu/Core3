@@ -86,6 +86,8 @@ class WeaponObject extends TangibleObject {
 	protected int mindAttackCost;
 	protected int forceCost;
 	
+	protected string xpType;
+	
 	@dereferenced
 	protected Vector<string> damageModifiers;
 	

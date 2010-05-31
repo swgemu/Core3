@@ -8,6 +8,8 @@ object_weapon_melee_knife_knife_survival = object_weapon_melee_knife_shared_knif
 	minDamage = 20,
 	maxDamage = 50,
 	
+	xpType = "combat_meleespecialize_onehand",
+	
 	certificationsRequired = { "cert_knife_survival" },
 	
 	creatureAccuracyModifiers = { "onehandmelee_accuracy" }, 

@@ -273,6 +273,8 @@ protected:
 
 	int forceCost;
 
+	String xpType;
+
 	Vector<String> damageModifiers;
 
 	Vector<String> speedModifiers;

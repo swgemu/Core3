@@ -76,7 +76,7 @@ which carries forward this exception.
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
-#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
@@ -496,10 +496,25 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	int newValue = currentValue - damage;
 
-	setHAM(damageType, MIN(newValue, maxHamList.get(damageType)), notifyClient);
+	setHAM(damageType, newValue, notifyClient);
 
 	if (newValue <= 0)
 		notifyObjectDestructionObservers(attacker, newValue);
+
+	return 0;
+}
+
+int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
+	if (damageType < 0 || damageType >= hamList.size()) {
+		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
+		return 0;
+	}
+
+	int currentValue = hamList.get(damageType);
+
+	int newValue = currentValue + damage;
+
+	setHAM(damageType, MIN(newValue, maxHamList.get(damageType)), notifyClient);
 
 	return 0;
 }
@@ -1213,9 +1228,9 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	if (mindTick < 1)
 		mindTick = 1;
 
-	inflictDamage(_this, CreatureAttribute::HEALTH, -healthTick);
-	inflictDamage(_this, CreatureAttribute::ACTION, -actionTick);
-	inflictDamage(_this, CreatureAttribute::MIND, -mindTick);
+	healDamage(_this, CreatureAttribute::HEALTH, healthTick);
+	healDamage(_this, CreatureAttribute::ACTION, actionTick);
+	healDamage(_this, CreatureAttribute::MIND, mindTick);
 
 	//Check for passive wound healing
 	/*if (isInBuilding()) {

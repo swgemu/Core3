@@ -8,7 +8,7 @@
 #include "BazaarManager.h"
 #include "BazaarAuctionsMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"

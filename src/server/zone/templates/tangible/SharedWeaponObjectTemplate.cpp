@@ -14,6 +14,8 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
 	attackType = templateData->getIntField("attackType");
 
+	xpType = templateData->getStringField("xpType");
+
 	damageType = templateData->getIntField("damageType");
 
 	LuaObject certifications = templateData->getObjectField("certificationsRequired");

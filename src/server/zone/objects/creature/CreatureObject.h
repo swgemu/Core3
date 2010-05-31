@@ -232,6 +232,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
 	void setWounds(int type, int value, bool notifyClient = true);
@@ -728,6 +730,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
 	void setWounds(int type, int value, bool notifyClient = true);
@@ -1108,6 +1112,8 @@ public:
 	void setHAM(int type, int value, bool notifyClient);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
 

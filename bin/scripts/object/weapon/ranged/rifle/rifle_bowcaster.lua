@@ -7,6 +7,8 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	
 	minDamage = 50,
 	maxDamage = 100,
+	
+	xpType = "combat_rangedspecialize_rifle",
 
 	certificationsRequired = { "cert_rifle_bowcaster" },
 	

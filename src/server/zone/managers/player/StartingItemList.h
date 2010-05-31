@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/managers/template/TemplateManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 class StartingItem : public Object {
 	uint32 templateCRC;

@@ -29,6 +29,8 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	weaponEffect =  weaoData->getWeaponEffect();
 	weaponEffectIndex = weaoData->getWeaponEffectIndex();
 
+	xpType = weaoData->getXpType();
+
 	damageType = weaoData->getDamageType();
 
 	certificationsRequired = weaoData->getCertificationsRequired();
