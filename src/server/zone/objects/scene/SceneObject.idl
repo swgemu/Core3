@@ -173,6 +173,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int PROBOTCREATURE = 0x403;
 	public static final int PLAYERCREATURE = 0x409;
 	public static final int TRAINERCREATURE = 0x40A;
+	public static final int SHUTTLECREATURE = 0x40B;
 
 	public static final int INTANGIBLE = 0x800;
 	public static final int DRAFTSCHEMATIC = 0x801;
@@ -246,6 +247,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int INTERACTIVETERMINAL = 0x400C;
 	public static final int NEWBIETUTORIALTERMINAL = 0x400F;
 	public static final int CHARACTERBUILDERTERMINAL = 0x4010;
+	public static final int TICKETCOLLECTOR = 0x4011;
+	public static final int TRAVELTERMINAL = 0x4012;
 
 	public static final int TOOL = 0x8000;
 	public static final int CRAFTINGTOOL = 0x8001;

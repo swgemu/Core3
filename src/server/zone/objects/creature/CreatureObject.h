@@ -256,6 +256,8 @@ public:
 
 	bool verifyCashCredits(int credits);
 
+	bool verifyBankCredits(int credits);
+
 	void setCashCredits(int credits, bool notifyClient = true);
 
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
@@ -544,6 +546,8 @@ public:
 
 	bool isInCover();
 
+	bool isShuttleCreature();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -747,6 +751,8 @@ public:
 	void substractCashCredits(int credits);
 
 	bool verifyCashCredits(int credits);
+
+	bool verifyBankCredits(int credits);
 
 	void setCashCredits(int credits, bool notifyClient = true);
 
@@ -1036,6 +1042,8 @@ public:
 
 	bool isInCover();
 
+	virtual bool isShuttleCreature();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -1124,6 +1132,8 @@ public:
 	void substractCashCredits(int credits);
 
 	bool verifyCashCredits(int credits);
+
+	bool verifyBankCredits(int credits);
 
 	void setCashCredits(int credits, bool notifyClient);
 
@@ -1390,6 +1400,8 @@ public:
 	bool isAiming();
 
 	bool isInCover();
+
+	bool isShuttleCreature();
 
 protected:
 	String _param0_sendSystemMessage__String_;

@@ -53,11 +53,15 @@ import system.thread.Thread;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.creature.shuttle.ShuttleCreature;
+import server.zone.objects.player.PlayerCreature;
 include server.zone.objects.region.Region;
 
 include server.zone.managers.planet.RegionMap;
 include server.zone.objects.terrain.PlanetNames;
 include server.zone.managers.terrain.TerrainManager;
+include server.zone.managers.planet.ShuttleMap;
+
 
 class PlanetManager extends ManagedObject implements Logger {
 	@weakReference
@@ -69,8 +73,11 @@ class PlanetManager extends ManagedObject implements Logger {
 	protected StructureManager structureManager;
 	
 	protected transient ZoneProcessServerImplementation server;
-	
 	protected transient TerrainManager terrainManager;
+	
+	@dereferenced
+	protected transient ShuttleMap shuttleMap;
+	
 	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
@@ -91,6 +98,15 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public native void initialize();
 	public native void loadRegions();
+	public native void loadShuttles();
+	
+	public ShuttleCreature getShuttle(final string arrivalPoint) {
+		return shuttleMap.get(arrivalPoint);
+	}
+	
+	public native unsigned int getTravelFare(final string departurePlanet, final string arrivalPlanet);
+	
+	public native void sendPlanetTravelPointListResponse(PlayerCreature player);
 	
 	@local
 	public boolean getRegion(@dereferenced StringId name, float x, float y) {
