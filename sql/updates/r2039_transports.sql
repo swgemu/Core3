@@ -9,7 +9,7 @@
 # Table structure for table 'transports'
 #
 
-# DROP TABLE IF EXISTS transports;
+DROP TABLE IF EXISTS transports;
 CREATE TABLE `transports` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `planet_id` tinyint(3) unsigned NOT NULL,
