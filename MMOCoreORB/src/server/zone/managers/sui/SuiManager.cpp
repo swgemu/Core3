@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -197,10 +198,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::TICKET_PURCHASE_MESSAGE:
 		handleTicketPurchaseMessageBox(boxID, player);
-		break;
+		break;*/
 	case SuiWindowType::TICKET_COLLECTOR_RESPONSES:
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;/*
 	case SuiWindowType::COLOR_PICKER1:
 		handleColorPicker(boxID, player, cancel, value, 2);
 		break;
@@ -1008,8 +1009,9 @@ void SuiManager::handleStateTerminalRequest(uint32 boxID, Player* player, uint32
 		player->unlock();
 	}
 
-}
-void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex) {
+}*/
+
+void SuiManager::handleTicketCollectorRespones(uint32 boxID, PlayerCreature* player, uint32 cancel, int ticketIndex) {
 	try {
 		player->wlock();
 
@@ -1026,23 +1028,22 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 			uint64 ticketObjectID = listBox->getMenuObjectID(ticketIndex);
 
 			if (ticketObjectID != 0) {
-				SceneObject* invObj = player->getInventoryItem(ticketObjectID);
+				SceneObject* inventory = player->getSlottedObject("inventory");
+				SceneObject* invObj = inventory->getContainerObject(ticketObjectID);
 
-				if (invObj != NULL && invObj->isTangible()) {
+				if (invObj != NULL && invObj->isTangibleObject()) {
 					TangibleObject* object = (TangibleObject*) invObj;
 
-					if (object->isTicket()) {
-						Ticket* ticket = (Ticket*) object;
+					if (object->isTicketObject()) {
+						TicketObject* ticket = (TicketObject*) object;
 
-						ticket->useObject(player);
+						ticket->handleObjectMenuSelect(player, 20);
 					}
 				}
 			}
 		}
 
 		player->removeSuiBox(boxID);
-
-		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -1055,7 +1056,7 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 		player->unlock();
 	}
 }
-
+/*
 void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var) {
 	try {
 		player->wlock();

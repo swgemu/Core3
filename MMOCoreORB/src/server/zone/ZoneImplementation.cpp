@@ -122,6 +122,7 @@ void ZoneImplementation::startManagers() {
 	creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 	creatureManager->initialize();
+	planetManager->loadShuttles();
 
 	/*creatureManager->init();
 

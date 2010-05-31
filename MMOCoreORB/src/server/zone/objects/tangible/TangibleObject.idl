@@ -315,6 +315,13 @@ class TangibleObject extends SceneObject {
 		return unknownByte;
 	}
 	
+	public abstract boolean isTicketCollector() {
+		return false;
+	}
+	
+	public abstract boolean isTicketObject() {
+		return false;
+	}
 	
 	@local
 	public CustomizationVariables getCustomizationVariables() {

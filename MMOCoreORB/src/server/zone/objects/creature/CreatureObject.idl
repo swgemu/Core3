@@ -420,6 +420,16 @@ class CreatureObject extends TangibleObject {
 		return true;
 	}
 	
+	public boolean verifyBankCredits(int credits) {
+		if (credits < 0)
+			return false;
+		
+		if (bankCredits < credits)
+			return false;
+		
+		return true;
+	}
+	
 	/**
 	 * Update the cash credits of this object
 	 * @pre { this object is locked }
@@ -1101,6 +1111,10 @@ class CreatureObject extends TangibleObject {
 
 	public boolean isInCover() {
 		return stateBitmask & CreatureState.COVER;
+	}
+	
+	public abstract boolean isShuttleCreature() {
+		return false;
 	}
 
 }

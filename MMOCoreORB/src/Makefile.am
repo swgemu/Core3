@@ -72,6 +72,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
+				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
+				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
@@ -128,8 +130,11 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/AuctionItem.cpp \
+				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
+				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
+				server/zone/objects/tangible/ticket/TicketObject.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
@@ -191,6 +196,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
+		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
@@ -229,6 +235,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
+		server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp \
+		server/zone/objects/tangible/ticket/TicketObjectImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
