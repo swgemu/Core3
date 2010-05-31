@@ -50,6 +50,8 @@ protected:
 	Vector<String> certificationsRequired;
 	Vector<String> defenderSecondaryDefenseModifiers;
 
+	String xpType;
+
 public:
 	SharedWeaponObjectTemplate() {
 
@@ -60,6 +62,10 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+
+	inline String getXpType() const {
+		return xpType;
+	}
 
 	inline int getActionAttackCost() const {
 		return actionAttackCost;

@@ -266,6 +266,12 @@ class TangibleObject extends SceneObject {
 	 */
 	public native abstract int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
 	
+	/**
+	 * Heals damage
+	 * @pre {
+	 */
+	public native abstract int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
+	
 	
 	/**
 	 * Sets the condition damage variable

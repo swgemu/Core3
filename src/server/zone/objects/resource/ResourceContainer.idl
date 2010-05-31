@@ -62,7 +62,15 @@ class ResourceContainer extends TangibleObject {
 	
     public ResourceContainer() {
     	stackQuantity = 0;
+    	
+    	setLoggingName("ResourceContainer");
     }
+    
+    public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("ResourceContainer");
+	}
         
    /**
 	 * Fills the attribute list message options that are sent to player creature

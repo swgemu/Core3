@@ -184,6 +184,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
+
 	void setConditionDamage(int condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
@@ -383,6 +385,8 @@ public:
 
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	virtual int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
+
 	void setConditionDamage(int condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
@@ -493,6 +497,8 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+
+	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 
 	void setConditionDamage(int condDamage, bool notifyClient);
 

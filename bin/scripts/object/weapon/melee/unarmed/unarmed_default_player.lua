@@ -6,6 +6,13 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	
 	certificationsRequired = {  },
 	
+	xpType = "combat_meleespecialize_unarmed",
+	
+	maxRange = 5,
+	
+	minDamage = 20,
+	maxDamage = 90,
+	
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
 	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
 	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
