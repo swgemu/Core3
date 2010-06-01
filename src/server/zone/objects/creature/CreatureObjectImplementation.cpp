@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "events/DizzyFallDownEvent.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
@@ -1194,6 +1195,15 @@ void CreatureObjectImplementation::setMeditateState() {
 	setMoodString("meditating");
 	setPosture(CreaturePosture::SITTING);
 	setState(CreatureState::ALERT);
+}
+
+void CreatureObjectImplementation::queueDizzyFallEvent() {
+	if (getPendingTask("dizzyFallDownEvent") != NULL)
+		return;
+
+	Task* task = new DizzyFallDownEvent(_this);
+	addPendingTask("dizzyFallDownEvent", task);
+	task->schedule(200);
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {

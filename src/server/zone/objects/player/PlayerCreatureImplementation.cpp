@@ -41,6 +41,8 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	recoveryEvent = NULL;
 	owner = NULL;
 
+	centeredBonus = 0;
+
 	persistentMessages.setNoDuplicateInsertPlan();
 	duelList.setNoDuplicateInsertPlan();
 

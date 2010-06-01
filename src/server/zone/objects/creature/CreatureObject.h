@@ -350,6 +350,8 @@ public:
 
 	void updateKnockdownRecovery();
 
+	void queueDizzyFallEvent();
+
 	void updateLastKnockdown();
 
 	bool checkKnockdownRecovery();
@@ -852,6 +854,8 @@ public:
 
 	void updateKnockdownRecovery();
 
+	void queueDizzyFallEvent();
+
 	void updateLastKnockdown();
 
 	bool checkKnockdownRecovery();
@@ -1230,6 +1234,8 @@ public:
 	bool hasAttackDelay();
 
 	void updateKnockdownRecovery();
+
+	void queueDizzyFallEvent();
 
 	void updateLastKnockdown();
 

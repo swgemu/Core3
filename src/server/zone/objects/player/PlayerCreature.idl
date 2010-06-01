@@ -170,6 +170,8 @@ class PlayerCreature extends CreatureObject {
 		factionStatus = 0;
 		lotsRemaining = 0;
 		
+		centeredBonus = 0;
+		
 		clientLastMovementStamp = 0;
 		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
