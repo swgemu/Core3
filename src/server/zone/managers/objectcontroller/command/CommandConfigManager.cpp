@@ -926,13 +926,13 @@ int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
 
 void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* command) {
 
-	String field = slashcommand.getStringField("animation");
-	command->setAnimation(field);
+	/*String field = slashcommand.getStringField("animation");
+	command->setAnimation(field);*/
 
 	uint64 mask = slashcommand.getLongField("invalidStateMask");
 	command->setStateMask(mask);
 
-	field = slashcommand.getStringField("invalidPostures");
+	String field = slashcommand.getStringField("invalidPostures");
 	command->setInvalidPostures(field);
 
 	/*int num = slashcommand.getIntField("target");

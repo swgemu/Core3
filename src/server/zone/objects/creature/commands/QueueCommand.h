@@ -67,7 +67,6 @@ class QueueCommand : public Skill, public Logger {
 protected:
 	uint32 nameCRC;
 
-	uint32 animCRC;
 	uint64 stateMask;
 	Vector<int> invalidPostures;
 	//int target;
@@ -155,9 +154,6 @@ public:
 	}
 
 	//setters
-	inline void setAnimation(const String& ename) {
-		animCRC = ename.hashCode();
-	}
 
 	/*
 	 * Sets the invalid states for this command
@@ -238,14 +234,6 @@ public:
 		return nameCRC;
 	}
 
-	inline uint32 getAnimCRC() {
-		return animCRC;
-	}
-
-	inline uint32 getAnimCRC(CreatureObject* creature, const String& actionModifier) {
-		return animCRC;
-	}
-
 	inline float getMaxRange() {
 		return maxRangeToTarget;
 	}
@@ -264,11 +252,6 @@ public:
 
 	inline int getDefaultPriority() {
 		return defaultPriority;
-	}
-
-	//misc
-	bool hasAnimation() {
-		return animCRC != 0;
 	}
 
 	/*
