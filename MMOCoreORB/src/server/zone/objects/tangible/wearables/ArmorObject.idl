@@ -173,4 +173,16 @@ class ArmorObject extends WearableObject {
 	public float getLightSaber() {
 		return lightSaber;
 	}
+	
+	public int getHealthEncumbrance() {
+		return healthEncumbrance;
+	}
+	
+	public int getActionEncumbrance() {
+		return actionEncumbrance;
+	}
+	
+	public int getMindEncumbrance() {
+		return mindEncumbrance;
+	}
 }

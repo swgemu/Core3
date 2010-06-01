@@ -272,6 +272,12 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	int canAddObject(SceneObject* object, String& errorDescription);
+
+	int notifyObjectInserted(SceneObject* object);
+
+	int notifyObjectRemoved(SceneObject* object);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	bool isFirstIncapacitationExpired();
@@ -559,6 +565,12 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	int canAddObject(SceneObject* object, String& errorDescription);
+
+	int notifyObjectInserted(SceneObject* object);
+
+	int notifyObjectRemoved(SceneObject* object);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	bool isFirstIncapacitationExpired();
@@ -770,6 +782,12 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	int canAddObject(SceneObject* object, String& errorDescription);
+
+	int notifyObjectInserted(SceneObject* object);
+
+	int notifyObjectRemoved(SceneObject* object);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	bool isFirstIncapacitationExpired();
@@ -913,6 +931,7 @@ public:
 	CreatureObject* getConversatingCreature();
 
 protected:
+	String _param1_canAddObject__SceneObject_String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;

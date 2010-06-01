@@ -425,3 +425,46 @@ int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObjec
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
+
+
+int PlayerCreatureImplementation::canAddObject(SceneObject* object, String& errorDescription) {
+	if (object->isArmorObject()) {
+		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+
+		if (!playerManager->checkEncumbrancies(_this, (ArmorObject*)object))
+			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
+	}
+
+	return CreatureObjectImplementation::canAddObject(object, errorDescription);
+}
+
+/**
+ * Is called when this object has been inserted with an object
+ * @param object object that has been inserted
+ */
+int PlayerCreatureImplementation::notifyObjectInserted(SceneObject* object) {
+	if (object->isArmorObject()) {
+		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+
+		playerManager->applyEncumbrancies(_this, (ArmorObject*)object);
+	}
+
+	return CreatureObjectImplementation::notifyObjectInserted(object);
+}
+
+
+/**
+ * Is called when this object has been inserted with an object
+ * @param object object that has been inserted
+ */
+int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
+	if (object->isArmorObject()) {
+		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+
+		playerManager->removeEncumbrancies(_this, (ArmorObject*)object);
+	}
+
+	return CreatureObjectImplementation::notifyObjectRemoved(object);
+}
+
+
