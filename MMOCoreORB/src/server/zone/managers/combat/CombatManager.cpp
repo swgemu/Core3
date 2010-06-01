@@ -724,24 +724,24 @@ void CombatManager::doMiss(CreatureObject* attacker, CreatureObject* defender, i
 }
 
 void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
-	creature->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
+	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
 
 void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
-	creature->showFlyText("combat_effects", "block", 0, 0xFF, 0);
+	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
-	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
-	creature->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
+	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
-	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }

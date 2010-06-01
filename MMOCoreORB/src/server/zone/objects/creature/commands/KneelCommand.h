@@ -65,12 +65,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		Zone* zone = creature->getZone();
+		/*if (creature->isDizzied()) {
+			if (creature->getPosture() != CreaturePosture::CROUCHED) {
+				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
+				creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
 
-		if (zone == NULL)
-			return GENERALERROR;
+				return SUCCESS;
+			}
+		}*/
 
 		creature->setPosture(CreaturePosture::CROUCHED, true);
+
+		if (creature->isDizzied())
+			creature->queueDizzyFallEvent();
 
 		return SUCCESS;
 	}
