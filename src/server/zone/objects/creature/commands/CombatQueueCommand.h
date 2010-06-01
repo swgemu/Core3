@@ -91,11 +91,17 @@ public:
 
 		float checkRange = range;
 
-		if (checkRange == -1) {
-			ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
+		if (checkRange == -1) {
 			checkRange = weapon->getMaxRange();
 		}
+
+		if (creature->isKneeling() && weapon->isMeleeWeapon())
+			return NOKNEELING;
+
+		if (creature->isProne() && !weapon->isRangedWeapon())
+			return NOPRONE;
 
 		if (!targetObject->isInRange(creature, checkRange))
 			return TOOFAR;
