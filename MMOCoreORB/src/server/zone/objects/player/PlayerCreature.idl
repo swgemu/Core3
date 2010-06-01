@@ -139,6 +139,8 @@ class PlayerCreature extends CreatureObject {
 	protected transient Vector<string> lastNpcConvoOptions;
 	@weakReference
 	protected transient CreatureObject conversatingCreature;
+	
+	protected transient int centeredBonus;
 		
 	//protected BankTerminal registeredBank;
 	
@@ -268,6 +270,14 @@ class PlayerCreature extends CreatureObject {
 		
 		return false;
 	}
+	
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
+	public native boolean isAttackableBy(CreatureObject object);
 	
 	public native int canAddObject(SceneObject object, string errorDescription);
 	
@@ -577,6 +587,14 @@ class PlayerCreature extends CreatureObject {
 	
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;
+	}
+	
+	public int getCenteredBonus() {
+		return centeredBonus;
+	}
+	
+	public void setCenteredBonus(int bonus) {
+		centeredBonus = bonus;
 	}
 	
 }

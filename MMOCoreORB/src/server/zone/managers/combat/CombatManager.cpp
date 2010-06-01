@@ -664,6 +664,9 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 	int targetDefense = getDefenderSecondaryDefenseModifier(targetCreature, weapon);
 
+	if (targetCreature->isPlayerCreature())
+		targetDefense += ((PlayerCreature*)targetCreature)->getCenteredBonus();
+
 	info("Base target secondary defense is " + String::valueOf(targetDefense));
 
 	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);

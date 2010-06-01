@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CENTEROFBEINGCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+#include "server/zone/objects/player/events/CenterOfBeingEvent.h"
 
 
 class CenterOfBeingCommand : public QueueCommand {
@@ -64,6 +64,51 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		Task* task = player->getPendingTask("centerofbeing");
+
+		if (task != NULL) {
+			player->sendSystemMessage("combat_effects", "already_centered");
+			return GENERALERROR;
+		}
+
+		WeaponObject* weapon = player->getWeapon();
+
+		int duration = 0;
+		int efficacy = 0;
+
+		if (weapon->isUnarmedWeapon()) {
+			duration = player->getSkillMod("center_of_being_duration_unarmed");
+			efficacy = player->getSkillMod("unarmed_center_of_being_efficacy");
+		} else if (weapon->isOneHandMeleeWeapon()) {
+			duration = player->getSkillMod("center_of_being_duration_onehandmelee");
+			efficacy = player->getSkillMod("onehandmelee_center_of_being_efficacy");
+		} else if (weapon->isTwoHandMeleeWeapon()) {
+			duration = player->getSkillMod("center_of_being_duration_twohandmelee");
+			efficacy = player->getSkillMod("twohandmelee_center_of_being_efficacy");
+		} else if (weapon->isPolearmWeaponObject()) {
+			duration = player->getSkillMod("center_of_being_duration_polearm");
+			efficacy = player->getSkillMod("polearm_center_of_being_efficacy");
+		} else
+			return GENERALERROR;
+
+		if (duration == 0 || efficacy == 0)
+			return GENERALERROR;
+
+		player->setCenteredBonus(efficacy);
+
+		player->sendSystemMessage("combat_effects", "center_start");
+		player->showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
+
+		CenterOfBeingEvent* centerOfBeingEvent = new CenterOfBeingEvent(player);
+		centerOfBeingEvent->schedule(duration * 1000);
+
+		player->addPendingTask("centerofbeing", centerOfBeingEvent);
 
 		return SUCCESS;
 	}
