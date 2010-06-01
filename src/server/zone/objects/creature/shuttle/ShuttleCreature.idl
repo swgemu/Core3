@@ -77,8 +77,8 @@ class ShuttleCreature extends NonPlayerCreatureObject {
 
 	public ShuttleCreature() {
 		Logger.setLoggingName("ShuttleCreature");
-		Logger.setLogging("false");
-		Logger.setGlobalLogging("true");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 	}
 	
 	public native void doTakeOff();

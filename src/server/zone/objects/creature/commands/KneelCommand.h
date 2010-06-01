@@ -70,14 +70,7 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
-		float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
-		uint64 parID = creature->getParentID();
-
-		CreatureManager* creatureManager = zone->getCreatureManager();
-
-		uint32 templ = String("object/mobile/shared_boba_fett.iff").hashCode();
-
-		CreatureObject* npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
+		creature->setPosture(CreaturePosture::CROUCHED, true);
 
 		return SUCCESS;
 	}

@@ -61,8 +61,8 @@ class ControlDevice extends IntangibleObject {
 		controlledObject = null;
 		
 		Logger.setLoggingName("ControlDevice");
-		Logger.setLogging("false");
-		Logger.setGlobalLogging("true");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 	}
 	
 	public abstract void storeObject(PlayerCreature player) {

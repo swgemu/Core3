@@ -84,8 +84,8 @@ class PlanetManager extends ManagedObject implements Logger {
 		server = srv;
 				
 		Logger.setLoggingName("PlanetManager");
-		Logger.setLogging("false");
-		Logger.setGlobalLogging("true");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 		
 		terrainManager = null;
 		

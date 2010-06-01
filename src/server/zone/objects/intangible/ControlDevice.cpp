@@ -169,10 +169,10 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 	controlledObject = NULL;
 	// server/zone/objects/intangible/ControlDevice.idl(63):  		Logger.setLoggingName("ControlDevice");
 	Logger::setLoggingName("ControlDevice");
-	// server/zone/objects/intangible/ControlDevice.idl(64):  		Logger.setLogging("false");
-	Logger::setLogging("false");
-	// server/zone/objects/intangible/ControlDevice.idl(65):  		Logger.setGlobalLogging("true");
-	Logger::setGlobalLogging("true");
+	// server/zone/objects/intangible/ControlDevice.idl(64):  		Logger.setLogging(false);
+	Logger::setLogging(false);
+	// server/zone/objects/intangible/ControlDevice.idl(65):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 }
 
 void ControlDeviceImplementation::storeObject(PlayerCreature* player) {
