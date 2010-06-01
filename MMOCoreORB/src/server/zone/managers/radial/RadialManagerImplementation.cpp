@@ -13,8 +13,8 @@
 RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : ManagedObjectImplementation(), Logger() {
 	setLoggingName("RadialManager");
 
-	setGlobalLogging("true");
-	setLogging("true");
+	setGlobalLogging(true);
+	setLogging(true);
 
 	zoneServer = server;
 }

@@ -28,8 +28,8 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServerImplementat
 
 	skillType = QUEUECOMMAND;
 
-	setLogging("true");
-	setGlobalLogging("true");
+	setLogging(true);
+	setGlobalLogging(true);
 	setLoggingName("QueueCommand " + skillname);
 }
 
