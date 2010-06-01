@@ -102,8 +102,8 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 
 	server = processServer->getZoneServer();
 
-	setGlobalLogging("true");
-	setLogging("true");
+	setGlobalLogging(true);
+	setLogging(true);
 
 	registerMessages();
 	registerObjectControllerMessages();
