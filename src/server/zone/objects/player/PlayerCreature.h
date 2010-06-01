@@ -272,6 +272,8 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	bool isAttackableBy(CreatureObject* object);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
@@ -421,6 +423,10 @@ public:
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
+
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -514,6 +520,8 @@ protected:
 
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
+	int centeredBonus;
+
 public:
 	static const int ONLINE = 1;
 
@@ -564,6 +572,8 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -715,6 +725,10 @@ public:
 
 	CreatureObject* getConversatingCreature();
 
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -781,6 +795,8 @@ public:
 	void unloadSpawnedChildren();
 
 	bool isAggressiveTo(PlayerCreature* object);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -929,6 +945,10 @@ public:
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
+
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
 
 protected:
 	String _param1_canAddObject__SceneObject_String_;

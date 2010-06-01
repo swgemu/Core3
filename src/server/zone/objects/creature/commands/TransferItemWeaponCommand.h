@@ -152,6 +152,12 @@ public:
 						} else {
 							weaponObject->setCertified(false);
 						}
+
+						if (playerCreature->getCenteredBonus() != 0) {
+							Reference<Task*> task = playerCreature->getPendingTask("centerofbeing");
+							task->cancel();
+							task->run();
+						}
 					}
 
 				}

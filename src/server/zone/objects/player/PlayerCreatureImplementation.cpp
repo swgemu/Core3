@@ -117,6 +117,17 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	scno->sendTo(_this, true);
 }
 
+bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
+	if (object->isPlayerCreature()) {
+		PlayerCreature* playerCreature = (PlayerCreature*) object;
+
+		if (duelList.contains(playerCreature) && playerCreature->requestedDuelTo(_this))
+			return true;
+	}
+
+	return CreatureObjectImplementation::isAttackableBy(object);
+}
+
 void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
