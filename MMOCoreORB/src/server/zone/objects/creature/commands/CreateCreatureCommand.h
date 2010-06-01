@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef CREATECREATURECOMMAND_H_
 #define CREATECREATURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+
 
 class CreateCreatureCommand : public QueueCommand {
 public:
@@ -56,12 +59,32 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return GENERALERROR;
+
+		float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
+		uint64 parID = creature->getParentID();
+
+		CreatureManager* creatureManager = zone->getCreatureManager();
+
+		uint32 templ = String("object/mobile/shared_boba_fett.iff").hashCode();
+
+		if (!arguments.isEmpty()) {
+			templ = String(arguments.toString()).hashCode();
+		}
+
+		CreatureObject* npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
+
+		if (npc == NULL)
+			creature->sendSystemMessage("could not spawn " + arguments.toString());
 
 		return SUCCESS;
 	}

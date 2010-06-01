@@ -282,10 +282,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	server = srv;
 	// server/zone/managers/planet/PlanetManager.idl(86):  		Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(87):  		Logger.setLogging("false");
-	Logger::setLogging("false");
-	// server/zone/managers/planet/PlanetManager.idl(88):  		Logger.setGlobalLogging("true");
-	Logger::setGlobalLogging("true");
+	// server/zone/managers/planet/PlanetManager.idl(87):  		Logger.setLogging(false);
+	Logger::setLogging(false);
+	// server/zone/managers/planet/PlanetManager.idl(88):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 	// server/zone/managers/planet/PlanetManager.idl(90):  		terrainManager = null;
 	terrainManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl(92):  		structureManager = null;

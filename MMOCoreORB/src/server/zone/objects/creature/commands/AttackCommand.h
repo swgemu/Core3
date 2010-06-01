@@ -57,7 +57,7 @@ public:
 		damageMultiplier = 1;
 		speedMultiplier = 1;
 
-		combatSpam = "";
+		combatSpam = "attack";
 		animationCRC = 0;
 
 		range = -1;
