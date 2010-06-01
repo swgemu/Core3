@@ -24,6 +24,7 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -756,4 +757,81 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	}
 
 	return 0;
+}
+
+bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+	int strength = player->getHAM(CreatureAttribute::STRENGTH);
+	int constitution = player->getHAM(CreatureAttribute::CONSTITUTION);
+	int quickness = player->getHAM(CreatureAttribute::QUICKNESS);
+	int stamina = player->getHAM(CreatureAttribute::STAMINA);
+	int focus = player->getHAM(CreatureAttribute::FOCUS);
+	int willpower = player->getHAM(CreatureAttribute::WILLPOWER);
+
+	int healthEncumb = armor->getHealthEncumbrance();
+	int actionEncumb = armor->getActionEncumbrance();
+	int mindEncumb = armor->getMindEncumbrance();
+
+	if (healthEncumb >= strength || healthEncumb >= constitution ||
+			actionEncumb >= quickness || actionEncumb >= stamina ||
+			mindEncumb >= focus || mindEncumb >= willpower)
+		return false;
+	else
+		return true;
+}
+
+
+void PlayerManagerImplementation::applyEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+	int healthEncumb = armor->getHealthEncumbrance();
+	int actionEncumb = armor->getActionEncumbrance();
+	int mindEncumb = armor->getMindEncumbrance();
+
+	player->changeEncumbrance(CreatureEncumbrance::HEALTH, healthEncumb, true);
+	player->changeEncumbrance(CreatureEncumbrance::ACTION, actionEncumb, true);
+	player->changeEncumbrance(CreatureEncumbrance::MIND, mindEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::STRENGTH, healthEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::STRENGTH, -healthEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::CONSTITUTION, healthEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::CONSTITUTION, -healthEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::QUICKNESS, actionEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::QUICKNESS, -actionEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::STAMINA, actionEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::STAMINA, -actionEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::FOCUS, mindEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::FOCUS, -mindEncumb, true);
+
+	player->inflictDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
+	player->changeMaxHAM(CreatureAttribute::WILLPOWER, -mindEncumb, true);
+}
+
+void PlayerManagerImplementation::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+	int healthEncumb = armor->getHealthEncumbrance();
+	int actionEncumb = armor->getActionEncumbrance();
+	int mindEncumb = armor->getMindEncumbrance();
+
+	player->changeEncumbrance(CreatureEncumbrance::HEALTH, -healthEncumb, true);
+	player->changeEncumbrance(CreatureEncumbrance::ACTION, -actionEncumb, true);
+	player->changeEncumbrance(CreatureEncumbrance::MIND, -mindEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::STRENGTH, healthEncumb, true);
+	player->healDamage(player, CreatureAttribute::STRENGTH, healthEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::CONSTITUTION, healthEncumb, true);
+	player->healDamage(player, CreatureAttribute::CONSTITUTION, healthEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::QUICKNESS, actionEncumb, true);
+	player->healDamage(player, CreatureAttribute::QUICKNESS, actionEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::STAMINA, actionEncumb, true);
+	player->healDamage(player, CreatureAttribute::STAMINA, actionEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::FOCUS, mindEncumb, true);
+	player->healDamage(player, CreatureAttribute::FOCUS, mindEncumb, true);
+
+	player->changeMaxHAM(CreatureAttribute::WILLPOWER, mindEncumb, true);
+	player->healDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
 }

@@ -47,6 +47,13 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+class CreatureEncumbrance {
+public:
+	static const uint8 HEALTH = 0;
+	static const uint8 ACTION = 1;
+	static const uint8 MIND = 2;
+};
+
 class CreatureAttribute {
 public:
 	static const uint8 HEALTH = 0;

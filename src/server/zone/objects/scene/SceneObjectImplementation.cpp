@@ -731,6 +731,8 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	if (notifyClient)
 		broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
 
+	notifyObjectRemoved(object);
+
 	return true;
 }
 
