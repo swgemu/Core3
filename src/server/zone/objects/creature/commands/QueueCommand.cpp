@@ -13,8 +13,6 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServerImplementat
 
 	nameCRC = skillname.hashCode();
 
-	animCRC = 0;
-
 	maxRangeToTarget = 0;
 
 	stateMask = 0;

@@ -106,6 +106,9 @@ public:
 
 	//all the combat math will go here
 protected:
+
+	const static uint32 defaultAttacks[9];
+
 	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, CombatQueueCommand* command);
 	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
 	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
@@ -114,6 +117,8 @@ protected:
 
 	int applyDefensePenalties(CreatureObject* defender, int attackType, int defense);
 	int applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy);
+
+	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 	/**
 	 * @returns % to hit
