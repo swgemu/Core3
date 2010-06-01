@@ -45,6 +45,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	bool isSpecial(const String& special);
@@ -141,6 +143,8 @@ public:
 	ArmorObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 

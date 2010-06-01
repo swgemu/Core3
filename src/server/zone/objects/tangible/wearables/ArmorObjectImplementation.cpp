@@ -6,11 +6,40 @@
  */
 
 #include "ArmorObject.h"
+#include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 
 void ArmorObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("ArmorObject");
+}
+
+void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	WearableObjectImplementation::loadTemplateData(templateData);
+
+	if (!templateData->isArmorObjectTemplate())
+		return;
+
+	ArmorObjectTemplate* armorTemplate = (ArmorObjectTemplate*) templateData;
+
+	healthEncumbrance = armorTemplate->getHealthEncumbrance();
+	actionEncumbrance = armorTemplate->getActionEncumbrance();
+	mindEncumbrance = armorTemplate->getMindEncumbrance();
+
+	rating = armorTemplate->getRating();
+
+	kinetic = armorTemplate->getKinetic();
+	energy = armorTemplate->getEnergy();
+	electricity = armorTemplate->getElectricity();
+	stun = armorTemplate->getStun();
+	blast = armorTemplate->getBlast();
+	heat = armorTemplate->getHeat();
+	cold = armorTemplate->getCold();
+	acid = armorTemplate->getAcid();
+	lightSaber = armorTemplate->getLightSaber();
+
+	specialBase = armorTemplate->getSpecialBase();
+
 }
 
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {

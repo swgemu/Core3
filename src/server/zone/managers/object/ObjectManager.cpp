@@ -117,6 +117,12 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
+	objectFactory.registerObject<ArmorObject>(SceneObject::HEADARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::MISCARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::LEGARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::ARMARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::HANDARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::FOOTARMOR);
 
 	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);

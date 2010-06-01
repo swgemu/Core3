@@ -59,4 +59,6 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	onlyVisibleInTools = templateData->getByteField("onlyVisibleInTools");
 	locationReservationRadius = templateData->getFloatField("locationReservationRadius");
 	clientObjectCRC = templateData->getIntField("clientObjectCRC");
+
+	templateType = templateData->getIntField("templateType");
 }
