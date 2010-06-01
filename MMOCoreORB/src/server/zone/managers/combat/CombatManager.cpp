@@ -17,6 +17,12 @@
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/Zone.h"
 
+const uint32 CombatManager::defaultAttacks[9] = {
+		0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
+		0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
+		0x306887EB
+};
+
 
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender) {
 	if (attacker == defender)
@@ -125,8 +131,15 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	CombatAction* combatAction = NULL;
 
+	uint32 animationCRC = command->getAnimationCRC();
+
+	if (animationCRC == 0)
+		animationCRC = getDefaultAttackAnimation(attacker);
+
+	uint8 hit = damage != 0 ? 1 : 0;
+
 	if (defenderObject->isCreatureObject()) {
-		combatAction = new CombatAction(attacker, (CreatureObject*)defenderObject, command->getAnimationCRC(), 1);
+		combatAction = new CombatAction(attacker, (CreatureObject*)defenderObject, animationCRC, hit);
 	} else {
 		combatAction = new CombatAction(attacker, command->getAnimationCRC());
 	}
@@ -1296,4 +1309,15 @@ bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 		return false;
 
 	return true;
+}
+
+uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
+	WeaponObject* weapon = creature->getWeapon();
+
+	if (weapon->isRangedWeapon())
+		return 0x506E9D4C;
+	else {
+		int choice = System::random(8);
+		return defaultAttacks[choice];
+	}
 }
