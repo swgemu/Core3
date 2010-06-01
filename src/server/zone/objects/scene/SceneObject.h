@@ -668,6 +668,8 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
+	int notifyObjectRemoved(SceneObject* object);
+
 	bool hasNotifiedSentObject(SceneObject* object);
 
 	void addNotifiedSentObject(SceneObject* object);
@@ -1391,6 +1393,8 @@ public:
 
 	virtual int notifyObjectInserted(SceneObject* object);
 
+	virtual int notifyObjectRemoved(SceneObject* object);
+
 	bool hasNotifiedSentObject(SceneObject* object);
 
 	void addNotifiedSentObject(SceneObject* object);
@@ -1669,6 +1673,8 @@ public:
 	int notifySelfPositionUpdate();
 
 	int notifyObjectInserted(SceneObject* object);
+
+	int notifyObjectRemoved(SceneObject* object);
 
 	bool hasNotifiedSentObject(SceneObject* object);
 

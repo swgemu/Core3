@@ -60,6 +60,7 @@ import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
 import server.zone.ZoneServer;
+import server.zone.objects.tangible.wearables.ArmorObject;
 
 include server.zone.managers.player.StartingItemList;
 include server.zone.objects.tangible.TangibleObjectDestructionObserver;
@@ -97,6 +98,13 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	 * \return Returns the number of seconds until the player should recover from incapacitation.
 	 */
 	public native byte calculateIncapacitationTimer(PlayerCreature player, int condition);
+	
+	/**
+	 * Check for enough encumbrances 
+	 */
+	public native boolean checkEncumbrancies(PlayerCreature player, ArmorObject armor);
+	public native void applyEncumbrancies(PlayerCreature player, ArmorObject armor);
+	public native void removeEncumbrancies(PlayerCreature player, ArmorObject armor);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	

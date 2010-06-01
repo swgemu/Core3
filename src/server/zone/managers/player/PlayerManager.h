@@ -85,6 +85,22 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace wearables {
+
+class ArmorObject;
+
+} // namespace wearables
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::wearables;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
@@ -121,6 +137,12 @@ public:
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
+
+	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
@@ -192,6 +214,12 @@ public:
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
+	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -252,6 +280,12 @@ public:
 	void finalize();
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
+
+	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

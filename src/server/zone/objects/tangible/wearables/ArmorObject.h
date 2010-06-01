@@ -75,6 +75,12 @@ public:
 
 	float getLightSaber();
 
+	int getHealthEncumbrance();
+
+	int getActionEncumbrance();
+
+	int getMindEncumbrance();
+
 protected:
 	ArmorObject(DummyConstructorParameter* param);
 
@@ -174,6 +180,12 @@ public:
 
 	float getLightSaber();
 
+	int getHealthEncumbrance();
+
+	int getActionEncumbrance();
+
+	int getMindEncumbrance();
+
 	ArmorObject* _this;
 
 	operator const ArmorObject*();
@@ -240,6 +252,12 @@ public:
 	float getAcid();
 
 	float getLightSaber();
+
+	int getHealthEncumbrance();
+
+	int getActionEncumbrance();
+
+	int getMindEncumbrance();
 
 protected:
 	String _param0_isSpecial__String_;

@@ -208,6 +208,42 @@ float ArmorObject::getLightSaber() {
 		return ((ArmorObjectImplementation*) _impl)->getLightSaber();
 }
 
+int ArmorObject::getHealthEncumbrance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getHealthEncumbrance();
+}
+
+int ArmorObject::getActionEncumbrance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getActionEncumbrance();
+}
+
+int ArmorObject::getMindEncumbrance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getMindEncumbrance();
+}
+
 /*
  *	ArmorObjectImplementation
  */
@@ -390,6 +426,21 @@ float ArmorObjectImplementation::getLightSaber() {
 	return lightSaber;
 }
 
+int ArmorObjectImplementation::getHealthEncumbrance() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(178):  		return healthEncumbrance;
+	return healthEncumbrance;
+}
+
+int ArmorObjectImplementation::getActionEncumbrance() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(182):  		return actionEncumbrance;
+	return actionEncumbrance;
+}
+
+int ArmorObjectImplementation::getMindEncumbrance() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(186):  		return mindEncumbrance;
+	return mindEncumbrance;
+}
+
 /*
  *	ArmorObjectAdapter
  */
@@ -442,6 +493,15 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 19:
 		resp->insertFloat(getLightSaber());
+		break;
+	case 20:
+		resp->insertSignedInt(getHealthEncumbrance());
+		break;
+	case 21:
+		resp->insertSignedInt(getActionEncumbrance());
+		break;
+	case 22:
+		resp->insertSignedInt(getMindEncumbrance());
 		break;
 	default:
 		return NULL;
@@ -504,6 +564,18 @@ float ArmorObjectAdapter::getAcid() {
 
 float ArmorObjectAdapter::getLightSaber() {
 	return ((ArmorObjectImplementation*) impl)->getLightSaber();
+}
+
+int ArmorObjectAdapter::getHealthEncumbrance() {
+	return ((ArmorObjectImplementation*) impl)->getHealthEncumbrance();
+}
+
+int ArmorObjectAdapter::getActionEncumbrance() {
+	return ((ArmorObjectImplementation*) impl)->getActionEncumbrance();
+}
+
+int ArmorObjectAdapter::getMindEncumbrance() {
+	return ((ArmorObjectImplementation*) impl)->getMindEncumbrance();
 }
 
 /*

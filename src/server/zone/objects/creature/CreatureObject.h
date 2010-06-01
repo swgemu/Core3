@@ -240,7 +240,11 @@ public:
 
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
+	void changeMaxHAM(int type, int value, bool notifyClient = true);
+
 	void setEncumbrance(int type, int value, bool notifyClient = true);
+
+	void changeEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
@@ -738,7 +742,11 @@ public:
 
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
+	void changeMaxHAM(int type, int value, bool notifyClient = true);
+
 	void setEncumbrance(int type, int value, bool notifyClient = true);
+
+	void changeEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
@@ -1121,7 +1129,11 @@ public:
 
 	void setMaxHAM(int type, int value, bool notifyClient);
 
+	void changeMaxHAM(int type, int value, bool notifyClient);
+
 	void setEncumbrance(int type, int value, bool notifyClient);
+
+	void changeEncumbrance(int type, int value, bool notifyClient);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient);
 

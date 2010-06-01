@@ -356,6 +356,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
+	public native void changeMaxHAM(int type, int value, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Encumbrance
@@ -367,6 +368,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
 	
+	public native void changeEncumbrance(int type, int value, boolean notifyClient = true);	
 	/**
 	 * Updates the weapon to the specified object
 	 * @pre { this object is locked }

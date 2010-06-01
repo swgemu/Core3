@@ -926,6 +926,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return 0;
 	}
 	
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
+	public abstract int notifyObjectRemoved(SceneObject object) {
+		return 0;
+	}
+	
 	public boolean hasNotifiedSentObject(SceneObject object) {
 		return notifiedSentObjects.contains(object);
 	}

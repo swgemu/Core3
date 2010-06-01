@@ -591,6 +591,30 @@ void CreatureObjectImplementation::setEncumbrance(int type, int value, bool noti
 	}
 }
 
+void CreatureObjectImplementation::changeMaxHAM(int type, int value, bool notifyClient) {
+	if (type < 0 || type > maxHamList.size()) {
+		error("invalid type in CreatureObjectImplementation::changeMaxHAM");
+		return;
+	}
+
+	int currentValue = maxHamList.get(type);
+	int newValue = currentValue + value;
+
+	setMaxHAM(type, newValue, notifyClient);
+}
+
+void CreatureObjectImplementation::changeEncumbrance(int type, int value, bool notifyClient) {
+	if (type < 0 || type >= encumbrances.size()) {
+		error("invalid type in CreatureObjectImplementation::changeEncumbrance");
+		return;
+	}
+
+	int currentValue = encumbrances.get(type);
+	int newValue = currentValue + value;
+
+	setEncumbrance(type, newValue, notifyClient);
+}
+
 void CreatureObjectImplementation::setBankCredits(int credits, bool notifyClient) {
 	if (bankCredits == credits)
 		return;
@@ -989,7 +1013,7 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object, String& erro
 		}
 	}
 
-	return SceneObjectImplementation::canAddObject(object, errorDescription);
+	return TangibleObjectImplementation::canAddObject(object, errorDescription);
 }
 
 void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool notifyClient) {
