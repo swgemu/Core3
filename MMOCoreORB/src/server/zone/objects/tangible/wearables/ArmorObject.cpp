@@ -34,6 +34,14 @@ void ArmorObject::initializeTransientMembers() {
 		((ArmorObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+void ArmorObject::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ArmorObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
 void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -318,67 +326,67 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 }
 
 bool ArmorObjectImplementation::isSpecial(const String& special) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(117):  		return specialResistsVector.contains(special);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(126):  		return specialResistsVector.contains(special);
 	return (&specialResistsVector)->contains(special);
 }
 
 bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(121):  		return vulnerabilitesVector.contains(vulnerability);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(130):  		return vulnerabilitesVector.contains(vulnerability);
 	return (&vulnerabilitesVector)->contains(vulnerability);
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(125):  		return true;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(134):  		return true;
 	return true;
 }
 
 int ArmorObjectImplementation::getRating() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(129):  		return rating;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(138):  		return rating;
 	return rating;
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(133):  		return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(142):  		return kinetic;
 	return kinetic;
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(137):  		return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(146):  		return energy;
 	return energy;
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(141):  		return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(150):  		return electricity;
 	return electricity;
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(145):  		return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(154):  		return stun;
 	return stun;
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(149):  		return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(158):  		return blast;
 	return blast;
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(153):  		return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(162):  		return heat;
 	return heat;
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(157):  		return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(166):  		return cold;
 	return cold;
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(161):  		return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(170):  		return acid;
 	return acid;
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(165):  		return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(174):  		return lightSaber;
 	return lightSaber;
 }
 

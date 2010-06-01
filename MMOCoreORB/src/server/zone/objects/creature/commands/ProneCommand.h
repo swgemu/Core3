@@ -71,18 +71,20 @@ public:
 			ZoneServer* zserv = server->getZoneServer();
 
 			String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
-			CharacterBuilderTerminal* blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 1);
+			CharacterBuilderTerminal* blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 0);
 
 			if (blueFrog == NULL)
 				return GENERALERROR;
 
 			float x = creature->getPositionX();
 			float y = creature->getPositionY();
-			float z = creature->getZone()->getHeight(x, y);
+			float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
 
 			blueFrog->initializePosition(x, z, y);
 			blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
 			blueFrog->insertToZone(creature->getZone());
+
+			info("blue frog created", true);
 		} else {
 			creature->setPosture(CreaturePosture::PRONE);
 		}

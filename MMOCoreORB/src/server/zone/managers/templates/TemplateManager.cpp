@@ -26,6 +26,7 @@
 #include "server/zone/templates/tangible/SharedResourceContainerObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+#include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
@@ -122,6 +123,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CharacterBuilderTerminalTemplate>(SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
 	templateFactory.registerObject<SurveyToolTemplate>(SharedObjectTemplate::SURVEYTOOL);
 	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
+	templateFactory.registerObject<ArmorObjectTemplate>(SharedObjectTemplate::ARMOROBJECT);
 }
 
 
@@ -219,6 +221,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CHARACTERBUILDERTERMINAL", SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
 	luaTemplatesInstance->setGlobalInt("SURVEYTOOL", SharedObjectTemplate::SURVEYTOOL);
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
+	luaTemplatesInstance->setGlobalInt("ARMOROBJECT", SharedObjectTemplate::ARMOROBJECT);
 }
 
 int TemplateManager::includeFile(lua_State* L) {
