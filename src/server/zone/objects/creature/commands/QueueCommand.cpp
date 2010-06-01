@@ -174,6 +174,18 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 4, 0);
 		break;
+
+	case NOPRONE:
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr, 0, 1, 7);
+
+		break;
+
+	case NOKNEELING:
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr, 0, 1, 4);
+
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
