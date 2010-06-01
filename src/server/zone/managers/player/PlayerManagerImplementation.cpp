@@ -503,12 +503,18 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
 
+	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
+	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);
+
 	SceneObject* cellTut = tutorial->getCell(10);
 	cellTut->addObject(travelTutorialTerminal, -1);
+	cellTut->addObject(blueFrogTemplate, -1);
 
 	tutorial->insertToZone(zone);
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	travelTutorialTerminal->insertToZone(zone);
+	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
+	blueFrogTemplate->insertToZone(zone);
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
@@ -531,12 +537,19 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
 
+	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
+	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);
+
 	SceneObject* cellTut = tutorial->getCell(0);
 	cellTut->addObject(travelTutorialTerminal, -1);
+	cellTut->addObject(blueFrogTemplate, -1);
 
 	tutorial->insertToZone(zone);
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	travelTutorialTerminal->insertToZone(zone);
+
+	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
+	blueFrogTemplate->insertToZone(zone);
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);

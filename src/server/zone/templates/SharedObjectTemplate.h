@@ -49,6 +49,8 @@ protected:
 
 	String fullTemplateString;
 
+	int templateType;
+
 public:
 	const static int SHOT = 0x1;
 	const static int STOT = 0x2;
@@ -81,6 +83,7 @@ public:
 	const static int SURVEYTOOL = 0x4000002;
 	const static int RESOURCESPAWN = 0x4000003;
 	const static int RESOURCECONTAINER = 0x4000004;
+	const static int ARMOROBJECT = 0x4000005;
 
 public:
 	SharedObjectTemplate() {
@@ -92,6 +95,10 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+
+	inline bool isArmorObjectTemplate() const {
+		return templateType == ARMOROBJECT;
+	}
 
     inline String getAppearanceFilename() const {
 		return appearanceFilename;

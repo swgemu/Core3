@@ -456,7 +456,7 @@ int CombatManager::getHealthArmorReduction(CreatureObject* attacker, CreatureObj
 
 int CombatManager::getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender) {
 	SceneObject* gloves = defender->getSlottedObject("gloves");
-	SceneObject* boots = defender->getSlottedObject("boots");
+	SceneObject* boots = defender->getSlottedObject("shoes");
 
 	ArmorObject* armorToHit = NULL;
 
