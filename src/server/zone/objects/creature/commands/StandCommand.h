@@ -67,16 +67,19 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		if (args.hasMoreTokens()) {
-			int zoneid = args.getIntToken();
-			float posx = args.getFloatToken();
-			float posy = args.getFloatToken();
+		/*if (creature->isDizzied()) {
+			if (creature->getPosture() != CreaturePosture::UPRIGHT) {
+				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
+				creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
 
-			creature->switchZone(zoneid, posx, 0, posy);
-		} else {
+				return SUCCESS;
+			}
+		}*/
 
-			creature->setPosture(CreaturePosture::UPRIGHT);
-		}
+		creature->setPosture(CreaturePosture::UPRIGHT);
+
+		if (creature->isDizzied())
+			creature->queueDizzyFallEvent();
 
 
 		return SUCCESS;

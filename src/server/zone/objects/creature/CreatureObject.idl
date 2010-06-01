@@ -715,6 +715,8 @@ class CreatureObject extends TangibleObject {
 	}
 
 	// misc methods
+	public native void queueDizzyFallEvent();
+	
 	public void updateLastKnockdown() {
 		cooldownTimerMap.updateToCurrentAndAddMili("lastKnockdown", 60000);
 	}
