@@ -315,10 +315,10 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(79):  		Logger.setLoggingName("ShuttleCreature");
 	Logger::setLoggingName("ShuttleCreature");
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(80):  		Logger.setLogging("false");
-	Logger::setLogging("false");
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(81):  		Logger.setGlobalLogging("true");
-	Logger::setGlobalLogging("true");
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(80):  		Logger.setLogging(false);
+	Logger::setLogging(false);
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(81):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 }
 
 int ShuttleCreatureImplementation::getArrivalTime() {

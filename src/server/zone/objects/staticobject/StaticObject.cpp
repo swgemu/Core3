@@ -116,10 +116,10 @@ StaticObjectImplementation::StaticObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/staticobject/StaticObject.idl(54):  		Logger.setLoggingName("StaticObject");
 	Logger::setLoggingName("StaticObject");
-	// server/zone/objects/staticobject/StaticObject.idl(55):  		Logger.setLogging("false");
-	Logger::setLogging("false");
-	// server/zone/objects/staticobject/StaticObject.idl(56):  		Logger.setGlobalLogging("true");
-	Logger::setGlobalLogging("true");
+	// server/zone/objects/staticobject/StaticObject.idl(55):  		Logger.setLogging(false);
+	Logger::setLogging(false);
+	// server/zone/objects/staticobject/StaticObject.idl(56):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 }
 
 void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

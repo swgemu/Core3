@@ -52,8 +52,8 @@ include server.zone.templates.SharedObjectTemplate;
 class StaticObject extends SceneObject {
 	public StaticObject() {
 		Logger.setLoggingName("StaticObject");
-		Logger.setLogging("false");
-		Logger.setGlobalLogging("true");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 	}
 	
 	/**

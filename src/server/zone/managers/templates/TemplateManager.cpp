@@ -45,8 +45,8 @@
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
 TemplateManager::TemplateManager() {
-	setLogging("false");
-	setGlobalLogging("true");
+	setLogging(false);
+	setGlobalLogging(true);
 	setLoggingName("TemplateManager");
 
 	registerTemplateObjects();

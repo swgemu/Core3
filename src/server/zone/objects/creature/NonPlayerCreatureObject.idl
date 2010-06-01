@@ -55,7 +55,7 @@ import server.zone.objects.creature.CreatureObject;
 class NonPlayerCreatureObject extends CreatureObject {
 	public NonPlayerCreatureObject() {
 		Logger.setLoggingName("NonPlayerCreatureObject");
-		Logger.setLogging("false");
-		Logger.setGlobalLogging("true");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 	}
 }
