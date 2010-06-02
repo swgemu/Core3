@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 
 class DataTransformWithParent : public ObjectControllerMessage {
@@ -120,6 +121,13 @@ public:
 		/*StringBuffer movementMsg;
 		movementMsg << "received movement update 0x:" << hex << movementCounter;
 		object->info(movementMsg.toString(), true);*/
+
+		if (object->isRidingMount()) {
+			ZoneServer* zoneServer = server->getZoneServer();
+
+			ObjectController* objectController = zoneServer->getObjectController();
+			objectController->activateCommand(object, String("dismount").hashCode(), 0, 0, "");
+		}
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 

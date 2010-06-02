@@ -152,6 +152,8 @@ public:
 
 	void loadShuttles();
 
+	void loadBadgeAreas();
+
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
@@ -221,6 +223,8 @@ public:
 
 	void loadShuttles();
 
+	void loadBadgeAreas();
+
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
@@ -287,6 +291,8 @@ public:
 	void loadRegions();
 
 	void loadShuttles();
+
+	void loadBadgeAreas();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 

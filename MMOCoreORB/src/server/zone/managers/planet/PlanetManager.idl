@@ -99,6 +99,7 @@ class PlanetManager extends ManagedObject implements Logger {
 	public native void initialize();
 	public native void loadRegions();
 	public native void loadShuttles();
+	public native void loadBadgeAreas();
 	
 	public ShuttleCreature getShuttle(final string arrivalPoint) {
 		return shuttleMap.get(arrivalPoint);
