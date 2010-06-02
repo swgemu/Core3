@@ -146,6 +146,10 @@ public:
 
 	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
+	void awardBadge(PlayerCreature* player, unsigned int badge);
+
+	void sendMessageOfTheDay(PlayerCreature* player);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -224,6 +228,10 @@ public:
 
 	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
+	void awardBadge(PlayerCreature* player, unsigned int badge);
+
+	void sendMessageOfTheDay(PlayerCreature* player);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -292,6 +300,10 @@ public:
 	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
 	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+
+	void awardBadge(PlayerCreature* player, unsigned int badge);
+
+	void sendMessageOfTheDay(PlayerCreature* player);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

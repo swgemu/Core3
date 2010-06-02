@@ -48,6 +48,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveArea;
 
+
 class BadgeActiveArea extends ActiveArea {
 	public unsigned int areaBadge;
 	

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ConfigManager : public Lua {
+class ConfigManager : public Singleton<ConfigManager>, public Lua {
 
 	bool makeLogin;
 	bool makeZone;
@@ -89,6 +89,8 @@ class ConfigManager : public Lua {
 	unsigned int statusInterval;
 
 	int pingAllowedConnections;
+
+	String messageOfTheDay;
 
 public:
 
@@ -144,6 +146,7 @@ public:
 	}
 
 	bool loadConfigData();
+	void loadMOTD();
 
 	//getters
 
@@ -225,6 +228,10 @@ public:
 
 	inline String& getForumsNewActivationTable() {
 		return forumsNewActivationTable;
+	}
+
+	inline String& getMessageOfTheDay() {
+		return messageOfTheDay;
 	}
 
 	inline uint16 getLoginPort() {

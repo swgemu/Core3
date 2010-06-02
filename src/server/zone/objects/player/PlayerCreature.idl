@@ -300,7 +300,19 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
-	public native void awardBadge(unsigned int badge, boolean notifyClient = true);
+	public void setBadge(unsigned int badge) {
+		badges.setBadge(badge);
+	}
+	
+	public native void awardBadge(unsigned int badge);
+	
+	public int getNumBadges() {
+		return badges.getNumBadges();
+	}
+	
+	public int getBadgeTypeCount(byte type) {
+		return badges.getTypeCount(type);
+	}
 	
 	public native boolean isFirstIncapacitationExpired();
 
