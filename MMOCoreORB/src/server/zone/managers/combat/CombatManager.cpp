@@ -165,6 +165,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	try {
 		tano->wlock(attacker);
 
+		attacker->addDefender(tano);
+		tano->addDefender(attacker);
+
 		if (tano->isCreatureObject()) {
 			CreatureObject* defender = (CreatureObject*) tano;
 
@@ -1069,6 +1072,9 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 			if (!tano->isAttackableBy(attacker))
 				continue;
 
+			if (tano->isCreatureObject() && ((CreatureObject*)tano)->isIncapacitated())
+				continue;
+
 			if (command->isConeAction() && !checkConeAngle(tano, command->getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX,
 					directionVectorY))
 				continue;
@@ -1201,9 +1207,11 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 		player->info("ending duel");
 
 		player->removeFromDuelList(targetPlayer);
+		player->removeDefender(targetPlayer);
 
 		if (targetPlayer->requestedDuelTo(player)) {
 			targetPlayer->removeFromDuelList(player);
+			targetPlayer->removeDefender(player);
 
 			player->sendPvpStatusTo(targetPlayer);
 
@@ -1241,9 +1249,11 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 				targetPlayer->wlock(player);
 
 				player->removeFromDuelList(targetPlayer);
+				player->removeDefender(targetPlayer);
 
 				if (targetPlayer->requestedDuelTo(player)) {
 					targetPlayer->removeFromDuelList(player);
+					targetPlayer->removeDefender(player);
 
 					player->sendPvpStatusTo(targetPlayer);
 
