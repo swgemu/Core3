@@ -136,6 +136,8 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
+	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
+
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
 	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
@@ -212,6 +214,8 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
+	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
+
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 
 	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
@@ -278,6 +282,8 @@ public:
 	void loadNameMap();
 
 	void finalize();
+
+	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
 

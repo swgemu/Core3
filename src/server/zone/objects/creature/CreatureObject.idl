@@ -609,7 +609,7 @@ class CreatureObject extends TangibleObject {
 		if (object == this)
 			return false;
 		
-		if (this.isIncapacitated() || this.isDead())
+		if (this.isDead())
 			return false;
 		
 		return true;
