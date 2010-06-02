@@ -30,6 +30,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	bool success = true;
 
+	if (attacker->isRidingMount())
+		return false;
+
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
