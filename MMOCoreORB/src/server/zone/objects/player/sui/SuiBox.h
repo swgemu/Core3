@@ -41,6 +41,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/io/StringTokenizer.h"

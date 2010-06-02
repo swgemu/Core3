@@ -80,6 +80,8 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	forumDatabase = NULL;
 	database = NULL;
 
+	configManager = ConfigManager::instance();
+
 	features = NULL;
 }
 
@@ -89,26 +91,26 @@ void ServerCore::init() {
 	processConfig();
 
 	try {
-		database = new ServerDatabase(&configManager);
+		database = new ServerDatabase(configManager);
 
-		if (configManager.getUseVBIngeration() == 1)
-			forumDatabase = new ForumsDatabase(&configManager);
+		if (configManager->getUseVBIngeration() == 1)
+			forumDatabase = new ForumsDatabase(configManager);
 
-		String& orbaddr = configManager.getORBNamingDirectoryAddress();
+		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr);
 
 		orb->setCustomObjectManager(ObjectManager::instance());
 
-		if (configManager.getMakeLogin()) {
-			loginServer = new LoginServer(&configManager);
+		if (configManager->getMakeLogin()) {
+			loginServer = new LoginServer(configManager);
 		}
 
-		if (configManager.getMakeZone()) {
-			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
+		if (configManager->getMakeZone()) {
+			zoneServer = new ZoneServer(configManager->getZoneProcessingThreads(), configManager->getZoneGalaxyID());
 			zoneServer->deploy("ZoneServer");
 		}
 
-		if (configManager.getMakePing()) {
+		if (configManager->getMakePing()) {
 			pingServer = new PingServer();
 		}
 
@@ -124,28 +126,28 @@ void ServerCore::init() {
 
 void ServerCore::run() {
 	if (loginServer != NULL) {
-		int loginPort = configManager.getLoginPort();
-		int loginAllowedConnections = configManager.getLoginAllowedConnections();
+		int loginPort = configManager->getLoginPort();
+		int loginAllowedConnections = configManager->getLoginAllowedConnections();
 
 		loginServer->start(loginPort, loginAllowedConnections);
 	}
 
 	if (zoneServer != NULL) {
-		int zoneAllowedConnections = configManager.getZoneAllowedConnections();
+		int zoneAllowedConnections = configManager->getZoneAllowedConnections();
 
 		zoneServer->start(44463, zoneAllowedConnections);
 	}
 
 	/*if (statusServer != NULL) {
-		int statusPort = configManager.getStatusPort();
-		int statusAllowedConnections = configManager.getStatusAllowedConnections();
+		int statusPort = configManager->getStatusPort();
+		int statusAllowedConnections = configManager->getStatusAllowedConnections();
 
 		statusServer->start(statusPort);
 	}*/
 
 	if (pingServer != NULL) {
-		int pingPort = configManager.getPingPort();
-		int pingAllowedConnections = configManager.getPingAllowedConnections();
+		int pingPort = configManager->getPingPort();
+		int pingAllowedConnections = configManager->getPingAllowedConnections();
 
 		pingServer->start(pingPort, pingAllowedConnections);
 	}
@@ -283,7 +285,7 @@ void ServerCore::handleCommands() {
 }
 
 void ServerCore::processConfig() {
-	if (!configManager.loadConfigData())
+	if (!configManager->loadConfigData())
 		info("missing config file.. loading default values\n");
 
 	//if (!features->loadFeatures())

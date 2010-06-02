@@ -122,22 +122,22 @@ void BadgeActiveAreaImplementation::_serializationHelperMethod() {
 
 BadgeActiveAreaImplementation::BadgeActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/BadgeActiveArea.idl(55):  		areaBadge = 0;
+	// server/zone/objects/area/BadgeActiveArea.idl(56):  		areaBadge = 0;
 	areaBadge = 0;
-	// server/zone/objects/area/BadgeActiveArea.idl(57):  		Logger.setLoggingName("BadgeActiveArea");
+	// server/zone/objects/area/BadgeActiveArea.idl(58):  		Logger.setLoggingName("BadgeActiveArea");
 	Logger::setLoggingName("BadgeActiveArea");
 }
 
 void BadgeActiveAreaImplementation::notifyEnter(PlayerCreature* player) {
-	// server/zone/objects/area/BadgeActiveArea.idl(61):  	}
+	// server/zone/objects/area/BadgeActiveArea.idl(62):  	}
 	if (!player->hasBadge(areaBadge)){
-	// server/zone/objects/area/BadgeActiveArea.idl(62):  			player.awardBadge(areaBadge);
+	// server/zone/objects/area/BadgeActiveArea.idl(63):  			player.awardBadge(areaBadge);
 	player->awardBadge(areaBadge);
 }
 }
 
 void BadgeActiveAreaImplementation::setBadge(unsigned int a) {
-	// server/zone/objects/area/BadgeActiveArea.idl(67):  		areaBadge = a;
+	// server/zone/objects/area/BadgeActiveArea.idl(68):  		areaBadge = a;
 	areaBadge = a;
 }
 

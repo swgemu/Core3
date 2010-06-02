@@ -10,7 +10,8 @@
 
 #include "../MessageCallback.h"
 
-#include "../../ZoneServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -81,6 +82,9 @@ public:
 
 			PlayerObject* ghost = player->getPlayerObject();
 			ghost->notifyOnline();
+
+			PlayerManager* playerManager = zoneServer->getPlayerManager();
+			playerManager->sendMessageOfTheDay(player);
 
 		}
 	}

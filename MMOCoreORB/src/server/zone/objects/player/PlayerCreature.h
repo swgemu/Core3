@@ -296,7 +296,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	void awardBadge(unsigned int badge, bool notifyClient = true);
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool isFirstIncapacitationExpired();
 
@@ -607,7 +613,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	void awardBadge(unsigned int badge, bool notifyClient = true);
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool isFirstIncapacitationExpired();
 
@@ -838,7 +850,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	void awardBadge(unsigned int badge, bool notifyClient);
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool isFirstIncapacitationExpired();
 

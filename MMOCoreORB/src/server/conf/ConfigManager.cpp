@@ -45,6 +45,8 @@ which carries forward this exception.
 #include "ConfigManager.h"
 
 bool ConfigManager::loadConfigData() {
+	loadMOTD();
+
 	if (!loadConfigFile())
 		return false;
 
@@ -90,4 +92,28 @@ bool ConfigManager::loadConfigData() {
 	statusInterval = getGlobalInt("StatusInterval");
 
 	return true;
+}
+
+void ConfigManager::loadMOTD() {
+	File* file;
+	FileReader* reader;
+
+	try {
+		file = new File("conf/motd.txt");
+		reader = new FileReader(file);
+
+		String line;
+
+		while(reader->readLine(line)) {
+			messageOfTheDay += line;
+		}
+
+		reader->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		reader = NULL;
+	}
+
+	delete reader;
+	delete file;
 }
