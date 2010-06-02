@@ -174,6 +174,7 @@ includeFile("creature/npc/theme_park/player_transport_theed_hangar.lua")
 includeFile("tangible/travel/ticket_collector/ticket_collector.lua")
 includeFile("tangible/terminal/terminal_travel.lua")
 includeFile("tangible/wearables/armor/composite/composite_set1.lua")
+includeFile("badge_area.lua")
 
 
 

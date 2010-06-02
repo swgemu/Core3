@@ -189,6 +189,20 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
@@ -281,6 +295,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void awardBadge(unsigned int badge, bool notifyClient = true);
 
 	bool isFirstIncapacitationExpired();
 
@@ -420,6 +436,8 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
+	void setActiveArea(ActiveArea* area);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -427,6 +445,10 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
+
+	ActiveArea* getActiveArea();
+
+	bool hasBadge(unsigned int badge);
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -522,6 +544,8 @@ protected:
 
 	int centeredBonus;
 
+	ManagedReference<ActiveArea* > activeArea;
+
 public:
 	static const int ONLINE = 1;
 
@@ -582,6 +606,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void awardBadge(unsigned int badge, bool notifyClient = true);
 
 	bool isFirstIncapacitationExpired();
 
@@ -721,6 +747,8 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
+	void setActiveArea(ActiveArea* area);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -728,6 +756,10 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
+
+	ActiveArea* getActiveArea();
+
+	bool hasBadge(unsigned int badge);
 
 	PlayerCreature* _this;
 
@@ -805,6 +837,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void awardBadge(unsigned int badge, bool notifyClient);
 
 	bool isFirstIncapacitationExpired();
 
@@ -942,6 +976,8 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
+	void setActiveArea(ActiveArea* area);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -949,6 +985,10 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
+
+	ActiveArea* getActiveArea();
+
+	bool hasBadge(unsigned int badge);
 
 protected:
 	String _param1_canAddObject__SceneObject_String_;
