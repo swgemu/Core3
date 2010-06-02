@@ -267,9 +267,9 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player
 	//skillManager->loadSkillBox(skillBox, player, false, updateClient);
 	awardSkillBox(skillBox, player, false, updateClient);
 
-	/*if (skillBox->isMasterBox()) {
+	if (skillBox->isMasterBox()) {
 		player->awardBadge(Badge::getID(skillBox->getName()));
-	}*/
+	}
 
 	/*if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
 
