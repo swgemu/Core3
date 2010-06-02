@@ -272,7 +272,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	setConditionDamage(newConditionDamage, notifyClient);
 
-	if (newConditionDamage <= 0)
+	if (newConditionDamage > maxCondition)
 		notifyObjectDestructionObservers(attacker, newConditionDamage);
 
 	return 0;

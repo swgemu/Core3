@@ -118,7 +118,15 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void setDefender(SceneObject* defender);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -161,7 +169,15 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
 
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void setDefender(SceneObject* defender);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -210,7 +226,15 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
 
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void setDefender(SceneObject* defender);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

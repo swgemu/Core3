@@ -89,6 +89,36 @@ class VehicleObject extends CreatureObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
 	
 	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
+	public native void addDefender(SceneObject defender) {
+		
+	}
+	
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
+	public native void removeDefender(SceneObject defender) {
+		
+	}
+	
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
+	public native void setDefender(SceneObject defender) {
+		
+	}
+	
+	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
 	 * @post { this object is locked�}
@@ -97,6 +127,13 @@ class VehicleObject extends CreatureObject {
 	public boolean isAttackableBy(CreatureObject object) {
 		return super.linkedCreature.isAttackableBy(object);
 	}
+	
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
 
 	/**

@@ -88,6 +88,9 @@ public:
 		if (!vehicle->isInRange(creature, 5))
 			return GENERALERROR;
 
+		if (vehicle->isDestroyed())
+			return GENERALERROR;
+
 		try {
 			vehicle->wlock(creature);
 
