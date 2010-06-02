@@ -107,6 +107,9 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	public native boolean checkEncumbrancies(PlayerCreature player, ArmorObject armor);
 	public native void applyEncumbrancies(PlayerCreature player, ArmorObject armor);
 	public native void removeEncumbrancies(PlayerCreature player, ArmorObject armor);
+	public native void awardBadge(PlayerCreature player, unsigned int badge);
+	
+	public native void sendMessageOfTheDay(PlayerCreature player);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	

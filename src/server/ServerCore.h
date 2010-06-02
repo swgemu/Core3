@@ -64,7 +64,7 @@ class Features;
 class PingServer;
 
 class ServerCore : public Core, public Logger {
-	ConfigManager configManager;
+	ConfigManager* configManager;
 
 	ServerDatabase* database;
 

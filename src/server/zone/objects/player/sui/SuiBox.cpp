@@ -531,36 +531,36 @@ void SuiBoxImplementation::_serializationHelperMethod() {
 
 SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/SuiBox.idl(102):  		player = play;
+	// server/zone/objects/player/sui/SuiBox.idl(103):  		player = play;
 	player = play;
-	// server/zone/objects/player/sui/SuiBox.idl(104):  		boxType = boxtype;
+	// server/zone/objects/player/sui/SuiBox.idl(105):  		boxType = boxtype;
 	boxType = boxtype;
-	// server/zone/objects/player/sui/SuiBox.idl(106):  		windowType = windowtype;
+	// server/zone/objects/player/sui/SuiBox.idl(107):  		windowType = windowtype;
 	windowType = windowtype;
-	// server/zone/objects/player/sui/SuiBox.idl(108):  		initialize();
+	// server/zone/objects/player/sui/SuiBox.idl(109):  		initialize();
 	initialize();
 }
 
 void SuiBoxImplementation::initialize() {
-	// server/zone/objects/player/sui/SuiBox.idl(112):  		Logger.setLoggingName("SuiBox");
+	// server/zone/objects/player/sui/SuiBox.idl(113):  		Logger.setLoggingName("SuiBox");
 	Logger::setLoggingName("SuiBox");
-	// server/zone/objects/player/sui/SuiBox.idl(114):  		boxID = player.getNewSuiBoxID(windowType);
+	// server/zone/objects/player/sui/SuiBox.idl(115):  		boxID = player.getNewSuiBoxID(windowType);
 	boxID = player->getNewSuiBoxID(windowType);
-	// server/zone/objects/player/sui/SuiBox.idl(116):  		cancelButtonText = "@cancel";
+	// server/zone/objects/player/sui/SuiBox.idl(117):  		cancelButtonText = "@cancel";
 	cancelButtonText = "@cancel";
-	// server/zone/objects/player/sui/SuiBox.idl(117):  		cancelButton = false;
+	// server/zone/objects/player/sui/SuiBox.idl(118):  		cancelButton = false;
 	cancelButton = false;
-	// server/zone/objects/player/sui/SuiBox.idl(119):  		backButtonText = "@back";
+	// server/zone/objects/player/sui/SuiBox.idl(120):  		backButtonText = "@back";
 	backButtonText = "@back";
-	// server/zone/objects/player/sui/SuiBox.idl(120):  		backButton = false;
+	// server/zone/objects/player/sui/SuiBox.idl(121):  		backButton = false;
 	backButton = false;
-	// server/zone/objects/player/sui/SuiBox.idl(122):  		okButtonText = "@ok";
+	// server/zone/objects/player/sui/SuiBox.idl(123):  		okButtonText = "@ok";
 	okButtonText = "@ok";
-	// server/zone/objects/player/sui/SuiBox.idl(123):  		okButton = true;
+	// server/zone/objects/player/sui/SuiBox.idl(124):  		okButton = true;
 	okButton = true;
-	// server/zone/objects/player/sui/SuiBox.idl(125):  		hdrOptCount = 0;
+	// server/zone/objects/player/sui/SuiBox.idl(126):  		hdrOptCount = 0;
 	hdrOptCount = 0;
-	// server/zone/objects/player/sui/SuiBox.idl(126):  		hasGenerated = false;
+	// server/zone/objects/player/sui/SuiBox.idl(127):  		hasGenerated = false;
 	hasGenerated = false;
 }
 
@@ -568,138 +568,138 @@ void SuiBoxImplementation::finalize() {
 }
 
 void SuiBoxImplementation::initializeTransientMembers() {
-	// server/zone/objects/player/sui/SuiBox.idl(134):  		super.initializeTransientMembers();
+	// server/zone/objects/player/sui/SuiBox.idl(135):  		super.initializeTransientMembers();
 	ManagedObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/player/sui/SuiBox.idl(136):  		Logger.setLoggingName("SuiBox");
+	// server/zone/objects/player/sui/SuiBox.idl(137):  		Logger.setLoggingName("SuiBox");
 	Logger::setLoggingName("SuiBox");
 }
 
 void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(165):  		message.insertFooter(type);
+	// server/zone/objects/player/sui/SuiBox.idl(166):  		message.insertFooter(type);
 	message->insertFooter(type);
 }
 
 BaseMessage* SuiBoxImplementation::generateMessage() {
-	// server/zone/objects/player/sui/SuiBox.idl(169):  		return null;
+	// server/zone/objects/player/sui/SuiBox.idl(170):  		return null;
 	return NULL;
 }
 
 void SuiBoxImplementation::clearOptions() {
-	// server/zone/objects/player/sui/SuiBox.idl(201):  		headerSets.removeAll();
+	// server/zone/objects/player/sui/SuiBox.idl(202):  		headerSets.removeAll();
 	(&headerSets)->removeAll();
-	// server/zone/objects/player/sui/SuiBox.idl(202):  		hdrOptCount = 0;
+	// server/zone/objects/player/sui/SuiBox.idl(203):  		hdrOptCount = 0;
 	hdrOptCount = 0;
-	// server/zone/objects/player/sui/SuiBox.idl(203):  		optionSets.removeAll();
+	// server/zone/objects/player/sui/SuiBox.idl(204):  		optionSets.removeAll();
 	(&optionSets)->removeAll();
 }
 
 int SuiBoxImplementation::compareTo(SuiBox* obj) {
-	// server/zone/objects/player/sui/SuiBox.idl(207):  		unsigned int id = obj.getBoxID();
+	// server/zone/objects/player/sui/SuiBox.idl(208):  		unsigned int id = obj.getBoxID();
 	unsigned int id = obj->getBoxID();
-	// server/zone/objects/player/sui/SuiBox.idl(209):  
-	if (boxID < id)	// server/zone/objects/player/sui/SuiBox.idl(210):  			return 1;
+	// server/zone/objects/player/sui/SuiBox.idl(210):  
+	if (boxID < id)	// server/zone/objects/player/sui/SuiBox.idl(211):  			return 1;
 	return 1;
 
-	else 	// server/zone/objects/player/sui/SuiBox.idl(211):  
-	if (boxID > id)	// server/zone/objects/player/sui/SuiBox.idl(212):  			return -1;
+	else 	// server/zone/objects/player/sui/SuiBox.idl(212):  
+	if (boxID > id)	// server/zone/objects/player/sui/SuiBox.idl(213):  			return -1;
 	return -1;
 
-	else 	// server/zone/objects/player/sui/SuiBox.idl(214):  			return 0;
+	else 	// server/zone/objects/player/sui/SuiBox.idl(215):  			return 0;
 	return 0;
 }
 
 bool SuiBoxImplementation::hasGeneratedMessage() {
-	// server/zone/objects/player/sui/SuiBox.idl(218):  		return hasGenerated;
+	// server/zone/objects/player/sui/SuiBox.idl(219):  		return hasGenerated;
 	return hasGenerated;
 }
 
 void SuiBoxImplementation::setPromptTitle(const String& name) {
-	// server/zone/objects/player/sui/SuiBox.idl(222):  		promptTitle = name;
+	// server/zone/objects/player/sui/SuiBox.idl(223):  		promptTitle = name;
 	promptTitle = name;
 }
 
 void SuiBoxImplementation::setPromptText(const String& name) {
-	// server/zone/objects/player/sui/SuiBox.idl(226):  		promptText = name;
+	// server/zone/objects/player/sui/SuiBox.idl(227):  		promptText = name;
 	promptText = name;
 }
 
 void SuiBoxImplementation::setUsingObjectID(unsigned long long oid) {
-	// server/zone/objects/player/sui/SuiBox.idl(230):  		usingObjectID = oid;
+	// server/zone/objects/player/sui/SuiBox.idl(231):  		usingObjectID = oid;
 	usingObjectID = oid;
 }
 
 void SuiBoxImplementation::setWindowType(unsigned int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(234):  		windowType = type;
+	// server/zone/objects/player/sui/SuiBox.idl(235):  		windowType = type;
 	windowType = type;
 }
 
 void SuiBoxImplementation::setBoxType(int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(238):  		boxType = type;
+	// server/zone/objects/player/sui/SuiBox.idl(239):  		boxType = type;
 	boxType = type;
 }
 
 void SuiBoxImplementation::setIntValue(int value) {
-	// server/zone/objects/player/sui/SuiBox.idl(242):  		integerValue = value;
+	// server/zone/objects/player/sui/SuiBox.idl(243):  		integerValue = value;
 	integerValue = value;
 }
 
 bool SuiBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(246):  		return boxType == INPUTBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(247):  		return boxType == INPUTBOX;
 	return boxType == INPUTBOX;
 }
 
 bool SuiBoxImplementation::isListBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(250):  		return boxType == LISTBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(251):  		return boxType == LISTBOX;
 	return boxType == LISTBOX;
 }
 
 bool SuiBoxImplementation::isMessageBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(254):  		return boxType == MESSAGEBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(255):  		return boxType == MESSAGEBOX;
 	return boxType == MESSAGEBOX;
 }
 
 bool SuiBoxImplementation::isTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(258):  		return boxType == TRANSFERBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(259):  		return boxType == TRANSFERBOX;
 	return boxType == TRANSFERBOX;
 }
 
 bool SuiBoxImplementation::isBankTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(262):  		return boxType == BANKTRANSFERBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(263):  		return boxType == BANKTRANSFERBOX;
 	return boxType == BANKTRANSFERBOX;
 }
 
 bool SuiBoxImplementation::isSlicingBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(266):  		return boxType == SLICINGBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(267):  		return boxType == SLICINGBOX;
 	return boxType == SLICINGBOX;
 }
 
 bool SuiBoxImplementation::isColorPicker() {
-	// server/zone/objects/player/sui/SuiBox.idl(270):  		return boxType == COLORPICKER;
+	// server/zone/objects/player/sui/SuiBox.idl(271):  		return boxType == COLORPICKER;
 	return boxType == COLORPICKER;
 }
 
 unsigned long long SuiBoxImplementation::getUsingObjectID() {
-	// server/zone/objects/player/sui/SuiBox.idl(280):  		return usingObjectID;
+	// server/zone/objects/player/sui/SuiBox.idl(281):  		return usingObjectID;
 	return usingObjectID;
 }
 
 int SuiBoxImplementation::getIntValue() {
-	// server/zone/objects/player/sui/SuiBox.idl(284):  		return integerValue;
+	// server/zone/objects/player/sui/SuiBox.idl(285):  		return integerValue;
 	return integerValue;
 }
 
 PlayerCreature* SuiBoxImplementation::getPlayer() {
-	// server/zone/objects/player/sui/SuiBox.idl(288):  		return player;
+	// server/zone/objects/player/sui/SuiBox.idl(289):  		return player;
 	return player;
 }
 
 unsigned int SuiBoxImplementation::getBoxID() {
-	// server/zone/objects/player/sui/SuiBox.idl(292):  		return boxID;
+	// server/zone/objects/player/sui/SuiBox.idl(293):  		return boxID;
 	return boxID;
 }
 
 int SuiBoxImplementation::getWindowType() {
-	// server/zone/objects/player/sui/SuiBox.idl(296):  		return windowType;
+	// server/zone/objects/player/sui/SuiBox.idl(297):  		return windowType;
 	return windowType;
 }
 

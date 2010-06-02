@@ -18,6 +18,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
+#include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
@@ -26,6 +27,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
@@ -839,4 +841,82 @@ void PlayerManagerImplementation::removeEncumbrancies(PlayerCreature* player, Ar
 
 	player->changeMaxHAM(CreatureAttribute::WILLPOWER, mindEncumb, true);
 	player->healDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
+}
+
+
+void PlayerManagerImplementation::awardBadge(PlayerCreature* player, uint32 badge) {
+	if (!Badge::exists(badge))
+		return;
+
+	ParameterizedStringId stringId("badge_n", "");
+	stringId.setTO("badge_n", Badge::getName(badge));
+
+	if (player->hasBadge(badge)) {
+		stringId.setStringId("badge_n", "prose_hasbadge");
+		player->sendSystemMessage(stringId);
+		return;
+	}
+
+	player->setBadge(badge);
+	stringId.setStringId("badge_n", "prose_grant");
+	player->sendSystemMessage(stringId);
+
+	switch (player->getNumBadges()) {
+	case 5:
+		awardBadge(player, Badge::COUNT_5);
+		break;
+	case 10:
+		awardBadge(player, Badge::COUNT_10);
+		break;
+	case 25:
+		awardBadge(player, Badge::COUNT_25);
+		break;
+	case 50:
+		awardBadge(player, Badge::COUNT_50);
+		break;
+	case 75:
+		awardBadge(player, Badge::COUNT_75);
+		break;
+	case 100:
+		awardBadge(player, Badge::COUNT_100);
+		break;
+	case 125:
+		awardBadge(player, Badge::COUNT_125);
+		break;
+	default:
+		break;
+	}
+
+	if (Badge::getType(badge) == Badge::EXPLORATION) {
+		switch (player->getBadgeTypeCount(Badge::EXPLORATION)) {
+		case 10:
+			awardBadge(player, Badge::BDG_EXP_10_BADGES);
+			break;
+		case 20:
+			awardBadge(player, Badge::BDG_EXP_20_BADGES);
+			break;
+		case 30:
+			awardBadge(player, Badge::BDG_EXP_30_BADGES);
+			break;
+		case 40:
+			awardBadge(player, Badge::BDG_EXP_40_BADGES);
+			break;
+		case 45:
+			awardBadge(player, Badge::BDG_EXP_45_BADGES);
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void PlayerManagerImplementation::sendMessageOfTheDay(PlayerCreature* player) {
+	String motd = ConfigManager::instance()->getMessageOfTheDay();
+
+	ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::MOTD);
+
+	suiMessageBox->setPromptTitle("Message of the Day");
+	suiMessageBox->setPromptText(motd);
+
+	player->sendMessage(suiMessageBox->generateMessage());
 }

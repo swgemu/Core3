@@ -10,14 +10,14 @@ composite_set1_bicep_l = object_tangible_wearables_armor_composite_shared_armor_
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -34,14 +34,14 @@ composite_set1_bicep_r = object_tangible_wearables_armor_composite_shared_armor_
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -58,14 +58,14 @@ composite_set1_boots = object_tangible_wearables_armor_composite_shared_armor_co
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -82,14 +82,14 @@ composite_set1_bracer_l = object_tangible_wearables_armor_composite_shared_armor
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -106,14 +106,14 @@ composite_set1_bracer_r = object_tangible_wearables_armor_composite_shared_armor
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -130,14 +130,14 @@ composite_set1_chest_plate = object_tangible_wearables_armor_composite_shared_ar
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -154,14 +154,14 @@ composite_set1_gloves = object_tangible_wearables_armor_composite_shared_armor_c
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -178,14 +178,14 @@ composite_set1_helmet = object_tangible_wearables_armor_composite_shared_armor_c
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 
@@ -202,14 +202,14 @@ composite_set1_leggings = object_tangible_wearables_armor_composite_shared_armor
 	
 	playerUseMask = HUMANOIDS,
 
-	kinetic = 40,
-	energy = 40,
-	electricity = 40,
-	stun = 20,
-	blast = 20,
-	heat = 20,
-	cold = 20,
-	acid = 20,
+	kinetic = 50,
+	energy = 50,
+	electricity = 50,
+	stun = 25,
+	blast = 25,
+	heat = 25,
+	cold = 25,
+	acid = 25,
 	lightSaber = 0
 }
 

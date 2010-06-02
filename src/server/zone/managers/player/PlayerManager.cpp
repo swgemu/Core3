@@ -140,12 +140,39 @@ void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* arm
 		((PlayerManagerImplementation*) _impl)->removeEncumbrancies(player, armor);
 }
 
-bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
+void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(badge);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->awardBadge(player, badge);
+}
+
+void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->sendMessageOfTheDay(player);
+}
+
+bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -158,7 +185,7 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -172,7 +199,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -185,7 +212,7 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -200,7 +227,7 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -213,7 +240,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -226,7 +253,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -239,7 +266,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -252,7 +279,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -361,30 +388,36 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		removeEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
+		awardBadge((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 14:
-		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
 		break;
 	case 16:
-		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
 	case 17:
-		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 18:
-		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
 		break;
 	case 19:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 20:
-		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 21:
+		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		break;
+	case 22:
+		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		break;
+	case 23:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	default:
@@ -420,6 +453,14 @@ void PlayerManagerAdapter::applyEncumbrancies(PlayerCreature* player, ArmorObjec
 
 void PlayerManagerAdapter::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
 	((PlayerManagerImplementation*) impl)->removeEncumbrancies(player, armor);
+}
+
+void PlayerManagerAdapter::awardBadge(PlayerCreature* player, unsigned int badge) {
+	((PlayerManagerImplementation*) impl)->awardBadge(player, badge);
+}
+
+void PlayerManagerAdapter::sendMessageOfTheDay(PlayerCreature* player) {
+	((PlayerManagerImplementation*) impl)->sendMessageOfTheDay(player);
 }
 
 bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) {

@@ -495,69 +495,8 @@ int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
 	return CreatureObjectImplementation::notifyObjectRemoved(object);
 }
 
-
-void PlayerCreatureImplementation::awardBadge(uint32 badge, bool notifyClient) {
-	if (!Badge::exists(badge))
-		return;
-
-	ParameterizedStringId stringId("badge_n", "");
-	stringId.setTO("badge_n", Badge::getName(badge));
-
-	if (hasBadge(badge)) {
-		stringId.setStringId("badge_n", "prose_hasbadge");
-		sendSystemMessage(stringId);
-		return;
-	}
-
-	badges.setBadge(badge);
-	stringId.setStringId("badge_n", "prose_grant");
-	sendSystemMessage(stringId);
-
-	switch (badges.getNumBadges()) {
-	case 5:
-		awardBadge(Badge::COUNT_5);
-		break;
-	case 10:
-		awardBadge(Badge::COUNT_10);
-		break;
-	case 25:
-		awardBadge(Badge::COUNT_25);
-		break;
-	case 50:
-		awardBadge(Badge::COUNT_50);
-		break;
-	case 75:
-		awardBadge(Badge::COUNT_75);
-		break;
-	case 100:
-		awardBadge(Badge::COUNT_100);
-		break;
-	case 125:
-		awardBadge(Badge::COUNT_125);
-		break;
-	default:
-		break;
-	}
-
-	if (Badge::getType(badge) == Badge::EXPLORATION) {
-		switch (badges.getTypeCount(Badge::EXPLORATION)) {
-		case 10:
-			awardBadge(Badge::BDG_EXP_10_BADGES);
-			break;
-		case 20:
-			awardBadge(Badge::BDG_EXP_20_BADGES);
-			break;
-		case 30:
-			awardBadge(Badge::BDG_EXP_30_BADGES);
-			break;
-		case 40:
-			awardBadge(Badge::BDG_EXP_40_BADGES);
-			break;
-		case 45:
-			awardBadge(Badge::BDG_EXP_45_BADGES);
-			break;
-		default:
-			break;
-		}
-	}
+void PlayerCreatureImplementation::awardBadge(uint32 badge) {
+	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+	playerManager->awardBadge(_this, badge);
 }
+
