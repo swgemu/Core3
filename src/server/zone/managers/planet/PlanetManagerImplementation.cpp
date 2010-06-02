@@ -16,10 +16,12 @@
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/player/TravelListResponseMessage.h"
+#include "server/zone/objects/area/BadgeActiveArea.h"
 #include "TravelFare.h"
 
 void PlanetManagerImplementation::initialize() {
 	loadRegions();
+	loadBadgeAreas();
 
 	terrainManager = new TerrainManager();
 
@@ -232,6 +234,32 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreatu
 	msg->generateMessage();
 
 	player->sendMessage(msg);
+}
+
+
+void PlanetManagerImplementation::loadBadgeAreas() {
+	StringBuffer query;
+	query << "SELECT x, y, z, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	uint32 crc = String("object/badge_area.iff").hashCode();
+
+	while (result->next()) {
+
+		float x = result->getFloat(0);
+		float y = result->getFloat(1);
+		float z = result->getFloat(2);
+		uint32 badgeId = result->getInt(3);
+
+		BadgeActiveArea* area = (BadgeActiveArea*) zone->getZoneServer()->createObject(crc, 0);
+		area->setBadge(badgeId);
+		area->setRadius(100);
+		area->initializePosition(x, z, y);
+		area->insertToZone(zone);
+	}
+
+	delete result;
 }
 
 

@@ -548,6 +548,8 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
+	static const int BADGEAREA = 0x200000;
+
 	SceneObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -1268,6 +1270,8 @@ public:
 	static const int SKIRT = 0x1000012;
 
 	static const int ITHOGARB = 0x1000013;
+
+	static const int BADGEAREA = 0x200000;
 
 	SceneObjectImplementation();
 

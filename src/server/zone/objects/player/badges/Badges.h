@@ -24,6 +24,8 @@ public:
 			badgeTypeCounts[i] = 0;
 
 		badgeTotal = 0;
+
+		addSerializableVariables();
 	}
 
 	inline void addSerializableVariables() {

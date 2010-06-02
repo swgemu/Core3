@@ -71,6 +71,7 @@ import server.zone.objects.waypoint.WaypointObject;
 import system.lang.ref.Reference;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
 
 class PlayerCreature extends CreatureObject {
 	protected transient ZoneClientSession owner;
@@ -141,6 +142,8 @@ class PlayerCreature extends CreatureObject {
 	protected transient CreatureObject conversatingCreature;
 	
 	protected transient int centeredBonus;
+	
+	protected transient ActiveArea activeArea;
 		
 	//protected BankTerminal registeredBank;
 	
@@ -296,6 +299,8 @@ class PlayerCreature extends CreatureObject {
 	 * @post { this, attacker locked }
 	 */
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+	public native void awardBadge(unsigned int badge, boolean notifyClient = true);
 	
 	public native boolean isFirstIncapacitationExpired();
 
@@ -580,6 +585,10 @@ class PlayerCreature extends CreatureObject {
 		surveyWaypoint = waypoint;
 	}
 	
+	public void setActiveArea(ActiveArea area) {
+		activeArea = area;
+	}
+	
 	/**
 	 * Returns the active SurveyWaypoint
 	 */
@@ -597,6 +606,14 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setCenteredBonus(int bonus) {
 		centeredBonus = bonus;
+	}
+	
+	public ActiveArea getActiveArea() {
+		return activeArea;
+	}
+	
+	public boolean hasBadge(unsigned int badge) {
+		return badges.hasBadge(badge);
 	}
 	
 }

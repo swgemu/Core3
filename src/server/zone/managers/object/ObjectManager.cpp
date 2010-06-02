@@ -62,6 +62,8 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 
+#include "server/zone/objects/area/BadgeActiveArea.h"
+
 #include "server/db/ServerDatabase.h"
 
 #include "ObjectMap.h"
@@ -103,6 +105,7 @@ ObjectManager::~ObjectManager() {
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
+	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObject::NPCCREATURE);

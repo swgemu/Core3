@@ -61,6 +61,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
+				server/zone/objects/area/ActiveArea.cpp \
+				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
 				server/zone/objects/staticobject/StaticObject.cpp \
@@ -174,6 +176,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
