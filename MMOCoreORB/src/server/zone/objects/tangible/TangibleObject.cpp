@@ -463,12 +463,24 @@ DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList()
 		return ((TangibleObjectImplementation*) _impl)->getDefenderList();
 }
 
-unsigned int TangibleObject::getPlayerUseMask() {
+bool TangibleObject::isDestroyed() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 36);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isDestroyed();
+}
+
+unsigned int TangibleObject::getPlayerUseMask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -480,7 +492,7 @@ bool TangibleObject::isSliced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -492,7 +504,7 @@ void TangibleObject::setCustomizationString(const String& vars) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addAsciiParameter(vars);
 
 		method.executeWithVoidReturn();
@@ -730,18 +742,23 @@ DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::get
 	return (&defenderList);
 }
 
+bool TangibleObjectImplementation::isDestroyed() {
+	// server/zone/objects/tangible/TangibleObject.idl(387):  		return conditionDamage > maxCondition;
+	return conditionDamage > maxCondition;
+}
+
 unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl(387):  		return playerUseMask;
+	// server/zone/objects/tangible/TangibleObject.idl(391):  		return playerUseMask;
 	return playerUseMask;
 }
 
 bool TangibleObjectImplementation::isSliced() {
-	// server/zone/objects/tangible/TangibleObject.idl(391):  		return sliced;
+	// server/zone/objects/tangible/TangibleObject.idl(395):  		return sliced;
 	return sliced;
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(395):  		customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(399):  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
@@ -847,12 +864,15 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 36:
-		resp->insertInt(getPlayerUseMask());
+		resp->insertBoolean(isDestroyed());
 		break;
 	case 37:
-		resp->insertBoolean(isSliced());
+		resp->insertInt(getPlayerUseMask());
 		break;
 	case 38:
+		resp->insertBoolean(isSliced());
+		break;
+	case 39:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	default:
@@ -980,6 +1000,10 @@ bool TangibleObjectAdapter::isTangibleObject() {
 
 void TangibleObjectAdapter::getCustomizationString(String& variables) {
 	((TangibleObjectImplementation*) impl)->getCustomizationString(variables);
+}
+
+bool TangibleObjectAdapter::isDestroyed() {
+	return ((TangibleObjectImplementation*) impl)->isDestroyed();
 }
 
 unsigned int TangibleObjectAdapter::getPlayerUseMask() {

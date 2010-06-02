@@ -14,12 +14,8 @@
 
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	info("checking linked creature", true);
-
 	if (linkedCreature != player)
 		return;
-
-	info("adding radial items", true);
 
 	menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
 	menuResponse->addRadialMenuItem(61, 3, "");
@@ -70,3 +66,25 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, notifyClient);
 }
+
+int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	unlock();
+
+	try {
+		if (linkedCreature != attacker)
+			linkedCreature->wlock(attacker);
+
+		linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
+
+		if (linkedCreature != attacker)
+			linkedCreature->unlock();
+	} catch (...) {
+		if (linkedCreature != attacker)
+			linkedCreature->unlock();
+	}
+
+	wlock(attacker);
+
+	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+}
+

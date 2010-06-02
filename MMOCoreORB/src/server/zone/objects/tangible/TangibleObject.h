@@ -228,6 +228,8 @@ public:
 
 	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
+	bool isDestroyed();
+
 	unsigned int getPlayerUseMask();
 
 	bool isSliced();
@@ -429,6 +431,8 @@ public:
 
 	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
+	bool isDestroyed();
+
 	unsigned int getPlayerUseMask();
 
 	bool isSliced();
@@ -533,6 +537,8 @@ public:
 	bool isTangibleObject();
 
 	void getCustomizationString(String& variables);
+
+	bool isDestroyed();
 
 	unsigned int getPlayerUseMask();
 

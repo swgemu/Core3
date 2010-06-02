@@ -383,6 +383,10 @@ class TangibleObject extends SceneObject {
 		return defenderList;
 	}
 	
+	public boolean isDestroyed() {
+		return conditionDamage > maxCondition;
+	}
+	
 	public unsigned int getPlayerUseMask() {
 		return playerUseMask;
 	}
