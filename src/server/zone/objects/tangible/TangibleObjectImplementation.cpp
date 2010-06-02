@@ -132,6 +132,9 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 			break;
 		}
 	}
+
+	if (i == defenderList.size())
+		addDefender(defender);
 }
 
 void TangibleObjectImplementation::addDefender(SceneObject* defender) {

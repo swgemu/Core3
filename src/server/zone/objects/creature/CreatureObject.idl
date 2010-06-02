@@ -606,13 +606,7 @@ class CreatureObject extends TangibleObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
-		if (object == this)
-			return false;
-		
-		if (this.isDead())
-			return false;
-		
-		return true;
+		return false;
 	}
 	
 	/**

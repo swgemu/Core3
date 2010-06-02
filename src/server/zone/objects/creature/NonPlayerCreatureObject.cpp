@@ -22,6 +22,19 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 }
 
 
+bool NonPlayerCreatureObject::isAttackableBy(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((NonPlayerCreatureObjectImplementation*) _impl)->isAttackableBy(object);
+}
+
 /*
  *	NonPlayerCreatureObjectImplementation
  */
@@ -101,6 +114,17 @@ NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	Logger::setGlobalLogging(true);
 }
 
+bool NonPlayerCreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(69):  		if 
+	if (object == _this)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(70):  			return false;
+	return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(72):  		return 
+	if (_this->isDead())	// server/zone/objects/creature/NonPlayerCreatureObject.idl(73):  			return false;
+	return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(75):  true;
+	return true;
+}
+
 /*
  *	NonPlayerCreatureObjectAdapter
  */
@@ -112,11 +136,18 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool NonPlayerCreatureObjectAdapter::isAttackableBy(CreatureObject* object) {
+	return ((NonPlayerCreatureObjectImplementation*) impl)->isAttackableBy(object);
 }
 
 /*

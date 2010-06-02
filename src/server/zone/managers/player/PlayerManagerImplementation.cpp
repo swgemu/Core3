@@ -726,6 +726,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	playerCreature->updateIncapacitationCounter();
 
 	playerCreature->clearCombatState();
+	destructor->removeDefender(playerCreature);
 
 	if (playerCreature->getIncapacitationCounter() < 3) {
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
