@@ -42,6 +42,8 @@ class NonPlayerCreatureObject : public CreatureObject {
 public:
 	NonPlayerCreatureObject();
 
+	bool isAttackableBy(CreatureObject* object);
+
 protected:
 	NonPlayerCreatureObject(DummyConstructorParameter* param);
 
@@ -68,6 +70,8 @@ public:
 	NonPlayerCreatureObjectImplementation();
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	NonPlayerCreatureObject* _this;
 
@@ -107,6 +111,8 @@ public:
 	NonPlayerCreatureObjectAdapter(NonPlayerCreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool isAttackableBy(CreatureObject* object);
 
 };
 

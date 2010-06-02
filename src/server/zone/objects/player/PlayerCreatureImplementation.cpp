@@ -124,6 +124,12 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 }
 
 bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
+	if (object == _this)
+		return false;
+
+	if (isDead())
+		return false;
+
 	if (object->isPlayerCreature()) {
 		PlayerCreature* playerCreature = (PlayerCreature*) object;
 
@@ -131,7 +137,7 @@ bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 			return true;
 	}
 
-	return CreatureObjectImplementation::isAttackableBy(object);
+	return false;
 }
 
 void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
@@ -186,6 +192,11 @@ void PlayerCreatureImplementation::doRecovery() {
 
 	activateHAMRegeneration();
 	activateStateRecovery();
+
+	if (isInCombat() && getTargetID() != 0 && !isPeaced()
+			&& (commandQueue.size() == 0)) {
+		enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
+	}
 
 	activateRecovery();
 }
