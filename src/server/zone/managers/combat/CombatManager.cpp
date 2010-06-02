@@ -33,6 +33,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
+	if (defender->isCreatureObject() && ((CreatureObject*)defender)->isIncapacitated())
+		return false;
+
 	attacker->clearState(CreatureState::PEACE);
 
 	if (lockDefender)

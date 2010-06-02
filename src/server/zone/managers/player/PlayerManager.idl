@@ -93,6 +93,8 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	@local
 	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition);
 	
+	public native void killPlayer(TangibleObject attacker, PlayerCreature player);
+	
 	/**
 	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
 	 * \return Returns the number of seconds until the player should recover from incapacitation.

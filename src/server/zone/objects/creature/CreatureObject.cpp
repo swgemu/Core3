@@ -2418,7 +2418,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == _this)	// server/zone/objects/creature/CreatureObject.idl(610):  			return false;
 	return false;
 	// server/zone/objects/creature/CreatureObject.idl(612):  		return 
-	if (_this->isIncapacitated() || _this->isDead())	// server/zone/objects/creature/CreatureObject.idl(613):  			return false;
+	if (_this->isDead())	// server/zone/objects/creature/CreatureObject.idl(613):  			return false;
 	return false;
 	// server/zone/objects/creature/CreatureObject.idl(615):  true;
 	return true;

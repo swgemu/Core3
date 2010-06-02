@@ -46,6 +46,7 @@ which carries forward this exception.
 #define DEATHBLOWCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class DeathBlowCommand : public QueueCommand {
 public:
@@ -62,6 +63,29 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (creature == targetObject || targetObject == NULL || !targetObject->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) targetObject.get();
+
+		try {
+			player->wlock(creature);
+
+			if (player->isIncapacitated() && player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
+				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+				playerManager->killPlayer(creature, player);
+			}
+
+			player->unlock();
+		} catch (...) {
+			player->unlock();
+		}
 
 		return SUCCESS;
 	}

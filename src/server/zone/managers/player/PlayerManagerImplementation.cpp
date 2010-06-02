@@ -749,14 +749,18 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	} else {
 		if (!playerCreature->isFirstIncapacitationExpired()) {
-			playerCreature->setPosture(CreaturePosture::DEAD, true);
-
-			Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature);
-			task->schedule(10 * 1000);
+			killPlayer(destructor, playerCreature);
 		}
 	}
 
 	return 0;
+}
+
+void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
+	player->setPosture(CreaturePosture::DEAD, true);
+
+	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player);
+	task->schedule(10 * 1000);
 }
 
 bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
