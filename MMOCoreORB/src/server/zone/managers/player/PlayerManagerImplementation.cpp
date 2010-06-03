@@ -792,27 +792,27 @@ void PlayerManagerImplementation::applyEncumbrancies(PlayerCreature* player, Arm
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
 
-	player->changeEncumbrance(CreatureEncumbrance::HEALTH, healthEncumb, true);
-	player->changeEncumbrance(CreatureEncumbrance::ACTION, actionEncumb, true);
-	player->changeEncumbrance(CreatureEncumbrance::MIND, mindEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::HEALTH, healthEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::ACTION, actionEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::MIND, mindEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::STRENGTH, healthEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::STRENGTH, -healthEncumb, true);
+	player->addMaxHAM(CreatureAttribute::STRENGTH, -healthEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::CONSTITUTION, healthEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::CONSTITUTION, -healthEncumb, true);
+	player->addMaxHAM(CreatureAttribute::CONSTITUTION, -healthEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::QUICKNESS, actionEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::QUICKNESS, -actionEncumb, true);
+	player->addMaxHAM(CreatureAttribute::QUICKNESS, -actionEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::STAMINA, actionEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::STAMINA, -actionEncumb, true);
+	player->addMaxHAM(CreatureAttribute::STAMINA, -actionEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::FOCUS, mindEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::FOCUS, -mindEncumb, true);
+	player->addMaxHAM(CreatureAttribute::FOCUS, -mindEncumb, true);
 
 	player->inflictDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
-	player->changeMaxHAM(CreatureAttribute::WILLPOWER, -mindEncumb, true);
+	player->addMaxHAM(CreatureAttribute::WILLPOWER, -mindEncumb, true);
 }
 
 void PlayerManagerImplementation::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
@@ -820,26 +820,26 @@ void PlayerManagerImplementation::removeEncumbrancies(PlayerCreature* player, Ar
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
 
-	player->changeEncumbrance(CreatureEncumbrance::HEALTH, -healthEncumb, true);
-	player->changeEncumbrance(CreatureEncumbrance::ACTION, -actionEncumb, true);
-	player->changeEncumbrance(CreatureEncumbrance::MIND, -mindEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::HEALTH, -healthEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::ACTION, -actionEncumb, true);
+	player->addEncumbrance(CreatureEncumbrance::MIND, -mindEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::STRENGTH, healthEncumb, true);
+	player->addMaxHAM(CreatureAttribute::STRENGTH, healthEncumb, true);
 	player->healDamage(player, CreatureAttribute::STRENGTH, healthEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::CONSTITUTION, healthEncumb, true);
+	player->addMaxHAM(CreatureAttribute::CONSTITUTION, healthEncumb, true);
 	player->healDamage(player, CreatureAttribute::CONSTITUTION, healthEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::QUICKNESS, actionEncumb, true);
+	player->addMaxHAM(CreatureAttribute::QUICKNESS, actionEncumb, true);
 	player->healDamage(player, CreatureAttribute::QUICKNESS, actionEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::STAMINA, actionEncumb, true);
+	player->addMaxHAM(CreatureAttribute::STAMINA, actionEncumb, true);
 	player->healDamage(player, CreatureAttribute::STAMINA, actionEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::FOCUS, mindEncumb, true);
+	player->addMaxHAM(CreatureAttribute::FOCUS, mindEncumb, true);
 	player->healDamage(player, CreatureAttribute::FOCUS, mindEncumb, true);
 
-	player->changeMaxHAM(CreatureAttribute::WILLPOWER, mindEncumb, true);
+	player->addMaxHAM(CreatureAttribute::WILLPOWER, mindEncumb, true);
 	player->healDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
 }
 

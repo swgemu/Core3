@@ -78,6 +78,8 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	if (group != NULL)
 		group->sendTo(_this);
 
+	creatureBuffs.sendTo(_this);
+
 	owner->resetPacketCheckupTime();
 }
 

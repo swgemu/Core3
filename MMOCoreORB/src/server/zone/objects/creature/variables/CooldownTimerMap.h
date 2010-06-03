@@ -10,25 +10,104 @@
 
 #include "engine/engine.h"
 
-class CooldownTimerMap : private HashTable<String, Time*> {
+class CooldownTimer : public Variable {
+	Time* timeStamp;
+
+public:
+	CooldownTimer() : Variable() {
+		timeStamp = NULL;
+	}
+
+	CooldownTimer(Time* timestamp) : Variable() {
+		timeStamp = timestamp;
+	}
+
+	CooldownTimer(const CooldownTimer& obj) : Variable() {
+		timeStamp = obj.timeStamp;
+	}
+
+	void operator=(Time* obj) {
+		timeStamp = obj;
+	}
+
+	bool toString(String& str) {
+		timeStamp->toString(str);
+
+		return true;
+	}
+
+	bool parseFromString(const String& str, int version = 0) {
+		if (timeStamp != NULL) {
+			timeStamp->parseFromString(str);
+		} else {
+			Time newTimeStamp;
+			newTimeStamp.parseFromString(str);
+
+			if (!newTimeStamp.isPast())
+				timeStamp = new Time(newTimeStamp);
+			else
+				return false;
+		}
+
+		return true;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		timeStamp->toBinaryStream(stream);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		if (timeStamp != NULL) {
+			timeStamp->parseFromBinaryStream(stream);
+		} else {
+			Time newTimeStamp;
+			newTimeStamp.parseFromBinaryStream(stream);
+
+			if (!newTimeStamp.isPast())
+				timeStamp = new Time(newTimeStamp);
+			else
+				return false;
+		}
+
+		return true;
+	}
+
+	Time* operator->() const {
+		return timeStamp;
+	}
+
+	Time* get() const {
+		return timeStamp;
+	}
+
+	operator Time*() const {
+		return timeStamp;
+	}
+
+
+};
+
+class CooldownTimerMap : public HashTable<String, CooldownTimer> {
 	int hash(const String& k) {
 		return k.hashCode();
 	}
 
 public:
-	CooldownTimerMap() : HashTable<String, Time*>() {
+	CooldownTimerMap() : HashTable<String, CooldownTimer>() {
 		setNullValue(NULL);
 	}
 
 	~CooldownTimerMap() {
-		HashTableIterator<String, Time*> iterator(((HashTable<String, Time*>*) this));
+		HashTableIterator<String, CooldownTimer> iterator(((HashTable<String, CooldownTimer>*) this));
 
 		while (iterator.hasNext())
 			delete iterator.getNextValue();
 	}
 
 	bool isPast(const String& cooldownName) {
-		Time* cooldown = HashTable<String, Time*>::get(cooldownName);
+		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
 
 		if (cooldown == NULL)
 			return true;
@@ -43,11 +122,11 @@ public:
 	}
 
 	Time* updateToCurrentTime(const String& cooldownName) {
-		Time* cooldown = HashTable<String, Time*>::get(cooldownName);
+		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
 
 		if (cooldown == NULL) {
 			cooldown = new Time();
-			HashTable<String, Time*>::put(cooldownName, cooldown);
+			HashTable<String, CooldownTimer>::put(cooldownName, cooldown);
 		} else {
 			cooldown->updateToCurrentTime();
 		}
@@ -56,12 +135,12 @@ public:
 	}
 
 	void addMiliTime(const String& cooldownName, uint64 mili) {
-		Time* cooldown = HashTable<String, Time*>::get(cooldownName);
+		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
 
 		if (cooldown == NULL) {
 			cooldown = new Time();
 			cooldown->addMiliTime(mili);
-			HashTable<String, Time*>::put(cooldownName, cooldown);
+			HashTable<String, CooldownTimer>::put(cooldownName, cooldown);
 		} else {
 			cooldown->addMiliTime(mili);
 		}

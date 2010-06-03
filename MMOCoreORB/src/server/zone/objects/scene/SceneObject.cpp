@@ -1754,7 +1754,6 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("slotDescriptors", &slotDescriptors);
 	addSerializableVariable("objectName", &objectName);
 	addSerializableVariable("detailedDescription", &detailedDescription);
-	addSerializableVariable("notifiedSentObjects", &notifiedSentObjects);
 	addSerializableVariable("staticObject", &staticObject);
 	addSerializableVariable("containerType", &containerType);
 	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);

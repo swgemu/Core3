@@ -46,6 +46,9 @@ which carries forward this exception.
 #define BURSTRUNCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
 
 class BurstRunCommand : public QueueCommand {
 public:
@@ -63,7 +66,95 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!checkBurstRun(creature))
+			return GENERALERROR;
+
+
+		uint32 crc = String("burstrun").hashCode();
+
+		if (creature->hasBuff(crc)) {
+			return GENERALERROR;
+		}
+
+		float burstRunMod = (float) creature->getSkillMod("burst_run");
+
+		if (burstRunMod > 100.0f) {
+			burstRunMod = 100.0f;
+		}
+
+		float hamCost = 100.0f;
+
+		float efficiency = 1.0f - (burstRunMod / 100.0f);
+		hamCost *= efficiency;
+		int newHamCost = (int) hamCost;
+
+		//Check for and deduct HAM cost.
+		if (creature->getHAM(CreatureAttribute::HEALTH) <= newHamCost
+				|| creature->getHAM(CreatureAttribute::ACTION) <= newHamCost
+				|| creature->getHAM(CreatureAttribute::MIND) <= newHamCost) {
+			creature->sendSystemMessage("combat_effects", "burst_run_wait"); //"You are too tired to Burst Run."
+
+			return GENERALERROR;
+
+		}
+
+		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost);
+
+		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
+		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
+
+		int duration = 100;
+
+		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
+		buff->setSpeedModifier(4.424f);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+
+		creature->addBuff(buff);
+
+		creature->updateCooldownTimer("burstrun", (300 + duration) * 1000);
+
+		Reference<BurstRunNotifyAvailableEvent*> task = new BurstRunNotifyAvailableEvent(creature);
+		task->schedule((300 + duration) * 1000);
+
+
 		return SUCCESS;
+	}
+
+	bool checkBurstRun(CreatureObject* creature) {
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
+			return false;
+		}
+
+		Zone* zone = creature->getZone();
+
+		if (creature->getZone() == NULL) {
+			return false;
+		}
+
+		if (zone->getZoneID() == 39) {
+			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+
+			return false;
+		}
+
+		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		if (!creature->checkCooldownRecovery("burstrun")) {
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		return true;
+
 	}
 
 };
