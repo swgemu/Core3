@@ -32,6 +32,10 @@ using namespace server::zone::objects::tangible;
 
 class Observer {
 public:
+	virtual ~Observer() {
+
+	}
+
 	int compareTo(Observer* obj) {
 		if (this < obj) {
 			return 1;

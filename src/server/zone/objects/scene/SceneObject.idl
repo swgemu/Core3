@@ -124,7 +124,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected StringId detailedDescription;
 	
 	@dereferenced
-	protected SortedVector<SceneObject> notifiedSentObjects;
+	protected transient SortedVector<SceneObject> notifiedSentObjects;
 	
 	@dereferenced
 	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
@@ -511,7 +511,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
 	 */
-	public native void updateToDatabaseAllObjects(boolean startTask = true);
+	public abstract native void updateToDatabaseAllObjects(boolean startTask);
 	
 	/**
 	 * Destroys this object from database
