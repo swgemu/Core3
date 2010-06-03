@@ -578,7 +578,7 @@ public:
 
 	void updateToDatabaseWithoutChildren();
 
-	void updateToDatabaseAllObjects(bool startTask = true);
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -1305,7 +1305,7 @@ public:
 
 	void updateToDatabaseWithoutChildren();
 
-	void updateToDatabaseAllObjects(bool startTask = true);
+	virtual void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 

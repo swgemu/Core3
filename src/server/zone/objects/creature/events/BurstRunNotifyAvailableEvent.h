@@ -42,96 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGID_H_
-#define STRINGID_H_
+#ifndef BURSTRUNNOTIFYAVAILABLEEVENT_H_
+#define BURSTRUNNOTIFYAVAILABLEEVENT_H_
 
-#include "engine/engine.h"
+#include "../CreatureObject.h"
 
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
-
-class StringId : public Serializable {
-protected:
-	String file;
-	String stringID;
-	UnicodeString customName;
-
-	inline void addSerializableVariables() {
-		addSerializableVariable("file", &file);
-		addSerializableVariable("stringID", &stringID);
-		addSerializableVariable("customName", &customName);
-	}
+class BurstRunNotifyAvailableEvent : public Task {
+	ManagedWeakReference<CreatureObject*> creo;
 
 public:
-	StringId();
-	StringId(const StringId& id);
-	StringId(const char * cstr);
-	StringId(const String& fullPath);
-	StringId(const String& fil, const String& stringId);
-	StringId(const UnicodeString& custom);
-
-	StringId& operator=(const StringId& id) {
-		if (&id == this)
-			return *this;
-
-		file = id.file;
-		stringID = id.stringID;
-
-		customName = id.customName;
-
-		return *this;
+	BurstRunNotifyAvailableEvent(CreatureObject* cr) : Task() {
+		creo = cr;
 	}
 
-	void clear();
+	void run() {
+		ManagedReference<CreatureObject*> creature = creo.get();
 
-	inline void getFullPath(String& str) const {
-		str = "@" + file + ":" + stringID;
+		if (creature == NULL)
+			return;
+
+		Locker locker(creature);
+
+		creature->sendSystemMessage("combat_effects", "burst_run_not_tired"); //"You are no longer tired.";
 	}
 
-	inline String& getFile() {
-		return file;
-	}
-
-	inline String& getStringID() {
-		return stringID;
-	}
-
-	inline UnicodeString& getCustomString() {
-		return customName;
-	}
-
-	inline uint32 size() const {
-		return customName.length() * 2 + file.length() + stringID.length();
-	}
-
-	inline bool isEmpty() const {
-		if (customName.isEmpty() && file.isEmpty())
-			return true;
-
-		return false;
-	}
-
-	inline void setCustomString(const UnicodeString& custom) {
-		customName = custom;
-	}
-
-	void setStringId(const String& fullPath);
-
-	inline void setStringId(const String& file, const String& id) {
-		StringId::file = file;
-		StringId::stringID = id;
-	}
 };
 
-}
-}
-}
-}
-}
-
-using namespace server::zone::objects::scene::variables;
-#endif /* STRINGID_H_ */
+#endif /*BURSTRUNNOTIFYAVAILABLEEVENT_H_*/

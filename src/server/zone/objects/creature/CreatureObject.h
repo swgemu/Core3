@@ -139,6 +139,22 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace buffs {
+
+class Buff;
+
+} // namespace buffs
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::buffs;
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
@@ -156,6 +172,8 @@ using namespace server::zone;
 #include "server/zone/objects/creature/PostureChangeObserver.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -200,6 +218,8 @@ public:
 
 	static const int FEMALE = 1;
 
+	static const float DEFAULTRUNSPEED = 5.376;
+
 	CreatureObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -228,6 +248,8 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	void setRunSpeed(float newSpeed, bool notifyClient = true);
+
 	void setHAM(int type, int value, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
@@ -238,13 +260,15 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient = true);
 
+	void addWounds(int type, int value, bool notifyClient = true);
+
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
-	void changeMaxHAM(int type, int value, bool notifyClient = true);
+	void addMaxHAM(int type, int value, bool notifyClient = true);
 
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
-	void changeEncumbrance(int type, int value, bool notifyClient = true);
+	void addEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
@@ -253,6 +277,18 @@ public:
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
+
+	void addBuff(Buff* buff);
+
+	void removeBuff(unsigned int buffcrc);
+
+	void removeBuff(Buff* buff);
+
+	void clearBuffs(bool updateclient);
+
+	bool hasBuff(unsigned int buffcrc);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
@@ -365,6 +401,10 @@ public:
 	bool checkPostureDownRecovery();
 
 	bool checkPostureUpRecovery();
+
+	void updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd = 0);
+
+	bool checkCooldownRecovery(const String& cooldown);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -675,6 +715,8 @@ protected:
 
 	SortedVector<PostureChangeObserver*> postureChangeObservers;
 
+	BuffList creatureBuffs;
+
 public:
 	static const int HUMAN = 0;
 
@@ -699,6 +741,8 @@ public:
 	static const int MALE = 0;
 
 	static const int FEMALE = 1;
+
+	static const float DEFAULTRUNSPEED = 5.376;
 
 	CreatureObjectImplementation();
 
@@ -732,6 +776,8 @@ public:
 
 	virtual void setPosture(int newPosture, bool notifyClient = true);
 
+	void setRunSpeed(float newSpeed, bool notifyClient = true);
+
 	void setHAM(int type, int value, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
@@ -742,13 +788,15 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient = true);
 
+	void addWounds(int type, int value, bool notifyClient = true);
+
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
-	void changeMaxHAM(int type, int value, bool notifyClient = true);
+	void addMaxHAM(int type, int value, bool notifyClient = true);
 
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
-	void changeEncumbrance(int type, int value, bool notifyClient = true);
+	void addEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
@@ -757,6 +805,18 @@ public:
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
+
+	void addBuff(Buff* buff);
+
+	void removeBuff(unsigned int buffcrc);
+
+	void removeBuff(Buff* buff);
+
+	void clearBuffs(bool updateclient);
+
+	bool hasBuff(unsigned int buffcrc);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
@@ -869,6 +929,10 @@ public:
 	bool checkPostureDownRecovery();
 
 	bool checkPostureUpRecovery();
+
+	void updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd = 0);
+
+	bool checkCooldownRecovery(const String& cooldown);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -1121,6 +1185,8 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient);
 
+	void setRunSpeed(float newSpeed, bool notifyClient);
+
 	void setHAM(int type, int value, bool notifyClient);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
@@ -1131,13 +1197,15 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient);
 
+	void addWounds(int type, int value, bool notifyClient);
+
 	void setMaxHAM(int type, int value, bool notifyClient);
 
-	void changeMaxHAM(int type, int value, bool notifyClient);
+	void addMaxHAM(int type, int value, bool notifyClient);
 
 	void setEncumbrance(int type, int value, bool notifyClient);
 
-	void changeEncumbrance(int type, int value, bool notifyClient);
+	void addEncumbrance(int type, int value, bool notifyClient);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient);
 
@@ -1146,6 +1214,18 @@ public:
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 
 	void setBankCredits(int credits, bool notifyClient);
+
+	void addBuff(Buff* buff);
+
+	void removeBuff(unsigned int buffcrc);
+
+	void removeBuff(Buff* buff);
+
+	void clearBuffs(bool updateclient);
+
+	bool hasBuff(unsigned int buffcrc);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient);
 
@@ -1250,6 +1330,10 @@ public:
 	bool checkPostureDownRecovery();
 
 	bool checkPostureUpRecovery();
+
+	void updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd);
+
+	bool checkCooldownRecovery(const String& cooldown);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -1438,6 +1522,8 @@ protected:
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
 	String _param0_setMoodString__String_bool_;
+	String _param0_updateCooldownTimer__String_int_;
+	String _param0_checkCooldownRecovery__String_;
 	String _param1_canAddObject__SceneObject_String_;
 	String _param0_doAnimation__String_;
 	String _param0_playEffect__String_String_;

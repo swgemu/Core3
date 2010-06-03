@@ -556,6 +556,18 @@ void CreatureObjectImplementation::setWounds(int type, int value, bool notifyCli
 	}
 }
 
+void CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient) {
+	if (type < 0 || type >= wounds.size()) {
+		error("unknown wound type in changeWounds");
+		return;
+	}
+
+	int currentValue = wounds.get(type);
+	int newValue = currentValue + value;
+
+	setWounds(type, newValue, notifyClient);
+}
+
 void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyClient) {
 	if (maxHamList.get(type) == value)
 		return;
@@ -592,9 +604,9 @@ void CreatureObjectImplementation::setEncumbrance(int type, int value, bool noti
 	}
 }
 
-void CreatureObjectImplementation::changeMaxHAM(int type, int value, bool notifyClient) {
+void CreatureObjectImplementation::addMaxHAM(int type, int value, bool notifyClient) {
 	if (type < 0 || type > maxHamList.size()) {
-		error("invalid type in CreatureObjectImplementation::changeMaxHAM");
+		error("invalid type in CreatureObjectImplementation::addMaxHAM");
 		return;
 	}
 
@@ -604,9 +616,9 @@ void CreatureObjectImplementation::changeMaxHAM(int type, int value, bool notify
 	setMaxHAM(type, newValue, notifyClient);
 }
 
-void CreatureObjectImplementation::changeEncumbrance(int type, int value, bool notifyClient) {
+void CreatureObjectImplementation::addEncumbrance(int type, int value, bool notifyClient) {
 	if (type < 0 || type >= encumbrances.size()) {
-		error("invalid type in CreatureObjectImplementation::changeEncumbrance");
+		error("invalid type in CreatureObjectImplementation::addEncumbrance");
 		return;
 	}
 
@@ -749,6 +761,12 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (posture == newPosture)
 		return;
 
+	if (newPosture == CreaturePosture::PRONE) {
+		setRunSpeed(runSpeed / 5.f);
+	} else if (posture == CreaturePosture::PRONE) {
+		setRunSpeed(runSpeed * 5.f);
+	}
+
 	posture = newPosture;
 
 	notifyPostureChange(newPosture);
@@ -809,6 +827,21 @@ void CreatureObjectImplementation::setMood(byte mood, bool notifyClient) {
 		dcreo6->close();
 
 		broadcastMessage(dcreo6, true);
+	}
+}
+
+void CreatureObjectImplementation::setRunSpeed(float newSpeed, bool notifyClient) {
+	if (runSpeed == newSpeed)
+		return;
+
+	runSpeed = newSpeed;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		dcreo4->updateRunSpeed();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
 	}
 }
 
@@ -1232,6 +1265,47 @@ void CreatureObjectImplementation::activateStateRecovery() {
 
 	//updateStates();
 }
+
+void CreatureObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
+	if (!isPersistent())
+		return;
+
+	creatureBuffs.updateBuffsToDatabase();
+
+	TangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
+}
+
+void CreatureObjectImplementation::addBuff(Buff* buff) {
+	if (buff == NULL)
+		return;
+
+	uint32 buffcrc = buff->getBuffCRC();
+
+	creatureBuffs.addBuff(_this, buff);
+}
+
+void CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
+	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
+	creatureBuffs.removeBuff(_this, buffcrc);
+}
+
+void CreatureObjectImplementation::removeBuff(Buff* buff) {
+	if (buff == NULL)
+		return;
+
+	uint32 buffcrc = buff->getBuffCRC();
+
+	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
+	creatureBuffs.removeBuff(_this, buff);
+}
+
+void CreatureObjectImplementation::clearBuffs(bool updateclient) {
+	while (creatureBuffs.getBuffListSize() > 0) {
+		Buff* buff = creatureBuffs.getBuffByIndex(0);
+		creatureBuffs.removeBuff(_this, buff);
+	}
+}
+
 
 
 void CreatureObjectImplementation::activateHAMRegeneration() {

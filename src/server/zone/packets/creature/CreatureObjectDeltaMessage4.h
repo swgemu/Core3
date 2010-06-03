@@ -56,11 +56,11 @@ public:
 		creo = cr;
 	}
 
-	/*void updateSpeed() {
-		addFloatUpdate(0x07, creo->speed);
+	void updateRunSpeed() {
+		addFloatUpdate(0x07, creo->getRunSpeed());
 	}
 
-	void updateAcceleration() {
+	/*void updateAcceleration() {
 		addFloatUpdate(0x0B, creo->acceleration);
 	}
 

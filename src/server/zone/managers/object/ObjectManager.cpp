@@ -89,6 +89,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	databaseManager->loadDatabase("staticobjects", true, 0);
 	databaseManager->loadDatabase("sceneobjects", true);
+	databaseManager->loadDatabase("buffs", true);
 
 	loadLastUsedObjectID();
 
@@ -372,11 +373,18 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, const String& database) {
 	Locker _locker(this);
 
+	if (object->isPersistent()) {
+		//error("object is already persistent");
+		return;
+	}
+
 	uint64 newObjectID = getNextObjectID(database);
 
 	object->_setObjectID(newObjectID);
 
 	object->setPersistent(persistenceLevel);
+
+	object->deploy();
 
 	updatePersistentObject(object);
 }
