@@ -29,7 +29,7 @@ ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager")
 
 		info("loading object templates...", true);
 		registerFunctions();
-		luaInstance->runFile("scripts/object/main.lua");
+		luaInstance->runFile("scripts/object/clientmain.lua");
 
 		registerObjectTypes();
 	}
