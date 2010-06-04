@@ -9,7 +9,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Small Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_small_deed.iff",
 			"Tatooine Guild Hall Deed", "object/tangible/deed/guild_deed/tatooine_guild_deed.iff",
 			"Elegant Chair", "object/tangible/furniture/elegant/shared_chair_s01.iff",
-			"Elegant Coffee Table", "object/tangible/furniture/elegant/shared_coffee_table_s01.iff"
+			"Elegant Coffee Table", "object/tangible/furniture/elegant/shared_coffee_table_s01.iff",
 			"Large Corellian House Deed", "object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff",
 			"Composite Left Bicep", "object/tangible/wearables/armor/composite/composite_set1_bicep_l.iff",
 			"Composite Right Bicep", "object/tangible/wearables/armor/composite/composite_set1_bicep_r.iff",

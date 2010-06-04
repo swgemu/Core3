@@ -22,4 +22,6 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 
 	for (int i = 1; i < allowzones.getTableSize() + 1; ++i)
 		allowedZones.add(allowzones.getIntAt(i));
+
+	allowzones.pop();
 }

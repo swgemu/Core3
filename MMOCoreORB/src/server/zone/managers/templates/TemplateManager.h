@@ -29,7 +29,16 @@ public:
 
 	void loadLuaTemplates() {
 		info("loading object templates...", true);
-		luaTemplatesInstance->runFile("scripts/object/main.lua");
+
+		try {
+			luaTemplatesInstance->runFile("scripts/object/main.lua");
+		} catch (Exception& e) {
+			error(e.getMessage());
+		} catch (...) {
+			error("unreported exception caught while loading templates");
+		}
+
+		info("done loading object templates", true);
 	}
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
