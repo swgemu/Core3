@@ -633,14 +633,14 @@ void SceneObjectImplementation::removeFromZone() {
 	} else
 		zone->remove(this);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		QuadTreeEntry* obj = getInRangeObject(i);
+	while (inRangeObjectCount() > 0) {
+		QuadTreeEntry* obj = getInRangeObject(0);
 
 		if (obj != this)
 			obj->removeInRangeObject(this);
-	}
 
-	removeInRangeObjects();
+		removeInRangeObject(obj);
+	}
 
 	zone->dropSceneObject(getObjectID());
 
