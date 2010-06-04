@@ -145,6 +145,8 @@ public:
 
 	void doLanding();
 
+	bool isAttackableBy(CreatureObject* object);
+
 	void sendPlayerTo(PlayerCreature* player, TicketObject* ticket);
 
 	int getArrivalTime();
@@ -227,6 +229,8 @@ public:
 
 	void doLanding();
 
+	bool isAttackableBy(CreatureObject* object);
+
 	void sendPlayerTo(PlayerCreature* player, TicketObject* ticket);
 
 	int getArrivalTime();
@@ -297,6 +301,8 @@ public:
 	void doTakeOff();
 
 	void doLanding();
+
+	bool isAttackableBy(CreatureObject* object);
 
 	void sendPlayerTo(PlayerCreature* player, TicketObject* ticket);
 
