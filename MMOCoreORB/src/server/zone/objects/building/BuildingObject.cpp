@@ -332,25 +332,12 @@ bool BuildingObject::isBuildingObject() {
 		return ((BuildingObjectImplementation*) _impl)->isBuildingObject();
 }
 
-bool BuildingObject::hasPermissionAdmin(CreatureObject* creature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 25);
-		method.addObjectParameter(creature);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((BuildingObjectImplementation*) _impl)->hasPermissionAdmin(creature);
-}
-
 void BuildingObject::setDeedObjectID(unsigned long long deedid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 		method.addUnsignedLongParameter(deedid);
 
 		method.executeWithVoidReturn();
@@ -363,7 +350,7 @@ unsigned long long BuildingObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -375,7 +362,7 @@ void BuildingObject::setOwnerObjectID(unsigned long long ownerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 27);
 		method.addUnsignedLongParameter(ownerID);
 
 		method.executeWithVoidReturn();
@@ -388,7 +375,7 @@ unsigned long long BuildingObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -400,7 +387,7 @@ void BuildingObject::setSignObject(SignObject* sign) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(sign);
 
 		method.executeWithVoidReturn();
@@ -413,7 +400,7 @@ SignObject* BuildingObject::getSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 30);
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
@@ -425,7 +412,7 @@ void BuildingObject::setBaseMaintenanceRate(int maintenanceRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 31);
 		method.addSignedIntParameter(maintenanceRate);
 
 		method.executeWithVoidReturn();
@@ -438,7 +425,7 @@ int BuildingObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -450,24 +437,24 @@ int BuildingObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((BuildingObjectImplementation*) _impl)->getRedeedCost();
 }
 
-bool BuildingObject::isOnAdminList(PlayerCreature* player) {
+bool BuildingObject::isOnAdminList(CreatureObject* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
-		method.addObjectParameter(player);
+		DistributedMethod method(this, 34);
+		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isOnAdminList(player);
+		return ((BuildingObjectImplementation*) _impl)->isOnAdminList(creature);
 }
 
 void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& listName) {
@@ -475,7 +462,7 @@ void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -676,65 +663,60 @@ bool BuildingObjectImplementation::isBuildingObject() {
 	return true;
 }
 
-bool BuildingObjectImplementation::hasPermissionAdmin(CreatureObject* creature) {
-	// server/zone/objects/building/BuildingObject.idl(223):  		return true;
-	return true;
-}
-
 void BuildingObjectImplementation::setDeedObjectID(unsigned long long deedid) {
-	// server/zone/objects/building/BuildingObject.idl(227):  		deedObjectID = deedid;
+	// server/zone/objects/building/BuildingObject.idl(223):  		deedObjectID = deedid;
 	deedObjectID = deedid;
 }
 
 unsigned long long BuildingObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(231):  		return deedObjectID;
+	// server/zone/objects/building/BuildingObject.idl(227):  		return deedObjectID;
 	return deedObjectID;
 }
 
 void BuildingObjectImplementation::setOwnerObjectID(unsigned long long ownerID) {
-	// server/zone/objects/building/BuildingObject.idl(235):  		ownerObjectID = ownerID;
+	// server/zone/objects/building/BuildingObject.idl(231):  		ownerObjectID = ownerID;
 	ownerObjectID = ownerID;
-	// server/zone/objects/building/BuildingObject.idl(236):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	// server/zone/objects/building/BuildingObject.idl(232):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->grantPermission(ownerID, StructurePermissionList::OWNER);
 }
 
 unsigned long long BuildingObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(240):  		return ownerObjectID;
+	// server/zone/objects/building/BuildingObject.idl(236):  		return ownerObjectID;
 	return ownerObjectID;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(244):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(240):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(248):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(244):  		return signObject;
 	return signObject;
 }
 
 void BuildingObjectImplementation::setBaseMaintenanceRate(int maintenanceRate) {
-	// server/zone/objects/building/BuildingObject.idl(256):  		baseMaintenanceRate = maintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(252):  		baseMaintenanceRate = maintenanceRate;
 	baseMaintenanceRate = maintenanceRate;
 }
 
 int BuildingObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/building/BuildingObject.idl(265):  		return baseMaintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(261):  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int BuildingObjectImplementation::getRedeedCost() {
-	// server/zone/objects/building/BuildingObject.idl(273):  		return baseMaintenanceRate * 50;
+	// server/zone/objects/building/BuildingObject.idl(269):  		return baseMaintenanceRate * 50;
 	return baseMaintenanceRate * 50;
 }
 
-bool BuildingObjectImplementation::isOnAdminList(PlayerCreature* player) {
-	// server/zone/objects/building/BuildingObject.idl(280):  		return structurePermissionList.isOnAdminList(player.getObjectID());
-	return (&structurePermissionList)->isOnAdminList(player->getObjectID());
+bool BuildingObjectImplementation::isOnAdminList(CreatureObject* creature) {
+	// server/zone/objects/building/BuildingObject.idl(278):  		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	return (&structurePermissionList)->isOnAdminList(creature->getObjectID());
 }
 
 void BuildingObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/building/BuildingObject.idl(284):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/building/BuildingObject.idl(282):  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
@@ -807,39 +789,36 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isBuildingObject());
 		break;
 	case 25:
-		resp->insertBoolean(hasPermissionAdmin((CreatureObject*) inv->getObjectParameter()));
-		break;
-	case 26:
 		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 27:
+	case 26:
 		resp->insertLong(getDeedObjectID());
 		break;
-	case 28:
+	case 27:
 		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 29:
+	case 28:
 		resp->insertLong(getOwnerObjectID());
 		break;
-	case 30:
+	case 29:
 		setSignObject((SignObject*) inv->getObjectParameter());
 		break;
-	case 31:
+	case 30:
 		resp->insertLong(getSignObject()->_getObjectID());
 		break;
-	case 32:
+	case 31:
 		setBaseMaintenanceRate(inv->getSignedIntParameter());
 		break;
-	case 33:
+	case 32:
 		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
-	case 34:
+	case 33:
 		resp->insertSignedInt(getRedeedCost());
 		break;
-	case 35:
-		resp->insertBoolean(isOnAdminList((PlayerCreature*) inv->getObjectParameter()));
+	case 34:
+		resp->insertBoolean(isOnAdminList((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 36:
+	case 35:
 		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
 	default:
@@ -925,10 +904,6 @@ bool BuildingObjectAdapter::isBuildingObject() {
 	return ((BuildingObjectImplementation*) impl)->isBuildingObject();
 }
 
-bool BuildingObjectAdapter::hasPermissionAdmin(CreatureObject* creature) {
-	return ((BuildingObjectImplementation*) impl)->hasPermissionAdmin(creature);
-}
-
 void BuildingObjectAdapter::setDeedObjectID(unsigned long long deedid) {
 	((BuildingObjectImplementation*) impl)->setDeedObjectID(deedid);
 }
@@ -965,8 +940,8 @@ int BuildingObjectAdapter::getRedeedCost() {
 	return ((BuildingObjectImplementation*) impl)->getRedeedCost();
 }
 
-bool BuildingObjectAdapter::isOnAdminList(PlayerCreature* player) {
-	return ((BuildingObjectImplementation*) impl)->isOnAdminList(player);
+bool BuildingObjectAdapter::isOnAdminList(CreatureObject* creature) {
+	return ((BuildingObjectImplementation*) impl)->isOnAdminList(creature);
 }
 
 void BuildingObjectAdapter::sendPermissionListTo(PlayerCreature* player, const String& listName) {
