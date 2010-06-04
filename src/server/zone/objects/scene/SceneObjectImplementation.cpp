@@ -822,7 +822,7 @@ void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 	ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();
 
 	//Is this player on the permission list?
-	if (!buio->hasPermissionAdmin(player))
+	if (!buio->isOnAdminList(player))
 		return;
 
 	menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up

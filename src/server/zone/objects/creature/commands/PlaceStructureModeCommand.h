@@ -69,22 +69,22 @@ public:
 			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
 		ZoneServer* zserv = server->getZoneServer();
 
 		if (zserv == NULL)
-			return false;
+			return GENERALERROR;
 
 		ManagedReference<SceneObject*> obj = zserv->getObject(target);
 
 		if (obj == NULL)
-			return false;
+			return GENERALERROR;
 
 		if (!obj->isBuildingDeed())
-			return false;
+			return GENERALERROR;
 
 		ManagedReference<BuildingDeed*> deed = (BuildingDeed*) obj.get();
 
@@ -93,38 +93,50 @@ public:
 
 		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("player_structure", "cant_place_mounted"); //You may not place a structure while mounted or riding a vehicle.
-			return false;
+			return GENERALERROR;
 		}
 
 		if (creature->getParentID() > 0) {
 			creature->sendSystemMessage("player_structure", "not_inside"); //You can not place a structure while you are inside a building.
-			return false;
+			return GENERALERROR;
 		}
 
 		TemplateManager* templateManager = TemplateManager::instance();
 
-		String templateName = deed->getGeneratedObjectTemplate();
-		uint32 buioCRC = templateName.hashCode();
+		String structureTemplateName = deed->getGeneratedObjectTemplate();
+		uint32 structureTemplateCRC = structureTemplateName.hashCode();
 
-		SharedBuildingObjectTemplate* buildingTemplate = dynamic_cast<SharedBuildingObjectTemplate*>(templateManager->getTemplate(buioCRC));
+		SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
+
+		if (structureTemplate == NULL) {
+			player->error("Invalid structure template used to enter placeStructureMode");
+			return GENERALERROR;
+		}
 
 		int lotsRemaining = player->getLotsRemaining();
-		int lotsNeeded = buildingTemplate->getLotSize();
+		int lotsNeeded = structureTemplate->getLotSize();
 
 		if (lotsRemaining < lotsNeeded) {
 			ParameterizedStringId stringId;
 			stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
 			stringId.setDI(lotsNeeded);
 			player->sendSystemMessage(stringId);
-			return false;
+			return GENERALERROR;
 		}
 
-		if (!buildingTemplate->isAllowedZone(player->getZone()->getZoneID())) {
+		if (!structureTemplate->isAllowedZone(player->getZone()->getZoneID())) {
 			player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
-			return false;
+			return GENERALERROR;
 		}
 
-		EnterStructurePlacementModeMessage* espm = new EnterStructurePlacementModeMessage(deed->getObjectID(), templateName);
+		int clientObjectCRC = structureTemplate->getClientObjectCRC();
+
+		String clientTemplateString = structureTemplateName;
+
+		if (clientObjectCRC != structureTemplateCRC)
+			clientTemplateString = templateManager->getTemplateFile(clientObjectCRC);
+
+		EnterStructurePlacementModeMessage* espm = new EnterStructurePlacementModeMessage(deed->getObjectID(), clientTemplateString);
 		player->sendMessage(espm);
 
 		return SUCCESS;

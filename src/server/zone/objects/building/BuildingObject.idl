@@ -219,10 +219,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return true;
 	}
 	
-	public boolean hasPermissionAdmin(CreatureObject creature) {
-		return true;
-	}
-	
 	public void setDeedObjectID(unsigned long deedid) {
 		deedObjectID = deedid;
 	}
@@ -273,11 +269,13 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return baseMaintenanceRate * 50;
 	}
 	
-	
-	
-	//Structure Permissions
-	public boolean isOnAdminList(PlayerCreature player) {
-		return structurePermissionList.isOnAdminList(player.getObjectID());
+	/**
+	 * Returns if the creature is on the admin list or not for this structure.
+	 * @param creature The creature to check for admin permissions on.
+	 * @return boolean True if the creature is on the admin list.
+	 */
+	public boolean isOnAdminList(CreatureObject creature) {
+		return structurePermissionList.isOnAdminList(creature.getObjectID());
 	}
 	
 	public void sendPermissionListTo(PlayerCreature player, final string listName) {

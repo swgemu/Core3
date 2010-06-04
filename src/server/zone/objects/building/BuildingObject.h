@@ -198,8 +198,6 @@ public:
 
 	bool isBuildingObject();
 
-	bool hasPermissionAdmin(CreatureObject* creature);
-
 	void setDeedObjectID(unsigned long long deedid);
 
 	unsigned long long getDeedObjectID();
@@ -218,7 +216,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(PlayerCreature* player);
+	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
@@ -321,8 +319,6 @@ public:
 
 	bool isBuildingObject();
 
-	bool hasPermissionAdmin(CreatureObject* creature);
-
 	void setDeedObjectID(unsigned long long deedid);
 
 	unsigned long long getDeedObjectID();
@@ -341,7 +337,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(PlayerCreature* player);
+	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
@@ -422,8 +418,6 @@ public:
 
 	bool isBuildingObject();
 
-	bool hasPermissionAdmin(CreatureObject* creature);
-
 	void setDeedObjectID(unsigned long long deedid);
 
 	unsigned long long getDeedObjectID();
@@ -442,7 +436,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(PlayerCreature* player);
+	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 

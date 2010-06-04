@@ -1,0 +1,208 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.building;
+
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import engine.util.QuadTree;
+import engine.util.QuadTreeEntry;
+import server.zone.objects.cell.CellObject;
+import system.util.SortedVector;
+import system.util.Vector;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.tangible.sign.SignObject;
+import server.zone.objects.tangible.terminal.structure.StructureTerminal;
+import server.zone.ZoneServer;
+import server.zone.Zone;
+include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.building.StructurePermissionList;
+
+class InstallationObject extends TangibleObject implements QuadTree {
+	@dereferenced
+	protected StructurePermissionList structurePermissionList;
+	
+	protected unsigned long ownerObjectID;
+	
+	protected int lotSize;
+	
+	protected unsigned long deedObjectID;
+	
+	protected int baseMaintenanceRate;
+	
+	protected int basePowerRate;
+	
+	public InstallationObject() {
+		Logger.setLoggingName("InstallationObject");
+		
+		QuadTree.setSize(-1024, -1024, 1024, 1024);
+		
+		super.staticObject = false;
+		
+		super.containerVolumeLimit = 0xFFFFFFFF;
+
+		super.containerType = 2;
+		
+		lotSize = 0;
+		
+		baseMaintenanceRate = 0;
+		
+		basePowerRate = 0;
+		
+		deedObjectID = 0;
+	}
+	
+	/*
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public native void initializeTransientMembers();
+	
+	@local
+	public native void notifyInsert(QuadTreeEntry obj);
+	
+	@local
+	public native void notifyDissapear(QuadTreeEntry obj);
+
+	public native void notifyInsertToZone(SceneObject object);
+	public native void notifyRemove(SceneObject object);
+	
+	@local
+	public native void insert(QuadTreeEntry obj);
+	
+	@local
+	public native void remove(QuadTreeEntry obj);
+	
+	@local
+	public native void update(QuadTreeEntry obj);
+	
+	@local
+	public native void inRange(QuadTreeEntry obj, float range);
+	
+	public native void sendTo(SceneObject player, boolean doClose);
+	public native void sendBaselinesTo(SceneObject player);
+	public native void sendDestroyTo(SceneObject player);*/
+	
+	public void setLotSize(int lotsize) {
+		lotSize = lotsize;
+	}
+	
+	public int getLotSize() {
+		return lotSize;
+	}
+
+	public void setDeedObjectID(unsigned long deedid) {
+		deedObjectID = deedid;
+	}
+	
+	public unsigned long getDeedObjectID() {
+		return deedObjectID;
+	}
+	
+	public void setOwnerObjectID(unsigned long ownerID) {
+		ownerObjectID = ownerID;
+		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	}
+	
+	public unsigned long getOwnerObjectID() {
+		return ownerObjectID;
+	}
+	
+	/**
+	 * Returns the base power rate for the installation.
+	 * This value is the rate before any bonuses from the merchant skills are added.
+	 * @return int The base power rate for the installation.
+	 */
+	public int getBasePowerRate() {
+		return basePowerRate;
+	}
+	
+	/**
+	 * Sets the base power rate for this installation. This is the rate before any bonuses are applied.
+	 * @param powerRate The new power rate to set for this installation.
+	 */
+	public void setBasePowerRate(int powerRate) {
+		basePowerRate = powerRate;
+	}
+	
+	/**
+	 * Sets the base maintenance rate for this building. This is the rate before any bonuses are applied.
+	 * @param maintenanceRate The new maintenance rate to set for this building.
+	 */
+	public void setBaseMaintenanceRate(int maintenanceRate) {
+		baseMaintenanceRate = maintenanceRate;
+	}
+	
+	/**
+	 * Returns the base maintenance rate for the building.
+	 * This value is the rate before any bonuses from the merchant skills are added.
+	 * @return int The base maintenance rate for the building.
+	 */
+	public int getBaseMaintenanceRate() {
+		return baseMaintenanceRate;
+	}
+	
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
+	public int getRedeedCost() {
+		return baseMaintenanceRate * 50;
+	}
+	
+	/**
+	 * Returns if the creature is on the admin list or not for this structure.
+	 * @param creature The creature to check for admin permissions on.
+	 * @return boolean True if the creature is on the admin list.
+	 */
+	public boolean isOnAdminList(CreatureObject creature) {
+		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	}
+	
+	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+		structurePermissionList.sendTo(player, listName);
+	}
+}
