@@ -45,8 +45,11 @@ ObjectTemplates = { }
 
 function ObjectTemplates:addTemplate(obj, file)
 	--crc = crcString(file)
-	
-	addTemplateCRC(file, obj)
+	if (obj == nil) then
+		print("null template object specified for " .. file)
+	else
+		addTemplateCRC(file, obj)
+	end
 	
 	--if self[crc] == nil then
 	--	self[crc] = obj 
