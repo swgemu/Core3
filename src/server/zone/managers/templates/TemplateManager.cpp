@@ -38,7 +38,7 @@
 #include "server/zone/templates/SharedUniverseObjectTemplate.h"
 #include "server/zone/templates/tangible/survey_tool/SurveyToolTemplate.h"
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
-
+#include "server/zone/templates/tangible/DeedTemplate.h"
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -124,6 +124,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<SurveyToolTemplate>(SharedObjectTemplate::SURVEYTOOL);
 	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
 	templateFactory.registerObject<ArmorObjectTemplate>(SharedObjectTemplate::ARMOROBJECT);
+	templateFactory.registerObject<DeedTemplate>(SharedObjectTemplate::DEED);
 }
 
 
@@ -222,6 +223,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("SURVEYTOOL", SharedObjectTemplate::SURVEYTOOL);
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
 	luaTemplatesInstance->setGlobalInt("ARMOROBJECT", SharedObjectTemplate::ARMOROBJECT);
+	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
 }
 
 int TemplateManager::includeFile(lua_State* L) {
