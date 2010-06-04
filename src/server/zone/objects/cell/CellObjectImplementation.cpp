@@ -28,7 +28,7 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	StringBuffer msg;
 	msg << "sending cell number " << cellNumber << " baselines";
-	info(msg.toString());
+	info(msg.toString(), true);
 
 	BaseMessage* cellMsg3 = new CellObjectMessage3(getObjectID(), cellNumber);
 	player->sendMessage(cellMsg3);

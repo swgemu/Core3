@@ -339,11 +339,11 @@ public:
 	}
 
 public:
-	inline virtual bool isSharedBuildingObjectTemplate() {
+	virtual bool isSharedBuildingObjectTemplate() {
 		return false;
 	}
 
-	inline virtual bool isSharedInstallationObjectTemplate() {
+	virtual bool isSharedInstallationObjectTemplate() {
 		return false;
 	}
 };

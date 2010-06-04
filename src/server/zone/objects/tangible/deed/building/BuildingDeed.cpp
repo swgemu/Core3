@@ -62,6 +62,43 @@ int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		return ((BuildingDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
+void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedIntParameter(surplusMaint);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+}
+
+unsigned int BuildingDeed::getSurplusMaintenance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((BuildingDeedImplementation*) _impl)->getSurplusMaintenance();
+}
+
+bool BuildingDeed::isBuildingDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingDeedImplementation*) _impl)->isBuildingDeed();
+}
+
 /*
  *	BuildingDeedImplementation
  */
@@ -150,6 +187,11 @@ unsigned int BuildingDeedImplementation::getSurplusMaintenance() {
 	return surplusMaintenance;
 }
 
+bool BuildingDeedImplementation::isBuildingDeed() {
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(85):  		return true;
+	return true;
+}
+
 /*
  *	BuildingDeedAdapter
  */
@@ -167,6 +209,15 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case 7:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
+	case 8:
+		setSurplusMaintenance(inv->getUnsignedIntParameter());
+		break;
+	case 9:
+		resp->insertInt(getSurplusMaintenance());
+		break;
+	case 10:
+		resp->insertBoolean(isBuildingDeed());
+		break;
 	default:
 		return NULL;
 	}
@@ -180,6 +231,18 @@ void BuildingDeedAdapter::initializeTransientMembers() {
 
 int BuildingDeedAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((BuildingDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void BuildingDeedAdapter::setSurplusMaintenance(unsigned int surplusMaint) {
+	((BuildingDeedImplementation*) impl)->setSurplusMaintenance(surplusMaint);
+}
+
+unsigned int BuildingDeedAdapter::getSurplusMaintenance() {
+	return ((BuildingDeedImplementation*) impl)->getSurplusMaintenance();
+}
+
+bool BuildingDeedAdapter::isBuildingDeed() {
+	return ((BuildingDeedImplementation*) impl)->isBuildingDeed();
 }
 
 /*

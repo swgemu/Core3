@@ -203,7 +203,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	group->startChatRoom();
 	group->setZone(leader->getZone());
 
-	group->sendTo(leader);
+	group->sendTo(leader, true);
 
 	leader->updateGroup(group);
 	leader->sendSystemMessage("group", "formed_self");

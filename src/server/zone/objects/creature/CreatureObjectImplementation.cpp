@@ -253,7 +253,7 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 					|| childArrangement == "datapad" || childArrangement == "mission_bag"))
 				continue;
 			else
-				object->sendTo(player);
+				object->sendTo(player, true);
 		}
 	}
 }

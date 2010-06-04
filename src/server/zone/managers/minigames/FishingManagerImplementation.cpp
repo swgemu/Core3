@@ -402,7 +402,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 					// Set Object Count to 2
 
 					if (baitObject != NULL) {
-						baitObject->sendTo(player);
+						baitObject->sendTo(player, true);
 						lootFishObject->addObject(baitObject, -1, true);
 					}
 
@@ -429,7 +429,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 		lootObject=zoneServer->createObject(loot.hashCode(), 0);
 
 		if (lootObject != NULL) {
-			lootObject->sendTo(player);
+			lootObject->sendTo(player, true);
 			marker->addObject(lootObject,-1,true);
 
 			// TEST MISC OBJECT
@@ -439,7 +439,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 			lootObject=zoneServer->createObject(loot.hashCode(), 0);
 
 			if (lootObject != NULL) {
-				lootObject->sendTo(player);
+				lootObject->sendTo(player, true);
 				marker->addObject(lootObject,-1,true);
 
 				String name;
@@ -461,12 +461,12 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 							// Set Object Count to 2
 
 							if (baitObject != NULL) {
-								baitObject->sendTo(player);
+								baitObject->sendTo(player, true);
 								lootFishObject->addObject(baitObject, -1, true);
 							}
 						}
 
-						lootFishObject->sendTo(player);
+						lootFishObject->sendTo(player, true);
 
 						marker->addObject(lootFishObject, -1, true);
 					}
@@ -484,7 +484,7 @@ void FishingManagerImplementation::sendReward(PlayerCreature* player, SceneObjec
 	if ((player != NULL) && (marker != NULL) && (loot != NULL)) {
 		ParameterizedStringId body("fishing","prose_notify_catch");
 		String itemName;
-		loot->sendTo(player);
+		loot->sendTo(player, true);
 
 		if (marker->addObject(loot, -1, true)) {
 			marker->openContainerTo(player);
@@ -771,7 +771,7 @@ void FishingManagerImplementation::freeBait(PlayerCreature* player) {
 	if (player != NULL) {
 		String bait = "object/tangible/fishing/bait/shared_bait_worm.iff";
 		ManagedReference<SceneObject*> baitObject = zoneServer->createObject(bait.hashCode(), 0);
-		baitObject->sendTo(player);
+		baitObject->sendTo(player, true);
 
 		ManagedReference<FishingPoleObject*> pole = getPole(player);
 

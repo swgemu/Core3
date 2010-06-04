@@ -78,6 +78,18 @@ String Deed::getGeneratedObjectTemplate() {
 		return ((DeedImplementation*) _impl)->getGeneratedObjectTemplate();
 }
 
+bool Deed::isDeedObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedImplementation*) _impl)->isDeedObject();
+}
+
 /*
  *	DeedImplementation
  */
@@ -164,6 +176,11 @@ String DeedImplementation::getGeneratedObjectTemplate() {
 	return generatedObjectTemplate;
 }
 
+bool DeedImplementation::isDeedObject() {
+	// server/zone/objects/tangible/deed/Deed.idl(91):  		return true;
+	return true;
+}
+
 /*
  *	DeedAdapter
  */
@@ -184,6 +201,9 @@ Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 8:
 		resp->insertAscii(getGeneratedObjectTemplate());
 		break;
+	case 9:
+		resp->insertBoolean(isDeedObject());
+		break;
 	default:
 		return NULL;
 	}
@@ -201,6 +221,10 @@ void DeedAdapter::setGeneratedObjectTemplate(const String& templ) {
 
 String DeedAdapter::getGeneratedObjectTemplate() {
 	return ((DeedImplementation*) impl)->getGeneratedObjectTemplate();
+}
+
+bool DeedAdapter::isDeedObject() {
+	return ((DeedImplementation*) impl)->isDeedObject();
 }
 
 /*

@@ -67,7 +67,7 @@ public:
 			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-			return false;
+			return GENERALERROR;
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
@@ -75,39 +75,39 @@ public:
 		tokenizer.setDelimeter(" ");
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		uint64 deedID = tokenizer.getLongToken();
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		float x = tokenizer.getFloatToken();
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		float y = tokenizer.getFloatToken();
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		int angle = tokenizer.getIntToken() * 90; //In degrees
 
 		Zone* zone = player->getZone();
 
 		if (zone == NULL)
-			return false;
+			return GENERALERROR;
 
 		PlanetManager* planetManager = zone->getPlanetManager();
 
 		if (planetManager == NULL)
-			return false;
+			return GENERALERROR;
 
 		StructureManager* structureManager = planetManager->getStructureManager();
 
 		if (structureManager == NULL)
-			return false;
+			return GENERALERROR;
 
 		Locker _locker(structureManager);
 

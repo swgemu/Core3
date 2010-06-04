@@ -24,6 +24,10 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 	}
+
+	virtual bool isSharedInstallationObjectTemplate() {
+		return true;
+	}
 };
 
 

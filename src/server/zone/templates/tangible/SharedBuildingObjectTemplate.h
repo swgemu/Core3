@@ -24,6 +24,10 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+
+	virtual bool isSharedBuildingObjectTemplate() {
+		return true;
+	}
 };
 
 #endif /* SHAREDBUILDINGOBJECTTEMPLATE_H_ */

@@ -28,12 +28,24 @@ StructureTerminal::~StructureTerminal() {
 }
 
 
-int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+void StructureTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureTerminalImplementation*) _impl)->initializeTransientMembers();
+}
+
+int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -55,7 +67,7 @@ void StructureTerminal::setBuildingObject(BuildingObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -68,7 +80,7 @@ BuildingObject* StructureTerminal::getBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
 	} else
@@ -151,13 +163,20 @@ StructureTerminalImplementation::StructureTerminalImplementation() {
 	Logger::setLoggingName("StructureTerminal");
 }
 
+void StructureTerminalImplementation::initializeTransientMembers() {
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(72):  		super.initializeTransientMembers();
+	TerminalImplementation::initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(74):  		Logger.setLoggingName("StructureTerminal");
+	Logger::setLoggingName("StructureTerminal");
+}
+
 void StructureTerminalImplementation::setBuildingObject(BuildingObject* obj) {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(91):  		buildingObject = obj;
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(95):  		buildingObject = obj;
 	buildingObject = obj;
 }
 
 BuildingObject* StructureTerminalImplementation::getBuildingObject() {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(95):  		return buildingObject;
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(99):  		return buildingObject;
 	return buildingObject;
 }
 
@@ -173,12 +192,15 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case 6:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		initializeTransientMembers();
 		break;
 	case 7:
-		setBuildingObject((BuildingObject*) inv->getObjectParameter());
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 8:
+		setBuildingObject((BuildingObject*) inv->getObjectParameter());
+		break;
+	case 9:
 		resp->insertLong(getBuildingObject()->_getObjectID());
 		break;
 	default:
@@ -186,6 +208,10 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	}
 
 	return resp;
+}
+
+void StructureTerminalAdapter::initializeTransientMembers() {
+	((StructureTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
 int StructureTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
