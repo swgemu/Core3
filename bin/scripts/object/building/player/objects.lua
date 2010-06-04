@@ -301,9 +301,6 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 17,
-	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -360,9 +357,6 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 17,
-	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -419,9 +413,6 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 17,
-	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {1,5,6},
 
 	useStructureFootprintOutline = 0,
 
@@ -478,9 +469,6 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 17,
-	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -537,9 +525,6 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 21,
-	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -596,9 +581,6 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 13,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -655,13 +637,6 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 10,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {0,7},
-	
-	
-	signLocations = {},
-	terminalLocation = {},
 
 	useStructureFootprintOutline = 0,
 
@@ -718,9 +693,6 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -777,9 +749,6 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -836,9 +805,6 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -895,9 +861,6 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -954,9 +917,6 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -1013,9 +973,6 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 2,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,7},
 
 	useStructureFootprintOutline = 0,
 
@@ -1072,9 +1029,6 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 13,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1131,9 +1085,6 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 10,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1190,9 +1141,6 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1249,9 +1197,6 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1308,9 +1253,6 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1367,9 +1309,6 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1426,9 +1365,6 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1485,9 +1421,6 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 2,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1544,9 +1477,6 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 14,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {1,5,6},
 
 	useStructureFootprintOutline = 0,
 
@@ -1603,9 +1533,6 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 7,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {1,5,6},
 
 	useStructureFootprintOutline = 0,
 
@@ -1662,9 +1589,6 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {1,5,6},
 
 	useStructureFootprintOutline = 0,
 
@@ -1721,9 +1645,6 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 4,
-	lotSize = 1,
-	baseMaintenanceRate = 16,
-	allowedZones = {1,5,6},
 
 	useStructureFootprintOutline = 0,
 
@@ -1780,9 +1701,6 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 10,
-	lotSize = 5,
-	baseMaintenanceRate = 50,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1839,9 +1757,6 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 8,
-	lotSize = 2,
-	baseMaintenanceRate = 34,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -1898,9 +1813,6 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
@@ -2016,9 +1928,6 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 1,
-	lotSize = 1,
-	baseMaintenanceRate = 10,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 

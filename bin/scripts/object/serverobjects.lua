@@ -43,6 +43,11 @@
 includeFile("cell/cell.lua")
 includeFile("group/group_object.lua")
 includeFile("player/player.lua")
+includeFile("building/player/player_house_corellia.lua");
+includeFile("building/player/player_house_generic.lua");
+includeFile("building/player/player_house_naboo.lua");
+includeFile("building/player/player_house_tatooine.lua");
+includeFile("building/player/player_merchant_tent.lua");
 includeFile("creature/player/bothan_female.lua")
 includeFile("creature/player/bothan_male.lua")
 includeFile("creature/player/human_female.lua")
