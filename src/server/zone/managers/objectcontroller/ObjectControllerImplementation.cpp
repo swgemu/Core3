@@ -84,6 +84,8 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 				objectToTransfer->insertToZone(zne);
 				System::out << "Inserted to zone" << endl;
 			}
+
+			destinationObject->getParent()->updateToDatabase();
 		}
 	}
 
