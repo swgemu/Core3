@@ -78,6 +78,8 @@ class StructureTerminal : public Terminal {
 public:
 	StructureTerminal();
 
+	void initializeTransientMembers();
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -118,6 +120,8 @@ public:
 	StructureTerminalImplementation();
 
 	StructureTerminalImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -165,6 +169,8 @@ public:
 	StructureTerminalAdapter(StructureTerminalImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

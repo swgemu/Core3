@@ -68,7 +68,11 @@ class StructureTerminal extends Terminal {
 	//@local
 	//public native void loadTemplateData(LuaObject templateData);
 	
-	//public native void initializeTransientMembers();
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("StructureTerminal");
+	}
 	
 	/**
 	 * Handles the radial selection sent by the client

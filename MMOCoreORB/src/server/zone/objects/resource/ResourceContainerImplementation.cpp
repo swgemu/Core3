@@ -98,7 +98,7 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 		ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
-		harvestedResource->sendTo(player);
+		harvestedResource->sendTo(player, true);
 		inventory->addObject(harvestedResource, -1, true);
 		harvestedResource->updateToDatabase();
 	}
@@ -121,7 +121,7 @@ void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int 
 	if(newResource == NULL)
 		return;
 
-	newResource->sendTo(playerCreature);
+	newResource->sendTo(playerCreature, true);
 	inventory->addObject(newResource, -1, true);
 	newResource->updateToDatabase();
 

@@ -48,6 +48,8 @@ public:
 
 	void setCellNumber(int number);
 
+	bool isCellObject();
+
 protected:
 	CellObject(DummyConstructorParameter* param);
 
@@ -88,6 +90,8 @@ public:
 	int getCellNumber();
 
 	void setCellNumber(int number);
+
+	bool isCellObject();
 
 	CellObject* _this;
 
@@ -135,6 +139,8 @@ public:
 	int getCellNumber();
 
 	void setCellNumber(int number);
+
+	bool isCellObject();
 
 };
 

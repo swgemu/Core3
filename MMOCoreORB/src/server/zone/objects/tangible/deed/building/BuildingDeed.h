@@ -84,6 +84,12 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void setSurplusMaintenance(unsigned int surplusMaint);
+
+	unsigned int getSurplusMaintenance();
+
+	bool isBuildingDeed();
+
 protected:
 	BuildingDeed(DummyConstructorParameter* param);
 
@@ -123,12 +129,12 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-private:
 	void setSurplusMaintenance(unsigned int surplusMaint);
 
 	unsigned int getSurplusMaintenance();
 
-public:
+	bool isBuildingDeed();
+
 	BuildingDeed* _this;
 
 	operator const BuildingDeed*();
@@ -171,6 +177,12 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void setSurplusMaintenance(unsigned int surplusMaint);
+
+	unsigned int getSurplusMaintenance();
+
+	bool isBuildingDeed();
 
 };
 

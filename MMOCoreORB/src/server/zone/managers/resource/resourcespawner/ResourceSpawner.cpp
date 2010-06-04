@@ -561,7 +561,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 
 	// Create New resource container if one isn't found in inventory
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
-	harvestedResource->sendTo(playerCreature);
+	harvestedResource->sendTo(playerCreature, true);
 	inventory->addObject(harvestedResource, -1, true);
 	harvestedResource->updateToDatabase();
 }

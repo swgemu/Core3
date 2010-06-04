@@ -168,7 +168,7 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
-	void sendTo(SceneObject* player, bool doClose = true);
+	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -291,7 +291,7 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
-	void sendTo(SceneObject* player, bool doClose = true);
+	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 

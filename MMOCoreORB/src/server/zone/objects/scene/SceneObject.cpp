@@ -1914,7 +1914,7 @@ int SceneObjectImplementation::compareTo(SceneObject* obj) {
 
 	else 	// server/zone/objects/scene/SceneObject.idl(797):  
 	if (getObjectID() > obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(798):  			return -1;
-	return 1;
+	return -1;
 
 	else 	// server/zone/objects/scene/SceneObject.idl(800):  			return 0;
 	return 0;
@@ -2219,8 +2219,8 @@ bool SceneObjectImplementation::isArmorObject() {
 }
 
 bool SceneObjectImplementation::isCellObject() {
-	// server/zone/objects/scene/SceneObject.idl(1148):  		return gameObjectType == CELLOBJECT;
-	return gameObjectType == CELLOBJECT;
+	// server/zone/objects/scene/SceneObject.idl(1148):  		return false;
+	return false;
 }
 
 bool SceneObjectImplementation::isTangibleObject() {
@@ -2244,13 +2244,13 @@ bool SceneObjectImplementation::isFishingPoleObject() {
 }
 
 bool SceneObjectImplementation::isDeedObject() {
-	// server/zone/objects/scene/SceneObject.idl(1168):  		return gameObjectType == DEED;
-	return gameObjectType == DEED;
+	// server/zone/objects/scene/SceneObject.idl(1168):  		return false;
+	return false;
 }
 
 bool SceneObjectImplementation::isBuildingDeed() {
-	// server/zone/objects/scene/SceneObject.idl(1172):  		return gameObjectType == BUILDINGDEED;
-	return gameObjectType == BUILDINGDEED;
+	// server/zone/objects/scene/SceneObject.idl(1172):  		return false;
+	return false;
 }
 
 bool SceneObjectImplementation::isBazaarTerminal() {

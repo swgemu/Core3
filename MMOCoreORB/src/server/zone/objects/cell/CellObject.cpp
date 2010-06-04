@@ -80,6 +80,18 @@ void CellObject::setCellNumber(int number) {
 		((CellObjectImplementation*) _impl)->setCellNumber(number);
 }
 
+bool CellObject::isCellObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->isCellObject();
+}
+
 /*
  *	CellObjectImplementation
  */
@@ -169,6 +181,11 @@ void CellObjectImplementation::setCellNumber(int number) {
 	cellNumber = number;
 }
 
+bool CellObjectImplementation::isCellObject() {
+	// server/zone/objects/cell/CellObject.idl(81):  		return true;
+	return true;
+}
+
 /*
  *	CellObjectAdapter
  */
@@ -195,6 +212,9 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 10:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
+	case 11:
+		resp->insertBoolean(isCellObject());
+		break;
 	default:
 		return NULL;
 	}
@@ -220,6 +240,10 @@ int CellObjectAdapter::getCellNumber() {
 
 void CellObjectAdapter::setCellNumber(int number) {
 	((CellObjectImplementation*) impl)->setCellNumber(number);
+}
+
+bool CellObjectAdapter::isCellObject() {
+	return ((CellObjectImplementation*) impl)->isCellObject();
 }
 
 /*

@@ -47,7 +47,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				SceneObject* childStub = cell->getContainerObject(j);
-				childStub->sendTo(player);
+				childStub->sendTo(player, true);
 			}
 		}
 	}
@@ -143,5 +143,6 @@ void BuildingObjectImplementation::addCell(CellObject* cell) {
 
 	cell->setCellNumber(cells.size());
 
-	addObject(cell, -1);
+	if (!addObject(cell, -1))
+		error("could not add cell");
 }

@@ -598,7 +598,7 @@ public:
 
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
-	void sendTo(SceneObject* player, bool doClose = true);
+	void sendTo(SceneObject* player, bool doClose);
 
 	void sendDestroyTo(SceneObject* player);
 
@@ -1339,7 +1339,7 @@ public:
 
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
-	virtual void sendTo(SceneObject* player, bool doClose = true);
+	virtual void sendTo(SceneObject* player, bool doClose);
 
 	virtual void sendDestroyTo(SceneObject* player);
 
@@ -1515,7 +1515,7 @@ public:
 
 	virtual bool isArmorObject();
 
-	bool isCellObject();
+	virtual bool isCellObject();
 
 	virtual bool isTangibleObject();
 
@@ -1525,9 +1525,9 @@ public:
 
 	bool isFishingPoleObject();
 
-	bool isDeedObject();
+	virtual bool isDeedObject();
 
-	bool isBuildingDeed();
+	virtual bool isBuildingDeed();
 
 	bool isBazaarTerminal();
 

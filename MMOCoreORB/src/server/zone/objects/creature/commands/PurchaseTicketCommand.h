@@ -170,7 +170,7 @@ public:
 
 		SceneObject* inventory = player->getSlottedObject("inventory");
 		inventory->addObject(ticket, -1);
-		ticket->sendTo(player);
+		ticket->sendTo(player, true);
 
 		ticket->updateToDatabase();
 
@@ -182,7 +182,7 @@ public:
 			ticketObj->setArrivalPoint(departurePoint);
 
 			inventory->addObject(ticketObj, -1);
-			ticketObj->sendTo(player);
+			ticketObj->sendTo(player, true);
 
 			ticketObj->updateToDatabase();
 		}

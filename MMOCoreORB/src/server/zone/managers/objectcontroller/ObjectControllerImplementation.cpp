@@ -62,7 +62,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
 
 	//What about nested containers inside of the inventory...
-	if (parent->getParent() != NULL && parent->getParent()->isPlayerCreature())
+	if (parent->getParent() != NULL && parent->getParent()->isPlayerCreature() && destinationObject->isCellObject())
 		objectToTransfer->sendDestroyTo(parent->getParent());
 
 	if (!parent->removeObject(objectToTransfer)) {

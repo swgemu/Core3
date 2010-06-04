@@ -73,11 +73,15 @@ class BuildingDeed extends Deed {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	void setSurplusMaintenance(unsigned int surplusMaint) {
+	public void setSurplusMaintenance(unsigned int surplusMaint) {
 		surplusMaintenance = surplusMaint;
 	}
 	
-	unsigned int getSurplusMaintenance() {
+	public unsigned int getSurplusMaintenance() {
 		return surplusMaintenance;
+	}
+	
+	public boolean isBuildingDeed() {
+		return true;
 	}
 }

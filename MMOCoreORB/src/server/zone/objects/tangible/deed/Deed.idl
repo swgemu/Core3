@@ -86,4 +86,8 @@ class Deed extends TangibleObject {
 	public string getGeneratedObjectTemplate() {
 		return generatedObjectTemplate;
 	}
+	
+	public boolean isDeedObject() {
+		return true;
+	}
 }
