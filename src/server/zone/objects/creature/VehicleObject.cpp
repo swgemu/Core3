@@ -60,12 +60,25 @@ bool VehicleObject::checkInRangeGarage() {
 		return ((VehicleObjectImplementation*) _impl)->checkInRangeGarage();
 }
 
-int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+void VehicleObject::insertToZone(Zone* zone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		((VehicleObjectImplementation*) _impl)->insertToZone(zone);
+}
+
+int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -76,12 +89,28 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int d
 		return ((VehicleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
 }
 
+int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(healer);
+		method.addSignedIntParameter(damageType);
+		method.addSignedIntParameter(damageToHeal);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((VehicleObjectImplementation*) _impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
+}
+
 void VehicleObject::addDefender(SceneObject* defender) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -94,7 +123,7 @@ void VehicleObject::removeDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -107,7 +136,7 @@ void VehicleObject::setDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -120,7 +149,7 @@ bool VehicleObject::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -133,7 +162,7 @@ int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -147,7 +176,7 @@ int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -161,7 +190,7 @@ bool VehicleObject::isVehicleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -269,12 +298,12 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 }
 
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/VehicleObject.idl(128):  		return super.linkedCreature.isAttackableBy(object);
+	// server/zone/objects/creature/VehicleObject.idl(143):  		return super.linkedCreature.isAttackableBy(object);
 	return CreatureObjectImplementation::linkedCreature->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {
-	// server/zone/objects/creature/VehicleObject.idl(150):  		return true;
+	// server/zone/objects/creature/VehicleObject.idl(165):  		return true;
 	return true;
 }
 
@@ -293,27 +322,33 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(checkInRangeGarage());
 		break;
 	case 7:
-		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 8:
-		addDefender((SceneObject*) inv->getObjectParameter());
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 9:
-		removeDefender((SceneObject*) inv->getObjectParameter());
+		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 10:
-		setDefender((SceneObject*) inv->getObjectParameter());
+		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 14:
+		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 15:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 16:
 		resp->insertBoolean(isVehicleObject());
 		break;
 	default:
@@ -327,8 +362,16 @@ bool VehicleObjectAdapter::checkInRangeGarage() {
 	return ((VehicleObjectImplementation*) impl)->checkInRangeGarage();
 }
 
+void VehicleObjectAdapter::insertToZone(Zone* zone) {
+	((VehicleObjectImplementation*) impl)->insertToZone(zone);
+}
+
 int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	return ((VehicleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+}
+
+int VehicleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+	return ((VehicleObjectImplementation*) impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void VehicleObjectAdapter::addDefender(SceneObject* defender) {

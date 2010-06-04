@@ -140,7 +140,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	public native void notifyDissapear(QuadTreeEntry obj);
 
 	public native void notifyInsertToZone(SceneObject object);
-	public native void notifyRemove(SceneObject object);
 	
 	@local
 	public native void insert(QuadTreeEntry obj);

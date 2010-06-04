@@ -149,7 +149,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	int canBeDestroyed(PlayerCreature* player);
 
