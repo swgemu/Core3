@@ -22,6 +22,7 @@
 void PlanetManagerImplementation::initialize() {
 	loadRegions();
 	loadBadgeAreas();
+	loadNoBuildAreas();
 
 	terrainManager = new TerrainManager();
 
@@ -35,6 +36,45 @@ void PlanetManagerImplementation::initialize() {
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
+}
+
+
+void PlanetManagerImplementation::loadNoBuildAreas() {
+	StringBuffer query;
+	query << "SELECT * FROM no_build_zones WHERE planet_id = " << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		float x = result->getFloat(5);
+		float y = result->getFloat(6);
+		float radius = result->getFloat(7);
+
+		String zoneType = result->getString(4);
+		String file = result->getString(3);
+		String name = result->getString(2);
+
+		if (zoneType == "poi_badge") {
+			name = file;
+			file = "clientpoi_n";
+		} if (zoneType == "poi") {
+			file = "clientpoi_n";
+		}
+
+		String fullName = "@" + file + ":" + name;
+
+		Region* region = new Region(fullName, x, y, radius /* + 300 */);
+		region->deploy();
+		noBuildAreaMap.add(region);
+
+		//addNoBuildArea(x, y, radius + 300); // Adding 500 as a buffer for spawns since this patch doesn't need buildings
+	}
+
+	delete result;
+}
+
+bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
+	return noBuildAreaMap.isNoBuildArea(x, y, fullAreaName);
 }
 
 void PlanetManagerImplementation::loadRegions() {

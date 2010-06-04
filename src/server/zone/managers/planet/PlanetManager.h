@@ -129,6 +129,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/planet/ShuttleMap.h"
 
+#include "server/zone/managers/planet/NoBuildAreaMap.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -150,11 +152,15 @@ public:
 
 	void loadRegions();
 
+	void loadNoBuildAreas();
+
 	void loadShuttles();
 
 	void loadBadgeAreas();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
+
+	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
@@ -208,6 +214,8 @@ protected:
 
 	ShuttleMap shuttleMap;
 
+	NoBuildAreaMap noBuildAreaMap;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
 
@@ -221,11 +229,15 @@ public:
 
 	void loadRegions();
 
+	void loadNoBuildAreas();
+
 	void loadShuttles();
 
 	void loadBadgeAreas();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
+
+	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
@@ -289,6 +301,8 @@ public:
 	void initialize();
 
 	void loadRegions();
+
+	void loadNoBuildAreas();
 
 	void loadShuttles();
 
