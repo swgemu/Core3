@@ -63,6 +63,25 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		if (obj == NULL)
+			return false;
+
+		float x = obj->getPositionX();
+		float y = obj->getPositionY();
+		float z = obj->getPositionZ() + 1;
+
+		//TODO: Check to make sure the item is not being moved outside the range of the cell.
+
+		obj->setPosition(x, z, y);
+
+		if (obj->getParent() != NULL)
+			obj->updateZoneWithParent(obj->getParent(), true);
+		else
+			obj->updateZone(true);
+
 		return SUCCESS;
 	}
 

@@ -1153,12 +1153,25 @@ int PlayerCreature::getLotsRemaining() {
 		return ((PlayerCreatureImplementation*) _impl)->getLotsRemaining();
 }
 
-int PlayerCreature::getFactionStatus() {
+void PlayerCreature::setLotsRemaining(int lots) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 91);
+		method.addSignedIntParameter(lots);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->setLotsRemaining(lots);
+}
+
+int PlayerCreature::getFactionStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 92);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1170,7 +1183,7 @@ UnicodeString PlayerCreature::getBiography() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, 93);
 
 		method.executeWithUnicodeReturn(_return_getBiography);
 		return _return_getBiography;
@@ -1183,7 +1196,7 @@ unsigned int PlayerCreature::getClientLastMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, 94);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1195,7 +1208,7 @@ void PlayerCreature::setSurveyTool(SurveyTool* tool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, 95);
 		method.addObjectParameter(tool);
 
 		method.executeWithVoidReturn();
@@ -1208,7 +1221,7 @@ SurveyTool* PlayerCreature::getSurveyTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, 96);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -1220,7 +1233,7 @@ void PlayerCreature::setSurveyWaypoint(WaypointObject* waypoint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, 97);
 		method.addObjectParameter(waypoint);
 
 		method.executeWithVoidReturn();
@@ -1233,7 +1246,7 @@ void PlayerCreature::setActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, 98);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -1246,7 +1259,7 @@ WaypointObject* PlayerCreature::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, 99);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -1258,7 +1271,7 @@ CreatureObject* PlayerCreature::getConversatingCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, 100);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -1270,7 +1283,7 @@ int PlayerCreature::getCenteredBonus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, 101);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1282,7 +1295,7 @@ void PlayerCreature::setCenteredBonus(int bonus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, 102);
 		method.addSignedIntParameter(bonus);
 
 		method.executeWithVoidReturn();
@@ -1295,7 +1308,7 @@ ActiveArea* PlayerCreature::getActiveArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, 103);
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
@@ -1307,7 +1320,7 @@ bool PlayerCreature::hasBadge(unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, 104);
 		method.addUnsignedIntParameter(badge);
 
 		return method.executeWithBooleanReturn();
@@ -1418,7 +1431,7 @@ PlayerCreatureImplementation::PlayerCreatureImplementation() {
 	// server/zone/objects/player/PlayerCreature.idl(164):  		accountID = 0;
 	accountID = 0;
 	// server/zone/objects/player/PlayerCreature.idl(166):  		savedZoneID = -1;
-	savedZoneID = -1;
+	savedZoneID = 1;
 	// server/zone/objects/player/PlayerCreature.idl(167):  		savedParentID = 0;
 	savedParentID = 0;
 	// server/zone/objects/player/PlayerCreature.idl(169):  		skillPoints = 0;
@@ -1427,8 +1440,8 @@ PlayerCreatureImplementation::PlayerCreatureImplementation() {
 	suiBoxNextID = 0;
 	// server/zone/objects/player/PlayerCreature.idl(173):  		factionStatus = 0;
 	factionStatus = 0;
-	// server/zone/objects/player/PlayerCreature.idl(174):  		lotsRemaining = 0;
-	lotsRemaining = 0;
+	// server/zone/objects/player/PlayerCreature.idl(174):  		lotsRemaining = 10;
+	lotsRemaining = 10;
 	// server/zone/objects/player/PlayerCreature.idl(176):  		centeredBonus = 0;
 	centeredBonus = 0;
 	// server/zone/objects/player/PlayerCreature.idl(178):  		clientLastMovementStamp = 0;
@@ -1753,68 +1766,73 @@ int PlayerCreatureImplementation::getLotsRemaining() {
 	return lotsRemaining;
 }
 
+void PlayerCreatureImplementation::setLotsRemaining(int lots) {
+	// server/zone/objects/player/PlayerCreature.idl(566):  		lotsRemaining = lots;
+	lotsRemaining = lots;
+}
+
 int PlayerCreatureImplementation::getFactionStatus() {
-	// server/zone/objects/player/PlayerCreature.idl(566):  		return factionStatus;
+	// server/zone/objects/player/PlayerCreature.idl(570):  		return factionStatus;
 	return factionStatus;
 }
 
 UnicodeString PlayerCreatureImplementation::getBiography() {
-	// server/zone/objects/player/PlayerCreature.idl(570):  		return biography;
+	// server/zone/objects/player/PlayerCreature.idl(574):  		return biography;
 	return biography;
 }
 
 unsigned int PlayerCreatureImplementation::getClientLastMovementStamp() {
-	// server/zone/objects/player/PlayerCreature.idl(574):  		return clientLastMovementStamp;
+	// server/zone/objects/player/PlayerCreature.idl(578):  		return clientLastMovementStamp;
 	return clientLastMovementStamp;
 }
 
 void PlayerCreatureImplementation::setSurveyTool(SurveyTool* tool) {
-	// server/zone/objects/player/PlayerCreature.idl(582):  		surveyTool = tool;
+	// server/zone/objects/player/PlayerCreature.idl(586):  		surveyTool = tool;
 	surveyTool = tool;
 }
 
 SurveyTool* PlayerCreatureImplementation::getSurveyTool() {
-	// server/zone/objects/player/PlayerCreature.idl(589):  		return surveyTool;
+	// server/zone/objects/player/PlayerCreature.idl(593):  		return surveyTool;
 	return surveyTool;
 }
 
 void PlayerCreatureImplementation::setSurveyWaypoint(WaypointObject* waypoint) {
-	// server/zone/objects/player/PlayerCreature.idl(597):  		surveyWaypoint = waypoint;
+	// server/zone/objects/player/PlayerCreature.idl(601):  		surveyWaypoint = waypoint;
 	surveyWaypoint = waypoint;
 }
 
 void PlayerCreatureImplementation::setActiveArea(ActiveArea* area) {
-	// server/zone/objects/player/PlayerCreature.idl(601):  		activeArea = area;
+	// server/zone/objects/player/PlayerCreature.idl(605):  		activeArea = area;
 	activeArea = area;
 }
 
 WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
-	// server/zone/objects/player/PlayerCreature.idl(608):  		return surveyWaypoint;
+	// server/zone/objects/player/PlayerCreature.idl(612):  		return surveyWaypoint;
 	return surveyWaypoint;
 }
 
 CreatureObject* PlayerCreatureImplementation::getConversatingCreature() {
-	// server/zone/objects/player/PlayerCreature.idl(612):  		return conversatingCreature;
+	// server/zone/objects/player/PlayerCreature.idl(616):  		return conversatingCreature;
 	return conversatingCreature;
 }
 
 int PlayerCreatureImplementation::getCenteredBonus() {
-	// server/zone/objects/player/PlayerCreature.idl(616):  		return centeredBonus;
+	// server/zone/objects/player/PlayerCreature.idl(620):  		return centeredBonus;
 	return centeredBonus;
 }
 
 void PlayerCreatureImplementation::setCenteredBonus(int bonus) {
-	// server/zone/objects/player/PlayerCreature.idl(620):  		centeredBonus = bonus;
+	// server/zone/objects/player/PlayerCreature.idl(624):  		centeredBonus = bonus;
 	centeredBonus = bonus;
 }
 
 ActiveArea* PlayerCreatureImplementation::getActiveArea() {
-	// server/zone/objects/player/PlayerCreature.idl(624):  		return activeArea;
+	// server/zone/objects/player/PlayerCreature.idl(628):  		return activeArea;
 	return activeArea;
 }
 
 bool PlayerCreatureImplementation::hasBadge(unsigned int badge) {
-	// server/zone/objects/player/PlayerCreature.idl(628):  		return badges.hasBadge(badge);
+	// server/zone/objects/player/PlayerCreature.idl(632):  		return badges.hasBadge(badge);
 	return (&badges)->hasBadge(badge);
 }
 
@@ -2085,42 +2103,45 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getLotsRemaining());
 		break;
 	case 91:
-		resp->insertSignedInt(getFactionStatus());
+		setLotsRemaining(inv->getSignedIntParameter());
 		break;
 	case 92:
-		resp->insertUnicode(getBiography());
+		resp->insertSignedInt(getFactionStatus());
 		break;
 	case 93:
-		resp->insertInt(getClientLastMovementStamp());
+		resp->insertUnicode(getBiography());
 		break;
 	case 94:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertInt(getClientLastMovementStamp());
 		break;
 	case 95:
-		resp->insertLong(getSurveyTool()->_getObjectID());
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 96:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		resp->insertLong(getSurveyTool()->_getObjectID());
 		break;
 	case 97:
-		setActiveArea((ActiveArea*) inv->getObjectParameter());
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 98:
-		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		setActiveArea((ActiveArea*) inv->getObjectParameter());
 		break;
 	case 99:
-		resp->insertLong(getConversatingCreature()->_getObjectID());
+		resp->insertLong(getSurveyWaypoint()->_getObjectID());
 		break;
 	case 100:
-		resp->insertSignedInt(getCenteredBonus());
+		resp->insertLong(getConversatingCreature()->_getObjectID());
 		break;
 	case 101:
-		setCenteredBonus(inv->getSignedIntParameter());
+		resp->insertSignedInt(getCenteredBonus());
 		break;
 	case 102:
-		resp->insertLong(getActiveArea()->_getObjectID());
+		setCenteredBonus(inv->getSignedIntParameter());
 		break;
 	case 103:
+		resp->insertLong(getActiveArea()->_getObjectID());
+		break;
+	case 104:
 		resp->insertBoolean(hasBadge(inv->getUnsignedIntParameter()));
 		break;
 	default:
@@ -2468,6 +2489,10 @@ void PlayerCreatureAdapter::addSuiBox(SuiBox* sui) {
 
 int PlayerCreatureAdapter::getLotsRemaining() {
 	return ((PlayerCreatureImplementation*) impl)->getLotsRemaining();
+}
+
+void PlayerCreatureAdapter::setLotsRemaining(int lots) {
+	((PlayerCreatureImplementation*) impl)->setLotsRemaining(lots);
 }
 
 int PlayerCreatureAdapter::getFactionStatus() {

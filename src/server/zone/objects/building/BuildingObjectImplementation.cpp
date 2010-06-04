@@ -9,6 +9,8 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "../../templates/tangible/SharedBuildingObjectTemplate.h"
+
 
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
@@ -23,11 +25,15 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	totalCellNumber = templateData->getTotalCellNumber();
+	SharedBuildingObjectTemplate* buildingData = dynamic_cast<SharedBuildingObjectTemplate*>(templateData);
+
+	totalCellNumber = buildingData->getTotalCellNumber();
 
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
+
+	lotSize = buildingData->getLotSize();
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {

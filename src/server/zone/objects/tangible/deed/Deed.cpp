@@ -6,6 +6,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 /*
  *	DeedStub
  */
@@ -21,6 +23,60 @@ Deed::Deed(DummyConstructorParameter* param) : TangibleObject(param) {
 Deed::~Deed() {
 }
 
+
+void Deed::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedImplementation*) _impl)->initializeTransientMembers();
+}
+
+void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((DeedImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void Deed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((DeedImplementation*) _impl)->fillAttributeList(alm, object);
+}
+
+void Deed::setGeneratedObjectTemplate(const String& templ) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addAsciiParameter(templ);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedImplementation*) _impl)->setGeneratedObjectTemplate(templ);
+}
+
+String Deed::getGeneratedObjectTemplate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithAsciiReturn(_return_getGeneratedObjectTemplate);
+		return _return_getGeneratedObjectTemplate;
+	} else
+		return ((DeedImplementation*) _impl)->getGeneratedObjectTemplate();
+}
 
 /*
  *	DeedImplementation
@@ -89,12 +145,23 @@ void DeedImplementation::_serializationHelperMethod() {
 
 	_setClassName("Deed");
 
+	addSerializableVariable("generatedObjectTemplate", &generatedObjectTemplate);
 }
 
 DeedImplementation::DeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/Deed.idl(54):  		Logger.setLoggingName("Deed");
+	// server/zone/objects/tangible/deed/Deed.idl(58):  		Logger.setLoggingName("Deed");
 	Logger::setLoggingName("Deed");
+}
+
+void DeedImplementation::setGeneratedObjectTemplate(const String& templ) {
+	// server/zone/objects/tangible/deed/Deed.idl(80):  		generatedObjectTemplate = templ;
+	generatedObjectTemplate = templ;
+}
+
+String DeedImplementation::getGeneratedObjectTemplate() {
+	// server/zone/objects/tangible/deed/Deed.idl(87):  		return generatedObjectTemplate;
+	return generatedObjectTemplate;
 }
 
 /*
@@ -108,11 +175,32 @@ Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		setGeneratedObjectTemplate(inv->getAsciiParameter(_param0_setGeneratedObjectTemplate__String_));
+		break;
+	case 8:
+		resp->insertAscii(getGeneratedObjectTemplate());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void DeedAdapter::initializeTransientMembers() {
+	((DeedImplementation*) impl)->initializeTransientMembers();
+}
+
+void DeedAdapter::setGeneratedObjectTemplate(const String& templ) {
+	((DeedImplementation*) impl)->setGeneratedObjectTemplate(templ);
+}
+
+String DeedAdapter::getGeneratedObjectTemplate() {
+	return ((DeedImplementation*) impl)->getGeneratedObjectTemplate();
 }
 
 /*

@@ -42,6 +42,26 @@
 
 SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	terrainModificationFileName = "",
+
 	interiorLayoutFileName = "",
-	templateType = SBOT
+	templateType = SBOT,
+	
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	--What zones can this building be built by a player on.
+	--Default is corellia, lok, naboo, rori, talus, tatooine
+	allowedZones = {0, 4, 5, 6, 7, 8},
+	
+	--Sign locations is a list of possible sign locations in relation to the center of the building object.
+	--Format is x, z, y, qx, qy, qz, qw
+	signLocations = {0, 0, 0, 0, 0, 0, 1},
+	
+	--The object that is placed during the construction phase.
+	constructionTemplate = "",
+	
+	--Terminal Location is cell#, x, z, y, qx, qy, qz, qw
+	terminalLocation = {0, 0, 0, 0, 0, 0, 0, 1},
+	
+	--Elevator Terminals format is template_path, cell#, x, z, y, qx, qy, qz, qw, dz - where dz is the delta z.
+	elevatorTerminals = {"", 0, 0, 0, 0, 0, 0, 0, 1, 0}
 }

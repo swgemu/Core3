@@ -430,6 +430,8 @@ public:
 
 	int getLotsRemaining();
 
+	void setLotsRemaining(int lots);
+
 	int getFactionStatus();
 
 	UnicodeString getBiography();
@@ -747,6 +749,8 @@ public:
 
 	int getLotsRemaining();
 
+	void setLotsRemaining(int lots);
+
 	int getFactionStatus();
 
 	UnicodeString getBiography();
@@ -981,6 +985,8 @@ public:
 	void addSuiBox(SuiBox* sui);
 
 	int getLotsRemaining();
+
+	void setLotsRemaining(int lots);
 
 	int getFactionStatus();
 

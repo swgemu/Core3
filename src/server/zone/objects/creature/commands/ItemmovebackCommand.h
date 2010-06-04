@@ -63,6 +63,31 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		if (obj == NULL)
+			return false;
+
+		//Moving an item forward is based on the direction of the player + 180 degrees since we are going in the opposite direction.
+		int degrees = creature->getDirectionAngle() + 180;
+
+		float offsetX = 10 * sin(Math::deg2rad(degrees));
+		float offsetY = 10 * cos(Math::deg2rad(degrees));
+
+		float x = obj->getPositionX() + offsetX;
+		float y = obj->getPositionY() + offsetY;
+		float z = obj->getPositionZ();
+
+		//TODO: Check to make sure the item is not being moved outside the range of the cell.
+
+		obj->setPosition(x, z, y);
+
+		if (obj->getParent() != NULL)
+			obj->updateZoneWithParent(obj->getParent(), true);
+		else
+			obj->updateZone(true);
+
 		return SUCCESS;
 	}
 

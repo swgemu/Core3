@@ -249,6 +249,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int CHARACTERBUILDERTERMINAL = 0x4010;
 	public static final int TICKETCOLLECTOR = 0x4011;
 	public static final int TRAVELTERMINAL = 0x4012;
+	public static final int ELEVATORTERMINAL = 0x4013;
+	public static final int GUILDTERMINAL = 0x4014;
 
 	public static final int TOOL = 0x8000;
 	public static final int CRAFTINGTOOL = 0x8001;
@@ -653,8 +655,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player) {
-	}
+	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
 	/**
 	 * Opens container contents to player
@@ -863,9 +864,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
-		return 0;
-	}
+	public native abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	/**
 	 * Registers an observer for the position changed event
@@ -978,6 +977,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getDirectionW() {
 		return direction.getW();
 	}
+	
+	@local
+	@dereferenced
+	public native Quaternion getDirection();
 
 	public unsigned int getClientObjectCRC() {
 		return clientObjectCRC;
@@ -1064,6 +1067,13 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getSpecialDirectionAngle() {
 		return direction.getSpecialDegrees();
 	}
+	
+	/**
+	 * Rotates an object by a specified number of degrees.
+	 * @param degrees How many degrees to rotate the object with 0 being North.
+	 * TODO: @param notifyClient
+	 */
+	public native void rotate(int degrees);
 
 	public unsigned int getMovementCounter() {
 		return movementCounter;
@@ -1154,6 +1164,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == FISHINGPOLE;
 	}
 	
+	public boolean isDeedObject() {
+		return gameObjectType == DEED;
+	}
+	
+	public boolean isBuildingDeed() {
+		return gameObjectType == BUILDINGDEED;
+	}
+	
 	public boolean isBazaarTerminal() {
 		return gameObjectType == BAZAAR;
 	}
@@ -1205,6 +1223,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
 	}
+	
+	@local
+	public native void setDirection(@dereferenced final Quaternion dir);
 
 	public void setMovementCounter(unsigned int count) {
 		movementCounter = count;

@@ -5,29 +5,49 @@
  *      Author: TheAnswer
  */
 
+#include "engine/engine.h"
+
 #include "server/db/ServerDatabase.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/Zone.h"
 
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+
+#include "tasks/StructureConstructionCompleteTask.h"
 
 #include "StructureManager.h"
 
-StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
-	ManagedObjectImplementation() {
+StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor)
+		: ManagedObjectImplementation() {
+
 	StructureManagerImplementation::zone = zone;
 	StructureManagerImplementation::server = processor;
+
+	//TODO: Move this constructor to the idl
+	templateManager = TemplateManager::instance();
 
 	String managerName = "StructureManager ";
 	setLoggingName(managerName + Planet::getPlanetName(zone->getZoneID()));
@@ -480,19 +500,20 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 }
 
 void StructureManagerImplementation::loadPlayerStructures() {
-/*
+
 	StringBuffer msg;
 	msg << "StructureManagerImplementation::loadPlayerStructures()";
 	info(msg.toString());
 
+	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadDatabase("playerstructures", true);
+
+	if (playerStructuresDatabase == NULL)
+		info("StructureManagerImplementation::loadPlayerStructures(): There was an error loading the 'playerstructures' database.", true);
+
 	try {
 		int planetid = zone->getZoneID();
 		uint64 currentZoneObjectID = zone->_getObjectID();
-
-		// This is very unefficient, only do it on server load.
-		ObjectDatabase* objectDatabase = ObjectManager::instance()->getObjectDatabase();
-
-		ObjectDatabaseIterator iterator(objectDatabase);
+		ObjectDatabaseIterator iterator(playerStructuresDatabase);
 
 		uint64 objectID;
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
@@ -511,7 +532,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				continue;
 			}
 
-			if (zoneObjectID != currentZoneObjectID || gameObjectType != 512) {
+			if (zoneObjectID != currentZoneObjectID || gameObjectType != SceneObject::BUILDING) {
 				objectData->clear();
 				continue;
 			}
@@ -537,6 +558,186 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	} catch (...) {
 		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
-*/
 }
 
+int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
+	ZoneServer* zoneServer = player->getZoneServer();
+
+	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(deedID);
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (obj == NULL || !obj->isDeedObject()) {
+		//Invalid deed object message.
+		return 1;
+	}
+
+	if (inventory == NULL || !obj->isASubChildOf(inventory)) {
+		//No longer in possession of deed, or deed doesn't belong to you message.
+		return 1;
+	}
+
+	ManagedReference<Deed*> deed = (Deed*) obj.get();
+
+	String structureTemplateString = deed->getGeneratedObjectTemplate();
+	uint32 structureTemplateCRC = structureTemplateString.hashCode();
+
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
+
+	if (ssot == NULL) {
+		//Invalid template type returned or it didn't exist.
+		return 1;
+	}
+
+	if (!ssot->isAllowedZone(zone->getZoneID())) {
+		//Message about wrong planet.
+		return 1;
+	}
+
+	//Check that they can place at this location.
+		//A method that accepts a structure template, and x, y coordinates.
+
+	int lotsRemaining = player->getLotsRemaining();
+	int lotsRequired = 0;
+
+	//If the player is not an admin, then find out how many lots are required.
+	if (playerObject != NULL && !playerObject->isPrivileged())
+		lotsRequired = ssot->getLotSize();
+
+	if (lotsRemaining < lotsRequired) {
+		ParameterizedStringId stringId;
+		stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
+		stringId.setDI(lotsRequired);
+
+		player->sendSystemMessage(stringId);
+		return 1;
+	}
+
+	player->setLotsRemaining(lotsRemaining - lotsRequired);
+
+	player->sendDestroyTo(player);
+	inventory->removeObject(obj, true);
+
+	Quaternion direction;
+	Vector3 unity(0, 1, 0);
+	direction.rotate(unity, angle);
+
+	constructStructure(player, ssot, deedID, x, y, direction);
+
+	return 0;
+}
+
+int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	String constructionMarkerTemplateString;
+	uint64 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
+
+	SharedObjectTemplate* constructionMarkerTemplate = templateManager->getTemplate(constructionMarkerTemplateCRC);
+
+	if (constructionMarkerTemplate == NULL) {
+		//Then skip the construction phase and go straight to placement.
+		placeStructure(player, structureTemplate, deedID, x, y, direction);
+		return 1;
+	}
+
+	//Create the construction object, insert it to zone.
+
+	StructureConstructionCompleteTask* task = new StructureConstructionCompleteTask(_this, player, structureTemplate, deedID, x, y, direction);
+	task->schedule(3000 * structureTemplate->getLotSize());
+
+	return 0;
+}
+
+int StructureManagerImplementation::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	//Check to see what type of structure is being placed, then pass off execution.
+
+	if (structureTemplate->isSharedBuildingObjectTemplate()) {
+		SharedBuildingObjectTemplate* sbot = (SharedBuildingObjectTemplate*) structureTemplate;
+		return placeBuilding(player, sbot, deedID, x, y, direction);
+
+	} else if (structureTemplate->isSharedInstallationObjectTemplate()) {
+		SharedInstallationObjectTemplate* siot = (SharedInstallationObjectTemplate*) structureTemplate;
+		return placeInstallation(player, siot, deedID, x, y, direction);
+	}
+
+	return 1;
+}
+
+int StructureManagerImplementation::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	ZoneServer* zserv = player->getZoneServer();
+	ObjectManager* objectManager = ObjectManager::instance();
+
+	float z = zone->getHeight(x, y);
+
+	int buioCRC = buildingTemplate->getObjectName().hashCode();
+
+	ManagedReference<BuildingObject*> buio = (BuildingObject*) objectManager->createObject(buioCRC, 1, "playerstructures");
+	buio->createCellObjects();
+	buio->setOwnerObjectID(player->getObjectID());
+	buio->initializePosition(x, z, y);
+	buio->setDirection(direction);
+	buio->insertToZone(zone);
+
+	/*
+	//Create a sign
+	String signTemplate = buildingTemplate->getSignTemplate();
+	ManagedReference<SignObject*> structureSign = (SignObject*) zserv->createObject(signTemplate.hashCode(), 1);
+
+	if (structureSign != NULL) {
+		structureSign->initializePosition(buio->getPositionX() + 16.0f, buio->getPositionZ() + 1.0f, buio->getPositionY());
+		structureSign->setDirection(buio->getDirection());
+		UnicodeString signName = player->getFirstName() + "'s House";
+		structureSign->setObjectName(signName);
+		buio->setSignObject(structureSign);
+		structureSign->insertToZone(zone);
+		structureSign->updateToDatabase();
+	}*/
+
+	//Create a structure terminal
+	String terminalTemplate = "object/tangible/terminal/shared_terminal_player_structure.iff";
+	ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
+
+	if (structureTerminal != NULL) {
+		structureTerminal->initializePosition(-7, 0.7, -7);
+		structureTerminal->setDirection(0.707107, 0, 0.707107, 0);
+		structureTerminal->setBuildingObject(buio);
+
+		//Add the structure terminal to the cell
+		ManagedReference<CellObject*> cell = buio->getCell(1);
+		cell->addObject(structureTerminal, -1, true);
+		cell->broadcastObject(structureTerminal, false);
+		structureTerminal->insertToZone(zone);
+
+		structureTerminal->updateToDatabase();
+	}
+
+	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
+	buio->setDeedObjectID(deedID);
+
+	buio->updateToDatabase();
+
+	//Send out email informing the user that their construction has completed successfully.
+	ManagedReference<ChatManager*> chatManager = zserv->getChatManager();
+
+	if (chatManager != NULL) {
+		ParameterizedStringId emailBody;
+		emailBody.setStringId("@player_structure:construction_complete");
+		emailBody.setTO(buio->getObjectName());
+		emailBody.setDI(player->getLotsRemaining());
+		UnicodeString subject = "@player_structure:construction_complete_subject";
+		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
+	}
+
+	return 0;
+}
+
+int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	return 0;
+}
+
+int StructureManagerImplementation::destroyStructure(PlayerCreature* player, SceneObject* structure) {
+	return 0;
+}
+
+int StructureManagerImplementation::redeedStructure(PlayerCreature* player, SceneObject* structure) {
+	return 0;
+}

@@ -1282,7 +1282,7 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 	if (item == NULL)
 		return;
 
-	SceneObject* inventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	item->sendTo(player);
 	inventory->addObject(item, -1, true);
 }

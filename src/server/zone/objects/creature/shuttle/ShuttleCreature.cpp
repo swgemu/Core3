@@ -327,7 +327,7 @@ int ShuttleCreatureImplementation::getArrivalTime() {
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(97):  		long land = getLandingTime();
 	long long land = getLandingTime();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(99):  		int t = (land / 1000) * -1;
-	int t = (land / 1000) * -1;
+	int t = (land / 1000) * 1;
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(101):  		return t;
 	return t;
 }

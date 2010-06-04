@@ -58,17 +58,9 @@ public:
 		play = pl;
 	}
 
-	void setAdminLevel(int level) {
-		if (level > 0 && level <= 255) {
-
-			int adminFlag = level;
-			if (adminFlag == PlayerImplementation::CSRJR)
-				adminFlag = PlayerImplementation::CSR; //Allow CSRJR to have CSR title.
-
-			startUpdate(1);
-			insertByte(adminFlag);
-		}
-
+	void setAdminLevel(uint8 level) {
+		startUpdate(1);
+		insertByte(level);
 	}
 
 };

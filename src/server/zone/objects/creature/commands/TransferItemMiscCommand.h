@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 
 class TransferItemMiscCommand : public QueueCommand {
@@ -67,7 +68,7 @@ public:
 
 		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
-		creature->info(infoMsg.toString());
+		creature->info(infoMsg.toString(), true);
 
 		StringTokenizer tokenizer(arguments.toString());
 
@@ -103,6 +104,19 @@ public:
 
 		ZoneServer* zoneServer = server->getZoneServer();
 		ObjectController* objectController = zoneServer->getObjectController();
+
+		//TODO: This needs to be looked at more!
+		//If transferring the object to a cell, ensure that the creature has permission to drop the item to the cell.
+		if (destinationObject->isCellObject()) {
+			ManagedReference<BuildingObject*> building = (BuildingObject*) destinationObject->getParent();
+
+			if (!building->hasPermissionAdmin(creature)) {
+				return false;
+			}
+
+			//Set the objects position to the creature that is transferring it?
+			objectToTransfer->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+		}
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent());
 

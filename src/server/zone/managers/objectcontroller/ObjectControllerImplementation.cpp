@@ -53,10 +53,17 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		return false;
 	}
 
+	if (parent->isCellObject())
+		objectToTransfer->removeFromZone();
+
 	if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
 		destinationObject->broadcastObject(objectToTransfer, false);
 
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
+
+	//What about nested containers inside of the inventory...
+	if (parent->getParent() != NULL && parent->getParent()->isPlayerCreature())
+		objectToTransfer->sendDestroyTo(parent->getParent());
 
 	if (!parent->removeObject(objectToTransfer)) {
 		error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
@@ -67,6 +74,17 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
 		parent->addObject(objectToTransfer, oldContainmentType);
 		return false;
+	}
+
+	if (destinationObject->isCellObject()) {
+		if (destinationObject->getParent() != NULL) {
+			Zone* zne = destinationObject->getParent()->getZone();
+
+			if (zne != NULL) {
+				objectToTransfer->insertToZone(zne);
+				System::out << "Inserted to zone" << endl;
+			}
+		}
 	}
 
 	return true;
