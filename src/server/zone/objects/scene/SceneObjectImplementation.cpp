@@ -402,6 +402,8 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     parent->removeObject(_this);
 
     building->remove(this);
+    building->notifyRemove(_this);
+
     building->removeNotifiedSentObject(_this);
 }
 
@@ -702,6 +704,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	if (object->getParent() != _this) {
 		error("trying to remove an object but i am not the parent");
+		object->getParent()->info("i am the parent", true);
 		return false;
 	}
 
@@ -809,35 +812,38 @@ void SceneObjectImplementation::rotate(int degrees) {
 void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	//All objects in a cell can be picked up, if the player is on the structures permission list.
 	//This opens the door to allow admins to be able to drop/pickup items in public structures
-	if (parent != NULL && parent->isCellObject()) {
-		ManagedReference<SceneObject*> obj = parent->getParent();
+	if (parent == NULL || !parent->isCellObject())
+		return;
 
-		if (obj != NULL && obj->isBuildingObject()) {
-			ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();
+	ManagedReference<SceneObject*> obj = parent->getParent();
 
-			//Is this player on the permission list?
-			if (buio->hasPermissionAdmin(player)) {
-				menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
-				menuResponse->addRadialMenuItem(54, 1, "@ui_radial:item_move"); //Move
-				menuResponse->addRadialMenuItem(51, 1, "@ui_radial:item_rotate"); //Rotate
-				menuResponse->addRadialMenuItem(3, 55, 3, "@ui_radial:item_move_forward"); //Move Forward
-				menuResponse->addRadialMenuItem(3, 56, 3, "@ui_radial:item_move_back"); //Move Back
-				menuResponse->addRadialMenuItem(3, 57, 3, "@ui_radial:item_move_up"); //Move Up
-				menuResponse->addRadialMenuItem(3, 58, 3, "@ui_radial:item_move_down"); //Move Down
+	if (!obj->isBuildingObject())
+		return;
 
-				menuResponse->addRadialMenuItem(4, 52, 3, "@ui_radial:item_rotate_left"); //Rotate Left
-				menuResponse->addRadialMenuItem(4, 53, 3, "@ui_radial:item_rotate_right"); //Rotate Right
-			}
-		}
-	}
+	ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();
+
+	//Is this player on the permission list?
+	if (!buio->hasPermissionAdmin(player))
+		return;
+
+	menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
+	menuResponse->addRadialMenuItem(54, 1, "@ui_radial:item_move"); //Move
+	menuResponse->addRadialMenuItem(51, 1, "@ui_radial:item_rotate"); //Rotate
+	menuResponse->addRadialMenuItem(3, 55, 3, "@ui_radial:item_move_forward"); //Move Forward
+	menuResponse->addRadialMenuItem(3, 56, 3, "@ui_radial:item_move_back"); //Move Back
+	menuResponse->addRadialMenuItem(3, 57, 3, "@ui_radial:item_move_up"); //Move Up
+	menuResponse->addRadialMenuItem(3, 58, 3, "@ui_radial:item_move_down"); //Move Down
+
+	menuResponse->addRadialMenuItem(4, 52, 3, "@ui_radial:item_rotate_left"); //Rotate Left
+	menuResponse->addRadialMenuItem(4, 53, 3, "@ui_radial:item_rotate_right"); //Rotate Right
 }
 
 int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	switch (selectedID) {
 	case 10: //Pick Up
 	{
-		String actionName = "transferitemmisc";
-		player->executeObjectControllerAction(actionName.hashCode(), getObjectID(), "");
+		//String actionName = "transferitemmisc";
+		//player->executeObjectControllerAction(actionName.hashCode(), getObjectID(), "");
 		//transferitem
 		break;
 	}

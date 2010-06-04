@@ -592,6 +592,18 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	PlanetManager* planetManager = zone->getPlanetManager();
+	StringId errorStf;
+
+	if (planetManager->isNoBuildArea(x, y, errorStf)) {
+		ParameterizedStringId sendString("player_structure", "city_too_close");
+		sendString.setTO(errorStf.getFile(), errorStf.getStringID());
+
+		player->sendSystemMessage(sendString);
+
+		return 1;
+	}
+
 	if (!ssot->isAllowedZone(zone->getZoneID())) {
 		//Message about wrong planet.
 		player->error("invalid planet");
