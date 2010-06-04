@@ -20,11 +20,14 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
 	menuResponse->addRadialMenuItem(61, 3, "");
 
-
-	//TODO:Remove this when garages are functioning
 	if (checkInRangeGarage())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");
+}
 
+void VehicleObjectImplementation::insertToZone(Zone* zone) {
+	SceneObjectImplementation::insertToZone(zone);
+
+	inflictDamage(_this, 0, System::random(50), true);
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
@@ -58,6 +61,8 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 		controlDevice->storeObject(player);
 
 		wlock(player);
+	} else if (selectedID == 62) {
+		healDamage(player, 0, conditionDamage, true);
 	}
 
 	return 0;
@@ -65,6 +70,10 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 
 int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
 	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, notifyClient);
+}
+
+int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
+	return TangibleObjectImplementation::healDamage(healer, damageType, damage, notifyClient);
 }
 
 int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {

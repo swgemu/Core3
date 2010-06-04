@@ -65,6 +65,18 @@ class ControlDevice extends IntangibleObject {
 		Logger.setGlobalLogging(true);
 	}
 	
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	public void updateToDatabaseAllObjects(boolean startTask) {
+		controlledObject.updateToDatabaseAllObjects(startTask);
+		
+		super.updateToDatabaseAllObjects(startTask);
+	}
+	
 	public abstract void storeObject(PlayerCreature player) {
 		Logger.error("called storeObject on an abstract method");
 	}

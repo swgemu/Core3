@@ -116,7 +116,11 @@ public:
 
 	bool checkInRangeGarage();
 
+	void insertToZone(Zone* zone);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+
+	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
 	void addDefender(SceneObject* defender);
 
@@ -167,7 +171,11 @@ public:
 
 	bool checkInRangeGarage();
 
+	void insertToZone(Zone* zone);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+
+	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
 	void addDefender(SceneObject* defender);
 
@@ -224,7 +232,11 @@ public:
 
 	bool checkInRangeGarage();
 
+	void insertToZone(Zone* zone);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+
+	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 
 	void addDefender(SceneObject* defender);
 

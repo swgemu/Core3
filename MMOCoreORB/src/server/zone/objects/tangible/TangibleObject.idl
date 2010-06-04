@@ -268,7 +268,8 @@ class TangibleObject extends SceneObject {
 	
 	/**
 	 * Heals damage
-	 * @pre {
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
 	 */
 	public native abstract int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
 	
