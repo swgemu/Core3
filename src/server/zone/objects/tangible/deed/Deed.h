@@ -61,6 +61,8 @@ public:
 
 	String getGeneratedObjectTemplate();
 
+	bool isDeedObject();
+
 protected:
 	Deed(DummyConstructorParameter* param);
 
@@ -103,6 +105,8 @@ public:
 	void setGeneratedObjectTemplate(const String& templ);
 
 	String getGeneratedObjectTemplate();
+
+	bool isDeedObject();
 
 	Deed* _this;
 
@@ -148,6 +152,8 @@ public:
 	void setGeneratedObjectTemplate(const String& templ);
 
 	String getGeneratedObjectTemplate();
+
+	bool isDeedObject();
 
 protected:
 	String _param0_setGeneratedObjectTemplate__String_;

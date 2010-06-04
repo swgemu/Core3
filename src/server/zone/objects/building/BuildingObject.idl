@@ -153,7 +153,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	@local
 	public native void inRange(QuadTreeEntry obj, float range);
 	
-	public native void sendTo(SceneObject player, boolean doClose = true);
+	public native void sendTo(SceneObject player, boolean doClose);
 	public native void sendBaselinesTo(SceneObject player);
 	public native void sendDestroyTo(SceneObject player);
 	

@@ -228,7 +228,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 	/*StringBuffer msg;
 	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
-	info(msg.toString());*/
+	info(msg.toString(), true);*/
 
 	create(client);
 
@@ -249,7 +249,7 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
-		object->sendTo(player);
+		object->sendTo(player, true);
 	}
 }
 
@@ -258,7 +258,7 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
-		containerObject->sendTo(player);
+		containerObject->sendTo(player, true);
 	}
 }
 
@@ -309,7 +309,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 			continue;
 
 		if (scno->isPlayerCreature()) {
-			object->sendTo((SceneObject*) scno->_getStub());
+			object->sendTo((SceneObject*) scno->_getStub(), true);
 		}
 	}
 

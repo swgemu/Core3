@@ -72,7 +72,7 @@ void GroupObjectImplementation::addMember(SceneObject* player) {
 
 	broadcastMessage(grp);
 
-	sendTo(player);
+	sendTo(player, true);
 }
 
 void GroupObjectImplementation::removeMember(SceneObject* player) {

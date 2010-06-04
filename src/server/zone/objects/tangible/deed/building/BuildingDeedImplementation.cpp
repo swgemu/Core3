@@ -38,6 +38,9 @@ void BuildingDeedImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 	SharedBuildingObjectTemplate* buildingTemplate = dynamic_cast<SharedBuildingObjectTemplate*>(templateManager->getTemplate(buioCRC));
 
+	if (buildingTemplate == NULL)
+		return;
+
 	//Base Maintenance Rate
 	int baseMaintenanceRate = buildingTemplate->getBaseMaintenanceRate();
 

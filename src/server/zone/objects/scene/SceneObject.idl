@@ -584,7 +584,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
-	public native abstract void sendTo(SceneObject player, boolean doClose = true);
+	public native abstract void sendTo(SceneObject player, boolean doClose);
 
 	/**
 	 * Sends a SceneObjectDestroyMessage of this object to client
@@ -1144,8 +1144,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return false;
 	}
 
-	public boolean isCellObject() {
-		return gameObjectType == CELLOBJECT;
+	public abstract boolean isCellObject() {
+		return false;
 	}
 	
 	public abstract boolean isTangibleObject() {
@@ -1164,12 +1164,12 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == FISHINGPOLE;
 	}
 	
-	public boolean isDeedObject() {
-		return gameObjectType == DEED;
+	public abstract boolean isDeedObject() {
+		return false;
 	}
 	
-	public boolean isBuildingDeed() {
-		return gameObjectType == BUILDINGDEED;
+	public abstract boolean isBuildingDeed() {
+		return false;
 	}
 	
 	public boolean isBazaarTerminal() {

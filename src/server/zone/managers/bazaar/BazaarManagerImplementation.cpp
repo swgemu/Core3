@@ -516,7 +516,7 @@ void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 ob
 
 	ManagedReference<SceneObject*> objectToRetrieve = zoneServer->getObject(objectid);
 
-	objectToRetrieve->sendTo(player);
+	objectToRetrieve->sendTo(player, true);
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
 	inventory->addObject(objectToRetrieve, 4, true);

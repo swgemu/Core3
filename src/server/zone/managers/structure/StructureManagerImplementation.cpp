@@ -478,7 +478,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				}
 
 				buio->initializePosition(x, z, y);
-				buio->setDirection(oX, oZ, oY, oW);
+				//buio->setDirection(oX, oZ, oY, oW);
 				buio->setStaticBuilding(true);
 
 				loadStaticCells(buio);
@@ -569,11 +569,13 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	if (obj == NULL || !obj->isDeedObject()) {
 		//Invalid deed object message.
+		player->error("invalid deed object");
 		return 1;
 	}
 
 	if (inventory == NULL || !obj->isASubChildOf(inventory)) {
 		//No longer in possession of deed, or deed doesn't belong to you message.
+		player->error("deed is not in inventory");
 		return 1;
 	}
 
@@ -586,11 +588,13 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	if (ssot == NULL) {
 		//Invalid template type returned or it didn't exist.
+		player->error("invalid tepmlate");
 		return 1;
 	}
 
 	if (!ssot->isAllowedZone(zone->getZoneID())) {
 		//Message about wrong planet.
+		player->error("invalid planet");
 		return 1;
 	}
 
@@ -615,7 +619,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	player->setLotsRemaining(lotsRemaining - lotsRequired);
 
-	player->sendDestroyTo(player);
+	//player->sendDestroyTo(player);
 	inventory->removeObject(obj, true);
 
 	Quaternion direction;
@@ -628,6 +632,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 }
 
 int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	player->info("constructing structure", true);
 	String constructionMarkerTemplateString;
 	uint64 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
 
@@ -643,6 +648,7 @@ int StructureManagerImplementation::constructStructure(PlayerCreature* player, S
 
 	StructureConstructionCompleteTask* task = new StructureConstructionCompleteTask(_this, player, structureTemplate, deedID, x, y, direction);
 	task->schedule(3000 * structureTemplate->getLotSize());
+	player->info("scheduled place structure in " + String::valueOf(3000 * structureTemplate->getLotSize()) , true);
 
 	return 0;
 }
@@ -659,6 +665,8 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 		return placeInstallation(player, siot, deedID, x, y, direction);
 	}
 
+	player->info("no right template", true);
+
 	return 1;
 }
 
@@ -666,9 +674,10 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	float z = zone->getHeight(x, y);
+	//float z = zone->getHeight(x, y);
+	float z = player->getPositionZ();
 
-	int buioCRC = buildingTemplate->getObjectName().hashCode();
+	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
 	ManagedReference<BuildingObject*> buio = (BuildingObject*) objectManager->createObject(buioCRC, 1, "playerstructures");
 	buio->createCellObjects();

@@ -71,12 +71,12 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
-		grandParent->sendTo(_this);
+		grandParent->sendTo(_this, true);
 	} else
 		sendTo(_this, doClose);
 
 	if (group != NULL)
-		group->sendTo(_this);
+		group->sendTo(_this, true);
 
 	creatureBuffs.sendTo(_this);
 
