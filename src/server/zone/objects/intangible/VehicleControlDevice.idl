@@ -115,7 +115,7 @@ class VehicleControlDevice extends ControlDevice {
 	 * @post { this is locked }
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
-	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
 	/**
 	 * Checks if the object can be destroyed

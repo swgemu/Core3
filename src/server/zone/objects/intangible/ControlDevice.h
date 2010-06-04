@@ -92,6 +92,8 @@ class ControlDevice : public IntangibleObject {
 public:
 	ControlDevice();
 
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void storeObject(PlayerCreature* player);
 
 	void generateObject(PlayerCreature* player);
@@ -130,6 +132,8 @@ public:
 	ControlDeviceImplementation();
 
 	ControlDeviceImplementation(DummyConstructorParameter* param);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void storeObject(PlayerCreature* player);
 
@@ -179,6 +183,8 @@ public:
 	ControlDeviceAdapter(ControlDeviceImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void storeObject(PlayerCreature* player);
 

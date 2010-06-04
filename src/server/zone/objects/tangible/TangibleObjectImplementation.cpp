@@ -281,7 +281,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
 	int newConditionDamage = conditionDamage - damageToHeal;
 
-	setConditionDamage(newConditionDamage, notifyClient);
+	setConditionDamage(MAX(0, newConditionDamage), notifyClient);
 
 	return 0;
 }

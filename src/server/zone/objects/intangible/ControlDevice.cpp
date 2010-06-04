@@ -30,12 +30,25 @@ ControlDevice::~ControlDevice() {
 }
 
 
-void ControlDevice::storeObject(PlayerCreature* player) {
+void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addBooleanParameter(startTask);
+
+		method.executeWithVoidReturn();
+	} else
+		((ControlDeviceImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
+}
+
+void ControlDevice::storeObject(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -48,7 +61,7 @@ void ControlDevice::generateObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -61,7 +74,7 @@ void ControlDevice::setControlledObject(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -74,7 +87,7 @@ CreatureObject* ControlDevice::getControlledObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -86,7 +99,7 @@ bool ControlDevice::isControlDevice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -175,28 +188,35 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 	Logger::setGlobalLogging(true);
 }
 
+void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
+	// server/zone/objects/intangible/ControlDevice.idl(75):  		controlledObject.updateToDatabaseAllObjects(startTask);
+	controlledObject->updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/intangible/ControlDevice.idl(77):  		super.updateToDatabaseAllObjects(startTask);
+	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
+}
+
 void ControlDeviceImplementation::storeObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(69):  		Logger.error("called storeObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl(81):  		Logger.error("called storeObject on an abstract method");
 	Logger::error("called storeObject on an abstract method");
 }
 
 void ControlDeviceImplementation::generateObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(73):  		Logger.error("called generateObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl(85):  		Logger.error("called generateObject on an abstract method");
 	Logger::error("called generateObject on an abstract method");
 }
 
 void ControlDeviceImplementation::setControlledObject(CreatureObject* object) {
-	// server/zone/objects/intangible/ControlDevice.idl(77):  		controlledObject = object;
+	// server/zone/objects/intangible/ControlDevice.idl(89):  		controlledObject = object;
 	controlledObject = object;
 }
 
 CreatureObject* ControlDeviceImplementation::getControlledObject() {
-	// server/zone/objects/intangible/ControlDevice.idl(81):  		return controlledObject;
+	// server/zone/objects/intangible/ControlDevice.idl(93):  		return controlledObject;
 	return controlledObject;
 }
 
 bool ControlDeviceImplementation::isControlDevice() {
-	// server/zone/objects/intangible/ControlDevice.idl(85):  		return true;
+	// server/zone/objects/intangible/ControlDevice.idl(97):  		return true;
 	return true;
 }
 
@@ -212,18 +232,21 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		storeObject((PlayerCreature*) inv->getObjectParameter());
+		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
 	case 7:
-		generateObject((PlayerCreature*) inv->getObjectParameter());
+		storeObject((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
-		setControlledObject((CreatureObject*) inv->getObjectParameter());
+		generateObject((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertLong(getControlledObject()->_getObjectID());
+		setControlledObject((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 10:
+		resp->insertLong(getControlledObject()->_getObjectID());
+		break;
+	case 11:
 		resp->insertBoolean(isControlDevice());
 		break;
 	default:
@@ -231,6 +254,10 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+void ControlDeviceAdapter::updateToDatabaseAllObjects(bool startTask) {
+	((ControlDeviceImplementation*) impl)->updateToDatabaseAllObjects(startTask);
 }
 
 void ControlDeviceAdapter::storeObject(PlayerCreature* player) {

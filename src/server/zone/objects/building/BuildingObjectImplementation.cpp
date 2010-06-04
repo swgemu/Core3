@@ -105,24 +105,6 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	}
 }
 
-
-void BuildingObjectImplementation::notifyRemove(SceneObject* object) {
-	//info("BuildingObjectImplementation::notifyInsert");
-	/*SceneObjectImplementation* obj = (SceneObjectImplementation*) object->_getImplementation();
-
-	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
-
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainerObject(j);
-			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
-
-			child->removeInRangeObject(obj);
-			obj->removeInRangeObject(child);
-		}
-	}*/
-}
-
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 

@@ -402,7 +402,6 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     parent->removeObject(_this);
 
     building->remove(this);
-    building->notifyRemove(_this);
 
     building->removeNotifiedSentObject(_this);
 }
