@@ -88,6 +88,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/region/Region.cpp \
+				server/zone/objects/installation/InstallationObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
@@ -220,6 +221,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
+		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/building/StructurePermissionList.cpp \

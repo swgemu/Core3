@@ -110,7 +110,7 @@ public:
 		if (destinationObject->isCellObject()) {
 			ManagedReference<BuildingObject*> building = (BuildingObject*) destinationObject->getParent();
 
-			if (!building->hasPermissionAdmin(creature)) {
+			if (!building->isOnAdminList(creature)) {
 				return false;
 			}
 
