@@ -42,5 +42,15 @@
 
 SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
 	templateType = SIOT,
-	lotSize = 0
+			
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	basePowerRate = 0,
+	
+	--What zones can this installation be built by a player on.
+	--Default is all zones
+	allowedZones = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+	
+	--The object that is placed during the construction phase.
+	constructionTemplate = ""
 }
