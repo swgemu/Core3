@@ -53,9 +53,6 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		return false;
 	}
 
-	if (parent->isCellObject())
-		objectToTransfer->removeFromZone();
-
 	if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
 		destinationObject->broadcastObject(objectToTransfer, false);
 
@@ -65,14 +62,23 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	if (parent->getParent() != NULL && parent->getParent()->isPlayerCreature() && destinationObject->isCellObject())
 		objectToTransfer->sendDestroyTo(parent->getParent());
 
-	if (!parent->removeObject(objectToTransfer)) {
-		error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
-		return false;
+	if (parent->isCellObject()) {
+		objectToTransfer->removeFromZone();
+	} else {
+		if (!parent->removeObject(objectToTransfer)) {
+			error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
+			return false;
+		}
+	}
+
+	if (parent->isCellObject()) {
+		objectToTransfer->sendTo(destinationObject->getParent(), true);
 	}
 
 	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
 		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
 		parent->addObject(objectToTransfer, oldContainmentType);
+
 		return false;
 	}
 
@@ -82,10 +88,10 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 
 			if (zne != NULL) {
 				objectToTransfer->insertToZone(zne);
-				System::out << "Inserted to zone" << endl;
+				//System::out << "Inserted to zone" << endl;
 			}
 
-			destinationObject->getParent()->updateToDatabase();
+			//destinationObject->getParent()->updateToDatabase();
 		}
 	}
 

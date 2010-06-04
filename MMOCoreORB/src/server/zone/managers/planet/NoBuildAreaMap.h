@@ -45,25 +45,26 @@ which carries forward this exception.
 #ifndef NOBUILDAREAMAP_H_
 #define NOBUILDAREAMAP_H_
 
-#include "../../objects/area/Area.h"
+#include "server/zone/objects/region/Region.h"
 #include "engine/engine.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+class NoBuildAreaMap : public Vector<ManagedReference<Region*> > {
 public:
 	NoBuildAreaMap() { }
 
 	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
 
-		removeAll();
 	}
 
-	bool isNoBuildArea(float x, float y) {
+	bool isNoBuildArea(float x, float y, StringId& fullAreaName) {
 		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
+			Region* region = get(i);
+
+			if (region->containsPoint(x,y)) {
+				fullAreaName = *region->getName();
+
 				return true;
+			}
 		}
 
 		return false;

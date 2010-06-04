@@ -109,6 +109,19 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(object);
 }
 
+void BuildingObject::notifyRemove(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->notifyRemove(object);
+}
+
 void BuildingObject::insert(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -146,7 +159,7 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -160,7 +173,7 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -173,7 +186,7 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -186,7 +199,7 @@ void BuildingObject::addCell(CellObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -199,7 +212,7 @@ bool BuildingObject::isStaticBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -211,7 +224,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -224,7 +237,7 @@ int BuildingObject::getTotalCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -236,7 +249,7 @@ void BuildingObject::setLotSize(int lotsize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(lotsize);
 
 		method.executeWithVoidReturn();
@@ -249,7 +262,7 @@ int BuildingObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -261,7 +274,7 @@ void BuildingObject::setStaticBuilding(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -274,7 +287,7 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -287,7 +300,7 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -300,7 +313,7 @@ bool BuildingObject::isStaticGarage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -312,7 +325,7 @@ void BuildingObject::setStaticGarage(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -325,7 +338,7 @@ bool BuildingObject::isBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -337,7 +350,7 @@ bool BuildingObject::hasPermissionAdmin(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -350,7 +363,7 @@ void BuildingObject::setDeedObjectID(unsigned long long deedid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addUnsignedLongParameter(deedid);
 
 		method.executeWithVoidReturn();
@@ -363,7 +376,7 @@ unsigned long long BuildingObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -375,7 +388,7 @@ void BuildingObject::setOwnerObjectID(unsigned long long ownerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addUnsignedLongParameter(ownerID);
 
 		method.executeWithVoidReturn();
@@ -388,7 +401,7 @@ unsigned long long BuildingObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -400,7 +413,7 @@ void BuildingObject::setSignObject(SignObject* sign) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(sign);
 
 		method.executeWithVoidReturn();
@@ -413,7 +426,7 @@ SignObject* BuildingObject::getSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
@@ -425,7 +438,7 @@ void BuildingObject::setBaseMaintenanceRate(int maintenanceRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addSignedIntParameter(maintenanceRate);
 
 		method.executeWithVoidReturn();
@@ -438,7 +451,7 @@ int BuildingObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -450,7 +463,7 @@ int BuildingObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -462,7 +475,7 @@ bool BuildingObject::isOnAdminList(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -475,7 +488,7 @@ void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -626,32 +639,32 @@ void BuildingObjectImplementation::removeFromZone() {
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(163):  		return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(164):  		return super.staticObject;
 	return TangibleObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(167):  		return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(168):  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 int BuildingObjectImplementation::getTotalCellNumber() {
-	// server/zone/objects/building/BuildingObject.idl(171):  		return totalCellNumber;
+	// server/zone/objects/building/BuildingObject.idl(172):  		return totalCellNumber;
 	return totalCellNumber;
 }
 
 void BuildingObjectImplementation::setLotSize(int lotsize) {
-	// server/zone/objects/building/BuildingObject.idl(175):  		lotSize = lotsize;
+	// server/zone/objects/building/BuildingObject.idl(176):  		lotSize = lotsize;
 	lotSize = lotsize;
 }
 
 int BuildingObjectImplementation::getLotSize() {
-	// server/zone/objects/building/BuildingObject.idl(179):  		return lotSize;
+	// server/zone/objects/building/BuildingObject.idl(180):  		return lotSize;
 	return lotSize;
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(183):  		super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(184):  		super.staticObject = value;
 	TangibleObjectImplementation::staticObject = value;
 }
 
@@ -662,79 +675,79 @@ void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isStaticGarage() {
-	// server/zone/objects/building/BuildingObject.idl(211):  		return staticGarage;
+	// server/zone/objects/building/BuildingObject.idl(212):  		return staticGarage;
 	return staticGarage;
 }
 
 void BuildingObjectImplementation::setStaticGarage(bool val) {
-	// server/zone/objects/building/BuildingObject.idl(215):  		staticGarage = val;
+	// server/zone/objects/building/BuildingObject.idl(216):  		staticGarage = val;
 	staticGarage = val;
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(219):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(220):  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::hasPermissionAdmin(CreatureObject* creature) {
-	// server/zone/objects/building/BuildingObject.idl(223):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(224):  		return true;
 	return true;
 }
 
 void BuildingObjectImplementation::setDeedObjectID(unsigned long long deedid) {
-	// server/zone/objects/building/BuildingObject.idl(227):  		deedObjectID = deedid;
+	// server/zone/objects/building/BuildingObject.idl(228):  		deedObjectID = deedid;
 	deedObjectID = deedid;
 }
 
 unsigned long long BuildingObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(231):  		return deedObjectID;
+	// server/zone/objects/building/BuildingObject.idl(232):  		return deedObjectID;
 	return deedObjectID;
 }
 
 void BuildingObjectImplementation::setOwnerObjectID(unsigned long long ownerID) {
-	// server/zone/objects/building/BuildingObject.idl(235):  		ownerObjectID = ownerID;
+	// server/zone/objects/building/BuildingObject.idl(236):  		ownerObjectID = ownerID;
 	ownerObjectID = ownerID;
-	// server/zone/objects/building/BuildingObject.idl(236):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	// server/zone/objects/building/BuildingObject.idl(237):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->grantPermission(ownerID, StructurePermissionList::OWNER);
 }
 
 unsigned long long BuildingObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(240):  		return ownerObjectID;
+	// server/zone/objects/building/BuildingObject.idl(241):  		return ownerObjectID;
 	return ownerObjectID;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(244):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(245):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(248):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(249):  		return signObject;
 	return signObject;
 }
 
 void BuildingObjectImplementation::setBaseMaintenanceRate(int maintenanceRate) {
-	// server/zone/objects/building/BuildingObject.idl(256):  		baseMaintenanceRate = maintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(257):  		baseMaintenanceRate = maintenanceRate;
 	baseMaintenanceRate = maintenanceRate;
 }
 
 int BuildingObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/building/BuildingObject.idl(265):  		return baseMaintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(266):  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int BuildingObjectImplementation::getRedeedCost() {
-	// server/zone/objects/building/BuildingObject.idl(273):  		return baseMaintenanceRate * 50;
+	// server/zone/objects/building/BuildingObject.idl(274):  		return baseMaintenanceRate * 50;
 	return baseMaintenanceRate * 50;
 }
 
 bool BuildingObjectImplementation::isOnAdminList(PlayerCreature* player) {
-	// server/zone/objects/building/BuildingObject.idl(280):  		return structurePermissionList.isOnAdminList(player.getObjectID());
+	// server/zone/objects/building/BuildingObject.idl(281):  		return structurePermissionList.isOnAdminList(player.getObjectID());
 	return (&structurePermissionList)->isOnAdminList(player->getObjectID());
 }
 
 void BuildingObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/building/BuildingObject.idl(284):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/building/BuildingObject.idl(285):  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
@@ -762,84 +775,87 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		notifyRemove((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		sendDestroyTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		addCell((CellObject*) inv->getObjectParameter());
+		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertBoolean(isStaticBuilding());
+		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isStaticBuilding());
 		break;
 	case 16:
-		resp->insertSignedInt(getTotalCellNumber());
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 17:
-		setLotSize(inv->getSignedIntParameter());
+		resp->insertSignedInt(getTotalCellNumber());
 		break;
 	case 18:
-		resp->insertSignedInt(getLotSize());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 19:
-		setStaticBuilding(inv->getBooleanParameter());
+		resp->insertSignedInt(getLotSize());
 		break;
 	case 20:
-		onEnter((PlayerCreature*) inv->getObjectParameter());
+		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	case 21:
-		onExit((PlayerCreature*) inv->getObjectParameter());
+		onEnter((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 22:
-		resp->insertBoolean(isStaticGarage());
+		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 23:
-		setStaticGarage(inv->getBooleanParameter());
+		resp->insertBoolean(isStaticGarage());
 		break;
 	case 24:
-		resp->insertBoolean(isBuildingObject());
+		setStaticGarage(inv->getBooleanParameter());
 		break;
 	case 25:
-		resp->insertBoolean(hasPermissionAdmin((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isBuildingObject());
 		break;
 	case 26:
-		setDeedObjectID(inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasPermissionAdmin((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 27:
-		resp->insertLong(getDeedObjectID());
+		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 28:
-		setOwnerObjectID(inv->getUnsignedLongParameter());
+		resp->insertLong(getDeedObjectID());
 		break;
 	case 29:
-		resp->insertLong(getOwnerObjectID());
+		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 30:
-		setSignObject((SignObject*) inv->getObjectParameter());
+		resp->insertLong(getOwnerObjectID());
 		break;
 	case 31:
-		resp->insertLong(getSignObject()->_getObjectID());
+		setSignObject((SignObject*) inv->getObjectParameter());
 		break;
 	case 32:
-		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		resp->insertLong(getSignObject()->_getObjectID());
 		break;
 	case 33:
-		resp->insertSignedInt(getBaseMaintenanceRate());
+		setBaseMaintenanceRate(inv->getSignedIntParameter());
 		break;
 	case 34:
-		resp->insertSignedInt(getRedeedCost());
+		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
 	case 35:
-		resp->insertBoolean(isOnAdminList((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertSignedInt(getRedeedCost());
 		break;
 	case 36:
+		resp->insertBoolean(isOnAdminList((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 37:
 		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
 	default:
@@ -863,6 +879,10 @@ void BuildingObjectAdapter::removeFromZone() {
 
 void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
 	((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
+}
+
+void BuildingObjectAdapter::notifyRemove(SceneObject* object) {
+	((BuildingObjectImplementation*) impl)->notifyRemove(object);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {

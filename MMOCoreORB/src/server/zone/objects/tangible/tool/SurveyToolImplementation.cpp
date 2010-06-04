@@ -70,7 +70,7 @@ void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	menuResponse->addRadialMenuItem(135, 3, "@sui:tool_options");
 	menuResponse->addRadialMenuItemToRadialID(135,133, 3, "@sui:survey_range");
 }

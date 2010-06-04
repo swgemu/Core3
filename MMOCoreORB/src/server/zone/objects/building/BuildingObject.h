@@ -160,6 +160,8 @@ public:
 
 	void notifyInsertToZone(SceneObject* object);
 
+	void notifyRemove(SceneObject* object);
+
 	void insert(QuadTreeEntry* obj);
 
 	void remove(QuadTreeEntry* obj);
@@ -283,6 +285,8 @@ public:
 
 	void notifyInsertToZone(SceneObject* object);
 
+	void notifyRemove(SceneObject* object);
+
 	void insert(QuadTreeEntry* obj);
 
 	void remove(QuadTreeEntry* obj);
@@ -391,6 +395,8 @@ public:
 	void removeFromZone();
 
 	void notifyInsertToZone(SceneObject* object);
+
+	void notifyRemove(SceneObject* object);
 
 	void sendTo(SceneObject* player, bool doClose);
 

@@ -451,6 +451,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public boolean isInRange(QuadTreeEntry obj, float range) {
 		return QuadTreeEntry.isInRange(obj, range);
 	}
+	@local
+	public void removeInRangeObject(QuadTreeEntry obj) {
+		QuadTreeEntry.removeInRangeObject(obj);
+	}
 
 	/**
 	 * Tries to add/link object

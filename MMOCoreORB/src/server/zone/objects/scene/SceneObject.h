@@ -572,6 +572,8 @@ public:
 
 	bool isInRange(QuadTreeEntry* obj, float range);
 
+	void removeInRangeObject(QuadTreeEntry* obj);
+
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
@@ -1312,6 +1314,8 @@ public:
 	bool isInRange(SceneObject* obj, float range);
 
 	bool isInRange(QuadTreeEntry* obj, float range);
+
+	void removeInRangeObject(QuadTreeEntry* obj);
 
 	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
