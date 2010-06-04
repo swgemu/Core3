@@ -183,7 +183,7 @@ int FishingBaitObjectImplementation::getFreshness() {
 
 void FishingBaitObjectImplementation::setFreshness(int value) {
 	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(73):  	}
-	if ((value > -1) && (value < 10))	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(74):  			freshness = value;
+	if ((value > 1) && (value < 10))	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(74):  			freshness = value;
 	freshness = value;
 }
 

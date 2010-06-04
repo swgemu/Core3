@@ -41,7 +41,7 @@
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
-#include "server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.h"
+#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
@@ -52,7 +52,10 @@
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
@@ -132,6 +135,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
 	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
 
+	objectFactory.registerObject<TangibleObject>(SceneObject::FURNITURE);
+
+	objectFactory.registerObject<SignObject>(SceneObject::SIGN);
+
 	objectFactory.registerObject<Instrument>(SceneObject::INSTRUMENT);
 	objectFactory.registerObject<Food>(SceneObject::FOOD);
 	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
@@ -170,12 +177,14 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObject::CHARACTERBUILDERTERMINAL);
+	objectFactory.registerObject<StructureTerminal>(SceneObject::PLAYERTERMINALSTRUCTURE);
+	objectFactory.registerObject<ElevatorTerminal>(SceneObject::ELEVATORTERMINAL);
 	objectFactory.registerObject<TicketCollector>(SceneObject::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
-	objectFactory.registerObject<PlayerHouseDeed>(SceneObject::BUILDINGDEED);
+	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 

@@ -21,6 +21,22 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -35,10 +51,22 @@ class Deed : public TangibleObject {
 public:
 	Deed();
 
+	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+
+	void setGeneratedObjectTemplate(const String& templ);
+
+	String getGeneratedObjectTemplate();
+
 protected:
 	Deed(DummyConstructorParameter* param);
 
 	virtual ~Deed();
+
+	String _return_getGeneratedObjectTemplate;
 
 	friend class DeedHelper;
 };
@@ -58,11 +86,23 @@ namespace tangible {
 namespace deed {
 
 class DeedImplementation : public TangibleObjectImplementation {
+protected:
+	String generatedObjectTemplate;
 
 public:
 	DeedImplementation();
 
 	DeedImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+
+	void setGeneratedObjectTemplate(const String& templ);
+
+	String getGeneratedObjectTemplate();
 
 	Deed* _this;
 
@@ -103,6 +143,14 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void setGeneratedObjectTemplate(const String& templ);
+
+	String getGeneratedObjectTemplate();
+
+protected:
+	String _param0_setGeneratedObjectTemplate__String_;
 };
 
 class DeedHelper : public DistributedObjectClassHelper, public Singleton<DeedHelper> {

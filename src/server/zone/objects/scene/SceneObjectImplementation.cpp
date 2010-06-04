@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/ClientOpenContainerMessage.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
@@ -790,6 +791,59 @@ float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	float deltaY = y - positionY;
 
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+Quaternion SceneObjectImplementation::getDirection() {
+	return direction;
+}
+
+void SceneObjectImplementation::setDirection(const Quaternion& dir) {
+	direction = dir;
+}
+
+void SceneObjectImplementation::rotate(int degrees) {
+	Vector3 unity(0, 1, 0);
+	direction.rotate(unity, degrees);
+}
+
+void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	//All objects in a cell can be picked up, if the player is on the structures permission list.
+	//This opens the door to allow admins to be able to drop/pickup items in public structures
+	if (parent != NULL && parent->isCellObject()) {
+		ManagedReference<SceneObject*> obj = parent->getParent();
+
+		if (obj != NULL && obj->isBuildingObject()) {
+			ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();
+
+			//Is this player on the permission list?
+			if (buio->hasPermissionAdmin(player)) {
+				menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
+				menuResponse->addRadialMenuItem(54, 1, "@ui_radial:item_move"); //Move
+				menuResponse->addRadialMenuItem(51, 1, "@ui_radial:item_rotate"); //Rotate
+				menuResponse->addRadialMenuItem(3, 55, 3, "@ui_radial:item_move_forward"); //Move Forward
+				menuResponse->addRadialMenuItem(3, 56, 3, "@ui_radial:item_move_back"); //Move Back
+				menuResponse->addRadialMenuItem(3, 57, 3, "@ui_radial:item_move_up"); //Move Up
+				menuResponse->addRadialMenuItem(3, 58, 3, "@ui_radial:item_move_down"); //Move Down
+
+				menuResponse->addRadialMenuItem(4, 52, 3, "@ui_radial:item_rotate_left"); //Rotate Left
+				menuResponse->addRadialMenuItem(4, 53, 3, "@ui_radial:item_rotate_right"); //Rotate Right
+			}
+		}
+	}
+}
+
+int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	switch (selectedID) {
+	case 10: //Pick Up
+	{
+		String actionName = "transferitemmisc";
+		player->executeObjectControllerAction(actionName.hashCode(), getObjectID(), "");
+		//transferitem
+		break;
+	}
+	}
+
+	return 0;
 }
 
 void SceneObjectImplementation::setObjectName(StringId& stringID) {

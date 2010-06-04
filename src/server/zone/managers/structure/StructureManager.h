@@ -47,6 +47,34 @@ using namespace server::zone::objects::building;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace objectcontroller {
 
@@ -59,7 +87,17 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+#include "server/zone/managers/templates/TemplateManager.h"
+
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+
+#include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
+
 #include "engine/core/ManagedObject.h"
+
+#include "engine/util/Quaternion.h"
 
 #include "engine/log/Logger.h"
 
@@ -75,6 +113,20 @@ public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
 	void loadStructures();
+
+	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
+
+	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+
+	int redeedStructure(PlayerCreature* player, SceneObject* structure);
 
 protected:
 	StructureManager(DummyConstructorParameter* param);
@@ -101,6 +153,8 @@ class StructureManagerImplementation : public ManagedObjectImplementation, publi
 
 	ZoneProcessServerImplementation* server;
 
+	TemplateManager* templateManager;
+
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor);
 
@@ -125,6 +179,20 @@ private:
 
 public:
 	void loadStructures();
+
+	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
+
+	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+
+	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+
+	int redeedStructure(PlayerCreature* player, SceneObject* structure);
 
 	StructureManager* _this;
 
@@ -166,6 +234,12 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void loadStructures();
+
+	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
+
+	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+
+	int redeedStructure(PlayerCreature* player, SceneObject* structure);
 
 };
 

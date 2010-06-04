@@ -84,6 +84,7 @@ public:
 	const static int RESOURCESPAWN = 0x4000003;
 	const static int RESOURCECONTAINER = 0x4000004;
 	const static int ARMOROBJECT = 0x4000005;
+	const static int DEED = 0x4000006;
 
 public:
 	SharedObjectTemplate() {
@@ -337,6 +338,14 @@ public:
 		fullTemplateString = str;
 	}
 
+public:
+	inline virtual bool isSharedBuildingObjectTemplate() {
+		return false;
+	}
+
+	inline virtual bool isSharedInstallationObjectTemplate() {
+		return false;
+	}
 };
 
 

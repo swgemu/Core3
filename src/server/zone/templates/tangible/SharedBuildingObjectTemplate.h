@@ -8,9 +8,9 @@
 #ifndef SHAREDBUILDINGOBJECTTEMPLATE_H_
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "SharedStructureObjectTemplate.h"
 
-class SharedBuildingObjectTemplate : public SharedTangibleObjectTemplate {
+class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	String terrainModificationFileName;
 	String interiorLayoutFileName;
 

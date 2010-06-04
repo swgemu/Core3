@@ -63,6 +63,44 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		String dir;
+
+		//TODO: Return a usage message?
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		tokenizer.getStringToken(dir);
+
+		if (dir != "left" && dir != "right")
+			return false;
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		int degrees = tokenizer.getIntToken();
+
+		if (degrees < 1 ||degrees > 359)
+			return false;
+
+		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		if (obj == NULL)
+			return false;
+
+		if (dir == "right")
+			obj->rotate(-degrees);
+		else
+			obj->rotate(degrees);
+
+		if (obj->getParent() != NULL)
+			obj->updateZoneWithParent(obj->getParent(), true);
+		else
+			obj->updateZone(true);
+
 		return SUCCESS;
 	}
 

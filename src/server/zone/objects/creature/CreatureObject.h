@@ -338,6 +338,8 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
+	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(PlayerCreature* object);
@@ -866,6 +868,8 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
+	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	virtual bool isAggressiveTo(PlayerCreature* object);
@@ -1271,6 +1275,8 @@ public:
 
 	void executeObjectControllerAction(unsigned int actionCRC);
 
+	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(PlayerCreature* object);
@@ -1522,6 +1528,7 @@ protected:
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
 	String _param0_setMoodString__String_bool_;
+	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
 	String _param0_updateCooldownTimer__String_int_;
 	String _param0_checkCooldownRecovery__String_;
 	String _param1_canAddObject__SceneObject_String_;

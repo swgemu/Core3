@@ -148,19 +148,7 @@ public:
 
 	static const int CSR = 1;
 
-	static const int DEVELOPER = 2;
-
-	static const int ADMIN = 3;
-
-	static const int NORMAL = 4;
-
-	static const int QA = 8;
-
-	static const int EC = 16;
-
-	static const int CSRJR = 32;
-
-	static const int ECJR = 64;
+	static const int DEV = 2;
 
 	PlayerObject();
 
@@ -225,6 +213,12 @@ public:
 	String getTitle();
 
 	unsigned int getAdminLevel();
+
+	bool isDeveloper();
+
+	bool isCSR();
+
+	bool isPrivileged();
 
 	void setCharacterBitmask(unsigned int bitmask);
 
@@ -335,19 +329,7 @@ public:
 
 	static const int CSR = 1;
 
-	static const int DEVELOPER = 2;
-
-	static const int ADMIN = 3;
-
-	static const int NORMAL = 4;
-
-	static const int QA = 8;
-
-	static const int EC = 16;
-
-	static const int CSRJR = 32;
-
-	static const int ECJR = 64;
+	static const int DEV = 2;
 
 	PlayerObjectImplementation();
 
@@ -416,6 +398,12 @@ public:
 	String getTitle();
 
 	unsigned int getAdminLevel();
+
+	bool isDeveloper();
+
+	bool isCSR();
+
+	bool isPrivileged();
 
 	void setCharacterBitmask(unsigned int bitmask);
 
@@ -539,6 +527,12 @@ public:
 	String getTitle();
 
 	unsigned int getAdminLevel();
+
+	bool isDeveloper();
+
+	bool isCSR();
+
+	bool isPrivileged();
 
 	void setCharacterBitmask(unsigned int bitmask);
 

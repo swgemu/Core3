@@ -127,12 +127,15 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
-				server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.cpp \
+				server/zone/objects/tangible/deed/building/BuildingDeed.cpp \
+				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/AuctionItem.cpp \
+				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
+				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
@@ -191,7 +194,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
-		server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.cpp \
+		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
+		server/zone/objects/tangible/deed/DeedImplementation.cpp \
+		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
@@ -216,6 +222,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
+		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
@@ -252,6 +259,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
+		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp

@@ -47,12 +47,43 @@ package server.zone.objects.tangible.deed;
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
+import server.zone.packets.scene.AttributeListMessage;
+
+include server.zone.templates.SharedObjectTemplate;
 
 class Deed extends TangibleObject {
+	protected string generatedObjectTemplate;
 	
-	public Deed() {		
+	public Deed() {
 		Logger.setLoggingName("Deed");
 	}
 	
-	//public native void initializeTransientMembers();
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
+	
+	/**
+	 * Sets the object template path for the object which is generated from this deed being used.
+	 * @param templ The string template path that is to be created when this deed is used.
+	 */
+	public void setGeneratedObjectTemplate(final string templ) {
+		generatedObjectTemplate = templ;
+	}
+	
+	/**
+	 * Gets the object template path for the object which is generated from this deed being used.
+	 */
+	public string getGeneratedObjectTemplate() {
+		return generatedObjectTemplate;
+	}
 }

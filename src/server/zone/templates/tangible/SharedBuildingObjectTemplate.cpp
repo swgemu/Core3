@@ -9,7 +9,7 @@
 
 
 void SharedBuildingObjectTemplate::readObject(LuaObject* templateData) {
-	SharedTangibleObjectTemplate::readObject(templateData);
+	SharedStructureObjectTemplate::readObject(templateData);
 
 	terrainModificationFileName = templateData->getStringField("terrainModificationFileName");
 	interiorLayoutFileName = templateData->getStringField("interiorLayoutFileName");

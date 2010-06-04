@@ -63,6 +63,67 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		String dir;
+
+		//TODO: Return a usage message?
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		tokenizer.getStringToken(dir);
+
+		if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
+			return false;
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		int dist = tokenizer.getIntToken();
+
+		if (dist < 1 || dist > 10)
+			return false;
+
+		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		if (obj == NULL)
+			return false;
+
+		int degrees = creature->getDirectionAngle();
+
+		float offsetX = dist * sin(Math::deg2rad(degrees));
+		float offsetY = dist * cos(Math::deg2rad(degrees));
+
+		float x = obj->getPositionX();
+		float y = obj->getPositionY();
+		float z = obj->getPositionZ();
+
+		if (dir == "forward" || dir == "back") {
+			x += offsetX;
+			y += offsetY;
+		} else {
+			if (dir == "up")
+				z += dist;
+			else
+				z -= dist;
+		}
+
+		//TODO: Check to make sure the item is not being moved outside the range of the cell.
+
+		obj->setPosition(x, z, y);
+
+		if (obj->getParent() != NULL)
+			obj->updateZoneWithParent(obj->getParent(), true);
+		else
+			obj->updateZone(true);
+
+		if (obj->getParent() != NULL)
+			obj->updateZoneWithParent(obj->getParent(), true);
+		else
+			obj->updateZone(true);
+
 		return SUCCESS;
 	}
 

@@ -370,6 +370,10 @@ public:
 
 	static const int TRAVELTERMINAL = 0x4012;
 
+	static const int ELEVATORTERMINAL = 0x4013;
+
+	static const int GUILDTERMINAL = 0x4014;
+
 	static const int TOOL = 0x8000;
 
 	static const int CRAFTINGTOOL = 0x8001;
@@ -694,6 +698,8 @@ public:
 
 	float getDirectionW();
 
+	Quaternion getDirection();
+
 	unsigned int getClientObjectCRC();
 
 	unsigned int getServerObjectCRC();
@@ -736,6 +742,8 @@ public:
 
 	float getSpecialDirectionAngle();
 
+	void rotate(int degrees);
+
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
@@ -776,6 +784,10 @@ public:
 
 	bool isFishingPoleObject();
 
+	bool isDeedObject();
+
+	bool isBuildingDeed();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -801,6 +813,8 @@ public:
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setDirection(const Quaternion& dir);
 
 	void setMovementCounter(unsigned int count);
 
@@ -1092,6 +1106,10 @@ public:
 	static const int TICKETCOLLECTOR = 0x4011;
 
 	static const int TRAVELTERMINAL = 0x4012;
+
+	static const int ELEVATORTERMINAL = 0x4013;
+
+	static const int GUILDTERMINAL = 0x4014;
 
 	static const int TOOL = 0x8000;
 
@@ -1421,6 +1439,8 @@ public:
 
 	float getDirectionW();
 
+	Quaternion getDirection();
+
 	unsigned int getClientObjectCRC();
 
 	unsigned int getServerObjectCRC();
@@ -1463,6 +1483,8 @@ public:
 
 	float getSpecialDirectionAngle();
 
+	void rotate(int degrees);
+
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
@@ -1503,6 +1525,10 @@ public:
 
 	bool isFishingPoleObject();
 
+	bool isDeedObject();
+
+	bool isBuildingDeed();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -1528,6 +1554,8 @@ public:
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setDirection(const Quaternion& dir);
 
 	void setMovementCounter(unsigned int count);
 
@@ -1740,6 +1768,8 @@ public:
 
 	float getSpecialDirectionAngle();
 
+	void rotate(int degrees);
+
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
@@ -1779,6 +1809,10 @@ public:
 	bool isInstrument();
 
 	bool isFishingPoleObject();
+
+	bool isDeedObject();
+
+	bool isBuildingDeed();
 
 	bool isBazaarTerminal();
 
