@@ -46,6 +46,9 @@ which carries forward this exception.
 #define PLACESTRUCTURECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../player/PlayerCreature.h"
+#include "../../../managers/planet/PlanetManager.h"
+#include "../../../managers/structure/StructureManager.h"
 
 class PlaceStructureCommand : public QueueCommand {
 public:
@@ -62,6 +65,53 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		uint64 deedID = tokenizer.getLongToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		float x = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		float y = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		int angle = tokenizer.getIntToken() * 90; //In degrees
+
+		Zone* zone = player->getZone();
+
+		if (zone == NULL)
+			return false;
+
+		PlanetManager* planetManager = zone->getPlanetManager();
+
+		if (planetManager == NULL)
+			return false;
+
+		StructureManager* structureManager = planetManager->getStructureManager();
+
+		if (structureManager == NULL)
+			return false;
+
+		Locker _locker(structureManager);
+
+		structureManager->placeStructureFromDeed(player, deedID, x, y, angle);
 
 		return SUCCESS;
 	}

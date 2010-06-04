@@ -10,8 +10,10 @@ void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTempla
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
 	CharacterBuilderTerminalTemplate* terminalData = dynamic_cast<CharacterBuilderTerminalTemplate*>(templateData);
-	//Maybe just have one large Items field instead of fields for each type of item?
-	//Maybe make them multi dimensional?
+
+	if (terminalData == NULL)
+		return;
+
 	itemList = terminalData->getItemList();
 
 	info("loaded " + String::valueOf(itemList.size()));

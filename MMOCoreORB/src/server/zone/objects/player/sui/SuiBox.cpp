@@ -602,7 +602,7 @@ int SuiBoxImplementation::compareTo(SuiBox* obj) {
 
 	else 	// server/zone/objects/player/sui/SuiBox.idl(212):  
 	if (boxID > id)	// server/zone/objects/player/sui/SuiBox.idl(213):  			return -1;
-	return -1;
+	return 1;
 
 	else 	// server/zone/objects/player/sui/SuiBox.idl(215):  			return 0;
 	return 0;

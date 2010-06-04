@@ -52,17 +52,36 @@ import server.zone.objects.cell.CellObject;
 import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.tangible.sign.SignObject;
+import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.building.StructurePermissionList;
 
 class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
 	
+	@dereferenced
+	protected StructurePermissionList structurePermissionList;
+	
+	protected unsigned long ownerObjectID;
+	
 	protected int totalCellNumber;
 	protected boolean staticGarage;
+	
+	protected SignObject signObject;
+	
+	protected int lotSize;
+	
+	protected unsigned long deedObjectID;
+	
+	protected int baseMaintenanceRate;
+	
+	protected int accessFee;
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
@@ -77,7 +96,15 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		
 		totalCellNumber = 0;
 		
+		lotSize = 0;
+		
+		baseMaintenanceRate = 0;
+		
 		staticGarage = false;
+		
+		deedObjectID = 0;
+		
+		accessFee = 0;
 	}
 	
 	public void createCellObjects() {
@@ -140,6 +167,18 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return cells.get(idx);
 	}
 	
+	public int getTotalCellNumber() {
+		return totalCellNumber;
+	}
+	
+	public void setLotSize(int lotsize) {
+		lotSize = lotsize;
+	}
+	
+	public int getLotSize() {
+		return lotSize;
+	}
+	
 	public void setStaticBuilding(boolean value) {
 		super.staticObject = value;
 	}
@@ -180,4 +219,68 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return true;
 	}
 	
+	public boolean hasPermissionAdmin(CreatureObject creature) {
+		return true;
+	}
+	
+	public void setDeedObjectID(unsigned long deedid) {
+		deedObjectID = deedid;
+	}
+	
+	public unsigned long getDeedObjectID() {
+		return deedObjectID;
+	}
+	
+	public void setOwnerObjectID(unsigned long ownerID) {
+		ownerObjectID = ownerID;
+		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	}
+	
+	public unsigned long getOwnerObjectID() {
+		return ownerObjectID;
+	}
+	
+	public void setSignObject(SignObject sign) {
+		signObject = sign;
+	}
+	
+	public SignObject getSignObject() {
+		return signObject;
+	}
+	
+	/**
+	 * Sets the base maintenance rate for this building. This is the rate before any bonuses are applied.
+	 * @param maintenanceRate The new maintenance rate to set for this building.
+	 */
+	public void setBaseMaintenanceRate(int maintenanceRate) {
+		baseMaintenanceRate = maintenanceRate;
+	}
+	
+	/**
+	 * Returns the base maintenance rate for the building.
+	 * This value is the rate before any bonuses from the merchant skills are added.
+	 * @return The base maintenance rate for the building.
+	 */
+	public int getBaseMaintenanceRate() {
+		return baseMaintenanceRate;
+	}
+	
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return The cost to redeed this building.
+	 */
+	public int getRedeedCost() {
+		return baseMaintenanceRate * 50;
+	}
+	
+	
+	
+	//Structure Permissions
+	public boolean isOnAdminList(PlayerCreature player) {
+		return structurePermissionList.isOnAdminList(player.getObjectID());
+	}
+	
+	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+		structurePermissionList.sendTo(player, listName);
+	}
 }

@@ -42,6 +42,20 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -52,6 +66,40 @@ class PlayerCreature;
 } // namespace server
 
 using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace sign {
+
+class SignObject;
+
+} // namespace sign
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::sign;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace structure {
+
+class StructureTerminal;
+
+} // namespace structure
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::structure;
 
 namespace server {
 namespace zone {
@@ -74,6 +122,8 @@ class Zone;
 using namespace server::zone;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/building/StructurePermissionList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -130,6 +180,12 @@ public:
 
 	CellObject* getCell(int idx);
 
+	int getTotalCellNumber();
+
+	void setLotSize(int lotsize);
+
+	int getLotSize();
+
 	void setStaticBuilding(bool value);
 
 	void onEnter(PlayerCreature* player);
@@ -141,6 +197,30 @@ public:
 	void setStaticGarage(bool val);
 
 	bool isBuildingObject();
+
+	bool hasPermissionAdmin(CreatureObject* creature);
+
+	void setDeedObjectID(unsigned long long deedid);
+
+	unsigned long long getDeedObjectID();
+
+	void setOwnerObjectID(unsigned long long ownerID);
+
+	unsigned long long getOwnerObjectID();
+
+	void setSignObject(SignObject* sign);
+
+	SignObject* getSignObject();
+
+	void setBaseMaintenanceRate(int maintenanceRate);
+
+	int getBaseMaintenanceRate();
+
+	int getRedeedCost();
+
+	bool isOnAdminList(PlayerCreature* player);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -166,9 +246,23 @@ class BuildingObjectImplementation : public TangibleObjectImplementation, public
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
+	StructurePermissionList structurePermissionList;
+
+	unsigned long long ownerObjectID;
+
 	int totalCellNumber;
 
 	bool staticGarage;
+
+	ManagedReference<SignObject* > signObject;
+
+	int lotSize;
+
+	unsigned long long deedObjectID;
+
+	int baseMaintenanceRate;
+
+	int accessFee;
 
 public:
 	BuildingObjectImplementation();
@@ -209,6 +303,12 @@ public:
 
 	CellObject* getCell(int idx);
 
+	int getTotalCellNumber();
+
+	void setLotSize(int lotsize);
+
+	int getLotSize();
+
 	void setStaticBuilding(bool value);
 
 	virtual void onEnter(PlayerCreature* player);
@@ -220,6 +320,30 @@ public:
 	void setStaticGarage(bool val);
 
 	bool isBuildingObject();
+
+	bool hasPermissionAdmin(CreatureObject* creature);
+
+	void setDeedObjectID(unsigned long long deedid);
+
+	unsigned long long getDeedObjectID();
+
+	void setOwnerObjectID(unsigned long long ownerID);
+
+	unsigned long long getOwnerObjectID();
+
+	void setSignObject(SignObject* sign);
+
+	SignObject* getSignObject();
+
+	void setBaseMaintenanceRate(int maintenanceRate);
+
+	int getBaseMaintenanceRate();
+
+	int getRedeedCost();
+
+	bool isOnAdminList(PlayerCreature* player);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
 	BuildingObject* _this;
 
@@ -280,6 +404,12 @@ public:
 
 	CellObject* getCell(int idx);
 
+	int getTotalCellNumber();
+
+	void setLotSize(int lotsize);
+
+	int getLotSize();
+
 	void setStaticBuilding(bool value);
 
 	void onEnter(PlayerCreature* player);
@@ -292,6 +422,32 @@ public:
 
 	bool isBuildingObject();
 
+	bool hasPermissionAdmin(CreatureObject* creature);
+
+	void setDeedObjectID(unsigned long long deedid);
+
+	unsigned long long getDeedObjectID();
+
+	void setOwnerObjectID(unsigned long long ownerID);
+
+	unsigned long long getOwnerObjectID();
+
+	void setSignObject(SignObject* sign);
+
+	SignObject* getSignObject();
+
+	void setBaseMaintenanceRate(int maintenanceRate);
+
+	int getBaseMaintenanceRate();
+
+	int getRedeedCost();
+
+	bool isOnAdminList(PlayerCreature* player);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+protected:
+	String _param1_sendPermissionListTo__PlayerCreature_String_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

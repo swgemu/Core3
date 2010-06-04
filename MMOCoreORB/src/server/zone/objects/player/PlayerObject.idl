@@ -106,13 +106,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int ANONYMOUS = 0x80000000;
 	
 	public static final int CSR = 1;
-	public static final int DEVELOPER = 2;
-	public static final int ADMIN = 3;
-	public static final int NORMAL = 4;
-	public static final int QA = 8;
-	public static final int EC = 16;
-	public static final int CSRJR = 32;
-	public static final int ECJR = 64;
+	public static final int DEV = 2;
 	
 	public PlayerObject() {
 		Logger.setLoggingName("PlayerObject");
@@ -317,6 +311,18 @@ class PlayerObject extends IntangibleObject {
 	
 	public unsigned int getAdminLevel() {
 		return adminLevel;
+	}
+	
+	public boolean isDeveloper() {
+		return adminLevel == DEV;
+	}
+	
+	public boolean isCSR() {
+		return adminLevel == CSR;
+	}
+	
+	public boolean isPrivileged() {
+		return adminLevel > 0;
 	}
 	
 	public void setCharacterBitmask(unsigned int bitmask) {

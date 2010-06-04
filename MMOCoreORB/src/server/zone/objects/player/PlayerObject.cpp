@@ -408,12 +408,48 @@ unsigned int PlayerObject::getAdminLevel() {
 		return ((PlayerObjectImplementation*) _impl)->getAdminLevel();
 }
 
-void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
+bool PlayerObject::isDeveloper() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 30);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isDeveloper();
+}
+
+bool PlayerObject::isCSR() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isCSR();
+}
+
+bool PlayerObject::isPrivileged() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isPrivileged();
+}
+
+void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
 		method.addUnsignedIntParameter(bitmask);
 
 		method.executeWithVoidReturn();
@@ -426,7 +462,7 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 34);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -440,7 +476,7 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 35);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -454,7 +490,7 @@ void PlayerObject::setTitle(const String& characterTitle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 36);
 		method.addAsciiParameter(characterTitle);
 
 		method.executeWithVoidReturn();
@@ -475,7 +511,7 @@ int PlayerObject::getForcePower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -487,7 +523,7 @@ int PlayerObject::getForcePowerMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -515,7 +551,7 @@ int PlayerObject::getFoodFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -527,7 +563,7 @@ int PlayerObject::getFoodFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -539,7 +575,7 @@ int PlayerObject::getDrinkFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -551,7 +587,7 @@ int PlayerObject::getDrinkFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -563,7 +599,7 @@ int PlayerObject::getJediState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -575,7 +611,7 @@ byte PlayerObject::getLanguageID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithByteReturn();
 	} else
@@ -603,7 +639,7 @@ int PlayerObject::getExperience(const String& xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 45);
 		method.addAsciiParameter(xp);
 
 		return method.executeWithSignedIntReturn();
@@ -696,7 +732,7 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(118):  		Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl(112):  		Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
@@ -704,127 +740,142 @@ void PlayerObjectImplementation::finalize() {
 }
 
 bool PlayerObjectImplementation::hasFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(282):  		return friendList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(276):  		return friendList.contains(name);
 	return (&friendList)->contains(name);
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(286):  		return ignoreList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(280):  		return ignoreList.contains(name);
 	return (&ignoreList)->contains(name);
 }
 
 void PlayerObjectImplementation::addReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(290):  		friendList.addReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(284):  		friendList.addReversePlayer(name);
 	(&friendList)->addReversePlayer(name);
 }
 
 void PlayerObjectImplementation::removeReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(294):  		friendList.removeReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(288):  		friendList.removeReversePlayer(name);
 	(&friendList)->removeReversePlayer(name);
 }
 
 bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
-	// server/zone/objects/player/PlayerObject.idl(300):  		return waypointList.contains(objectID);
+	// server/zone/objects/player/PlayerObject.idl(294):  		return waypointList.contains(objectID);
 	return (&waypointList)->contains(objectID);
 }
 
 bool PlayerObjectImplementation::hasSkill(Skill* skill) {
-	// server/zone/objects/player/PlayerObject.idl(305):  		return skillList.contains(skill);
+	// server/zone/objects/player/PlayerObject.idl(299):  		return skillList.contains(skill);
 	return (&skillList)->contains(skill);
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(311):  		return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(305):  		return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(315):  		return title;
+	// server/zone/objects/player/PlayerObject.idl(309):  		return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(319):  		return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(313):  		return adminLevel;
 	return adminLevel;
 }
 
+bool PlayerObjectImplementation::isDeveloper() {
+	// server/zone/objects/player/PlayerObject.idl(317):  		return adminLevel == DEV;
+	return adminLevel == DEV;
+}
+
+bool PlayerObjectImplementation::isCSR() {
+	// server/zone/objects/player/PlayerObject.idl(321):  		return adminLevel == CSR;
+	return adminLevel == CSR;
+}
+
+bool PlayerObjectImplementation::isPrivileged() {
+	// server/zone/objects/player/PlayerObject.idl(325):  		return adminLevel > 0;
+	return adminLevel > 0;
+}
+
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(323):  		characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(329):  		characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(330):  		title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(336):  		title = characterTitle;
 	title = characterTitle;
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(335):  		return experienceList;
+	// server/zone/objects/player/PlayerObject.idl(341):  		return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(339):  		return forcePower;
+	// server/zone/objects/player/PlayerObject.idl(345):  		return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(343):  		return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl(349):  		return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(348):  		return waypointList;
+	// server/zone/objects/player/PlayerObject.idl(354):  		return waypointList;
 	return (&waypointList);
 }
 
 SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl(353):  		return skillList;
+	// server/zone/objects/player/PlayerObject.idl(359):  		return skillList;
 	return (&skillList);
 }
 
 int PlayerObjectImplementation::getFoodFilling() {
-	// server/zone/objects/player/PlayerObject.idl(357):  		return foodFilling;
+	// server/zone/objects/player/PlayerObject.idl(363):  		return foodFilling;
 	return foodFilling;
 }
 
 int PlayerObjectImplementation::getFoodFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(361):  		return foodFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(367):  		return foodFillingMax;
 	return foodFillingMax;
 }
 
 int PlayerObjectImplementation::getDrinkFilling() {
-	// server/zone/objects/player/PlayerObject.idl(365):  		return drinkFilling;
+	// server/zone/objects/player/PlayerObject.idl(371):  		return drinkFilling;
 	return drinkFilling;
 }
 
 int PlayerObjectImplementation::getDrinkFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(369):  		return drinkFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(375):  		return drinkFillingMax;
 	return drinkFillingMax;
 }
 
 int PlayerObjectImplementation::getJediState() {
-	// server/zone/objects/player/PlayerObject.idl(373):  		return jediState;
+	// server/zone/objects/player/PlayerObject.idl(379):  		return jediState;
 	return jediState;
 }
 
 byte PlayerObjectImplementation::getLanguageID() {
-	// server/zone/objects/player/PlayerObject.idl(377):  		return languageID;
+	// server/zone/objects/player/PlayerObject.idl(383):  		return languageID;
 	return languageID;
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getFriendList() {
-	// server/zone/objects/player/PlayerObject.idl(382):  		return friendList;
+	// server/zone/objects/player/PlayerObject.idl(388):  		return friendList;
 	return (&friendList);
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
-	// server/zone/objects/player/PlayerObject.idl(387):  		return ignoreList;
+	// server/zone/objects/player/PlayerObject.idl(393):  		return ignoreList;
 	return (&ignoreList);
 }
 
 int PlayerObjectImplementation::getExperience(const String& xp) {
-	// server/zone/objects/player/PlayerObject.idl(391):  		return experienceList.get(xp);
+	// server/zone/objects/player/PlayerObject.idl(397):  		return experienceList.get(xp);
 	return (&experienceList)->get(xp);
 }
 
@@ -915,42 +966,51 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertInt(getAdminLevel());
 		break;
 	case 31:
-		setCharacterBitmask(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isDeveloper());
 		break;
 	case 32:
-		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(isCSR());
 		break;
 	case 33:
-		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(isPrivileged());
 		break;
 	case 34:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		setCharacterBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 35:
-		resp->insertSignedInt(getForcePower());
+		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 36:
-		resp->insertSignedInt(getForcePowerMax());
+		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 37:
-		resp->insertSignedInt(getFoodFilling());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	case 38:
-		resp->insertSignedInt(getFoodFillingMax());
+		resp->insertSignedInt(getForcePower());
 		break;
 	case 39:
-		resp->insertSignedInt(getDrinkFilling());
+		resp->insertSignedInt(getForcePowerMax());
 		break;
 	case 40:
-		resp->insertSignedInt(getDrinkFillingMax());
+		resp->insertSignedInt(getFoodFilling());
 		break;
 	case 41:
-		resp->insertSignedInt(getJediState());
+		resp->insertSignedInt(getFoodFillingMax());
 		break;
 	case 42:
-		resp->insertByte(getLanguageID());
+		resp->insertSignedInt(getDrinkFilling());
 		break;
 	case 43:
+		resp->insertSignedInt(getDrinkFillingMax());
+		break;
+	case 44:
+		resp->insertSignedInt(getJediState());
+		break;
+	case 45:
+		resp->insertByte(getLanguageID());
+		break;
+	case 46:
 		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
 	default:
@@ -1058,6 +1118,18 @@ String PlayerObjectAdapter::getTitle() {
 
 unsigned int PlayerObjectAdapter::getAdminLevel() {
 	return ((PlayerObjectImplementation*) impl)->getAdminLevel();
+}
+
+bool PlayerObjectAdapter::isDeveloper() {
+	return ((PlayerObjectImplementation*) impl)->isDeveloper();
+}
+
+bool PlayerObjectAdapter::isCSR() {
+	return ((PlayerObjectImplementation*) impl)->isCSR();
+}
+
+bool PlayerObjectAdapter::isPrivileged() {
+	return ((PlayerObjectImplementation*) impl)->isPrivileged();
 }
 
 void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {

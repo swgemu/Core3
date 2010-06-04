@@ -2393,6 +2393,7 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	detailedDescription = "@terminal_detail:terminal_player_structure",
 
 	gameObjectType = 16392,
+	maxCondition = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@terminal_lookat:terminal_player_structure",

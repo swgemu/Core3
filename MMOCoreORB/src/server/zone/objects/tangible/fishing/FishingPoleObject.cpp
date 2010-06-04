@@ -244,7 +244,7 @@ int FishingPoleObjectImplementation::getQuality() {
 
 void FishingPoleObjectImplementation::setQuality(int value) {
 	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(75):  	}
-	if ((value > -1) && (value < 101))	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(76):  			quality = value;
+	if ((value > 1) && (value < 101))	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(76):  			quality = value;
 	quality = value;
 }
 

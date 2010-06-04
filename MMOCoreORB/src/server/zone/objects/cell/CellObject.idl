@@ -76,5 +76,4 @@ class CellObject extends SceneObject {
 	public void setCellNumber(int number) {
 		cellNumber = number;
 	}
-	
 }

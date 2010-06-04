@@ -42,19 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.deed.playerhouse;
+package server.zone.objects.tangible.deed.building;
 
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.deed.Deed;
+import server.zone.packets.scene.AttributeListMessage;
 
-class PlayerHouseDeed extends Deed {
+class BuildingDeed extends Deed {
+	protected unsigned int surplusMaintenance;
 	
-	public PlayerHouseDeed() {		
-		Logger.setLoggingName("PlayerHouseDeed");
+	public BuildingDeed() {		
+		Logger.setLoggingName("BuildingDeed");
+		
+		surplusMaintenance = 0;
 	}
+	
+	@local
+	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
 	
 	public native void initializeTransientMembers();
 	
@@ -65,4 +72,12 @@ class PlayerHouseDeed extends Deed {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	void setSurplusMaintenance(unsigned int surplusMaint) {
+		surplusMaintenance = surplusMaint;
+	}
+	
+	unsigned int getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
 }

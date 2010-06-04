@@ -804,7 +804,7 @@ int ChatRoomImplementation::compareTo(ChatRoom* obj) {
 
 	else 	// server/chat/room/ChatRoom.idl(270):  
 	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(271):  			return -1;
-	return -1;
+	return 1;
 
 	else 	// server/chat/room/ChatRoom.idl(273):  			return 0;
 	return 0;

@@ -1072,6 +1072,12 @@ void CreatureObjectImplementation::executeObjectControllerAction(unsigned int ac
 	objectController->activateCommand(_this, actionCRC, 0, 0, "");
 }
 
+void CreatureObjectImplementation::executeObjectControllerAction(unsigned int actionCRC, uint64 targetID, const UnicodeString& args) {
+	ObjectController* objectController = getZoneServer()->getObjectController();
+
+	objectController->activateCommand(_this, actionCRC, 0, targetID, args);
+}
+
 
 void CreatureObjectImplementation::doCombatAnimation(CreatureObject* defender, uint32 animcrc, byte hit) {
 	CombatAction* action = new CombatAction(_this, defender, animcrc, hit);

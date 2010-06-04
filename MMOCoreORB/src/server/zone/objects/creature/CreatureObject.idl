@@ -644,6 +644,7 @@ class CreatureObject extends TangibleObject {
 	 * Executes an object controller command
 	 */
 	public native void executeObjectControllerAction(unsigned int actionCRC);
+	public native void executeObjectControllerAction(unsigned int actionCRC, unsigned long targetID, final unicode args);
 	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
