@@ -18,7 +18,6 @@
 void BuildingObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
-	QuadTree::setSize(-1024, -1024, 1024, 1024);
 	setLoggingName("BuildingObject");
 }
 
