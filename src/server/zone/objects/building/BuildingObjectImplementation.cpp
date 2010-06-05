@@ -112,13 +112,14 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* childStub = cell->getContainerObject(j);
 
-			if (!childStub->isCreatureObject())
-				continue;
+			if (childStub->isCreatureObject()
+					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {
 
-			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
+				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
-			child->addInRangeObject(obj, false);
-			obj->addInRangeObject(child, false);
+				child->addInRangeObject(obj, false);
+				obj->addInRangeObject(child, false);
+			}
 		}
 	}
 }

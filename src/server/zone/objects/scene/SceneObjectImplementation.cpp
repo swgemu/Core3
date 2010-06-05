@@ -558,6 +558,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	} else if (parent->isCellObject()) {
 		BuildingObject* building = (BuildingObject*) parent->getParent();
 		insertToBuilding(building);
+
+		building->notifyInsertToZone(_this);
 	}
 
 	movementCounter = 0;
@@ -597,8 +599,6 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		building->insert(this);
 		building->inRange(this, 128);
-
-		building->notifyInsertToZone(_this);
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
 

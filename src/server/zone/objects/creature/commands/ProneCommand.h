@@ -80,6 +80,11 @@ public:
 			float y = creature->getPositionY();
 			float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
 
+			SceneObject* parent = creature->getParent();
+
+			if (parent != NULL && parent->isCellObject())
+				parent->addObject(blueFrog, -1);
+
 			blueFrog->initializePosition(x, z, y);
 			blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
 			blueFrog->insertToZone(creature->getZone());
