@@ -105,7 +105,7 @@ public:
 		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
 		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
 
-		int duration = 100;
+		int duration = 30;
 
 		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
 		buff->setSpeedModifier(4.424f);
