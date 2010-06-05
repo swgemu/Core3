@@ -547,19 +547,21 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	sendToOwner(true);
 
 	if (isInQuadTree()) {
+		notifiedSentObjects.removeAll();
+
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			notifyInsert(getInRangeObject(i));
 		}
-	}
+	} else {
+		if (parent == NULL || !parent->isCellObject()) {
+			zone->insert(this);
+			zone->inRange(this, 128);
+		} else if (parent->isCellObject()) {
+			BuildingObject* building = (BuildingObject*) parent->getParent();
+			insertToBuilding(building);
 
-	if (parent == NULL || !parent->isCellObject()) {
-		zone->insert(this);
-		zone->inRange(this, 128);
-	} else if (parent->isCellObject()) {
-		BuildingObject* building = (BuildingObject*) parent->getParent();
-		insertToBuilding(building);
-
-		building->notifyInsertToZone(_this);
+			building->notifyInsertToZone(_this);
+		}
 	}
 
 	movementCounter = 0;

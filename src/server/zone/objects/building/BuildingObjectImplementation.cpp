@@ -97,9 +97,22 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 		obj->addInRangeObject(creoImpl, true);
 	}
 
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* childStub = cell->getContainerObject(j);
+			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
+
+			//if (childStub->isInRange(object, 128)) {
+				child->addInRangeObject(creoImpl, false);
+				creoImpl->addInRangeObject(child, false);
+			//}
+		}
+	}
+
 	creoImpl->addInRangeObject(this, false);
 	addInRangeObject(creoImpl, false);
-
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
@@ -112,14 +125,14 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* childStub = cell->getContainerObject(j);
 
-			if (childStub->isCreatureObject()
-					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {
+			/*if (childStub->isCreatureObject()
+					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
 
 				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
 				child->addInRangeObject(obj, false);
 				obj->addInRangeObject(child, false);
-			}
+			//}
 		}
 	}
 }
