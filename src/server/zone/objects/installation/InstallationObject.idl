@@ -86,36 +86,13 @@ class InstallationObject extends TangibleObject {
 		deedObjectID = 0;
 	}
 	
-	/*
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("InstallationObject");
+	}
 	
-	public native void initializeTransientMembers();
-	
-	@local
-	public native void notifyInsert(QuadTreeEntry obj);
-	
-	@local
-	public native void notifyDissapear(QuadTreeEntry obj);
-
-	public native void notifyInsertToZone(SceneObject object);
-	public native void notifyRemove(SceneObject object);
-	
-	@local
-	public native void insert(QuadTreeEntry obj);
-	
-	@local
-	public native void remove(QuadTreeEntry obj);
-	
-	@local
-	public native void update(QuadTreeEntry obj);
-	
-	@local
-	public native void inRange(QuadTreeEntry obj, float range);
-	
-	public native void sendTo(SceneObject player, boolean doClose);*/
 	public native void sendBaselinesTo(SceneObject player);
-	//public native void sendDestroyTo(SceneObject player);
 	
 	public void setLotSize(int lotsize) {
 		lotSize = lotsize;
