@@ -11,7 +11,7 @@
 
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
-	info("sending building baselines");
+	info("sending installation baselines");
 
 	BaseMessage* buio3 = new InstallationObjectMessage3(_this);
 	player->sendMessage(buio3);

@@ -54,6 +54,8 @@ class InstallationObject : public TangibleObject {
 public:
 	InstallationObject();
 
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setLotSize(int lotsize);
@@ -133,6 +135,8 @@ public:
 
 	InstallationObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setLotSize(int lotsize);
@@ -207,6 +211,8 @@ public:
 	InstallationObjectAdapter(InstallationObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
