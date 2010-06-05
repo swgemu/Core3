@@ -30,12 +30,25 @@ void CellObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		((CellObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
-void CellObject::initializeTransientMembers() {
+void CellObject::sendContainerObjectsTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->sendContainerObjectsTo(player);
+}
+
+void CellObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -47,7 +60,7 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -60,7 +73,7 @@ int CellObject::getCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -72,7 +85,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -85,7 +98,7 @@ bool CellObject::isCellObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -172,17 +185,17 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(73):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(81):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(77):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(85):  		cellNumber = number;
 	cellNumber = number;
 }
 
 bool CellObjectImplementation::isCellObject() {
-	// server/zone/objects/cell/CellObject.idl(81):  		return true;
+	// server/zone/objects/cell/CellObject.idl(89):  		return true;
 	return true;
 }
 
@@ -198,21 +211,24 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 8:
-		finalize();
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertSignedInt(getCellNumber());
+		finalize();
 		break;
 	case 10:
-		setCellNumber(inv->getSignedIntParameter());
+		resp->insertSignedInt(getCellNumber());
 		break;
 	case 11:
+		setCellNumber(inv->getSignedIntParameter());
+		break;
+	case 12:
 		resp->insertBoolean(isCellObject());
 		break;
 	default:
@@ -220,6 +236,10 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void CellObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
+	((CellObjectImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
 void CellObjectAdapter::initializeTransientMembers() {

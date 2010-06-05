@@ -24,11 +24,24 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	containerType = 2;
 }
 
+void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	//info("sending cell containers", true);
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		SceneObject* containerObject = containerObjects.get(j);
+
+		if (containerObject->isCreatureObject()
+				|| (player->getRootParent() == parent) && (player->isInRange(containerObject, 128))) {
+
+			//info("sending cell container contents", true);
+			containerObject->sendTo(player, true);
+		}
+	}
+}
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "sending cell number " << cellNumber << " baselines";
-	info(msg.toString(), true);
+	info(msg.toString(), true);*/
 
 	BaseMessage* cellMsg3 = new CellObjectMessage3(getObjectID(), cellNumber);
 	player->sendMessage(cellMsg3);
