@@ -8,10 +8,9 @@
 #ifndef SHAREDINSTALLATIONOBJECTTEMPLATE_H_
 #define SHAREDINSTALLATIONOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "SharedStructureObjectTemplate.h"
 
-class SharedInstallationObjectTemplate : public SharedTangibleObjectTemplate {
-
+class SharedInstallationObjectTemplate : public SharedStructureObjectTemplate {
 public:
 	SharedInstallationObjectTemplate() {
 
@@ -22,7 +21,7 @@ public:
 	}
 
 	void readObject(LuaObject* templateData) {
-		SharedTangibleObjectTemplate::readObject(templateData);
+		SharedStructureObjectTemplate::readObject(templateData);
 	}
 
 	virtual bool isSharedInstallationObjectTemplate() {

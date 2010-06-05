@@ -83,10 +83,10 @@ public:
 		if (obj == NULL)
 			return GENERALERROR;
 
-		if (!obj->isBuildingDeed())
+		if (!obj->isBuildingDeed() && !obj->isInstallationDeed())
 			return GENERALERROR;
 
-		ManagedReference<BuildingDeed*> deed = (BuildingDeed*) obj.get();
+		ManagedReference<Deed*> deed = (Deed*) obj.get();
 
 		//Need to lock the deed ?
 		Locker _locker(deed);
@@ -141,7 +141,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //PLACESTRUCTUREMODECOMMAND_H_

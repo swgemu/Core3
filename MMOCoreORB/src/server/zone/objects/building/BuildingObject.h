@@ -210,6 +210,10 @@ public:
 
 	SignObject* getSignObject();
 
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
+
 	void setBaseMaintenanceRate(int maintenanceRate);
 
 	int getBaseMaintenanceRate();
@@ -259,6 +263,8 @@ protected:
 	unsigned long long deedObjectID;
 
 	int baseMaintenanceRate;
+
+	unsigned int maintenancePool;
 
 	int accessFee;
 
@@ -330,6 +336,10 @@ public:
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
+
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
 
 	void setBaseMaintenanceRate(int maintenanceRate);
 
@@ -429,6 +439,10 @@ public:
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
+
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
 
 	void setBaseMaintenanceRate(int maintenanceRate);
 
