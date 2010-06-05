@@ -98,9 +98,9 @@ public:
 
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost);
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost);
-		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost);
+		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost, true);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost, true);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost, true);
 
 		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
 		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");

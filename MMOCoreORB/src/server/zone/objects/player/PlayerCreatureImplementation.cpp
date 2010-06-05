@@ -195,6 +195,10 @@ void PlayerCreatureImplementation::doRecovery() {
 	activateHAMRegeneration();
 	activateStateRecovery();
 
+	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
+		damageOverTimeList.activateDots(_this);
+	}
+
 	if (isInCombat() && getTargetID() != 0 && !isPeaced()
 			&& (commandQueue.size() == 0)) {
 		enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack

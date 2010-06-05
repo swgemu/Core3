@@ -38,6 +38,8 @@ class ActiveArea : public SceneObject {
 public:
 	ActiveArea();
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	void notifyEnter(PlayerCreature* object);
 
 	void notifyExit(PlayerCreature* object);
@@ -80,6 +82,8 @@ public:
 	ActiveAreaImplementation();
 
 	ActiveAreaImplementation(DummyConstructorParameter* param);
+
+	void sendTo(SceneObject* player, bool doClose);
 
 	virtual void notifyEnter(PlayerCreature* object);
 
@@ -131,6 +135,8 @@ public:
 	ActiveAreaAdapter(ActiveAreaImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendTo(SceneObject* player, bool doClose);
 
 	void notifyEnter(PlayerCreature* object);
 

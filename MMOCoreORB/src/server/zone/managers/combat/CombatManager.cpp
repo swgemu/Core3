@@ -233,10 +233,44 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	}
 
 	applyStates(attacker, defender, command);
+	attemptApplyDot(attacker, defender, command);
 
 	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
 	return 0;
+}
+
+bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command) {
+	uint32 duration = command->getDotDuration();
+
+	if (duration == 0)
+		return false;
+
+	uint64 type = command->getDotType();
+	uint8 dotPool = command->getDotPool();
+	uint32 strength = command->getDotStrength();
+	float potency = command->getDotPotency();
+
+	int resist = 0;
+
+	switch (type) {
+	case CreatureState::BLEEDING:
+		resist = defender->getSkillMod("resistance_bleeding");
+		break;
+	case CreatureState::POISONED:
+		resist = defender->getSkillMod("resistance_poison");
+		break;
+	case CreatureState::DISEASED:
+		resist = defender->getSkillMod("resistance_disease");
+		break;
+	case CreatureState::ONFIRE:
+		resist = defender->getSkillMod("resistance_fire");
+		break;
+	}
+
+	int applied = defender->addDotState(type, strength, dotPool, duration, potency, resist);
+
+	return applied != 0;
 }
 
 float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* weapon) {
@@ -768,7 +802,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CombatQueue
 		if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 			return false;
 
-		attacker->inflictDamage(CreatureAttribute::HEALTH, health, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true);
 	}
 
 	if (action > 0) {
@@ -1034,7 +1068,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 
 	int damage = System::random(1000);
 
-	defender->inflictDamage(0, damage, true);
+	defender->inflictDamage(defender, 0, damage, true);
 
 	return damage;
 }

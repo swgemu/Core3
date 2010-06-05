@@ -202,6 +202,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
+		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \

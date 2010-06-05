@@ -182,7 +182,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -385,7 +385,7 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* object);
 
-	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	virtual int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -500,7 +500,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 
