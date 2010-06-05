@@ -142,6 +142,20 @@ using namespace server::zone::managers::resource;
 namespace server {
 namespace zone {
 namespace managers {
+namespace crafting {
+
+class CraftingManager;
+
+} // namespace crafting
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::crafting;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace bazaar {
 
 class BazaarManager;
@@ -298,6 +312,8 @@ public:
 
 	ResourceManager* getResourceManager();
 
+	CraftingManager* getCraftingManager();
+
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
@@ -357,6 +373,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<RadialManager* > radialManager;
 
 	ManagedReference<ResourceManager* > resourceManager;
+
+	ManagedReference<CraftingManager* > craftingManager;
 
 	ManagedReference<BazaarManager* > bazaarManager;
 
@@ -488,6 +506,8 @@ public:
 	RadialManager* getRadialManager();
 
 	ResourceManager* getResourceManager();
+
+	CraftingManager* getCraftingManager();
 
 	BazaarManager* getBazaarManager();
 
@@ -623,6 +643,8 @@ public:
 	RadialManager* getRadialManager();
 
 	ResourceManager* getResourceManager();
+
+	CraftingManager* getCraftingManager();
 
 	BazaarManager* getBazaarManager();
 

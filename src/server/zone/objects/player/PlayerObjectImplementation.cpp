@@ -379,6 +379,110 @@ void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bo
 	}
 }
 
+void PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
+	if (schematics.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.add(schematics.get(0), msg, schematics.size());
+
+		for (int i = 1; i < schematics.size(); ++i)
+			schematicList.add(schematics.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < schematics.size(); ++i)
+			schematicList.add(schematics.get(i));
+	}
+}
+
+void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
+
+	if (schematics.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.remove(schematics.get(0), msg, schematics.size());
+
+		for (int i = 1; i < schematics.size(); ++i)
+			schematicList.remove(schematics.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < schematics.size(); ++i)
+			schematicList.remove(schematics.get(i));
+	}
+
+	/*if (schematics.size() == 0)
+		return;
+
+	for (int i = 0; i < schematics.size(); ++i)
+		schematicList.remove(schematics.get(i));
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+
+		msg->startUpdate(4);
+		schematicList.readd(NULL, msg, schematicList.size());
+
+		msg->insertByte(3);
+		msg->insertShort(0);
+
+		for (int i = 0; i < schematicList.size(); ++i)
+			schematicList.readd(schematicList.get(i), msg, i + 1);
+
+		msg->close();
+
+		sendMessage(msg);
+	}*/
+}
+
+void PlayerObjectImplementation::addSchematic(DraftSchematic* schematic, bool notifyClient) {
+	if (schematic == NULL)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.add(schematic, msg, 1);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		schematicList.add(schematic);
+	}
+}
+
+void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
+	if (schematic == NULL)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.remove(schematic, msg, 1);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		schematicList.remove(schematic);
+	}
+}
+
 void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
 	String nameLower = name.toLowerCase();
 

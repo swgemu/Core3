@@ -48,12 +48,9 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/manufacture/ManufactureSchematic.h"
-
 class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, UnicodeString& playerName)
+	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, String playerName)
 			: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
 
 		insertFloat(complexity);
@@ -83,7 +80,7 @@ public:
 		setSize();
 	}
 
-	ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
+	/*ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
 			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(draftSchematic->getComplexity());
@@ -139,7 +136,7 @@ public:
 		insertFloat(8.0f);
 
 		setSize();
-	}
+	}*/
 };
 
 #endif /*MANUFACTURESCHEMATICOBJECTMESSAGE3_H_*/

@@ -67,7 +67,8 @@ which carries forward this exception.
 #include "resourcepool/ManualPool.h"
 
 /**
- *
+ * The ResourceSpawner class represents all the functions related to ResourceSpawns
+ * Including spawning, despawning rules,
  */
 class ResourceSpawner : public Logger {
 private:

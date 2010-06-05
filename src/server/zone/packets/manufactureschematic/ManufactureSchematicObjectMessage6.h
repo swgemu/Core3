@@ -48,8 +48,6 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-
 class ManufactureSchematicObjectMessage6 : public BaseLineMessage {
 public:
 	ManufactureSchematicObjectMessage6(uint64 oid, uint32 schematicCRC) 

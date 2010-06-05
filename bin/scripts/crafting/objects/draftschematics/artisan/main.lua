@@ -43,9 +43,10 @@
 
 -- Artisan
 
+RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/mineralSurveyDevice.lua")
+
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/gasPocketSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/chemicalSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/mineralSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/waterSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/floraSurveyTool.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/ambientSolarEnergySurveyingTool.lua")

@@ -130,6 +130,9 @@ namespace server {
 		void awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		void removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 
+		void awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		void removeDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+
 		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player);
 
 		uint8 getLangFromRace(int race);

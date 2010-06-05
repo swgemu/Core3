@@ -51,6 +51,7 @@ which carries forward this exception.
 
 //#include "../skills/SkillManager.h
 #include "../objectcontroller/ObjectController.h"
+#include "../crafting/CraftingManager.h"
 #include "../../ZoneServer.h"
 
 //#include "../../objects/player/badges/Badge.h"
@@ -215,6 +216,24 @@ void ProfessionManager::awardSkillMods(SkillBox* skillBox, PlayerCreature* playe
 	}
 }
 
+void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	ManagedReference<CraftingManager* > craftingManager = player->getZoneServer()->getCraftingManager();
+	if(craftingManager == NULL)
+		return;
+
+	Vector<String> schematicgroups;
+
+	for (int i = 0; i < skillBox->skillSchematicsGranted.size(); ++i) {
+		String schematicgroup = skillBox->skillSchematicsGranted.get(i);
+
+		schematicgroups.add(schematicgroup);
+	}
+
+	craftingManager->awardSchematicGroup(playerObject, schematicgroups, updateClient);
+}
+
 void ProfessionManager::removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
@@ -224,6 +243,24 @@ void ProfessionManager::removeSkillMods(SkillBox* skillBox, PlayerCreature* play
 
 		player->addSkillMod(skillMod, -value, updateClient);
 	}
+}
+
+void ProfessionManager::removeDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	ManagedReference<CraftingManager* > craftingManager = player->getZoneServer()->getCraftingManager();
+	if(craftingManager == NULL)
+		return;
+
+	Vector<String> schematicgroups;
+
+	for (int i = 0; i < skillBox->skillSchematicsGranted.size(); ++i) {
+		String schematicgroup = skillBox->skillSchematicsGranted.get(i);
+
+		schematicgroups.add(schematicgroup);
+	}
+
+	craftingManager->removeSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
 void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
@@ -246,7 +283,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	playerObject->addSkills(skillBox->skillCertifications, updateClient);
 
 	awardSkillMods(skillBox, player, updateClient);
-	//awardDraftSchematics(skillBox, player, updateClient);
+	awardDraftSchematics(skillBox, player, updateClient);
 
 	if (!awardRequired)
 		return;
@@ -381,6 +418,7 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 	playerObject->removeSkills(skillBox->skillCertifications, updateClient);
 
 	removeSkillMods(skillBox, player, updateClient);
+	removeDraftSchematics(skillBox, player, updateClient);
 
 
 	/*
