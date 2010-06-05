@@ -189,8 +189,8 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 }
 
 void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
-	// server/zone/objects/intangible/ControlDevice.idl(75):  		controlledObject.updateToDatabaseAllObjects(startTask);
-	controlledObject->updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/intangible/ControlDevice.idl(75):  		controlledObject.updateToDatabaseWithoutChildren();
+	controlledObject->updateToDatabaseWithoutChildren();
 	// server/zone/objects/intangible/ControlDevice.idl(77):  		super.updateToDatabaseAllObjects(startTask);
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
