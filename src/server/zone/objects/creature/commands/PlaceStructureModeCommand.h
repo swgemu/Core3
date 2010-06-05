@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 class PlaceStructureModeCommand : public QueueCommand {
 public:
@@ -126,6 +127,18 @@ public:
 
 		if (!structureTemplate->isAllowedZone(player->getZone()->getZoneID())) {
 			player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
+			return GENERALERROR;
+		}
+
+		PlanetManager* planetManager = player->getZone()->getPlanetManager();
+		StringId errorStf;
+
+		if (planetManager->isNoBuildArea(player->getPositionX(), player->getPositionY(), errorStf)) {
+			ParameterizedStringId sendString("player_structure", "city_too_close");
+			sendString.setTO(errorStf.getFile(), errorStf.getStringID());
+
+			player->sendSystemMessage(sendString);
+
 			return GENERALERROR;
 		}
 

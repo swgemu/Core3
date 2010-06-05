@@ -1272,6 +1272,9 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 	SuiListBox* listBox = (SuiListBox*) sui.get();
 	uint32 itemCRC = (uint32) listBox->getMenuObjectID(index);
 
+	if (itemCRC == 0)
+		return;
+
 	ZoneServer* zserv = player->getZoneServer();
 
 	if (zserv == NULL)
