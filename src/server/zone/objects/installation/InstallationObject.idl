@@ -42,26 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.building;
+package server.zone.objects.installation;
 
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
-import engine.util.QuadTree;
-import engine.util.QuadTreeEntry;
-import server.zone.objects.cell.CellObject;
-import system.util.SortedVector;
-import system.util.Vector;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.objects.tangible.sign.SignObject;
-import server.zone.objects.tangible.terminal.structure.StructureTerminal;
-import server.zone.ZoneServer;
-import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.building.StructurePermissionList;
 
-class InstallationObject extends TangibleObject implements QuadTree {
+class InstallationObject extends TangibleObject {
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
 	
@@ -75,22 +64,24 @@ class InstallationObject extends TangibleObject implements QuadTree {
 	
 	protected int basePowerRate;
 	
+	protected unsigned int maintenancePool;
+	
+	protected unsigned int powerPool;
+	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
-		QuadTree.setSize(-1024, -1024, 1024, 1024);
-		
 		super.staticObject = false;
-		
-		super.containerVolumeLimit = 0xFFFFFFFF;
-
-		super.containerType = 2;
 		
 		lotSize = 0;
 		
 		baseMaintenanceRate = 0;
 		
 		basePowerRate = 0;
+		
+		maintenancePool = 0;
+		
+		powerPool = 0;
 		
 		deedObjectID = 0;
 	}
@@ -122,9 +113,9 @@ class InstallationObject extends TangibleObject implements QuadTree {
 	@local
 	public native void inRange(QuadTreeEntry obj, float range);
 	
-	public native void sendTo(SceneObject player, boolean doClose);
+	public native void sendTo(SceneObject player, boolean doClose);*/
 	public native void sendBaselinesTo(SceneObject player);
-	public native void sendDestroyTo(SceneObject player);*/
+	//public native void sendDestroyTo(SceneObject player);
 	
 	public void setLotSize(int lotsize) {
 		lotSize = lotsize;
@@ -149,6 +140,22 @@ class InstallationObject extends TangibleObject implements QuadTree {
 	
 	public unsigned long getOwnerObjectID() {
 		return ownerObjectID;
+	}
+	
+	public void setMaintenancePool(unsigned int maintenance) {
+		maintenancePool = maintenance;
+	}
+	
+	public unsigned int getMaintenancePool() {
+		return maintenancePool;
+	}
+	
+	public void setPowerPool(unsigned int power) {
+		powerPool = power;
+	}
+	
+	public unsigned int getPowerPool() {
+		return powerPool;
 	}
 	
 	/**

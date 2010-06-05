@@ -40,8 +40,13 @@
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "server/zone/objects/installation/generator/GeneratorObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
@@ -157,6 +162,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
 
+	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
+	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
+	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);
+	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);
+
 	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObject::MELEEWEAPON);
 	objectFactory.registerObject<PistolWeaponObject>(SceneObject::PISTOL);
@@ -185,6 +195,7 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
 	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);
+	objectFactory.registerObject<InstallationDeed>(SceneObject::INSTALLATIONDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 

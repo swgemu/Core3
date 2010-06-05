@@ -1176,6 +1176,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isInstallationDeed() {
+		return false;
+	}
+	
 	public boolean isBazaarTerminal() {
 		return gameObjectType == BAZAAR;
 	}

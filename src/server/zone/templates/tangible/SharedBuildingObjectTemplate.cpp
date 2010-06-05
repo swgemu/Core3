@@ -13,4 +13,8 @@ void SharedBuildingObjectTemplate::readObject(LuaObject* templateData) {
 
 	terrainModificationFileName = templateData->getStringField("terrainModificationFileName");
 	interiorLayoutFileName = templateData->getStringField("interiorLayoutFileName");
+
+	cityRankRequired = templateData->getByteField("cityRankRequired");
+
+	//TODO: Abilities and skills required
 }

@@ -16,6 +16,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/cell/CellObject.h"
@@ -588,7 +589,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	if (ssot == NULL) {
 		//Invalid template type returned or it didn't exist.
-		player->error("invalid tepmlate");
+		player->error("invalid template");
 		return 1;
 	}
 
@@ -752,6 +753,37 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 }
 
 int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+	ZoneServer* zserv = player->getZoneServer();
+	ObjectManager* objectManager = ObjectManager::instance();
+
+	//float z = zone->getHeight(x, y);
+	float z = player->getPositionZ();
+
+	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
+
+	ManagedReference<InstallationObject*> installation = (InstallationObject*) objectManager->createObject(installationTemplateCRC, 1, "playerstructures");
+	installation->setOwnerObjectID(player->getObjectID());
+	installation->initializePosition(x, z, y);
+	installation->setDirection(direction);
+	installation->insertToZone(zone);
+
+	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
+	installation->setDeedObjectID(deedID);
+
+	installation->updateToDatabase();
+
+	//Send out email informing the user that their construction has completed successfully.
+	ManagedReference<ChatManager*> chatManager = zserv->getChatManager();
+
+	if (chatManager != NULL) {
+		ParameterizedStringId emailBody;
+		emailBody.setStringId("@player_structure:construction_complete");
+		emailBody.setTO(installation->getObjectName());
+		emailBody.setDI(player->getLotsRemaining());
+		UnicodeString subject = "@player_structure:construction_complete_subject";
+		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
+	}
+
 	return 0;
 }
 
