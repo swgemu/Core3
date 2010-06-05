@@ -103,6 +103,7 @@ public:
 	void declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
+	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command);
 
 	//all the combat math will go here
 protected:

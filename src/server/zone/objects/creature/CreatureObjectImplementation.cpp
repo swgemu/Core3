@@ -341,6 +341,23 @@ void CreatureObjectImplementation::setTargetID(uint64 targetID, bool notifyClien
 	}
 }
 
+
+void CreatureObjectImplementation::setShockWounds(int newShock, bool notifyClient) {
+	if (shockWounds == newShock)
+		return;
+
+	shockWounds = newShock;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+		dcreo3->updateShockWounds();
+		dcreo3->close();
+
+		broadcastMessage(dcreo3, true);
+	}
+}
+
+
 void CreatureObjectImplementation::setCombatState() {
 	//lastCombatAction.update();
 
@@ -487,7 +504,7 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 	}
 }
 
-int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
 		return 0;
@@ -496,6 +513,9 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	int currentValue = hamList.get(damageType);
 
 	int newValue = currentValue - damage;
+
+	if (!destroy && newValue <= 0)
+		newValue = 1;
 
 	setHAM(damageType, newValue, notifyClient);
 

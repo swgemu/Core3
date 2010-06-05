@@ -185,7 +185,7 @@ bool TangibleObject::isAttackableBy(CreatureObject* object) {
 		return ((TangibleObjectImplementation*) _impl)->isAttackableBy(object);
 }
 
-int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,11 +194,12 @@ int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int 
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
+		method.addBooleanParameter(destroy);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+		return ((TangibleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
@@ -807,7 +808,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 17:
-		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case 18:
 		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
@@ -926,8 +927,8 @@ bool TangibleObjectAdapter::isAttackableBy(CreatureObject* object) {
 	return ((TangibleObjectImplementation*) impl)->isAttackableBy(object);
 }
 
-int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
-	return ((TangibleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+	return ((TangibleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int TangibleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {

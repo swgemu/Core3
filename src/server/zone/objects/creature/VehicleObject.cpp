@@ -73,7 +73,7 @@ void VehicleObject::insertToZone(Zone* zone) {
 		((VehicleObjectImplementation*) _impl)->insertToZone(zone);
 }
 
-int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,11 +82,12 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int d
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
+		method.addBooleanParameter(destroy);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+		return ((VehicleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
@@ -325,7 +326,7 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case 9:
 		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
@@ -366,8 +367,8 @@ void VehicleObjectAdapter::insertToZone(Zone* zone) {
 	((VehicleObjectImplementation*) impl)->insertToZone(zone);
 }
 
-int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
-	return ((VehicleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, notifyClient);
+int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+	return ((VehicleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int VehicleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {

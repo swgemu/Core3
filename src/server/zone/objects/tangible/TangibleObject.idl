@@ -264,7 +264,7 @@ class TangibleObject extends SceneObject {
 	 * @post { attacker, this object is locked }
 	 * @return unused for now
 	 */
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
 	
 	/**
 	 * Heals damage

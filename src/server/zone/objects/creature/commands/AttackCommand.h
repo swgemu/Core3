@@ -60,6 +60,12 @@ public:
 		combatSpam = "attack";
 		animationCRC = 0;
 
+		/*dotDuration = 60;
+		dotType = CreatureState::POISONED;
+		dotPool = CreatureAttribute::HEALTH;
+		dotStrength = 15;
+		dotPotency = 2;*/
+
 		range = -1;
 
 		poolsToDamage = CombatManager::RANDOM;

@@ -100,11 +100,11 @@ public:
 
 	void updateHeight() {
 		addFloatUpdate(14, creo->getHeight());
-	}
+	}*/
 
 	void updateShockWounds() {
 		addIntUpdate(15, creo->getShockWounds());
-	} */
+	}
 
 	void updateCreatureLinkID() {
 		addLongUpdate(0x0D, creo->getCreatureLinkID());
