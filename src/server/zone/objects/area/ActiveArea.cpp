@@ -22,12 +22,26 @@ ActiveArea::~ActiveArea() {
 }
 
 
-void ActiveArea::notifyEnter(PlayerCreature* object) {
+void ActiveArea::sendTo(SceneObject* player, bool doClose) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(doClose);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActiveAreaImplementation*) _impl)->sendTo(player, doClose);
+}
+
+void ActiveArea::notifyEnter(PlayerCreature* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -40,7 +54,7 @@ void ActiveArea::notifyExit(PlayerCreature* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -53,7 +67,7 @@ bool ActiveArea::containsPoint(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -75,7 +89,7 @@ float ActiveArea::getRadius() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -87,7 +101,7 @@ void ActiveArea::setRadius(float r) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -176,6 +190,9 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	Logger::setLoggingName("ActiveArea");
 }
 
+void ActiveAreaImplementation::sendTo(SceneObject* player, bool doClose) {
+}
+
 void ActiveAreaImplementation::notifyEnter(PlayerCreature* object) {
 }
 
@@ -183,14 +200,14 @@ void ActiveAreaImplementation::notifyExit(PlayerCreature* object) {
 }
 
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(76):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl(87):  		return radius;
 	return radius;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(80):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(91):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(81):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(92):  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -206,18 +223,21 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		notifyEnter((PlayerCreature*) inv->getObjectParameter());
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		notifyExit((PlayerCreature*) inv->getObjectParameter());
+		notifyEnter((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		notifyExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertFloat(getRadius());
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 10:
+		resp->insertFloat(getRadius());
+		break;
+	case 11:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:
@@ -225,6 +245,10 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void ActiveAreaAdapter::sendTo(SceneObject* player, bool doClose) {
+	((ActiveAreaImplementation*) impl)->sendTo(player, doClose);
 }
 
 void ActiveAreaAdapter::notifyEnter(PlayerCreature* object) {

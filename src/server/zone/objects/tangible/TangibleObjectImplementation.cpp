@@ -267,12 +267,15 @@ void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notif
 	broadcastMessage(dtano3, true);
 }
 
-int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient) {
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	int newConditionDamage = conditionDamage + damage;
+
+	if (!destroy && newConditionDamage >= maxCondition)
+		newConditionDamage = maxCondition - 1;
 
 	setConditionDamage(newConditionDamage, notifyClient);
 
-	if (newConditionDamage > maxCondition)
+	if (newConditionDamage >= maxCondition)
 		notifyObjectDestructionObservers(attacker, newConditionDamage);
 
 	return 0;

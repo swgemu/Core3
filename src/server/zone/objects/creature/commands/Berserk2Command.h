@@ -86,7 +86,7 @@ public:
 			return GENERALERROR;
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, -50);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, -50, true);
 
 		creature->setBerserkedState(40 * 1000);
 		//creature->setBerserkDamage(25);

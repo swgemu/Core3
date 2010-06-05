@@ -118,7 +118,7 @@ public:
 
 	void insertToZone(Zone* zone);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -173,7 +173,7 @@ public:
 
 	void insertToZone(Zone* zone);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -234,7 +234,7 @@ public:
 
 	void insertToZone(Zone* zone);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 

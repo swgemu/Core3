@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "server/zone/objects/creature/CreatureState.h"
 #include "QueueCommand.h"
 
 class CombatQueueCommand: public QueueCommand {
@@ -33,6 +35,12 @@ protected:
 	int intimidateStateChance;
 	int nextAttackDelayChance;
 	int durationStateTime;
+
+	uint32 dotDuration;
+	uint64 dotType;
+	uint8 dotPool;
+	uint32 dotStrength;
+	float dotPotency;
 
 	int range;
 
@@ -69,6 +77,12 @@ public:
 		nextAttackDelayChance = 0;
 
 		durationStateTime = 10;
+
+		dotDuration = 0;
+		dotType = 0;
+		dotPool = 0;
+		dotStrength = 0;
+		dotPotency = 0;
 
 		coneAngle = 30;
 
@@ -131,6 +145,26 @@ public:
 		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(
 				object, object->getWeapon(), speedMultiplier);
 		return duration;
+	}
+
+	inline uint32 getDotDuration() const {
+		return dotDuration;
+	}
+
+	inline uint64 getDotType() const {
+		return dotType;
+	}
+
+	inline uint8 getDotPool() const {
+		return dotPool;
+	}
+
+	inline uint32 getDotStrength() const {
+		return dotStrength;
+	}
+
+	inline float getDotPotency() const {
+		return dotPotency;
 	}
 
 	inline int getHealthCostMultiplier() const {

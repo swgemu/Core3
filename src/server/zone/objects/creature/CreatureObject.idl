@@ -72,6 +72,7 @@ include server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.creature.PostureChangeObserver;
 include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
+include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 import server.zone.objects.creature.buffs.Buff;
 
 class CreatureObject extends TangibleObject {
@@ -165,6 +166,8 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected BuffList creatureBuffs;
+	@dereferenced
+	protected DamageOverTimeList damageOverTimeList;
 	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
@@ -332,7 +335,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
-	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
 	
 	/**
 	 * Heals damage
@@ -404,6 +407,23 @@ class CreatureObject extends TangibleObject {
 	public native void setInstrumentID(int instrumentid, boolean notifyClient = false);
 	
 	/**
+	 * Updates shock wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param shock new shock wounds
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setShockWounds(int newShock, boolean notifyClient = true);
+	public void addShockWounds(int shockToAdd, boolean notiyClient = true) {
+		shockWounds = shockWounds + shockToAdd;
+
+		if (shockWounds < 0)
+			shockWounds = 0;
+		else if (shockWounds > 1000)
+			shockWounds = 1000;
+	}
+	
+	/**
 	 * Updates the target id to the specified object id
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified target id }
@@ -444,6 +464,14 @@ class CreatureObject extends TangibleObject {
 	 * @param updateclient Should packets be sent to the player?
 	 */
 	public native void clearBuffs(boolean updateclient);
+	
+	public int addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
+		return damageOverTimeList.addDot(this, duration, dotType, type, strength, potency, defense);
+	}
+
+	public boolean healDot(unsigned long dotType, int reduction) {
+		return damageOverTimeList.healState(this, dotType, reduction);
+	}
 	
 	public boolean hasBuff(unsigned int buffcrc) {
 		return creatureBuffs.hasBuff(buffcrc);

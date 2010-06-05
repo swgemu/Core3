@@ -175,6 +175,8 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "server/zone/objects/creature/buffs/BuffList.h"
 
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -252,7 +254,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
@@ -274,6 +276,10 @@ public:
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
+	void setShockWounds(int newShock, bool notifyClient = true);
+
+	void addShockWounds(int shockToAdd, bool notiyClient = true);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
@@ -285,6 +291,10 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+
+	bool healDot(unsigned long long dotType, int reduction);
 
 	bool hasBuff(unsigned int buffcrc);
 
@@ -719,6 +729,8 @@ protected:
 
 	BuffList creatureBuffs;
 
+	DamageOverTimeList damageOverTimeList;
+
 public:
 	static const int HUMAN = 0;
 
@@ -782,7 +794,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
@@ -804,6 +816,10 @@ public:
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
+	void setShockWounds(int newShock, bool notifyClient = true);
+
+	void addShockWounds(int shockToAdd, bool notiyClient = true);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
@@ -815,6 +831,10 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+
+	bool healDot(unsigned long long dotType, int reduction);
 
 	bool hasBuff(unsigned int buffcrc);
 
@@ -1193,7 +1213,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient);
 
@@ -1215,6 +1235,10 @@ public:
 
 	void setInstrumentID(int instrumentid, bool notifyClient);
 
+	void setShockWounds(int newShock, bool notifyClient);
+
+	void addShockWounds(int shockToAdd, bool notiyClient);
+
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 
 	void setBankCredits(int credits, bool notifyClient);
@@ -1226,6 +1250,10 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+
+	bool healDot(unsigned long long dotType, int reduction);
 
 	bool hasBuff(unsigned int buffcrc);
 
