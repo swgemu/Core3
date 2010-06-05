@@ -91,7 +91,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 				//System::out << "Inserted to zone" << endl;
 			}
 
-			//destinationObject->getParent()->updateToDatabase();
+			destinationObject->updateToDatabaseAllObjects(false);
 		}
 	}
 

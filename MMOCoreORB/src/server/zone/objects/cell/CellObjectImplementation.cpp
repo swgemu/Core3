@@ -29,12 +29,12 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
-		if (containerObject->isCreatureObject()
-				|| (player->getRootParent() == parent) && (player->isInRange(containerObject, 128))) {
+		/*if (containerObject->isCreatureObject()
+				|| (player->getRootParent() == parent) && (player->isInRange(containerObject, 128))) {*/
 
 			//info("sending cell container contents", true);
 			containerObject->sendTo(player, true);
-		}
+		//}
 	}
 }
 
