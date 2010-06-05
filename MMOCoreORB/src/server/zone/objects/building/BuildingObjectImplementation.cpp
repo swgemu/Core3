@@ -52,6 +52,20 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	}
 }
 
+void BuildingObjectImplementation::removeFromZone() {
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		while (cell->getContainerObjectsSize() > 0) {
+			SceneObject* obj = cell->getContainerObject(0);
+
+			obj->removeFromZone();
+		}
+	}
+
+	TangibleObjectImplementation::removeFromZone();
+}
+
 void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (!isStaticBuilding()) {
 		info("sending building object destroy");
@@ -79,7 +93,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 		QuadTreeEntry* obj = getInRangeObject(i);
 		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
-		creoImpl->addInRangeObject(obj, false);
+		creoImpl->addInRangeObject(obj, true);
 		obj->addInRangeObject(creoImpl, true);
 	}
 
@@ -97,6 +111,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* childStub = cell->getContainerObject(j);
+
+			if (!childStub->isCreatureObject())
+				continue;
+
 			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
 			child->addInRangeObject(obj, false);

@@ -40,6 +40,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -80,6 +82,8 @@ public:
 	CellObjectImplementation(DummyConstructorParameter* param);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void sendContainerObjectsTo(SceneObject* player);
 
 	void initializeTransientMembers();
 
@@ -129,6 +133,8 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendContainerObjectsTo(SceneObject* player);
 
 	void initializeTransientMembers();
 
