@@ -62,6 +62,14 @@ class CellObject extends SceneObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	public native void sendContainerObjectsTo(SceneObject player);
+	
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);

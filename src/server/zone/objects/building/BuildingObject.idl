@@ -120,18 +120,20 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		
 	public native void initializeTransientMembers();
 	
-	public void removeFromZone() {
+	public native void removeFromZone();/* {
 		for (int i = 0; i < cells.size(); ++i) {
 			CellObject cell = cells.get(i);
 			
-			for (int j = 0; j < cell.getContainerObjectsSize(); ++j) {
-				SceneObject obj = cell.getContainerObject(j);
+			while (cell.getContainerObjectsSize() > 0) {
+				SceneObject obj = cell.getContainerObject(0);
+				
 				obj.removeFromZone();
+				
 			}
 		}
 		
 		super.removeFromZone();
-	}
+	}*/
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);

@@ -72,6 +72,9 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		SceneObject* grandParent = getRootParent();
 
 		grandParent->sendTo(_this, true);
+
+		/*if (grandParent->isBuildingObject())
+			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
 	} else
 		sendTo(_this, doClose);
 
