@@ -1,6 +1,6 @@
 object_tangible_deed_guild_deed_corellia_guild_deed = object_tangible_deed_guild_deed_shared_corellia_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/shared_player_guildhall_corellia_style_01.iff",
+	generatedObjectTemplate = "object/building/player/player_guildhall_corellia_style_01.iff",
 	maxCondition = 0
 }
 
@@ -8,7 +8,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_corellia_guild_deed,
 
 object_tangible_deed_guild_deed_generic_guild_deed = object_tangible_deed_guild_deed_shared_generic_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/shared_player_guildhall_generic_style_01.iff",
+	generatedObjectTemplate = "object/building/player/player_guildhall_generic_style_01.iff",
 	maxCondition = 0
 }
 
@@ -16,7 +16,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_generic_guild_deed, 
 
 object_tangible_deed_guild_deed_naboo_guild_deed = object_tangible_deed_guild_deed_shared_naboo_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/shared_player_guildhall_naboo_style_01.iff",
+	generatedObjectTemplate = "object/building/player/player_guildhall_naboo_style_01.iff",
 	maxCondition = 0
 }
 
@@ -24,7 +24,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_naboo_guild_deed, "o
 
 object_tangible_deed_guild_deed_tatooine_guild_deed = object_tangible_deed_guild_deed_shared_tatooine_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/shared_player_guildhall_tatooine_style_01.iff",
+	generatedObjectTemplate = "object/building/player/player_guildhall_tatooine_style_01.iff",
 	maxCondition = 0
 }
 
@@ -32,7 +32,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_tatooine_guild_deed,
 
 object_tangible_deed_guild_deed_tatooine_guild_style_02_deed = object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/shared_player_guildhall_tatooine_style_02.iff",
+	generatedObjectTemplate = "object/building/player/player_guildhall_tatooine_style_02.iff",
 	maxCondition = 0
 }
 
