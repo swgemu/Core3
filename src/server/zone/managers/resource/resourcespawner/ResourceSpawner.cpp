@@ -527,6 +527,18 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 
 	int unitsExtracted = int((density * 25 + System::random(3)) * (float(surveySkill)/100.0f));
 
+	if(unitsExtracted < 2) {
+
+		// Send message to player about trace amounts
+		ParameterizedStringId message("survey", "trace_amount");
+		message.setTO(resname);
+		message.setDI(unitsExtracted);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		playerCreature->sendMessage(sysMessage);
+
+		return;
+	}
+
 	// Send message to player about unit extraction
 	ParameterizedStringId message("survey", "sample_located");
 	message.setTO(resname);

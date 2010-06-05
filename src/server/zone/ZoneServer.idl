@@ -66,6 +66,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
 import server.zone.managers.professions.ProfessionManager;
 import server.zone.managers.resource.ResourceManager;
+import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.bazaar.BazaarManager;
 import server.zone.managers.minigames.FishingManager;
 
@@ -87,6 +88,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private RadialManager radialManager;
 
 	private ResourceManager resourceManager;
+	private CraftingManager craftingManager;
 	private BazaarManager bazaarManager;
 	
 	private FishingManager fishingManager;
@@ -281,6 +283,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public ResourceManager getResourceManager() {
 		return resourceManager;
+	}
+	
+	public CraftingManager getCraftingManager() {
+		return craftingManager;
 	}
 
 	public BazaarManager getBazaarManager() {
