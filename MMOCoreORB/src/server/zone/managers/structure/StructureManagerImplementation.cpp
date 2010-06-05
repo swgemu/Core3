@@ -687,8 +687,8 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	//float z = zone->getHeight(x, y);
-	float z = player->getPositionZ();
+	float z = zone->getHeight(x, y);
+	//float z = player->getPositionZ();
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
@@ -756,8 +756,8 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	//float z = zone->getHeight(x, y);
-	float z = player->getPositionZ();
+	float z = zone->getHeight(x, y);
+	//float z = player->getPositionZ();
 
 	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
 
