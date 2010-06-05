@@ -4,21 +4,9 @@
 
 #include "InstallationObject.h"
 
-#include "server/zone/objects/cell/CellObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/Zone.h"
 
 /*
  *	InstallationObjectStub
@@ -36,12 +24,25 @@ InstallationObject::~InstallationObject() {
 }
 
 
-void InstallationObject::setLotSize(int lotsize) {
+void InstallationObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendBaselinesTo(player);
+}
+
+void InstallationObject::setLotSize(int lotsize) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addSignedIntParameter(lotsize);
 
 		method.executeWithVoidReturn();
@@ -54,7 +55,7 @@ int InstallationObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -66,7 +67,7 @@ void InstallationObject::setDeedObjectID(unsigned long long deedid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addUnsignedLongParameter(deedid);
 
 		method.executeWithVoidReturn();
@@ -79,7 +80,7 @@ unsigned long long InstallationObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -91,7 +92,7 @@ void InstallationObject::setOwnerObjectID(unsigned long long ownerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addUnsignedLongParameter(ownerID);
 
 		method.executeWithVoidReturn();
@@ -104,11 +105,61 @@ unsigned long long InstallationObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((InstallationObjectImplementation*) _impl)->getOwnerObjectID();
+}
+
+void InstallationObject::setMaintenancePool(unsigned int maintenance) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(maintenance);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setMaintenancePool(maintenance);
+}
+
+unsigned int InstallationObject::getMaintenancePool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getMaintenancePool();
+}
+
+void InstallationObject::setPowerPool(unsigned int power) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addUnsignedIntParameter(power);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setPowerPool(power);
+}
+
+unsigned int InstallationObject::getPowerPool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getPowerPool();
 }
 
 int InstallationObject::getBasePowerRate() {
@@ -116,7 +167,7 @@ int InstallationObject::getBasePowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -128,7 +179,7 @@ void InstallationObject::setBasePowerRate(int powerRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(powerRate);
 
 		method.executeWithVoidReturn();
@@ -141,7 +192,7 @@ void InstallationObject::setBaseMaintenanceRate(int maintenanceRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(maintenanceRate);
 
 		method.executeWithVoidReturn();
@@ -154,7 +205,7 @@ int InstallationObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -166,7 +217,7 @@ int InstallationObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -178,7 +229,7 @@ bool InstallationObject::isOnAdminList(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -191,7 +242,7 @@ void InstallationObject::sendPermissionListTo(PlayerCreature* player, const Stri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -273,94 +324,114 @@ void InstallationObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("deedObjectID", &deedObjectID);
 	addSerializableVariable("baseMaintenanceRate", &baseMaintenanceRate);
 	addSerializableVariable("basePowerRate", &basePowerRate);
+	addSerializableVariable("maintenancePool", &maintenancePool);
+	addSerializableVariable("powerPool", &powerPool);
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/InstallationObject.idl(79):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl(72):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(81):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
-	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/installation/InstallationObject.idl(83):  		super.staticObject = false;
+	// server/zone/objects/installation/InstallationObject.idl(74):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/installation/InstallationObject.idl(85):  		super.containerVolumeLimit = 0xFFFFFFFF;
-	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/installation/InstallationObject.idl(87):  		super.containerType = 2;
-	TangibleObjectImplementation::containerType = 2;
-	// server/zone/objects/installation/InstallationObject.idl(89):  		lotSize = 0;
+	// server/zone/objects/installation/InstallationObject.idl(76):  		lotSize = 0;
 	lotSize = 0;
-	// server/zone/objects/installation/InstallationObject.idl(91):  		baseMaintenanceRate = 0;
+	// server/zone/objects/installation/InstallationObject.idl(78):  		baseMaintenanceRate = 0;
 	baseMaintenanceRate = 0;
-	// server/zone/objects/installation/InstallationObject.idl(93):  		basePowerRate = 0;
+	// server/zone/objects/installation/InstallationObject.idl(80):  		basePowerRate = 0;
 	basePowerRate = 0;
-	// server/zone/objects/installation/InstallationObject.idl(95):  		deedObjectID = 0;
+	// server/zone/objects/installation/InstallationObject.idl(82):  		maintenancePool = 0;
+	maintenancePool = 0;
+	// server/zone/objects/installation/InstallationObject.idl(84):  		powerPool = 0;
+	powerPool = 0;
+	// server/zone/objects/installation/InstallationObject.idl(86):  		deedObjectID = 0;
 	deedObjectID = 0;
 }
 
 void InstallationObjectImplementation::setLotSize(int lotsize) {
-	// server/zone/objects/installation/InstallationObject.idl(130):  		lotSize = lotsize;
+	// server/zone/objects/installation/InstallationObject.idl(121):  		lotSize = lotsize;
 	lotSize = lotsize;
 }
 
 int InstallationObjectImplementation::getLotSize() {
-	// server/zone/objects/installation/InstallationObject.idl(134):  		return lotSize;
+	// server/zone/objects/installation/InstallationObject.idl(125):  		return lotSize;
 	return lotSize;
 }
 
 void InstallationObjectImplementation::setDeedObjectID(unsigned long long deedid) {
-	// server/zone/objects/installation/InstallationObject.idl(138):  		deedObjectID = deedid;
+	// server/zone/objects/installation/InstallationObject.idl(129):  		deedObjectID = deedid;
 	deedObjectID = deedid;
 }
 
 unsigned long long InstallationObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/installation/InstallationObject.idl(142):  		return deedObjectID;
+	// server/zone/objects/installation/InstallationObject.idl(133):  		return deedObjectID;
 	return deedObjectID;
 }
 
 void InstallationObjectImplementation::setOwnerObjectID(unsigned long long ownerID) {
-	// server/zone/objects/installation/InstallationObject.idl(146):  		ownerObjectID = ownerID;
+	// server/zone/objects/installation/InstallationObject.idl(137):  		ownerObjectID = ownerID;
 	ownerObjectID = ownerID;
-	// server/zone/objects/installation/InstallationObject.idl(147):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	// server/zone/objects/installation/InstallationObject.idl(138):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->grantPermission(ownerID, StructurePermissionList::OWNER);
 }
 
 unsigned long long InstallationObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/installation/InstallationObject.idl(151):  		return ownerObjectID;
+	// server/zone/objects/installation/InstallationObject.idl(142):  		return ownerObjectID;
 	return ownerObjectID;
 }
 
+void InstallationObjectImplementation::setMaintenancePool(unsigned int maintenance) {
+	// server/zone/objects/installation/InstallationObject.idl(146):  		maintenancePool = maintenance;
+	maintenancePool = maintenance;
+}
+
+unsigned int InstallationObjectImplementation::getMaintenancePool() {
+	// server/zone/objects/installation/InstallationObject.idl(150):  		return maintenancePool;
+	return maintenancePool;
+}
+
+void InstallationObjectImplementation::setPowerPool(unsigned int power) {
+	// server/zone/objects/installation/InstallationObject.idl(154):  		powerPool = power;
+	powerPool = power;
+}
+
+unsigned int InstallationObjectImplementation::getPowerPool() {
+	// server/zone/objects/installation/InstallationObject.idl(158):  		return powerPool;
+	return powerPool;
+}
+
 int InstallationObjectImplementation::getBasePowerRate() {
-	// server/zone/objects/installation/InstallationObject.idl(160):  		return basePowerRate;
+	// server/zone/objects/installation/InstallationObject.idl(167):  		return basePowerRate;
 	return basePowerRate;
 }
 
 void InstallationObjectImplementation::setBasePowerRate(int powerRate) {
-	// server/zone/objects/installation/InstallationObject.idl(168):  		basePowerRate = powerRate;
+	// server/zone/objects/installation/InstallationObject.idl(175):  		basePowerRate = powerRate;
 	basePowerRate = powerRate;
 }
 
 void InstallationObjectImplementation::setBaseMaintenanceRate(int maintenanceRate) {
-	// server/zone/objects/installation/InstallationObject.idl(176):  		baseMaintenanceRate = maintenanceRate;
+	// server/zone/objects/installation/InstallationObject.idl(183):  		baseMaintenanceRate = maintenanceRate;
 	baseMaintenanceRate = maintenanceRate;
 }
 
 int InstallationObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/installation/InstallationObject.idl(185):  		return baseMaintenanceRate;
+	// server/zone/objects/installation/InstallationObject.idl(192):  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int InstallationObjectImplementation::getRedeedCost() {
-	// server/zone/objects/installation/InstallationObject.idl(193):  		return baseMaintenanceRate * 50;
+	// server/zone/objects/installation/InstallationObject.idl(200):  		return baseMaintenanceRate * 50;
 	return baseMaintenanceRate * 50;
 }
 
 bool InstallationObjectImplementation::isOnAdminList(CreatureObject* creature) {
-	// server/zone/objects/installation/InstallationObject.idl(202):  		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	// server/zone/objects/installation/InstallationObject.idl(209):  		return structurePermissionList.isOnAdminList(creature.getObjectID());
 	return (&structurePermissionList)->isOnAdminList(creature->getObjectID());
 }
 
 void InstallationObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/installation/InstallationObject.idl(206):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/installation/InstallationObject.idl(213):  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
@@ -376,42 +447,57 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case 6:
-		setLotSize(inv->getSignedIntParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertSignedInt(getLotSize());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 8:
-		setDeedObjectID(inv->getUnsignedLongParameter());
+		resp->insertSignedInt(getLotSize());
 		break;
 	case 9:
-		resp->insertLong(getDeedObjectID());
+		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 10:
-		setOwnerObjectID(inv->getUnsignedLongParameter());
+		resp->insertLong(getDeedObjectID());
 		break;
 	case 11:
-		resp->insertLong(getOwnerObjectID());
+		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 12:
-		resp->insertSignedInt(getBasePowerRate());
+		resp->insertLong(getOwnerObjectID());
 		break;
 	case 13:
-		setBasePowerRate(inv->getSignedIntParameter());
+		setMaintenancePool(inv->getUnsignedIntParameter());
 		break;
 	case 14:
-		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		resp->insertInt(getMaintenancePool());
 		break;
 	case 15:
-		resp->insertSignedInt(getBaseMaintenanceRate());
+		setPowerPool(inv->getUnsignedIntParameter());
 		break;
 	case 16:
-		resp->insertSignedInt(getRedeedCost());
+		resp->insertInt(getPowerPool());
 		break;
 	case 17:
-		resp->insertBoolean(isOnAdminList((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(getBasePowerRate());
 		break;
 	case 18:
+		setBasePowerRate(inv->getSignedIntParameter());
+		break;
+	case 19:
+		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		break;
+	case 20:
+		resp->insertSignedInt(getBaseMaintenanceRate());
+		break;
+	case 21:
+		resp->insertSignedInt(getRedeedCost());
+		break;
+	case 22:
+		resp->insertBoolean(isOnAdminList((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 23:
 		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
 	default:
@@ -419,6 +505,10 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	}
 
 	return resp;
+}
+
+void InstallationObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	((InstallationObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 void InstallationObjectAdapter::setLotSize(int lotsize) {
@@ -443,6 +533,22 @@ void InstallationObjectAdapter::setOwnerObjectID(unsigned long long ownerID) {
 
 unsigned long long InstallationObjectAdapter::getOwnerObjectID() {
 	return ((InstallationObjectImplementation*) impl)->getOwnerObjectID();
+}
+
+void InstallationObjectAdapter::setMaintenancePool(unsigned int maintenance) {
+	((InstallationObjectImplementation*) impl)->setMaintenancePool(maintenance);
+}
+
+unsigned int InstallationObjectAdapter::getMaintenancePool() {
+	return ((InstallationObjectImplementation*) impl)->getMaintenancePool();
+}
+
+void InstallationObjectAdapter::setPowerPool(unsigned int power) {
+	((InstallationObjectImplementation*) impl)->setPowerPool(power);
+}
+
+unsigned int InstallationObjectAdapter::getPowerPool() {
+	return ((InstallationObjectImplementation*) impl)->getPowerPool();
 }
 
 int InstallationObjectAdapter::getBasePowerRate() {

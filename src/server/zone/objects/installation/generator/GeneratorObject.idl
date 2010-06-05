@@ -1,0 +1,9 @@
+package server.zone.objects.installation;
+
+import server.zone.objects.installation.InstallationObject;
+
+class GeneratorObject extends InstallationObject {
+	public GeneratorObject() {
+		Logger.setLoggingName("GeneratorObject");
+	}
+}

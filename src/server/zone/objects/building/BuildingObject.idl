@@ -80,6 +80,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	protected unsigned long deedObjectID;
 	
 	protected int baseMaintenanceRate;
+	protected unsigned int maintenancePool;
 	
 	protected int accessFee;
 	
@@ -244,6 +245,14 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public SignObject getSignObject() {
 		return signObject;
+	}
+	
+	public void setMaintenancePool (unsigned int maintenance) {
+		maintenancePool = maintenance;
+	}
+	
+	public unsigned int getMaintenancePool() {
+		return maintenancePool;
 	}
 	
 	/**

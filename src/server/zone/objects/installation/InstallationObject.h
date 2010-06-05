@@ -14,34 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace cell {
-
-class CellObject;
-
-} // namespace cell
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::cell;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -67,84 +39,22 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace sign {
-
-class SignObject;
-
-} // namespace sign
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::sign;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace terminal {
-namespace structure {
-
-class StructureTerminal;
-
-} // namespace structure
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::structure;
-
-namespace server {
-namespace zone {
-
-class ZoneServer;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
 #include "server/zone/objects/building/StructurePermissionList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
 
-#include "engine/util/QuadTree.h"
-
-#include "engine/util/QuadTreeEntry.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
 namespace server {
 namespace zone {
 namespace objects {
-namespace building {
+namespace installation {
 
 class InstallationObject : public TangibleObject {
 public:
 	InstallationObject();
+
+	void sendBaselinesTo(SceneObject* player);
 
 	void setLotSize(int lotsize);
 
@@ -157,6 +67,14 @@ public:
 	void setOwnerObjectID(unsigned long long ownerID);
 
 	unsigned long long getOwnerObjectID();
+
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
+
+	void setPowerPool(unsigned int power);
+
+	unsigned int getPowerPool();
 
 	int getBasePowerRate();
 
@@ -180,19 +98,19 @@ protected:
 	friend class InstallationObjectHelper;
 };
 
-} // namespace building
+} // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::building;
+using namespace server::zone::objects::installation;
 
 namespace server {
 namespace zone {
 namespace objects {
-namespace building {
+namespace installation {
 
-class InstallationObjectImplementation : public TangibleObjectImplementation, public QuadTree {
+class InstallationObjectImplementation : public TangibleObjectImplementation {
 protected:
 	StructurePermissionList structurePermissionList;
 
@@ -206,10 +124,16 @@ protected:
 
 	int basePowerRate;
 
+	unsigned int maintenancePool;
+
+	unsigned int powerPool;
+
 public:
 	InstallationObjectImplementation();
 
 	InstallationObjectImplementation(DummyConstructorParameter* param);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	void setLotSize(int lotsize);
 
@@ -222,6 +146,14 @@ public:
 	void setOwnerObjectID(unsigned long long ownerID);
 
 	unsigned long long getOwnerObjectID();
+
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
+
+	void setPowerPool(unsigned int power);
+
+	unsigned int getPowerPool();
 
 	int getBasePowerRate();
 
@@ -276,6 +208,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	void setLotSize(int lotsize);
 
 	int getLotSize();
@@ -287,6 +221,14 @@ public:
 	void setOwnerObjectID(unsigned long long ownerID);
 
 	unsigned long long getOwnerObjectID();
+
+	void setMaintenancePool(unsigned int maintenance);
+
+	unsigned int getMaintenancePool();
+
+	void setPowerPool(unsigned int power);
+
+	unsigned int getPowerPool();
 
 	int getBasePowerRate();
 
@@ -323,11 +265,11 @@ public:
 	friend class Singleton<InstallationObjectHelper>;
 };
 
-} // namespace building
+} // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::building;
+using namespace server::zone::objects::installation;
 
 #endif /*INSTALLATIONOBJECT_H_*/

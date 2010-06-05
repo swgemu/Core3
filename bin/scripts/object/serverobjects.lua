@@ -43,6 +43,12 @@
 includeFile("cell/cell.lua")
 includeFile("group/group_object.lua")
 includeFile("player/player.lua")
+includeFile("building/player/city/corellia.lua");
+includeFile("building/player/city/dantooine.lua");
+includeFile("building/player/city/dathomir.lua");
+includeFile("building/player/city/endor.lua");
+includeFile("building/player/city/naboo.lua");
+includeFile("building/player/city/tatooine.lua");
 includeFile("building/player/player_house_corellia.lua");
 includeFile("building/player/player_house_generic.lua");
 includeFile("building/player/player_house_naboo.lua");

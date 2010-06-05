@@ -52,6 +52,15 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	--Default is corellia, lok, naboo, rori, talus, tatooine
 	allowedZones = {0, 4, 5, 6, 7, 8},
 	
+	--The minimum rank of a player city required for this structure to be placed.
+	cityRankRequired = 0,
+	
+	--Skills required to place this structure object. Array of skill names (strings).
+	skillsRequired = {},
+	
+	--Abilities required to place this structure object. Array of ability names (strings).
+	abilitiesRequired = {},
+	
 	--Sign locations is a list of possible sign locations in relation to the center of the building object.
 	--Format is x, z, y, qx, qy, qz, qw
 	signLocations = {0, 0, 0, 0, 0, 0, 1},

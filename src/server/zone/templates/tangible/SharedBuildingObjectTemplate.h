@@ -14,6 +14,8 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	String terrainModificationFileName;
 	String interiorLayoutFileName;
 
+	uint8 cityRankRequired;
+
 public:
 	SharedBuildingObjectTemplate() {
 

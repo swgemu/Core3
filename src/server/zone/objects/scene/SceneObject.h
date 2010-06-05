@@ -790,6 +790,8 @@ public:
 
 	bool isBuildingDeed();
 
+	bool isInstallationDeed();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -1533,6 +1535,8 @@ public:
 
 	virtual bool isBuildingDeed();
 
+	virtual bool isInstallationDeed();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -1817,6 +1821,8 @@ public:
 	bool isDeedObject();
 
 	bool isBuildingDeed();
+
+	bool isInstallationDeed();
 
 	bool isBazaarTerminal();
 
