@@ -105,6 +105,10 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/professions/Certification.h"
 
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
+
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -118,6 +122,8 @@ using namespace server::zone;
 #include "server/zone/objects/player/variables/FriendList.h"
 
 #include "server/zone/objects/player/variables/IgnoreList.h"
+
+#include "server/zone/objects/player/variables/SchematicList.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -178,6 +184,14 @@ public:
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
+	void addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
+
+	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
+
+	void addSchematic(DraftSchematic* schematic, bool notifyClient = true);
+
+	void removeSchematic(DraftSchematic* schematic, bool notifyClient = true);
+
 	void setLanguageID(byte language, bool notifyClient = true);
 
 	void addFriend(const String& name, bool notifyClient = true);
@@ -237,6 +251,8 @@ public:
 	WaypointList* getWaypointList();
 
 	SkillList* getSkills();
+
+	SchematicList* getSchematics();
 
 	int getFoodFilling();
 
@@ -312,6 +328,8 @@ protected:
 
 	IgnoreList ignoreList;
 
+	SchematicList schematicList;
+
 public:
 	static const int LFG = 1;
 
@@ -362,6 +380,14 @@ public:
 	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
+
+	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
+
+	void addSchematic(DraftSchematic* schematic, bool notifyClient = true);
+
+	void removeSchematic(DraftSchematic* schematic, bool notifyClient = true);
 
 	void setLanguageID(byte language, bool notifyClient = true);
 
@@ -422,6 +448,8 @@ public:
 	WaypointList* getWaypointList();
 
 	SkillList* getSkills();
+
+	SchematicList* getSchematics();
 
 	int getFoodFilling();
 

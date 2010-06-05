@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "managers/player/PlayerManager.h"
 #include "managers/radial/RadialManager.h"
 #include "managers/resource/ResourceManager.h"
+#include "managers/crafting/CraftingManager.h"
 #include "managers/professions/ProfessionManager.h"
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/minigames/FishingManager.h"
@@ -81,6 +82,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	chatManager = NULL;
 	radialManager = NULL;
 	resourceManager = NULL;
+	craftingManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -420,6 +422,10 @@ void ZoneServerImplementation::startManagers() {
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
 	resourceManager->initialize();
+
+	craftingManager = new CraftingManager(_this, processor, objectManager);
+	craftingManager->deploy("CraftingManager");
+	craftingManager->initialize();
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();

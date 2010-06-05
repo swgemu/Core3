@@ -103,6 +103,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
+				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
@@ -116,6 +117,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.cpp \
 				server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.cpp \
 				server/zone/objects/tangible/weapon/PolearmWeaponObject.cpp \
+				server/zone/managers/crafting/CraftingManager.cpp \
+				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
@@ -165,6 +168,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
+		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
@@ -184,6 +188,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
+		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
@@ -220,6 +225,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
+		server/zone/objects/player/variables/SchematicList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
 		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
 		server/zone/objects/resource/ResourceContainerImplementation.cpp \

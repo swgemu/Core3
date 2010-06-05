@@ -67,7 +67,8 @@ public:
 		insertLong(0);
 
 		// datapad draft schematics
-		insertDraftSchematics(play);
+		DeltaVector<DraftSchematic*>* schematics = play->getSchematics();
+		schematics->insertToMessage(this);
 
 		// crafting?
 		insertInt(0);
@@ -109,23 +110,6 @@ public:
 
 		setSize();
 	}
-
-	void insertDraftSchematics(PlayerObjectImplementation* play) {
-		/*uint32 dsListSize = play->player->getDraftSchematicListSize();
-		uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
-
-		insertInt(dsListSize);
-		insertInt(dsUpdateCount);
-
-		for (int i = 0; i < dsListSize; i++) {
-			insertInt(play->player->getDraftSchematic(i)->getObjectCRC());
-			insertInt(play->player->getDraftSchematic(i)->getSchematicID());
-		}*/
-		insertInt(0);
-		insertInt(0);
-	}
-
-
 };
 
 #endif /*PLAYEROBJECTMESSAGE9_H_*/

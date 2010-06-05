@@ -51,7 +51,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.managers.objectcontroller.ObjectController;
 include server.zone.objects.creature.professions.Certification;
-
+include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.managers.crafting.schematicmap.DraftSchematicGroup;
 import server.zone.ZoneClientSession;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
@@ -61,6 +62,7 @@ include server.zone.objects.creature.professions.Skill;
 include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
+include server.zone.objects.player.variables.SchematicList;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -96,6 +98,10 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected IgnoreList ignoreList;
+	
+	@dereferenced
+	protected SchematicList schematicList;
+	
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -212,6 +218,18 @@ class PlayerObject extends IntangibleObject {
 	 */
 	@local
 	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	
+	@local
+	public native void addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
+	
+	@local
+	public native void removeSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
+	
+	@local
+	public native void addSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	@local
+	public native void removeSchematic(DraftSchematic schematic, boolean notifyClient = true);
 	
 	/**
 	 * Sets the specified language id
@@ -357,6 +375,11 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public SkillList getSkills() {
 		return skillList;
+	}
+	
+	@local
+	public SchematicList getSchematics() {
+		return schematicList;
 	}
 	
 	public int getFoodFilling() {
