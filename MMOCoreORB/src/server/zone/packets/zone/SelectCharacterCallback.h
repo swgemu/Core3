@@ -80,7 +80,17 @@ public:
 					}
 				}
 
-				zone = zoneServer->getZone(zoneID);
+				try {
+					zone = zoneServer->getZone(zoneID);
+				} catch (...) {
+					zone = NULL;
+				}
+
+				if (zone == NULL && parent != NULL)
+					zone = parent->getRootParent()->getZone();
+
+				if (zone == NULL)
+					zone = zoneServer->getZone(0);
 
 				player->insertToZone(zone);
 			}
