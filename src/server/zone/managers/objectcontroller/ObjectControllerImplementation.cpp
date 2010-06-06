@@ -90,10 +90,11 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 				objectToTransfer->insertToZone(zne);
 				//System::out << "Inserted to zone" << endl;
 			}
-
-			destinationObject->updateToDatabaseAllObjects(false);
 		}
 	}
+
+	parent->updateToDatabaseWithoutChildren();
+	destinationObject->updateToDatabaseAllObjects(false);
 
 	return true;
 }

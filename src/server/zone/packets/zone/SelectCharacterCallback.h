@@ -41,6 +41,17 @@ public:
 
 			Locker _locker(player);
 
+			ManagedReference<ZoneClientSession*> oldClient = player->getClient();
+
+			if (oldClient != NULL && client != oldClient) {
+
+				_locker.release();
+
+				oldClient->disconnect();
+
+				return;
+			}
+
 			player->setClient(client);
 			client->setPlayer(obj);
 

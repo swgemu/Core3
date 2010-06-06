@@ -106,7 +106,9 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 
 			//if (childStub->isInRange(object, 128)) {
 				child->addInRangeObject(creoImpl, false);
+				//child->sendTo(object, true);
 				creoImpl->addInRangeObject(child, false);
+				//object->sendTo(childStub, true);
 			//}
 		}
 	}
