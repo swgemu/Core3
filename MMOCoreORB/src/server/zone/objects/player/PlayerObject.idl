@@ -230,7 +230,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@local
 	public native void removeSchematic(DraftSchematic schematic, boolean notifyClient = true);
-	
+
 	/**
 	 * Sets the specified language id
 	 * @pre { }

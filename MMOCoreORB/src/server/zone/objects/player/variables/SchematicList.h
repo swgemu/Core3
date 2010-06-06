@@ -12,11 +12,10 @@
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-class SchematicList : public DeltaVector<DraftSchematic*> {
+class SchematicList : public DeltaVector<ManagedReference<DraftSchematic* > > {
 
 public:
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
-	void readd(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 	bool remove(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 
 	bool toString(String& str);

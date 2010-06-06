@@ -62,6 +62,7 @@ class SchematicMap : public Lua, public VectorMap<uint32, ManagedReference<Draft
 	static ObjectManager* objectManager;
 	static VectorMap<String, DraftSchematicGroup* > groupMap;
 	static SchematicMap* instance;
+	static VectorMap<String, ManagedReference<DraftSchematic* > > nameMap;
 
 public:
 
@@ -77,6 +78,9 @@ public:
 	static int addDraftSchematicToServer(lua_State *L);
 	static void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
 	static void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
+	static void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+	static void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+
 };
 
 #endif /* SCHEMATICMAP_H_ */
