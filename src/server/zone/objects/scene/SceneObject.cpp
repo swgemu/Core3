@@ -481,7 +481,7 @@ void SceneObject::insertToBuilding(BuildingObject* building) {
 		((SceneObjectImplementation*) _impl)->insertToBuilding(building);
 }
 
-void SceneObject::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
+void SceneObject::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -491,10 +491,11 @@ void SceneObject::switchZone(int newZoneID, float newPostionX, float newPosition
 		method.addFloatParameter(newPostionX);
 		method.addFloatParameter(newPositionZ);
 		method.addFloatParameter(newPositionY);
+		method.addUnsignedLongParameter(parentID);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY);
+		((SceneObjectImplementation*) _impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObject::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
@@ -2514,7 +2515,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		insertToBuilding((BuildingObject*) inv->getObjectParameter());
 		break;
 	case 37:
-		switchZone(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		switchZone(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 38:
 		teleport(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
@@ -2917,8 +2918,8 @@ void SceneObjectAdapter::insertToBuilding(BuildingObject* building) {
 	((SceneObjectImplementation*) impl)->insertToBuilding(building);
 }
 
-void SceneObjectAdapter::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
-	((SceneObjectImplementation*) impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY);
+void SceneObjectAdapter::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
+	((SceneObjectImplementation*) impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectAdapter::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
