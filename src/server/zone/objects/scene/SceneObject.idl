@@ -719,6 +719,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param newPositionY new position Y
 	 */
 	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
+	
+	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 
 	/**
 	 * Removes object from zone

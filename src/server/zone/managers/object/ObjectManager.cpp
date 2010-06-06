@@ -98,6 +98,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	databaseManager->loadDatabase("staticobjects", true, 0);
 	databaseManager->loadDatabase("sceneobjects", true);
+	databaseManager->loadDatabase("playerstructures", true);
 	databaseManager->loadDatabase("buffs", true);
 
 	loadLastUsedObjectID();

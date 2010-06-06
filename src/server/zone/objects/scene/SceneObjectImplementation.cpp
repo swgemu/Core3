@@ -57,6 +57,8 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "server/zone/packets/object/DataTransform.h"
+#include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -227,7 +229,9 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		return;
 
 	/*StringBuffer msg;
-	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
+	if (parent != NULL)
+		msg << "with parent " << parent->getLoggingName() << " ";
+	msg << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
 	info(msg.toString(), true);*/
 
 	create(client);
@@ -265,6 +269,10 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (staticObject)
 		return;
+
+	/*StringBuffer msg;
+	msg << "sending destroy to " << player->getLoggingName();
+	info(msg.toString(), true);*/
 
 	destroy(player->getClient());
 }
@@ -504,7 +512,9 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 		// add to new cell
 		//parent = newParent;
-		newParent->addObject(_this, -1);
+		if (!newParent->addObject(_this, -1)) {
+			error("could not add to parent " + newParent->getLoggingName());
+		}
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
 	}
@@ -530,7 +540,33 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 	notifySelfPositionUpdate();
 }
 
+void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
+
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (parentID != 0) {
+		ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
+
+		if (newParent == NULL)
+			return;
+
+		setPosition(newPositionX, newPositionZ, newPositionY);
+		updateZoneWithParent(newParent, false);
+
+		DataTransformWithParent* pack = new DataTransformWithParent(_this);
+		broadcastMessage(pack , true);
+	} else {
+		setPosition(newPositionX, newPositionZ, newPositionY);
+		updateZone(false);
+
+		DataTransform* pack = new DataTransform(_this);
+		broadcastMessage(pack , true);
+	}
+}
+
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
+	info("inserting to zone");
+
 	Locker zoneLocker(newZone);
 
 	if (isInQuadTree() && newZone != zone) {
@@ -542,17 +578,29 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 	zone->addSceneObject(_this);
 
-	initializePosition(positionX, positionZ, positionY);
-
 	sendToOwner(true);
 
 	if (isInQuadTree()) {
 		notifiedSentObjects.removeAll();
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			notifyInsert(getInRangeObject(i));
+			SceneObjectImplementation* object = (SceneObjectImplementation*) getInRangeObject(i);
+
+			if (object->getParent() == NULL)
+				notifyInsert(object);
+
+			//teleport(positionX, positionZ, positionY, getParentID());
+
+			if (object != this) {
+				sendDestroyTo((SceneObject*) object->_getStub());
+				sendTo((SceneObject*) object->_getStub(), true);
+			}
 		}
 	} else {
+		initializePosition(positionX, positionZ, positionY);
+
+		movementCounter = 0;
+
 		if (parent == NULL || !parent->isCellObject()) {
 			zone->insert(this);
 			zone->inRange(this, 128);
@@ -563,8 +611,6 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 			building->notifyInsertToZone(_this);
 		}
 	}
-
-	movementCounter = 0;
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
@@ -623,12 +669,12 @@ void SceneObjectImplementation::removeFromZone() {
 
 	Locker zoneLocker(zone);
 
-	ManagedReference<SceneObject*> par = parent.get();
+	//ManagedReference<SceneObject*> par = parent.get();
 
 	if (parent != NULL && parent->isCellObject()) {
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
-		par = parent;
+		//par = parent;
 
 		removeFromBuilding(building);
 	} else
@@ -669,8 +715,9 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (slottedObjects.contains(childArrangement))
+			if (slottedObjects.contains(childArrangement)) {
 				return false;
+			}
 		}
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -680,8 +727,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		if (containerObjects.size() >= containerVolumeLimit)
 			return false;
 
-		if (containerObjects.contains(object->getObjectID()))
-			return false;
+		/*if (containerObjects.contains(object->getObjectID()))
+			return false*/
 
 		containerObjects.put(object->getObjectID(), object);
 	} else {

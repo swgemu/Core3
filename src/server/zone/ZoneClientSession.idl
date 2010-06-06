@@ -85,6 +85,14 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);
+	
+	public void info(final string msg, boolean force = false) {
+		Logger.info(msg, force);
+	}
+	
+	public void error(final string msg) {
+		Logger.error(msg);
+	}
 
 	@nativeStub
 	public native void acquire();
