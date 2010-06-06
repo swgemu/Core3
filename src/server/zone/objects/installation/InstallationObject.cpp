@@ -338,31 +338,36 @@ void InstallationObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("basePowerRate", &basePowerRate);
 	addSerializableVariable("maintenancePool", &maintenancePool);
 	addSerializableVariable("powerPool", &powerPool);
+	addSerializableVariable("operatorList", &operatorList);
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/InstallationObject.idl(72):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl(73):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(74):  		super.staticObject = false;
+	// server/zone/objects/installation/InstallationObject.idl(75):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/installation/InstallationObject.idl(76):  		lotSize = 0;
+	// server/zone/objects/installation/InstallationObject.idl(77):  		lotSize = 0;
 	lotSize = 0;
-	// server/zone/objects/installation/InstallationObject.idl(78):  		baseMaintenanceRate = 0;
+	// server/zone/objects/installation/InstallationObject.idl(79):  		baseMaintenanceRate = 0;
 	baseMaintenanceRate = 0;
 	// server/zone/objects/installation/InstallationObject.idl(80):  		basePowerRate = 0;
 	basePowerRate = 0;
-	// server/zone/objects/installation/InstallationObject.idl(82):  		maintenancePool = 0;
+	// server/zone/objects/installation/InstallationObject.idl(81):  		maintenancePool = 0;
 	maintenancePool = 0;
-	// server/zone/objects/installation/InstallationObject.idl(84):  		powerPool = 0;
+	// server/zone/objects/installation/InstallationObject.idl(82):  		powerPool = 0;
 	powerPool = 0;
-	// server/zone/objects/installation/InstallationObject.idl(86):  		deedObjectID = 0;
+	// server/zone/objects/installation/InstallationObject.idl(83):  		deedObjectID = 0;
 	deedObjectID = 0;
+	// server/zone/objects/installation/InstallationObject.idl(84):  		operatorList.setNoDuplicateInsertPlan();
+	(&operatorList)->setNoDuplicateInsertPlan();
 }
 
 void InstallationObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/installation/InstallationObject.idl(90):  		super.initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl(88):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl(90):  		operatorList.setNoDuplicateInsertPlan();
+	(&operatorList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/installation/InstallationObject.idl(92):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
 }

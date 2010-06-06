@@ -45,6 +45,8 @@ using namespace server::zone::objects::player;
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -129,6 +131,8 @@ protected:
 	unsigned int maintenancePool;
 
 	unsigned int powerPool;
+
+	SortedVector<ManagedReference<PlayerCreature* > > operatorList;
 
 public:
 	InstallationObjectImplementation();

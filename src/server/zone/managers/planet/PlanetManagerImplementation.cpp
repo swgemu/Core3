@@ -24,7 +24,7 @@ void PlanetManagerImplementation::initialize() {
 	loadBadgeAreas();
 	loadNoBuildAreas();
 
-	terrainManager = new TerrainManager();
+	terrainManager = new TerrainManager(zone);
 
 	int zoneID = zone->getZoneID();
 
@@ -121,7 +121,7 @@ void PlanetManagerImplementation::loadRegions() {
 void PlanetManagerImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	terrainManager = new TerrainManager();
+	terrainManager = new TerrainManager(zone);
 }
 
 
