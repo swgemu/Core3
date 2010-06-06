@@ -351,6 +351,10 @@ void ZoneServerImplementation::init() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
+	craftingManager = new CraftingManager(_this, processor, objectManager);
+	craftingManager->deploy("CraftingManager");
+	craftingManager->initialize();
+
 	startZones();
 
 	startManagers();
@@ -422,10 +426,6 @@ void ZoneServerImplementation::startManagers() {
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
 	resourceManager->initialize();
-
-	craftingManager = new CraftingManager(_this, processor, objectManager);
-	craftingManager->deploy("CraftingManager");
-	craftingManager->initialize();
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
