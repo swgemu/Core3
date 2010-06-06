@@ -620,7 +620,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	}
 }
 
-void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
+void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	ManagedReference<SceneObject*> thisLocker = _this;
 
 	if (zone == NULL)
@@ -629,6 +629,11 @@ void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, flo
 	removeFromZone();
 
 	ZoneServer* server = getZoneServer();
+	SceneObject* newParent = server->getObject(parentID);
+
+	if (newParent != NULL && newParent->isCellObject())
+		newParent->addObject(_this, -1);
+
 	Zone* zone = server->getZone(newZoneID);
 
 	initializePosition(newPostionX, newPositionZ, newPositionY);
