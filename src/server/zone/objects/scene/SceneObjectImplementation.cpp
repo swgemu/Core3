@@ -874,6 +874,9 @@ void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 	if (!buio->isOnAdminList(player))
 		return;
 
+	if (isPlayerCreature())
+		return;
+
 	menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
 
 	menuResponse->addRadialMenuItem(54, 1, "@ui_radial:item_move"); //Move
