@@ -4,7 +4,13 @@ object_building_player_player_guildhall_corellia_style_01 = object_building_play
 	allowedZones = {0,7}
 }
 
-ObjectTemplates:addTemplate(object_building_player_player_guildhall_corellia_style_01, "object/building/player/player_guildhall_corellia_style_01.iff")
+object_building_player_player_garage_corellia_style_01 = object_building_player_shared_player_garage_corellia_style_01:new {
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	allowedZones = {0,7}
+}
+
+ObjectTemplates:addTemplate(object_building_player_player_garage_corellia_style_01, "object/building/player/player_garage_corellia_style_01.iff")
 
 object_building_player_player_house_corellia_large_style_01 = object_building_player_shared_player_house_corellia_large_style_01:new {
 	lotSize = 5,

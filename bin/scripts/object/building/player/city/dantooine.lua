@@ -1,5 +1,5 @@
 object_building_player_city_garden_dantooine_lrg_01 = object_building_player_city_shared_garden_dantooine_lrg_01:new {
-	lotSize = 1,
+	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	cityRankRequired = 3,
@@ -9,7 +9,7 @@ object_building_player_city_garden_dantooine_lrg_01 = object_building_player_cit
 ObjectTemplates:addTemplate(object_building_player_city_garden_dantooine_lrg_01, "object/building/player/city/garden_dantooine_lrg_01.iff")
 
 object_building_player_city_garden_dantooine_med_01 = object_building_player_city_shared_garden_dantooine_med_01:new {
-	lotSize = 1,
+	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	cityRankRequired = 2,
@@ -19,7 +19,7 @@ object_building_player_city_garden_dantooine_med_01 = object_building_player_cit
 ObjectTemplates:addTemplate(object_building_player_city_garden_dantooine_med_01, "object/building/player/city/garden_dantooine_med_01.iff")
 
 object_building_player_city_garden_dantooine_sml_01 = object_building_player_city_shared_garden_dantooine_sml_01:new {
-	lotSize = 1,
+	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	cityRankRequired = 1,

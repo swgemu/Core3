@@ -9,6 +9,7 @@
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
 #include "SharedStructureObjectTemplate.h"
+#include "StructureTerminalLocation.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	String terrainModificationFileName;
@@ -16,19 +17,29 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 	uint8 cityRankRequired;
 
+	StructureTerminalLocation* structureTerminalLocation;
+
+
 public:
 	SharedBuildingObjectTemplate() {
-
+		structureTerminalLocation = NULL;
 	}
 
 	~SharedBuildingObjectTemplate() {
-
+		if (structureTerminalLocation != NULL) {
+			delete structureTerminalLocation;
+			structureTerminalLocation = NULL;
+		}
 	}
 
 	void readObject(LuaObject* templateData);
 
 	virtual bool isSharedBuildingObjectTemplate() {
 		return true;
+	}
+
+	inline StructureTerminalLocation* getStructureTerminalLocation() {
+		return structureTerminalLocation;
 	}
 };
 

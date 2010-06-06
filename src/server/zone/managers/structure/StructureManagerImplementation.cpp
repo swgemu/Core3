@@ -716,20 +716,24 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 
 	//Create a structure terminal
 	String terminalTemplate = "object/tangible/terminal/shared_terminal_player_structure.iff";
-	ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
+	StructureTerminalLocation* structureTerminalLocation = buildingTemplate->getStructureTerminalLocation();
 
-	if (structureTerminal != NULL) {
-		structureTerminal->initializePosition(-7, 0.7, -7);
-		structureTerminal->setDirection(0.707107, 0, 0.707107, 0);
-		structureTerminal->setBuildingObject(buio);
+	if (structureTerminalLocation != NULL) {
+		ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
 
-		//Add the structure terminal to the cell
-		ManagedReference<CellObject*> cell = buio->getCell(1);
-		cell->addObject(structureTerminal, -1, true);
-		cell->broadcastObject(structureTerminal, false);
-		structureTerminal->insertToZone(zone);
+		if (structureTerminal != NULL) {
+			structureTerminal->initializePosition(structureTerminalLocation->getPositionX(), structureTerminalLocation->getPositionZ(), structureTerminalLocation->getPositionY());
+			structureTerminal->setDirection(structureTerminalLocation->getDirection());
+			structureTerminal->setBuildingObject(buio);
 
-		structureTerminal->updateToDatabase();
+			//Add the structure terminal to the cell
+			ManagedReference<CellObject*> cell = buio->getCell(structureTerminalLocation->getCellNumber());
+			cell->addObject(structureTerminal, -1, true);
+			cell->broadcastObject(structureTerminal, false);
+			structureTerminal->insertToZone(zone);
+
+			structureTerminal->updateToDatabase();
+		}
 	}
 
 	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
