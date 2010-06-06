@@ -580,6 +580,10 @@ public:
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
+	void synchronizedUIListen(PlayerCreature* player, int value);
+
+	void synchronizedUIStopListen(PlayerCreature* player, int value);
+
 	void updateToDatabase();
 
 	void updateToDatabaseWithoutChildren();
@@ -1327,6 +1331,10 @@ public:
 
 	virtual int canAddObject(SceneObject* object, String& errorDescription);
 
+	virtual void synchronizedUIListen(PlayerCreature* player, int value);
+
+	virtual void synchronizedUIStopListen(PlayerCreature* player, int value);
+
 	void updateToDatabase();
 
 	void updateToDatabaseWithoutChildren();
@@ -1643,6 +1651,10 @@ public:
 	bool removeObject(SceneObject* object, bool notifyClient);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
+
+	void synchronizedUIListen(PlayerCreature* player, int value);
+
+	void synchronizedUIStopListen(PlayerCreature* player, int value);
 
 	void updateToDatabase();
 

@@ -63,6 +63,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<SceneObject*> object = (SceneObject*)creature->getZoneServer()->getObject(target);
+		int value = 0;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(tokenizer.hasMoreTokens())
+			value = tokenizer.getIntToken();
+
+		if(object != NULL && creature->isPlayerCreature())
+			object->synchronizedUIStopListen((PlayerCreature*)creature, value);
+
 		return SUCCESS;
 	}
 

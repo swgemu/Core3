@@ -90,6 +90,10 @@ void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
 
 bool NativePool::update() {
 
+	int despawnedCount = 0, spawnedCount = 0;
+	StringBuffer buffer;
+	buffer << "Native pool updating: ";
+
 	for(int ii = 0; ii < activeResourceZones.size(); ++ii) {
 		for(int jj = 0; jj < includedResources.size(); ++jj) {
 
@@ -106,6 +110,7 @@ bool NativePool::update() {
 
 					newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
 					newSpawn->updateToDatabase();
+					spawnedCount++;
 
 					setElementAt(indexoffset, newSpawn);
 
@@ -123,18 +128,21 @@ bool NativePool::update() {
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
+			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(spawn->getType(), excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
 			newSpawn->updateToDatabase();
+			spawnedCount++;
 
 			setElementAt(ii, newSpawn);
 		}
 	}
 
-	resourceSpawner->log("Native Pool Update Successful");
+	buffer << "Spawned " << spawnedCount << " Despawned " << despawnedCount;
+	resourceSpawner->info(buffer.toString(), true);
 	return true;
 }
 

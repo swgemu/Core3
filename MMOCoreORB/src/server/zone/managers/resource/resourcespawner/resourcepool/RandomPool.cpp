@@ -83,6 +83,12 @@ bool RandomPool::update() {
 	 * Create resources for any included type that doesn't exist in
 	 * the VectorMap
 	 */
+
+	int despawnedCount = 0, spawnedCount = 0;
+
+	StringBuffer buffer;
+	buffer << "Random pool updating: ";
+
 	for(int ii = 0; ii < size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
@@ -92,6 +98,7 @@ bool RandomPool::update() {
 					resourceSpawner->createResourceSpawn(includedResources, excludedResources);
 			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
 			newSpawn->updateToDatabase();
+			spawnedCount++;
 
 			setElementAt(ii, newSpawn);
 
@@ -115,6 +122,7 @@ bool RandomPool::update() {
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
+			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn = NULL;// =
 					//resourceSpawner->getFromRandomPool(type);
@@ -124,12 +132,14 @@ bool RandomPool::update() {
 
 			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
 			newSpawn->updateToDatabase();
+			spawnedCount++;
 
 			setElementAt(ii, newSpawn);
 		}
 	}
 
-	resourceSpawner->log("Random Pool Update Successful");
+	buffer << "Spawned " << spawnedCount << " Despawned " << despawnedCount;
+	resourceSpawner->info(buffer.toString(), true);
 	return true;
 }
 
