@@ -693,7 +693,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	/*if (z == 0)
 		z = player->getPositionZ();*/
 
-	float maxZ = terrainManager->getHighestHeight(x - 12, y - 12, x + 12, y + 12 , 4); // checking default 24x24 area with 4 stepping
+	float maxZ = terrainManager->getHighestHeight(x - 24, y - 24, x + 24, y + 24 , 4); // checking default 24x24 area with 4 stepping
 	z = maxZ;
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
