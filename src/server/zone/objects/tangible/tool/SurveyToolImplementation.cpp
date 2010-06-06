@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/templates/tangible/survey_tool/SurveyToolTemplate.h"
+#include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
 
 
 void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

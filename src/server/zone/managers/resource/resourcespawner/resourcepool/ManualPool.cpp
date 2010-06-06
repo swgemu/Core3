@@ -69,6 +69,11 @@ bool ManualPool::update() {
 	 * The manual pool doesn't spawn anything on it's own
 	 * it just removes anything that happens to be expired
 	 */
+
+	StringBuffer buffer;
+	buffer << "Manual pool updating: ";
+	int despawnedCount = 0;
+
 	for (int ii = 0; ii < size(); ++ii) {
 
 		ManagedReference<ResourceSpawn* > spawn = get(ii);
@@ -78,10 +83,13 @@ bool ManualPool::update() {
 			removeElement(spawn);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
 			spawn->updateToDatabase();
+			despawnedCount++;
 		}
 	}
 
-	resourceSpawner->log("ManualPool Pool Update Successful");
+	buffer << "Despawned " << despawnedCount;
+	resourceSpawner->info(buffer.toString(), true);
+
 	return true;
 }
 

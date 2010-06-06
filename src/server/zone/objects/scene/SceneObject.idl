@@ -499,6 +499,28 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public abstract void synchronizedUIListen(PlayerCreature player, int value) {
+		Logger.info("Unhandled synchronizedUIListen", true);
+	}
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public abstract void synchronizedUIStopListen(PlayerCreature player, int value) {
+		Logger.info("Unhandled synchronizedUIStopListen", true);
+	}
+	
+	/**
 	 * Updates this object to database (calls updatesToDatabaseAllObjects())
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
