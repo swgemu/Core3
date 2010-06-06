@@ -875,15 +875,17 @@ void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 		return;
 
 	menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
+
 	menuResponse->addRadialMenuItem(54, 1, "@ui_radial:item_move"); //Move
 	menuResponse->addRadialMenuItem(51, 1, "@ui_radial:item_rotate"); //Rotate
-	menuResponse->addRadialMenuItem(3, 55, 3, "@ui_radial:item_move_forward"); //Move Forward
-	menuResponse->addRadialMenuItem(3, 56, 3, "@ui_radial:item_move_back"); //Move Back
-	menuResponse->addRadialMenuItem(3, 57, 3, "@ui_radial:item_move_up"); //Move Up
-	menuResponse->addRadialMenuItem(3, 58, 3, "@ui_radial:item_move_down"); //Move Down
 
-	menuResponse->addRadialMenuItem(4, 52, 3, "@ui_radial:item_rotate_left"); //Rotate Left
-	menuResponse->addRadialMenuItem(4, 53, 3, "@ui_radial:item_rotate_right"); //Rotate Right
+	menuResponse->addRadialMenuItemToRadialID(54, 55, 3, "@ui_radial:item_move_forward"); //Move Forward
+	menuResponse->addRadialMenuItemToRadialID(54, 56, 3, "@ui_radial:item_move_back"); //Move Back
+	menuResponse->addRadialMenuItemToRadialID(54, 57, 3, "@ui_radial:item_move_up"); //Move Up
+	menuResponse->addRadialMenuItemToRadialID(54, 58, 3, "@ui_radial:item_move_down"); //Move Down
+
+	menuResponse->addRadialMenuItemToRadialID(51, 52, 3, "@ui_radial:item_rotate_left"); //Rotate Left
+	menuResponse->addRadialMenuItemToRadialID(51, 53, 3, "@ui_radial:item_rotate_right"); //Rotate Right
 }
 
 int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

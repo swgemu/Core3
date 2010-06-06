@@ -37,7 +37,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cloning_naboo_deed, "
 object_tangible_deed_city_deed_garage_naboo_deed = object_tangible_deed_city_deed_shared_garage_naboo_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/garage_naboo.iff",
+	generatedObjectTemplate = "object/building/player/player_garage_naboo_style_01.iff",
 	maxCondition = 0
 }
 
