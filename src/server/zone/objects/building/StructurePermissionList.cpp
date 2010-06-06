@@ -21,9 +21,9 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
 
 	for (int i = 0; i < size(); ++i) {
-		VectorMapEntry<uint64, uint8> entry = elementAt(i);
-		uint64 playerID = entry.getKey();
-		uint8 permission = entry.getValue();
+		VectorMapEntry<uint64, uint8>* entry = &elementAt(i);
+		uint64 playerID = entry->getKey();
+		uint8 permission = entry->getValue();
 
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(playerID);
 

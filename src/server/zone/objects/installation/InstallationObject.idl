@@ -46,6 +46,7 @@ package server.zone.objects.installation;
 
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
+import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.objects.building.StructurePermissionList;
@@ -55,18 +56,18 @@ class InstallationObject extends TangibleObject {
 	protected StructurePermissionList structurePermissionList;
 	
 	protected unsigned long ownerObjectID;
-	
 	protected int lotSize;
 	
 	protected unsigned long deedObjectID;
 	
 	protected int baseMaintenanceRate;
-	
 	protected int basePowerRate;
 	
 	protected unsigned int maintenancePool;
-	
 	protected unsigned int powerPool;
+	
+	@dereferenced
+	protected SortedVector<PlayerCreature> operatorList;
 	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
@@ -76,18 +77,17 @@ class InstallationObject extends TangibleObject {
 		lotSize = 0;
 		
 		baseMaintenanceRate = 0;
-		
 		basePowerRate = 0;
-		
 		maintenancePool = 0;
-		
 		powerPool = 0;
-		
 		deedObjectID = 0;
+		operatorList.setNoDuplicateInsertPlan();
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
+		
+		operatorList.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("InstallationObject");
 	}
