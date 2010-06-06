@@ -533,7 +533,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				continue;
 			}
 
-			if (zoneObjectID != currentZoneObjectID || gameObjectType != SceneObject::BUILDING) {
+			if (zoneObjectID != currentZoneObjectID) {
 				objectData->clear();
 				continue;
 			}
@@ -541,9 +541,9 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			SceneObject* object = server->getZoneServer()->getObject(objectID);
 
 			if (object != NULL)
-				object->info("loaded player building into world", true);
+				object->info("loaded player structure into world", true);
 			else {
-				error("could not load player building " + String::valueOf(objectID));
+				error("could not load structure " + String::valueOf(objectID));
 			}
 
 			objectData->clear();
@@ -688,7 +688,9 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	ObjectManager* objectManager = ObjectManager::instance();
 
 	float z = zone->getHeight(x, y);
-	//float z = player->getPositionZ();
+
+	if (z == 0)
+		z = player->getPositionZ();
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
