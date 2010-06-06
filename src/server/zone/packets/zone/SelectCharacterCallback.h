@@ -68,7 +68,7 @@ public:
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
 
-				if (parent != NULL) {
+				if (parent != NULL && parent->isCellObject() || parent->isVehicleObject()) {
 					try {
 						parent->wlock(player);
 
