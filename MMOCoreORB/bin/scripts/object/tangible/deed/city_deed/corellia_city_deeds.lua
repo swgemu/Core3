@@ -37,7 +37,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cloning_corellia_deed
 object_tangible_deed_city_deed_garage_corellia_deed = object_tangible_deed_city_deed_shared_garage_corellia_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/garage_corellia.iff",
+	generatedObjectTemplate = "object/building/player/player_garage_corellia_style_01.iff",
 	maxCondition = 0
 }
 
