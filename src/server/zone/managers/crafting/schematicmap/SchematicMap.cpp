@@ -53,6 +53,7 @@ which carries forward this exception.
 
 ObjectManager* SchematicMap::objectManager = NULL;
 VectorMap<String, DraftSchematicGroup* > SchematicMap::groupMap;
+VectorMap<String, ManagedReference<DraftSchematic* > > SchematicMap::nameMap;
 SchematicMap* SchematicMap::instance = NULL;
 
 SchematicMap::SchematicMap(ObjectManager* objman) {
@@ -118,6 +119,11 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 
 		ManagedReference<DraftSchematic* > draftSchematic = (DraftSchematic*) objectManager->createObject(objCRC, 0, "DraftSchematics");
 
+		StringId stringid;
+		stringid.setStringId(stfFile, stfName);
+		stringid.setCustomString(objectName);
+
+		draftSchematic->setObjectName(stringid);
 		/*
 		// The groupName will be used as the key to return a list of schematics with that groupName
 		// example: "craftArtisanNewbieGroupA" (this is one groupName from Novice Artisan)
@@ -335,6 +341,7 @@ void SchematicMap::mapDraftSchematic(String groupname, DraftSchematic* schematic
 
 	group->add(schematic);
 	instance->put(schematic->getClientObjectCRC(), schematic);
+	instance->nameMap.put(schematic->getObjectNameStringIdName(), schematic);
 }
 
 void SchematicMap::addSchematics(PlayerObject* playerObject,
@@ -379,4 +386,24 @@ void SchematicMap::removeSchematics(PlayerObject* playerObject,
 
 	if (schematics.size() > 0)
 		playerObject->removeSchematics(schematics, updateClient);
+}
+
+void SchematicMap::addSchematic(PlayerObject* playerObject,
+		DraftSchematic* schematic, bool updateClient) {
+
+	Vector<ManagedReference<DraftSchematic*> > schematics;
+
+	schematics.add(schematic);
+
+	playerObject->addSchematics(schematics, updateClient);
+}
+
+void SchematicMap::removeSchematic(PlayerObject* playerObject,
+		DraftSchematic* schematic, bool updateClient) {
+
+	Vector<ManagedReference<DraftSchematic*> > schematics;
+
+	schematics.add(schematic);
+
+	playerObject->removeSchematics(schematics, updateClient);
 }

@@ -57,4 +57,3 @@ void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObje
 void CraftingManagerImplementation::removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
 	schematicMap->removeSchematics(playerObject, schematicgroups, updateClient);
 }
-

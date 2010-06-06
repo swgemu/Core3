@@ -96,28 +96,12 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	return val;
 }
 
-void SchematicList::readd(DraftSchematic* schematic, DeltaMessage* message, int updates) {
-
-	if (message != NULL) {
-		if (updates != 0)
-			message->startList(updates, updateCounter += updates);
-
-		if (schematic != NULL) {
-			message->insertByte(1);
-			message->insertShort(updates);
-
-			message->insertInt(schematic->getClientObjectCRC());
-			message->insertInt(schematic->getClientObjectCRC());
-		}
-	}
-}
-
 bool SchematicList::remove(DraftSchematic* schematic, DeltaMessage* message, int updates) {
 
 	int index = -1;
 
 	for(int i = 0; i < vector.size(); ++i) {
-		if(schematic->getClientObjectCRC() == vector.get(i)->getClientObjectCRC()) {
+		if(schematic->getObjectNameStringIdName() == vector.get(i)->getObjectNameStringIdName()) {
 			index = i;
 			break;
 		}
