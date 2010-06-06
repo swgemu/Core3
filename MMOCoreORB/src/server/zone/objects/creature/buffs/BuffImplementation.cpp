@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "server/zone/packets/object/Buffs.h"
 
 void BuffImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
+
 	init();
 
 	if (buffEvent != NULL)

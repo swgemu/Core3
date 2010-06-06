@@ -686,11 +686,15 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 int StructureManagerImplementation::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
 	float z = zone->getHeight(x, y);
 
-	if (z == 0)
-		z = player->getPositionZ();
+	/*if (z == 0)
+		z = player->getPositionZ();*/
+
+	float maxZ = terrainManager->getHighestHeight(x - 12, y - 12, x + 12, y + 12 , 4); // checking default 24x24 area with 4 stepping
+	z = maxZ;
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
