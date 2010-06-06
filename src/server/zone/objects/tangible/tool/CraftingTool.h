@@ -27,6 +27,34 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -51,6 +79,14 @@ public:
 
 	void initializeTransientMembers();
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 protected:
 	CraftingTool(DummyConstructorParameter* param);
 
@@ -74,6 +110,25 @@ namespace tangible {
 namespace tool {
 
 class CraftingToolImplementation : public ToolTangibleObjectImplementation {
+	int type;
+
+	float effectiveness;
+
+	String status;
+
+	static const int CLOTHING = 1;
+
+	static const int FOOD = 2;
+
+	static const int GENERIC = 3;
+
+	static const int JEDI = 4;
+
+	static const int SPACE = 5;
+
+	static const int STRUCTURE = 6;
+
+	static const int WEAPON = 7;
 
 public:
 	CraftingToolImplementation();
@@ -81,6 +136,14 @@ public:
 	CraftingToolImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	CraftingTool* _this;
 
@@ -122,6 +185,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 };
 

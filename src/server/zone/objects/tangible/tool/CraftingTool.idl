@@ -47,9 +47,24 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 
 class CraftingTool extends ToolTangibleObject {
+	
+	private int type;
+	private float effectiveness;
+	private string status;
+	
+	static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
+	static final int FOOD = 2; // Food and Chemical Crafting Tool
+	static final int GENERIC = 3; // Generic Crafting Tool
+	static final int JEDI = 4; // Lightsaber Crafting Tool
+	static final int SPACE = 5; // Starship Crafting Tool
+	static final int STRUCTURE = 6; // Structure and Furniture Crafting Tool
+	static final int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
+	
 	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
 	}
@@ -59,5 +74,29 @@ class CraftingTool extends ToolTangibleObject {
 		
 		Logger.setLoggingName("CraftingTool");
 	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
 }

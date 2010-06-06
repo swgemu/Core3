@@ -79,6 +79,7 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	protected string craftersName;
+	protected string craftersSerial;
 	
 	@dereferenced
 	protected transient DeltaVector<SceneObject> defenderList;
@@ -251,7 +252,7 @@ class TangibleObject extends SceneObject {
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
-	 * @post { this object is lockedÊ}
+	 * @post { this object is lockedï¿½}
 	 * @return returns true if the creature object can attack this 
 	 */
 	public abstract boolean isAttackableBy(CreatureObject object) {

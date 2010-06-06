@@ -280,6 +280,8 @@ protected:
 
 	String craftersName;
 
+	String craftersSerial;
+
 	DeltaVector<ManagedReference<SceneObject* > > defenderList;
 
 	unsigned short playerUseMask;

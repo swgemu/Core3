@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,42 +42,53 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SYNCHRONIZEDUILISTENCOMMAND_H_
-#define SYNCHRONIZEDUILISTENCOMMAND_H_
+#include "engine/engine.h"
 
-#include "../../scene/SceneObject.h"
-#include "server/zone/ZoneServer.h"
+#include "CraftingTool.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
 
-class SynchronizedUiListenCommand : public QueueCommand {
-public:
 
-	SynchronizedUiListenCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*>(templateData);
+
+	type = craftingToolData->getToolType();
+
+}
+
+void CraftingToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
+
+}
+
+int CraftingToolImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
+	PlayerObject* playerObject = playerCreature->getPlayerObject();
+
+	if (selectedID == 20) { // use object
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	return 1;
+}
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+	alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
 
-		ManagedReference<SceneObject*> object = (SceneObject*)creature->getZoneServer()->getObject(target);
-		int value = 0;
+	alm->insertAttribute("craft_tool_status", status);
 
-		StringTokenizer tokenizer(arguments.toString());
+	if (craftersName != ""){
 
-		if(tokenizer.hasMoreTokens())
-			value = tokenizer.getIntToken();
-
-		if(object != NULL && creature->isPlayerCreature())
-			object->synchronizedUIListen((PlayerCreature*)creature, value);
-
-		return SUCCESS;
+		alm->insertAttribute("crafter", craftersName);
 	}
+	if (craftersSerial != ""){
 
-};
-
-#endif //SYNCHRONIZEDUILISTENCOMMAND_H_
+		alm->insertAttribute("serial_number", craftersSerial);
+	}
+}
