@@ -110,7 +110,6 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 		//if it has me than send the object without the buio
 		//if it hasnt me than dont send me and wait for the building to be sent
 		//TODO: check if we need this for every object or only for buildings
-
 		SceneObject* scnoGrandParent = scno->getRootParent();
 
 		if (scnoGrandParent->isBuildingObject()) {
@@ -124,7 +123,6 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno->isBuildingObject())
 		((BuildingObject*)scno)->addNotifiedSentObject(_this);
-
 
 	scno->sendTo(_this, true);
 }
@@ -234,9 +232,9 @@ void PlayerCreatureImplementation::unloadSpawnedChildren() {
 }
 
 void PlayerCreatureImplementation::unload() {
-	info("unloading player");
+	info("unloading player", true);
 
-	ManagedReference<SceneObject*> savedParent = NULL;
+	SceneObject* savedParent = NULL;
 
 	getPlayerObject()->notifyOffline();
 
@@ -264,8 +262,9 @@ void PlayerCreatureImplementation::unload() {
 	clearUpdateToDatabaseTask();
 	updateToDatabaseAllObjects(false);
 
-	if (savedParent != NULL)
-		getZoneServer()->updateObjectToDatabase(savedParent);
+	if (savedParent != NULL) {
+		//savedParent->updateToDatabaseWithoutChildren();
+	}
 
 	clearCombatState(true);
 

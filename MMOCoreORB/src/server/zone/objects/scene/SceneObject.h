@@ -630,6 +630,8 @@ public:
 
 	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
+	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
+
 	void removeFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
@@ -1375,6 +1377,8 @@ public:
 
 	virtual void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
+	virtual void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
+
 	virtual void removeFromZone();
 
 	virtual void removeFromBuilding(BuildingObject* building);
@@ -1685,6 +1689,8 @@ public:
 	void insertToBuilding(BuildingObject* building);
 
 	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
+
+	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
 
 	void removeFromZone();
 

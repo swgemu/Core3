@@ -47,13 +47,15 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "ObjectControllerMessageCallback.h"
 
 
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
-	DataTransformWithParent(CreatureObject* creo)
+	DataTransformWithParent(SceneObject* creo)
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xF1) {
 
 		insertInt(creo->getMovementCounter());
@@ -131,12 +133,12 @@ public:
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 
-		if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
-			/*StringBuffer msg;
+		/*if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
+			StringBuffer msg;
 			msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
-			object->info(msg.toString(), true);*/
+			object->info(msg.toString(), true);
 			return;
-		}
+		}*/
 
 		/*if (object->isMounted())
 				object->dismount(true, true);*/

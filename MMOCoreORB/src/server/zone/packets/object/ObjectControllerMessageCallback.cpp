@@ -23,7 +23,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	StringBuffer objectCtrl;
 	objectCtrl << "parsing objc type 0x" << hex << type;
-	client->getPlayer()->info(objectCtrl.toString());
+	client->info(objectCtrl.toString());
 
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 
@@ -31,8 +31,8 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		StringBuffer msg;
 		msg << "unregistered 0x" << hex << type << " object controller message received\n";
 
-		SceneObject* player = client->getPlayer();
-		player->error(msg.toString());
+		//SceneObject* player = client->getPlayer();
+		client->error(msg.toString());
 		return;
 	}
 

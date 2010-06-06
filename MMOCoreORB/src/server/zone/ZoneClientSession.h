@@ -76,6 +76,10 @@ public:
 
 	void unlock(bool doLock = true);
 
+	void info(const String& msg, bool force = false);
+
+	void error(const String& msg);
+
 	void acquire();
 
 	void release();
@@ -148,6 +152,10 @@ public:
 
 	void unlock(bool doLock = true);
 
+	void info(const String& msg, bool force = false);
+
+	void error(const String& msg);
+
 	void acquire();
 
 	void release();
@@ -207,6 +215,10 @@ public:
 
 	void unlock(bool doLock);
 
+	void info(const String& msg, bool force);
+
+	void error(const String& msg);
+
 	void acquire();
 
 	void release();
@@ -225,6 +237,9 @@ public:
 
 	unsigned int getAccountID();
 
+protected:
+	String _param0_info__String_bool_;
+	String _param0_error__String_;
 };
 
 class ZoneClientSessionHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientSessionHelper> {
