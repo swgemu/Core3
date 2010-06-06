@@ -67,7 +67,7 @@ public:
 		insertLong(0);
 
 		// datapad draft schematics
-		DeltaVector<DraftSchematic*>* schematics = play->getSchematics();
+		DeltaVector<ManagedReference<DraftSchematic* > >* schematics = play->getSchematics();
 		schematics->insertToMessage(this);
 
 		// crafting?
