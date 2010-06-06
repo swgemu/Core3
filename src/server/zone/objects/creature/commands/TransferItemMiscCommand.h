@@ -85,6 +85,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (objectToTransfer->isPlayerCreature()) {
+			//creature->sendSystemMessage("You cant pickup players");
+			return GENERALERROR;
+		}
+
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
