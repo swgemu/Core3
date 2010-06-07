@@ -70,6 +70,8 @@ public:
 
 	BaseMessage* generateMessage();
 
+	bool isBankTransferBox();
+
 protected:
 	SuiBankTransferBox(DummyConstructorParameter* param);
 
@@ -127,6 +129,8 @@ public:
 
 	BaseMessage* generateMessage();
 
+	bool isBankTransferBox();
+
 	SuiBankTransferBox* _this;
 
 	operator const SuiBankTransferBox*();
@@ -173,6 +177,8 @@ public:
 	SceneObject* getBank();
 
 	BaseMessage* generateMessage();
+
+	bool isBankTransferBox();
 
 };
 

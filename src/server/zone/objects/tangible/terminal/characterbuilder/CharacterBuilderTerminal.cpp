@@ -140,12 +140,11 @@ void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("CharacterBuilderTerminal");
 
-	addSerializableVariable("itemList", &itemList);
 }
 
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(61):  		Logger.setLoggingName("CharacterBuilderTerminal");
+	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(60):  		Logger.setLoggingName("CharacterBuilderTerminal");
 	Logger::setLoggingName("CharacterBuilderTerminal");
 }
 

@@ -36,6 +36,18 @@ BaseMessage* SuiMessageBox::generateMessage() {
 		return ((SuiMessageBoxImplementation*) _impl)->generateMessage();
 }
 
+bool SuiMessageBox::isMessageBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SuiMessageBoxImplementation*) _impl)->isMessageBox();
+}
+
 /*
  *	SuiMessageBoxImplementation
  */
@@ -110,6 +122,11 @@ SuiMessageBoxImplementation::SuiMessageBoxImplementation(PlayerCreature* player,
 	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl(59):  		;
 }
 
+bool SuiMessageBoxImplementation::isMessageBox() {
+	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl(65):  		return true;
+	return true;
+}
+
 /*
  *	SuiMessageBoxAdapter
  */
@@ -124,6 +141,9 @@ Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 6:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
+	case 7:
+		resp->insertBoolean(isMessageBox());
+		break;
 	default:
 		return NULL;
 	}
@@ -133,6 +153,10 @@ Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 BaseMessage* SuiMessageBoxAdapter::generateMessage() {
 	return ((SuiMessageBoxImplementation*) impl)->generateMessage();
+}
+
+bool SuiMessageBoxAdapter::isMessageBox() {
+	return ((SuiMessageBoxImplementation*) impl)->isMessageBox();
 }
 
 /*

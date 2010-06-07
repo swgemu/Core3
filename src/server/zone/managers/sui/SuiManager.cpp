@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
+#include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/Zone.h"
@@ -1260,34 +1261,66 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 	if (!player->hasSuiBox(boxID))
 		return;
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	player->removeSuiBox(boxID);
-
-	if (cancel > 0)
-		return;
-
-	if (!sui->isListBox())
-		return;
-
-	SuiListBox* listBox = (SuiListBox*) sui.get();
-	uint32 itemCRC = (uint32) listBox->getMenuObjectID(index);
-
-	if (itemCRC == 0)
-		return;
-
 	ZoneServer* zserv = player->getZoneServer();
 
-	if (zserv == NULL)
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	if (!sui->isCharacterBuilderBox())
 		return;
 
-	SceneObject* item = zserv->createObject(itemCRC, 1);
+	ManagedReference<SuiCharacterBuilderBox*> cbSui = (SuiCharacterBuilderBox*) sui.get();
 
-	if (item == NULL)
+	CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
+
+	//If cancel was pressed and there is no parent node to backup too, then we kill the box/menu.
+	if (currentNode == NULL || (cancel > 0 && !currentNode->hasParentNode())) {
+		player->removeSuiBox(boxID);
 		return;
+	}
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-	item->sendTo(player, true);
-	inventory->addObject(item, -1, true);
+	//Back was pressed. Send the node above it.
+	if (cancel > 0) {
+		CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
+		cbSui->setCurrentNode(parentNode);
+		cbSui->clearOptions();
+		player->sendMessage(cbSui->generateMessage());
+		return;
+	}
+
+	CharacterBuilderMenuNode* node = currentNode->getChildNodeAt(index);
+
+	//Node doesn't exist or the index was out of bounds. Should probably resend the menu here.
+	if (node == NULL) {
+		player->removeSuiBox(boxID);
+		return;
+	}
+
+	if (node->hasChildNodes()) {
+		cbSui->setCurrentNode(node);
+		cbSui->clearOptions();
+		player->sendMessage(cbSui->generateMessage());
+	} else {
+		SceneObject* item = zserv->createObject(node->getTemplateCRC(), 1);
+
+		if (item == NULL) {
+			player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+			cbSui->clearOptions();
+			player->sendMessage(cbSui->generateMessage());
+			return;
+		}
+
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+		item->sendTo(player, true);
+		inventory->addObject(item, -1, true);
+
+		ParameterizedStringId stringId;
+		stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
+		stringId.setTO(item);
+		player->sendSystemMessage(stringId);
+
+		cbSui->clearOptions();
+		player->sendMessage(cbSui->generateMessage());
+	}
 }
 /*
 void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int index) {

@@ -330,12 +330,24 @@ bool SuiBox::isSlicingBox() {
 		return ((SuiBoxImplementation*) _impl)->isSlicingBox();
 }
 
-bool SuiBox::isColorPicker() {
+bool SuiBox::isCharacterBuilderBox() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 30);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->isCharacterBuilderBox();
+}
+
+bool SuiBox::isColorPicker() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -347,7 +359,7 @@ void SuiBox::setCancelButton(bool value, const String& cancelText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(cancelText);
 
@@ -361,7 +373,7 @@ void SuiBox::setBackButton(bool value, const String& backText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(backText);
 
@@ -375,7 +387,7 @@ void SuiBox::setOkButton(bool value, const String& okText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(okText);
 
@@ -389,7 +401,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -401,7 +413,7 @@ int SuiBox::getIntValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -413,7 +425,7 @@ PlayerCreature* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -425,7 +437,7 @@ unsigned int SuiBox::getBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -437,7 +449,7 @@ int SuiBox::getWindowType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -570,8 +582,6 @@ void SuiBoxImplementation::finalize() {
 void SuiBoxImplementation::initializeTransientMembers() {
 	// server/zone/objects/player/sui/SuiBox.idl(135):  		super.initializeTransientMembers();
 	ManagedObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/player/sui/SuiBox.idl(137):  		Logger.setLoggingName("SuiBox");
-	Logger::setLoggingName("SuiBox");
 }
 
 void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
@@ -644,62 +654,67 @@ void SuiBoxImplementation::setIntValue(int value) {
 }
 
 bool SuiBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(247):  		return boxType == INPUTBOX;
-	return boxType == INPUTBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(247):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isListBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(251):  		return boxType == LISTBOX;
-	return boxType == LISTBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(251):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isMessageBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(255):  		return boxType == MESSAGEBOX;
-	return boxType == MESSAGEBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(255):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(259):  		return boxType == TRANSFERBOX;
-	return boxType == TRANSFERBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(259):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isBankTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(263):  		return boxType == BANKTRANSFERBOX;
-	return boxType == BANKTRANSFERBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(263):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isSlicingBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(267):  		return boxType == SLICINGBOX;
-	return boxType == SLICINGBOX;
+	// server/zone/objects/player/sui/SuiBox.idl(267):  		return false;
+	return false;
+}
+
+bool SuiBoxImplementation::isCharacterBuilderBox() {
+	// server/zone/objects/player/sui/SuiBox.idl(271):  		return false;
+	return false;
 }
 
 bool SuiBoxImplementation::isColorPicker() {
-	// server/zone/objects/player/sui/SuiBox.idl(271):  		return boxType == COLORPICKER;
-	return boxType == COLORPICKER;
+	// server/zone/objects/player/sui/SuiBox.idl(275):  		return false;
+	return false;
 }
 
 unsigned long long SuiBoxImplementation::getUsingObjectID() {
-	// server/zone/objects/player/sui/SuiBox.idl(281):  		return usingObjectID;
+	// server/zone/objects/player/sui/SuiBox.idl(285):  		return usingObjectID;
 	return usingObjectID;
 }
 
 int SuiBoxImplementation::getIntValue() {
-	// server/zone/objects/player/sui/SuiBox.idl(285):  		return integerValue;
+	// server/zone/objects/player/sui/SuiBox.idl(289):  		return integerValue;
 	return integerValue;
 }
 
 PlayerCreature* SuiBoxImplementation::getPlayer() {
-	// server/zone/objects/player/sui/SuiBox.idl(289):  		return player;
+	// server/zone/objects/player/sui/SuiBox.idl(293):  		return player;
 	return player;
 }
 
 unsigned int SuiBoxImplementation::getBoxID() {
-	// server/zone/objects/player/sui/SuiBox.idl(293):  		return boxID;
+	// server/zone/objects/player/sui/SuiBox.idl(297):  		return boxID;
 	return boxID;
 }
 
 int SuiBoxImplementation::getWindowType() {
-	// server/zone/objects/player/sui/SuiBox.idl(297):  		return windowType;
+	// server/zone/objects/player/sui/SuiBox.idl(301):  		return windowType;
 	return windowType;
 }
 
@@ -790,30 +805,33 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isSlicingBox());
 		break;
 	case 31:
-		resp->insertBoolean(isColorPicker());
+		resp->insertBoolean(isCharacterBuilderBox());
 		break;
 	case 32:
-		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
+		resp->insertBoolean(isColorPicker());
 		break;
 	case 33:
-		setBackButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setBackButton__bool_String_));
+		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
 		break;
 	case 34:
-		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
+		setBackButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setBackButton__bool_String_));
 		break;
 	case 35:
-		resp->insertLong(getUsingObjectID());
+		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
 		break;
 	case 36:
-		resp->insertSignedInt(getIntValue());
+		resp->insertLong(getUsingObjectID());
 		break;
 	case 37:
-		resp->insertLong(getPlayer()->_getObjectID());
+		resp->insertSignedInt(getIntValue());
 		break;
 	case 38:
-		resp->insertInt(getBoxID());
+		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 39:
+		resp->insertInt(getBoxID());
+		break;
+	case 40:
 		resp->insertSignedInt(getWindowType());
 		break;
 	default:
@@ -921,6 +939,10 @@ bool SuiBoxAdapter::isBankTransferBox() {
 
 bool SuiBoxAdapter::isSlicingBox() {
 	return ((SuiBoxImplementation*) impl)->isSlicingBox();
+}
+
+bool SuiBoxAdapter::isCharacterBuilderBox() {
+	return ((SuiBoxImplementation*) impl)->isCharacterBuilderBox();
 }
 
 bool SuiBoxAdapter::isColorPicker() {

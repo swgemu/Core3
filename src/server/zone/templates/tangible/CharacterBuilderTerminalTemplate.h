@@ -9,39 +9,43 @@
 #define CHARACTERBUILDTERTERMINALTEMPLATE_H_
 
 #include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
-	VectorMap<uint32, String> itemList;
+	CharacterBuilderMenuNode* rootNode;
 
 public:
 	CharacterBuilderTerminalTemplate() {
-
+		rootNode = NULL;
 	}
 
 	~CharacterBuilderTerminalTemplate() {
-
+		if (rootNode != NULL) {
+			delete rootNode;
+			rootNode = NULL;
+		}
 	}
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-		LuaObject deedsList = templateData->getObjectField("deedsList");
+		LuaObject luaItemList = templateData->getObjectField("itemList");
 
-        if (deedsList.getTableSize() % 2 == 0) {
-            for (int i = 1;i <= deedsList.getTableSize();i += 2) {
-                String itemName = deedsList.getStringAt(i);
-                uint32 itemCRC = deedsList.getStringAt(i + 1).hashCode();
-                itemList.put(itemCRC, itemName);
-            }
-        } else {
-            System :: out << "Elements in deedsList must be of an even order.";
-        }
+		//Ensure that the luaItemList root level is of an even order.
+		if (luaItemList.getTableSize() % 2 != 0) {
+			System::out << "[CharacterBuilderTerminalTemplate] Dimension mismatch in itemList. Item count must be a multiple of 2." << endl;
+			luaItemList.pop();
+			return;
+		}
 
-        deedsList.pop();
+		rootNode = new CharacterBuilderMenuNode("root");
+		rootNode->readLuaObject(luaItemList, true);
+
+		luaItemList.pop();
     }
 
-    VectorMap<uint32, String> getItemList() const {
-        return itemList;
+    inline CharacterBuilderMenuNode* getItemList() const {
+        return rootNode;
     }
 
 };

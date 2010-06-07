@@ -82,7 +82,7 @@ public:
 
 		int dist = tokenizer.getIntToken();
 
-		if (dist < 1 || dist > 10)
+		if (dist < 1 || dist > 100)
 			return false;
 
 		ZoneServer* zoneServer = creature->getZoneServer();
@@ -101,13 +101,13 @@ public:
 		float z = obj->getPositionZ();
 
 		if (dir == "forward" || dir == "back") {
-			x += offsetX;
-			y += offsetY;
+			x += (offsetX / 10.0f);
+			y += (offsetY / 10.0f);
 		} else {
 			if (dir == "up")
-				z += dist;
+				z += ((float) dist / 10.0f);
 			else
-				z -= dist;
+				z -= ((float) dist / 10.0f);
 		}
 
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.

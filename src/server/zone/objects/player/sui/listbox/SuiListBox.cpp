@@ -165,6 +165,18 @@ unsigned long long SuiListBox::getPreviousBox() {
 		return ((SuiListBoxImplementation*) _impl)->getPreviousBox();
 }
 
+bool SuiListBox::isListBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SuiListBoxImplementation*) _impl)->isListBox();
+}
+
 /*
  *	SuiListBoxImplementation
  */
@@ -311,6 +323,11 @@ unsigned long long SuiListBoxImplementation::getPreviousBox() {
 	return previous;
 }
 
+bool SuiListBoxImplementation::isListBox() {
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(139):  		return true;
+	return true;
+}
+
 /*
  *	SuiListBoxAdapter
  */
@@ -354,6 +371,9 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 16:
 		resp->insertLong(getPreviousBox());
+		break;
+	case 17:
+		resp->insertBoolean(isListBox());
 		break;
 	default:
 		return NULL;
@@ -404,6 +424,10 @@ unsigned long long SuiListBoxAdapter::getNextBox() {
 
 unsigned long long SuiListBoxAdapter::getPreviousBox() {
 	return ((SuiListBoxImplementation*) impl)->getPreviousBox();
+}
+
+bool SuiListBoxAdapter::isListBox() {
+	return ((SuiListBoxImplementation*) impl)->isListBox();
 }
 
 /*

@@ -61,4 +61,8 @@ class SuiMessageBox extends SuiBox {
 	
 	public native BaseMessage generateMessage();
 	
+	public boolean isMessageBox() {
+		return true;
+	}
+	
 }

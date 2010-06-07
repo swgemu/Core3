@@ -23,8 +23,6 @@ int BuildingDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 	if (selectedID != 20) // not use object
 		return 1;
 
-	System::out << "handleObjectMenuSelect " << generatedObjectTemplate << endl;
-
 	String actionName = "placestructuremode";
 	player->executeObjectControllerAction(actionName.hashCode(), getObjectID(), "");
 
