@@ -415,7 +415,6 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 		for (int i = 1; i < schematics.size(); ++i)
 			schematicList.remove(schematics.get(i), msg, 0);
 
-
 		msg->close();
 
 		sendMessage(msg);
