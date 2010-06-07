@@ -76,6 +76,7 @@ which carries forward this exception.
 #include "packets/object/TargetUpdate.h"
 #include "packets/object/ObjectMenuSelect.h"
 #include "packets/object/MissionListRequestCallback.h"
+#include "packets/object/ItemDropTradeCallback.h"
 
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
@@ -93,6 +94,14 @@ which carries forward this exception.
 #include "packets/chat/ChatPersistentMessageToServerCallback.h"
 #include "packets/chat/ChatRequestPersistentMessageCallback.h"
 #include "packets/chat/ChatDeletePersistentMessageCallback.h"
+
+#include "packets/trade/AbortTradeMessageCallback.h"
+#include "packets/trade/AcceptTransactionMessageCallback.h"
+#include "packets/trade/UnAcceptTransactionMessageCallback.h"
+#include "packets/trade/VerifyTradeMessageCallback.h"
+#include "packets/trade/AddItemMessageCallback.h"
+#include "packets/trade/GiveMoneyMessageCallback.h"
+
 
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
@@ -145,6 +154,13 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<RetrieveAuctionItemMessageCallback>(0x12B0D449);
 	messageCallbackFactory.registerObject<BidAuctionMessageCallback>(0x91125453);
 	messageCallbackFactory.registerObject<PlanetTravelPointListRequestCallback>(0x96405d4d);
+	messageCallbackFactory.registerObject<AbortTradeMessageCallback>(0x9CA80F98);
+	messageCallbackFactory.registerObject<AcceptTransactionMessageCallback>(0xB131CA17);
+	messageCallbackFactory.registerObject<UnAcceptTransactionMessageCallback>(0xE81E4382);
+	messageCallbackFactory.registerObject<VerifyTradeMessageCallback>(0x9AE247EE);
+	messageCallbackFactory.registerObject<AddItemMessageCallback>(0x1E8D1356);
+	messageCallbackFactory.registerObject<GiveMoneyMessageCallback>(0xD1527EE8);
+
 
 }
 
@@ -157,6 +173,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
 	objectMessageControllerFactory->registerObject<MissionListRequestCallback>(0xF5);
+	objectMessageControllerFactory->registerObject<ItemDropTradeCallback>(0x115);
 	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
 	objectMessageControllerFactory->registerObject<CommandQueueRemoveCallback>(0x117);
 	objectMessageControllerFactory->registerObject<TargetUpdateCallback>(0x126);

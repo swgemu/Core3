@@ -12,8 +12,6 @@
 
 #include "ClientPermissionsMessage.h"
 
-
-
 class ClientIDMessageCallback : public MessageCallback {
 	uint32 dataLen;
 	uint32 sessionKey;

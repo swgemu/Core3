@@ -44,6 +44,7 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 	owner = NULL;
+	tradeContainer = NULL;
 
 	centeredBonus = 0;
 
@@ -51,6 +52,13 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerCreature");
+}
+
+void PlayerCreatureImplementation::finalize() {
+	if (tradeContainer != NULL) {
+		delete tradeContainer;
+		tradeContainer = NULL;
+	}
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {
@@ -267,6 +275,11 @@ void PlayerCreatureImplementation::unload() {
 	}
 
 	clearCombatState(true);
+
+	if (tradeContainer != NULL) {
+		delete tradeContainer;
+		tradeContainer = NULL;
+	}
 
 	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
 

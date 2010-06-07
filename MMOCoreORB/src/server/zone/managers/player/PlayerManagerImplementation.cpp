@@ -31,6 +31,16 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
+#include "server/zone/packets/trade/AbortTradeMessage.h"
+#include "server/zone/packets/trade/AcceptTransactionMessage.h"
+#include "server/zone/packets/trade/UnAcceptTransactionMessage.h"
+#include "server/zone/packets/trade/AddItemMessage.h"
+#include "server/zone/packets/trade/BeginTradeMessage.h"
+#include "server/zone/packets/trade/DenyTradeMessage.h"
+#include "server/zone/packets/trade/TradeCompleteMessage.h"
+#include "server/zone/packets/trade/GiveMoneyMessage.h"
+
+
 #include "server/zone/Zone.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
@@ -919,4 +929,312 @@ void PlayerManagerImplementation::sendMessageOfTheDay(PlayerCreature* player) {
 	suiMessageBox->setPromptText(motd);
 
 	player->sendMessage(suiMessageBox->generateMessage());
+}
+
+void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player, bool doLock) {
+	try {
+		player->wlock(doLock);
+
+		TradeContainer* tradeContainer = player->getTradeContainer();
+
+		if (tradeContainer == NULL) {
+			AbortTradeMessage* msg = new AbortTradeMessage();
+			player->sendMessage(msg);
+
+			player->unlock(doLock);
+			return;
+		}
+
+		uint64 targID = tradeContainer->getTradeTargetPlayer();
+		ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+		AbortTradeMessage* msg = new AbortTradeMessage();
+
+		if (obj != NULL && obj->isPlayerCreature()) {
+			PlayerCreature* receiver = (PlayerCreature*) obj.get();
+
+			receiver->sendMessage(msg->clone());
+
+			receiver->wlock(player);
+
+			TradeContainer* receiverContainer = receiver->getTradeContainer();
+
+			if (receiver != NULL) {
+				receiver->setTradeContainer(NULL);
+				delete receiverContainer;
+			}
+
+			receiver->unlock();
+		}
+
+		player->sendMessage(msg->clone());
+
+		delete msg;
+
+		player->setTradeContainer(NULL);
+		delete tradeContainer;
+
+		player->unlock(doLock);
+	} catch (...) {
+		player->unlock(doLock);
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleAddItemToTradeWindow(PlayerCreature* player, uint64 itemID) {
+	Locker _locker(player);
+
+	TradeContainer* tradeContainer = player->getTradeContainer();
+
+	if (tradeContainer == NULL) {
+		return;
+	}
+	// First Verify Target is Player
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return;
+
+	PlayerCreature* receiver = (PlayerCreature*) obj.get();
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> inventoryObject = inventory->getContainerObject(itemID);
+
+	if (inventoryObject == NULL) {
+		player->sendSystemMessage("container_error_message", "container26");
+		handleAbortTradeMessage(player, false);
+		return;
+	}
+
+	tradeContainer->addTradeItem(inventoryObject);
+
+	inventoryObject->sendWithoutParentTo(receiver);
+
+	AddItemMessage* msg = new AddItemMessage(itemID);
+	receiver->sendMessage(msg);
+}
+
+void PlayerManagerImplementation::handleGiveMoneyMessage(PlayerCreature* player, uint32 value) {
+	Locker _locker(player);
+
+	int currentMoney = player->getCashCredits();
+
+	if (value > currentMoney)
+		value = currentMoney;
+
+	TradeContainer* tradeContainer = player->getTradeContainer();
+
+	if (tradeContainer == NULL)
+		return;
+
+	tradeContainer->setMoneyToTrade(value);
+
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+	if (obj != NULL && obj->isPlayerCreature()) {
+		PlayerCreature* receiver = (PlayerCreature*) obj.get();
+
+		GiveMoneyMessage* msg = new GiveMoneyMessage(value);
+		receiver->sendMessage(msg);
+	}
+}
+
+void PlayerManagerImplementation::handleAcceptTransactionMessage(PlayerCreature* player) {
+	Locker _locker(player);
+
+	TradeContainer* tradeContainer = player->getTradeContainer();
+
+	if (tradeContainer == NULL)
+		return;
+
+	tradeContainer->setAcceptedTrade(true);
+
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+	if (obj != NULL && obj->isPlayerCreature()) {
+		PlayerCreature* receiver = (PlayerCreature*)obj.get();
+
+		AcceptTransactionMessage* msg = new AcceptTransactionMessage();
+		receiver->sendMessage(msg);
+	}
+}
+
+void PlayerManagerImplementation::handleUnAcceptTransactionMessage(PlayerCreature* player) {
+	Locker _locker(player);
+
+	TradeContainer* tradeContainer = player->getTradeContainer();
+
+	if (tradeContainer == NULL)
+		return;
+
+	tradeContainer->setAcceptedTrade(false);
+
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+	if (obj != NULL && obj->isPlayerCreature()) {
+		PlayerCreature* receiver = (PlayerCreature*)obj.get();
+
+		UnAcceptTransactionMessage* msg = new UnAcceptTransactionMessage();
+		receiver->sendMessage(msg);
+	}
+
+}
+
+bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, PlayerCreature* receiver) {
+	TradeContainer* tradeContainer = player->getTradeContainer();
+	TradeContainer* receiverContainer = receiver->getTradeContainer();
+
+	if (tradeContainer->getTradeTargetPlayer() != receiver->getObjectID())
+		return false;
+
+	if (receiverContainer->getTradeTargetPlayer() != player->getObjectID())
+		return false;
+
+	SceneObject* playerInventory = player->getSlottedObject("inventory");
+	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+
+	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
+		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
+
+		String err;
+		if (receiverInventory->canAddObject(scene, err) != 0)
+			return false;
+
+		if (!playerInventory->hasObjectInContainer(scene->getObjectID()))
+			return false;
+	}
+
+	for (int i = 0; i < receiverContainer->getTradeSize(); ++i) {
+		ManagedReference<SceneObject*> scene = receiverContainer->getTradeItem(i);
+
+		String err;
+		if (playerInventory->canAddObject(scene, err) != 0)
+			return false;
+
+		if (!receiverInventory->hasObjectInContainer(scene->getObjectID()))
+			return false;
+	}
+
+	int playerMoneyToTrade = tradeContainer->getMoneyToTrade();
+
+	if (playerMoneyToTrade < 0)
+		return false;
+
+	if (playerMoneyToTrade > player->getCashCredits())
+		return false;
+
+	int receiverMoneyToTrade = receiverContainer->getMoneyToTrade();
+
+	if (receiverMoneyToTrade < 0)
+		return false;
+
+	if (receiverMoneyToTrade > receiver->getCashCredits())
+		return false;
+
+	return true;
+}
+
+void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* player) {
+	ObjectController* objectController = server->getObjectController();
+	try {
+		player->wlock();
+
+		TradeContainer* tradeContainer = player->getTradeContainer();
+
+		if (tradeContainer == NULL) {
+			player->unlock();
+			return;
+		}
+
+		tradeContainer->setVerifiedTrade(true);
+
+		uint64 targID = tradeContainer->getTradeTargetPlayer();
+		ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+		if (obj != NULL && obj->isPlayerCreature()) {
+			PlayerCreature* receiver = (PlayerCreature*)obj.get();
+
+			try {
+				receiver->wlock(player);
+
+				TradeContainer* receiverTradeContainer = receiver->getTradeContainer();
+
+				if (receiverTradeContainer == NULL) {
+					receiver->unlock();
+					player->unlock();
+
+					return;
+				}
+
+				if (!checkTradeItems(player, receiver)) {
+					receiver->unlock();
+					handleAbortTradeMessage(player, false);
+
+					player->unlock();
+
+					return;
+				}
+
+				if (receiverTradeContainer->hasVerifiedTrade()) {
+					SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+
+					for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
+						ManagedReference<SceneObject*> item = tradeContainer->getTradeItem(i);
+
+						if (objectController->transferObject(item, receiverInventory, -1, true))
+							item->sendDestroyTo(player);
+					}
+
+					SceneObject* playerInventory = player->getSlottedObject("inventory");
+
+					for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
+						ManagedReference<SceneObject*> item = receiverTradeContainer->getTradeItem(i);
+
+						if (objectController->transferObject(item, playerInventory, -1, true))
+							item->sendDestroyTo(receiver);
+					}
+
+					uint32 giveMoney = tradeContainer->getMoneyToTrade();
+
+					if (giveMoney > 0) {
+						player->substractCashCredits(giveMoney);
+						receiver->addCashCredits(giveMoney);
+					}
+
+					giveMoney = receiverTradeContainer->getMoneyToTrade();
+
+					if (giveMoney > 0) {
+						receiver->substractCashCredits(giveMoney);
+						player->addCashCredits(giveMoney);
+					}
+
+					receiver->setTradeContainer(NULL);
+					delete receiverTradeContainer;
+
+					player->setTradeContainer(NULL);
+					delete tradeContainer;
+
+					TradeCompleteMessage* msg = new TradeCompleteMessage();
+					receiver->sendMessage(msg->clone());
+					player->sendMessage(msg->clone());
+
+					delete msg;
+				}
+
+				receiver->unlock();
+			} catch (...) {
+				System::out << "Exception in PlayerManagerImplementation::handleVerifyTradeMessage\n";
+				receiver->unlock();
+			}
+		}
+
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
+	}
 }
