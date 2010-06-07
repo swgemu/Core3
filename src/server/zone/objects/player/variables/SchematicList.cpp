@@ -87,7 +87,7 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 			message->startList(updates, updateCounter += updates);
 
 		message->insertByte(1);
-		message->insertShort(vector.size());
+		message->insertShort(vector.size() - 1);
 
 		message->insertInt(schematic->getClientObjectCRC());
 		message->insertInt(schematic->getClientObjectCRC());
@@ -117,7 +117,7 @@ bool SchematicList::remove(DraftSchematic* schematic, DeltaMessage* message, int
 			message->startList(updates, updateCounter += updates);
 
 		message->insertByte(0);
-		message->insertShort(index + 1);
+		message->insertShort(index);
 	}
 
 	return true;
