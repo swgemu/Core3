@@ -83,6 +83,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
+				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
@@ -243,6 +244,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
+		server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.cpp \
 		server/zone/objects/player/badges/Badge.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \

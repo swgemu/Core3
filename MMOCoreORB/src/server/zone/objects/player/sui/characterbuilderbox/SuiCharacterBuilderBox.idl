@@ -42,42 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.terminal.characterbuilder;
+package server.zone.objects.player.sui.characterbuilderbox;
 
-import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
-import system.util.VectorMap;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.player.sui.listbox.SuiListBox;
+
 include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
 
-class CharacterBuilderTerminal extends Terminal {
-	public transient CharacterBuilderMenuNode rootNode;
+class SuiCharacterBuilderBox extends SuiListBox {
+	protected transient CharacterBuilderMenuNode rootNode;
+	protected transient CharacterBuilderMenuNode currentNode;
 	
-	public CharacterBuilderTerminal() {
-		Logger.setLoggingName("CharacterBuilderTerminal");
+	public SuiCharacterBuilderBox(PlayerCreature player, CharacterBuilderMenuNode root) {
+		super(player, SuiWindowType.CHARACTERBUILDERITEMSELECT, 0);
+		
+		Logger.setLoggingName("SuiCharacterBuilderBox");
+		
+		setPromptTitle("Character Builder");
+		
+		setPromptText("Provided below are items which the developers feel are necessary to complete the current testing objectives. Please select only the items which you require.");
+		
+		rootNode = root;
+		
+		currentNode = root;
 	}
 	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
+	public native BaseMessage generateMessage();
+	
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public native CharacterBuilderMenuNode getCurrentNode();
 	
-	public native void initializeTransientMembers();
+	@local
+	public native void setCurrentNode(CharacterBuilderMenuNode node);
 	
-	/**
-	 * Handles the radial selection sent by the client
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
-	 * @returns 0 if successfull
-	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
-	
-	public native void sendInitialChoices(PlayerCreature player);
+	public boolean isCharacterBuilderBox() {
+		return true;
+	}
 }

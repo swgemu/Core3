@@ -134,7 +134,7 @@ class SuiBox extends ManagedObject implements Logger {
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
-		Logger.setLoggingName("SuiBox");
+		//Logger.setLoggingName("SuiBox");
 	}
 	
 
@@ -243,32 +243,36 @@ class SuiBox extends ManagedObject implements Logger {
 		integerValue = value;
 	}
 
-	public boolean isInputBox() {
-		return boxType == INPUTBOX;
+	public abstract boolean isInputBox() {
+		return false;
 	}
 
-	public boolean isListBox() {
-		return boxType == LISTBOX;
+	public abstract boolean isListBox() {
+		return false;
 	}
 
-	public boolean isMessageBox() {
-		return boxType == MESSAGEBOX;
+	public abstract boolean isMessageBox() {
+		return false;
 	}
 
-	public boolean isTransferBox() {
-		return boxType == TRANSFERBOX;
+	public abstract boolean isTransferBox() {
+		return false;
 	}
 
-	public boolean isBankTransferBox() {
-		return boxType == BANKTRANSFERBOX;
+	public abstract boolean isBankTransferBox() {
+		return false;
 	}
 
-	public boolean isSlicingBox() {
-		return boxType == SLICINGBOX;
+	public abstract boolean isSlicingBox() {
+		return false;
+	}
+	
+	public abstract boolean isCharacterBuilderBox() {
+		return false;
 	}
 
 	public boolean isColorPicker() {
-		return boxType == COLORPICKER;
+		return false;
 	}
 
 	public native void setCancelButton(boolean value, final string cancelText);

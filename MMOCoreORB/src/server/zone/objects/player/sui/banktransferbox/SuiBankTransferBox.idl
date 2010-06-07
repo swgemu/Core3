@@ -95,4 +95,8 @@ class SuiBankTransferBox extends SuiBox {
 	}
 	
 	public native BaseMessage generateMessage();
+	
+	public boolean isBankTransferBox() {
+		return true;
+	}
 }

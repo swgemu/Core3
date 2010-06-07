@@ -135,4 +135,7 @@ class SuiListBox extends SuiBox {
 		return previous;
 	}
 	
+	public boolean isListBox() {
+		return true;
+	}
 }

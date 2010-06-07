@@ -60,6 +60,8 @@ public:
 
 	BaseMessage* generateMessage();
 
+	bool isMessageBox();
+
 protected:
 	SuiMessageBox(DummyConstructorParameter* param);
 
@@ -92,6 +94,8 @@ public:
 	SuiMessageBoxImplementation(DummyConstructorParameter* param);
 
 	BaseMessage* generateMessage();
+
+	bool isMessageBox();
 
 	SuiMessageBox* _this;
 
@@ -133,6 +137,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	BaseMessage* generateMessage();
+
+	bool isMessageBox();
 
 };
 
