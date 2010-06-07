@@ -640,7 +640,7 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	@local
-	public TradeContainer getTradeContainer()Ê{
+	public TradeContainer getTradeContainer() {
 		return tradeContainer;
 	}
 	
