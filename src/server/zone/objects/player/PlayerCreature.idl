@@ -71,6 +71,7 @@ import server.zone.objects.waypoint.WaypointObject;
 import system.lang.ref.Reference;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.player.TradeContainer;
 import server.zone.objects.area.ActiveArea;
 
 class PlayerCreature extends CreatureObject {
@@ -144,6 +145,8 @@ class PlayerCreature extends CreatureObject {
 	protected transient int centeredBonus;
 	
 	protected transient ActiveArea activeArea;
+	
+	protected transient TradeContainer tradeContainer;
 		
 	//protected BankTerminal registeredBank;
 	
@@ -161,6 +164,7 @@ class PlayerCreature extends CreatureObject {
 
 		disconnectEvent = null;
 		recoveryEvent = null;
+		tradeContainer = null;
 		accountID = 0;
 
 		savedZoneID = -1;
@@ -186,6 +190,8 @@ class PlayerCreature extends CreatureObject {
 
 		setOffline();
 	}
+	
+	public native void finalize();
 	
 	@local 
 	public void loadTemplateData(SharedObjectTemplate templateData) {
@@ -605,6 +611,11 @@ class PlayerCreature extends CreatureObject {
 		activeArea = area;
 	}
 	
+	@local
+	public void setTradeContainer(TradeContainer container) {
+		tradeContainer = container;
+	}
+	
 	/**
 	 * Returns the active SurveyWaypoint
 	 */
@@ -626,6 +637,11 @@ class PlayerCreature extends CreatureObject {
 	
 	public ActiveArea getActiveArea() {
 		return activeArea;
+	}
+	
+	@local
+	public TradeContainer getTradeContainer()Ê{
+		return tradeContainer;
 	}
 	
 	public boolean hasBadge(unsigned int badge) {

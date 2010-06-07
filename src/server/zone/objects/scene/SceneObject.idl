@@ -485,18 +485,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
-	public abstract int canAddObject(SceneObject object, string errorDescription) {
-		int arrangementSize = object.getArrangementDescriptorSize();
-
-		for (int i = 0; i < arrangementSize; ++i) {
-			string childArrangement = object.getArrangementDescriptor(i);
-
-			if (slottedObjects.contains(childArrangement))
-				return TransferErrorCode.SLOTOCCUPIED;
-		}
-
-		return 0;
-	}
+	public native abstract int canAddObject(SceneObject object, string errorDescription);
 	
 	/**
 	 * Calls the appropriate UI Listener Function
@@ -611,6 +600,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	public native abstract void sendTo(SceneObject player, boolean doClose);
+	
+	/**
+	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
+	 */
+	public native abstract void sendWithoutParentTo(SceneObject player);
 
 	/**
 	 * Sends a SceneObjectDestroyMessage of this object to client

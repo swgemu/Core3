@@ -61,6 +61,7 @@ public:
 		insertFloat(scno->getDirectionW());
 		insertFloat(scno->getPositionX());
 		insertFloat(scno->getPositionZ());
+		//scno->info("sending z = " + String::valueOf(scno->getPositionZ()), true);
 		insertFloat(scno->getPositionY());
 		insertInt(scno->getClientObjectCRC());  // ObjectCRC
 		insertByte(0);

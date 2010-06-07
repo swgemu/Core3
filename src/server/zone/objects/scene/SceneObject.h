@@ -606,6 +606,8 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
+	void sendWithoutParentTo(SceneObject* player);
+
 	void sendDestroyTo(SceneObject* player);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -1357,6 +1359,8 @@ public:
 
 	virtual void sendTo(SceneObject* player, bool doClose);
 
+	virtual void sendWithoutParentTo(SceneObject* player);
+
 	virtual void sendDestroyTo(SceneObject* player);
 
 	virtual void sendBaselinesTo(SceneObject* player);
@@ -1677,6 +1681,8 @@ public:
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
 
 	void sendTo(SceneObject* player, bool doClose);
+
+	void sendWithoutParentTo(SceneObject* player);
 
 	void sendDestroyTo(SceneObject* player);
 

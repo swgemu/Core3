@@ -109,6 +109,14 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	public native void removeEncumbrancies(PlayerCreature player, ArmorObject armor);
 	public native void awardBadge(PlayerCreature player, unsigned int badge);
 	
+	public native void handleAbortTradeMessage(PlayerCreature player, boolean doLock = true);
+	public native void handleAddItemToTradeWindow(PlayerCreature player, unsigned long itemID);
+	public native void handleGiveMoneyMessage(PlayerCreature player, unsigned int value);
+	public native void handleAcceptTransactionMessage(PlayerCreature player);
+	public native void handleUnAcceptTransactionMessage(PlayerCreature player);
+	public native void handleVerifyTradeMessage(PlayerCreature player);
+	public native boolean checkTradeItems(PlayerCreature player, PlayerCreature receiver);
+	
 	public native void sendMessageOfTheDay(PlayerCreature player);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);

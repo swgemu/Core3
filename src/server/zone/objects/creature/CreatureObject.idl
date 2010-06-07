@@ -484,6 +484,11 @@ class CreatureObject extends TangibleObject {
 		setBankCredits(newCredits);
 	}
 	
+	public void addCashCredits(int credits, boolean notifyClient = true) {
+		int newCredits = cashCredits + credits;
+		setCashCredits(newCredits);
+	}
+	
 	public void substractBankCredits(int credits) {
 		int newCredits = bankCredits - credits;
 		setBankCredits(newCredits);

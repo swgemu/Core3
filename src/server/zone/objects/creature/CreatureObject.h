@@ -302,6 +302,8 @@ public:
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
+	void addCashCredits(int credits, bool notifyClient = true);
+
 	void substractBankCredits(int credits);
 
 	void substractCashCredits(int credits);
@@ -842,6 +844,8 @@ public:
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
+	void addCashCredits(int credits, bool notifyClient = true);
+
 	void substractBankCredits(int credits);
 
 	void substractCashCredits(int credits);
@@ -1260,6 +1264,8 @@ public:
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient);
+
+	void addCashCredits(int credits, bool notifyClient);
 
 	void substractBankCredits(int credits);
 
