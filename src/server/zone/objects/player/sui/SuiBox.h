@@ -123,6 +123,8 @@ public:
 
 	bool isSlicingBox();
 
+	bool isCharacterBuilderBox();
+
 	bool isColorPicker();
 
 	void setCancelButton(bool value, const String& cancelText);
@@ -260,17 +262,19 @@ public:
 
 	void setIntValue(int value);
 
-	bool isInputBox();
+	virtual bool isInputBox();
 
-	bool isListBox();
+	virtual bool isListBox();
 
-	bool isMessageBox();
+	virtual bool isMessageBox();
 
-	bool isTransferBox();
+	virtual bool isTransferBox();
 
-	bool isBankTransferBox();
+	virtual bool isBankTransferBox();
 
-	bool isSlicingBox();
+	virtual bool isSlicingBox();
+
+	virtual bool isCharacterBuilderBox();
 
 	bool isColorPicker();
 
@@ -376,6 +380,8 @@ public:
 	bool isBankTransferBox();
 
 	bool isSlicingBox();
+
+	bool isCharacterBuilderBox();
 
 	bool isColorPicker();
 

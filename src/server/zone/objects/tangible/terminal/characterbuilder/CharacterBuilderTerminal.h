@@ -51,6 +51,8 @@ using namespace server::zone;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -102,7 +104,7 @@ namespace characterbuilder {
 
 class CharacterBuilderTerminalImplementation : public TerminalImplementation {
 public:
-	VectorMap<unsigned int, String> itemList;
+	CharacterBuilderMenuNode* rootNode;
 
 	CharacterBuilderTerminalImplementation();
 

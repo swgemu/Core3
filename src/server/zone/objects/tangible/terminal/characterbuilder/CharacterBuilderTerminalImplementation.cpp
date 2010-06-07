@@ -1,10 +1,10 @@
 #include "CharacterBuilderTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
+#include "CharacterBuilderMenuNode.h"
 
 void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -14,9 +14,9 @@ void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTempla
 	if (terminalData == NULL)
 		return;
 
-	itemList = terminalData->getItemList();
+	rootNode = terminalData->getItemList();
 
-	info("loaded " + String::valueOf(itemList.size()));
+	//info("loaded " + String::valueOf(itemList.size()));
 }
 
 void CharacterBuilderTerminalImplementation::initializeTransientMembers() {
@@ -37,17 +37,15 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(PlayerCreatur
 }
 
 void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* player) {
-	SuiListBox* listBox = new SuiListBox(player, SuiWindowType::CHARACTERBUILDERITEMSELECT);
-	listBox->setPromptTitle("Character Builder");
-	listBox->setPromptText("Provided below are items which the developers deem necessary for testing. Please select the items you require:");
-	listBox->setUsingObjectID(getObjectID());
-
-	for (int i = 0; i < itemList.size(); ++i) {
-		VectorMapEntry<uint32, String> entry = itemList.elementAt(i);
-		listBox->addMenuItem(entry.getValue(), entry.getKey());
+	if (rootNode == NULL) {
+		player->sendSystemMessage("There was an error initializing the menu for this character builder terminal. Sorry for the inconvenience.");
+		return;
 	}
 
-	player->sendMessage(listBox->generateMessage());
-	player->addSuiBox(listBox);
+	SuiCharacterBuilderBox* sui = new SuiCharacterBuilderBox(player, rootNode);
+	sui->setUsingObjectID(getObjectID());
+
+	player->sendMessage(sui->generateMessage());
+	player->addSuiBox(sui);
 }
 

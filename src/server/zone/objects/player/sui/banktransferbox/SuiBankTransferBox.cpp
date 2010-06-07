@@ -74,6 +74,18 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 		return ((SuiBankTransferBoxImplementation*) _impl)->generateMessage();
 }
 
+bool SuiBankTransferBox::isBankTransferBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SuiBankTransferBoxImplementation*) _impl)->isBankTransferBox();
+}
+
 /*
  *	SuiBankTransferBoxImplementation
  */
@@ -185,6 +197,11 @@ SceneObject* SuiBankTransferBoxImplementation::getBank() {
 	return bank;
 }
 
+bool SuiBankTransferBoxImplementation::isBankTransferBox() {
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(100):  		return true;
+	return true;
+}
+
 /*
  *	SuiBankTransferBoxAdapter
  */
@@ -208,6 +225,9 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case 9:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
+	case 10:
+		resp->insertBoolean(isBankTransferBox());
+		break;
 	default:
 		return NULL;
 	}
@@ -229,6 +249,10 @@ SceneObject* SuiBankTransferBoxAdapter::getBank() {
 
 BaseMessage* SuiBankTransferBoxAdapter::generateMessage() {
 	return ((SuiBankTransferBoxImplementation*) impl)->generateMessage();
+}
+
+bool SuiBankTransferBoxAdapter::isBankTransferBox() {
+	return ((SuiBankTransferBoxImplementation*) impl)->isBankTransferBox();
 }
 
 /*

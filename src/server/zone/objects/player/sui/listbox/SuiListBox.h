@@ -104,6 +104,8 @@ public:
 
 	unsigned long long getPreviousBox();
 
+	bool isListBox();
+
 protected:
 	SuiListBox(DummyConstructorParameter* param);
 
@@ -174,6 +176,8 @@ public:
 
 	unsigned long long getPreviousBox();
 
+	bool isListBox();
+
 	SuiListBox* _this;
 
 	operator const SuiListBox*();
@@ -234,6 +238,8 @@ public:
 	unsigned long long getNextBox();
 
 	unsigned long long getPreviousBox();
+
+	bool isListBox();
 
 protected:
 	String _param0_addMenuItem__String_long_;

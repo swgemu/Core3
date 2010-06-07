@@ -72,8 +72,8 @@ public:
 		//Moving an item forward is based on the direction of the player + 180 degrees since we are going in the opposite direction.
 		int degrees = creature->getDirectionAngle() + 180;
 
-		float offsetX = 10 * sin(Math::deg2rad(degrees));
-		float offsetY = 10 * cos(Math::deg2rad(degrees));
+		float offsetX = sin(Math::deg2rad(degrees));
+		float offsetY = cos(Math::deg2rad(degrees));
 
 		float x = obj->getPositionX() + offsetX;
 		float y = obj->getPositionY() + offsetY;
