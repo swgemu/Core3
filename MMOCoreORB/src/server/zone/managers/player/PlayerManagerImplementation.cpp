@@ -959,7 +959,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 
 			TradeContainer* receiverContainer = receiver->getTradeContainer();
 
-			if (receiver != NULL) {
+			if (receiverContainer != NULL) {
 				receiver->setTradeContainer(NULL);
 				delete receiverContainer;
 			}
