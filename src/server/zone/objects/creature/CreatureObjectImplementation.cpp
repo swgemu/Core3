@@ -249,8 +249,8 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (player != _this && (childArrangement == "bank" || childArrangement == "inventory"
-					|| childArrangement == "datapad" || childArrangement == "mission_bag"))
+			if (player != _this && ((childArrangement == "bank") || (childArrangement == "inventory")
+					|| (childArrangement == "datapad") || (childArrangement == "mission_bag")))
 				continue;
 			else
 				object->sendTo(player, true);

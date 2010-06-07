@@ -215,6 +215,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/player/TradeContainer.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -446,6 +448,8 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
+	void setTradeContainer(TradeContainer* container);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -455,6 +459,8 @@ public:
 	void setCenteredBonus(int bonus);
 
 	ActiveArea* getActiveArea();
+
+	TradeContainer* getTradeContainer();
 
 	bool hasBadge(unsigned int badge);
 
@@ -554,6 +560,8 @@ protected:
 
 	ManagedReference<ActiveArea* > activeArea;
 
+	TradeContainer* tradeContainer;
+
 public:
 	static const int ONLINE = 1;
 
@@ -570,6 +578,8 @@ public:
 	PlayerCreatureImplementation();
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
+
+	void finalize();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -765,6 +775,8 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
+	void setTradeContainer(TradeContainer* container);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -775,6 +787,8 @@ public:
 
 	ActiveArea* getActiveArea();
 
+	TradeContainer* getTradeContainer();
+
 	bool hasBadge(unsigned int badge);
 
 	PlayerCreature* _this;
@@ -784,8 +798,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerCreatureImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -815,6 +827,8 @@ public:
 	PlayerCreatureAdapter(PlayerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

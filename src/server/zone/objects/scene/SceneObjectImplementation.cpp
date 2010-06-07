@@ -219,6 +219,26 @@ uint64 SceneObjectImplementation::getObjectID() {
 	return _this->_getObjectID();
 }
 
+void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
+	ManagedReference<ZoneClientSession*> client = player->getClient();
+
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	/*if (parent != NULL)
+		link(client.get(), containmentType);*/
+
+	sendBaselinesTo(player);
+
+	//sendSlottedObjectsTo(player);
+	//sendContainerObjectsTo(player);
+
+
+	SceneObjectImplementation::close(client);
+}
+
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
 		return;
@@ -278,7 +298,7 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
-	info("sending attribute list", true);
+	info("sending attribute list");
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
@@ -706,6 +726,27 @@ void SceneObjectImplementation::removeFromZone() {
 	zone = NULL;
 
 	info("removed from zone");
+}
+
+int SceneObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
+	if (containerType == 1 || containerType == 5) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (slottedObjects.contains(childArrangement))
+				return TransferErrorCode::SLOTOCCUPIED;
+		}
+	} else if (containerType == 2 || containerType == 3) {
+		if (containerObjects.size() >= containerVolumeLimit)
+			return 1;
+	} else {
+		error("unkown container type");
+		return 1;
+	}
+
+	return 0;
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {

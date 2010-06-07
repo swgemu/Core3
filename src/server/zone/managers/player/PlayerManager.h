@@ -148,6 +148,20 @@ public:
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
 
+	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
+
+	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+
+	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+
+	void handleAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleVerifyTradeMessage(PlayerCreature* player);
+
+	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
 	void sendMessageOfTheDay(PlayerCreature* player);
 
 	bool checkExistentNameInDatabase(const String& firstName);
@@ -230,6 +244,20 @@ public:
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
 
+	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
+
+	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+
+	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+
+	void handleAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleVerifyTradeMessage(PlayerCreature* player);
+
+	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
 	void sendMessageOfTheDay(PlayerCreature* player);
 
 	bool checkExistentNameInDatabase(const String& firstName);
@@ -302,6 +330,20 @@ public:
 	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
+
+	void handleAbortTradeMessage(PlayerCreature* player, bool doLock);
+
+	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+
+	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+
+	void handleAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+
+	void handleVerifyTradeMessage(PlayerCreature* player);
+
+	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

@@ -50,6 +50,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class CraftingTool extends ToolTangibleObject {
 	
