@@ -769,6 +769,9 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	float z = zone->getHeight(x, y);
 	//float z = player->getPositionZ();
 
+	float maxZ = terrainManager->getHighestHeight(x - 24, y - 24, x + 24, y + 24 , 4); // checking default 24x24 area with 4 stepping
+	z = maxZ;
+
 	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
 
 	ManagedReference<InstallationObject*> installation = (InstallationObject*) objectManager->createObject(installationTemplateCRC, 1, "playerstructures");
