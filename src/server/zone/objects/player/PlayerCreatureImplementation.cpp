@@ -21,7 +21,7 @@
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
-
+#include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -284,6 +284,9 @@ void PlayerCreatureImplementation::unload() {
 	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
 
 	CombatManager::instance()->freeDuelList(_this);
+
+	if (group != NULL)
+		GroupManager::instance()->leaveGroup(group, _this);
 
 	/*StringBuffer msg;
 	msg << "remaining ref count: " << _this->getReferenceCount();
