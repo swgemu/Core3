@@ -63,6 +63,10 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		uint32 groupChatcrc = String("groupchat").hashCode();
+
+		creature->executeObjectControllerAction(groupChatcrc, target, arguments);
+
 		return SUCCESS;
 	}
 
