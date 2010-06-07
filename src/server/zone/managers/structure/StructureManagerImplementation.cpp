@@ -765,6 +765,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
 	float z = zone->getHeight(x, y);
 	//float z = player->getPositionZ();
