@@ -51,6 +51,7 @@ import engine.lua.Lua;
 import system.util.VectorMap;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerObject;
+import server.zone.objects.player.PlayerCreature;
 
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
@@ -84,7 +85,11 @@ class CraftingManager extends ManagedObject implements Lua {
 	@local
 	public native void removeSchematicGroup(PlayerObject playerObject, @dereferenced Vector<string> schematicgroups, boolean updateClient = false);
 	
-	public DraftSchematic getSchematic(unsigned int crc) {
-		return schematicMap.get(crc);
+	public DraftSchematic getSchematic(unsigned int schematicID) {
+		return schematicMap.get(schematicID);
 	}
+	
+	public native void sendDraftSlotsTo(PlayerCreature player, unsigned int schematicID);
+	
+	public native void sendResourceWeightsTo(PlayerCreature player, unsigned int schematicID);
 }

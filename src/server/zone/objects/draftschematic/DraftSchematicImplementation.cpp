@@ -85,3 +85,56 @@ void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(msco9);
 
 }
+
+void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
+
+	PlayerCreature* playerCreature = (PlayerCreature*) player;
+
+	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
+
+	msg->insertInt(schematicID);
+	msg->insertInt(clientObjectCRC);
+
+	msg->insertInt(complexity); // ex: 3
+	msg->insertInt(size); // ex: 1
+	msg->insertByte(2);
+
+	insertIngredients(msg);
+
+	player->sendMessage(msg);
+
+}
+
+void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
+
+	msg->insertInt(0);
+
+
+	msg->insertShort(0);
+}
+
+void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
+	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
+
+	msg->insertInt(schematicID);
+	msg->insertInt(clientObjectCRC);
+
+	//uint8 listSize = dsExpPropGroups.size();
+
+	msg->insertByte(0);
+	// Send all the resource batch property data
+	//for (int i = 0; i < listSize; i++) {
+
+	//	DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
+	//	dsEpg->sendBatchToPlayer(msg);
+	//}
+
+	msg->insertByte(0);
+	// Send all the experimental property data
+	//for (int i = 0; i < listSize; i++) {
+
+	//	DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
+	//	dsEpg->sendToPlayer(msg);
+	//}
+	player->sendMessage(msg);
+}

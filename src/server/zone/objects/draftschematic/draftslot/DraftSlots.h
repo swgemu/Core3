@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,45 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
-#define REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
+#ifndef DRAFTSLOTS_H_
+#define DRAFTSLOTS_H_
 
-#include "../../scene/SceneObject.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
+#include "engine/engine.h"
+#include "DraftSlot.h"
 
-class RequestResourceWeightsBatchCommand : public QueueCommand {
+class DraftSlots : public Vector<DraftSlot* >{
 public:
-
-	RequestResourceWeightsBatchCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+	DraftSlots() {
 
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		StringTokenizer tokenizer(arguments.toString());
-
-		String value;
-		tokenizer.getStringToken(value);
-
-		uint32 schematicID = Long::valueOf(value);
-
-		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
-
-		if(craftingManager == NULL || !creature->isPlayerCreature())
-			return GENERALERROR;
-
-		craftingManager->sendResourceWeightsTo((PlayerCreature*)creature, schematicID);
-
-		return SUCCESS;
-	}
-
 };
 
-#endif //REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
+#endif /* DRAFTSLOTS_H_ */

@@ -63,24 +63,30 @@ class SchematicMap : public Lua, public VectorMap<uint32, ManagedReference<Draft
 	static VectorMap<String, DraftSchematicGroup* > groupMap;
 	static SchematicMap* instance;
 	static VectorMap<String, ManagedReference<DraftSchematic* > > nameMap;
+	static uint32 nextSchematicID;
 
 public:
 
 	SchematicMap(ObjectManager* objman);
 	~SchematicMap();
 
-	void registerFunctions();
-
-	void loadDraftSchematicFile();
-
-	static void mapDraftSchematic(String groupname, DraftSchematic* schematic);
-	static int runDraftSchematicFile(lua_State* L);
-	static int addDraftSchematicToServer(lua_State *L);
 	static void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
 	static void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
 	static void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 	static void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 
+	void sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID);
+	void sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID);
+
+private:
+	void registerFunctions();
+
+	void loadDraftSchematicFile();
+	void loadDraftSchematicDatabase();
+
+	static void mapDraftSchematic(String groupname, DraftSchematic* schematic);
+	static int runDraftSchematicFile(lua_State* L);
+	static int addDraftSchematicToServer(lua_State *L);
 };
 
 #endif /* SCHEMATICMAP_H_ */

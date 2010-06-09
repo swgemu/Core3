@@ -46,6 +46,7 @@ which carries forward this exception.
 #define REQUESTDRAFTSLOTSBATCHCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 class RequestDraftSlotsBatchCommand : public QueueCommand {
 public:
@@ -62,6 +63,25 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		/**
+		 * Argument 1 is the SchematicID
+		 * Argument 2 is the SchematicCRC
+		 */
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		String value;
+
+		tokenizer.getStringToken(value);
+		uint32 schematicID = Long::valueOf(value);
+
+		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
+
+		if(craftingManager == NULL || !creature->isPlayerCreature())
+			return GENERALERROR;
+
+		craftingManager->sendDraftSlotsTo((PlayerCreature*)creature, schematicID);
 
 		return SUCCESS;
 	}
