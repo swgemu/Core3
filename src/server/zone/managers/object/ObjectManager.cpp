@@ -335,7 +335,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 			database->getDatabaseName(dbName);
 
 			msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
-			info(msg.toString(), true);
+			info(msg.toString());
 
 			database->putData(oid, &objectData);
 		} else {
