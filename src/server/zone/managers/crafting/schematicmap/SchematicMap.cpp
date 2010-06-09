@@ -199,6 +199,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= templateNameList.getTableSize(); ++i) {
 			templateNames.add(templateNameList.getStringAt(i));
 		}
+		templateNameList.pop();
 
 		// example: dried Fruit, crust, additive
 		LuaObject titleNameList = schematic.getObjectField("ingredientTitleNames");
@@ -206,6 +207,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= titleNameList.getTableSize(); ++i) {
 			titleNames.add(titleNameList.getStringAt(i));
 		}
+		titleNameList.pop();
 
 		// example: 2 for identical, 1 for optional, 0 for mandatory
 		LuaObject slotTypeList = schematic.getObjectField("ingredientSlotType");
@@ -213,6 +215,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= slotTypeList.getTableSize(); ++i) {
 			slotTypes.add(slotTypeList.getIntAt(i));
 		}
+		slotTypeList.pop();
 
 		// example: organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff
 		LuaObject resourceTypesList = schematic.getObjectField("resourceTypes");
@@ -220,6 +223,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= resourceTypesList.getTableSize(); ++i) {
 			resourceTypes.add(resourceTypesList.getStringAt(i));
 		}
+		resourceTypesList.pop();
 
 		// example: 3,8,1
 		LuaObject resourceQuantitiesList = schematic.getObjectField("resourceQuantities");
@@ -227,6 +231,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= resourceQuantitiesList.getTableSize(); ++i) {
 			resourceQuantities.add(resourceQuantitiesList.getIntAt(i));
 		}
+		resourceQuantitiesList.pop();
 
 		// example: 1,2,3
 		LuaObject combineTypesList = schematic.getObjectField("combineTypes");
@@ -234,6 +239,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= combineTypesList.getTableSize(); ++i) {
 			combineTypes.add(combineTypesList.getIntAt(i));
 		}
+		combineTypesList.pop();
 
 		// example: 1,2,3
 		LuaObject contributionList = schematic.getObjectField("contribution");
@@ -241,6 +247,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 1; i <= contributionList.getTableSize(); ++i) {
 			contribution.add(contributionList.getFloatAt(i));
 		}
+		contributionList.pop();
 
 		// Add resource slots to schematic
 		for (int i = 0; i < templateNames.size(); ++i) {
