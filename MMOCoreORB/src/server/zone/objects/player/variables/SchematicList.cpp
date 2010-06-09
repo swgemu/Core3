@@ -12,11 +12,11 @@
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 
-void SchematicList::getCrcList(Vector<uint32>& schematics) {
+void SchematicList::getSchematicIDList(Vector<uint32>& schematics) {
 	for (int i = 0; i < vector.size(); ++i) {
 		DraftSchematic* schematic = vector.get(i);
 
-		uint32 crc = schematic->getClientObjectCRC();
+		uint32 crc = schematic->getSchematicID();
 
 		schematics.add(crc);
 	}
@@ -24,7 +24,7 @@ void SchematicList::getCrcList(Vector<uint32>& schematics) {
 
 bool SchematicList::toString(String& str) {
 	Vector<uint32> names;
-	getCrcList(names);
+	getSchematicIDList(names);
 
 	TypeInfo<uint32>::toString(&updateCounter, str);
 	names.toString(str);
@@ -34,7 +34,7 @@ bool SchematicList::toString(String& str) {
 
 bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
 	Vector<uint32> names;
-	getCrcList(names);
+	getSchematicIDList(names);
 
 	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
 	names.toBinaryStream(stream);
@@ -49,7 +49,7 @@ bool SchematicList::parseFromString(const String& str, int version) {
 	TypeInfo<uint32>::parseFromString(&updateCounter, str, version);
 	schematics.parseFromString(str, version);
 
-	loadFromCrcs(schematics);
+	loadFromSchematicIDs(schematics);
 
 	return true;
 }
@@ -60,19 +60,19 @@ bool SchematicList::parseFromBinaryStream(ObjectInputStream* stream) {
 	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
 	schematics.parseFromBinaryStream(stream);
 
-	loadFromCrcs(schematics);
+	loadFromSchematicIDs(schematics);
 
 	return true;
 }
 
-void SchematicList::loadFromCrcs(Vector<uint32>& schematics) {
+void SchematicList::loadFromSchematicIDs(Vector<uint32>& schematics) {
 	ZoneServer* server = ServerCore::getZoneServer();
 	CraftingManager* craftingManager = server->getCraftingManager();
 
 	for (int i = 0; i < schematics.size(); ++i) {
-		uint32 crc = schematics.get(i);
+		uint32 schematicID = schematics.get(i);
 
-		DraftSchematic* schematic = craftingManager->getSchematic(crc);
+		DraftSchematic* schematic = craftingManager->getSchematic(schematicID);
 
 		add(schematic);
 	}
@@ -89,8 +89,8 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 		message->insertByte(1);
 		message->insertShort(vector.size() - 1);
 
-		message->insertInt(schematic->getClientObjectCRC());
-		message->insertInt(schematic->getClientObjectCRC());
+		message->insertInt(schematic->getSchematicID());
+		message->insertInt(schematic->getClientObjectCRC()); /// Must be client CRC
 	}
 
 	return val;
@@ -130,7 +130,7 @@ void SchematicList::insertToMessage(BaseMessage* msg) {
 	for (int i = 0; i < size(); ++i) {
 		DraftSchematic* schematic = get(i);
 
-		msg->insertInt(schematic->getClientObjectCRC());
-		msg->insertInt(schematic->getClientObjectCRC());
+		msg->insertInt(schematic->getSchematicID());
+		msg->insertInt(schematic->getClientObjectCRC());  /// Must be client CRC
 	}
 }

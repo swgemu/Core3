@@ -27,6 +27,12 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+
+#include "server/zone/objects/draftschematic/draftslot/DraftSlots.h"
+
+#include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
@@ -43,14 +49,52 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendDraftSlotsTo(PlayerCreature* player);
+
+	void sendResourceWeightsTo(PlayerCreature* player);
+
+	void addSlot(DraftSlot* slot);
+
+	void setSchematicID(unsigned int id);
+
+	unsigned int getSchematicID();
+
 	void setComplexity(float complex);
 
 	float getComplexity();
+
+	void setToolTab(unsigned int tab);
+
+	float getToolTab();
+
+	void setSize(unsigned int s);
+
+	float getSize();
+
+	void setXpType(String& type);
+
+	String getXpType();
+
+	void setXpAmount(int amount);
+
+	int getXpAmount();
+
+	void setAssemblySkill(String& skill);
+
+	String getAssemblySkill();
+
+	void setExperiementationSkill(String& skill);
+
+	String getExperiementationSkill();
 
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
 
 	virtual ~DraftSchematic();
+
+	String _return_getAssemblySkill;
+	String _return_getExperiementationSkill;
+	String _return_getXpType;
 
 	friend class DraftSchematicHelper;
 };
@@ -70,7 +114,23 @@ namespace draftschematic {
 namespace DraftSchematic {
 
 class DraftSchematicImplementation : public SceneObjectImplementation {
+	unsigned int schematicID;
+
 	float complexity;
+
+	unsigned int toolTab;
+
+	int size;
+
+	String xpType;
+
+	int xpAmount;
+
+	String assemblySkill;
+
+	String experiementationSkill;
+
+	DraftSlots draftSlots;
 
 public:
 	DraftSchematicImplementation();
@@ -81,9 +141,47 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendDraftSlotsTo(PlayerCreature* player);
+
+private:
+	void insertIngredients(ObjectControllerMessage* msg);
+
+public:
+	void sendResourceWeightsTo(PlayerCreature* player);
+
+	void addSlot(DraftSlot* slot);
+
+	void setSchematicID(unsigned int id);
+
+	unsigned int getSchematicID();
+
 	void setComplexity(float complex);
 
 	float getComplexity();
+
+	void setToolTab(unsigned int tab);
+
+	float getToolTab();
+
+	void setSize(unsigned int s);
+
+	float getSize();
+
+	void setXpType(String& type);
+
+	String getXpType();
+
+	void setXpAmount(int amount);
+
+	int getXpAmount();
+
+	void setAssemblySkill(String& skill);
+
+	String getAssemblySkill();
+
+	void setExperiementationSkill(String& skill);
+
+	String getExperiementationSkill();
 
 	DraftSchematic* _this;
 
@@ -126,10 +224,46 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendDraftSlotsTo(PlayerCreature* player);
+
+	void sendResourceWeightsTo(PlayerCreature* player);
+
+	void setSchematicID(unsigned int id);
+
+	unsigned int getSchematicID();
+
 	void setComplexity(float complex);
 
 	float getComplexity();
 
+	void setToolTab(unsigned int tab);
+
+	float getToolTab();
+
+	void setSize(unsigned int s);
+
+	float getSize();
+
+	void setXpType(String& type);
+
+	String getXpType();
+
+	void setXpAmount(int amount);
+
+	int getXpAmount();
+
+	void setAssemblySkill(String& skill);
+
+	String getAssemblySkill();
+
+	void setExperiementationSkill(String& skill);
+
+	String getExperiementationSkill();
+
+protected:
+	String _param0_setXpType__String_;
+	String _param0_setAssemblySkill__String_;
+	String _param0_setExperiementationSkill__String_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {
