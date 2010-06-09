@@ -78,7 +78,7 @@ class CraftingManager extends ManagedObject implements Lua {
 	
 	@local
 	public native void initialize();
-	
+		
 	@local 
 	public native void awardSchematicGroup(PlayerObject playerObject, @dereferenced Vector<string> schematicgroups, boolean updateClient = false);
 	

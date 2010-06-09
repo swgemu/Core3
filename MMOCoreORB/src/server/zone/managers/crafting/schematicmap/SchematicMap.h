@@ -57,18 +57,21 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "DraftSchematicGroup.h"
 
-class SchematicMap : public Lua, public VectorMap<uint32, ManagedReference<DraftSchematic* > > {
+class SchematicMap : public Singleton<SchematicMap>, public Lua, public VectorMap<uint32, ManagedReference<DraftSchematic* > > {
 
-	static ObjectManager* objectManager;
 	static VectorMap<String, DraftSchematicGroup* > groupMap;
-	static SchematicMap* instance;
 	static VectorMap<String, ManagedReference<DraftSchematic* > > nameMap;
 	static uint32 nextSchematicID;
 
 public:
 
-	SchematicMap(ObjectManager* objman);
+	SchematicMap();
 	~SchematicMap();
+
+	void initialize() {
+		loadDraftSchematicDatabase();
+		loadDraftSchematicFile();
+	}
 
 	static void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
 	static void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
@@ -84,7 +87,7 @@ private:
 	void loadDraftSchematicFile();
 	void loadDraftSchematicDatabase();
 
-	static void mapDraftSchematic(String groupname, DraftSchematic* schematic);
+	static void mapDraftSchematic(const String& groupname, DraftSchematic* schematic);
 	static int runDraftSchematicFile(lua_State* L);
 	static int addDraftSchematicToServer(lua_State *L);
 };
