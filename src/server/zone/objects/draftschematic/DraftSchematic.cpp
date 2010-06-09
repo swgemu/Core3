@@ -43,12 +43,71 @@ void DraftSchematic::sendBaselinesTo(SceneObject* player) {
 		((DraftSchematicImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-void DraftSchematic::setComplexity(float complex) {
+void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->sendDraftSlotsTo(player);
+}
+
+void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->sendResourceWeightsTo(player);
+}
+
+void DraftSchematic::addSlot(DraftSlot* slot) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((DraftSchematicImplementation*) _impl)->addSlot(slot);
+}
+
+void DraftSchematic::setSchematicID(unsigned int id) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setSchematicID(id);
+}
+
+unsigned int DraftSchematic::getSchematicID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getSchematicID();
+}
+
+void DraftSchematic::setComplexity(float complex) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addFloatParameter(complex);
 
 		method.executeWithVoidReturn();
@@ -61,11 +120,164 @@ float DraftSchematic::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((DraftSchematicImplementation*) _impl)->getComplexity();
+}
+
+void DraftSchematic::setToolTab(unsigned int tab) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(tab);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setToolTab(tab);
+}
+
+float DraftSchematic::getToolTab() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getToolTab();
+}
+
+void DraftSchematic::setSize(unsigned int s) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addUnsignedIntParameter(s);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setSize(s);
+}
+
+float DraftSchematic::getSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getSize();
+}
+
+void DraftSchematic::setXpType(String& type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addAsciiParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setXpType(type);
+}
+
+String DraftSchematic::getXpType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		method.executeWithAsciiReturn(_return_getXpType);
+		return _return_getXpType;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getXpType();
+}
+
+void DraftSchematic::setXpAmount(int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addSignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setXpAmount(amount);
+}
+
+int DraftSchematic::getXpAmount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getXpAmount();
+}
+
+void DraftSchematic::setAssemblySkill(String& skill) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addAsciiParameter(skill);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setAssemblySkill(skill);
+}
+
+String DraftSchematic::getAssemblySkill() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithAsciiReturn(_return_getAssemblySkill);
+		return _return_getAssemblySkill;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getAssemblySkill();
+}
+
+void DraftSchematic::setExperiementationSkill(String& skill) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addAsciiParameter(skill);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setExperiementationSkill(skill);
+}
+
+String DraftSchematic::getExperiementationSkill() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		method.executeWithAsciiReturn(_return_getExperiementationSkill);
+		return _return_getExperiementationSkill;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getExperiementationSkill();
 }
 
 /*
@@ -135,23 +347,106 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 
 	_setClassName("DraftSchematic");
 
+	addSerializableVariable("schematicID", &schematicID);
 	addSerializableVariable("complexity", &complexity);
+	addSerializableVariable("toolTab", &toolTab);
+	addSerializableVariable("size", &size);
+	addSerializableVariable("xpType", &xpType);
+	addSerializableVariable("xpAmount", &xpAmount);
+	addSerializableVariable("assemblySkill", &assemblySkill);
+	addSerializableVariable("experiementationSkill", &experiementationSkill);
+	addSerializableVariable("draftSlots", &draftSlots);
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/draftschematic/DraftSchematic.idl(58):  		Logger.setLoggingName("DraftSchematic");
+	// server/zone/objects/draftschematic/DraftSchematic.idl(110):  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
 
+void DraftSchematicImplementation::addSlot(DraftSlot* slot) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(153):  		draftSlots.add(slot);
+	(&draftSlots)->add(slot);
+}
+
+void DraftSchematicImplementation::setSchematicID(unsigned int id) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(161):  		schematicID = id;
+	schematicID = id;
+}
+
+unsigned int DraftSchematicImplementation::getSchematicID() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(169):  		return schematicID;
+	return schematicID;
+}
+
 void DraftSchematicImplementation::setComplexity(float complex) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(85):  		complexity = complex;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(177):  		complexity = complex;
 	complexity = complex;
 }
 
 float DraftSchematicImplementation::getComplexity() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(93):  		return complexity;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(185):  		return complexity;
 	return complexity;
+}
+
+void DraftSchematicImplementation::setToolTab(unsigned int tab) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(193):  		toolTab = tab;
+	toolTab = tab;
+}
+
+float DraftSchematicImplementation::getToolTab() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(201):  		return toolTab;
+	return toolTab;
+}
+
+void DraftSchematicImplementation::setSize(unsigned int s) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(209):  		size = s;
+	size = s;
+}
+
+float DraftSchematicImplementation::getSize() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(217):  		return size;
+	return size;
+}
+
+void DraftSchematicImplementation::setXpType(String& type) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(225):  		xpType = type;
+	xpType = type;
+}
+
+String DraftSchematicImplementation::getXpType() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(233):  		return xpType;
+	return xpType;
+}
+
+void DraftSchematicImplementation::setXpAmount(int amount) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(241):  		xpAmount = amount;
+	xpAmount = amount;
+}
+
+int DraftSchematicImplementation::getXpAmount() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(249):  		return xpAmount;
+	return xpAmount;
+}
+
+void DraftSchematicImplementation::setAssemblySkill(String& skill) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(257):  		assemblySkill = skill;
+	assemblySkill = skill;
+}
+
+String DraftSchematicImplementation::getAssemblySkill() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(265):  		return assemblySkill;
+	return assemblySkill;
+}
+
+void DraftSchematicImplementation::setExperiementationSkill(String& skill) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(273):  		experiementationSkill = skill;
+	experiementationSkill = skill;
+}
+
+String DraftSchematicImplementation::getExperiementationSkill() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(281):  		return experiementationSkill;
+	return experiementationSkill;
 }
 
 /*
@@ -169,10 +464,58 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setComplexity(inv->getFloatParameter());
+		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
+		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 9:
+		setSchematicID(inv->getUnsignedIntParameter());
+		break;
+	case 10:
+		resp->insertInt(getSchematicID());
+		break;
+	case 11:
+		setComplexity(inv->getFloatParameter());
+		break;
+	case 12:
 		resp->insertFloat(getComplexity());
+		break;
+	case 13:
+		setToolTab(inv->getUnsignedIntParameter());
+		break;
+	case 14:
+		resp->insertFloat(getToolTab());
+		break;
+	case 15:
+		setSize(inv->getUnsignedIntParameter());
+		break;
+	case 16:
+		resp->insertFloat(getSize());
+		break;
+	case 17:
+		setXpType(inv->getAsciiParameter(_param0_setXpType__String_));
+		break;
+	case 18:
+		resp->insertAscii(getXpType());
+		break;
+	case 19:
+		setXpAmount(inv->getSignedIntParameter());
+		break;
+	case 20:
+		resp->insertSignedInt(getXpAmount());
+		break;
+	case 21:
+		setAssemblySkill(inv->getAsciiParameter(_param0_setAssemblySkill__String_));
+		break;
+	case 22:
+		resp->insertAscii(getAssemblySkill());
+		break;
+	case 23:
+		setExperiementationSkill(inv->getAsciiParameter(_param0_setExperiementationSkill__String_));
+		break;
+	case 24:
+		resp->insertAscii(getExperiementationSkill());
 		break;
 	default:
 		return NULL;
@@ -185,12 +528,76 @@ void DraftSchematicAdapter::sendBaselinesTo(SceneObject* player) {
 	((DraftSchematicImplementation*) impl)->sendBaselinesTo(player);
 }
 
+void DraftSchematicAdapter::sendDraftSlotsTo(PlayerCreature* player) {
+	((DraftSchematicImplementation*) impl)->sendDraftSlotsTo(player);
+}
+
+void DraftSchematicAdapter::sendResourceWeightsTo(PlayerCreature* player) {
+	((DraftSchematicImplementation*) impl)->sendResourceWeightsTo(player);
+}
+
+void DraftSchematicAdapter::setSchematicID(unsigned int id) {
+	((DraftSchematicImplementation*) impl)->setSchematicID(id);
+}
+
+unsigned int DraftSchematicAdapter::getSchematicID() {
+	return ((DraftSchematicImplementation*) impl)->getSchematicID();
+}
+
 void DraftSchematicAdapter::setComplexity(float complex) {
 	((DraftSchematicImplementation*) impl)->setComplexity(complex);
 }
 
 float DraftSchematicAdapter::getComplexity() {
 	return ((DraftSchematicImplementation*) impl)->getComplexity();
+}
+
+void DraftSchematicAdapter::setToolTab(unsigned int tab) {
+	((DraftSchematicImplementation*) impl)->setToolTab(tab);
+}
+
+float DraftSchematicAdapter::getToolTab() {
+	return ((DraftSchematicImplementation*) impl)->getToolTab();
+}
+
+void DraftSchematicAdapter::setSize(unsigned int s) {
+	((DraftSchematicImplementation*) impl)->setSize(s);
+}
+
+float DraftSchematicAdapter::getSize() {
+	return ((DraftSchematicImplementation*) impl)->getSize();
+}
+
+void DraftSchematicAdapter::setXpType(String& type) {
+	((DraftSchematicImplementation*) impl)->setXpType(type);
+}
+
+String DraftSchematicAdapter::getXpType() {
+	return ((DraftSchematicImplementation*) impl)->getXpType();
+}
+
+void DraftSchematicAdapter::setXpAmount(int amount) {
+	((DraftSchematicImplementation*) impl)->setXpAmount(amount);
+}
+
+int DraftSchematicAdapter::getXpAmount() {
+	return ((DraftSchematicImplementation*) impl)->getXpAmount();
+}
+
+void DraftSchematicAdapter::setAssemblySkill(String& skill) {
+	((DraftSchematicImplementation*) impl)->setAssemblySkill(skill);
+}
+
+String DraftSchematicAdapter::getAssemblySkill() {
+	return ((DraftSchematicImplementation*) impl)->getAssemblySkill();
+}
+
+void DraftSchematicAdapter::setExperiementationSkill(String& skill) {
+	((DraftSchematicImplementation*) impl)->setExperiementationSkill(skill);
+}
+
+String DraftSchematicAdapter::getExperiementationSkill() {
+	return ((DraftSchematicImplementation*) impl)->getExperiementationSkill();
 }
 
 /*

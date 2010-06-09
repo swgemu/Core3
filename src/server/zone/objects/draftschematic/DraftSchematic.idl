@@ -45,14 +45,66 @@ which carries forward this exception.
 package server.zone.object.draftschematic.DraftSchematic;
 
 include server.zone.packets.scene.AttributeListMessage;
+include server.zone.packets.object.ObjectControllerMessage;
+
+include server.zone.objects.draftschematic.draftslot.DraftSlots;
+include server.zone.objects.draftschematic.draftslot.DraftSlot;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 
 class DraftSchematic implements SceneObject {
 
-	/// Schematics level of complexity
+	/// Arbitrary ID for the schematic
+	private unsigned int schematicID;
+	
+	/// Level of complexity
 	private float complexity;
+	
+	/// Indicates what tab in the crafting tool this item is found on
+	/*
+	 * BITMASK FOR TABS
+	 * 0 = unknown													0000
+	 * 1 = weapons													0001
+	 * 2 = armor													0010
+	 * 4 = food														0100
+	 * 8 = clothing													1000
+	 * 16 = vehicle											   0001 0000
+	 * 32 =	droid											   0010 0000
+	 * 64 = chemical										   0100 0000
+	 * 128 = tissues									  	   1000 0000
+	 * 256 = creatures									  0001 0000 0000
+	 * 512 = furniture									  0010 0000 0000
+	 * 1024 = installation								  0100 0000 0000
+	 * 2048 = lightsaber							 	  1000 0000 0000
+	 * 4096 = generic item							 0001 0000 0000 0000
+	 * 8192 = genetics								 0010 0000 0000 0000
+	 * 16384 = tailor, Mandalorian					 0100 0000 0000 0000
+	 * 32768 = armorsmith, Mandalorian				 1000 0000 0000 0000
+	 * 65536 = Droid Engineer, Mandalorian		0001 0000 0000 0000 0000
+	 * 131072 = Starship Components				0010 0000 0000 0000 0000
+	 * 262144 = Ship Tools						0100 0000 0000 0000 0000
+	 * 524288 = Misc							1000 0000 0000 0000 0000
+	 * * */
+	private unsigned int toolTab;
+	
+	/// The datapad size of the schematic
+	private int size;
+	
+	/// Xp Type awarded
+	string xpType;
+	
+	/// XP Amount awarded
+	int xpAmount;
+	
+	/// Assembly skill used
+	string assemblySkill;
+	
+	/// Experimentation Skill used
+	string experiementationSkill;
+	
+	@dereferenced
+	DraftSlots draftSlots;
 	
 	public DraftSchematic() {
 		Logger.setLoggingName("DraftSchematic");	
@@ -78,6 +130,46 @@ class DraftSchematic implements SceneObject {
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
+	 * Sends the ingredients of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
+	public native void sendDraftSlotsTo(PlayerCreature player);
+	
+	@local
+	private native void insertIngredients(ObjectControllerMessage msg);
+	
+	/**
+	 * Sends the resource weights of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
+	public native void sendResourceWeightsTo(PlayerCreature player);
+	
+	@local
+	public void addSlot(DraftSlot slot) {
+		draftSlots.add(slot);
+	}
+	
+	/**
+	 * Setter for the schematic ID
+	 * \param id incoming ID
+	 */
+	public void setSchematicID(unsigned int id) {
+		schematicID = id;
+	}
+	
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return schematicID
+	 */
+	public unsigned int getSchematicID() {
+		return schematicID;
+	}
+	
+	/**
 	 * Setter for complexity
 	 * \param complex Complexity Level
 	 */
@@ -91,5 +183,101 @@ class DraftSchematic implements SceneObject {
 	 */
 	public float getComplexity() {
 		return complexity;
+	}
+	
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \param tab crafting tool tab
+	 */
+	public void setToolTab(unsigned int tab) {
+		toolTab = tab;
+	}
+	
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return toolTab
+	 */
+	public float getToolTab() {
+		return toolTab;
+	}
+	
+	/**
+	 * Setter for the schematic size
+	 * \param s size of schematic
+	 */
+	public void setSize(unsigned int s) {
+		size = s;
+	}
+	
+	/**
+	 * getter for the schematic size
+	 * \return size
+	 */
+	public float getSize() {
+		return size;
+	}
+	
+	/**
+	 * Setter for xptype
+	 * \param type type of xp
+	 */
+	public void setXpType(string type) {
+		xpType = type;
+	}
+	
+	/**
+	 * getter for xpType
+	 * \return size
+	 */
+	public string getXpType() {
+		return xpType;
+	}
+	
+	/**
+	 * Setter for xpAmount
+	 * \param amount xp amount
+	 */
+	public void setXpAmount(int amount) {
+		xpAmount = amount;
+	}
+	
+	/**
+	 * getter for the xpAmount
+	 * \return xpAmount
+	 */
+	public int getXpAmount() {
+		return xpAmount;
+	}
+
+	/**
+	 * Setter for assemblySkill
+	 * \param skill assemblySkill
+	 */
+	public void setAssemblySkill(string skill) {
+		assemblySkill = skill;
+	}
+	
+	/**
+	 * getter for assemblyMod
+	 * \return assemblyMod
+	 */
+	public string getAssemblySkill() {
+		return assemblySkill;
+	}
+
+	/**
+	 * Setter for experiementationSkill
+	 * \param skill experiementationSkill
+	 */
+	public void setExperiementationSkill(string skill) {
+		experiementationSkill = skill;
+	}
+	
+	/**
+	 * getter for experiementationMod
+	 * \return experiementationMod
+	 */
+	public string getExperiementationSkill() {
+		return experiementationSkill;
 	}
 }

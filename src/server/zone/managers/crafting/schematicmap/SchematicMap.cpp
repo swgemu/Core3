@@ -49,19 +49,25 @@ which carries forward this exception.
  */
 
 #include "SchematicMap.h"
+#include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 #include "engine/engine.h"
 
 ObjectManager* SchematicMap::objectManager = NULL;
 VectorMap<String, DraftSchematicGroup* > SchematicMap::groupMap;
 VectorMap<String, ManagedReference<DraftSchematic* > > SchematicMap::nameMap;
 SchematicMap* SchematicMap::instance = NULL;
+uint32 SchematicMap::nextSchematicID = 0x10000000;
 
 SchematicMap::SchematicMap(ObjectManager* objman) {
+
+	info("Loading schematics...");
 
 	objectManager = objman;
 	Lua::init();
 	registerFunctions();
 	instance = this;
+
+	loadDraftSchematicDatabase();
 	loadDraftSchematicFile();
 }
 
@@ -88,6 +94,33 @@ int SchematicMap::runDraftSchematicFile(lua_State* L) {
 	return 0;
 }
 
+void SchematicMap::loadDraftSchematicDatabase() {
+
+	ObjectDatabase* schematicDatabase = ObjectDatabaseManager::instance()->loadDatabase("draftschematics", true);
+
+	ObjectDatabaseIterator iterator(schematicDatabase);
+
+	uint64 objectID = 0;
+	int count = 0;
+
+	while (iterator.getNextKey(objectID)) {
+
+		ManagedReference<DraftSchematic* > draftSchematic = (DraftSchematic*) DistributedObjectBroker::instance()->lookUp(objectID);
+
+		if(draftSchematic != NULL) {
+
+			if(nextSchematicID < draftSchematic->getSchematicID())
+				nextSchematicID = draftSchematic->getSchematicID();
+
+			instance->put(draftSchematic->getSchematicID(), draftSchematic);
+			instance->nameMap.put(draftSchematic->getObjectNameStringIdName(), draftSchematic);
+			count++;
+		}
+	}
+
+	info("Loaded " + String::valueOf(count) + " schematics from database");
+}
+
 int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 	LuaObject schematic(L);
 
@@ -112,19 +145,20 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		// objCRC would be 0xD1207EFF
 		uint32 objCRC = schematic.getIntField("objectCRC");
 
-		// The groupName will be used as the key to return a list of schematics with that groupName
-		// example: "craftArtisanNewbieGroupA" (this is one groupName from Novice Artisan)
-		// this groupName will include, CDEF Carbine, CDEF Rifle, Bofa Treat, etc...
-		String groupName = schematic.getStringField("groupName");
+		ManagedReference<DraftSchematic* > draftSchematic = instance->nameMap.get(stfName);
 
-		ManagedReference<DraftSchematic* > draftSchematic = (DraftSchematic*) objectManager->createObject(objCRC, 0, "DraftSchematics");
+		if(draftSchematic == NULL) {
+			instance->info("Creating schematic for " + objectName);
+			draftSchematic = (DraftSchematic*) objectManager->createObject(objCRC, 2, "draftschematics");
+			draftSchematic->setSchematicID(nextSchematicID++);
+		}
 
 		StringId stringid;
 		stringid.setStringId(stfFile, stfName);
 		stringid.setCustomString(objectName);
 
 		draftSchematic->setObjectName(stringid);
-		/*
+
 		// The groupName will be used as the key to return a list of schematics with that groupName
 		// example: "craftArtisanNewbieGroupA" (this is one groupName from Novice Artisan)
 		// this groupName will include, CDEF Carbine, CDEF Rifle, Bofa Treat, etc...
@@ -132,91 +166,96 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 
 		// The number that tells the client which crafting tool tab to put the draftSchematic in
 		int craftingToolTab = schematic.getIntField("craftingToolTab");
-
-		// The objID is two of the crc combined to make a uint64
-		uint32 schematicID = objCRC;
-
-		// The complexity will give a number that will correspond to which level of crafting tools and or
-		// crafting stations are required
-		uint32 complexity = schematic.getIntField("complexity");
+		draftSchematic->setToolTab(craftingToolTab);
 
 		// I have no idea what the schematicSize is used for :D, but it's a part of all draft schematics
-		uint32 schematicSize = schematic.getIntField("size");
+		int complexity = schematic.getIntField("complexity");
+		draftSchematic->setComplexity(complexity);
 
-		DraftSchematic* draftSchematic = new DraftSchematic(schematicID,
-				objectName, stfFile, stfName, objCRC, groupName, complexity, schematicSize,
-				craftingToolTab);
+		// I have no idea what the schematicSize is used for :D, but it's a part of all draft schematics
+		float schematicSize = schematic.getIntField("size");
+		draftSchematic->setSize(schematicSize);
 
-		uint64 temp = (((uint64)schematicID) << 32);
-		temp += objCRC;
-		draftSchematic->setObjectID(temp);
-
+		// Type of XP this schematic awards
 		String xptype = schematic.getStringField("xpType");
 		draftSchematic->setXpType(xptype);
 
+		// Quantity of xp this schematic awards
 		int xp = schematic.getIntField("xp");
-		draftSchematic->setXp(xp);
+		draftSchematic->setXpAmount(xp);
 
+		// Assembly skill referenced for this schematic
 		String assemblySkill = schematic.getStringField("assemblySkill");
 		draftSchematic->setAssemblySkill(assemblySkill);
 
-		String experimentingSkill = schematic.getStringField(
-				"experimentingSkill");
-		draftSchematic->setExperimentingSkill(experimentingSkill);
+		// Experimentation skill referenced for this schematic
+		String experimentingSkill = schematic.getStringField("experimentingSkill");
+		draftSchematic->setExperiementationSkill(experimentingSkill);
 
 		// Parse the Ingredient data of DraftSchematic from LUA
 		// example: craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n
-		String unparIngredientTemplateNames = schematic.getStringField(
-				"ingredientTemplateNames");
-		Vector<String> parsedIngredientTemplateNames =
-				instance->parseStringsFromString(unparIngredientTemplateNames);
-
-		// example: dried Fruit, crust, additive
-		String unparIngredientTitleNames = schematic.getStringField(
-				"ingredientTitleNames");
-		Vector<String> parsedIngredientTitleNames =
-				instance->parseStringsFromString(unparIngredientTitleNames);
-
-		// example: 2 for identical, 1 for optional, 0 for mandatory
-		String unparOptionalFlags = schematic.getStringField(
-				"ingredientSlotType");
-		Vector<uint32> parsedOptionalFlags =
-				instance->parseUnsignedInt32sFromString(unparOptionalFlags);
-
-		// example: organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff
-		String unparResourceTypes = schematic.getStringField("resourceTypes");
-		Vector<String> parsedResourceTypes = instance->parseStringsFromString(
-				unparResourceTypes);
-
-		// example: 3,8,1
-		String unparResourceQuantities = schematic.getStringField(
-				"resourceQuantities");
-		Vector<uint32>
-				parsedResourceQuantities =
-						instance->parseUnsignedInt32sFromString(
-								unparResourceQuantities);
-
-		// example: 1,2,3
-		String unparCombineTypes = schematic.getStringField("combineTypes");
-		Vector<uint32> parsedCombineTypes =
-				instance->parseUnsignedInt32sFromString(unparCombineTypes);
-
-		// example: 1,2,3
-		String unparContribution = schematic.getStringField("contribution");
-		Vector<uint32> parsedContribution =
-				instance->parseUnsignedInt32sFromString(unparContribution);
-
-		// Add resource requirement sets to schematic
-		// Each vector just parsed should all have the same .size() so any .size() will work
-		// for the amount of times the loop should execute
-		for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
-			draftSchematic->addIngredient(parsedIngredientTemplateNames.get(i),
-					parsedIngredientTitleNames.get(i),
-					parsedOptionalFlags.get(i), parsedResourceTypes.get(
-							i), parsedResourceQuantities.get(i),
-					parsedCombineTypes.get(i), parsedContribution.get(i));
+		LuaObject templateNameList = schematic.getObjectField("ingredientTemplateNames");
+		Vector<String> templateNames;
+		for (int i = 1; i <= templateNameList.getTableSize(); ++i) {
+			templateNames.add(templateNameList.getStringAt(i));
 		}
 
+		// example: dried Fruit, crust, additive
+		LuaObject titleNameList = schematic.getObjectField("ingredientTitleNames");
+		Vector<String> titleNames;
+		for (int i = 1; i <= titleNameList.getTableSize(); ++i) {
+			titleNames.add(titleNameList.getStringAt(i));
+		}
+
+		// example: 2 for identical, 1 for optional, 0 for mandatory
+		LuaObject slotTypeList = schematic.getObjectField("ingredientSlotType");
+		Vector<int> slotTypes;
+		for (int i = 1; i <= slotTypeList.getTableSize(); ++i) {
+			slotTypes.add(slotTypeList.getIntAt(i));
+		}
+
+		// example: organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff
+		LuaObject resourceTypesList = schematic.getObjectField("resourceTypes");
+		Vector<String> resourceTypes;
+		for (int i = 1; i <= resourceTypesList.getTableSize(); ++i) {
+			resourceTypes.add(resourceTypesList.getStringAt(i));
+		}
+
+		// example: 3,8,1
+		LuaObject resourceQuantitiesList = schematic.getObjectField("resourceQuantities");
+		Vector<int> resourceQuantities;
+		for (int i = 1; i <= resourceQuantitiesList.getTableSize(); ++i) {
+			resourceQuantities.add(resourceQuantitiesList.getIntAt(i));
+		}
+
+		// example: 1,2,3
+		LuaObject combineTypesList = schematic.getObjectField("combineTypes");
+		Vector<int> combineTypes;
+		for (int i = 1; i <= combineTypesList.getTableSize(); ++i) {
+			combineTypes.add(combineTypesList.getIntAt(i));
+		}
+
+		// example: 1,2,3
+		LuaObject contributionList = schematic.getObjectField("contribution");
+		Vector<float> contribution;
+		for (int i = 1; i <= contributionList.getTableSize(); ++i) {
+			contribution.add(contributionList.getFloatAt(i));
+		}
+
+		// Add resource slots to schematic
+		for (int i = 0; i < templateNames.size(); ++i) {
+			DraftSlot* newSlot = new DraftSlot();
+			newSlot->setStringId(templateNames.get(i), titleNames.get(i));
+			newSlot->setSlotType(slotTypes.get(i));
+			newSlot->setResourceType(resourceTypes.get(i));
+			newSlot->setQuantity(resourceQuantities.get(i));
+			newSlot->setCombineType(combineTypes.get(i));
+			newSlot->setContribution(contribution.get(i));
+
+			draftSchematic->addSlot(newSlot);
+		}
+
+		/*
 		// Parse Experimental Properties of Draft Schematic from DB
 		// example: 1, 1, 1, 2, 2, 2, 2
 		String unparNumberExperimentalProperties = schematic.getStringField(
@@ -320,6 +359,7 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		draftSchematic->setCustomizationSkill(customizationSkill);*/
 
 		mapDraftSchematic(groupName, draftSchematic);
+		draftSchematic->updateToDatabase();
 
 	} catch (...) {
 
@@ -340,8 +380,6 @@ void SchematicMap::mapDraftSchematic(String groupname, DraftSchematic* schematic
 	}
 
 	group->add(schematic);
-	instance->put(schematic->getClientObjectCRC(), schematic);
-	instance->nameMap.put(schematic->getObjectNameStringIdName(), schematic);
 }
 
 void SchematicMap::addSchematics(PlayerObject* playerObject,
@@ -406,4 +444,22 @@ void SchematicMap::removeSchematic(PlayerObject* playerObject,
 	schematics.add(schematic);
 
 	playerObject->removeSchematics(schematics, updateClient);
+}
+
+void SchematicMap::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) {
+	ManagedReference<DraftSchematic*> schematic = instance->get(schematicID);
+
+	if(schematic == NULL)
+		return;
+
+	schematic->sendDraftSlotsTo(player);
+}
+
+void SchematicMap::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
+	ManagedReference<DraftSchematic*> schematic = instance->get(schematicID);
+
+	if(schematic == NULL)
+		return;
+
+	schematic->sendResourceWeightsTo(player);
 }

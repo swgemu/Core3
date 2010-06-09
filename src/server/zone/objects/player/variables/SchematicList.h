@@ -24,8 +24,8 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	void getCrcList(Vector<uint32>& schematics);
-	void loadFromCrcs(Vector<uint32>& schematics);
+	void getSchematicIDList(Vector<uint32>& schematics);
+	void loadFromSchematicIDs(Vector<uint32>& schematics);
 
 	void insertToMessage(BaseMessage* msg);
 };

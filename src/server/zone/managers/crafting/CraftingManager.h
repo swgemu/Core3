@@ -59,6 +59,20 @@ class PlayerObject;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
@@ -84,7 +98,11 @@ public:
 
 	void removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient = false);
 
-	DraftSchematic* getSchematic(unsigned int crc);
+	DraftSchematic* getSchematic(unsigned int schematicID);
+
+	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+
+	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
 
 protected:
 	CraftingManager(DummyConstructorParameter* param);
@@ -126,7 +144,11 @@ public:
 
 	void removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient = false);
 
-	DraftSchematic* getSchematic(unsigned int crc);
+	DraftSchematic* getSchematic(unsigned int schematicID);
+
+	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+
+	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
 
 	CraftingManager* _this;
 
@@ -167,7 +189,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	DraftSchematic* getSchematic(unsigned int crc);
+	DraftSchematic* getSchematic(unsigned int schematicID);
+
+	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+
+	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
 
 };
 

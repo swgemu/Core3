@@ -57,3 +57,11 @@ void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObje
 void CraftingManagerImplementation::removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
 	schematicMap->removeSchematics(playerObject, schematicgroups, updateClient);
 }
+
+void CraftingManagerImplementation::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) {
+	schematicMap->sendDraftSlotsTo(player, schematicID);
+}
+
+void CraftingManagerImplementation::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
+	schematicMap->sendResourceWeightsTo(player, schematicID);
+}

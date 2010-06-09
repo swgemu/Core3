@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	CraftingManagerStub
  */
@@ -52,17 +54,45 @@ void CraftingManager::removeSchematicGroup(PlayerObject* playerObject, Vector<St
 		((CraftingManagerImplementation*) _impl)->removeSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
-DraftSchematic* CraftingManager::getSchematic(unsigned int crc) {
+DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addUnsignedIntParameter(crc);
+		method.addUnsignedIntParameter(schematicID);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->getSchematic(crc);
+		return ((CraftingManagerImplementation*) _impl)->getSchematic(schematicID);
+}
+
+void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(schematicID);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->sendDraftSlotsTo(player, schematicID);
+}
+
+void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(schematicID);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->sendResourceWeightsTo(player, schematicID);
 }
 
 /*
@@ -136,23 +166,23 @@ void CraftingManagerImplementation::_serializationHelperMethod() {
 
 CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) {
 	_initializeImplementation();
-	// server/zone/managers/crafting/CraftingManager.idl(68):  		Logger.setLoggingName("CraftingManager");
+	// server/zone/managers/crafting/CraftingManager.idl(69):  		Logger.setLoggingName("CraftingManager");
 	Logger::setLoggingName("CraftingManager");
-	// server/zone/managers/crafting/CraftingManager.idl(70):  		Logger.setLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(71):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(71):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(72):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(73):  		zoneServer = serv;
+	// server/zone/managers/crafting/CraftingManager.idl(74):  		zoneServer = serv;
 	zoneServer = serv;
-	// server/zone/managers/crafting/CraftingManager.idl(74):  		zoneProcessor = proc;
+	// server/zone/managers/crafting/CraftingManager.idl(75):  		zoneProcessor = proc;
 	zoneProcessor = proc;
-	// server/zone/managers/crafting/CraftingManager.idl(75):  		objectManager = objman;
+	// server/zone/managers/crafting/CraftingManager.idl(76):  		objectManager = objman;
 	objectManager = objman;
 }
 
-DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int crc) {
-	// server/zone/managers/crafting/CraftingManager.idl(88):  		return schematicMap.get(crc);
-	return schematicMap->get(crc);
+DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schematicID) {
+	// server/zone/managers/crafting/CraftingManager.idl(89):  		return schematicMap.get(schematicID);
+	return schematicMap->get(schematicID);
 }
 
 /*
@@ -169,6 +199,12 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 6:
 		resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
+	case 7:
+		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 8:
+		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -176,8 +212,16 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int crc) {
-	return ((CraftingManagerImplementation*) impl)->getSchematic(crc);
+DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int schematicID) {
+	return ((CraftingManagerImplementation*) impl)->getSchematic(schematicID);
+}
+
+void CraftingManagerAdapter::sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID) {
+	((CraftingManagerImplementation*) impl)->sendDraftSlotsTo(player, schematicID);
+}
+
+void CraftingManagerAdapter::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
+	((CraftingManagerImplementation*) impl)->sendResourceWeightsTo(player, schematicID);
 }
 
 /*
