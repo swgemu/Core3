@@ -107,8 +107,11 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 
 void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
 
-	msg->insertInt(0);
+	msg->insertInt(draftSlots.size());
 
+	for(int i = 0; i < draftSlots.size(); ++i) {
+		draftSlots.get(i)->insertToMessage(msg);
+	}
 
 	msg->insertShort(0);
 }
