@@ -46,7 +46,8 @@
 
 void CraftingManagerImplementation::initialize() {
 
-	schematicMap = new SchematicMap(objectManager);
+	schematicMap = SchematicMap::instance();
+	schematicMap->initialize();
 
 }
 

@@ -20,10 +20,6 @@
 #include "TravelFare.h"
 
 void PlanetManagerImplementation::initialize() {
-	loadRegions();
-	loadBadgeAreas();
-	loadNoBuildAreas();
-
 	terrainManager = new TerrainManager(zone);
 
 	int zoneID = zone->getZoneID();
@@ -31,8 +27,16 @@ void PlanetManagerImplementation::initialize() {
 	if (zoneID < 10) {
 		String planetName = Planet::getPlanetName(zoneID);
 
+		setLoggingName("PlanetManager " + planetName);
+
 		terrainManager->initialize("planets/" + planetName + "/" + planetName + ".trn");
 	}
+
+	info("loading planet...", true);
+
+	loadRegions();
+	loadBadgeAreas();
+	loadNoBuildAreas();
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();

@@ -52,28 +52,23 @@ which carries forward this exception.
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 #include "engine/engine.h"
 
-ObjectManager* SchematicMap::objectManager = NULL;
 VectorMap<String, DraftSchematicGroup* > SchematicMap::groupMap;
 VectorMap<String, ManagedReference<DraftSchematic* > > SchematicMap::nameMap;
-SchematicMap* SchematicMap::instance = NULL;
 uint32 SchematicMap::nextSchematicID = 0x10000000;
 
-SchematicMap::SchematicMap(ObjectManager* objman) {
+SchematicMap::SchematicMap() {
 
 	info("Loading schematics...");
 
-	objectManager = objman;
 	Lua::init();
 	registerFunctions();
-	instance = this;
 
-	loadDraftSchematicDatabase();
-	loadDraftSchematicFile();
+	groupMap.setNullValue(NULL);
 }
 
 SchematicMap::~SchematicMap() {
-	while(instance->groupMap.size() > 0)
-		delete instance->groupMap.get(0);
+	while(groupMap.size() > 0)
+		delete groupMap.get(0);
 }
 
 void SchematicMap::registerFunctions() {
@@ -112,8 +107,8 @@ void SchematicMap::loadDraftSchematicDatabase() {
 			if(nextSchematicID < draftSchematic->getSchematicID())
 				nextSchematicID = draftSchematic->getSchematicID();
 
-			instance->put(draftSchematic->getSchematicID(), draftSchematic);
-			instance->nameMap.put(draftSchematic->getObjectNameStringIdName(), draftSchematic);
+			put(draftSchematic->getSchematicID(), draftSchematic);
+			nameMap.put(draftSchematic->getObjectNameStringIdName(), draftSchematic);
 			count++;
 		}
 	}
@@ -145,11 +140,11 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 		// objCRC would be 0xD1207EFF
 		uint32 objCRC = schematic.getIntField("objectCRC");
 
-		ManagedReference<DraftSchematic* > draftSchematic = instance->nameMap.get(stfName);
+		ManagedReference<DraftSchematic* > draftSchematic = SchematicMap::instance()->nameMap.get(stfName);
 
 		if(draftSchematic == NULL) {
-			instance->info("Creating schematic for " + objectName);
-			draftSchematic = (DraftSchematic*) objectManager->createObject(objCRC, 2, "draftschematics");
+			SchematicMap::instance()->info("Creating schematic for " + objectName);
+			draftSchematic = (DraftSchematic*) ObjectManager::instance()->createObject(objCRC, 2, "draftschematics");
 			draftSchematic->setSchematicID(nextSchematicID++);
 		}
 
@@ -377,11 +372,11 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 	return 0;
 }
 
-void SchematicMap::mapDraftSchematic(String groupname, DraftSchematic* schematic) {
+void SchematicMap::mapDraftSchematic(const String& groupname, DraftSchematic* schematic) {
 
 	DraftSchematicGroup* group = groupMap.get(groupname);
 
-	if(group == NULL) {
+	if (group == NULL) {
 		group = new DraftSchematicGroup();
 		groupMap.put(groupname, group);
 	}
@@ -424,7 +419,7 @@ void SchematicMap::removeSchematics(PlayerObject* playerObject,
 
 			DraftSchematicGroup* dsg = groupMap.get(groupName);
 
-			for(int j = 0; j < dsg->size(); ++j)
+			for (int j = 0; j < dsg->size(); ++j)
 				schematics.add(dsg->get(j));
 		}
 	}
@@ -454,18 +449,18 @@ void SchematicMap::removeSchematic(PlayerObject* playerObject,
 }
 
 void SchematicMap::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) {
-	ManagedReference<DraftSchematic*> schematic = instance->get(schematicID);
+	ManagedReference<DraftSchematic*> schematic = get(schematicID);
 
-	if(schematic == NULL)
+	if (schematic == NULL)
 		return;
 
 	schematic->sendDraftSlotsTo(player);
 }
 
 void SchematicMap::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
-	ManagedReference<DraftSchematic*> schematic = instance->get(schematicID);
+	ManagedReference<DraftSchematic*> schematic = get(schematicID);
 
-	if(schematic == NULL)
+	if (schematic == NULL)
 		return;
 
 	schematic->sendResourceWeightsTo(player);

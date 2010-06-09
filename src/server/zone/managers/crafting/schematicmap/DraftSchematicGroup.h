@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-class DraftSchematicGroup : public Vector<DraftSchematic* > {
+class DraftSchematicGroup : public Vector<ManagedReference<DraftSchematic*> > {
 
 public:
 	DraftSchematicGroup() {

@@ -53,7 +53,7 @@ include server.zone.objects.draftschematic.draftslot.DraftSlot;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 
-class DraftSchematic implements SceneObject {
+class DraftSchematic extends SceneObject {
 
 	/// Arbitrary ID for the schematic
 	private unsigned int schematicID;
@@ -92,19 +92,19 @@ class DraftSchematic implements SceneObject {
 	private int size;
 	
 	/// Xp Type awarded
-	string xpType;
+	protected string xpType;
 	
 	/// XP Amount awarded
-	int xpAmount;
+	protected int xpAmount;
 	
 	/// Assembly skill used
-	string assemblySkill;
+	protected string assemblySkill;
 	
 	/// Experimentation Skill used
-	string experiementationSkill;
+	protected string experiementationSkill;
 	
 	@dereferenced
-	DraftSlots draftSlots;
+	protected DraftSlots draftSlots;
 	
 	public DraftSchematic() {
 		Logger.setLoggingName("DraftSchematic");	

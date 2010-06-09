@@ -82,6 +82,8 @@ class StructureManager extends ManagedObject implements Logger {
 	//PUBLIC METHODS
 	
 	public void loadStructures() {
+		Logger.info("loading structures...", true);
+		
 		loadStaticBuildings();
 		loadPlayerStructures();
 		loadStaticBanks();

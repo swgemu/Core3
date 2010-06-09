@@ -61,6 +61,8 @@ void DraftSchematicImplementation::fillAttributeList(AttributeListMessage* alm, 
 }
 
 void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
+	if (!player->isPlayerCreature())
+		return;
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
 
@@ -76,12 +78,12 @@ void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 	// MSCO8
 	ManufactureSchematicObjectMessage8* msco8 =
-		new ManufactureSchematicObjectMessage8(_this->getObjectID());
+		new ManufactureSchematicObjectMessage8(getObjectID());
 	player->sendMessage(msco8);
 
 	// MSCO9
 	ManufactureSchematicObjectMessage9* msco9 =
-		new ManufactureSchematicObjectMessage9(_this->getObjectID());
+		new ManufactureSchematicObjectMessage9(getObjectID());
 	player->sendMessage(msco9);
 
 }

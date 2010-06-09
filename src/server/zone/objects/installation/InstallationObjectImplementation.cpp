@@ -19,3 +19,5 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* buio6 = new InstallationObjectMessage6(_this);
 	player->sendMessage(buio6);
 }
+
+

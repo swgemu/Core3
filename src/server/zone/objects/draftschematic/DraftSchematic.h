@@ -122,6 +122,7 @@ class DraftSchematicImplementation : public SceneObjectImplementation {
 
 	int size;
 
+protected:
 	String xpType;
 
 	int xpAmount;

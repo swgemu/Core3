@@ -53,6 +53,11 @@ public:
 	DraftSlots() {
 
 	}
+
+	~DraftSlots() {
+		for (int i = 0; i < size(); ++i)
+			delete get(i);
+	}
 };
 
 #endif /* DRAFTSLOTS_H_ */
