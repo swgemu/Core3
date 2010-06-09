@@ -69,7 +69,7 @@ public:
 		String value;
 		tokenizer.getStringToken(value);
 
-		uint32 schematicID = Long::valueOf(value);
+		uint32 schematicID = Integer::valueOf(value);
 
 		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
 
