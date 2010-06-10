@@ -67,6 +67,20 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/objects/building/StructurePermissionList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -85,6 +99,24 @@ public:
 	InstallationObject();
 
 	void initializeTransientMembers();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureManageMaintenance(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
+
+	void handleStructureDestroy(PlayerCreature* player);
+
+	bool isOnAdminList(CreatureObject* creature);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -108,6 +140,8 @@ public:
 
 	unsigned int getPowerPool();
 
+	void addMaintenance(float maint);
+
 	int getBasePowerRate();
 
 	void setBasePowerRate(int powerRate);
@@ -118,9 +152,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	bool isInstallationObject();
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -160,6 +192,12 @@ protected:
 
 	unsigned int powerPool;
 
+	float surplusMaintenance;
+
+	float surplusPower;
+
+	bool publicStructure;
+
 	SortedVector<ManagedReference<PlayerCreature* > > operatorList;
 
 public:
@@ -168,6 +206,24 @@ public:
 	InstallationObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureManageMaintenance(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
+
+	void handleStructureDestroy(PlayerCreature* player);
+
+	bool isOnAdminList(CreatureObject* creature);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -191,6 +247,8 @@ public:
 
 	unsigned int getPowerPool();
 
+	void addMaintenance(float maint);
+
 	int getBasePowerRate();
 
 	void setBasePowerRate(int powerRate);
@@ -201,9 +259,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	bool isInstallationObject();
 
 	InstallationObject* _this;
 
@@ -246,6 +302,22 @@ public:
 
 	void initializeTransientMembers();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureManageMaintenance(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
+
+	void handleStructureDestroy(PlayerCreature* player);
+
+	bool isOnAdminList(CreatureObject* creature);
+
+	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setLotSize(int lotsize);
@@ -268,6 +340,8 @@ public:
 
 	unsigned int getPowerPool();
 
+	void addMaintenance(float maint);
+
 	int getBasePowerRate();
 
 	void setBasePowerRate(int powerRate);
@@ -278,9 +352,7 @@ public:
 
 	int getRedeedCost();
 
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	bool isInstallationObject();
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

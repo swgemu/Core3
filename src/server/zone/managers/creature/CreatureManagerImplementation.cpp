@@ -178,7 +178,7 @@ void CreatureManagerImplementation::loadTrainers() {
 
 		//TODO: Replace this once thoop commits his trainer fix.
 		//UnicodeString trainername = makeCreatureName(customname);
-		trainer->setObjectName(customname);
+		trainer->setCustomObjectName(customname, false);
 
 		/*if (planetmapid > 0)
 			zone->addMapLocation(trainer->getObjectID(), trainername, worldx, worldy, 19, planetmapid, 0);*/

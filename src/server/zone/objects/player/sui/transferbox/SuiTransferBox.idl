@@ -42,59 +42,50 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TANGIBLEOBJECTDELTAMESSAGE3_H_
-#define TANGIBLEOBJECTDELTAMESSAGE3_H_
+package server.zone.objects.player.sui.messagebox;
 
-#include "../../packets/DeltaMessage.h"
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.sui.SuiBox;
+include server.zone.packets.ui.SuiCreatePageMessage;
 
-#include "../../objects/tangible/TangibleObject.h"
+class SuiTransferBox extends SuiBox {
+	protected string lblFrom;
+	protected string lblStartingFrom;
+	protected string lblInputFrom;
+	protected string lblTo;
+	protected string lblStartingTo;
+	protected string lblInputTo;
+	
+	protected string convertRatioFrom;
+	protected string convertRatioTo;
+	
+	@weakReference
+	protected SceneObject usingObject;
 
-class TangibleObjectDeltaMessage3 : public DeltaMessage {
-	TangibleObject* tano;
 
-public:
-	TangibleObjectDeltaMessage3(TangibleObject* ta, uint32 objType = 0x54414E4F)
-			: DeltaMessage(ta->getObjectID(), objType, 3) {
-		tano = ta;
+	public SuiTransferBox(PlayerCreature player, unsigned int windowType) {
+		super(player, windowType, SuiBox.TRANSFERBOX);
+		
+		usingObject = null;
 	}
 
-	void updateCustomizationString() {
-		String app;
-		tano->getCustomizationString(app);
-		addAsciiUpdate(4, app);
+	public native BaseMessage generateMessage();
+
+	public native void addFrom(final string from, final string startingFrom, final string inputFrom, final string rFrom);
+	public native void addTo(final string to, final string startingTo, final string inputTo, final string rTo);
+	
+	public void setUsingObject(SceneObject obj) {
+		usingObject = obj;
 	}
-
-	void updateComplexity(float complexity) {
-		addFloatUpdate(0, complexity);
+	
+	public SceneObject getUsingObject() {
+		return usingObject;
 	}
-
-	void updateName(const UnicodeString& name) {
-		addUnicodeUpdate(2, name);
+	
+	public boolean isTransferBox() {
+		return true;
 	}
-
-	void updateCraftingTimer(int timer) {
-		addIntUpdate(7, timer);
-	}
-
-	void updateConditionDamage() {
-		addIntUpdate(8, int(tano->getConditionDamage()));
-	}
-
-	void updateMaxCondition() {
-		addIntUpdate(9, tano->getMaxCondition());
-	}
-
-	void setQuantity(int quantity) {
-
-		if (quantity == 1)
-			quantity = 0;
-
-		addIntUpdate(7, quantity);
-	}
-
-	void updateOptionsBitmask() {
-		addIntUpdate(0x06, tano->getOptionsBitmask());
-	}
-};
-
-#endif /*TANGIBLEOBJECTDELTAMESSAGE3_H_*/
+}

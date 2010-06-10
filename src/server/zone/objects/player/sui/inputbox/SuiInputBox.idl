@@ -42,59 +42,58 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TANGIBLEOBJECTDELTAMESSAGE3_H_
-#define TANGIBLEOBJECTDELTAMESSAGE3_H_
+package server.zone.objects.player.sui.messagebox;
 
-#include "../../packets/DeltaMessage.h"
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.sui.SuiBox;
+include server.zone.packets.ui.SuiCreatePageMessage;
 
-#include "../../objects/tangible/TangibleObject.h"
+class SuiInputBox extends SuiBox {
+	protected int maxInputSize;
+	protected string defaultInput;
 
-class TangibleObjectDeltaMessage3 : public DeltaMessage {
-	TangibleObject* tano;
+	protected int inputType;
+	
+	@weakReference
+	protected SceneObject usingObject;
 
-public:
-	TangibleObjectDeltaMessage3(TangibleObject* ta, uint32 objType = 0x54414E4F)
-			: DeltaMessage(ta->getObjectID(), objType, 3) {
-		tano = ta;
+	public final static int DEFAULT = 0;
+	public final static int FILTER = 1;
+
+	public SuiInputBox(PlayerCreature player, unsigned int windowType, int inputtype = 0) {
+		super(player, windowType, SuiBox.INPUTBOX);
+		
+		maxInputSize = 25;
+
+		inputType = inputtype;
 	}
 
-	void updateCustomizationString() {
-		String app;
-		tano->getCustomizationString(app);
-		addAsciiUpdate(4, app);
+	public native BaseMessage generateMessage();
+
+	public void setMaxInputSize(int size) {
+		maxInputSize = size;
+	}
+	
+	public void setUsingObject(SceneObject object) {
+		usingObject = object;
 	}
 
-	void updateComplexity(float complexity) {
-		addFloatUpdate(0, complexity);
+	public void setDefaultInput(final string text) {
+		defaultInput = text;
 	}
 
-	void updateName(const UnicodeString& name) {
-		addUnicodeUpdate(2, name);
+	public boolean isFilterBox() {
+		return inputType == FILTER;
 	}
-
-	void updateCraftingTimer(int timer) {
-		addIntUpdate(7, timer);
+	
+	public SceneObject getUsingObject() {
+		return usingObject;
 	}
-
-	void updateConditionDamage() {
-		addIntUpdate(8, int(tano->getConditionDamage()));
+	
+	public boolean isInputBox() {
+		return true;
 	}
-
-	void updateMaxCondition() {
-		addIntUpdate(9, tano->getMaxCondition());
-	}
-
-	void setQuantity(int quantity) {
-
-		if (quantity == 1)
-			quantity = 0;
-
-		addIntUpdate(7, quantity);
-	}
-
-	void updateOptionsBitmask() {
-		addIntUpdate(0x06, tano->getOptionsBitmask());
-	}
-};
-
-#endif /*TANGIBLEOBJECTDELTAMESSAGE3_H_*/
+}

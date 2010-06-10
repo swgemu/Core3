@@ -91,8 +91,8 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(7):  		Logger.setLoggingName("HarveserObject");
-	Logger::setLoggingName("HarveserObject");
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(7):  		Logger.setLoggingName("HarvesterObject");
+	Logger::setLoggingName("HarvesterObject");
 }
 
 /*

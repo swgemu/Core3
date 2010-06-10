@@ -622,6 +622,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	void openContainerTo(PlayerCreature* player);
@@ -792,6 +794,8 @@ public:
 
 	bool isInstrument();
 
+	bool isInstallationObject();
+
 	bool isFishingPoleObject();
 
 	bool isDeedObject();
@@ -819,8 +823,6 @@ public:
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
 	void setObjectName(StringId& stringID);
-
-	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
 
@@ -1375,6 +1377,8 @@ public:
 
 	virtual void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	virtual void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	virtual void openContainerTo(PlayerCreature* player);
@@ -1545,6 +1549,8 @@ public:
 
 	bool isInstrument();
 
+	virtual bool isInstallationObject();
+
 	bool isFishingPoleObject();
 
 	virtual bool isDeedObject();
@@ -1572,8 +1578,6 @@ public:
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
 	void setObjectName(StringId& stringID);
-
-	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
 
@@ -1695,6 +1699,8 @@ public:
 	void sendToOwner(bool doClose);
 
 	void sendAttributeListTo(PlayerCreature* object);
+
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void openContainerTo(PlayerCreature* player);
 
@@ -1840,6 +1846,8 @@ public:
 
 	bool isInstrument();
 
+	bool isInstallationObject();
+
 	bool isFishingPoleObject();
 
 	bool isDeedObject();
@@ -1863,8 +1871,6 @@ public:
 	void setServerObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
-
-	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
 
@@ -1892,8 +1898,8 @@ protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
 	String _param1_canAddObject__SceneObject_String_;
+	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_getSlottedObject__String_;
-	UnicodeString _param0_setObjectName__UnicodeString_;
 	String _param0_setLoggingName__String_;
 };
 
