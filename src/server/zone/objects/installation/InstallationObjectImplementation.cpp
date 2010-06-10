@@ -165,7 +165,7 @@ void InstallationObjectImplementation::handleStructureManageMaintenance(PlayerCr
 		player->sendMessage(maintenanceBox->generateMessage());
 
 	} catch(...) {
-		System::out << "unreported exception in InstallationObjectImplementation::handleStructureManageMaintenance\n";
+		error("unreported exception in InstallationObjectImplementation::handleStructureManageMaintenance");
 	}
 }
 
