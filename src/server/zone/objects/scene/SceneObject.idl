@@ -667,6 +667,15 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
 		
 	}
+	
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public abstract void setCustomObjectName(final unicode name, boolean notifyClient) {
+		objectName.setCustomString(name);
+	}
 
 	/**
 	 * Fills the radial options, needs to be overriden
@@ -1182,6 +1191,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == INSTRUMENT;
 	}
 	
+	public abstract boolean isInstallationObject() {
+		return false;
+	}
+	
 	public boolean isFishingPoleObject() {
 		return gameObjectType == FISHINGPOLE;
 	}
@@ -1237,10 +1250,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@local
 	public native void setObjectName(@dereferenced StringId stringID);
-
-	public void setObjectName(final unicode name) {
-		objectName.setCustomString(name);
-	}
 
 	public void setZone(Zone zon) {
 		zone = zon;

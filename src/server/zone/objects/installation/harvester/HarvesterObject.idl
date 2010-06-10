@@ -4,6 +4,6 @@ import server.zone.objects.installation.InstallationObject;
 
 class HarvesterObject extends InstallationObject {
 	public HarvesterObject() {
-		Logger.setLoggingName("HarveserObject");
+		Logger.setLoggingName("HarvesterObject");
 	}
 }

@@ -51,6 +51,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.building.StructurePermissionList;
 
 class InstallationObject extends TangibleObject {
@@ -68,6 +69,11 @@ class InstallationObject extends TangibleObject {
 	protected unsigned int maintenancePool;
 	protected unsigned int powerPool;
 	
+	protected float surplusMaintenance;
+	protected float surplusPower;
+	
+	protected boolean publicStructure;
+	
 	@dereferenced
 	protected SortedVector<PlayerCreature> operatorList;
 	
@@ -76,6 +82,8 @@ class InstallationObject extends TangibleObject {
 		
 		super.staticObject = false;
 		
+		publicStructure = true;
+		
 		lotSize = 0;
 		
 		baseMaintenanceRate = 0;
@@ -83,6 +91,8 @@ class InstallationObject extends TangibleObject {
 		maintenancePool = 0;
 		powerPool = 0;
 		deedObjectID = 0;
+		surplusMaintenance = 0;
+		surplusPower = 0;
 		operatorList.setNoDuplicateInsertPlan();
 	}
 	
@@ -92,6 +102,51 @@ class InstallationObject extends TangibleObject {
 		operatorList.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("InstallationObject");
+	}
+	
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public native void handleStructureStatus(PlayerCreature player);
+	public native void handleStructureManageMaintenance(PlayerCreature player);
+	public native void handleSetObjectName(PlayerCreature player);
+	public native void handleStructureDestroy(PlayerCreature player);
+	
+	/**
+	 * Returns if the creature is on the admin list or not for this structure.
+	 * @param creature The creature to check for admin permissions on.
+	 * @return boolean True if the creature is on the admin list.
+	 */
+	public boolean isOnAdminList(CreatureObject creature) {
+		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	}
+	
+	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+		structurePermissionList.sendTo(player, listName);
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
@@ -137,6 +192,10 @@ class InstallationObject extends TangibleObject {
 		return powerPool;
 	}
 	
+	public void addMaintenance(float maint) {
+		surplusMaintenance = surplusMaintenance  + maint;
+	}
+	
 	/**
 	 * Returns the base power rate for the installation.
 	 * This value is the rate before any bonuses from the merchant skills are added.
@@ -179,16 +238,7 @@ class InstallationObject extends TangibleObject {
 		return baseMaintenanceRate * 50;
 	}
 	
-	/**
-	 * Returns if the creature is on the admin list or not for this structure.
-	 * @param creature The creature to check for admin permissions on.
-	 * @return boolean True if the creature is on the admin list.
-	 */
-	public boolean isOnAdminList(CreatureObject creature) {
-		return structurePermissionList.isOnAdminList(creature.getObjectID());
-	}
-	
-	public void sendPermissionListTo(PlayerCreature player, final string listName) {
-		structurePermissionList.sendTo(player, listName);
+	public boolean isInstallationObject() {
+		return true;
 	}
 }

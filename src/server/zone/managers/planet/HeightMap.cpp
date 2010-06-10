@@ -156,8 +156,24 @@ int HeightMap::getPlanePosition(float x, float y) {
 }
 
 void HeightMap::convert(const String& path) {
-	FileInputStream* reader = new FileInputStream(new File(path));
-	FileOutputStream* writer = new FileOutputStream(new File("converted_" + path));
+	FileInputStream* reader = NULL;
+	try {
+		reader = new FileInputStream(new File(path));
+	} catch (...) {
+		System::out << "could not open reader" << endl;
+		exit(1);
+	}
+
+	FileOutputStream* writer = NULL;
+
+	try {
+		writer = new FileOutputStream(new File("converted_" + path));
+	} catch (...) {
+		System::out << "could not open writer" << endl;
+		exit(1);
+	}
+
+	//FileOutputStream* writer = new FileOutputStream(new File("converted_" + path));
 
 	byte emptybuffer[PLANEWIDTH * HEIGHTSIZE];
 
