@@ -70,10 +70,9 @@ smallGlass = Object:new {
    contribution = {100},
 
    numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", XX},
+   experimentalProperties = {"XX", "XX", "XX"},
    experimentalWeights = {1, 1, 1},
    experimentalGroupTitles = {"null", "null", "null"},
-
    experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
    experimentalMin = {0, 0, 1},
    experimentalMax = {0, 0, 1},

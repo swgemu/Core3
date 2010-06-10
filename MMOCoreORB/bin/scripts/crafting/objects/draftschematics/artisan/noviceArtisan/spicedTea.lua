@@ -70,10 +70,9 @@ spicedTea = Object:new {
    contribution = {100, 100, 100, 100},
 
    numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", XX, XX, "PE", "OQ", "DR", "FL", "DR", "PE", "DR", "OQ", XX},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "PE", "OQ", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
    experimentalWeights = {1, 1, 1, 1, 2, 1, 1, 2, 1, 3, 3, 1, 1},
    experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
-
    experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
    experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
    experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},

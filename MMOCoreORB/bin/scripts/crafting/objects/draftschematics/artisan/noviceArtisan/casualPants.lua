@@ -70,10 +70,9 @@ casualPants = Object:new {
    contribution = {100, 100},
 
    numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", XX, XX},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
    experimentalWeights = {1, 1, 1, 1},
    experimentalGroupTitles = {"null", "null", "null", "null"},
-
    experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
    experimentalMin = {0, 0, 0, 1000},
    experimentalMax = {0, 0, 0, 1000},

@@ -70,10 +70,9 @@ bofaTreat = Object:new {
    contribution = {100, 100, 100},
 
    numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", XX, "PE", "OQ", "FL", "OQ", "DR", "PE", "DR", "OQ"},
+   experimentalProperties = {"XX", "XX", "XX", "PE", "OQ", "FL", "OQ", "DR", "PE", "DR", "OQ"},
    experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 3, 3, 1},
    experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
-
    experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
    experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
    experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
