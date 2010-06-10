@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,50 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef REQUESTDRAFTSLOTSBATCHCOMMAND_H_
-#define REQUESTDRAFTSLOTSBATCHCOMMAND_H_
+#ifndef RESOURCEWEIGHTS_H_
+#define RESOURCEWEIGHTS_H_
 
-#include "../../scene/SceneObject.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
+#include "engine/engine.h"
+#include "ResourceWeight.h"
 
-class RequestDraftSlotsBatchCommand : public QueueCommand {
+class ResourceWeights : public Vector<ResourceWeight* >{
 public:
-
-	RequestDraftSlotsBatchCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+	ResourceWeights() {
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		/**
-		 * Argument 1 is the SchematicID
-		 * Argument 2 is the SchematicCRC
-		 */
-
-		StringTokenizer tokenizer(arguments.toString());
-
-		String value;
-
-		tokenizer.getStringToken(value);
-		uint32 schematicID = Integer::valueOf(value);
-
-		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
-
-		if(craftingManager == NULL || !creature->isPlayerCreature())
-			return GENERALERROR;
-
-		craftingManager->sendDraftSlotsTo((PlayerCreature*)creature, schematicID);
-
-		return SUCCESS;
+	~ResourceWeights() {
+		for (int i = 0; i < size(); ++i)
+			delete get(i);
 	}
-
 };
 
-#endif //REQUESTDRAFTSLOTSBATCHCOMMAND_H_
+#endif /* RESOURCEWEIGHTS_H_ */

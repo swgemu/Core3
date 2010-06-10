@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "SchematicMap.h"
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
+#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
 #include "engine/engine.h"
 
 VectorMap<String, DraftSchematicGroup* > SchematicMap::groupMap;
@@ -257,76 +258,97 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 			draftSchematic->addSlot(newSlot);
 		}
 
-		/*
+
 		// Parse Experimental Properties of Draft Schematic from DB
 		// example: 1, 1, 1, 2, 2, 2, 2
-		String unparNumberExperimentalProperties = schematic.getStringField(
-				"numberExperimentalProperties");
-		Vector<uint32> parsedNumberExperimentalProperties =
-				instance->parseUnsignedInt32sFromString(
-						unparNumberExperimentalProperties);
+		LuaObject numberPropertiesList = schematic.getObjectField("numberExperimentalProperties");
+		Vector<int> numberProperties;
+		for (int i = 1; i <= numberPropertiesList.getTableSize(); ++i) {
+			numberProperties.add(numberPropertiesList.getIntAt(i));
+		}
+		numberPropertiesList.pop();
 
 		// example: XX, XX, XX, OQ, PE, FL, OQ, DR, PE, DR, OQ
-		String unparExperimentalProperties = schematic.getStringField(
-				"experimentalProperties");
-		Vector<String> parsedExperimentalProperties =
-				instance->parseStringsFromString(unparExperimentalProperties);
+		LuaObject experimentalPropertiesList = schematic.getObjectField("experimentalProperties");
+		Vector<String> experimentalProperties;
+		for (int i = 1; i <= experimentalPropertiesList.getTableSize(); ++i) {
+			experimentalProperties.add(experimentalPropertiesList.getStringAt(i));
+		}
+		experimentalPropertiesList.pop();
 
 		// example: 0, 0, 0, 1, 2, 2, 1, 1, 3, 3, 1
-		String unparExperimentalWeights = schematic.getStringField(
-				"experimentalWeights");
-		Vector<uint32> parsedExperimentalWeights =
-				instance->parseUnsignedInt32sFromString(
-						unparExperimentalWeights);
+		LuaObject experimentalWeightsList = schematic.getObjectField("experimentalWeights");
+		Vector<int> experimentalWeights;
+		for (int i = 1; i <= experimentalWeightsList.getTableSize(); ++i) {
+			experimentalWeights.add(experimentalWeightsList.getIntAt(i));
+		}
+		experimentalWeightsList.pop();
 
 		// example: exp_filling, exp_flavor, exp_nutrition, exp_quantity
-		String unparExperimentalGroupTitles = schematic.getStringField(
-				"experimentalGroupTitles");
-		Vector<String> parsedExperimentalGroupTitles =
-				instance->parseStringsFromString(unparExperimentalGroupTitles);
+		LuaObject experimentalGroupTitlesList = schematic.getObjectField("experimentalGroupTitles");
+		Vector<String> experimentalGroupTitles;
+		for (int i = 1; i <= experimentalGroupTitlesList.getTableSize(); ++i) {
+			experimentalGroupTitles.add(experimentalGroupTitlesList.getStringAt(i));
+		}
+		experimentalGroupTitlesList.pop();
 
-		String unparExperimentalSubGroupTitles = schematic.getStringField(
-				"experimentalSubGroupTitles");
-		Vector<String> parsedExperimentalSubGroupTitles =
-				instance->parseStringsFromString(
-						unparExperimentalSubGroupTitles);
-
-		// Set associated exp property
-		String unparExperimentalMinToSet = schematic.getStringField(
-				"experimentalMin");
-		Vector<float> parsedExperimentalMinToSet =
-				instance->parseFloatsFromString(unparExperimentalMinToSet);
+		// Property name
+		LuaObject experimentalSubGroupTitlesList = schematic.getObjectField("experimentalSubGroupTitles");
+		Vector<String> experimentalSubGroupTitles;
+		for (int i = 1; i <= experimentalSubGroupTitlesList.getTableSize(); ++i) {
+			experimentalSubGroupTitles.add(experimentalSubGroupTitlesList.getStringAt(i));
+		}
+		experimentalSubGroupTitlesList.pop();
 
 		// Set associated exp property
-		String unparExperimentalMaxToSet = schematic.getStringField(
-				"experimentalMax");
-		Vector<float> parsedExperimentalMaxToSet =
-				instance->parseFloatsFromString(unparExperimentalMaxToSet);
+		LuaObject experimentalMinList = schematic.getObjectField("experimentalMin");
+		Vector<float> experimentalMin;
+		for (int i = 1; i <= experimentalMinList.getTableSize(); ++i) {
+			experimentalMin.add(experimentalMinList.getFloatAt(i));
+		}
+		experimentalMinList.pop();
+
+		// Set associated exp property
+		LuaObject experimentalMaxList = schematic.getObjectField("experimentalMax");
+		Vector<float> experimentalMax;
+		for (int i = 1; i <= experimentalMaxList.getTableSize(); ++i) {
+			experimentalMax.add(experimentalMaxList.getFloatAt(i));
+		}
+		experimentalMaxList.pop();
 
 		// Set associated precision
-		String unparExperimentalPrecisionToSet = schematic.getStringField(
-				"experimentalPrecision");
-		Vector<int> parsedExperimentalPrecisionToSet =
-				instance->parseInt32sFromString(unparExperimentalPrecisionToSet);
+		LuaObject experimentalPrecisionList = schematic.getObjectField("experimentalPrecision");
+		Vector<int> experimentalPrecision;
+		for (int i = 1; i <= experimentalPrecisionList.getTableSize(); ++i) {
+			experimentalPrecision.add(experimentalPrecisionList.getIntAt(i));
+		}
+		experimentalPrecisionList.pop();
 
 		// Add experimental properties groups to the draft schematic
 		uint32 weightIterator = 0;
 		String subtitle = "";
-		for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
-			for (uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
+		for (uint32 i = 0; i < numberProperties.size(); i++) {
 
-				draftSchematic->addExperimentalProperty(i,
-						parsedExperimentalProperties.get(weightIterator),
-						parsedExperimentalWeights.get(weightIterator),
-						parsedExperimentalGroupTitles.get(i),
-						parsedExperimentalSubGroupTitles.get(i),
-						parsedExperimentalMinToSet.get(i),
-						parsedExperimentalMaxToSet.get(i),
-						parsedExperimentalPrecisionToSet.get(i));
+			ResourceWeight* newWeight = new ResourceWeight();
+
+			newWeight->addProperties(experimentalGroupTitles.get(i),
+						experimentalSubGroupTitles.get(i),
+						experimentalMin.get(i),
+						experimentalMax.get(i),
+						experimentalPrecision.get(i));
+
+			for (uint32 j = 0; j < numberProperties.get(i); j++) {
+
+				newWeight->addWeight(experimentalProperties.get(weightIterator),
+						experimentalWeights.get(weightIterator));
+
 				weightIterator++;
 			}
+
+			draftSchematic->addResourceWeight(newWeight);
 		}
 
+		/*
 		// Save schematics tano attributes
 		String tanoAttributes = schematic.getStringField("tanoAttributes");
 		draftSchematic->setTanoAttributes(tanoAttributes);
