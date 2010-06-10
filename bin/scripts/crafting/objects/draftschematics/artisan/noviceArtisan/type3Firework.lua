@@ -70,10 +70,9 @@ type3Firework = Object:new {
    contribution = {100, 100, 100, 100},
 
    numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", XX, "OQ"},
+   experimentalProperties = {"XX", "XX", "XX", "OQ"},
    experimentalWeights = {1, 1, 1, 1},
    experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-
    experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
    experimentalMin = {0, 0, 1000, 2},
    experimentalMax = {0, 0, 1000, 10},
