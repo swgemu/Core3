@@ -77,6 +77,14 @@ void DraftSchematic::addSlot(DraftSlot* slot) {
 		((DraftSchematicImplementation*) _impl)->addSlot(slot);
 }
 
+void DraftSchematic::addResourceWeight(ResourceWeight* weight) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((DraftSchematicImplementation*) _impl)->addResourceWeight(weight);
+}
+
 void DraftSchematic::setSchematicID(unsigned int id) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -356,96 +364,102 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 	addSerializableVariable("assemblySkill", &assemblySkill);
 	addSerializableVariable("experiementationSkill", &experiementationSkill);
 	addSerializableVariable("draftSlots", &draftSlots);
+	addSerializableVariable("resourceWeights", &resourceWeights);
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/draftschematic/DraftSchematic.idl(110):  		Logger.setLoggingName("DraftSchematic");
+	// server/zone/objects/draftschematic/DraftSchematic.idl(115):  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
 
 void DraftSchematicImplementation::addSlot(DraftSlot* slot) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(153):  		draftSlots.add(slot);
+	// server/zone/objects/draftschematic/DraftSchematic.idl(158):  		draftSlots.add(slot);
 	(&draftSlots)->add(slot);
 }
 
+void DraftSchematicImplementation::addResourceWeight(ResourceWeight* weight) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(163):  		resourceWeights.add(weight);
+	(&resourceWeights)->add(weight);
+}
+
 void DraftSchematicImplementation::setSchematicID(unsigned int id) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(161):  		schematicID = id;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(171):  		schematicID = id;
 	schematicID = id;
 }
 
 unsigned int DraftSchematicImplementation::getSchematicID() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(169):  		return schematicID;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(179):  		return schematicID;
 	return schematicID;
 }
 
 void DraftSchematicImplementation::setComplexity(float complex) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(177):  		complexity = complex;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(187):  		complexity = complex;
 	complexity = complex;
 }
 
 float DraftSchematicImplementation::getComplexity() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(185):  		return complexity;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(195):  		return complexity;
 	return complexity;
 }
 
 void DraftSchematicImplementation::setToolTab(unsigned int tab) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(193):  		toolTab = tab;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(203):  		toolTab = tab;
 	toolTab = tab;
 }
 
 float DraftSchematicImplementation::getToolTab() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(201):  		return toolTab;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(211):  		return toolTab;
 	return toolTab;
 }
 
 void DraftSchematicImplementation::setSize(unsigned int s) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(209):  		size = s;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(219):  		size = s;
 	size = s;
 }
 
 float DraftSchematicImplementation::getSize() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(217):  		return size;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(227):  		return size;
 	return size;
 }
 
 void DraftSchematicImplementation::setXpType(String& type) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(225):  		xpType = type;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(235):  		xpType = type;
 	xpType = type;
 }
 
 String DraftSchematicImplementation::getXpType() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(233):  		return xpType;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(243):  		return xpType;
 	return xpType;
 }
 
 void DraftSchematicImplementation::setXpAmount(int amount) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(241):  		xpAmount = amount;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(251):  		xpAmount = amount;
 	xpAmount = amount;
 }
 
 int DraftSchematicImplementation::getXpAmount() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(249):  		return xpAmount;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(259):  		return xpAmount;
 	return xpAmount;
 }
 
 void DraftSchematicImplementation::setAssemblySkill(String& skill) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(257):  		assemblySkill = skill;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(267):  		assemblySkill = skill;
 	assemblySkill = skill;
 }
 
 String DraftSchematicImplementation::getAssemblySkill() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(265):  		return assemblySkill;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(275):  		return assemblySkill;
 	return assemblySkill;
 }
 
 void DraftSchematicImplementation::setExperiementationSkill(String& skill) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(273):  		experiementationSkill = skill;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(283):  		experiementationSkill = skill;
 	experiementationSkill = skill;
 }
 
 String DraftSchematicImplementation::getExperiementationSkill() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(281):  		return experiementationSkill;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(291):  		return experiementationSkill;
 	return experiementationSkill;
 }
 

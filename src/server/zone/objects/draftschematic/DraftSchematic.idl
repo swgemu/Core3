@@ -49,6 +49,8 @@ include server.zone.packets.object.ObjectControllerMessage;
 
 include server.zone.objects.draftschematic.draftslot.DraftSlots;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
+include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
+include server.zone.objects.draftschematic.resourceweight.ResourceWeights;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
@@ -106,6 +108,9 @@ class DraftSchematic extends SceneObject {
 	@dereferenced
 	protected DraftSlots draftSlots;
 	
+	@dereferenced
+	protected ResourceWeights resourceWeights;
+	
 	public DraftSchematic() {
 		Logger.setLoggingName("DraftSchematic");	
 	}
@@ -151,6 +156,11 @@ class DraftSchematic extends SceneObject {
 	@local
 	public void addSlot(DraftSlot slot) {
 		draftSlots.add(slot);
+	}
+	
+	@local
+	public void addResourceWeight(ResourceWeight weight) {
+		resourceWeights.add(weight);
 	}
 	
 	/**

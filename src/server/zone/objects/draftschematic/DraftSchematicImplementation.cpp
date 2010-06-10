@@ -124,22 +124,17 @@ void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player)
 	msg->insertInt(schematicID);
 	msg->insertInt(clientObjectCRC);
 
-	//uint8 listSize = dsExpPropGroups.size();
+	msg->insertByte(resourceWeights.size());
 
-	msg->insertByte(0);
-	// Send all the resource batch property data
-	//for (int i = 0; i < listSize; i++) {
+	//Send all the resource batch property data
+	for (int i = 0; i < resourceWeights.size(); i++)
+		resourceWeights.get(i)->insertBatchToMessage(msg);
 
-	//	DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
-	//	dsEpg->sendBatchToPlayer(msg);
-	//}
+	msg->insertByte(resourceWeights.size());
 
-	msg->insertByte(0);
-	// Send all the experimental property data
-	//for (int i = 0; i < listSize; i++) {
+	//Send all the resource property data
+	for (int i = 0; i < resourceWeights.size(); i++)
+		resourceWeights.get(i)->insertToMessage(msg);
 
-	//	DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
-	//	dsEpg->sendToPlayer(msg);
-	//}
 	player->sendMessage(msg);
 }

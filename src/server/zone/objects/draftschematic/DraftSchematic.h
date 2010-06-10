@@ -33,6 +33,10 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 
+#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
+
+#include "server/zone/objects/draftschematic/resourceweight/ResourceWeights.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
@@ -54,6 +58,8 @@ public:
 	void sendResourceWeightsTo(PlayerCreature* player);
 
 	void addSlot(DraftSlot* slot);
+
+	void addResourceWeight(ResourceWeight* weight);
 
 	void setSchematicID(unsigned int id);
 
@@ -133,6 +139,8 @@ protected:
 
 	DraftSlots draftSlots;
 
+	ResourceWeights resourceWeights;
+
 public:
 	DraftSchematicImplementation();
 
@@ -151,6 +159,8 @@ public:
 	void sendResourceWeightsTo(PlayerCreature* player);
 
 	void addSlot(DraftSlot* slot);
+
+	void addResourceWeight(ResourceWeight* weight);
 
 	void setSchematicID(unsigned int id);
 
