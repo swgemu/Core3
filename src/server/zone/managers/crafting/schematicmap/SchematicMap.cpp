@@ -145,8 +145,8 @@ int SchematicMap::addDraftSchematicToServer(lua_State *L) {
 
 		if(draftSchematic == NULL) {
 			SchematicMap::instance()->info("Creating schematic for " + objectName);
-			draftSchematic = (DraftSchematic*) ObjectManager::instance()->createObject(objCRC, 2, "draftschematics");
-			draftSchematic->setSchematicID(nextSchematicID++);
+			draftSchematic = (DraftSchematic*) ObjectManager::instance()->createObject(objCRC, 1, "draftschematics");
+			draftSchematic->setSchematicID(++nextSchematicID);
 		}
 
 		StringId stringid;
