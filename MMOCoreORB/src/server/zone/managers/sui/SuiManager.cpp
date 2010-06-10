@@ -55,13 +55,16 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
+#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -244,13 +247,13 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::DENY_TRAINING_LIST:
 		handleDenyTrainingList(boxID, player);
-		break;
+		break;*/
 	case SuiWindowType::OBJECT_NAME:   // Set Object Name
 		handleSetObjectName(boxID, player, cancel, value.toCharArray());
 		break;
 	case SuiWindowType::MANAGE_MAINTENANCE:    // Add/Remove Maintenance
 		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;/*
 	case SuiWindowType::ADD_ENERGY:    // Add Energy
 		handleAddEnergy(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -440,117 +443,95 @@ void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
 		error("Unreported exception caught in SuiManager::handleRefreshStatusListBox");
 		player->unlock();
 	}
-}
+}*/
 
-void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
+void SuiManager::handleSetObjectName(uint32 boxID, PlayerCreature* player,
 		uint32 cancel, const String& name) {
-	try {
+	Locker _locker(player);
 
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isInputBox() && cancel != 1) {
-			Zone * zone = player->getZone();
-
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
-
-			TangibleObject * tano = (TangibleObject *) scno;
-
-			if (tano!= NULL)	{
-
-				//tano->setTemplateName(name);
-
-			}
-
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleSetObjectName ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSetObjectName");
-		player->unlock();
+	if (!player->hasSuiBox(boxID)) {
+		return;
 	}
+
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	if (sui->isInputBox() && cancel != 1) {
+		SuiInputBox* inputBox = (SuiInputBox*) sui.get();
+
+		Zone* zone = player->getZone();
+
+		ManagedReference<SceneObject*> object = inputBox->getUsingObject();
+
+		if (object != NULL)	{
+			object->setCustomObjectName(name , true);
+		}
+	}
+
+	player->removeSuiBox(boxID);
 }
 
-void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
+void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 		uint32 cancel, const int newCashVal) {
-	try {
 
-		player->wlock();
+	Locker _locker(player);
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isTransferBox() && cancel != 1) {
-
-			Zone * zone = player->getZone();
-
-			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
-
-			InstallationObject * inso = (InstallationObject *) scno.get();
-
-			if (inso!= NULL)	{
-				try {
-					inso->wlock(player);
-
-					int maint = (player->getCashCredits() - newCashVal);
-
-					inso->addMaintenance(maint);
-					player->subtractCashCredits(maint);
-
-					StringBuffer report;
-					report << "You successfully make a payment of " << maint << " to "
-					<< inso->getCustomName().toString() << ".\n"
-					<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";
-
-					player->sendSystemMessage(report.toString());
-
-					inso->unlock();
-				} catch (...) {
-					inso->unlock();
-				}
-
-			}
-
-
-
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleManageMaintenance ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleManageMaintenance");
-		player->unlock();
+	if (!player->hasSuiBox(boxID)) {
+		return;
 	}
+
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!sui->isTransferBox() || cancel == 1) {
+		return;
+	}
+
+	SuiTransferBox* transferBox = (SuiTransferBox*) sui.get();
+
+	Zone* zone = player->getZone();
+
+	ManagedReference<SceneObject*> usingObject = transferBox->getUsingObject();
+
+	if (usingObject == NULL || !usingObject->isInstallationObject())
+		return;
+
+	InstallationObject* installation = (InstallationObject*) usingObject.get();
+
+	int currentCash = player->getCashCredits();
+
+	if (newCashVal > currentCash || newCashVal < 0)
+		return;
+
+	try {
+		installation->wlock(player);
+
+		int maint = currentCash - newCashVal;
+
+		installation->addMaintenance(maint);
+		player->substractCashCredits(maint);
+
+		ParameterizedStringId stringId("base_player", "prose_pay_success");
+		stringId.setTT(installation->getObjectID());
+		stringId.setDI(maint);
+
+		/*StringBuffer report;
+		report << "You successfully make a payment of " << maint << " to "
+				<< inso->getCustomName().toString() << ".\n"
+				<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";*/
+
+		player->sendSystemMessage(stringId);
+		installation->updateToDatabaseWithoutChildren();
+
+		installation->unlock();
+	} catch (...) {
+		installation->unlock();
+	}
+
+	player->updateToDatabaseWithoutChildren();
 }
+
+/*
 void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 		uint32 cancel, const int newEnergyVal) {
 	try {

@@ -160,6 +160,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setDefender(SceneObject* defender);
@@ -365,6 +367,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void setDefender(SceneObject* defender);
@@ -482,6 +486,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setDefender(SceneObject* defender);
@@ -549,6 +555,7 @@ public:
 	void setCustomizationString(const String& vars);
 
 protected:
+	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_getCustomizationString__String_;
 	String _param0_setCustomizationString__String_;
 };

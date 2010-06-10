@@ -158,6 +158,13 @@ class TangibleObject extends SceneObject {
 	public native void initializeTransientMembers();
 	
 	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	
+	/**
 	 * Sends the TANO baseline messages of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }

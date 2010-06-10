@@ -137,6 +137,11 @@ public:
 		insertUnicode(v);
 	}
 
+	inline void addUnicodeUpdate(uint16 type, const UnicodeString& val) {
+		startUpdate(type);
+		insertUnicode(val);
+	}
+
 	inline void startList(uint32 cnt, uint32 updcnt) {
 		insertInt(cnt);
 		insertInt(updcnt);

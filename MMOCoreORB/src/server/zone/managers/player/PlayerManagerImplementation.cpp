@@ -293,7 +293,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getCustomizationString(playerCustomization);
 	playerCreature->setCustomizationString(playerCustomization);
 
-	playerCreature->setObjectName(name);
+	playerCreature->setCustomObjectName(name, false);
 
 	String firstName = playerCreature->getFirstName();
 	String lastName = playerCreature->getLastName();
