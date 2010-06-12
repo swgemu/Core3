@@ -70,7 +70,12 @@ public:
 			float posx = args.getFloatToken();
 			float posy = args.getFloatToken();
 
-			creature->switchZone(zoneid, posx, 0, posy);
+			uint64 parent = 0;
+
+			if (args.hasMoreTokens())
+				parent = args.getLongToken();
+
+			creature->switchZone(zoneid, posx, 0, posy, parent);
 		} catch (...) {
 			creature->sendSystemMessage("invalid arguments for teleport command");
 		}
