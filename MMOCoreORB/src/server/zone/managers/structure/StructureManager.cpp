@@ -192,19 +192,21 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(85):  		Logger.info("loading structures...", true);
+	// server/zone/managers/structure/StructureManager.idl(86):  		Logger.info("loading structures...", true);
 	Logger::info("loading structures...", true);
-	// server/zone/managers/structure/StructureManager.idl(87):  		loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(88):  		loadStaticBuildings();
 	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(88):  		loadPlayerStructures();
+	// server/zone/managers/structure/StructureManager.idl(89):  		loadPlayerStructures();
 	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl(89):  		loadStaticBanks();
+	// server/zone/managers/structure/StructureManager.idl(90):  		loadStaticBanks();
 	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl(90):  		loadStaticBazaars();
+	// server/zone/managers/structure/StructureManager.idl(91):  		loadStaticBazaars();
 	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl(91):  		loadStaticMissionTerminals();
+	// server/zone/managers/structure/StructureManager.idl(92):  		loadStaticMissionTerminals();
 	loadStaticMissionTerminals();
-	// server/zone/managers/structure/StructureManager.idl(92):  		loadStaticGarages();
+	// server/zone/managers/structure/StructureManager.idl(93):  		loadStaticCraftingStations();
+	loadStaticCraftingStations();
+	// server/zone/managers/structure/StructureManager.idl(94):  		loadStaticGarages();
 	loadStaticGarages();
 }
 

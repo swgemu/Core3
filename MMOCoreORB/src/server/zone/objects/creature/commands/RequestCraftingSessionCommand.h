@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "../../tangible/tool/CraftingTool.h"
+#include "../../tangible/tool/CraftingStation.h"
 
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
@@ -79,10 +80,13 @@ public:
 		if(object->isCraftingTool()) {
 
 			CraftingTool* craftingTool = (CraftingTool*) object.get();
-			craftingTool->reqeustCraftingSession((PlayerCreature*)creature);
+			craftingTool->requestCraftingSession((PlayerCreature*)creature);
 
 		/// Logic for if target oid is crafting station
 		} else if(object->isCraftingStation()) {
+
+			CraftingStation* craftingStation = (CraftingStation*) object.get();
+			craftingStation->reqeustCraftingSession((PlayerCreature*)creature);
 
 		} else
 			return INVALIDTARGET;

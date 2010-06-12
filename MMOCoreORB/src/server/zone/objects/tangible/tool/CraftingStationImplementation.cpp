@@ -44,46 +44,42 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "CraftingTool.h"
+#include "CraftingStation.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
+#include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 
 
-void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*>(templateData);
+	CraftingStationTemplate* craftingStationData = dynamic_cast<CraftingStationTemplate*>(templateData);
 
-	type = craftingToolData->getToolType();
-
-	for(int i = 0; i < craftingToolData->getTabs().size(); ++i)
-		enabledTabs.add(craftingToolData->getTabs().get(i));
+	type = craftingStationData->getStationType();
 }
 
-void CraftingToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 }
 
-int CraftingToolImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
+int CraftingStationImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
 	if (selectedID == 20) { // use object
-
+		reqeustCraftingSession(playerCreature);
 	}
 
 	return 1;
 }
 
-void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
-
-	alm->insertAttribute("craft_tool_status", status);
+	alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
 
 	if (craftersName != ""){
 
@@ -95,11 +91,6 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 	}
 }
 
-Vector<uint32>* CraftingToolImplementation::getToolTabs() {
-	return &enabledTabs;
-}
-
-void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player) {
-
+void CraftingStationImplementation::reqeustCraftingSession(PlayerCreature* player) {
 	player->getPlayerObject()->requestCraftingSession(player, _this);
 }
