@@ -90,17 +90,37 @@ bool CraftingTool::isCraftingTool() {
 		return ((CraftingToolImplementation*) _impl)->isCraftingTool();
 }
 
-void CraftingTool::reqeustCraftingSession(PlayerCreature* player) {
+int CraftingTool::getToolType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getToolType();
+}
+
+Vector<unsigned int>* CraftingTool::getToolTabs() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((CraftingToolImplementation*) _impl)->getToolTabs();
+}
+
+void CraftingTool::requestCraftingSession(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->reqeustCraftingSession(player);
+		((CraftingToolImplementation*) _impl)->requestCraftingSession(player);
 }
 
 /*
@@ -194,6 +214,11 @@ bool CraftingToolImplementation::isCraftingTool() {
 	return true;
 }
 
+int CraftingToolImplementation::getToolType() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl(111):  		return type;
+	return type;
+}
+
 /*
  *	CraftingToolAdapter
  */
@@ -215,7 +240,10 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isCraftingTool());
 		break;
 	case 9:
-		reqeustCraftingSession((PlayerCreature*) inv->getObjectParameter());
+		resp->insertSignedInt(getToolType());
+		break;
+	case 10:
+		requestCraftingSession((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -236,8 +264,12 @@ bool CraftingToolAdapter::isCraftingTool() {
 	return ((CraftingToolImplementation*) impl)->isCraftingTool();
 }
 
-void CraftingToolAdapter::reqeustCraftingSession(PlayerCreature* player) {
-	((CraftingToolImplementation*) impl)->reqeustCraftingSession(player);
+int CraftingToolAdapter::getToolType() {
+	return ((CraftingToolImplementation*) impl)->getToolType();
+}
+
+void CraftingToolAdapter::requestCraftingSession(PlayerCreature* player) {
+	((CraftingToolImplementation*) impl)->requestCraftingSession(player);
 }
 
 /*

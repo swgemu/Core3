@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/chat/ChatManager.h"
 
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
@@ -696,18 +697,94 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 
 
 void PlayerObjectImplementation::requestCraftingSession(
-		PlayerCreature* player, CraftingTool* craftingTool, Vector<uint32>& enabledTabs,
-		float maxComplexity, uint64 stationID) {
+		PlayerCreature* player, CraftingTool* craftingTool) {
 
-	craftingSession.request(player, _this, craftingTool, enabledTabs, maxComplexity, stationID);
+	Locker _locker(player);
+
+	//Locate closest crafting station, if exists.
+	CraftingStation* craftingStation = findCraftingStation(player, craftingTool->getToolType());
+
+	craftingSession.request(player, _this, craftingTool, craftingStation);
+}
+
+void PlayerObjectImplementation::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
+
+	Locker _locker(player);
+
+	// Locate associated crafting tool
+	CraftingTool* craftingTool = findCraftingTool(player, craftingStation->getStationType());
+
+	craftingSession.request(player, _this, craftingTool, craftingStation);
 }
 
 void PlayerObjectImplementation::cancelCraftingSession() {
 	craftingSession.cancel();
 }
 
+CraftingStation* PlayerObjectImplementation::findCraftingStation(PlayerCreature* player,
+		int toolType){
+
+	CraftingStation* station;
+	ZoneServer* server = player->getZone()->getZoneServer();
+	Zone* zone = player->getZone();
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno =
+				(SceneObjectImplementation*) player->getInRangeObject(i);
+
+		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
+
+			station = (CraftingStation*) server->getObject(scno->getObjectID());
+
+			if(station == NULL)
+				continue;
+
+			if (toolType == station->getStationType() || (toolType
+					== CraftingTool::JEDI && station->getStationType()
+					== CraftingTool::WEAPON)) {
+				return station;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+CraftingTool* PlayerObjectImplementation::findCraftingTool(
+		PlayerCreature* player, int stationType) {
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
+			"inventory");
+	Locker inventoryLocker(inventory);
+	CraftingTool* craftingTool = NULL;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+
+		SceneObject* object = inventory->getContainerObject(i);
+
+		if (object != NULL && object->isCraftingTool()) {
+
+			int toolType = ((CraftingTool*) object)->getToolType();
+
+			if (toolType == stationType) {
+				craftingTool = (CraftingTool*) object;
+				return craftingTool;
+			}
+
+			if (toolType == CraftingTool::JEDI && stationType
+					== CraftingTool::WEAPON) {
+				craftingTool = (CraftingTool*) object;
+			}
+		}
+
+	}
+	return craftingTool;
+}
+
 Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
-		Vector<uint32>& enabledTabs) {
+		Vector<uint32>* enabledTabs) {
 
 	Locker _locker(_this);
 

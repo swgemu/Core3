@@ -34,6 +34,7 @@
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 
@@ -185,6 +186,97 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 		error(e.getMessage());
 	} catch (...) {
 		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+}
+
+void StructureManagerImplementation::loadStaticCraftingStations() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file like '%object/tangible/crafting/station%';";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		CraftingStation* craftingStation = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+		String file = "";
+		uint32 serverCRC = 0;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+			file = result->getString(3);
+
+			if(file.indexOf("droid") != -1) {
+				info("Ignoring template for " + file);
+				continue;
+			}
+
+			file = file.replaceAll("shared_public_", "");
+			file = file.replaceAll("shared_", "");
+			serverCRC = file.hashCode();
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("crafting station unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			craftingStation = (CraftingStation*) zoneServer->createStaticObject(serverCRC, objectID);
+
+			if(craftingStation == NULL) {
+				error("craftingstation '" + file + "' not created from template");
+				continue;
+			}
+
+			craftingStation->setStaticObject(true);
+			craftingStation->setComplexityLevel(20);
+
+			if (cell != NULL)
+				cell->addObject(craftingStation, -1);
+
+			craftingStation->initializePosition(positionX, positionZ, positionY);
+			craftingStation->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				craftingStation->updateToDatabase();
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticCraftingStations()\n");
 	}
 
 	delete result;

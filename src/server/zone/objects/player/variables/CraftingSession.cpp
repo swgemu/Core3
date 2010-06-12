@@ -53,8 +53,9 @@ CraftingSession::CraftingSession() {
 CraftingSession::~CraftingSession() {
 
 }
-
-void CraftingSession::request(PlayerCreature* pl, PlayerObject* play, CraftingTool* tool, Vector<uint32>& enabledTabs, float maxComplexity, uint64 stationID) {
+/// Player is locked pre
+void CraftingSession::request(PlayerCreature* pl, PlayerObject* play, CraftingTool* tool,
+		CraftingStation* station) {
 
 	/// Check Jedi tool usage later
 	//if(getToolType() == JEDI && !player->isJedi()) {
@@ -65,28 +66,26 @@ void CraftingSession::request(PlayerCreature* pl, PlayerObject* play, CraftingTo
 	playerObject = play;
 	player = pl;
 	craftingTool = tool;
-	experimentingEnabled = stationID != 0;
-	complexityLevel = maxComplexity;
-	craftingStationID = stationID;
+	craftingStation = station;
 
-	collectSchematics(enabledTabs);
-
-	sendStart();
+	if(craftingTool != NULL) {
+		collectSchematics();
+		sendStart();
+	} else
+		player->sendSystemMessage("You do not have a crafting tool compatible with this station");
 }
 
 void CraftingSession::cancel() {
 	playerObject = NULL;
 	player = NULL;
 	craftingTool = NULL;
-	experimentingEnabled = false;
-	complexityLevel = 0;
-	craftingStationID = 0;
+	craftingStation = NULL;
 	schematics.removeAll();
 }
 
-void CraftingSession::collectSchematics(Vector<uint32>& enabledTabs) {
+void CraftingSession::collectSchematics() {
 
-	schematics = playerObject->filterSchematicList(enabledTabs);
+	schematics = playerObject->filterSchematicList(craftingTool->getToolTabs());
 }
 
 void CraftingSession::sendStart() {
@@ -94,9 +93,14 @@ void CraftingSession::sendStart() {
 	/// Packet Sending Start
 	/// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(playerObject);
-	dplay9->setExperimentationEnabled(experimentingEnabled);
+	dplay9->setExperimentationEnabled(craftingStation != NULL);
 	dplay9->setCraftingState(1);
-	dplay9->setClosestCraftingStation(craftingStationID);
+
+	if(craftingStation != NULL)
+		dplay9->setClosestCraftingStation(craftingStation->getObjectID());
+	else
+		dplay9->setClosestCraftingStation(0)
+		;
 	dplay9->setExperimentationPoints(0);
 	dplay9->close();
 	player->sendMessage(dplay9);
@@ -106,7 +110,11 @@ void CraftingSession::sendStart() {
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(
 			player->getObjectID(), 0x0B, 0x102);
 	ocm->insertLong(craftingTool->getObjectID());
-	ocm->insertLong(craftingStationID);
+
+	if(craftingStation != NULL)
+		ocm->insertLong(craftingStation->getObjectID());
+	else
+		ocm->insertLong(0);
 
 	ocm->insertInt(schematics.size());
 	for (int i = 0; i < schematics.size(); ++i) {
