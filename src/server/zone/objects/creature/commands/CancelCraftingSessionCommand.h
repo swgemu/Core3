@@ -63,6 +63,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if(creature == NULL || !creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<PlayerObject* > playerObject = ((PlayerCreature*)creature)->getPlayerObject();
+		playerObject->cancelCraftingSession();
+
 		return SUCCESS;
 	}
 

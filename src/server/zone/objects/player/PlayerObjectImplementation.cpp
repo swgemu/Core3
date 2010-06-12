@@ -693,3 +693,23 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 	}
 
 }
+
+
+void PlayerObjectImplementation::requestCraftingSession(
+		PlayerCreature* player, CraftingTool* craftingTool, Vector<uint32>& enabledTabs,
+		float maxComplexity, uint64 stationID) {
+
+	craftingSession.request(player, _this, craftingTool, enabledTabs, maxComplexity, stationID);
+}
+
+void PlayerObjectImplementation::cancelCraftingSession() {
+	craftingSession.cancel();
+}
+
+Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
+		Vector<uint32>& enabledTabs) {
+
+	Locker _locker(_this);
+
+	return schematicList.filterSchematicList(enabledTabs);
+}

@@ -494,7 +494,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player PlayerCreature using the item
 	 * @param value value from packet
 	 */
-	public abstract void synchronizedUIListen(PlayerCreature player, int value) {
+	public abstract void synchronizedUIListen(SceneObject player, int value) {
 		Logger.info("Unhandled synchronizedUIListen", true);
 	}
 	
@@ -505,7 +505,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player PlayerCreature using the item
 	 * @param value value from packet
 	 */
-	public abstract void synchronizedUIStopListen(PlayerCreature player, int value) {
+	public abstract void synchronizedUIStopListen(SceneObject player, int value) {
 		Logger.info("Unhandled synchronizedUIStopListen", true);
 	}
 	
@@ -1208,6 +1208,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public abstract boolean isInstallationDeed() {
+		return false;
+	}
+	
+	public abstract boolean isCraftingTool() {
+		return false;
+	}
+	
+	public abstract boolean isCraftingStation() {
 		return false;
 	}
 	

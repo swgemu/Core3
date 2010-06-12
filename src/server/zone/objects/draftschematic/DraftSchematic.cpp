@@ -148,14 +148,14 @@ void DraftSchematic::setToolTab(unsigned int tab) {
 		((DraftSchematicImplementation*) _impl)->setToolTab(tab);
 }
 
-float DraftSchematic::getToolTab() {
+unsigned int DraftSchematic::getToolTab() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
 
-		return method.executeWithFloatReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((DraftSchematicImplementation*) _impl)->getToolTab();
 }
@@ -408,7 +408,7 @@ void DraftSchematicImplementation::setToolTab(unsigned int tab) {
 	toolTab = tab;
 }
 
-float DraftSchematicImplementation::getToolTab() {
+unsigned int DraftSchematicImplementation::getToolTab() {
 	// server/zone/objects/draftschematic/DraftSchematic.idl(211):  		return toolTab;
 	return toolTab;
 }
@@ -499,7 +499,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setToolTab(inv->getUnsignedIntParameter());
 		break;
 	case 14:
-		resp->insertFloat(getToolTab());
+		resp->insertInt(getToolTab());
 		break;
 	case 15:
 		setSize(inv->getUnsignedIntParameter());
@@ -570,7 +570,7 @@ void DraftSchematicAdapter::setToolTab(unsigned int tab) {
 	((DraftSchematicImplementation*) impl)->setToolTab(tab);
 }
 
-float DraftSchematicAdapter::getToolTab() {
+unsigned int DraftSchematicAdapter::getToolTab() {
 	return ((DraftSchematicImplementation*) impl)->getToolTab();
 }
 

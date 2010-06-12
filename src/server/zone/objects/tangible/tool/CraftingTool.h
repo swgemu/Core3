@@ -27,20 +27,6 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
 namespace packets {
 namespace scene {
 
@@ -77,6 +63,8 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -100,6 +88,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isCraftingTool();
+
+	void reqeustCraftingSession(PlayerCreature* player);
 
 protected:
 	CraftingTool(DummyConstructorParameter* param);
@@ -130,6 +122,8 @@ class CraftingToolImplementation : public ToolTangibleObjectImplementation {
 
 	String status;
 
+	Vector<unsigned int> enabledTabs;
+
 	static const int CLOTHING = 1;
 
 	static const int FOOD = 2;
@@ -158,6 +152,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	bool isCraftingTool();
+
+	void reqeustCraftingSession(PlayerCreature* player);
 
 	CraftingTool* _this;
 
@@ -201,6 +199,10 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isCraftingTool();
+
+	void reqeustCraftingSession(PlayerCreature* player);
 
 };
 

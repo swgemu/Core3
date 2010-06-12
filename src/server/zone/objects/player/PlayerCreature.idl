@@ -149,7 +149,7 @@ class PlayerCreature extends CreatureObject {
 	protected transient TradeContainer tradeContainer;
 		
 	//protected BankTerminal registeredBank;
-	
+
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
 	public static final int LINKDEAD = 3;
@@ -647,5 +647,4 @@ class PlayerCreature extends CreatureObject {
 	public boolean hasBadge(unsigned int badge) {
 		return badges.hasBadge(badge);
 	}
-	
 }

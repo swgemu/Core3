@@ -46,6 +46,7 @@ which carries forward this exception.
 #define REQUESTCRAFTINGSESSIONCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../tangible/tool/CraftingTool.h"
 
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
@@ -62,6 +63,29 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		/**
+		 * This command seems to have no arguments
+		 * The target is either the crafting tool,
+		 * or station clicked on
+		 */
+
+		ManagedReference<SceneObject* > object = creature->getZoneServer()->getObject(target);
+
+		if(object == NULL || !creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		/// Logic for if target oid is crafting tool
+		if(object->isCraftingTool()) {
+
+			CraftingTool* craftingTool = (CraftingTool*) object.get();
+			craftingTool->reqeustCraftingSession((PlayerCreature*)creature);
+
+		/// Logic for if target oid is crafting station
+		} else if(object->isCraftingStation()) {
+
+		} else
+			return INVALIDTARGET;
 
 		return SUCCESS;
 	}

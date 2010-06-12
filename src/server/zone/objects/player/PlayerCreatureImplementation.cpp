@@ -59,6 +59,7 @@ void PlayerCreatureImplementation::finalize() {
 		delete tradeContainer;
 		tradeContainer = NULL;
 	}
+
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {

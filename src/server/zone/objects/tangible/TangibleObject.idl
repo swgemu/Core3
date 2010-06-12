@@ -173,6 +173,24 @@ class TangibleObject extends SceneObject {
 	public native abstract void sendBaselinesTo(SceneObject player);
 	
 	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIListen(SceneObject player, int value);
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
+	
+	/**
 	 * Sets the active defender
 	 * @pre { this object is locked }
 	 * @post { this object is locked, defender is active }
