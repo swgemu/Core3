@@ -164,6 +164,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
 	void setDefender(SceneObject* defender);
 
 	void addDefender(SceneObject* defender);
@@ -371,6 +375,10 @@ public:
 
 	virtual void sendBaselinesTo(SceneObject* player);
 
+	virtual void synchronizedUIListen(SceneObject* player, int value);
+
+	virtual void synchronizedUIStopListen(SceneObject* player, int value);
+
 	virtual void setDefender(SceneObject* defender);
 
 	virtual void addDefender(SceneObject* defender);
@@ -489,6 +497,10 @@ public:
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	void setDefender(SceneObject* defender);
 

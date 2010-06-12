@@ -580,9 +580,9 @@ public:
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
-	void synchronizedUIListen(PlayerCreature* player, int value);
+	void synchronizedUIListen(SceneObject* player, int value);
 
-	void synchronizedUIStopListen(PlayerCreature* player, int value);
+	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	void updateToDatabase();
 
@@ -803,6 +803,10 @@ public:
 	bool isBuildingDeed();
 
 	bool isInstallationDeed();
+
+	bool isCraftingTool();
+
+	bool isCraftingStation();
 
 	bool isBazaarTerminal();
 
@@ -1335,9 +1339,9 @@ public:
 
 	virtual int canAddObject(SceneObject* object, String& errorDescription);
 
-	virtual void synchronizedUIListen(PlayerCreature* player, int value);
+	virtual void synchronizedUIListen(SceneObject* player, int value);
 
-	virtual void synchronizedUIStopListen(PlayerCreature* player, int value);
+	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
 	void updateToDatabase();
 
@@ -1559,6 +1563,10 @@ public:
 
 	virtual bool isInstallationDeed();
 
+	virtual bool isCraftingTool();
+
+	virtual bool isCraftingStation();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -1660,9 +1668,9 @@ public:
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
-	void synchronizedUIListen(PlayerCreature* player, int value);
+	void synchronizedUIListen(SceneObject* player, int value);
 
-	void synchronizedUIStopListen(PlayerCreature* player, int value);
+	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	void updateToDatabase();
 
@@ -1855,6 +1863,10 @@ public:
 	bool isBuildingDeed();
 
 	bool isInstallationDeed();
+
+	bool isCraftingTool();
+
+	bool isCraftingStation();
 
 	bool isBazaarTerminal();
 

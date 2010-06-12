@@ -123,6 +123,24 @@ bool SchematicList::remove(DraftSchematic* schematic, DeltaMessage* message, int
 	return true;
 }
 
+Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
+		Vector<uint32>& enabledTabs) {
+
+	Vector<ManagedReference<DraftSchematic* > > filteredschematics;
+
+	for (int i = 0; i < size(); ++i) {
+		ManagedReference<DraftSchematic*> schematic = get(i);
+
+		for(int j = 0; j < enabledTabs.size(); ++j) {
+			if(enabledTabs.get(j) == schematic->getToolTab()) {
+				filteredschematics.add(schematic);
+				break;
+			}
+		}
+	}
+	return filteredschematics;
+}
+
 void SchematicList::insertToMessage(BaseMessage* msg) {
 	msg->insertInt(size());
 	msg->insertInt(updateCounter);

@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage7.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -96,6 +97,16 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
 	player->sendMessage(tano6);
+}
+
+void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
+	// Send TANO7 Baseline
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	player->sendMessage(tano7);
+}
+
+void TangibleObjectImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
+
 }
 
 void TangibleObjectImplementation::setDefender(SceneObject* defender) {

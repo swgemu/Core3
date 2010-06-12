@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/Zone.h"
@@ -80,6 +78,31 @@ void CraftingTool::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		((CraftingToolImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
+bool CraftingTool::isCraftingTool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->isCraftingTool();
+}
+
+void CraftingTool::reqeustCraftingSession(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->reqeustCraftingSession(player);
+}
+
 /*
  *	CraftingToolImplementation
  */
@@ -150,19 +173,25 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("type", &type);
 	addSerializableVariable("effectiveness", &effectiveness);
 	addSerializableVariable("status", &status);
+	addSerializableVariable("enabledTabs", &enabledTabs);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(70):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(73):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(74):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(77):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(76):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(79):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
+}
+
+bool CraftingToolImplementation::isCraftingTool() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl(107):  		return true;
+	return true;
 }
 
 /*
@@ -182,6 +211,12 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case 7:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
+	case 8:
+		resp->insertBoolean(isCraftingTool());
+		break;
+	case 9:
+		reqeustCraftingSession((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -195,6 +230,14 @@ void CraftingToolAdapter::initializeTransientMembers() {
 
 int CraftingToolAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((CraftingToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+bool CraftingToolAdapter::isCraftingTool() {
+	return ((CraftingToolImplementation*) impl)->isCraftingTool();
+}
+
+void CraftingToolAdapter::reqeustCraftingSession(PlayerCreature* player) {
+	((CraftingToolImplementation*) impl)->reqeustCraftingSession(player);
 }
 
 /*
