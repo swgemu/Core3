@@ -109,6 +109,8 @@ using namespace server::zone;
 
 #include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
 
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
@@ -276,11 +278,13 @@ public:
 
 	int getExperience(const String& xp);
 
-	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool, Vector<unsigned int>& enabledTabs, float maxComplexity, unsigned long long stationID);
+	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool);
+
+	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
 
 	void cancelCraftingSession();
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>& enabledTabs);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -481,11 +485,19 @@ public:
 
 	int getExperience(const String& xp);
 
-	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool, Vector<unsigned int>& enabledTabs, float maxComplexity, unsigned long long stationID);
+	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool);
+
+	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
 
 	void cancelCraftingSession();
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>& enabledTabs);
+private:
+	CraftingStation* findCraftingStation(PlayerCreature* player, int toolType);
+
+	CraftingTool* findCraftingTool(PlayerCreature* player, int stationType);
+
+public:
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
 
 	PlayerObject* _this;
 

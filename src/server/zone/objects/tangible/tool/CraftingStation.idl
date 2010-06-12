@@ -52,31 +52,21 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 
-class CraftingTool extends ToolTangibleObject {
+class CraftingStation extends ToolTangibleObject {
 	
 	private int type;
 	private float effectiveness;
-	private string status;
-	
-	@dereferenced
-	Vector<unsigned int> enabledTabs;
-	
-	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
-	public static final int FOOD = 2; // Food and Chemical Crafting Tool
-	public static final int GENERIC = 3; // Generic Crafting Tool
-	public static final int JEDI = 4; // Lightsaber Crafting Tool
-	public static final int SPACE = 5; // Starship Crafting Tool
-	public static final int STRUCTURE = 6; // Structure and Furniture Crafting Tool
-	public static final int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
-	
-	public CraftingTool() {
-		Logger.setLoggingName("CraftingTool");
+	private int complexityLevel;
+
+	public CraftingStation() {
+		Logger.setLoggingName("CraftingStation");
+		complexityLevel = 100;
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
-		Logger.setLoggingName("CraftingTool");
+		Logger.setLoggingName("CraftingStation");
 	}
 	
 	@local
@@ -103,16 +93,21 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
-	public boolean isCraftingTool() {
+	public boolean isCraftingStation() {
 		return true;
 	}
 	
-	public int getToolType() {
+	public int getComplexityLevel() {
+		return complexityLevel;
+	}
+	
+	public int getStationType() {
 		return type;
 	}
 	
-	@local
-	public native Vector<unsigned int> getToolTabs();
+	public void setComplexityLevel(int level) {
+		complexityLevel = level;
+	}
 	
-	public native void requestCraftingSession(PlayerCreature player);
+	public native void reqeustCraftingSession(PlayerCreature player);
 }

@@ -169,6 +169,8 @@ private:
 
 	void loadStaticMissionTerminals();
 
+	void loadStaticCraftingStations();
+
 	void loadPlayerStructures();
 
 	void loadStaticGarages();

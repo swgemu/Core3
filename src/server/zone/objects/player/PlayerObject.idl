@@ -54,6 +54,7 @@ include server.zone.objects.creature.professions.Certification;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.managers.crafting.schematicmap.DraftSchematicGroup;
 import server.zone.ZoneClientSession;
+include server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.objects.tangible.tool.CraftingTool;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
@@ -426,13 +427,21 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@local
-	public native void requestCraftingSession(PlayerCreature player, CraftingTool craftingTool, @dereferenced Vector<unsigned int> enabledTabs, 
-			float maxComplexity, unsigned long stationID);
+	public native void requestCraftingSession(PlayerCreature player, CraftingTool craftingTool);
+	
+	@local
+	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation);
 	
 	@local
 	public native void cancelCraftingSession();
 	
 	@local
+	private native CraftingStation findCraftingStation(PlayerCreature player, int toolType);
+	
+	@local
+	private native CraftingTool findCraftingTool(PlayerCreature player, int stationType);
+	
+	@local
 	@dereferenced
-	public native Vector<DraftSchematic> filterSchematicList(@dereferenced Vector<unsigned int> enabledTabs);
+	public native Vector<DraftSchematic> filterSchematicList(Vector<unsigned int> enabledTabs);
 }

@@ -47,16 +47,15 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 class CraftingSession {
 private:
 	ManagedReference<CraftingTool* > craftingTool;
+	ManagedReference<CraftingStation* > craftingStation;
 	ManagedReference<PlayerCreature* > player;
 	ManagedReference<PlayerObject* > playerObject;
-	bool experimentingEnabled;
-	float complexityLevel;
-	uint64 craftingStationID;
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 public:
@@ -65,13 +64,12 @@ public:
 	~CraftingSession();
 
 	void request(PlayerCreature* pl, PlayerObject* play,
-			CraftingTool* tool, Vector<uint32>& enabledTabs,
-			float maxComplexity, uint64 stationID);
+			CraftingTool* tool, CraftingStation* station);
 	void cancel();
 
 private:
 	void sendStart();
-	void collectSchematics(Vector<uint32>& enabledTabs);
+	void collectSchematics();
 
 };
 

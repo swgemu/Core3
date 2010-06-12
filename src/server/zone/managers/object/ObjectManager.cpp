@@ -32,6 +32,7 @@
 #include "server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.h"
 #include "server/zone/objects/tangible/weapon/PolearmWeaponObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -141,6 +142,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
 	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
+
+	objectFactory.registerObject<CraftingStation>(SceneObject::CRAFTINGSTATION);
 
 	objectFactory.registerObject<TangibleObject>(SceneObject::FURNITURE);
 
