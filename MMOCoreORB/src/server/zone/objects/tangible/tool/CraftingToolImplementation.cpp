@@ -59,6 +59,8 @@ void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	type = craftingToolData->getToolType();
 
+	for(int i = 0; i < craftingToolData->getTabs().size(); ++i)
+		enabledTabs.add(craftingToolData->getTabs().get(i));
 }
 
 void CraftingToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -91,4 +93,17 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 		alm->insertAttribute("serial_number", craftersSerial);
 	}
+}
+
+void CraftingToolImplementation::reqeustCraftingSession(PlayerCreature* player) {
+
+	uint64 craftingStationID = 0;
+	/// Identify type of nearby crafting station, if in range
+	//oidOfLocatedCraftingStation = findCraftingStation(player, workingStationComplexity);
+
+	/// Crafting station complexity
+	float maxComplexity = 15 + effectiveness;
+
+	/// Get schematics based on type of tool and complexity level
+	player->getPlayerObject()->requestCraftingSession(player, _this, enabledTabs, maxComplexity, craftingStationID);
 }

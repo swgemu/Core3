@@ -76,6 +76,31 @@ public:
 		insertInt((uint32)lid);
 	}
 
+	void setExperimentationEnabled(bool experimenting) {
+		startUpdate(1);
+		if (experimenting){
+			insertInt(3);  // 3 // 4
+		}
+		else {
+			insertInt(1);
+		}
+	}
+
+	void setExperimentationPoints(int points){
+		startUpdate(5);
+		insertInt(points); // Number of experimentation points
+	}
+
+	void setCraftingState(int state) {
+		startUpdate(2);
+		insertInt(state);
+	}
+
+	void setClosestCraftingStation(uint64 oid) {
+		startUpdate(3);
+		insertLong(oid);
+	}
+
 	/*void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
@@ -90,26 +115,6 @@ public:
 	void removeSkill(uint16 idx) {
 		insertByte(0);
 		insertShort(idx);
-	}
-
-	void setExperimentationEnabled(bool experimenting) {
-		startUpdate(1);
-		if (experimenting){
-			insertInt(3);  // 3 // 4
-		}
-		else {
-			insertInt(1);
-		}
-	}
-
-	void setCraftingState(int state) {
-		startUpdate(2);
-		insertInt(state);
-	}
-
-	void setClosestCraftingStation(uint64 oid) {
-		startUpdate(3);
-		insertLong(oid);
 	}
 
 		// startUpdate(1), insertInt(2) closes the datapad (i think)
@@ -169,12 +174,6 @@ public:
 		insertInt(tempSchematic->getSchematicID());
 		insertInt(tempSchematic->getObjectCRC());
 	}
-
-	void setExperimentationPoints(int points){
-		startUpdate(5);
-		insertInt(points); // Number of experimentation points
-	}
-
 
 	void updateFriendsList(){
 		FriendsList* friendsList = play->getFriendsList();

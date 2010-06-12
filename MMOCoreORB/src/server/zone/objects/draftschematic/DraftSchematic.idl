@@ -207,7 +207,7 @@ class DraftSchematic extends SceneObject {
 	 * Setter for the crafting tool tab mask
 	 * \return toolTab
 	 */
-	public float getToolTab() {
+	public unsigned int getToolTab() {
 		return toolTab;
 	}
 	

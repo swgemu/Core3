@@ -71,7 +71,7 @@ public:
 
 	void setToolTab(unsigned int tab);
 
-	float getToolTab();
+	unsigned int getToolTab();
 
 	void setSize(unsigned int s);
 
@@ -172,7 +172,7 @@ public:
 
 	void setToolTab(unsigned int tab);
 
-	float getToolTab();
+	unsigned int getToolTab();
 
 	void setSize(unsigned int s);
 
@@ -249,7 +249,7 @@ public:
 
 	void setToolTab(unsigned int tab);
 
-	float getToolTab();
+	unsigned int getToolTab();
 
 	void setSize(unsigned int s);
 

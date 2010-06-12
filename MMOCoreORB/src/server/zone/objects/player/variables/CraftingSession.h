@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,41 +42,37 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SYNCHRONIZEDUISTOPLISTENINGCOMMAND_H_
-#define SYNCHRONIZEDUISTOPLISTENINGCOMMAND_H_
+#ifndef CRAFTINGSESSION_H_
+#define CRAFTINGSESSION_H_
 
-#include "../../scene/SceneObject.h"
+#include "engine/engine.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-class SynchronizedUiStopListeningCommand : public QueueCommand {
+class CraftingSession {
+private:
+	ManagedReference<CraftingTool* > craftingTool;
+	ManagedReference<PlayerCreature* > player;
+	ManagedReference<PlayerObject* > playerObject;
+	bool experimentingEnabled;
+	float complexityLevel;
+	uint64 craftingStationID;
+	Vector<ManagedReference<DraftSchematic*> > schematics;
+
 public:
+	CraftingSession();
 
-	SynchronizedUiStopListeningCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+	~CraftingSession();
 
-	}
+	void request(PlayerCreature* pl, PlayerObject* play,
+			CraftingTool* tool, Vector<uint32>& enabledTabs,
+			float maxComplexity, uint64 stationID);
+	void cancel();
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		ManagedReference<SceneObject*> object = (SceneObject*)creature->getZoneServer()->getObject(target);
-		int value = 0;
-
-		StringTokenizer tokenizer(arguments.toString());
-
-		if(tokenizer.hasMoreTokens())
-			value = tokenizer.getIntToken();
-
-		if(object != NULL && creature->isPlayerCreature())
-			object->synchronizedUIStopListen(creature, value);
-
-		return SUCCESS;
-	}
+private:
+	void sendStart();
+	void collectSchematics(Vector<uint32>& enabledTabs);
 
 };
 
-#endif //SYNCHRONIZEDUISTOPLISTENINGCOMMAND_H_
+#endif /* CRAFTINGSESSION_H_ */

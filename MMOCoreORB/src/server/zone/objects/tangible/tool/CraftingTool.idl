@@ -47,7 +47,7 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+include server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -57,6 +57,9 @@ class CraftingTool extends ToolTangibleObject {
 	private int type;
 	private float effectiveness;
 	private string status;
+	
+	@dereferenced
+	Vector<unsigned int> enabledTabs;
 	
 	static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	static final int FOOD = 2; // Food and Chemical Crafting Tool
@@ -100,4 +103,9 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
+	public boolean isCraftingTool() {
+		return true;
+	}
+	
+	public native void reqeustCraftingSession(PlayerCreature player);
 }

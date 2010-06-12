@@ -54,6 +54,7 @@ include server.zone.objects.creature.professions.Certification;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.managers.crafting.schematicmap.DraftSchematicGroup;
 import server.zone.ZoneClientSession;
+include server.zone.objects.tangible.tool.CraftingTool;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.objects.waypoint.WaypointObject;
@@ -63,6 +64,7 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
+include server.zone.objects.player.variables.CraftingSession;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -101,6 +103,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SchematicList schematicList;
+	
+	@dereferenced
+	protected transient CraftingSession craftingSession;
 	
 	
 	public static final int LFG = 1;
@@ -419,4 +424,15 @@ class PlayerObject extends IntangibleObject {
 	public int getExperience(final string xp) {
 		return experienceList.get(xp);
 	}
+	
+	@local
+	public native void requestCraftingSession(PlayerCreature player, CraftingTool craftingTool, @dereferenced Vector<unsigned int> enabledTabs, 
+			float maxComplexity, unsigned long stationID);
+	
+	@local
+	public native void cancelCraftingSession();
+	
+	@local
+	@dereferenced
+	public native Vector<DraftSchematic> filterSchematicList(@dereferenced Vector<unsigned int> enabledTabs);
 }

@@ -73,7 +73,7 @@ public:
 			value = tokenizer.getIntToken();
 
 		if(object != NULL && creature->isPlayerCreature())
-			object->synchronizedUIListen((PlayerCreature*)creature, value);
+			object->synchronizedUIListen(creature, value);
 
 		return SUCCESS;
 	}

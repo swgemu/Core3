@@ -14,7 +14,7 @@ class CraftingToolTemplate : public SharedTangibleObjectTemplate {
 private:
 
 	int toolType;
-	Vector<int> tabs;
+	Vector<uint32> tabs;
 
 public:
 	CraftingToolTemplate() {
@@ -41,6 +41,10 @@ public:
 
 	int getToolType() {
 		return toolType;
+	}
+
+	Vector<uint32> getTabs() {
+		return tabs;
 	}
 
 };
