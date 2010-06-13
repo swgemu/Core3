@@ -61,6 +61,8 @@ class InstallationObject extends TangibleObject {
 	protected unsigned long ownerObjectID;
 	protected int lotSize;
 	
+	protected boolean operating;
+	
 	protected unsigned long deedObjectID;
 	
 	protected int baseMaintenanceRate;
@@ -83,6 +85,8 @@ class InstallationObject extends TangibleObject {
 		super.staticObject = false;
 		
 		publicStructure = true;
+		
+		operating = false;
 		
 		lotSize = 0;
 		
@@ -240,5 +244,9 @@ class InstallationObject extends TangibleObject {
 	
 	public boolean isInstallationObject() {
 		return true;
+	}
+	
+	public boolean isOperating() {
+		return operating;
 	}
 }

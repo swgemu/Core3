@@ -4,6 +4,8 @@
 
 #include "HarvesterObject.h"
 
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
 /*
  *	HarvesterObjectStub
  */
@@ -19,6 +21,96 @@ HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : Installatio
 HarvesterObject::~HarvesterObject() {
 }
 
+
+void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((HarvesterObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+float HarvesterObject::getHopperSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getHopperSize();
+}
+
+unsigned long long HarvesterObject::getActiveResourceID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getActiveResourceID();
+}
+
+float HarvesterObject::getActualRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getActualRate();
+}
+
+float HarvesterObject::getExtractionRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getExtractionRate();
+}
+
+float HarvesterObject::getHopperSizeMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getHopperSizeMax();
+}
+
+HopperList* HarvesterObject::getHopperList() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((HarvesterObjectImplementation*) _impl)->getHopperList();
+}
 
 /*
  *	HarvesterObjectImplementation
@@ -87,12 +179,44 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("HarvesterObject");
 
+	addSerializableVariable("harvesterType", &harvesterType);
+	addSerializableVariable("activeResource", &activeResource);
+	addSerializableVariable("spawnExpireTimestamp", &spawnExpireTimestamp);
+	addSerializableVariable("resourceHopperTimestamp", &resourceHopperTimestamp);
+	addSerializableVariable("lastMaintenanceTime", &lastMaintenanceTime);
+	addSerializableVariable("resourceHopper", &resourceHopper);
+	addSerializableVariable("hopperSizeMax", &hopperSizeMax);
+	addSerializableVariable("extractionRate", &extractionRate);
 }
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(7):  		Logger.setLoggingName("HarvesterObject");
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(74):  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
+}
+
+unsigned long long HarvesterObjectImplementation::getActiveResourceID() {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(108):  
+	if (activeResource == NULL)	// server/zone/objects/installation/harvester/HarvesterObject.idl(109):  			return 0;
+	return 0;
+
+	else 	// server/zone/objects/installation/harvester/HarvesterObject.idl(111):  			return activeResource.getObjectID();
+	return activeResource->getObjectID();
+}
+
+float HarvesterObjectImplementation::getExtractionRate() {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(117):  		return extractionRate;
+	return extractionRate;
+}
+
+float HarvesterObjectImplementation::getHopperSizeMax() {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(121):  		return hopperSizeMax;
+	return hopperSizeMax;
+}
+
+HopperList* HarvesterObjectImplementation::getHopperList() {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(126):  		return resourceHopper;
+	return (&resourceHopper);
 }
 
 /*
@@ -106,11 +230,53 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 7:
+		resp->insertFloat(getHopperSize());
+		break;
+	case 8:
+		resp->insertLong(getActiveResourceID());
+		break;
+	case 9:
+		resp->insertFloat(getActualRate());
+		break;
+	case 10:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 11:
+		resp->insertFloat(getHopperSizeMax());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int HarvesterObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((HarvesterObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+float HarvesterObjectAdapter::getHopperSize() {
+	return ((HarvesterObjectImplementation*) impl)->getHopperSize();
+}
+
+unsigned long long HarvesterObjectAdapter::getActiveResourceID() {
+	return ((HarvesterObjectImplementation*) impl)->getActiveResourceID();
+}
+
+float HarvesterObjectAdapter::getActualRate() {
+	return ((HarvesterObjectImplementation*) impl)->getActualRate();
+}
+
+float HarvesterObjectAdapter::getExtractionRate() {
+	return ((HarvesterObjectImplementation*) impl)->getExtractionRate();
+}
+
+float HarvesterObjectAdapter::getHopperSizeMax() {
+	return ((HarvesterObjectImplementation*) impl)->getHopperSizeMax();
 }
 
 /*

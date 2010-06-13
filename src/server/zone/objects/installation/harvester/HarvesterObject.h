@@ -11,16 +11,51 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceSpawn;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
+#include "server/zone/objects/installation/harvester/HopperList.h"
+
 #include "server/zone/objects/installation/InstallationObject.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace installation {
+namespace harvester {
 
 class HarvesterObject : public InstallationObject {
 public:
 	HarvesterObject();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	float getHopperSize();
+
+	unsigned long long getActiveResourceID();
+
+	float getActualRate();
+
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
+	HopperList* getHopperList();
 
 protected:
 	HarvesterObject(DummyConstructorParameter* param);
@@ -30,24 +65,59 @@ protected:
 	friend class HarvesterObjectHelper;
 };
 
+} // namespace harvester
 } // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::installation;
+using namespace server::zone::objects::installation::harvester;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace installation {
+namespace harvester {
 
 class HarvesterObjectImplementation : public InstallationObjectImplementation {
+protected:
+	int harvesterType;
+
+	ManagedWeakReference<ResourceSpawn* > activeResource;
+
+	Time spawnExpireTimestamp;
+
+	Time resourceHopperTimestamp;
+
+	Time lastMaintenanceTime;
+
+	HopperList resourceHopper;
+
+private:
+	float hopperSizeMax;
+
+	float extractionRate;
 
 public:
 	HarvesterObjectImplementation();
 
 	HarvesterObjectImplementation(DummyConstructorParameter* param);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	float getHopperSize();
+
+	unsigned long long getActiveResourceID();
+
+	float getActualRate();
+
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
+	HopperList* getHopperList();
 
 	HarvesterObject* _this;
 
@@ -88,6 +158,18 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	float getHopperSize();
+
+	unsigned long long getActiveResourceID();
+
+	float getActualRate();
+
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
 };
 
 class HarvesterObjectHelper : public DistributedObjectClassHelper, public Singleton<HarvesterObjectHelper> {
@@ -107,11 +189,12 @@ public:
 	friend class Singleton<HarvesterObjectHelper>;
 };
 
+} // namespace harvester
 } // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::installation;
+using namespace server::zone::objects::installation::harvester;
 
 #endif /*HARVESTEROBJECT_H_*/

@@ -52,6 +52,7 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.CreatureObject;
+import engine.service.proto.BaseMessage;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
@@ -82,7 +83,6 @@ class ResourceManager extends ManagedObject implements Lua, PostureChangeObserve
 		objectManager = objectMan;
 	}
 	
-
 	public native void stop();
 	public native void initialize();
 	public native void shiftResources();
@@ -92,6 +92,9 @@ class ResourceManager extends ManagedObject implements Lua, PostureChangeObserve
 	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
 	public native void sendSample(PlayerCreature playerCreature, final string resname, final string sampleAnimation);
+	
+	@local
+	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, int zoneid);
 	
 	public native void createResourceSpawn(PlayerCreature playerCreature, final string restype);
 	

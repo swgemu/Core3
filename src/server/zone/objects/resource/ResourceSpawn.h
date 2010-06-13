@@ -11,13 +11,35 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-#include "engine/core/ManagedObject.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
 
-#include "server/zone/objects/player/PlayerCreature.h"
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceContainer;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/objects/resource/ResourceContainer.h"
 
 #include "server/zone/objects/resource/SpawnDensityMap.h"
 
@@ -29,6 +51,8 @@
 
 #include "system/util/Vector.h"
 
+#include "engine/core/ManagedObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -39,6 +63,8 @@ public:
 	ResourceSpawn();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void decreaseContainerReferenceCount();
 
 	void setName(const String& name);
 
@@ -71,6 +97,8 @@ public:
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	unsigned long long getDespawned();
 
 	void setContainerCRC(unsigned int crc);
 
@@ -156,12 +184,20 @@ protected:
 
 	unsigned long long unitsInCirculation;
 
+	int containerReferenceCount;
+
+	bool dbDestroyed;
+
 public:
 	ResourceSpawnImplementation();
 
 	ResourceSpawnImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void decreaseContainerReferenceCount();
 
 	void setName(const String& name);
 
@@ -194,6 +230,8 @@ public:
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	unsigned long long getDespawned();
 
 	void setContainerCRC(unsigned int crc);
 
@@ -237,8 +275,6 @@ public:
 protected:
 	virtual ~ResourceSpawnImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -267,6 +303,10 @@ public:
 	ResourceSpawnAdapter(ResourceSpawnImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
+
+	void decreaseContainerReferenceCount();
 
 	void setName(const String& name);
 
@@ -299,6 +339,8 @@ public:
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
+
+	unsigned long long getDespawned();
 
 	void setContainerCRC(unsigned int crc);
 

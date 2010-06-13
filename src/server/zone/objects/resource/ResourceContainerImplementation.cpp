@@ -51,9 +51,9 @@ which carries forward this exception.
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
 void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	StringBuffer ssQuantity;
@@ -76,7 +76,6 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* player) {
-
 	Locker _locker(_this);
 
 	stackQuantity = quantity;
@@ -112,7 +111,6 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 }
 
 void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int newStackSize) {
-
 	ManagedReference<SceneObject*> inventory =
 			playerCreature->getSlottedObject("inventory");
 
@@ -129,16 +127,21 @@ void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int 
 }
 
 void ResourceContainerImplementation::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+	Locker _locker(_this);
 
-		Locker _locker(_this);
+	ManagedReference<SceneObject*> inventory =
+			player->getSlottedObject("inventory");
 
-		ManagedReference<SceneObject*> inventory =
-				player->getSlottedObject("inventory");
+	setQuantity(getQuantity() + fromContainer->getQuantity(), player);
+	fromContainer->setQuantity(0);
 
-		setQuantity(getQuantity() + fromContainer->getQuantity(), player);
-		fromContainer->setQuantity(0);
+	Locker _inventorylocker(inventory);
+	inventory->removeObject(fromContainer, true);
+	fromContainer->destroyObjectFromDatabase(false);
+}
 
-		Locker _inventorylocker(inventory);
-		inventory->removeObject(fromContainer, true);
-		fromContainer->destroyObjectFromDatabase(false);
+void ResourceContainerImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	spawnObject->decreaseContainerReferenceCount();
 }
