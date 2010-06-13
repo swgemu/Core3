@@ -78,7 +78,7 @@ spicedTea = Object:new {
    experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8216:objectcrc=3551363941:stfFile=food_name:stfName=spiced_tea:stfDetail=food_detail:itemmask=65535:customattributes=effectType=1;buffName=food.drink_spiced_tea;modifierString=mind;nutritionMin=35;nutritionMax=60;flavorMin=1800;flavorMax=3600;quantityMin=3;quantityMax=4;fillingMin=9;fillingMax=5;:",
+   tanoCRC = 3551363941,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

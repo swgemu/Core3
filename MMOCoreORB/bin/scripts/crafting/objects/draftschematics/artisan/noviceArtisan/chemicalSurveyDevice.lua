@@ -78,7 +78,7 @@ chemicalSurveyDevice = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=32770:objectcrc=2242363434:stfFile=item_n:stfName=survey_tool_liquid:stfDetail=item_d:itemmask=65535:customattributes=range=64;type=2;:",
+   tanoCRC = 2242363434,
 
    blueFrogAttributes = "range=64:type=2:;",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ bofaTreat = Object:new {
    experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8202:objectcrc=2010692823:stfFile=food_name:stfName=bofa_treat:stfDetail=food_detail:itemmask=65535:customattributes=effectType=1;buffName=food.dessert_bofa_treat;modifierString=action;fillingMin=11;fillingMax=7;flavorMin=1800;flavorMax=3600;nutritionMin=35;nutritionMax=60;quantityMin=6;quantityMax=10;:",
+   tanoCRC = 2010692823,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ travelBiscuits = Object:new {
    experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8202:objectcrc=2831837498:stfFile=food_name:stfName=travel_biscuits:stfDetail=food_detail:itemmask=65535:customattributes=effectType=4;buffName=food.dish_travel_biscuits;modifierString=slope_move;fillingMin=11;fillingMax=7;flavorMin=720;flavorMax=1500;nutritionMin=7.5;nutritionMax=12;quantityMin=4;quantityMax=14;:",
+   tanoCRC = 2831837498,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

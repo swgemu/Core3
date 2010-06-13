@@ -78,7 +78,7 @@ simpleShirt = Object:new {
    experimentalMax = {0, 0, 0, 1000},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=16777230:objectcrc=2268729318:stfFile=wearables_name:stfName=shirt_s04:stfDetail=wearables_detail:itemmask=62975:customattributes=:",
+   tanoCRC = 2268729318,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

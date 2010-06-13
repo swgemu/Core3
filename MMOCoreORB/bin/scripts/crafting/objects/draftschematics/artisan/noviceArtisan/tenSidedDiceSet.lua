@@ -78,7 +78,7 @@ tenSidedDiceSet = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8211:objectcrc=3051569698:stfFile=dice/dice_details:stfName=eqp_ten_sided_dice_set_single:stfDetail=:itemmask=65535:customattributes=:",
+   tanoCRC = 3051569698,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

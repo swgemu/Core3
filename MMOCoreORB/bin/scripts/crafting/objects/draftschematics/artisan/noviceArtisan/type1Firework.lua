@@ -78,7 +78,7 @@ type1Firework = Object:new {
    experimentalMax = {0, 0, 1000, 10},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8217:objectcrc=4192390072:stfFile=firework_n:stfName=firework_one:stfDetail=firework_d:itemmask=65535:customattributes=:",
+   tanoCRC = 4192390072,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,
