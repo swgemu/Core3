@@ -62,6 +62,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -121,6 +123,8 @@ public:
 	ResourceContainerImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -184,6 +188,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	void sendBaselinesTo(SceneObject* player);
 

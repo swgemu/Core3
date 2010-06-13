@@ -48,11 +48,11 @@ import engine.log.Logger;
 import system.util.VectorMap;
 import system.util.Vector;
 
-include engine.core.ManagedObject;
-include server.zone.objects.player.PlayerCreature;
+import engine.core.ManagedObject;
+import server.zone.objects.player.PlayerCreature;
 include server.zone.packets.scene.AttributeListMessage;
 
-include server.zone.objects.resource.ResourceContainer;
+import server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.resource.SpawnDensityMap;
 include server.zone.objects.resource.SpawnMap;
 
@@ -84,13 +84,24 @@ class ResourceSpawn extends SceneObject {
 		
 	protected unsigned long maxUnitsSpawned;
 	protected unsigned long unitsInCirculation;
+	
+	protected int containerReferenceCount;
+	protected boolean dbDestroyed;
 
     public ResourceSpawn() {
        	spawnType = "";
        	spawnPool = 0;
        	spawnAttributes.setNoDuplicateInsertPlan();
        	
+       	containerReferenceCount = 0;
+       	dbDestroyed = false;
+       	
        	setLoggingName("ResourceSpawn");
+    }
+    
+    public native void finalize() {
+    	if (!dbDestroyed && (containerReferenceCount == 0))
+    		decreaseContainerReferenceCount();
     }
         
    /**
@@ -102,6 +113,8 @@ class ResourceSpawn extends SceneObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public native void decreaseContainerReferenceCount();
         
     /**
 	 * Sets the resource spawn with the system generated name

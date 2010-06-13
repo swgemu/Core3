@@ -124,6 +124,11 @@ public:
 	void sendSampleResults(PlayerCreature* playerCreature, const float density, const String& resname);
 
 	ResourceSpawn* getFromRandomPool(const String& type);
+
+	inline ResourceMap* getResourceMap() {
+		return resourceMap;
+	}
+
 private:
 
 	void loadResourceSpawns();

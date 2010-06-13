@@ -87,6 +87,8 @@ using namespace server::zone::objects::creature;
 
 #include "engine/log/Logger.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -109,6 +111,8 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
@@ -161,6 +165,8 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 

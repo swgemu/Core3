@@ -154,6 +154,8 @@ public:
 
 	bool isInstallationObject();
 
+	bool isOperating();
+
 protected:
 	InstallationObject(DummyConstructorParameter* param);
 
@@ -181,6 +183,8 @@ protected:
 	unsigned long long ownerObjectID;
 
 	int lotSize;
+
+	bool operating;
 
 	unsigned long long deedObjectID;
 
@@ -260,6 +264,8 @@ public:
 	int getRedeedCost();
 
 	bool isInstallationObject();
+
+	bool isOperating();
 
 	InstallationObject* _this;
 
@@ -353,6 +359,8 @@ public:
 	int getRedeedCost();
 
 	bool isInstallationObject();
+
+	bool isOperating();
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

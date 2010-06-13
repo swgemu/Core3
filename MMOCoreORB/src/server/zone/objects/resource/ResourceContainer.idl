@@ -71,6 +71,14 @@ class ResourceContainer extends TangibleObject {
 		
 		Logger.setLoggingName("ResourceContainer");
 	}
+    
+    /**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
         
    /**
 	 * Fills the attribute list message options that are sent to player creature
