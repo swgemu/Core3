@@ -78,7 +78,7 @@ smallGlass = Object:new {
    experimentalMax = {0, 0, 1},
    experimentalPrecision = {0, 0, 0},
 
-   tanoAttributes = "objecttype=262144:objectcrc=4135258442:stfFile=craft_food_ingredients_n:stfName=small_glass:stfDetail=craft_food_ingredients_d:itemmask=65535:customattributes=:",
+   tanoCRC = 4135258442,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

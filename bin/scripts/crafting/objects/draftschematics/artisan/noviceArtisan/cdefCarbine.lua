@@ -78,7 +78,7 @@ cdefCarbine = Object:new {
    experimentalMax = {0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=131083:objectcrc=583942574:stfFile=weapon_name:stfName=carbine_cdef:stfDetail=weapon_detail:itemmask=65535:customattributes=damagetype=2;armorpiercing=0;:",
+   tanoCRC = 583942574,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

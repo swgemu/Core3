@@ -78,7 +78,7 @@ grip = Object:new {
    experimentalMax = {0, 0, 1000, 100},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=524290:objectcrc=1312422379:stfFile=powerup_n:stfName=weapon_ranged_grip:stfDetail=:itemmask=65535:customattributes=:",
+   tanoCRC = 1312422379,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

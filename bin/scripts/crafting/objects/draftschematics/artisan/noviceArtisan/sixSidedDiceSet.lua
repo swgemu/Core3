@@ -78,7 +78,7 @@ sixSidedDiceSet = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8211:objectcrc=3211047396:stfFile=dice/dice_details:stfName=eqp_six_sided_dice_set_single:stfDetail=:itemmask=65535:customattributes=:",
+   tanoCRC = 3211047396,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ fishingPole = Object:new {
    experimentalMax = {0, 0, 1000, 100},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8214:objectcrc=1813029717:stfFile=item_n:stfName=fishing_pole:stfDetail=item_d:itemmask=65535:customattributes=:",
+   tanoCRC = 1813029717,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ barrel = Object:new {
    experimentalMax = {0, 0, 1000, 100},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=524290:objectcrc=137262486:stfFile=powerup_n:stfName=weapon_ranged_barrel:stfDetail=craft_food_ingredients_d:itemmask=65535:customattributes=:",
+   tanoCRC = 137262486,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

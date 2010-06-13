@@ -78,7 +78,7 @@ casualPants = Object:new {
    experimentalMax = {0, 0, 0, 1000},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1037699097:stfFile=wearables_name:stfName=pants_s25:stfDetail=wearables_detail:itemmask=62975:customattributes=:",
+   tanoCRC = 1037699097,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

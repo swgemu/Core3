@@ -78,7 +78,7 @@ cdefPistol = Object:new {
    experimentalMax = {0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 15, 65, 7, 15, 7},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=131082:objectcrc=937103853:stfFile=weapon_name:stfName=pistol_cdef:stfDetail=weapon_detail:itemmask=65535:customattributes=damagetype=2;armorpiercing=0;:",
+   tanoCRC = 937103853,
 
    blueFrogAttributes = "damagetype=2:armorpiercing=0:;",
    blueFrogEnabled = 1,

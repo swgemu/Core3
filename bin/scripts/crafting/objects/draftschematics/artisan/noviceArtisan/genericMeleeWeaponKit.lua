@@ -78,7 +78,7 @@ genericMeleeWeaponKit = Object:new {
    experimentalMax = {0, 0, 1000, 100},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=524289:objectcrc=1375892401:stfFile=powerup_n:stfName=weapon_melee:stfDetail=powerup_d:itemmask=65535:customattributes=:",
+   tanoCRC = 1375892401,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,
