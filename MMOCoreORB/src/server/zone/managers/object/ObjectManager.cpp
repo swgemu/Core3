@@ -404,13 +404,25 @@ void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, c
 		return;
 	}
 
-	uint64 newObjectID = getNextObjectID(database);
+	if (database.length() > 0) {
+		uint64 objectID = object->_getObjectID();
 
-	object->_setObjectID(newObjectID);
+		uint16 tableID = (uint16)(objectID >> 48);
+
+		uint16 newDatabaseTableID = databaseManager->getDatabaseID(database);
+
+		if (tableID != newDatabaseTableID) {
+			uint64 newObjectID = getNextObjectID(database);
+
+			object->_setObjectID(newObjectID);
+
+			object->deploy();
+		}
+	} else {
+		throw Exception("no database specified in ObjectManager::persistObject");
+	}
 
 	object->setPersistent(persistenceLevel);
-
-	object->deploy();
 
 	updatePersistentObject(object);
 }
