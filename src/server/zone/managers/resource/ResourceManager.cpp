@@ -124,6 +124,14 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname, sampleAnimation);
 }
 
+void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ResourceManagerImplementation*) _impl)->getResourceListByType(list, type, zoneid);
+}
+
 void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -210,17 +218,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(75):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(76):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(77):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(78):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(78):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(79):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(80):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(81):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(81):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(82):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(82):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(83):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 

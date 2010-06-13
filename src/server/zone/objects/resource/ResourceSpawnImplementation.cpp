@@ -191,7 +191,20 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    	customString.setCustomString(getFamilyName());
    	newResource->setObjectName(customString);
 
+   	++containerReferenceCount;
+
+   	newResource->updateToDatabaseWithoutChildren();
+   	updateToDatabaseWithoutChildren();
+
    	return newResource;
+}
+
+void ResourceSpawnImplementation::decreaseContainerReferenceCount() {
+	if (--containerReferenceCount < 1) {
+		destroyObjectFromDatabase(true);
+
+		dbDestroyed = true;
+	}
 }
 
 void ResourceSpawnImplementation::print() {

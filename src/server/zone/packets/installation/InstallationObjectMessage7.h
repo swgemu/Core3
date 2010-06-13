@@ -47,20 +47,18 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../managers/resource/ResourceManager.h"
-#include "../../managers/resource/ResourceList.h"
-#include "../../managers/resource/ResourceItem.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 
-#include "../../objects/installation/harvester/HarvesterObject.h"
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class InstallationObjectMessage7 : public BaseLineMessage {
 public:
 	InstallationObjectMessage7(InstallationObject * inso)
 			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 7, 0x05) {
 
-		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER)
-		{
+		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER) {
 			HarvesterObject* hino = (HarvesterObject*) inso;
 			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
 			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneID(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());

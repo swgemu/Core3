@@ -171,7 +171,7 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 		error("unreported exception caught in ResourceManagerImplementation::sendResourceListForSurvey");
 	}
 
-	unlock();
+	runlock();
 }
 
 void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
@@ -196,3 +196,35 @@ void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCr
 
 }
 
+void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid) {
+	list.removeAll();
+
+	rlock();
+
+	ManagedReference<ResourceSpawn*> resourceSpawn;
+
+	try {
+		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
+
+		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+
+		if (zoneMap != NULL) {
+			for (int i = 0; i < zoneMap->size(); ++i) {
+				resourceSpawn = zoneMap->get(i);
+
+				if (resourceSpawn->getSurveyToolType() == type) {
+					list.add(resourceSpawn);
+				}
+			}
+
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid)");
+	}
+
+	runlock();
+}

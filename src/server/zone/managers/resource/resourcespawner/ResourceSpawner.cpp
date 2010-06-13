@@ -149,6 +149,9 @@ void ResourceSpawner::loadResourceSpawns() {
 
 		ManagedReference<ResourceSpawn* > resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
 
+		if (!resourceSpawn->inShift())
+			continue;
+
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 
 		if (resourceSpawn->getSpawnPool() != 0) {

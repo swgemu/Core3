@@ -52,10 +52,10 @@ which carries forward this exception.
 
 class CraftingSession {
 private:
-	ManagedReference<CraftingTool* > craftingTool;
-	ManagedReference<CraftingStation* > craftingStation;
-	ManagedReference<PlayerCreature* > player;
-	ManagedReference<PlayerObject* > playerObject;
+	ManagedWeakReference<CraftingTool* > craftingTool;
+	ManagedWeakReference<CraftingStation* > craftingStation;
+	ManagedWeakReference<PlayerCreature* > player;
+	ManagedWeakReference<PlayerObject* > playerObject;
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 public:
