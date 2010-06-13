@@ -200,7 +200,7 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
 }
 
 void ResourceSpawnImplementation::decreaseContainerReferenceCount() {
-	if (--containerReferenceCount < 1) {
+	if (--containerReferenceCount < 1 && !inShift()) {
 		destroyObjectFromDatabase(true);
 
 		dbDestroyed = true;
