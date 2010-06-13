@@ -78,7 +78,7 @@ windCurrentSurveyingTool = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=32770:objectcrc=566467536:stfFile=item_n:stfName=survey_tool_wind:stfDetail=item_d:itemmask=65535:customattributes=range=64;type=8;:",
+   tanoCRC = 566467536,
 
    blueFrogAttributes = "range=64:type=8:;",
    blueFrogEnabled = 1,

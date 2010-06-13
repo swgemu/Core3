@@ -78,7 +78,7 @@ survivalKnife = Object:new {
    experimentalMax = {0, 0, 26, 52, 2.9, 11, 1500, 39, 39, 3, 39, 4, 5, 15, 4},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=131079:objectcrc=530531036:stfFile=weapon_name:stfName=knife_survival:stfDetail=weapon_detail:itemmask=65535:customattributes=damagetype=1;armorpiercing=0;:",
+   tanoCRC = 530531036,
 
    blueFrogAttributes = "damagetype=1:armorpiercing=0:;",
    blueFrogEnabled = 1,

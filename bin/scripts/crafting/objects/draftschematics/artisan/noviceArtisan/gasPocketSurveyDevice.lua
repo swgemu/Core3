@@ -78,7 +78,7 @@ gasPocketSurveyDevice = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=32770:objectcrc=1059021891:stfFile=item_n:stfName=survey_tool_gas:stfDetail=item_d:itemmask=65535:customattributes=range=64;type=4;:",
+   tanoCRC = 1059021891,
 
    blueFrogAttributes = "range=64:type=4:;",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ waterSurveyDevice = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=32770:objectcrc=2175673400:stfFile=item_n:stfName=survey_tool_moisture:stfDetail=item_d:itemmask=65535:customattributes=range=64;type=7;:",
+   tanoCRC = 2175673400,
 
    blueFrogAttributes = "range=64:type=7:;",
    blueFrogEnabled = 1,

@@ -78,7 +78,7 @@ chanceCube = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=8211:objectcrc=572459271:stfFile=dice/dice_details:stfName=eqp_chance_cube_single:stfDetail=:itemmask=65535:customattributes=:",
+   tanoCRC = 572459271,
 
    blueFrogAttributes = "",
    blueFrogEnabled = 1,

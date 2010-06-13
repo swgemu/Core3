@@ -78,7 +78,7 @@ genericCraftingTool = Object:new {
    experimentalMax = {0, 0, 1000, 15},
    experimentalPrecision = {0, 0, 0, 0},
 
-   tanoAttributes = "objecttype=32769:objectcrc=1055200365:stfFile=crafting:stfName=generic_tool_name:stfDetail=crafting_detail:itemmask=65535:customattributes=effectiveness=-15;type=3;craftingTabs=1,2,4,8,1024,4096,524288;status=tool_status_ready;:",
+   tanoCRC = 1055200365,
 
    blueFrogAttributes = "effectiveness=0:type=3:craftingTabs=1,2,4,8,1024,4096,524288:status=tool_status_ready:;",
    blueFrogEnabled = 1,
