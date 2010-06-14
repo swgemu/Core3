@@ -116,7 +116,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	}
 
 	StringBuffer infoMsg;
-	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName();
+	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName() << " arguments='" << arguments.toString() << "'";
 	object->info(infoMsg.toString(), true);
 
 	String characterAbility = queueCommand->getCharacterAbility();

@@ -41,7 +41,7 @@
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
@@ -247,7 +247,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICSTRUCTURAL);
 	objectFactory.registerObject<ResourceContainer>(SceneObject::QUESTREOURCE);
 
-	objectFactory.registerObject<DraftSchematic>(SceneObject::DRAFTSCHEMATIC);
+	objectFactory.registerObject<ManufactureSchematic>(SceneObject::DRAFTSCHEMATIC);
 
 }
 

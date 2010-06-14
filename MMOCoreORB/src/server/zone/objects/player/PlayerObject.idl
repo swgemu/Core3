@@ -52,6 +52,7 @@ import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.managers.objectcontroller.ObjectController;
 include server.zone.objects.creature.professions.Certification;
 include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.managers.crafting.schematicmap.DraftSchematicGroup;
 import server.zone.ZoneClientSession;
 include server.zone.objects.tangible.tool.CraftingStation;
@@ -65,7 +66,7 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.variables.CraftingSession;
+include server.zone.objects.player.craftingsession.CraftingSession;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -125,7 +126,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void finalize() {
-		
+
 	}
 	
 	@local
@@ -444,4 +445,11 @@ class PlayerObject extends IntangibleObject {
 	@local
 	@dereferenced
 	public native Vector<DraftSchematic> filterSchematicList(Vector<unsigned int> enabledTabs);
+	
+	@local
+	public native void selectDraftSchematic(PlayerCreature player, int index);
+	
+	@local
+	public native void synchronizedUIListenForSchematic();
+	
 }

@@ -185,6 +185,10 @@ public:
 		} else
 			return 0x00;  // 0
 	}
+
+	String getExperimentalTitle() {
+		return experimentalTitle;
+	}
 };
 
 #endif /* RESOURCEWEIGHT_H_ */

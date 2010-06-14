@@ -37,7 +37,11 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/draftschematic/resourceweight/ResourceWeights.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "engine/service/proto/BaseMessage.h"
+
+#include "engine/core/ManagedObject.h"
 
 namespace server {
 namespace zone {
@@ -45,7 +49,7 @@ namespace object {
 namespace draftschematic {
 namespace DraftSchematic {
 
-class DraftSchematic : public SceneObject {
+class DraftSchematic : public ManagedObject {
 public:
 	DraftSchematic();
 
@@ -59,7 +63,15 @@ public:
 
 	void addSlot(DraftSlot* slot);
 
+	int getDraftSlotCount();
+
+	DraftSlot* getDraftSlot(int i);
+
 	void addResourceWeight(ResourceWeight* weight);
+
+	int getResourceWeightCount();
+
+	ResourceWeight* getResourceWeight(int i);
 
 	void setSchematicID(unsigned int id);
 
@@ -93,6 +105,18 @@ public:
 
 	String getExperiementationSkill();
 
+	void setClientObjectCRC(unsigned int crc);
+
+	unsigned int getClientObjectCRC();
+
+	void setObjectName(StringId& stringId);
+
+	String getObjectNameStringIdName();
+
+	void setTanoCRC(unsigned int crc);
+
+	unsigned int getTanoCRC();
+
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
 
@@ -100,6 +124,7 @@ protected:
 
 	String _return_getAssemblySkill;
 	String _return_getExperiementationSkill;
+	String _return_getObjectNameStringIdName;
 	String _return_getXpType;
 
 	friend class DraftSchematicHelper;
@@ -119,8 +144,12 @@ namespace object {
 namespace draftschematic {
 namespace DraftSchematic {
 
-class DraftSchematicImplementation : public SceneObjectImplementation {
+class DraftSchematicImplementation : public ManagedObjectImplementation, public Logger {
 	unsigned int schematicID;
+
+	unsigned int clientObjectCRC;
+
+	StringId objectName;
 
 	float complexity;
 
@@ -141,6 +170,9 @@ protected:
 
 	ResourceWeights resourceWeights;
 
+private:
+	unsigned int tanoCRC;
+
 public:
 	DraftSchematicImplementation();
 
@@ -160,7 +192,15 @@ public:
 
 	void addSlot(DraftSlot* slot);
 
+	int getDraftSlotCount();
+
+	DraftSlot* getDraftSlot(int i);
+
 	void addResourceWeight(ResourceWeight* weight);
+
+	int getResourceWeightCount();
+
+	ResourceWeight* getResourceWeight(int i);
 
 	void setSchematicID(unsigned int id);
 
@@ -193,6 +233,18 @@ public:
 	void setExperiementationSkill(String& skill);
 
 	String getExperiementationSkill();
+
+	void setClientObjectCRC(unsigned int crc);
+
+	unsigned int getClientObjectCRC();
+
+	void setObjectName(StringId& stringId);
+
+	String getObjectNameStringIdName();
+
+	void setTanoCRC(unsigned int crc);
+
+	unsigned int getTanoCRC();
 
 	DraftSchematic* _this;
 
@@ -227,7 +279,7 @@ protected:
 	friend class DraftSchematic;
 };
 
-class DraftSchematicAdapter : public SceneObjectAdapter {
+class DraftSchematicAdapter : public ManagedObjectAdapter {
 public:
 	DraftSchematicAdapter(DraftSchematicImplementation* impl);
 
@@ -238,6 +290,10 @@ public:
 	void sendDraftSlotsTo(PlayerCreature* player);
 
 	void sendResourceWeightsTo(PlayerCreature* player);
+
+	int getDraftSlotCount();
+
+	int getResourceWeightCount();
 
 	void setSchematicID(unsigned int id);
 
@@ -270,6 +326,16 @@ public:
 	void setExperiementationSkill(String& skill);
 
 	String getExperiementationSkill();
+
+	void setClientObjectCRC(unsigned int crc);
+
+	unsigned int getClientObjectCRC();
+
+	String getObjectNameStringIdName();
+
+	void setTanoCRC(unsigned int crc);
+
+	unsigned int getTanoCRC();
 
 protected:
 	String _param0_setXpType__String_;

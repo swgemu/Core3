@@ -134,12 +134,14 @@ namespace tangible {
 namespace tool {
 
 class CraftingToolImplementation : public ToolTangibleObjectImplementation {
+protected:
 	int type;
 
 	float effectiveness;
 
 	String status;
 
+private:
 	Vector<unsigned int> enabledTabs;
 
 public:

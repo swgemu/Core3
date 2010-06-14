@@ -63,6 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		/**
+		 * Argument = 1 integer
+		 * This argument is the index of the schematic in the players schematic list
+		 */
+
+	    if(!creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+	    ManagedReference<PlayerCreature* > player = (PlayerCreature*) creature;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(tokenizer.hasMoreTokens()) {
+
+			int index = tokenizer.getIntToken();
+			player->getPlayerObject()->selectDraftSchematic(player, index);
+
+		} else
+			return GENERALERROR;
+
 		return SUCCESS;
 	}
 
