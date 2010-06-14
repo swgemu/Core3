@@ -57,6 +57,10 @@ void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*>(templateData);
 
+	if (craftingToolData == NULL) {
+		throw Exception("invalid template for CraftingTool");
+	}
+
 	type = craftingToolData->getToolType();
 
 	for(int i = 0; i < craftingToolData->getTabs().size(); ++i)

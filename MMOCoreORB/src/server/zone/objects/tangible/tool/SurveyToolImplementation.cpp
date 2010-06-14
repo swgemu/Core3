@@ -63,6 +63,10 @@ void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	SurveyToolTemplate* surveyToolData = dynamic_cast<SurveyToolTemplate*>(templateData);
 
+	if (surveyToolData == NULL) {
+		throw Exception("invalid template for SurveyTool");
+	}
+
 	type = surveyToolData->getToolType();
 	surveyType = surveyToolData->getSurveyType();
 	surveyAnimation = surveyToolData->getSurveyAnimation();
