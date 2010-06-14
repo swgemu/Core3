@@ -69,11 +69,20 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
-		if(tokenizer.hasMoreTokens())
+		if (tokenizer.hasMoreTokens())
 			value = tokenizer.getIntToken();
 
-		if(object != NULL && creature->isPlayerCreature())
-			object->synchronizedUIListen(creature, value);
+		if (object != NULL && creature->isPlayerCreature()) {
+			try {
+				object->wlock(creature);
+
+				object->synchronizedUIListen(creature, value);
+
+				object->unlock();
+			} catch (...) {
+				object->unlock();
+			}
+		}
 
 		return SUCCESS;
 	}

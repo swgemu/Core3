@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef HARVESTERSELECTRESOURCECOMMAND_H_
 #define HARVESTERSELECTRESOURCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/packets/harvester/HarvesterResourceDataMessage.h"
+
 
 class HarvesterSelectResourceCommand : public QueueCommand {
 public:
@@ -62,6 +65,35 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isInstallationObject())
+			return GENERALERROR;
+
+		InstallationObject* inso = (InstallationObject*) object.get();
+
+		if (!inso->isHarvesterObject())
+			return GENERALERROR;
+
+		uint64 spawnId = Long::valueOf(arguments.toString());
+
+		try {
+			object->wlock(player);
+
+			HarvesterObject* harvester = (HarvesterObject*) inso;
+			harvester->changeActiveResourceID(spawnId);
+
+			object->unlock();
+		} catch (...) {
+			object->unlock();
+		}
+
 
 		return SUCCESS;
 	}

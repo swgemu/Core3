@@ -49,23 +49,25 @@ which carries forward this exception.
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(Player* player, HarvesterObject* hino)
+	HarvesterResourceDataMessage(PlayerCreature* player, HarvesterObject* hino)
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
 
 		insertLong(hino->getObjectID()); // Harvester Object
 
-		ResourceManager* resourceManager = hino->getZone()->getZoneServer()->getResourceManager();
-		if (resourceManager == NULL) {
-			insertInt(0);
-			return;
-		}
+		Vector<ManagedReference<ResourceSpawn*> > resourceList;
 
+		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
+		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneID());
 
-		ResourceList* list = resourceManager->getResourceListAtLocation(hino->getZone()->getZoneID(), hino->getPositionX(), hino->getPositionY(), hino->getHarvesterType());
-		insertResourceList(list);
+		/*StringBuffer msg;
+		msg << "resource list for type " << hino->getInstallationType() << " with size " << resourceList.size();
+		hino->info(msg.toString(), true);*/
+
+		insertResourceList(&resourceList, hino);
+
 	}
 
-	void insertResourceList(ResourceList *list) {
+	void insertResourceList(Vector<ManagedReference<ResourceSpawn*> >* list, HarvesterObject* hino) {
 
 		//System::out << "insertResourceList size(): " << list->size() << endl;
 		insertInt(list->size()); // list size
@@ -75,14 +77,13 @@ public:
 		ASTRING:	Resource Type
 		BYTE:		Resource Density
 */
-		for (int x = 0; x < list->size(); x++)
-		{
-			ResourceItem *ri = list->get(x);
+		for (int x = 0; x < list->size(); x++) {
+			ResourceSpawn* ri = list->get(x);
 			//System::out << "insertResourceList() ObjectID: " << hex << ri->getObjectID() << endl;
 			insertLong(ri->getObjectID());
 			insertAscii(ri->getName());
 			insertAscii(ri->getType());
-			insertByte(ri->getDensity());
+			insertByte((int) (ri->getDensityAt(hino->getZone()->getZoneID(), hino->getPositionX(), hino->getPositionY()) * 100.f));
 		}
 
 	}
