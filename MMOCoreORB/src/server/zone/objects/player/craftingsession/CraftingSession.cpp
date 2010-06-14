@@ -118,11 +118,19 @@ void CraftingSession::cancel() {
 }*/
 
 void CraftingSession::collectSchematics() {
+	if (player == NULL || playerObject == NULL) {
+		cancel();
+		return;
+	}
 
 	schematics = playerObject->filterSchematicList(craftingTool->getToolTabs());
 }
 
 void CraftingSession::sendStart() {
+	if (player == NULL || playerObject == NULL) {
+		cancel();
+		return;
+	}
 
 	/// Packet Sending Start
 	/// DPlay9
@@ -185,6 +193,10 @@ void CraftingSession::sendStart() {
 }
 
 void CraftingSession::selectDraftSchematic(ManufactureSchematic* manu, TangibleObject* tano) {
+	if (player == NULL || playerObject == NULL) {
+		cancel();
+		return;
+	}
 
 	if(manu == NULL) {
 		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
@@ -236,6 +248,10 @@ void CraftingSession::selectDraftSchematic(ManufactureSchematic* manu, TangibleO
 }
 
 void CraftingSession::synchronizedUIListen() {
+	if (player == NULL || playerObject == NULL) {
+		cancel();
+		return;
+	}
 
 	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(schematic);
 	player->sendMessage(mcso7);
