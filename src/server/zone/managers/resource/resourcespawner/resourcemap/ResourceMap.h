@@ -112,7 +112,7 @@ public:
 	 * \param y The value of the y coordinate
 	 * \return Value between -1 and 1 indicating density
 	*/
-	float getDensityAt(String resourcename, int zoneid, float x, float y);
+	float getDensityAt(const String& resourcename, int zoneid, float x, float y);
 
 	/**
 	 * Get's the density value of resource at given point

@@ -77,6 +77,7 @@ which carries forward this exception.
 #include "packets/object/ObjectMenuSelect.h"
 #include "packets/object/MissionListRequestCallback.h"
 #include "packets/object/ItemDropTradeCallback.h"
+#include "packets/object/EmptyHopperCallback.h"
 
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
@@ -178,6 +179,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<CommandQueueRemoveCallback>(0x117);
 	objectMessageControllerFactory->registerObject<TargetUpdateCallback>(0x126);
 	objectMessageControllerFactory->registerObject<ObjectMenuRequestCallback>(0x146);
+	objectMessageControllerFactory->registerObject<EmptyHopperCallback>(0xED);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

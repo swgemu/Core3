@@ -5,6 +5,8 @@
 
 #include "../../objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/Zone.h"
 
 class HarvesterObjectMessage7 : public BaseLineMessage {
 public:
@@ -14,11 +16,17 @@ public:
 		insertByte(1);
 
 		Vector<ManagedReference<ResourceSpawn*> > resourceList;
+
 		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
+		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneID());
+
+		insertHopperSpawnObjects(&resourceList, hino);
 
 		insertResourceIDList(&resourceList);
 		insertResourceNameList(&resourceList);
 		insertResourceTypeList(&resourceList);
+
+
 
 		/*insertLong(hino->getActiveResourceID());
 		insertByte(hino->isOperating());
@@ -29,7 +37,7 @@ public:
 
 		insertInt(hino->getHopperSize());*/
 
-		insertLong(hino->getActiveResourceID());
+		insertLong(hino->getActiveResourceSpawnID());
 		insertByte(hino->isOperating());
 		insertInt((int)hino->getExtractionRate()); // Extraction Rate Displayed
 		insertFloat(hino->getExtractionRate()); // Extract Rate Max
@@ -43,6 +51,18 @@ public:
 		insertByte(100); // Percentage of Condition
 
 		setSize();
+
+	}
+
+	void insertHopperSpawnObjects(Vector<ManagedReference<ResourceSpawn*> >* resourceList, HarvesterObject* hino) {
+		HopperList* list = hino->getHopperList();
+
+		for (int i = 0; i < list->size(); ++i) {
+			ResourceSpawn* spawn = list->get(i)->getSpawnObject();
+
+			if (!spawn->inShift())
+				resourceList->add(spawn);
+		}
 
 	}
 

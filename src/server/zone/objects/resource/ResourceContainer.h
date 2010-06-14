@@ -82,6 +82,8 @@ public:
 
 	unsigned long long getSpawnID();
 
+	ResourceSpawn* getSpawnObject();
+
 	void split(PlayerCreature* player, int newStackSize);
 
 	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
@@ -143,6 +145,8 @@ public:
 	String getSpawnType();
 
 	unsigned long long getSpawnID();
+
+	ResourceSpawn* getSpawnObject();
 
 	void split(PlayerCreature* player, int newStackSize);
 
@@ -206,6 +210,8 @@ public:
 	String getSpawnType();
 
 	unsigned long long getSpawnID();
+
+	ResourceSpawn* getSpawnObject();
 
 	void split(PlayerCreature* player, int newStackSize);
 

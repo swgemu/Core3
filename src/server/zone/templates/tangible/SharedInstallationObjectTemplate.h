@@ -11,21 +11,27 @@
 #include "SharedStructureObjectTemplate.h"
 
 class SharedInstallationObjectTemplate : public SharedStructureObjectTemplate {
+	uint32 installationType;
 public:
 	SharedInstallationObjectTemplate() {
-
+		installationType = 0;
 	}
 
 	~SharedInstallationObjectTemplate() {
-
 	}
 
 	void readObject(LuaObject* templateData) {
 		SharedStructureObjectTemplate::readObject(templateData);
+
+		installationType = templateData->getIntField("installationType");
 	}
 
 	virtual bool isSharedInstallationObjectTemplate() {
 		return true;
+	}
+
+	inline uint32 getInstallationType() {
+		return installationType;
 	}
 };
 

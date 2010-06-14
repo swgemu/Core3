@@ -51,6 +51,10 @@ SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
 	--Default is all zones
 	allowedZones = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 	
+	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
+	installationType = 0, 
+	
+	
 	--The object that is placed during the construction phase.
 	constructionTemplate = ""
 }

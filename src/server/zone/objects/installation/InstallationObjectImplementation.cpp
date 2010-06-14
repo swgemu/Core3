@@ -14,6 +14,16 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
+
+void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(templateData);
+
+	installationType = inso->getInstallationType();
+}
+
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 	info("sending installation baselines");
@@ -46,6 +56,15 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 		management->addRadialMenuItem(77, 3, "@player_structure:management_power");
 
 	*/
+}
+
+void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
+	for (int i = 0; i < operatorList.size(); ++i) {
+		PlayerCreature* player = operatorList.get(i);
+		player->sendMessage(packet->clone());
+	}
+
+	delete packet;
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
