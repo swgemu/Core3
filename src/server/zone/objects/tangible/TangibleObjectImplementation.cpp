@@ -312,3 +312,19 @@ void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name
 
 	broadcastMessage(dtano3, true);
 }
+
+void TangibleObjectImplementation::setOptionsBitmask(uint32 bitmask, bool notifyClient) {
+	if (bitmask == optionsBitmask)
+		return;
+
+	optionsBitmask = bitmask;
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateOptionsBitmask();
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
+}

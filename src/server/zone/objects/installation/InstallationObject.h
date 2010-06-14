@@ -81,6 +81,20 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+
+class SyncrhonizedUiListenInstallationTask;
+
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation;
+
 #include "server/zone/objects/building/StructurePermissionList.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
@@ -92,6 +106,8 @@ using namespace server::zone::packets::object;
 #include "system/util/SortedVector.h"
 
 #include "engine/service/proto/BasePacket.h"
+
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace zone {
@@ -111,6 +127,16 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void setOperating(bool operating, bool notifyClient = true);
+
+	void activateUiSync();
+
+	void updateOperators();
+
+	void verifyOperators();
+
+	void updateInstallationWork();
 
 	void handleStructureStatus(PlayerCreature* player);
 
@@ -151,6 +177,8 @@ public:
 	void setPowerPool(unsigned int power);
 
 	unsigned int getPowerPool();
+
+	void addPower(int add);
 
 	void addMaintenance(float maint);
 
@@ -196,6 +224,8 @@ class InstallationObjectImplementation : public TangibleObjectImplementation {
 protected:
 	StructurePermissionList structurePermissionList;
 
+	Reference<SyncrhonizedUiListenInstallationTask*> syncUiTask;
+
 	unsigned long long ownerObjectID;
 
 	int lotSize;
@@ -237,6 +267,16 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	virtual void setOperating(bool operating, bool notifyClient = true);
+
+	void activateUiSync();
+
+	virtual void updateOperators();
+
+	void verifyOperators();
+
+	virtual void updateInstallationWork();
+
 	void handleStructureStatus(PlayerCreature* player);
 
 	void handleStructureManageMaintenance(PlayerCreature* player);
@@ -276,6 +316,8 @@ public:
 	void setPowerPool(unsigned int power);
 
 	unsigned int getPowerPool();
+
+	void addPower(int add);
 
 	void addMaintenance(float maint);
 
@@ -342,6 +384,16 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void setOperating(bool operating, bool notifyClient);
+
+	void activateUiSync();
+
+	void updateOperators();
+
+	void verifyOperators();
+
+	void updateInstallationWork();
+
 	void handleStructureStatus(PlayerCreature* player);
 
 	void handleStructureManageMaintenance(PlayerCreature* player);
@@ -381,6 +433,8 @@ public:
 	void setPowerPool(unsigned int power);
 
 	unsigned int getPowerPool();
+
+	void addPower(int add);
 
 	void addMaintenance(float maint);
 

@@ -74,12 +74,27 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 		((HarvesterObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
 }
 
-void HarvesterObject::updateToDatabaseAllObjects(bool startTask) {
+void HarvesterObject::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(container);
+		method.addSignedIntParameter(newQuantity);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterObjectImplementation*) _impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
+}
+
+void HarvesterObject::updateToDatabaseAllObjects(bool startTask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -87,12 +102,51 @@ void HarvesterObject::updateToDatabaseAllObjects(bool startTask) {
 		((HarvesterObjectImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
 }
 
+void HarvesterObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addBooleanParameter(destroyContainedObjects);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void HarvesterObject::setOperating(bool operating, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addBooleanParameter(operating);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterObjectImplementation*) _impl)->setOperating(operating, notifyClient);
+}
+
+void HarvesterObject::updateInstallationWork() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterObjectImplementation*) _impl)->updateInstallationWork();
+}
+
 void HarvesterObject::updateOperators() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -104,7 +158,7 @@ void HarvesterObject::setActiveResource(ResourceContainer* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -117,7 +171,7 @@ void HarvesterObject::changeActiveResourceID(unsigned long long spawnObjectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 		method.addUnsignedLongParameter(spawnObjectID);
 
 		method.executeWithVoidReturn();
@@ -130,7 +184,7 @@ void HarvesterObject::addResourceToHopper(ResourceContainer* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -143,7 +197,7 @@ void HarvesterObject::removeResourceFromHopper(ResourceContainer* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -156,7 +210,7 @@ void HarvesterObject::clearResourceHopper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -168,7 +222,7 @@ float HarvesterObject::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -180,23 +234,23 @@ void HarvesterObject::updateHopper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 21);
 
 		method.executeWithVoidReturn();
 	} else
 		((HarvesterObjectImplementation*) _impl)->updateHopper();
 }
 
-void HarvesterObject::verifyOperators() {
+void HarvesterObject::updateMaintenance() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 22);
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->verifyOperators();
+		((HarvesterObjectImplementation*) _impl)->updateMaintenance();
 }
 
 int HarvesterObject::getHopperItemQuantity(ResourceSpawn* spawn) {
@@ -204,7 +258,7 @@ int HarvesterObject::getHopperItemQuantity(ResourceSpawn* spawn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(spawn);
 
 		return method.executeWithSignedIntReturn();
@@ -217,7 +271,7 @@ ResourceContainer* HarvesterObject::getContainerFromHopper(ResourceSpawn* spawn)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(spawn);
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
@@ -230,7 +284,7 @@ unsigned long long HarvesterObject::getActiveResourceSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -242,7 +296,7 @@ float HarvesterObject::getActualRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -254,7 +308,7 @@ float HarvesterObject::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -266,7 +320,7 @@ float HarvesterObject::getHopperSizeMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -286,7 +340,7 @@ bool HarvesterObject::isHarvesterObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -369,31 +423,38 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(68):  		hopperSizeMax = 10;
-	hopperSizeMax = 10;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(69):  		extractionRate = 10;
-	extractionRate = 10;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(68):  		hopperSizeMax = 10000;
+	hopperSizeMax = 10000;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(69):  		extractionRate = 1000;
+	extractionRate = 1000;
 	// server/zone/objects/installation/harvester/HarvesterObject.idl(71):  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
 }
 
+void HarvesterObjectImplementation::updateInstallationWork() {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(132):  		updateMaintenance();
+	updateMaintenance();
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(133):  		updateHopper();
+	updateHopper();
+}
+
 float HarvesterObjectImplementation::getExtractionRate() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(139):  		return extractionRate;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(156):  		return extractionRate;
 	return extractionRate;
 }
 
 float HarvesterObjectImplementation::getHopperSizeMax() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(143):  		return hopperSizeMax;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(160):  		return hopperSizeMax;
 	return hopperSizeMax;
 }
 
 HopperList* HarvesterObjectImplementation::getHopperList() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(148):  		return resourceHopper;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(165):  		return resourceHopper;
 	return (&resourceHopper);
 }
 
 bool HarvesterObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(152):  		return true;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(169):  		return true;
 	return true;
 }
 
@@ -418,54 +479,66 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		updateResourceContainerQuantity((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		updateOperators();
+		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
 	case 11:
-		setActiveResource((ResourceContainer*) inv->getObjectParameter());
+		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	case 12:
-		changeActiveResourceID(inv->getUnsignedLongParameter());
+		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 13:
-		addResourceToHopper((ResourceContainer*) inv->getObjectParameter());
+		updateInstallationWork();
 		break;
 	case 14:
-		removeResourceFromHopper((ResourceContainer*) inv->getObjectParameter());
+		updateOperators();
 		break;
 	case 15:
-		clearResourceHopper();
+		setActiveResource((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertFloat(getHopperSize());
+		changeActiveResourceID(inv->getUnsignedLongParameter());
 		break;
 	case 17:
-		updateHopper();
+		addResourceToHopper((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 18:
-		verifyOperators();
+		removeResourceFromHopper((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 19:
-		resp->insertSignedInt(getHopperItemQuantity((ResourceSpawn*) inv->getObjectParameter()));
+		clearResourceHopper();
 		break;
 	case 20:
-		resp->insertLong(getContainerFromHopper((ResourceSpawn*) inv->getObjectParameter())->_getObjectID());
+		resp->insertFloat(getHopperSize());
 		break;
 	case 21:
-		resp->insertLong(getActiveResourceSpawnID());
+		updateHopper();
 		break;
 	case 22:
-		resp->insertFloat(getActualRate());
+		updateMaintenance();
 		break;
 	case 23:
-		resp->insertFloat(getExtractionRate());
+		resp->insertSignedInt(getHopperItemQuantity((ResourceSpawn*) inv->getObjectParameter()));
 		break;
 	case 24:
-		resp->insertFloat(getHopperSizeMax());
+		resp->insertLong(getContainerFromHopper((ResourceSpawn*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 25:
+		resp->insertLong(getActiveResourceSpawnID());
+		break;
+	case 26:
+		resp->insertFloat(getActualRate());
+		break;
+	case 27:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 28:
+		resp->insertFloat(getHopperSizeMax());
+		break;
+	case 29:
 		resp->insertBoolean(isHarvesterObject());
 		break;
 	default:
@@ -487,8 +560,24 @@ void HarvesterObjectAdapter::synchronizedUIStopListen(SceneObject* player, int v
 	((HarvesterObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
 }
 
+void HarvesterObjectAdapter::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
+	((HarvesterObjectImplementation*) impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
+}
+
 void HarvesterObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
 	((HarvesterObjectImplementation*) impl)->updateToDatabaseAllObjects(startTask);
+}
+
+void HarvesterObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	((HarvesterObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void HarvesterObjectAdapter::setOperating(bool operating, bool notifyClient) {
+	((HarvesterObjectImplementation*) impl)->setOperating(operating, notifyClient);
+}
+
+void HarvesterObjectAdapter::updateInstallationWork() {
+	((HarvesterObjectImplementation*) impl)->updateInstallationWork();
 }
 
 void HarvesterObjectAdapter::updateOperators() {
@@ -523,8 +612,8 @@ void HarvesterObjectAdapter::updateHopper() {
 	((HarvesterObjectImplementation*) impl)->updateHopper();
 }
 
-void HarvesterObjectAdapter::verifyOperators() {
-	((HarvesterObjectImplementation*) impl)->verifyOperators();
+void HarvesterObjectAdapter::updateMaintenance() {
+	((HarvesterObjectImplementation*) impl)->updateMaintenance();
 }
 
 int HarvesterObjectAdapter::getHopperItemQuantity(ResourceSpawn* spawn) {
