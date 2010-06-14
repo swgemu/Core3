@@ -53,50 +53,62 @@ public:
 
 		HarvesterObject* harvester = (HarvesterObject*) inso;
 
-		SceneObject* inventory = player->getSlottedObject("inventory");
+		try {
+			harvester->wlock(player);
+
+			SceneObject* inventory = player->getSlottedObject("inventory");
 
 
-		ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*>(server->getZoneServer()->getObject(resourceId));
+			ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*>(server->getZoneServer()->getObject(resourceId));
 
-		if (resourceSpawn == NULL) {
-			player->error("wrong spawn id");
-			return;
-		}
-
-		ManagedReference<ResourceContainer*> container = harvester->getContainerFromHopper(resourceSpawn);
-
-		if (container == NULL) {
-			player->error("null container");
-			return;
-		}
-
-		if (byte1 == 0 && quantity > container->getQuantity()) {
-			player->error("too much splitting");
-			return;
-		}
-
-		if (byte1 == 1) {
-			//harvester->removeResourceFromHopper(container);
-			int oldQuantity = container->getQuantity();
-			int newQuantity = oldQuantity - quantity;
-
-			harvester->updateResourceContainerQuantity(container, newQuantity, true);
-		} else if (byte1 == 0) {
-			if (!inventory->hasFullContainerObjects()) {
-				container->split(player, quantity);
-				harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
-
-			} else {
-				ParameterizedStringId stringId("error_message", "inv_full");
-				player->sendSystemMessage(stringId);
+			if (resourceSpawn == NULL) {
+				player->error("wrong spawn id");
+				harvester->unlock();
+				return;
 			}
+
+			ManagedReference<ResourceContainer*> container = harvester->getContainerFromHopper(resourceSpawn);
+
+			if (container == NULL) {
+				player->error("null container");
+				harvester->unlock();
+				return;
+			}
+
+			if (byte1 == 0 && quantity > container->getQuantity()) {
+				player->error("too much splitting");
+				harvester->unlock();
+				return;
+			}
+
+			if (byte1 == 1) {
+				//harvester->removeResourceFromHopper(container);
+				int oldQuantity = container->getQuantity();
+				int newQuantity = oldQuantity - quantity;
+
+				harvester->updateResourceContainerQuantity(container, newQuantity, true);
+			} else if (byte1 == 0) {
+				if (!inventory->hasFullContainerObjects()) {
+					container->split(player, quantity);
+					harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
+
+				} else {
+					ParameterizedStringId stringId("error_message", "inv_full");
+					player->sendSystemMessage(stringId);
+				}
+			}
+
+			GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+			player->sendMessage(gr);
+
+			inventory->updateToDatabaseAllObjects(false);
+			harvester->updateToDatabaseAllObjects(false);
+
+			harvester->unlock();
+		} catch (...) {
+			harvester->unlock();
+			player->error("unreported exception caught in EmptyHopperCallback::run");
 		}
-
-		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-		player->sendMessage(gr);
-
-		inventory->updateToDatabaseAllObjects(false);
-		harvester->updateToDatabaseAllObjects(false);
 
 		//if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT)
 
