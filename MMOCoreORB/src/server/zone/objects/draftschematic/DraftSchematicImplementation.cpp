@@ -121,15 +121,3 @@ void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player)
 void DraftSchematicImplementation::setObjectName(StringId& stringId) {
 	objectName = stringId;
 }
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
