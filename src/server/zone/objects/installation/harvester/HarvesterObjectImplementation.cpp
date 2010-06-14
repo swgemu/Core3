@@ -114,18 +114,19 @@ void HarvesterObjectImplementation::clearResourceHopper() {
 		container->destroyObjectFromDatabase(true);
 	}
 
-	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->startUpdate(0x0D);
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->updateHopper();
+	inso7->startUpdate(0x0D);
 
-	resourceHopper.removeAll(dtano6);
+	resourceHopper.removeAll(inso7);
 
-	dtano6->updateActiveResourceSpawn(getActiveResourceSpawnID());
-	dtano6->updateHopperSize(getHopperSize());
-	dtano6->updateExtractionRate(getActualRate());
+	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
+	inso7->updateHopperSize(getHopperSize());
+	inso7->updateExtractionRate(getActualRate());
 
-	dtano6->close();
+	inso7->close();
 
-	broadcastToOperators(dtano6);
+	broadcastToOperators(inso7);
 
 	/*while (resourceHopper.size() > 0) {
 		ResourceContainer* container = resourceHopper.get(0);
@@ -144,18 +145,19 @@ void HarvesterObjectImplementation::removeResourceFromHopper(ResourceContainer* 
 
 	container->destroyObjectFromDatabase(true);
 
-	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->startUpdate(0x0D);
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->updateHopper();
+	inso7->startUpdate(0x0D);
 
-	resourceHopper.remove(index, dtano6, 1);
+	resourceHopper.remove(index, inso7, 1);
 
-	dtano6->updateActiveResourceSpawn(getActiveResourceSpawnID());
-	dtano6->updateHopperSize(getHopperSize());
-	dtano6->updateExtractionRate(getActualRate());
+	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
+	inso7->updateHopperSize(getHopperSize());
+	inso7->updateExtractionRate(getActualRate());
 
-	dtano6->close();
+	inso7->close();
 
-	broadcastToOperators(dtano6);
+	broadcastToOperators(inso7);
 
 	if (resourceHopper.size() == 0)
 		setOperating(false);
@@ -165,13 +167,14 @@ void HarvesterObjectImplementation::addResourceToHopper(ResourceContainer* conta
 	if (resourceHopper.contains(container))
 		return;
 
-	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->startUpdate(0x0D);
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->updateHopper();
+	inso7->startUpdate(0x0D);
 
-	resourceHopper.add(container, dtano6, 1);
-	dtano6->close();
+	resourceHopper.add(container, inso7, 1);
+	inso7->close();
 
-	broadcastToOperators(dtano6);
+	broadcastToOperators(inso7);
 }
 
 void HarvesterObjectImplementation::setActiveResource(ResourceContainer* container) {
@@ -191,15 +194,16 @@ void HarvesterObjectImplementation::setActiveResource(ResourceContainer* contain
 
 			ManagedReference<ResourceContainer*> oldEntry = resourceHopper.get(0);
 
-			InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-			dtano6->startUpdate(0x0D);
+			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+			inso7->updateHopper();
+			inso7->startUpdate(0x0D);
 
-			resourceHopper.set(0, container, dtano6, 2);
-			resourceHopper.set(i, oldEntry, dtano6, 0);
+			resourceHopper.set(0, container, inso7, 2);
+			resourceHopper.set(i, oldEntry, inso7, 0);
 
-			dtano6->close();
+			inso7->close();
 
-			broadcastToOperators(dtano6);
+			broadcastToOperators(inso7);
 		}
 	}
 }
@@ -249,12 +253,12 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		setActiveResource(container);
 	}
 
-	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->updateExtractionRate(getActualRate());
-	dtano6->updateActiveResourceSpawn(getActiveResourceSpawnID());
-	dtano6->close();
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->updateExtractionRate(getActualRate());
+	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
+	inso7->close();
 
-	broadcastToOperators(dtano6);
+	broadcastToOperators(inso7);
 }
 
 void HarvesterObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
@@ -267,13 +271,15 @@ void HarvesterObjectImplementation::updateResourceContainerQuantity(ResourceCont
 		ResourceContainer* cont = resourceHopper.get(i);
 
 		if (cont == container) {
-			InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-			dtano6->startUpdate(0x0D);
-			resourceHopper.set(i, container, dtano6, 1);
-			dtano6->updateHopperSize(getHopperSize());
-			dtano6->close();
+			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+			inso7->updateHopper();
+			inso7->startUpdate(0x0D);
+			resourceHopper.set(i, container, inso7, 1);
+			inso7->updateHopperSize(getHopperSize());
+			inso7->updateExtractionRate(getActualRate());
+			inso7->close();
 
-			broadcastToOperators(dtano6);
+			broadcastToOperators(inso7);
 		}
 	}
 }
@@ -350,13 +356,13 @@ void HarvesterObjectImplementation::updateHopper() {
 
 	updateToDatabaseAllObjects(false);
 
-	/*InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->startUpdate(0x0D);
-	resourceHopper.set(0, container, dtano6, 1);
-	dtano6->updateHopperSize(getHopperSize());
-	dtano6->close();
+	/*InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->startUpdate(0x0D);
+	resourceHopper.set(0, container, inso7, 1);
+	inso7->updateHopperSize(getHopperSize());
+	inso7->close();
 
-	broadcastToOperators(dtano6);*/
+	broadcastToOperators(inso7);*/
 
 }
 
@@ -394,13 +400,13 @@ void HarvesterObjectImplementation::setOperating(bool value, bool notifyClient) 
 		resourceHopperTimestamp.updateToCurrentTime();
 	}
 
-	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
-	dtano6->updateExtractionRate(getActualRate());
-	dtano6->close();
-
-	broadcastToOperators(dtano6);
-
 	InstallationObjectImplementation::setOperating(value, notifyClient);
+
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
+	inso7->updateExtractionRate(getActualRate());
+	inso7->close();
+
+	broadcastToOperators(inso7);
 
 	updateToDatabaseAllObjects(false);
 }
