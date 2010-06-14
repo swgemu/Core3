@@ -1,12 +1,12 @@
 /*
-Copyright (C) 2010 <SWGEmu>
+Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 3 of the License,
+Foundation; either version 2 of the License,
 or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -42,35 +42,66 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CRAFTINGSESSION_H_
-#define CRAFTINGSESSION_H_
+#ifndef CRAFTINGSLOT_H_
+#define CRAFTINGSLOT_H_
 
-#include "engine/engine.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
-class CraftingSession {
-private:
-	ManagedWeakReference<CraftingTool* > craftingTool;
-	ManagedWeakReference<CraftingStation* > craftingStation;
-	ManagedWeakReference<PlayerCreature* > player;
-	ManagedWeakReference<PlayerObject* > playerObject;
-	Vector<ManagedReference<DraftSchematic*> > schematics;
+class CraftingSlot {
+
+protected:
+
+	int maxsize;
+	int slottype;
+	String serial;
 
 public:
-	CraftingSession();
 
-	~CraftingSession();
+	static const int RESOURCESLOT = 0;
+	static const int IDENTICALSLOT = 1;
+	static const int MIXEDSLOT = 2;
+	static const int OPTIONALIDENTICALSLOT = 3;
+	static const int OPTIONALMIXEDSLOT = 4;
 
-	void request(PlayerCreature* pl, PlayerObject* play,
-			CraftingTool* tool, CraftingStation* station);
-	void cancel();
+public:
+	CraftingSlot(){
 
-private:
-	void sendStart();
-	void collectSchematics();
+	}
 
+	virtual ~CraftingSlot(){
+
+	}
+
+	virtual inline void init(const int size){
+
+	}
+
+	virtual inline void cleanup(){
+
+	}
+
+	virtual inline int size(){
+
+		return 0;
+	}
+
+	virtual inline bool add(TangibleObject* tano) {
+
+		return false;
+	}
+
+	virtual inline void clear(){
+
+	}
+
+	virtual inline TangibleObject* get() {
+
+		return NULL;
+	}
+
+	virtual void toString(){
+
+
+	}
 };
-
-#endif /* CRAFTINGSESSION_H_ */
+#endif /*CRAFTINGSLOTS_H_*/

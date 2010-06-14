@@ -86,7 +86,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
-				server/zone/objects/player/variables/CraftingSession.cpp \
+				server/zone/objects/player/craftingsession/CraftingSession.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
@@ -108,6 +108,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
+				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
@@ -194,6 +195,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
+		server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \

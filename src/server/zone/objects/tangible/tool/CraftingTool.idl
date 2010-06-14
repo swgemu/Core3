@@ -54,9 +54,9 @@ import server.zone.packets.object.ObjectMenuResponse;
 
 class CraftingTool extends ToolTangibleObject {
 	
-	private int type;
-	private float effectiveness;
-	private string status;
+	protected int type;
+	protected float effectiveness;
+	protected string status;
 	
 	@dereferenced
 	Vector<unsigned int> enabledTabs;
