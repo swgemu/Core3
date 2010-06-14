@@ -131,6 +131,10 @@ public:
 		x -= minX;
 		y = maxY - y;
 		float value = SimplexNoise::noise(x * modifier, y * modifier, seed * modifier);
+
+		if(value < 0)
+			return 0;
+
 		return value * density;
 	}
 
