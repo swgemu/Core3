@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef HARVESTERDISCARDHOPPERCOMMAND_H_
 #define HARVESTERDISCARDHOPPERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/packets/harvester/HarvesterResourceDataMessage.h"
+
 
 class HarvesterDiscardHopperCommand : public QueueCommand {
 public:
@@ -62,6 +65,31 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isInstallationObject())
+			return GENERALERROR;
+
+		InstallationObject* inso = (InstallationObject*) object.get();
+
+		if (!inso->isHarvesterObject())
+			return GENERALERROR;
+
+		HarvesterObject* harvester = (HarvesterObject*) inso;
+
+		try {
+			harvester->wlock(player);
+
+			harvester->clearResourceHopper();
+
+			harvester->unlock();
+		} catch (...) {
+			harvester->unlock();
+		}
+
 
 		return SUCCESS;
 	}

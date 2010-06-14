@@ -52,7 +52,9 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
+import engine.service.proto.BasePacket;
 include server.zone.objects.building.StructurePermissionList;
+include server.zone.templates.SharedObjectTemplate;
 
 class InstallationObject extends TangibleObject {
 	@dereferenced
@@ -79,6 +81,8 @@ class InstallationObject extends TangibleObject {
 	@dereferenced
 	protected SortedVector<PlayerCreature> operatorList;
 	
+	protected int installationType;
+	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
@@ -89,6 +93,8 @@ class InstallationObject extends TangibleObject {
 		operating = false;
 		
 		lotSize = 0;
+		
+		installationType = 0;
 		
 		baseMaintenanceRate = 0;
 		basePowerRate = 0;
@@ -117,6 +123,15 @@ class InstallationObject extends TangibleObject {
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
 	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, menuResponse is complete}
@@ -140,6 +155,8 @@ class InstallationObject extends TangibleObject {
 	public native void handleSetObjectName(PlayerCreature player);
 	public native void handleStructureDestroy(PlayerCreature player);
 	
+	public native void broadcastToOperators(BasePacket packet);
+	
 	/**
 	 * Returns if the creature is on the admin list or not for this structure.
 	 * @param creature The creature to check for admin permissions on.
@@ -151,6 +168,14 @@ class InstallationObject extends TangibleObject {
 	
 	public void sendPermissionListTo(PlayerCreature player, final string listName) {
 		structurePermissionList.sendTo(player, listName);
+	}
+	
+	public void addOperator(PlayerCreature player) {
+		operatorList.put(player);
+	}
+	
+	public void removeOperator(PlayerCreature player) {
+		operatorList.drop(player);
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
@@ -248,5 +273,13 @@ class InstallationObject extends TangibleObject {
 	
 	public boolean isOperating() {
 		return operating;
+	}
+	
+	public int getInstallationType() {
+		return installationType;
+	}
+	
+	public abstract boolean isHarvesterObject() {
+		return false;
 	}
 }

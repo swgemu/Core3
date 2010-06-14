@@ -83,11 +83,15 @@ using namespace server::zone::packets::object;
 
 #include "server/zone/objects/building/StructurePermissionList.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/SortedVector.h"
+
+#include "engine/service/proto/BasePacket.h"
 
 namespace server {
 namespace zone {
@@ -102,6 +106,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -114,9 +120,15 @@ public:
 
 	void handleStructureDestroy(PlayerCreature* player);
 
+	void broadcastToOperators(BasePacket* packet);
+
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	void addOperator(PlayerCreature* player);
+
+	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -155,6 +167,10 @@ public:
 	bool isInstallationObject();
 
 	bool isOperating();
+
+	int getInstallationType();
+
+	bool isHarvesterObject();
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -204,6 +220,8 @@ protected:
 
 	SortedVector<ManagedReference<PlayerCreature* > > operatorList;
 
+	int installationType;
+
 public:
 	InstallationObjectImplementation();
 
@@ -212,6 +230,8 @@ public:
 	void initializeTransientMembers();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -225,9 +245,15 @@ public:
 
 	void handleStructureDestroy(PlayerCreature* player);
 
+	void broadcastToOperators(BasePacket* packet);
+
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	void addOperator(PlayerCreature* player);
+
+	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -266,6 +292,10 @@ public:
 	bool isInstallationObject();
 
 	bool isOperating();
+
+	int getInstallationType();
+
+	virtual bool isHarvesterObject();
 
 	InstallationObject* _this;
 
@@ -320,9 +350,15 @@ public:
 
 	void handleStructureDestroy(PlayerCreature* player);
 
+	void broadcastToOperators(BasePacket* packet);
+
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	void addOperator(PlayerCreature* player);
+
+	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -361,6 +397,10 @@ public:
 	bool isInstallationObject();
 
 	bool isOperating();
+
+	int getInstallationType();
+
+	bool isHarvesterObject();
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

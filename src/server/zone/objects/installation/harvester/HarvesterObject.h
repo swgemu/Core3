@@ -25,6 +25,20 @@ class ResourceSpawn;
 
 using namespace server::zone::objects::resource;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceContainer;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
 #include "server/zone/objects/installation/harvester/HopperList.h"
 
 #include "server/zone/objects/installation/InstallationObject.h"
@@ -45,9 +59,35 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
+	void updateOperators();
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
 	float getHopperSize();
 
-	unsigned long long getActiveResourceID();
+	void updateHopper();
+
+	void verifyOperators();
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
 
 	float getActualRate();
 
@@ -56,6 +96,8 @@ public:
 	float getHopperSizeMax();
 
 	HopperList* getHopperList();
+
+	bool isHarvesterObject();
 
 protected:
 	HarvesterObject(DummyConstructorParameter* param);
@@ -81,12 +123,6 @@ namespace harvester {
 
 class HarvesterObjectImplementation : public InstallationObjectImplementation {
 protected:
-	int harvesterType;
-
-	ManagedWeakReference<ResourceSpawn* > activeResource;
-
-	Time spawnExpireTimestamp;
-
 	Time resourceHopperTimestamp;
 
 	Time lastMaintenanceTime;
@@ -107,9 +143,35 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	virtual void updateToDatabaseAllObjects(bool startTask);
+
+	void updateOperators();
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
 	float getHopperSize();
 
-	unsigned long long getActiveResourceID();
+	void updateHopper();
+
+	void verifyOperators();
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
 
 	float getActualRate();
 
@@ -118,6 +180,8 @@ public:
 	float getHopperSizeMax();
 
 	HopperList* getHopperList();
+
+	bool isHarvesterObject();
 
 	HarvesterObject* _this;
 
@@ -160,15 +224,43 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
+	void updateOperators();
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
 	float getHopperSize();
 
-	unsigned long long getActiveResourceID();
+	void updateHopper();
+
+	void verifyOperators();
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
 
 	float getActualRate();
 
 	float getExtractionRate();
 
 	float getHopperSizeMax();
+
+	bool isHarvesterObject();
 
 };
 

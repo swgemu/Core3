@@ -124,6 +124,10 @@ class ResourceContainer extends TangibleObject {
 		return spawnObject.getObjectID();
 	}
 	
+	public ResourceSpawn getSpawnObject() {
+		return spawnObject;
+	}
+	
 	public native void split(PlayerCreature player, int newStackSize);
 	
 	public native void combine(PlayerCreature player, ResourceContainer fromContainer);

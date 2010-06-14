@@ -67,7 +67,23 @@ public:
 		addByteUpdate(0x0C, 0);
 	}
 
-	void updateActiveResource(uint64 oid) {
+	void updateOperating(bool state) {
+		addByteUpdate(0x06, state);
+	}
+
+	void updateHopper() {
+		addByteUpdate(0x0C, 1); // think about incrementing like a counter
+	}
+
+	void updateHopperSize(float size) {
+		addFloatUpdate(0x0A, size);
+	}
+
+	void updateActiveResourceSpawn(uint64 id) {
+		addLongUpdate(0x05, id);
+	}
+
+	/*void updateActiveResource(uint64 oid) {
 
 		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER && ((HarvesterObject*)inso)->getActiveResourceID() != oid)
 			((HarvesterObject*)inso)->changeActiveResourceID(oid);
@@ -78,18 +94,7 @@ public:
 
 	}
 
-	void updateOperating(bool state) {
-		inso->setOperating(state);
-		addByteUpdate(0x06, state);
-	}
 
-	void updateHopper() {
-		addByteUpdate(0x0C, 1); // think about incrementing like a counter
-	}
-
-	void updateHopperSize() {
-		addFloatUpdate(0x0A, inso->getHopperSize());
-	}
 
 	void updateHopperItem(uint64 rId) {
 
@@ -110,7 +115,7 @@ public:
 		insertShort(0x00);
 		insertLong(rId); // ID
 		insertFloat(inso->getHopperItemQuantity(rId)); // size
-	}
+	}*/
 
 
 };

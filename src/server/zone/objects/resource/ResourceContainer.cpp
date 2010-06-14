@@ -159,12 +159,24 @@ unsigned long long ResourceContainer::getSpawnID() {
 		return ((ResourceContainerImplementation*) _impl)->getSpawnID();
 }
 
-void ResourceContainer::split(PlayerCreature* player, int newStackSize) {
+ResourceSpawn* ResourceContainer::getSpawnObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+
+		return (ResourceSpawn*) method.executeWithObjectReturn();
+	} else
+		return ((ResourceContainerImplementation*) _impl)->getSpawnObject();
+}
+
+void ResourceContainer::split(PlayerCreature* player, int newStackSize) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(newStackSize);
 
@@ -178,7 +190,7 @@ void ResourceContainer::combine(PlayerCreature* player, ResourceContainer* fromC
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(fromContainer);
 
@@ -303,6 +315,11 @@ unsigned long long ResourceContainerImplementation::getSpawnID() {
 	return spawnObject->getObjectID();
 }
 
+ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
+	// server/zone/objects/resource/ResourceContainer.idl(128):  		return spawnObject;
+	return spawnObject;
+}
+
 /*
  *	ResourceContainerAdapter
  */
@@ -345,9 +362,12 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertLong(getSpawnID());
 		break;
 	case 16:
-		split((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		resp->insertLong(getSpawnObject()->_getObjectID());
 		break;
 	case 17:
+		split((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 18:
 		combine((PlayerCreature*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:
@@ -395,6 +415,10 @@ String ResourceContainerAdapter::getSpawnType() {
 
 unsigned long long ResourceContainerAdapter::getSpawnID() {
 	return ((ResourceContainerImplementation*) impl)->getSpawnID();
+}
+
+ResourceSpawn* ResourceContainerAdapter::getSpawnObject() {
+	return ((ResourceContainerImplementation*) impl)->getSpawnObject();
 }
 
 void ResourceContainerAdapter::split(PlayerCreature* player, int newStackSize) {

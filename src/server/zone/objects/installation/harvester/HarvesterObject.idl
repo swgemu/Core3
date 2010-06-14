@@ -47,17 +47,10 @@ package server.zone.objects.installation.harvester;
 import server.zone.objects.installation.InstallationObject;
 import system.util.VectorMap;
 import server.zone.objects.resource.ResourceSpawn;
+import server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.installation.harvester.HopperList;
 
 class HarvesterObject extends InstallationObject {
-	protected int harvesterType;
-
-	@weakReference
-	protected ResourceSpawn activeResource;
-	
-	@dereferenced
-	protected Time spawnExpireTimestamp;
-
 	@dereferenced
 	protected Time resourceHopperTimestamp;
 	
@@ -71,6 +64,10 @@ class HarvesterObject extends InstallationObject {
 	float extractionRate;
 	
 	public HarvesterObject() {
+		
+		hopperSizeMax = 10;
+		extractionRate = 10;
+		
 		Logger.setLoggingName("HarvesterObject");
 	}
 	
@@ -100,16 +97,41 @@ class HarvesterObject extends InstallationObject {
 	 * @param player PlayerCreature using the item
 	 * @param value value from packet
 	 */
-	//public native void synchronizedUIListen(SceneObject player, int value);
+	public native void synchronizedUIListen(SceneObject player, int value);
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native void synchronizedUIStopListen(SceneObject player, int value);
+	
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	public abstract native void updateToDatabaseAllObjects(boolean startTask);
+	
+	public native void updateOperators();
+	
+	public native void setActiveResource(ResourceContainer container);
+	public native void changeActiveResourceID(unsigned long spawnObjectID);
+	public native void addResourceToHopper(ResourceContainer container);
+	public native void removeResourceFromHopper(ResourceContainer container);
+	public native void clearResourceHopper();
 	
 	public native float getHopperSize();
+	public native void updateHopper();
+	public native void verifyOperators();
 	
-	public unsigned long getActiveResourceID() {
-		if (activeResource == null)
-			return 0;
-		else
-			return activeResource.getObjectID();
-	}
+	public native int getHopperItemQuantity(ResourceSpawn spawn);
+	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);
+		
+	public native unsigned long getActiveResourceSpawnID();
 	
 	public native float getActualRate();
 	
@@ -124,5 +146,9 @@ class HarvesterObject extends InstallationObject {
 	@local
 	public HopperList getHopperList() {
 		return resourceHopper;
+	}
+	
+	public boolean isHarvesterObject() {
+		return true;
 	}
 }

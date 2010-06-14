@@ -62,7 +62,7 @@ ResourceMap::~ResourceMap() {
 	removeAll();
 }
 
-float ResourceMap::getDensityAt(String resourcename, int zoneid, float x, float y) {
+float ResourceMap::getDensityAt(const String& resourcename, int zoneid, float x, float y) {
 	ManagedReference<ResourceSpawn* > resourceSpawn = get(resourcename);
 	return resourceSpawn->getDensityAt(zoneid, x, y);
 }
