@@ -361,7 +361,8 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
 
-	if(surveyTool == NULL || !resourceMap->contains(resname))
+	if(surveyTool == NULL || !resourceMap->contains(resname) ||
+			playerCreature == NULL || playerCreature->getZone() == NULL)
 		return;
 
 	int zoneid = playerCreature->getZone()->getZoneID();
@@ -437,7 +438,9 @@ void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& r
 
 	// Determine if survey tool is valid, and that resource actually exists
 	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
-	if(surveyTool == NULL || !resourceMap->contains(resname))
+
+	if(surveyTool == NULL || !resourceMap->contains(resname) ||
+			playerCreature == NULL || playerCreature->getZone() == NULL)
 		return;
 
 	ManagedReference<ResourceSpawn* > resourceSpawn = resourceMap->get(resname);
@@ -488,7 +491,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 
 	// Determine if survey tool is valid, and that resource actually exists
 	ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
-	if(surveyTool == NULL)
+	if(surveyTool == NULL || playerCreature == NULL || playerCreature->getZone() == NULL)
 		return;
 
 	Locker playerLocker(playerCreature);
