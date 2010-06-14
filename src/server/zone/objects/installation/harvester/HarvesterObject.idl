@@ -65,8 +65,8 @@ class HarvesterObject extends InstallationObject {
 	
 	public HarvesterObject() {
 		
-		hopperSizeMax = 10;
-		extractionRate = 10;
+		hopperSizeMax = 10000;
+		extractionRate = 1000;
 		
 		Logger.setLoggingName("HarvesterObject");
 	}
@@ -108,6 +108,8 @@ class HarvesterObject extends InstallationObject {
 	 */
 	public native void synchronizedUIStopListen(SceneObject player, int value);
 	
+	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
+	
 	/**
 	 * Updates this object and childre objects to database
 	 * @pre { this object is locked }
@@ -115,6 +117,21 @@ class HarvesterObject extends InstallationObject {
 	 * @param startTask if true, queues a new update task
 	 */
 	public abstract native void updateToDatabaseAllObjects(boolean startTask);
+	
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	public native void setOperating(boolean operating, boolean notifyClient = true);
+	
+	public void updateInstallationWork() {
+		updateMaintenance();
+		updateHopper();
+	}
 	
 	public native void updateOperators();
 	
@@ -126,7 +143,7 @@ class HarvesterObject extends InstallationObject {
 	
 	public native float getHopperSize();
 	public native void updateHopper();
-	public native void verifyOperators();
+	public native void updateMaintenance();
 	
 	public native int getHopperItemQuantity(ResourceSpawn spawn);
 	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);

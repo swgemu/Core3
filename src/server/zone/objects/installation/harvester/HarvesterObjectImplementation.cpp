@@ -37,6 +37,8 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 
 	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this);
 	player->sendMessage(msg);
+
+	activateUiSync();
 }
 
 void HarvesterObjectImplementation::updateOperators() {
@@ -74,7 +76,7 @@ int HarvesterObjectImplementation::handleObjectMenuSelect(PlayerCreature* player
 void HarvesterObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	InstallationObjectImplementation::updateToDatabaseAllObjects(startTask);
 
-	for (int i = 0; resourceHopper.size(); ++i) {
+	for (int i = 0; i < resourceHopper.size(); ++i) {
 		resourceHopper.get(i)->updateToDatabaseAllObjects(false);
 	}
 }
@@ -88,23 +90,6 @@ int HarvesterObjectImplementation::getHopperItemQuantity(ResourceSpawn* spawn) {
 	}
 
 	return -1;
-}
-
-void HarvesterObjectImplementation::verifyOperators() {
-	if (operatorList.size() <= 0)
-		return;
-
-	// won't fully clean up at once because indexes would change once you remove one - but should clean up
-	for (int i = 0; i < operatorList.size(); i++) {
-		ManagedReference<PlayerCreature*> obj = operatorList.get(i);
-
-		if (!obj->isOnline()) {
-			operatorList.remove(i);
-
-			--i;
-		}
-	}
-
 }
 
 uint64 HarvesterObjectImplementation::getActiveResourceSpawnID() {
@@ -121,6 +106,13 @@ void HarvesterObjectImplementation::clearResourceHopper() {
 	if (resourceHopper.size() == 0)
 		return;
 
+	//lets delete the containers from db
+
+	for (int i = 0; i < resourceHopper.size(); ++i) {
+		ResourceContainer* container = resourceHopper.get(i);
+
+		container->destroyObjectFromDatabase(true);
+	}
 
 	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
 	dtano6->startUpdate(0x0D);
@@ -128,10 +120,20 @@ void HarvesterObjectImplementation::clearResourceHopper() {
 	resourceHopper.removeAll(dtano6);
 
 	dtano6->updateActiveResourceSpawn(getActiveResourceSpawnID());
+	dtano6->updateHopperSize(getHopperSize());
+	dtano6->updateExtractionRate(getActualRate());
 
 	dtano6->close();
 
 	broadcastToOperators(dtano6);
+
+	/*while (resourceHopper.size() > 0) {
+		ResourceContainer* container = resourceHopper.get(0);
+
+		removeResourceFromHopper(container);
+	}*/
+
+	setOperating(false);
 }
 
 void HarvesterObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
@@ -140,16 +142,23 @@ void HarvesterObjectImplementation::removeResourceFromHopper(ResourceContainer* 
 	if (index == -1)
 		return;
 
+	container->destroyObjectFromDatabase(true);
+
 	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
 	dtano6->startUpdate(0x0D);
 
 	resourceHopper.remove(index, dtano6, 1);
 
 	dtano6->updateActiveResourceSpawn(getActiveResourceSpawnID());
+	dtano6->updateHopperSize(getHopperSize());
+	dtano6->updateExtractionRate(getActualRate());
 
 	dtano6->close();
 
 	broadcastToOperators(dtano6);
+
+	if (resourceHopper.size() == 0)
+		setOperating(false);
 }
 
 void HarvesterObjectImplementation::addResourceToHopper(ResourceContainer* container) {
@@ -227,7 +236,7 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 
 	Time currentTime;
 
-	resourceHopperTimestamp = currentTime;
+	resourceHopperTimestamp.updateToCurrentTime();
 
 	ManagedReference<ResourceContainer*> container = getContainerFromHopper(newSpawn);
 
@@ -246,10 +255,53 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 	dtano6->close();
 
 	broadcastToOperators(dtano6);
+}
 
-	//setResourceHopperTimestamp(currentTime.getTime()); // ReInit
+void HarvesterObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
+	container->setQuantity(newQuantity);
 
-	//ResourceManager* resourceManager = getZoneServer()->getResourceManager();
+	if (!notifyClient)
+		return;
+
+	for (int i = 0; i < resourceHopper.size(); ++i) {
+		ResourceContainer* cont = resourceHopper.get(i);
+
+		if (cont == container) {
+			InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
+			dtano6->startUpdate(0x0D);
+			resourceHopper.set(i, container, dtano6, 1);
+			dtano6->updateHopperSize(getHopperSize());
+			dtano6->close();
+
+			broadcastToOperators(dtano6);
+		}
+	}
+}
+
+void HarvesterObjectImplementation::updateMaintenance() {
+	Time currentTime;
+
+	float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
+
+	float payAmount = (elapsedTime / 3600.0) * baseMaintenanceRate;
+
+	if (payAmount > surplusMaintenance) {
+		payAmount = surplusMaintenance;
+		setOperating(false);
+	}
+
+	addMaintenance(-1.0f * payAmount);
+
+	float enegeryAmount = (elapsedTime / 3600.0) * basePowerRate;
+
+	if (enegeryAmount > surplusPower) {
+		enegeryAmount = surplusPower;
+		setOperating(false);
+	}
+
+	addPower(-1.0f * enegeryAmount);
+
+	lastMaintenanceTime.updateToCurrentTime();
 }
 
 void HarvesterObjectImplementation::updateHopper() {
@@ -287,9 +339,38 @@ void HarvesterObjectImplementation::updateHopper() {
 
 	float currentQuantity = container->getQuantity();
 
-	container->setQuantity(currentQuantity + harvestAmount);
+	if (harvestAmount > 0) {
+		spawn->extractResource(zone->getZoneID(), harvestAmount);
+
+		updateResourceContainerQuantity(container, currentQuantity + harvestAmount, true);
+		//container->setQuantity(currentQuantity + harvestAmount);
+	}
 	// Update Timestamp
-	resourceHopperTimestamp = currentTime;
+	resourceHopperTimestamp.updateToCurrentTime();
+
+	updateToDatabaseAllObjects(false);
+
+	/*InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
+	dtano6->startUpdate(0x0D);
+	resourceHopper.set(0, container, dtano6, 1);
+	dtano6->updateHopperSize(getHopperSize());
+	dtano6->close();
+
+	broadcastToOperators(dtano6);*/
+
+}
+
+void HarvesterObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	InstallationObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	if (!destroyContainedObjects)
+		return;
+
+	for (int i = 0; i < resourceHopper.size(); ++i) {
+		ResourceContainer* container = resourceHopper.get(i);
+
+		container->destroyObjectFromDatabase(true);
+	}
 }
 
 float HarvesterObjectImplementation::getActualRate() {
@@ -305,6 +386,24 @@ float HarvesterObjectImplementation::getActualRate() {
 	return extractionRate * (spawn->getDensityAt(zone->getZoneID(), positionX, positionY) / 100.f);
 }
 
+void HarvesterObjectImplementation::setOperating(bool value, bool notifyClient) {
+	if (value == operating)
+		return;
+
+	if (value) {
+		resourceHopperTimestamp.updateToCurrentTime();
+	}
+
+	InstallationObjectDeltaMessage7* dtano6 = new InstallationObjectDeltaMessage7( _this);
+	dtano6->updateExtractionRate(getActualRate());
+	dtano6->close();
+
+	broadcastToOperators(dtano6);
+
+	InstallationObjectImplementation::setOperating(value, notifyClient);
+
+	updateToDatabaseAllObjects(false);
+}
 
 float HarvesterObjectImplementation::getHopperSize() {
 	float hopperSize = 0.0f;

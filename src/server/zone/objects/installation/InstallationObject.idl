@@ -53,12 +53,17 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import engine.service.proto.BasePacket;
+import system.lang.ref.Reference;
 include server.zone.objects.building.StructurePermissionList;
 include server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 
 class InstallationObject extends TangibleObject {
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
+	
+	@dereferenced
+	protected transient Reference<SyncrhonizedUiListenInstallationTask> syncUiTask;
 	
 	protected unsigned long ownerObjectID;
 	protected int lotSize;
@@ -150,6 +155,20 @@ class InstallationObject extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
+	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
+	
+	public native void activateUiSync();
+	
+	public abstract void updateOperators() {
+		
+	}
+	
+	public native void verifyOperators();
+	
+	public abstract void updateInstallationWork() {
+		
+	}
+	
 	public native void handleStructureStatus(PlayerCreature player);
 	public native void handleStructureManageMaintenance(PlayerCreature player);
 	public native void handleSetObjectName(PlayerCreature player);
@@ -219,6 +238,10 @@ class InstallationObject extends TangibleObject {
 	
 	public unsigned int getPowerPool() {
 		return powerPool;
+	}
+	
+	public void addPower(int add) {
+		powerPool = powerPool + add;
 	}
 	
 	public void addMaintenance(float maint) {
