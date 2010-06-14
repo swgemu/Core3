@@ -313,6 +313,7 @@ class TangibleObject extends SceneObject {
 	 */
 	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
 	
+	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
 	@local
 	public void attachObjectDestructionObserver(TangibleObjectDestructionObserver observer) {
@@ -387,10 +388,6 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
-	}
-	
-	public void setOptionsBitmask(unsigned int bitmask) {
-		optionsBitmask = bitmask;
 	}
 	
 	public unsigned int getPvpStatusBitmask() {

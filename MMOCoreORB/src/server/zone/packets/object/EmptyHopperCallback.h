@@ -70,12 +70,33 @@ public:
 			return;
 		}
 
+		if (byte1 == 0 && quantity > container->getQuantity()) {
+			player->error("too much splitting");
+			return;
+		}
+
 		if (byte1 == 1) {
-			harvester->removeResourceFromHopper(container);
+			//harvester->removeResourceFromHopper(container);
+			int oldQuantity = container->getQuantity();
+			int newQuantity = oldQuantity - quantity;
+
+			harvester->updateResourceContainerQuantity(container, newQuantity, true);
+		} else if (byte1 == 0) {
+			if (!inventory->hasFullContainerObjects()) {
+				container->split(player, quantity);
+				harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
+
+			} else {
+				ParameterizedStringId stringId("error_message", "inv_full");
+				player->sendSystemMessage(stringId);
+			}
 		}
 
 		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
 		player->sendMessage(gr);
+
+		inventory->updateToDatabaseAllObjects(false);
+		harvester->updateToDatabaseAllObjects(false);
 
 		//if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT)
 

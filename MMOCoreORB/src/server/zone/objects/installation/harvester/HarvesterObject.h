@@ -63,7 +63,15 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
+
 	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void setOperating(bool operating, bool notifyClient = true);
+
+	void updateInstallationWork();
 
 	void updateOperators();
 
@@ -81,7 +89,7 @@ public:
 
 	void updateHopper();
 
-	void verifyOperators();
+	void updateMaintenance();
 
 	int getHopperItemQuantity(ResourceSpawn* spawn);
 
@@ -147,7 +155,15 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
+
 	virtual void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void setOperating(bool operating, bool notifyClient = true);
+
+	void updateInstallationWork();
 
 	void updateOperators();
 
@@ -165,7 +181,7 @@ public:
 
 	void updateHopper();
 
-	void verifyOperators();
+	void updateMaintenance();
 
 	int getHopperItemQuantity(ResourceSpawn* spawn);
 
@@ -228,7 +244,15 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
+
 	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	void setOperating(bool operating, bool notifyClient);
+
+	void updateInstallationWork();
 
 	void updateOperators();
 
@@ -246,7 +270,7 @@ public:
 
 	void updateHopper();
 
-	void verifyOperators();
+	void updateMaintenance();
 
 	int getHopperItemQuantity(ResourceSpawn* spawn);
 

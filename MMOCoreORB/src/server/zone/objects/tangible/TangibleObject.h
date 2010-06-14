@@ -196,6 +196,8 @@ public:
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
+	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
+
 	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
 
 	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
@@ -223,8 +225,6 @@ public:
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
-
-	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 
@@ -407,6 +407,8 @@ public:
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
+	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
+
 	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
 
 	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
@@ -434,8 +436,6 @@ public:
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
-
-	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 
@@ -528,6 +528,8 @@ public:
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
+	void setOptionsBitmask(unsigned int bitmask, bool notifyClient);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	byte getUnknownByte();
@@ -549,8 +551,6 @@ public:
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
-
-	void setOptionsBitmask(unsigned int bitmask);
 
 	unsigned int getPvpStatusBitmask();
 

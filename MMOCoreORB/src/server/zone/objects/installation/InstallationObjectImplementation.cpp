@@ -7,6 +7,8 @@
 
 #include "InstallationObject.h"
 #include "server/zone/packets/installation/InstallationObjectMessage3.h"
+#include "server/zone/packets/installation/InstallationObjectDeltaMessage3.h"
+#include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectMessage6.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -15,6 +17,8 @@
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
+
+#include "SyncrhonizedUiListenInstallationTask.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -58,6 +62,37 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 	*/
 }
 
+void InstallationObjectImplementation::setOperating(bool value, bool notifyClient) {
+	if (operating == value)
+		return;
+
+	operating = value;
+
+	if (operating) {
+		if (!(optionsBitmask & 1)) {
+			optionsBitmask |= 1;
+		}
+	} else {
+		if (optionsBitmask & 1)
+			optionsBitmask &= ~1;
+	}
+
+	InstallationObjectDeltaMessage3* delta = new InstallationObjectDeltaMessage3(_this);
+	delta->updateOperating(value);
+	delta->updateOptionsBitmask();
+	delta->close();
+
+	InstallationObjectDeltaMessage7* delta7 = new InstallationObjectDeltaMessage7(_this);
+	delta7->updateOperating(value);
+	delta7->close();
+
+	Vector<BasePacket*> messages;
+	messages.add(delta);
+	messages.add(delta7);
+
+	broadcastMessages(&messages, true);
+}
+
 void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
 	for (int i = 0; i < operatorList.size(); ++i) {
 		PlayerCreature* player = operatorList.get(i);
@@ -65,6 +100,40 @@ void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) 
 	}
 
 	delete packet;
+}
+
+void InstallationObjectImplementation::activateUiSync() {
+	if (operatorList.size() == 0)
+		return;
+
+	try {
+
+		if (syncUiTask == NULL)
+			syncUiTask = new SyncrhonizedUiListenInstallationTask(_this);
+
+		if (!syncUiTask->isScheduled())
+			syncUiTask->schedule(5000);
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+}
+
+void InstallationObjectImplementation::verifyOperators() {
+	if (operatorList.size() <= 0)
+		return;
+
+	// won't fully clean up at once because indexes would change once you remove one - but should clean up
+	for (int i = 0; i < operatorList.size(); i++) {
+		ManagedReference<PlayerCreature*> obj = operatorList.get(i);
+
+		if (!obj->isOnline()) {
+			operatorList.remove(i);
+
+			--i;
+		}
+	}
+
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -110,6 +179,10 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 
 void InstallationObjectImplementation::handleStructureDestroy(PlayerCreature* player) {
 	removeFromZone();
+
+	int lotsRemaining = player->getLotsRemaining();
+
+	player->setLotsRemaining(lotsRemaining + lotSize);
 
 	destroyObjectFromDatabase(true);
 }
