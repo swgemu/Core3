@@ -42,94 +42,87 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "DraftSchematic.h"
+#include "ManufactureSchematic.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
+#include "server/zone/packets/scene/UpdateContainmentMessage.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
-//#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
 /*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"*/
 
-
-void DraftSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
 
 }
 
-void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
+void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isStaticObject())
+		return;
+
+	// Scene Create
+	BaseMessage* create = new SceneObjectCreateMessage(getObjectID(), 0x3819C409);
+	player->sendMessage(create);
+
+	// Link to Crafting Tool
+	BaseMessage* link = new UpdateContainmentMessage(getObjectID(), getParent()->getObjectID(), 4);
+	player->sendMessage(link);
+
+	sendBaselinesTo(player);
+
+	sendSlottedObjectsTo(player);
+	sendContainerObjectsTo(player);
+
+	if(doClose) {
+		BaseMessage* msg = new SceneObjectCloseMessage(_this);
+		player->sendMessage(msg);
+	}
+
+}
+
+void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	error("Trying to send DraftSchematic baselines, should not be sending");
-}
-
-void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
-
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
 
-	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
+	ManufactureSchematicObjectMessage3* msco3 =
+			new ManufactureSchematicObjectMessage3(getObjectID(),
+					draftSchematic->getComplexity(), playerCreature->getFirstName());
+	player->sendMessage(msco3);
 
-	msg->insertInt(schematicID);
-	msg->insertInt(clientObjectCRC);
+	// MSCO6
+	ManufactureSchematicObjectMessage6* msco6 =
+		new ManufactureSchematicObjectMessage6(getObjectID(), getClientObjectCRC());
+	player->sendMessage(msco6);
 
-	msg->insertInt(complexity); // ex: 3
-	msg->insertInt(size); // ex: 1
-	msg->insertByte(2);
+	// MSCO8
+	ManufactureSchematicObjectMessage8* msco8 =
+		new ManufactureSchematicObjectMessage8(getObjectID());
+	player->sendMessage(msco8);
 
-	insertIngredients(msg);
-
-	player->sendMessage(msg);
+	// MSCO9
+	ManufactureSchematicObjectMessage9* msco9 =
+		new ManufactureSchematicObjectMessage9(getObjectID());
+	player->sendMessage(msco9);
 
 }
 
-void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
+void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
 
-	msg->insertInt(draftSlots.size());
+	if(!player->isPlayerCreature())
+		return;
 
-	for(int i = 0; i < draftSlots.size(); ++i) {
-		draftSlots.get(i)->insertToMessage(msg);
-	}
-
-	msg->insertShort(0);
+	PlayerObject* playerObject = ((PlayerCreature*) player)->getPlayerObject();
+	playerObject->synchronizedUIListenForSchematic();
 }
 
-void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
-	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
+void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
 
-	msg->insertInt(schematicID);
-	msg->insertInt(clientObjectCRC);
-
-	msg->insertByte(resourceWeights.size());
-
-	//Send all the resource batch property data
-	for (int i = 0; i < resourceWeights.size(); i++)
-		resourceWeights.get(i)->insertBatchToMessage(msg);
-
-	msg->insertByte(resourceWeights.size());
-
-	//Send all the resource property data
-	for (int i = 0; i < resourceWeights.size(); i++)
-		resourceWeights.get(i)->insertToMessage(msg);
-
-	player->sendMessage(msg);
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
-}
-
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
 }

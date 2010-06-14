@@ -107,6 +107,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 #include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
 
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
@@ -129,7 +131,7 @@ using namespace server::zone;
 
 #include "server/zone/objects/player/variables/SchematicList.h"
 
-#include "server/zone/objects/player/variables/CraftingSession.h"
+#include "server/zone/objects/player/craftingsession/CraftingSession.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -285,6 +287,10 @@ public:
 	void cancelCraftingSession();
 
 	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+
+	void selectDraftSchematic(PlayerCreature* player, int index);
+
+	void synchronizedUIListenForSchematic();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -498,6 +504,10 @@ private:
 
 public:
 	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+
+	void selectDraftSchematic(PlayerCreature* player, int index);
+
+	void synchronizedUIListenForSchematic();
 
 	PlayerObject* _this;
 

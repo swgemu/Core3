@@ -46,19 +46,27 @@ package server.zone.object.draftschematic.DraftSchematic;
 
 include server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectControllerMessage;
+import engine.service.proto.BaseMessage;
 
 include server.zone.objects.draftschematic.draftslot.DraftSlots;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeights;
+include server.zone.objects.scene.variables.StringId;
 
-import server.zone.objects.scene.SceneObject;
+import engine.core.ManagedObject;
 import server.zone.objects.player.PlayerCreature;
 
-class DraftSchematic extends SceneObject {
+class DraftSchematic extends ManagedObject implements Logger {
 
 	/// Arbitrary ID for the schematic
 	private unsigned int schematicID;
+
+	// CRC
+	private unsigned int clientObjectCRC;
+	
+	@dereferenced
+	StringId objectName;
 	
 	/// Level of complexity
 	private float complexity;
@@ -111,6 +119,8 @@ class DraftSchematic extends SceneObject {
 	@dereferenced
 	protected ResourceWeights resourceWeights;
 	
+	unsigned int tanoCRC;
+	
 	public DraftSchematic() {
 		Logger.setLoggingName("DraftSchematic");	
 	}
@@ -152,15 +162,33 @@ class DraftSchematic extends SceneObject {
 	 * @param player SceneObject that will receive the ingredients 
 	 */
 	public native void sendResourceWeightsTo(PlayerCreature player);
-	
+
 	@local
 	public void addSlot(DraftSlot slot) {
 		draftSlots.add(slot);
 	}
 	
+	public int getDraftSlotCount() {
+		return draftSlots.size();
+	}
+	
+	@local
+	public DraftSlot getDraftSlot(int i) {
+		return draftSlots.get(i);
+	}
+	
 	@local
 	public void addResourceWeight(ResourceWeight weight) {
 		resourceWeights.add(weight);
+	}
+	
+	public int getResourceWeightCount() {
+		return resourceWeights.size();
+	}
+	
+	@local
+	public ResourceWeight getResourceWeight(int i) {
+		return resourceWeights.get(i);
 	}
 	
 	/**
@@ -289,5 +317,28 @@ class DraftSchematic extends SceneObject {
 	 */
 	public string getExperiementationSkill() {
 		return experiementationSkill;
+	}
+	
+	public void setClientObjectCRC(unsigned int crc) {
+		clientObjectCRC = crc;
+	}
+	
+	public unsigned int getClientObjectCRC() {
+		return clientObjectCRC;
+	}
+	
+	@local
+	public native void setObjectName(@dereferenced StringId stringId);
+	
+	public string getObjectNameStringIdName() {
+		return objectName.getStringID();
+	}
+	
+	public void setTanoCRC(unsigned int crc) {
+		tanoCRC = crc;
+	}
+	
+	public unsigned int getTanoCRC() {
+		return tanoCRC;
 	}
 }

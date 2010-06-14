@@ -48,104 +48,96 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicIngredient.h"
-#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+//#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 class ManufactureSchematicObjectMessage7 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage7(DraftSchematic* draftSchematic)
-			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 7, 0x15) {
+	ManufactureSchematicObjectMessage7(ManufactureSchematic* schematic)
+			: BaseLineMessage(schematic->getObjectID(), 0x4D53434F, 7, 0x15) {
 
-		int ingredientListSize = draftSchematic->getIngredientListSize();
-		int updateCount = ingredientListSize;
+		DraftSchematic* draftSchematic = schematic->getDraftSchematic();
 
-		insertInt(ingredientListSize);
+		int draftSlotCount = draftSchematic->getDraftSlotCount();
+		int updateCount = draftSlotCount;
+
+		insertInt(draftSlotCount);
 		insertInt(updateCount);
 
-		for (int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
-			if (dsi != NULL) {
-				insertAscii(dsi->getTemplateName());
+		for (int i = 0; i < draftSlotCount; i++) {
+			DraftSlot* slot = draftSchematic->getDraftSlot(i);
+			if (slot != NULL) {
+				insertAscii(slot->getStringId().getFile());
 				insertInt(0);
-				insertAscii(dsi->getTitleName());
-			} else {
-				System::out << "\n\nInvalid dsi: MSCO7 line 63.\n\n";
+				insertAscii(slot->getStringId().getStringID());
 			}
 		}
 
-		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
-		for (int i = 0; i < 6; i++) {
-			insertInt(ingredientListSize);
-			if (i == 5) {
-				insertInt(updateCount * 2);
-			} else {
-				insertInt(updateCount);
-			}
-
-			for (int j = 0; j < ingredientListSize; j++) {
-				if (i == 3) {
-					if (j == 0) {
-						insertInt(0);
-					} else {
-						insertFloat(1);
-					}
-				} else if (i == 4) {
-					insertInt(0xFFFFFFFF);
-				} else if (i == 5) {
-					insertInt(j);
-				} else {
-					insertInt(0);
-				}
-			}
+		// Send slot type
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++) {
+			DraftSlot* slot = draftSchematic->getDraftSlot(i);
+			if (slot != NULL)
+				insertInt(slot->getSlotType());
 		}
-		insertByte(0x0C); 	// no idea
 
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
-
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
-
-		insertInt(titleCount);
-		insertInt(titleCount);
-
-		for (int i = 0; i < titleCount; i++) {
-			String title = craftingValues->getExperimentalPropertyTitle(i);
-
-			insertAscii("crafting");  // I think this is always "crafting"
+		// Send Resource ID per slot - initially empty
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++)
 			insertInt(0);
-			insertAscii(title);
 
-		}
-
-		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
-		for (int i = 0; i < 4; i++) {
-			insertInt(titleCount);
-			insertInt(titleCount);
-			for (int j = 0; j < titleCount; j++) {
-				insertInt(0);
-			}
-
-			//insertInt(4);
-			//insertInt(4);
-			/*for (int j = 0; j < 4; j++) {
-				insertInt(0);
-			}*/
-		}
-
-		for (int i = 0; i < 4; i++) {
+		// Send Resource quantity per slot - initially empty
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++)
 			insertInt(0);
+
+		// Unknown
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++)
 			insertInt(0);
-		}
 
-		insertByte(0x00);
+		// Unknown
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++)
+			insertInt(0);
 
+		// Unknown
+		insertInt(draftSlotCount);
+		insertInt(updateCount);
+		for (int i = 0; i < draftSlotCount; i++)
+			insertInt(i);
+
+		insertByte(0x72);
+
+		insertInt(0);
 		insertInt(0);
 
 		insertInt(0);
 		insertInt(0);
 
-		insertByte(0x01);
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertInt(0);
+
+		insertByte(0);
+		insertByte(1);
 
 		setSize();
 	}

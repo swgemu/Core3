@@ -790,3 +790,99 @@ Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSc
 
 	return schematicList.filterSchematicList(enabledTabs);
 }
+
+void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, int index) {
+
+	DraftSchematic* schematic = schematicList.get(index);
+
+	if(schematic == NULL) {
+		craftingSession.cancel();
+		return;
+	}
+
+	ManufactureSchematic* newSchematic = (ManufactureSchematic*) player->getZoneServer()->createObject(
+			schematic->getClientObjectCRC(), 0);
+
+	newSchematic->setDraftSchematic(schematic);
+
+	TangibleObject* tano = (TangibleObject*) player->getZoneServer()->createObject(
+			schematic->getTanoCRC(), 0);
+
+	craftingSession.selectDraftSchematic(newSchematic, tano);
+}
+
+void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
+	craftingSession.synchronizedUIListen();
+}
+
+void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, int index) {
+
+	DraftSchematic* schematic = schematicList.get(index);
+
+	if(schematic == NULL) {
+		craftingSession.cancel();
+		return;
+	}
+
+	ManufactureSchematic* newSchematic = (ManufactureSchematic*) player->getZoneServer()->createObject(
+			schematic->getClientObjectCRC(), 0);
+
+	newSchematic->setDraftSchematic(schematic);
+
+	TangibleObject* tano = (TangibleObject*) player->getZoneServer()->createObject(
+			schematic->getTanoCRC(), 0);
+
+	craftingSession.selectDraftSchematic(newSchematic, tano);
+}
+
+void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
+	craftingSession.synchronizedUIListen();
+}
+
+void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, int index) {
+
+	DraftSchematic* schematic = schematicList.get(index);
+
+	if(schematic == NULL) {
+		craftingSession.cancel();
+		return;
+	}
+
+	ManufactureSchematic* newSchematic = (ManufactureSchematic*) player->getZoneServer()->createObject(
+			schematic->getClientObjectCRC(), 0);
+
+	newSchematic->setDraftSchematic(schematic);
+
+	TangibleObject* tano = (TangibleObject*) player->getZoneServer()->createObject(
+			schematic->getTanoCRC(), 0);
+
+	craftingSession.selectDraftSchematic(newSchematic, tano);
+}
+
+void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
+	craftingSession.synchronizedUIListen();
+}
+
+void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, int index) {
+
+	DraftSchematic* schematic = schematicList.get(index);
+
+	if(schematic == NULL) {
+		craftingSession.cancel();
+		return;
+	}
+
+	ManufactureSchematic* newSchematic = (ManufactureSchematic*) player->getZoneServer()->createObject(
+			schematic->getClientObjectCRC(), 0);
+
+	newSchematic->setDraftSchematic(schematic);
+
+	TangibleObject* tano = (TangibleObject*) player->getZoneServer()->createObject(
+			schematic->getTanoCRC(), 0);
+
+	craftingSession.selectDraftSchematic(newSchematic, tano);
+}
+
+void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
+	craftingSession.synchronizedUIListen();
+}

@@ -42,56 +42,47 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-/**
- * \file SchematicMap.h
- * \author Kyle Burkhardt
- * \date 6-01-10
- */
-
-#ifndef SCHEMATICMAP_H_
-#define SCHEMATICMAP_H_
+#ifndef CRAFTINGSESSION_H_
+#define CRAFTINGSESSION_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "DraftSchematicGroup.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "CraftingSlots.h"
 
-class SchematicMap : public Singleton<SchematicMap>, public Lua {
+class CraftingSession {
+private:
+	ManagedReference<CraftingTool* > craftingTool;
+	ManagedReference<CraftingStation* > craftingStation;
+	ManagedReference<PlayerCreature* > player;
+	ManagedReference<PlayerObject* > playerObject;
+	ManagedReference<ManufactureSchematic* > schematic;
+	ManagedReference<DraftSchematic* > draftSchematic;
+	ManagedReference<TangibleObject* > object;
+	Vector<ManagedReference<DraftSchematic*> > schematics;
 
-	static VectorMap<uint32, ManagedReference<DraftSchematic* > > nameMap;
-	static VectorMap<String, DraftSchematicGroup* > groupMap;
-	static uint32 nextSchematicID;
+	int insertCount;
+	int currentState;
 
 public:
+	CraftingSession();
 
-	SchematicMap();
-	~SchematicMap();
+	~CraftingSession();
 
-	void initialize() {
-		loadDraftSchematicFile();
-	}
+	void request(PlayerCreature* pl, PlayerObject* play,
+			CraftingTool* tool, CraftingStation* station);
+	void cancel();
 
-	static void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	static void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	static void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
-	static void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+	void selectDraftSchematic(ManufactureSchematic* manu, TangibleObject* tano);
 
-	void sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID);
-	void sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID);
-
-	DraftSchematic* get(uint32 schemid) {
-		return nameMap.get(schemid);
-	}
+	void synchronizedUIListen();
 
 private:
-	void registerFunctions();
+	void sendStart();
+	void collectSchematics();
 
-	void loadDraftSchematicFile();
-
-	static void mapDraftSchematic(const String& groupname, DraftSchematic* schematic);
-	static int runDraftSchematicFile(lua_State* L);
-	static int addDraftSchematicToServer(lua_State *L);
 };
 
-#endif /* SCHEMATICMAP_H_ */
+#endif /* CRAFTINGSESSION_H_ */

@@ -58,8 +58,8 @@ public:
 		UnicodeString u_str = UnicodeString("");
 		insertUnicode(u_str); // Container Name
 		insertInt(ResourceContainer::MAXSIZE); // Max stack size
-		insertAscii(rcno->getSpawnName()); // Resource Type: planet specific
-		insertUnicode(rcno->getSpawnType());  // Resource name.
+		insertAscii(rcno->getSpawnType()); // Resource Type: planet specific
+		insertUnicode(rcno->getSpawnName());  // Resource name.
 		setSize();
 	}
 };
