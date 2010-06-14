@@ -800,15 +800,23 @@ void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, in
 		return;
 	}
 
-	ManufactureSchematic* newSchematic = (ManufactureSchematic*) player->getZoneServer()->createObject(
-			schematic->getClientObjectCRC(), 0);
+	try {
 
-	newSchematic->setDraftSchematic(schematic);
+		ManufactureSchematic* newSchematic =
+				(ManufactureSchematic*) player->getZoneServer()->createObject(
+						schematic->getClientObjectCRC(), 0);
 
-	TangibleObject* tano = (TangibleObject*) player->getZoneServer()->createObject(
-			schematic->getTanoCRC(), 0);
+		newSchematic->setDraftSchematic(schematic);
 
-	craftingSession.selectDraftSchematic(newSchematic, tano);
+		TangibleObject* tano =
+				(TangibleObject*) player->getZoneServer()->createObject(
+						schematic->getTanoCRC(), 0);
+
+		craftingSession.selectDraftSchematic(newSchematic, tano);
+
+	} catch (...) {
+		player->sendSystemMessage("ui_craft", "err_no_prototype");
+	}
 }
 
 void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
