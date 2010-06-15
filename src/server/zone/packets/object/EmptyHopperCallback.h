@@ -56,6 +56,17 @@ public:
 		try {
 			harvester->wlock(player);
 
+			if (!harvester->isOnAdminList(player)) {
+				harvester->unlock();
+				return;
+			}
+
+			if (!harvester->isInRange(player, 10)) {
+				harvester->unlock();
+				return;
+			}
+
+
 			SceneObject* inventory = player->getSlottedObject("inventory");
 
 

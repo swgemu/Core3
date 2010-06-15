@@ -83,7 +83,8 @@ public:
 		try {
 			harvester->wlock(player);
 
-			harvester->setOperating(true);
+			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
+				harvester->setOperating(true);
 
 			harvester->unlock();
 		} catch (...) {
