@@ -425,8 +425,8 @@ HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/installation/harvester/HarvesterObject.idl(68):  		hopperSizeMax = 10000;
 	hopperSizeMax = 10000;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(69):  		extractionRate = 1000;
-	extractionRate = 1000;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(69):  		extractionRate = 100;
+	extractionRate = 100;
 	// server/zone/objects/installation/harvester/HarvesterObject.idl(71):  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
 }

@@ -66,7 +66,7 @@ class HarvesterObject extends InstallationObject {
 	public HarvesterObject() {
 		
 		hopperSizeMax = 10000;
-		extractionRate = 1000;
+		extractionRate = 100;
 		
 		Logger.setLoggingName("HarvesterObject");
 	}
