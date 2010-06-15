@@ -83,7 +83,8 @@ public:
 		try {
 			harvester->wlock(player);
 
-			harvester->clearResourceHopper();
+			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
+				harvester->clearResourceHopper();
 
 			harvester->unlock();
 		} catch (...) {

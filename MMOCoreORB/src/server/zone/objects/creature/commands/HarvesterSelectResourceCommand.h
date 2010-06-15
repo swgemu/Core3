@@ -87,7 +87,9 @@ public:
 			object->wlock(player);
 
 			HarvesterObject* harvester = (HarvesterObject*) inso;
-			harvester->changeActiveResourceID(spawnId);
+
+			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
+				harvester->changeActiveResourceID(spawnId);
 
 			object->unlock();
 		} catch (...) {
