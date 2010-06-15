@@ -389,7 +389,7 @@ float HarvesterObjectImplementation::getActualRate() {
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	return extractionRate * (spawn->getDensityAt(zone->getZoneID(), positionX, positionY) / 100.f);
+	return extractionRate * (spawn->getDensityAt(zone->getZoneID(), positionX, positionY));
 }
 
 void HarvesterObjectImplementation::setOperating(bool value, bool notifyClient) {
