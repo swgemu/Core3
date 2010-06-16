@@ -22,6 +22,16 @@ class GeneratorObject : public InstallationObject {
 public:
 	GeneratorObject();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	bool isGeneratorObject();
+
 protected:
 	GeneratorObject(DummyConstructorParameter* param);
 
@@ -48,6 +58,16 @@ public:
 	GeneratorObjectImplementation();
 
 	GeneratorObjectImplementation(DummyConstructorParameter* param);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	bool isGeneratorObject();
 
 	GeneratorObject* _this;
 
@@ -87,6 +107,14 @@ public:
 	GeneratorObjectAdapter(GeneratorObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	bool isGeneratorObject();
 
 };
 

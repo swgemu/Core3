@@ -250,7 +250,7 @@ String Badge::names[] = {
 		"crafting_merchant_master",
 		"crafting_tailor_master",
 		"crafting_weaponsmith_master",
-		"outdoors_bioengineer_master",
+		"outdoors_bio_engineer_master",
 		"outdoors_creaturehandler_master",
 		"outdoors_ranger_master",
 		"outdoors_scout_master",

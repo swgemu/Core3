@@ -1,11 +1,12 @@
 /*
- * HarvesterObjectImplementation.cpp
+ * GeneratorObjectImplementation.cpp
  *
- *  Created on: 10/06/2010
+ *  Created on: 15/06/2010
  *      Author: victor
  */
 
-#include "HarvesterObject.h"
+
+#include "GeneratorObject.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
@@ -15,7 +16,7 @@
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 
-void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	//info("atrasdasd", true);
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
@@ -24,10 +25,9 @@ void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 		return;
 
 	menuResponse->addRadialMenuItemToRadialID(122, 78, 3, "@harvester:manage");
-	menuResponse->addRadialMenuItemToRadialID(122, 77, 3, "@player_structure:management_power");
 }
 
-void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
+void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
 	if (!player->isPlayerCreature() || !isOnAdminList((CreatureObject*)player))
 		return;
 
@@ -41,31 +41,24 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 	activateUiSync();
 }
 
-void HarvesterObjectImplementation::updateOperators() {
-	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this);
-	broadcastToOperators(msg);
-}
-
-void HarvesterObjectImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
+void GeneratorObjectImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
 	if (!player->isPlayerCreature())
 		return;
 
 	removeOperator((PlayerCreature*) player);
 }
 
-int HarvesterObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GeneratorObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (!isOnAdminList(player))
 		return 1;
 
 	switch (selectedID) {
+
 	case 78: {
 		ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(getObjectID());
 		player->sendMessage(rhapm);
 		break;
 	}
-	case 77:
-		handleStructureAddEnergy(player);
-		break;
 
 	default:
 		return InstallationObjectImplementation::handleObjectMenuSelect(player, selectedID);
@@ -73,6 +66,3 @@ int HarvesterObjectImplementation::handleObjectMenuSelect(PlayerCreature* player
 
 	return 0;
 }
-
-
-

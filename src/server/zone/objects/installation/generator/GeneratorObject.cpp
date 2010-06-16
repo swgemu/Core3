@@ -20,6 +20,68 @@ GeneratorObject::~GeneratorObject() {
 }
 
 
+void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((GeneratorObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((GeneratorObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+}
+
+void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+}
+
+bool GeneratorObject::isGeneratorObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((GeneratorObjectImplementation*) _impl)->isGeneratorObject();
+}
+
 /*
  *	GeneratorObjectImplementation
  */
@@ -95,6 +157,11 @@ GeneratorObjectImplementation::GeneratorObjectImplementation() {
 	Logger::setLoggingName("GeneratorObject");
 }
 
+bool GeneratorObjectImplementation::isGeneratorObject() {
+	// server/zone/objects/installation/generator/GeneratorObject.idl(48):  		return true;
+	return true;
+}
+
 /*
  *	GeneratorObjectAdapter
  */
@@ -106,11 +173,39 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 7:
+		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 8:
+		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 9:
+		resp->insertBoolean(isGeneratorObject());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int GeneratorObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((GeneratorObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void GeneratorObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
+	((GeneratorObjectImplementation*) impl)->synchronizedUIListen(player, value);
+}
+
+void GeneratorObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
+	((GeneratorObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+}
+
+bool GeneratorObjectAdapter::isGeneratorObject() {
+	return ((GeneratorObjectImplementation*) impl)->isGeneratorObject();
 }
 
 /*

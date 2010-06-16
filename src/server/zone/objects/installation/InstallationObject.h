@@ -95,9 +95,39 @@ class SyncrhonizedUiListenInstallationTask;
 
 using namespace server::zone::objects::installation;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceSpawn;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceContainer;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
 #include "server/zone/objects/building/StructurePermissionList.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/installation/HopperList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -108,6 +138,8 @@ using namespace server::zone::objects::installation;
 #include "engine/service/proto/BasePacket.h"
 
 #include "system/lang/ref/Reference.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {
@@ -128,6 +160,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void setOperating(bool operating, bool notifyClient = true);
 
 	void activateUiSync();
@@ -145,6 +181,32 @@ public:
 	void handleSetObjectName(PlayerCreature* player);
 
 	void handleStructureDestroy(PlayerCreature* player);
+
+	void handleStructureAddEnergy(PlayerCreature* player);
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
+	float getHopperSize();
+
+	bool updateMaintenance(Time& workingTime);
+
+	void updateHopper(Time& workingTime, bool shutdownAfterUpdate);
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
+
+	float getActualRate();
 
 	void broadcastToOperators(BasePacket* packet);
 
@@ -198,7 +260,15 @@ public:
 
 	int getInstallationType();
 
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
+	HopperList* getHopperList();
+
 	bool isHarvesterObject();
+
+	bool isGeneratorObject();
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -252,6 +322,16 @@ protected:
 
 	int installationType;
 
+	Time resourceHopperTimestamp;
+
+	Time lastMaintenanceTime;
+
+	HopperList resourceHopper;
+
+	float hopperSizeMax;
+
+	float extractionRate;
+
 public:
 	InstallationObjectImplementation();
 
@@ -266,6 +346,10 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
+
+	virtual void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void setOperating(bool operating, bool notifyClient = true);
 
@@ -284,6 +368,32 @@ public:
 	void handleSetObjectName(PlayerCreature* player);
 
 	void handleStructureDestroy(PlayerCreature* player);
+
+	void handleStructureAddEnergy(PlayerCreature* player);
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
+	float getHopperSize();
+
+	bool updateMaintenance(Time& workingTime);
+
+	void updateHopper(Time& workingTime, bool shutdownAfterUpdate);
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
+
+	float getActualRate();
 
 	void broadcastToOperators(BasePacket* packet);
 
@@ -337,7 +447,15 @@ public:
 
 	int getInstallationType();
 
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
+	HopperList* getHopperList();
+
 	virtual bool isHarvesterObject();
+
+	virtual bool isGeneratorObject();
 
 	InstallationObject* _this;
 
@@ -384,6 +502,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void setOperating(bool operating, bool notifyClient);
 
 	void activateUiSync();
@@ -401,6 +523,28 @@ public:
 	void handleSetObjectName(PlayerCreature* player);
 
 	void handleStructureDestroy(PlayerCreature* player);
+
+	void handleStructureAddEnergy(PlayerCreature* player);
+
+	void setActiveResource(ResourceContainer* container);
+
+	void changeActiveResourceID(unsigned long long spawnObjectID);
+
+	void addResourceToHopper(ResourceContainer* container);
+
+	void removeResourceFromHopper(ResourceContainer* container);
+
+	void clearResourceHopper();
+
+	float getHopperSize();
+
+	int getHopperItemQuantity(ResourceSpawn* spawn);
+
+	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
+
+	unsigned long long getActiveResourceSpawnID();
+
+	float getActualRate();
 
 	void broadcastToOperators(BasePacket* packet);
 
@@ -454,7 +598,13 @@ public:
 
 	int getInstallationType();
 
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
 	bool isHarvesterObject();
+
+	bool isGeneratorObject();
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

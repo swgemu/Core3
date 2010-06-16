@@ -57,6 +57,11 @@ import system.lang.ref.Reference;
 include server.zone.objects.building.StructurePermissionList;
 include server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
+import system.util.VectorMap;
+import server.zone.objects.resource.ResourceSpawn;
+import server.zone.objects.resource.ResourceContainer;
+include server.zone.objects.installation.HopperList;
+
 
 class InstallationObject extends TangibleObject {
 	@dereferenced
@@ -88,6 +93,18 @@ class InstallationObject extends TangibleObject {
 	
 	protected int installationType;
 	
+	@dereferenced
+	protected Time resourceHopperTimestamp;
+	
+	@dereferenced
+	protected Time lastMaintenanceTime;
+	
+	@dereferenced
+	protected HopperList resourceHopper; // ID + Size
+
+	protected float hopperSizeMax;
+	protected float extractionRate;
+	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
@@ -109,6 +126,9 @@ class InstallationObject extends TangibleObject {
 		surplusMaintenance = 0;
 		surplusPower = 0;
 		operatorList.setNoDuplicateInsertPlan();
+		
+		hopperSizeMax = 10000;
+		extractionRate = 100;
 	}
 	
 	public void initializeTransientMembers() {
@@ -154,6 +174,16 @@ class InstallationObject extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+
+	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
+
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	public abstract native void updateToDatabaseAllObjects(boolean startTask);
 	
 	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
 	
@@ -165,14 +195,44 @@ class InstallationObject extends TangibleObject {
 	
 	public native void verifyOperators();
 	
-	public abstract void updateInstallationWork() {
-		
-	}
+	public abstract native void updateInstallationWork();
 	
 	public native void handleStructureStatus(PlayerCreature player);
 	public native void handleStructureManageMaintenance(PlayerCreature player);
 	public native void handleSetObjectName(PlayerCreature player);
 	public native void handleStructureDestroy(PlayerCreature player);
+	public native void handleStructureAddEnergy(PlayerCreature player);
+	
+	public native void setActiveResource(ResourceContainer container);
+	public native void changeActiveResourceID(unsigned long spawnObjectID);
+	public native void addResourceToHopper(ResourceContainer container);
+	public native void removeResourceFromHopper(ResourceContainer container);
+	public native void clearResourceHopper();
+	
+	public native float getHopperSize();
+	
+	
+	/**
+	 * @param workingTime Time till when the installation can work
+	 * @returns true if to continue working, false to shutdown after next hopper update
+	 */
+	@local
+	public native boolean updateMaintenance(@dereferenced Time workingTime);
+	
+	/**
+	 * @param workingTime time till when harvester can work
+	 */
+	@local
+	public native void updateHopper(@dereferenced Time workingTime, boolean shutdownAfterUpdate);
+	
+	public native int getHopperItemQuantity(ResourceSpawn spawn);
+	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);
+		
+	public native unsigned long getActiveResourceSpawnID();
+	
+	public native float getActualRate();
+	
+	
 	
 	public native void broadcastToOperators(BasePacket packet);
 	
@@ -241,11 +301,11 @@ class InstallationObject extends TangibleObject {
 	}
 	
 	public void addPower(int add) {
-		powerPool = powerPool + add;
+		surplusPower = surplusPower + add;
 	}
 	
 	public void addMaintenance(float maint) {
-		surplusMaintenance = surplusMaintenance  + maint;
+		surplusMaintenance = surplusMaintenance + maint;
 	}
 	
 	/**
@@ -302,7 +362,24 @@ class InstallationObject extends TangibleObject {
 		return installationType;
 	}
 	
+	public float getExtractionRate() {
+		return extractionRate;
+	}
+	
+	public float getHopperSizeMax() {
+		return hopperSizeMax;
+	}
+	
+	@local
+	public HopperList getHopperList() {
+		return resourceHopper;
+	}
+	
 	public abstract boolean isHarvesterObject() {
+		return false;
+	}
+	
+	public abstract boolean isGeneratorObject() {
 		return false;
 	}
 }

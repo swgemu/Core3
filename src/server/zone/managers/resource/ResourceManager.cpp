@@ -124,6 +124,33 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname, sampleAnimation);
 }
 
+unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getAvailablePowerFromPlayer(player);
+}
+
+void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(power);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->removePowerFromPlayer(player, power);
+}
+
 void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -137,7 +164,7 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 
@@ -265,6 +292,12 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_sendSample__PlayerCreature_String_String_));
 		break;
 	case 13:
+		resp->insertLong(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 14:
+		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 15:
 		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
 		break;
 	default:
@@ -300,6 +333,14 @@ void ResourceManagerAdapter::sendSurvey(PlayerCreature* playerCreature, const St
 
 void ResourceManagerAdapter::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
 	((ResourceManagerImplementation*) impl)->sendSample(playerCreature, resname, sampleAnimation);
+}
+
+unsigned long long ResourceManagerAdapter::getAvailablePowerFromPlayer(PlayerCreature* player) {
+	return ((ResourceManagerImplementation*) impl)->getAvailablePowerFromPlayer(player);
+}
+
+void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
+	((ResourceManagerImplementation*) impl)->removePowerFromPlayer(player, power);
 }
 
 void ResourceManagerAdapter::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
