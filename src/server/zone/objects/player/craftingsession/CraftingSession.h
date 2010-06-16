@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "CraftingSlots.h"
 
-class CraftingSession {
+class CraftingSession : public Serializable {
 private:
 	ManagedReference<CraftingTool* > craftingTool;
 	ManagedReference<CraftingStation* > craftingStation;

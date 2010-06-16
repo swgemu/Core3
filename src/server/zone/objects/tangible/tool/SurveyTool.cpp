@@ -271,6 +271,8 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("surveyType", &surveyType);
 	addSerializableVariable("surveyAnimation", &surveyAnimation);
 	addSerializableVariable("sampleAnimation", &sampleAnimation);
+	addSerializableVariable("lastResourceSampleName", &lastResourceSampleName);
+	addSerializableVariable("radioactiveOk", &radioactiveOk);
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {

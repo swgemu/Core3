@@ -8,7 +8,9 @@
 #ifndef TRADECONTAINER_H_
 #define TRADECONTAINER_H_
 
-class TradeContainer {
+#include "engine/engine.h"
+
+class TradeContainer : public Serializable {
 protected:
 
 	uint64 tradeTargetPlayer;
@@ -21,6 +23,21 @@ public:
 	TradeContainer() {
 		tradeTargetPlayer = 0;
 		itemsToTrade.setNoDuplicateInsertPlan();
+		acceptedTrade = false;
+		verifiedTrade = false;
+		moneyToTrade = 0;
+
+		addSerializableVariable("tradeTargetPlayer", &tradeTargetPlayer);
+		addSerializableVariable("itemsToTrade", &itemsToTrade);
+		addSerializableVariable("acceptedTrade", &acceptedTrade);
+		addSerializableVariable("verifiedTrade", &verifiedTrade);
+		addSerializableVariable("moneyToTrade", &moneyToTrade);
+	}
+
+	void clear() {
+		tradeTargetPlayer = 0;
+		itemsToTrade.removeAll();
+		acceptedTrade = false;
 		acceptedTrade = false;
 		verifiedTrade = false;
 		moneyToTrade = 0;
@@ -53,6 +70,10 @@ public:
     inline uint64 getTradeTargetPlayer() const {
 		return tradeTargetPlayer;
 	}
+
+    inline bool isTryingToTrade() const {
+    	return tradeTargetPlayer != 0;
+    }
 
     inline bool hasVerifiedTrade() const {
 		return verifiedTrade;

@@ -560,6 +560,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
@@ -1319,6 +1321,8 @@ public:
 
 	void initializeTransientMembers();
 
+	virtual void notifyLoadFromDatabase();
+
 	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
@@ -1653,6 +1657,8 @@ public:
 	void finalize();
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	void info(const String& msg, bool forced);
 

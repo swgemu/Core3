@@ -635,6 +635,7 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("unknownByte", &unknownByte);
 	addSerializableVariable("craftersName", &craftersName);
 	addSerializableVariable("craftersSerial", &craftersSerial);
+	addSerializableVariable("defenderList", &defenderList);
 	addSerializableVariable("playerUseMask", &playerUseMask);
 	addSerializableVariable("sliced", &sliced);
 }

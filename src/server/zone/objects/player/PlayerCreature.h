@@ -258,6 +258,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -297,6 +299,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void setCombatState();
 
 	void setBadge(unsigned int badge);
 
@@ -448,7 +452,7 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
-	void setTradeContainer(TradeContainer* container);
+	void clearTradeContainer();
 
 	WaypointObject* getSurveyWaypoint();
 
@@ -560,7 +564,7 @@ protected:
 
 	ManagedReference<ActiveArea* > activeArea;
 
-	TradeContainer* tradeContainer;
+	TradeContainer tradeContainer;
 
 public:
 	static const int ONLINE = 1;
@@ -584,6 +588,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	void notifyInsert(QuadTreeEntry* entry);
 
@@ -624,6 +630,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void setCombatState();
 
 	void setBadge(unsigned int badge);
 
@@ -775,7 +783,7 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
-	void setTradeContainer(TradeContainer* container);
+	void clearTradeContainer();
 
 	WaypointObject* getSurveyWaypoint();
 
@@ -832,6 +840,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void disconnect(bool closeClient, bool doLock);
 
 	void unload();
@@ -867,6 +877,8 @@ public:
 	int notifyObjectRemoved(SceneObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void setCombatState();
 
 	void setBadge(unsigned int badge);
 

@@ -49,6 +49,17 @@ which carries forward this exception.
 
 CraftingSession::CraftingSession() {
 	insertCount = 1;
+
+	addSerializableVariable("craftingTool", &craftingTool);
+	addSerializableVariable("craftingStation", &craftingStation);
+	addSerializableVariable("player", &player);
+	addSerializableVariable("playerObject", &playerObject);
+	addSerializableVariable("schematic", &schematic);
+	addSerializableVariable("draftSchematic", &draftSchematic);
+	addSerializableVariable("object", &object);
+	addSerializableVariable("schematics", &schematics);
+	addSerializableVariable("insertCount", &insertCount);
+	addSerializableVariable("currentState", &currentState);
 }
 
 CraftingSession::~CraftingSession() {

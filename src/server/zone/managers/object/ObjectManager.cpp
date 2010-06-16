@@ -518,15 +518,12 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 
 		object->readObject(data);
 
-		Zone* zone = object->getZone();
-
-		if (zone != NULL)
-			object->insertToZone(zone);
-
 		object->setLoggingName(logName);
 
 		if (object->isPersistent())
 			object->queueUpdateToDatabaseTask();
+
+		object->notifyLoadFromDatabase();
 
 		object->unlock();
 	} catch (Exception& e) {

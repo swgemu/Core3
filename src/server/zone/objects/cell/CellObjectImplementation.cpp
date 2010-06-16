@@ -15,24 +15,6 @@ void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("CellObject");
-
-	// Lets check if it has player children, if it does that means server crashed with player
-	// in the cell, so lets unload it
-
-	for (int i = 0; i < containerObjects.size(); ++i) {
-		ManagedReference<SceneObject*> object = containerObjects.get(i);
-
-		if (object->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) object.get();
-
-			if (object->getParent() == _this)
-				player->unload();
-			else
-				containerObjects.drop(player->getObjectID());
-
-			--i;
-		}
-	}
 }
 
 void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
