@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/Zone.h"
@@ -253,11 +254,11 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::MANAGE_MAINTENANCE:    // Add/Remove Maintenance
 		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
-		break;/*
+		break;
 	case SuiWindowType::ADD_ENERGY:    // Add Energy
 		handleAddEnergy(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiWindowType::INSTALLATION_REDEED:    // Redeed Verification Prompt
+	/*case SuiWindowType::INSTALLATION_REDEED:    // Redeed Verification Prompt
 		handleCodeForRedeed(boxID, player, cancel, value.toCharArray());
 		break;
 	case SuiWindowType::INSTALLATION_REDEED_CONFIRM:    // Re-Deed Confirm
@@ -531,76 +532,63 @@ void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 	player->updateToDatabaseWithoutChildren();
 }
 
-/*
-void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
+
+void SuiManager::handleAddEnergy(uint32 boxID, PlayerCreature* player,
 		uint32 cancel, const int newEnergyVal) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+	player->removeSuiBox(boxID);
+
+	if (sui == NULL || !sui->isTransferBox() || cancel == 1)
+		return;
+
+	SuiTransferBox* transferBox = (SuiTransferBox*) sui.get();
+
+	ManagedReference<SceneObject*> usingObject = transferBox->getUsingObject();
+
+	if (usingObject == NULL || !usingObject->isInstallationObject())
+		return;
+
+	InstallationObject* installation = (InstallationObject*) usingObject.get();
+
+	ResourceManager* resourceManager = player->getZoneServer()->getResourceManager();
+
 	try {
+		installation->wlock(player);
 
-		player->wlock();
+		uint32 energyFromPlayer = resourceManager->getAvailablePowerFromPlayer(player);
+		uint32 energy = energyFromPlayer - newEnergyVal;
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
+		if (energy > energyFromPlayer) {
+			installation->unlock();
 			return;
 		}
 
-		SuiBox* sui = player->getSuiBox(boxID);
+		installation->addPower(energy);
+		resourceManager->removePowerFromPlayer(player, energy);
 
-		if (sui->isTransferBox() && cancel != 1) {
+		ParameterizedStringId stringId("player_structure", "deposit_successful");
+		stringId.setDI(energy);
 
-			Zone * zone = player->getZone();
+		player->sendSystemMessage(stringId);
 
-			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
+		stringId.setStringId("player_structure", "reserve_report");
+		stringId.setDI(energy);
 
-			InstallationObject * inso = (InstallationObject *) scno.get();
+		player->sendSystemMessage(stringId);
 
-			StringBuffer msg;
-
-			if (inso!= NULL)	{
-				try {
-					inso->wlock(player);
-					// player->getEnergy() - atoi(newEnergyVal.toCharArray())
-					uint energy = player->getAvailablePower() - newEnergyVal;
-					//inso->getSurplusPower()
-					msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << newEnergyVal << " / available: " << player->getAvailablePower() << endl;
-					info(msg.toString());
-
-					inso->addPower(energy);
-					player->removePower(energy);
-					//player->removeEnergy(energy);
-
-					StringBuffer report;
-					report << "You successfully deposit " << energy << " units of energy.\n"
-					<< "Energy reserves now at " << inso->getSurplusPower() << " units.";
-
-					player->sendSystemMessage(report.toString());
-
-					inso->unlock();
-				} catch (...) {
-					inso->unlock();
-				}
-
-			}
-
-
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleAddPower ");
-		e.printStackTrace();
-
-		player->unlock();
+		installation->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleAddPower");
-		player->unlock();
+		installation->unlock();
 	}
+
 }
 
+/*
 void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const String& song, bool change) {
 	try {
 		player->wlock();

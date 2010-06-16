@@ -87,6 +87,7 @@ class ResourceSpawn extends SceneObject {
 	
 	protected int containerReferenceCount;
 	protected boolean dbDestroyed;
+	protected boolean energy;
 
     public ResourceSpawn() {
        	spawnType = "";
@@ -94,7 +95,16 @@ class ResourceSpawn extends SceneObject {
        	spawnAttributes.setNoDuplicateInsertPlan();
        	
        	containerReferenceCount = 0;
+       	unitsInCirculation = 0;
+       	maxUnitsSpawned = 0;
+       	containerCRC= 0;
+       	spawned = 0;
+       	despawned = 0;
+       	surveyToolType = 0;
+       	zoneRestriction = 0;
+       	spawnPool = 0;
        	dbDestroyed = false;
+       	energy = false;
        	
        	setLoggingName("ResourceSpawn");
     }
@@ -174,6 +184,10 @@ class ResourceSpawn extends SceneObject {
 	public void setSurveyToolType(int type) {
 		surveyToolType = type;
 	}
+	
+	public void setIsEnergy(boolean val) {
+		energy = val;
+	}
 
     // getters
 	public string getName() {
@@ -221,6 +235,10 @@ class ResourceSpawn extends SceneObject {
     	return spawnPool;
     }
     
+    public boolean isEnergy() {
+    	return energy;
+    }
+    
     public int getZoneRestriction() {
     	return zoneRestriction;
     }
@@ -261,6 +279,10 @@ class ResourceSpawn extends SceneObject {
     
     @local
     public native int getAttributeAndValue(string attribute, int index);
+    
+    public native int getAttributeValue(int index) {
+    	return spawnAttributes.get(index);
+    }
 
 	@local
     public native void print();

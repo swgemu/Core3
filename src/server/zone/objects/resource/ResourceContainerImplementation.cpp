@@ -80,12 +80,12 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 
 	stackQuantity = quantity;
 
-	if(player == NULL)
+	if (player == NULL)
 		return;
 
 	int newStackSize = 0;
 
-	if(stackQuantity > ResourceContainer::MAXSIZE) {
+	if (stackQuantity > ResourceContainer::MAXSIZE) {
 
 		newStackSize = stackQuantity - ResourceContainer::MAXSIZE;
 		stackQuantity = ResourceContainer::MAXSIZE;
@@ -137,7 +137,7 @@ void ResourceContainerImplementation::combine(PlayerCreature* player, ResourceCo
 
 	Locker _inventorylocker(inventory);
 	inventory->removeObject(fromContainer, true);
-	fromContainer->destroyObjectFromDatabase(false);
+	fromContainer->destroyObjectFromDatabase(true);
 }
 
 void ResourceContainerImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {

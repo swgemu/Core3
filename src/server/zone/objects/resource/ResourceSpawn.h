@@ -84,6 +84,8 @@ public:
 
 	void setSurveyToolType(int type);
 
+	void setIsEnergy(bool val);
+
 	String getName();
 
 	String getType();
@@ -103,6 +105,8 @@ public:
 	void setContainerCRC(unsigned int crc);
 
 	int getSpawnPool();
+
+	bool isEnergy();
 
 	int getZoneRestriction();
 
@@ -125,6 +129,8 @@ public:
 	bool inShift();
 
 	int getAttributeAndValue(String& attribute, int index);
+
+	int getAttributeValue(int index);
 
 	void print();
 
@@ -188,6 +194,8 @@ protected:
 
 	bool dbDestroyed;
 
+	bool energy;
+
 public:
 	ResourceSpawnImplementation();
 
@@ -217,6 +225,8 @@ public:
 
 	void setSurveyToolType(int type);
 
+	void setIsEnergy(bool val);
+
 	String getName();
 
 	String getType();
@@ -236,6 +246,8 @@ public:
 	void setContainerCRC(unsigned int crc);
 
 	int getSpawnPool();
+
+	bool isEnergy();
 
 	int getZoneRestriction();
 
@@ -264,6 +276,8 @@ public:
 	bool inShift();
 
 	int getAttributeAndValue(String& attribute, int index);
+
+	int getAttributeValue(int index);
 
 	void print();
 
@@ -326,6 +340,8 @@ public:
 
 	void setSurveyToolType(int type);
 
+	void setIsEnergy(bool val);
+
 	String getName();
 
 	String getType();
@@ -346,6 +362,8 @@ public:
 
 	int getSpawnPool();
 
+	bool isEnergy();
+
 	int getZoneRestriction();
 
 	int getSurveyToolType();
@@ -355,6 +373,8 @@ public:
 	void extractResource(int zoneid, int units);
 
 	ResourceContainer* createResource(int units);
+
+	int getAttributeValue(int index);
 
 protected:
 	String _param0_setName__String_;

@@ -93,6 +93,9 @@ class ResourceManager extends ManagedObject implements Lua, PostureChangeObserve
 	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
 	public native void sendSample(PlayerCreature playerCreature, final string resname, final string sampleAnimation);
 	
+	public native unsigned long getAvailablePowerFromPlayer(PlayerCreature player);
+	public native void removePowerFromPlayer(PlayerCreature player, unsigned long power);
+	
 	@local
 	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, int zoneid);
 	

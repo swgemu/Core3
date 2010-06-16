@@ -228,3 +228,69 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 
 	runlock();
 }
+
+uint64 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature* player) {
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	uint64 power = 0;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		ManagedReference<SceneObject*> tano = (SceneObject*) inventory->getContainerObject(i);
+
+		if (tano->isResourceContainer()) {
+			ResourceContainer* rcno = (ResourceContainer*) tano.get();
+			ResourceSpawn* spawn = rcno->getSpawnObject();
+
+			if (spawn->isEnergy()) {
+				int PE = spawn->getAttributeValue(3); // potential energy
+
+				if (PE > 500)
+					power += (unsigned long long) ( (PE /* * 1.0 */) / 500.0 * (rcno->getQuantity() /* * 1.0 */) );
+				else
+					power += rcno->getQuantity();
+			}
+		}
+	}
+
+	return power;
+}
+
+void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player, uint64 power) {
+	if (power == 0)
+		return;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	uint64 containerPower = 0;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++ && power > 0) {
+		ManagedReference<SceneObject*> tano = inventory->getContainerObject(i);
+
+		if (tano->isResourceContainer()) {
+			ResourceContainer* rcno = (ResourceContainer*)tano.get();
+			ResourceSpawn* spawn = rcno->getSpawnObject();
+
+			if (spawn->isEnergy()) {
+				int PE = spawn->getAttributeValue(3); // potential energy
+
+				if (PE > 500)
+					containerPower = (unsigned long long) ( (PE  /* * 1.0 */) / 500.0 * (rcno->getQuantity() /* * 1.0*/) );
+				else
+					containerPower = rcno->getQuantity();
+
+				if (containerPower > power) {
+					// remove
+					uint64 consumedUnits = (unsigned long long) ( (power /* * 1.0 */) / ( (containerPower /* * 1.0*/) / rcno->getQuantity() ) );
+					power = 0; // zero it down
+
+					rcno->setQuantity(rcno->getQuantity() - consumedUnits, player);
+				} else {
+					power -= containerPower;
+
+					inventory->removeObject(rcno, true);
+					rcno->destroyObjectFromDatabase(true);
+				}
+			}
+		}
+
+	}
+}
