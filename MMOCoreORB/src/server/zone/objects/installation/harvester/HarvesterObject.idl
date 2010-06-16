@@ -45,30 +45,24 @@ which carries forward this exception.
 package server.zone.objects.installation.harvester;
 
 import server.zone.objects.installation.InstallationObject;
-import system.util.VectorMap;
-import server.zone.objects.resource.ResourceSpawn;
-import server.zone.objects.resource.ResourceContainer;
-include server.zone.objects.installation.harvester.HopperList;
 
 class HarvesterObject extends InstallationObject {
-	@dereferenced
-	protected Time resourceHopperTimestamp;
-	
-	@dereferenced
-	protected Time lastMaintenanceTime;
-	
-	@dereferenced
-	protected HopperList resourceHopper; // ID + Size
-
-	float hopperSizeMax;
-	float extractionRate;
-	
 	public HarvesterObject() {
-		
-		hopperSizeMax = 10000;
-		extractionRate = 100;
-		
 		Logger.setLoggingName("HarvesterObject");
+	}
+	
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		super.surplusPower = 1000;
+		super.basePowerRate = 100;
 	}
 	
 	/**
@@ -108,62 +102,8 @@ class HarvesterObject extends InstallationObject {
 	 */
 	public native void synchronizedUIStopListen(SceneObject player, int value);
 	
-	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
-	
-	/**
-	 * Updates this object and childre objects to database
-	 * @pre { this object is locked }
-	 * @post { this object is locked }
-	 * @param startTask if true, queues a new update task
-	 */
-	public abstract native void updateToDatabaseAllObjects(boolean startTask);
-	
-	/**
-	 * Destroys this object from database
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
-	 */
-	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
-	public native void setOperating(boolean operating, boolean notifyClient = true);
-	
-	public void updateInstallationWork() {
-		updateMaintenance();
-		updateHopper();
-	}
-	
 	public native void updateOperators();
 	
-	public native void setActiveResource(ResourceContainer container);
-	public native void changeActiveResourceID(unsigned long spawnObjectID);
-	public native void addResourceToHopper(ResourceContainer container);
-	public native void removeResourceFromHopper(ResourceContainer container);
-	public native void clearResourceHopper();
-	
-	public native float getHopperSize();
-	public native void updateHopper();
-	public native void updateMaintenance();
-	
-	public native int getHopperItemQuantity(ResourceSpawn spawn);
-	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);
-		
-	public native unsigned long getActiveResourceSpawnID();
-	
-	public native float getActualRate();
-	
-	public float getExtractionRate() {
-		return extractionRate;
-	}
-	
-	public float getHopperSizeMax() {
-		return hopperSizeMax;
-	}
-	
-	@local
-	public HopperList getHopperList() {
-		return resourceHopper;
-	}
 	
 	public boolean isHarvesterObject() {
 		return true;

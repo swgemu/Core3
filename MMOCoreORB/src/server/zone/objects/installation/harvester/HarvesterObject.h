@@ -11,39 +11,7 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace resource {
-
-class ResourceSpawn;
-
-} // namespace resource
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::resource;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace resource {
-
-class ResourceContainer;
-
-} // namespace resource
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::resource;
-
-#include "server/zone/objects/installation/harvester/HopperList.h"
-
 #include "server/zone/objects/installation/InstallationObject.h"
-
-#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {
@@ -55,6 +23,8 @@ class HarvesterObject : public InstallationObject {
 public:
 	HarvesterObject();
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -63,47 +33,7 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
-	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
-
-	void updateToDatabaseAllObjects(bool startTask);
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
-
-	void setOperating(bool operating, bool notifyClient = true);
-
-	void updateInstallationWork();
-
 	void updateOperators();
-
-	void setActiveResource(ResourceContainer* container);
-
-	void changeActiveResourceID(unsigned long long spawnObjectID);
-
-	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
-
-	void clearResourceHopper();
-
-	float getHopperSize();
-
-	void updateHopper();
-
-	void updateMaintenance();
-
-	int getHopperItemQuantity(ResourceSpawn* spawn);
-
-	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
-
-	unsigned long long getActiveResourceSpawnID();
-
-	float getActualRate();
-
-	float getExtractionRate();
-
-	float getHopperSizeMax();
-
-	HopperList* getHopperList();
 
 	bool isHarvesterObject();
 
@@ -130,22 +60,13 @@ namespace installation {
 namespace harvester {
 
 class HarvesterObjectImplementation : public InstallationObjectImplementation {
-protected:
-	Time resourceHopperTimestamp;
-
-	Time lastMaintenanceTime;
-
-	HopperList resourceHopper;
-
-private:
-	float hopperSizeMax;
-
-	float extractionRate;
 
 public:
 	HarvesterObjectImplementation();
 
 	HarvesterObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -155,47 +76,7 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
-	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
-
-	virtual void updateToDatabaseAllObjects(bool startTask);
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
-
-	void setOperating(bool operating, bool notifyClient = true);
-
-	void updateInstallationWork();
-
 	void updateOperators();
-
-	void setActiveResource(ResourceContainer* container);
-
-	void changeActiveResourceID(unsigned long long spawnObjectID);
-
-	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
-
-	void clearResourceHopper();
-
-	float getHopperSize();
-
-	void updateHopper();
-
-	void updateMaintenance();
-
-	int getHopperItemQuantity(ResourceSpawn* spawn);
-
-	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
-
-	unsigned long long getActiveResourceSpawnID();
-
-	float getActualRate();
-
-	float getExtractionRate();
-
-	float getHopperSizeMax();
-
-	HopperList* getHopperList();
 
 	bool isHarvesterObject();
 
@@ -244,45 +125,7 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
-	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
-
-	void updateToDatabaseAllObjects(bool startTask);
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects);
-
-	void setOperating(bool operating, bool notifyClient);
-
-	void updateInstallationWork();
-
 	void updateOperators();
-
-	void setActiveResource(ResourceContainer* container);
-
-	void changeActiveResourceID(unsigned long long spawnObjectID);
-
-	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
-
-	void clearResourceHopper();
-
-	float getHopperSize();
-
-	void updateHopper();
-
-	void updateMaintenance();
-
-	int getHopperItemQuantity(ResourceSpawn* spawn);
-
-	ResourceContainer* getContainerFromHopper(ResourceSpawn* spawn);
-
-	unsigned long long getActiveResourceSpawnID();
-
-	float getActualRate();
-
-	float getExtractionRate();
-
-	float getHopperSizeMax();
 
 	bool isHarvesterObject();
 

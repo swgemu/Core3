@@ -112,6 +112,10 @@ public:
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
 
+	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+
+	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
+
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
@@ -165,6 +169,10 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+
+	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
 
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
@@ -232,6 +240,10 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+
+	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 

@@ -10,7 +10,7 @@
 
 class HarvesterObjectMessage7 : public BaseLineMessage {
 public:
-	HarvesterObjectMessage7(HarvesterObject* hino)
+	HarvesterObjectMessage7(InstallationObject* hino)
 			: BaseLineMessage(hino->getObjectID(), 0x48494E4F, 7, 0x05) {
 
 		insertByte(1);
@@ -54,7 +54,7 @@ public:
 
 	}
 
-	void insertHopperSpawnObjects(Vector<ManagedReference<ResourceSpawn*> >* resourceList, HarvesterObject* hino) {
+	void insertHopperSpawnObjects(Vector<ManagedReference<ResourceSpawn*> >* resourceList, InstallationObject* hino) {
 		HopperList* list = hino->getHopperList();
 
 		for (int i = 0; i < list->size(); ++i) {
@@ -92,7 +92,7 @@ public:
 		}
 	}
 
-	void insertHopperItems(HarvesterObject * hino) {
+	void insertHopperItems(InstallationObject * hino) {
 		HopperList* hopperList = hino->getHopperList();
 
 		if (hopperList->size() == 0)

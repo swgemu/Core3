@@ -4,10 +4,6 @@
 
 #include "HarvesterObject.h"
 
-#include "server/zone/objects/resource/ResourceSpawn.h"
-
-#include "server/zone/objects/resource/ResourceContainer.h"
-
 /*
  *	HarvesterObjectStub
  */
@@ -23,6 +19,14 @@ HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : Installatio
 HarvesterObject::~HarvesterObject() {
 }
 
+
+void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((HarvesterObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
 
 void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (_impl == NULL) {
@@ -74,265 +78,16 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 		((HarvesterObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
 }
 
-void HarvesterObject::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(container);
-		method.addSignedIntParameter(newQuantity);
-		method.addBooleanParameter(notifyClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
-}
-
-void HarvesterObject::updateToDatabaseAllObjects(bool startTask) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addBooleanParameter(startTask);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
-}
-
-void HarvesterObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-		method.addBooleanParameter(destroyContainedObjects);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
-}
-
-void HarvesterObject::setOperating(bool operating, bool notifyClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-		method.addBooleanParameter(operating);
-		method.addBooleanParameter(notifyClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->setOperating(operating, notifyClient);
-}
-
-void HarvesterObject::updateInstallationWork() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->updateInstallationWork();
-}
-
 void HarvesterObject::updateOperators() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
 		((HarvesterObjectImplementation*) _impl)->updateOperators();
-}
-
-void HarvesterObject::setActiveResource(ResourceContainer* container) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(container);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->setActiveResource(container);
-}
-
-void HarvesterObject::changeActiveResourceID(unsigned long long spawnObjectID) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addUnsignedLongParameter(spawnObjectID);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->changeActiveResourceID(spawnObjectID);
-}
-
-void HarvesterObject::addResourceToHopper(ResourceContainer* container) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addObjectParameter(container);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->addResourceToHopper(container);
-}
-
-void HarvesterObject::removeResourceFromHopper(ResourceContainer* container) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-		method.addObjectParameter(container);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->removeResourceFromHopper(container);
-}
-
-void HarvesterObject::clearResourceHopper() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->clearResourceHopper();
-}
-
-float HarvesterObject::getHopperSize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getHopperSize();
-}
-
-void HarvesterObject::updateHopper() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->updateHopper();
-}
-
-void HarvesterObject::updateMaintenance() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 22);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->updateMaintenance();
-}
-
-int HarvesterObject::getHopperItemQuantity(ResourceSpawn* spawn) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 23);
-		method.addObjectParameter(spawn);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getHopperItemQuantity(spawn);
-}
-
-ResourceContainer* HarvesterObject::getContainerFromHopper(ResourceSpawn* spawn) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 24);
-		method.addObjectParameter(spawn);
-
-		return (ResourceContainer*) method.executeWithObjectReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getContainerFromHopper(spawn);
-}
-
-unsigned long long HarvesterObject::getActiveResourceSpawnID() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 25);
-
-		return method.executeWithUnsignedLongReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getActiveResourceSpawnID();
-}
-
-float HarvesterObject::getActualRate() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 26);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getActualRate();
-}
-
-float HarvesterObject::getExtractionRate() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 27);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getExtractionRate();
-}
-
-float HarvesterObject::getHopperSizeMax() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 28);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getHopperSizeMax();
-}
-
-HopperList* HarvesterObject::getHopperList() {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getHopperList();
 }
 
 bool HarvesterObject::isHarvesterObject() {
@@ -340,7 +95,7 @@ bool HarvesterObject::isHarvesterObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -414,47 +169,25 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("HarvesterObject");
 
-	addSerializableVariable("resourceHopperTimestamp", &resourceHopperTimestamp);
-	addSerializableVariable("lastMaintenanceTime", &lastMaintenanceTime);
-	addSerializableVariable("resourceHopper", &resourceHopper);
-	addSerializableVariable("hopperSizeMax", &hopperSizeMax);
-	addSerializableVariable("extractionRate", &extractionRate);
 }
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(68):  		hopperSizeMax = 10000;
-	hopperSizeMax = 10000;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(69):  		extractionRate = 100;
-	extractionRate = 100;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(71):  		Logger.setLoggingName("HarvesterObject");
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(51):  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
 }
 
-void HarvesterObjectImplementation::updateInstallationWork() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(132):  		updateMaintenance();
-	updateMaintenance();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(133):  		updateHopper();
-	updateHopper();
-}
-
-float HarvesterObjectImplementation::getExtractionRate() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(156):  		return extractionRate;
-	return extractionRate;
-}
-
-float HarvesterObjectImplementation::getHopperSizeMax() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(160):  		return hopperSizeMax;
-	return hopperSizeMax;
-}
-
-HopperList* HarvesterObjectImplementation::getHopperList() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(165):  		return resourceHopper;
-	return (&resourceHopper);
+void HarvesterObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(62):  		super.loadTemplateData(templateData);
+	InstallationObjectImplementation::loadTemplateData(templateData);
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(64):  		super.surplusPower = 1000;
+	InstallationObjectImplementation::surplusPower = 1000;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(65):  		super.basePowerRate = 100;
+	InstallationObjectImplementation::basePowerRate = 100;
 }
 
 bool HarvesterObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(169):  		return true;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(109):  		return true;
 	return true;
 }
 
@@ -479,66 +212,9 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		updateResourceContainerQuantity((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
-		break;
-	case 10:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
-		break;
-	case 11:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
-		break;
-	case 12:
-		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
-		break;
-	case 13:
-		updateInstallationWork();
-		break;
-	case 14:
 		updateOperators();
 		break;
-	case 15:
-		setActiveResource((ResourceContainer*) inv->getObjectParameter());
-		break;
-	case 16:
-		changeActiveResourceID(inv->getUnsignedLongParameter());
-		break;
-	case 17:
-		addResourceToHopper((ResourceContainer*) inv->getObjectParameter());
-		break;
-	case 18:
-		removeResourceFromHopper((ResourceContainer*) inv->getObjectParameter());
-		break;
-	case 19:
-		clearResourceHopper();
-		break;
-	case 20:
-		resp->insertFloat(getHopperSize());
-		break;
-	case 21:
-		updateHopper();
-		break;
-	case 22:
-		updateMaintenance();
-		break;
-	case 23:
-		resp->insertSignedInt(getHopperItemQuantity((ResourceSpawn*) inv->getObjectParameter()));
-		break;
-	case 24:
-		resp->insertLong(getContainerFromHopper((ResourceSpawn*) inv->getObjectParameter())->_getObjectID());
-		break;
-	case 25:
-		resp->insertLong(getActiveResourceSpawnID());
-		break;
-	case 26:
-		resp->insertFloat(getActualRate());
-		break;
-	case 27:
-		resp->insertFloat(getExtractionRate());
-		break;
-	case 28:
-		resp->insertFloat(getHopperSizeMax());
-		break;
-	case 29:
+	case 10:
 		resp->insertBoolean(isHarvesterObject());
 		break;
 	default:
@@ -560,84 +236,8 @@ void HarvesterObjectAdapter::synchronizedUIStopListen(SceneObject* player, int v
 	((HarvesterObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
 }
 
-void HarvesterObjectAdapter::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	((HarvesterObjectImplementation*) impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
-}
-
-void HarvesterObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((HarvesterObjectImplementation*) impl)->updateToDatabaseAllObjects(startTask);
-}
-
-void HarvesterObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((HarvesterObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
-}
-
-void HarvesterObjectAdapter::setOperating(bool operating, bool notifyClient) {
-	((HarvesterObjectImplementation*) impl)->setOperating(operating, notifyClient);
-}
-
-void HarvesterObjectAdapter::updateInstallationWork() {
-	((HarvesterObjectImplementation*) impl)->updateInstallationWork();
-}
-
 void HarvesterObjectAdapter::updateOperators() {
 	((HarvesterObjectImplementation*) impl)->updateOperators();
-}
-
-void HarvesterObjectAdapter::setActiveResource(ResourceContainer* container) {
-	((HarvesterObjectImplementation*) impl)->setActiveResource(container);
-}
-
-void HarvesterObjectAdapter::changeActiveResourceID(unsigned long long spawnObjectID) {
-	((HarvesterObjectImplementation*) impl)->changeActiveResourceID(spawnObjectID);
-}
-
-void HarvesterObjectAdapter::addResourceToHopper(ResourceContainer* container) {
-	((HarvesterObjectImplementation*) impl)->addResourceToHopper(container);
-}
-
-void HarvesterObjectAdapter::removeResourceFromHopper(ResourceContainer* container) {
-	((HarvesterObjectImplementation*) impl)->removeResourceFromHopper(container);
-}
-
-void HarvesterObjectAdapter::clearResourceHopper() {
-	((HarvesterObjectImplementation*) impl)->clearResourceHopper();
-}
-
-float HarvesterObjectAdapter::getHopperSize() {
-	return ((HarvesterObjectImplementation*) impl)->getHopperSize();
-}
-
-void HarvesterObjectAdapter::updateHopper() {
-	((HarvesterObjectImplementation*) impl)->updateHopper();
-}
-
-void HarvesterObjectAdapter::updateMaintenance() {
-	((HarvesterObjectImplementation*) impl)->updateMaintenance();
-}
-
-int HarvesterObjectAdapter::getHopperItemQuantity(ResourceSpawn* spawn) {
-	return ((HarvesterObjectImplementation*) impl)->getHopperItemQuantity(spawn);
-}
-
-ResourceContainer* HarvesterObjectAdapter::getContainerFromHopper(ResourceSpawn* spawn) {
-	return ((HarvesterObjectImplementation*) impl)->getContainerFromHopper(spawn);
-}
-
-unsigned long long HarvesterObjectAdapter::getActiveResourceSpawnID() {
-	return ((HarvesterObjectImplementation*) impl)->getActiveResourceSpawnID();
-}
-
-float HarvesterObjectAdapter::getActualRate() {
-	return ((HarvesterObjectImplementation*) impl)->getActualRate();
-}
-
-float HarvesterObjectAdapter::getExtractionRate() {
-	return ((HarvesterObjectImplementation*) impl)->getExtractionRate();
-}
-
-float HarvesterObjectAdapter::getHopperSizeMax() {
-	return ((HarvesterObjectImplementation*) impl)->getHopperSizeMax();
 }
 
 bool HarvesterObjectAdapter::isHarvesterObject() {
