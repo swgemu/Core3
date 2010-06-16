@@ -519,7 +519,7 @@ void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 ob
 	objectToRetrieve->sendTo(player, true);
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	inventory->addObject(objectToRetrieve, 4, true);
+	inventory->addObject(objectToRetrieve, -1, true);
 	inventory->updateToDatabase();
 
 	item->setRemovedByOwner(true);

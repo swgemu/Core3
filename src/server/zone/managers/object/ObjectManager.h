@@ -98,6 +98,12 @@ namespace zone {
 		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
 
 		/**
+		 * Returns a clone of the passed object with new object id
+		 * if the passed object is persistent, the new object will be too
+		 */
+		SceneObject* cloneObject(SceneObject* object);
+
+		/**
 		 * Assigns a new persistent object id, stores in the specified database
 		 */
 		void persistObject(ManagedObject* object, int persistenceLevel, const String& database);

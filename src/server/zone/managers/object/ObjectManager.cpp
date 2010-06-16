@@ -396,6 +396,42 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
+SceneObject* ObjectManager::cloneObject(SceneObject* object) {
+	ObjectOutputStream objectData(500);
+
+	((ManagedObject*)object)->writeObject(&objectData);
+	objectData.reset();
+
+	ObjectInputStream objectInput;
+	objectData.copy(&objectInput, 0);
+	objectInput.reset();
+
+	uint64 oid = object->_getObjectID();
+
+	uint32 serverCRC = object->getServerObjectCRC();
+
+	SceneObject* clonedObject = NULL;
+
+	ObjectDatabase* database = getTable(oid);
+	String databaseName;
+
+	if (database != NULL) {
+		database->getDatabaseName(databaseName);
+	}
+
+	if (object->isPersistent()) {
+		clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
+	} else {
+		clonedObject = createObject(serverCRC, 0, databaseName);
+	}
+
+	uint64 newoid = clonedObject->_getObjectID();
+
+	clonedObject->readObject(&objectInput);
+
+	return clonedObject;
+}
+
 void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, const String& database) {
 	Locker _locker(this);
 
