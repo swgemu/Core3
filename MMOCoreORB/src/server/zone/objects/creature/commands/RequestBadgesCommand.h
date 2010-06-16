@@ -71,8 +71,11 @@ public:
 		if (!object->isPlayerCreature())
 			return GENERALERROR;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		PlayerCreature* playerCreature = (PlayerCreature*) object.get();
-		playerCreature->sendBadgesResponseTo(playerCreature);
+		playerCreature->sendBadgesResponseTo((PlayerCreature*)creature);
 
 		return SUCCESS;
 	}
