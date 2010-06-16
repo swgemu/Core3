@@ -755,7 +755,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		return false;
 	}
 
-	if (containerType == 1 || containerType == 5) {
+	//if (containerType == 1 || containerType == 5) {
+	if (containmentType == 4) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -769,7 +770,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		for (int i = 0; i < arrangementSize; ++i) {
 			slottedObjects.put(object->getArrangementDescriptor(i), object);
 		}
-	} else if (containerType == 2 || containerType == 3) {
+	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
 		if (containerObjects.size() >= containerVolumeLimit)
 			return false;
 
