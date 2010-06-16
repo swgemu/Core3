@@ -62,8 +62,8 @@ class SurveyTool extends ToolTangibleObject {
 	protected string surveyAnimation;
 	protected string sampleAnimation;
 	
-	protected transient string lastResourceSampleName;
-	protected transient boolean radioactiveOk;
+	protected string lastResourceSampleName;
+	protected boolean radioactiveOk;
 	
 	public static final int SOLAR = 1;
 	public static final int CHEMICAL = 2;

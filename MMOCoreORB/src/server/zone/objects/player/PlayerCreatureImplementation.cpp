@@ -44,9 +44,6 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 	owner = NULL;
-	tradeContainer = NULL;
-
-	centeredBonus = 0;
 
 	persistentMessages.setNoDuplicateInsertPlan();
 	duelList.setNoDuplicateInsertPlan();
@@ -55,11 +52,24 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 }
 
 void PlayerCreatureImplementation::finalize() {
-	if (tradeContainer != NULL) {
-		delete tradeContainer;
-		tradeContainer = NULL;
-	}
 
+}
+
+void PlayerCreatureImplementation::notifyLoadFromDatabase() {
+	CreatureObjectImplementation::notifyLoadFromDatabase();
+
+	surveyWaypoint = NULL;
+	surveyTool = NULL;
+	centeredBonus = 0;
+	tradeContainer.clear();
+
+	if (zone != NULL && !isInQuadTree())
+		zone = NULL;
+
+	if (owner == NULL)
+		setLinkDead();
+
+	activateRecovery();
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {
@@ -277,10 +287,7 @@ void PlayerCreatureImplementation::unload() {
 
 	clearCombatState(true);
 
-	if (tradeContainer != NULL) {
-		delete tradeContainer;
-		tradeContainer = NULL;
-	}
+	tradeContainer.clear();
 
 	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
 
@@ -358,6 +365,15 @@ void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 		unlock();
 	} catch (...) {
 		unlock();
+	}
+}
+
+void PlayerCreatureImplementation::setCombatState() {
+	CreatureObjectImplementation::setCombatState();
+
+	if (tradeContainer.isTryingToTrade()) {
+		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+		playerManager->handleAbortTradeMessage(_this, false);
 	}
 }
 

@@ -107,8 +107,7 @@ class PlayerObject extends IntangibleObject {
 	protected SchematicList schematicList;
 	
 	@dereferenced
-	protected transient CraftingSession craftingSession;
-	
+	protected CraftingSession craftingSession;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;

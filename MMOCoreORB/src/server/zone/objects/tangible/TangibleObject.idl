@@ -82,7 +82,7 @@ class TangibleObject extends SceneObject {
 	protected string craftersSerial;
 	
 	@dereferenced
-	protected transient DeltaVector<SceneObject> defenderList;
+	protected DeltaVector<SceneObject> defenderList;
 	
 	protected unsigned short playerUseMask;
 	

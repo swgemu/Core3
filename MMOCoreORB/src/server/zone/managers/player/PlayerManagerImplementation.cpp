@@ -937,13 +937,13 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 
 		TradeContainer* tradeContainer = player->getTradeContainer();
 
-		if (tradeContainer == NULL) {
+		/*if (tradeContainer == NULL) {
 			AbortTradeMessage* msg = new AbortTradeMessage();
 			player->sendMessage(msg);
 
 			player->unlock(doLock);
 			return;
-		}
+		}*/
 
 		uint64 targID = tradeContainer->getTradeTargetPlayer();
 		ManagedReference<SceneObject*> obj = server->getObject(targID);
@@ -953,15 +953,13 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 		if (obj != NULL && obj->isPlayerCreature()) {
 			PlayerCreature* receiver = (PlayerCreature*) obj.get();
 
-			receiver->sendMessage(msg->clone());
-
 			receiver->wlock(player);
 
 			TradeContainer* receiverContainer = receiver->getTradeContainer();
 
-			if (receiverContainer != NULL) {
-				receiver->setTradeContainer(NULL);
-				delete receiverContainer;
+			if (receiverContainer->getTradeTargetPlayer() == player->getObjectID()) {
+				receiver->clearTradeContainer();
+				receiver->sendMessage(msg->clone());
 			}
 
 			receiver->unlock();
@@ -971,13 +969,12 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 
 		delete msg;
 
-		player->setTradeContainer(NULL);
-		delete tradeContainer;
+		player->clearTradeContainer();
 
 		player->unlock(doLock);
 	} catch (...) {
 		player->unlock(doLock);
-		System::out << "Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)\n";
+		error("Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)");
 	}
 }
 
@@ -986,9 +983,6 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(PlayerCreature* pla
 
 	TradeContainer* tradeContainer = player->getTradeContainer();
 
-	if (tradeContainer == NULL) {
-		return;
-	}
 	// First Verify Target is Player
 	uint64 targID = tradeContainer->getTradeTargetPlayer();
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
@@ -1024,9 +1018,6 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(PlayerCreature* player,
 		value = currentMoney;
 
 	TradeContainer* tradeContainer = player->getTradeContainer();
-
-	if (tradeContainer == NULL)
-		return;
 
 	tradeContainer->setMoneyToTrade(value);
 
@@ -1066,9 +1057,6 @@ void PlayerManagerImplementation::handleUnAcceptTransactionMessage(PlayerCreatur
 	Locker _locker(player);
 
 	TradeContainer* tradeContainer = player->getTradeContainer();
-
-	if (tradeContainer == NULL)
-		return;
 
 	tradeContainer->setAcceptedTrade(false);
 
@@ -1212,11 +1200,9 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* playe
 						player->addCashCredits(giveMoney);
 					}
 
-					receiver->setTradeContainer(NULL);
-					delete receiverTradeContainer;
+					receiver->clearTradeContainer();
 
-					player->setTradeContainer(NULL);
-					delete tradeContainer;
+					player->clearTradeContainer();
 
 					TradeCompleteMessage* msg = new TradeCompleteMessage();
 					receiver->sendMessage(msg->clone());

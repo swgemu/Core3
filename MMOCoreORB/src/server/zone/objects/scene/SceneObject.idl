@@ -102,7 +102,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	@dereferenced
 	protected Quaternion direction;
 
-	protected transient unsigned int movementCounter;
+	protected unsigned int movementCounter;
 
 	protected native float positionX;
 	protected native float previousPositionX;
@@ -384,6 +384,17 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public abstract void notifyLoadFromDatabase() {
+		if (zone != null) {
+			insertToZone(zone);
+		}
+	}
 
 	/**
 	 * Logs an info message
