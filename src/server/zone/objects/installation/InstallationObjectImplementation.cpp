@@ -97,7 +97,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 }
 
 void InstallationObjectImplementation::setOperating(bool value, bool notifyClient) {
-	updateInstallationWork();
+	//updateInstallationWork();
 
 	if (operating == value)
 		return;
