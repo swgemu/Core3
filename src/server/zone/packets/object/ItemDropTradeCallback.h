@@ -45,15 +45,11 @@ public:
 
 		TradeContainer* playerTradeContainer = player->getTradeContainer();
 
-		if (playerTradeContainer == NULL) {
-			playerTradeContainer = new TradeContainer();
-		} else if (playerTradeContainer->getTradeTargetPlayer() == targetToTrade) {
+		if (playerTradeContainer->getTradeTargetPlayer() == targetToTrade || player->isInCombat()) {
 			return;
 		}
 
 		playerTradeContainer->setTradeTargetPlayer(targetToTrade);
-
-		player->setTradeContainer(playerTradeContainer);
 
 		try {
 			targetPlayer->wlock(player);
@@ -62,7 +58,7 @@ public:
 
 			TradeContainer* targetTradeContainer = targetPlayer->getTradeContainer();
 
-			if (targetTradeContainer != NULL && targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
+			if (targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
 				BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());
 				player->sendMessage(msg);
 
