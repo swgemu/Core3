@@ -298,15 +298,15 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	String firstName = playerCreature->getFirstName();
 	String lastName = playerCreature->getLastName();
 
-	firstName.escapeString();
+	/*firstName.escapeString();
 	lastName.escapeString();
-	race.escapeString();
+	race.escapeString();*/
 
 	try {
 		StringBuffer query;
 		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
 				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
-				<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
+				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (Exception& e) {
