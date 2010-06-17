@@ -75,17 +75,33 @@ public:
 			ManagedReference<PlayerCreature*> player = playerManager->getPlayer(name);
 
 			if (player != NULL) {
-				Zone* targetZone = player->getZone();
 
-				if (targetZone == NULL)
-					return GENERALERROR;
+				int zoneid = 0;
+				float posx = 0, posy = 0, posz = 0;
+				uint64 parentid = 0;
 
-				int zoneid = targetZone->getZoneID();
-				float posx = player->getPositionX();
-				float posy = player->getPositionY();
-				float posz = player->getPositionZ();
+				try {
+					player->wlock(creature);
 
-				creature->switchZone(zoneid, posx, posz, posy, player->getParentID());
+					Zone* targetZone = player->getZone();
+
+					if (targetZone == NULL) {
+						player->unlock();
+						return GENERALERROR;
+					}
+
+					zoneid = targetZone->getZoneID();
+					posx = player->getPositionX();
+					posy = player->getPositionY();
+					posz = player->getPositionZ();
+					parentid = player->getParentID();
+
+					player->unlock();
+				} catch (...) {
+					player->unlock();
+				}
+
+				creature->switchZone(zoneid, posx, posz, posy, parentid);
 			}
 
 
