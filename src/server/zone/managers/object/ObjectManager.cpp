@@ -406,13 +406,11 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object) {
 	objectData.copy(&objectInput, 0);
 	objectInput.reset();
 
-	uint64 oid = object->_getObjectID();
-
 	uint32 serverCRC = object->getServerObjectCRC();
 
 	SceneObject* clonedObject = NULL;
 
-	ObjectDatabase* database = getTable(oid);
+	ObjectDatabase* database = getTable(object->getObjectID());
 	String databaseName;
 
 	if (database != NULL) {
@@ -425,7 +423,7 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object) {
 		clonedObject = createObject(serverCRC, 0, databaseName);
 	}
 
-	uint64 newoid = clonedObject->_getObjectID();
+	Locker locker(clonedObject);
 
 	clonedObject->readObject(&objectInput);
 
@@ -528,17 +526,16 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 
 void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* data) {
-	try {
-		object->wlock();
+	Locker _locker(object);
 
+	try {
 		object->readObject(data);
 
 		if (object->isPersistent())
 			object->queueUpdateToDatabaseTask();
 
-		object->unlock();
 	} catch (Exception& e) {
-		object->unlock();
+
 		error("could not deserialize object from DB");
 	} catch (...) {
 		object->unlock();
@@ -547,11 +544,10 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 }
 
 void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
+	Locker locker(object);
 	String logName = object->getLoggingName();
 
 	try {
-		object->wlock();
-
 		object->readObject(data);
 
 		object->setLoggingName(logName);
@@ -561,12 +557,9 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 
 		object->notifyLoadFromDatabase();
 
-		object->unlock();
 	} catch (Exception& e) {
-		object->unlock();
 		error("could not deserialize object from DB");
 	} catch (...) {
-		object->unlock();
 		error("could not deserialize object from DB");
 	}
 }

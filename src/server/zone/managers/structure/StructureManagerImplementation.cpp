@@ -782,11 +782,13 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 
 	float z = zone->getHeight(x, y);
 
-	/*if (z == 0)
-		z = player->getPositionZ();*/
+	float floraRadius = buildingTemplate->getClearFloraRadius();
+	bool snapToTerrain = buildingTemplate->getSnapToTerrain();
 
-	float maxZ = terrainManager->getHighestHeight(x - 24, y - 24, x + 24, y + 24 , 4); // checking default 24x24 area with 4 stepping
-	z = maxZ;
+	if (floraRadius > 0 && !snapToTerrain) {
+		float maxZ = terrainManager->getHighestHeight(x - floraRadius, y - floraRadius, x + floraRadius, y + floraRadius , 4); // checking default 24x24 area with 4 stepping
+		z = maxZ;
+	}
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
@@ -860,10 +862,14 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
 	float z = zone->getHeight(x, y);
-	//float z = player->getPositionZ();
 
-	float maxZ = terrainManager->getHighestHeight(x - 24, y - 24, x + 24, y + 24 , 4); // checking default 24x24 area with 4 stepping
-	z = maxZ;
+	float floraRadius = installationTemplate->getClearFloraRadius();
+	bool snapToTerrain = installationTemplate->getSnapToTerrain();
+
+	if (floraRadius > 0 && !snapToTerrain) {
+		float maxZ = terrainManager->getHighestHeight(x - floraRadius, y - floraRadius, x + floraRadius, y + floraRadius , 4); // checking default 24x24 area with 4 stepping
+		z = maxZ;
+	}
 
 	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
 
