@@ -803,7 +803,9 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 		return false;
 	}
 
-	if (containerType == 1 || containerType == 5) {
+	int containedType = object->getContainmentType();
+
+	if (containedType == 4/*containerType == 1 || containerType == 5*/) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -815,7 +817,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 		for (int i = 0; i < arrangementSize; ++i)
 			slottedObjects.drop(object->getArrangementDescriptor(i));
-	} else if (containerType == 2 || containerType == 3) {
+	} else if (containedType == -1/*containerType == 2 || containerType == 3*/) {
 		if (!containerObjects.contains(object->getObjectID()))
 			return false;
 

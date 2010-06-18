@@ -235,6 +235,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 	player->substractBankCredits(SALESFEE);
 
 	inventory->updateToDatabase();
+	objectToSell->updateToDatabase();
 
 	ParameterizedStringId str("base_player", "sale_fee");
 	str.setDI(SALESFEE);
