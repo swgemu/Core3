@@ -80,6 +80,7 @@ include server.zone.objects.scene.SceneObjectObserver;
 include server.zone.objects.scene.CloseContainerObserver;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -136,6 +137,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
+	
+	protected ActiveArea activeArea;
 
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
@@ -166,6 +169,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int RECREATIONBUILDING = 0x206;
 	public static final int CLONINGBUILDING = 0x207;
 	public static final int TRAVELBUILDING = 0x208;
+	public static final int STARPORTBUILDING = 0x209;
+	public static final int CAPITOLBUILDING = 0x20A;
+	public static final int HOTELBUILDING = 0x20B;
+	public static final int THEATERBUILDING = 0x20C;
+	public static final int COMBATBUILDING = 0x20D;
+	public static final int COMMERCEBUILDING = 0x20E;
+	public static final int UNIVERSITYBUILDING = 0x20F;
+	public static final int GARAGEBUILDING = 0x210;
 
 	public static final int CREATURE = 0x400;
 	public static final int NPCCREATURE = 0x401;
@@ -193,6 +204,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int HARVESTER = 0x1003;
 	public static final int TURRET = 0x1004;
 	public static final int MINEFIELD = 0x1005;
+	public static final int GARAGEINSTALLATION = 0x1006;
 
 	public static final int TANGIBLE = 0x2000;
 	public static final int AMMUNITION = 0x2001;
@@ -353,6 +365,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	
 	public static final int BADGEAREA = 0x200000;
+	public static final int REGIONAREA = 0x200001;
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -1173,6 +1186,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract boolean isBuildingObject() {
 		return false;
 	}
+	
+	public boolean isGarage() {
+		return gameObjectType == GARAGEBUILDING || gameObjectType == GARAGEINSTALLATION;
+	}
 
 	public abstract boolean isWeaponObject() {
 		return false;
@@ -1249,6 +1266,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void setGameObjectType(unsigned int type) {
 		gameObjectType = type;
 	}
+	
+	public void setActiveArea(ActiveArea area) {
+		activeArea = area;
+	}
 
 	public void setClientObjectCRC(unsigned int objCRC) {
 		clientObjectCRC = objCRC;
@@ -1321,6 +1342,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract boolean isControlDevice() {
 		return false;
 	}
-
+	
+	public ActiveArea getActiveArea() {
+		return activeArea;
+	}
 }
 

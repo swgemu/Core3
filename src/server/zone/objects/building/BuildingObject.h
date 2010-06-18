@@ -192,10 +192,6 @@ public:
 
 	void onExit(PlayerCreature* player);
 
-	bool isStaticGarage();
-
-	void setStaticGarage(bool val);
-
 	bool isBuildingObject();
 
 	void setDeedObjectID(unsigned long long deedid);
@@ -253,8 +249,6 @@ protected:
 	unsigned long long ownerObjectID;
 
 	int totalCellNumber;
-
-	bool staticGarage;
 
 	ManagedReference<SignObject* > signObject;
 
@@ -318,10 +312,6 @@ public:
 	virtual void onEnter(PlayerCreature* player);
 
 	virtual void onExit(PlayerCreature* player);
-
-	bool isStaticGarage();
-
-	void setStaticGarage(bool val);
 
 	bool isBuildingObject();
 
@@ -421,10 +411,6 @@ public:
 	void onEnter(PlayerCreature* player);
 
 	void onExit(PlayerCreature* player);
-
-	bool isStaticGarage();
-
-	void setStaticGarage(bool val);
 
 	bool isBuildingObject();
 

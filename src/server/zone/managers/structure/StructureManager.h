@@ -103,6 +103,8 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "system/thread/Thread.h"
 
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -155,12 +157,21 @@ class StructureManagerImplementation : public ManagedObjectImplementation, publi
 
 	TemplateManager* templateManager;
 
+protected:
+	static SortedVector<String> listOfStaticBuildings;
+
+	static SortedVector<String> createdFiles;
+
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor);
 
 	StructureManagerImplementation(DummyConstructorParameter* param);
 
 private:
+	void createNewLuas();
+
+	void createLuaIncludes();
+
 	void loadStaticBuildings();
 
 	void loadStaticBanks();

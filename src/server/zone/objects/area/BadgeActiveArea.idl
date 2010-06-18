@@ -58,14 +58,23 @@ class BadgeActiveArea extends ActiveArea {
 		Logger.setLoggingName("BadgeActiveArea");
 	}
 
-	public void notifyEnter(PlayerCreature player) {
-		if (!player.hasBadge(areaBadge)) {
-			player.awardBadge(areaBadge);
+	public void notifyEnter(SceneObject player) {
+		if (!player.isPlayerCreature())
+			return;
+		
+		PlayerCreature playerCreature = (PlayerCreature) player;
+		
+		if (!playerCreature.hasBadge(areaBadge)) {
+			playerCreature.awardBadge(areaBadge);
 		}
 	}
 	
 	public void setBadge(unsigned int a) {
 		areaBadge = a;
+	}
+	
+	public unsigned int getBadge() {
+		return areaBadge;
 	}
 }
 

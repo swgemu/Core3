@@ -1,12 +1,15 @@
 object_building_player_player_guildhall_naboo_style_01 = object_building_player_shared_player_guildhall_naboo_style_01:new {
 	lotSize = 5,
 	baseMaintenanceRate = 100,
+	mapLocationsType1 = 7,
 	allowedZones = {1,5,6}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_guildhall_naboo_style_01, "object/building/player/player_guildhall_naboo_style_01.iff")
 
 object_building_player_player_garage_naboo_style_01 = object_building_player_shared_player_garage_naboo_style_01:new {
+	gameObjectType = 4102,
+	mapLocationsType1 = 6,
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6}

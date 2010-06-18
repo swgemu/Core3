@@ -105,6 +105,8 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "server/zone/managers/object/ObjectMap.h"
 
+#include "server/zone/managers/planet/MapLocationTable.h"
+
 #include "engine/util/QuadTree.h"
 
 #include "engine/util/QuadTreeEntry.h"
@@ -114,6 +116,8 @@ using namespace server::zone::managers::objectcontroller;
 #include "engine/core/TaskManager.h"
 
 #include "engine/core/ManagedObject.h"
+
+#include "system/util/VectorMap.h"
 
 #include "system/lang/System.h"
 
@@ -141,6 +145,8 @@ public:
 	float getHeight(float x, float y);
 
 	void addSceneObject(SceneObject* object);
+
+	void sendMapLocationsTo(const String& planetName, SceneObject* player);
 
 	void dropSceneObject(unsigned long long objectID);
 
@@ -213,6 +219,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	HeightMap* heightMap;
 
+	MapLocationTable mapLocations;
+
 	float weatherWindX;
 
 	float weatherWindY;
@@ -243,6 +251,8 @@ public:
 	float getHeight(float x, float y);
 
 	void addSceneObject(SceneObject* object);
+
+	void sendMapLocationsTo(const String& planetName, SceneObject* player);
 
 	void dropSceneObject(unsigned long long objectID);
 
@@ -331,6 +341,8 @@ public:
 
 	void addSceneObject(SceneObject* object);
 
+	void sendMapLocationsTo(const String& planetName, SceneObject* player);
+
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
@@ -369,6 +381,8 @@ public:
 
 	float getMaxY();
 
+protected:
+	String _param0_sendMapLocationsTo__String_SceneObject_;
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {

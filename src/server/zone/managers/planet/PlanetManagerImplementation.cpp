@@ -67,8 +67,16 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 
 		String fullName = "@" + file + ":" + name;
 
-		Region* region = new Region(fullName, x, y, radius /* + 300 */);
-		region->deploy();
+		uint32 crc = String("object/region_area.iff").hashCode();
+
+		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
+		region->initializePosition(x, 0, y);
+		region->setRadius(radius);
+		StringId* objectName = region->getObjectName();
+		objectName->setStringId(fullName);
+
+		//Region* region = new Region(fullName, x, y, radius /* + 300 */);
+		//region->deploy();
 		noBuildAreaMap.add(region);
 
 		//addNoBuildArea(x, y, radius + 300); // Adding 500 as a buffer for spawns since this patch doesn't need buildings
@@ -105,7 +113,7 @@ void PlanetManagerImplementation::loadRegions() {
 			float y = result->getFloat(2);
 			float radius = result->getFloat(3);
 
-			regionMap.addRegion(fullName, x, y, radius);
+			regionMap.addRegion(zone, fullName, x, y, radius);
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());

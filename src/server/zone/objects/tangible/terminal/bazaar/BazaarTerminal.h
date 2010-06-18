@@ -106,16 +106,10 @@ public:
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
 
-	void setBazaarRegion(const String& region);
-
-	String getBazaarRegion();
-
 protected:
 	BazaarTerminal(DummyConstructorParameter* param);
 
 	virtual ~BazaarTerminal();
-
-	String _return_getBazaarRegion;
 
 	friend class BazaarTerminalHelper;
 };
@@ -138,8 +132,6 @@ namespace bazaar {
 
 class BazaarTerminalImplementation : public TerminalImplementation {
 protected:
-	String bazaarRegion;
-
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
 
 public:
@@ -156,10 +148,6 @@ public:
 	void dropAuction(unsigned long long auctionItemID);
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getAuctions();
-
-	void setBazaarRegion(const String& region);
-
-	String getBazaarRegion();
 
 	BazaarTerminal* _this;
 
@@ -208,12 +196,6 @@ public:
 
 	void dropAuction(unsigned long long auctionItemID);
 
-	void setBazaarRegion(const String& region);
-
-	String getBazaarRegion();
-
-protected:
-	String _param0_setBazaarRegion__String_;
 };
 
 class BazaarTerminalHelper : public DistributedObjectClassHelper, public Singleton<BazaarTerminalHelper> {

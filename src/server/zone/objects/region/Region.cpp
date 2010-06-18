@@ -10,45 +10,42 @@
  *	RegionStub
  */
 
-Region::Region(const String& fullName, float posX, float posY, float radi) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RegionImplementation(fullName, posX, posY, radi);
+Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
+	_impl = new RegionImplementation();
 	_impl->_setStub(this);
 }
 
-Region::Region(DummyConstructorParameter* param) : ManagedObject(param) {
+Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
 }
 
 Region::~Region() {
 }
 
 
-bool Region::containsPoint(float px, float py) {
+void Region::notifyEnter(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addFloatParameter(px);
-		method.addFloatParameter(py);
+		method.addObjectParameter(object);
 
-		return method.executeWithBooleanReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((RegionImplementation*) _impl)->containsPoint(px, py);
+		((RegionImplementation*) _impl)->notifyEnter(object);
 }
 
-void Region::addPoint(float px, float py, float radius) {
+void Region::notifyExit(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addFloatParameter(px);
-		method.addFloatParameter(py);
-		method.addFloatParameter(radius);
+		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->addPoint(px, py, radius);
+		((RegionImplementation*) _impl)->notifyExit(object);
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
@@ -89,32 +86,23 @@ int Region::getBazaarCount() {
 		return ((RegionImplementation*) _impl)->getBazaarCount();
 }
 
-StringId* Region::getName() {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return ((RegionImplementation*) _impl)->getName();
-}
-
-String Region::getRegionName() {
+bool Region::isRegion() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
 
-		method.executeWithAsciiReturn(_return_getRegionName);
-		return _return_getRegionName;
+		return method.executeWithBooleanReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getRegionName();
+		return ((RegionImplementation*) _impl)->isRegion();
 }
 
 /*
  *	RegionImplementation
  */
 
-RegionImplementation::RegionImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+RegionImplementation::RegionImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -133,7 +121,7 @@ void RegionImplementation::_initializeImplementation() {
 
 void RegionImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (Region*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ActiveAreaImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* RegionImplementation::_getStub() {
@@ -173,62 +161,58 @@ void RegionImplementation::runlock(bool doLock) {
 }
 
 void RegionImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ActiveAreaImplementation::_serializationHelperMethod();
 
 	_setClassName("Region");
 
-	addSerializableVariable("name", &name);
-	addSerializableVariable("points", &points);
 	addSerializableVariable("bazaars", &bazaars);
 }
 
-RegionImplementation::RegionImplementation(const String& fullName, float posX, float posY, float radi) {
+RegionImplementation::RegionImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(66):  		name.setStringId(fullName);
-	(&name)->setStringId(fullName);
-	// server/zone/objects/region/Region.idl(68):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(60):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(69):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(61):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
-	// server/zone/objects/region/Region.idl(71):  		points.addRegion(posX, posY, radi);
-	(&points)->addRegion(posX, posY, radi);
 }
 
-void RegionImplementation::addPoint(float px, float py, float radius) {
-	// server/zone/objects/region/Region.idl(78):  		points.addRegion(px, py, radius);
-	(&points)->addRegion(px, py, radius);
+void RegionImplementation::notifyEnter(SceneObject* object) {
+	// server/zone/objects/region/Region.idl(65):  	}
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(66):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
+}
+
+void RegionImplementation::notifyExit(SceneObject* object) {
+	// server/zone/objects/region/Region.idl(70):  	}
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(71):  			bazaars.drop(object.getObjectID());
+	(&bazaars)->drop(object->getObjectID());
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(82):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(75):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(86):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(79):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(90):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(83):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
-StringId* RegionImplementation::getName() {
-	// server/zone/objects/region/Region.idl(95):  		return name;
-	return (&name);
-}
-
-String RegionImplementation::getRegionName() {
-	// server/zone/objects/region/Region.idl(99):  		return name.getStringID();
-	return (&name)->getStringID();
+bool RegionImplementation::isRegion() {
+	// server/zone/objects/region/Region.idl(87):  		return true;
+	return true;
 }
 
 /*
  *	RegionAdapter
  */
 
-RegionAdapter::RegionAdapter(RegionImplementation* obj) : ManagedObjectAdapter(obj) {
+RegionAdapter::RegionAdapter(RegionImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -236,10 +220,10 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		addPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
 		addBazaar((BazaarTerminal*) inv->getObjectParameter());
@@ -251,7 +235,7 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getBazaarCount());
 		break;
 	case 11:
-		resp->insertAscii(getRegionName());
+		resp->insertBoolean(isRegion());
 		break;
 	default:
 		return NULL;
@@ -260,12 +244,12 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-bool RegionAdapter::containsPoint(float px, float py) {
-	return ((RegionImplementation*) impl)->containsPoint(px, py);
+void RegionAdapter::notifyEnter(SceneObject* object) {
+	((RegionImplementation*) impl)->notifyEnter(object);
 }
 
-void RegionAdapter::addPoint(float px, float py, float radius) {
-	((RegionImplementation*) impl)->addPoint(px, py, radius);
+void RegionAdapter::notifyExit(SceneObject* object) {
+	((RegionImplementation*) impl)->notifyExit(object);
 }
 
 void RegionAdapter::addBazaar(BazaarTerminal* ter) {
@@ -280,8 +264,8 @@ int RegionAdapter::getBazaarCount() {
 	return ((RegionImplementation*) impl)->getBazaarCount();
 }
 
-String RegionAdapter::getRegionName() {
-	return ((RegionImplementation*) impl)->getRegionName();
+bool RegionAdapter::isRegion() {
+	return ((RegionImplementation*) impl)->isRegion();
 }
 
 /*

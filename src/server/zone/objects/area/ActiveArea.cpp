@@ -36,7 +36,7 @@ void ActiveArea::sendTo(SceneObject* player, bool doClose) {
 		((ActiveAreaImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void ActiveArea::notifyEnter(PlayerCreature* object) {
+void ActiveArea::notifyEnter(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +49,7 @@ void ActiveArea::notifyEnter(PlayerCreature* object) {
 		((ActiveAreaImplementation*) _impl)->notifyEnter(object);
 }
 
-void ActiveArea::notifyExit(PlayerCreature* object) {
+void ActiveArea::notifyExit(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,12 +62,24 @@ void ActiveArea::notifyExit(PlayerCreature* object) {
 		((ActiveAreaImplementation*) _impl)->notifyExit(object);
 }
 
-bool ActiveArea::containsPoint(float x, float y) {
+bool ActiveArea::isRegion() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ActiveAreaImplementation*) _impl)->isRegion();
+}
+
+bool ActiveArea::containsPoint(float x, float y) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -84,12 +96,28 @@ void ActiveArea::notifyPositionUpdate(QuadTreeEntry* obj) {
 		((ActiveAreaImplementation*) _impl)->notifyPositionUpdate(obj);
 }
 
+void ActiveArea::notifyInsert(QuadTreeEntry* entry) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ActiveAreaImplementation*) _impl)->notifyInsert(entry);
+}
+
+void ActiveArea::notifyDissapear(QuadTreeEntry* entry) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ActiveAreaImplementation*) _impl)->notifyDissapear(entry);
+}
+
 float ActiveArea::getRadius() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -101,7 +129,7 @@ void ActiveArea::setRadius(float r) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -193,21 +221,31 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 void ActiveAreaImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
-void ActiveAreaImplementation::notifyEnter(PlayerCreature* object) {
+void ActiveAreaImplementation::notifyEnter(SceneObject* object) {
 }
 
-void ActiveAreaImplementation::notifyExit(PlayerCreature* object) {
+void ActiveAreaImplementation::notifyExit(SceneObject* object) {
+}
+
+bool ActiveAreaImplementation::isRegion() {
+	// server/zone/objects/area/ActiveArea.idl(82):  		return false;
+	return false;
+}
+
+void ActiveAreaImplementation::notifyInsert(QuadTreeEntry* entry) {
+	// server/zone/objects/area/ActiveArea.idl(92):  		notifyPositionUpdate(entry);
+	notifyPositionUpdate(entry);
 }
 
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(87):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl(99):  		return radius;
 	return radius;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(91):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(103):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(92):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(104):  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -226,18 +264,21 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		notifyEnter((PlayerCreature*) inv->getObjectParameter());
+		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		notifyExit((PlayerCreature*) inv->getObjectParameter());
+		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		resp->insertBoolean(isRegion());
 		break;
 	case 10:
-		resp->insertFloat(getRadius());
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 11:
+		resp->insertFloat(getRadius());
+		break;
+	case 12:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:
@@ -251,12 +292,16 @@ void ActiveAreaAdapter::sendTo(SceneObject* player, bool doClose) {
 	((ActiveAreaImplementation*) impl)->sendTo(player, doClose);
 }
 
-void ActiveAreaAdapter::notifyEnter(PlayerCreature* object) {
+void ActiveAreaAdapter::notifyEnter(SceneObject* object) {
 	((ActiveAreaImplementation*) impl)->notifyEnter(object);
 }
 
-void ActiveAreaAdapter::notifyExit(PlayerCreature* object) {
+void ActiveAreaAdapter::notifyExit(SceneObject* object) {
 	((ActiveAreaImplementation*) impl)->notifyExit(object);
+}
+
+bool ActiveAreaAdapter::isRegion() {
+	return ((ActiveAreaImplementation*) impl)->isRegion();
 }
 
 bool ActiveAreaAdapter::containsPoint(float x, float y) {

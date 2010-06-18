@@ -44,6 +44,10 @@ SharedObjectTemplate = Object:new {
  	 objectName = "",
 	 detailedDescription = "",
 	 lookAtText = "",
+	 
+	 mapLocationsType1 = 0,
+	 mapLocationsType2 = 0,
+	 mapLocationsType3 = 0,
 
 	 snapToTerrain = 0,
 	 containerType= 0,

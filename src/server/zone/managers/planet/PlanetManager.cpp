@@ -156,14 +156,6 @@ void PlanetManager::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 		((PlanetManagerImplementation*) _impl)->sendPlanetTravelPointListResponse(player);
 }
 
-bool PlanetManager::getRegion(StringId& name, float x, float y) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(name, x, y);
-}
-
 StructureManager* PlanetManager::getStructureManager() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -221,19 +213,6 @@ Region* PlanetManager::getRegion(int index) {
 		return (Region*) method.executeWithObjectReturn();
 	} else
 		return ((PlanetManagerImplementation*) _impl)->getRegion(index);
-}
-
-Region* PlanetManager::getRegion(const String& regionName) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-		method.addAsciiParameter(regionName);
-
-		return (Region*) method.executeWithObjectReturn();
-	} else
-		return ((PlanetManagerImplementation*) _impl)->getRegion(regionName);
 }
 
 /*
@@ -329,11 +308,6 @@ ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& arrivalPo
 	return (&shuttleMap)->get(arrivalPoint);
 }
 
-bool PlanetManagerImplementation::getRegion(StringId& name, float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(121):  		return regionMap.getRegion(name, x, y);
-	return (&regionMap)->getRegion((&name), x, y);
-}
-
 StructureManager* PlanetManagerImplementation::getStructureManager() {
 	// server/zone/managers/planet/PlanetManager.idl(125):  		return structureManager;
 	return structureManager;
@@ -357,11 +331,6 @@ int PlanetManagerImplementation::getRegionCount() {
 Region* PlanetManagerImplementation::getRegion(int index) {
 	// server/zone/managers/planet/PlanetManager.idl(142):  		return regionMap.getRegion(index);
 	return (&regionMap)->getRegion(index);
-}
-
-Region* PlanetManagerImplementation::getRegion(const String& regionName) {
-	// server/zone/managers/planet/PlanetManager.idl(146):  		return regionMap.getRegion(regionName);
-	return (&regionMap)->getRegion(regionName);
 }
 
 /*
@@ -416,9 +385,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 19:
 		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
-		break;
-	case 20:
-		resp->insertLong(getRegion(inv->getAsciiParameter(_param0_getRegion__String_))->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -481,10 +447,6 @@ int PlanetManagerAdapter::getRegionCount() {
 
 Region* PlanetManagerAdapter::getRegion(int index) {
 	return ((PlanetManagerImplementation*) impl)->getRegion(index);
-}
-
-Region* PlanetManagerAdapter::getRegion(const String& regionName) {
-	return ((PlanetManagerImplementation*) impl)->getRegion(regionName);
 }
 
 /*

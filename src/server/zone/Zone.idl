@@ -58,10 +58,12 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
+import system.util.VectorMap;
 
 
 include server.zone.managers.planet.HeightMap;
 include server.zone.managers.object.ObjectMap;
+include server.zone.managers.planet.MapLocationTable;
 
 import system.lang.System;
 
@@ -85,6 +87,9 @@ class Zone extends ManagedObject implements QuadTree {
 	private Time galacticTime;
 	
 	private transient HeightMap heightMap;
+	
+	@dereferenced
+	private transient MapLocationTable mapLocations;
 
 	//Weather
 	private float weatherWindX; //1.0 = east, -1.0 = west
@@ -113,13 +118,11 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native float getHeight(float x, float y);
 	
-	public void addSceneObject(SceneObject object) {
-		objectMap.put(object.getObjectID(), object);
-	}
+	public native void addSceneObject(SceneObject object);
 	
-	public void dropSceneObject(unsigned long objectID) {
-		objectMap.remove(objectID);
-	}
+	public native void sendMapLocationsTo(final string planetName, SceneObject player);
+	
+	public native void dropSceneObject(unsigned long objectID);
 
 	// setters and getters
 	public int getZoneID() {

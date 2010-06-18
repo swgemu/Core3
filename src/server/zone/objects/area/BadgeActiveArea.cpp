@@ -24,7 +24,7 @@ BadgeActiveArea::~BadgeActiveArea() {
 }
 
 
-void BadgeActiveArea::notifyEnter(PlayerCreature* player) {
+void BadgeActiveArea::notifyEnter(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -48,6 +48,18 @@ void BadgeActiveArea::setBadge(unsigned int a) {
 		method.executeWithVoidReturn();
 	} else
 		((BadgeActiveAreaImplementation*) _impl)->setBadge(a);
+}
+
+unsigned int BadgeActiveArea::getBadge() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((BadgeActiveAreaImplementation*) _impl)->getBadge();
 }
 
 /*
@@ -128,17 +140,27 @@ BadgeActiveAreaImplementation::BadgeActiveAreaImplementation() {
 	Logger::setLoggingName("BadgeActiveArea");
 }
 
-void BadgeActiveAreaImplementation::notifyEnter(PlayerCreature* player) {
-	// server/zone/objects/area/BadgeActiveArea.idl(62):  	}
-	if (!player->hasBadge(areaBadge)){
-	// server/zone/objects/area/BadgeActiveArea.idl(63):  			player.awardBadge(areaBadge);
-	player->awardBadge(areaBadge);
+void BadgeActiveAreaImplementation::notifyEnter(SceneObject* player) {
+	// server/zone/objects/area/BadgeActiveArea.idl(62):  		PlayerCreature 
+	if (!player->isPlayerCreature())	// server/zone/objects/area/BadgeActiveArea.idl(63):  			return;
+	return;
+	// server/zone/objects/area/BadgeActiveArea.idl(65):  playerCreature = (PlayerCreature) player;
+	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	// server/zone/objects/area/BadgeActiveArea.idl(67):  	}
+	if (!playerCreature->hasBadge(areaBadge)){
+	// server/zone/objects/area/BadgeActiveArea.idl(68):  			playerCreature.awardBadge(areaBadge);
+	playerCreature->awardBadge(areaBadge);
 }
 }
 
 void BadgeActiveAreaImplementation::setBadge(unsigned int a) {
-	// server/zone/objects/area/BadgeActiveArea.idl(68):  		areaBadge = a;
+	// server/zone/objects/area/BadgeActiveArea.idl(73):  		areaBadge = a;
 	areaBadge = a;
+}
+
+unsigned int BadgeActiveAreaImplementation::getBadge() {
+	// server/zone/objects/area/BadgeActiveArea.idl(77):  		return areaBadge;
+	return areaBadge;
 }
 
 /*
@@ -153,10 +175,13 @@ Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		notifyEnter((PlayerCreature*) inv->getObjectParameter());
+		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
 		setBadge(inv->getUnsignedIntParameter());
+		break;
+	case 8:
+		resp->insertInt(getBadge());
 		break;
 	default:
 		return NULL;
@@ -165,12 +190,16 @@ Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-void BadgeActiveAreaAdapter::notifyEnter(PlayerCreature* player) {
+void BadgeActiveAreaAdapter::notifyEnter(SceneObject* player) {
 	((BadgeActiveAreaImplementation*) impl)->notifyEnter(player);
 }
 
 void BadgeActiveAreaAdapter::setBadge(unsigned int a) {
 	((BadgeActiveAreaImplementation*) impl)->setBadge(a);
+}
+
+unsigned int BadgeActiveAreaAdapter::getBadge() {
+	return ((BadgeActiveAreaImplementation*) impl)->getBadge();
 }
 
 /*

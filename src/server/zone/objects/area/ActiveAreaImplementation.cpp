@@ -9,8 +9,8 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
-		return (((px - positionX) * (px - positionX)) + ((py - positionY) * (py - positionY)) <= radius2 );
-	}
+	return (((px - positionX) * (px - positionX)) + ((py - positionY) * (py - positionY)) <= radius2 );
+}
 
 void ActiveAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (obj == NULL || obj == this)
@@ -18,17 +18,24 @@ void ActiveAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-	if (!scno->isPlayerCreature())
+	if (scno->getActiveArea() != _this && containsPoint(scno->getPositionX(), scno->getPositionY())) {
+		scno->setActiveArea(_this);
+		notifyEnter(scno);
+
+	} else if (scno->getActiveArea() == _this && !containsPoint(scno->getPositionX(), scno->getPositionY())) {
+		scno->setActiveArea(NULL);
+		notifyExit(scno);
+	}
+}
+
+void ActiveAreaImplementation::notifyDissapear(QuadTreeEntry* obj) {
+	if (obj == NULL || obj == this)
 		return;
 
-	PlayerCreature* player = (PlayerCreature*) scno;
+	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-	if (player->getActiveArea() != _this && containsPoint(player->getPositionX(), player->getPositionY())) {
-		player->setActiveArea(_this);
-		notifyEnter(player);
-
-	} else if (player->getActiveArea() == _this && !containsPoint(player->getPositionX(), player->getPositionY())) {
-		player->setActiveArea(NULL);
-		notifyExit(player);
+	if (scno->getActiveArea() == _this) {
+		scno->setActiveArea(NULL);
+		notifyExit(scno);
 	}
 }

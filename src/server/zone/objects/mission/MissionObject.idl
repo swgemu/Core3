@@ -87,7 +87,7 @@ class MissionObject extends IntangibleObject {
 	public static final int SURVEY = 0x19C9FAC1;
 	
 	public MissionObject() {
-		typeCRC = MUSICIAN;
+		typeCRC = SURVEY;
 		
 		refreshCounter = 0;
 		
