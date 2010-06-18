@@ -73,6 +73,7 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 
 #include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/objects/region/Region.h"
 
 #include "server/db/ServerDatabase.h"
 
@@ -101,6 +102,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("sceneobjects", true);
 	databaseManager->loadDatabase("playerstructures", true);
 	databaseManager->loadDatabase("buffs", true);
+	databaseManager->loadDatabase("waypoints", true);
 
 	loadLastUsedObjectID();
 
@@ -118,6 +120,7 @@ void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
+	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObject::NPCCREATURE);
@@ -161,13 +164,23 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
 	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::CAPITOLBUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
 	objectFactory.registerObject<CloningBuildingObject>(SceneObject::CLONINGBUILDING);
 	objectFactory.registerObject<MedicalBuildingObject>(SceneObject::MEDICALBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObject::STARPORTBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::HOTELBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::THEATERBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::COMBATBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::COMMERCEBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::UNIVERSITYBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::GARAGEBUILDING);
+
 
 	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
+	objectFactory.registerObject<InstallationObject>(SceneObject::GARAGEINSTALLATION);
 	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);

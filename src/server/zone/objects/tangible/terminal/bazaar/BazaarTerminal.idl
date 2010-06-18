@@ -53,7 +53,7 @@ import system.util.VectorMap;
 import server.zone.Zone;
 
 class BazaarTerminal extends Terminal {
-	protected string bazaarRegion;
+	//protected string bazaarRegion;
 	
 	@dereferenced
 	protected VectorMap<unsigned long, AuctionItem> auctions;
@@ -96,11 +96,11 @@ class BazaarTerminal extends Terminal {
 		return auctions;
 	}
 	
-	public void setBazaarRegion(final string region) {
+	/*public void setBazaarRegion(final string region) {
 		bazaarRegion = region;
 	}
 	
 	public string getBazaarRegion() {
 		return bazaarRegion;
-	}
+	}*/
 }

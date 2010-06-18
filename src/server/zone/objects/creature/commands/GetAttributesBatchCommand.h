@@ -81,7 +81,10 @@ public:
 			try {
 				objid = ids.getLongToken();
 
+			} catch (Exception& e) {
+				error(e.getMessage());
 			} catch (...) {
+				error("unknown exception caught");
 			}
 
 			if (objid == 0)

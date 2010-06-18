@@ -52,7 +52,7 @@ class GetMapLocationsResponseMessage : public BaseMessage {
 	String planetName;
 
 public:
-	GetMapLocationsResponseMessage(String planet) : BaseMessage() {
+	GetMapLocationsResponseMessage(const String& planet) : BaseMessage() {
 		planetName = planet;
 		insertShort(0x05);
 		insertInt(0x9F80464C);  // CRC
@@ -78,10 +78,9 @@ public:
     	insertInt(0);
 	}
 
-	void addMapLocation(int id, String name, float x, float y, uint8 type1, uint8 type2, uint8 type3) {
+	void addMapLocation(uint64 id, const UnicodeString& name, float x, float y, uint8 type1, uint8 type2, uint8 type3) {
 		insertLong((uint64)id); //ID 1
-		UnicodeString uniName = name;
-	    insertUnicode(uniName); //name
+	    insertUnicode(name); //name
 	    insertFloat(x); //X
 	    insertFloat(y); //Y
 	    insertByte(type1); //type

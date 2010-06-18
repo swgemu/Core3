@@ -244,8 +244,8 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(90):  		typeCRC = MUSICIAN;
-	typeCRC = MUSICIAN;
+	// server/zone/objects/mission/MissionObject.idl(90):  		typeCRC = SURVEY;
+	typeCRC = SURVEY;
 	// server/zone/objects/mission/MissionObject.idl(92):  		refreshCounter = 0;
 	refreshCounter = 0;
 	// server/zone/objects/mission/MissionObject.idl(94):  		targetTemplateCRC = 0;

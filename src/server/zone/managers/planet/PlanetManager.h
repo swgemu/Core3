@@ -166,8 +166,6 @@ public:
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
-	bool getRegion(StringId& name, float x, float y);
-
 	StructureManager* getStructureManager();
 
 	TerrainManager* getTerrainManager();
@@ -177,8 +175,6 @@ public:
 	int getRegionCount();
 
 	Region* getRegion(int index);
-
-	Region* getRegion(const String& regionName);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -243,8 +239,6 @@ public:
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
-	bool getRegion(StringId& name, float x, float y);
-
 	StructureManager* getStructureManager();
 
 	TerrainManager* getTerrainManager();
@@ -254,8 +248,6 @@ public:
 	int getRegionCount();
 
 	Region* getRegion(int index);
-
-	Region* getRegion(const String& regionName);
 
 	PlanetManager* _this;
 
@@ -322,13 +314,10 @@ public:
 
 	Region* getRegion(int index);
 
-	Region* getRegion(const String& regionName);
-
 protected:
 	String _param0_getShuttle__String_;
 	String _param0_getTravelFare__String_String_;
 	String _param1_getTravelFare__String_String_;
-	String _param0_getRegion__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

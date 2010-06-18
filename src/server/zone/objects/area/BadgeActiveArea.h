@@ -50,9 +50,11 @@ class BadgeActiveArea : public ActiveArea {
 public:
 	BadgeActiveArea();
 
-	void notifyEnter(PlayerCreature* player);
+	void notifyEnter(SceneObject* player);
 
 	void setBadge(unsigned int a);
+
+	unsigned int getBadge();
 
 protected:
 	BadgeActiveArea(DummyConstructorParameter* param);
@@ -82,9 +84,11 @@ public:
 
 	BadgeActiveAreaImplementation(DummyConstructorParameter* param);
 
-	void notifyEnter(PlayerCreature* player);
+	void notifyEnter(SceneObject* player);
 
 	void setBadge(unsigned int a);
+
+	unsigned int getBadge();
 
 	BadgeActiveArea* _this;
 
@@ -125,9 +129,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void notifyEnter(PlayerCreature* player);
+	void notifyEnter(SceneObject* player);
 
 	void setBadge(unsigned int a);
+
+	unsigned int getBadge();
 
 };
 

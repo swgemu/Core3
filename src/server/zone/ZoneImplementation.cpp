@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -85,6 +87,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 	heightMap = new HeightMap();
 
+	mapLocations.setNoDuplicateInsertPlan();
+
 	//galacticTime = new Time();
 
 	planetManager = NULL;
@@ -98,6 +102,8 @@ void ZoneImplementation::initializeTransientMembers() {
 	//taskManager =
 
 	heightMap = new HeightMap();
+
+	mapLocations.setNoDuplicateInsertPlan();
 
 	if (zoneID <= 9) {
 		String planetName = Planet::getPlanetName(zoneID);
@@ -200,6 +206,109 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 /*ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
 }*/
+
+void ZoneImplementation::addSceneObject(SceneObject* object) {
+	objectMap.put(object->getObjectID(), object);
+
+	uint32 templateCRC = object->getServerObjectCRC();
+
+	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(templateCRC);
+
+	if (templ != NULL) {
+		int mapLoc1 = templ->getMapLocationsType1();
+		int mapLoc2 = templ->getMapLocationsType2();
+		int mapLoc3 = templ->getMapLocationsType3();
+
+		if (mapLoc1 != 0 || mapLoc2 != 0 || mapLoc3 != 0 || object->isPlayerCreature()) {
+			if (object->isPlayerCreature())
+				mapLoc1 = 1;
+
+			MapLocationEntry entry(object, mapLoc1, mapLoc2, mapLoc3);
+
+			Locker locker(&mapLocations);
+			mapLocations.put(object->getObjectID(), entry);
+		}
+	}
+}
+
+void ZoneImplementation::dropSceneObject(uint64 oid)  {
+	objectMap.remove(oid);
+
+	Locker locker(&mapLocations);
+	mapLocations.drop(oid);
+}
+
+void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObject* player) {
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planetName);
+
+	mapLocations.rlock();
+
+	SortedVector<String> cities;
+
+	try {
+		for (int i = 0; i < mapLocations.size(); ++i) {
+			MapLocationEntry* entry = &mapLocations.get(i);
+			SceneObject* object = entry->getObject();
+			UnicodeString name;
+			StringId* objectName = object->getObjectName();
+
+			if (object->isBuildingObject()) {
+				ActiveArea* area = object->getActiveArea();
+
+				if (area != NULL) {
+					objectName = area->getObjectName();
+				}
+			}
+
+			name = objectName->getCustomString();
+
+			if (name.length() == 0) {
+				String fullPath;
+				objectName->getFullPath(fullPath);
+
+				name = fullPath;
+			}
+
+			if (entry->getType1() == 17) {
+				if (!cities.contains(name.toString()))
+					cities.put(name.toString());
+				else
+					continue;
+			}
+
+			float posX, posY;
+
+			if (object->getParent() != NULL) {
+				posX = object->getRootParent()->getPositionX();
+				posY = object->getRootParent()->getPositionY();
+			} else {
+				posX = object->getPositionX();
+				posY = object->getPositionY();
+			}
+
+			gmlr->addMapLocation(object->getObjectID(), name, posX,
+					posY, entry->getType1(), entry->getType2(), entry->getType3());
+
+		}
+
+	} catch (Exception& e) {
+		System::out << e.getMessage() << endl;
+		e.printStackTrace();
+	} catch (...) {
+		System::out << "unreported exception caught in ZoneImplementation::sendMapLocationsTo" << endl;
+	}
+
+	mapLocations.runlock();
+
+	//these will be used for other locations on the planet map
+	gmlr->addBlankList();
+	gmlr->addBlankList();
+
+	//unknown
+	gmlr->addFooter();
+
+	player->sendMessage(gmlr);
+}
 
 float ZoneImplementation::getMinX() {
 	return -8192;

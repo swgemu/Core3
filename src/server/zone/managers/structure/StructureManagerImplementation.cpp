@@ -42,6 +42,9 @@
 
 #include "StructureManager.h"
 
+SortedVector<String> StructureManagerImplementation::listOfStaticBuildings;
+SortedVector<String> StructureManagerImplementation::createdFiles;
+
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor)
 		: ManagedObjectImplementation() {
 
@@ -56,6 +59,127 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 
 	setGlobalLogging(true);
 	setLogging(false);
+}
+
+void StructureManagerImplementation::createLuaIncludes() {
+	StringBuffer newFile;
+
+	for (int i = 0; i < createdFiles.size(); ++i) {
+		String file = createdFiles.get(i);
+
+		String luaFile = file.replaceAll("iff", "aul");
+		luaFile = luaFile.replaceAll("object/", "");
+		luaFile = luaFile.replaceAll("shared_", "");
+
+
+		//includeFile("group/group_object.lua")
+		newFile << "includeFile(\"" << luaFile << "\")" << endl;
+	}
+
+	String completeName = "includeLuas.lua";
+
+	try {
+		File* writeFile = new File(completeName);
+		FileOutputStream* writer = new FileOutputStream(writeFile);
+		writer->write(newFile.toString());
+		writer->close();
+
+		delete writer;
+		delete writeFile;
+
+		info("created " + completeName, true);
+	} catch (Exception& e) {
+		error("exception caught creating " + completeName);
+		error(e.getMessage());
+	} catch (...) {
+		error("unknown exception caught creating " + completeName);
+	}
+}
+
+void StructureManagerImplementation::createNewLuas() {
+	for (int i = 0; i < listOfStaticBuildings.size(); ++i) {
+		String file = listOfStaticBuildings.get(i);
+
+		if (createdFiles.contains(file))
+			continue;
+
+		String newFileName = file.replaceAll("shared_", "");
+
+		String clientObjectName = file.replaceAll("/", "_");
+		clientObjectName = clientObjectName.replaceAll(".iff", "");
+		String serverObjectName = newFileName.replaceAll("/", "_");
+		serverObjectName = serverObjectName.replaceAll(".iff", "");
+
+		int mapType1 = 0, mapType2 = 0, mapType3 = 0, gameObjectType = -1;
+
+		if (file.indexOf("building") != -1 && file.indexOf("cloning") != -1) {
+			mapType1 = 5, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::CLONINGBUILDING;
+		} else if (file.indexOf("building") != -1 && (file.indexOf("starport") != -1 || file.indexOf("hangar") != -1)) {
+			mapType1 = 15, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::STARPORTBUILDING;
+		} else if (file.indexOf("building") != -1 && file.indexOf("capitol") != -1) {
+			mapType1 = 4, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::CAPITOLBUILDING;
+		} else if (file.indexOf("building") != -1 && file.indexOf("hospital") != -1) {
+			mapType1 = 13, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::MEDICALBUILDING;
+		} else if (file.indexOf("building") != -1 && file.indexOf("cantina") != -1) {
+			mapType1 = 3, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::RECREATIONBUILDING;
+		} else if (file.indexOf("building") != -1 && file.indexOf("hotel") != -1) {
+			mapType1 = 12, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::HOTELBUILDING;
+		} else if (file.indexOf("building") != -1 && file.indexOf("guild") != -1) {
+
+			if (file.indexOf("theater") != -1)
+				mapType1 = 7, mapType2 = 10, mapType3 = 0, gameObjectType = SceneObject::THEATERBUILDING;
+			else if (file.indexOf("combat") != -1)
+				mapType1 = 7, mapType2 = 8, mapType3 = 0, gameObjectType = SceneObject::COMBATBUILDING;
+			else if (file.indexOf("commerce") != -1)
+				mapType1 = 7, mapType2 = 9, mapType3 = 0, gameObjectType = SceneObject::COMMERCEBUILDING;
+			else if (file.indexOf("university") != -1)
+				mapType1 = 7, mapType2 = 11, mapType3 = 0, gameObjectType = SceneObject::UNIVERSITYBUILDING;
+		} else if (file.indexOf("garage") != -1) {
+			mapType1 = 6, mapType2 = 0, mapType3 = 0, gameObjectType = SceneObject::GARAGEBUILDING;
+		}
+
+
+		StringBuffer newLua;
+
+		newLua << serverObjectName << " = " << clientObjectName << ":new {" << endl;
+
+		if (gameObjectType != -1)
+				newLua << "\tgameObjectType = " << gameObjectType << "," << endl;
+
+		newLua << "\tmapLocationsType1 = " << mapType1 << "," << endl
+				<< "\tmapLocationsType2 = " << mapType2 << "," << endl
+				<< "\tmapLocationsType3 = " << mapType3 << endl;
+
+		newLua << "}" << endl << endl;
+
+		newLua << "ObjectTemplates:addTemplate(" << serverObjectName << ", \"" << newFileName << "\")";
+
+		String path = "scripts/";
+		String luaFileName = newFileName.replaceAll("iff", "aul");
+
+		String completeName = path + luaFileName;
+
+		try {
+			File* writeFile = new File(completeName);
+			FileOutputStream* writer = new FileOutputStream(writeFile);
+			writer->write(newLua.toString());
+			writer->close();
+
+			delete writer;
+			delete writeFile;
+
+			info("created " + completeName, true);
+			createdFiles.put(file);
+		} catch (Exception& e) {
+			error("exception caught creating " + completeName);
+			error(e.getMessage());
+		} catch (...) {
+			error("unknown exception caught creating " + completeName);
+		}
+
+	}
+
+	createLuaIncludes();
 }
 
 void StructureManagerImplementation::loadStaticGarages() {
@@ -89,13 +213,15 @@ void StructureManagerImplementation::loadStaticGarages() {
 				continue;
 
 			templateFile = result->getString(3);
+
+			String serverTemplate = templateFile.replaceAll("shared_", "");
+
 			positionX = result->getFloat(8);
 			positionZ = result->getFloat(9);
 			positionY = result->getFloat(10);
 
-			building = (BuildingObject*) zoneServer->createStaticObject(templateFile.hashCode(), objectID);
+			building = (BuildingObject*) zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
 			building->setStaticObject(true);
-			building->setStaticGarage(true);
 
 			building->initializePosition(positionX, positionZ, positionY);
 			building->insertToZone(zone);
@@ -122,6 +248,7 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 	ZoneServer* zoneServer = zone->getZoneServer();
 
 	uint32 bankCRC = String("object/tangible/terminal/shared_terminal_mission.iff").hashCode();
+	uint32 serverCRC = String("object/tangible/terminal/terminal_mission.iff").hashCode();
 
 	//lock();
 
@@ -168,7 +295,7 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 			} else
 				cell = NULL;
 
-			missionTerminal = (MissionTerminal*) zoneServer->createStaticObject(bankCRC, objectID);
+			missionTerminal = (MissionTerminal*) zoneServer->createStaticObject(serverCRC, objectID);
 			missionTerminal->setStaticObject(true);
 
 			if (cell != NULL)
@@ -288,6 +415,7 @@ void StructureManagerImplementation::loadStaticBazaars() {
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	uint32 bazaarCRC = String("object/tangible/terminal/shared_terminal_bazaar.iff").hashCode();
+	uint32 serverCRC = String("object/tangible/terminal/terminal_bazaar.iff").hashCode();
 
 	StringBuffer query;
 
@@ -322,33 +450,33 @@ void StructureManagerImplementation::loadStaticBazaars() {
 			//StringId region;
 
 			if (parentId == 0) {
-				if ((region = planetManager->getRegion(positionX, positionY)) == NULL) {
+				/*if ((region = planetManager->getRegion(positionX, positionY)) == NULL) {
 					StringBuffer msg;
 					msg << "could not find region for bazaar " << dec << objectID;
 					msg << " positionX " << positionX << " positionY " << positionY;
 					error(msg.toString());
-				}
+				}*/
 
 				cell = NULL;
 			} else {
 				cell = zoneServer->getObject(parentId);
-				SceneObject* buildingObject = cell->getParent();
+				/*SceneObject* buildingObject = cell->getParent();
 
 				if ((region = planetManager->getRegion(buildingObject->getPositionX(), buildingObject->getPositionY())) == NULL) {
 					StringBuffer msg;
 					msg << "could not find region for bazaar " << dec << objectID << " parentid " << dec << parentId;
 					msg << " positionX " << buildingObject->getPositionX() << " positionY " << buildingObject->getPositionY();
 					error(msg.toString());
-				}
+				}*/
 			}
 
-			String regionCity = region->getName()->getStringID();
+			//String regionCity = region->getName()->getStringID();
 
-			bazaar = (BazaarTerminal*) zoneServer->createStaticObject(bazaarCRC, objectID);
-			bazaar->setBazaarRegion(regionCity);
+			bazaar = (BazaarTerminal*) zoneServer->createStaticObject(serverCRC, objectID);
+			//bazaar->setBazaarRegion(regionCity);
 			bazaar->setStaticObject(true);
 
-			region->addBazaar(bazaar);
+			//region->addBazaar(bazaar);
 
 			if (cell != NULL)
 				cell->addObject(bazaar, -1);
@@ -376,6 +504,7 @@ void StructureManagerImplementation::loadStaticBanks() {
 	ZoneServer* zoneServer = zone->getZoneServer();
 
 	uint32 bankCRC = String("object/tangible/terminal/shared_terminal_bank.iff").hashCode();
+	uint32 serverCRC = String("object/tangible/terminal/terminal_bank.iff").hashCode();
 
 	//lock();
 
@@ -422,7 +551,7 @@ void StructureManagerImplementation::loadStaticBanks() {
 			} else
 				cell = NULL;
 
-			bank = (BankTerminal*) zoneServer->createStaticObject(bankCRC, objectID);
+			bank = (BankTerminal*) zoneServer->createStaticObject(serverCRC, objectID);
 			bank->setStaticObject(true);
 
 			if (cell != NULL)
@@ -460,7 +589,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
-			BuildingObject * building = NULL;
+			BuildingObject* building = NULL;
 
 			uint64 parentId = result->getUnsignedLong(0);
 
@@ -478,6 +607,8 @@ void StructureManagerImplementation::loadStaticBuildings() {
 	} catch (...) {
 		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
 	}
+
+	//createNewLuas();
 
 	//unlock();
 }
@@ -562,11 +693,14 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				float z = result->getFloat(9);
 				float y = result->getFloat(10);
 
+				file = file.replaceAll("shared_", "");
+
 				info("trying to create " + file);
 
 				buio = (BuildingObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
 				if (buio == NULL) {
+					error("could not create " + file);
 					return NULL;
 				}
 

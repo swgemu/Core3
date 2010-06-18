@@ -54,6 +54,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import system.thread.Thread;
 import server.zone.managers.objectcontroller.ObjectController;
+import system.util.SortedVector;
 include server.zone.managers.templates.TemplateManager;
 include server.zone.templates.tangible.SharedStructureObjectTemplate;
 include server.zone.templates.tangible.SharedBuildingObjectTemplate;
@@ -66,10 +67,18 @@ class StructureManager extends ManagedObject implements Logger {
 	
 	private transient TemplateManager templateManager;
 	
-	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);	
+	@dereferenced
+	static protected transient SortedVector<string> listOfStaticBuildings;
+	
+	@dereferenced
+	static protected transient SortedVector<string> createdFiles;
+	
+	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
 	//PRIVATE METHODS
 	
+	private native void createNewLuas();
+	private native void createLuaIncludes();
 	private native void loadStaticBuildings();
 	private native void loadStaticBanks();
 	private native void loadStaticBazaars();
@@ -84,6 +93,8 @@ class StructureManager extends ManagedObject implements Logger {
 	
 	public void loadStructures() {
 		Logger.info("loading structures...", true);
+		
+		listOfStaticBuildings.setNoDuplicateInsertPlan();
 		
 		loadStaticBuildings();
 		loadPlayerStructures();

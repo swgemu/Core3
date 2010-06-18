@@ -14,32 +14,30 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public Serializable {
-	VectorMap<String, ManagedReference<Region*> > regions;
+	SortedVector<ManagedReference<Region*> > regions;
 
 public:
 	RegionMap() {
 		addSerializableVariable("regions", &regions);
 		regions.setNoDuplicateInsertPlan();
-		regions.setNullValue(NULL);
 	}
 
 	~RegionMap() {
 
 	}
 
-	void addRegion(const String& name, float x, float y, float radius) {
-		StringId nameid;
-		nameid.setStringId(name);
+	void addRegion(Zone* zone, const String& name, float x, float y, float radius) {
+		uint32 crc = String("object/region_area.iff").hashCode();
 
-		Region* region = regions.get(nameid.getStringID());
+		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
+		region->initializePosition(x, 0, y);
+		region->setRadius(radius);
+		StringId* objectName = region->getObjectName();
+		objectName->setStringId(name);
 
-		if (region == NULL) {
-			region = new Region(name, x, y, radius);
-			region->deploy();
-			regions.put(nameid.getStringID(), region);
-		} else {
-			region->addPoint(x, y, radius);
-		}
+		region->insertToZone(zone);
+
+		regions.put(region);
 	}
 
 	Region* getRegion(float x, float y) {
@@ -58,24 +56,6 @@ public:
 
 	inline Region* getRegion(int index) {
 		return regions.get(index);
-	}
-
-	inline Region* getRegion(const String& name) {
-		return regions.get(name);
-	}
-
-	bool getRegion(StringId* name, float x, float y) {
-		for (int i = 0; i < regions.size(); ++i) {
-			Region* region = regions.get(i);
-
-			if (region->containsPoint(x, y)) {
-				name = region->getName();
-
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	inline int size() {

@@ -70,18 +70,30 @@ class ActiveArea extends SceneObject {
 		
 	}
 	
-	public abstract void notifyEnter(PlayerCreature object) {
+	public abstract void notifyEnter(SceneObject object) {
 		
 	}
 	
-	public abstract void notifyExit(PlayerCreature object) {
+	public abstract void notifyExit(SceneObject object) {
 
+	}
+	
+	public abstract boolean isRegion() {
+		return false;
 	}
 	
 	public native boolean containsPoint(float x, float y);
 	
 	@local
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
+	
+	@local
+	public void notifyInsert(QuadTreeEntry entry) {
+		notifyPositionUpdate(entry);
+	}
+	
+	@local
+	public native void notifyDissapear(QuadTreeEntry entry);
 	
 	public float getRadius() {
 		return radius;

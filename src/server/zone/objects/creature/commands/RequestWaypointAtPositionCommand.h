@@ -63,6 +63,44 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		//'naboo 2527.300049 0.000000 1696.300049 parking garage general'
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		UnicodeTokenizer tokenizer(arguments);
+
+		try {
+			String planet;
+			tokenizer.getStringToken(planet);
+
+			float x = tokenizer.getFloatToken();
+			float z = tokenizer.getFloatToken();
+			float y = tokenizer.getFloatToken();
+
+			UnicodeString name;
+			tokenizer.finalToken(name);
+
+			x = (x < -8192) ? -8192 : x;
+			x = (x > 8192) ? 8192 : x;
+
+			y = (y < -8192) ? -8192 : y;
+			y = (y > 8192) ? 8192 : y;
+
+			PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
+
+			ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 1, "waypoints");
+			obj->setPlanetCRC(planet.hashCode());
+			obj->setPosition(x, z, y);
+			obj->setCustomName(name);
+			obj->setActive(true);
+
+			playerObject->addWaypoint(obj, true);
+
+		} catch (...) {
+
+		}
+
 		return SUCCESS;
 	}
 

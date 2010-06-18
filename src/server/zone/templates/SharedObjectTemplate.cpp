@@ -61,4 +61,8 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	clientObjectCRC = templateData->getIntField("clientObjectCRC");
 
 	templateType = templateData->getIntField("templateType");
+
+	mapLocationsType1 = templateData->getIntField("mapLocationsType1");
+	mapLocationsType2 = templateData->getIntField("mapLocationsType2");
+	mapLocationsType3 = templateData->getIntField("mapLocationsType3");
 }
