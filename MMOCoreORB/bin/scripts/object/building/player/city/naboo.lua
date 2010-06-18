@@ -2,6 +2,7 @@ object_building_player_city_bank_naboo = object_building_player_city_shared_bank
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	mapLocationsType1 = 2,
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeBank"}
 }
@@ -12,6 +13,8 @@ object_building_player_city_cantina_naboo = object_building_player_city_shared_c
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	gameObjectType = 518,
+	mapLocationsType1 = 3,
 	cityRankRequired = 2
 }
 
@@ -20,6 +23,7 @@ ObjectTemplates:addTemplate(object_building_player_city_cantina_naboo, "object/b
 object_building_player_city_cityhall_naboo = object_building_player_city_shared_cityhall_naboo:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	mapLocationsType1 = 50,
 	allowedZones = {1,5,6},
 	cityRankRequired = 0
 }
@@ -29,6 +33,8 @@ ObjectTemplates:addTemplate(object_building_player_city_cityhall_naboo, "object/
 object_building_player_city_cloning_naboo = object_building_player_city_shared_cloning_naboo:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	gameObjectType = 519,
+	mapLocationsType1 = 5,
 	allowedZones = {1,5,6},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeCloningFacility"}
@@ -40,6 +46,8 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	gameObjectType = 517,
+	mapLocationsType1 = 13,
 	cityRankRequired = 3
 }
 
@@ -59,6 +67,8 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	gameObjectType = 524,
+	mapLocationsType1 = 51,
 	cityRankRequired = 4
 }
 

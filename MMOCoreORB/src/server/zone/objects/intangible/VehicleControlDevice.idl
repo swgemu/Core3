@@ -71,6 +71,9 @@ class VehicleControlDevice extends ControlDevice {
 		if (super.controlledObject.isInQuadTree())
 			return;
 		
+		if (player.isInCombat())
+			return;
+		
 		ZoneServer zoneServer = getZoneServer();
 
 		super.controlledObject.initializePosition(player.getPositionX(), player.getPositionZ(), player.getPositionY());

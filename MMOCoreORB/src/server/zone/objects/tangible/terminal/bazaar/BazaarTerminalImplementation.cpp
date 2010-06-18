@@ -14,10 +14,6 @@
 void BazaarTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 
-	PlanetManager* planetManager = zone->getPlanetManager();
-	Region* region = planetManager->getRegion(bazaarRegion);
-	region->addBazaar(_this);
-
 	auctions.setNullValue(NULL);
 	auctions.setNoDuplicateInsertPlan();
 

@@ -61,7 +61,7 @@ public:
 			Region* region = get(i);
 
 			if (region->containsPoint(x,y)) {
-				fullAreaName = *region->getName();
+				fullAreaName = *region->getObjectName();
 
 				return true;
 			}

@@ -20,7 +20,7 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
 	menuResponse->addRadialMenuItem(61, 3, "");
 
-	if (checkInRangeGarage())
+	if (checkInRangeGarage() && !isDestroyed())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");
 }
 
@@ -42,12 +42,10 @@ bool VehicleObjectImplementation::checkInRangeGarage() {
 		if (scno == this)
 			continue;
 
-		if (scno->isBuildingObject()) {
-			BuildingObjectImplementation* building = (BuildingObjectImplementation*) scno;
 
-			if (building->isStaticGarage() && building->isInRange(_this, 15))
-				return true;
-		}
+		if (scno->isGarage() && scno->isInRange(_this, 15))
+			return true;
+
 	}
 
 	return false;
@@ -62,7 +60,8 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 
 		wlock(player);
 	} else if (selectedID == 62) {
-		healDamage(player, 0, conditionDamage, true);
+		if (!isDestroyed())
+			healDamage(player, 0, conditionDamage, true);
 	}
 
 	return 0;

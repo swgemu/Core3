@@ -181,66 +181,69 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	// server/zone/objects/intangible/VehicleControlDevice.idl(68):  		if 
 	if (player->getParent() != NULL)	// server/zone/objects/intangible/VehicleControlDevice.idl(69):  			return;
 	return;
-	// server/zone/objects/intangible/VehicleControlDevice.idl(71):  		ZoneServer 
+	// server/zone/objects/intangible/VehicleControlDevice.idl(71):  		if 
 	if (ControlDeviceImplementation::controlledObject->isInQuadTree())	// server/zone/objects/intangible/VehicleControlDevice.idl(72):  			return;
 	return;
-	// server/zone/objects/intangible/VehicleControlDevice.idl(74):  zoneServer = getZoneServer();
+	// server/zone/objects/intangible/VehicleControlDevice.idl(74):  		ZoneServer 
+	if (player->isInCombat())	// server/zone/objects/intangible/VehicleControlDevice.idl(75):  			return;
+	return;
+	// server/zone/objects/intangible/VehicleControlDevice.idl(77):  zoneServer = getZoneServer();
 	ZoneServer* zoneServer = getZoneServer();
-	// server/zone/objects/intangible/VehicleControlDevice.idl(76):  		super.controlledObject.initializePosition(player.getPositionX(), player.getPositionZ(), player.getPositionY());
+	// server/zone/objects/intangible/VehicleControlDevice.idl(79):  		super.controlledObject.initializePosition(player.getPositionX(), player.getPositionZ(), player.getPositionY());
 	ControlDeviceImplementation::controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-	// server/zone/objects/intangible/VehicleControlDevice.idl(77):  		super.controlledObject.setCreatureLink(player);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(80):  		super.controlledObject.setCreatureLink(player);
 	ControlDeviceImplementation::controlledObject->setCreatureLink(player);
-	// server/zone/objects/intangible/VehicleControlDevice.idl(78):  		super.controlledObject.setControlDevice(this);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(81):  		super.controlledObject.setControlDevice(this);
 	ControlDeviceImplementation::controlledObject->setControlDevice(_this);
-	// server/zone/objects/intangible/VehicleControlDevice.idl(80):  		super.controlledObject.insertToZone(player.getZone());
+	// server/zone/objects/intangible/VehicleControlDevice.idl(83):  		super.controlledObject.insertToZone(player.getZone());
 	ControlDeviceImplementation::controlledObject->insertToZone(player->getZone());
-	// server/zone/objects/intangible/VehicleControlDevice.idl(82):  		super.updateStatus(1);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(85):  		super.updateStatus(1);
 	ControlDeviceImplementation::updateStatus(1);
 }
 
 int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/intangible/VehicleControlDevice.idl(86):  		Logger.info("selected call", true);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(89):  		Logger.info("selected call", true);
 	Logger::info("selected call", true);
-	// server/zone/objects/intangible/VehicleControlDevice.idl(88):  
+	// server/zone/objects/intangible/VehicleControlDevice.idl(91):  
 	if (selectedID == RadialOptions::VEHICLE_GENERATE){
-	// server/zone/objects/intangible/VehicleControlDevice.idl(90):  
+	// server/zone/objects/intangible/VehicleControlDevice.idl(93):  
 	if (ControlDeviceImplementation::controlledObject == NULL){
-	// server/zone/objects/intangible/VehicleControlDevice.idl(91):  				Logger.error("null controlled object in vehicle control device");
+	// server/zone/objects/intangible/VehicleControlDevice.idl(94):  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
-	// server/zone/objects/intangible/VehicleControlDevice.idl(92):  				return 1;
+	// server/zone/objects/intangible/VehicleControlDevice.idl(95):  				return 1;
 	return 1;
 }
 
 	else {
-	// server/zone/objects/intangible/VehicleControlDevice.idl(94):  				this.generateObject(player);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(97):  				this.generateObject(player);
 	_this->generateObject(player);
 }
 }
 
-	else 	// server/zone/objects/intangible/VehicleControlDevice.idl(96):  		return 
+	else 	// server/zone/objects/intangible/VehicleControlDevice.idl(99):  		return 
 	if (selectedID == RadialOptions::VEHICLE_STORE){
-	// server/zone/objects/intangible/VehicleControlDevice.idl(97):  
+	// server/zone/objects/intangible/VehicleControlDevice.idl(100):  
 	if (ControlDeviceImplementation::controlledObject == NULL){
-	// server/zone/objects/intangible/VehicleControlDevice.idl(98):  				Logger.error("null controlled object in vehicle control device");
+	// server/zone/objects/intangible/VehicleControlDevice.idl(101):  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
-	// server/zone/objects/intangible/VehicleControlDevice.idl(99):  				return 1;
+	// server/zone/objects/intangible/VehicleControlDevice.idl(102):  				return 1;
 	return 1;
 }
 
 	else {
-	// server/zone/objects/intangible/VehicleControlDevice.idl(101):  
+	// server/zone/objects/intangible/VehicleControlDevice.idl(104):  
 	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject->isInQuadTree()){
-	// server/zone/objects/intangible/VehicleControlDevice.idl(102):  					this.generateObject(player);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(105):  					this.generateObject(player);
 	_this->generateObject(player);
 }
 
 	else {
-	// server/zone/objects/intangible/VehicleControlDevice.idl(104):  					this.storeObject(player);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(107):  					this.storeObject(player);
 	_this->storeObject(player);
 }
 }
 }
-	// server/zone/objects/intangible/VehicleControlDevice.idl(109):  0;
+	// server/zone/objects/intangible/VehicleControlDevice.idl(112):  0;
 	return 0;
 }
 

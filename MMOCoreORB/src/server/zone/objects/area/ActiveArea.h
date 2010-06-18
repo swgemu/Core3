@@ -40,13 +40,19 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	void notifyEnter(PlayerCreature* object);
+	void notifyEnter(SceneObject* object);
 
-	void notifyExit(PlayerCreature* object);
+	void notifyExit(SceneObject* object);
+
+	bool isRegion();
 
 	bool containsPoint(float x, float y);
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
 
 	float getRadius();
 
@@ -85,13 +91,19 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	virtual void notifyEnter(PlayerCreature* object);
+	virtual void notifyEnter(SceneObject* object);
 
-	virtual void notifyExit(PlayerCreature* object);
+	virtual void notifyExit(SceneObject* object);
+
+	virtual bool isRegion();
 
 	bool containsPoint(float x, float y);
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
 
 	float getRadius();
 
@@ -138,9 +150,11 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	void notifyEnter(PlayerCreature* object);
+	void notifyEnter(SceneObject* object);
 
-	void notifyExit(PlayerCreature* object);
+	void notifyExit(SceneObject* object);
+
+	bool isRegion();
 
 	bool containsPoint(float x, float y);
 

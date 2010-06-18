@@ -121,6 +121,20 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
@@ -216,6 +230,22 @@ public:
 
 	static const int TRAVELBUILDING = 0x208;
 
+	static const int STARPORTBUILDING = 0x209;
+
+	static const int CAPITOLBUILDING = 0x20A;
+
+	static const int HOTELBUILDING = 0x20B;
+
+	static const int THEATERBUILDING = 0x20C;
+
+	static const int COMBATBUILDING = 0x20D;
+
+	static const int COMMERCEBUILDING = 0x20E;
+
+	static const int UNIVERSITYBUILDING = 0x20F;
+
+	static const int GARAGEBUILDING = 0x210;
+
 	static const int CREATURE = 0x400;
 
 	static const int NPCCREATURE = 0x401;
@@ -263,6 +293,8 @@ public:
 	static const int TURRET = 0x1004;
 
 	static const int MINEFIELD = 0x1005;
+
+	static const int GARAGEINSTALLATION = 0x1006;
 
 	static const int TANGIBLE = 0x2000;
 
@@ -553,6 +585,8 @@ public:
 	static const int ITHOGARB = 0x1000013;
 
 	static const int BADGEAREA = 0x200000;
+
+	static const int REGIONAREA = 0x200001;
 
 	SceneObject();
 
@@ -782,6 +816,8 @@ public:
 
 	bool isBuildingObject();
 
+	bool isGarage();
+
 	bool isWeaponObject();
 
 	bool isWearableObject();
@@ -820,6 +856,8 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
+	void setActiveArea(ActiveArea* area);
+
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
@@ -855,6 +893,8 @@ public:
 	bool isStaticObject();
 
 	bool isControlDevice();
+
+	ActiveArea* getActiveArea();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -922,6 +962,8 @@ protected:
 
 	bool staticObject;
 
+	ManagedReference<ActiveArea* > activeArea;
+
 	unsigned int containerType;
 
 	unsigned int containerVolumeLimit;
@@ -973,6 +1015,22 @@ public:
 
 	static const int TRAVELBUILDING = 0x208;
 
+	static const int STARPORTBUILDING = 0x209;
+
+	static const int CAPITOLBUILDING = 0x20A;
+
+	static const int HOTELBUILDING = 0x20B;
+
+	static const int THEATERBUILDING = 0x20C;
+
+	static const int COMBATBUILDING = 0x20D;
+
+	static const int COMMERCEBUILDING = 0x20E;
+
+	static const int UNIVERSITYBUILDING = 0x20F;
+
+	static const int GARAGEBUILDING = 0x210;
+
 	static const int CREATURE = 0x400;
 
 	static const int NPCCREATURE = 0x401;
@@ -1020,6 +1078,8 @@ public:
 	static const int TURRET = 0x1004;
 
 	static const int MINEFIELD = 0x1005;
+
+	static const int GARAGEINSTALLATION = 0x1006;
 
 	static const int TANGIBLE = 0x2000;
 
@@ -1310,6 +1370,8 @@ public:
 	static const int ITHOGARB = 0x1000013;
 
 	static const int BADGEAREA = 0x200000;
+
+	static const int REGIONAREA = 0x200001;
 
 	SceneObjectImplementation();
 
@@ -1543,6 +1605,8 @@ public:
 
 	virtual bool isBuildingObject();
 
+	bool isGarage();
+
 	virtual bool isWeaponObject();
 
 	virtual bool isWearableObject();
@@ -1581,6 +1645,8 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
+	void setActiveArea(ActiveArea* area);
+
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
@@ -1616,6 +1682,8 @@ public:
 	bool isStaticObject();
 
 	virtual bool isControlDevice();
+
+	ActiveArea* getActiveArea();
 
 	SceneObject* _this;
 
@@ -1846,6 +1914,8 @@ public:
 
 	bool isBuildingObject();
 
+	bool isGarage();
+
 	bool isWeaponObject();
 
 	bool isWearableObject();
@@ -1884,6 +1954,8 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
+	void setActiveArea(ActiveArea* area);
+
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
@@ -1911,6 +1983,8 @@ public:
 	bool isStaticObject();
 
 	bool isControlDevice();
+
+	ActiveArea* getActiveArea();
 
 protected:
 	String _param0_info__String_bool_;

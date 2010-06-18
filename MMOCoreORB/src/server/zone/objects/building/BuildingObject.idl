@@ -71,7 +71,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	protected unsigned long ownerObjectID;
 	
 	protected int totalCellNumber;
-	protected boolean staticGarage;
 	
 	protected SignObject signObject;
 	
@@ -101,7 +100,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		
 		baseMaintenanceRate = 0;
 		
-		staticGarage = false;
 		
 		deedObjectID = 0;
 		
@@ -208,14 +206,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	 */
 	public abstract void onExit(PlayerCreature player) {
 		
-	}
-	
-	public boolean isStaticGarage() {
-		return staticGarage;
-	}
-	
-	public void setStaticGarage(boolean val) {
-		staticGarage = val;
 	}
 	
 	public boolean isBuildingObject() {

@@ -44,7 +44,9 @@ public:
 			return;
 
 		if (bazaar->isBazaarTerminal()) {
-			String bazaarRegion = ((BazaarTerminal*) bazaar.get())->getBazaarRegion();
+			ActiveArea* area = bazaar->getActiveArea();
+			String bazaarRegion = area->getObjectName()->getStringID();
+			//String bazaarRegion = ((BazaarTerminal*) bazaar.get())->getBazaarRegion();
 			String planetString = Planet::getPlanetName(zone->getZoneID());
 
 			client->getPlayer()->info(String("sending for bazaar region ") + bazaarRegion, true);

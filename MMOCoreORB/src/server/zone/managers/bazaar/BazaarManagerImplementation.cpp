@@ -22,6 +22,7 @@
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
@@ -452,7 +453,9 @@ int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 ob
 	if (item->isSold() && item->getBuyerID() != player->getObjectID())
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
-	String region = terminal->getBazaarRegion();
+	ActiveArea* area = terminal->getActiveArea();
+	String region = area->getObjectName()->getStringID();
+	//String region = terminal->getBazaarRegion();
 
 	if (item->getLocation().indexOf(region) == -1)
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
@@ -550,7 +553,8 @@ AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* play
 	item->setPlanet(planet);
 	item->setBazaarTerminal(terminal);
 
-	String region = terminal->getBazaarRegion();
+	ActiveArea* area = terminal->getActiveArea();
+	String region = area->getObjectName()->getStringID();
 	String planetStr = Planet::getPlanetName(planet);
 
 	StringId* objectName = objectToSell->getObjectName();
@@ -717,15 +721,18 @@ void BazaarManagerImplementation::getRegionBazaarData(PlayerCreature* player, Ba
 		return;
 	}
 
-	String region = terminal->getBazaarRegion();
-	PlanetManager* planetManager = zone->getPlanetManager();
+	//String region = terminal->getBazaarRegion();
+	ActiveArea* area = terminal->getActiveArea();
+	String region = area->getObjectName()->getStringID();
 
-	ManagedReference<Region*> regionObject = planetManager->getRegion(region);
-
-	if (regionObject == NULL) {
-		error("null regionObject in getRegionBazaarData");
+	if (area == NULL || !area->isRegion()) {
+		StringId* name = area->getObjectName();
+		info("area wtf " + name->getStringID(), true);
+		error("null region in getRegionBazaarData");
 		return;
 	}
+
+	Region* regionObject = (Region*) area;
 
 	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 

@@ -39,18 +39,20 @@ using namespace server::zone::objects::tangible::terminal::bazaar;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 namespace server {
 namespace zone {
 namespace managers {
 namespace bazaar {
 
-class Region : public ManagedObject {
+class Region : public ActiveArea {
 public:
-	Region(const String& fullName, float posX, float posY, float radi);
+	Region();
 
-	bool containsPoint(float px, float py);
+	void notifyEnter(SceneObject* object);
 
-	void addPoint(float px, float py, float radius);
+	void notifyExit(SceneObject* object);
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -58,16 +60,12 @@ public:
 
 	int getBazaarCount();
 
-	StringId* getName();
-
-	String getRegionName();
+	bool isRegion();
 
 protected:
 	Region(DummyConstructorParameter* param);
 
 	virtual ~Region();
-
-	String _return_getRegionName;
 
 	friend class RegionHelper;
 };
@@ -84,22 +82,18 @@ namespace zone {
 namespace managers {
 namespace bazaar {
 
-class RegionImplementation : public ManagedObjectImplementation {
+class RegionImplementation : public ActiveAreaImplementation {
 protected:
-	StringId name;
-
-	RegionCenterPointList points;
-
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
 public:
-	RegionImplementation(const String& fullName, float posX, float posY, float radi);
+	RegionImplementation();
 
 	RegionImplementation(DummyConstructorParameter* param);
 
-	bool containsPoint(float px, float py);
+	void notifyEnter(SceneObject* object);
 
-	void addPoint(float px, float py, float radius);
+	void notifyExit(SceneObject* object);
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -107,9 +101,7 @@ public:
 
 	int getBazaarCount();
 
-	StringId* getName();
-
-	String getRegionName();
+	bool isRegion();
 
 	Region* _this;
 
@@ -144,15 +136,15 @@ protected:
 	friend class Region;
 };
 
-class RegionAdapter : public ManagedObjectAdapter {
+class RegionAdapter : public ActiveAreaAdapter {
 public:
 	RegionAdapter(RegionImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	bool containsPoint(float px, float py);
+	void notifyEnter(SceneObject* object);
 
-	void addPoint(float px, float py, float radius);
+	void notifyExit(SceneObject* object);
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -160,7 +152,7 @@ public:
 
 	int getBazaarCount();
 
-	String getRegionName();
+	bool isRegion();
 
 };
 

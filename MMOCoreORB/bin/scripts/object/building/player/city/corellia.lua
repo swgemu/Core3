@@ -1,6 +1,7 @@
 object_building_player_city_bank_corellia = object_building_player_city_shared_bank_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	mapLocationsType1 = 2,
 	allowedZones = {0,7},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeBank"}
@@ -11,6 +12,8 @@ ObjectTemplates:addTemplate(object_building_player_city_bank_corellia, "object/b
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	gameObjectType = 518,
+	mapLocationsType1 = 3,
 	allowedZones = {0,7},
 	cityRankRequired = 2
 }
@@ -20,6 +23,7 @@ ObjectTemplates:addTemplate(object_building_player_city_cantina_corellia, "objec
 object_building_player_city_cityhall_corellia = object_building_player_city_shared_cityhall_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	mapLocationsType1 = 50,
 	allowedZones = {0,7},
 	cityRankRequired = 0
 }
@@ -29,6 +33,8 @@ ObjectTemplates:addTemplate(object_building_player_city_cityhall_corellia, "obje
 object_building_player_city_cloning_corellia = object_building_player_city_shared_cloning_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	gameObjectType = 519,
+	mapLocationsType1 = 5,
 	allowedZones = {0,7},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeCloningFacility"}
@@ -39,6 +45,8 @@ ObjectTemplates:addTemplate(object_building_player_city_cloning_corellia, "objec
 object_building_player_city_hospital_corellia = object_building_player_city_shared_hospital_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	gameObjectType = 517,
+	mapLocationsType1 = 13,
 	allowedZones = {0,7},
 	cityRankRequired = 3
 }
@@ -58,6 +66,8 @@ ObjectTemplates:addTemplate(object_building_player_city_shuttleport_corellia, "o
 object_building_player_city_theater_corellia = object_building_player_city_shared_theater_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	gameObjectType = 524,
+	mapLocationsType1 = 51,
 	allowedZones = {0,7},
 	cityRankRequired = 4
 }

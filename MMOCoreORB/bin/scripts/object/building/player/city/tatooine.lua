@@ -1,6 +1,7 @@
 object_building_player_city_bank_tatooine = object_building_player_city_shared_bank_tatooine:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	mapLocationsType1 = 2,
 	allowedZones = {1,4,8},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeBank"}
@@ -12,6 +13,8 @@ object_building_player_city_cantina_tatooine = object_building_player_city_share
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	gameObjectType = 518,
+	mapLocationsType1 = 3,
 	cityRankRequired = 2
 }
 
@@ -21,6 +24,7 @@ object_building_player_city_cityhall_tatooine = object_building_player_city_shar
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	mapLocationsType1 = 50,
 	cityRankRequired = 0
 }
 
@@ -30,6 +34,8 @@ object_building_player_city_cloning_tatooine = object_building_player_city_share
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	gameObjectType = 519,
+	mapLocationsType1 = 5,
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeCloningFacility"}
 }
@@ -40,6 +46,8 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	gameObjectType = 517,
+	mapLocationsType1 = 13,
 	cityRankRequired = 3
 }
 
@@ -59,6 +67,8 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	gameObjectType = 524,
+	mapLocationsType1 = 51,
 	cityRankRequired = 4
 }
 

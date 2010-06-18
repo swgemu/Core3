@@ -1,6 +1,7 @@
 object_building_player_player_guildhall_generic_style_01 = object_building_player_shared_player_guildhall_generic_style_01:new {
 	lotSize = 5,
 	baseMaintenanceRate = 100,
+	mapLocationsType1 = 7,
 	allowedZones = {0,1,4,5,6,7,8}
 }
 

@@ -450,8 +450,6 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
-	void setActiveArea(ActiveArea* area);
-
 	void clearTradeContainer();
 
 	WaypointObject* getSurveyWaypoint();
@@ -461,8 +459,6 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
-
-	ActiveArea* getActiveArea();
 
 	TradeContainer* getTradeContainer();
 
@@ -561,8 +557,6 @@ protected:
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
 	int centeredBonus;
-
-	ManagedReference<ActiveArea* > activeArea;
 
 	TradeContainer tradeContainer;
 
@@ -781,8 +775,6 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
-	void setActiveArea(ActiveArea* area);
-
 	void clearTradeContainer();
 
 	WaypointObject* getSurveyWaypoint();
@@ -792,8 +784,6 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
-
-	ActiveArea* getActiveArea();
 
 	TradeContainer* getTradeContainer();
 
@@ -1026,8 +1016,6 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
-	void setActiveArea(ActiveArea* area);
-
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -1035,8 +1023,6 @@ public:
 	int getCenteredBonus();
 
 	void setCenteredBonus(int bonus);
-
-	ActiveArea* getActiveArea();
 
 	bool hasBadge(unsigned int badge);
 

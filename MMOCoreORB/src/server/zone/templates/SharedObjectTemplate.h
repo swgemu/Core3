@@ -47,6 +47,10 @@ protected:
 	float locationReservationRadius;
 	uint32 clientObjectCRC;
 
+	int mapLocationsType1;
+	int mapLocationsType2;
+	int mapLocationsType3;
+
 	String fullTemplateString;
 
 	int templateType;
@@ -215,12 +219,24 @@ public:
 		return totalCellNumber;
 	}
 
-    inline uint32 getClientObjectCRC() {
+    inline uint32 getClientObjectCRC() const {
 		return clientObjectCRC;
 	}
 
     inline String getFullTemplateString() {
 		return fullTemplateString;
+	}
+
+	inline int getMapLocationsType1() const {
+		return mapLocationsType1;
+	}
+
+	inline int getMapLocationsType2() const {
+		return mapLocationsType2;
+	}
+
+	inline int getMapLocationsType3() const {
+		return mapLocationsType3;
 	}
 
 public:
