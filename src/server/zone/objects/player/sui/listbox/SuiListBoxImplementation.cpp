@@ -7,7 +7,7 @@
 
 #include "SuiListBox.h"
 
-#include "server/zone/packets/ui/SuiCreatePageMessage.h";
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "SuiListBoxMenuItem.h"
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {

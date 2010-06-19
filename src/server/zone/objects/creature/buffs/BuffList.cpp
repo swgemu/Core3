@@ -97,6 +97,8 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 	if (buff == NULL)
 		return;
 
+	ManagedReference<Buff*> ref = buff;
+
 	uint32 buffcrc = buff->getBuffCRC();
 
 	//Remove the old buff if it exists. (Exists checked in removeBuff)
@@ -123,6 +125,8 @@ void BuffList::removeBuff(CreatureObject* creature, uint32 buffcrc) {
 void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 	if (buff == NULL)
 		return;
+
+	ManagedReference<Buff*> ref = buff;
 
 	uint32 buffcrc = buff->getBuffCRC();
 
