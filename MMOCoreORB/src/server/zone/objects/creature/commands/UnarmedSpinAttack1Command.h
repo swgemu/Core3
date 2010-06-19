@@ -58,6 +58,9 @@ public:
 		speedMultiplier = 2;
 		areaAction = true;
 		areaRange = 7;
+		healthCostMultiplier = 1.5;
+		actionCostMultiplier = 1.5;
+		mindCostMultiplier = 1.5;
 
 		animationCRC = String("combo_3c_light").hashCode();
 

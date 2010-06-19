@@ -1202,7 +1202,7 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 
 			ParameterizedStringId stringId4("duel", "challenge_target");
 			stringId4.setTT(player->getObjectID());
-			targetPlayer->sendSystemMessage(stringId3);
+			targetPlayer->sendSystemMessage(stringId4);
 		}
 
 		targetPlayer->unlock();

@@ -56,6 +56,9 @@ public:
 
 		damageMultiplier = 1.5;
 		speedMultiplier = 2;
+		healthCostMultiplier = 1.5;
+		actionCostMultiplier = 1.5;
+		mindCostMultiplier = 1.5;
 
 		animationCRC = String("attack_high_center_light_1").hashCode();
 
