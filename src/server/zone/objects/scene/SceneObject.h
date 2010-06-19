@@ -734,6 +734,12 @@ public:
 
 	float getPositionX();
 
+	float getWorldPositionX();
+
+	float getWorldPositionY();
+
+	float getWorldPositionZ();
+
 	float getPositionZ();
 
 	float getPositionY();
@@ -746,7 +752,7 @@ public:
 
 	float getDirectionW();
 
-	Quaternion getDirection();
+	Quaternion* getDirection();
 
 	unsigned int getClientObjectCRC();
 
@@ -1523,6 +1529,12 @@ public:
 
 	float getPositionX();
 
+	float getWorldPositionX();
+
+	float getWorldPositionY();
+
+	float getWorldPositionZ();
+
 	float getPositionZ();
 
 	float getPositionY();
@@ -1535,7 +1547,7 @@ public:
 
 	float getDirectionW();
 
-	Quaternion getDirection();
+	Quaternion* getDirection();
 
 	unsigned int getClientObjectCRC();
 
@@ -1837,6 +1849,12 @@ public:
 	unsigned long long getObjectID();
 
 	float getPositionX();
+
+	float getWorldPositionX();
+
+	float getWorldPositionY();
+
+	float getWorldPositionZ();
 
 	float getPositionZ();
 

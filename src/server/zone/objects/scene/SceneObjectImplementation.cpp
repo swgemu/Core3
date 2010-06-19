@@ -501,6 +501,14 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	bool insert = false;
 
+	/*StringBuffer msg;
+	msg << "world posx: " << getWorldPositionX() << " wolrd posy: " << getWorldPositionY() << " posz: " << getWorldPositionZ();
+	info(msg.toString(), true);
+
+	StringBuffer msg2;
+	msg2 << "cell x: " << positionX << " cell y: " << positionY;
+	info(msg2.toString(), true);*/
+
 	Locker zoneLocker(zone);
 
 	if (newParent != parent) {
@@ -893,8 +901,8 @@ float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-Quaternion SceneObjectImplementation::getDirection() {
-	return direction;
+Quaternion* SceneObjectImplementation::getDirection() {
+	return &direction;
 }
 
 void SceneObjectImplementation::setDirection(const Quaternion& dir) {
@@ -957,3 +965,40 @@ int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, by
 void SceneObjectImplementation::setObjectName(StringId& stringID) {
 	objectName = stringID;
 }
+
+float SceneObjectImplementation::getWorldPositionX() {
+	if (parent == NULL)
+		return positionX;
+
+	SceneObject* root = getRootParent();
+
+	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+
+	return root->getPositionX() + (sin(angle) * length);
+}
+
+float SceneObjectImplementation::getWorldPositionY() {
+	if (parent == NULL)
+		return positionY;
+
+	SceneObject* root = getRootParent();
+
+	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+
+	return root->getPositionY() + (cos(angle) * length);
+}
+
+float SceneObjectImplementation::getWorldPositionZ() {
+	if (parent == NULL)
+		return positionZ;
+
+	SceneObject* root = getRootParent();
+
+	/*float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float angle = direction.getRadians() - atan(positionX, positionY);*/
+
+	return root->getPositionZ() + positionZ;
+}
+
