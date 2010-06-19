@@ -705,7 +705,8 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				}
 
 				buio->initializePosition(x, z, y);
-				//buio->setDirection(oX, oZ, oY, oW);
+				//float fw, float fx, float fy, float fz
+				buio->setDirection(oW, oX, oY, oZ);
 				buio->setStaticBuilding(true);
 
 				loadStaticCells(buio);

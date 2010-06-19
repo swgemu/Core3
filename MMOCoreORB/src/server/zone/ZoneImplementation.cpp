@@ -278,13 +278,9 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 
 			float posX, posY;
 
-			if (object->getParent() != NULL) {
-				posX = object->getRootParent()->getPositionX();
-				posY = object->getRootParent()->getPositionY();
-			} else {
-				posX = object->getPositionX();
-				posY = object->getPositionY();
-			}
+			posX = object->getWorldPositionX();
+			posY = object->getWorldPositionY();
+
 
 			gmlr->addMapLocation(object->getObjectID(), name, posX,
 					posY, entry->getType1(), entry->getType2(), entry->getType3());
