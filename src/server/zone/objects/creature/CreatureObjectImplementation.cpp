@@ -1179,7 +1179,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		playEffect("clienteffect/combat_special_attacker_berserk.cef");
 		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("berserkRecoveryTime", duration);
+		cooldownTimerMap.updateToCurrentAndAddMili("berserkRecoveryTime", duration * 1000);
 	}
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
@@ -1231,13 +1231,13 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 
 bool CreatureObjectImplementation::setNextAttackDelay(int del) {
 	if (cooldownTimerMap.isPast("nextAttackDelayRecovery")) {
-		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelay", del);
+		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + del);
+		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 
 		if (isPlayerCreature()) {
 			ParameterizedStringId stringId("combat_effects", "delay_applied_self");
-			stringId.setDI(del / 1000);
+			stringId.setDI(del);
 			sendSystemMessage(stringId);
 		}
 

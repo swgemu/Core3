@@ -88,7 +88,7 @@ public:
 
 		creature->inflictDamage(creature, CreatureAttribute::ACTION, -50, true);
 
-		creature->setBerserkedState(40 * 1000);
+		creature->setBerserkedState(40);
 		//creature->setBerserkDamage(25);
 
 		if (creature->isPlayerCreature())

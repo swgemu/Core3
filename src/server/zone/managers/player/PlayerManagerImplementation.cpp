@@ -770,7 +770,19 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 }
 
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
+	ParameterizedStringId stringId;
+
+	if (attacker->isPlayerCreature()) {
+		stringId.setStringId("base_player", "prose_target_dead");
+		stringId.setTT(player->getObjectID());
+		((CreatureObject*)attacker)->sendSystemMessage(stringId);
+	}
+
 	player->setPosture(CreaturePosture::DEAD, true);
+
+	stringId.setStringId("base_player", "prose_victim_dead");
+	stringId.setTT(attacker->getObjectID());
+	player->sendSystemMessage(stringId);
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player);
 	task->schedule(10 * 1000);
