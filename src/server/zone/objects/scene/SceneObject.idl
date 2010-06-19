@@ -1008,6 +1008,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getPositionX() {
 		return QuadTreeEntry.getPositionX();
 	}
+	
+	public native float getWorldPositionX();
+	public native float getWorldPositionY();
+	public native float getWorldPositionZ();
 
 	public float getPositionZ() {
 		return QuadTreeEntry.getPositionZ();
@@ -1034,7 +1038,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	@local
-	@dereferenced
 	public native Quaternion getDirection();
 
 	public unsigned int getClientObjectCRC() {
