@@ -750,7 +750,7 @@ int SceneObjectImplementation::canAddObject(SceneObject* object, String& errorDe
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (object->getParent() != NULL) {
+	if (object->getParent() != NULL && object->getParent() != _this) {
 		error("trying to add an object with a parent already");
 		return false;
 	}
