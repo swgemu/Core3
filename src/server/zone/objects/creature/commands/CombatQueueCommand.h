@@ -16,14 +16,14 @@
 
 class CombatQueueCommand: public QueueCommand {
 protected:
-	int damageMultiplier;
-	int speedMultiplier;
-	int poolsToDamage;
+	float damageMultiplier;
+	float speedMultiplier;
+	float poolsToDamage;
 
-	int healthCostMultiplier;
-	int actionCostMultiplier;
-	int mindCostMultiplier;
-	int forceCostMultiplier;
+	float healthCostMultiplier;
+	float actionCostMultiplier;
+	float mindCostMultiplier;
+	float forceCostMultiplier;
 
 	int knockdownStateChance;
 	int postureDownStateChance;
@@ -167,15 +167,15 @@ public:
 		return dotPotency;
 	}
 
-	inline int getHealthCostMultiplier() const {
+	inline float getHealthCostMultiplier() const {
 		return healthCostMultiplier;
 	}
 
-	inline int getActionCostMultiplier() const {
+	inline float getActionCostMultiplier() const {
 		return actionCostMultiplier;
 	}
 
-	inline int getMindCostMultiplier() const {
+	inline float getMindCostMultiplier() const {
 		return mindCostMultiplier;
 	}
 
@@ -187,7 +187,7 @@ public:
 		return blindStateChance;
 	}
 
-	inline int getDamageMultiplier() const {
+	inline float getDamageMultiplier() const {
 		return damageMultiplier;
 	}
 
@@ -211,7 +211,7 @@ public:
 		return postureUpStateChance;
 	}
 
-	inline int getSpeedMultiplier() const {
+	inline float getSpeedMultiplier() const {
 		return speedMultiplier;
 	}
 
@@ -239,7 +239,7 @@ public:
 		return durationStateTime;
 	}
 
-	inline int getForceCostMultiplier() const {
+	inline float getForceCostMultiplier() const {
 		return forceCostMultiplier;
 	}
 
@@ -251,7 +251,7 @@ public:
 		this->blindStateChance = blindStateChance;
 	}
 
-	void setDamageMultiplier(int damageMultiplier) {
+	void setDamageMultiplier(float damageMultiplier) {
 		this->damageMultiplier = damageMultiplier;
 	}
 
@@ -275,7 +275,7 @@ public:
 		this->postureUpStateChance = postureUpStateChance;
 	}
 
-	void setSpeedMultiplier(int speedMultiplier) {
+	void setSpeedMultiplier(float speedMultiplier) {
 		this->speedMultiplier = speedMultiplier;
 	}
 

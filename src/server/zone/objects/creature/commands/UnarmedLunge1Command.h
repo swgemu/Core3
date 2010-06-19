@@ -56,7 +56,7 @@ public:
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 1;
-		speedMultiplier = 1.25;
+		speedMultiplier = 1.5;
 
 		animationCRC = String("counter_mid_center_light").hashCode();
 
