@@ -71,6 +71,7 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	
 	transient PlayerMap playerMap;
 	transient CharacterNameMap nameMap;
+	private float globalExpMultiplier;
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
 	public native void loadNameMap();
@@ -108,6 +109,9 @@ class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestr
 	public native void applyEncumbrancies(PlayerCreature player, ArmorObject armor);
 	public native void removeEncumbrancies(PlayerCreature player, ArmorObject armor);
 	public native void awardBadge(PlayerCreature player, unsigned int badge);
+	
+	public native void setExperienceMultiplier(float globalMultiplier);
+	public native void awardExperience(PlayerCreature player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
 	
 	public native void handleAbortTradeMessage(PlayerCreature player, boolean doLock = true);
 	public native void handleAddItemToTradeWindow(PlayerCreature player, unsigned long itemID);

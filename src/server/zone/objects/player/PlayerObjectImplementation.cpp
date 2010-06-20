@@ -188,10 +188,11 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 		return false;
 }
 
-
 void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
 	if (xp == 0)
 		return;
+
+	Locker locker(_this);
 
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
@@ -201,6 +202,17 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 			return;
 		}
 	}
+
+	int xpCap = -1;
+
+	if (xpTypeCapList.contains(xpType))
+		xpCap = xpTypeCapList.get(xpType);
+
+	if (xpCap < 0)
+		xpCap = 2000;
+
+	if(xp > xpCap)
+		xp = xpCap;
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
