@@ -148,6 +148,10 @@ public:
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
 
+	void setExperienceMultiplier(float globalMultiplier);
+
+	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
+
 	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
 
 	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
@@ -211,6 +215,8 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 
 	CharacterNameMap* nameMap;
 
+	float globalExpMultiplier;
+
 public:
 	StartingItemList* startingItemList;
 
@@ -243,6 +249,10 @@ public:
 	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
+
+	void setExperienceMultiplier(float globalMultiplier);
+
+	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
 	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
 
@@ -331,6 +341,10 @@ public:
 
 	void awardBadge(PlayerCreature* player, unsigned int badge);
 
+	void setExperienceMultiplier(float globalMultiplier);
+
+	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier);
+
 	void handleAbortTradeMessage(PlayerCreature* player, bool doLock);
 
 	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
@@ -366,6 +380,7 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 protected:
+	String _param1_awardExperience__PlayerCreature_String_int_bool_float_;
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
 	String _param1_createHairObject__String_String_;

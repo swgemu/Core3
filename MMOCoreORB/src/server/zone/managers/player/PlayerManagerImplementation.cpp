@@ -39,7 +39,7 @@
 #include "server/zone/packets/trade/DenyTradeMessage.h"
 #include "server/zone/packets/trade/TradeCompleteMessage.h"
 #include "server/zone/packets/trade/GiveMoneyMessage.h"
-
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/zone/Zone.h"
 
@@ -50,6 +50,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	playerMap = new PlayerMap(3000);
 	nameMap = new CharacterNameMap();
+
+	globalExpMultiplier = 1.0f;
 
 	loadStartingItems();
 
@@ -929,6 +931,32 @@ void PlayerManagerImplementation::awardBadge(PlayerCreature* player, uint32 badg
 		default:
 			break;
 		}
+	}
+}
+
+void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier) {
+	globalExpMultiplier = globalMultiplier;
+}
+
+/*
+ * Award experience to a player.
+ * Ex.
+	PlayerManager* playerManager = server->getPlayerManager();
+	playerManager->awardExperience(playerCreature, "resource_harvesting_inorganic", 500);
+ *
+ */
+void PlayerManagerImplementation::awardExperience(PlayerCreature* player, const String& xpType,
+													int amount, bool sendSystemMessage, float localMultiplier) {
+
+	player->getPlayerObject()->addExperience(xpType, amount * localMultiplier * globalExpMultiplier);
+
+	//You receive 30 points of Surveying experience.
+	if(sendSystemMessage) {
+		ParameterizedStringId message("base_player","prose_grant_xp");
+		message.setDI(amount * localMultiplier * globalExpMultiplier);
+		message.setTO("exp_n", xpType);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		player->sendMessage(sysMessage);
 	}
 }
 
