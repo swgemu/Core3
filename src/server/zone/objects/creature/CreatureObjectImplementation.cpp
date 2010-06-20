@@ -94,7 +94,6 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	skillModList.setNullValue(0);
-	postureChangeObservers.setNoDuplicateInsertPlan();
 
 	groupInviterID = 0;
 	groupInviteCounter = 0;
@@ -1332,7 +1331,20 @@ void CreatureObjectImplementation::clearBuffs(bool updateclient) {
 	}
 }
 
+void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
+	notifyObservers(ObserverEventType::POSTURECHANGED, NULL, newPosture);
+}
 
+void CreatureObjectImplementation::notifySelfPositionUpdate() {
+	if (zone != NULL) {
+		PlanetManager* planetManager = zone->getPlanetManager();
+		TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+		terrainManager->notifyPositionUpdate(_this);
+	}
+
+	TangibleObjectImplementation::notifySelfPositionUpdate();
+}
 
 void CreatureObjectImplementation::activateHAMRegeneration() {
 	if (isIncapacitated() || isDead())

@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
@@ -475,8 +476,7 @@ void ResourceSpawner::sendSample(PlayerCreature* playerCreature, const String& r
 	// Send survey start message
 	ParameterizedStringId message("survey","start_sampling");
 	message.setTO(resname);
-	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-	playerCreature->sendMessage(sysMessage);
+	playerCreature->sendSystemMessage(message);
 
 	// Add sampleresultstask
 	SampleResultsTask* sampleResultsTask = new SampleResultsTask(playerCreature, this, density, resname);
@@ -505,8 +505,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 	if (density < .10f) {
 		ParameterizedStringId message("survey", "efficiency_too_low");
 		message.setTO(resname);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		playerCreature->sendMessage(sysMessage);
+		playerCreature->sendSystemMessage(message);
 		playerCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		return;
 	}
@@ -516,8 +515,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 	if (density < .40 && surveySkill < 50) {
 		ParameterizedStringId message("survey", "density_below_threshold");
 		message.setTO(resname);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		playerCreature->sendMessage(sysMessage);
+		playerCreature->sendSystemMessage(message);
 		playerCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		return;
 	}
@@ -528,22 +526,20 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 	if (sampleRate < 100) {
 		ParameterizedStringId message("survey", "sample_failed");
 		message.setTO(resname);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		playerCreature->sendMessage(sysMessage);
+		playerCreature->sendSystemMessage(message);
 
 		return;
 	}
 
 	int unitsExtracted = int((density * 25 + System::random(3)) * (float(surveySkill)/100.0f));
 
-	if(unitsExtracted < 2) {
+	if (unitsExtracted < 2) {
 
 		// Send message to player about trace amounts
 		ParameterizedStringId message("survey", "trace_amount");
 		message.setTO(resname);
 		message.setDI(unitsExtracted);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		playerCreature->sendMessage(sysMessage);
+		playerCreature->sendSystemMessage(message);
 
 		return;
 	}
@@ -552,12 +548,14 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 	ParameterizedStringId message("survey", "sample_located");
 	message.setTO(resname);
 	message.setDI(unitsExtracted);
-	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-	playerCreature->sendMessage(sysMessage);
+	playerCreature->sendSystemMessage(message);
 
 	// We need the spawn object to track extraction
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
 	resourceSpawn->extractResource(zoneid, unitsExtracted);
+
+	PlayerManager* playerManager = server->getPlayerManager();
+	playerManager->awardExperience(playerCreature, "resource_harvesting_inorganic", 15);
 
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory =
@@ -578,6 +576,12 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 				return;
 			}
 		}
+	}
+
+	if (inventory->hasFullContainerObjects()) {
+		ParameterizedStringId err("survey", "no_inv_space");
+		playerCreature->sendSystemMessage(err);
+		return;
 	}
 
 	// Create New resource container if one isn't found in inventory

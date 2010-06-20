@@ -11,7 +11,6 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
-#include "server/zone/objects/scene/SceneObjectObserver.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -23,7 +22,7 @@ namespace server {
 
 using namespace server::zone;
 
-class TerrainManager : public SceneObjectObserver, public Logger {
+class TerrainManager : public Logger {
 	ProceduralTerrainAppearance terrainData;
 
 	Zone* zone;
@@ -46,7 +45,7 @@ public:
 	 */
 	float getHighestHeight(float x0, float y0, float x1, float y1, int stepping = 1);
 
-	int notify(SceneObject* object);
+	int notifyPositionUpdate(CreatureObject* object);
 };
 
 

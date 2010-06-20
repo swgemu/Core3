@@ -112,7 +112,7 @@ int FishingManagerImplementation::startFishing(PlayerCreature* player) {
 
 	player->sendSystemMessage("@fishing:start_fishing");
 
-	player->attachPositionChangedObserver(this);
+	player->registerObserver(ObserverEventType::POSITIONCHANGED, _this);
 
 	return 0;
 }
@@ -155,7 +155,7 @@ void FishingManagerImplementation::stopFishing(PlayerCreature* player, uint32 bo
 
 	player->sendSystemMessage("@fishing:stop_fishing");
 
-	player->deattachPositionChangedObserver(this);
+	player->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
 }
 
 
@@ -947,7 +947,7 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 	markerObject->initializePosition(x, z, y);
 	markerObject->insertToZone(zone);
 
-	markerObject->attachCloseContainerObserver(this);
+	markerObject->registerObserver(ObserverEventType::CLOSECONTAINER, _this);
 
 	return markerObject;
 }

@@ -144,10 +144,9 @@ class PlayerCreature extends CreatureObject {
 	
 	protected int centeredBonus;
 	
-	
 	@dereferenced
 	protected TradeContainer tradeContainer;
-		
+	
 	//protected BankTerminal registeredBank;
 
 	public static final int ONLINE = 1;

@@ -57,10 +57,11 @@ import server.zone.objects.tangible.fishing.FishingBaitObject;
 import server.zone.managers.minigames.events.FishingEvent;
 import server.zone.managers.minigames.events.FishingSplashEvent;
 import system.lang.ref.Reference;
-include server.zone.objects.scene.SceneObjectObserver;
-include server.zone.objects.scene.CloseContainerObserver;
+import server.zone.objects.scene.Observer;
+import server.zone.objects.scene.Observable;
+include server.zone.objects.scene.ObserverEventType;
 
-class FishingManager extends ManagedObject implements Logger, SceneObjectObserver, CloseContainerObserver {
+class FishingManager extends Observer implements Logger {
 
 	protected ZoneServer zoneServer;
 	
@@ -201,11 +202,16 @@ class FishingManager extends ManagedObject implements Logger, SceneObjectObserve
 		color.add(41);
 	}
 	
-	public int notify(SceneObject sceneObject) {
-		if (sceneObject.isPlayerCreature())
-			checkFishingOnPositionUpdate((PlayerCreature) sceneObject);
+	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		if (eventType == ObserverEventType.POSITIONCHANGED) {
+			checkFishingOnPositionUpdate((PlayerCreature) observable);
+			
+			return 0;
+		} else if (eventType == ObserverEventType.CLOSECONTAINER) {
+			return notifyCloseContainer((PlayerCreature)arg1, (SceneObject)observable);
+		}
 		
-		return 0;
+		return 1;
 	}
 	
 	/**

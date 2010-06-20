@@ -123,9 +123,21 @@ class FishingSplashEvent;
 
 using namespace server::zone::managers::minigames::events;
 
-#include "server/zone/objects/scene/SceneObjectObserver.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
 
-#include "server/zone/objects/scene/CloseContainerObserver.h"
+class Observable;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -137,12 +149,14 @@ using namespace server::zone::managers::minigames::events;
 
 #include "system/lang/ref/Reference.h"
 
+#include "server/zone/objects/scene/Observer.h"
+
 namespace server {
 namespace zone {
 namespace managers {
 namespace minigames {
 
-class FishingManager : public ManagedObject {
+class FishingManager : public Observer {
 public:
 	static const int NOTFISHING = 0;
 
@@ -214,7 +228,7 @@ public:
 
 	void initializeColor();
 
-	int notify(SceneObject* sceneObject);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 
@@ -318,7 +332,7 @@ namespace zone {
 namespace managers {
 namespace minigames {
 
-class FishingManagerImplementation : public ManagedObjectImplementation, public Logger, public SceneObjectObserver, public CloseContainerObserver {
+class FishingManagerImplementation : public ObserverImplementation, public Logger {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
 
@@ -411,7 +425,7 @@ public:
 
 	void initializeColor();
 
-	int notify(SceneObject* sceneObject);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 
@@ -526,7 +540,7 @@ protected:
 	friend class FishingManager;
 };
 
-class FishingManagerAdapter : public ManagedObjectAdapter {
+class FishingManagerAdapter : public ObserverAdapter {
 public:
 	FishingManagerAdapter(FishingManagerImplementation* impl);
 
@@ -546,7 +560,7 @@ public:
 
 	void initializeColor();
 
-	int notify(SceneObject* sceneObject);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void checkFishingOnPositionUpdate(PlayerCreature* player);
 

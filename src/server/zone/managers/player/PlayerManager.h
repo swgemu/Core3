@@ -109,8 +109,6 @@ using namespace server::zone::objects::tangible::wearables;
 
 #include "server/zone/managers/player/StartingItemList.h"
 
-#include "server/zone/objects/tangible/TangibleObjectDestructionObserver.h"
-
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -206,7 +204,7 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger, public TangibleObjectDestructionObserver {
+class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > server;

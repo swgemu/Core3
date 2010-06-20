@@ -110,6 +110,8 @@ public:
 
 	unsigned int getTargetTemplateCRC();
 
+	bool isSurveyMission();
+
 protected:
 	MissionObject(DummyConstructorParameter* param);
 
@@ -209,6 +211,8 @@ public:
 
 	unsigned int getTargetTemplateCRC();
 
+	virtual bool isSurveyMission();
+
 	MissionObject* _this;
 
 	operator const MissionObject*();
@@ -267,6 +271,8 @@ public:
 	int getRefreshCounter();
 
 	unsigned int getTargetTemplateCRC();
+
+	bool isSurveyMission();
 
 };
 

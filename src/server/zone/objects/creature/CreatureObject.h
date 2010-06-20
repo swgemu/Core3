@@ -169,8 +169,6 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/creature/PostureChangeObserver.h"
-
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/buffs/BuffList.h"
@@ -298,6 +296,10 @@ public:
 
 	bool hasBuff(unsigned int buffcrc);
 
+	void notifySelfPositionUpdate();
+
+	void notifyPostureChange(int newPosture);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient = true);
@@ -356,8 +358,6 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
-	void notifyPostureChange(int newPosture);
-
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
@@ -393,10 +393,6 @@ public:
 	void activateStateRecovery();
 
 	bool hasAttackDelay();
-
-	void attachPostureChangeObserver(PostureChangeObserver* observer);
-
-	void deattachPostureChangeObserver(PostureChangeObserver* observer);
 
 	void updateKnockdownRecovery();
 
@@ -727,8 +723,6 @@ protected:
 
 	CooldownTimerMap cooldownTimerMap;
 
-	SortedVector<PostureChangeObserver*> postureChangeObservers;
-
 	BuffList creatureBuffs;
 
 	DamageOverTimeList damageOverTimeList;
@@ -840,6 +834,10 @@ public:
 
 	bool hasBuff(unsigned int buffcrc);
 
+	void notifySelfPositionUpdate();
+
+	void notifyPostureChange(int newPosture);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient = true);
@@ -898,8 +896,6 @@ public:
 
 	virtual bool isAggressiveTo(PlayerCreature* object);
 
-	virtual void notifyPostureChange(int newPosture);
-
 	virtual void sendConversationStartTo(SceneObject* player);
 
 	virtual void selectConversationOption(int option, SceneObject* obj);
@@ -935,10 +931,6 @@ public:
 	virtual void activateStateRecovery();
 
 	bool hasAttackDelay();
-
-	void attachPostureChangeObserver(PostureChangeObserver* observer);
-
-	void deattachPostureChangeObserver(PostureChangeObserver* observer);
 
 	void updateKnockdownRecovery();
 
@@ -1261,6 +1253,10 @@ public:
 
 	bool hasBuff(unsigned int buffcrc);
 
+	void notifySelfPositionUpdate();
+
+	void notifyPostureChange(int newPosture);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void addBankCredits(int credits, bool notifyClient);
@@ -1314,8 +1310,6 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(PlayerCreature* object);
-
-	void notifyPostureChange(int newPosture);
 
 	void sendConversationStartTo(SceneObject* player);
 

@@ -951,12 +951,11 @@ void PlayerManagerImplementation::awardExperience(PlayerCreature* player, const 
 	player->getPlayerObject()->addExperience(xpType, amount * localMultiplier * globalExpMultiplier);
 
 	//You receive 30 points of Surveying experience.
-	if(sendSystemMessage) {
+	if (sendSystemMessage) {
 		ParameterizedStringId message("base_player","prose_grant_xp");
 		message.setDI(amount * localMultiplier * globalExpMultiplier);
 		message.setTO("exp_n", xpType);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		player->sendMessage(sysMessage);
+		player->sendSystemMessage(message);
 	}
 }
 

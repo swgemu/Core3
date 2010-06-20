@@ -73,16 +73,16 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.scene.Observable;
 
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
-include server.zone.objects.scene.SceneObjectObserver;
-include server.zone.objects.scene.CloseContainerObserver;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.area.ActiveArea;
 
-class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
+class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 
 	@weakReference
@@ -126,12 +126,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected transient SortedVector<SceneObject> notifiedSentObjects;
-	
-	@dereferenced
-	protected transient SortedVector<SceneObjectObserver> positionChangedObservers;
-	
-	@dereferenced
-	protected transient SortedVector<CloseContainerObserver> closeContainerObservers;
 	
 	@dereferenced
 	protected transient PendingTasksMap pendingTasks;
@@ -724,25 +718,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract native void closeContainerTo(PlayerCreature player);
 	
 	/**
-	 * Is executed when the client closes the opened container
-	 * @pre { this locked, player locked }
-	 * @post { this locked, player locked }
-	 * @param player PlayerCreature that closed this container
-	 */
-	public abstract void notifyCloseContainer(PlayerCreature player) {
-		for (int i = 0; i < closeContainerObservers.size(); ++i) {
-			CloseContainerObserver observer = closeContainerObservers.get(i);
-			
-			int res = observer.notifyCloseContainer(player, this);
-			
-			if (res == 1) {
-				closeContainerObservers.drop(observer);
-				i = i - 1;
-			}
-		}
-	}
-
-	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }
 	 * @post { this object is locked and inserted into zone }
@@ -921,59 +896,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public native abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	/**
-	 * Registers an observer for the position changed event
-	 */
-	@local
-	public void attachPositionChangedObserver(SceneObjectObserver observer) {
-		positionChangedObservers.put(observer);
-	}
-	
-	/**
-	 * Register an observer for the close container event
-	 */
-	@local
-	public void attachCloseContainerObserver(CloseContainerObserver observer) {
-		closeContainerObservers.put(observer);
-	}
-	
-	/**
-	 * Drops a close container observer
-	 */
-	@local
-	public void deattachCloseContainerObserver(CloseContainerObserver observer) {
-		closeContainerObservers.drop(observer);
-	}
-	
-	/**
-	 * Drops a positionChangedObserver
-	 */
-	@local
-	public void deattachPositionChangedObserver(SceneObjectObserver observer) {
-		positionChangedObservers.drop(observer);
-	}
 	
 	public native float getDistanceTo(SceneObject object);
 	
 	public native void updateVehiclePosition();
 	
-	/**
-	 * Is called when this object has moved to a new position
-	 */
-	public abstract int notifySelfPositionUpdate() {
-		for (int i = 0; i < positionChangedObservers.size(); ++i) {
-			SceneObjectObserver observer = positionChangedObservers.get(i);
-			
-			int res = observer.notify(this);
-			
-			if (res == 1) {
-				positionChangedObservers.drop(observer);
-				i = i - 1;
-			}
-		}
-		
-		return 0;
-	}
 	
 	/**
 	 * Is called when this object has been inserted with an object
@@ -1132,6 +1059,13 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * TODO: @param notifyClient
 	 */
 	public native void rotate(int degrees);
+	
+	public native abstract void notifySelfPositionUpdate();
+	
+	/**
+	 * @param player player that closed the container
+	 */
+	public native abstract void notifyCloseContainer(PlayerCreature player);
 
 	public unsigned int getMovementCounter() {
 		return movementCounter;
