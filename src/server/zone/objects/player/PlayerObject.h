@@ -250,6 +250,8 @@ public:
 
 	void setTitle(const String& characterTitle);
 
+	VectorMap<String, int>* getXpTypeCapList();
+
 	DeltaVectorMap<String, int>* getExperienceList();
 
 	int getForcePower();
@@ -337,6 +339,8 @@ protected:
 	unsigned int adminLevel;
 
 	byte languageID;
+
+	VectorMap<String, int> xpTypeCapList;
 
 	DeltaVectorMap<String, int> experienceList;
 
@@ -460,6 +464,8 @@ public:
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	void setTitle(const String& characterTitle);
+
+	VectorMap<String, int>* getXpTypeCapList();
 
 	DeltaVectorMap<String, int>* getExperienceList();
 

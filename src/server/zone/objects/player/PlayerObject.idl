@@ -87,6 +87,9 @@ class PlayerObject extends IntangibleObject {
 	protected unsigned int adminLevel;
 	
 	protected byte languageID;
+	
+	@dereferenced
+	protected VectorMap<string, int> xpTypeCapList;
 		
 	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
@@ -358,6 +361,11 @@ class PlayerObject extends IntangibleObject {
 	
 	public void setTitle(final string characterTitle) {
 		title = characterTitle;
+	}
+	
+	@local 
+	public VectorMap<string, int> getXpTypeCapList() {
+	    return xpTypeCapList;
 	}
 	
 	@local

@@ -161,6 +161,8 @@ namespace server {
 				awardSkillBox(skillBox, player, awardRequired, updateClient);
 		}
 
+		void loadXpTypeCap(PlayerCreature* player);
+
 		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
 

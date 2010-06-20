@@ -278,6 +278,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 
 	player->addSkillBox(skillBox, updateClient);
 	player->addSkillPoints(skillBox->getSkillPointsRequired());
+	loadXpTypeCap(player);
 
 	playerObject->addSkills(skillBox->skillCommands, updateClient);
 	playerObject->addSkills(skillBox->skillCertifications, updateClient);
@@ -291,6 +292,103 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
 		skillBoxReq = skillBox->requiredSkills.get(i);
 		awardSkillBox(skillBoxReq, player, true, false);
+	}
+}
+
+
+void ProfessionManager::loadXpTypeCap(PlayerCreature* player) {
+
+	Locker locker(player);
+
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	VectorMap<String, int>* xpTypeCapList = playerObject->getXpTypeCapList();
+	xpTypeCapList->removeAll();
+
+	SkillBoxList* skillBoxList = player->getSkillBoxList();
+
+	for(int i = 0; i < skillBoxList->size(); i++) {
+		SkillBox *skillbox = skillBoxList->get(i);
+
+		/*
+		 * If we just learned/unlearned a novice box, we need to check multiple skills
+		 */
+		if (skillbox->isNoviceBox()) {
+
+			Profession *prof = skillbox->getProfession();
+			SkillBox *plusone;
+
+			/*
+			 * If it's a 4x4, we go through each tier to find the xp cap
+			 */
+			if (prof->isFourByFour()) {
+
+				for (int j = 1; j <= 4; j++) {
+					FourByFourProfession *curprof = (FourByFourProfession*)prof;
+
+					plusone = curprof->getBox(j, 1);
+
+					if (xpTypeCapList->contains(plusone->getSkillXpType())) {
+
+						if (plusone->getSkillXpCap() > xpTypeCapList->get(plusone->getSkillXpType()))
+							xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+					} else
+						xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+				}
+
+			/*
+			 * If it's a 1x4
+			 */
+			} else if (prof->isOneByFour()) {
+
+				OneByFourProfession *curprof = (OneByFourProfession*)prof;
+				plusone = curprof->getBox(1);
+
+				if (xpTypeCapList->contains(plusone->getSkillXpType())) {
+
+					if (plusone->getSkillXpCap() > xpTypeCapList->get(plusone->getSkillXpType()))
+						xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+				} else
+					xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+			/*
+			 * If it's a pyramid
+			 */
+			} else if (prof->isPyramid()) {
+
+				PyramidProfession *curprof = (PyramidProfession*)prof;
+				plusone = curprof->getBox(1);
+
+				if (xpTypeCapList->contains(plusone->getSkillXpType())) {
+
+					if (plusone->getSkillXpCap() > xpTypeCapList->get(plusone->getSkillXpType()))
+						xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+				} else
+					xpTypeCapList->put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+
+			}
+
+		/*
+		 * Otherwise, if we have an xp cap already, we need to compare the two caps
+		 */
+		} else if (xpTypeCapList->contains(skillbox->getSkillXpType())) {
+
+			if (xpTypeCapList->get(skillbox->getSkillXpType()) < skillbox->getSkillXpCap()) {
+
+				xpTypeCapList->drop(skillbox->getSkillXpType());
+				xpTypeCapList->put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
+
+			}
+
+		/*
+		 * If we didn't already have the xp cap, we just make a new one.
+		 */
+		} else
+			xpTypeCapList->put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
 }
 
@@ -411,6 +509,7 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 
 	player->removeSkillBox(skillBox, updateClient);
 	player->addSkillPoints(-skillBox->getSkillPointsRequired());
+	loadXpTypeCap(player);
 
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
