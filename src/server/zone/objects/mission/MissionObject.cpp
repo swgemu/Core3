@@ -165,6 +165,18 @@ unsigned int MissionObject::getTargetTemplateCRC() {
 		return ((MissionObjectImplementation*) _impl)->getTargetTemplateCRC();
 }
 
+bool MissionObject::isSurveyMission() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->isSurveyMission();
+}
+
 /*
  *	MissionObjectImplementation
  */
@@ -311,6 +323,11 @@ unsigned int MissionObjectImplementation::getTargetTemplateCRC() {
 	return targetTemplateCRC;
 }
 
+bool MissionObjectImplementation::isSurveyMission() {
+	// server/zone/objects/mission/MissionObject.idl(153):  		return false;
+	return false;
+}
+
 /*
  *	MissionObjectAdapter
  */
@@ -354,6 +371,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 16:
 		resp->insertInt(getTargetTemplateCRC());
+		break;
+	case 17:
+		resp->insertBoolean(isSurveyMission());
 		break;
 	default:
 		return NULL;
@@ -404,6 +424,10 @@ int MissionObjectAdapter::getRefreshCounter() {
 
 unsigned int MissionObjectAdapter::getTargetTemplateCRC() {
 	return ((MissionObjectImplementation*) impl)->getTargetTemplateCRC();
+}
+
+bool MissionObjectAdapter::isSurveyMission() {
+	return ((MissionObjectImplementation*) impl)->isSurveyMission();
 }
 
 /*

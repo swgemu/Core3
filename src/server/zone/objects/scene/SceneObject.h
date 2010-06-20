@@ -141,13 +141,11 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/TransferErrorCode.h"
 
-#include "server/zone/objects/scene/SceneObjectObserver.h"
-
-#include "server/zone/objects/scene/CloseContainerObserver.h"
-
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/log/Logger.h"
 
@@ -181,12 +179,14 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/Task.h"
 
+#include "server/zone/objects/scene/Observable.h"
+
 namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
 
-class SceneObject : public ManagedObject {
+class SceneObject : public Observable {
 public:
 	static const int CELLOBJECT = 11;
 
@@ -666,8 +666,6 @@ public:
 
 	void closeContainerTo(PlayerCreature* player);
 
-	void notifyCloseContainer(PlayerCreature* player);
-
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -706,19 +704,9 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void attachPositionChangedObserver(SceneObjectObserver* observer);
-
-	void attachCloseContainerObserver(CloseContainerObserver* observer);
-
-	void deattachCloseContainerObserver(CloseContainerObserver* observer);
-
-	void deattachPositionChangedObserver(SceneObjectObserver* observer);
-
 	float getDistanceTo(SceneObject* object);
 
 	void updateVehiclePosition();
-
-	int notifySelfPositionUpdate();
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -797,6 +785,10 @@ public:
 	float getSpecialDirectionAngle();
 
 	void rotate(int degrees);
+
+	void notifySelfPositionUpdate();
+
+	void notifyCloseContainer(PlayerCreature* player);
 
 	unsigned int getMovementCounter();
 
@@ -930,7 +922,7 @@ namespace zone {
 namespace objects {
 namespace scene {
 
-class SceneObjectImplementation : public ManagedObjectImplementation, public QuadTreeEntry, public Logger {
+class SceneObjectImplementation : public ObservableImplementation, public QuadTreeEntry, public Logger {
 protected:
 	ZoneProcessServerImplementation* server;
 
@@ -959,10 +951,6 @@ protected:
 	StringId detailedDescription;
 
 	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
-
-	SortedVector<SceneObjectObserver*> positionChangedObservers;
-
-	SortedVector<CloseContainerObserver*> closeContainerObservers;
 
 	PendingTasksMap pendingTasks;
 
@@ -1461,8 +1449,6 @@ public:
 
 	virtual void closeContainerTo(PlayerCreature* player);
 
-	virtual void notifyCloseContainer(PlayerCreature* player);
-
 	virtual void insertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
@@ -1501,19 +1487,9 @@ public:
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void attachPositionChangedObserver(SceneObjectObserver* observer);
-
-	void attachCloseContainerObserver(CloseContainerObserver* observer);
-
-	void deattachCloseContainerObserver(CloseContainerObserver* observer);
-
-	void deattachPositionChangedObserver(SceneObjectObserver* observer);
-
 	float getDistanceTo(SceneObject* object);
 
 	void updateVehiclePosition();
-
-	virtual int notifySelfPositionUpdate();
 
 	virtual int notifyObjectInserted(SceneObject* object);
 
@@ -1592,6 +1568,10 @@ public:
 	float getSpecialDirectionAngle();
 
 	void rotate(int degrees);
+
+	virtual void notifySelfPositionUpdate();
+
+	virtual void notifyCloseContainer(PlayerCreature* player);
 
 	unsigned int getMovementCounter();
 
@@ -1728,7 +1708,7 @@ protected:
 	friend class SceneObject;
 };
 
-class SceneObjectAdapter : public ManagedObjectAdapter {
+class SceneObjectAdapter : public ObservableAdapter {
 public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
@@ -1800,8 +1780,6 @@ public:
 
 	void closeContainerTo(PlayerCreature* player);
 
-	void notifyCloseContainer(PlayerCreature* player);
-
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -1833,8 +1811,6 @@ public:
 	float getDistanceTo(SceneObject* object);
 
 	void updateVehiclePosition();
-
-	int notifySelfPositionUpdate();
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -1907,6 +1883,10 @@ public:
 	float getSpecialDirectionAngle();
 
 	void rotate(int degrees);
+
+	void notifySelfPositionUpdate();
+
+	void notifyCloseContainer(PlayerCreature* player);
 
 	unsigned int getMovementCounter();
 

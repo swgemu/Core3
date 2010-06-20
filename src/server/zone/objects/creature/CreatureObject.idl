@@ -69,7 +69,6 @@ import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
 include server.zone.templates.SharedObjectTemplate;
-include server.zone.objects.creature.PostureChangeObserver;
 include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;
@@ -162,9 +161,6 @@ class CreatureObject extends TangibleObject {
 	protected CooldownTimerMap cooldownTimerMap;
 	
 	@dereferenced
-	protected transient SortedVector<PostureChangeObserver> postureChangeObservers;
-	
-	@dereferenced
 	protected BuffList creatureBuffs;
 	@dereferenced
 	protected DamageOverTimeList damageOverTimeList;
@@ -198,7 +194,6 @@ class CreatureObject extends TangibleObject {
 		controlDevice = null;
 		
 		skillModList.setNullValue(0);
-		postureChangeObservers.setNoDuplicateInsertPlan();
 	}
 	
 	public native void finalize();
@@ -477,6 +472,9 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.hasBuff(buffcrc);
 	}
 	
+	public native void notifySelfPositionUpdate();
+	public native void notifyPostureChange(int newPosture);
+	
 	public native void updateToDatabaseAllObjects(boolean startTask);
 
 	public void addBankCredits(int credits, boolean notifyClient = true) {
@@ -700,25 +698,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	/**
-	 * Is executed when this creature changes posture
-	 * @pre { this locked }
-	 * @post { this locked }
-	 * @param newPosture new posture that will be set
-	 */
-	public abstract void notifyPostureChange(int newPosture) {
-		for (int i = 0; i < postureChangeObservers.size(); ++i) {
-			PostureChangeObserver observer = postureChangeObservers.get(i);
-			
-			int res = observer.notifyPostureChange(this, newPosture);
-			
-			if (res == 1) {
-				postureChangeObservers.drop(observer);
-				i = i - 1;
-			}
-		}
-	}
-	
-	/**
 	 * sends the conversation list 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
@@ -766,22 +745,6 @@ class CreatureObject extends TangibleObject {
 	
 	public boolean hasAttackDelay() {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
-	}
-	
-	/**
-	 * Registers an observer for the posture changed event
-	 */
-	@local
-	public void attachPostureChangeObserver(PostureChangeObserver observer) {
-		postureChangeObservers.put(observer);
-	}
-	
-	/**
-	 * Drops a positionChangedObserver
-	 */
-	@local
-	public void deattachPostureChangeObserver(PostureChangeObserver observer) {
-		postureChangeObservers.drop(observer);
 	}
 	
 	public void updateKnockdownRecovery() {

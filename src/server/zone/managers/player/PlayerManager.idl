@@ -63,9 +63,8 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.wearables.ArmorObject;
 
 include server.zone.managers.player.StartingItemList;
-include server.zone.objects.tangible.TangibleObjectDestructionObserver;
 
-class PlayerManager extends ManagedObject implements Logger, TangibleObjectDestructionObserver {
+class PlayerManager extends ManagedObject implements Logger {
 	transient ZoneProcessServerImplementation processor;
 	private ZoneServer server;
 	

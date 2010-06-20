@@ -73,13 +73,25 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class Observable;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
-
-#include "server/zone/objects/creature/PostureChangeObserver.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -89,12 +101,14 @@ using namespace server::zone::objects::creature;
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "server/zone/objects/scene/Observer.h"
+
 namespace server {
 namespace zone {
 namespace managers {
 namespace resource {
 
-class ResourceManager : public ManagedObject {
+class ResourceManager : public Observer {
 public:
 	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
@@ -104,7 +118,7 @@ public:
 
 	void shiftResources();
 
-	int notifyPostureChange(CreatureObject* object, int newPosture);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 
@@ -140,7 +154,7 @@ namespace zone {
 namespace managers {
 namespace resource {
 
-class ResourceManagerImplementation : public ManagedObjectImplementation, public Lua, public PostureChangeObserver {
+class ResourceManagerImplementation : public ObserverImplementation, public Lua {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > zoneServer;
@@ -162,7 +176,7 @@ public:
 
 	void shiftResources();
 
-	int notifyPostureChange(CreatureObject* object, int newPosture);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 
@@ -221,7 +235,7 @@ protected:
 	friend class ResourceManager;
 };
 
-class ResourceManagerAdapter : public ManagedObjectAdapter {
+class ResourceManagerAdapter : public ObserverAdapter {
 public:
 	ResourceManagerAdapter(ResourceManagerImplementation* impl);
 
@@ -233,7 +247,7 @@ public:
 
 	void shiftResources();
 
-	int notifyPostureChange(CreatureObject* object, int newPosture);
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
 

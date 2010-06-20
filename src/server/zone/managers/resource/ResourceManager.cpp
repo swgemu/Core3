@@ -14,16 +14,18 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/scene/Observable.h"
+
 /*
  *	ResourceManagerStub
  */
 
-ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) : ManagedObject(DummyConstructorParameter::instance()) {
+ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	_impl = new ResourceManagerImplementation(server, impl, objectMan);
 	_impl->_setStub(this);
 }
 
-ResourceManager::ResourceManager(DummyConstructorParameter* param) : ManagedObject(param) {
+ResourceManager::ResourceManager(DummyConstructorParameter* param) : Observer(param) {
 }
 
 ResourceManager::~ResourceManager() {
@@ -66,18 +68,20 @@ void ResourceManager::shiftResources() {
 		((ResourceManagerImplementation*) _impl)->shiftResources();
 }
 
-int ResourceManager::notifyPostureChange(CreatureObject* object, int newPosture) {
+int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
-		method.addObjectParameter(object);
-		method.addSignedIntParameter(newPosture);
+		method.addUnsignedIntParameter(eventType);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+		method.addSignedLongParameter(arg2);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->notifyPostureChange(object, newPosture);
+		return ((ResourceManagerImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
@@ -177,7 +181,7 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
  *	ResourceManagerImplementation
  */
 
-ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -196,7 +200,7 @@ void ResourceManagerImplementation::_initializeImplementation() {
 
 void ResourceManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (ResourceManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ObserverImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* ResourceManagerImplementation::_getStub() {
@@ -236,7 +240,7 @@ void ResourceManagerImplementation::runlock(bool doLock) {
 }
 
 void ResourceManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ObserverImplementation::_serializationHelperMethod();
 
 	_setClassName("ResourceManager");
 
@@ -245,17 +249,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(76):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(77):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(78):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(79):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(79):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(80):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(81):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(82):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(82):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(83):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(83):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(84):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
@@ -263,7 +267,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server,
  *	ResourceManagerAdapter
  */
 
-ResourceManagerAdapter::ResourceManagerAdapter(ResourceManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+ResourceManagerAdapter::ResourceManagerAdapter(ResourceManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
 Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -280,7 +284,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		shiftResources();
 		break;
 	case 9:
-		resp->insertSignedInt(notifyPostureChange((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	case 10:
 		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
@@ -319,8 +323,8 @@ void ResourceManagerAdapter::shiftResources() {
 	((ResourceManagerImplementation*) impl)->shiftResources();
 }
 
-int ResourceManagerAdapter::notifyPostureChange(CreatureObject* object, int newPosture) {
-	return ((ResourceManagerImplementation*) impl)->notifyPostureChange(object, newPosture);
+int ResourceManagerAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	return ((ResourceManagerImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ResourceManagerAdapter::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
