@@ -72,15 +72,18 @@ bool ResourceManagerImplementation::loadConfigFile() {
 	return runFile("scripts/resources/config.lua");
 }
 
-int ResourceManagerImplementation::notifyPostureChange(CreatureObject* object, int newPosture) {
-	// Cancel Sampling on posture change
-	Reference<SampleTask*> task = (SampleTask*) object->getPendingTask("sample");
+int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	if (eventType == ObserverEventType::POSTURECHANGED) {
+		CreatureObject* creature = (CreatureObject*) observable;
+		// Cancel Sampling on posture change
+		Reference<SampleTask*> task = (SampleTask*) creature->getPendingTask("sample");
 
-	if (task != NULL) {
-		task->stopSampling();
+		if (task != NULL) {
+			task->stopSampling();
 
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
-		object->sendSystemMessage("survey", "sample_cancel");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
+			creature->sendSystemMessage("survey", "sample_cancel");
+		}
 	}
 
 	return 1;
@@ -181,7 +184,7 @@ void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, c
 void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
 	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
-	playerCreature->attachPostureChangeObserver(this);
+	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this);
 }
 
 void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {

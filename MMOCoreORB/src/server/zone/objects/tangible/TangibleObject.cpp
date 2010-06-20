@@ -303,22 +303,6 @@ void TangibleObject::setOptionsBitmask(unsigned int bitmask, bool notifyClient) 
 		((TangibleObjectImplementation*) _impl)->setOptionsBitmask(bitmask, notifyClient);
 }
 
-void TangibleObject::attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((TangibleObjectImplementation*) _impl)->attachObjectDestructionObserver(observer);
-}
-
-void TangibleObject::dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((TangibleObjectImplementation*) _impl)->dattachObjectDestructionObserver(observer);
-}
-
 int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -642,164 +626,130 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 
 TangibleObjectImplementation::TangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/TangibleObject.idl(139):  		Logger.setLoggingName("TangibleObject");
+	// server/zone/objects/tangible/TangibleObject.idl(133):  		Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");
-	// server/zone/objects/tangible/TangibleObject.idl(141):  		destructionObservers.setNoDuplicateInsertPlan();
-	(&destructionObservers)->setNoDuplicateInsertPlan();
 }
 
 void TangibleObjectImplementation::setCombatState() {
 }
 
 void TangibleObjectImplementation::clearCombatState(bool clearDefenders) {
-	// server/zone/objects/tangible/TangibleObject.idl(258):  	}
-	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(259):  			removeDefenders();
+	// server/zone/objects/tangible/TangibleObject.idl(250):  	}
+	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(251):  			removeDefenders();
 	removeDefenders();
 }
 
 bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
-	// server/zone/objects/tangible/TangibleObject.idl(269):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(269):  		for (int i = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(261):  
+	for (	// server/zone/objects/tangible/TangibleObject.idl(261):  		for (int i = 0;
 	int i = 0;
 	i < (&defenderList)->size();
  ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(270):  		}
-	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(271):  				return true;
+	// server/zone/objects/tangible/TangibleObject.idl(262):  		}
+	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(263):  				return true;
 	return true;
 }
-	// server/zone/objects/tangible/TangibleObject.idl(274):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(266):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl(284):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(276):  		return false;
 	return false;
 }
 
-void TangibleObjectImplementation::attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	// server/zone/objects/tangible/TangibleObject.idl(320):  		destructionObservers.put(observer);
-	(&destructionObservers)->put(observer);
-}
-
-void TangibleObjectImplementation::dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer) {
-	// server/zone/objects/tangible/TangibleObject.idl(325):  		destructionObservers.drop(observer);
-	(&destructionObservers)->drop(observer);
-}
-
-int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	// server/zone/objects/tangible/TangibleObject.idl(334):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(334):  		for (int i = 0;
-	int i = 0;
-	i < (&destructionObservers)->size();
- ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(335):  			TangibleObjectDestructionObserver observer = destructionObservers.get(i);
-	TangibleObjectDestructionObserver* observer = (&destructionObservers)->get(i);
-	// server/zone/objects/tangible/TangibleObject.idl(337):  			int res = observer.notifyDestruction(attacker, this, condition);
-	int res = observer->notifyDestruction(attacker, _this, condition);
-	// server/zone/objects/tangible/TangibleObject.idl(339):  		}
-	if (res == 1){
-	// server/zone/objects/tangible/TangibleObject.idl(340):  				destructionObservers.drop(observer);
-	(&destructionObservers)->drop(observer);
-	// server/zone/objects/tangible/TangibleObject.idl(341):  				i = i - 1;
-	i = i - 1;
-}
-}
-	// server/zone/objects/tangible/TangibleObject.idl(345):  		return 0;
-	return 0;
-}
-
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(349):  		return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(313):  		return unknownByte;
 	return unknownByte;
 }
 
 bool TangibleObjectImplementation::isTicketCollector() {
-	// server/zone/objects/tangible/TangibleObject.idl(353):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(317):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isTicketObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(357):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(321):  		return false;
 	return false;
 }
 
 CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(362):  		return customizationVariables;
+	// server/zone/objects/tangible/TangibleObject.idl(326):  		return customizationVariables;
 	return (&customizationVariables);
 }
 
 int TangibleObjectImplementation::getUseCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(366):  		return useCount;
+	// server/zone/objects/tangible/TangibleObject.idl(330):  		return useCount;
 	return useCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(370):  		return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(334):  		return maxCondition;
 	return maxCondition;
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond) {
-	// server/zone/objects/tangible/TangibleObject.idl(374):  		maxCondition = maxCond;
+	// server/zone/objects/tangible/TangibleObject.idl(338):  		maxCondition = maxCond;
 	maxCondition = maxCond;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(378):  		return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(342):  		return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(382):  		return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(346):  		return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(386):  		return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(350):  		return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(390):  		return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(354):  		return optionsBitmask;
 	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(394):  		return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(358):  		return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 bool TangibleObjectImplementation::isTangibleObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(398):  		return true;
+	// server/zone/objects/tangible/TangibleObject.idl(362):  		return true;
 	return true;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(402):  		customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(366):  		customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(407):  		return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl(371):  		return defenderList;
 	return (&defenderList);
 }
 
 bool TangibleObjectImplementation::isDestroyed() {
-	// server/zone/objects/tangible/TangibleObject.idl(411):  		return conditionDamage > maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(375):  		return conditionDamage > maxCondition;
 	return conditionDamage > maxCondition;
 }
 
 unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl(415):  		return playerUseMask;
+	// server/zone/objects/tangible/TangibleObject.idl(379):  		return playerUseMask;
 	return playerUseMask;
 }
 
 bool TangibleObjectImplementation::isSliced() {
-	// server/zone/objects/tangible/TangibleObject.idl(419):  		return sliced;
+	// server/zone/objects/tangible/TangibleObject.idl(383):  		return sliced;
 	return sliced;
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(423):  		customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(387):  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 

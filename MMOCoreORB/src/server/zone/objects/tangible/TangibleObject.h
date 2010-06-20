@@ -69,8 +69,6 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/tangible/TangibleObjectDestructionObserver.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -198,10 +196,6 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
-
-	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
-
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	byte getUnknownByte();
@@ -293,8 +287,6 @@ protected:
 	unsigned short playerUseMask;
 
 	bool sliced;
-
-	SortedVector<TangibleObjectDestructionObserver*> destructionObservers;
 
 public:
 	unsigned static const short MALE = 0x01;
@@ -409,11 +401,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	void attachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
-
-	void dattachObjectDestructionObserver(TangibleObjectDestructionObserver* observer);
-
-	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	byte getUnknownByte();
 

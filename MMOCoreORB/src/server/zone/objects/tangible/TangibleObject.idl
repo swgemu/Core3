@@ -54,12 +54,9 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 
-
 include server.zone.objects.scene.variables.CustomizationVariables;
-
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.templates.SharedObjectTemplate;
-include server.zone.objects.tangible.TangibleObjectDestructionObserver;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -87,9 +84,6 @@ class TangibleObject extends SceneObject {
 	protected unsigned short playerUseMask;
 	
 	protected boolean sliced;
-	
-	@dereferenced
-	protected transient SortedVector<TangibleObjectDestructionObserver> destructionObservers;
 	
 	//item mask
 	public static final unsigned short MALE = 0x01;
@@ -137,8 +131,6 @@ class TangibleObject extends SceneObject {
 	 */
 	public TangibleObject() {
 		Logger.setLoggingName("TangibleObject");
-		
-		destructionObservers.setNoDuplicateInsertPlan();
 	}
 	
 	/**
@@ -315,35 +307,7 @@ class TangibleObject extends SceneObject {
 	
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
-	@local
-	public void attachObjectDestructionObserver(TangibleObjectDestructionObserver observer) {
-		destructionObservers.put(observer);
-	}
-	
-	@local
-	public void dattachObjectDestructionObserver(TangibleObjectDestructionObserver observer) {
-		destructionObservers.drop(observer);
-	}
-	
-	/**
-	 * Is called when this object has moved to a new position
-	 * @pre { this, attacker locked }
-	 * @post { this, attacker locked }
-	 */
-	public abstract int notifyObjectDestructionObservers(TangibleObject attacker, int condition) {
-		for (int i = 0; i < destructionObservers.size(); ++i) {
-			TangibleObjectDestructionObserver observer = destructionObservers.get(i);
-			
-			int res = observer.notifyDestruction(attacker, this, condition);
-			
-			if (res == 1) {
-				destructionObservers.drop(observer);
-				i = i - 1;
-			}
-		}
-		
-		return 0;
-	}
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
 	public byte getUnknownByte() {
 		return unknownByte;

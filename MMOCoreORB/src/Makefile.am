@@ -61,6 +61,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
+				server/zone/objects/scene/Observer.cpp \
+				server/zone/objects/scene/Observable.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
@@ -197,6 +199,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/scene/ObserverImplementation.cpp \
+		server/zone/objects/scene/ObserverEventMap.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \

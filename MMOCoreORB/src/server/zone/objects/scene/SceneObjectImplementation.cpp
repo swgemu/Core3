@@ -83,10 +83,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	slottedObjects.setNoDuplicateInsertPlan();
 	containerObjects.setNullValue(NULL);
 	containerObjects.setNoDuplicateInsertPlan();
-	positionChangedObservers.setNoDuplicateInsertPlan();
 	pendingTasks.setNoDuplicateInsertPlan();
 	pendingTasks.setNullValue(NULL);
-	closeContainerObservers.setNoDuplicateInsertPlan();
 
 	server = ZoneProcessServerImplementation::instance;
 
@@ -492,6 +490,14 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	notifySelfPositionUpdate();
 }
 
+void SceneObjectImplementation::notifySelfPositionUpdate() {
+	notifyObservers(ObserverEventType::POSITIONCHANGED);
+}
+
+void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
+	notifyObservers(ObserverEventType::CLOSECONTAINER, player);
+}
+
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
 	if (zone == NULL)
 		return;
@@ -639,13 +645,6 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 			building->notifyInsertToZone(_this);
 		}
 	}
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	if (planetManager != NULL) {
-		TerrainManager* terrainManager = planetManager->getTerrainManager();
-		positionChangedObservers.put(terrainManager);
-	}
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
@@ -723,13 +722,6 @@ void SceneObjectImplementation::removeFromZone() {
 	}
 
 	zone->dropSceneObject(getObjectID());
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	if (planetManager != NULL) {
-		TerrainManager* terrainManager = planetManager->getTerrainManager();
-		positionChangedObservers.drop(terrainManager);
-	}
 
 	zone = NULL;
 

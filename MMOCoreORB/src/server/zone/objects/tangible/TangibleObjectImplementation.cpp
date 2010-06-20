@@ -58,8 +58,6 @@ which carries forward this exception.
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
-	destructionObservers.setNoDuplicateInsertPlan();
-
 	setLoggingName("TangibleObject");
 }
 
@@ -290,6 +288,12 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		notifyObjectDestructionObservers(attacker, newConditionDamage);
 
 	return 0;
+}
+
+int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
+
+	return 1;
 }
 
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {

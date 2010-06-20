@@ -57,13 +57,14 @@ import engine.service.proto.BaseMessage;
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
-include server.zone.objects.creature.PostureChangeObserver;
+import server.zone.objects.scene.Observer;
+import server.zone.objects.scene.Observable;
 
 /**
  * The resource manager handles all aspects of in game resources
  * within the Core3 environment
  */
-class ResourceManager extends ManagedObject implements Lua, PostureChangeObserver {
+class ResourceManager extends Observer implements Lua {
 	private transient ZoneProcessServerImplementation processor;
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
@@ -87,7 +88,7 @@ class ResourceManager extends ManagedObject implements Lua, PostureChangeObserve
 	public native void initialize();
 	public native void shiftResources();
 	
-	public native int notifyPostureChange(CreatureObject object, int newPosture);
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
 	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
