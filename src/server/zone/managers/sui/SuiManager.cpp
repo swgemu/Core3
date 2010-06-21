@@ -58,6 +58,9 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/Zone.h"
@@ -239,14 +242,14 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::GIVE_FREE_RESOURCE:
 		handleGiveFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;*/
 	case SuiWindowType::TEACH_SKILL:
 		handleTeachSkill(boxID, player, cancel);
 		break;
 	case SuiWindowType::TEACH_PLAYER:
 		handleTeachPlayer(boxID, player, atoi(value.toCharArray()), cancel);
 		break;
-	case SuiWindowType::DENY_TRAINING_LIST:
+	/*case SuiWindowType::DENY_TRAINING_LIST:
 		handleDenyTrainingList(boxID, player);
 		break;*/
 	case SuiWindowType::OBJECT_NAME:   // Set Object Name
@@ -1673,92 +1676,132 @@ void SuiManager::handleDenyTrainingList(uint32 boxID, Player* player) {
                player->unlock();
        }
 }
+*/
 
-void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value, uint32 cancel) {
-	Player* student = NULL;
+void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int value, uint32 cancel) {
+	PlayerCreature* student = NULL;
 
 	try {
+		System::out << "[handleTeachPlayer] before lock" << endl;
 		player->wlock();
+		System::out << "[handleTeachPlayer] after lock" << endl;
 
 		if(!player->hasSuiBox(boxID)) {
+			System::out << "[handleTeachPlayer] doesnt have sui" << endl;
 			player->unlock();
 			return;
 		}
 
+		System::out << "[handleTeachPlayer] has sui" << endl;
 		SuiBox* sui = player->getSuiBox(boxID);
+		System::out << "[handleTeachPlayer] got sui" << endl;
 		player->removeSuiBox(boxID);
-		sui->finalize();
+		System::out << "[handleTeachPlayer] removed sui" << endl;
+		//sui->finalize();
+		//System::out << "[handleTeachPlayer] finalized sui" << endl;
 
 		student = player->getStudent();
 
 		if (student == NULL) {
+			System::out << "[handleTeachPlayer] student is null" << endl;
+			player->clearTeachingSkillOptions();
 			player->unlock();
 			return;
 		}
 
-		if (student != player)
-			student->wlock(player);
+		try {
+			System::out << "[handleTeachPlayer] try block" << endl;
+			if (student != player)
+				student->wlock(player);
+			System::out << "[handleTeachPlayer] student locked" << endl;
 
-		if (cancel == 1 || value == -1) {
-			student->setTeacher(NULL);
-			player->setStudent(NULL);
+			if ( cancel == 1 || value == -1 ) {
+				System::out << "[handleTeachPlayer] cancel" << endl;
+
+				student->setTeacher(NULL);
+				player->setStudent(NULL);
+				player->clearTeachingSkillOptions();
+
+				System::out << "[handleTeachPlayer] unlocking student" << endl;
+				if (student != player)
+					student->unlock();
+
+				System::out << "[handleTeachPlayer] unlocking player" << endl;
+				player->unlock();
+				return;
+			}
+
+			System::out << "[handleTeachPlayer] checking group" << endl;
+			//if they are no longer in the same group we cancel
+			if ( player->getGroup() == NULL || !player->getGroup()->hasMember(player->getStudent()) ) {
+
+				System::out << "[handleTeachPlayer] failed" << endl;
+				student->setTeacher(NULL);
+				player->setStudent(NULL);
+				player->sendSystemMessage("teaching","not_in_same_group");
+
+				System::out << "[handleTeachPlayer] unlocking student" << endl;
+				if (student != player)
+					student->unlock();
+
+				System::out << "[handleTeachPlayer] unlocking player" << endl;
+				player->unlock();
+				return;
+			}
+
+			System::out << "[handleTeachPlayer] success" << endl;
+
+			student->setTeachingOffer(player->getTeachingSkillOption(value));
+
+			ParameterizedStringId message("teaching","offer_given");
+			message.setTT(student->getObjectID());
+			message.setTO("skl_n", player->getTeachingSkillOption(value));
+			ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+			player->sendMessage(sysMessage);
+
+			System::out << "[handleTeachPlayer] creating sui" << endl;
+			SuiListBox* mbox = new SuiListBox(student, SuiWindowType::TEACH_SKILL);
+
+			// TODO: redo this after I find the proper String
+			StringBuffer prompt, skillname;
+			skillname << "@skl_n:" << player->getTeachingSkillOption(value);
+			prompt << "Do you wish to learn the following from " << player->getFirstName() << "?";
+			mbox->setPromptTitle("@sui:teach");
+			mbox->setPromptText(prompt.toString());
+			mbox->addMenuItem(skillname.toString());
+			mbox->setCancelButton(true, "");
+
+			student->addSuiBox(mbox);
+			student->sendMessage(mbox->generateMessage());
+
+			System::out << "[handleTeachPlayer] added sui" << endl;
 			player->clearTeachingSkillOptions();
+			player->setStudent(NULL);
 
+			System::out << "[handleTeachPlayer] unlocking student" << endl;
 			if (student != player)
 				student->unlock();
 
-			player->unlock();
-			return;
+		} catch (...) {
+			System::out << "[handleTeachPlayer] catch: unlocking student" << endl;
+			student->unlock();
 		}
 
-
-		student->setTeachingOffer(player->getTeachingSkillOption(value));
-
-		StfParameter* params = new StfParameter;
-		params->addTT(student->getObjectID());
-		params->addTO("skl_n",player->getTeachingSkillOption(value));
-
-		player->sendSystemMessage("teaching","offer_given", params);
-
-		delete params;
-
-		SuiListBox* mbox = new SuiListBox(student, SuiWindowType::TEACH_SKILL);
-
-		// TODO: redo this after I find the proper String
-		StringBuffer prompt, skillname;
-		skillname << "@skl_n:" << player->getTeachingSkillOption(value);
-		prompt << "Do you wish to learn the following from " << player->getFirstNameProper() << "?";
-		mbox->setPromptTitle("@sui:teach");
-		mbox->setPromptText(prompt.toString());
-		mbox->addMenuItem(skillname.toString());
-		mbox->setCancelButton(true, "");
-
-		student->addSuiBox(mbox);
-		student->sendMessage(mbox->generateMessage());
-
-		player->clearTeachingSkillOptions();
-		player->setStudent(NULL);
-
-		if (student != player)
-			student->unlock();
-
+		System::out << "[handleTeachPlayer] unlocking player" << endl;
 		player->unlock();
 	} catch (Exception& e) {
 		error("Exception in SuiManager::handleTeachPlayer");
 	    	e.printStackTrace();
 
-	    	if (student != player)
-	    		student->unlock();
         	player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleTeachPlayer");
-		if (student != player)
-			student->unlock();
+
         player->unlock();
 	}
 }
 
-void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
+void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 cancel) {
 	try {
 		player->wlock();
 
@@ -1769,40 +1812,59 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 
 		SuiBox* sui = player->getSuiBox(boxID);
 		player->removeSuiBox(boxID);
-		sui->finalize();
+		//sui->finalize();
 
 
 		if (cancel != 1) {
+
 			if (player->getTeacher() == NULL) {
+
 				player->sendSystemMessage("teaching","teacher_too_far");
 				//player->getTeacher()->sendSystemMessage("teaching","teaching_failed"); TEACHER IS NULL..
 				//player->getTeacher()->clearTeachingSkillOptions();
-			} else if (!player->isInRange(player->getTeacher(), 128)) {
-				StfParameter* locparams = new StfParameter;
-				locparams->addTT(player->getTeacher()->getObjectID());
 
-				locparams->addTO("skl_n",player->getTeachingOffer());
-				player->sendSystemMessage("teaching","teacher_too_far_target", locparams);
+			} else if (!player->isInRange(player->getTeacher(), 128)) {
+
+				ParameterizedStringId message("teaching","teacher_too_far_target");
+				message.setTT(player->getTeacher()->getObjectID());
+				message.setTO("skl_n", player->getTeachingOffer());
+				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+				player->sendMessage(sysMessage);
+
 				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 				player->getTeacher()->setStudent(NULL);
 				player->getTeacher()->clearTeachingSkillOptions();
 				player->setTeacher(NULL);
 
-				delete locparams;
+			} else if ( player->getGroup() == NULL || !player->getGroup()->hasMember(player->getTeacher()) ) {
+
+				ParameterizedStringId message("teaching","not_in_same_group");
+				message.setTT(player->getTeacher()->getObjectID());
+				message.setTO("skl_n", player->getTeachingOffer());
+				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+				player->sendMessage(sysMessage);
+
+				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
+				player->getTeacher()->setStudent(NULL);
+				player->getTeacher()->clearTeachingSkillOptions();
+				player->setTeacher(NULL);
+
 			} else
-				player->teachSkill(player->getTeachingOffer());
+				server->getProfessionManager()->playerTeachSkill(player->getTeachingOffer(), player);
+				//player->teachSkill(player->getTeachingOffer());
+
 		} else if (player->getTeacher() != NULL){
-			StfParameter* params = new StfParameter;
 
-			params->addTT(player->getObjectID());
-			params->addTO("skl_n",player->getTeachingOffer());
+			ParameterizedStringId message("teaching","offer_refused");
+			message.setTT(player->getObjectID());
+			message.setTO("skl_n", player->getTeachingOffer());
+			ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+			player->sendMessage(sysMessage);
 
-			player->getTeacher()->sendSystemMessage("teaching","offer_refused",params);
 			player->getTeacher()->setStudent(NULL);
 			player->getTeacher()->clearTeachingSkillOptions();
 			player->setTeacher(NULL);
 
-			delete params;
 		}
 
 		player->unlock();
@@ -1815,7 +1877,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
         	player->unlock();
 	}
 }
-
+/*
 
 void SuiManager::handleInsuranceMenu(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try {
@@ -2545,7 +2607,7 @@ void SuiManager::handleCharacterListSelection(uint32 boxid, Player* player, uint
 						arguments = targetname;
 						break;
 					}
-					case 6: //Buff 
+					case 6: //Buff
 					{
 						command = GameCommandHandler::getCommand("buff");
 						arguments = "2000" + targetname;
@@ -2580,7 +2642,7 @@ void SuiManager::handleCharacterListSelection(uint32 boxid, Player* player, uint
 						command = GameCommandHandler::getCommand("freeze");
 						arguments = targetname;
 						break;
-					}					
+					}
 					case 12: //Punish - Jail Cell A
 					{
 						command = GameCommandHandler::getCommand("warpplayer");

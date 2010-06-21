@@ -13,6 +13,7 @@
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -79,9 +80,9 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 	ManagedReference<SceneObject*> obj = player;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
+		SceneObject* scno = groupMembers.get(i);
 
-		if (play == player) {
+		if (scno == player) {
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 			grp->startUpdate(1);
 			groupMembers.remove(i, grp);
@@ -89,7 +90,53 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 
 			broadcastMessage(grp);
 
-			return;
+			CreatureObject* crea = (CreatureObject*)scno;
+			try {
+				/*********** for training ************/
+				crea->wlock();
+				//TODO: Does this need a lock for the other student/teacher?
+
+				if (crea->isPlayerCreature() ) {
+
+					PlayerCreature* play = (PlayerCreature*) crea;
+
+					if (play->getTeacher() != NULL) {
+
+						//if play is the teacher then we want to grab a reference before we set student = NULL
+						if (play->getStudent() != NULL) {
+
+							play->getStudent()->setTeacher(NULL);
+							play->setStudent(NULL);
+						}
+
+						play->getTeacher()->setStudent(NULL);
+						play->setTeacher(NULL);
+
+					}
+
+					//usually not going to need this one but this will be a failsafe in case something weird happens
+					if (play->getStudent() != NULL) {
+
+						if(play->getTeacher() != NULL) {
+
+							play->getTeacher()->setStudent(NULL);
+							play->setTeacher(NULL);
+						}
+
+						play->getStudent()->setTeacher(NULL);
+						play->setStudent(NULL);
+
+					}
+
+				}
+
+				crea->unlock();
+				/********************************/
+
+				return;
+			} catch (...) {
+				crea->unlock();
+			}
 		}
 	}
 }
@@ -134,42 +181,62 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 void GroupObjectImplementation::disband() {
 	// this locked
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* play = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
+		CreatureObject* crea = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
 		try {
-			play->wlock((GroupObject*) _this);
+			crea->wlock((GroupObject*) _this);
 
-			if (play->isPlayerCreature()) {
+			if (crea->isPlayerCreature()) {
+
+				PlayerCreature* play = (PlayerCreature*) crea;
+
 				chatRoom->removePlayer((PlayerCreature*) play, false);
 				chatRoom->sendDestroyTo((PlayerCreature*) play);
 
 				ChatRoom* room = chatRoom->getParent();
 				room->sendDestroyTo((PlayerCreature*) play);
+
+				play->updateGroup(NULL);
+				//play->updateGroupId(0);
+
+				if (play->getTeacher() != NULL) {
+
+					//if play is the teacher then we want to grab a reference before we set student = NULL
+					if(play->getStudent() != NULL) {
+						play->getStudent()->setTeacher(NULL);
+						play->setStudent(NULL);
+					}
+
+					play->getTeacher()->setStudent(NULL);
+					play->setTeacher(NULL);
+
+				}
+
+				//usually not going to need this one but this will be a failsafe in case something weird happens
+				if (play->getStudent() != NULL) {
+
+					if(play->getTeacher() != NULL) {
+						play->getTeacher()->setStudent(NULL);
+						play->setTeacher(NULL);
+					}
+
+					play->getStudent()->setTeacher(NULL);
+					play->setStudent(NULL);
+
+				}
+
 			}
 
 			//sendClosestWaypointDestroyTo(play);
 
-			play->updateGroup(NULL);
-			//play->updateGroupId(0);
-
-			/*if (play->getTeacher() != NULL) {
-				play->getTeacher()->setStudent(NULL);
-				play->setTeacher(NULL);
-			}
-
-			if (play->getStudent() != NULL) {
-				play->getStudent()->setTeacher(NULL);
-				play->setStudent(NULL);
-			}*/
-
 			//removeSquadLeaderBonuses(play);
 
-			sendDestroyTo(play);
+			sendDestroyTo(crea);
 
-			play->unlock();
+			crea->unlock();
 
 		} catch (...) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
-			play->unlock();
+			crea->unlock();
 		}
 	}
 

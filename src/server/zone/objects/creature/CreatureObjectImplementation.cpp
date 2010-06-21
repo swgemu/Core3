@@ -97,6 +97,8 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 
 	groupInviterID = 0;
 	groupInviteCounter = 0;
+	//TODO: remove this after persistent ManagedReferences load correctly
+	group = NULL;
 
 	setLoggingName("CreatureObject");
 }
