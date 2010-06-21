@@ -1682,84 +1682,63 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 	PlayerCreature* student = NULL;
 
 	try {
-		System::out << "[handleTeachPlayer] before lock" << endl;
 		player->wlock();
-		System::out << "[handleTeachPlayer] after lock" << endl;
 
 		if(!player->hasSuiBox(boxID)) {
-			System::out << "[handleTeachPlayer] doesnt have sui" << endl;
 			player->unlock();
 			return;
 		}
 
-		System::out << "[handleTeachPlayer] has sui" << endl;
 		SuiBox* sui = player->getSuiBox(boxID);
-		System::out << "[handleTeachPlayer] got sui" << endl;
 		player->removeSuiBox(boxID);
-		System::out << "[handleTeachPlayer] removed sui" << endl;
-		//sui->finalize();
-		//System::out << "[handleTeachPlayer] finalized sui" << endl;
 
 		student = player->getStudent();
 
 		if (student == NULL) {
-			System::out << "[handleTeachPlayer] student is null" << endl;
 			player->clearTeachingSkillOptions();
 			player->unlock();
 			return;
 		}
 
 		try {
-			System::out << "[handleTeachPlayer] try block" << endl;
 			if (student != player)
 				student->wlock(player);
-			System::out << "[handleTeachPlayer] student locked" << endl;
 
 			if ( cancel == 1 || value == -1 ) {
-				System::out << "[handleTeachPlayer] cancel" << endl;
 
 				student->setTeacher(NULL);
 				player->setStudent(NULL);
 				player->clearTeachingSkillOptions();
 
-				System::out << "[handleTeachPlayer] unlocking student" << endl;
 				if (student != player)
 					student->unlock();
 
-				System::out << "[handleTeachPlayer] unlocking player" << endl;
 				player->unlock();
 				return;
 			}
 
-			System::out << "[handleTeachPlayer] checking group" << endl;
 			//if they are no longer in the same group we cancel
 			if ( player->getGroup() == NULL || !player->getGroup()->hasMember(player->getStudent()) ) {
 
-				System::out << "[handleTeachPlayer] failed" << endl;
 				student->setTeacher(NULL);
 				player->setStudent(NULL);
 				player->sendSystemMessage("teaching","not_in_same_group");
 
-				System::out << "[handleTeachPlayer] unlocking student" << endl;
 				if (student != player)
 					student->unlock();
 
-				System::out << "[handleTeachPlayer] unlocking player" << endl;
 				player->unlock();
 				return;
 			}
 
-			System::out << "[handleTeachPlayer] success" << endl;
 
 			student->setTeachingOffer(player->getTeachingSkillOption(value));
 
 			ParameterizedStringId message("teaching","offer_given");
 			message.setTT(student->getObjectID());
 			message.setTO("skl_n", player->getTeachingSkillOption(value));
-			ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-			player->sendMessage(sysMessage);
+			player->sendSystemMessage(message);
 
-			System::out << "[handleTeachPlayer] creating sui" << endl;
 			SuiListBox* mbox = new SuiListBox(student, SuiWindowType::TEACH_SKILL);
 
 			// TODO: redo this after I find the proper String
@@ -1774,20 +1753,16 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 			student->addSuiBox(mbox);
 			student->sendMessage(mbox->generateMessage());
 
-			System::out << "[handleTeachPlayer] added sui" << endl;
 			player->clearTeachingSkillOptions();
 			player->setStudent(NULL);
 
-			System::out << "[handleTeachPlayer] unlocking student" << endl;
 			if (student != player)
 				student->unlock();
 
 		} catch (...) {
-			System::out << "[handleTeachPlayer] catch: unlocking student" << endl;
 			student->unlock();
 		}
 
-		System::out << "[handleTeachPlayer] unlocking player" << endl;
 		player->unlock();
 	} catch (Exception& e) {
 		error("Exception in SuiManager::handleTeachPlayer");
@@ -1828,8 +1803,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 c
 				ParameterizedStringId message("teaching","teacher_too_far_target");
 				message.setTT(player->getTeacher()->getObjectID());
 				message.setTO("skl_n", player->getTeachingOffer());
-				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-				player->sendMessage(sysMessage);
+				player->sendSystemMessage(message);
 
 				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 				player->getTeacher()->setStudent(NULL);
@@ -1841,8 +1815,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 c
 				ParameterizedStringId message("teaching","not_in_same_group");
 				message.setTT(player->getTeacher()->getObjectID());
 				message.setTO("skl_n", player->getTeachingOffer());
-				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-				player->sendMessage(sysMessage);
+				player->sendSystemMessage(message);
 
 				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 				player->getTeacher()->setStudent(NULL);
@@ -1858,8 +1831,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 c
 			ParameterizedStringId message("teaching","offer_refused");
 			message.setTT(player->getObjectID());
 			message.setTO("skl_n", player->getTeachingOffer());
-			ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-			player->sendMessage(sysMessage);
+			player->sendSystemMessage(message);
 
 			player->getTeacher()->setStudent(NULL);
 			player->getTeacher()->clearTeachingSkillOptions();

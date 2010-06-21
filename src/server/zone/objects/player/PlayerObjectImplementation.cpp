@@ -103,6 +103,8 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	adminLevel = 0;
 
+	experienceList.setNullValue(0);
+
 	/*skillList.add(new QueueCommand("admin", server));
 	skillList.add(new QueueCommand("hidden", server));
 	skillList.add(new QueueCommand("addbannedplayer", server));*/

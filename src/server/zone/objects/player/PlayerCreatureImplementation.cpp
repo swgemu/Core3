@@ -31,6 +31,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/Races.h"
 
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
@@ -591,6 +592,13 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 
 	}
 
+	if (player->getTeacher() != NULL) {
+		ParameterizedStringId message("teaching", "student_has_offer_to_learn");
+		message.setTT(player->getFirstName());
+		sendSystemMessage(message);
+		return;
+	}
+
 	/*
 	 * Loop through each skill that the player has and filter out accordingly
 	 */
@@ -652,10 +660,30 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 			 * Lastly, we cannot teach someone the base language skill. Ex. "social_language_basic"
 			 * Only the speak and comprehend skills can be taught.
 			 */
-			if(sBox->getName().indexOf("social") >= 0) {
+			if(sBox->getName().indexOf("social_language") >= 0) {
 
 				if(sBox->getName().indexOf("speak") == -1 && sBox->getName().indexOf("comprehend") == -1)
 					continue;
+
+				/*
+				 * Also, there are race restrictions on some languages
+				 */
+				if(sBox->getRequiredSpeciesSize() > 0) {
+					String race;
+					bool correctRace = false;
+
+					for(int i = 0; i < sBox->getRequiredSpeciesSize(); i++) {
+
+						sBox->getRequiredSpecies(race, i);
+
+						if(race.compareTo(Races::getRace(player->getRaceID())) == 0) {
+							correctRace = true;
+						}
+					}
+
+					if(!correctRace)
+						continue;
+				}
 			}
 
 			trainableBoxes.add(sBox);
@@ -690,8 +718,7 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 
 		ParameterizedStringId message("teaching","no_skills_for_student");
 		message.setTT(player->getFirstName());
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		sendMessage(sysMessage);
+		sendSystemMessage(message);
 
 	}
 
