@@ -9,6 +9,7 @@
 #define MISSIONLISTREQUESTCALLBACK_H_
 
 #include "ObjectControllerMessageCallback.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 class MissionListRequestCallback : public MessageCallback {
 	uint16 unk1;
@@ -43,8 +44,18 @@ public:
 
 		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
 
-		if (terminal == NULL)
+		if (terminal == NULL) {
 			player->sendSystemMessage("skill_teacher", "skill_terminal_disabled");
+			return;
+		}
+
+		if (!terminal->isMissionTerminal())
+			return;
+
+		MissionTerminal* missionTerminal = (MissionTerminal*) terminal.get();
+
+		MissionManager* manager = server->getZoneServer()->getMissionManager();
+		manager->handleMissionListRequest(missionTerminal, player, unk2);
 
 	}
 

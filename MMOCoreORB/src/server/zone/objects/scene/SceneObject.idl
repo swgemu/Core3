@@ -1280,6 +1280,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isMissionTerminal() {
+		return false;
+	}
+	
 	public ActiveArea getActiveArea() {
 		return activeArea;
 	}

@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "managers/professions/ProfessionManager.h"
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/minigames/FishingManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -419,6 +420,9 @@ void ZoneServerImplementation::startManagers() {
 	bazaarManager = new BazaarManager(_this);
 	bazaarManager->deploy();
 	bazaarManager->initialize();
+
+	missionManager = new MissionManager(_this);
+	missionManager->deploy("MissionManager");
 
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");

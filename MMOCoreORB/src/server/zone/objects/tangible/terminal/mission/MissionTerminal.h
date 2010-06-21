@@ -49,6 +49,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/tangible/MissionTerminalTemplate.h"
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -64,7 +66,15 @@ class MissionTerminal : public Terminal {
 public:
 	MissionTerminal();
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void initializeTransientMembers();
+
+	bool isMissionTerminal();
+
+	bool isArtisanTerminal();
+
+	bool isGeneralTerminal();
 
 protected:
 	MissionTerminal(DummyConstructorParameter* param);
@@ -91,13 +101,23 @@ namespace terminal {
 namespace mission {
 
 class MissionTerminalImplementation : public TerminalImplementation {
+protected:
+	String terminalType;
 
 public:
 	MissionTerminalImplementation();
 
 	MissionTerminalImplementation(DummyConstructorParameter* param);
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void initializeTransientMembers();
+
+	bool isMissionTerminal();
+
+	bool isArtisanTerminal();
+
+	bool isGeneralTerminal();
 
 	MissionTerminal* _this;
 
@@ -139,6 +159,12 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isMissionTerminal();
+
+	bool isArtisanTerminal();
+
+	bool isGeneralTerminal();
 
 };
 

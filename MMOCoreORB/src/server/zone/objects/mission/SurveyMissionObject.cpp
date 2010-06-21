@@ -12,6 +12,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/mission/MissionObserver.h"
+
 /*
  *	SurveyMissionObjectStub
  */
@@ -123,19 +125,19 @@ void SurveyMissionObjectImplementation::_serializationHelperMethod() {
 
 SurveyMissionObjectImplementation::SurveyMissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/SurveyMissionObject.idl(58):  		initialize();
+	// server/zone/objects/mission/SurveyMissionObject.idl(59):  		initialize();
 	initialize();
-	// server/zone/objects/mission/SurveyMissionObject.idl(60):  		Logger.setLoggingName("SurveyMissionObject");
+	// server/zone/objects/mission/SurveyMissionObject.idl(61):  		Logger.setLoggingName("SurveyMissionObject");
 	Logger::setLoggingName("SurveyMissionObject");
 }
 
 void SurveyMissionObjectImplementation::initialize() {
-	// server/zone/objects/mission/SurveyMissionObject.idl(64):  		super.typeCRC = super.SURVEY;
+	// server/zone/objects/mission/SurveyMissionObject.idl(65):  		super.typeCRC = super.SURVEY;
 	MissionObjectImplementation::typeCRC = MissionObjectImplementation::SURVEY;
 }
 
 bool SurveyMissionObjectImplementation::isSurveyMission() {
-	// server/zone/objects/mission/SurveyMissionObject.idl(68):  		return true;
+	// server/zone/objects/mission/SurveyMissionObject.idl(69):  		return true;
 	return true;
 }
 
