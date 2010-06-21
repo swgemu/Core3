@@ -181,6 +181,20 @@ class FishingManager;
 
 using namespace server::zone::managers::minigames;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace mission {
+
+class MissionManager;
+
+} // namespace mission
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::mission;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -308,6 +322,8 @@ public:
 
 	ObjectController* getObjectController();
 
+	MissionManager* getMissionManager();
+
 	RadialManager* getRadialManager();
 
 	ResourceManager* getResourceManager();
@@ -377,6 +393,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<CraftingManager* > craftingManager;
 
 	ManagedReference<BazaarManager* > bazaarManager;
+
+	ManagedReference<MissionManager* > missionManager;
 
 	ManagedReference<FishingManager* > fishingManager;
 
@@ -502,6 +520,8 @@ public:
 	ChatManager* getChatManager();
 
 	ObjectController* getObjectController();
+
+	MissionManager* getMissionManager();
 
 	RadialManager* getRadialManager();
 
@@ -639,6 +659,8 @@ public:
 	ChatManager* getChatManager();
 
 	ObjectController* getObjectController();
+
+	MissionManager* getMissionManager();
 
 	RadialManager* getRadialManager();
 

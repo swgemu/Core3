@@ -10,6 +10,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/mission/MissionObserver.h"
+
 /*
  *	MissionObjectStub
  */
@@ -26,12 +28,40 @@ MissionObject::~MissionObject() {
 }
 
 
-void MissionObject::initializeTransientMembers() {
+void MissionObject::setRefreshCounter(int ctr, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addSignedIntParameter(ctr);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setRefreshCounter(ctr, notifyClient);
+}
+
+void MissionObject::setTypeCRC(unsigned int crc, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addUnsignedIntParameter(crc);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setTypeCRC(crc, notifyClient);
+}
+
+void MissionObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -43,7 +73,7 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -56,7 +86,7 @@ WaypointObject* MissionObject::getWaypointToMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -68,7 +98,7 @@ unsigned int MissionObject::getTypeCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -80,7 +110,7 @@ int MissionObject::getRewardCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -92,7 +122,7 @@ UnicodeString MissionObject::getCreatorName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
@@ -105,7 +135,7 @@ int MissionObject::getDifficultyLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -133,7 +163,7 @@ String MissionObject::getTargetName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
@@ -146,7 +176,7 @@ int MissionObject::getRefreshCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -158,7 +188,7 @@ unsigned int MissionObject::getTargetTemplateCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -170,7 +200,7 @@ bool MissionObject::isSurveyMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -186,9 +216,11 @@ MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParamet
 }
 
 MissionObjectImplementation::~MissionObjectImplementation() {
-	MissionObjectImplementation::finalize();
 }
 
+
+void MissionObjectImplementation::finalize() {
+}
 
 void MissionObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObjectHelper::instance());
@@ -243,6 +275,7 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 	_setClassName("MissionObject");
 
 	addSerializableVariable("waypointToMission", &waypointToMission);
+	addSerializableVariable("missionObserver", &missionObserver);
 	addSerializableVariable("typeCRC", &typeCRC);
 	addSerializableVariable("difficultyLevel", &difficultyLevel);
 	addSerializableVariable("creatorName", &creatorName);
@@ -256,75 +289,78 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(90):  		typeCRC = SURVEY;
+	// server/zone/objects/mission/MissionObject.idl(93):  		typeCRC = SURVEY;
 	typeCRC = SURVEY;
-	// server/zone/objects/mission/MissionObject.idl(92):  		refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl(95):  		refreshCounter = 0;
 	refreshCounter = 0;
-	// server/zone/objects/mission/MissionObject.idl(94):  		targetTemplateCRC = 0;
-	targetTemplateCRC = 0;
-	// server/zone/objects/mission/MissionObject.idl(96):  		rewardCredits = 0;
-	rewardCredits = 0;
-	// server/zone/objects/mission/MissionObject.idl(98):  		difficultyLevel = 0;
-	difficultyLevel = 0;
-	// server/zone/objects/mission/MissionObject.idl(100):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl(97):  		targetTemplateCRC = 2640304325;
+	targetTemplateCRC = 2640304325;
+	// server/zone/objects/mission/MissionObject.idl(99):  		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+	(&missionDescription)->setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+	// server/zone/objects/mission/MissionObject.idl(100):  		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+	(&missionTitle)->setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+	// server/zone/objects/mission/MissionObject.idl(101):  		targetName = "Testing target name";
+	targetName = "Testing target name";
+	// server/zone/objects/mission/MissionObject.idl(102):  		difficultyLevel = 50;
+	difficultyLevel = 50;
+	// server/zone/objects/mission/MissionObject.idl(104):  		rewardCredits = 100;
+	rewardCredits = 100;
+	// server/zone/objects/mission/MissionObject.idl(106):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
-void MissionObjectImplementation::finalize() {
-}
-
 WaypointObject* MissionObjectImplementation::getWaypointToMission() {
-	// server/zone/objects/mission/MissionObject.idl(111):  		return waypointToMission;
+	// server/zone/objects/mission/MissionObject.idl(116):  		return waypointToMission;
 	return waypointToMission;
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
-	// server/zone/objects/mission/MissionObject.idl(115):  		return typeCRC;
+	// server/zone/objects/mission/MissionObject.idl(120):  		return typeCRC;
 	return typeCRC;
 }
 
 int MissionObjectImplementation::getRewardCredits() {
-	// server/zone/objects/mission/MissionObject.idl(119):  		return rewardCredits;
+	// server/zone/objects/mission/MissionObject.idl(124):  		return rewardCredits;
 	return rewardCredits;
 }
 
 UnicodeString MissionObjectImplementation::getCreatorName() {
-	// server/zone/objects/mission/MissionObject.idl(123):  		return creatorName;
+	// server/zone/objects/mission/MissionObject.idl(128):  		return creatorName;
 	return creatorName;
 }
 
 int MissionObjectImplementation::getDifficultyLevel() {
-	// server/zone/objects/mission/MissionObject.idl(127):  		return difficultyLevel;
+	// server/zone/objects/mission/MissionObject.idl(132):  		return difficultyLevel;
 	return difficultyLevel;
 }
 
 StringId* MissionObjectImplementation::getMissionDescription() {
-	// server/zone/objects/mission/MissionObject.idl(132):  		return missionDescription;
+	// server/zone/objects/mission/MissionObject.idl(137):  		return missionDescription;
 	return (&missionDescription);
 }
 
 StringId* MissionObjectImplementation::getMissionTitle() {
-	// server/zone/objects/mission/MissionObject.idl(137):  		return missionTitle;
+	// server/zone/objects/mission/MissionObject.idl(142):  		return missionTitle;
 	return (&missionTitle);
 }
 
 String MissionObjectImplementation::getTargetName() {
-	// server/zone/objects/mission/MissionObject.idl(141):  		return targetName;
+	// server/zone/objects/mission/MissionObject.idl(146):  		return targetName;
 	return targetName;
 }
 
 int MissionObjectImplementation::getRefreshCounter() {
-	// server/zone/objects/mission/MissionObject.idl(145):  		return refreshCounter;
+	// server/zone/objects/mission/MissionObject.idl(150):  		return refreshCounter;
 	return refreshCounter;
 }
 
 unsigned int MissionObjectImplementation::getTargetTemplateCRC() {
-	// server/zone/objects/mission/MissionObject.idl(149):  		return targetTemplateCRC;
+	// server/zone/objects/mission/MissionObject.idl(154):  		return targetTemplateCRC;
 	return targetTemplateCRC;
 }
 
 bool MissionObjectImplementation::isSurveyMission() {
-	// server/zone/objects/mission/MissionObject.idl(153):  		return false;
+	// server/zone/objects/mission/MissionObject.idl(158):  		return false;
 	return false;
 }
 
@@ -340,39 +376,42 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		finalize();
+		setRefreshCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		initializeTransientMembers();
+		setTypeCRC(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 8:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 9:
-		resp->insertLong(getWaypointToMission()->_getObjectID());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertInt(getTypeCRC());
+		resp->insertLong(getWaypointToMission()->_getObjectID());
 		break;
 	case 11:
-		resp->insertSignedInt(getRewardCredits());
+		resp->insertInt(getTypeCRC());
 		break;
 	case 12:
-		resp->insertUnicode(getCreatorName());
+		resp->insertSignedInt(getRewardCredits());
 		break;
 	case 13:
-		resp->insertSignedInt(getDifficultyLevel());
+		resp->insertUnicode(getCreatorName());
 		break;
 	case 14:
-		resp->insertAscii(getTargetName());
+		resp->insertSignedInt(getDifficultyLevel());
 		break;
 	case 15:
-		resp->insertSignedInt(getRefreshCounter());
+		resp->insertAscii(getTargetName());
 		break;
 	case 16:
-		resp->insertInt(getTargetTemplateCRC());
+		resp->insertSignedInt(getRefreshCounter());
 		break;
 	case 17:
+		resp->insertInt(getTargetTemplateCRC());
+		break;
+	case 18:
 		resp->insertBoolean(isSurveyMission());
 		break;
 	default:
@@ -382,8 +421,12 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	return resp;
 }
 
-void MissionObjectAdapter::finalize() {
-	((MissionObjectImplementation*) impl)->finalize();
+void MissionObjectAdapter::setRefreshCounter(int ctr, bool notifyClient) {
+	((MissionObjectImplementation*) impl)->setRefreshCounter(ctr, notifyClient);
+}
+
+void MissionObjectAdapter::setTypeCRC(unsigned int crc, bool notifyClient) {
+	((MissionObjectImplementation*) impl)->setTypeCRC(crc, notifyClient);
 }
 
 void MissionObjectAdapter::initializeTransientMembers() {

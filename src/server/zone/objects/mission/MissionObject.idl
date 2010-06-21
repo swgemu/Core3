@@ -51,9 +51,12 @@ import server.zone.objects.waypoint.WaypointObject;
 import server.zone.Zone;
 
 include server.zone.objects.scene.variables.StringId;
+import server.zone.objects.mission.MissionObserver;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
+	
+	protected MissionObserver missionObserver;
 	
 	protected unsigned int typeCRC;
 	protected int difficultyLevel;
@@ -91,18 +94,20 @@ class MissionObject extends IntangibleObject {
 		
 		refreshCounter = 0;
 		
-		targetTemplateCRC = 0;
+		targetTemplateCRC = 2640304325;
 		
-		rewardCredits = 0;
+		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+		targetName = "Testing target name";
+		difficultyLevel = 50;
 		
-		difficultyLevel = 0;
+		rewardCredits = 100;
 		
 		Logger.setLoggingName("MissionObject");
 	}
 	
-	public void finalize() {
-		
-	}
+	public native void setRefreshCounter(int ctr, boolean notifyClient = true);
+	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
 	
 	public native void initializeTransientMembers();
 	public native void sendBaselinesTo(SceneObject player);

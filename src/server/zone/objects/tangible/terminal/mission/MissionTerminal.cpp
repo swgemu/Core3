@@ -26,6 +26,14 @@ MissionTerminal::~MissionTerminal() {
 }
 
 
+void MissionTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((MissionTerminalImplementation*) _impl)->loadTemplateData(templateData);
+}
+
 void MissionTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -36,6 +44,42 @@ void MissionTerminal::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		((MissionTerminalImplementation*) _impl)->initializeTransientMembers();
+}
+
+bool MissionTerminal::isMissionTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isMissionTerminal();
+}
+
+bool MissionTerminal::isArtisanTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isArtisanTerminal();
+}
+
+bool MissionTerminal::isGeneralTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isGeneralTerminal();
 }
 
 /*
@@ -105,19 +149,47 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionTerminal");
 
+	addSerializableVariable("terminalType", &terminalType);
 }
 
 MissionTerminalImplementation::MissionTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(55):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(58):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
+void MissionTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(69):  		super.loadTemplateData(templateData);
+	TerminalImplementation::loadTemplateData(templateData);
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(71):  		MissionTerminalTemplate 
+	if (!templateData->isMissionTerminalTemplate())	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(72):  			return;
+	return;
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(74):  templ = (MissionTerminalTemplate) templateData;
+	MissionTerminalTemplate* templ = (MissionTerminalTemplate*) templateData;
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(76):  		terminalType = templ.getMissionTerminalType();
+	terminalType = templ->getMissionTerminalType();
+}
+
 void MissionTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(80):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(61):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(82):  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
+}
+
+bool MissionTerminalImplementation::isMissionTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(86):  		return true;
+	return true;
+}
+
+bool MissionTerminalImplementation::isArtisanTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(90):  		return terminalType == "artisan";
+	return terminalType == "artisan";
+}
+
+bool MissionTerminalImplementation::isGeneralTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(94):  		return terminalType == "general";
+	return terminalType == "general";
 }
 
 /*
@@ -134,6 +206,15 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isMissionTerminal());
+		break;
+	case 8:
+		resp->insertBoolean(isArtisanTerminal());
+		break;
+	case 9:
+		resp->insertBoolean(isGeneralTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -143,6 +224,18 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 void MissionTerminalAdapter::initializeTransientMembers() {
 	((MissionTerminalImplementation*) impl)->initializeTransientMembers();
+}
+
+bool MissionTerminalAdapter::isMissionTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isMissionTerminal();
+}
+
+bool MissionTerminalAdapter::isArtisanTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isArtisanTerminal();
+}
+
+bool MissionTerminalAdapter::isGeneralTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isGeneralTerminal();
 }
 
 /*

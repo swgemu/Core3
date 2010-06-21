@@ -60,7 +60,7 @@ public:
 
 
 	//Description Key
-	void updateDescKey() {
+	/*void updateDescKey() {
 		startUpdate(0x04);
 
 		insertInt(miso->getDescKey()); //make sure this isnt being reversed! like m27t -> t72m
@@ -141,7 +141,7 @@ public:
 			insertAscii(miso->getTitleStf());
 			insertInt(0);
 		}
-	}
+	}*/
 
 	void updateRefreshCount(uint32 trc) {
 		startUpdate(0x0D);
@@ -150,10 +150,10 @@ public:
 		insertInt(trc);
 	}
 
-	void updateTypeCrc() {
+	void updateTypeCRC(uint32 crc) {
 		startUpdate(0x0E);
 
-		insertInt(miso->getTypeCrc());
+		insertInt(crc);
 	}
 };
 

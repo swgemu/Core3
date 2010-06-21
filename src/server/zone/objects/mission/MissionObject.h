@@ -49,6 +49,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+
+class MissionObserver;
+
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/lua/LuaObject.h"
@@ -85,6 +99,10 @@ public:
 	static const int SURVEY = 0x19C9FAC1;
 
 	MissionObject();
+
+	void setRefreshCounter(int ctr, bool notifyClient = true);
+
+	void setTypeCRC(unsigned int crc, bool notifyClient = true);
 
 	void initializeTransientMembers();
 
@@ -140,6 +158,8 @@ class MissionObjectImplementation : public IntangibleObjectImplementation {
 protected:
 	ManagedReference<WaypointObject* > waypointToMission;
 
+	ManagedReference<MissionObserver* > missionObserver;
+
 	unsigned int typeCRC;
 
 	int difficultyLevel;
@@ -185,7 +205,9 @@ public:
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
 
-	void finalize();
+	void setRefreshCounter(int ctr, bool notifyClient = true);
+
+	void setTypeCRC(unsigned int crc, bool notifyClient = true);
 
 	void initializeTransientMembers();
 
@@ -221,6 +243,8 @@ public:
 protected:
 	virtual ~MissionObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -250,7 +274,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void finalize();
+	void setRefreshCounter(int ctr, bool notifyClient);
+
+	void setTypeCRC(unsigned int crc, bool notifyClient);
 
 	void initializeTransientMembers();
 
