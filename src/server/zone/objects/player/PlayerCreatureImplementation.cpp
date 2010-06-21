@@ -576,10 +576,14 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 
 	}
 
+	//The boxes that will be sent to the SUI
 	Vector<SkillBox*> trainableBoxes;
 
 	SkillBoxList* skillBoxList = getSkillBoxList();
 
+	/*
+	 * If the player has no skills at all
+	 */
 	if (skillBoxList->size() <= 0) {
 
 		sendSystemMessage("teaching","no_skills");
@@ -587,13 +591,22 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 
 	}
 
+	/*
+	 * Loop through each skill that the player has and filter out accordingly
+	 */
 	for(int i = 0; i < skillBoxList->size(); i++) {
 
 		SkillBox* sBox = skillBoxList->get(i);
 
+		/*
+		 * Players cannot teach novice skill boxes
+		 */
 		if (sBox->isNoviceBox())
 			continue;
 
+		/*
+		 * Players cannot teach jedi skills
+		 */
 		if (sBox->getSkillXpType() == "jedi_general" ||
 			sBox->getSkillXpType() == "space_combat_general" ||
 			sBox->getSkillXpType() == "fs_crafting" ||
@@ -605,12 +618,21 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 			continue;
 		}
 
+		/*
+		 * Cannot teach someone a skill box that they already have
+		 */
 		if (player->hasSkillBox(sBox->getName()))
 			continue;
 
+		/*
+		 * Cannot teach them a skill that they dont have enough xp for
+		 */
 		if (sBox->getSkillXpCost() > ((PlayerObject*)getSlottedObject("ghost"))->getExperience(sBox->getSkillXpType()))
 			continue;
 
+		/*
+		 * Cannot teach someone a skill if they dont have the required skills
+		 */
 		bool hasReqs = true;
 
 		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
@@ -621,8 +643,15 @@ void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
 		}
 
 
+		/*
+		 * Cannot teach someone a skill that is God only or that is Hidden
+		 */
 		if (hasReqs && !sBox->getSkillGodOnly() && !sBox->getSkillIsHidden()) {
 
+			/*
+			 * Lastly, we cannot teach someone the base language skill. Ex. "social_language_basic"
+			 * Only the speak and comprehend skills can be taught.
+			 */
 			if(sBox->getName().indexOf("social") >= 0) {
 
 				if(sBox->getName().indexOf("speak") == -1 && sBox->getName().indexOf("comprehend") == -1)
