@@ -63,6 +63,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+
+class MissionObserver;
+
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/lua/LuaObject.h"

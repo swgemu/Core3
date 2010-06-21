@@ -1883,12 +1883,24 @@ bool SceneObject::isControlDevice() {
 		return ((SceneObjectImplementation*) _impl)->isControlDevice();
 }
 
-ActiveArea* SceneObject::getActiveArea() {
+bool SceneObject::isMissionTerminal() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 139);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isMissionTerminal();
+}
+
+ActiveArea* SceneObject::getActiveArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 140);
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
@@ -2508,8 +2520,13 @@ bool SceneObjectImplementation::isControlDevice() {
 	return false;
 }
 
+bool SceneObjectImplementation::isMissionTerminal() {
+	// server/zone/objects/scene/SceneObject.idl(1284):  		return false;
+	return false;
+}
+
 ActiveArea* SceneObjectImplementation::getActiveArea() {
-	// server/zone/objects/scene/SceneObject.idl(1284):  		return activeArea;
+	// server/zone/objects/scene/SceneObject.idl(1288):  		return activeArea;
 	return activeArea;
 }
 
@@ -2927,6 +2944,9 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isControlDevice());
 		break;
 	case 140:
+		resp->insertBoolean(isMissionTerminal());
+		break;
+	case 141:
 		resp->insertLong(getActiveArea()->_getObjectID());
 		break;
 	default:
@@ -3470,6 +3490,10 @@ bool SceneObjectAdapter::isStaticObject() {
 
 bool SceneObjectAdapter::isControlDevice() {
 	return ((SceneObjectImplementation*) impl)->isControlDevice();
+}
+
+bool SceneObjectAdapter::isMissionTerminal() {
+	return ((SceneObjectImplementation*) impl)->isMissionTerminal();
 }
 
 ActiveArea* SceneObjectAdapter::getActiveArea() {

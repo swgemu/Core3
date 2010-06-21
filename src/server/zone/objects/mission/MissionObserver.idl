@@ -44,28 +44,37 @@ which carries forward this exception.
 
 package server.zone.objects.mission;
 
-import engine.lua.LuaObject;
+import server.zone.objects.scene.Observer;
+import server.zone.objects.scene.Observable;
+import server.zone.objects.mission.MissionObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.intangible.IntangibleObject;
-import server.zone.objects.waypoint.WaypointObject;
-import server.zone.Zone;
 
-include server.zone.objects.scene.variables.StringId;
-import server.zone.objects.mission.MissionObserver;
-
-class SurveyMissionObject extends MissionObject {
-
-	public SurveyMissionObject() {
-		initialize();
-		
-		Logger.setLoggingName("SurveyMissionObject");
+class MissionObserver extends Observer implements Logger {
+	@weakReference
+	protected MissionObject missionObject;
+	
+	protected unsigned int objectiveType;
+	
+	@weakReference
+	protected SceneObject objective;
+	
+	public MissionObserver() {
+		Logger.setLoggingName("MissionObserver");
 	}
 	
-	public void initialize() {
-		super.typeCRC = super.SURVEY;
+	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		return 1;
 	}
 	
-	public boolean isSurveyMission() {
-		return true;
+	public SceneObject getObjective() {
+		return objective;
+	}
+	
+	public MissionObject getMissionObject() {
+		return missionObject;
+	}
+	
+	public unsigned int getObjectiveType() {
+		return objectiveType;
 	}
 }

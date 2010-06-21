@@ -91,6 +91,7 @@ public:
 	const static int DEED = 0x4000006;
 	const static int CRAFTINGTOOL = 0x4000007;
 	const static int CRAFTINGSTATION = 0x4000008;
+	const static int MISSIONTERMINAL = 0x4000009;
 
 public:
 	SharedObjectTemplate() {
@@ -362,6 +363,10 @@ public:
 	}
 
 	virtual bool isSharedInstallationObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isMissionTerminalTemplate() {
 		return false;
 	}
 };

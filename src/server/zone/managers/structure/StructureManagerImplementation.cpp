@@ -255,7 +255,7 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 	StringBuffer query;
 
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
-	query << " AND file = 'object/tangible/terminal/shared_terminal_mission.iff';";
+	query << " AND (file = 'object/tangible/terminal/shared_terminal_mission.iff' OR file = 'object/tangible/terminal/shared_terminal_mission_artisan.iff');";
 
 	ResultSet* result = NULL;
 
@@ -267,10 +267,12 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 		uint64 parentId = 0;
 		uint64 objectID = 0;
 		float positionX, positionZ, positionY;
+		String file;
 
 		while (result->next()) {
 			parentId = result->getUnsignedLong(2);
 			objectID = result->getUnsignedLong(1);
+			file = result->getString(3);
 
 			SceneObject* savedObject = zoneServer->getObject(objectID);
 
@@ -294,6 +296,11 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 				}
 			} else
 				cell = NULL;
+
+			if (file.indexOf("artisan") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_artisan.iff").hashCode();
+			else
+				serverCRC = String("object/tangible/terminal/terminal_mission.iff").hashCode();
 
 			missionTerminal = (MissionTerminal*) zoneServer->createStaticObject(serverCRC, objectID);
 			missionTerminal->setStaticObject(true);

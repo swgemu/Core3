@@ -892,6 +892,8 @@ public:
 
 	bool isControlDevice();
 
+	bool isMissionTerminal();
+
 	ActiveArea* getActiveArea();
 
 protected:
@@ -1675,6 +1677,8 @@ public:
 
 	virtual bool isControlDevice();
 
+	virtual bool isMissionTerminal();
+
 	ActiveArea* getActiveArea();
 
 	SceneObject* _this;
@@ -1981,6 +1985,8 @@ public:
 	bool isStaticObject();
 
 	bool isControlDevice();
+
+	bool isMissionTerminal();
 
 	ActiveArea* getActiveArea();
 

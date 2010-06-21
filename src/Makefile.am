@@ -133,6 +133,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
 				server/zone/managers/bazaar/BazaarManager.cpp \
 				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
+				server/zone/managers/mission/MissionManager.cpp \
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/CraftingStation.cpp \
@@ -154,6 +155,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
+				server/zone/objects/mission/MissionObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
 				server/zone/objects/tangible/ticket/TicketObject.cpp \
@@ -271,6 +273,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
 		server/zone/managers/templates/TemplateManager.cpp \
+		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \

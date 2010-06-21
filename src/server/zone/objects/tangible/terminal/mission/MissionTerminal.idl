@@ -48,11 +48,32 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
+include server.zone.templates.tangible.MissionTerminalTemplate;
 import server.zone.Zone;
 
 class MissionTerminal extends Terminal {
+	protected string terminalType;
+	
 	public MissionTerminal() {
 		Logger.setLoggingName("MissionTerminal");
+	}
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		if (!templateData.isMissionTerminalTemplate())
+			return;
+		
+		MissionTerminalTemplate templ = (MissionTerminalTemplate) templateData;
+		
+		terminalType = templ.getMissionTerminalType();
 	}
 	
 	public void initializeTransientMembers() {
@@ -60,4 +81,17 @@ class MissionTerminal extends Terminal {
 		
 		Logger.setLoggingName("MissionTerminal");
 	}
+	
+	public boolean isMissionTerminal() {
+		return true;
+	}
+	
+	public boolean isArtisanTerminal() {
+		return terminalType == "artisan";
+	}
+	
+	public boolean isGeneralTerminal() {
+		return terminalType == "general";
+	}
+	
 }

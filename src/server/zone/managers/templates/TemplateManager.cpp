@@ -41,6 +41,7 @@
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
+#include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -129,6 +130,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
 	templateFactory.registerObject<ArmorObjectTemplate>(SharedObjectTemplate::ARMOROBJECT);
 	templateFactory.registerObject<DeedTemplate>(SharedObjectTemplate::DEED);
+	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
+
 }
 
 
@@ -230,6 +233,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
 	luaTemplatesInstance->setGlobalInt("ARMOROBJECT", SharedObjectTemplate::ARMOROBJECT);
 	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
+	luaTemplatesInstance->setGlobalInt("MISSIONTERMINAL", SharedObjectTemplate::MISSIONTERMINAL);
 }
 
 int TemplateManager::includeFile(lua_State* L) {
