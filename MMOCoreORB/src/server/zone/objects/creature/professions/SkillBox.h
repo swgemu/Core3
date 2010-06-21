@@ -146,12 +146,20 @@ namespace server {
 			skillGodOnly = god;
 		}
 
+		bool getSkillGodOnly() {
+			return skillGodOnly;
+		}
+
 		void setSkillIsTitle(bool title) {
 			skillIsTitle = title;
 		}
 
 		void setSkillIsHidden(bool isHidden) {
 			skillIsHidden = isHidden;
+		}
+
+		bool getSkillIsHidden() {
+			return skillIsHidden;
 		}
 
 		void setSkillMoneyRequired(int money) {

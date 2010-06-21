@@ -152,6 +152,8 @@ namespace server {
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
 
+		bool playerTeachSkill(const String& name, PlayerCreature* player);
+
 		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
 
 		inline void awardSkillBox(const String& skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
@@ -165,7 +167,6 @@ namespace server {
 
 		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
-
 
 		Skill* getSkill(const String& name);
 

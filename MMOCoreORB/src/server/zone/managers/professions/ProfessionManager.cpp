@@ -48,6 +48,8 @@ which carries forward this exception.
 
 /*#include "../../objects/player/Player.h"
 #include "../../objects/player/PlayerImplementation.h"*/
+#include "../../managers/player/PlayerManager.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 //#include "../skills/SkillManager.h
 #include "../objectcontroller/ObjectController.h"
@@ -475,6 +477,103 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* pl
 	return true;
 }
 */
+
+bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* player) {
+
+	PlayerObject* playo = (PlayerObject*)player->getSlottedObject("ghost");
+
+	/*
+	 * Make sure that they didnt lose the necessary exprience after someone opened the training sui
+	 */
+	if (getSkillBox(name)->getSkillXpCost() > playo->getExperience(getSkillBox(name)->getSkillXpType())) {
+
+		ParameterizedStringId message("skill_teacher","prose_train_failed");
+		message.setTT(player->getTeacher()->getFirstName());
+		message.setTO("skl_n", name);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		player->sendMessage(sysMessage);
+
+		player->getTeacher()->setStudent(NULL);
+		player->getTeacher()->setTeacher(NULL);
+		player->setTeacher(NULL);
+		player->setStudent(NULL);
+
+		return false;
+	}
+
+	/*
+	 * Make sure they didnt drop any required skills after someone opened the training sui
+	 */
+	for (int j = 0; j < getSkillBox(name)->getRequiredSkillsSize(); j++) {
+			if (!player->hasSkillBox(getSkillBox(name)->getRequiredSkill(j)->getName())) {
+
+				ParameterizedStringId message("skill_teacher","prose_train_failed");
+				message.setTT(player->getTeacher()->getFirstName());
+				message.setTO("skl_n", name);
+				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+				player->sendMessage(sysMessage);
+
+				player->getTeacher()->setStudent(NULL);
+				player->getTeacher()->setTeacher(NULL);
+				player->setTeacher(NULL);
+				player->setStudent(NULL);
+			}
+	}
+
+	/*
+	 * Make sure they actually get trained before removing xp
+	 */
+	if( !trainSkillBox(name, player, true) ) {
+
+		ParameterizedStringId message("skill_teacher","prose_train_failed");
+		message.setTT(player->getTeacher()->getFirstName());
+		message.setTO("skl_n", name);
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		player->sendMessage(sysMessage);
+
+		player->getTeacher()->setStudent(NULL);
+		player->getTeacher()->setTeacher(NULL);
+		player->setTeacher(NULL);
+		player->setStudent(NULL);
+
+		return false;
+
+	}
+
+	playo->addExperience(getSkillBox(name)->getSkillXpType(), (-1) * getSkillBox(name)->getSkillXpCost(), true);
+
+	ParameterizedStringId message("teaching","student_skill_learned");
+	message.setTT(player->getTeacher()->getFirstName());
+	message.setTO("skl_n", name);
+	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+	player->sendMessage(sysMessage);
+
+	ParameterizedStringId message2("teaching","teacher_skill_learned");
+	message2.setTT(player->getFirstName());
+	message2.setTO("skl_n", name);
+	ChatSystemMessage* sysMessage2 = new ChatSystemMessage(message2);
+	player->getTeacher()->sendMessage(sysMessage2);
+
+	int xp = 0;
+	String xpType("apprenticeship");
+
+	if ( getSkillBox(name)->isMasterBox())
+		xp = 60;
+	else {
+		char tier = name.charAt(name.length()-1);
+		xp = ((tier-'0') + 1) * 10;
+	}
+
+	player->getZoneServer()->getPlayerManager()->awardExperience(player->getTeacher(), xpType, xp);
+
+	player->getTeacher()->setStudent(NULL);
+	player->getTeacher()->setTeacher(NULL);
+	player->setTeacher(NULL);
+	player->setStudent(NULL);
+
+	return true;
+
+}
 
 bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
@@ -977,3 +1076,4 @@ uint8 ProfessionManager::getLangFromRace(int race) {
 
 	return 1;
 }
+
