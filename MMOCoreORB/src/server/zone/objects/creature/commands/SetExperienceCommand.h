@@ -66,12 +66,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer args(arguments.toString());
-
 		try {
 
-			if(creature->isPlayerCreature()) {
-				PlayerCreature* player = (PlayerCreature*) creature;
+			StringTokenizer args(arguments.toString());
+
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+			if (object == NULL)
+				return GENERALERROR;
+
+
+			if (object->isPlayerCreature()) {
+
+				PlayerCreature* player = (PlayerCreature*) object.get();
 
 				String xpType;
 				args.getStringToken(xpType);

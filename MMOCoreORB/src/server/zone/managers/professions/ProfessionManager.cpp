@@ -490,8 +490,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 		ParameterizedStringId message("skill_teacher","prose_train_failed");
 		message.setTT(player->getTeacher()->getFirstName());
 		message.setTO("skl_n", name);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		player->sendMessage(sysMessage);
+		player->sendSystemMessage(message);
 
 		player->getTeacher()->setStudent(NULL);
 		player->getTeacher()->setTeacher(NULL);
@@ -510,8 +509,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 				ParameterizedStringId message("skill_teacher","prose_train_failed");
 				message.setTT(player->getTeacher()->getFirstName());
 				message.setTO("skl_n", name);
-				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-				player->sendMessage(sysMessage);
+				player->sendSystemMessage(message);
 
 				player->getTeacher()->setStudent(NULL);
 				player->getTeacher()->setTeacher(NULL);
@@ -528,8 +526,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 		ParameterizedStringId message("skill_teacher","prose_train_failed");
 		message.setTT(player->getTeacher()->getFirstName());
 		message.setTO("skl_n", name);
-		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-		player->sendMessage(sysMessage);
+		player->sendSystemMessage(message);
 
 		player->getTeacher()->setStudent(NULL);
 		player->getTeacher()->setTeacher(NULL);
@@ -545,14 +542,12 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 	ParameterizedStringId message("teaching","student_skill_learned");
 	message.setTT(player->getTeacher()->getFirstName());
 	message.setTO("skl_n", name);
-	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-	player->sendMessage(sysMessage);
+	player->sendSystemMessage(message);
 
 	ParameterizedStringId message2("teaching","teacher_skill_learned");
 	message2.setTT(player->getFirstName());
 	message2.setTO("skl_n", name);
-	ChatSystemMessage* sysMessage2 = new ChatSystemMessage(message2);
-	player->getTeacher()->sendMessage(sysMessage2);
+	player->getTeacher()->sendSystemMessage(message2);
 
 	int xp = 0;
 	String xpType("apprenticeship");

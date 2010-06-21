@@ -210,8 +210,12 @@ namespace server {
 			return skillMods.get(mod);
 		}
 
-		inline void getRequiredSpeces(String& race, int index) {
+		inline void getRequiredSpecies(String& race, int index) {
 			race = skillSpeciesRequired.get(index);
+		}
+
+		inline int getRequiredSpeciesSize() {
+			return skillSpeciesRequired.size();
 		}
 
 		void setSkillXpType(const String& skill) {
