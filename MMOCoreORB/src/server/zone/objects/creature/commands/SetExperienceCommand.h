@@ -46,6 +46,9 @@ which carries forward this exception.
 #define SETEXPERIENCECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../player/PlayerCreature.h"
+#include "../../player/PlayerObject.h"
+#include "../../../managers/player/PlayerManager.h"
 
 class SetExperienceCommand : public QueueCommand {
 public:
@@ -62,6 +65,27 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer args(arguments.toString());
+
+		try {
+
+			if(creature->isPlayerCreature()) {
+				PlayerCreature* player = (PlayerCreature*) creature;
+
+				String xpType;
+				args.getStringToken(xpType);
+				int amount = args.getIntToken();
+
+				int num = ((PlayerObject*)player->getSlottedObject("ghost"))->getExperience(xpType);
+				amount -= num;
+				player->getZoneServer()->getPlayerManager()->awardExperience(player, xpType, amount);
+
+			}
+		} catch (...) {
+			creature->sendSystemMessage("invalid arguments for setExperience command");
+		}
+
 
 		return SUCCESS;
 	}
