@@ -15,6 +15,8 @@
 #include "server/zone/packets/zone/ParametersMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/player/BadgesResponseMessage.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -23,6 +25,8 @@
 #include "events/PlayerRecoveryEvent.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
@@ -438,6 +442,26 @@ void PlayerCreatureImplementation::sendMessage(BasePacket* msg) {
 	}
 }
 
+void PlayerCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+
+	if (group != NULL) {
+		if (group->hasMember(player))
+			menuResponse->addRadialMenuItem(51, 51, "@sui:teach"); //TODO:find the stf
+	}
+
+}
+
+int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+
+	switch(selectedID) {
+	case 51:
+			player->teachPlayer(_this);
+		break;
+	}
+
+	return 0;
+}
+
 void PlayerCreatureImplementation::insertToBuilding(BuildingObject * building) {
 	SceneObjectImplementation::insertToBuilding(building);
 	building->onEnter(_this);
@@ -542,3 +566,104 @@ void PlayerCreatureImplementation::awardBadge(uint32 badge) {
 	playerManager->awardBadge(_this, badge);
 }
 
+void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
+	//pre: _this and player are wlocked
+	//post: _this and player are wlocked
+	if (teachingSkillList.size() > 0) {
+
+		sendSystemMessage("teaching","teaching_failed");
+		return;
+
+	}
+
+	Vector<SkillBox*> trainableBoxes;
+
+	SkillBoxList* skillBoxList = getSkillBoxList();
+
+	if (skillBoxList->size() <= 0) {
+
+		sendSystemMessage("teaching","no_skills");
+		return;
+
+	}
+
+	for(int i = 0; i < skillBoxList->size(); i++) {
+
+		SkillBox* sBox = skillBoxList->get(i);
+
+		if (sBox->isNoviceBox())
+			continue;
+
+		if (sBox->getSkillXpType() == "jedi_general" ||
+			sBox->getSkillXpType() == "space_combat_general" ||
+			sBox->getSkillXpType() == "fs_crafting" ||
+			sBox->getSkillXpType() == "fs_combat" ||
+			sBox->getSkillXpType() == "fs_reflex" ||
+			sBox->getSkillXpType() == "fs_senses" ||
+			sBox->getSkillXpType() == "force_rank_xp") {
+
+			continue;
+		}
+
+		if (player->hasSkillBox(sBox->getName()))
+			continue;
+
+		if (sBox->getSkillXpCost() > ((PlayerObject*)getSlottedObject("ghost"))->getExperience(sBox->getSkillXpType()))
+			continue;
+
+		bool hasReqs = true;
+
+		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
+
+				if (!player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
+						hasReqs = false;
+
+		}
+
+
+		if (hasReqs && !sBox->getSkillGodOnly() && !sBox->getSkillIsHidden()) {
+
+			if(sBox->getName().indexOf("social") >= 0) {
+
+				if(sBox->getName().indexOf("speak") == -1 && sBox->getName().indexOf("comprehend") == -1)
+					continue;
+			}
+
+			trainableBoxes.add(sBox);
+
+		}
+
+	}
+
+	//we want to make sure we're still in the group with them
+	if ( (trainableBoxes.size() > 0) && (group != NULL) && (group->hasMember(player)) ) {
+
+		setStudent(player);
+		player->setTeacher(_this);
+
+		SuiListBox* sbox = new SuiListBox(player, SuiWindowType::TEACH_PLAYER);
+		sbox->setPromptTitle("@sui:teach");
+		sbox->setPromptText("What would you like to teach?");
+		sbox->setCancelButton(true, "");
+
+		for (int i = 0; i < trainableBoxes.size(); i++) {
+
+			StringBuffer skillboxname;
+			skillboxname << "@skl_n:" << trainableBoxes.get(i)->getName();
+			sbox->addMenuItem(skillboxname.toString());
+			teachingSkillList.add(trainableBoxes.get(i));
+		}
+
+		addSuiBox(sbox);
+		sendMessage(sbox->generateMessage());
+
+	} else {
+
+		ParameterizedStringId message("teaching","no_skills_for_student");
+		message.setTT(player->getFirstName());
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
+		sendMessage(sysMessage);
+
+	}
+
+}

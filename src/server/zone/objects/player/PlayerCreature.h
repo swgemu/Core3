@@ -203,6 +203,36 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace professions {
+
+class SkillBox;
+
+} // namespace professions
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::professions;
+
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
@@ -275,6 +305,10 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void insertToBuilding(BuildingObject* building);
 
@@ -452,6 +486,24 @@ public:
 
 	void clearTradeContainer();
 
+	void teachPlayer(PlayerCreature* player);
+
+	PlayerCreature* getTeacher();
+
+	PlayerCreature* getStudent();
+
+	void setTeacher(PlayerCreature* pTeacher);
+
+	void setStudent(PlayerCreature* pStudent);
+
+	const String getTeachingSkillOption(int index);
+
+	void clearTeachingSkillOptions();
+
+	String getTeachingOffer();
+
+	void setTeachingOffer(const String& name);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -474,6 +526,7 @@ protected:
 	String _return_getLastNpcConvMessStr;
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
+	String _return_getTeachingOffer;
 
 	UnicodeString _return_getBiography;
 
@@ -527,6 +580,14 @@ protected:
 	PlayerRecoveryEvent* recoveryEvent;
 
 	int skillPoints;
+
+	ManagedReference<PlayerCreature* > teacher;
+
+	ManagedReference<PlayerCreature* > student;
+
+	Vector<SkillBox*> teachingSkillList;
+
+	String teachingOffer;
 
 	Badges badges;
 
@@ -601,6 +662,10 @@ public:
 
 	void doRecovery();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void insertToBuilding(BuildingObject* building);
 
 	void removeFromBuilding(BuildingObject* building);
@@ -777,6 +842,24 @@ public:
 
 	void clearTradeContainer();
 
+	void teachPlayer(PlayerCreature* player);
+
+	PlayerCreature* getTeacher();
+
+	PlayerCreature* getStudent();
+
+	void setTeacher(PlayerCreature* pTeacher);
+
+	void setStudent(PlayerCreature* pStudent);
+
+	const String getTeachingSkillOption(int index);
+
+	void clearTeachingSkillOptions();
+
+	String getTeachingOffer();
+
+	void setTeachingOffer(const String& name);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -843,6 +926,8 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void insertToBuilding(BuildingObject* building);
 
@@ -1016,6 +1101,16 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
+	void teachPlayer(PlayerCreature* player);
+
+	void setTeacher(PlayerCreature* pTeacher);
+
+	void setStudent(PlayerCreature* pStudent);
+
+	void clearTeachingSkillOptions();
+
+	void setTeachingOffer(const String& name);
+
 	WaypointObject* getSurveyWaypoint();
 
 	CreatureObject* getConversatingCreature();
@@ -1032,6 +1127,7 @@ protected:
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
+	String _param0_setTeachingOffer__String_;
 };
 
 class PlayerCreatureHelper : public DistributedObjectClassHelper, public Singleton<PlayerCreatureHelper> {

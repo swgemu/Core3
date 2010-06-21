@@ -125,9 +125,8 @@ void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool 
 			qual = false;
 		}
 
-		//TODO: uncomment when xp is working
-		/*if (checkXp && (skillBox->getSkillXpCost() > playerObject->getExperience(skillBox->getSkillXpType())))
-			qual = false;*/
+		if (checkXp && (skillBox->getSkillXpCost() > playerObject->getExperience(skillBox->getSkillXpType())))
+			qual = false;
 
 		for (int j = 0; (qual == true) && (j < skillBox->getRequiredSkillsSize()); j++) {
 			String skillname;
@@ -313,11 +312,10 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 
 				PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
-				//TODO: uncomment when xp is working
-				/*if (sBox->getSkillXpCost() > playerObject->getExperience(sBox->getSkillXpType())) {
+				if (sBox->getSkillXpCost() > playerObject->getExperience(sBox->getSkillXpType())) {
 					params.setStringId(stffile, "prose_train_failed");
 					player->sendSystemMessage(params);
-				} else */ if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
+				} else if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
 					params.setDI(sp);
 					if (player->getSkillPoints() != 250) {
 						params.setStringId(stffile, "nsf_skill_points");
