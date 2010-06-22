@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
@@ -413,7 +414,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 		// Create new waypoint
 		if (waypoint == NULL)
-			newwaypoint = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+			newwaypoint = (WaypointObject*) server->createObject(3038003230, 1);
 		else {
 			playerCreature->getPlayerObject()->removeWaypoint(waypoint->getObjectID(), true);
 			newwaypoint = waypoint.get();
@@ -556,6 +557,8 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* playerCreature, const fl
 
 	PlayerManager* playerManager = server->getPlayerManager();
 	playerManager->awardExperience(playerCreature, "resource_harvesting_inorganic", 15);
+
+	playerCreature->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density * 100);
 
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory =

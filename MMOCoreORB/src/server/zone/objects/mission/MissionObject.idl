@@ -52,17 +52,23 @@ import server.zone.Zone;
 
 include server.zone.objects.scene.variables.StringId;
 import server.zone.objects.mission.MissionObserver;
+import server.zone.objects.player.PlayerCreature;
+import system.util.SortedVector;
+import server.zone.objects.mission.MissionObjective;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
 	
-	protected MissionObserver missionObserver;
+	protected MissionObjective missionObjective;
 	
 	protected unsigned int typeCRC;
 	protected int difficultyLevel;
-	//protected SceneObject missionTarget;
 	protected unicode creatorName;
 	protected int rewardCredits;
+	
+	protected float startPositionX;
+	protected float startPositionY;
+	protected unsigned int startPlanetCRC;
 	
 	@dereferenced
 	protected StringId missionDescription;
@@ -74,8 +80,7 @@ class MissionObject extends IntangibleObject {
 	
 	protected string targetName;
 	
-	protected unsigned int targetTemplateCRC;
-	
+	protected unsigned int targetTemplateCRC;	
 	
 	public static final int DESTROY = 0x74EF9BE3;
 	public static final int BOUNTY = 0x2904F372;
@@ -103,8 +108,30 @@ class MissionObject extends IntangibleObject {
 		
 		rewardCredits = 100;
 		
+		startPositionX = 0;
+		startPositionY = 0;
+		startPlanetCRC = 0;
+		
 		Logger.setLoggingName("MissionObject");
 	}
+	
+	public native void createWaypoint();
+	
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	public native void setRefreshCounter(int ctr, boolean notifyClient = true);
 	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
@@ -112,9 +139,43 @@ class MissionObject extends IntangibleObject {
 	public native void initializeTransientMembers();
 	public native void sendBaselinesTo(SceneObject player);
 	
+	public native void setMissionDescription(final string file, final string id, boolean notifyClient = true);
+	public native void setMissionTitle(final string file, final string id, boolean notifyClient = true);
+	public native void setMissionTargetName(final string target, boolean notifyClient = true);
+	public native void setMissionDifficulty(int difficulty, boolean notifyClient = true);
+	public native void setRewardCredits(int creds, boolean notifyClient = true);
+	public native void setTargetTemplateCRC(unsigned int crc, boolean notifyClient = true);
+	//public native void setMissionTarget(SceneObject target);
+	public native void setStartPosition(float posX, float posY, unsigned int planetCRC, boolean notifyClient = true);
+	
+	public void abort() {
+		if (missionObjective != null)
+			missionObjective.abort();
+	}
+	
+	public void setMissionObjective(MissionObjective obj) {
+		missionObjective = obj;
+	}
+	
+	public float getStartPositionX() {
+		return startPositionX;
+	}
+	
+	public float getStartPositionY() {
+		return startPositionY;
+	}
+	
+	public unsigned int getStartPlanetCRC() {
+		return startPlanetCRC;
+	}
+	
 	public WaypointObject getWaypointToMission() {
 		return waypointToMission;
 	}
+	
+	/*public SceneObject getMissionTarget() {
+		return missionTarget;
+	}*/
 	
 	public unsigned int getTypeCRC() {
 		return typeCRC;
@@ -154,7 +215,11 @@ class MissionObject extends IntangibleObject {
 		return targetTemplateCRC;
 	}
 	
-	public abstract boolean isSurveyMission() {
-		return false;
+	public boolean isSurveyMission() {
+		return typeCRC == this.SURVEY;
+	}
+	
+	public boolean isMissionObject() {
+		return true;
 	}
 }

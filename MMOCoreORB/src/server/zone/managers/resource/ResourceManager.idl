@@ -102,6 +102,8 @@ class ResourceManager extends Observer implements Lua {
 	
 	public native void createResourceSpawn(PlayerCreature playerCreature, final string restype);
 	
+	public native ResourceSpawn getResourceSpawn(final string spawnName);
+	
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();

@@ -292,12 +292,24 @@ void ResourceSpawn::setContainerCRC(unsigned int crc) {
 		((ResourceSpawnImplementation*) _impl)->setContainerCRC(crc);
 }
 
-int ResourceSpawn::getSpawnPool() {
+unsigned int ResourceSpawn::getContainerCRC() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 26);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->getContainerCRC();
+}
+
+int ResourceSpawn::getSpawnPool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -309,7 +321,7 @@ bool ResourceSpawn::isEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -321,7 +333,7 @@ int ResourceSpawn::getZoneRestriction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -333,7 +345,7 @@ int ResourceSpawn::getSurveyToolType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -345,7 +357,7 @@ int ResourceSpawn::getSpawnMapSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -357,7 +369,7 @@ void ResourceSpawn::extractResource(int zoneid, int units) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addSignedIntParameter(zoneid);
 		method.addSignedIntParameter(units);
 
@@ -371,7 +383,7 @@ ResourceContainer* ResourceSpawn::createResource(int units) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addSignedIntParameter(units);
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
@@ -403,6 +415,18 @@ void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, int zone
 		((ResourceSpawnImplementation*) _impl)->createSpawnMaps(jtl, minpool, maxpool, zonerestriction, activeZones);
 }
 
+unsigned int ResourceSpawn::getPlanetCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((ResourceSpawnImplementation*) _impl)->getPlanetCRC();
+}
+
 float ResourceSpawn::getDensityAt(int zoneid, float x, float y) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -432,7 +456,7 @@ int ResourceSpawn::getAttributeValue(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -546,7 +570,7 @@ ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	unitsInCirculation = 0;
 	// server/zone/objects/resource/ResourceSpawn.idl(99):   	maxUnitsSpawned = 0;
 	maxUnitsSpawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(100):   	containerCRC= 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(100):   	containerCRC = 0;
 	containerCRC = 0;
 	// server/zone/objects/resource/ResourceSpawn.idl(101):   	spawned = 0;
 	spawned = 0;
@@ -697,33 +721,38 @@ void ResourceSpawnImplementation::setContainerCRC(unsigned int crc) {
 	containerCRC = crc;
 }
 
+unsigned int ResourceSpawnImplementation::getContainerCRC() {
+	// server/zone/objects/resource/ResourceSpawn.idl(235):   	return containerCRC;
+	return containerCRC;
+}
+
 int ResourceSpawnImplementation::getSpawnPool() {
-	// server/zone/objects/resource/ResourceSpawn.idl(235):   	return spawnPool;
+	// server/zone/objects/resource/ResourceSpawn.idl(239):   	return spawnPool;
 	return spawnPool;
 }
 
 bool ResourceSpawnImplementation::isEnergy() {
-	// server/zone/objects/resource/ResourceSpawn.idl(239):   	return energy;
+	// server/zone/objects/resource/ResourceSpawn.idl(243):   	return energy;
 	return energy;
 }
 
 int ResourceSpawnImplementation::getZoneRestriction() {
-	// server/zone/objects/resource/ResourceSpawn.idl(243):   	return zoneRestriction;
+	// server/zone/objects/resource/ResourceSpawn.idl(247):   	return zoneRestriction;
 	return zoneRestriction;
 }
 
 int ResourceSpawnImplementation::getSurveyToolType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(247):   	return surveyToolType;
+	// server/zone/objects/resource/ResourceSpawn.idl(251):   	return surveyToolType;
 	return surveyToolType;
 }
 
 int ResourceSpawnImplementation::getSpawnMapSize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(251):   	return spawnMaps.size();
+	// server/zone/objects/resource/ResourceSpawn.idl(255):   	return spawnMaps.size();
 	return (&spawnMaps)->size();
 }
 
 int ResourceSpawnImplementation::getAttributeValue(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(284):   	return spawnAttributes.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(290):   	return spawnAttributes.get(index);
 	return (&spawnAttributes)->get(index);
 }
 
@@ -802,27 +831,33 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setContainerCRC(inv->getUnsignedIntParameter());
 		break;
 	case 27:
-		resp->insertSignedInt(getSpawnPool());
+		resp->insertInt(getContainerCRC());
 		break;
 	case 28:
-		resp->insertBoolean(isEnergy());
+		resp->insertSignedInt(getSpawnPool());
 		break;
 	case 29:
-		resp->insertSignedInt(getZoneRestriction());
+		resp->insertBoolean(isEnergy());
 		break;
 	case 30:
-		resp->insertSignedInt(getSurveyToolType());
+		resp->insertSignedInt(getZoneRestriction());
 		break;
 	case 31:
-		resp->insertSignedInt(getSpawnMapSize());
+		resp->insertSignedInt(getSurveyToolType());
 		break;
 	case 32:
-		extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(getSpawnMapSize());
 		break;
 	case 33:
-		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
+		extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 34:
+		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 35:
+		resp->insertInt(getPlanetCRC());
+		break;
+	case 36:
 		resp->insertSignedInt(getAttributeValue(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -916,6 +951,10 @@ void ResourceSpawnAdapter::setContainerCRC(unsigned int crc) {
 	((ResourceSpawnImplementation*) impl)->setContainerCRC(crc);
 }
 
+unsigned int ResourceSpawnAdapter::getContainerCRC() {
+	return ((ResourceSpawnImplementation*) impl)->getContainerCRC();
+}
+
 int ResourceSpawnAdapter::getSpawnPool() {
 	return ((ResourceSpawnImplementation*) impl)->getSpawnPool();
 }
@@ -942,6 +981,10 @@ void ResourceSpawnAdapter::extractResource(int zoneid, int units) {
 
 ResourceContainer* ResourceSpawnAdapter::createResource(int units) {
 	return ((ResourceSpawnImplementation*) impl)->createResource(units);
+}
+
+unsigned int ResourceSpawnAdapter::getPlanetCRC() {
+	return ((ResourceSpawnImplementation*) impl)->getPlanetCRC();
 }
 
 int ResourceSpawnAdapter::getAttributeValue(int index) {

@@ -58,6 +58,68 @@ public:
 		miso = mi;
 	}
 
+	void updateDescriptionStf(StringId* stringId) {
+		startUpdate(0x0B);
+
+		insertAscii(stringId->getFile());
+		insertInt(0);
+		insertAscii(stringId->getStringID());
+	}
+
+	void updateTitleStf(StringId* stringId) {
+		startUpdate(0x0C);
+
+		insertAscii(stringId->getFile());
+		insertInt(0);
+		insertAscii(stringId->getStringID());
+	}
+
+	void updateTargetName(const String& name) {
+		startUpdate(0x0F);
+
+		insertAscii(name);
+	}
+
+	void updateDifficultyLevel(int diff) {
+		startUpdate(0x05);
+
+		insertInt(diff);
+	}
+
+	void updateRewardCredits(int creds) {
+		startUpdate(0x08);
+
+		insertInt(creds);
+	}
+
+	void updateRefreshCount(uint32 trc) {
+		startUpdate(0x0D);
+
+		//insertInt(miso->getRefreshCount());
+		insertInt(trc);
+	}
+
+	void updateTypeCRC(uint32 crc) {
+		startUpdate(0x0E);
+
+		insertInt(crc);
+	}
+
+	void updateTemplateCRC(uint32 crc) {
+		startUpdate(0x0A);
+
+		insertInt(crc);
+	}
+
+	void updateStartPosition(float posX, float posY, uint32 crc) {
+		startUpdate(0x09);
+
+		insertFloat(posX);
+		insertFloat(0.0f);
+		insertFloat(posY);
+		insertLong(0); //?
+		insertInt(crc);
+	}
 
 	//Description Key
 	/*void updateDescKey() {
@@ -73,11 +135,7 @@ public:
 		insertInt(miso->getTitleKey()); //make sure this isnt being reversed! like m27t -> t72m
 	}
 
-	void updateDifficultyLv() {
-		startUpdate(0x05);
 
-		insertInt(miso->getDifficultyLevel());
-	}
 
 	void updateDestination() {
 		startUpdate(0x06);
@@ -95,21 +153,9 @@ public:
 		insertUnicode(miso->getCreatorName());
 	}
 
-	void updateRewardCredits() {
-		startUpdate(0x08);
 
-		insertInt(miso->getRewardCredits());
-	}
 
-	void updateTarget() {
-		startUpdate(0x09);
 
-		insertFloat(miso->getTargetX());
-		insertFloat(0.0f);
-		insertFloat(miso->getTargetY());
-		insertLong(0); //?
-		insertInt(miso->getTargetPlanetCrc());
-	}
 
 	void updateDepictedObject() {
 		startUpdate(0x0A);
@@ -117,44 +163,12 @@ public:
 		insertInt(miso->getDepictedObjCrc());
 	}
 
-	void updateDescriptionStf(bool isStf) {
-		startUpdate(0x0B);
 
-		if (!isStf) {
-			insertShort(0); //No stf String
-			insertInt(0);
-			insertAscii(miso->getDescriptionStf());
-		} else {
-			insertAscii(miso->getDescriptionStf());
-			insertInt(0);
-		}
-	}
 
-	void updateTitleStf(bool isStf) {
-		startUpdate(0x0C);
 
-		if (!isStf) {
-			insertShort(0); //No stf String
-			insertInt(0);
-			insertAscii(miso->getTitleStf());
-		} else {
-			insertAscii(miso->getTitleStf());
-			insertInt(0);
-		}
 	}*/
 
-	void updateRefreshCount(uint32 trc) {
-		startUpdate(0x0D);
 
-		//insertInt(miso->getRefreshCount());
-		insertInt(trc);
-	}
-
-	void updateTypeCRC(uint32 crc) {
-		startUpdate(0x0E);
-
-		insertInt(crc);
-	}
 };
 
 #endif /*MISSIONOBJECTDELTAMESSAGE3_H_*/

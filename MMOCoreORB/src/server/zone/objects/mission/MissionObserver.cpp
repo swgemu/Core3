@@ -8,14 +8,16 @@
 
 #include "server/zone/objects/mission/MissionObject.h"
 
+#include "server/zone/objects/mission/MissionObjective.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 /*
  *	MissionObserverStub
  */
 
-MissionObserver::MissionObserver() : Observer(DummyConstructorParameter::instance()) {
-	_impl = new MissionObserverImplementation();
+MissionObserver::MissionObserver(MissionObjective* objective) : Observer(DummyConstructorParameter::instance()) {
+	_impl = new MissionObserverImplementation(objective);
 	_impl->_setStub(this);
 }
 
@@ -42,40 +44,16 @@ int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* obs
 		return ((MissionObserverImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-SceneObject* MissionObserver::getObjective() {
+void MissionObserver::destroyObjectFromDatabase() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((MissionObserverImplementation*) _impl)->getObjective();
-}
-
-MissionObject* MissionObserver::getMissionObject() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		return (MissionObject*) method.executeWithObjectReturn();
-	} else
-		return ((MissionObserverImplementation*) _impl)->getMissionObject();
-}
-
-unsigned int MissionObserver::getObjectiveType() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((MissionObserverImplementation*) _impl)->getObjectiveType();
+		((MissionObserverImplementation*) _impl)->destroyObjectFromDatabase();
 }
 
 /*
@@ -145,35 +123,15 @@ void MissionObserverImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionObserver");
 
-	addSerializableVariable("missionObject", &missionObject);
-	addSerializableVariable("objectiveType", &objectiveType);
-	addSerializableVariable("objective", &objective);
+	addSerializableVariable("missionObjective", &missionObjective);
 }
 
-MissionObserverImplementation::MissionObserverImplementation() {
+MissionObserverImplementation::MissionObserverImplementation(MissionObjective* objective) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObserver.idl(62):  		Logger.setLoggingName("MissionObserver");
+	// server/zone/objects/mission/MissionObserver.idl(58):  		missionObjective = objective;
+	missionObjective = objective;
+	// server/zone/objects/mission/MissionObserver.idl(60):  		Logger.setLoggingName("MissionObserver");
 	Logger::setLoggingName("MissionObserver");
-}
-
-int MissionObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/mission/MissionObserver.idl(66):  		return 1;
-	return 1;
-}
-
-SceneObject* MissionObserverImplementation::getObjective() {
-	// server/zone/objects/mission/MissionObserver.idl(70):  		return objective;
-	return objective;
-}
-
-MissionObject* MissionObserverImplementation::getMissionObject() {
-	// server/zone/objects/mission/MissionObserver.idl(74):  		return missionObject;
-	return missionObject;
-}
-
-unsigned int MissionObserverImplementation::getObjectiveType() {
-	// server/zone/objects/mission/MissionObserver.idl(78):  		return objectiveType;
-	return objectiveType;
 }
 
 /*
@@ -191,13 +149,7 @@ Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	case 7:
-		resp->insertLong(getObjective()->_getObjectID());
-		break;
-	case 8:
-		resp->insertLong(getMissionObject()->_getObjectID());
-		break;
-	case 9:
-		resp->insertInt(getObjectiveType());
+		destroyObjectFromDatabase();
 		break;
 	default:
 		return NULL;
@@ -210,16 +162,8 @@ int MissionObserverAdapter::notifyObserverEvent(unsigned int eventType, Observab
 	return ((MissionObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-SceneObject* MissionObserverAdapter::getObjective() {
-	return ((MissionObserverImplementation*) impl)->getObjective();
-}
-
-MissionObject* MissionObserverAdapter::getMissionObject() {
-	return ((MissionObserverImplementation*) impl)->getMissionObject();
-}
-
-unsigned int MissionObserverAdapter::getObjectiveType() {
-	return ((MissionObserverImplementation*) impl)->getObjectiveType();
+void MissionObserverAdapter::destroyObjectFromDatabase() {
+	((MissionObserverImplementation*) impl)->destroyObjectFromDatabase();
 }
 
 /*

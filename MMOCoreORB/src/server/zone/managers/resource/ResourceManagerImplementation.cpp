@@ -199,6 +199,24 @@ void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCr
 
 }
 
+ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spawnName) {
+	ResourceSpawn* spawn = NULL;
+
+	rlock();
+
+	try {
+		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
+
+		spawn = resourceMap->get(spawnName);
+	} catch (...) {
+
+	}
+
+	runlock();
+
+	return spawn;
+}
+
 void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid) {
 	list.removeAll();
 

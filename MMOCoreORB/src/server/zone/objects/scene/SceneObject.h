@@ -762,6 +762,8 @@ public:
 
 	String getSlotDescriptor(int idx);
 
+	bool hasSlotDescriptor(const String& descr);
+
 	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
@@ -797,6 +799,8 @@ public:
 	ZoneServer* getZoneServer();
 
 	SceneObject* getRootParent();
+
+	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -888,11 +892,15 @@ public:
 
 	SceneObject* getContainerObject(unsigned long long objectID);
 
+	unsigned int getPlanetCRC();
+
 	bool isStaticObject();
 
 	bool isControlDevice();
 
 	bool isMissionTerminal();
+
+	bool isMissionObject();
 
 	ActiveArea* getActiveArea();
 
@@ -1547,6 +1555,8 @@ public:
 
 	String getSlotDescriptor(int idx);
 
+	bool hasSlotDescriptor(const String& descr);
+
 	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
@@ -1582,6 +1592,8 @@ public:
 	ZoneServer* getZoneServer();
 
 	SceneObject* getRootParent();
+
+	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1673,11 +1685,15 @@ public:
 
 	SceneObject* getContainerObject(unsigned long long objectID);
 
+	virtual unsigned int getPlanetCRC();
+
 	bool isStaticObject();
 
 	virtual bool isControlDevice();
 
 	virtual bool isMissionTerminal();
+
+	virtual bool isMissionObject();
 
 	ActiveArea* getActiveArea();
 
@@ -1864,6 +1880,8 @@ public:
 
 	String getSlotDescriptor(int idx);
 
+	bool hasSlotDescriptor(const String& descr);
+
 	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
@@ -1899,6 +1917,8 @@ public:
 	ZoneServer* getZoneServer();
 
 	SceneObject* getRootParent();
+
+	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1982,11 +2002,15 @@ public:
 
 	SceneObject* getContainerObject(unsigned long long objectID);
 
+	unsigned int getPlanetCRC();
+
 	bool isStaticObject();
 
 	bool isControlDevice();
 
 	bool isMissionTerminal();
+
+	bool isMissionObject();
 
 	ActiveArea* getActiveArea();
 
@@ -1995,6 +2019,7 @@ protected:
 	String _param0_error__String_;
 	String _param1_canAddObject__SceneObject_String_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
+	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;
 	String _param0_setLoggingName__String_;
 };

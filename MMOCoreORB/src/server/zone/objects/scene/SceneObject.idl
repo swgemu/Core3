@@ -1008,6 +1008,15 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public string getSlotDescriptor(int idx) {
 		return slotDescriptors.get(idx);
 	}
+	
+	public boolean hasSlotDescriptor(final string descr) {
+		for (int i = 0; i < slotDescriptors.size(); ++i) {
+			if (slotDescriptors.get(i) == descr)
+				return true;
+		}
+		
+		return false;
+	}
 
 	public SceneObject getSlottedObject(final string slot) {
 		return slottedObjects.get(slot);
@@ -1086,6 +1095,14 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @return returns the parent of all children in the object tree
 	 */
 	public native SceneObject getRootParent();
+	
+	/**
+	 * Returns the parent of object type in the tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return Returns the parent of object type in the tree
+	 */
+	public native SceneObject getParentRecursively(unsigned int gameObjectType);
 
 
 	/**
@@ -1272,6 +1289,8 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return containerObjects.get(objectID);
 	}
 	
+	public abstract native unsigned int getPlanetCRC();
+	
 	public boolean isStaticObject() {
 		return staticObject;
 	}
@@ -1281,6 +1300,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	}
 	
 	public abstract boolean isMissionTerminal() {
+		return false;
+	}
+	
+	public abstract boolean isMissionObject() {
 		return false;
 	}
 	

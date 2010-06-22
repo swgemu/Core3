@@ -134,6 +134,8 @@ public:
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
+	ResourceSpawn* getResourceSpawn(const String& spawnName);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
@@ -191,6 +193,8 @@ public:
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+
+	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
 private:
 	bool loadConfigFile();
@@ -261,12 +265,15 @@ public:
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
+	ResourceSpawn* getResourceSpawn(const String& spawnName);
+
 protected:
 	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
 	String _param1_sendSurvey__PlayerCreature_String_;
 	String _param1_sendSample__PlayerCreature_String_String_;
 	String _param2_sendSample__PlayerCreature_String_String_;
 	String _param1_createResourceSpawn__PlayerCreature_String_;
+	String _param0_getResourceSpawn__String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

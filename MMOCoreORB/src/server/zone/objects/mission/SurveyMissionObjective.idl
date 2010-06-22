@@ -48,25 +48,50 @@ import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
+import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.resource.ResourceSpawn;
 
-class MissionObserver extends Observer implements Logger {
-	@weakReference
-	protected MissionObjective missionObjective;
+class SurveyMissionObjective extends MissionObjective {
+	protected ResourceSpawn spawn;
+	protected unsigned int efficiency;
+	protected SceneObject missionGiver;
 	
-	public MissionObserver(MissionObjective objective) {
-		missionObjective = objective;
+	public SurveyMissionObjective(MissionObject mission) {
+		super(mission);
 		
-		Logger.setLoggingName("MissionObserver");
+		Logger.setLoggingName("SurveyMissionObjective");
+		
+		efficiency = 0;
 	}
 	
-	public abstract native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	public native void finalize() {
+		Logger.info("deleting from memory", true);
+	}
 	
-	/**
-	 * Destroys this object from database
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	public abstract native void destroyObjectFromDatabase();
-
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("MissionObject");
+		
+		activate();
+	}
+	
+	public native void activate();
+	public native void abort();
+	public native void complete();
+	
+	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	
+	public void setSpawn(ResourceSpawn sp) {
+		spawn = sp;
+	}
+	
+	public void setMissionGiver(SceneObject object) {
+		missionGiver = object;
+	}
+	
+	public void setEfficiency(unsigned int eff) {
+		efficiency = eff;
+	}
 }
