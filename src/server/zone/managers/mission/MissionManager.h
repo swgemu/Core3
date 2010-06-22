@@ -82,9 +82,21 @@ public:
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+
+	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+
+	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
 protected:
 	MissionManager(DummyConstructorParameter* param);
@@ -117,9 +129,21 @@ public:
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+
+	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+
+	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
 	MissionManager* _this;
 
@@ -162,10 +186,24 @@ public:
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+
+	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
+	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
+
+protected:
+	String _param1_hasSurveyMission__PlayerCreature_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

@@ -63,11 +63,41 @@ class MissionObserver;
 
 using namespace server::zone::objects::mission;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+
+class MissionObjective;
+
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -100,6 +130,12 @@ public:
 
 	MissionObject();
 
+	void createWaypoint();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void setRefreshCounter(int ctr, bool notifyClient = true);
 
 	void setTypeCRC(unsigned int crc, bool notifyClient = true);
@@ -107,6 +143,30 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void setMissionDescription(const String& file, const String& id, bool notifyClient = true);
+
+	void setMissionTitle(const String& file, const String& id, bool notifyClient = true);
+
+	void setMissionTargetName(const String& target, bool notifyClient = true);
+
+	void setMissionDifficulty(int difficulty, bool notifyClient = true);
+
+	void setRewardCredits(int creds, bool notifyClient = true);
+
+	void setTargetTemplateCRC(unsigned int crc, bool notifyClient = true);
+
+	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void abort();
+
+	void setMissionObjective(MissionObjective* obj);
+
+	float getStartPositionX();
+
+	float getStartPositionY();
+
+	unsigned int getStartPlanetCRC();
 
 	WaypointObject* getWaypointToMission();
 
@@ -129,6 +189,8 @@ public:
 	unsigned int getTargetTemplateCRC();
 
 	bool isSurveyMission();
+
+	bool isMissionObject();
 
 protected:
 	MissionObject(DummyConstructorParameter* param);
@@ -158,7 +220,7 @@ class MissionObjectImplementation : public IntangibleObjectImplementation {
 protected:
 	ManagedReference<WaypointObject* > waypointToMission;
 
-	ManagedReference<MissionObserver* > missionObserver;
+	ManagedReference<MissionObjective* > missionObjective;
 
 	unsigned int typeCRC;
 
@@ -167,6 +229,12 @@ protected:
 	UnicodeString creatorName;
 
 	int rewardCredits;
+
+	float startPositionX;
+
+	float startPositionY;
+
+	unsigned int startPlanetCRC;
 
 	StringId missionDescription;
 
@@ -205,6 +273,12 @@ public:
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
 
+	void createWaypoint();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void setRefreshCounter(int ctr, bool notifyClient = true);
 
 	void setTypeCRC(unsigned int crc, bool notifyClient = true);
@@ -212,6 +286,30 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void setMissionDescription(const String& file, const String& id, bool notifyClient = true);
+
+	void setMissionTitle(const String& file, const String& id, bool notifyClient = true);
+
+	void setMissionTargetName(const String& target, bool notifyClient = true);
+
+	void setMissionDifficulty(int difficulty, bool notifyClient = true);
+
+	void setRewardCredits(int creds, bool notifyClient = true);
+
+	void setTargetTemplateCRC(unsigned int crc, bool notifyClient = true);
+
+	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void abort();
+
+	void setMissionObjective(MissionObjective* obj);
+
+	float getStartPositionX();
+
+	float getStartPositionY();
+
+	unsigned int getStartPlanetCRC();
 
 	WaypointObject* getWaypointToMission();
 
@@ -233,7 +331,9 @@ public:
 
 	unsigned int getTargetTemplateCRC();
 
-	virtual bool isSurveyMission();
+	bool isSurveyMission();
+
+	bool isMissionObject();
 
 	MissionObject* _this;
 
@@ -274,6 +374,12 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void createWaypoint();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	void setRefreshCounter(int ctr, bool notifyClient);
 
 	void setTypeCRC(unsigned int crc, bool notifyClient);
@@ -281,6 +387,30 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void setMissionDescription(const String& file, const String& id, bool notifyClient);
+
+	void setMissionTitle(const String& file, const String& id, bool notifyClient);
+
+	void setMissionTargetName(const String& target, bool notifyClient);
+
+	void setMissionDifficulty(int difficulty, bool notifyClient);
+
+	void setRewardCredits(int creds, bool notifyClient);
+
+	void setTargetTemplateCRC(unsigned int crc, bool notifyClient);
+
+	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
+
+	void abort();
+
+	void setMissionObjective(MissionObjective* obj);
+
+	float getStartPositionX();
+
+	float getStartPositionY();
+
+	unsigned int getStartPlanetCRC();
 
 	WaypointObject* getWaypointToMission();
 
@@ -300,6 +430,14 @@ public:
 
 	bool isSurveyMission();
 
+	bool isMissionObject();
+
+protected:
+	String _param0_setMissionDescription__String_String_bool_;
+	String _param1_setMissionDescription__String_String_bool_;
+	String _param0_setMissionTitle__String_String_bool_;
+	String _param1_setMissionTitle__String_String_bool_;
+	String _param0_setMissionTargetName__String_bool_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

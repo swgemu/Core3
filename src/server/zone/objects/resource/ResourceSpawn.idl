@@ -97,7 +97,7 @@ class ResourceSpawn extends SceneObject {
        	containerReferenceCount = 0;
        	unitsInCirculation = 0;
        	maxUnitsSpawned = 0;
-       	containerCRC= 0;
+       	containerCRC = 0;
        	spawned = 0;
        	despawned = 0;
        	surveyToolType = 0;
@@ -231,6 +231,10 @@ class ResourceSpawn extends SceneObject {
     	containerCRC = crc;
     }
     
+    public unsigned int getContainerCRC() {
+    	return containerCRC;
+    }
+    
     public int getSpawnPool() {
     	return spawnPool;
     }
@@ -266,6 +270,8 @@ class ResourceSpawn extends SceneObject {
     
     @local 	
 	private native int getConcentration(boolean jtl);
+    
+    public native unsigned int getPlanetCRC();
 	
 	@local 	
 	@dereferenced

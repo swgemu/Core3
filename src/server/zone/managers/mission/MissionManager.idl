@@ -58,11 +58,20 @@ class MissionManager extends Observer implements Logger {
 	public MissionManager(ZoneServer srv) {
 		server = srv;
 		Logger.setLoggingName("MissionManager");
-	}
-	
-	//public MissionObject createSurveyMission(SceneObject object, Pla)
+	}	
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
+	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
+	public native void handleMissionAbort(MissionObject mission, PlayerCreature player);
+	
 	public native void populateGeneralMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void populateArtisanMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
+	
+	
+	public native void randomizeSurveyMission(PlayerCreature player, MissionObject mission);
+	
+	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	
+	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }

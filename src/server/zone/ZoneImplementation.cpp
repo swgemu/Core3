@@ -72,6 +72,7 @@ which carries forward this exception.
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -304,6 +305,12 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 	gmlr->addFooter();
 
 	player->sendMessage(gmlr);
+}
+
+String ZoneImplementation::getPlanetName() {
+	String planetName = Planet::getPlanetName(getZoneID());
+
+	return planetName;
 }
 
 float ZoneImplementation::getMinX() {

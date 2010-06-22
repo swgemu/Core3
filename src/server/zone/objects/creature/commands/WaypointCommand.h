@@ -191,7 +191,7 @@ public:
 
 		PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
 
-		ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+		ManagedReference<WaypointObject*> obj = (WaypointObject*) server->getZoneServer()->createObject(3038003230, 1);
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomName(waypointName);

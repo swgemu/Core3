@@ -104,6 +104,8 @@ public:
 
 	void setContainerCRC(unsigned int crc);
 
+	unsigned int getContainerCRC();
+
 	int getSpawnPool();
 
 	bool isEnergy();
@@ -123,6 +125,8 @@ public:
 	bool isUnknownType();
 
 	void createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
+
+	unsigned int getPlanetCRC();
 
 	float getDensityAt(int zoneid, float x, float y);
 
@@ -245,6 +249,8 @@ public:
 
 	void setContainerCRC(unsigned int crc);
 
+	unsigned int getContainerCRC();
+
 	int getSpawnPool();
 
 	bool isEnergy();
@@ -268,6 +274,10 @@ public:
 private:
 	int getConcentration(bool jtl);
 
+public:
+	unsigned int getPlanetCRC();
+
+private:
 	Vector<unsigned int> getSpawnZones(int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
 
 public:
@@ -360,6 +370,8 @@ public:
 
 	void setContainerCRC(unsigned int crc);
 
+	unsigned int getContainerCRC();
+
 	int getSpawnPool();
 
 	bool isEnergy();
@@ -373,6 +385,8 @@ public:
 	void extractResource(int zoneid, int units);
 
 	ResourceContainer* createResource(int units);
+
+	unsigned int getPlanetCRC();
 
 	int getAttributeValue(int index);
 

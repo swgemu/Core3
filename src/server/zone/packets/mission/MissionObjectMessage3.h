@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../../packets/BaseLineMessage.h"
 
 #include "../../objects/mission/MissionObject.h"
+#include "../../objects/waypoint/WaypointObject.h"
 
 /*
  * Unforunately, the way SOE designed the baseline/delta system with missions makes it
@@ -78,12 +79,11 @@ public:
 		//Difficulty
 		insertInt(mi->getDifficultyLevel());
 
-		//Target Location
-		insertFloat(0);//insertFloat(mi->getTargetX()); //x
+		insertFloat(mi->getStartPositionX());//insertFloat(mi->getTargetX()); //x
 		insertFloat(0); //z
-		insertFloat(0);//insertFloat(mi->getTargetY()); //y
+		insertFloat(mi->getStartPositionY());//insertFloat(mi->getTargetY()); //y
 		insertLong(0); //Start obj id
-		insertInt(0);//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
+		insertInt(mi->getStartPlanetCRC());//
 
 		//Creator Name
 		insertUnicode(mi->getCreatorName());
@@ -115,7 +115,8 @@ public:
 		insertAscii(strId->getStringID()); //Description text
 
 		//Refresh Counter
-		insertInt(mi->getRefreshCounter());
+		//insertInt(mi->getRefreshCounter());
+		insertInt(0);
 
 		//Mission Type CRC
 		insertInt(mi->getTypeCRC());
@@ -125,16 +126,22 @@ public:
 
 		insertInt(0); //??
 
-		//Waypoint Info
-		insertFloat(0);//insertFloat(mi->getDestX()); //x
-		insertFloat(0); //z
-		insertFloat(0);//insertFloat(mi->getDestY()); //y
-		insertLong(0); //Target ID
-		insertInt(0); //planet crc
-		insertUnicode("");//insertUnicode(UnicodeString(mi->getTitle())); //Name
-		insertLong(0); //waypoint obj id
-		insertByte(0x00); //color
-		insertByte(0x01); //active
+		WaypointObject* waypoint = mi->getWaypointToMission();
+
+		if (waypoint == NULL) {
+			//Waypoint Info
+			insertFloat(0);//insertFloat(mi->getDestX()); //x
+			insertFloat(0); //z
+			insertFloat(0);//insertFloat(mi->getDestY()); //y
+			insertLong(0); //Target ID
+			insertInt(0); //planet crc
+			insertUnicode("");//insertUnicode(UnicodeString(mi->getTitle())); //Name
+			insertLong(0); //waypoint obj id
+			insertByte(0x00); //color
+			insertByte(0x01); //active
+		} else {
+			waypoint->insertToMessage(this);
+		}
 
 		setSize();
 	}

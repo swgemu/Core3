@@ -155,6 +155,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
+				server/zone/objects/mission/MissionObjective.cpp \
+				server/zone/objects/mission/SurveyMissionObjective.cpp \
 				server/zone/objects/mission/MissionObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
@@ -292,6 +294,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
+		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \

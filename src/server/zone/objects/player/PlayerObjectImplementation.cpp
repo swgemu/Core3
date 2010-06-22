@@ -287,7 +287,7 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 
 
 void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+	ManagedReference<WaypointObject*> obj = (WaypointObject*) getZoneServer()->createObject(3038003230, 1);
 	obj->setPlanetCRC(planet.hashCode());
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);

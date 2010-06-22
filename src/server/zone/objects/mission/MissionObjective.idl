@@ -44,28 +44,55 @@ which carries forward this exception.
 
 package server.zone.objects.mission;
 
-import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.intangible.IntangibleObject;
-import server.zone.objects.waypoint.WaypointObject;
-import server.zone.Zone;
-
-include server.zone.objects.scene.variables.StringId;
+import server.zone.objects.scene.Observer;
+import server.zone.objects.scene.Observable;
+import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObserver;
+import server.zone.objects.scene.SceneObject;
 
-class SurveyMissionObject extends MissionObject {
+class MissionObjective extends ManagedObject implements Logger {
+	@dereferenced
+	protected SortedVector<MissionObserver> observers;
+	
+	@weakReference
+	protected MissionObject mission;
+	
+	protected unsigned int objectiveType;
 
-	public SurveyMissionObject() {
-		initialize();
+	public MissionObjective(MissionObject parent) {
+		mission = parent;
 		
-		Logger.setLoggingName("SurveyMissionObject");
+		Logger.setLoggingName("MissionObjective");
 	}
 	
-	public void initialize() {
-		super.typeCRC = super.SURVEY;
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	public abstract native void destroyObjectFromDatabase();
+	
+	public abstract int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		return 1;
 	}
 	
-	public boolean isSurveyMission() {
-		return true;
+	public abstract void activate() {
+		
+	}
+	
+	public abstract void abort() {
+		
+	}
+	
+	public abstract void complete() {
+		
+	}
+	
+	public MissionObject getMissionObject() {
+		return mission;
+	}
+	
+	public unsigned int getObjectiveType() {
+		return objectiveType;
 	}
 }

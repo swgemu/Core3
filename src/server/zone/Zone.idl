@@ -129,6 +129,8 @@ class Zone extends ManagedObject implements QuadTree {
 		return zoneID;
 	}
 	
+	public native string getPlanetName();
+	
 	//public native SceneObject lookupObject(unsigned long objectID);
 	
 	public PlanetManager getPlanetManager() {
