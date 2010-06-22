@@ -177,6 +177,19 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		((ResourceManagerImplementation*) _impl)->createResourceSpawn(playerCreature, restype);
 }
 
+ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addAsciiParameter(spawnName);
+
+		return (ResourceSpawn*) method.executeWithObjectReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getResourceSpawn(spawnName);
+}
+
 /*
  *	ResourceManagerImplementation
  */
@@ -304,6 +317,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 15:
 		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
 		break;
+	case 16:
+		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -349,6 +365,10 @@ void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsig
 
 void ResourceManagerAdapter::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
 	((ResourceManagerImplementation*) impl)->createResourceSpawn(playerCreature, restype);
+}
+
+ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {
+	return ((ResourceManagerImplementation*) impl)->getResourceSpawn(spawnName);
 }
 
 /*

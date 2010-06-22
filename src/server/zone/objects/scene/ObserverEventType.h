@@ -14,6 +14,7 @@ public:
 	const static int CLOSECONTAINER = 2;
 	const static int POSTURECHANGED = 3;
 	const static int OBJECTDESTRUCTION = 4;
+	const static int SAMPLE = 5;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

@@ -246,11 +246,11 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (client == NULL)
 		return;
 
-	/*StringBuffer msg;
+/*	StringBuffer msg;
 	if (parent != NULL)
 		msg << "with parent " << parent->getLoggingName() << " ";
 	msg << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
-	info(msg.toString(), true);*/
+	info(msg.toString(), true); */
 
 	create(client);
 
@@ -863,6 +863,25 @@ SceneObject* SceneObjectImplementation::getRootParent() {
 	return grandParent;
 }
 
+SceneObject* SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
+	if (parent == NULL)
+		return NULL;
+
+	SceneObject* temp = parent;
+
+	if (temp->getGameObjectType() == gameObjectType)
+		return temp;
+
+	while (temp->getParent() != NULL) {
+		temp = temp->getParent();
+
+		if (temp->getGameObjectType() == gameObjectType)
+			return temp;
+	}
+
+	return NULL;
+}
+
 bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	if (parent == NULL)
 		return false;
@@ -992,5 +1011,12 @@ float SceneObjectImplementation::getWorldPositionZ() {
 	float angle = direction.getRadians() - atan(positionX, positionY);*/
 
 	return root->getPositionZ() + positionZ;
+}
+
+uint32 SceneObjectImplementation::getPlanetCRC() {
+	if (zone == NULL)
+		return 0;
+
+	return zone->getPlanetName().hashCode();
 }
 

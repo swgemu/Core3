@@ -152,6 +152,8 @@ public:
 
 	int getZoneID();
 
+	String getPlanetName();
+
 	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
@@ -190,6 +192,8 @@ protected:
 	Zone(DummyConstructorParameter* param);
 
 	virtual ~Zone();
+
+	String _return_getPlanetName;
 
 	friend class ZoneHelper;
 };
@@ -257,6 +261,8 @@ public:
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
+
+	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
 
@@ -346,6 +352,8 @@ public:
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
+
+	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
 

@@ -500,8 +500,8 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	SceneObject* baitObject = server->createObject(bait.hashCode(), 1);
 	inventory->addObject(baitObject, -1);
 
-	SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
-	datapad->addObject(mission, -1);
+	/*SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
+	datapad->addObject(mission, -1);*/
 
 	return true;
 }

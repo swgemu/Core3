@@ -70,17 +70,19 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 }
 
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {
-	uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
+	if (creature->hasSlotDescriptor("default_weapon")) {
+		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
 
-	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 0);
+		SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 0);
 
-	if (defaultWeapon == NULL) {
-		error("could not create creature default weapon");
+		if (defaultWeapon == NULL) {
+			error("could not create creature default weapon");
 
-		return false;
+			return false;
+		}
+
+		creature->addObject(defaultWeapon, 4);
 	}
-
-	creature->addObject(defaultWeapon, 4);
 
 	return true;
 }

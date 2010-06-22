@@ -176,6 +176,17 @@ int ResourceSpawnImplementation::getSpawnMapZone(int i) {
 		return -1;
 }
 
+uint32 ResourceSpawnImplementation::getPlanetCRC() {
+	int id = getSpawnMapZone(0);
+
+	if (id == -1)
+		return 0;
+
+	Zone* zone = server->getZoneServer()->getZone(id);
+
+	return zone->getPlanetName().hashCode();
+}
+
 void ResourceSpawnImplementation::extractResource(int zoneid, int units) {
 	unitsInCirculation += units;
 

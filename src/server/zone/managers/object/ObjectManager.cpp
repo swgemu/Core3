@@ -102,7 +102,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("sceneobjects", true);
 	databaseManager->loadDatabase("playerstructures", true);
 	databaseManager->loadDatabase("buffs", true);
-	databaseManager->loadDatabase("waypoints", true);
+	databaseManager->loadDatabase("missionobjectives", true);
+	databaseManager->loadDatabase("missionobservers", true);
 
 	loadLastUsedObjectID();
 
