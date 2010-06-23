@@ -34,12 +34,24 @@ void TrainerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 		((TrainerCreatureImplementation*) _impl)->loadTemplateData(templateData);
 }
 
-void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
+void TrainerCreature::activateRecovery() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((TrainerCreatureImplementation*) _impl)->activateRecovery();
+}
+
+void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -52,7 +64,7 @@ void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -65,7 +77,7 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -78,7 +90,7 @@ void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkXp);
 
@@ -92,7 +104,7 @@ void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkLearned);
 
@@ -106,7 +118,7 @@ void TrainerCreature::sendConfirmation(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -119,7 +131,7 @@ void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -133,7 +145,7 @@ void TrainerCreature::setTrainerID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -154,7 +166,7 @@ int TrainerCreature::getTrainerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -166,7 +178,7 @@ String TrainerCreature::getLocation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
@@ -179,7 +191,7 @@ void TrainerCreature::setLocation(const String& loc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(loc);
 
 		method.executeWithVoidReturn();
@@ -192,7 +204,7 @@ bool TrainerCreature::isTrainerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -204,7 +216,7 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -303,38 +315,41 @@ void TrainerCreatureImplementation::loadTemplateData(SharedObjectTemplate* templ
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
+void TrainerCreatureImplementation::activateRecovery() {
+}
+
 void TrainerCreatureImplementation::setTrainerID(int id) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(132):  		trainerID = id;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(136):  		trainerID = id;
 	trainerID = id;
 }
 
 void TrainerCreatureImplementation::setProfession(Profession* prof) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(137):  		profession.setProfession(prof);
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(141):  		profession.setProfession(prof);
 	(&profession)->setProfession(prof);
 }
 
 int TrainerCreatureImplementation::getTrainerID() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(141):  		return trainerID;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(145):  		return trainerID;
 	return trainerID;
 }
 
 String TrainerCreatureImplementation::getLocation() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(145):  		return location;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(149):  		return location;
 	return location;
 }
 
 void TrainerCreatureImplementation::setLocation(const String& loc) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(149):  		location = loc;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(153):  		location = loc;
 	location = loc;
 }
 
 bool TrainerCreatureImplementation::isTrainerCreature() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(153):  		return true;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(157):  		return true;
 	return true;
 }
 
 bool TrainerCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(157):  		return false;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl(161):  		return false;
 	return false;
 }
 
@@ -350,42 +365,45 @@ Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		sendInitialMessage((PlayerCreature*) inv->getObjectParameter());
+		activateRecovery();
 		break;
 	case 7:
-		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
+		sendInitialMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
-		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 9:
-		sendSkillBoxes((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		sendSkillBoxList((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendSkillBoxes((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		sendConfirmation((PlayerCreature*) inv->getObjectParameter());
+		sendSkillBoxList((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
+		sendConfirmation((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 13:
-		setTrainerID(inv->getSignedIntParameter());
+		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertSignedInt(getTrainerID());
+		setTrainerID(inv->getSignedIntParameter());
 		break;
 	case 15:
-		resp->insertAscii(getLocation());
+		resp->insertSignedInt(getTrainerID());
 		break;
 	case 16:
-		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
+		resp->insertAscii(getLocation());
 		break;
 	case 17:
-		resp->insertBoolean(isTrainerCreature());
+		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
 		break;
 	case 18:
+		resp->insertBoolean(isTrainerCreature());
+		break;
+	case 19:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
@@ -393,6 +411,10 @@ Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	}
 
 	return resp;
+}
+
+void TrainerCreatureAdapter::activateRecovery() {
+	((TrainerCreatureImplementation*) impl)->activateRecovery();
 }
 
 void TrainerCreatureAdapter::sendInitialMessage(PlayerCreature* player) {

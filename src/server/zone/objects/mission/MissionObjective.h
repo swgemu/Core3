@@ -81,6 +81,8 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace objects {

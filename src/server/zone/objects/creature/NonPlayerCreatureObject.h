@@ -21,6 +21,22 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class CreatureThinkEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -33,6 +49,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "system/lang/ref/Reference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -42,7 +60,15 @@ class NonPlayerCreatureObject : public CreatureObject {
 public:
 	NonPlayerCreatureObject();
 
+	void activateRecovery();
+
+	void doRecovery();
+
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isNonPlayerCreature();
 
 protected:
 	NonPlayerCreatureObject(DummyConstructorParameter* param);
@@ -65,13 +91,23 @@ namespace objects {
 namespace creature {
 
 class NonPlayerCreatureObjectImplementation : public CreatureObjectImplementation {
+protected:
+	Reference<CreatureThinkEvent*> thinkEvent;
 
 public:
 	NonPlayerCreatureObjectImplementation();
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
 
+	virtual void activateRecovery();
+
+	void doRecovery();
+
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isNonPlayerCreature();
 
 	NonPlayerCreatureObject* _this;
 
@@ -112,7 +148,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void activateRecovery();
+
+	void doRecovery();
+
+	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isNonPlayerCreature();
 
 };
 
