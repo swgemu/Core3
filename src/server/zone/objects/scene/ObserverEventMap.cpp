@@ -23,8 +23,8 @@ void ObserverEventMap::notifyObservers(uint32 eventType, Observable* observable,
 		int result = observer->notifyObserverEvent(eventType, observable, arg1, arg2);
 
 		if (result == 1) {
-			observers->drop(observer);
-			--i;
+			if (observers->drop(observer))
+				--i;
 		}
 
 	}
