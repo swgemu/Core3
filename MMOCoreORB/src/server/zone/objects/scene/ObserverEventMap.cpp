@@ -18,7 +18,7 @@ void ObserverEventMap::notifyObservers(uint32 eventType, Observable* observable,
 	SortedVector<ManagedReference<Observer*> >* observers = &elementAt(index).getValue();
 
 	for (int i = 0; i < observers->size(); ++i) {
-		Observer* observer = observers->get(i);
+		ManagedReference<Observer*> observer = observers->get(i);
 
 		int result = observer->notifyObserverEvent(eventType, observable, arg1, arg2);
 
