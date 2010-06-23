@@ -118,17 +118,27 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 }
 
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
+	//info("entering doCombat action", true);
+
 	if (!startCombat(attacker, defenderObject))
 		return -1;
+
+	//info("past start combat", true);
 
 	if (!applySpecialAttackCost(attacker, command))
 		return -2;
 
+	//info("past special attack cost", true);
+
 	if (attacker->hasAttackDelay())
 		return -3;
 
+	//info("past delay", true);
+
 	if (attacker->isBerserked() && command->getNameCRC() != 0xA8FEF90A) //berserk only works with attack
 		return -3;
+
+	//info("past berserk", true);
 
 	int damage = 0;
 

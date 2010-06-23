@@ -145,6 +145,8 @@ public:
 
 	void doLanding();
 
+	void activateRecovery();
+
 	bool isAttackableBy(CreatureObject* object);
 
 	void sendPlayerTo(PlayerCreature* player, TicketObject* ticket);
@@ -229,6 +231,8 @@ public:
 
 	void doLanding();
 
+	void activateRecovery();
+
 	bool isAttackableBy(CreatureObject* object);
 
 	void sendPlayerTo(PlayerCreature* player, TicketObject* ticket);
@@ -301,6 +305,8 @@ public:
 	void doTakeOff();
 
 	void doLanding();
+
+	void activateRecovery();
 
 	bool isAttackableBy(CreatureObject* object);
 

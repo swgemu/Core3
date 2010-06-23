@@ -85,6 +85,10 @@ class ShuttleCreature extends NonPlayerCreatureObject {
 	
 	public native void doLanding();
 	
+	public void activateRecovery() {
+		
+	}
+	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }

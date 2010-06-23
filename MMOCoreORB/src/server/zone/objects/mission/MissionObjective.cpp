@@ -193,14 +193,14 @@ void MissionObjectiveImplementation::_serializationHelperMethod() {
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObjective.idl(63):  		mission = parent;
+	// server/zone/objects/mission/MissionObjective.idl(64):  		mission = parent;
 	mission = parent;
-	// server/zone/objects/mission/MissionObjective.idl(65):  		Logger.setLoggingName("MissionObjective");
+	// server/zone/objects/mission/MissionObjective.idl(66):  		Logger.setLoggingName("MissionObjective");
 	Logger::setLoggingName("MissionObjective");
 }
 
 int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/mission/MissionObjective.idl(76):  		return 1;
+	// server/zone/objects/mission/MissionObjective.idl(77):  		return 1;
 	return 1;
 }
 
@@ -214,12 +214,12 @@ void MissionObjectiveImplementation::complete() {
 }
 
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
-	// server/zone/objects/mission/MissionObjective.idl(92):  		return mission;
+	// server/zone/objects/mission/MissionObjective.idl(93):  		return mission;
 	return mission;
 }
 
 unsigned int MissionObjectiveImplementation::getObjectiveType() {
-	// server/zone/objects/mission/MissionObjective.idl(96):  		return objectiveType;
+	// server/zone/objects/mission/MissionObjective.idl(97):  		return objectiveType;
 	return objectiveType;
 }
 

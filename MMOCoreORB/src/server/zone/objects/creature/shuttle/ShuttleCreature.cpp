@@ -60,12 +60,24 @@ void ShuttleCreature::doLanding() {
 		((ShuttleCreatureImplementation*) _impl)->doLanding();
 }
 
-bool ShuttleCreature::isAttackableBy(CreatureObject* object) {
+void ShuttleCreature::activateRecovery() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((ShuttleCreatureImplementation*) _impl)->activateRecovery();
+}
+
+bool ShuttleCreature::isAttackableBy(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -78,7 +90,7 @@ void ShuttleCreature::sendPlayerTo(PlayerCreature* player, TicketObject* ticket)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 		method.addObjectParameter(ticket);
 
@@ -92,7 +104,7 @@ int ShuttleCreature::getArrivalTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -104,7 +116,7 @@ long long ShuttleCreature::getLandingTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedLongReturn();
 	} else
@@ -124,7 +136,7 @@ void ShuttleCreature::setArrivalPoint(float x, float y, float z) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(z);
@@ -139,7 +151,7 @@ void ShuttleCreature::setStarport(bool st) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addBooleanParameter(st);
 
 		method.executeWithVoidReturn();
@@ -152,7 +164,7 @@ void ShuttleCreature::setPlanet(const String& plan) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(plan);
 
 		method.executeWithVoidReturn();
@@ -165,7 +177,7 @@ void ShuttleCreature::setCity(const String& cit) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(cit);
 
 		method.executeWithVoidReturn();
@@ -178,7 +190,7 @@ void ShuttleCreature::setTax(unsigned int t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addUnsignedIntParameter(t);
 
 		method.executeWithVoidReturn();
@@ -191,7 +203,7 @@ String ShuttleCreature::getPlanet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		method.executeWithAsciiReturn(_return_getPlanet);
 		return _return_getPlanet;
@@ -204,7 +216,7 @@ String ShuttleCreature::getCity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		method.executeWithAsciiReturn(_return_getCity);
 		return _return_getCity;
@@ -217,7 +229,7 @@ unsigned int ShuttleCreature::getTax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -229,7 +241,7 @@ bool ShuttleCreature::isStarport() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -241,7 +253,7 @@ bool ShuttleCreature::isShuttleCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -334,82 +346,85 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation() {
 	Logger::setGlobalLogging(true);
 }
 
+void ShuttleCreatureImplementation::activateRecovery() {
+}
+
 bool ShuttleCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(95):  		return false;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(99):  		return false;
 	return false;
 }
 
 int ShuttleCreatureImplementation::getArrivalTime() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(106):  		PlanetManager planetManager = super.zone.getPlanetManager();
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(110):  		PlanetManager planetManager = super.zone.getPlanetManager();
 	PlanetManager* planetManager = NonPlayerCreatureObjectImplementation::zone->getPlanetManager();
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(107):  		long land = getLandingTime();
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		long land = getLandingTime();
 	long long land = getLandingTime();
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(109):  		int t = (land / 1000) * -1;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(113):  		int t = (land / 1000) * -1;
 	int t = (land / 1000) * -1;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		return t;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(115):  		return t;
 	return t;
 }
 
 void ShuttleCreatureImplementation::getArrivalPoint(float& x, float& y, float& z) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(118):  		x = arrivalPositionX;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(122):  		x = arrivalPositionX;
 	x = arrivalPositionX;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(119):  		y = arrivalPositionY;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(123):  		y = arrivalPositionY;
 	y = arrivalPositionY;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(120):  		z = arrivalPositionZ;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(124):  		z = arrivalPositionZ;
 	z = arrivalPositionZ;
 }
 
 void ShuttleCreatureImplementation::setArrivalPoint(float x, float y, float z) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(124):  		arrivalPositionX = x;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(128):  		arrivalPositionX = x;
 	arrivalPositionX = x;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(125):  		arrivalPositionY = y;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(129):  		arrivalPositionY = y;
 	arrivalPositionY = y;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(126):  		arrivalPositionZ = z;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(130):  		arrivalPositionZ = z;
 	arrivalPositionZ = z;
 }
 
 void ShuttleCreatureImplementation::setStarport(bool st) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(130):  		starport = st;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(134):  		starport = st;
 	starport = st;
 }
 
 void ShuttleCreatureImplementation::setPlanet(const String& plan) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(134):  		planet = plan;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(138):  		planet = plan;
 	planet = plan;
 }
 
 void ShuttleCreatureImplementation::setCity(const String& cit) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(138):  		city = cit;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(142):  		city = cit;
 	city = cit;
 }
 
 void ShuttleCreatureImplementation::setTax(unsigned int t) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(142):  		tax = t;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(146):  		tax = t;
 	tax = t;
 }
 
 String ShuttleCreatureImplementation::getPlanet() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(146):  		return planet;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(150):  		return planet;
 	return planet;
 }
 
 String ShuttleCreatureImplementation::getCity() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(150):  		return city;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(154):  		return city;
 	return city;
 }
 
 unsigned int ShuttleCreatureImplementation::getTax() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(154):  		return tax;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(158):  		return tax;
 	return tax;
 }
 
 bool ShuttleCreatureImplementation::isStarport() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(158):  		return starport;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(162):  		return starport;
 	return starport;
 }
 
 bool ShuttleCreatureImplementation::isShuttleCreature() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(162):  		return true;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(166):  		return true;
 	return true;
 }
 
@@ -431,45 +446,48 @@ Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		doLanding();
 		break;
 	case 8:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		activateRecovery();
 		break;
 	case 9:
-		sendPlayerTo((PlayerCreature*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 10:
-		resp->insertSignedInt(getArrivalTime());
+		sendPlayerTo((PlayerCreature*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertSignedLong(getLandingTime());
+		resp->insertSignedInt(getArrivalTime());
 		break;
 	case 12:
-		setArrivalPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertSignedLong(getLandingTime());
 		break;
 	case 13:
-		setStarport(inv->getBooleanParameter());
+		setArrivalPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 14:
-		setPlanet(inv->getAsciiParameter(_param0_setPlanet__String_));
+		setStarport(inv->getBooleanParameter());
 		break;
 	case 15:
-		setCity(inv->getAsciiParameter(_param0_setCity__String_));
+		setPlanet(inv->getAsciiParameter(_param0_setPlanet__String_));
 		break;
 	case 16:
-		setTax(inv->getUnsignedIntParameter());
+		setCity(inv->getAsciiParameter(_param0_setCity__String_));
 		break;
 	case 17:
-		resp->insertAscii(getPlanet());
+		setTax(inv->getUnsignedIntParameter());
 		break;
 	case 18:
-		resp->insertAscii(getCity());
+		resp->insertAscii(getPlanet());
 		break;
 	case 19:
-		resp->insertInt(getTax());
+		resp->insertAscii(getCity());
 		break;
 	case 20:
-		resp->insertBoolean(isStarport());
+		resp->insertInt(getTax());
 		break;
 	case 21:
+		resp->insertBoolean(isStarport());
+		break;
+	case 22:
 		resp->insertBoolean(isShuttleCreature());
 		break;
 	default:
@@ -485,6 +503,10 @@ void ShuttleCreatureAdapter::doTakeOff() {
 
 void ShuttleCreatureAdapter::doLanding() {
 	((ShuttleCreatureImplementation*) impl)->doLanding();
+}
+
+void ShuttleCreatureAdapter::activateRecovery() {
+	((ShuttleCreatureImplementation*) impl)->activateRecovery();
 }
 
 bool ShuttleCreatureAdapter::isAttackableBy(CreatureObject* object) {

@@ -77,6 +77,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void activateRecovery();
+
 	void sendInitialMessage(PlayerCreature* player);
 
 	void sendInitialChoices(PlayerCreature* player);
@@ -144,6 +146,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void activateRecovery();
+
 	void sendInitialMessage(PlayerCreature* player);
 
 	void sendInitialChoices(PlayerCreature* player);
@@ -210,6 +214,8 @@ public:
 	TrainerCreatureAdapter(TrainerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void activateRecovery();
 
 	void sendInitialMessage(PlayerCreature* player);
 

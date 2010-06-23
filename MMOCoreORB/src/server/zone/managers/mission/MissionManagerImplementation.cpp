@@ -106,7 +106,6 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 	ManagedReference<SurveyMissionObjective*> objective = new  SurveyMissionObjective(mission);
 	objective->setEfficiency(mission->getDifficultyLevel());
 
-
 	String spawnName = mission->getTargetName();
 	ResourceManager* manager = server->getResourceManager();
 	ManagedReference<ResourceSpawn*> spawn = manager->getResourceSpawn(spawnName);
@@ -146,6 +145,8 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Pl
 
 	if (missionParent != datapad)
 		return;
+
+	mission->abort();
 
 	datapad->removeObject(mission, true);
 	mission->sendDestroyTo(player);
