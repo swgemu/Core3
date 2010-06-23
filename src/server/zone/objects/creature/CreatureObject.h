@@ -606,6 +606,8 @@ public:
 
 	bool isShuttleCreature();
 
+	bool isNonPlayerCreature();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1144,6 +1146,8 @@ public:
 
 	virtual bool isShuttleCreature();
 
+	virtual bool isNonPlayerCreature();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -1544,6 +1548,8 @@ public:
 	bool isInCover();
 
 	bool isShuttleCreature();
+
+	bool isNonPlayerCreature();
 
 protected:
 	String _param0_sendSystemMessage__String_;

@@ -2462,6 +2462,18 @@ bool CreatureObject::isShuttleCreature() {
 		return ((CreatureObjectImplementation*) _impl)->isShuttleCreature();
 }
 
+bool CreatureObject::isNonPlayerCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 187);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isNonPlayerCreature();
+}
+
 /*
  *	CreatureObjectImplementation
  */
@@ -3207,6 +3219,11 @@ bool CreatureObjectImplementation::isShuttleCreature() {
 	return false;
 }
 
+bool CreatureObjectImplementation::isNonPlayerCreature() {
+	// server/zone/objects/creature/CreatureObject.idl(1182):  		return false;
+	return false;
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -3763,6 +3780,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 187:
 		resp->insertBoolean(isShuttleCreature());
+		break;
+	case 188:
+		resp->insertBoolean(isNonPlayerCreature());
 		break;
 	default:
 		return NULL;
@@ -4497,6 +4517,10 @@ bool CreatureObjectAdapter::isInCover() {
 
 bool CreatureObjectAdapter::isShuttleCreature() {
 	return ((CreatureObjectImplementation*) impl)->isShuttleCreature();
+}
+
+bool CreatureObjectAdapter::isNonPlayerCreature() {
+	return ((CreatureObjectImplementation*) impl)->isNonPlayerCreature();
 }
 
 /*

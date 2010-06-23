@@ -6,6 +6,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/creature/events/CreatureThinkEvent.h"
+
 /*
  *	NonPlayerCreatureObjectStub
  */
@@ -22,17 +24,70 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 }
 
 
-bool NonPlayerCreatureObject::isAttackableBy(CreatureObject* object) {
+void NonPlayerCreatureObject::activateRecovery() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((NonPlayerCreatureObjectImplementation*) _impl)->activateRecovery();
+}
+
+void NonPlayerCreatureObject::doRecovery() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((NonPlayerCreatureObjectImplementation*) _impl)->doRecovery();
+}
+
+int NonPlayerCreatureObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(attacker);
+		method.addSignedIntParameter(damageType);
+		method.addSignedIntParameter(damage);
+		method.addBooleanParameter(destroy);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((NonPlayerCreatureObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
+bool NonPlayerCreatureObject::isAttackableBy(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((NonPlayerCreatureObjectImplementation*) _impl)->isAttackableBy(object);
+}
+
+bool NonPlayerCreatureObject::isNonPlayerCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((NonPlayerCreatureObjectImplementation*) _impl)->isNonPlayerCreature();
 }
 
 /*
@@ -102,26 +157,32 @@ void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("NonPlayerCreatureObject");
 
+	addSerializableVariable("thinkEvent", &thinkEvent);
 }
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(57):  		Logger.setLoggingName("NonPlayerCreatureObject");
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(62):  		Logger.setLoggingName("NonPlayerCreatureObject");
 	Logger::setLoggingName("NonPlayerCreatureObject");
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(58):  		Logger.setLogging(false);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(63):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(59):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(64):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool NonPlayerCreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(69):  		if 
-	if (object == _this)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(70):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(86):  		if 
+	if (object == _this)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(87):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(72):  		return 
-	if (_this->isDead())	// server/zone/objects/creature/NonPlayerCreatureObject.idl(73):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(89):  		return 
+	if (_this->isDead())	// server/zone/objects/creature/NonPlayerCreatureObject.idl(90):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(75):  true;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(92):  true;
+	return true;
+}
+
+bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(96):  		return true;
 	return true;
 }
 
@@ -137,7 +198,19 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 
 	switch (methid) {
 	case 6:
+		activateRecovery();
+		break;
+	case 7:
+		doRecovery();
+		break;
+	case 8:
+		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		break;
+	case 9:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 10:
+		resp->insertBoolean(isNonPlayerCreature());
 		break;
 	default:
 		return NULL;
@@ -146,8 +219,24 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	return resp;
 }
 
+void NonPlayerCreatureObjectAdapter::activateRecovery() {
+	((NonPlayerCreatureObjectImplementation*) impl)->activateRecovery();
+}
+
+void NonPlayerCreatureObjectAdapter::doRecovery() {
+	((NonPlayerCreatureObjectImplementation*) impl)->doRecovery();
+}
+
+int NonPlayerCreatureObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+	return ((NonPlayerCreatureObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
 bool NonPlayerCreatureObjectAdapter::isAttackableBy(CreatureObject* object) {
 	return ((NonPlayerCreatureObjectImplementation*) impl)->isAttackableBy(object);
+}
+
+bool NonPlayerCreatureObjectAdapter::isNonPlayerCreature() {
+	return ((NonPlayerCreatureObjectImplementation*) impl)->isNonPlayerCreature();
 }
 
 /*

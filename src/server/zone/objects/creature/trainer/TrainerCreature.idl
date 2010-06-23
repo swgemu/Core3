@@ -78,6 +78,10 @@ class TrainerCreature extends CreatureObject {
 		super.optionsBitmask = 0x108;
 		super.pvpStatusBitmask = 0;
 	}
+	
+	public void activateRecovery() {
+		
+	}
 
 	/**
 	 * Sends the initial trainer NPC blurb.

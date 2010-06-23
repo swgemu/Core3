@@ -1177,5 +1177,9 @@ class CreatureObject extends TangibleObject {
 	public abstract boolean isShuttleCreature() {
 		return false;
 	}
+	
+	public abstract boolean isNonPlayerCreature() {
+		return false;
+	}
 
 }
