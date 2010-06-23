@@ -136,8 +136,7 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	}
 }
 
-
-void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, PlayerCreature* player) {
+void MissionManagerImplementation::removeMission(MissionObject* mission, PlayerCreature* player) {
 	ManagedReference<MissionObject*> ref = mission;
 
 	SceneObject* missionParent = mission->getParent();
@@ -146,13 +145,17 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Pl
 	if (missionParent != datapad)
 		return;
 
-	mission->abort();
-
 	datapad->removeObject(mission, true);
 	mission->sendDestroyTo(player);
 
 	mission->destroyObjectFromDatabase(true);
 	player->updateToDatabaseAllObjects(false);
+}
+
+void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, PlayerCreature* player) {
+	mission->abort();
+
+	removeMission(mission, player);
 }
 
 void MissionManagerImplementation::populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {

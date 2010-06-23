@@ -86,6 +86,8 @@ public:
 
 	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
 
+	void removeMission(MissionObject* mission, PlayerCreature* player);
+
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
@@ -132,6 +134,8 @@ public:
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
 
 	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+
+	void removeMission(MissionObject* mission, PlayerCreature* player);
 
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
@@ -189,6 +193,8 @@ public:
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
 
 	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+
+	void removeMission(MissionObject* mission, PlayerCreature* player);
 
 	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 

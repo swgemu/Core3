@@ -64,6 +64,8 @@ class MissionManager extends Observer implements Logger {
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
 	public native void handleMissionAbort(MissionObject mission, PlayerCreature player);
 	
+	public native void removeMission(MissionObject mission, PlayerCreature player);
+	
 	public native void populateGeneralMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void populateArtisanMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	
