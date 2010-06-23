@@ -49,6 +49,7 @@ import server.zone.objects.scene.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
+import system.util.SortedVector;
 
 class MissionObjective extends ManagedObject implements Logger {
 	@dereferenced
