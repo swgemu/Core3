@@ -24,7 +24,7 @@ void NonPlayerCreatureObjectImplementation::doRecovery() {
 			CreatureObject* creo = (CreatureObject*) targetToAttack;
 
 			if (creo->isPeaced()) {
-				removeDefender(_this);
+				removeDefender(creo);
 			} else {
 				setTargetID(creo->getObjectID(), true);
 
