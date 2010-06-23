@@ -64,7 +64,7 @@ void SurveyMissionObjectiveImplementation::complete() {
 	ZoneServer* zoneServer = player->getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
-	missionManager->handleMissionAbort(mission, player);
+	missionManager->removeMission(mission, player);
 }
 
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
