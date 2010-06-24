@@ -27,6 +27,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
@@ -457,7 +458,22 @@ int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 	switch(selectedID) {
 	case 51:
-			player->teachPlayer(_this);
+
+			if(isTeachingOrLearning() || player->isTeachingOrLearning()) {
+				player->sendSystemMessage("teaching", "teaching_failed");
+				return 1;
+			}
+
+			player->setTeachingOrLearning(true);
+
+			TeachPlayerListBox* teachPlayerListBox = new TeachPlayerListBox(player);
+			teachPlayerListBox->setCancelButton(true, "");
+
+			bool completed = teachPlayerListBox->generateSkillList(player, _this);
+
+			if(!completed)
+				player->setTeachingOrLearning(false);
+
 		break;
 	}
 
@@ -566,161 +582,4 @@ int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
 void PlayerCreatureImplementation::awardBadge(uint32 badge) {
 	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 	playerManager->awardBadge(_this, badge);
-}
-
-void PlayerCreatureImplementation::teachPlayer(PlayerCreature* player) {
-	//pre: _this and player are wlocked
-	//post: _this and player are wlocked
-	if (teachingSkillList.size() > 0) {
-
-		sendSystemMessage("teaching","teaching_failed");
-		return;
-
-	}
-
-	//The boxes that will be sent to the SUI
-	Vector<SkillBox*> trainableBoxes;
-
-	SkillBoxList* skillBoxList = getSkillBoxList();
-
-	/*
-	 * If the player has no skills at all
-	 */
-	if (skillBoxList->size() <= 0) {
-
-		sendSystemMessage("teaching","no_skills");
-		return;
-
-	}
-
-	if (player->getTeacher() != NULL) {
-		ParameterizedStringId message("teaching", "student_has_offer_to_learn");
-		message.setTT(player->getFirstName());
-		sendSystemMessage(message);
-		return;
-	}
-
-	/*
-	 * Loop through each skill that the player has and filter out accordingly
-	 */
-	for(int i = 0; i < skillBoxList->size(); i++) {
-
-		SkillBox* sBox = skillBoxList->get(i);
-
-		/*
-		 * Players cannot teach novice skill boxes
-		 */
-		if (sBox->isNoviceBox())
-			continue;
-
-		/*
-		 * Players cannot teach jedi skills
-		 */
-		if (sBox->getSkillXpType() == "jedi_general" ||
-			sBox->getSkillXpType() == "space_combat_general" ||
-			sBox->getSkillXpType() == "fs_crafting" ||
-			sBox->getSkillXpType() == "fs_combat" ||
-			sBox->getSkillXpType() == "fs_reflex" ||
-			sBox->getSkillXpType() == "fs_senses" ||
-			sBox->getSkillXpType() == "force_rank_xp") {
-
-			continue;
-		}
-
-		/*
-		 * Cannot teach someone a skill box that they already have
-		 */
-		if (player->hasSkillBox(sBox->getName()))
-			continue;
-
-		/*
-		 * Cannot teach them a skill that they dont have enough xp for
-		 */
-		if (sBox->getSkillXpCost() > ((PlayerObject*)getSlottedObject("ghost"))->getExperience(sBox->getSkillXpType()))
-			continue;
-
-		/*
-		 * Cannot teach someone a skill if they dont have the required skills
-		 */
-		bool hasReqs = true;
-
-		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
-
-				if (!player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
-						hasReqs = false;
-
-		}
-
-
-		/*
-		 * Cannot teach someone a skill that is God only or that is Hidden
-		 */
-		if (hasReqs && !sBox->getSkillGodOnly() && !sBox->getSkillIsHidden()) {
-
-			/*
-			 * Lastly, we cannot teach someone the base language skill. Ex. "social_language_basic"
-			 * Only the speak and comprehend skills can be taught.
-			 */
-			if(sBox->getName().indexOf("social_language") >= 0) {
-
-				if(sBox->getName().indexOf("speak") == -1 && sBox->getName().indexOf("comprehend") == -1)
-					continue;
-
-				/*
-				 * Also, there are race restrictions on some languages
-				 */
-				if(sBox->getRequiredSpeciesSize() > 0) {
-					String race;
-					bool correctRace = false;
-
-					for(int i = 0; i < sBox->getRequiredSpeciesSize(); i++) {
-
-						sBox->getRequiredSpecies(race, i);
-
-						if(race.compareTo(Races::getRace(player->getRaceID())) == 0) {
-							correctRace = true;
-						}
-					}
-
-					if(!correctRace)
-						continue;
-				}
-			}
-
-			trainableBoxes.add(sBox);
-
-		}
-
-	}
-
-	//we want to make sure we're still in the group with them
-	if ( (trainableBoxes.size() > 0) && (group != NULL) && (group->hasMember(player)) ) {
-
-		setStudent(player);
-		player->setTeacher(_this);
-
-		SuiListBox* sbox = new SuiListBox(player, SuiWindowType::TEACH_PLAYER);
-		sbox->setPromptTitle("@sui:teach");
-		sbox->setPromptText("What would you like to teach?");
-		sbox->setCancelButton(true, "");
-
-		for (int i = 0; i < trainableBoxes.size(); i++) {
-
-			StringBuffer skillboxname;
-			skillboxname << "@skl_n:" << trainableBoxes.get(i)->getName();
-			sbox->addMenuItem(skillboxname.toString());
-			teachingSkillList.add(trainableBoxes.get(i));
-		}
-
-		addSuiBox(sbox);
-		sendMessage(sbox->generateMessage());
-
-	} else {
-
-		ParameterizedStringId message("teaching","no_skills_for_student");
-		message.setTT(player->getFirstName());
-		sendSystemMessage(message);
-
-	}
-
 }
