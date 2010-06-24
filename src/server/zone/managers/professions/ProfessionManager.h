@@ -152,7 +152,7 @@ namespace server {
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
 
-		bool playerTeachSkill(const String& name, PlayerCreature* player);
+		bool playerTeachSkill(const String& name, PlayerCreature* player, PlayerCreature* teacher);
 
 		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
 

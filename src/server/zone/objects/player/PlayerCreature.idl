@@ -108,13 +108,8 @@ class PlayerCreature extends CreatureObject {
 	
 	protected int skillPoints;
 	
-	protected PlayerCreature teacher;
-	protected PlayerCreature student;
-	
-	@dereferenced
-	protected Vector<SkillBox> teachingSkillList;
-	//protected SkillBox* teachingOffer;
-	protected string teachingOffer;
+	@transient
+	protected boolean teachingOrLearning;
 
 	@dereferenced
 	protected Badges badges;
@@ -179,6 +174,8 @@ class PlayerCreature extends CreatureObject {
 		savedParentID = 0;
 		
 		skillPoints = 0;
+		
+		teachingOrLearning = false;
 		
 		suiBoxNextID = 0;
 		
@@ -653,44 +650,13 @@ class PlayerCreature extends CreatureObject {
 		tradeContainer.clear();
 	}
 	
-	public native void teachPlayer(PlayerCreature player);
-	
-	@local
-	public PlayerCreature getTeacher() {
-	    return teacher;
+	public void setTeachingOrLearning(boolean value) {
+	    teachingOrLearning = value;
 	}
 	
 	@local
-	public PlayerCreature getStudent() {
-	    return student;
-	}
-	
-	public void setTeacher(PlayerCreature pTeacher) {
-	    teacher = pTeacher;
-	}
-	
-	public void setStudent(PlayerCreature pStudent) {
-	    student = pStudent;
-	}
-	
-	@local
-	public final string getTeachingSkillOption(int index) {
-	    return teachingSkillList.get(index).getName();
-	}
-	
-	public void clearTeachingSkillOptions() {
-	    teachingSkillList.removeAll();
-	}
-	
-	@local 
-	public string getTeachingOffer() {
-	    //return teachingOffer->getName();
-	    return teachingOffer;
-	}
-	
-	public void setTeachingOffer(final string name) {
-	    //teachingOffer = server->getProfessionManager->getSkillBox(name);
-	    teachingOffer = name;
+	public boolean isTeachingOrLearning() {
+	    return teachingOrLearning;
 	}
 	
 	/**

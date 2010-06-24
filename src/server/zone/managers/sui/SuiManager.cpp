@@ -62,6 +62,8 @@ which carries forward this exception.
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
+#include "server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -1682,20 +1684,28 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 	PlayerCreature* student = NULL;
 
 	try {
+
 		player->wlock();
+		player->setTeachingOrLearning(false);
 
 		if(!player->hasSuiBox(boxID)) {
 			player->unlock();
 			return;
 		}
 
-		SuiBox* sui = player->getSuiBox(boxID);
+		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
 		player->removeSuiBox(boxID);
 
-		student = player->getStudent();
+		if(!sui->isListBox() || sui->getWindowType() != 36) {
+			player->unlock();
+			return;
+		}
+
+		TeachPlayerListBox* listBox = (TeachPlayerListBox*) sui.get();
+
+		student = listBox->getStudent();
 
 		if (student == NULL) {
-			player->clearTeachingSkillOptions();
 			player->unlock();
 			return;
 		}
@@ -1706,10 +1716,6 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 
 			if ( cancel == 1 || value == -1 ) {
 
-				student->setTeacher(NULL);
-				player->setStudent(NULL);
-				player->clearTeachingSkillOptions();
-
 				if (student != player)
 					student->unlock();
 
@@ -1718,11 +1724,10 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 			}
 
 			//if they are no longer in the same group we cancel
-			if ( player->getGroup() == NULL || !player->getGroup()->hasMember(player->getStudent()) ) {
+			if ( player->getGroup() == NULL || !player->getGroup()->hasMember(student) ) {
 
-				student->setTeacher(NULL);
-				player->setStudent(NULL);
 				player->sendSystemMessage("teaching","not_in_same_group");
+				player->setTeachingOrLearning(false);
 
 				if (student != player)
 					student->unlock();
@@ -1731,30 +1736,30 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 				return;
 			}
 
-
-			student->setTeachingOffer(player->getTeachingSkillOption(value));
+			//student->setTeachingOffer(listBox->getTeachingSkillOption(value));
 
 			ParameterizedStringId message("teaching","offer_given");
-			message.setTT(student->getObjectID());
-			message.setTO("skl_n", player->getTeachingSkillOption(value));
+			message.setTT(student->getFirstName());
+			message.setTO("skl_n", listBox->getTeachingSkillOption(value));
 			player->sendSystemMessage(message);
 
-			SuiListBox* mbox = new SuiListBox(student, SuiWindowType::TEACH_SKILL);
+			PlayerLearnListBox* mbox = new PlayerLearnListBox(student);
+
+			student->setTeachingOrLearning(true);
 
 			// TODO: redo this after I find the proper String
 			StringBuffer prompt, skillname;
-			skillname << "@skl_n:" << player->getTeachingSkillOption(value);
+			skillname << "@skl_n:" << listBox->getTeachingSkillOption(value);
 			prompt << "Do you wish to learn the following from " << player->getFirstName() << "?";
 			mbox->setPromptTitle("@sui:teach");
 			mbox->setPromptText(prompt.toString());
 			mbox->addMenuItem(skillname.toString());
 			mbox->setCancelButton(true, "");
+			mbox->setTeacher(player);
+			mbox->setTeachingOffer(listBox->getTeachingSkillOption(value));
 
 			student->addSuiBox(mbox);
 			student->sendMessage(mbox->generateMessage());
-
-			player->clearTeachingSkillOptions();
-			player->setStudent(NULL);
 
 			if (student != player)
 				student->unlock();
@@ -1779,63 +1784,58 @@ void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int val
 void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 cancel) {
 	try {
 		player->wlock();
+		player->setTeachingOrLearning(false);
 
 		if(!player->hasSuiBox(boxID)) {
 			player->unlock();
 			return;
 		}
 
-		SuiBox* sui = player->getSuiBox(boxID);
+		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
 		player->removeSuiBox(boxID);
-		//sui->finalize();
 
+		if(!sui->isListBox() || sui->getWindowType() != 35) {
+			player->unlock();
+			return;
+		}
+
+		PlayerLearnListBox* listBox = (PlayerLearnListBox*) sui.get();
 
 		if (cancel != 1) {
 
-			if (player->getTeacher() == NULL) {
+			if (listBox->getTeacher() == NULL) {
 
 				player->sendSystemMessage("teaching","teacher_too_far");
 				//player->getTeacher()->sendSystemMessage("teaching","teaching_failed"); TEACHER IS NULL..
 				//player->getTeacher()->clearTeachingSkillOptions();
 
-			} else if (!player->isInRange(player->getTeacher(), 128)) {
+			} else if (!player->isInRange(listBox->getTeacher(), 128)) {
 
 				ParameterizedStringId message("teaching","teacher_too_far_target");
-				message.setTT(player->getTeacher()->getObjectID());
-				message.setTO("skl_n", player->getTeachingOffer());
+				message.setTT(listBox->getTeacher()->getObjectID());
+				message.setTO("skl_n", listBox->getTeachingOffer());
 				player->sendSystemMessage(message);
 
-				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
-				player->getTeacher()->setStudent(NULL);
-				player->getTeacher()->clearTeachingSkillOptions();
-				player->setTeacher(NULL);
+				listBox->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 
-			} else if ( player->getGroup() == NULL || !player->getGroup()->hasMember(player->getTeacher()) ) {
+			} else if ( player->getGroup() == NULL || !player->getGroup()->hasMember(listBox->getTeacher()) ) {
 
 				ParameterizedStringId message("teaching","not_in_same_group");
-				message.setTT(player->getTeacher()->getObjectID());
-				message.setTO("skl_n", player->getTeachingOffer());
+				message.setTT(listBox->getTeacher()->getObjectID());
 				player->sendSystemMessage(message);
 
-				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
-				player->getTeacher()->setStudent(NULL);
-				player->getTeacher()->clearTeachingSkillOptions();
-				player->setTeacher(NULL);
+				listBox->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 
 			} else
-				server->getProfessionManager()->playerTeachSkill(player->getTeachingOffer(), player);
+				server->getProfessionManager()->playerTeachSkill(listBox->getTeachingOffer(), player, listBox->getTeacher());
 				//player->teachSkill(player->getTeachingOffer());
 
-		} else if (player->getTeacher() != NULL){
+		} else {// if (listBox->getTeacher() != NULL){
 
 			ParameterizedStringId message("teaching","offer_refused");
 			message.setTT(player->getObjectID());
-			message.setTO("skl_n", player->getTeachingOffer());
-			player->sendSystemMessage(message);
-
-			player->getTeacher()->setStudent(NULL);
-			player->getTeacher()->clearTeachingSkillOptions();
-			player->setTeacher(NULL);
+			message.setTO("skl_n", listBox->getTeachingOffer());
+			listBox->getTeacher()->sendSystemMessage(message);
 
 		}
 

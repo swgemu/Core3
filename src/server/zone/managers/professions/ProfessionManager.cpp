@@ -478,7 +478,7 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* pl
 }
 */
 
-bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* player) {
+bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* player, PlayerCreature* teacher) {
 
 	PlayerObject* playo = (PlayerObject*)player->getSlottedObject("ghost");
 
@@ -488,14 +488,9 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 	if (getSkillBox(name)->getSkillXpCost() > playo->getExperience(getSkillBox(name)->getSkillXpType())) {
 
 		ParameterizedStringId message("skill_teacher","prose_train_failed");
-		message.setTT(player->getTeacher()->getFirstName());
+		message.setTT(teacher->getFirstName());
 		message.setTO("skl_n", name);
 		player->sendSystemMessage(message);
-
-		player->getTeacher()->setStudent(NULL);
-		player->getTeacher()->setTeacher(NULL);
-		player->setTeacher(NULL);
-		player->setStudent(NULL);
 
 		return false;
 	}
@@ -507,14 +502,9 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 			if (!player->hasSkillBox(getSkillBox(name)->getRequiredSkill(j)->getName())) {
 
 				ParameterizedStringId message("skill_teacher","prose_train_failed");
-				message.setTT(player->getTeacher()->getFirstName());
+				message.setTT(teacher->getFirstName());
 				message.setTO("skl_n", name);
 				player->sendSystemMessage(message);
-
-				player->getTeacher()->setStudent(NULL);
-				player->getTeacher()->setTeacher(NULL);
-				player->setTeacher(NULL);
-				player->setStudent(NULL);
 			}
 	}
 
@@ -524,14 +514,9 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 	if( !trainSkillBox(name, player, true) ) {
 
 		ParameterizedStringId message("skill_teacher","prose_train_failed");
-		message.setTT(player->getTeacher()->getFirstName());
+		message.setTT(teacher->getFirstName());
 		message.setTO("skl_n", name);
 		player->sendSystemMessage(message);
-
-		player->getTeacher()->setStudent(NULL);
-		player->getTeacher()->setTeacher(NULL);
-		player->setTeacher(NULL);
-		player->setStudent(NULL);
 
 		return false;
 
@@ -540,14 +525,14 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 	playo->addExperience(getSkillBox(name)->getSkillXpType(), (-1) * getSkillBox(name)->getSkillXpCost(), true);
 
 	ParameterizedStringId message("teaching","student_skill_learned");
-	message.setTT(player->getTeacher()->getFirstName());
+	message.setTT(teacher->getFirstName());
 	message.setTO("skl_n", name);
 	player->sendSystemMessage(message);
 
 	ParameterizedStringId message2("teaching","teacher_skill_learned");
 	message2.setTT(player->getFirstName());
 	message2.setTO("skl_n", name);
-	player->getTeacher()->sendSystemMessage(message2);
+	teacher->sendSystemMessage(message2);
 
 	int xp = 0;
 	String xpType("apprenticeship");
@@ -559,12 +544,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 		xp = ((tier-'0') + 1) * 10;
 	}
 
-	player->getZoneServer()->getPlayerManager()->awardExperience(player->getTeacher(), xpType, xp);
-
-	player->getTeacher()->setStudent(NULL);
-	player->getTeacher()->setTeacher(NULL);
-	player->setTeacher(NULL);
-	player->setStudent(NULL);
+	player->getZoneServer()->getPlayerManager()->awardExperience(teacher, xpType, xp);
 
 	return true;
 

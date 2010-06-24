@@ -486,23 +486,9 @@ public:
 
 	void clearTradeContainer();
 
-	void teachPlayer(PlayerCreature* player);
+	void setTeachingOrLearning(bool value);
 
-	PlayerCreature* getTeacher();
-
-	PlayerCreature* getStudent();
-
-	void setTeacher(PlayerCreature* pTeacher);
-
-	void setStudent(PlayerCreature* pStudent);
-
-	const String getTeachingSkillOption(int index);
-
-	void clearTeachingSkillOptions();
-
-	String getTeachingOffer();
-
-	void setTeachingOffer(const String& name);
+	bool isTeachingOrLearning();
 
 	WaypointObject* getSurveyWaypoint();
 
@@ -526,7 +512,6 @@ protected:
 	String _return_getLastNpcConvMessStr;
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
-	String _return_getTeachingOffer;
 
 	UnicodeString _return_getBiography;
 
@@ -581,13 +566,7 @@ protected:
 
 	int skillPoints;
 
-	ManagedReference<PlayerCreature* > teacher;
-
-	ManagedReference<PlayerCreature* > student;
-
-	Vector<SkillBox*> teachingSkillList;
-
-	String teachingOffer;
+	bool teachingOrLearning;
 
 	Badges badges;
 
@@ -842,23 +821,9 @@ public:
 
 	void clearTradeContainer();
 
-	void teachPlayer(PlayerCreature* player);
+	void setTeachingOrLearning(bool value);
 
-	PlayerCreature* getTeacher();
-
-	PlayerCreature* getStudent();
-
-	void setTeacher(PlayerCreature* pTeacher);
-
-	void setStudent(PlayerCreature* pStudent);
-
-	const String getTeachingSkillOption(int index);
-
-	void clearTeachingSkillOptions();
-
-	String getTeachingOffer();
-
-	void setTeachingOffer(const String& name);
+	bool isTeachingOrLearning();
 
 	WaypointObject* getSurveyWaypoint();
 
@@ -1101,15 +1066,7 @@ public:
 
 	void setSurveyWaypoint(WaypointObject* waypoint);
 
-	void teachPlayer(PlayerCreature* player);
-
-	void setTeacher(PlayerCreature* pTeacher);
-
-	void setStudent(PlayerCreature* pStudent);
-
-	void clearTeachingSkillOptions();
-
-	void setTeachingOffer(const String& name);
+	void setTeachingOrLearning(bool value);
 
 	WaypointObject* getSurveyWaypoint();
 
@@ -1127,7 +1084,6 @@ protected:
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
-	String _param0_setTeachingOffer__String_;
 };
 
 class PlayerCreatureHelper : public DistributedObjectClassHelper, public Singleton<PlayerCreatureHelper> {
