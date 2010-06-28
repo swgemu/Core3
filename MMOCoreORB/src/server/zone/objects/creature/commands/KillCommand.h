@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef KILLCOMMAND_H_
 #define KILLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class KillCommand : public QueueCommand {
 public:
@@ -62,6 +62,10 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 
 		return SUCCESS;
 	}
