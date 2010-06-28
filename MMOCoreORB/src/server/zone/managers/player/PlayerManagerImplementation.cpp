@@ -20,6 +20,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 
@@ -783,6 +784,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	}
 
 	player->setPosture(CreaturePosture::DEAD, true);
+
+	CombatManager::instance()->freeDuelList(player, false);
 
 	sendActivateCloneRequest(player);
 
