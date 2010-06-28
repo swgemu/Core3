@@ -333,7 +333,7 @@ void ChatManager::loadMail(PlayerCreature* player) {
 		((ChatManagerImplementation*) _impl)->loadMail(player);
 }
 
-void ChatManager::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
+void ChatManager::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -349,7 +349,7 @@ void ChatManager::sendMail(const String& sendername, UnicodeString& header, Unic
 		((ChatManagerImplementation*) _impl)->sendMail(sendername, header, body, name);
 }
 
-void ChatManager::sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name) {
+void ChatManager::sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -758,7 +758,7 @@ void ChatManagerAdapter::loadMail(PlayerCreature* player) {
 	((ChatManagerImplementation*) impl)->loadMail(player);
 }
 
-void ChatManagerAdapter::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
+void ChatManagerAdapter::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
 	((ChatManagerImplementation*) impl)->sendMail(sendername, header, body, name);
 }
 

@@ -204,9 +204,9 @@ public:
 
 	void loadMail(PlayerCreature* player);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	void sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name);
+	void sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
@@ -308,9 +308,9 @@ public:
 
 	void loadMail(PlayerCreature* player);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	void sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name);
+	void sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
@@ -407,7 +407,7 @@ public:
 
 	void loadMail(PlayerCreature* player);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 

@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 
 class DumpZoneInformationCommand : public QueueCommand {
 public:
@@ -63,6 +65,11 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
 
 		SceneObject* cell = creature->getParent();
 
@@ -88,6 +95,9 @@ public:
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
 		creature->sendSystemMessage(msg.toString());
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->sendMail("System", "dumpZoneInformation", msg.toString(), player->getFirstName());
 
 		return SUCCESS;
 	}
