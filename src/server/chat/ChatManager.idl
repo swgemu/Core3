@@ -132,10 +132,10 @@ class ChatManager extends ManagedObject implements Logger {
 	public native ChatRoom createGroupRoom(unsigned long groupID, PlayerCreature creator);
 
 	public native void loadMail(PlayerCreature player);
-	public native void sendMail(final string sendername, unicode header, unicode body, final string name);
+	public native void sendMail(final string sendername, final unicode header, final unicode body, final string name);
 	
 	@local
-	public native void sendMail(final string sendername, unicode header, @dereferenced ParameterizedStringId body, final string name);
+	public native void sendMail(final string sendername, final unicode header, @dereferenced ParameterizedStringId body, final string name);
 	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
 	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
 	
