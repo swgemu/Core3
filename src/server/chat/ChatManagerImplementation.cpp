@@ -511,7 +511,7 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 	sender->wlock();
 }
 
-void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
+void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
 	uint64 receiverObjectID = playerManager->getObjectID(name);
 
 	Time expireTime;
@@ -564,7 +564,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 	player->updateToDatabaseWithoutChildren();
 }
 
-void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString& header, ParameterizedStringId& body, const String& name) {
+void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name) {
 	uint64 receiverObjectID = playerManager->getObjectID(name);
 
 	Time expireTime;
