@@ -81,14 +81,12 @@ public:
 			return GENERALERROR;
 
 		try {
-			object->wlock(player);
+			Locker clocker(object, player);
 
 			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, (HarvesterObject*) inso);
 			player->sendMessage(msg);
 
-			object->unlock();
 		} catch (...) {
-			object->unlock();
 		}
 
 		return SUCCESS;

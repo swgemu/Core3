@@ -818,6 +818,8 @@ public:
 
 	bool isBuildingObject();
 
+	bool isCloningBuildingObject();
+
 	bool isGarage();
 
 	bool isWeaponObject();
@@ -904,6 +906,12 @@ public:
 
 	ActiveArea* getActiveArea();
 
+	int getMapLocationsType1();
+
+	int getMapLocationsType2();
+
+	int getMapLocationsType3();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -975,6 +983,8 @@ protected:
 	unsigned int gameObjectType;
 
 	unsigned int containmentType;
+
+	SharedObjectTemplate* templateObject;
 
 public:
 	static const int CELLOBJECT = 11;
@@ -1611,6 +1621,8 @@ public:
 
 	virtual bool isBuildingObject();
 
+	virtual bool isCloningBuildingObject();
+
 	bool isGarage();
 
 	virtual bool isWeaponObject();
@@ -1696,6 +1708,12 @@ public:
 	virtual bool isMissionObject();
 
 	ActiveArea* getActiveArea();
+
+	int getMapLocationsType1();
+
+	int getMapLocationsType2();
+
+	int getMapLocationsType3();
 
 	SceneObject* _this;
 
@@ -1936,6 +1954,8 @@ public:
 
 	bool isBuildingObject();
 
+	bool isCloningBuildingObject();
+
 	bool isGarage();
 
 	bool isWeaponObject();
@@ -2013,6 +2033,12 @@ public:
 	bool isMissionObject();
 
 	ActiveArea* getActiveArea();
+
+	int getMapLocationsType1();
+
+	int getMapLocationsType2();
+
+	int getMapLocationsType3();
 
 protected:
 	String _param0_info__String_bool_;

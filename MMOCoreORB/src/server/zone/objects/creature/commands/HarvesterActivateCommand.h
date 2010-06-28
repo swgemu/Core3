@@ -81,14 +81,14 @@ public:
 		HarvesterObject* harvester = (HarvesterObject*) inso;
 
 		try {
-			harvester->wlock(player);
+			Locker clocker(harvester, player);
 
 			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
 				harvester->setOperating(true);
 
-			harvester->unlock();
+
 		} catch (...) {
-			harvester->unlock();
+
 		}
 
 

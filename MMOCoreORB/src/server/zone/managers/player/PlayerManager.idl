@@ -122,6 +122,9 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	public native void sendMessageOfTheDay(PlayerCreature player);
 	
+	public native void sendActivateCloneRequest(PlayerCreature player);
+	public native void sendPlayerToCloner(PlayerCreature player, unsigned long clonerID);
+	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);

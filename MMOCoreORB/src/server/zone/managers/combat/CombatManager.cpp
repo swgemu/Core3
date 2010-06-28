@@ -41,8 +41,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	attacker->clearState(CreatureState::PEACE);
 
-	if (lockDefender)
-		defender->wlock(attacker);
+	Locker clocker(defender, attacker);
 
 	try {
 
@@ -52,9 +51,6 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	} catch (...) {
 		success = false;
 	}
-
-	if (lockDefender)
-		defender->unlock();
 
 	return success;
 }
@@ -71,7 +67,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 		TangibleObject* defender = (TangibleObject*) object.get();
 
 		try {
-			defender->wlock(attacker);
+			Locker clocker(defender, attacker);
 
 			if (defender->hasDefender(attacker)) {
 
@@ -95,11 +91,10 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 				--i;
 			}
 
-			defender->unlock();
+			clocker.release();
 
 		} catch (...) {
 			error("unknown exception in PlayerImplementation::doPeace()\n");
-			defender->unlock();
 		}
 
 	}
@@ -176,7 +171,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	int damage = 0;
 
 	try {
-		tano->wlock(attacker);
+		Locker clocker(tano, attacker);
 
 		attacker->addDefender(tano);
 		tano->addDefender(attacker);
@@ -193,9 +188,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 			broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, command->getCombatSpam() + "_hit");
 		}
 
-		tano->unlock();
 	} catch (...) {
-		tano->unlock();
 	}
 
 	return damage;
@@ -1171,14 +1164,13 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 	 */
 
 	try {
-		targetPlayer->wlock(player);
+		Locker clocker(targetPlayer, player);
 
 		if (player->requestedDuelTo(targetPlayer)) {
 			ParameterizedStringId stringId("duel", "already_challenged");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
-			targetPlayer->unlock();
 			return;
 		}
 
@@ -1215,18 +1207,14 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 			targetPlayer->sendSystemMessage(stringId4);
 		}
 
-		targetPlayer->unlock();
-	} catch (Exception& e) {
-		targetPlayer->unlock();
 
+	} catch (Exception& e) {
 		StringBuffer msg;
 		msg << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n"
 				<< e.getMessage();
 
 		error(msg.toString());
 	} catch (...) {
-		targetPlayer->unlock();
-
 		StringBuffer msg;
 		msg << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
 
@@ -1240,14 +1228,13 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 	 */
 
 	try {
-		targetPlayer->wlock(player);
+		Locker clocker(targetPlayer, player);
 
 		if (!player->requestedDuelTo(targetPlayer)) {
 			ParameterizedStringId stringId("duel", "not_dueling");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
-			targetPlayer->unlock();
 			return;
 		}
 
@@ -1273,9 +1260,8 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 			targetPlayer->sendSystemMessage(stringId2);
 		}
 
-		targetPlayer->unlock();
 	} catch (...) {
-		targetPlayer->unlock();
+
 	}
 }
 
@@ -1293,7 +1279,7 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 
 		if (targetPlayer != NULL && targetPlayer.get() != player) {
 			try {
-				targetPlayer->wlock(player);
+				Locker clocker(targetPlayer, player);
 
 				player->removeFromDuelList(targetPlayer);
 				player->removeDefender(targetPlayer);
@@ -1320,14 +1306,13 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 				}
 
 
-				targetPlayer->unlock();
 			} catch (ObjectNotDeployedException& e) {
 				player->removeFromDuelList(targetPlayer);
 
 				System::out << "Exception on CombatManager::freeDuelList()\n"
 						<< e.getMessage() << "\n";
 			} catch (...) {
-				targetPlayer->unlock();
+
 			}
 		}
 	}
@@ -1339,7 +1324,7 @@ void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPl
 	 */
 
 	try {
-		targetPlayer->wlock(player);
+		Locker clocker(targetPlayer, player);
 
 		if (targetPlayer->requestedDuelTo(player)) {
 			targetPlayer->removeFromDuelList(player);
@@ -1353,9 +1338,9 @@ void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPl
 			targetPlayer->sendSystemMessage(stringId2);
 		}
 
-		targetPlayer->unlock();
+
 	} catch (...) {
-		targetPlayer->unlock();
+
 	}
 }
 

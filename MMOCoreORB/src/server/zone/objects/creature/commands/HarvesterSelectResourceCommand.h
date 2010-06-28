@@ -84,16 +84,14 @@ public:
 		uint64 spawnId = Long::valueOf(arguments.toString());
 
 		try {
-			object->wlock(player);
+			Locker clocker(object, player);
 
 			HarvesterObject* harvester = (HarvesterObject*) inso;
 
 			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
 				harvester->changeActiveResourceID(spawnId);
 
-			object->unlock();
 		} catch (...) {
-			object->unlock();
 		}
 
 

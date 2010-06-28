@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
@@ -124,10 +125,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;*/
 	case SuiWindowType::CLONE_REQUEST:
 		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;/*
 	case SuiWindowType::CLONE_CONFIRM:
 		handleCloneConfirm(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -1336,41 +1337,37 @@ void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel,
 		player->unlock();
 	}
 }
-void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
+*/
+void SuiManager::handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+	Locker locker(player);
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (index >= 0) {
-			if (!player->isDead()) {
-				player->sendSystemMessage("You must be dead to activate your clone.");
-			} else {
-				SuiListBox* suiListBox = (SuiListBox*) sui;
-				player->clone(suiListBox->getMenuObjectID(index));
-			}
-		} else {
-			if (player->isDead())
-				player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleCloneRequest");
-		player->unlock();
+	if (!player->hasSuiBox(boxID)) {
+		return;
 	}
-}
 
+	info("activating sui cloner option", true);
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	if (index >= 0) {
+		if (!player->isDead()) {
+			player->sendSystemMessage("You must be dead to activate your clone.");
+		} else {
+			SuiListBox* suiListBox = (SuiListBox*) sui.get();
+			playerManager->sendPlayerToCloner(player, suiListBox->getMenuObjectID(index));
+		}
+	} else {
+		if (player->isDead())
+			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+	}
+
+	player->removeSuiBox(boxID);
+
+}
+/*
 void SuiManager::handleDiagnose(uint32 boxID, Player* player) {
 	try {
 		player->wlock();

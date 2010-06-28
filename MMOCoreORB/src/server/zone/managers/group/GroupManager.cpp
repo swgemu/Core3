@@ -64,14 +64,13 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 	// Pre: leader locked
 	// Post: player invited to leader's group, leader locked
 	try {
-		player->wlock(leader);
+		Locker clocker(player, leader);
 
 		if (leader->isGroupped()) {
 			ManagedReference<GroupObject*> group = leader->getGroup();
 
 			if (group->getLeader() != leader) {
 				leader->sendSystemMessage("group", "must_be_leader");
-				player->unlock();
 				return;
 			}
 		}
@@ -83,7 +82,6 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 			leader->sendSystemMessage(stringId);
 			//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
 
-			player->unlock();
 			return;
 		}
 
@@ -94,14 +92,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 			leader->sendSystemMessage(stringId);
 			//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
 
-			player->unlock();
 			return;
 		} else if (player->getGroupInviterID() != 0) {
 			StringBuffer msg;
 			msg << player->getCreatureName().toString() << " is considering joining another group.";
 			leader->sendSystemMessage(msg.toString());
 
-			player->unlock();
 			return;
 		}
 
@@ -116,10 +112,10 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		stringId.setTT(player);
 		leader->sendSystemMessage(stringId);
 
-		player->unlock();
+
 	} catch (...) {
 		System::out << "Exception in GroupManager::inviteToGroup(GroupObject* group, CreatureObject* player)\n";
-		player->unlock();
+
 	}
 }
 
@@ -138,31 +134,33 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	GroupObject* group = NULL;
 
 	try {
-		inviter->wlock(player);
+		Locker clocker(inviter, player);
+
 
 		group = inviter->getGroup();
 
 		if (group == NULL)
 			group = createGroup(inviter);
 
-		inviter->unlock();
+
 	} catch (Exception& e) {
 		e.printStackTrace();
-		inviter->unlock();
+
 
 		return;
 	} catch (...) {
 		System::out << "Exception in GroupManager::joinGroup(CreatureObject* player)\n";
-		inviter->unlock();
+
 
 		return;
 	}
 
 	try {
-		group->wlock(player);
+		Locker clocker(group, player);
+
 
 		if (group->getGroupSize() == 20) {
-			group->unlock();
+			clocker.release();
 
 			player->updateGroupInviterID(0);
 
@@ -185,9 +183,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 		player->updateGroupInviterID(0);
 
-		group->unlock();
 	} catch (...) {
-		group->unlock();
 		System::out << "Exception in GroupManager::joinGroup(CreatureObject* player)\n";
 	}
 }
@@ -221,7 +217,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		return;
 
 	try {
-		group->wlock(player);
+		Locker clocker(group, player);
 
 		ChatRoom* groupChannel = group->getGroupChannel();
 		if (groupChannel != NULL && player->isPlayerCreature()) {
@@ -250,13 +246,11 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 			group->disband();
 		}
 
-		group->unlock();
 	} catch (Exception& e) {
 		System::out << e.getMessage();
 		e.printStackTrace();
-		group->unlock();
+
 	} catch (...) {
-		group->unlock();
 		System::out << "Exception in GroupManager::leaveGroup(GroupObject* group, CreatureObject* player)\n";
 	}
 

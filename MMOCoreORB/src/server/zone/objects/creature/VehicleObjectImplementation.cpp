@@ -79,16 +79,11 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	unlock();
 
 	try {
-		if (linkedCreature != attacker)
-			linkedCreature->wlock(attacker);
+		Locker clocker(linkedCreature, attacker);
 
 		linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
 
-		if (linkedCreature != attacker)
-			linkedCreature->unlock();
 	} catch (...) {
-		if (linkedCreature != attacker)
-			linkedCreature->unlock();
 	}
 
 	wlock(attacker);

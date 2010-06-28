@@ -24,10 +24,12 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
@@ -782,12 +784,84 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 
 	player->setPosture(CreaturePosture::DEAD, true);
 
+	sendActivateCloneRequest(player);
+
 	stringId.setStringId("base_player", "prose_victim_dead");
 	stringId.setTT(attacker->getObjectID());
 	player->sendSystemMessage(stringId);
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player);
 	task->schedule(10 * 1000);
+}
+
+void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* player) {
+	player->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
+
+	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
+
+	cloneMenu->setPromptTitle("@base_player:revive_title");
+
+	Zone* zone = player->getZone();
+
+	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
+	CloningBuildingObject* preDesignatedFacility = NULL;
+
+	String closestName = "Not Working Yet";
+	String predesignatedName = (preDesignatedFacility != NULL) ? "Not Working Yet" : "None";
+
+	//TODO: Integrate this menu with cloning system.
+
+	StringBuffer promptText;
+	promptText << "Closest:\t\t\t" << closestName << "\n"
+			<< "Pre-Designated: \t" << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
+			<< "Cash Balance:\t\t" << player->getCashCredits() << "\n\n"
+			<< "Select the desired option and click OK.";
+
+	cloneMenu->setPromptText(promptText.toString());
+
+	cloneMenu->addMenuItem("@base_player:revive_closest", closestCloning->getObjectID());
+
+	//Check if predesignated is on this planet or not.
+	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone()->getZoneID() == zone->getZoneID())
+		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
+
+	player->addSuiBox(cloneMenu);
+	player->sendMessage(cloneMenu->generateMessage());
+}
+
+void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uint64 clonerID) {
+	ManagedReference<SceneObject*> cloner = server->getObject(clonerID);
+
+	info("entering sendPlayerToCloner", true);
+
+	if (cloner == NULL) {
+		error("cloner is null");
+		return;
+	}
+
+	if (!cloner->isCloningBuildingObject()) {
+		error("cloner is not cloner building");
+		return;
+	}
+
+	CloningBuildingObject* cloningBuilding = (CloningBuildingObject*) cloner.get();
+
+	CloneSpawnPoint* clonePoint = cloningBuilding->getRandomSpawnPoint();
+
+	if (clonePoint == NULL) {
+		error("clone point null");
+		return;
+	}
+
+	Coordinate* coordinate = clonePoint->getCoordinate();
+	Quaternion* direction = clonePoint->getDirection();
+	int cellID = clonePoint->getCellID();
+
+	SceneObject* cell = cloningBuilding->getCell(cellID - 1);
+
+	Zone* zone = player->getZone();
+
+	player->switchZone(zone->getZoneID(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 }
 
 bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
@@ -992,7 +1066,8 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 		if (obj != NULL && obj->isPlayerCreature()) {
 			PlayerCreature* receiver = (PlayerCreature*) obj.get();
 
-			receiver->wlock(player);
+			Locker locker(receiver, player);
+			//receiver->wlock(player);
 
 			TradeContainer* receiverContainer = receiver->getTradeContainer();
 
@@ -1001,7 +1076,8 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 				receiver->sendMessage(msg->clone());
 			}
 
-			receiver->unlock();
+			//receiver->unlock();
+			locker.release();
 		}
 
 		player->sendMessage(msg->clone());
@@ -1168,12 +1244,11 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* player) {
 	ObjectController* objectController = server->getObjectController();
 	try {
-		player->wlock();
+		Locker locker(player);
 
 		TradeContainer* tradeContainer = player->getTradeContainer();
 
 		if (tradeContainer == NULL) {
-			player->unlock();
 			return;
 		}
 
@@ -1186,23 +1261,20 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* playe
 			PlayerCreature* receiver = (PlayerCreature*)obj.get();
 
 			try {
-				receiver->wlock(player);
+				Locker clocker(receiver, player);
 
 				TradeContainer* receiverTradeContainer = receiver->getTradeContainer();
 
 				if (receiverTradeContainer == NULL) {
-					receiver->unlock();
-					player->unlock();
-
+					locker.release();
 					return;
 				}
 
 				if (!checkTradeItems(player, receiver)) {
-					receiver->unlock();
+					clocker.release();
 					handleAbortTradeMessage(player, false);
 
-					player->unlock();
-
+					locker.release();
 					return;
 				}
 
@@ -1250,16 +1322,12 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* playe
 					delete msg;
 				}
 
-				receiver->unlock();
 			} catch (...) {
 				System::out << "Exception in PlayerManagerImplementation::handleVerifyTradeMessage\n";
-				receiver->unlock();
 			}
 		}
 
-		player->unlock();
 	} catch (...) {
-		player->unlock();
 		System::out << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
 	}
 }

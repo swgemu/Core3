@@ -186,6 +186,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
+		server/zone/managers/planet/MapLocationTable.cpp \
+		server/zone/managers/planet/MapLocationEntry.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \

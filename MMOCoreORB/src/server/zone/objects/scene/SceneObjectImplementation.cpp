@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/ZoneClientSession.h"
@@ -87,6 +88,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	pendingTasks.setNullValue(NULL);
 
 	server = ZoneProcessServerImplementation::instance;
+
+	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
 	movementCounter = 0;
 
@@ -124,6 +127,8 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	movementCounter = 0;
 
 	staticObject = false;
+
+	templateObject = templateData;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -241,16 +246,20 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
 		return;
 
+	/*if (getObjectID() == 0x1000001008d10) {
+		StackTrace::printStackTrace();
+	}*/
+
 	ManagedReference<ZoneClientSession*> client = player->getClient();
 
 	if (client == NULL)
 		return;
 
-/*	StringBuffer msg;
+	/*StringBuffer msg;
 	if (parent != NULL)
 		msg << "with parent " << parent->getLoggingName() << " ";
 	msg << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
-	info(msg.toString(), true); */
+	info(msg.toString(), true);*/
 
 	create(client);
 
@@ -268,10 +277,15 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
+	SortedVector<SceneObject*> objects(1, slottedObjects.size());
+	objects.setNoDuplicateInsertPlan();
+
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
-		object->sendTo(player, true);
+		if (objects.put(object) != -1) {
+			object->sendTo(player, true);
+		}
 	}
 }
 
@@ -437,7 +451,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 		return;
 
 	try {
-		parent->wlock();
+		Locker locker(parent);
 
 		parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
 		parent->setPosition(positionX, positionZ, positionY);
@@ -446,10 +460,8 @@ void SceneObjectImplementation::updateVehiclePosition() {
 
 		parent->updateZone(true);
 
-		parent->unlock();
 	} catch (...) {
 		error("Unreported exception in SceneObjectImplementation::updateVehiclePosition()");
-		parent->unlock();
 	}
 }
 
@@ -612,6 +624,9 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 	zone->addSceneObject(_this);
 
+	if (parent != NULL && parent->isCellObject())
+		parent->addObject(_this, -1, false);
+
 	sendToOwner(true);
 
 	if (isInQuadTree()) {
@@ -659,7 +674,7 @@ void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, flo
 	SceneObject* newParent = server->getObject(parentID);
 
 	if (newParent != NULL && newParent->isCellObject())
-		newParent->addObject(_this, -1);
+		newParent->addObject(_this, -1, false);
 
 	Zone* zone = server->getZone(newZoneID);
 
@@ -721,7 +736,7 @@ void SceneObjectImplementation::removeFromZone() {
 		removeInRangeObject(obj);
 	}
 
-	zone->dropSceneObject(getObjectID());
+	zone->dropSceneObject(_this);
 
 	zone = NULL;
 

@@ -81,12 +81,11 @@ public:
 				uint64 parentid = 0;
 
 				try {
-					player->wlock(creature);
+					Locker clocker(player, creature);
 
 					Zone* targetZone = player->getZone();
 
 					if (targetZone == NULL) {
-						player->unlock();
 						return GENERALERROR;
 					}
 
@@ -96,9 +95,8 @@ public:
 					posz = player->getPositionZ();
 					parentid = player->getParentID();
 
-					player->unlock();
 				} catch (...) {
-					player->unlock();
+
 				}
 
 				creature->switchZone(zoneid, posx, posz, posy, parentid);
