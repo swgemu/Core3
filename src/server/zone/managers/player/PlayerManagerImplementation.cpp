@@ -23,6 +23,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
@@ -751,7 +752,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setUseCount(incapTime);
 
-		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature);
+		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature, false);
 		task->schedule(incapTime * 1000);
 
 		ParameterizedStringId stringId;
@@ -784,6 +785,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	}
 
 	player->setPosture(CreaturePosture::DEAD, true);
+	player->clearCombatState();
 
 	CombatManager::instance()->freeDuelList(player, false);
 
@@ -793,7 +795,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	stringId.setTT(attacker->getObjectID());
 	player->sendSystemMessage(stringId);
 
-	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player);
+	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(10 * 1000);
 }
 
@@ -809,15 +811,36 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
 	CloningBuildingObject* preDesignatedFacility = NULL;
 
-	String closestName = "Not Working Yet";
+	UnicodeString name;
+	StringId* objectName = closestCloning->getObjectName();
+
+	ActiveArea* area = closestCloning->getActiveArea();
+
+	if (area != NULL) {
+		objectName = area->getObjectName();
+
+		//info("area found", true);
+	} else
+		//info("area not found, true");
+
+	name = objectName->getCustomString();
+
+	if (name.length() == 0) {
+		String fullPath;
+		objectName->getFullPath(fullPath);
+
+		name = fullPath;
+	}
+
+	String closestName = name.toString(); //"Not Working Yet";
 	String predesignatedName = (preDesignatedFacility != NULL) ? "Not Working Yet" : "None";
 
 	//TODO: Integrate this menu with cloning system.
 
 	StringBuffer promptText;
-	promptText << "Closest:\t\t\t" << closestName << "\n"
-			<< "Pre-Designated: \t" << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
-			<< "Cash Balance:\t\t" << player->getCashCredits() << "\n\n"
+	promptText << "@base_player:revive_closest : " << closestName << "\n"
+			<< "@base_player:revive_bind : " << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
+			<< "Cash Balance : " << player->getCashCredits() << "\n\n"
 			<< "Select the desired option and click OK.";
 
 	cloneMenu->setPromptText(promptText.toString());

@@ -20,10 +20,13 @@ namespace events {
 
 class PlayerIncapacitationRecoverTask : public Task {
 	ManagedReference<PlayerCreature*> player;
+	bool deadRecovery;
 
 public:
-	PlayerIncapacitationRecoverTask(PlayerCreature* pl) : Task() {
+	PlayerIncapacitationRecoverTask(PlayerCreature* pl, bool deadRecovery) : Task() {
 		player = pl;
+
+		this->deadRecovery = deadRecovery;
 	}
 
 	~PlayerIncapacitationRecoverTask() {
@@ -53,6 +56,9 @@ public:
 				player->setHAM(CreatureAttribute::MIND, 1);
 
 			player->setPosture(CreaturePosture::UPRIGHT);
+
+			if (deadRecovery)
+				player->playEffect("clienteffect/player_clone_compile.cef");
 		} catch (...) {
 			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
 

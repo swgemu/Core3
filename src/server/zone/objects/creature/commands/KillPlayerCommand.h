@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef KILLPLAYERCOMMAND_H_
 #define KILLPLAYERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class KillPlayerCommand : public QueueCommand {
 public:
@@ -62,6 +63,26 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<PlayerCreature*> targetToKill = NULL;
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+		if (!arguments.isEmpty()) {
+			targetToKill = playerManager->getPlayer(arguments.toString());
+		} else {
+			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+			if (obj != NULL && obj->isPlayerCreature())
+				targetToKill = (PlayerCreature*) obj.get();
+		}
+
+		if (targetToKill == NULL)
+			return INVALIDTARGET;
+
+		Locker clocker(targetToKill, creature);
+
+		playerManager->killPlayer(creature, targetToKill);
 
 		return SUCCESS;
 	}
