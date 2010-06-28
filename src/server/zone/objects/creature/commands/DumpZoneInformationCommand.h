@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef DUMPZONEINFORMATIONCOMMAND_H_
 #define DUMPZONEINFORMATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 class DumpZoneInformationCommand : public QueueCommand {
 public:
@@ -62,6 +63,25 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		SceneObject* cell = creature->getParent();
+
+		int cellid = 0;
+
+		if (cell != NULL && cell->isCellObject()) {
+			cellid = ((CellObject*)cell)->getCellNumber();
+		}
+
+		StringBuffer msg;
+
+		float posX = creature->getPositionX(), posZ = creature->getPositionZ(), posY = creature->getPositionY();
+		Quaternion* direction = creature->getDirection();
+
+		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
+				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()
+				<< ", cellid = " << cellid;
+
+		creature->sendSystemMessage(msg.toString());
 
 		return SUCCESS;
 	}
