@@ -138,6 +138,8 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType;
 	protected unsigned int containmentType;
+	
+	protected transient SharedObjectTemplate templateObject;
 
 	public static final int CELLOBJECT = 11;
 	public static final int PLAYEROBJECT = 12;
@@ -1141,6 +1143,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isCloningBuildingObject() {
+		return false;
+	}
+	
 	public boolean isGarage() {
 		return gameObjectType == GARAGEBUILDING || gameObjectType == GARAGEINSTALLATION;
 	}
@@ -1306,9 +1312,21 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public abstract boolean isMissionObject() {
 		return false;
 	}
-	
+
 	public ActiveArea getActiveArea() {
 		return activeArea;
+	}
+
+	public int getMapLocationsType1() {
+		return templateObject.getMapLocationsType1();
+	}
+
+	public int getMapLocationsType2() {
+		return templateObject.getMapLocationsType2();
+	}
+
+	public int getMapLocationsType3() {
+		return templateObject.getMapLocationsType3();
 	}
 }
 

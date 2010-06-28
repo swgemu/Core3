@@ -242,8 +242,14 @@ void CreatureObjectImplementation::sendPvpStatusTo(PlayerCreature* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
+	SortedVector<SceneObject*> objects(1, slottedObjects.size());
+	objects.setNoDuplicateInsertPlan();
+
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
+
+		if (objects.put(object) == -1)
+			continue;
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 

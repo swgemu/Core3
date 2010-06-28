@@ -401,7 +401,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	byte getUnknownByte();
 

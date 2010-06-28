@@ -135,7 +135,8 @@ void GroupObjectImplementation::disband() {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		CreatureObject* crea = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
 		try {
-			crea->wlock((GroupObject*) _this);
+			Locker clocker(crea, _this);
+
 
 			if (crea->isPlayerCreature()) {
 
@@ -158,11 +159,8 @@ void GroupObjectImplementation::disband() {
 
 			sendDestroyTo(crea);
 
-			crea->unlock();
-
 		} catch (...) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
-			crea->unlock();
 		}
 	}
 

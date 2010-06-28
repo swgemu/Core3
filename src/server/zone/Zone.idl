@@ -66,6 +66,8 @@ include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
 
 import system.lang.System;
+import server.zone.objects.building.cloning.CloningBuildingObject;
+import server.zone.objects.creature.CreatureObject;
 
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
@@ -100,6 +102,8 @@ class Zone extends ManagedObject implements QuadTree {
 	public native Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 	public native void initializeTransientMembers();
 	
+	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
+	
 	@local
 	public native void insert(QuadTreeEntry entry);
 	
@@ -122,7 +126,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native void sendMapLocationsTo(final string planetName, SceneObject player);
 	
-	public native void dropSceneObject(unsigned long objectID);
+	public native void dropSceneObject(SceneObject object);
 
 	// setters and getters
 	public int getZoneID() {

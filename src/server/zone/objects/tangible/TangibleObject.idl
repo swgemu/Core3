@@ -307,7 +307,7 @@ class TangibleObject extends SceneObject {
 	
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
-	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
 	public byte getUnknownByte() {
 		return unknownByte;

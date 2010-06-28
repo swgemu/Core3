@@ -166,6 +166,10 @@ public:
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 
+	void sendActivateCloneRequest(PlayerCreature* player);
+
+	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -268,6 +272,10 @@ public:
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 
+	void sendActivateCloneRequest(PlayerCreature* player);
+
+	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -358,6 +366,10 @@ public:
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
+
+	void sendActivateCloneRequest(PlayerCreature* player);
+
+	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

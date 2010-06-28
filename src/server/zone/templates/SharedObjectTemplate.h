@@ -92,6 +92,7 @@ public:
 	const static int CRAFTINGTOOL = 0x4000007;
 	const static int CRAFTINGSTATION = 0x4000008;
 	const static int MISSIONTERMINAL = 0x4000009;
+	const static int CLONINGBUILDING = 0x400000A;
 
 public:
 	SharedObjectTemplate() {
@@ -367,6 +368,10 @@ public:
 	}
 
 	virtual bool isMissionTerminalTemplate() {
+		return false;
+	}
+
+	virtual bool isCloningBuildingObjectTemplate() {
 		return false;
 	}
 };

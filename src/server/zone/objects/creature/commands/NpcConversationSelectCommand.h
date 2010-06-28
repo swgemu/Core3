@@ -77,13 +77,11 @@ public:
 			int option = Integer::valueOf(arguments.toString());
 
 			try {
-				object->wlock(creature);
+				Locker clocker(object, creature);
 
 				object->selectConversationOption(option, player);
-
-				object->unlock();
 			} catch (...) {
-				object->unlock();
+
 			}
 		}
 

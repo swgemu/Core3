@@ -8,6 +8,22 @@
 #ifndef MAPLOCATIONENTRY_H_
 #define MAPLOCATIONENTRY_H_
 
+#include "engine/engine.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 class MapLocationEntry : public Object {
 	ManagedReference<SceneObject*> object;
 	int mapLoc1;
@@ -36,18 +52,9 @@ public:
 		mapLoc3 = entry.mapLoc3;
 	}
 
-	MapLocationEntry& operator=(const MapLocationEntry& entry) {
-		if (this == &entry)
-			return *this;
+	int compareTo(const MapLocationEntry& entry) const;
 
-		object = entry.object;
-
-		mapLoc1 = entry.mapLoc1;
-		mapLoc2 = entry.mapLoc2;
-		mapLoc3 = entry.mapLoc3;
-
-		return *this;
-	}
+	MapLocationEntry& operator=(const MapLocationEntry& entry);
 
 	inline void setObject(SceneObject* obj) {
 		object = obj;
@@ -56,6 +63,8 @@ public:
 	inline SceneObject* getObject() {
 		return object;
 	}
+
+	uint64 getObjectID() const;
 
 	inline void setType1(int type) {
 		mapLoc1 = type;

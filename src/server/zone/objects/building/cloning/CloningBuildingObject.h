@@ -35,6 +35,12 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+#include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
+
+#include "server/zone/objects/building/cloning/CloneSpawnPoint.h"
+
+#include "server/zone/managers/templates/TemplateManager.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -48,6 +54,12 @@ namespace cloning {
 class CloningBuildingObject : public BuildingObject {
 public:
 	CloningBuildingObject();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	bool isCloningBuildingObject();
+
+	CloneSpawnPoint* getRandomSpawnPoint();
 
 protected:
 	CloningBuildingObject(DummyConstructorParameter* param);
@@ -77,6 +89,12 @@ public:
 	CloningBuildingObjectImplementation();
 
 	CloningBuildingObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	bool isCloningBuildingObject();
+
+	CloneSpawnPoint* getRandomSpawnPoint();
 
 	CloningBuildingObject* _this;
 
@@ -116,6 +134,8 @@ public:
 	CloningBuildingObjectAdapter(CloningBuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool isCloningBuildingObject();
 
 };
 

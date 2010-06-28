@@ -36,6 +36,8 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	info("building sendto..", true);
+
 	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");
 
@@ -120,6 +122,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 
 	creoImpl->addInRangeObject(this, false);
 	addInRangeObject(creoImpl, false);
+	//this->sendTo(object, true);
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {

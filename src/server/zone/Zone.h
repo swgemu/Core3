@@ -101,6 +101,36 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+namespace cloning {
+
+class CloningBuildingObject;
+
+} // namespace cloning
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building::cloning;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "server/zone/managers/object/ObjectMap.h"
@@ -130,6 +160,8 @@ public:
 
 	void initializeTransientMembers();
 
+	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -148,7 +180,7 @@ public:
 
 	void sendMapLocationsTo(const String& planetName, SceneObject* player);
 
-	void dropSceneObject(unsigned long long objectID);
+	void dropSceneObject(SceneObject* object);
 
 	int getZoneID();
 
@@ -240,6 +272,8 @@ public:
 
 	void initializeTransientMembers();
 
+	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -258,7 +292,7 @@ public:
 
 	void sendMapLocationsTo(const String& planetName, SceneObject* player);
 
-	void dropSceneObject(unsigned long long objectID);
+	void dropSceneObject(SceneObject* object);
 
 	int getZoneID();
 
@@ -339,6 +373,8 @@ public:
 
 	void initializeTransientMembers();
 
+	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
+
 	void startManagers();
 
 	void stopManagers();
@@ -349,7 +385,7 @@ public:
 
 	void sendMapLocationsTo(const String& planetName, SceneObject* player);
 
-	void dropSceneObject(unsigned long long objectID);
+	void dropSceneObject(SceneObject* object);
 
 	int getZoneID();
 

@@ -54,27 +54,23 @@ public:
 		HarvesterObject* harvester = (HarvesterObject*) inso;
 
 		try {
-			harvester->wlock(player);
+			Locker clocker(harvester, player);
 
 			if (!harvester->isOnAdminList(player)) {
-				harvester->unlock();
 				return;
 			}
 
 			if (!harvester->isInRange(player, 10)) {
-				harvester->unlock();
 				return;
 			}
 
 
 			SceneObject* inventory = player->getSlottedObject("inventory");
 
-
 			ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*>(server->getZoneServer()->getObject(resourceId));
 
 			if (resourceSpawn == NULL) {
 				player->error("wrong spawn id");
-				harvester->unlock();
 				return;
 			}
 
@@ -82,13 +78,11 @@ public:
 
 			if (container == NULL) {
 				player->error("null container");
-				harvester->unlock();
 				return;
 			}
 
 			if (byte1 == 0 && quantity > container->getQuantity()) {
 				player->error("too much splitting");
-				harvester->unlock();
 				return;
 			}
 
@@ -115,9 +109,8 @@ public:
 			inventory->updateToDatabaseAllObjects(false);
 			harvester->updateToDatabaseAllObjects(false);
 
-			harvester->unlock();
+
 		} catch (...) {
-			harvester->unlock();
 			player->error("unreported exception caught in EmptyHopperCallback::run");
 		}
 

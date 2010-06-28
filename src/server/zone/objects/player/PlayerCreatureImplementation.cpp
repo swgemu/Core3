@@ -98,10 +98,14 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 
 		grandParent->sendTo(_this, true);
 
+		info("parent not null", true);
+
 		/*if (grandParent->isBuildingObject())
 			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
-	} else
+	} else {
+		info("parent null", true);
 		sendTo(_this, doClose);
+	}
 
 	if (group != NULL)
 		group->sendTo(_this, true);
@@ -313,7 +317,6 @@ void PlayerCreatureImplementation::unload() {
 void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 	if (disconnectEvent != NULL) {
 		disconnectEvent->cancel();
-		//delete disconnectEvent;
 		disconnectEvent = NULL;
 	}
 
@@ -518,6 +521,15 @@ void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWi
 
 	suiBoxes.drop(boxID);
 }
+
+void PlayerCreatureImplementation::removeSuiBoxType(unsigned int windowType) {
+	SuiBox* sui = NULL;
+
+	if ((sui = getSuiBoxFromWindowType(windowType)) != NULL) {
+		removeSuiBox(sui->getBoxID(), true);
+	}
+}
+
 
 void PlayerCreatureImplementation::resetFirstIncapacitationTime() {
 	if (!isFirstIncapacitation())
