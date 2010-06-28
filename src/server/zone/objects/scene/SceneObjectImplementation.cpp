@@ -918,11 +918,11 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 
 float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	// TEMP till
-	float x = targetCreature->getPositionX();
-	float y = targetCreature->getPositionY();
+	float x = targetCreature->getWorldPositionX();
+	float y = targetCreature->getWorldPositionY();
 
-	float deltaX = x - positionX;
-	float deltaY = y - positionY;
+	float deltaX = x - getWorldPositionX();
+	float deltaY = y - getWorldPositionY();
 
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }
