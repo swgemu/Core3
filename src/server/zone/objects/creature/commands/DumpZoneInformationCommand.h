@@ -67,9 +67,12 @@ public:
 		SceneObject* cell = creature->getParent();
 
 		int cellid = 0;
+		uint32 buildingTemplate = 0;
 
 		if (cell != NULL && cell->isCellObject()) {
 			cellid = ((CellObject*)cell)->getCellNumber();
+			SceneObject* building = cell->getParent();
+			buildingTemplate = building->getServerObjectCRC();
 		}
 
 		StringBuffer msg;
@@ -80,6 +83,9 @@ public:
 		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
 				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()
 				<< ", cellid = " << cellid;
+
+		if (buildingTemplate != 0)
+			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
 		creature->sendSystemMessage(msg.toString());
 
