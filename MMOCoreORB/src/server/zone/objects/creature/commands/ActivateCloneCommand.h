@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef ACTIVATECLONECOMMAND_H_
 #define ACTIVATECLONECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class ActivateCloneCommand : public QueueCommand {
 public:
@@ -62,6 +63,17 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (!player->isDead())
+			return GENERALERROR;
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		playerManager->sendActivateCloneRequest(player);
 
 		return SUCCESS;
 	}
