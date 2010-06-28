@@ -52,7 +52,7 @@ public:
 		playerTradeContainer->setTradeTargetPlayer(targetToTrade);
 
 		try {
-			targetPlayer->wlock(player);
+			Locker clocker(targetPlayer, player);
 
 			//player->info("asiodhjsodifjsoijghfoisjg", true);
 
@@ -71,9 +71,8 @@ public:
 				targetPlayer->sendSystemMessage(stringId);
 			}
 
-			targetPlayer->unlock();
 		} catch (...) {
-			targetPlayer->unlock();
+
 		}
 
 	}

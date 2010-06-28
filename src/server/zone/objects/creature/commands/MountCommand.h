@@ -92,7 +92,7 @@ public:
 			return GENERALERROR;
 
 		try {
-			vehicle->wlock(creature);
+			Locker clocker(vehicle, creature);
 
 			vehicle->setState(CreatureState::MOUNTEDCREATURE);
 
@@ -101,9 +101,9 @@ public:
 
 			creature->setState(CreatureState::RIDINGMOUNT);
 
-			vehicle->unlock();
+
 		} catch (...) {
-			vehicle->unlock();
+
 		}
 
 		return SUCCESS;

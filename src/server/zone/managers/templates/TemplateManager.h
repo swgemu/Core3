@@ -34,6 +34,7 @@ public:
 			luaTemplatesInstance->runFile("scripts/object/main.lua");
 		} catch (Exception& e) {
 			error(e.getMessage());
+			e.printStackTrace();
 		} catch (...) {
 			error("unreported exception caught while loading templates");
 		}

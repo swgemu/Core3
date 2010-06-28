@@ -78,13 +78,14 @@ public:
 			return GENERALERROR;
 
 		try {
-			container->wlock(creature);
+			Locker clocker(container, creature);
+
 
 			container->notifyCloseContainer((PlayerCreature*)creature);
 
-			container->unlock();
+
 		} catch (...) {
-			container->unlock();
+
 		}
 
 		return SUCCESS;

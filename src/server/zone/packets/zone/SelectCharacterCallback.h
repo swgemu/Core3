@@ -57,10 +57,11 @@ public:
 
 			Zone* zone = player->getZone();
 
-			if (zone != NULL) {
+			if (zone != NULL && player->isInQuadTree()) {
 				//reload
 
 				player->reload(client);
+				player->info("reloading", true);
 
 			} else {
 				int zoneID = player->getSavedZoneID();
@@ -70,13 +71,12 @@ public:
 
 				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
 					try {
-						parent->wlock(player);
+						Locker clocker(parent, player);
 
 						parent->addObject(player, -1);
 
-						parent->unlock();
 					} catch (...) {
-						parent->unlock();
+
 					}
 				}
 

@@ -72,7 +72,7 @@ public:
 		CreatureObject* vehicle = (CreatureObject*) mount.get();
 
 		try {
-			vehicle->wlock(creature);
+			Locker clocker(vehicle, creature);
 
 			vehicle->clearState(CreatureState::MOUNTEDCREATURE);
 
@@ -81,9 +81,9 @@ public:
 
 			creature->clearState(CreatureState::RIDINGMOUNT);
 
-			vehicle->unlock();
+
 		} catch (...) {
-			vehicle->unlock();
+
 		}
 
 		return SUCCESS;

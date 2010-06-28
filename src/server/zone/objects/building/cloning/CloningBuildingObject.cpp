@@ -24,6 +24,34 @@ CloningBuildingObject::~CloningBuildingObject() {
 }
 
 
+void CloningBuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((CloningBuildingObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+bool CloningBuildingObject::isCloningBuildingObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CloningBuildingObjectImplementation*) _impl)->isCloningBuildingObject();
+}
+
+CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((CloningBuildingObjectImplementation*) _impl)->getRandomSpawnPoint();
+}
+
 /*
  *	CloningBuildingObjectImplementation
  */
@@ -95,8 +123,35 @@ void CloningBuildingObjectImplementation::_serializationHelperMethod() {
 
 CloningBuildingObjectImplementation::CloningBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl(55):  		Logger.setLoggingName("CloningBuildingObject");
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(57):  		Logger.setLoggingName("CloningBuildingObject");
 	Logger::setLoggingName("CloningBuildingObject");
+}
+
+void CloningBuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(63):  		super.loadTemplateData(templateData);
+	BuildingObjectImplementation::loadTemplateData(templateData);
+}
+
+bool CloningBuildingObjectImplementation::isCloningBuildingObject() {
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(67):  		return true;
+	return true;
+}
+
+CloneSpawnPoint* CloningBuildingObjectImplementation::getRandomSpawnPoint() {
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(72):  		CloningBuildingObjectTemplate cloningTemplate = null;
+	CloningBuildingObjectTemplate* cloningTemplate = NULL;
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(74):  
+	if (BuildingObjectImplementation::templateObject->isCloningBuildingObjectTemplate()){
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(75):  			cloningTemplate = (CloningBuildingObjectTemplate) super.templateObject;
+	cloningTemplate = (CloningBuildingObjectTemplate*) BuildingObjectImplementation::templateObject;
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(77):  			return cloningTemplate.getRandomSpawnPoint();
+	return cloningTemplate->getRandomSpawnPoint();
+}
+
+	else {
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl(79):  			return null;
+	return NULL;
+}
 }
 
 /*
@@ -110,11 +165,18 @@ Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(isCloningBuildingObject());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool CloningBuildingObjectAdapter::isCloningBuildingObject() {
+	return ((CloningBuildingObjectImplementation*) impl)->isCloningBuildingObject();
 }
 
 /*

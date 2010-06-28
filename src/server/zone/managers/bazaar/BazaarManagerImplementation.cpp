@@ -318,19 +318,15 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
 
 	try {
-		if (seller != player)
-			seller->wlock(player);
+		Locker clocker(seller, player);
 
 		seller->sendSystemMessage(body2);
 		seller->addBankCredits(price1);
 
 		seller->updateToDatabaseWithoutChildren();
 
-		if (seller != player)
-			seller->unlock();
 	} catch (...) {
-		if (seller != player)
-			seller->unlock();
+
 	}
 
 }
@@ -359,20 +355,15 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 		body.setTO(item->getItemName());
 
 		try {
-			if (priorBidder != player)
-				priorBidder->wlock(player);
+			Locker clocker(priorBidder, player);
 
 			priorBidder->sendSystemMessage(body);
 			priorBidder->addBankCredits(item->getPrice());
 
 			priorBidder->updateToDatabaseWithoutChildren();
 
-			if (priorBidder != player)
-				priorBidder->unlock();
+			clocker.release();
 		} catch (...) {
-			if (priorBidder != player)
-				priorBidder->unlock();
-
 			error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 		}
 

@@ -597,6 +597,36 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native void removeSuiBox(unsigned int boxID, boolean closeWindowToClient = false);
 	
+	public native void removeSuiBoxType(unsigned int windowType);
+	
+	public boolean hasSuiBoxWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			type = sui.getWindowType();
+			
+			if (windowType == type)
+				return true;
+		}
+
+		return false;
+	}
+	
+	public unsigned SuiBox getSuiBoxFromWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			if (windowType == sui.getWindowType())
+				return sui;
+		}
+		
+		return null;
+	}
+	
 	public void addSuiBox(SuiBox sui) {
 		unsigned int key = sui.getBoxID();
 		suiBoxes.put(key, sui);

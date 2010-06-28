@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -211,32 +212,15 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap.put(object->getObjectID(), object);
 
-	uint32 templateCRC = object->getServerObjectCRC();
-
-	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(templateCRC);
-
-	if (templ != NULL) {
-		int mapLoc1 = templ->getMapLocationsType1();
-		int mapLoc2 = templ->getMapLocationsType2();
-		int mapLoc3 = templ->getMapLocationsType3();
-
-		if (mapLoc1 != 0 || mapLoc2 != 0 || mapLoc3 != 0 || object->isPlayerCreature()) {
-			if (object->isPlayerCreature())
-				mapLoc1 = 1;
-
-			MapLocationEntry entry(object, mapLoc1, mapLoc2, mapLoc3);
-
-			Locker locker(&mapLocations);
-			mapLocations.put(object->getObjectID(), entry);
-		}
-	}
+	Locker locker(&mapLocations);
+	mapLocations.addObject(object);
 }
 
-void ZoneImplementation::dropSceneObject(uint64 oid)  {
-	objectMap.remove(oid);
+void ZoneImplementation::dropSceneObject(SceneObject* object)  {
+	objectMap.remove(object->getObjectID());
 
 	Locker locker(&mapLocations);
-	mapLocations.drop(oid);
+	mapLocations.dropObject(object);
 }
 
 void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObject* player) {
@@ -248,43 +232,47 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 
 	try {
 		for (int i = 0; i < mapLocations.size(); ++i) {
-			MapLocationEntry* entry = &mapLocations.get(i);
-			SceneObject* object = entry->getObject();
-			UnicodeString name;
-			StringId* objectName = object->getObjectName();
+			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(i).getValue();
 
-			if (object->isBuildingObject()) {
-				ActiveArea* area = object->getActiveArea();
+			for (int j = 0; j < sortedVector->size(); ++j) {
+				MapLocationEntry* entry = &sortedVector->elementAt(j);
+				SceneObject* object = entry->getObject();
+				UnicodeString name;
+				StringId* objectName = object->getObjectName();
 
-				if (area != NULL) {
-					objectName = area->getObjectName();
+				if (object->isBuildingObject()) {
+					ActiveArea* area = object->getActiveArea();
+
+					if (area != NULL) {
+						objectName = area->getObjectName();
+					}
 				}
+
+				name = objectName->getCustomString();
+
+				if (name.length() == 0) {
+					String fullPath;
+					objectName->getFullPath(fullPath);
+
+					name = fullPath;
+				}
+
+				if (entry->getType1() == 17) {
+					if (!cities.contains(name.toString()))
+						cities.put(name.toString());
+					else
+						continue;
+				}
+
+				float posX, posY;
+
+				posX = object->getWorldPositionX();
+				posY = object->getWorldPositionY();
+
+
+				gmlr->addMapLocation(object->getObjectID(), name, posX,
+						posY, entry->getType1(), entry->getType2(), entry->getType3());
 			}
-
-			name = objectName->getCustomString();
-
-			if (name.length() == 0) {
-				String fullPath;
-				objectName->getFullPath(fullPath);
-
-				name = fullPath;
-			}
-
-			if (entry->getType1() == 17) {
-				if (!cities.contains(name.toString()))
-					cities.put(name.toString());
-				else
-					continue;
-			}
-
-			float posX, posY;
-
-			posX = object->getWorldPositionX();
-			posY = object->getWorldPositionY();
-
-
-			gmlr->addMapLocation(object->getObjectID(), name, posX,
-					posY, entry->getType1(), entry->getType2(), entry->getType3());
 
 		}
 
@@ -306,6 +294,45 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 
 	player->sendMessage(gmlr);
 }
+
+CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObject* creature) {
+	ManagedReference<CloningBuildingObject*> cloning = NULL;
+
+	mapLocations.rlock();
+
+	try {
+		//cloning type 5
+
+		int index = mapLocations.find(5);
+
+		float distance = 16000.f;
+
+		if (index != -1) {
+			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+
+			for (int i = 0; i < sortedVector->size(); ++i) {
+				SceneObject* object = sortedVector->get(i).getObject();
+
+				if (object->isCloningBuildingObject()) {
+					float objDistance = object->getDistanceTo(creature);
+
+					if (objDistance < distance) {
+						cloning = (CloningBuildingObject*) object;
+						distance = objDistance;
+					}
+				}
+			}
+
+		}
+	} catch (...) {
+
+	}
+
+	mapLocations.runlock();
+
+	return cloning.get();
+}
+
 
 String ZoneImplementation::getPlanetName() {
 	String planetName = Planet::getPlanetName(getZoneID());

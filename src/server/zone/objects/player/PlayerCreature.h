@@ -466,6 +466,12 @@ public:
 
 	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
+
 	void addSuiBox(SuiBox* sui);
 
 	int getLotsRemaining();
@@ -801,6 +807,12 @@ public:
 
 	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
+
 	void addSuiBox(SuiBox* sui);
 
 	int getLotsRemaining();
@@ -1047,6 +1059,12 @@ public:
 	SuiBox* getSuiBox(unsigned int boxID);
 
 	void removeSuiBox(unsigned int boxID, bool closeWindowToClient);
+
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
 

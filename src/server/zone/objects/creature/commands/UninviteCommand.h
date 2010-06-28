@@ -75,11 +75,10 @@ public:
 		PlayerCreature* play = (PlayerCreature*) object.get();
 
 		try {
-			play->wlock(creature);
+			Locker clocker(play, creature);
 
 			if (play->getGroupInviterID() != creature->getObjectID()) {
 				creature->sendSystemMessage("group", "must_be_leader");
-				play->unlock();
 				return GENERALERROR;
 			} else {
 				play->updateGroupInviterID(0);
@@ -91,10 +90,7 @@ public:
 				creature->sendSystemMessage(stringId);
 			}
 
-			play->unlock();
-
 		} catch (...) {
-			play->unlock();
 			System::out << "Exception in parseGroupUninvite(PlayerCreature* player, Message* pack)\n";
 			return GENERALERROR;
 		}

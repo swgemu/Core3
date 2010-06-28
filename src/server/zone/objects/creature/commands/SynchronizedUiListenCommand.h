@@ -74,13 +74,10 @@ public:
 
 		if (object != NULL && creature->isPlayerCreature()) {
 			try {
-				object->wlock(creature);
+				Locker clocker(object, creature);
 
 				object->synchronizedUIListen(creature, value);
-
-				object->unlock();
 			} catch (...) {
-				object->unlock();
 			}
 		}
 

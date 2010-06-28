@@ -74,21 +74,16 @@ public:
 			CreatureObject* creatureObject = (CreatureObject*) object.get();
 
 			try {
-				if (creatureObject != creature)
-					creatureObject->wlock(creature);
+				Locker clocker(creatureObject, creature);
 
 				if (creature->isInRange(object, 5)) {
 					player->setConversatingCreature(creatureObject);
 					creatureObject->sendConversationStartTo(creature);
 				}
 
-				if (creatureObject != creature)
-					creatureObject->unlock();
 			} catch (...) {
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 
-				if (creatureObject != creature)
-					creatureObject->unlock();
 			}
 		} else
 			return INVALIDTARGET;

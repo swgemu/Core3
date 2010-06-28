@@ -75,16 +75,14 @@ public:
 		PlayerCreature* player = (PlayerCreature*) targetObject.get();
 
 		try {
-			player->wlock(creature);
+			Locker clocker(player, creature);
 
 			if (player->isIncapacitated() && player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->killPlayer(creature, player);
 			}
 
-			player->unlock();
 		} catch (...) {
-			player->unlock();
 		}
 
 		return SUCCESS;
