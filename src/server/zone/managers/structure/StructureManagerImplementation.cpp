@@ -627,7 +627,7 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 
 	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE file = 'object/cell/shared_cell.iff'";
-	query << " AND parentid = " << building->getObjectID();
+	query << " AND parentid = " << building->getObjectID() << " order by objectid asc";
 
 	try {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
