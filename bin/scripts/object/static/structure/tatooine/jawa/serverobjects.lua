@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/static/structure/tatooine/jawa/base/serverobjects.lua")
+includeFile("static/structure/tatooine/jawa/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/static/structure/tatooine/jawa/tent_jawa_01_large.lua")
-includeFile("object/static/structure/tatooine/jawa/tent_jawa_01_med.lua")
-includeFile("object/static/structure/tatooine/jawa/tent_jawa_01_small.lua")
+includeFile("static/structure/tatooine/jawa/tent_jawa_01_large.lua")
+includeFile("static/structure/tatooine/jawa/tent_jawa_01_med.lua")
+includeFile("static/structure/tatooine/jawa/tent_jawa_01_small.lua")

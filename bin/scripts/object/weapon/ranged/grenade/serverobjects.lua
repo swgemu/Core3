@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/weapon/ranged/grenade/base/serverobjects.lua")
+includeFile("weapon/ranged/grenade/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/ranged/grenade/grenade_bug_bomb.lua")
-includeFile("object/weapon/ranged/grenade/grenade_cryoban.lua")
-includeFile("object/weapon/ranged/grenade/grenade_fallback.lua")
-includeFile("object/weapon/ranged/grenade/grenade_fragmentation.lua")
-includeFile("object/weapon/ranged/grenade/grenade_fragmentation_light.lua")
-includeFile("object/weapon/ranged/grenade/grenade_glop.lua")
-includeFile("object/weapon/ranged/grenade/grenade_imperial_detonator.lua")
-includeFile("object/weapon/ranged/grenade/grenade_poison.lua")
-includeFile("object/weapon/ranged/grenade/grenade_proton.lua")
-includeFile("object/weapon/ranged/grenade/grenade_thermal_detonator.lua")
+includeFile("weapon/ranged/grenade/grenade_bug_bomb.lua")
+includeFile("weapon/ranged/grenade/grenade_cryoban.lua")
+includeFile("weapon/ranged/grenade/grenade_fallback.lua")
+includeFile("weapon/ranged/grenade/grenade_fragmentation.lua")
+includeFile("weapon/ranged/grenade/grenade_fragmentation_light.lua")
+includeFile("weapon/ranged/grenade/grenade_glop.lua")
+includeFile("weapon/ranged/grenade/grenade_imperial_detonator.lua")
+includeFile("weapon/ranged/grenade/grenade_poison.lua")
+includeFile("weapon/ranged/grenade/grenade_proton.lua")
+includeFile("weapon/ranged/grenade/grenade_thermal_detonator.lua")

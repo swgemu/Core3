@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/loot/quest/hero_of_tatooine/mark_altruism.lua")
-includeFile("object/tangible/loot/quest/hero_of_tatooine/mark_courage.lua")
-includeFile("object/tangible/loot/quest/hero_of_tatooine/mark_honor.lua")
-includeFile("object/tangible/loot/quest/hero_of_tatooine/mark_intellect.lua")
-includeFile("object/tangible/loot/quest/hero_of_tatooine/squill_skull.lua")
+includeFile("tangible/loot/quest/hero_of_tatooine/mark_altruism.lua")
+includeFile("tangible/loot/quest/hero_of_tatooine/mark_courage.lua")
+includeFile("tangible/loot/quest/hero_of_tatooine/mark_honor.lua")
+includeFile("tangible/loot/quest/hero_of_tatooine/mark_intellect.lua")
+includeFile("tangible/loot/quest/hero_of_tatooine/squill_skull.lua")

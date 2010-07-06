@@ -43,12 +43,12 @@
 
 
 --Children folder includes
-includeFile("object/static/space/asteroid/serverobjects.lua")
-includeFile("object/static/space/base/serverobjects.lua")
-includeFile("object/static/space/beacon/serverobjects.lua")
-includeFile("object/static/space/debris/serverobjects.lua")
-includeFile("object/static/space/ship/serverobjects.lua")
-includeFile("object/static/space/spacestation/serverobjects.lua")
-includeFile("object/static/space/zonemap/serverobjects.lua")
+includeFile("static/space/asteroid/serverobjects.lua")
+includeFile("static/space/base/serverobjects.lua")
+includeFile("static/space/beacon/serverobjects.lua")
+includeFile("static/space/debris/serverobjects.lua")
+includeFile("static/space/ship/serverobjects.lua")
+includeFile("static/space/spacestation/serverobjects.lua")
+includeFile("static/space/zonemap/serverobjects.lua")
 
 -- Server Objects

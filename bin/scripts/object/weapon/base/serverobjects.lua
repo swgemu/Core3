@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/base/base_weapon.lua")
-includeFile("object/weapon/base/weapon_default.lua")
+includeFile("weapon/base/base_weapon.lua")
+includeFile("weapon/base/weapon_default.lua")

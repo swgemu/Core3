@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/destructible/wreckage/wreck_starship_small_01.lua")
+includeFile("tangible/destructible/wreckage/wreck_starship_small_01.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/fynock/lair_fynock.lua")
-includeFile("object/tangible/lair/fynock/lair_fynock_forest.lua")
+includeFile("tangible/lair/fynock/lair_fynock.lua")
+includeFile("tangible/lair/fynock/lair_fynock_forest.lua")

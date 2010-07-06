@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/poi/object/droid_body.lua")
-includeFile("object/tangible/poi/object/droid_head.lua")
+includeFile("tangible/poi/object/droid_body.lua")
+includeFile("tangible/poi/object/droid_head.lua")

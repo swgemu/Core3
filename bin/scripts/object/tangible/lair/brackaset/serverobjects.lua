@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/brackaset/lair_brackaset.lua")
-includeFile("object/tangible/lair/brackaset/lair_brackaset_desert.lua")
+includeFile("tangible/lair/brackaset/lair_brackaset.lua")
+includeFile("tangible/lair/brackaset/lair_brackaset_desert.lua")

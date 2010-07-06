@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/poi/hq/hutt_lrg.lua")
-includeFile("object/building/poi/hq/hutt_med.lua")
-includeFile("object/building/poi/hq/hutt_sm.lua")
-includeFile("object/building/poi/hq/imperial_lrg.lua")
-includeFile("object/building/poi/hq/imperial_med.lua")
-includeFile("object/building/poi/hq/imperial_sm.lua")
-includeFile("object/building/poi/hq/rebel_lrg.lua")
-includeFile("object/building/poi/hq/rebel_med.lua")
-includeFile("object/building/poi/hq/rebel_sm.lua")
+includeFile("building/poi/hq/hutt_lrg.lua")
+includeFile("building/poi/hq/hutt_med.lua")
+includeFile("building/poi/hq/hutt_sm.lua")
+includeFile("building/poi/hq/imperial_lrg.lua")
+includeFile("building/poi/hq/imperial_med.lua")
+includeFile("building/poi/hq/imperial_sm.lua")
+includeFile("building/poi/hq/rebel_lrg.lua")
+includeFile("building/poi/hq/rebel_med.lua")
+includeFile("building/poi/hq/rebel_sm.lua")

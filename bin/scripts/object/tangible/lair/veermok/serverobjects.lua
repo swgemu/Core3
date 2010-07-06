@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/veermok/lair_veermok.lua")
-includeFile("object/tangible/lair/veermok/lair_veermok_forest.lua")
-includeFile("object/tangible/lair/veermok/lair_veermok_swamp.lua")
+includeFile("tangible/lair/veermok/lair_veermok.lua")
+includeFile("tangible/lair/veermok/lair_veermok_forest.lua")
+includeFile("tangible/lair/veermok/lair_veermok_swamp.lua")

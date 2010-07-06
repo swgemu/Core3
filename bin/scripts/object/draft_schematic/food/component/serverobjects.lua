@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/food/component/container_barrel.lua")
-includeFile("object/draft_schematic/food/component/container_cask.lua")
-includeFile("object/draft_schematic/food/component/container_large_glass.lua")
-includeFile("object/draft_schematic/food/component/container_small_glass.lua")
-includeFile("object/draft_schematic/food/component/ingredient_ball_of_dough.lua")
-includeFile("object/draft_schematic/food/component/ingredient_carbosyrup.lua")
+includeFile("draft_schematic/food/component/container_barrel.lua")
+includeFile("draft_schematic/food/component/container_cask.lua")
+includeFile("draft_schematic/food/component/container_large_glass.lua")
+includeFile("draft_schematic/food/component/container_small_glass.lua")
+includeFile("draft_schematic/food/component/ingredient_ball_of_dough.lua")
+includeFile("draft_schematic/food/component/ingredient_carbosyrup.lua")

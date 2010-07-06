@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/quest/quest_start/serverobjects.lua")
+includeFile("tangible/quest/quest_start/serverobjects.lua")
 
 -- Server Objects

@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/test/inventory_filler.lua")
-includeFile("object/tangible/test/test_barrel_a.lua")
-includeFile("object/tangible/test/test_barrel_b.lua")
-includeFile("object/tangible/test/test_jwatson.lua")
-includeFile("object/tangible/test/test_pastry_01.lua")
-includeFile("object/tangible/test/test_terminal.lua")
+includeFile("tangible/test/inventory_filler.lua")
+includeFile("tangible/test/test_barrel_a.lua")
+includeFile("tangible/test/test_barrel_b.lua")
+includeFile("tangible/test/test_jwatson.lua")
+includeFile("tangible/test/test_pastry_01.lua")
+includeFile("tangible/test/test_terminal.lua")

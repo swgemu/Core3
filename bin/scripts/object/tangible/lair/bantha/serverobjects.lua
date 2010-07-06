@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/bantha/lair_bantha.lua")
-includeFile("object/tangible/lair/bantha/lair_bantha_desert.lua")
-includeFile("object/tangible/lair/bantha/lair_bantha_dune.lua")
-includeFile("object/tangible/lair/bantha/lair_bantha_wasteland.lua")
+includeFile("tangible/lair/bantha/lair_bantha.lua")
+includeFile("tangible/lair/bantha/lair_bantha_desert.lua")
+includeFile("tangible/lair/bantha/lair_bantha_dune.lua")
+includeFile("tangible/lair/bantha/lair_bantha_wasteland.lua")

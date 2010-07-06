@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/tangible/ship/attachment/serverobjects.lua")
-includeFile("object/tangible/ship/components/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/serverobjects.lua")
-includeFile("object/tangible/ship/customization/serverobjects.lua")
-includeFile("object/tangible/ship/interior_components/serverobjects.lua")
+includeFile("tangible/ship/attachment/serverobjects.lua")
+includeFile("tangible/ship/components/serverobjects.lua")
+includeFile("tangible/ship/crafted/serverobjects.lua")
+includeFile("tangible/ship/customization/serverobjects.lua")
+includeFile("tangible/ship/interior_components/serverobjects.lua")
 
 -- Server Objects

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/trophy/picture_handheld_s01.lua")
-includeFile("object/tangible/trophy/picture_handheld_s02.lua")
-includeFile("object/tangible/trophy/shisa_decorative_s01.lua")
+includeFile("tangible/trophy/picture_handheld_s01.lua")
+includeFile("tangible/trophy/picture_handheld_s02.lua")
+includeFile("tangible/trophy/shisa_decorative_s01.lua")

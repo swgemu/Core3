@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/gravestone/gravestone01.lua")
-includeFile("object/tangible/gravestone/gravestone02.lua")
-includeFile("object/tangible/gravestone/gravestone03.lua")
-includeFile("object/tangible/gravestone/gravestone04.lua")
-includeFile("object/tangible/gravestone/gravestone05.lua")
+includeFile("tangible/gravestone/gravestone01.lua")
+includeFile("tangible/gravestone/gravestone02.lua")
+includeFile("tangible/gravestone/gravestone03.lua")
+includeFile("tangible/gravestone/gravestone04.lua")
+includeFile("tangible/gravestone/gravestone05.lua")

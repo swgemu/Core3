@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/battlefield_marker/battlefield_marker.lua")
-includeFile("object/battlefield_marker/battlefield_marker_128m.lua")
-includeFile("object/battlefield_marker/battlefield_marker_192m.lua")
-includeFile("object/battlefield_marker/battlefield_marker_256m.lua")
-includeFile("object/battlefield_marker/battlefield_marker_384m.lua")
-includeFile("object/battlefield_marker/battlefield_marker_512m.lua")
+includeFile("battlefield_marker/battlefield_marker.lua")
+includeFile("battlefield_marker/battlefield_marker_128m.lua")
+includeFile("battlefield_marker/battlefield_marker_192m.lua")
+includeFile("battlefield_marker/battlefield_marker_256m.lua")
+includeFile("battlefield_marker/battlefield_marker_384m.lua")
+includeFile("battlefield_marker/battlefield_marker_512m.lua")

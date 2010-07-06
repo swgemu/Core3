@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/twilek/base/hair_twilek_base.lua")
-includeFile("object/tangible/hair/twilek/base/hair_twilek_female_base.lua")
-includeFile("object/tangible/hair/twilek/base/hair_twilek_male_base.lua")
+includeFile("tangible/hair/twilek/base/hair_twilek_base.lua")
+includeFile("tangible/hair/twilek/base/hair_twilek_female_base.lua")
+includeFile("tangible/hair/twilek/base/hair_twilek_male_base.lua")

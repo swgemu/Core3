@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/zucca_boar/lair_zucca_boar.lua")
-includeFile("object/tangible/lair/zucca_boar/lair_zucca_boar_desert.lua")
-includeFile("object/tangible/lair/zucca_boar/lair_zucca_boar_dune.lua")
-includeFile("object/tangible/lair/zucca_boar/lair_zucca_boar_wasteland.lua")
+includeFile("tangible/lair/zucca_boar/lair_zucca_boar.lua")
+includeFile("tangible/lair/zucca_boar/lair_zucca_boar_desert.lua")
+includeFile("tangible/lair/zucca_boar/lair_zucca_boar_dune.lua")
+includeFile("tangible/lair/zucca_boar/lair_zucca_boar_wasteland.lua")

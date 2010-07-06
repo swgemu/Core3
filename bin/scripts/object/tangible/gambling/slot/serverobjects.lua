@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/gambling/slot/standard.lua")
+includeFile("tangible/gambling/slot/standard.lua")

@@ -43,13 +43,13 @@
 
 
 --Children folder includes
-includeFile("object/tangible/component/item/quest_item/serverobjects.lua")
+includeFile("tangible/component/item/quest_item/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/component/item/electronic_control_unit.lua")
-includeFile("object/tangible/component/item/electronic_energy_distributor.lua")
-includeFile("object/tangible/component/item/electronic_power_conditioner.lua")
-includeFile("object/tangible/component/item/electronics_gp_module.lua")
-includeFile("object/tangible/component/item/electronics_memory_module.lua")
-includeFile("object/tangible/component/item/large_sensor_package.lua")
-includeFile("object/tangible/component/item/micro_sensor_suite.lua")
+includeFile("tangible/component/item/electronic_control_unit.lua")
+includeFile("tangible/component/item/electronic_energy_distributor.lua")
+includeFile("tangible/component/item/electronic_power_conditioner.lua")
+includeFile("tangible/component/item/electronics_gp_module.lua")
+includeFile("tangible/component/item/electronics_memory_module.lua")
+includeFile("tangible/component/item/large_sensor_package.lua")
+includeFile("tangible/component/item/micro_sensor_suite.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/naboo/player_house_deed/naboo_house_large_deed.lua")
-includeFile("object/tangible/deed/naboo/player_house_deed/naboo_house_medium_deed.lua")
-includeFile("object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.lua")
+includeFile("tangible/deed/naboo/player_house_deed/naboo_house_large_deed.lua")
+includeFile("tangible/deed/naboo/player_house_deed/naboo_house_medium_deed.lua")
+includeFile("tangible/deed/naboo/player_house_deed/naboo_house_small_deed.lua")

@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/datapad/character_datapad.lua")
-includeFile("object/tangible/datapad/droid_datapad_1.lua")
-includeFile("object/tangible/datapad/droid_datapad_2.lua")
-includeFile("object/tangible/datapad/droid_datapad_3.lua")
-includeFile("object/tangible/datapad/droid_datapad_4.lua")
-includeFile("object/tangible/datapad/droid_datapad_5.lua")
-includeFile("object/tangible/datapad/droid_datapad_6.lua")
+includeFile("tangible/datapad/character_datapad.lua")
+includeFile("tangible/datapad/droid_datapad_1.lua")
+includeFile("tangible/datapad/droid_datapad_2.lua")
+includeFile("tangible/datapad/droid_datapad_3.lua")
+includeFile("tangible/datapad/droid_datapad_4.lua")
+includeFile("tangible/datapad/droid_datapad_5.lua")
+includeFile("tangible/datapad/droid_datapad_6.lua")

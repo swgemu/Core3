@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/loot/quest/force_sensitive/camp_frequency_datapad.lua")
-includeFile("object/tangible/loot/quest/force_sensitive/camp_remote.lua")
-includeFile("object/tangible/loot/quest/force_sensitive/camp_waypoint_datapad.lua")
-includeFile("object/tangible/loot/quest/force_sensitive/theater_datapad.lua")
-includeFile("object/tangible/loot/quest/force_sensitive/sharred_force_crystal.lua")
-includeFile("object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.lua")
+includeFile("tangible/loot/quest/force_sensitive/camp_frequency_datapad.lua")
+includeFile("tangible/loot/quest/force_sensitive/camp_remote.lua")
+includeFile("tangible/loot/quest/force_sensitive/camp_waypoint_datapad.lua")
+includeFile("tangible/loot/quest/force_sensitive/theater_datapad.lua")
+includeFile("tangible/loot/quest/force_sensitive/sharred_force_crystal.lua")
+includeFile("tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.lua")

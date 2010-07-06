@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s01.lua")
-includeFile("object/tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s02.lua")
-includeFile("object/tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s03.lua")
-includeFile("object/tangible/hair/singing_mountain_clan/singing_mountain_clan_bangs_s01.lua")
+includeFile("tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s01.lua")
+includeFile("tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s02.lua")
+includeFile("tangible/hair/singing_mountain_clan/hair_singing_mountain_clan_s03.lua")
+includeFile("tangible/hair/singing_mountain_clan/singing_mountain_clan_bangs_s01.lua")

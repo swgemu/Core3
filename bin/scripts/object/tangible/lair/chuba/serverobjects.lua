@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/chuba/lair_chuba.lua")
-includeFile("object/tangible/lair/chuba/lair_chuba_forest.lua")
-includeFile("object/tangible/lair/chuba/lair_chuba_swamp.lua")
+includeFile("tangible/lair/chuba/lair_chuba.lua")
+includeFile("tangible/lair/chuba/lair_chuba_forest.lua")
+includeFile("tangible/lair/chuba/lair_chuba_swamp.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/container/base/base_container.lua")
-includeFile("object/tangible/container/base/base_container_slotted.lua")
-includeFile("object/tangible/container/base/base_container_volume.lua")
+includeFile("tangible/container/base/base_container.lua")
+includeFile("tangible/container/base/base_container_slotted.lua")
+includeFile("tangible/container/base/base_container_volume.lua")

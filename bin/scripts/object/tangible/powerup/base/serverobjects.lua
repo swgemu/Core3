@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/powerup/base/armor_base.lua")
-includeFile("object/tangible/powerup/base/base.lua")
-includeFile("object/tangible/powerup/base/weapon_base.lua")
+includeFile("tangible/powerup/base/armor_base.lua")
+includeFile("tangible/powerup/base/base.lua")
+includeFile("tangible/powerup/base/weapon_base.lua")

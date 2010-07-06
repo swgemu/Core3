@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/vynock/lair_vynock.lua")
-includeFile("object/tangible/lair/vynock/lair_vynock_dune.lua")
-includeFile("object/tangible/lair/vynock/lair_vynock_mountain.lua")
-includeFile("object/tangible/lair/vynock/lair_vynock_wasteland.lua")
+includeFile("tangible/lair/vynock/lair_vynock.lua")
+includeFile("tangible/lair/vynock/lair_vynock_dune.lua")
+includeFile("tangible/lair/vynock/lair_vynock_mountain.lua")
+includeFile("tangible/lair/vynock/lair_vynock_wasteland.lua")

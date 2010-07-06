@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/faction_perk/turret/base/faction_turret_base.lua")
+includeFile("installation/faction_perk/turret/base/faction_turret_base.lua")

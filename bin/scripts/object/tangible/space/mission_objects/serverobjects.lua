@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/space/mission_objects/palace_access_doc.lua")
-includeFile("object/tangible/space/mission_objects/transfer_auth.lua")
+includeFile("tangible/space/mission_objects/palace_access_doc.lua")
+includeFile("tangible/space/mission_objects/transfer_auth.lua")

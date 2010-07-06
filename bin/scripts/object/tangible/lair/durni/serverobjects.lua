@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/durni/lair_durni.lua")
-includeFile("object/tangible/lair/durni/lair_durni_grassland.lua")
-includeFile("object/tangible/lair/durni/lair_durni_mountain.lua")
+includeFile("tangible/lair/durni/lair_durni.lua")
+includeFile("tangible/lair/durni/lair_durni_grassland.lua")
+includeFile("tangible/lair/durni/lair_durni_mountain.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/furniture/city/furniture_fountain.lua")
-includeFile("object/draft_schematic/furniture/city/furniture_statue.lua")
-includeFile("object/draft_schematic/furniture/city/furniture_streetlamp.lua")
+includeFile("draft_schematic/furniture/city/furniture_fountain.lua")
+includeFile("draft_schematic/furniture/city/furniture_statue.lua")
+includeFile("draft_schematic/furniture/city/furniture_streetlamp.lua")

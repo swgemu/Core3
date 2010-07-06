@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/furniture/elegant/armoire_elegant_s01.lua")
-includeFile("object/tangible/furniture/elegant/bookcase_s01.lua")
-includeFile("object/tangible/furniture/elegant/cabinet_s01.lua")
-includeFile("object/tangible/furniture/elegant/chair_s01.lua")
-includeFile("object/tangible/furniture/elegant/chest_s01.lua")
-includeFile("object/tangible/furniture/elegant/coffee_table_s01.lua")
-includeFile("object/tangible/furniture/elegant/couch_s01.lua")
-includeFile("object/tangible/furniture/elegant/end_table_s01.lua")
-includeFile("object/tangible/furniture/elegant/love_seat_s01.lua")
+includeFile("tangible/furniture/elegant/armoire_elegant_s01.lua")
+includeFile("tangible/furniture/elegant/bookcase_s01.lua")
+includeFile("tangible/furniture/elegant/cabinet_s01.lua")
+includeFile("tangible/furniture/elegant/chair_s01.lua")
+includeFile("tangible/furniture/elegant/chest_s01.lua")
+includeFile("tangible/furniture/elegant/coffee_table_s01.lua")
+includeFile("tangible/furniture/elegant/couch_s01.lua")
+includeFile("tangible/furniture/elegant/end_table_s01.lua")
+includeFile("tangible/furniture/elegant/love_seat_s01.lua")

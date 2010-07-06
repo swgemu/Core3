@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/faction_perk/turret/base/faction_turret_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/base/faction_turret_deed.lua")

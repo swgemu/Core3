@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/component/droid/repair/capacitor_high_discharge.lua")
-includeFile("object/tangible/component/droid/repair/capacitor_low_discharge.lua")
-includeFile("object/tangible/component/droid/repair/diagnostic_circuit.lua")
-includeFile("object/tangible/component/droid/repair/diagnostic_circuit_advanced.lua")
-includeFile("object/tangible/component/droid/repair/power_supply_redundant.lua")
-includeFile("object/tangible/component/droid/repair/power_supply_redundant_advanced.lua")
-includeFile("object/tangible/component/droid/repair/repair_unit_casing.lua")
-includeFile("object/tangible/component/droid/repair/repair_unit_casing_advanced.lua")
-includeFile("object/tangible/component/droid/repair/unit_delivery_cartridge.lua")
-includeFile("object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.lua")
+includeFile("tangible/component/droid/repair/capacitor_high_discharge.lua")
+includeFile("tangible/component/droid/repair/capacitor_low_discharge.lua")
+includeFile("tangible/component/droid/repair/diagnostic_circuit.lua")
+includeFile("tangible/component/droid/repair/diagnostic_circuit_advanced.lua")
+includeFile("tangible/component/droid/repair/power_supply_redundant.lua")
+includeFile("tangible/component/droid/repair/power_supply_redundant_advanced.lua")
+includeFile("tangible/component/droid/repair/repair_unit_casing.lua")
+includeFile("tangible/component/droid/repair/repair_unit_casing_advanced.lua")
+includeFile("tangible/component/droid/repair/unit_delivery_cartridge.lua")
+includeFile("tangible/component/droid/repair/unit_delivery_cartridge_advanced.lua")

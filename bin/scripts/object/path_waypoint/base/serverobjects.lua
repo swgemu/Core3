@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/path_waypoint/base/path_waypoint_base.lua")
+includeFile("path_waypoint/base/path_waypoint_base.lua")

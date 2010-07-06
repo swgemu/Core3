@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/ranged/droid/droid_astromech_ranged.lua")
-includeFile("object/weapon/ranged/droid/droid_droideka_ranged.lua")
-includeFile("object/weapon/ranged/droid/droid_probot_ranged.lua")
+includeFile("weapon/ranged/droid/droid_astromech_ranged.lua")
+includeFile("weapon/ranged/droid/droid_droideka_ranged.lua")
+includeFile("weapon/ranged/droid/droid_probot_ranged.lua")

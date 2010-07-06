@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/faction_perk/faction_base_item/alarm_destruct.lua")
-includeFile("object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.lua")
-includeFile("object/tangible/faction_perk/faction_base_item/alarm_hack.lua")
-includeFile("object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.lua")
+includeFile("tangible/faction_perk/faction_base_item/alarm_destruct.lua")
+includeFile("tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.lua")
+includeFile("tangible/faction_perk/faction_base_item/alarm_hack.lua")
+includeFile("tangible/faction_perk/faction_base_item/alarm_hack_no_sound.lua")

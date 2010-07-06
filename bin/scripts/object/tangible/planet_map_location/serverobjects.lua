@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/planet_map_location/map_location_base.lua")
+includeFile("tangible/planet_map_location/map_location_base.lua")

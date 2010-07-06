@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/shaupaut/lair_shaupaut.lua")
-includeFile("object/tangible/lair/shaupaut/lair_shaupaut_forest.lua")
-includeFile("object/tangible/lair/shaupaut/lair_shaupaut_swamp.lua")
+includeFile("tangible/lair/shaupaut/lair_shaupaut.lua")
+includeFile("tangible/lair/shaupaut/lair_shaupaut_forest.lua")
+includeFile("tangible/lair/shaupaut/lair_shaupaut_swamp.lua")

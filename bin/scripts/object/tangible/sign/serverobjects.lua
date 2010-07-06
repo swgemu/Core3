@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/tangible/sign/base/serverobjects.lua")
-includeFile("object/tangible/sign/municipal/serverobjects.lua")
-includeFile("object/tangible/sign/player/serverobjects.lua")
+includeFile("tangible/sign/base/serverobjects.lua")
+includeFile("tangible/sign/municipal/serverobjects.lua")
+includeFile("tangible/sign/player/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/sign/all_sign_city_s01.lua")
-includeFile("object/tangible/sign/all_sign_city_s02.lua")
-includeFile("object/tangible/sign/all_sign_city_s03.lua")
-includeFile("object/tangible/sign/all_sign_street_s01.lua")
-includeFile("object/tangible/sign/streetsign_upright_style_01.lua")
-includeFile("object/tangible/sign/streetsign_wall_style_01.lua")
-includeFile("object/tangible/sign/tatooine_moraj_marker.lua")
+includeFile("tangible/sign/all_sign_city_s01.lua")
+includeFile("tangible/sign/all_sign_city_s02.lua")
+includeFile("tangible/sign/all_sign_city_s03.lua")
+includeFile("tangible/sign/all_sign_street_s01.lua")
+includeFile("tangible/sign/streetsign_upright_style_01.lua")
+includeFile("tangible/sign/streetsign_wall_style_01.lua")
+includeFile("tangible/sign/tatooine_moraj_marker.lua")

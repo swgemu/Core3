@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/skreeg/lair_skreeg.lua")
-includeFile("object/tangible/lair/skreeg/lair_skreeg_jungle.lua")
-includeFile("object/tangible/lair/skreeg/lair_skreeg_swamp.lua")
+includeFile("tangible/lair/skreeg/lair_skreeg.lua")
+includeFile("tangible/lair/skreeg/lair_skreeg_jungle.lua")
+includeFile("tangible/lair/skreeg/lair_skreeg_swamp.lua")

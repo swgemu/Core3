@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/tangible/space/content_infrastructure/serverobjects.lua")
-includeFile("object/tangible/space/mission_objects/serverobjects.lua")
-includeFile("object/tangible/space/spacestations/serverobjects.lua")
-includeFile("object/tangible/space/special_loot/serverobjects.lua")
-includeFile("object/tangible/space/story_loot/serverobjects.lua")
-includeFile("object/tangible/space/veteran_reward/serverobjects.lua")
+includeFile("tangible/space/content_infrastructure/serverobjects.lua")
+includeFile("tangible/space/mission_objects/serverobjects.lua")
+includeFile("tangible/space/spacestations/serverobjects.lua")
+includeFile("tangible/space/special_loot/serverobjects.lua")
+includeFile("tangible/space/story_loot/serverobjects.lua")
+includeFile("tangible/space/veteran_reward/serverobjects.lua")
 
 -- Server Objects

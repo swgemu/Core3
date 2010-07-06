@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/bustier/bustier_s01.lua")
-includeFile("object/tangible/wearables/bustier/bustier_s02.lua")
-includeFile("object/tangible/wearables/bustier/bustier_s03.lua")
+includeFile("tangible/wearables/bustier/bustier_s01.lua")
+includeFile("tangible/wearables/bustier/bustier_s02.lua")
+includeFile("tangible/wearables/bustier/bustier_s03.lua")

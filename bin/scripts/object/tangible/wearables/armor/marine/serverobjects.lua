@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/armor/marine/armor_marine_backpack.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_bicep_l.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_bicep_r.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_boots.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_chest_plate.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_chest_plate_rebel.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_helmet.lua")
-includeFile("object/tangible/wearables/armor/marine/armor_marine_leggings.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_backpack.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_bicep_l.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_bicep_r.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_boots.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_chest_plate.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_chest_plate_rebel.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_helmet.lua")
+includeFile("tangible/wearables/armor/marine/armor_marine_leggings.lua")

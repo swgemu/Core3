@@ -43,19 +43,19 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/munition/component/serverobjects.lua")
+includeFile("draft_schematic/munition/component/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/draft_schematic/munition/base_munition.lua")
-includeFile("object/draft_schematic/munition/base_munition_enhancer.lua")
-includeFile("object/draft_schematic/munition/bomb_field_antigravity.lua")
-includeFile("object/draft_schematic/munition/detonator_thermal_class_a.lua")
-includeFile("object/draft_schematic/munition/detonator_thermal_imperial_issue.lua")
-includeFile("object/draft_schematic/munition/grenade_cryoban_ww_41.lua")
-includeFile("object/draft_schematic/munition/grenade_fragmentation_c_12.lua")
-includeFile("object/draft_schematic/munition/grenade_fragmentation_c_22.lua")
-includeFile("object/draft_schematic/munition/grenade_glop.lua")
-includeFile("object/draft_schematic/munition/grenade_proton.lua")
-includeFile("object/draft_schematic/munition/mine_anti_vehicle.lua")
-includeFile("object/draft_schematic/munition/mine_dxr55.lua")
-includeFile("object/draft_schematic/munition/mine_xg.lua")
+includeFile("draft_schematic/munition/base_munition.lua")
+includeFile("draft_schematic/munition/base_munition_enhancer.lua")
+includeFile("draft_schematic/munition/bomb_field_antigravity.lua")
+includeFile("draft_schematic/munition/detonator_thermal_class_a.lua")
+includeFile("draft_schematic/munition/detonator_thermal_imperial_issue.lua")
+includeFile("draft_schematic/munition/grenade_cryoban_ww_41.lua")
+includeFile("draft_schematic/munition/grenade_fragmentation_c_12.lua")
+includeFile("draft_schematic/munition/grenade_fragmentation_c_22.lua")
+includeFile("draft_schematic/munition/grenade_glop.lua")
+includeFile("draft_schematic/munition/grenade_proton.lua")
+includeFile("draft_schematic/munition/mine_anti_vehicle.lua")
+includeFile("draft_schematic/munition/mine_dxr55.lua")
+includeFile("draft_schematic/munition/mine_xg.lua")

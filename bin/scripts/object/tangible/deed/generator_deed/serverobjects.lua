@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/generator_deed/generator_fusion_deed.lua")
-includeFile("object/tangible/deed/generator_deed/generator_photo_bio_deed.lua")
-includeFile("object/tangible/deed/generator_deed/generator_solar_deed.lua")
-includeFile("object/tangible/deed/generator_deed/generator_wind_deed.lua")
+includeFile("tangible/deed/generator_deed/generator_fusion_deed.lua")
+includeFile("tangible/deed/generator_deed/generator_photo_bio_deed.lua")
+includeFile("tangible/deed/generator_deed/generator_solar_deed.lua")
+includeFile("tangible/deed/generator_deed/generator_wind_deed.lua")

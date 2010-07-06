@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/slicing/slicing_armor_upgrade_kit.lua")
-includeFile("object/tangible/slicing/slicing_flow_analyzer.lua")
-includeFile("object/tangible/slicing/slicing_laser_knife.lua")
-includeFile("object/tangible/slicing/slicing_molecular_clamp.lua")
-includeFile("object/tangible/slicing/slicing_weapon_upgrade_kit.lua")
+includeFile("tangible/slicing/slicing_armor_upgrade_kit.lua")
+includeFile("tangible/slicing/slicing_flow_analyzer.lua")
+includeFile("tangible/slicing/slicing_laser_knife.lua")
+includeFile("tangible/slicing/slicing_molecular_clamp.lua")
+includeFile("tangible/slicing/slicing_weapon_upgrade_kit.lua")

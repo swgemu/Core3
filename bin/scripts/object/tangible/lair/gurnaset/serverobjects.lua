@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/gurnaset/lair_gurnaset.lua")
-includeFile("object/tangible/lair/gurnaset/lair_gurnaset_grassland.lua")
-includeFile("object/tangible/lair/gurnaset/lair_gurnaset_mountain.lua")
+includeFile("tangible/lair/gurnaset/lair_gurnaset.lua")
+includeFile("tangible/lair/gurnaset/lair_gurnaset_grassland.lua")
+includeFile("tangible/lair/gurnaset/lair_gurnaset_mountain.lua")

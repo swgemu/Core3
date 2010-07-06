@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/loot/plant_grow/plant_stage_1.lua")
-includeFile("object/tangible/loot/plant_grow/plant_stage_2.lua")
-includeFile("object/tangible/loot/plant_grow/plant_stage_3.lua")
-includeFile("object/tangible/loot/plant_grow/plant_stage_dead.lua")
+includeFile("tangible/loot/plant_grow/plant_stage_1.lua")
+includeFile("tangible/loot/plant_grow/plant_stage_2.lua")
+includeFile("tangible/loot/plant_grow/plant_stage_3.lua")
+includeFile("tangible/loot/plant_grow/plant_stage_dead.lua")

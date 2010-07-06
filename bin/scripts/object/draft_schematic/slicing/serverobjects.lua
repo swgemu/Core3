@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/slicing/slicing_armor_upgrade_kit.lua")
-includeFile("object/draft_schematic/slicing/slicing_flow_analyzer.lua")
-includeFile("object/draft_schematic/slicing/slicing_laser_knife.lua")
-includeFile("object/draft_schematic/slicing/slicing_molecular_clamp.lua")
-includeFile("object/draft_schematic/slicing/slicing_weapon_upgrade_kit.lua")
+includeFile("draft_schematic/slicing/slicing_armor_upgrade_kit.lua")
+includeFile("draft_schematic/slicing/slicing_flow_analyzer.lua")
+includeFile("draft_schematic/slicing/slicing_laser_knife.lua")
+includeFile("draft_schematic/slicing/slicing_molecular_clamp.lua")
+includeFile("draft_schematic/slicing/slicing_weapon_upgrade_kit.lua")

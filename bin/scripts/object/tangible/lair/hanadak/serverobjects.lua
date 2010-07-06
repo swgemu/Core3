@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/hanadak/lair_hanadak.lua")
-includeFile("object/tangible/lair/hanadak/lair_hanadak_mountain.lua")
+includeFile("tangible/lair/hanadak/lair_hanadak.lua")
+includeFile("tangible/lair/hanadak/lair_hanadak_mountain.lua")

@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/poi/base/base_poi_building.lua")
-includeFile("object/building/poi/base/base_poi_large.lua")
-includeFile("object/building/poi/base/base_poi_medium.lua")
-includeFile("object/building/poi/base/base_poi_small.lua")
+includeFile("building/poi/base/base_poi_building.lua")
+includeFile("building/poi/base/base_poi_large.lua")
+includeFile("building/poi/base/base_poi_medium.lua")
+includeFile("building/poi/base/base_poi_small.lua")

@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/furniture/cheap/armoire_s01.lua")
-includeFile("object/tangible/furniture/cheap/bookcase_s01.lua")
-includeFile("object/tangible/furniture/cheap/cabinet_s01.lua")
-includeFile("object/tangible/furniture/cheap/chair_s01.lua")
-includeFile("object/tangible/furniture/cheap/chest_s01.lua")
-includeFile("object/tangible/furniture/cheap/coffee_table_s01.lua")
-includeFile("object/tangible/furniture/cheap/couch_s01.lua")
-includeFile("object/tangible/furniture/cheap/end_table_s01.lua")
-includeFile("object/tangible/furniture/cheap/love_seat_s01.lua")
+includeFile("tangible/furniture/cheap/armoire_s01.lua")
+includeFile("tangible/furniture/cheap/bookcase_s01.lua")
+includeFile("tangible/furniture/cheap/cabinet_s01.lua")
+includeFile("tangible/furniture/cheap/chair_s01.lua")
+includeFile("tangible/furniture/cheap/chest_s01.lua")
+includeFile("tangible/furniture/cheap/coffee_table_s01.lua")
+includeFile("tangible/furniture/cheap/couch_s01.lua")
+includeFile("tangible/furniture/cheap/end_table_s01.lua")
+includeFile("tangible/furniture/cheap/love_seat_s01.lua")

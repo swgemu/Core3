@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/corellian_sand_panther/lair_corellian_sand_panther.lua")
-includeFile("object/tangible/lair/corellian_sand_panther/lair_corellian_sand_panther_grassland.lua")
+includeFile("tangible/lair/corellian_sand_panther/lair_corellian_sand_panther.lua")
+includeFile("tangible/lair/corellian_sand_panther/lair_corellian_sand_panther_grassland.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/stintaril/lair_stintaril.lua")
-includeFile("object/tangible/lair/stintaril/lair_stintaril_jungle.lua")
-includeFile("object/tangible/lair/stintaril/lair_stintaril_swamp.lua")
+includeFile("tangible/lair/stintaril/lair_stintaril.lua")
+includeFile("tangible/lair/stintaril/lair_stintaril_jungle.lua")
+includeFile("tangible/lair/stintaril/lair_stintaril_swamp.lua")

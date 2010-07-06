@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/mining_organic/base/mining_organic_base.lua")
+includeFile("installation/mining_organic/base/mining_organic_base.lua")

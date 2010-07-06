@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kittle/lair_kittle.lua")
-includeFile("object/tangible/lair/kittle/lair_kittle_forest.lua")
-includeFile("object/tangible/lair/kittle/lair_kittle_grassland.lua")
+includeFile("tangible/lair/kittle/lair_kittle.lua")
+includeFile("tangible/lair/kittle/lair_kittle_forest.lua")
+includeFile("tangible/lair/kittle/lair_kittle_grassland.lua")

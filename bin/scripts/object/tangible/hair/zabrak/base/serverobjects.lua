@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/zabrak/base/hair_zabrak_base.lua")
-includeFile("object/tangible/hair/zabrak/base/hair_zabrak_female_base.lua")
-includeFile("object/tangible/hair/zabrak/base/hair_zabrak_male_base.lua")
+includeFile("tangible/hair/zabrak/base/hair_zabrak_base.lua")
+includeFile("tangible/hair/zabrak/base/hair_zabrak_female_base.lua")
+includeFile("tangible/hair/zabrak/base/hair_zabrak_male_base.lua")

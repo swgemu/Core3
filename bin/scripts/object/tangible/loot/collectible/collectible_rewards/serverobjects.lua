@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/loot/collectible/collectible_rewards/blue_rug.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/collectible_sculpture_s01.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/collectible_table.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/fs_tracking_device.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/gong.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/orange_rug.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/blue_rug.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/collectible_sculpture_s01.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/collectible_table.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/fs_tracking_device.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/gong.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/orange_rug.lua")

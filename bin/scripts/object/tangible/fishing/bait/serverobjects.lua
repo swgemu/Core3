@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/tangible/fishing/bait/base/serverobjects.lua")
+includeFile("tangible/fishing/bait/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/fishing/bait/bait_chum.lua")
-includeFile("object/tangible/fishing/bait/bait_grub.lua")
-includeFile("object/tangible/fishing/bait/bait_insect.lua")
-includeFile("object/tangible/fishing/bait/bait_worm.lua")
+includeFile("tangible/fishing/bait/bait_chum.lua")
+includeFile("tangible/fishing/bait/bait_grub.lua")
+includeFile("tangible/fishing/bait/bait_insect.lua")
+includeFile("tangible/fishing/bait/bait_worm.lua")

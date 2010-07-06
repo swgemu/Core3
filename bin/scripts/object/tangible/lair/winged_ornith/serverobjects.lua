@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/winged_ornith/lair_winged_ornith.lua")
-includeFile("object/tangible/lair/winged_ornith/lair_winged_ornith_grassland.lua")
-includeFile("object/tangible/lair/winged_ornith/lair_winged_ornith_jungle.lua")
+includeFile("tangible/lair/winged_ornith/lair_winged_ornith.lua")
+includeFile("tangible/lair/winged_ornith/lair_winged_ornith_grassland.lua")
+includeFile("tangible/lair/winged_ornith/lair_winged_ornith_jungle.lua")

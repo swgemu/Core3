@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/blistmok/lair_blistmok.lua")
-includeFile("object/tangible/lair/blistmok/lair_blistmok_mountain.lua")
-includeFile("object/tangible/lair/blistmok/lair_blistmok_wasteland.lua")
+includeFile("tangible/lair/blistmok/lair_blistmok.lua")
+includeFile("tangible/lair/blistmok/lair_blistmok_mountain.lua")
+includeFile("tangible/lair/blistmok/lair_blistmok_wasteland.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/melee/special/blacksun_razor.lua")
-includeFile("object/weapon/melee/special/vibroknuckler.lua")
+includeFile("weapon/melee/special/blacksun_razor.lua")
+includeFile("weapon/melee/special/vibroknuckler.lua")

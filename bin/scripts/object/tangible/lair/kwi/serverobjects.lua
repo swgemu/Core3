@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kwi/lair_kwi.lua")
-includeFile("object/tangible/lair/kwi/lair_kwi_desert.lua")
-includeFile("object/tangible/lair/kwi/lair_kwi_forest.lua")
-includeFile("object/tangible/lair/kwi/lair_kwi_mountain.lua")
+includeFile("tangible/lair/kwi/lair_kwi.lua")
+includeFile("tangible/lair/kwi/lair_kwi_desert.lua")
+includeFile("tangible/lair/kwi/lair_kwi_forest.lua")
+includeFile("tangible/lair/kwi/lair_kwi_mountain.lua")

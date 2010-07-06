@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/gcw/flip_banner_imperial.lua")
-includeFile("object/tangible/gcw/flip_banner_onpole_imperial.lua")
-includeFile("object/tangible/gcw/flip_banner_onpole_rebel.lua")
-includeFile("object/tangible/gcw/flip_banner_onpole_spawner.lua")
-includeFile("object/tangible/gcw/flip_banner_rebel.lua")
-includeFile("object/tangible/gcw/flip_banner_spawner.lua")
-includeFile("object/tangible/gcw/gcw_city_spawner.lua")
+includeFile("tangible/gcw/flip_banner_imperial.lua")
+includeFile("tangible/gcw/flip_banner_onpole_imperial.lua")
+includeFile("tangible/gcw/flip_banner_onpole_rebel.lua")
+includeFile("tangible/gcw/flip_banner_onpole_spawner.lua")
+includeFile("tangible/gcw/flip_banner_rebel.lua")
+includeFile("tangible/gcw/flip_banner_spawner.lua")
+includeFile("tangible/gcw/gcw_city_spawner.lua")

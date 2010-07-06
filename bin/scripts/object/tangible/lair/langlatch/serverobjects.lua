@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/langlatch/lair_langlatch.lua")
-includeFile("object/tangible/lair/langlatch/lair_langlatch_forest.lua")
-includeFile("object/tangible/lair/langlatch/lair_langlatch_mountain.lua")
-includeFile("object/tangible/lair/langlatch/lair_langlatch_wasteland.lua")
+includeFile("tangible/lair/langlatch/lair_langlatch.lua")
+includeFile("tangible/lair/langlatch/lair_langlatch_forest.lua")
+includeFile("tangible/lair/langlatch/lair_langlatch_mountain.lua")
+includeFile("tangible/lair/langlatch/lair_langlatch_wasteland.lua")

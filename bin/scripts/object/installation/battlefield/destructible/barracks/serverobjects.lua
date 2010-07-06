@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/battlefield/destructible/barracks/bfield_gungan_barracks.lua")
-includeFile("object/installation/battlefield/destructible/barracks/bfield_nightsister_barracks.lua")
-includeFile("object/installation/battlefield/destructible/barracks/rebel_infantry_barracks.lua")
-includeFile("object/installation/battlefield/destructible/barracks/storm_trooper_barracks.lua")
+includeFile("installation/battlefield/destructible/barracks/bfield_gungan_barracks.lua")
+includeFile("installation/battlefield/destructible/barracks/bfield_nightsister_barracks.lua")
+includeFile("installation/battlefield/destructible/barracks/rebel_infantry_barracks.lua")
+includeFile("installation/battlefield/destructible/barracks/storm_trooper_barracks.lua")

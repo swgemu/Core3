@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/weapon/mine/base/serverobjects.lua")
+includeFile("weapon/mine/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/mine/wp_mine_anti_vehicle.lua")
-includeFile("object/weapon/mine/wp_mine_drx55.lua")
-includeFile("object/weapon/mine/wp_mine_xg.lua")
+includeFile("weapon/mine/wp_mine_anti_vehicle.lua")
+includeFile("weapon/mine/wp_mine_drx55.lua")
+includeFile("weapon/mine/wp_mine_xg.lua")

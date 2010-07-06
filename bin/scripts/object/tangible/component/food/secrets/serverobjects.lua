@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/component/food/secrets/secret_base.lua")
-includeFile("object/tangible/component/food/secrets/secret_imperial_biochem.lua")
-includeFile("object/tangible/component/food/secrets/secret_rebel_biochem.lua")
+includeFile("tangible/component/food/secrets/secret_base.lua")
+includeFile("tangible/component/food/secrets/secret_imperial_biochem.lua")
+includeFile("tangible/component/food/secrets/secret_rebel_biochem.lua")

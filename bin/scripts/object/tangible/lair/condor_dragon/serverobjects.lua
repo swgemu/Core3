@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/condor_dragon/lair_condor_dragon.lua")
-includeFile("object/tangible/lair/condor_dragon/lair_condor_dragon_forest.lua")
-includeFile("object/tangible/lair/condor_dragon/lair_condor_dragon_mountain.lua")
+includeFile("tangible/lair/condor_dragon/lair_condor_dragon.lua")
+includeFile("tangible/lair/condor_dragon/lair_condor_dragon_forest.lua")
+includeFile("tangible/lair/condor_dragon/lair_condor_dragon_mountain.lua")

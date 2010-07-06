@@ -43,13 +43,13 @@
 
 
 --Children folder includes
-includeFile("object/static/vehicle/e3/serverobjects.lua")
+includeFile("static/vehicle/e3/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/static/vehicle/player_shuttle.lua")
-includeFile("object/static/vehicle/static_lambda_shuttle.lua")
-includeFile("object/static/vehicle/static_sandcrawler.lua")
-includeFile("object/static/vehicle/static_speeder_bike.lua")
-includeFile("object/static/vehicle/static_swoop_bike.lua")
-includeFile("object/static/vehicle/static_tie_bomber.lua")
-includeFile("object/static/vehicle/static_tie_fighter.lua")
+includeFile("static/vehicle/player_shuttle.lua")
+includeFile("static/vehicle/static_lambda_shuttle.lua")
+includeFile("static/vehicle/static_sandcrawler.lua")
+includeFile("static/vehicle/static_speeder_bike.lua")
+includeFile("static/vehicle/static_swoop_bike.lua")
+includeFile("static/vehicle/static_tie_bomber.lua")
+includeFile("static/vehicle/static_tie_fighter.lua")

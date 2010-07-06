@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/trandoshan/base/hair_trandoshan_base.lua")
-includeFile("object/tangible/hair/trandoshan/base/hair_trandoshan_female_base.lua")
-includeFile("object/tangible/hair/trandoshan/base/hair_trandoshan_male_base.lua")
+includeFile("tangible/hair/trandoshan/base/hair_trandoshan_base.lua")
+includeFile("tangible/hair/trandoshan/base/hair_trandoshan_female_base.lua")
+includeFile("tangible/hair/trandoshan/base/hair_trandoshan_male_base.lua")

@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/installation/mining_organic/base/serverobjects.lua")
+includeFile("installation/mining_organic/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/mining_organic/mining_organic_creature_farm.lua")
-includeFile("object/installation/mining_organic/mining_organic_flora_farm.lua")
-includeFile("object/installation/mining_organic/mining_organic_flora_farm_heavy.lua")
-includeFile("object/installation/mining_organic/mining_organic_flora_farm_medium.lua")
+includeFile("installation/mining_organic/mining_organic_creature_farm.lua")
+includeFile("installation/mining_organic/mining_organic_flora_farm.lua")
+includeFile("installation/mining_organic/mining_organic_flora_farm_heavy.lua")
+includeFile("installation/mining_organic/mining_organic_flora_farm_medium.lua")

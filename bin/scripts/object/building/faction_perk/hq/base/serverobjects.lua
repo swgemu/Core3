@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/faction_perk/hq/base/factional_hq_base.lua")
-includeFile("object/building/faction_perk/hq/base/factional_hq_fp.lua")
+includeFile("building/faction_perk/hq/base/factional_hq_base.lua")
+includeFile("building/faction_perk/hq/base/factional_hq_fp.lua")

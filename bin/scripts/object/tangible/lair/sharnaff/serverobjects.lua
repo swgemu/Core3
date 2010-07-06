@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/sharnaff/lair_sharnaff.lua")
-includeFile("object/tangible/lair/sharnaff/lair_sharnaff_forest.lua")
-includeFile("object/tangible/lair/sharnaff/lair_sharnaff_grassland.lua")
+includeFile("tangible/lair/sharnaff/lair_sharnaff.lua")
+includeFile("tangible/lair/sharnaff/lair_sharnaff_forest.lua")
+includeFile("tangible/lair/sharnaff/lair_sharnaff_grassland.lua")

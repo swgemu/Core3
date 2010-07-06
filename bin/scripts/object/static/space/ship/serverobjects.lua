@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/space/ship/cargo_freighter.lua")
-includeFile("object/static/space/ship/corellian_corvette.lua")
-includeFile("object/static/space/ship/nebulon_frigate.lua")
+includeFile("static/space/ship/cargo_freighter.lua")
+includeFile("static/space/ship/corellian_corvette.lua")
+includeFile("static/space/ship/nebulon_frigate.lua")

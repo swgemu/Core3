@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_stimpack_a.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_stimpack_b.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_stimpack_c.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_stimpack_d.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_vitapack_a.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_vitapack_b.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/pet_vitapack_c.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_stimpack_a.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_stimpack_b.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_stimpack_c.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_stimpack_d.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_vitapack_a.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_vitapack_b.lua")
+includeFile("draft_schematic/bio_engineer/utilities/pet_vitapack_c.lua")

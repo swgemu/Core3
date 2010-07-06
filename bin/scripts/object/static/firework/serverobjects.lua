@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/static/firework/base/serverobjects.lua")
+includeFile("static/firework/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/static/firework/fx_01.lua")
-includeFile("object/static/firework/fx_02.lua")
-includeFile("object/static/firework/fx_03.lua")
-includeFile("object/static/firework/fx_04.lua")
-includeFile("object/static/firework/fx_05.lua")
-includeFile("object/static/firework/fx_10.lua")
-includeFile("object/static/firework/fx_11.lua")
-includeFile("object/static/firework/fx_18.lua")
-includeFile("object/static/firework/show_launcher.lua")
+includeFile("static/firework/fx_01.lua")
+includeFile("static/firework/fx_02.lua")
+includeFile("static/firework/fx_03.lua")
+includeFile("static/firework/fx_04.lua")
+includeFile("static/firework/fx_05.lua")
+includeFile("static/firework/fx_10.lua")
+includeFile("static/firework/fx_11.lua")
+includeFile("static/firework/fx_18.lua")
+includeFile("static/firework/show_launcher.lua")

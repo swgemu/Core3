@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/capper_spineflap/lair_capper_spineflap.lua")
-includeFile("object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.lua")
+includeFile("tangible/lair/capper_spineflap/lair_capper_spineflap.lua")
+includeFile("tangible/lair/capper_spineflap/lair_capper_spineflap_forest.lua")

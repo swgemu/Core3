@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/bug_jar/craftable_bug_habitat.lua")
-includeFile("object/tangible/bug_jar/sample_bats.lua")
-includeFile("object/tangible/bug_jar/sample_bees.lua")
-includeFile("object/tangible/bug_jar/sample_bugs.lua")
-includeFile("object/tangible/bug_jar/sample_butterflies.lua")
-includeFile("object/tangible/bug_jar/sample_flies.lua")
-includeFile("object/tangible/bug_jar/sample_glowzees.lua")
-includeFile("object/tangible/bug_jar/sample_moths.lua")
+includeFile("tangible/bug_jar/craftable_bug_habitat.lua")
+includeFile("tangible/bug_jar/sample_bats.lua")
+includeFile("tangible/bug_jar/sample_bees.lua")
+includeFile("tangible/bug_jar/sample_bugs.lua")
+includeFile("tangible/bug_jar/sample_butterflies.lua")
+includeFile("tangible/bug_jar/sample_flies.lua")
+includeFile("tangible/bug_jar/sample_glowzees.lua")
+includeFile("tangible/bug_jar/sample_moths.lua")

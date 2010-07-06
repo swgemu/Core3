@@ -43,13 +43,13 @@
 
 
 --Children folder includes
-includeFile("object/tangible/ship/attachment/base/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/booster/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/bridge/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/engine/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/hangar/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/shield/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/weapon/serverobjects.lua")
-includeFile("object/tangible/ship/attachment/wing/serverobjects.lua")
+includeFile("tangible/ship/attachment/base/serverobjects.lua")
+includeFile("tangible/ship/attachment/booster/serverobjects.lua")
+includeFile("tangible/ship/attachment/bridge/serverobjects.lua")
+includeFile("tangible/ship/attachment/engine/serverobjects.lua")
+includeFile("tangible/ship/attachment/hangar/serverobjects.lua")
+includeFile("tangible/ship/attachment/shield/serverobjects.lua")
+includeFile("tangible/ship/attachment/weapon/serverobjects.lua")
+includeFile("tangible/ship/attachment/wing/serverobjects.lua")
 
 -- Server Objects

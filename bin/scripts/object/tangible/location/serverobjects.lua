@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/tangible/location/base/serverobjects.lua")
+includeFile("tangible/location/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/location/location_32.lua")
-includeFile("object/tangible/location/location_48.lua")
-includeFile("object/tangible/location/location_64.lua")
-includeFile("object/tangible/location/location_80.lua")
-includeFile("object/tangible/location/location_96.lua")
+includeFile("tangible/location/location_32.lua")
+includeFile("tangible/location/location_48.lua")
+includeFile("tangible/location/location_64.lua")
+includeFile("tangible/location/location_80.lua")
+includeFile("tangible/location/location_96.lua")

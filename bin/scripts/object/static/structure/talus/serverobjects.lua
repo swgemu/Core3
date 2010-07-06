@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/structure/talus/talus_imprv_bannerpole_s01.lua")
-includeFile("object/static/structure/talus/talus_imprv_flagpole_s01.lua")
+includeFile("static/structure/talus/talus_imprv_bannerpole_s01.lua")
+includeFile("static/structure/talus/talus_imprv_flagpole_s01.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/underwear/underwear_bottom.lua")
-includeFile("object/tangible/wearables/underwear/underwear_top.lua")
+includeFile("tangible/wearables/underwear/underwear_bottom.lua")
+includeFile("tangible/wearables/underwear/underwear_top.lua")

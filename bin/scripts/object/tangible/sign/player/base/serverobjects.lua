@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/sign/player/base/player_sign_base.lua")
-includeFile("object/tangible/sign/player/base/shop_sign_base.lua")
+includeFile("tangible/sign/player/base/player_sign_base.lua")
+includeFile("tangible/sign/player/base/shop_sign_base.lua")

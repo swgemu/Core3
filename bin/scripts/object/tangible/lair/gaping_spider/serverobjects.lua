@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/gaping_spider/lair_gaping_spider.lua")
-includeFile("object/tangible/lair/gaping_spider/lair_gaping_spider_forest.lua")
+includeFile("tangible/lair/gaping_spider/lair_gaping_spider.lua")
+includeFile("tangible/lair/gaping_spider/lair_gaping_spider_forest.lua")

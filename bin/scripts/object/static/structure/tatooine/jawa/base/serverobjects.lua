@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/structure/tatooine/jawa/base/tent_jawa_base.lua")
+includeFile("static/structure/tatooine/jawa/base/tent_jawa_base.lua")

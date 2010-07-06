@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/intangible/holocron/newbie_mission.lua")
+includeFile("intangible/holocron/newbie_mission.lua")

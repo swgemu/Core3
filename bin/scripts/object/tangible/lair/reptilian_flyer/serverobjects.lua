@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/reptilian_flyer/lair_reptilian_flyer.lua")
-includeFile("object/tangible/lair/reptilian_flyer/lair_reptilian_flyer_forest.lua")
-includeFile("object/tangible/lair/reptilian_flyer/lair_reptilian_flyer_mountain.lua")
+includeFile("tangible/lair/reptilian_flyer/lair_reptilian_flyer.lua")
+includeFile("tangible/lair/reptilian_flyer/lair_reptilian_flyer_forest.lua")
+includeFile("tangible/lair/reptilian_flyer/lair_reptilian_flyer_mountain.lua")

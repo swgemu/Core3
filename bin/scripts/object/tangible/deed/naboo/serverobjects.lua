@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/deed/naboo/player_house_deed/serverobjects.lua")
+includeFile("tangible/deed/naboo/player_house_deed/serverobjects.lua")
 
 -- Server Objects

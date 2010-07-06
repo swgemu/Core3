@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/cyborg/arm_l_s01.lua")
-includeFile("object/tangible/wearables/cyborg/arm_r_s01.lua")
-includeFile("object/tangible/wearables/cyborg/forearm_l_s01.lua")
-includeFile("object/tangible/wearables/cyborg/forearm_r_s01.lua")
-includeFile("object/tangible/wearables/cyborg/hand_l_s01.lua")
-includeFile("object/tangible/wearables/cyborg/hand_r_s01.lua")
+includeFile("tangible/wearables/cyborg/arm_l_s01.lua")
+includeFile("tangible/wearables/cyborg/arm_r_s01.lua")
+includeFile("tangible/wearables/cyborg/forearm_l_s01.lua")
+includeFile("tangible/wearables/cyborg/forearm_r_s01.lua")
+includeFile("tangible/wearables/cyborg/hand_l_s01.lua")
+includeFile("tangible/wearables/cyborg/hand_r_s01.lua")

@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/static/terrain/base/serverobjects.lua")
-includeFile("object/static/terrain/corellia/serverobjects.lua")
-includeFile("object/static/terrain/tatooine/serverobjects.lua")
+includeFile("static/terrain/base/serverobjects.lua")
+includeFile("static/terrain/corellia/serverobjects.lua")
+includeFile("static/terrain/tatooine/serverobjects.lua")
 
 -- Server Objects

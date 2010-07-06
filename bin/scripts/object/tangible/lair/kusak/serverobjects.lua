@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kusak/lair_kusak.lua")
-includeFile("object/tangible/lair/kusak/lair_kusak_wasteland.lua")
+includeFile("tangible/lair/kusak/lair_kusak.lua")
+includeFile("tangible/lair/kusak/lair_kusak_wasteland.lua")

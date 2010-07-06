@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/mobile/naboo_npc/thrawn.lua")
-includeFile("object/mobile/naboo_npc/veers.lua")
+includeFile("mobile/naboo_npc/thrawn.lua")
+includeFile("mobile/naboo_npc/veers.lua")

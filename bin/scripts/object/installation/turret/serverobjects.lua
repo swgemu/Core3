@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/installation/turret/base/serverobjects.lua")
+includeFile("installation/turret/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/turret/turret_block_large.lua")
-includeFile("object/installation/turret/turret_block_med.lua")
-includeFile("object/installation/turret/turret_block_sm.lua")
-includeFile("object/installation/turret/turret_dish_large.lua")
-includeFile("object/installation/turret/turret_dish_sm.lua")
-includeFile("object/installation/turret/turret_tower_large.lua")
-includeFile("object/installation/turret/turret_tower_med.lua")
-includeFile("object/installation/turret/turret_tower_sm.lua")
+includeFile("installation/turret/turret_block_large.lua")
+includeFile("installation/turret/turret_block_med.lua")
+includeFile("installation/turret/turret_block_sm.lua")
+includeFile("installation/turret/turret_dish_large.lua")
+includeFile("installation/turret/turret_dish_sm.lua")
+includeFile("installation/turret/turret_tower_large.lua")
+includeFile("installation/turret/turret_tower_med.lua")
+includeFile("installation/turret/turret_tower_sm.lua")

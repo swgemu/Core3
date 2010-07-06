@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/cu_pa/lair_cu_pa.lua")
-includeFile("object/tangible/lair/cu_pa/lair_cu_pa_dune.lua")
-includeFile("object/tangible/lair/cu_pa/lair_cu_pa_mountain.lua")
-includeFile("object/tangible/lair/cu_pa/lair_cu_pa_wasteland.lua")
+includeFile("tangible/lair/cu_pa/lair_cu_pa.lua")
+includeFile("tangible/lair/cu_pa/lair_cu_pa_dune.lua")
+includeFile("tangible/lair/cu_pa/lair_cu_pa_mountain.lua")
+includeFile("tangible/lair/cu_pa/lair_cu_pa_wasteland.lua")

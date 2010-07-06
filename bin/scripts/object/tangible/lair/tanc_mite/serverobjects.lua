@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/tanc_mite/lair_tanc_mite.lua")
-includeFile("object/tangible/lair/tanc_mite/lair_tanc_mite_mountain.lua")
+includeFile("tangible/lair/tanc_mite/lair_tanc_mite.lua")
+includeFile("tangible/lair/tanc_mite/lair_tanc_mite_mountain.lua")

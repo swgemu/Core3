@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/melee/unarmed/unarmed_default.lua")
-includeFile("object/weapon/melee/unarmed/unarmed_default_player.lua")
+includeFile("weapon/melee/unarmed/unarmed_default.lua")
+includeFile("weapon/melee/unarmed/unarmed_default_player.lua")

@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/tangible/ship/crafted/armor/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/booster/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/capacitor/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/chassis/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/droid_interface/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/engine/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/reactor/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/repair/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/shields/serverobjects.lua")
-includeFile("object/tangible/ship/crafted/weapon/serverobjects.lua")
+includeFile("tangible/ship/crafted/armor/serverobjects.lua")
+includeFile("tangible/ship/crafted/booster/serverobjects.lua")
+includeFile("tangible/ship/crafted/capacitor/serverobjects.lua")
+includeFile("tangible/ship/crafted/chassis/serverobjects.lua")
+includeFile("tangible/ship/crafted/droid_interface/serverobjects.lua")
+includeFile("tangible/ship/crafted/engine/serverobjects.lua")
+includeFile("tangible/ship/crafted/reactor/serverobjects.lua")
+includeFile("tangible/ship/crafted/repair/serverobjects.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/serverobjects.lua")
+includeFile("tangible/ship/crafted/shields/serverobjects.lua")
+includeFile("tangible/ship/crafted/weapon/serverobjects.lua")
 
 -- Server Objects

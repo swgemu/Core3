@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/installation/generators/base/serverobjects.lua")
+includeFile("installation/generators/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/generators/power_generator_fusion_style_1.lua")
-includeFile("object/installation/generators/power_generator_photo_bio_style_1.lua")
-includeFile("object/installation/generators/power_generator_solar_style_1.lua")
-includeFile("object/installation/generators/power_generator_wind_style_1.lua")
+includeFile("installation/generators/power_generator_fusion_style_1.lua")
+includeFile("installation/generators/power_generator_photo_bio_style_1.lua")
+includeFile("installation/generators/power_generator_solar_style_1.lua")
+includeFile("installation/generators/power_generator_wind_style_1.lua")

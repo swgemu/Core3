@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/food/creature_bio_effects/bio_kliknik_fortitude_boost.lua")
-includeFile("object/tangible/food/creature_bio_effects/bio_kwi_adrenal_boost.lua")
+includeFile("tangible/food/creature_bio_effects/bio_kliknik_fortitude_boost.lua")
+includeFile("tangible/food/creature_bio_effects/bio_kwi_adrenal_boost.lua")

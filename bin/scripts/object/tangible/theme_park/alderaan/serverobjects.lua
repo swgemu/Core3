@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/theme_park/alderaan/act2/serverobjects.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/serverobjects.lua")
+includeFile("tangible/theme_park/alderaan/act2/serverobjects.lua")
+includeFile("tangible/theme_park/alderaan/act3/serverobjects.lua")
 
 -- Server Objects

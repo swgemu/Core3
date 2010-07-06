@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/space/armor/serverobjects.lua")
-includeFile("object/draft_schematic/space/booster/serverobjects.lua")
-includeFile("object/draft_schematic/space/capacitor/serverobjects.lua")
-includeFile("object/draft_schematic/space/chassis/serverobjects.lua")
-includeFile("object/draft_schematic/space/droid_interface/serverobjects.lua")
-includeFile("object/draft_schematic/space/engine/serverobjects.lua")
-includeFile("object/draft_schematic/space/reactor/serverobjects.lua")
-includeFile("object/draft_schematic/space/repair/serverobjects.lua")
-includeFile("object/draft_schematic/space/reverse_engineering/serverobjects.lua")
-includeFile("object/draft_schematic/space/shields/serverobjects.lua")
-includeFile("object/draft_schematic/space/weapon/serverobjects.lua")
+includeFile("draft_schematic/space/armor/serverobjects.lua")
+includeFile("draft_schematic/space/booster/serverobjects.lua")
+includeFile("draft_schematic/space/capacitor/serverobjects.lua")
+includeFile("draft_schematic/space/chassis/serverobjects.lua")
+includeFile("draft_schematic/space/droid_interface/serverobjects.lua")
+includeFile("draft_schematic/space/engine/serverobjects.lua")
+includeFile("draft_schematic/space/reactor/serverobjects.lua")
+includeFile("draft_schematic/space/repair/serverobjects.lua")
+includeFile("draft_schematic/space/reverse_engineering/serverobjects.lua")
+includeFile("draft_schematic/space/shields/serverobjects.lua")
+includeFile("draft_schematic/space/weapon/serverobjects.lua")
 
 -- Server Objects

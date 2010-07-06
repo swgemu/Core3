@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/malkloc/lair_malkloc.lua")
-includeFile("object/tangible/lair/malkloc/lair_malkloc_desert.lua")
-includeFile("object/tangible/lair/malkloc/lair_malkloc_forest.lua")
-includeFile("object/tangible/lair/malkloc/lair_malkloc_mountain.lua")
+includeFile("tangible/lair/malkloc/lair_malkloc.lua")
+includeFile("tangible/lair/malkloc/lair_malkloc_desert.lua")
+includeFile("tangible/lair/malkloc/lair_malkloc_forest.lua")
+includeFile("tangible/lair/malkloc/lair_malkloc_mountain.lua")

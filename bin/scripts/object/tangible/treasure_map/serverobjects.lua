@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/treasure_map/treasure_map_base.lua")
-includeFile("object/tangible/treasure_map/treasure_map_quest.lua")
+includeFile("tangible/treasure_map/treasure_map_base.lua")
+includeFile("tangible/treasure_map/treasure_map_quest.lua")

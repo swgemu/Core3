@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/horned_krevol/lair_horned_krevol.lua")
-includeFile("object/tangible/lair/horned_krevol/lair_horned_krevol_desert.lua")
-includeFile("object/tangible/lair/horned_krevol/lair_horned_krevol_forest.lua")
-includeFile("object/tangible/lair/horned_krevol/lair_horned_krevol_mountain.lua")
+includeFile("tangible/lair/horned_krevol/lair_horned_krevol.lua")
+includeFile("tangible/lair/horned_krevol/lair_horned_krevol_desert.lua")
+includeFile("tangible/lair/horned_krevol/lair_horned_krevol_forest.lua")
+includeFile("tangible/lair/horned_krevol/lair_horned_krevol_mountain.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/salt_mynock/lair_salt_mynock.lua")
-includeFile("object/tangible/lair/salt_mynock/lair_salt_mynock_mountain.lua")
-includeFile("object/tangible/lair/salt_mynock/lair_salt_mynock_wasteland.lua")
+includeFile("tangible/lair/salt_mynock/lair_salt_mynock.lua")
+includeFile("tangible/lair/salt_mynock/lair_salt_mynock_mountain.lua")
+includeFile("tangible/lair/salt_mynock/lair_salt_mynock_wasteland.lua")

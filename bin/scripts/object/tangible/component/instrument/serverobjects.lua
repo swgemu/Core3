@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/component/instrument/dual_wave_synthesizer.lua")
+includeFile("tangible/component/instrument/dual_wave_synthesizer.lua")

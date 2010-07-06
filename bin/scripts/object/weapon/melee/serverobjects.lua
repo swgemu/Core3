@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/weapon/melee/2h_sword/serverobjects.lua")
-includeFile("object/weapon/melee/axe/serverobjects.lua")
-includeFile("object/weapon/melee/base/serverobjects.lua")
-includeFile("object/weapon/melee/baton/serverobjects.lua")
-includeFile("object/weapon/melee/knife/serverobjects.lua")
-includeFile("object/weapon/melee/polearm/serverobjects.lua")
-includeFile("object/weapon/melee/special/serverobjects.lua")
-includeFile("object/weapon/melee/sword/serverobjects.lua")
-includeFile("object/weapon/melee/unarmed/serverobjects.lua")
+includeFile("weapon/melee/2h_sword/serverobjects.lua")
+includeFile("weapon/melee/axe/serverobjects.lua")
+includeFile("weapon/melee/base/serverobjects.lua")
+includeFile("weapon/melee/baton/serverobjects.lua")
+includeFile("weapon/melee/knife/serverobjects.lua")
+includeFile("weapon/melee/polearm/serverobjects.lua")
+includeFile("weapon/melee/special/serverobjects.lua")
+includeFile("weapon/melee/sword/serverobjects.lua")
+includeFile("weapon/melee/unarmed/serverobjects.lua")
 
 -- Server Objects

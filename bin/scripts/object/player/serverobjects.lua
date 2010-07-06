@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/player/base/serverobjects.lua")
+includeFile("player/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/player/player.lua")
+includeFile("player/player.lua")

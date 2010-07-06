@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/item/theme_park/alderaan/serverobjects.lua")
+includeFile("draft_schematic/item/theme_park/alderaan/serverobjects.lua")
 
 -- Server Objects
