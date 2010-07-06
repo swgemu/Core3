@@ -1,5 +1,0 @@
-object_resource_container_organic_bean = object_resource_container_shared_resource_container_organic_bean:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_organic_bean, "object/resource_container/organic_bean.iff")
