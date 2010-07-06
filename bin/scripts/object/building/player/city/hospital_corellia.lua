@@ -42,7 +42,12 @@
 
 
 object_building_player_city_hospital_corellia = object_building_player_city_shared_hospital_corellia:new {
-
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	gameObjectType = 517,
+	mapLocationsType1 = 13,
+	allowedZones = {0,7},
+	cityRankRequired = 3
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_hospital_corellia, "object/building/player/city/hospital_corellia.iff")

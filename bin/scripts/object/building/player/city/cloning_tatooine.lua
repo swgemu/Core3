@@ -42,7 +42,13 @@
 
 
 object_building_player_city_cloning_tatooine = object_building_player_city_shared_cloning_tatooine:new {
-
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	allowedZones = {1,4,8},
+	gameObjectType = 519,
+	mapLocationsType1 = 5,
+	cityRankRequired = 3,
+	abilitiesRequired = {"placeCloningFacility"}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cloning_tatooine, "object/building/player/city/cloning_tatooine.iff")

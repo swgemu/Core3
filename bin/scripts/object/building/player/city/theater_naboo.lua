@@ -42,7 +42,12 @@
 
 
 object_building_player_city_theater_naboo = object_building_player_city_shared_theater_naboo:new {
-
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	allowedZones = {1,5,6},
+	gameObjectType = 524,
+	mapLocationsType1 = 51,
+	cityRankRequired = 4
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_naboo, "object/building/player/city/theater_naboo.iff")

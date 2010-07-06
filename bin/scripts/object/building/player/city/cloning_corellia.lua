@@ -42,7 +42,14 @@
 
 
 object_building_player_city_cloning_corellia = object_building_player_city_shared_cloning_corellia:new {
-
+= object_building_player_city_shared_cloning_corellia:new {
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	gameObjectType = 519,
+	mapLocationsType1 = 5,
+	allowedZones = {0,7},
+	cityRankRequired = 3,
+	abilitiesRequired = {"placeCloningFacility"}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cloning_corellia, "object/building/player/city/cloning_corellia.iff")
