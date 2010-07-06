@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/sullustan/base/hair_sullustan_base.lua")
-includeFile("object/tangible/hair/sullustan/base/hair_sullustan_female_base.lua")
-includeFile("object/tangible/hair/sullustan/base/hair_sullustan_male_base.lua")
+includeFile("tangible/hair/sullustan/base/hair_sullustan_base.lua")
+includeFile("tangible/hair/sullustan/base/hair_sullustan_female_base.lua")
+includeFile("tangible/hair/sullustan/base/hair_sullustan_male_base.lua")

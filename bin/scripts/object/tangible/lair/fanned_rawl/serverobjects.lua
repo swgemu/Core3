@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/fanned_rawl/lair_fanned_rawl.lua")
-includeFile("object/tangible/lair/fanned_rawl/lair_fanned_rawl_swamp.lua")
+includeFile("tangible/lair/fanned_rawl/lair_fanned_rawl.lua")
+includeFile("tangible/lair/fanned_rawl/lair_fanned_rawl_swamp.lua")

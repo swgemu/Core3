@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/npc/tatooine_special/sarlacc.lua")
+includeFile("tangible/npc/tatooine_special/sarlacc.lua")

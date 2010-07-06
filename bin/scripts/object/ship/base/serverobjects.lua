@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/ship/base/ship_base.lua")
-includeFile("object/ship/base/ship_capital_base.lua")
-includeFile("object/ship/base/ship_fighter_base.lua")
-includeFile("object/ship/base/ship_station_base.lua")
-includeFile("object/ship/base/ship_transport_base.lua")
+includeFile("ship/base/ship_base.lua")
+includeFile("ship/base/ship_capital_base.lua")
+includeFile("ship/base/ship_fighter_base.lua")
+includeFile("ship/base/ship_station_base.lua")
+includeFile("ship/base/ship_transport_base.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/corellian_slice_hound/lair_corellian_slice_hound.lua")
-includeFile("object/tangible/lair/corellian_slice_hound/lair_corellian_slice_hound_forest.lua")
-includeFile("object/tangible/lair/corellian_slice_hound/lair_corellian_slice_hound_grassland.lua")
+includeFile("tangible/lair/corellian_slice_hound/lair_corellian_slice_hound.lua")
+includeFile("tangible/lair/corellian_slice_hound/lair_corellian_slice_hound_forest.lua")
+includeFile("tangible/lair/corellian_slice_hound/lair_corellian_slice_hound_grassland.lua")

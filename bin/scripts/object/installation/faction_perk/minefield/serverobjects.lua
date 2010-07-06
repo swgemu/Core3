@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/installation/faction_perk/minefield/base/serverobjects.lua")
+includeFile("installation/faction_perk/minefield/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/faction_perk/minefield/field_1x1.lua")
+includeFile("installation/faction_perk/minefield/field_1x1.lua")

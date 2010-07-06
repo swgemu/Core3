@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/tangible/travel/shuttle/serverobjects.lua")
-includeFile("object/tangible/travel/ticket_collector/serverobjects.lua")
-includeFile("object/tangible/travel/travel_ticket/serverobjects.lua")
+includeFile("tangible/travel/shuttle/serverobjects.lua")
+includeFile("tangible/travel/ticket_collector/serverobjects.lua")
+includeFile("tangible/travel/travel_ticket/serverobjects.lua")
 
 -- Server Objects

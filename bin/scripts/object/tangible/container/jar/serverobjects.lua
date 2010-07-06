@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/tangible/container/jar/base/serverobjects.lua")
+includeFile("tangible/container/jar/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/container/jar/jar_berries_s01.lua")
-includeFile("object/tangible/container/jar/jar_bugs_s01.lua")
-includeFile("object/tangible/container/jar/jar_empty_s01.lua")
-includeFile("object/tangible/container/jar/jar_funk_s01.lua")
-includeFile("object/tangible/container/jar/jar_guts_s01.lua")
-includeFile("object/tangible/container/jar/jar_spice_s01.lua")
-includeFile("object/tangible/container/jar/jar_spice_s02.lua")
-includeFile("object/tangible/container/jar/jar_spice_s03.lua")
+includeFile("tangible/container/jar/jar_berries_s01.lua")
+includeFile("tangible/container/jar/jar_bugs_s01.lua")
+includeFile("tangible/container/jar/jar_empty_s01.lua")
+includeFile("tangible/container/jar/jar_funk_s01.lua")
+includeFile("tangible/container/jar/jar_guts_s01.lua")
+includeFile("tangible/container/jar/jar_spice_s01.lua")
+includeFile("tangible/container/jar/jar_spice_s02.lua")
+includeFile("tangible/container/jar/jar_spice_s03.lua")

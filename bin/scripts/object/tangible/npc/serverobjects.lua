@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/npc/tatooine_special/serverobjects.lua")
+includeFile("tangible/npc/tatooine_special/serverobjects.lua")
 
 -- Server Objects

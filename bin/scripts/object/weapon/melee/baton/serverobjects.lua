@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/weapon/melee/baton/base/serverobjects.lua")
+includeFile("weapon/melee/baton/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/melee/baton/baton_gaderiffi.lua")
-includeFile("object/weapon/melee/baton/baton_stun.lua")
-includeFile("object/weapon/melee/baton/victor_baton_gaderiffi.lua")
+includeFile("weapon/melee/baton/baton_gaderiffi.lua")
+includeFile("weapon/melee/baton/baton_stun.lua")
+includeFile("weapon/melee/baton/victor_baton_gaderiffi.lua")

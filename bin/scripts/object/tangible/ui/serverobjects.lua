@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/ui/ui_char_cust_pedestal.lua")
-includeFile("object/tangible/ui/ui_planet_corellia.lua")
-includeFile("object/tangible/ui/ui_planet_imperial.lua")
-includeFile("object/tangible/ui/ui_planet_naboo.lua")
-includeFile("object/tangible/ui/ui_planet_privateer.lua")
-includeFile("object/tangible/ui/ui_planet_rebel.lua")
-includeFile("object/tangible/ui/ui_planet_rori.lua")
-includeFile("object/tangible/ui/ui_planet_talus.lua")
-includeFile("object/tangible/ui/ui_planet_tatooine.lua")
+includeFile("tangible/ui/ui_char_cust_pedestal.lua")
+includeFile("tangible/ui/ui_planet_corellia.lua")
+includeFile("tangible/ui/ui_planet_imperial.lua")
+includeFile("tangible/ui/ui_planet_naboo.lua")
+includeFile("tangible/ui/ui_planet_privateer.lua")
+includeFile("tangible/ui/ui_planet_rebel.lua")
+includeFile("tangible/ui/ui_planet_rori.lua")
+includeFile("tangible/ui/ui_planet_talus.lua")
+includeFile("tangible/ui/ui_planet_tatooine.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/dathomir/mtn_clan_stronghold.lua")
-includeFile("object/building/dathomir/night_sister_stronghold.lua")
+includeFile("building/dathomir/mtn_clan_stronghold.lua")
+includeFile("building/dathomir/night_sister_stronghold.lua")

@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/travel/travel_ticket/base/serverobjects.lua")
+includeFile("tangible/travel/travel_ticket/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/travel/travel_ticket/dungeon_ticket.lua")
+includeFile("tangible/travel/travel_ticket/dungeon_ticket.lua")

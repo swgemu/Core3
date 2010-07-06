@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/tangible/loot/collectible/collectible_parts/serverobjects.lua")
-includeFile("object/tangible/loot/collectible/collectible_rewards/serverobjects.lua")
-includeFile("object/tangible/loot/collectible/kits/serverobjects.lua")
+includeFile("tangible/loot/collectible/collectible_parts/serverobjects.lua")
+includeFile("tangible/loot/collectible/collectible_rewards/serverobjects.lua")
+includeFile("tangible/loot/collectible/kits/serverobjects.lua")
 
 -- Server Objects

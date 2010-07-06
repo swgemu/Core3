@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/tangible/survey_tool/base/serverobjects.lua")
+includeFile("tangible/survey_tool/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/survey_tool/survey_tool_all.lua")
-includeFile("object/tangible/survey_tool/survey_tool_gas.lua")
-includeFile("object/tangible/survey_tool/survey_tool_inorganic.lua")
-includeFile("object/tangible/survey_tool/survey_tool_liquid.lua")
-includeFile("object/tangible/survey_tool/survey_tool_lumber.lua")
-includeFile("object/tangible/survey_tool/survey_tool_mineral.lua")
-includeFile("object/tangible/survey_tool/survey_tool_moisture.lua")
-includeFile("object/tangible/survey_tool/survey_tool_organic.lua")
-includeFile("object/tangible/survey_tool/survey_tool_solar.lua")
-includeFile("object/tangible/survey_tool/survey_tool_wind.lua")
+includeFile("tangible/survey_tool/survey_tool_all.lua")
+includeFile("tangible/survey_tool/survey_tool_gas.lua")
+includeFile("tangible/survey_tool/survey_tool_inorganic.lua")
+includeFile("tangible/survey_tool/survey_tool_liquid.lua")
+includeFile("tangible/survey_tool/survey_tool_lumber.lua")
+includeFile("tangible/survey_tool/survey_tool_mineral.lua")
+includeFile("tangible/survey_tool/survey_tool_moisture.lua")
+includeFile("tangible/survey_tool/survey_tool_organic.lua")
+includeFile("tangible/survey_tool/survey_tool_solar.lua")
+includeFile("tangible/survey_tool/survey_tool_wind.lua")

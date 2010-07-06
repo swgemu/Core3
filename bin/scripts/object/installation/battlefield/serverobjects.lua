@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/installation/battlefield/destructible/serverobjects.lua")
+includeFile("installation/battlefield/destructible/serverobjects.lua")
 
 -- Server Objects

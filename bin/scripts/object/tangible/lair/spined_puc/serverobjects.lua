@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/spined_puc/lair_spined_puc.lua")
-includeFile("object/tangible/lair/spined_puc/lair_spined_puc_underwater.lua")
+includeFile("tangible/lair/spined_puc/lair_spined_puc.lua")
+includeFile("tangible/lair/spined_puc/lair_spined_puc_underwater.lua")

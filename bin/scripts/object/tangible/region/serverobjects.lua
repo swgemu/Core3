@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/region/battlefield_marker.lua")
-includeFile("object/tangible/region/deliver_region_10.lua")
-includeFile("object/tangible/region/deliver_region_15.lua")
-includeFile("object/tangible/region/deliver_region_20.lua")
-includeFile("object/tangible/region/deliver_region_25.lua")
-includeFile("object/tangible/region/deliver_region_30.lua")
-includeFile("object/tangible/region/deliver_region_5.lua")
+includeFile("tangible/region/battlefield_marker.lua")
+includeFile("tangible/region/deliver_region_10.lua")
+includeFile("tangible/region/deliver_region_15.lua")
+includeFile("tangible/region/deliver_region_20.lua")
+includeFile("tangible/region/deliver_region_25.lua")
+includeFile("tangible/region/deliver_region_30.lua")
+includeFile("tangible/region/deliver_region_5.lua")

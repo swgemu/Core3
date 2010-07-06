@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/hair/wookiee/base/serverobjects.lua")
+includeFile("tangible/hair/wookiee/base/serverobjects.lua")
 
 -- Server Objects

@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/container/quest/crafting_contract/serverobjects.lua")
-includeFile("object/tangible/container/quest/hero_of_tatooine/serverobjects.lua")
+includeFile("tangible/container/quest/crafting_contract/serverobjects.lua")
+includeFile("tangible/container/quest/hero_of_tatooine/serverobjects.lua")
 
 -- Server Objects

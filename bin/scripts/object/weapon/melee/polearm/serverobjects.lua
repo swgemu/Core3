@@ -43,19 +43,19 @@
 
 
 --Children folder includes
-includeFile("object/weapon/melee/polearm/base/serverobjects.lua")
-includeFile("object/weapon/melee/polearm/crafted_saber/serverobjects.lua")
+includeFile("weapon/melee/polearm/base/serverobjects.lua")
+includeFile("weapon/melee/polearm/crafted_saber/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/melee/polearm/lance_controllerfp.lua")
-includeFile("object/weapon/melee/polearm/lance_controllerfp_nightsister.lua")
-includeFile("object/weapon/melee/polearm/lance_lightsaber_01.lua")
-includeFile("object/weapon/melee/polearm/lance_lightsaber_02.lua")
-includeFile("object/weapon/melee/polearm/lance_nightsister.lua")
-includeFile("object/weapon/melee/polearm/lance_nightsister_npc_version.lua")
-includeFile("object/weapon/melee/polearm/lance_staff_janta.lua")
-includeFile("object/weapon/melee/polearm/lance_staff_metal.lua")
-includeFile("object/weapon/melee/polearm/lance_staff_wood_s1.lua")
-includeFile("object/weapon/melee/polearm/lance_staff_wood_s2.lua")
-includeFile("object/weapon/melee/polearm/lance_vibrolance.lua")
-includeFile("object/weapon/melee/polearm/polearm_vibro_axe.lua")
+includeFile("weapon/melee/polearm/lance_controllerfp.lua")
+includeFile("weapon/melee/polearm/lance_controllerfp_nightsister.lua")
+includeFile("weapon/melee/polearm/lance_lightsaber_01.lua")
+includeFile("weapon/melee/polearm/lance_lightsaber_02.lua")
+includeFile("weapon/melee/polearm/lance_nightsister.lua")
+includeFile("weapon/melee/polearm/lance_nightsister_npc_version.lua")
+includeFile("weapon/melee/polearm/lance_staff_janta.lua")
+includeFile("weapon/melee/polearm/lance_staff_metal.lua")
+includeFile("weapon/melee/polearm/lance_staff_wood_s1.lua")
+includeFile("weapon/melee/polearm/lance_staff_wood_s2.lua")
+includeFile("weapon/melee/polearm/lance_vibrolance.lua")
+includeFile("weapon/melee/polearm/polearm_vibro_axe.lua")

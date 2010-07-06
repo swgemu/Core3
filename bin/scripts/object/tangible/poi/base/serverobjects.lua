@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/poi/base/poi_base.lua")
-includeFile("object/tangible/poi/base/poi_base_nosnap.lua")
+includeFile("tangible/poi/base/poi_base.lua")
+includeFile("tangible/poi/base/poi_base_nosnap.lua")

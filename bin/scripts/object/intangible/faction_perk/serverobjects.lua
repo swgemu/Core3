@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/intangible/faction_perk/shuttle_extract.lua")
+includeFile("intangible/faction_perk/shuttle_extract.lua")

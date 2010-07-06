@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/utility/utility_belt_tusken_raider.lua")
+includeFile("tangible/wearables/utility/utility_belt_tusken_raider.lua")

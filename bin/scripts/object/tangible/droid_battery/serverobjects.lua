@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/droid_battery/base/serverobjects.lua")
+includeFile("tangible/droid_battery/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/droid_battery/battery.lua")
+includeFile("tangible/droid_battery/battery.lua")

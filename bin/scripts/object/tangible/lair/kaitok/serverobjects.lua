@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kaitok/lair_kaitok.lua")
-includeFile("object/tangible/lair/kaitok/lair_kaitok_mountain.lua")
-includeFile("object/tangible/lair/kaitok/lair_kaitok_wasteland.lua")
+includeFile("tangible/lair/kaitok/lair_kaitok.lua")
+includeFile("tangible/lair/kaitok/lair_kaitok_mountain.lua")
+includeFile("tangible/lair/kaitok/lair_kaitok_wasteland.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/human/base/hair_human_base.lua")
-includeFile("object/tangible/hair/human/base/hair_human_female_base.lua")
-includeFile("object/tangible/hair/human/base/hair_human_male_base.lua")
+includeFile("tangible/hair/human/base/hair_human_base.lua")
+includeFile("tangible/hair/human/base/hair_human_female_base.lua")
+includeFile("tangible/hair/human/base/hair_human_male_base.lua")

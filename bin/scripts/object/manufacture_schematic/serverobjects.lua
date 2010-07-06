@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/manufacture_schematic/base/serverobjects.lua")
+includeFile("manufacture_schematic/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/manufacture_schematic/generic_schematic.lua")
+includeFile("manufacture_schematic/generic_schematic.lua")

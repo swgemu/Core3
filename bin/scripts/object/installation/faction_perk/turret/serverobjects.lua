@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/installation/faction_perk/turret/base/serverobjects.lua")
+includeFile("installation/faction_perk/turret/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/faction_perk/turret/block_lg.lua")
-includeFile("object/installation/faction_perk/turret/block_med.lua")
-includeFile("object/installation/faction_perk/turret/block_sm.lua")
-includeFile("object/installation/faction_perk/turret/dish_lg.lua")
-includeFile("object/installation/faction_perk/turret/dish_sm.lua")
-includeFile("object/installation/faction_perk/turret/tower_lg.lua")
-includeFile("object/installation/faction_perk/turret/tower_med.lua")
-includeFile("object/installation/faction_perk/turret/tower_sm.lua")
+includeFile("installation/faction_perk/turret/block_lg.lua")
+includeFile("installation/faction_perk/turret/block_med.lua")
+includeFile("installation/faction_perk/turret/block_sm.lua")
+includeFile("installation/faction_perk/turret/dish_lg.lua")
+includeFile("installation/faction_perk/turret/dish_sm.lua")
+includeFile("installation/faction_perk/turret/tower_lg.lua")
+includeFile("installation/faction_perk/turret/tower_med.lua")
+includeFile("installation/faction_perk/turret/tower_sm.lua")

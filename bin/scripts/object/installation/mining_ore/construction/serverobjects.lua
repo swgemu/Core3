@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.lua")
-includeFile("object/installation/mining_ore/construction/construction_mining_ore_harvester_style_2.lua")
-includeFile("object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.lua")
+includeFile("installation/mining_ore/construction/construction_mining_ore_harvester_style_1.lua")
+includeFile("installation/mining_ore/construction/construction_mining_ore_harvester_style_2.lua")
+includeFile("installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.lua")

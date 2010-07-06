@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/token/base/serverobjects.lua")
+includeFile("token/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/token/token.lua")
+includeFile("token/token.lua")

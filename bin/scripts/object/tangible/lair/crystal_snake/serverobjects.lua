@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/crystal_snake/lair_crystal_snake.lua")
-includeFile("object/tangible/lair/crystal_snake/lair_crystal_snake_jungle.lua")
-includeFile("object/tangible/lair/crystal_snake/lair_crystal_snake_swamp.lua")
-includeFile("object/tangible/lair/crystal_snake/lair_crystal_snake_underwater.lua")
+includeFile("tangible/lair/crystal_snake/lair_crystal_snake.lua")
+includeFile("tangible/lair/crystal_snake/lair_crystal_snake_jungle.lua")
+includeFile("tangible/lair/crystal_snake/lair_crystal_snake_swamp.lua")
+includeFile("tangible/lair/crystal_snake/lair_crystal_snake_underwater.lua")

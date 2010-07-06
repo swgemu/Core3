@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/merek/lair_merek.lua")
-includeFile("object/tangible/lair/merek/lair_merek_jungle.lua")
-includeFile("object/tangible/lair/merek/lair_merek_swamp.lua")
+includeFile("tangible/lair/merek/lair_merek.lua")
+includeFile("tangible/lair/merek/lair_merek_jungle.lua")
+includeFile("tangible/lair/merek/lair_merek_swamp.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/test/dan_test_component.lua")
-includeFile("object/draft_schematic/test/dan_test_pistol.lua")
+includeFile("draft_schematic/test/dan_test_component.lua")
+includeFile("draft_schematic/test/dan_test_pistol.lua")

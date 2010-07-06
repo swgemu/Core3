@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/lok/cave_03_nym_pirates.lua")
-includeFile("object/building/lok/mining_cave_01.lua")
-includeFile("object/building/lok/nym_stronghold.lua")
+includeFile("building/lok/cave_03_nym_pirates.lua")
+includeFile("building/lok/mining_cave_01.lua")
+includeFile("building/lok/nym_stronghold.lua")

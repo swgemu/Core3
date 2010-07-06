@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/factory/base/serverobjects.lua")
+includeFile("factory/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/factory/factory_crate_armor.lua")
-includeFile("object/factory/factory_crate_chemicals.lua")
-includeFile("object/factory/factory_crate_clothing.lua")
-includeFile("object/factory/factory_crate_electronics.lua")
-includeFile("object/factory/factory_crate_food.lua")
-includeFile("object/factory/factory_crate_furniture.lua")
-includeFile("object/factory/factory_crate_generic_items.lua")
-includeFile("object/factory/factory_crate_installation.lua")
-includeFile("object/factory/factory_crate_weapon.lua")
+includeFile("factory/factory_crate_armor.lua")
+includeFile("factory/factory_crate_chemicals.lua")
+includeFile("factory/factory_crate_clothing.lua")
+includeFile("factory/factory_crate_electronics.lua")
+includeFile("factory/factory_crate_food.lua")
+includeFile("factory/factory_crate_furniture.lua")
+includeFile("factory/factory_crate_generic_items.lua")
+includeFile("factory/factory_crate_installation.lua")
+includeFile("factory/factory_crate_weapon.lua")

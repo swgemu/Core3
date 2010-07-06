@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/mamien/lair_mamien.lua")
-includeFile("object/tangible/lair/mamien/lair_mamien_jungle.lua")
+includeFile("tangible/lair/mamien/lair_mamien.lua")
+includeFile("tangible/lair/mamien/lair_mamien_jungle.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/dalyrake/lair_dalyrake.lua")
-includeFile("object/tangible/lair/dalyrake/lair_dalyrake_forest.lua")
+includeFile("tangible/lair/dalyrake/lair_dalyrake.lua")
+includeFile("tangible/lair/dalyrake/lair_dalyrake_forest.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/krayt_dragon/lair_krayt_dragon.lua")
-includeFile("object/tangible/lair/krayt_dragon/lair_krayt_dragon_desert.lua")
-includeFile("object/tangible/lair/krayt_dragon/lair_krayt_dragon_wasteland.lua")
+includeFile("tangible/lair/krayt_dragon/lair_krayt_dragon.lua")
+includeFile("tangible/lair/krayt_dragon/lair_krayt_dragon_desert.lua")
+includeFile("tangible/lair/krayt_dragon/lair_krayt_dragon_wasteland.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/item/quest/hero_of_tatooine/explosives.lua")
-includeFile("object/tangible/item/quest/hero_of_tatooine/explosives_crate.lua")
+includeFile("tangible/item/quest/hero_of_tatooine/explosives.lua")
+includeFile("tangible/item/quest/hero_of_tatooine/explosives_crate.lua")

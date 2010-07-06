@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/ship/customization/xwing_cowl_neg_s01.lua")
-includeFile("object/tangible/ship/customization/xwing_cowl_neg_s02.lua")
-includeFile("object/tangible/ship/customization/xwing_gun_neg_s01.lua")
-includeFile("object/tangible/ship/customization/xwing_gun_neg_s02.lua")
-includeFile("object/tangible/ship/customization/xwing_thruster_neg_s01.lua")
-includeFile("object/tangible/ship/customization/xwing_thruster_neg_s02.lua")
+includeFile("tangible/ship/customization/xwing_cowl_neg_s01.lua")
+includeFile("tangible/ship/customization/xwing_cowl_neg_s02.lua")
+includeFile("tangible/ship/customization/xwing_gun_neg_s01.lua")
+includeFile("tangible/ship/customization/xwing_gun_neg_s02.lua")
+includeFile("tangible/ship/customization/xwing_thruster_neg_s01.lua")
+includeFile("tangible/ship/customization/xwing_thruster_neg_s02.lua")

@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/space/special_loot/encoded_document.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part1.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part2.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part3.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part4.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part5.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part6.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part7.lua")
-includeFile("object/tangible/space/special_loot/firespray_schematic_part8.lua")
+includeFile("tangible/space/special_loot/encoded_document.lua")
+includeFile("tangible/space/special_loot/firespray_schematic.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part1.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part2.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part3.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part4.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part5.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part6.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part7.lua")
+includeFile("tangible/space/special_loot/firespray_schematic_part8.lua")

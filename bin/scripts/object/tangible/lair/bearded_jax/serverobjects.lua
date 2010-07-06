@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/bearded_jax/lair_bearded_jax.lua")
-includeFile("object/tangible/lair/bearded_jax/lair_bearded_jax_grassland.lua")
+includeFile("tangible/lair/bearded_jax/lair_bearded_jax.lua")
+includeFile("tangible/lair/bearded_jax/lair_bearded_jax_grassland.lua")

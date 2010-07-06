@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/jedi/force_shrine_stone.lua")
-includeFile("object/tangible/jedi/jedi_holocron_dark.lua")
-includeFile("object/tangible/jedi/jedi_holocron_light.lua")
-includeFile("object/tangible/jedi/no_drop_jedi_holocron_dark.lua")
-includeFile("object/tangible/jedi/no_drop_jedi_holocron_light.lua")
-includeFile("object/tangible/jedi/padawan_trials_skeleton.lua")
-includeFile("object/tangible/jedi/power_shrine.lua")
-includeFile("object/tangible/jedi/power_shrine_red.lua")
+includeFile("tangible/jedi/force_shrine_stone.lua")
+includeFile("tangible/jedi/jedi_holocron_dark.lua")
+includeFile("tangible/jedi/jedi_holocron_light.lua")
+includeFile("tangible/jedi/no_drop_jedi_holocron_dark.lua")
+includeFile("tangible/jedi/no_drop_jedi_holocron_light.lua")
+includeFile("tangible/jedi/padawan_trials_skeleton.lua")
+includeFile("tangible/jedi/power_shrine.lua")
+includeFile("tangible/jedi/power_shrine_red.lua")

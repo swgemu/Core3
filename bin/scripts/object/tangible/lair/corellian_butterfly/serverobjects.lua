@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/corellian_butterfly/lair_corellian_butterfly.lua")
-includeFile("object/tangible/lair/corellian_butterfly/lair_corellian_butterfly_forest.lua")
-includeFile("object/tangible/lair/corellian_butterfly/lair_corellian_butterfly_mountain.lua")
+includeFile("tangible/lair/corellian_butterfly/lair_corellian_butterfly.lua")
+includeFile("tangible/lair/corellian_butterfly/lair_corellian_butterfly_forest.lua")
+includeFile("tangible/lair/corellian_butterfly/lair_corellian_butterfly_mountain.lua")

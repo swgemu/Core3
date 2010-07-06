@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/jedi_manager/jedi_manager.lua")
+includeFile("jedi_manager/jedi_manager.lua")

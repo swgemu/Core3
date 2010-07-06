@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/item/component/item_electronic_control_unit.lua")
-includeFile("object/draft_schematic/item/component/item_electronic_energy_distributor.lua")
-includeFile("object/draft_schematic/item/component/item_electronic_power_conditioner.lua")
-includeFile("object/draft_schematic/item/component/item_electronics_gp_module.lua")
-includeFile("object/draft_schematic/item/component/item_electronics_memory_module.lua")
-includeFile("object/draft_schematic/item/component/item_micro_sensor_suite.lua")
+includeFile("draft_schematic/item/component/item_electronic_control_unit.lua")
+includeFile("draft_schematic/item/component/item_electronic_energy_distributor.lua")
+includeFile("draft_schematic/item/component/item_electronic_power_conditioner.lua")
+includeFile("draft_schematic/item/component/item_electronics_gp_module.lua")
+includeFile("draft_schematic/item/component/item_electronics_memory_module.lua")
+includeFile("draft_schematic/item/component/item_micro_sensor_suite.lua")

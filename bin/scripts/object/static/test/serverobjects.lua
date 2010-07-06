@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/test/test_blast.lua")
-includeFile("object/static/test/test_blaster_bolt.lua")
-includeFile("object/static/test/test_sound_obelisk_1.lua")
-includeFile("object/static/test/test_sound_obelisk_2.lua")
-includeFile("object/static/test/test_static_sandcrawler.lua")
+includeFile("static/test/test_blast.lua")
+includeFile("static/test/test_blaster_bolt.lua")
+includeFile("static/test/test_sound_obelisk_1.lua")
+includeFile("static/test/test_sound_obelisk_2.lua")
+includeFile("static/test/test_static_sandcrawler.lua")

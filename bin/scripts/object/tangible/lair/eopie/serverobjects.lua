@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/eopie/lair_eopie.lua")
-includeFile("object/tangible/lair/eopie/lair_eopie_desert.lua")
-includeFile("object/tangible/lair/eopie/lair_eopie_dune.lua")
-includeFile("object/tangible/lair/eopie/lair_eopie_mountain.lua")
-includeFile("object/tangible/lair/eopie/lair_eopie_wasteland.lua")
+includeFile("tangible/lair/eopie/lair_eopie.lua")
+includeFile("tangible/lair/eopie/lair_eopie_desert.lua")
+includeFile("tangible/lair/eopie/lair_eopie_dune.lua")
+includeFile("tangible/lair/eopie/lair_eopie_mountain.lua")
+includeFile("tangible/lair/eopie/lair_eopie_wasteland.lua")

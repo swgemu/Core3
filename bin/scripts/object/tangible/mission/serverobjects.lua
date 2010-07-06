@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/tangible/mission/quest_item/serverobjects.lua")
+includeFile("tangible/mission/quest_item/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/mission/assassin_missions_device.lua")
-includeFile("object/tangible/mission/mission_bounty_droid_probot.lua")
-includeFile("object/tangible/mission/mission_bounty_droid_seeker.lua")
-includeFile("object/tangible/mission/mission_bounty_target.lua")
-includeFile("object/tangible/mission/mission_datadisk.lua")
-includeFile("object/tangible/mission/mission_informant_spawner_easy.lua")
-includeFile("object/tangible/mission/mission_informant_spawner_hard.lua")
-includeFile("object/tangible/mission/mission_informant_spawner_medium.lua")
-includeFile("object/tangible/mission/mission_recon_target.lua")
-includeFile("object/tangible/mission/mission_terminal.lua")
+includeFile("tangible/mission/assassin_missions_device.lua")
+includeFile("tangible/mission/mission_bounty_droid_probot.lua")
+includeFile("tangible/mission/mission_bounty_droid_seeker.lua")
+includeFile("tangible/mission/mission_bounty_target.lua")
+includeFile("tangible/mission/mission_datadisk.lua")
+includeFile("tangible/mission/mission_informant_spawner_easy.lua")
+includeFile("tangible/mission/mission_informant_spawner_hard.lua")
+includeFile("tangible/mission/mission_informant_spawner_medium.lua")
+includeFile("tangible/mission/mission_recon_target.lua")
+includeFile("tangible/mission/mission_terminal.lua")

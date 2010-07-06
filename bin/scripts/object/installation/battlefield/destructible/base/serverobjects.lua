@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/battlefield/destructible/base/base_destructible_building.lua")
-includeFile("object/installation/battlefield/destructible/base/construction_base_destructible_building.lua")
+includeFile("installation/battlefield/destructible/base/base_destructible_building.lua")
+includeFile("installation/battlefield/destructible/base/construction_base_destructible_building.lua")

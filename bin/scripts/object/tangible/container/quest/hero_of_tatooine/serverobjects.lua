@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/container/quest/hero_of_tatooine/rock_crevice.lua")
+includeFile("tangible/container/quest/hero_of_tatooine/rock_crevice.lua")

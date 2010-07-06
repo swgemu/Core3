@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/tangible/deed/faction_perk/covert_detector/serverobjects.lua")
-includeFile("object/tangible/deed/faction_perk/hq/serverobjects.lua")
-includeFile("object/tangible/deed/faction_perk/minefield/serverobjects.lua")
-includeFile("object/tangible/deed/faction_perk/turret/serverobjects.lua")
+includeFile("tangible/deed/faction_perk/covert_detector/serverobjects.lua")
+includeFile("tangible/deed/faction_perk/hq/serverobjects.lua")
+includeFile("tangible/deed/faction_perk/minefield/serverobjects.lua")
+includeFile("tangible/deed/faction_perk/turret/serverobjects.lua")
 
 -- Server Objects

@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/poi/farm/tatooine_flora_large.lua")
+includeFile("building/poi/farm/tatooine_flora_large.lua")

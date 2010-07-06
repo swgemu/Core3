@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/bio_engineer/bio_component/serverobjects.lua")
-includeFile("object/draft_schematic/bio_engineer/creature/serverobjects.lua")
-includeFile("object/draft_schematic/bio_engineer/dna_template/serverobjects.lua")
-includeFile("object/draft_schematic/bio_engineer/utilities/serverobjects.lua")
+includeFile("draft_schematic/bio_engineer/bio_component/serverobjects.lua")
+includeFile("draft_schematic/bio_engineer/creature/serverobjects.lua")
+includeFile("draft_schematic/bio_engineer/dna_template/serverobjects.lua")
+includeFile("draft_schematic/bio_engineer/utilities/serverobjects.lua")
 
 -- Server Objects

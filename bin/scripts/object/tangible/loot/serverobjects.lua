@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/tangible/loot/bestine/serverobjects.lua")
-includeFile("object/tangible/loot/collectible/serverobjects.lua")
-includeFile("object/tangible/loot/dungeon/serverobjects.lua")
-includeFile("object/tangible/loot/loot_schematic/serverobjects.lua")
-includeFile("object/tangible/loot/misc/serverobjects.lua")
-includeFile("object/tangible/loot/plant_grow/serverobjects.lua")
-includeFile("object/tangible/loot/quest/serverobjects.lua")
-includeFile("object/tangible/loot/simple_kit/serverobjects.lua")
-includeFile("object/tangible/loot/tool/serverobjects.lua")
+includeFile("tangible/loot/bestine/serverobjects.lua")
+includeFile("tangible/loot/collectible/serverobjects.lua")
+includeFile("tangible/loot/dungeon/serverobjects.lua")
+includeFile("tangible/loot/loot_schematic/serverobjects.lua")
+includeFile("tangible/loot/misc/serverobjects.lua")
+includeFile("tangible/loot/plant_grow/serverobjects.lua")
+includeFile("tangible/loot/quest/serverobjects.lua")
+includeFile("tangible/loot/simple_kit/serverobjects.lua")
+includeFile("tangible/loot/tool/serverobjects.lua")
 
 -- Server Objects

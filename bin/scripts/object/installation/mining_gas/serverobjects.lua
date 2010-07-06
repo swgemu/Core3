@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/installation/mining_gas/base/serverobjects.lua")
+includeFile("installation/mining_gas/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/mining_gas/mining_gas_harvester_style_1.lua")
-includeFile("object/installation/mining_gas/mining_gas_harvester_style_2.lua")
-includeFile("object/installation/mining_gas/mining_gas_harvester_style_3.lua")
+includeFile("installation/mining_gas/mining_gas_harvester_style_1.lua")
+includeFile("installation/mining_gas/mining_gas_harvester_style_2.lua")
+includeFile("installation/mining_gas/mining_gas_harvester_style_3.lua")

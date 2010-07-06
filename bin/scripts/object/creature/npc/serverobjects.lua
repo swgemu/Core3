@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/creature/npc/base/serverobjects.lua")
-includeFile("object/creature/npc/droid/serverobjects.lua")
-includeFile("object/creature/npc/general/serverobjects.lua")
-includeFile("object/creature/npc/theme_park/serverobjects.lua")
+includeFile("creature/npc/base/serverobjects.lua")
+includeFile("creature/npc/droid/serverobjects.lua")
+includeFile("creature/npc/general/serverobjects.lua")
+includeFile("creature/npc/theme_park/serverobjects.lua")
 
 -- Server Objects

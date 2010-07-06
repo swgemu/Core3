@@ -43,17 +43,17 @@
 
 
 --Children folder includes
-includeFile("object/tangible/vendor/base/serverobjects.lua")
+includeFile("tangible/vendor/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/vendor/vendor_droid_bartender.lua")
-includeFile("object/tangible/vendor/vendor_droid_power.lua")
-includeFile("object/tangible/vendor/vendor_droid_protocol.lua")
-includeFile("object/tangible/vendor/vendor_droid_surgical.lua")
-includeFile("object/tangible/vendor/vendor_droid_wed.lua")
-includeFile("object/tangible/vendor/vendor_terminal_basic.lua")
-includeFile("object/tangible/vendor/vendor_terminal_bulky.lua")
-includeFile("object/tangible/vendor/vendor_terminal_fancy.lua")
-includeFile("object/tangible/vendor/vendor_terminal_slim.lua")
-includeFile("object/tangible/vendor/vendor_terminal_small.lua")
-includeFile("object/tangible/vendor/vendor_terminal_standard.lua")
+includeFile("tangible/vendor/vendor_droid_bartender.lua")
+includeFile("tangible/vendor/vendor_droid_power.lua")
+includeFile("tangible/vendor/vendor_droid_protocol.lua")
+includeFile("tangible/vendor/vendor_droid_surgical.lua")
+includeFile("tangible/vendor/vendor_droid_wed.lua")
+includeFile("tangible/vendor/vendor_terminal_basic.lua")
+includeFile("tangible/vendor/vendor_terminal_bulky.lua")
+includeFile("tangible/vendor/vendor_terminal_fancy.lua")
+includeFile("tangible/vendor/vendor_terminal_slim.lua")
+includeFile("tangible/vendor/vendor_terminal_small.lua")
+includeFile("tangible/vendor/vendor_terminal_standard.lua")

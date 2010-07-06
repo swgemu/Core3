@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/bolma/lair_bolma.lua")
-includeFile("object/tangible/lair/bolma/lair_bolma_desert.lua")
-includeFile("object/tangible/lair/bolma/lair_bolma_dune.lua")
-includeFile("object/tangible/lair/bolma/lair_bolma_mountain.lua")
+includeFile("tangible/lair/bolma/lair_bolma.lua")
+includeFile("tangible/lair/bolma/lair_bolma_desert.lua")
+includeFile("tangible/lair/bolma/lair_bolma_dune.lua")
+includeFile("tangible/lair/bolma/lair_bolma_mountain.lua")

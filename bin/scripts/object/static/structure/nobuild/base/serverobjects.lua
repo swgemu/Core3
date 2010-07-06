@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/structure/nobuild/base/nobuild_base.lua")
+includeFile("static/structure/nobuild/base/nobuild_base.lua")

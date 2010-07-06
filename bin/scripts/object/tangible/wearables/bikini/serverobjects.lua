@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/bikini/bikini_leggings_s01.lua")
-includeFile("object/tangible/wearables/bikini/bikini_s01.lua")
-includeFile("object/tangible/wearables/bikini/bikini_s02.lua")
-includeFile("object/tangible/wearables/bikini/bikini_s03.lua")
-includeFile("object/tangible/wearables/bikini/bikini_s04.lua")
+includeFile("tangible/wearables/bikini/bikini_leggings_s01.lua")
+includeFile("tangible/wearables/bikini/bikini_s01.lua")
+includeFile("tangible/wearables/bikini/bikini_s02.lua")
+includeFile("tangible/wearables/bikini/bikini_s03.lua")
+includeFile("tangible/wearables/bikini/bikini_s04.lua")

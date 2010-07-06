@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/beta/beta_terminal_food.lua")
-includeFile("object/tangible/beta/beta_terminal_medicine.lua")
-includeFile("object/tangible/beta/beta_terminal_money.lua")
-includeFile("object/tangible/beta/beta_terminal_resource.lua")
-includeFile("object/tangible/beta/beta_terminal_warp.lua")
-includeFile("object/tangible/beta/beta_terminal_wound.lua")
-includeFile("object/tangible/beta/beta_terminal_xp.lua")
-includeFile("object/tangible/beta/donham_terminal.lua")
+includeFile("tangible/beta/beta_terminal_food.lua")
+includeFile("tangible/beta/beta_terminal_medicine.lua")
+includeFile("tangible/beta/beta_terminal_money.lua")
+includeFile("tangible/beta/beta_terminal_resource.lua")
+includeFile("tangible/beta/beta_terminal_warp.lua")
+includeFile("tangible/beta/beta_terminal_wound.lua")
+includeFile("tangible/beta/beta_terminal_xp.lua")
+includeFile("tangible/beta/donham_terminal.lua")

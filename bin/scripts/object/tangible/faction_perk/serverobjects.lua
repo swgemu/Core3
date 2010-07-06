@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/faction_perk/faction_base_item/serverobjects.lua")
+includeFile("tangible/faction_perk/faction_base_item/serverobjects.lua")
 
 -- Server Objects

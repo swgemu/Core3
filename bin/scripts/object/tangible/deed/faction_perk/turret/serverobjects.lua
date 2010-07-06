@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/tangible/deed/faction_perk/turret/base/serverobjects.lua")
+includeFile("tangible/deed/faction_perk/turret/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/deed/faction_perk/turret/block_lg_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/block_med_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/block_sm_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/dish_lg_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/dish_sm_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/tower_lg_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/tower_med_deed.lua")
-includeFile("object/tangible/deed/faction_perk/turret/tower_sm_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/block_lg_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/block_med_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/block_sm_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/dish_lg_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/dish_sm_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/tower_lg_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/tower_med_deed.lua")
+includeFile("tangible/deed/faction_perk/turret/tower_sm_deed.lua")

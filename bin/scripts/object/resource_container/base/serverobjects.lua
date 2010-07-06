@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/resource_container/base/base_resource_container.lua")
-includeFile("object/resource_container/base/resource_container_default.lua")
+includeFile("resource_container/base/base_resource_container.lua")
+includeFile("resource_container/base/resource_container_default.lua")

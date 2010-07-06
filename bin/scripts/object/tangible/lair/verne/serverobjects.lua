@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/verne/lair_verne.lua")
-includeFile("object/tangible/lair/verne/lair_verne_forest.lua")
+includeFile("tangible/lair/verne/lair_verne.lua")
+includeFile("tangible/lair/verne/lair_verne_forest.lua")

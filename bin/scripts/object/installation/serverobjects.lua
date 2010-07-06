@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/installation/base/serverobjects.lua")
-includeFile("object/installation/battlefield/serverobjects.lua")
-includeFile("object/installation/faction_perk/serverobjects.lua")
-includeFile("object/installation/generators/serverobjects.lua")
-includeFile("object/installation/manufacture/serverobjects.lua")
-includeFile("object/installation/mining_gas/serverobjects.lua")
-includeFile("object/installation/mining_liquid/serverobjects.lua")
-includeFile("object/installation/mining_ore/serverobjects.lua")
-includeFile("object/installation/mining_organic/serverobjects.lua")
-includeFile("object/installation/turret/serverobjects.lua")
+includeFile("installation/base/serverobjects.lua")
+includeFile("installation/battlefield/serverobjects.lua")
+includeFile("installation/faction_perk/serverobjects.lua")
+includeFile("installation/generators/serverobjects.lua")
+includeFile("installation/manufacture/serverobjects.lua")
+includeFile("installation/mining_gas/serverobjects.lua")
+includeFile("installation/mining_liquid/serverobjects.lua")
+includeFile("installation/mining_ore/serverobjects.lua")
+includeFile("installation/mining_organic/serverobjects.lua")
+includeFile("installation/turret/serverobjects.lua")
 
 -- Server Objects

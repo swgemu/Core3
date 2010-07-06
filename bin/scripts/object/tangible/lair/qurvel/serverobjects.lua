@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/qurvel/lair_qurvel.lua")
-includeFile("object/tangible/lair/qurvel/lair_qurvel_forest.lua")
-includeFile("object/tangible/lair/qurvel/lair_qurvel_mountain.lua")
+includeFile("tangible/lair/qurvel/lair_qurvel.lua")
+includeFile("tangible/lair/qurvel/lair_qurvel_forest.lua")
+includeFile("tangible/lair/qurvel/lair_qurvel_mountain.lua")

@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/powerup/weapon/fs_quest_sad/melee_speed_quest.lua")
+includeFile("tangible/powerup/weapon/fs_quest_sad/melee_speed_quest.lua")

@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/creature/base/serverobjects.lua")
-includeFile("object/creature/camera/serverobjects.lua")
-includeFile("object/creature/npc/serverobjects.lua")
-includeFile("object/creature/player/serverobjects.lua")
+includeFile("creature/base/serverobjects.lua")
+includeFile("creature/camera/serverobjects.lua")
+includeFile("creature/npc/serverobjects.lua")
+includeFile("creature/player/serverobjects.lua")
 
 -- Server Objects

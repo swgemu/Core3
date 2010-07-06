@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/angler/lair_angler.lua")
-includeFile("object/tangible/lair/angler/lair_angler_jungle.lua")
-includeFile("object/tangible/lair/angler/lair_angler_swamp.lua")
-includeFile("object/tangible/lair/angler/lair_angler_underwater.lua")
+includeFile("tangible/lair/angler/lair_angler.lua")
+includeFile("tangible/lair/angler/lair_angler_jungle.lua")
+includeFile("tangible/lair/angler/lair_angler_swamp.lua")
+includeFile("tangible/lair/angler/lair_angler_underwater.lua")

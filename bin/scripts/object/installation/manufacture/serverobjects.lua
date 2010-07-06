@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/installation/manufacture/base/serverobjects.lua")
+includeFile("installation/manufacture/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/installation/manufacture/clothing_factory.lua")
-includeFile("object/installation/manufacture/food_factory.lua")
-includeFile("object/installation/manufacture/structure_factory.lua")
-includeFile("object/installation/manufacture/weapon_factory.lua")
-includeFile("object/installation/manufacture/weapon_installation.lua")
+includeFile("installation/manufacture/clothing_factory.lua")
+includeFile("installation/manufacture/food_factory.lua")
+includeFile("installation/manufacture/structure_factory.lua")
+includeFile("installation/manufacture/weapon_factory.lua")
+includeFile("installation/manufacture/weapon_installation.lua")

@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/waypoint/base/serverobjects.lua")
+includeFile("waypoint/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/waypoint/path_waypoint.lua")
-includeFile("object/waypoint/waypoint.lua")
-includeFile("object/waypoint/world_waypoint.lua")
-includeFile("object/waypoint/world_waypoint_blue.lua")
-includeFile("object/waypoint/world_waypoint_green.lua")
-includeFile("object/waypoint/world_waypoint_orange.lua")
-includeFile("object/waypoint/world_waypoint_purple.lua")
-includeFile("object/waypoint/world_waypoint_space.lua")
-includeFile("object/waypoint/world_waypoint_white.lua")
-includeFile("object/waypoint/world_waypoint_yellow.lua")
+includeFile("waypoint/path_waypoint.lua")
+includeFile("waypoint/waypoint.lua")
+includeFile("waypoint/world_waypoint.lua")
+includeFile("waypoint/world_waypoint_blue.lua")
+includeFile("waypoint/world_waypoint_green.lua")
+includeFile("waypoint/world_waypoint_orange.lua")
+includeFile("waypoint/world_waypoint_purple.lua")
+includeFile("waypoint/world_waypoint_space.lua")
+includeFile("waypoint/world_waypoint_white.lua")
+includeFile("waypoint/world_waypoint_yellow.lua")

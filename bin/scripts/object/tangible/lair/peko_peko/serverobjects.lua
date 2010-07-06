@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/peko_peko/lair_peko_peko.lua")
-includeFile("object/tangible/lair/peko_peko/lair_peko_peko_forest.lua")
-includeFile("object/tangible/lair/peko_peko/lair_peko_peko_grassland.lua")
-includeFile("object/tangible/lair/peko_peko/lair_peko_peko_swamp.lua")
+includeFile("tangible/lair/peko_peko/lair_peko_peko.lua")
+includeFile("tangible/lair/peko_peko/lair_peko_peko_forest.lua")
+includeFile("tangible/lair/peko_peko/lair_peko_peko_grassland.lua")
+includeFile("tangible/lair/peko_peko/lair_peko_peko_swamp.lua")

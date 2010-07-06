@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/tangible/sign/player/banner/serverobjects.lua")
-includeFile("object/tangible/sign/player/base/serverobjects.lua")
+includeFile("tangible/sign/player/banner/serverobjects.lua")
+includeFile("tangible/sign/player/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/sign/player/house_address.lua")
-includeFile("object/tangible/sign/player/house_address_corellia.lua")
-includeFile("object/tangible/sign/player/house_address_naboo.lua")
-includeFile("object/tangible/sign/player/house_address_tatooine.lua")
-includeFile("object/tangible/sign/player/shop_sign_s01.lua")
-includeFile("object/tangible/sign/player/shop_sign_s02.lua")
-includeFile("object/tangible/sign/player/shop_sign_s03.lua")
-includeFile("object/tangible/sign/player/shop_sign_s04.lua")
+includeFile("tangible/sign/player/house_address.lua")
+includeFile("tangible/sign/player/house_address_corellia.lua")
+includeFile("tangible/sign/player/house_address_naboo.lua")
+includeFile("tangible/sign/player/house_address_tatooine.lua")
+includeFile("tangible/sign/player/shop_sign_s01.lua")
+includeFile("tangible/sign/player/shop_sign_s02.lua")
+includeFile("tangible/sign/player/shop_sign_s03.lua")
+includeFile("tangible/sign/player/shop_sign_s04.lua")

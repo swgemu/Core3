@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/tangible/ship/components/armor/serverobjects.lua")
-includeFile("object/tangible/ship/components/base/serverobjects.lua")
-includeFile("object/tangible/ship/components/booster/serverobjects.lua")
-includeFile("object/tangible/ship/components/chassis/serverobjects.lua")
-includeFile("object/tangible/ship/components/droid_interface/serverobjects.lua")
-includeFile("object/tangible/ship/components/engine/serverobjects.lua")
-includeFile("object/tangible/ship/components/reactor/serverobjects.lua")
-includeFile("object/tangible/ship/components/shield_generator/serverobjects.lua")
-includeFile("object/tangible/ship/components/weapon/serverobjects.lua")
-includeFile("object/tangible/ship/components/weapon_capacitor/serverobjects.lua")
+includeFile("tangible/ship/components/armor/serverobjects.lua")
+includeFile("tangible/ship/components/base/serverobjects.lua")
+includeFile("tangible/ship/components/booster/serverobjects.lua")
+includeFile("tangible/ship/components/chassis/serverobjects.lua")
+includeFile("tangible/ship/components/droid_interface/serverobjects.lua")
+includeFile("tangible/ship/components/engine/serverobjects.lua")
+includeFile("tangible/ship/components/reactor/serverobjects.lua")
+includeFile("tangible/ship/components/shield_generator/serverobjects.lua")
+includeFile("tangible/ship/components/weapon/serverobjects.lua")
+includeFile("tangible/ship/components/weapon_capacitor/serverobjects.lua")
 
 -- Server Objects

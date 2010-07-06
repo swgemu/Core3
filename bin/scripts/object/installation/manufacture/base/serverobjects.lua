@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/manufacture/base/manufacture_base.lua")
+includeFile("installation/manufacture/base/manufacture_base.lua")

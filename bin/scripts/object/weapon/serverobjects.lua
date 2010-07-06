@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/weapon/base/serverobjects.lua")
-includeFile("object/weapon/creature/serverobjects.lua")
-includeFile("object/weapon/melee/serverobjects.lua")
-includeFile("object/weapon/mine/serverobjects.lua")
-includeFile("object/weapon/ranged/serverobjects.lua")
-includeFile("object/weapon/trap/serverobjects.lua")
+includeFile("weapon/base/serverobjects.lua")
+includeFile("weapon/creature/serverobjects.lua")
+includeFile("weapon/melee/serverobjects.lua")
+includeFile("weapon/mine/serverobjects.lua")
+includeFile("weapon/ranged/serverobjects.lua")
+includeFile("weapon/trap/serverobjects.lua")
 
 -- Server Objects

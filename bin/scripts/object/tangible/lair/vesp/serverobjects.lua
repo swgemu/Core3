@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/vesp/lair_vesp.lua")
-includeFile("object/tangible/lair/vesp/lair_vesp_desert.lua")
-includeFile("object/tangible/lair/vesp/lair_vesp_mountain.lua")
+includeFile("tangible/lair/vesp/lair_vesp.lua")
+includeFile("tangible/lair/vesp/lair_vesp_desert.lua")
+includeFile("tangible/lair/vesp/lair_vesp_mountain.lua")

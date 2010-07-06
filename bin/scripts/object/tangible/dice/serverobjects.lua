@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/dice/eqp_chance_cube.lua")
-includeFile("object/tangible/dice/eqp_configurable_group_dice.lua")
-includeFile("object/tangible/dice/eqp_one_hundred_sided_dice_set.lua")
-includeFile("object/tangible/dice/eqp_six_sided_dice_set.lua")
-includeFile("object/tangible/dice/eqp_ten_sided_dice_set.lua")
-includeFile("object/tangible/dice/eqp_twelve_sided_dice_set.lua")
-includeFile("object/tangible/dice/eqp_twenty_sided_dice_set.lua")
+includeFile("tangible/dice/eqp_chance_cube.lua")
+includeFile("tangible/dice/eqp_configurable_group_dice.lua")
+includeFile("tangible/dice/eqp_one_hundred_sided_dice_set.lua")
+includeFile("tangible/dice/eqp_six_sided_dice_set.lua")
+includeFile("tangible/dice/eqp_ten_sided_dice_set.lua")
+includeFile("tangible/dice/eqp_twelve_sided_dice_set.lua")
+includeFile("tangible/dice/eqp_twenty_sided_dice_set.lua")

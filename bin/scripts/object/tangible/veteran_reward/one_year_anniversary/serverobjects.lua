@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_01.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_02.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_03.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_04.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_05.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_06.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_07.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_08.lua")
-includeFile("object/tangible/veteran_reward/one_year_anniversary/painting_09.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_01.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_02.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_03.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_04.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_05.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_06.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_07.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_08.lua")
+includeFile("tangible/veteran_reward/one_year_anniversary/painting_09.lua")

@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/vehicle/civilian/serverobjects.lua")
-includeFile("object/draft_schematic/vehicle/component/serverobjects.lua")
-includeFile("object/draft_schematic/vehicle/military/serverobjects.lua")
+includeFile("draft_schematic/vehicle/civilian/serverobjects.lua")
+includeFile("draft_schematic/vehicle/component/serverobjects.lua")
+includeFile("draft_schematic/vehicle/military/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/draft_schematic/vehicle/vehicle_customization_kit.lua")
+includeFile("draft_schematic/vehicle/vehicle_customization_kit.lua")

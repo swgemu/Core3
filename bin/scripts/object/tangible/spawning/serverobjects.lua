@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/spawning/fs_village_npc_spawner.lua")
-includeFile("object/tangible/spawning/quest_spawner.lua")
-includeFile("object/tangible/spawning/remote_theater_spawner.lua")
-includeFile("object/tangible/spawning/spawn_egg.lua")
+includeFile("tangible/spawning/fs_village_npc_spawner.lua")
+includeFile("tangible/spawning/quest_spawner.lua")
+includeFile("tangible/spawning/remote_theater_spawner.lua")
+includeFile("tangible/spawning/spawn_egg.lua")

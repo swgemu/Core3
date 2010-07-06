@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/space/zonemap/ui_hyperspace.lua")
-includeFile("object/static/space/zonemap/ui_mission_critical.lua")
-includeFile("object/static/space/zonemap/ui_poi_waypoint.lua")
-includeFile("object/static/space/zonemap/ui_spacestation.lua")
-includeFile("object/static/space/zonemap/ui_waypoint.lua")
-includeFile("object/static/space/zonemap/ui_waypoint_active.lua")
+includeFile("static/space/zonemap/ui_hyperspace.lua")
+includeFile("static/space/zonemap/ui_mission_critical.lua")
+includeFile("static/space/zonemap/ui_poi_waypoint.lua")
+includeFile("static/space/zonemap/ui_spacestation.lua")
+includeFile("static/space/zonemap/ui_waypoint.lua")
+includeFile("static/space/zonemap/ui_waypoint_active.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/ship/attachment/shield/star_destroyer_shieldtower_1.lua")
-includeFile("object/tangible/ship/attachment/shield/star_destroyer_shieldtower_2.lua")
+includeFile("tangible/ship/attachment/shield/star_destroyer_shieldtower_1.lua")
+includeFile("tangible/ship/attachment/shield/star_destroyer_shieldtower_2.lua")

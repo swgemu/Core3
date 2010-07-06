@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/destructible/destructible_cave_wall_damprock.lua")
-includeFile("object/static/destructible/destructible_item_barrel.lua")
-includeFile("object/static/destructible/destructible_tato_cave_rock_lg.lua")
-includeFile("object/static/destructible/destructible_tato_cave_rock_med.lua")
-includeFile("object/static/destructible/destructible_tato_crate1.lua")
-includeFile("object/static/destructible/destructible_tato_drum_dented.lua")
-includeFile("object/static/destructible/destructible_tato_drum_storage1.lua")
-includeFile("object/static/destructible/gungan_sacred_head.lua")
+includeFile("static/destructible/destructible_cave_wall_damprock.lua")
+includeFile("static/destructible/destructible_item_barrel.lua")
+includeFile("static/destructible/destructible_tato_cave_rock_lg.lua")
+includeFile("static/destructible/destructible_tato_cave_rock_med.lua")
+includeFile("static/destructible/destructible_tato_crate1.lua")
+includeFile("static/destructible/destructible_tato_drum_dented.lua")
+includeFile("static/destructible/destructible_tato_drum_storage1.lua")
+includeFile("static/destructible/gungan_sacred_head.lua")

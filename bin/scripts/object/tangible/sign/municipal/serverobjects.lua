@@ -43,19 +43,19 @@
 
 
 --Children folder includes
-includeFile("object/tangible/sign/municipal/base/serverobjects.lua")
+includeFile("tangible/sign/municipal/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_bank.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_cantina.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_capitol.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_cloning.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_combat.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_commerce.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_hospital.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_hotel.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_parking.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_shuttle.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_starport.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_theater.lua")
-includeFile("object/tangible/sign/municipal/municipal_sign_hanging_university.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_bank.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_cantina.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_capitol.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_cloning.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_combat.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_commerce.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_hospital.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_hotel.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_parking.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_shuttle.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_starport.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_theater.lua")
+includeFile("tangible/sign/municipal/municipal_sign_hanging_university.lua")

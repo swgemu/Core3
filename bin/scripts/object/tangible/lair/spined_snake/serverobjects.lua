@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/spined_snake/lair_spined_snake.lua")
-includeFile("object/tangible/lair/spined_snake/lair_spined_snake_mountain.lua")
-includeFile("object/tangible/lair/spined_snake/lair_spined_snake_wasteland.lua")
+includeFile("tangible/lair/spined_snake/lair_spined_snake.lua")
+includeFile("tangible/lair/spined_snake/lair_spined_snake_mountain.lua")
+includeFile("tangible/lair/spined_snake/lair_spined_snake_wasteland.lua")

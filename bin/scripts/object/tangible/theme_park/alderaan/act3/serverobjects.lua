@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/theme_park/alderaan/act3/alderaan_flora.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/broken_grav_unit.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/dead_eye_prototype.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/encoded_data_disk.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/grav_unit_repair_kit.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/repaired_grav_unit.lua")
-includeFile("object/tangible/theme_park/alderaan/act3/research_facility.lua")
+includeFile("tangible/theme_park/alderaan/act3/alderaan_flora.lua")
+includeFile("tangible/theme_park/alderaan/act3/broken_grav_unit.lua")
+includeFile("tangible/theme_park/alderaan/act3/dead_eye_prototype.lua")
+includeFile("tangible/theme_park/alderaan/act3/encoded_data_disk.lua")
+includeFile("tangible/theme_park/alderaan/act3/grav_unit_repair_kit.lua")
+includeFile("tangible/theme_park/alderaan/act3/repaired_grav_unit.lua")
+includeFile("tangible/theme_park/alderaan/act3/research_facility.lua")

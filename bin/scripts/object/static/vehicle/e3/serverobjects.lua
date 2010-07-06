@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/vehicle/e3/landspeeder.lua")
+includeFile("static/vehicle/e3/landspeeder.lua")

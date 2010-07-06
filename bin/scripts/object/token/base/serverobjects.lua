@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/token/base/base_token.lua")
-includeFile("object/token/base/token_default.lua")
+includeFile("token/base/base_token.lua")
+includeFile("token/base/token_default.lua")

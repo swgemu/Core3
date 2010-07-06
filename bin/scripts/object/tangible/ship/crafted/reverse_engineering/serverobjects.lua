@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/ship/crafted/reverse_engineering/analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/armor_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/booster_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/capacitor_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/droid_interface_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/engine_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/reactor_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/retrofit_kit.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/shields_analysis_tool.lua")
-includeFile("object/tangible/ship/crafted/reverse_engineering/weapon_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/armor_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/booster_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/capacitor_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/droid_interface_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/engine_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/reactor_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/retrofit_kit.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/shields_analysis_tool.lua")
+includeFile("tangible/ship/crafted/reverse_engineering/weapon_analysis_tool.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/mawgax/lair_mawgax.lua")
-includeFile("object/tangible/lair/mawgax/lair_mawgax_grassland.lua")
-includeFile("object/tangible/lair/mawgax/lair_mawgax_mountain.lua")
+includeFile("tangible/lair/mawgax/lair_mawgax.lua")
+includeFile("tangible/lair/mawgax/lair_mawgax_grassland.lua")
+includeFile("tangible/lair/mawgax/lair_mawgax_mountain.lua")

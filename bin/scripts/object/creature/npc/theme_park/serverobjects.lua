@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/creature/npc/theme_park/event_transport.lua")
-includeFile("object/creature/npc/theme_park/event_transport_theed_hangar.lua")
-includeFile("object/creature/npc/theme_park/lambda_shuttle.lua")
-includeFile("object/creature/npc/theme_park/lambda_shuttle_faction_perk.lua")
-includeFile("object/creature/npc/theme_park/player_shuttle.lua")
-includeFile("object/creature/npc/theme_park/player_transport.lua")
-includeFile("object/creature/npc/theme_park/player_transport_theed_hangar.lua")
+includeFile("creature/npc/theme_park/event_transport.lua")
+includeFile("creature/npc/theme_park/event_transport_theed_hangar.lua")
+includeFile("creature/npc/theme_park/lambda_shuttle.lua")
+includeFile("creature/npc/theme_park/lambda_shuttle_faction_perk.lua")
+includeFile("creature/npc/theme_park/player_shuttle.lua")
+includeFile("creature/npc/theme_park/player_transport.lua")
+includeFile("creature/npc/theme_park/player_transport_theed_hangar.lua")

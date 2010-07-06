@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/tangible/transport/base/serverobjects.lua")
+includeFile("tangible/transport/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/transport/door.lua")
-includeFile("object/tangible/transport/strut_a.lua")
-includeFile("object/tangible/transport/strut_b.lua")
-includeFile("object/tangible/transport/strut_c.lua")
-includeFile("object/tangible/transport/transport.lua")
+includeFile("tangible/transport/door.lua")
+includeFile("tangible/transport/strut_a.lua")
+includeFile("tangible/transport/strut_b.lua")
+includeFile("tangible/transport/strut_c.lua")
+includeFile("tangible/transport/transport.lua")

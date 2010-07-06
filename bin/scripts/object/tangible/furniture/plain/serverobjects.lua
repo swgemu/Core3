@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/furniture/plain/plain_armoire_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_bookcase_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_cabinet_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_chair_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_chest_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_coffee_table_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_couch_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_end_table_s01.lua")
-includeFile("object/tangible/furniture/plain/plain_love_seat_s01.lua")
+includeFile("tangible/furniture/plain/plain_armoire_s01.lua")
+includeFile("tangible/furniture/plain/plain_bookcase_s01.lua")
+includeFile("tangible/furniture/plain/plain_cabinet_s01.lua")
+includeFile("tangible/furniture/plain/plain_chair_s01.lua")
+includeFile("tangible/furniture/plain/plain_chest_s01.lua")
+includeFile("tangible/furniture/plain/plain_coffee_table_s01.lua")
+includeFile("tangible/furniture/plain/plain_couch_s01.lua")
+includeFile("tangible/furniture/plain/plain_end_table_s01.lua")
+includeFile("tangible/furniture/plain/plain_love_seat_s01.lua")

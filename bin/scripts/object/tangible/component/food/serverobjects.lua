@@ -43,13 +43,13 @@
 
 
 --Children folder includes
-includeFile("object/tangible/component/food/base/serverobjects.lua")
-includeFile("object/tangible/component/food/secrets/serverobjects.lua")
+includeFile("tangible/component/food/base/serverobjects.lua")
+includeFile("tangible/component/food/secrets/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/component/food/container_barrel.lua")
-includeFile("object/tangible/component/food/container_cask.lua")
-includeFile("object/tangible/component/food/container_large_glass.lua")
-includeFile("object/tangible/component/food/container_small_glass.lua")
-includeFile("object/tangible/component/food/ingredient_ball_of_dough.lua")
-includeFile("object/tangible/component/food/ingredient_carbosyrup.lua")
+includeFile("tangible/component/food/container_barrel.lua")
+includeFile("tangible/component/food/container_cask.lua")
+includeFile("tangible/component/food/container_large_glass.lua")
+includeFile("tangible/component/food/container_small_glass.lua")
+includeFile("tangible/component/food/ingredient_ball_of_dough.lua")
+includeFile("tangible/component/food/ingredient_carbosyrup.lua")

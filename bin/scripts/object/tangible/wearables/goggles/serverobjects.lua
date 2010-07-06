@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/goggles/goggles_s01.lua")
-includeFile("object/tangible/wearables/goggles/goggles_s02.lua")
-includeFile("object/tangible/wearables/goggles/goggles_s03.lua")
-includeFile("object/tangible/wearables/goggles/goggles_s04.lua")
-includeFile("object/tangible/wearables/goggles/goggles_s05.lua")
-includeFile("object/tangible/wearables/goggles/goggles_s06.lua")
-includeFile("object/tangible/wearables/goggles/rebreather.lua")
+includeFile("tangible/wearables/goggles/goggles_s01.lua")
+includeFile("tangible/wearables/goggles/goggles_s02.lua")
+includeFile("tangible/wearables/goggles/goggles_s03.lua")
+includeFile("tangible/wearables/goggles/goggles_s04.lua")
+includeFile("tangible/wearables/goggles/goggles_s05.lua")
+includeFile("tangible/wearables/goggles/goggles_s06.lua")
+includeFile("tangible/wearables/goggles/rebreather.lua")

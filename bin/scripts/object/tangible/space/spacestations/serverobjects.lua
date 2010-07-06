@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/space/spacestations/spacestation_imperial_01.lua")
-includeFile("object/tangible/space/spacestations/spacestation_imperial_battlefield_control.lua")
-includeFile("object/tangible/space/spacestations/spacestation_imperial_battlefield_entry.lua")
-includeFile("object/tangible/space/spacestations/spacestation_neutral_01.lua")
-includeFile("object/tangible/space/spacestations/spacestation_rebel_01.lua")
-includeFile("object/tangible/space/spacestations/spacestation_rebel_battlefield_control.lua")
-includeFile("object/tangible/space/spacestations/spacestation_rebel_battlefield_entry.lua")
+includeFile("tangible/space/spacestations/spacestation_imperial_01.lua")
+includeFile("tangible/space/spacestations/spacestation_imperial_battlefield_control.lua")
+includeFile("tangible/space/spacestations/spacestation_imperial_battlefield_entry.lua")
+includeFile("tangible/space/spacestations/spacestation_neutral_01.lua")
+includeFile("tangible/space/spacestations/spacestation_rebel_01.lua")
+includeFile("tangible/space/spacestations/spacestation_rebel_battlefield_control.lua")
+includeFile("tangible/space/spacestations/spacestation_rebel_battlefield_entry.lua")

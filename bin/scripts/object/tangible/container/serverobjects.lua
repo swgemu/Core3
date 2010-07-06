@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/tangible/container/base/serverobjects.lua")
-includeFile("object/tangible/container/corpse/serverobjects.lua")
-includeFile("object/tangible/container/drum/serverobjects.lua")
-includeFile("object/tangible/container/food/serverobjects.lua")
-includeFile("object/tangible/container/general/serverobjects.lua")
-includeFile("object/tangible/container/jar/serverobjects.lua")
-includeFile("object/tangible/container/loot/serverobjects.lua")
-includeFile("object/tangible/container/medical/serverobjects.lua")
-includeFile("object/tangible/container/quest/serverobjects.lua")
+includeFile("tangible/container/base/serverobjects.lua")
+includeFile("tangible/container/corpse/serverobjects.lua")
+includeFile("tangible/container/drum/serverobjects.lua")
+includeFile("tangible/container/food/serverobjects.lua")
+includeFile("tangible/container/general/serverobjects.lua")
+includeFile("tangible/container/jar/serverobjects.lua")
+includeFile("tangible/container/loot/serverobjects.lua")
+includeFile("tangible/container/medical/serverobjects.lua")
+includeFile("tangible/container/quest/serverobjects.lua")
 
 -- Server Objects

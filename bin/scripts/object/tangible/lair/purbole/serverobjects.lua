@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/purbole/lair_purbole.lua")
-includeFile("object/tangible/lair/purbole/lair_purbole_forest.lua")
+includeFile("tangible/lair/purbole/lair_purbole.lua")
+includeFile("tangible/lair/purbole/lair_purbole_forest.lua")
