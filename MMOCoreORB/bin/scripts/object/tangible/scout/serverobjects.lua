@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/tangible/scout/camokit/serverobjects.lua")
-includeFile("object/tangible/scout/camp/serverobjects.lua")
-includeFile("object/tangible/scout/trap/serverobjects.lua")
+includeFile("tangible/scout/camokit/serverobjects.lua")
+includeFile("tangible/scout/camp/serverobjects.lua")
+includeFile("tangible/scout/trap/serverobjects.lua")
 
 -- Server Objects

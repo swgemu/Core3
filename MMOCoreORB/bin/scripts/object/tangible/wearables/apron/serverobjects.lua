@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/apron/apron_chef_s01.lua")
-includeFile("object/tangible/wearables/apron/apron_porcellus.lua")
-includeFile("object/tangible/wearables/apron/apron_s01.lua")
-includeFile("object/tangible/wearables/apron/apron_s01_quest.lua")
+includeFile("tangible/wearables/apron/apron_chef_s01.lua")
+includeFile("tangible/wearables/apron/apron_porcellus.lua")
+includeFile("tangible/wearables/apron/apron_s01.lua")
+includeFile("tangible/wearables/apron/apron_s01_quest.lua")

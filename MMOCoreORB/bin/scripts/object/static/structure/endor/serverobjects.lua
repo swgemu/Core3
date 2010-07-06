@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/structure/endor/endor_cap.lua")
-includeFile("object/static/structure/endor/endor_catwalk.lua")
-includeFile("object/static/structure/endor/endr_imprv_bannerpole_s01.lua")
-includeFile("object/static/structure/endor/endr_imprv_flagpole_s01.lua")
+includeFile("static/structure/endor/endor_cap.lua")
+includeFile("static/structure/endor/endor_catwalk.lua")
+includeFile("static/structure/endor/endr_imprv_bannerpole_s01.lua")
+includeFile("static/structure/endor/endr_imprv_flagpole_s01.lua")

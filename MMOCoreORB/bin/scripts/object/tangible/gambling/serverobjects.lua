@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/tangible/gambling/base/serverobjects.lua")
-includeFile("object/tangible/gambling/slot/serverobjects.lua")
-includeFile("object/tangible/gambling/table/serverobjects.lua")
-includeFile("object/tangible/gambling/wheel/serverobjects.lua")
+includeFile("tangible/gambling/base/serverobjects.lua")
+includeFile("tangible/gambling/slot/serverobjects.lua")
+includeFile("tangible/gambling/table/serverobjects.lua")
+includeFile("tangible/gambling/wheel/serverobjects.lua")
 
 -- Server Objects

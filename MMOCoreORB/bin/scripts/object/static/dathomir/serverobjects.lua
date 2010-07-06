@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/dathomir/dath_mistyfalls_waterfall1.lua")
-includeFile("object/static/dathomir/dath_mistyfalls_waterfall2.lua")
+includeFile("static/dathomir/dath_mistyfalls_waterfall1.lua")
+includeFile("static/dathomir/dath_mistyfalls_waterfall2.lua")

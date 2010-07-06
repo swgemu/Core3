@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/item/new_player/new_player_cloning_coupon.lua")
-includeFile("object/tangible/item/new_player/new_player_travel_coupon.lua")
-includeFile("object/tangible/item/new_player/new_player_vehicle_coupon.lua")
+includeFile("tangible/item/new_player/new_player_cloning_coupon.lua")
+includeFile("tangible/item/new_player/new_player_travel_coupon.lua")
+includeFile("tangible/item/new_player/new_player_vehicle_coupon.lua")

@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/base/deed_base.lua")
-includeFile("object/tangible/deed/base/deed_building_base.lua")
-includeFile("object/tangible/deed/base/deed_installation_base.lua")
-includeFile("object/tangible/deed/base/pet_deed_base.lua")
-includeFile("object/tangible/deed/base/pet_droid_deed_base.lua")
+includeFile("tangible/deed/base/deed_base.lua")
+includeFile("tangible/deed/base/deed_building_base.lua")
+includeFile("tangible/deed/base/deed_installation_base.lua")
+includeFile("tangible/deed/base/pet_deed_base.lua")
+includeFile("tangible/deed/base/pet_droid_deed_base.lua")

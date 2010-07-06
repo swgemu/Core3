@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/rodian/base/hair_rodian_base.lua")
-includeFile("object/tangible/hair/rodian/base/hair_rodian_female_base.lua")
-includeFile("object/tangible/hair/rodian/base/hair_rodian_male_base.lua")
+includeFile("tangible/hair/rodian/base/hair_rodian_base.lua")
+includeFile("tangible/hair/rodian/base/hair_rodian_female_base.lua")
+includeFile("tangible/hair/rodian/base/hair_rodian_male_base.lua")

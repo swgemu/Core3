@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/food/additive/additive_heavy.lua")
-includeFile("object/draft_schematic/food/additive/additive_light.lua")
-includeFile("object/draft_schematic/food/additive/additive_medium.lua")
+includeFile("draft_schematic/food/additive/additive_heavy.lua")
+includeFile("draft_schematic/food/additive/additive_light.lua")
+includeFile("draft_schematic/food/additive/additive_medium.lua")

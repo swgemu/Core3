@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/mon_calamari/base/hair_mon_calamari_base.lua")
-includeFile("object/tangible/hair/mon_calamari/base/hair_mon_calamari_female_base.lua")
-includeFile("object/tangible/hair/mon_calamari/base/hair_mon_calamari_male_base.lua")
+includeFile("tangible/hair/mon_calamari/base/hair_mon_calamari_base.lua")
+includeFile("tangible/hair/mon_calamari/base/hair_mon_calamari_female_base.lua")
+includeFile("tangible/hair/mon_calamari/base/hair_mon_calamari_male_base.lua")

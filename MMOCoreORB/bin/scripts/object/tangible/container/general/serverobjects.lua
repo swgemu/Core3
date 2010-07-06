@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/container/general/cargo_pocket.lua")
-includeFile("object/tangible/container/general/satchel.lua")
-includeFile("object/tangible/container/general/tech_armoire.lua")
-includeFile("object/tangible/container/general/tech_bookcase.lua")
-includeFile("object/tangible/container/general/tech_chest.lua")
+includeFile("tangible/container/general/cargo_pocket.lua")
+includeFile("tangible/container/general/satchel.lua")
+includeFile("tangible/container/general/tech_armoire.lua")
+includeFile("tangible/container/general/tech_bookcase.lua")
+includeFile("tangible/container/general/tech_chest.lua")

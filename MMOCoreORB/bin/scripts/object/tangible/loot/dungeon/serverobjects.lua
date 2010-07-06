@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/tangible/loot/dungeon/corellian_corvette/serverobjects.lua")
-includeFile("object/tangible/loot/dungeon/death_watch_bunker/serverobjects.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/serverobjects.lua")
+includeFile("tangible/loot/dungeon/corellian_corvette/serverobjects.lua")
+includeFile("tangible/loot/dungeon/death_watch_bunker/serverobjects.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/serverobjects.lua")
 
 -- Server Objects

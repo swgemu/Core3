@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/food/base/alcoholic_drink_base.lua")
-includeFile("object/tangible/food/base/base_crafted_food.lua")
-includeFile("object/tangible/food/base/base_food.lua")
-includeFile("object/tangible/food/base/desert_base.lua")
-includeFile("object/tangible/food/base/dish_base.lua")
-includeFile("object/tangible/food/base/drink_base.lua")
-includeFile("object/tangible/food/base/meal_base.lua")
-includeFile("object/tangible/food/base/meat_base.lua")
-includeFile("object/tangible/food/base/side_dish_base.lua")
-includeFile("object/tangible/food/base/veggie_base.lua")
+includeFile("tangible/food/base/alcoholic_drink_base.lua")
+includeFile("tangible/food/base/base_crafted_food.lua")
+includeFile("tangible/food/base/base_food.lua")
+includeFile("tangible/food/base/desert_base.lua")
+includeFile("tangible/food/base/dish_base.lua")
+includeFile("tangible/food/base/drink_base.lua")
+includeFile("tangible/food/base/meal_base.lua")
+includeFile("tangible/food/base/meat_base.lua")
+includeFile("tangible/food/base/side_dish_base.lua")
+includeFile("tangible/food/base/veggie_base.lua")

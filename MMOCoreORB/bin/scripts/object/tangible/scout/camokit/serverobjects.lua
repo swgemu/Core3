@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/scout/camokit/camokit_corellia.lua")
-includeFile("object/tangible/scout/camokit/camokit_dantooine.lua")
-includeFile("object/tangible/scout/camokit/camokit_dathomir.lua")
-includeFile("object/tangible/scout/camokit/camokit_endor.lua")
-includeFile("object/tangible/scout/camokit/camokit_lok.lua")
-includeFile("object/tangible/scout/camokit/camokit_naboo.lua")
-includeFile("object/tangible/scout/camokit/camokit_rori.lua")
-includeFile("object/tangible/scout/camokit/camokit_talus.lua")
-includeFile("object/tangible/scout/camokit/camokit_tatooine.lua")
-includeFile("object/tangible/scout/camokit/camokit_yavin.lua")
+includeFile("tangible/scout/camokit/camokit_corellia.lua")
+includeFile("tangible/scout/camokit/camokit_dantooine.lua")
+includeFile("tangible/scout/camokit/camokit_dathomir.lua")
+includeFile("tangible/scout/camokit/camokit_endor.lua")
+includeFile("tangible/scout/camokit/camokit_lok.lua")
+includeFile("tangible/scout/camokit/camokit_naboo.lua")
+includeFile("tangible/scout/camokit/camokit_rori.lua")
+includeFile("tangible/scout/camokit/camokit_talus.lua")
+includeFile("tangible/scout/camokit/camokit_tatooine.lua")
+includeFile("tangible/scout/camokit/camokit_yavin.lua")

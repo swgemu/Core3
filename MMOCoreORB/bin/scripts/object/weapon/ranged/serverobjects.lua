@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/weapon/ranged/base/serverobjects.lua")
-includeFile("object/weapon/ranged/carbine/serverobjects.lua")
-includeFile("object/weapon/ranged/creature/serverobjects.lua")
-includeFile("object/weapon/ranged/droid/serverobjects.lua")
-includeFile("object/weapon/ranged/grenade/serverobjects.lua")
-includeFile("object/weapon/ranged/heavy/serverobjects.lua")
-includeFile("object/weapon/ranged/pistol/serverobjects.lua")
-includeFile("object/weapon/ranged/rifle/serverobjects.lua")
-includeFile("object/weapon/ranged/turret/serverobjects.lua")
-includeFile("object/weapon/ranged/vehicle/serverobjects.lua")
+includeFile("weapon/ranged/base/serverobjects.lua")
+includeFile("weapon/ranged/carbine/serverobjects.lua")
+includeFile("weapon/ranged/creature/serverobjects.lua")
+includeFile("weapon/ranged/droid/serverobjects.lua")
+includeFile("weapon/ranged/grenade/serverobjects.lua")
+includeFile("weapon/ranged/heavy/serverobjects.lua")
+includeFile("weapon/ranged/pistol/serverobjects.lua")
+includeFile("weapon/ranged/rifle/serverobjects.lua")
+includeFile("weapon/ranged/turret/serverobjects.lua")
+includeFile("weapon/ranged/vehicle/serverobjects.lua")
 
 -- Server Objects

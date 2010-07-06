@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_housing.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_power.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_processor.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_reader.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_screen.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/decoder_comp_translation.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/interface_override_device.lua")
-includeFile("object/tangible/theme_park/alderaan/act2/relay_station_terminal.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_housing.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_power.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_processor.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_reader.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_screen.lua")
+includeFile("tangible/theme_park/alderaan/act2/decoder_comp_translation.lua")
+includeFile("tangible/theme_park/alderaan/act2/interface_override_device.lua")
+includeFile("tangible/theme_park/alderaan/act2/relay_station_terminal.lua")

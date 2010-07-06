@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/tybis/lair_tybis.lua")
-includeFile("object/tangible/lair/tybis/lair_tybis_grassland.lua")
+includeFile("tangible/lair/tybis/lair_tybis.lua")
+includeFile("tangible/lair/tybis/lair_tybis_grassland.lua")

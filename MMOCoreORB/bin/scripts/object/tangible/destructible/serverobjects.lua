@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/destructible/wreckage/serverobjects.lua")
+includeFile("tangible/destructible/wreckage/serverobjects.lua")
 
 -- Server Objects

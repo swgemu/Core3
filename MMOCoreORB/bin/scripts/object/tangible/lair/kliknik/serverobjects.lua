@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kliknik/lair_kliknik.lua")
-includeFile("object/tangible/lair/kliknik/lair_kliknik_forest.lua")
+includeFile("tangible/lair/kliknik/lair_kliknik.lua")
+includeFile("tangible/lair/kliknik/lair_kliknik_forest.lua")

@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/static/structure/nobuild/base/serverobjects.lua")
+includeFile("static/structure/nobuild/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/static/structure/nobuild/nobuild_128.lua")
-includeFile("object/static/structure/nobuild/nobuild_32.lua")
-includeFile("object/static/structure/nobuild/nobuild_4.lua")
-includeFile("object/static/structure/nobuild/nobuild_64.lua")
+includeFile("static/structure/nobuild/nobuild_128.lua")
+includeFile("static/structure/nobuild/nobuild_32.lua")
+includeFile("static/structure/nobuild/nobuild_4.lua")
+includeFile("static/structure/nobuild/nobuild_64.lua")

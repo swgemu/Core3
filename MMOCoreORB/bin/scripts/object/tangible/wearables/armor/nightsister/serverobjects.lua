@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/armor/nightsister/armor_nightsister_bicep_r_s01.lua")
+includeFile("tangible/wearables/armor/nightsister/armor_nightsister_bicep_r_s01.lua")

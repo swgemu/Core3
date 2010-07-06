@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/tangible/food/base/serverobjects.lua")
-includeFile("object/tangible/food/crafted/serverobjects.lua")
-includeFile("object/tangible/food/creature_bio_effects/serverobjects.lua")
-includeFile("object/tangible/food/foraged/serverobjects.lua")
-includeFile("object/tangible/food/spice/serverobjects.lua")
+includeFile("tangible/food/base/serverobjects.lua")
+includeFile("tangible/food/crafted/serverobjects.lua")
+includeFile("tangible/food/creature_bio_effects/serverobjects.lua")
+includeFile("tangible/food/foraged/serverobjects.lua")
+includeFile("tangible/food/spice/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/food/bread_loaf_full_s1.lua")
-includeFile("object/tangible/food/fruit_melon.lua")
-includeFile("object/tangible/food/meat_kabob.lua")
-includeFile("object/tangible/food/meat_object.lua")
-includeFile("object/tangible/food/nectar.lua")
+includeFile("tangible/food/bread_loaf_full_s1.lua")
+includeFile("tangible/food/fruit_melon.lua")
+includeFile("tangible/food/meat_kabob.lua")
+includeFile("tangible/food/meat_object.lua")
+includeFile("tangible/food/nectar.lua")

@@ -43,8 +43,8 @@
 
 
 --Children folder includes
-includeFile("object/installation/faction_perk/covert_detector/serverobjects.lua")
-includeFile("object/installation/faction_perk/minefield/serverobjects.lua")
-includeFile("object/installation/faction_perk/turret/serverobjects.lua")
+includeFile("installation/faction_perk/covert_detector/serverobjects.lua")
+includeFile("installation/faction_perk/minefield/serverobjects.lua")
+includeFile("installation/faction_perk/turret/serverobjects.lua")
 
 -- Server Objects

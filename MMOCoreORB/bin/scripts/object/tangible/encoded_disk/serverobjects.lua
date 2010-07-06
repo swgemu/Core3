@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/encoded_disk/dead_eye_decoder.lua")
-includeFile("object/tangible/encoded_disk/encoded_disk_base.lua")
-includeFile("object/tangible/encoded_disk/message_assembled_base.lua")
-includeFile("object/tangible/encoded_disk/message_fragment_base.lua")
+includeFile("tangible/encoded_disk/dead_eye_decoder.lua")
+includeFile("tangible/encoded_disk/encoded_disk_base.lua")
+includeFile("tangible/encoded_disk/message_assembled_base.lua")
+includeFile("tangible/encoded_disk/message_fragment_base.lua")

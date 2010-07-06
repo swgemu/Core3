@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/intangible/data_item/data_geiger_counter.lua")
-includeFile("object/intangible/data_item/data_imperial.lua")
-includeFile("object/intangible/data_item/data_item.lua")
-includeFile("object/intangible/data_item/data_rebel.lua")
-includeFile("object/intangible/data_item/droid_command.lua")
-includeFile("object/intangible/data_item/warren_encryption_key.lua")
-includeFile("object/intangible/data_item/warren_evidence_01.lua")
-includeFile("object/intangible/data_item/warren_evidence_02.lua")
-includeFile("object/intangible/data_item/warren_evidence_03.lua")
-includeFile("object/intangible/data_item/warren_evidence_04.lua")
+includeFile("intangible/data_item/data_geiger_counter.lua")
+includeFile("intangible/data_item/data_imperial.lua")
+includeFile("intangible/data_item/data_item.lua")
+includeFile("intangible/data_item/data_rebel.lua")
+includeFile("intangible/data_item/droid_command.lua")
+includeFile("intangible/data_item/warren_encryption_key.lua")
+includeFile("intangible/data_item/warren_evidence_01.lua")
+includeFile("intangible/data_item/warren_evidence_02.lua")
+includeFile("intangible/data_item/warren_evidence_03.lua")
+includeFile("intangible/data_item/warren_evidence_04.lua")

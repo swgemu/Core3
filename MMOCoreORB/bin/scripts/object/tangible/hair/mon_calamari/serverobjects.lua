@@ -43,6 +43,6 @@
 
 
 --Children folder includes
-includeFile("object/tangible/hair/mon_calamari/base/serverobjects.lua")
+includeFile("tangible/hair/mon_calamari/base/serverobjects.lua")
 
 -- Server Objects

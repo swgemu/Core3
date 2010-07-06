@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/weapon/melee/knife/base/serverobjects.lua")
+includeFile("weapon/melee/knife/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/melee/knife/knife_dagger.lua")
-includeFile("object/weapon/melee/knife/knife_donkuwah.lua")
-includeFile("object/weapon/melee/knife/knife_janta.lua")
-includeFile("object/weapon/melee/knife/knife_stone.lua")
-includeFile("object/weapon/melee/knife/knife_stone_noob.lua")
-includeFile("object/weapon/melee/knife/knife_survival.lua")
-includeFile("object/weapon/melee/knife/knife_vibroblade.lua")
-includeFile("object/weapon/melee/knife/knife_vibroblade_quest.lua")
+includeFile("weapon/melee/knife/knife_dagger.lua")
+includeFile("weapon/melee/knife/knife_donkuwah.lua")
+includeFile("weapon/melee/knife/knife_janta.lua")
+includeFile("weapon/melee/knife/knife_stone.lua")
+includeFile("weapon/melee/knife/knife_stone_noob.lua")
+includeFile("weapon/melee/knife/knife_survival.lua")
+includeFile("weapon/melee/knife/knife_vibroblade.lua")
+includeFile("weapon/melee/knife/knife_vibroblade_quest.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/space/beacon/hyperspace_generator_01.lua")
-includeFile("object/static/space/beacon/hyperspace_route_beacon_01.lua")
+includeFile("static/space/beacon/hyperspace_generator_01.lua")
+includeFile("static/space/beacon/hyperspace_route_beacon_01.lua")

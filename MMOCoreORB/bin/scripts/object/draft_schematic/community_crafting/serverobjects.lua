@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/draft_schematic/community_crafting/component/serverobjects.lua")
+includeFile("draft_schematic/community_crafting/component/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/draft_schematic/community_crafting/base_community_crafting.lua")
-includeFile("object/draft_schematic/community_crafting/village_defenses.lua")
-includeFile("object/draft_schematic/community_crafting/village_shields.lua")
+includeFile("draft_schematic/community_crafting/base_community_crafting.lua")
+includeFile("draft_schematic/community_crafting/village_defenses.lua")
+includeFile("draft_schematic/community_crafting/village_shields.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/creature/camera/intro_camera.lua")
-includeFile("object/creature/camera/intro_controller.lua")
+includeFile("creature/camera/intro_camera.lua")
+includeFile("creature/camera/intro_controller.lua")

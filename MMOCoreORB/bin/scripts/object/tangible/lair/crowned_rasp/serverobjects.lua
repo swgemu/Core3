@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/crowned_rasp/lair_crowned_rasp.lua")
-includeFile("object/tangible/lair/crowned_rasp/lair_crowned_rasp_grassland.lua")
-includeFile("object/tangible/lair/crowned_rasp/lair_crowned_rasp_mountain.lua")
+includeFile("tangible/lair/crowned_rasp/lair_crowned_rasp.lua")
+includeFile("tangible/lair/crowned_rasp/lair_crowned_rasp_grassland.lua")
+includeFile("tangible/lair/crowned_rasp/lair_crowned_rasp_mountain.lua")

@@ -43,14 +43,14 @@
 
 
 --Children folder includes
-includeFile("object/tangible/fishing/fish/base/serverobjects.lua")
+includeFile("tangible/fishing/fish/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/fishing/fish/blackfish.lua")
-includeFile("object/tangible/fishing/fish/blowfish.lua")
-includeFile("object/tangible/fishing/fish/bluefish.lua")
-includeFile("object/tangible/fishing/fish/faa.lua")
-includeFile("object/tangible/fishing/fish/fish_generic.lua")
-includeFile("object/tangible/fishing/fish/laa.lua")
-includeFile("object/tangible/fishing/fish/ray.lua")
-includeFile("object/tangible/fishing/fish/striped.lua")
+includeFile("tangible/fishing/fish/blackfish.lua")
+includeFile("tangible/fishing/fish/blowfish.lua")
+includeFile("tangible/fishing/fish/bluefish.lua")
+includeFile("tangible/fishing/fish/faa.lua")
+includeFile("tangible/fishing/fish/fish_generic.lua")
+includeFile("tangible/fishing/fish/laa.lua")
+includeFile("tangible/fishing/fish/ray.lua")
+includeFile("tangible/fishing/fish/striped.lua")

@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/ring/aakuan_ring.lua")
-includeFile("object/tangible/wearables/ring/ring_base.lua")
-includeFile("object/tangible/wearables/ring/ring_mark_hero.lua")
-includeFile("object/tangible/wearables/ring/ring_nightsister.lua")
-includeFile("object/tangible/wearables/ring/ring_s01.lua")
-includeFile("object/tangible/wearables/ring/ring_s02.lua")
-includeFile("object/tangible/wearables/ring/ring_s03.lua")
-includeFile("object/tangible/wearables/ring/ring_s03_quest.lua")
-includeFile("object/tangible/wearables/ring/ring_s04.lua")
+includeFile("tangible/wearables/ring/aakuan_ring.lua")
+includeFile("tangible/wearables/ring/ring_base.lua")
+includeFile("tangible/wearables/ring/ring_mark_hero.lua")
+includeFile("tangible/wearables/ring/ring_nightsister.lua")
+includeFile("tangible/wearables/ring/ring_s01.lua")
+includeFile("tangible/wearables/ring/ring_s02.lua")
+includeFile("tangible/wearables/ring/ring_s03.lua")
+includeFile("tangible/wearables/ring/ring_s03_quest.lua")
+includeFile("tangible/wearables/ring/ring_s04.lua")

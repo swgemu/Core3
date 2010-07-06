@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/counting/base/serverobjects.lua")
+includeFile("counting/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/counting/default_battery.lua")
+includeFile("counting/default_battery.lua")

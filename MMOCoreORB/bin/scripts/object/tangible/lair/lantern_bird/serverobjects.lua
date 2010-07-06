@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/lantern_bird/lair_lantern_bird.lua")
-includeFile("object/tangible/lair/lantern_bird/lair_lantern_bird_forest.lua")
+includeFile("tangible/lair/lantern_bird/lair_lantern_bird.lua")
+includeFile("tangible/lair/lantern_bird/lair_lantern_bird_forest.lua")

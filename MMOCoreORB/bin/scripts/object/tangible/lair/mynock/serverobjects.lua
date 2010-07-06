@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/mynock/lair_mynock.lua")
+includeFile("tangible/lair/mynock/lair_mynock.lua")

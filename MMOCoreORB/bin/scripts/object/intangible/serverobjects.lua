@@ -43,13 +43,13 @@
 
 
 --Children folder includes
-includeFile("object/intangible/base/serverobjects.lua")
-includeFile("object/intangible/data_item/serverobjects.lua")
-includeFile("object/intangible/faction_perk/serverobjects.lua")
-includeFile("object/intangible/holocron/serverobjects.lua")
-includeFile("object/intangible/pet/serverobjects.lua")
-includeFile("object/intangible/ship/serverobjects.lua")
-includeFile("object/intangible/theater/serverobjects.lua")
-includeFile("object/intangible/vehicle/serverobjects.lua")
+includeFile("intangible/base/serverobjects.lua")
+includeFile("intangible/data_item/serverobjects.lua")
+includeFile("intangible/faction_perk/serverobjects.lua")
+includeFile("intangible/holocron/serverobjects.lua")
+includeFile("intangible/pet/serverobjects.lua")
+includeFile("intangible/ship/serverobjects.lua")
+includeFile("intangible/theater/serverobjects.lua")
+includeFile("intangible/vehicle/serverobjects.lua")
 
 -- Server Objects

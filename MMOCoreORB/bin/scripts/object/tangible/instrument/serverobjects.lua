@@ -43,19 +43,19 @@
 
 
 --Children folder includes
-includeFile("object/tangible/instrument/base/serverobjects.lua")
+includeFile("tangible/instrument/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/instrument/bandfill.lua")
-includeFile("object/tangible/instrument/fanfar.lua")
-includeFile("object/tangible/instrument/fizz.lua")
-includeFile("object/tangible/instrument/flute_droopy.lua")
-includeFile("object/tangible/instrument/instrument_organ_figrin_dan.lua")
-includeFile("object/tangible/instrument/instrument_organ_max_rebo.lua")
-includeFile("object/tangible/instrument/kloo_horn.lua")
-includeFile("object/tangible/instrument/mandoviol.lua")
-includeFile("object/tangible/instrument/nalargon.lua")
-includeFile("object/tangible/instrument/ommni_box.lua")
-includeFile("object/tangible/instrument/organ_max_rebo.lua")
-includeFile("object/tangible/instrument/slitherhorn.lua")
-includeFile("object/tangible/instrument/traz.lua")
+includeFile("tangible/instrument/bandfill.lua")
+includeFile("tangible/instrument/fanfar.lua")
+includeFile("tangible/instrument/fizz.lua")
+includeFile("tangible/instrument/flute_droopy.lua")
+includeFile("tangible/instrument/instrument_organ_figrin_dan.lua")
+includeFile("tangible/instrument/instrument_organ_max_rebo.lua")
+includeFile("tangible/instrument/kloo_horn.lua")
+includeFile("tangible/instrument/mandoviol.lua")
+includeFile("tangible/instrument/nalargon.lua")
+includeFile("tangible/instrument/ommni_box.lua")
+includeFile("tangible/instrument/organ_max_rebo.lua")
+includeFile("tangible/instrument/slitherhorn.lua")
+includeFile("tangible/instrument/traz.lua")

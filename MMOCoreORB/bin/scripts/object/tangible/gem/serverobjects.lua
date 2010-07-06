@@ -43,9 +43,9 @@
 
 
 --Children folder includes
-includeFile("object/tangible/gem/base/serverobjects.lua")
+includeFile("tangible/gem/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/gem/armor.lua")
-includeFile("object/tangible/gem/clothing.lua")
-includeFile("object/tangible/gem/default.lua")
+includeFile("tangible/gem/armor.lua")
+includeFile("tangible/gem/clothing.lua")
+includeFile("tangible/gem/default.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hair/wookiee/base/hair_wookiee_base.lua")
-includeFile("object/tangible/hair/wookiee/base/hair_wookiee_female_base.lua")
-includeFile("object/tangible/hair/wookiee/base/hair_wookiee_male_base.lua")
+includeFile("tangible/hair/wookiee/base/hair_wookiee_base.lua")
+includeFile("tangible/hair/wookiee/base/hair_wookiee_female_base.lua")
+includeFile("tangible/hair/wookiee/base/hair_wookiee_male_base.lua")

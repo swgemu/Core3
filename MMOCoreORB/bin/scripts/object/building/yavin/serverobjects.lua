@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/building/yavin/dark_enclave.lua")
-includeFile("object/building/yavin/light_enclave.lua")
-includeFile("object/building/yavin/temple_blueleaf.lua")
-includeFile("object/building/yavin/temple_exar_kun.lua")
-includeFile("object/building/yavin/temple_massassi.lua")
-includeFile("object/building/yavin/temple_woolamander.lua")
+includeFile("building/yavin/dark_enclave.lua")
+includeFile("building/yavin/light_enclave.lua")
+includeFile("building/yavin/temple_blueleaf.lua")
+includeFile("building/yavin/temple_exar_kun.lua")
+includeFile("building/yavin/temple_massassi.lua")
+includeFile("building/yavin/temple_woolamander.lua")

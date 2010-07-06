@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hq_destructible/base_destructible.lua")
-includeFile("object/tangible/hq_destructible/override_terminal.lua")
-includeFile("object/tangible/hq_destructible/power_regulator.lua")
-includeFile("object/tangible/hq_destructible/security_terminal.lua")
-includeFile("object/tangible/hq_destructible/uplink_terminal.lua")
+includeFile("tangible/hq_destructible/base_destructible.lua")
+includeFile("tangible/hq_destructible/override_terminal.lua")
+includeFile("tangible/hq_destructible/power_regulator.lua")
+includeFile("tangible/hq_destructible/security_terminal.lua")
+includeFile("tangible/hq_destructible/uplink_terminal.lua")

@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/lair/structure/exterior/serverobjects.lua")
-includeFile("object/tangible/lair/structure/interior/serverobjects.lua")
+includeFile("tangible/lair/structure/exterior/serverobjects.lua")
+includeFile("tangible/lair/structure/interior/serverobjects.lua")
 
 -- Server Objects

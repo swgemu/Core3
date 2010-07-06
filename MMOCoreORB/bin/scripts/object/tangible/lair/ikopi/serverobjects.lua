@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/ikopi/lair_ikopi.lua")
-includeFile("object/tangible/lair/ikopi/lair_ikopi_grassland.lua")
+includeFile("tangible/lair/ikopi/lair_ikopi.lua")
+includeFile("tangible/lair/ikopi/lair_ikopi_grassland.lua")

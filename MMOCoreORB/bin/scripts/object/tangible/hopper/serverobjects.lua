@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/tangible/hopper/crafting_station_hopper/serverobjects.lua")
-includeFile("object/tangible/hopper/manufacturing_facility_hopper/serverobjects.lua")
+includeFile("tangible/hopper/crafting_station_hopper/serverobjects.lua")
+includeFile("tangible/hopper/manufacturing_facility_hopper/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/hopper/crafting_station_ingredient_hopper_1.lua")
-includeFile("object/tangible/hopper/manufacture_installation_ingredient_hopper_1.lua")
-includeFile("object/tangible/hopper/manufacture_installation_output_hopper_1.lua")
+includeFile("tangible/hopper/crafting_station_ingredient_hopper_1.lua")
+includeFile("tangible/hopper/manufacture_installation_ingredient_hopper_1.lua")
+includeFile("tangible/hopper/manufacture_installation_output_hopper_1.lua")

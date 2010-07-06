@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.lua")
+includeFile("tangible/space/veteran_reward/sorosuub_space_yacht_deed.lua")

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/bluefish/lair_bluefish.lua")
-includeFile("object/tangible/lair/bluefish/lair_bluefish_underwater.lua")
+includeFile("tangible/lair/bluefish/lair_bluefish.lua")
+includeFile("tangible/lair/bluefish/lair_bluefish_underwater.lua")

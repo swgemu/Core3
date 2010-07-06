@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/path_waypoint/base/serverobjects.lua")
+includeFile("path_waypoint/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/path_waypoint/path_waypoint.lua")
-includeFile("object/path_waypoint/path_waypoint_auto_spawn.lua")
-includeFile("object/path_waypoint/path_waypoint_city.lua")
-includeFile("object/path_waypoint/path_waypoint_droid.lua")
-includeFile("object/path_waypoint/path_waypoint_patrol.lua")
+includeFile("path_waypoint/path_waypoint.lua")
+includeFile("path_waypoint/path_waypoint_auto_spawn.lua")
+includeFile("path_waypoint/path_waypoint_city.lua")
+includeFile("path_waypoint/path_waypoint_droid.lua")
+includeFile("path_waypoint/path_waypoint_patrol.lua")

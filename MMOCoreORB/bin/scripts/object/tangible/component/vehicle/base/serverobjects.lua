@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/component/vehicle/base/base_armor_panel.lua")
-includeFile("object/tangible/component/vehicle/base/base_veh_hull.lua")
-includeFile("object/tangible/component/vehicle/base/base_veh_hull_hvy.lua")
-includeFile("object/tangible/component/vehicle/base/base_veh_weapon.lua")
-includeFile("object/tangible/component/vehicle/base/base_veh_weapon_hvy.lua")
+includeFile("tangible/component/vehicle/base/base_armor_panel.lua")
+includeFile("tangible/component/vehicle/base/base_veh_hull.lua")
+includeFile("tangible/component/vehicle/base/base_veh_hull_hvy.lua")
+includeFile("tangible/component/vehicle/base/base_veh_weapon.lua")
+includeFile("tangible/component/vehicle/base/base_veh_weapon_hvy.lua")

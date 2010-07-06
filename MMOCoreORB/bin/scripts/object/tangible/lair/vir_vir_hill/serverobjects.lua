@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/vir_vir_hill/lair_vir_vir_hill.lua")
+includeFile("tangible/lair/vir_vir_hill/lair_vir_vir_hill.lua")

@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/shipcontrol/pilot_chair.lua")
-includeFile("object/tangible/shipcontrol/shipcontrol_corvette.lua")
-includeFile("object/tangible/shipcontrol/shipcontrol_falcon.lua")
-includeFile("object/tangible/shipcontrol/shipoperations_falcon.lua")
-includeFile("object/tangible/shipcontrol/turretcontrol_falcon.lua")
-includeFile("object/tangible/shipcontrol/turretcontrol_vt49.lua")
+includeFile("tangible/shipcontrol/pilot_chair.lua")
+includeFile("tangible/shipcontrol/shipcontrol_corvette.lua")
+includeFile("tangible/shipcontrol/shipcontrol_falcon.lua")
+includeFile("tangible/shipcontrol/shipoperations_falcon.lua")
+includeFile("tangible/shipcontrol/turretcontrol_falcon.lua")
+includeFile("tangible/shipcontrol/turretcontrol_vt49.lua")

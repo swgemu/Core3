@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/skill_buff/base/skill_buff_base.lua")
+includeFile("tangible/skill_buff/base/skill_buff_base.lua")

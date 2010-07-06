@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/recycler/chemical_recycler.lua")
-includeFile("object/tangible/recycler/creature_recycler.lua")
-includeFile("object/tangible/recycler/flora_recycler.lua")
-includeFile("object/tangible/recycler/metal_recycler.lua")
-includeFile("object/tangible/recycler/ore_recycler.lua")
+includeFile("tangible/recycler/chemical_recycler.lua")
+includeFile("tangible/recycler/creature_recycler.lua")
+includeFile("tangible/recycler/flora_recycler.lua")
+includeFile("tangible/recycler/metal_recycler.lua")
+includeFile("tangible/recycler/ore_recycler.lua")

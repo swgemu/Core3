@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/item/quest/crowd_pleaser/dance_reward.lua")
-includeFile("object/tangible/item/quest/crowd_pleaser/music_reward.lua")
+includeFile("tangible/item/quest/crowd_pleaser/dance_reward.lua")
+includeFile("tangible/item/quest/crowd_pleaser/music_reward.lua")

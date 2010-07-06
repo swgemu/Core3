@@ -43,15 +43,15 @@
 
 
 --Children folder includes
-includeFile("object/weapon/melee/2h_sword/base/serverobjects.lua")
-includeFile("object/weapon/melee/2h_sword/crafted_saber/serverobjects.lua")
+includeFile("weapon/melee/2h_sword/base/serverobjects.lua")
+includeFile("weapon/melee/2h_sword/crafted_saber/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/melee/2h_sword/2h_sword_battleaxe.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_blacksun_hack.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_cleaver.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_katana.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_katana_quest.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_maul.lua")
-includeFile("object/weapon/melee/2h_sword/2h_sword_scythe.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_battleaxe.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_battleaxe_quest.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_blacksun_hack.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_cleaver.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_katana.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_katana_quest.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_maul.lua")
+includeFile("weapon/melee/2h_sword/2h_sword_scythe.lua")

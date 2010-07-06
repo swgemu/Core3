@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/item/theme_park/alderaan/act2/dead_eye_decoder.lua")
+includeFile("draft_schematic/item/theme_park/alderaan/act2/dead_eye_decoder.lua")

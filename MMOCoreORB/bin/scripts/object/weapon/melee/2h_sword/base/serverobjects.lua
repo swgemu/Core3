@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/melee/2h_sword/base/2h_sword_base.lua")
-includeFile("object/weapon/melee/2h_sword/base/crafted_lightsaber_base.lua")
+includeFile("weapon/melee/2h_sword/base/2h_sword_base.lua")
+includeFile("weapon/melee/2h_sword/base/crafted_lightsaber_base.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/melee/polearm/base/crafted_lance_lightsaber_base.lua")
-includeFile("object/weapon/melee/polearm/base/lance_lightsaber_base.lua")
-includeFile("object/weapon/melee/polearm/base/polearm_base.lua")
+includeFile("weapon/melee/polearm/base/crafted_lance_lightsaber_base.lua")
+includeFile("weapon/melee/polearm/base/lance_lightsaber_base.lua")
+includeFile("weapon/melee/polearm/base/polearm_base.lua")

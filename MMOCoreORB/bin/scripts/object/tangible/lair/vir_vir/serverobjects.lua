@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/vir_vir/lair_vir_vir.lua")
-includeFile("object/tangible/lair/vir_vir/lair_vir_vir_grassland.lua")
+includeFile("tangible/lair/vir_vir/lair_vir_vir.lua")
+includeFile("tangible/lair/vir_vir/lair_vir_vir_grassland.lua")

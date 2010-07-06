@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/weapon/creature/creature_default_weapon.lua")
+includeFile("weapon/creature/creature_default_weapon.lua")

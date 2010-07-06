@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/carrion_spat/lair_carrion_spat.lua")
-includeFile("object/tangible/lair/carrion_spat/lair_carrion_spat_grassland.lua")
+includeFile("tangible/lair/carrion_spat/lair_carrion_spat.lua")
+includeFile("tangible/lair/carrion_spat/lair_carrion_spat_grassland.lua")

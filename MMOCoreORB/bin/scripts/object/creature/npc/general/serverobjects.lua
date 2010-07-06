@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/creature/npc/general/skill_trainer.lua")
+includeFile("creature/npc/general/skill_trainer.lua")

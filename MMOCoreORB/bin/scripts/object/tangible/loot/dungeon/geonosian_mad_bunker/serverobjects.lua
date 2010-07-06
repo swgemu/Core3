@@ -45,13 +45,13 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/passkey.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_chemical_tab.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_data_tab.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_honey_carafe.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_ration_kit.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_small_ball.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_spice_container.lua")
-includeFile("object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_tech_kit.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/passkey.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_chemical_tab.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_data_tab.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_honey_carafe.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_ration_kit.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_small_ball.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_spice_container.lua")
+includeFile("tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_tech_kit.lua")

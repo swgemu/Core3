@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/ship/components/base/ship_component_base.lua")
-includeFile("object/tangible/ship/components/base/ship_component_loot_base.lua")
-includeFile("object/tangible/ship/components/base/ship_subcomponent_base.lua")
+includeFile("tangible/ship/components/base/ship_component_base.lua")
+includeFile("tangible/ship/components/base/ship_component_loot_base.lua")
+includeFile("tangible/ship/components/base/ship_subcomponent_base.lua")

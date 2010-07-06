@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/corellia/player_house_deed/corellia_house_large_deed.lua")
-includeFile("object/tangible/deed/corellia/player_house_deed/corellia_house_medium_deed.lua")
-includeFile("object/tangible/deed/corellia/player_house_deed/corellia_house_small_deed.lua")
+includeFile("tangible/deed/corellia/player_house_deed/corellia_house_large_deed.lua")
+includeFile("tangible/deed/corellia/player_house_deed/corellia_house_medium_deed.lua")
+includeFile("tangible/deed/corellia/player_house_deed/corellia_house_small_deed.lua")

@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/base/base_draft_schematic.lua")
-includeFile("object/draft_schematic/base/draft_schematic_default.lua")
-includeFile("object/draft_schematic/base/missing_schematic_substitute.lua")
+includeFile("draft_schematic/base/base_draft_schematic.lua")
+includeFile("draft_schematic/base/draft_schematic_default.lua")
+includeFile("draft_schematic/base/missing_schematic_substitute.lua")

@@ -43,11 +43,11 @@
 
 
 --Children folder includes
-includeFile("object/weapon/ranged/heavy/base/serverobjects.lua")
+includeFile("weapon/ranged/heavy/base/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/weapon/ranged/heavy/heavy_acid_beam.lua")
-includeFile("object/weapon/ranged/heavy/heavy_lightning_beam.lua")
-includeFile("object/weapon/ranged/heavy/heavy_particle_beam.lua")
-includeFile("object/weapon/ranged/heavy/heavy_rocket_launcher.lua")
-includeFile("object/weapon/ranged/heavy/launcher.lua")
+includeFile("weapon/ranged/heavy/heavy_acid_beam.lua")
+includeFile("weapon/ranged/heavy/heavy_lightning_beam.lua")
+includeFile("weapon/ranged/heavy/heavy_particle_beam.lua")
+includeFile("weapon/ranged/heavy/heavy_rocket_launcher.lua")
+includeFile("weapon/ranged/heavy/launcher.lua")

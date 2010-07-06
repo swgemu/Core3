@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/powerup/base/serverobjects.lua")
-includeFile("object/tangible/powerup/weapon/serverobjects.lua")
+includeFile("tangible/powerup/base/serverobjects.lua")
+includeFile("tangible/powerup/weapon/serverobjects.lua")
 
 -- Server Objects

@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/dewback/lair_dewback.lua")
-includeFile("object/tangible/lair/dewback/lair_dewback_desert.lua")
+includeFile("tangible/lair/dewback/lair_dewback.lua")
+includeFile("tangible/lair/dewback/lair_dewback_desert.lua")

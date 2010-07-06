@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kupernug/lair_kupernug.lua")
-includeFile("object/tangible/lair/kupernug/lair_kupernug_mountain.lua")
-includeFile("object/tangible/lair/kupernug/lair_kupernug_wasteland.lua")
+includeFile("tangible/lair/kupernug/lair_kupernug.lua")
+includeFile("tangible/lair/kupernug/lair_kupernug_mountain.lua")
+includeFile("tangible/lair/kupernug/lair_kupernug_wasteland.lua")

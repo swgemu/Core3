@@ -43,7 +43,7 @@
 
 
 --Children folder includes
-includeFile("object/tangible/poi/base/serverobjects.lua")
-includeFile("object/tangible/poi/object/serverobjects.lua")
+includeFile("tangible/poi/base/serverobjects.lua")
+includeFile("tangible/poi/object/serverobjects.lua")
 
 -- Server Objects

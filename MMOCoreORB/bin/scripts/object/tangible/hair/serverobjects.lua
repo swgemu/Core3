@@ -43,16 +43,16 @@
 
 
 --Children folder includes
-includeFile("object/tangible/hair/base/serverobjects.lua")
-includeFile("object/tangible/hair/bothan/serverobjects.lua")
-includeFile("object/tangible/hair/human/serverobjects.lua")
-includeFile("object/tangible/hair/mon_calamari/serverobjects.lua")
-includeFile("object/tangible/hair/rodian/serverobjects.lua")
-includeFile("object/tangible/hair/singing_mountain_clan/serverobjects.lua")
-includeFile("object/tangible/hair/sullustan/serverobjects.lua")
-includeFile("object/tangible/hair/trandoshan/serverobjects.lua")
-includeFile("object/tangible/hair/twilek/serverobjects.lua")
-includeFile("object/tangible/hair/wookiee/serverobjects.lua")
-includeFile("object/tangible/hair/zabrak/serverobjects.lua")
+includeFile("tangible/hair/base/serverobjects.lua")
+includeFile("tangible/hair/bothan/serverobjects.lua")
+includeFile("tangible/hair/human/serverobjects.lua")
+includeFile("tangible/hair/mon_calamari/serverobjects.lua")
+includeFile("tangible/hair/rodian/serverobjects.lua")
+includeFile("tangible/hair/singing_mountain_clan/serverobjects.lua")
+includeFile("tangible/hair/sullustan/serverobjects.lua")
+includeFile("tangible/hair/trandoshan/serverobjects.lua")
+includeFile("tangible/hair/twilek/serverobjects.lua")
+includeFile("tangible/hair/wookiee/serverobjects.lua")
+includeFile("tangible/hair/zabrak/serverobjects.lua")
 
 -- Server Objects

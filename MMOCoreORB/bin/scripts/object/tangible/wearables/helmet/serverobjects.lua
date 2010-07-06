@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/helmet/helmet_atat.lua")
-includeFile("object/tangible/wearables/helmet/helmet_fighter_blacksun_ace.lua")
-includeFile("object/tangible/wearables/helmet/helmet_fighter_imperial_ace.lua")
-includeFile("object/tangible/wearables/helmet/helmet_fighter_privateer_ace.lua")
-includeFile("object/tangible/wearables/helmet/helmet_fighter_rebel_ace.lua")
-includeFile("object/tangible/wearables/helmet/helmet_s06.lua")
-includeFile("object/tangible/wearables/helmet/helmet_tie_fighter.lua")
-includeFile("object/tangible/wearables/helmet/helmet_tusken_raider_s01.lua")
-includeFile("object/tangible/wearables/helmet/helmet_tusken_raider_s02.lua")
+includeFile("tangible/wearables/helmet/helmet_atat.lua")
+includeFile("tangible/wearables/helmet/helmet_fighter_blacksun_ace.lua")
+includeFile("tangible/wearables/helmet/helmet_fighter_imperial_ace.lua")
+includeFile("tangible/wearables/helmet/helmet_fighter_privateer_ace.lua")
+includeFile("tangible/wearables/helmet/helmet_fighter_rebel_ace.lua")
+includeFile("tangible/wearables/helmet/helmet_s06.lua")
+includeFile("tangible/wearables/helmet/helmet_tie_fighter.lua")
+includeFile("tangible/wearables/helmet/helmet_tusken_raider_s01.lua")
+includeFile("tangible/wearables/helmet/helmet_tusken_raider_s02.lua")

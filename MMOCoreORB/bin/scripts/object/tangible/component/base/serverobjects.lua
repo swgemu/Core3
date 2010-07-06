@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/component/base/base_barrel.lua")
-includeFile("object/tangible/component/base/base_component.lua")
-includeFile("object/tangible/component/base/base_dna_sample.lua")
-includeFile("object/tangible/component/base/base_electronic_component.lua")
-includeFile("object/tangible/component/base/base_food.lua")
+includeFile("tangible/component/base/base_barrel.lua")
+includeFile("tangible/component/base/base_component.lua")
+includeFile("tangible/component/base/base_dna_sample.lua")
+includeFile("tangible/component/base/base_electronic_component.lua")
+includeFile("tangible/component/base/base_food.lua")

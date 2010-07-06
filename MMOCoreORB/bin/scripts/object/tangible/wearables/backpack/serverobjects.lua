@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/wearables/backpack/backpack_s01.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s03.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s03_quest.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s04.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s05.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s06.lua")
-includeFile("object/tangible/wearables/backpack/backpack_s06_quest.lua")
-includeFile("object/tangible/wearables/backpack/singing_mountain_clan_backpack.lua")
+includeFile("tangible/wearables/backpack/backpack_s01.lua")
+includeFile("tangible/wearables/backpack/backpack_s03.lua")
+includeFile("tangible/wearables/backpack/backpack_s03_quest.lua")
+includeFile("tangible/wearables/backpack/backpack_s04.lua")
+includeFile("tangible/wearables/backpack/backpack_s05.lua")
+includeFile("tangible/wearables/backpack/backpack_s06.lua")
+includeFile("tangible/wearables/backpack/backpack_s06_quest.lua")
+includeFile("tangible/wearables/backpack/singing_mountain_clan_backpack.lua")

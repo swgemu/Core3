@@ -45,11 +45,11 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/furniture/technical/armoire_s01.lua")
-includeFile("object/tangible/furniture/technical/bookcase_s01.lua")
-includeFile("object/tangible/furniture/technical/cabinet_s01.lua")
-includeFile("object/tangible/furniture/technical/chair_s01.lua")
-includeFile("object/tangible/furniture/technical/chest_s01.lua")
-includeFile("object/tangible/furniture/technical/coffee_table_s01.lua")
-includeFile("object/tangible/furniture/technical/couch_s01.lua")
-includeFile("object/tangible/furniture/technical/end_table_s01.lua")
+includeFile("tangible/furniture/technical/armoire_s01.lua")
+includeFile("tangible/furniture/technical/bookcase_s01.lua")
+includeFile("tangible/furniture/technical/cabinet_s01.lua")
+includeFile("tangible/furniture/technical/chair_s01.lua")
+includeFile("tangible/furniture/technical/chest_s01.lua")
+includeFile("tangible/furniture/technical/coffee_table_s01.lua")
+includeFile("tangible/furniture/technical/couch_s01.lua")
+includeFile("tangible/furniture/technical/end_table_s01.lua")

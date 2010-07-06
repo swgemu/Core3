@@ -43,10 +43,10 @@
 
 
 --Children folder includes
-includeFile("object/tangible/crafting/base/serverobjects.lua")
-includeFile("object/tangible/crafting/station/serverobjects.lua")
+includeFile("tangible/crafting/base/serverobjects.lua")
+includeFile("tangible/crafting/station/serverobjects.lua")
 
 -- Server Objects
-includeFile("object/tangible/crafting/crafting_components_container.lua")
-includeFile("object/tangible/crafting/default_draft_not_found.lua")
-includeFile("object/tangible/crafting/missing_schematic_substitute.lua")
+includeFile("tangible/crafting/crafting_components_container.lua")
+includeFile("tangible/crafting/default_draft_not_found.lua")
+includeFile("tangible/crafting/missing_schematic_substitute.lua")

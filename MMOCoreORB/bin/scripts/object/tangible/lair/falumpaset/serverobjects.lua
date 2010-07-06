@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/falumpaset/lair_falumpaset.lua")
-includeFile("object/tangible/lair/falumpaset/lair_falumpaset_forest.lua")
-includeFile("object/tangible/lair/falumpaset/lair_falumpaset_grassland.lua")
-includeFile("object/tangible/lair/falumpaset/lair_falumpaset_swamp.lua")
+includeFile("tangible/lair/falumpaset/lair_falumpaset.lua")
+includeFile("tangible/lair/falumpaset/lair_falumpaset_forest.lua")
+includeFile("tangible/lair/falumpaset/lair_falumpaset_grassland.lua")
+includeFile("tangible/lair/falumpaset/lair_falumpaset_swamp.lua")

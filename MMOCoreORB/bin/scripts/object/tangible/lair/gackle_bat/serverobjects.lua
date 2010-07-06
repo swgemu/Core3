@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/gackle_bat/lair_gackle_bat.lua")
-includeFile("object/tangible/lair/gackle_bat/lair_gackle_bat_jungle.lua")
-includeFile("object/tangible/lair/gackle_bat/lair_gackle_bat_swamp.lua")
+includeFile("tangible/lair/gackle_bat/lair_gackle_bat.lua")
+includeFile("tangible/lair/gackle_bat/lair_gackle_bat_jungle.lua")
+includeFile("tangible/lair/gackle_bat/lair_gackle_bat_swamp.lua")

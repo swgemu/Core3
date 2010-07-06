@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/draft_schematic/vehicle/military/military_a.lua")
-includeFile("object/draft_schematic/vehicle/military/military_b.lua")
-includeFile("object/draft_schematic/vehicle/military/military_c.lua")
-includeFile("object/draft_schematic/vehicle/military/military_d.lua")
-includeFile("object/draft_schematic/vehicle/military/military_e.lua")
-includeFile("object/draft_schematic/vehicle/military/starship_impl_tie_a.lua")
-includeFile("object/draft_schematic/vehicle/military/starship_impl_tie_b.lua")
-includeFile("object/draft_schematic/vehicle/military/starship_rebel_xwing_a.lua")
-includeFile("object/draft_schematic/vehicle/military/starship_rebel_xwing_b.lua")
+includeFile("draft_schematic/vehicle/military/military_a.lua")
+includeFile("draft_schematic/vehicle/military/military_b.lua")
+includeFile("draft_schematic/vehicle/military/military_c.lua")
+includeFile("draft_schematic/vehicle/military/military_d.lua")
+includeFile("draft_schematic/vehicle/military/military_e.lua")
+includeFile("draft_schematic/vehicle/military/starship_impl_tie_a.lua")
+includeFile("draft_schematic/vehicle/military/starship_impl_tie_b.lua")
+includeFile("draft_schematic/vehicle/military/starship_rebel_xwing_a.lua")
+includeFile("draft_schematic/vehicle/military/starship_rebel_xwing_b.lua")

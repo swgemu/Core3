@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/generators/base/power_generator_base.lua")
+includeFile("installation/generators/base/power_generator_base.lua")

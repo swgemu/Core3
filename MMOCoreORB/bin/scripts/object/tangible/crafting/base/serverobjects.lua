@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/crafting/base/base_public_station.lua")
-includeFile("object/tangible/crafting/base/base_repair.lua")
-includeFile("object/tangible/crafting/base/base_station.lua")
-includeFile("object/tangible/crafting/base/base_tool.lua")
+includeFile("tangible/crafting/base/base_public_station.lua")
+includeFile("tangible/crafting/base/base_repair.lua")
+includeFile("tangible/crafting/base/base_station.lua")
+includeFile("tangible/crafting/base/base_tool.lua")

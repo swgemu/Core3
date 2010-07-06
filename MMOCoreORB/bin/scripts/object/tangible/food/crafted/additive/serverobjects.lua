@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/food/crafted/additive/additive_base.lua")
-includeFile("object/tangible/food/crafted/additive/additive_heavy.lua")
-includeFile("object/tangible/food/crafted/additive/additive_light.lua")
-includeFile("object/tangible/food/crafted/additive/additive_medium.lua")
+includeFile("tangible/food/crafted/additive/additive_base.lua")
+includeFile("tangible/food/crafted/additive/additive_heavy.lua")
+includeFile("tangible/food/crafted/additive/additive_light.lua")
+includeFile("tangible/food/crafted/additive/additive_medium.lua")

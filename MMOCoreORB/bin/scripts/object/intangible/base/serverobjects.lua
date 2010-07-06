@@ -45,5 +45,5 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/intangible/base/base_intangible.lua")
-includeFile("object/intangible/base/intangible_default.lua")
+includeFile("intangible/base/base_intangible.lua")
+includeFile("intangible/base/intangible_default.lua")

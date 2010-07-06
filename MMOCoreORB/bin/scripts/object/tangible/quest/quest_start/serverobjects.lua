@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/quest/quest_start/ep3_clone_relics_jedi_starfighter.lua")
-includeFile("object/tangible/quest/quest_start/ep3_clone_relics_jedi_starfighter_container.lua")
-includeFile("object/tangible/quest/quest_start/ep3_clone_relics_nym_starmap.lua")
-includeFile("object/tangible/quest/quest_start/ep3_clone_relics_nym_starmap_container.lua")
+includeFile("tangible/quest/quest_start/ep3_clone_relics_jedi_starfighter.lua")
+includeFile("tangible/quest/quest_start/ep3_clone_relics_jedi_starfighter_container.lua")
+includeFile("tangible/quest/quest_start/ep3_clone_relics_nym_starmap.lua")
+includeFile("tangible/quest/quest_start/ep3_clone_relics_nym_starmap_container.lua")

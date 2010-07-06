@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/scout/camp/camp_basic.lua")
-includeFile("object/tangible/scout/camp/camp_elite.lua")
-includeFile("object/tangible/scout/camp/camp_improved.lua")
-includeFile("object/tangible/scout/camp/camp_luxury.lua")
-includeFile("object/tangible/scout/camp/camp_multi.lua")
-includeFile("object/tangible/scout/camp/camp_quality.lua")
+includeFile("tangible/scout/camp/camp_basic.lua")
+includeFile("tangible/scout/camp/camp_elite.lua")
+includeFile("tangible/scout/camp/camp_improved.lua")
+includeFile("tangible/scout/camp/camp_luxury.lua")
+includeFile("tangible/scout/camp/camp_multi.lua")
+includeFile("tangible/scout/camp/camp_quality.lua")

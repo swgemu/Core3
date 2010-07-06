@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/static/firework/base/firework_fx_base.lua")
+includeFile("static/firework/base/firework_fx_base.lua")

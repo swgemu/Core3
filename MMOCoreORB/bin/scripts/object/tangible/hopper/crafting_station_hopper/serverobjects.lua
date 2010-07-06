@@ -45,9 +45,9 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.lua")
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_medium.lua")
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_small.lua")
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_large.lua")
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_medium.lua")
-includeFile("object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_small.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_medium.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_small.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_large.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_medium.lua")
+includeFile("tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_small.lua")

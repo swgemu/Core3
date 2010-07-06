@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/deed/factory_deed/factory_clothing_deed.lua")
-includeFile("object/tangible/deed/factory_deed/factory_food_deed.lua")
-includeFile("object/tangible/deed/factory_deed/factory_item_deed.lua")
-includeFile("object/tangible/deed/factory_deed/factory_structure_deed.lua")
+includeFile("tangible/deed/factory_deed/factory_clothing_deed.lua")
+includeFile("tangible/deed/factory_deed/factory_food_deed.lua")
+includeFile("tangible/deed/factory_deed/factory_item_deed.lua")
+includeFile("tangible/deed/factory_deed/factory_structure_deed.lua")

@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/construction_contract/base/base_construction_contract.lua")
+includeFile("construction_contract/base/base_construction_contract.lua")

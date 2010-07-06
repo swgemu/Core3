@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/hermit_spider/lair_hermit_spider.lua")
-includeFile("object/tangible/lair/hermit_spider/lair_hermit_spider_mountain.lua")
-includeFile("object/tangible/lair/hermit_spider/lair_hermit_spider_wasteland.lua")
+includeFile("tangible/lair/hermit_spider/lair_hermit_spider.lua")
+includeFile("tangible/lair/hermit_spider/lair_hermit_spider_mountain.lua")
+includeFile("tangible/lair/hermit_spider/lair_hermit_spider_wasteland.lua")

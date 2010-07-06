@@ -45,12 +45,12 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/droid/droid_space_memory_module_1.lua")
-includeFile("object/tangible/droid/droid_space_memory_module_base.lua")
-includeFile("object/tangible/droid/navicomputer_1.lua")
-includeFile("object/tangible/droid/navicomputer_2.lua")
-includeFile("object/tangible/droid/navicomputer_3.lua")
-includeFile("object/tangible/droid/navicomputer_4.lua")
-includeFile("object/tangible/droid/navicomputer_5.lua")
-includeFile("object/tangible/droid/navicomputer_6.lua")
-includeFile("object/tangible/droid/navicomputer_base.lua")
+includeFile("tangible/droid/droid_space_memory_module_1.lua")
+includeFile("tangible/droid/droid_space_memory_module_base.lua")
+includeFile("tangible/droid/navicomputer_1.lua")
+includeFile("tangible/droid/navicomputer_2.lua")
+includeFile("tangible/droid/navicomputer_3.lua")
+includeFile("tangible/droid/navicomputer_4.lua")
+includeFile("tangible/droid/navicomputer_5.lua")
+includeFile("tangible/droid/navicomputer_6.lua")
+includeFile("tangible/droid/navicomputer_base.lua")

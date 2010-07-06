@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/remmer/lair_remmer.lua")
-includeFile("object/tangible/lair/remmer/lair_remmer_grassland.lua")
-includeFile("object/tangible/lair/remmer/lair_remmer_jungle.lua")
+includeFile("tangible/lair/remmer/lair_remmer.lua")
+includeFile("tangible/lair/remmer/lair_remmer_grassland.lua")
+includeFile("tangible/lair/remmer/lair_remmer_jungle.lua")

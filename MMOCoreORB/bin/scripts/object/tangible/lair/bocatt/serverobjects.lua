@@ -45,6 +45,6 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/bocatt/lair_bocatt.lua")
-includeFile("object/tangible/lair/bocatt/lair_bocatt_grassland.lua")
-includeFile("object/tangible/lair/bocatt/lair_bocatt_hills.lua")
+includeFile("tangible/lair/bocatt/lair_bocatt.lua")
+includeFile("tangible/lair/bocatt/lair_bocatt_grassland.lua")
+includeFile("tangible/lair/bocatt/lair_bocatt_hills.lua")

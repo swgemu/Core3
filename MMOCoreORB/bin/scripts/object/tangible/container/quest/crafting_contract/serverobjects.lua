@@ -45,10 +45,10 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/container/quest/crafting_contract/armor_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/clothing_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/droid_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/food_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/furniture_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/generic_crate.lua")
-includeFile("object/tangible/container/quest/crafting_contract/weapon_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/armor_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/clothing_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/droid_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/food_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/furniture_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/generic_crate.lua")
+includeFile("tangible/container/quest/crafting_contract/weapon_crate.lua")

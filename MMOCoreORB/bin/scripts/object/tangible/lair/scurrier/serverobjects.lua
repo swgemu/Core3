@@ -45,8 +45,8 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/scurrier/lair_scurrier.lua")
-includeFile("object/tangible/lair/scurrier/lair_scurrier_desert.lua")
-includeFile("object/tangible/lair/scurrier/lair_scurrier_dune.lua")
-includeFile("object/tangible/lair/scurrier/lair_scurrier_mountain.lua")
-includeFile("object/tangible/lair/scurrier/lair_scurrier_wasteland.lua")
+includeFile("tangible/lair/scurrier/lair_scurrier.lua")
+includeFile("tangible/lair/scurrier/lair_scurrier_desert.lua")
+includeFile("tangible/lair/scurrier/lair_scurrier_dune.lua")
+includeFile("tangible/lair/scurrier/lair_scurrier_mountain.lua")
+includeFile("tangible/lair/scurrier/lair_scurrier_wasteland.lua")

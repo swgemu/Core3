@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/tangible/lair/kaadu/lair_kaadu.lua")
-includeFile("object/tangible/lair/kaadu/lair_kaadu_forest.lua")
-includeFile("object/tangible/lair/kaadu/lair_kaadu_grassland.lua")
-includeFile("object/tangible/lair/kaadu/lair_kaadu_swamp.lua")
+includeFile("tangible/lair/kaadu/lair_kaadu.lua")
+includeFile("tangible/lair/kaadu/lair_kaadu_forest.lua")
+includeFile("tangible/lair/kaadu/lair_kaadu_grassland.lua")
+includeFile("tangible/lair/kaadu/lair_kaadu_swamp.lua")

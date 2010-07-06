@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("object/installation/turret/base/turret_base.lua")
+includeFile("installation/turret/base/turret_base.lua")
