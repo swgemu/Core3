@@ -42,7 +42,7 @@
 
 
 object_creature_player_wookiee_male = object_creature_player_shared_wookiee_male:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_wookiee_male, "object/creature/player/wookiee_male.iff")

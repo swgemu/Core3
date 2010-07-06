@@ -42,7 +42,7 @@
 
 
 object_tangible_beta_beta_terminal_warp = object_tangible_beta_shared_beta_terminal_warp:new {
-
+	gameObjectType = 16399
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_beta_terminal_warp, "object/tangible/beta/beta_terminal_warp.iff")
