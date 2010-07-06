@@ -1,5 +1,0 @@
-object_resource_container_organic_food = object_resource_container_shared_resource_container_organic_food:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_organic_food, "object/resource_container/organic_food.iff")

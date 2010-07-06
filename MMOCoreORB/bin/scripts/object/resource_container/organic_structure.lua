@@ -1,5 +1,0 @@
-object_resource_container_organic_structure = object_resource_container_shared_resource_container_organic_structure:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_organic_structure, "object/resource_container/organic_structure.iff")

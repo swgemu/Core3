@@ -1,5 +1,0 @@
-object_resource_container_organic_fungi = object_resource_container_shared_resource_container_organic_fungi:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_organic_fungi, "object/resource_container/organic_fungi.iff")
