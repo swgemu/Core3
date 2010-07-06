@@ -42,7 +42,7 @@
 
 
 object_creature_player_zabrak_female = object_creature_player_shared_zabrak_female:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_zabrak_female, "object/creature/player/zabrak_female.iff")

@@ -42,7 +42,7 @@
 
 
 object_creature_player_sullustan_male = object_creature_player_shared_sullustan_male:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_sullustan_male, "object/creature/player/sullustan_male.iff")

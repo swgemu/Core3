@@ -73,3 +73,4 @@ includeFile("weapon/serverobjects.lua")
 
 -- Server Objects
 includeFile("badge_area.lua")
+includeFile("region_area.lua")

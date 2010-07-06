@@ -42,7 +42,7 @@
 
 
 object_creature_player_rodian_female = object_creature_player_shared_rodian_female:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_rodian_female, "object/creature/player/rodian_female.iff")

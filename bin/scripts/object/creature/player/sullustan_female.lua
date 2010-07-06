@@ -42,7 +42,7 @@
 
 
 object_creature_player_sullustan_female = object_creature_player_shared_sullustan_female:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_sullustan_female, "object/creature/player/sullustan_female.iff")

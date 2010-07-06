@@ -42,7 +42,7 @@
 
 
 object_creature_player_bothan_male = object_creature_player_shared_bothan_male:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_bothan_male, "object/creature/player/bothan_male.iff")
