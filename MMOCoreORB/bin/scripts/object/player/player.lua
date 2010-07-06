@@ -42,7 +42,7 @@
 
 
 object_player_player = object_player_shared_player:new {
-
+	gameObjectType = 12
 }
 
 ObjectTemplates:addTemplate(object_player_player, "object/player/player.iff")

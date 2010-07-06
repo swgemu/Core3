@@ -42,7 +42,7 @@
 
 
 object_creature_player_moncal_male = object_creature_player_shared_moncal_male:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_moncal_male, "object/creature/player/moncal_male.iff")

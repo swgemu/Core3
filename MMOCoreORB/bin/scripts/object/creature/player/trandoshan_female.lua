@@ -42,7 +42,7 @@
 
 
 object_creature_player_trandoshan_female = object_creature_player_shared_trandoshan_female:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_trandoshan_female, "object/creature/player/trandoshan_female.iff")

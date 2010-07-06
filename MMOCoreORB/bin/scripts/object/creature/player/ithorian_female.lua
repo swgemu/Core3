@@ -42,7 +42,7 @@
 
 
 object_creature_player_ithorian_female = object_creature_player_shared_ithorian_female:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_ithorian_female, "object/creature/player/ithorian_female.iff")

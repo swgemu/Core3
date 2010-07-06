@@ -85,3 +85,6 @@ includeFile("resource_container/resource_container_organic_tuber.lua")
 includeFile("resource_container/resource_container_organic_wheat.lua")
 includeFile("resource_container/resource_container_organic_wooly_hide.lua")
 includeFile("resource_container/simple.lua")
+
+-- Manual Add
+includeFile("resource_container/resource_spawn.lua")

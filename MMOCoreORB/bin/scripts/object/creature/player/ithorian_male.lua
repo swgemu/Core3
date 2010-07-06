@@ -42,7 +42,7 @@
 
 
 object_creature_player_ithorian_male = object_creature_player_shared_ithorian_male:new {
-
+	gameObjectType = 1033
 }
 
 ObjectTemplates:addTemplate(object_creature_player_ithorian_male, "object/creature/player/ithorian_male.iff")
