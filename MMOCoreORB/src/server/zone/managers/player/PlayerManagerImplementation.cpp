@@ -520,7 +520,7 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);
@@ -554,7 +554,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);
