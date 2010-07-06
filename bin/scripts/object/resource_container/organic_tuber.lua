@@ -1,5 +1,0 @@
-object_resource_container_organic_tuber = object_resource_container_shared_resource_container_organic_tuber:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_organic_tuber, "object/resource_container/organic_tuber.iff")
