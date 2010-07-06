@@ -42,7 +42,12 @@
 
 
 object_building_player_city_cantina_tatooine = object_building_player_city_shared_cantina_tatooine:new {
-
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	allowedZones = {1,4,8},
+	gameObjectType = 518,
+	mapLocationsType1 = 3,
+	cityRankRequired = 2
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cantina_tatooine, "object/building/player/city/cantina_tatooine.iff")
