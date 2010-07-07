@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad:new {
+object_tangible_loot_quest_force_sensitive_waypoint_datapad = object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad:new {
 
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/waypoint_datapad.iff")

@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_dungeon_death_watch_bunker_invulnerable_debris = object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_invulnerable_debris, "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff")

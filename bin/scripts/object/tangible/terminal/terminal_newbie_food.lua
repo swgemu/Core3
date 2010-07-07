@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_terminal_terminal_newbie_food = object_tangible_terminal_shared_terminal_newbie_food:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/terminal/terminal_newbie_food.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_terminal_newbie_food, "object/tangible/terminal/terminal_newbie_food.iff")
