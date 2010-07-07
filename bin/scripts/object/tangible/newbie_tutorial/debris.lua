@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_newbie_tutorial_debris = object_tangible_newbie_tutorial_shared_debris:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/newbie_tutorial/debris.iff")
+ObjectTemplates:addTemplate(object_tangible_newbie_tutorial_debris, "object/tangible/newbie_tutorial/debris.iff")

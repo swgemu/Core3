@@ -52,9 +52,9 @@ object_building_player_player_guildhall_tatooine_style_01 = object_building_play
 	
 	--Elevator Terminals format is template_path, cell#, x, z, y, qx, qy, qz, qw, dz - where dz is the delta z.
 	elevatorTerminals = {
-			"", 0, 0, 0, 0, 0, 0, 0, 1, 0,
-			"", 0, 0, 0, 0, 0, 0, 0, 1, 0
-
+		"", 0, 0, 0, 0, 0, 0, 0, 1, 0,
+		"", 0, 0, 0, 0, 0, 0, 0, 1, 0
+	}
 
 }
 

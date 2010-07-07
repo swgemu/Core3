@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_terminal_terminal_newbie_instrument = object_tangible_terminal_shared_terminal_newbie_instrument:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/terminal/terminal_newbie_instrument.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_terminal_newbie_instrument, "object/tangible/terminal/terminal_newbie_instrument.iff")

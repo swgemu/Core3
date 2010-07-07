@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	detailedDescription = 	detailedDescription:new {
+object_intangible_ship_basic_hutt_light_pcd = object_intangible_ship_shared_basic_hutt_light_pcd:new {
 
 }
 
-ObjectTemplates:addTemplate(	detailedDescription, "object/intangible/ship/basic_hutt_light_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_ship_basic_hutt_light_pcd, "object/intangible/ship/basic_hutt_light_pcd.iff")

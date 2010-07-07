@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_medicine_newbie_heal_mission_medicine = object_tangible_medicine_shared_newbie_heal_mission_medicine:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/medicine/newbie_heal_mission_medicine.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_newbie_heal_mission_medicine, "object/tangible/medicine/newbie_heal_mission_medicine.iff")
