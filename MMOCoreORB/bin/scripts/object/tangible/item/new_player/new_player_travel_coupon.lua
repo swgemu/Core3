@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	objectName = 	objectName:new {
+object_tangible_item_new_player_new_player_travel_coupon = object_tangible_item_new_player_shared_new_player_travel_coupon:new {
 
 }
 
-ObjectTemplates:addTemplate(	objectName, "object/tangible/item/new_player/new_player_travel_coupon.iff")
+ObjectTemplates:addTemplate(object_tangible_item_new_player_new_player_travel_coupon, "object/tangible/item/new_player/new_player_travel_coupon.iff")

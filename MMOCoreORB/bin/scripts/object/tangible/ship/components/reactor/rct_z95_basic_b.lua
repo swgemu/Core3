@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_destructible_wreckage_wreck_starship_small_01 = object_tangible_destructible_wreckage_shared_wreck_starship_small_01:new {
+object_tangible_ship_components_reactor_rct_z95_basic_b = object_tangible_ship_components_reactor_rct_z95_basic:new {
 
 }
 
-ObjectTemplates:addTemplate(object_tangible_destructible_wreckage_wreck_starship_small_01, "object/tangible/destructible/wreckage/wreck_starship_small_01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_z95_basic_b, "object/tangible/ship/components/reactor/rct_z95_basic_b.iff")

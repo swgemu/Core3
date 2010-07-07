@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-	detailedDescription = 	detailedDescription:new {
+object_tangible_terminal_terminal_nym_cave = object_tangible_terminal_shared_terminal_nym_cave:new {
 
 }
 
-ObjectTemplates:addTemplate(	detailedDescription, "object/tangible/terminal/terminal_nym_cave.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_terminal_nym_cave, "object/tangible/terminal/terminal_nym_cave.iff")

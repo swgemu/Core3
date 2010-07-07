@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_ship_components_reactor_rct_z95_basic = object_tangible_ship_components_reactor_shared_rct_z95_basic:new {
+object_tangible_ship_components_reactor_rct_tiefighter_basic_a = object_tangible_ship_components_reactor_shared_rct_tiefighter_basic:new {
 
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_z95_basic, "object/tangible/ship/components/reactor/rct_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic_a, "object/tangible/ship/components/reactor/rct_tiefighter_basic_a.iff")
