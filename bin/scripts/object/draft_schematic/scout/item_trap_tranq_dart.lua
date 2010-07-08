@@ -43,6 +43,35 @@
 
 object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout_shared_item_trap_tranq_dart:new {
 
-}
+   groupName = "craftScoutTrapGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "trapping", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"dart_housing", "dart_grip_wrapping", "dart_tip"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"bone", "hide", "metal"},
+   resourceQuantities = {7, 10, 3},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3433589446, -- Script: 'object/tangible/scout/trap/trap_tranq_dart.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_trap_tranq_dart, "object/draft_schematic/scout/item_trap_tranq_dart.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spices_shared_spice_neutron_pixey:new {
 
-}
+   groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 1, 
+
+   xpType = "crafting_spice", 
+   xp = 240, 
+
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"crystalline_stratifier", "neutron_impactor", "fruit_flavoring"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"gemstone", "mineral", "fruit_fruits"},
+   resourceQuantities = {15, 15, 15},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3},
+   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+   experimentalWeights = {1, 1, 4, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 205254138, -- Script: 'object/tangible/food/spice/spice_neutron_pixey.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_neutron_pixey, "object/draft_schematic/spices/spice_neutron_pixey.iff")

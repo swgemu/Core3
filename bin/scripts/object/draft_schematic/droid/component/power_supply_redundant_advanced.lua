@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_power_supply_redundant_advanced = object_draft_schematic_droid_component_shared_power_supply_redundant_advanced:new {
 
-}
+   groupName = "craftDroidRepairCompB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 100, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"power_supply_housing", "reactive_energy_core", "reaction_catalyst"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"steel_cubirian", "fuel_petrochem_liquid_known", "gas_reactive_orveth"},
+   resourceQuantities = {10, 10, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "hitpoints"},
+   experimentalMin = {0, 0, 3, 1000},
+   experimentalMax = {0, 0, 15, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1591660368, -- Script: 'object/tangible/component/droid/repair/power_supply_redundant_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_power_supply_redundant_advanced, "object/draft_schematic/droid/component/power_supply_redundant_advanced.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_harvesting_mechanism = object_draft_schematic_structure_component_shared_structure_harvesting_mechanism:new {
 
-}
+   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 14, 
+   size = 8, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1070, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"manipulator_unit", "bio_controller", "fluid_hoses", "pump_unit", "sealant_and_shock_absorbing_buffers"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"steel", "steel", "chemical", "metal", "chemical"},
+   resourceQuantities = {80, 125, 200, 35, 100},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2},
+   experimentalGroupTitles = {"null", "null", "null", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "extractrate"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 5000, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2971470632, -- Script: 'object/tangible/component/structure/harvesting_mechanism.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_harvesting_mechanism, "object/draft_schematic/structure/component/structure_harvesting_mechanism.iff")

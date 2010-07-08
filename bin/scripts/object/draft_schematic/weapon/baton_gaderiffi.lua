@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_shared_baton_gaderiffi:new {
 
-}
+   groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 90, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"grip_unit", "reactive_striking_surface", "power_cell_brackets", "reinforcement_core"},
+   ingredientSlotType = {0, 0, 0, 2},
+   resourceTypes = {"iron", "metal", "metal", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
+   resourceQuantities = {20, 23, 5, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 49, 98, 5.9, 11, 750, -15, -15, 3, -15, 4, 58, 31, 10},
+   experimentalMax = {0, 0, 91, 182, 4, 21, 1500, -5, -5, 3, -5, 4, 30, 15, 4},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4274961640, -- Script: 'object/weapon/melee/baton/baton_gaderiffi.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_baton_gaderiffi, "object/draft_schematic/weapon/baton_gaderiffi.iff")

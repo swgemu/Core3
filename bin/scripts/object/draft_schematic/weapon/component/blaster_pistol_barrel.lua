@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_blaster_pistol_barrel = object_draft_schematic_weapon_component_shared_blaster_pistol_barrel:new {
 
-}
+   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 60, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"emitter_nozzle", "actuating_blaster_module", "barrel_to_receiver_coupling", "prismatic_crystal", "barrel_shroud"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal", "gemstone", "metal"},
+   resourceQuantities = {10, 8, 6, 1, 3},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "CD", "SR", "CD", "SR", "CD", "SR", "CD", "SR", "CD", "SR", "XX", "XX", "XX", "CD", "SR"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "null", "null", "null", "expRange"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "minrangemod", "midrangemod"},
+   experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 10, 10, -1, 5, 100, 0, 0, 0, 10},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1369190307, -- Script: 'object/tangible/component/weapon/blaster_pistol_barrel.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_blaster_pistol_barrel, "object/draft_schematic/weapon/component/blaster_pistol_barrel.iff")

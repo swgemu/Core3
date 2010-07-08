@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_enhance_poison_a = object_draft_schematic_chemistry_shared_medpack_enhance_poison_a:new {
 
-}
+   groupName = "craftMedpackBEnhanceGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 72, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"first_organic_element", "second_organic_element", "first_inorganic_element", "second_inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 2, 2},
+   resourceTypes = {"organic", "organic", "inorganic", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {9, 9, 9, 9, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expDuration", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 25, 5, 1200, 70, 100},
+   experimentalMax = {0, 0, 120, 15, 3600, 70, 150},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2029285277, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_poison_a.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_poison_a, "object/draft_schematic/chemistry/medpack_enhance_poison_a.iff")

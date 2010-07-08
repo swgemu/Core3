@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pumping_unit = object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit:new {
 
-}
+   groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 6, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1380, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"bore_head", "well_head_positioning_and_piping", "fluid_hoses", "pump_unit", "sealant_and_shock_absorbing_buffers"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"steel", "metal", "chemical", "metal", "chemical"},
+   resourceQuantities = {120, 150, 240, 60, 120},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2},
+   experimentalGroupTitles = {"null", "null", "null", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "extractrate"},
+   experimentalMin = {0, 0, 1000, 2},
+   experimentalMax = {0, 0, 5000, 7},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 135758881, -- Script: 'object/tangible/component/structure/turbo_fluidic_drilling_pumping_unit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/structure_turbo_fluidic_drilling_pumping_unit.iff")

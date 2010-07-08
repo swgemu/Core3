@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02:new {
 
-}
+   groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 24, 
+   size = 3, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 240, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"flightsuit_fabric_layer_one", "flightsuit_fabric_layer_two", "flightsuit_fabric_layer_three", "wiring_and_reinforcement", "hardware"},
+   ingredientSlotType = {2, 2, 2, 0, 2},
+   resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
+   resourceQuantities = {1, 1, 1, 120, 1},
+   combineTypes = {1, 1, 1, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two", "mod_idx_three", "mod_val_three", "mod_idx_four", "mod_val_four", "mod_idx_five", "mod_val_five", "mod_idx_six", "mod_val_six"},
+   experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3313588733, -- Script: 'object/tangible/wearables/ithorian/ith_bodysuit_s02.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_bodysuit_field_02, "object/draft_schematic/clothing/clothing_ith_bodysuit_field_02.iff")

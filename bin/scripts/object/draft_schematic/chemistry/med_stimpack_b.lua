@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_med_stimpack_b = object_draft_schematic_chemistry_shared_med_stimpack_b:new {
 
-}
+   groupName = "craftMedicineStimpackGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 50, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 2, 2, 2},
+   resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {12, 12, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 75, 15, 5, 1000},
+   experimentalMax = {0, 0, 200, 30, 5, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1176913189, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_b.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_b, "object/draft_schematic/chemistry/med_stimpack_b.iff")

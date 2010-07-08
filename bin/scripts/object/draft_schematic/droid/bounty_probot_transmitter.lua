@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_droid_shared_bounty_probot_transmitter:new {
 
-}
+   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 340, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "advanced_search_planning_circuit", "search_parameter_storage_circuit", "command_interpreter", "autonomous_searcher_logic_unit"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2, 2},
+   resourceTypes = {"steel", "chemical", "ore_extrusive", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
+   resourceQuantities = {30, 20, 25, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 3},
+   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "mechanism_quality"},
+   experimentalMin = {0, 0, 5, 0},
+   experimentalMax = {0, 0, 15, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 97250743, -- Script: 'object/tangible/mission/mission_bounty_droid_probot.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_bounty_probot_transmitter, "object/draft_schematic/droid/bounty_probot_transmitter.iff")

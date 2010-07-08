@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_furniture_city_shared_furniture_statue:new {
 
-}
+   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 5000, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"artistic_medium", "decorative_trim"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"ore", "gemstone"},
+   resourceQuantities = {2000, 1000},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 311218477, -- Script: 'object/tangible/furniture/city/statue_gungan_head.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_statue, "object/draft_schematic/furniture/city/furniture_statue.iff")

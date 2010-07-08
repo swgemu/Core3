@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:new {
 
-}
+   groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 280, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"grip_unit", "reactive_striking_surface", "power_cell_brackets", "reinforcement_core"},
+   ingredientSlotType = {0, 0, 0, 2},
+   resourceTypes = {"iron_kammris", "metal", "copper", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
+   resourceQuantities = {75, 40, 24, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 53, 235, 8.5, 11, 750, -46, -46, 3, -46, 4, 120, 30, 16},
+   experimentalMax = {0, 0, 98, 436, 5.8, 20, 1500, -25, -25, 3, -25, 4, 63, 15, 7},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3681800010, -- Script: 'object/weapon/melee/2h_sword/2h_sword_maul.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_maul, "object/draft_schematic/weapon/maul.iff")

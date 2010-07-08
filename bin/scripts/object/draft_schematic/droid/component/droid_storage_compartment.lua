@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_droid_storage_compartment = object_draft_schematic_droid_component_shared_droid_storage_compartment:new {
 
-}
+   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 45, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "compartment_enclosure", "content_handling_mechanism"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal"},
+   resourceQuantities = {12, 6, 5},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "DR", "XX", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 5, 1000, -5},
+   experimentalMax = {0, 0, 15, 1000, 5},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 4256039233, -- Script: 'object/tangible/component/droid/droid_storage_compartment.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_storage_compartment, "object/draft_schematic/droid/component/droid_storage_compartment.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draft_schematic_droid_component_shared_droid_space_memory_module_1:new {
 
-}
+   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 80, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "memory_circuit"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"copper", "gas_inert", "ore_extrusive", "fiberplast", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {16, 10, 8, 6, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1},
+   experimentalProperties = {"XX", "XX"},
+   experimentalWeights = {1, 1},
+   experimentalGroupTitles = {"null", "null"},
+   experimentalSubGroupTitles = {"null", "null"},
+   experimentalMin = {0, 0},
+   experimentalMax = {0, 0},
+   experimentalPrecision = {0, 0},
+
+   tanoCRC = 628706991, -- Script: 'object/tangible/droid/droid_space_memory_module_1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_space_memory_module_1, "object/draft_schematic/droid/component/droid_space_memory_module_1.iff")

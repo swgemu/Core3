@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_component_item_electronic_control_unit = object_draft_schematic_item_component_shared_item_electronic_control_unit:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 65, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_lattice", "mechanism_stabilization_and_insulation_material", "shock_reflective_substrate", "switching_mechanism_and_logic_circuitry", "coolant", "circuitry_mount_and_harness"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "gas_inert", "petrochem_inert_polymer"},
+   resourceQuantities = {10, 5, 5, 3, 3, 5},
+   combineTypes = {0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -5},
+   experimentalMax = {0, 0, 150, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 625267053, -- Script: 'object/tangible/component/item/electronic_control_unit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_electronic_control_unit, "object/draft_schematic/item/component/item_electronic_control_unit.iff")

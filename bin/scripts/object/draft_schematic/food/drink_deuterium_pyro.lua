@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_shared_drink_deuterium_pyro:new {
 
-}
+   groupName = "craftFoodDrinkGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 120, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"reactive_element", "alcohol", "glass", "additive"},
+   ingredientSlotType = {0, 0, 2, 4},
+   resourceTypes = {"gas_reactive", "rice", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {15, 15, 1, 1},
+   combineTypes = {0, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
+   experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
+   experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
+   experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 0},
+
+   tanoCRC = 4114442654, -- Script: 'object/tangible/food/crafted/drink_deuterium_pyro.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_deuterium_pyro, "object/draft_schematic/food/drink_deuterium_pyro.iff")

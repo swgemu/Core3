@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_personality_module_geek = object_draft_schematic_droid_component_shared_personality_module_geek:new {
 
-}
+   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 40, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "thermal_shielding", "data_smart_indexer", "ancillary_heuristic_processor", "primary_phrase_database", "secondary_phrase_database", "phrase_index_tree"},
+   ingredientSlotType = {0, 0, 2, 2, 2, 2, 2},
+   resourceTypes = {"copper", "ore_siliclastic", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {13, 6, 1, 1, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "personality_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 30},
+   experimentalMax = {0, 0, 15, 1000, 15, 30},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 789436461, -- Script: 'object/tangible/component/droid/personality_module_geek.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_personality_module_geek, "object/draft_schematic/droid/component/personality_module_geek.iff")

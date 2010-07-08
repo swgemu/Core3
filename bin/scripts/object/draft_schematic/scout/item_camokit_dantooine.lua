@@ -43,6 +43,35 @@
 
 object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_scout_shared_item_camokit_dantooine:new {
 
-}
+   groupName = "craftRangerCamoGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 2, 
+   size = 1, 
+
+   xpType = "scout", 
+   xp = 230, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"musk_extract", "native_animal_skins"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"meat_herbivore_dantooine", "hide_scaley_dantooine"},
+   resourceQuantities = {40, 45},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quantity"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity"},
+   experimentalMin = {0, 0, 1000, 5},
+   experimentalMax = {0, 0, 1000, 20},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2217205281, -- Script: 'object/tangible/scout/camokit/camokit_dantooine.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_camokit_dantooine, "object/draft_schematic/scout/item_camokit_dantooine.iff")

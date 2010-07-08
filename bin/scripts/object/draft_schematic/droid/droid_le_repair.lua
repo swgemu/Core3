@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shared_droid_le_repair:new {
 
-}
+   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 40, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module", "general_droid_module2", "droid_personality_chip", "droid_defensive_module"},
+   ingredientSlotType = {2, 0, 2, 2, 2, 2, 4, 4, 4, 4},
+   resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_personality_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
+   resourceQuantities = {1, 20, 1, 1, 1, 1, 1, 1, 1, 1},
+   combineTypes = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "null", "exp_quality", "exp_effectiveness", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "armor_toughness", "armorencumbrance", "mechanism_quality", "power_level", "storage_module", "data_module", "personality_module", "medical_module", "crafting_module", "repair_module", "armor_module", "cmbt_module", "armoreffectiveness", "playback_module", "struct_module", "harvest_power", "trap_bonus", "merchant_barker", "bomb_level", "stimpack_capacity", "stimpack_speed", "auto_repair_power", "entertainer_effects"},
+   experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 15, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 15781339, -- Script: 'object/tangible/deed/pet_deed/deed_le_repair_basic.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_le_repair, "object/draft_schematic/droid/droid_le_repair.iff")

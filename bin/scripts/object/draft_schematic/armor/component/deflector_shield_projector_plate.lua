@@ -43,6 +43,35 @@
 
 object_draft_schematic_armor_component_deflector_shield_projector_plate = object_draft_schematic_armor_component_shared_deflector_shield_projector_plate:new {
 
-}
+   groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 2, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 80, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"plate_mounting_brackets", "field_isolator_assembly", "projector_field_array"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal_nonferrous", "ore", "copper"},
+   resourceQuantities = {15, 10, 15},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1906195493, -- Script: 'object/tangible/component/armor/deflector_shield_projector_plate.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_projector_plate, "object/draft_schematic/armor/component/deflector_shield_projector_plate.iff")

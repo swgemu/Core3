@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schematic_droid_shared_droid_interplanetary_survey:new {
 
-}
+   groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 380, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "communication_array", "transportation_module", "survey_control_circuit", "survey_scanning_storage_circuit", "command_interpreter", "navigation_control_circuit"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 2},
+   resourceTypes = {"steel_carbonite", "chemical", "chemical", "crystalline_vertex", "radioactive_known", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
+   resourceQuantities = {40, 20, 25, 30, 35, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 3, 3},
+   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT", "OQ", "SR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_count", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "droid_count", "mechanism_quality"},
+   experimentalMin = {0, 0, 5, 3, 0},
+   experimentalMax = {0, 0, 15, 15, 100},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3351452767, -- Script: 'object/tangible/component/droid/droid_interplanetary_survey.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_interplanetary_survey, "object/draft_schematic/droid/droid_interplanetary_survey.iff")

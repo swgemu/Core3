@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_data_storage_module_3 = object_draft_schematic_droid_component_shared_data_storage_module_3:new {
 
-}
+   groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 8, 
+
+   xpType = "crafting_droid_general", 
+   xp = 60, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "memory_circuit"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"copper", "gas_inert", "ore_extrusive", "chemical", "object/tangible/droid/shared_droid_space_memory_module_1.iff"},
+   resourceQuantities = {13, 6, 4, 5, 1},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "data_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 5},
+   experimentalMax = {0, 0, 15, 1000, 15, 7},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2680902264, -- Script: 'object/tangible/component/droid/data_storage_module_3.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_data_storage_module_3, "object/draft_schematic/droid/component/data_storage_module_3.iff")

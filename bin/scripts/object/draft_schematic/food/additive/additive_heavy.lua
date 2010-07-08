@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_food_additive_shared_additive_heavy:new {
 
-}
+   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 9, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 80, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"suspension_agent", "bio_component"},
+   ingredientSlotType = {0, 4},
+   resourceTypes = {"water", "object/tangible/component/bio/shared_bio_component_food_heavy.iff"},
+   resourceQuantities = {20, 1},
+   combineTypes = {0, 1},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3509640022, -- Script: 'object/tangible/food/crafted/additive/additive_heavy.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_additive_heavy, "object/draft_schematic/food/additive/additive_heavy.iff")

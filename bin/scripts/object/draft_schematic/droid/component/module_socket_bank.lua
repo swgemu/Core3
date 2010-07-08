@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_module_socket_bank = object_draft_schematic_droid_component_shared_module_socket_bank:new {
 
-}
+   groupName = "craftdroidgenmodGroupDD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 132, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"expansion_board", "connector_socket", "attachment_bracket", "shock_buffering", "support_strut", "general_droid_module", "general_droid_module2", "general_droid_module3"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2},
+   resourceTypes = {"metal", "metal", "metal", "chemical", "ore", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff"},
+   resourceQuantities = {30, 15, 7, 7, 7, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_durability", "exp_effectiveness", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "storage_module", "data_module", "medical_module", "crafting_module", "repair_module", "playback_module", "struct_module", "harvest_power", "trap_bonus", "merchant_barker", "bomb_level", "stimpack_capacity", "stimpack_speed", "auto_repair_power", "entertainer_effects"},
+   experimentalMin = {0, 0, 1, 100, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 100, 150, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3606382606, -- Script: 'object/tangible/component/droid/socket_bank.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_module_socket_bank, "object/draft_schematic/droid/component/module_socket_bank.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_shared_knife_vibroblade:new {
 
-}
+   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 80, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip", "vibro_unit_and_power_cell_brackets", "vibration_generator"},
+   ingredientSlotType = {0, 0, 0, 0, 2},
+   resourceTypes = {"steel", "metal_ferrous", "metal", "copper", "object/tangible/component/weapon/shared_vibro_unit.iff"},
+   resourceQuantities = {18, 8, 9, 5, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 11, 60, 4.2, 6, 750, -2, -2, 3, -2, 4, 12, 25, 12},
+   experimentalMax = {0, 0, 20, 111, 2.9, 12, 1500, 8, 8, 3, 8, 4, 2, 11, 2},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1982554682, -- Script: 'object/weapon/melee/knife/knife_vibroblade.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_knife_vibroblade, "object/draft_schematic/weapon/knife_vibroblade.iff")

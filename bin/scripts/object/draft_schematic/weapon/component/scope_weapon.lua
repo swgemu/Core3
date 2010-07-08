@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_weapon_component_shared_scope_weapon:new {
 
-}
+   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 14, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 60, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"scope_shell", "shock_proofing_and_gasket_seals", "scope_bracket", "light_accumulators", "targeting_aid_circuitry"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "petrochem_inert", "metal", "gemstone", "copper"},
+   resourceQuantities = {12, 6, 3, 4, 2},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "OQ", "XX", "XX", "OQ", "OQ", "OQ", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "exp_durability", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "woundchance", "hitpoints", "zerorangemod", "minrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 0, 10, 0, 0, 5, 15, 15, 15},
+   experimentalMax = {0, 0, 10, 100, 0, 0, 25, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 403078591, -- Script: 'object/tangible/component/weapon/scope_weapon.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_scope_weapon, "object/draft_schematic/weapon/component/scope_weapon.iff")

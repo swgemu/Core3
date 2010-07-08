@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food_shared_dessert_sweet_cake_mix:new {
 
-}
+   groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 100, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"fine_wheat", "berries", "sweetener"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"wheat_domesticated", "fruit_berries", "fruit_fruits"},
+   resourceQuantities = {15, 5, 5},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1684725977, -- Script: 'object/tangible/food/crafted/dessert_sweet_cake_mix.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_sweet_cake_mix, "object/draft_schematic/food/dessert_sweet_cake_mix.iff")

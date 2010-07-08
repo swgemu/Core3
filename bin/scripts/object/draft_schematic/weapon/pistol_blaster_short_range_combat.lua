@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat:new {
 
-}
+   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 150, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "scope"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 4},
+   resourceTypes = {"steel_neutronium", "iron_plumbum", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
+   resourceQuantities = {45, 20, 10, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "expRange", "null", "null", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 32, 70, 4.9, 9, 5, 750, 0, -80, 12, -20, 30, 47, 17},
+   experimentalMax = {0, 0, 59, 130, 3.8, 17, 20, 1500, 10, -80, 12, -20, 16, 25, 9},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1691705957, -- Script: 'object/weapon/ranged/pistol/pistol_srcombat.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_blaster_short_range_combat, "object/draft_schematic/weapon/pistol_blaster_short_range_combat.iff")

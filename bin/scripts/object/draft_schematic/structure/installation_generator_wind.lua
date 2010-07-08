@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_installation_generator_wind = object_draft_schematic_structure_shared_installation_generator_wind:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 10, 
+
+   xpType = "crafting_general", 
+   xp = 425, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "generator", "capacitance_tank"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
+   resourceQuantities = {145, 45, 40, 20, 10},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 2, 1},
+   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+   experimentalMin = {0, 0, 4, 25000, 1000},
+   experimentalMax = {0, 0, 10, 50000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3948268743, -- Script: 'object/tangible/deed/generator_deed/generator_wind_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_wind, "object/draft_schematic/structure/installation_generator_wind.iff")

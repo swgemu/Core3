@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_food_shared_dessert_smugglers_delight:new {
 
-}
+   groupName = "craftFoodDessertGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 160, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"dough", "bantha_butter", "filling_tubers", "succulent_fruit", "additive"},
+   ingredientSlotType = {2, 2, 0, 0, 4},
+   resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "vegetable_tubers", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
+   resourceQuantities = {1, 1, 20, 20, 1},
+   combineTypes = {1, 1, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 10, 10, 10},
+
+   tanoCRC = 2080884324, -- Script: 'object/tangible/food/crafted/dessert_smugglers_delight.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_smugglers_delight, "object/draft_schematic/food/dessert_smugglers_delight.iff")

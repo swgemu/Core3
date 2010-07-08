@@ -43,6 +43,35 @@
 
 object_draft_schematic_munition_component_warhead_chemical = object_draft_schematic_munition_component_shared_warhead_chemical:new {
 
-}
+   groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 160, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"warhead_module_casing", "chemical_containment", "containment_field_coil", "trigger_pulse_prism", "chemical_payload"},
+   ingredientSlotType = {0, 0, 0, 0, 4},
+   resourceTypes = {"petrochem_inert_polymer", "copper", "gemstone_armophous", "steel_thoranium", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {15, 25, 15, 25, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
+   experimentalMax = {0, 0, 20, 30, 0, 3, 1000, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1729827693, -- Script: 'object/tangible/component/munition/warhead_chemical.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_chemical, "object/draft_schematic/munition/component/warhead_chemical.iff")

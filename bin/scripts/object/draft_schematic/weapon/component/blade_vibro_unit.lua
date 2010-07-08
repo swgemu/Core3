@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_blade_vibro_unit = object_draft_schematic_weapon_component_shared_blade_vibro_unit:new {
 
-}
+   groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 70, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "weapon_enhancement"},
+   ingredientSlotType = {0, 0, 0, 4},
+   resourceTypes = {"steel", "fuel_petrochem_solid", "copper", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"},
+   resourceQuantities = {15, 10, 8, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
+   experimentalMax = {0, 0, 20, 30, -0.5, 10, 100, 10, 10, 10, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3824060600, -- Script: 'object/tangible/component/weapon/vibro_unit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_blade_vibro_unit, "object/draft_schematic/weapon/component/blade_vibro_unit.iff")

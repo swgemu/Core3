@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared_dessert_gorrnar:new {
 
-}
+   groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 200, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"berry_topping", "dough", "carbosyrup", "oats", "additive"},
+   ingredientSlotType = {0, 2, 2, 0, 4},
+   resourceTypes = {"fruit_berries", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "oats", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
+   resourceQuantities = {30, 1, 1, 20, 1},
+   combineTypes = {0, 1, 1, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
+   experimentalWeights = {1, 1, 4, 1, 1, 1, 1, 1, 2, 2, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 10, 10, 10},
+
+   tanoCRC = 281064494, -- Script: 'object/tangible/food/crafted/dessert_gorrnar.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_gorrnar, "object/draft_schematic/food/dessert_gorrnar.iff")

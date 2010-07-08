@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic_weapon_shared_lance_vibro_controller_fp:new {
 
-}
+   groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 5, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 100, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"staff_shaft", "vibro_unit_and_power_cell_brackets", "power_circuits", "vibration_generator"},
+   ingredientSlotType = {0, 0, 2, 2},
+   resourceTypes = {"metal_nonferrous", "metal", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/weapon/shared_vibro_unit.iff"},
+   resourceQuantities = {17, 27, 1, 1},
+   combineTypes = {0, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 7, 133, 7, 9, 750, 5, 5, 3, 5, 5, 26, 59, 29},
+   experimentalMax = {0, 0, 13, 247, 4, 18, 1500, 15, 15, 3, 15, 5, 14, 32, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3892633613, -- Script: 'object/weapon/melee/polearm/lance_controllerfp.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lance_vibro_controller_fp, "object/draft_schematic/weapon/lance_vibro_controller_fp.iff")

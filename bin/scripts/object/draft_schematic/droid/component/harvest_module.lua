@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_harvest_module = object_draft_schematic_droid_component_shared_harvest_module:new {
 
-}
+   groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 185, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "micro_harvesters"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"copper", "gas_inert", "steel"},
+   resourceQuantities = {50, 20, 55},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "harvest_power"},
+   experimentalMin = {0, 0, 5, 1000, -10, 5},
+   experimentalMax = {0, 0, 15, 1000, 15, 20},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1840155737, -- Script: 'object/tangible/component/droid/harvest_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_harvest_module, "object/draft_schematic/droid/component/harvest_module.iff")

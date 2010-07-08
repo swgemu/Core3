@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared_dish_thakitillo:new {
 
-}
+   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 350, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"greens", "fungi_spice", "water_base", "soft_wood_chutes", "additive"},
+   ingredientSlotType = {0, 0, 0, 0, 4},
+   resourceTypes = {"vegetable_greens", "vegetable_fungi", "water", "softwood", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
+   resourceQuantities = {25, 25, 20, 20, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0},
+
+   tanoCRC = 4057409963, -- Script: 'object/tangible/food/crafted/dish_thakitillo.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_thakitillo, "object/draft_schematic/food/dish_thakitillo.iff")

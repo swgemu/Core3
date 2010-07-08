@@ -43,6 +43,35 @@
 
 object_draft_schematic_scout_item_camp_basic = object_draft_schematic_scout_shared_item_camp_basic:new {
 
-}
+   groupName = "craftScoutCampGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 2, 
+   size = 1, 
+
+   xpType = "camp", 
+   xp = 30, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"shelter_canvas", "shelter_structure"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"hide", "bone"},
+   resourceQuantities = {10, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1632911215, -- Script: 'object/tangible/scout/camp/camp_basic.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_camp_basic, "object/draft_schematic/scout/item_camp_basic.iff")

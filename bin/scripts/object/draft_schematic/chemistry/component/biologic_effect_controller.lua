@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_biologic_effect_controller = object_draft_schematic_chemistry_component_shared_biologic_effect_controller:new {
 
-}
+   groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 2, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 35, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "inorganic"},
+   resourceQuantities = {6, 6},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 1, 1, 1000},
+   experimentalMax = {0, 0, 10, 10, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 2874741112, -- Script: 'object/tangible/component/chemistry/biologic_effect_controller.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_biologic_effect_controller, "object/draft_schematic/chemistry/component/biologic_effect_controller.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_shared_item_weapon_station:new {
 
-}
+   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 5, 
+
+   xpType = "crafting_structure_general", 
+   xp = 900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit", "micro_sensor_suite", "storage_compartment"},
+   ingredientSlotType = {0, 0, 4, 4, 4},
+   resourceTypes = {"metal", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_micro_sensor_suite.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
+   resourceQuantities = {400, 50, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 1000, -15},
+   experimentalMax = {0, 0, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 889081003, -- Script: 'object/tangible/crafting/station/weapon_station.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_weapon_station, "object/draft_schematic/item/item_weapon_station.iff")

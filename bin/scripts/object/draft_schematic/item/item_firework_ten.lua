@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_firework_ten = object_draft_schematic_item_shared_item_firework_ten:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 28, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"canister", "booster_charge", "burster_charge", "effect_generator"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"mineral", "chemical", "chemical", "gas"},
+   resourceQuantities = {6, 4, 2, 2},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
+   experimentalMin = {0, 0, 1000, 2},
+   experimentalMax = {0, 0, 1000, 10},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2255997197, -- Script: 'object/tangible/firework/firework_s10.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_firework_ten, "object/draft_schematic/item/item_firework_ten.iff")

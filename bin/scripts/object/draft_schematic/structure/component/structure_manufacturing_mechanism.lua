@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_manufacturing_mechanism = object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism:new {
 
-}
+   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 10, 
+
+   xpType = "crafting_structure_general", 
+   xp = 900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"sub_assembly_frame", "assembly_machinery", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator"},
+   ingredientSlotType = {0, 0, 0, 0, 2},
+   resourceTypes = {"steel", "metal_nonferrous", "chemical", "ore", "object/tangible/component/structure/shared_generator_turbine.iff"},
+   resourceQuantities = {150, 100, 100, 100, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 5000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2607616608, -- Script: 'object/tangible/component/structure/manufacturing_mechanism.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_manufacturing_mechanism, "object/draft_schematic/structure/component/structure_manufacturing_mechanism.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_shared_item_trap_webber:new {
 
-}
+   groupName = "craftScoutTrapGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 1, 
+
+   xpType = "trapping", 
+   xp = 70, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"device_housing", "device_systems", "webbing_fluid"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"bone", "metal", "petrochem_inert_polymer"},
+   resourceQuantities = {15, 7, 13},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1997784912, -- Script: 'object/tangible/scout/trap/trap_webber.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_trap_webber, "object/draft_schematic/scout/item_trap_webber.iff")

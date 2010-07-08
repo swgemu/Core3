@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_armor_module_6 = object_draft_schematic_droid_component_shared_armor_module_6:new {
 
-}
+   groupName = "craftdroiddefmodGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 32, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 250, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "armor_filler", "stress_resist_plate", "fracture_capture_medium", "reinforcement_layer"},
+   ingredientSlotType = {0, 0, 0, 0, 2},
+   resourceTypes = {"steel_duralloy", "metal_ferrous", "aluminum_linksteel", "fiberplast", "object/tangible/component/armor/shared_armor_segment_composite.iff"},
+   resourceQuantities = {70, 20, 25, 10, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "armor_toughness", "armor_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 600, 11},
+   experimentalMax = {0, 0, 15, 1000, 15, 1500, 13},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3331834860, -- Script: 'object/tangible/component/droid/armor_module_6.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_armor_module_6, "object/draft_schematic/droid/component/armor_module_6.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_cleaver = object_draft_schematic_weapon_shared_cleaver:new {
 
-}
+   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 120, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"iron_colat", "metal", "object/tangible/component/weapon/shared_sword_core.iff"},
+   resourceQuantities = {42, 18, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 35, 105, 5.3, 19, 750, -20, -20, 3, -20, 4, 49, 46, 26},
+   experimentalMax = {0, 0, 65, 195, 3.7, 35, 1500, -10, -10, 3, -10, 4, 27, 25, 14},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 237038605, -- Script: 'object/weapon/melee/2h_sword/2h_sword_cleaver.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_cleaver, "object/draft_schematic/weapon/cleaver.iff")

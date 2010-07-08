@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_personality_module_slang = object_draft_schematic_droid_component_shared_personality_module_slang:new {
 
-}
+   groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 40, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "thermal_shielding", "data_smart_indexer", "ancillary_heuristic_processor", "primary_phrase_database", "secondary_phrase_database"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0},
+   resourceTypes = {"copper", "ore_siliclastic", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/furniture/decorative/shared_corellian_flagpole.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {13, 6, 1, 1, 1, 1},
+   combineTypes = {0, 0, 1, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "personality_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 25},
+   experimentalMax = {0, 0, 15, 1000, 15, 25},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2116866934, -- Script: 'object/tangible/component/droid/personality_module_slang.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_personality_module_slang, "object/draft_schematic/droid/component/personality_module_slang.iff")

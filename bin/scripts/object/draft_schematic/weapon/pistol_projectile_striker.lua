@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic_weapon_shared_pistol_projectile_striker:new {
 
-}
+   groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 100, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "cartridge_feed_unit", "barrel", "scope"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 4},
+   resourceTypes = {"iron", "steel", "metal", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
+   resourceQuantities = {30, 15, 6, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 25, 47, 4.4, 7, 1, 750, -10, -70, 20, 5, 13, 34, 22},
+   experimentalMax = {0, 0, 46, 78, 3.1, 13, 5, 1500, -10, -70, 20, 15, 7, 18, 12},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2375243758, -- Script: 'object/weapon/ranged/pistol/pistol_striker.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_projectile_striker, "object/draft_schematic/weapon/pistol_projectile_striker.iff")

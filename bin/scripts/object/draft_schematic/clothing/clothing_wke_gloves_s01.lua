@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_wke_gloves_s01 = object_draft_schematic_clothing_shared_clothing_wke_gloves_s01:new {
 
-}
+   groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 2, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 100, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"shell", "liner", "grip_pads"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"fiberplast", "hide", "petrochem_inert"},
+   resourceQuantities = {10, 25, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 99810816, -- Script: 'object/tangible/wearables/wookiee/wke_gloves_s01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_wke_gloves_s01, "object/draft_schematic/clothing/clothing_wke_gloves_s01.iff")

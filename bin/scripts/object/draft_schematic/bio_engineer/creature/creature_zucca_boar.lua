@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_creature_creature_zucca_boar = object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar:new {
 
-}
+   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 140, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
+   ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
+   ingredientSlotType = {2, 2, 0},
+   resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "flora_food"},
+   resourceQuantities = {1, 45, 30},
+   combineTypes = {1, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1},
+   experimentalProperties = {"XX", "XX"},
+   experimentalWeights = {1, 1},
+   experimentalGroupTitles = {"null", "null"},
+   experimentalSubGroupTitles = {"null", "null"},
+   experimentalMin = {0, 0},
+   experimentalMax = {0, 0},
+   experimentalPrecision = {0, 0},
+
+   tanoCRC = 3873592423, -- Script: 'object/tangible/deed/pet_deed/zucca_boar_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_creature_zucca_boar, "object/draft_schematic/bio_engineer/creature/creature_zucca_boar.iff")

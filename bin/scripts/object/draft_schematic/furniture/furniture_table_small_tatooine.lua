@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_schematic_furniture_shared_furniture_table_small_tatooine:new {
 
-}
+   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 14, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 160, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"table_top", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"mineral", "metal"},
+   resourceQuantities = {40, 40},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3724040631, -- Script: 'object/tangible/furniture/tatooine/frn_tato_table_small_style_01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_small_tatooine, "object/draft_schematic/furniture/furniture_table_small_tatooine.iff")

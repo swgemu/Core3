@@ -43,6 +43,35 @@
 
 object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_scout_shared_item_trap_enraging_spur:new {
 
-}
+   groupName = "craftScoutTrapGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 4, 
+   size = 1, 
+
+   xpType = "trapping", 
+   xp = 16, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"spur_core", "spur_housing", "spur_spikes"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"bone", "hide", "bone"},
+   resourceQuantities = {2, 4, 2},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2897575624, -- Script: 'object/tangible/scout/trap/trap_enraging_spur.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_trap_enraging_spur, "object/draft_schematic/scout/item_trap_enraging_spur.iff")

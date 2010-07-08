@@ -43,6 +43,35 @@
 
 object_draft_schematic_munition_component_warhead_light = object_draft_schematic_munition_component_shared_warhead_light:new {
 
-}
+   groupName = "craftMunitionsGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 35, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"warhead_module_casing", "casing_brackets", "fuse_coupling", "reaction_medium"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"steel", "steel", "petrochem_inert_polymer", "gas_reactive"},
+   resourceQuantities = {6, 2, 1, 9},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "woundchance", "hitpoints"},
+   experimentalMin = {0, 0, 5, 80, 0, 1000},
+   experimentalMax = {0, 0, 30, 140, 3, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 647613120, -- Script: 'object/tangible/component/munition/warhead_light.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_light, "object/draft_schematic/munition/component/warhead_light.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_shared_rifle_lightning:new {
 
-}
+   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 24, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 380, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "conduction_mass", "pulse_insulator", "shock_buffer", "grip_assembly", "powerhandler", "barrel", "scope", "stock"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 2, 2, 4, 4},
+   resourceTypes = {"steel_cubirian", "iron_polonium", "metal", "copper", "ore_siliclastic", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
+   resourceQuantities = {65, 35, 15, 25, 45, 75, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "expRange", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 276, 592, 6.3, 8, 30, 750, -10, 30, -5, 43, 62, 36},
+   experimentalMax = {0, 0, 410, 730, 4.7, 16, 65, 1500, 20, 30, 15, 28, 38, 24},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 397924793, -- Script: 'object/weapon/ranged/rifle/rifle_lightning.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_lightning, "object/draft_schematic/weapon/rifle_lightning.iff")

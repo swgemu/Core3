@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_installation_generator_fusion = object_draft_schematic_structure_shared_installation_generator_fusion:new {
 
-}
+   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 12, 
+
+   xpType = "crafting_structure_general", 
+   xp = 3900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_frame", "body_shell_structure", "ore_extractor_mill", "structure_foundation", "pile_containment_shielding", "pile_containment_unit", "pile_containment_coolant", "matched_turbine_cluster", "capacitance_storage_compartments", "cell_manufacturing_mechanism"},
+   ingredientSlotType = {0, 0, 2, 0, 0, 2, 0, 2, 2, 2},
+   resourceTypes = {"steel", "metal", "object/tangible/component/structure/shared_ore_mining_unit.iff", "metal", "ore", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
+   resourceQuantities = {300, 700, 1, 250, 250, 1, 300, 1, 1, 1},
+   combineTypes = {0, 0, 1, 0, 0, 1, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "null", "expStorage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+   experimentalMin = {0, 0, 6, 100000, 1000},
+   experimentalMax = {0, 0, 12, 150000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 153768002, -- Script: 'object/tangible/deed/generator_deed/generator_fusion_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_fusion, "object/draft_schematic/structure/installation_generator_fusion.iff")

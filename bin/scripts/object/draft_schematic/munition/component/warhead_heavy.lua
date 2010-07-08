@@ -43,6 +43,35 @@
 
 object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic_munition_component_shared_warhead_heavy:new {
 
-}
+   groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 40, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 700, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"warhead_module_casing", "casing_brackets", "fuse_coupling", "reaction_medium", "reaction_mass", "exploder_carriage", "charge_neutralization_agent"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "petrochem_inert_polymer", "radioactive", "steel_thoranium", "gas_reactive_skevon", "gas_inert_hydron3"},
+   resourceQuantities = {160, 20, 10, 50, 40, 80, 10},
+   combineTypes = {0, 0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "woundchance", "hitpoints"},
+   experimentalMin = {0, 0, 10, 100, 0, 1000},
+   experimentalMax = {0, 0, 50, 200, 3, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3888248350, -- Script: 'object/tangible/component/munition/warhead_heavy.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_heavy, "object/draft_schematic/munition/component/warhead_heavy.iff")

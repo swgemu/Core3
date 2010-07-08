@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_schematic_chemistry_component_shared_solid_delivery_shell:new {
 
-}
+   groupName = "craftMedicineComponentGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 35, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"purified_organic_element", "shell_material_seed_matrix"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "metal"},
+   resourceQuantities = {8, 8},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 1, 0, 1000},
+   experimentalMax = {0, 0, 20, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3737748835, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_solid_delivery_shell, "object/draft_schematic/chemistry/component/solid_delivery_shell.iff")

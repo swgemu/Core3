@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_wound_quickness_a = object_draft_schematic_chemistry_shared_medpack_wound_quickness_a:new {
 
-}
+   groupName = "craftMedpackBGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 30, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "inorganic"},
+   resourceQuantities = {8, 8},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 15, 10, 5, 1000},
+   experimentalMax = {0, 0, 20, 20, 5, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4277308404, -- Script: 'object/tangible/medicine/crafted/medpack_wound_quickness_a.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_wound_quickness_a, "object/draft_schematic/chemistry/medpack_wound_quickness_a.iff")

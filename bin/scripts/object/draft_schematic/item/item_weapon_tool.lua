@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_weapon_tool = object_draft_schematic_item_shared_item_weapon_tool:new {
 
-}
+   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 65, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "mineral", "chemical"},
+   resourceQuantities = {16, 8, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 1000, -15},
+   experimentalMax = {0, 0, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1777192720, -- Script: 'object/tangible/crafting/station/weapon_tool.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_weapon_tool, "object/draft_schematic/item/item_weapon_tool.iff")

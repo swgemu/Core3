@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_combat_module = object_draft_schematic_droid_component_shared_combat_module:new {
 
-}
+   groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 85, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "charge_suppression", "weapon_actuators", "targeting_expert_system"},
+   ingredientSlotType = {0, 0, 0, 2},
+   resourceTypes = {"metal", "gas_inert", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff"},
+   resourceQuantities = {5, 2, 35, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "cmbt_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 1},
+   experimentalMax = {0, 0, 15, 1000, 15, 110},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 946727014, -- Script: 'object/tangible/component/droid/combat_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_combat_module, "object/draft_schematic/droid/component/combat_module.iff")

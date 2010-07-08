@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_chassis_droid_r4 = object_draft_schematic_droid_component_shared_chassis_droid_r4:new {
 
-}
+   groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 8, 
+
+   xpType = "crafting_droid_general", 
+   xp = 260, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "body_shell", "leg_struts", "intellex_vi_computer", "manipulator_arm", "motivator", "sensor_suite"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2, 2},
+   resourceTypes = {"metal_ferrous", "chemical", "steel", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
+   resourceQuantities = {30, 60, 40, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "null", "null", "exp_quality", "exp_effectiveness", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "armoreffectiveness", "armorintegrity", "armorencumbrance", "mechanism_quality", "power_level", "storage_module", "data_module", "personality_module", "medical_module", "repair_module", "armor_module"},
+   experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 15, 0, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 484121242, -- Script: 'object/tangible/component/droid/r4_droid_chassis.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_chassis_droid_r4, "object/draft_schematic/droid/component/chassis_droid_r4.iff")

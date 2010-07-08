@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_wall_module = object_draft_schematic_structure_component_shared_wall_module:new {
 
-}
+   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 6, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1000, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_truss", "section_joints", "wall_foundation", "structure_modules"},
+   ingredientSlotType = {0, 0, 0, 2},
+   resourceTypes = {"metal", "metal", "ore", "object/tangible/component/structure/shared_structural_module.iff"},
+   resourceQuantities = {200, 100, 200, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 200},
+   experimentalMax = {0, 0, 500},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1742616016, -- Script: 'object/tangible/component/structure/wall_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_wall_module, "object/draft_schematic/structure/component/wall_module.iff")

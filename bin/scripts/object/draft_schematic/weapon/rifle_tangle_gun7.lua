@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_shared_rifle_tangle_gun7:new {
 
-}
+   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 170, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "targeting_assist", "cartridge_feed_unit", "firing_mechanism"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2},
+   resourceTypes = {"copper_codoan", "metal_nonferrous", "metal", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"},
+   resourceQuantities = {55, 20, 7, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "expRange", "null", "null", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 32, 51, 4.8, 2, 1, 750, -5, -80, 10, -10, 16, 33, 26},
+   experimentalMax = {0, 0, 50, 72, 3.3, 4, 8, 1500, 5, -80, 10, -10, 8, 18, 14},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3357582048, -- Script: 'object/weapon/ranged/pistol/pistol_tangle.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_tangle_gun7, "object/draft_schematic/weapon/rifle_tangle_gun7.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_vehicle_civilian_speeder_bike_swoop = object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop:new {
 
-}
+   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 1600, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
+   ingredientTitleNames = {"vehicle_body", "structural_frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal_nonferrous", "metal_ferrous"},
+   resourceQuantities = {1600, 6400},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 2500},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3042543754, -- Script: 'object/tangible/deed/vehicle_deed/speederbike_swoop_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_speeder_bike_swoop, "object/draft_schematic/vehicle/civilian/speeder_bike_swoop.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_droid_component_shared_merchant_barker:new {
 
-}
+   groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 170, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "voice_modulator"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"copper", "gas_inert", "aluminum"},
+   resourceQuantities = {50, 20, 40},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
+   experimentalMin = {0, 0, 5, 1000, -10},
+   experimentalMax = {0, 0, 15, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3461912486, -- Script: 'object/tangible/component/droid/merchant_barker.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_merchant_barker, "object/draft_schematic/droid/component/merchant_barker.iff")

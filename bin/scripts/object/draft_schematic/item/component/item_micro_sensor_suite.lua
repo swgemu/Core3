@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_schematic_item_component_shared_item_micro_sensor_suite:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 5, 
+
+   xpType = "crafting_general", 
+   xp = 80, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "assembly_frame", "thermal_shielding", "thermal_and_contaminant_shield", "micro_transciever_net", "base_pre_processing_unit", "primary_array_processing_and_control_unit", "sensor_array_wiring_harness"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 4},
+   resourceTypes = {"steel", "metal", "ore", "gas_inert", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
+   resourceQuantities = {10, 6, 3, 15, 3, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "UT", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -5},
+   experimentalMax = {0, 0, 150, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3778626740, -- Script: 'object/tangible/component/item/micro_sensor_suite.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_micro_sensor_suite, "object/draft_schematic/item/component/item_micro_sensor_suite.iff")

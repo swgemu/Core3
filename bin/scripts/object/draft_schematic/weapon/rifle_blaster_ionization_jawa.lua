@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa:new {
 
-}
+   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 230, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"stock", "receiver_assembly", "grip_assembly", "powerhandler", "barrel"},
+   ingredientSlotType = {0, 0, 0, 2, 2},
+   resourceTypes = {"copper_mythra", "iron_doonium", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"},
+   resourceQuantities = {60, 35, 10, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 56, 105, 8.5, 3, 15, 750, -50, -80, 40, -5, 16, 33, 52},
+   experimentalMax = {0, 0, 104, 195, 5.9, 5, 55, 1500, -50, -80, 40, 5, 8, 18, 28},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3691078044, -- Script: 'object/weapon/ranged/rifle/rifle_jawa_ion.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_blaster_ionization_jawa, "object/draft_schematic/weapon/rifle_blaster_ionization_jawa.iff")

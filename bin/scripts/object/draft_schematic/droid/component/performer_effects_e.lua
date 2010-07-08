@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_performer_effects_e = object_draft_schematic_droid_component_shared_performer_effects_e:new {
 
-}
+   groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 195, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "light_crystals"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"steel", "gas_inert", "gemstone_crystalline"},
+   resourceQuantities = {40, 20, 70},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "entertainer_effects"},
+   experimentalMin = {0, 0, 5, 1000, -10, 10000},
+   experimentalMax = {0, 0, 15, 1000, 15, 10000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 570149890, -- Script: 'object/tangible/component/droid/performer_effects_e.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_performer_effects_e, "object/draft_schematic/droid/component/performer_effects_e.iff")

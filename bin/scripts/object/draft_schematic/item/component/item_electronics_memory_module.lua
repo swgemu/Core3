@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_component_item_electronics_memory_module = object_draft_schematic_item_component_shared_item_electronics_memory_module:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"module_brackets", "mechanism_stabilization_and_insulation_material", "data_lattice_sheath", "data_storage_lattice", "thermal_and_contaminant_shield"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "gas_inert"},
+   resourceQuantities = {8, 5, 2, 3, 2},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -5},
+   experimentalMax = {0, 0, 150, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 270787698, -- Script: 'object/tangible/component/item/electronics_memory_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_electronics_memory_module, "object/draft_schematic/item/component/item_electronics_memory_module.iff")

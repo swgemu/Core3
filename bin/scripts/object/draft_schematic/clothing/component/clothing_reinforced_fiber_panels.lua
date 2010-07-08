@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels:new {
 
-}
+   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 75, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "binding", "padding", "reinforcement", "enhancement"},
+   ingredientSlotType = {0, 0, 0, 0, 4},
+   resourceTypes = {"fiberplast", "petrochem_inert", "fiberplast", "metal", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"},
+   resourceQuantities = {5, 5, 15, 5, 1},
+   combineTypes = {0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two", "mod_idx_three", "mod_val_three", "mod_idx_four", "mod_val_four", "mod_idx_five", "mod_val_five", "mod_idx_six", "mod_val_six"},
+   experimentalMin = {0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1726701612, -- Script: 'object/tangible/component/clothing/reinforced_fiber_panels.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/clothing_reinforced_fiber_panels.iff")

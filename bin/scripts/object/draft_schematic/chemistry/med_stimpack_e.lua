@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_med_stimpack_e = object_draft_schematic_chemistry_shared_med_stimpack_e:new {
 
-}
+   groupName = "craftMedicineStimpackGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 32, 
+   size = 1, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 80, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 2, 2, 2},
+   resourceTypes = {"fruit_berries", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {24, 16, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 200, 30, 35, 1000},
+   experimentalMax = {0, 0, 1000, 60, 50, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3183832625, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_e.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_e, "object/draft_schematic/chemistry/med_stimpack_e.iff")

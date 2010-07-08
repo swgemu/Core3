@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_component_container_large_glass = object_draft_schematic_food_component_shared_container_large_glass:new {
 
-}
+   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 200, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n"},
+   ingredientTitleNames = {"crystal"},
+   ingredientSlotType = {0},
+   resourceTypes = {"gemstone"},
+   resourceQuantities = {100},
+   combineTypes = {0},
+   contribution = {100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
+   experimentalMin = {0, 0, 2},
+   experimentalMax = {0, 0, 2},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1167030670, -- Script: 'object/tangible/component/food/container_large_glass.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_large_glass, "object/draft_schematic/food/component/container_large_glass.iff")

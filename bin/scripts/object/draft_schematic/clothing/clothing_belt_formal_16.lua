@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_belt_formal_16 = object_draft_schematic_clothing_shared_clothing_belt_formal_16:new {
 
-}
+   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 3, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 80, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"shell", "binding_and_reinforcement", "hardware"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"hide", "petrochem_inert", "fiberplast"},
+   resourceQuantities = {20, 10, 5},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1903547687, -- Script: 'object/tangible/wearables/belt/belt_s16.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_belt_formal_16, "object/draft_schematic/clothing/clothing_belt_formal_16.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_soypro = object_draft_schematic_food_shared_dish_soypro:new {
 
-}
+   groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 80, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"cereal_concentrate", "vegetable_mash"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"cereal", "vegetable"},
+   resourceQuantities = {10, 10},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 13953380, -- Script: 'object/tangible/food/crafted/dish_soypro.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_soypro, "object/draft_schematic/food/dish_soypro.iff")
