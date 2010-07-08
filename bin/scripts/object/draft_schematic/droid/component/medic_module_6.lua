@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_droid_component_shared_medic_module_6:new {
 
-}
+   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 90, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "med_assist_module", "medical_database"},
+   ingredientSlotType = {0, 0, 2, 2},
+   resourceTypes = {"aluminum_duralumin", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {25, 20, 1, 1},
+   combineTypes = {0, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "medical_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 11},
+   experimentalMax = {0, 0, 15, 1000, 15, 13},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1990035908, -- Script: 'object/tangible/component/droid/medic_module_6.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_medic_module_6, "object/draft_schematic/droid/component/medic_module_6.iff")

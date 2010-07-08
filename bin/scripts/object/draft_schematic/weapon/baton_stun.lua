@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_baton_stun:new {
 
-}
+   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 110, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"grip_unit", "conductive_strike_face", "power_cell_brackets", "charge_accumulator", "shock_pulsor", "reinforcement_core"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 2},
+   resourceTypes = {"petrochem_inert_polymer", "steel", "metal", "crystalline_byrothsis", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
+   resourceQuantities = {18, 18, 10, 6, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 28, 53, 4.2, 1, 750, -5, -5, 2, -5, 4, 10, 45, 39},
+   experimentalMax = {0, 0, 52, 98, 2.9, 3, 1500, 5, 5, 2, 5, 4, 4, 24, 19},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 257663710, -- Script: 'object/weapon/melee/baton/baton_stun.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_baton_stun, "object/draft_schematic/weapon/baton_stun.iff")

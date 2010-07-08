@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_creature_creature_angler = object_draft_schematic_bio_engineer_creature_shared_creature_angler:new {
 
-}
+   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   complexity = 28, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 240, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
+   ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
+   ingredientSlotType = {2, 0, 0},
+   resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "flora_food"},
+   resourceQuantities = {1, 60, 65},
+   combineTypes = {1, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1},
+   experimentalProperties = {"XX", "XX"},
+   experimentalWeights = {1, 1},
+   experimentalGroupTitles = {"null", "null"},
+   experimentalSubGroupTitles = {"null", "null"},
+   experimentalMin = {0, 0},
+   experimentalMax = {0, 0},
+   experimentalPrecision = {0, 0},
+
+   tanoCRC = 1282130191, -- Script: 'object/tangible/deed/pet_deed/angler_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_creature_angler, "object/draft_schematic/bio_engineer/creature/creature_angler.iff")

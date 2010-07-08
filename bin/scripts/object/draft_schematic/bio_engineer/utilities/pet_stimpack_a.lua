@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_utilities_pet_stimpack_a = object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a:new {
 
-}
+   groupName = "craftBasicTissueGroup", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 3, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 75, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 2, 2, 2},
+   resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {20, 16, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "decayrate", "hitpoints"},
+   experimentalMin = {0, 0, 100, 10, 15, 1000},
+   experimentalMax = {0, 0, 500, 15, 15, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 38436739, -- Script: 'object/tangible/medicine/pet/pet_stimpack_a.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_pet_stimpack_a, "object/draft_schematic/bio_engineer/utilities/pet_stimpack_a.iff")

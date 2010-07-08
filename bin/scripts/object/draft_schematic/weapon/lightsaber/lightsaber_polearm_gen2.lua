@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2 = object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2:new {
 
-}
+   groupName = "craftSaberPoleArm2", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 1, 
+
+   xpType = "jedi_general", 
+   xp = 0, 
+
+   assemblySkill = "jedi_saber_assembly", 
+   experimentingSkill = "jedi_saber_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"emitter_shroud", "primary_crystal", "activator", "handgrip", "focusing_crystals", "power_field_insulator", "energizers"},
+   ingredientSlotType = {0, 2, 0, 0, 2, 0, 0},
+   resourceTypes = {"metal", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "metal_nonferrous", "petrochem_inert", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "gas_inert_known", "metal_nonferrous"},
+   resourceQuantities = {30, 1, 42, 20, 1, 42, 42},
+   combineTypes = {0, 1, 0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
+   experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 125, 215, 5.1, 13, 24, 47, 55, 25},
+   experimentalMax = {0, 0, 145, 255, 4.8, 25, 28, 32, 40, 20},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 774140657, -- Script: 'object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen2.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2, "object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen2.iff")

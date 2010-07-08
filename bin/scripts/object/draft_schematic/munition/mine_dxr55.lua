@@ -43,6 +43,35 @@
 
 object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_shared_mine_dxr55:new {
 
-}
+   groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 35, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 4},
+   resourceTypes = {"metal", "petrochem_inert_polymer", "ore_carbonate", "steel_thoranium", "ore_siliclastic_crism", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/munition/shared_warhead_stabilizer.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"},
+   resourceQuantities = {10, 1, 2, 15, 3, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints"},
+   experimentalMin = {0, 0, 35, 105, 5, 7, 1000},
+   experimentalMax = {0, 0, 65, 195, 3, 13, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4243010094, -- Script: 'object/weapon/mine/wp_mine_drx55.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_munition_mine_dxr55, "object/draft_schematic/munition/mine_dxr55.iff")

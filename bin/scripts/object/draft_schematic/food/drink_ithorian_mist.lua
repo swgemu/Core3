@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_shared_drink_ithorian_mist:new {
 
-}
+   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 240, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"water", "alcohol_mixer", "alcohol", "glass", "additive"},
+   ingredientSlotType = {0, 0, 2, 2, 4},
+   resourceTypes = {"water", "wheat", "object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
+   resourceQuantities = {20, 40, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
+   experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
+   experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
+   experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 0},
+
+   tanoCRC = 1468700561, -- Script: 'object/tangible/food/crafted/drink_ithorian_mist.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_ithorian_mist, "object/draft_schematic/food/drink_ithorian_mist.iff")

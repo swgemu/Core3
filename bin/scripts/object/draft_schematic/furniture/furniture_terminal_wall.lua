@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_terminal_wall = object_draft_schematic_furniture_shared_furniture_terminal_wall:new {
 
-}
+   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 39, 
+   size = 4, 
+
+   xpType = "crafting_structure_general", 
+   xp = 160, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_truss", "memory_module", "processing_module"},
+   ingredientSlotType = {0, 2, 2},
+   resourceTypes = {"metal_nonferrous", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {80, 1, 1},
+   combineTypes = {0, 1, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1877255305, -- Script: 'object/tangible/furniture/all/frn_all_data_terminal_wall_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_terminal_wall, "object/draft_schematic/furniture/furniture_terminal_wall.iff")

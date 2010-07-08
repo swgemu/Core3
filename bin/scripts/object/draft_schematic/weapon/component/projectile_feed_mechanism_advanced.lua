@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_projectile_feed_mechanism_advanced = object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advanced:new {
 
-}
+   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 35, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"cartridge_feed_mechanisme", "feed_tray_and_frame", "weapon_enhancement"},
+   ingredientSlotType = {0, 0, 4},
+   resourceTypes = {"steel_quadranium", "iron_axidite", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"},
+   resourceQuantities = {20, 12, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "hitpoints"},
+   experimentalMin = {0, 0, 1, 1, 0, 10},
+   experimentalMax = {0, 0, 25, 50, -0.5, 100},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0},
+
+   tanoCRC = 590597969, -- Script: 'object/tangible/component/weapon/projectile_feed_mechanism_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_projectile_feed_mechanism_advanced, "object/draft_schematic/weapon/component/projectile_feed_mechanism_advanced.iff")

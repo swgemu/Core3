@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared_staff_metal:new {
 
-}
+   groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 84, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"staff_shaft", "flex_core", "balance_tabs", "impact_face"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "mineral", "metal"},
+   resourceQuantities = {15, 10, 14, 3},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "XX", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 56, 95, 6, 7, 750, -5, -5, 3, -5, 5, 9, 66, 39},
+   experimentalMax = {0, 0, 90, 143, 4.2, 7, 1500, 5, 5, 3, 5, 5, 4, 36, 21},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3821153504, -- Script: 'object/weapon/melee/polearm/lance_staff_metal.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_staff_metal, "object/draft_schematic/weapon/staff_metal.iff")

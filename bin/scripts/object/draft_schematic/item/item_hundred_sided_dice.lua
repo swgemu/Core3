@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_hundred_sided_dice = object_draft_schematic_item_shared_item_hundred_sided_dice:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 4, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 24, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"cube_core", "hardened_shell"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "petrochem_inert"},
+   resourceQuantities = {6, 6},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 1000, -15},
+   experimentalMax = {0, 0, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 860225641, -- Script: 'object/tangible/dice/eqp_one_hundred_sided_dice_set.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_hundred_sided_dice, "object/draft_schematic/item/item_hundred_sided_dice.iff")

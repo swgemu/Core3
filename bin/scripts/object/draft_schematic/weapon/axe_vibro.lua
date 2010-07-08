@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_axe_vibro:new {
 
-}
+   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 120, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"vibro_unit_and_power_cell_brackets", "axe_base", "vibration_generator"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"steel_ditanium", "copper", "object/tangible/component/weapon/shared_vibro_unit.iff"},
+   resourceQuantities = {38, 24, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 53, 123, 6.5, 6, 750, -26, -26, 3, -26, 4, 85, 52, 20},
+   experimentalMax = {0, 0, 98, 228, 4.5, 14, 1500, -14, -14, 3, -14, 4, 46, 28, 11},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 589649861, -- Script: 'object/weapon/melee/axe/axe_vibroaxe.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_axe_vibro, "object/draft_schematic/weapon/axe_vibro.iff")

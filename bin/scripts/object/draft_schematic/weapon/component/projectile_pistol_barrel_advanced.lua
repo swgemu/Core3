@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced = object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced:new {
 
-}
+   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 4, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 50, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"lining", "bore"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel_duralloy", "iron_plumbum"},
+   resourceQuantities = {29, 17},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "XX", "XX", "XX", "HR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "null", "null", "null", "expRange"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "minrangemod", "midrangemod"},
+   experimentalMin = {0, 0, 1, 1, -0.5, 0, 10, 0, 0, 0, 0},
+   experimentalMax = {0, 0, 25, 25, -1.2, 10, 100, 0, 0, 0, 25},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2132239519, -- Script: 'object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced, "object/draft_schematic/weapon/component/projectile_pistol_barrel_advanced.iff")

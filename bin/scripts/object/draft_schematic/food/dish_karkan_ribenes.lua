@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_karkan_ribenes = object_draft_schematic_food_shared_dish_karkan_ribenes:new {
 
-}
+   groupName = "craftFoodDishGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 200, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"artificial_ribenes_meat", "seasoning", "spit", "additive"},
+   ingredientSlotType = {2, 0, 0, 4},
+   resourceTypes = {"object/tangible/food/crafted/shared_dish_soypro.iff", "organic", "wood", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
+   resourceQuantities = {1, 35, 15, 1},
+   combineTypes = {1, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 10, 10, 10},
+
+   tanoCRC = 3972167412, -- Script: 'object/tangible/food/crafted/dish_karkan_ribenes.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_karkan_ribenes, "object/draft_schematic/food/dish_karkan_ribenes.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_drink_alcohol:new {
 
-}
+   groupName = "craftFoodNoviceGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 40, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n"},
+   ingredientTitleNames = {"mash"},
+   ingredientSlotType = {0},
+   resourceTypes = {"cereal"},
+   resourceQuantities = {10},
+   combineTypes = {0},
+   contribution = {100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "stomach"},
+   experimentalMin = {0, 0, 1000, 0, 1},
+   experimentalMax = {0, 0, 1000, 0, 1},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 181145794, -- Script: 'object/tangible/food/crafted/drink_alcohol.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_alcohol, "object/draft_schematic/food/drink_alcohol.iff")

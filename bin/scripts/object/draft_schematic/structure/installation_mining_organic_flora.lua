@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_installation_mining_organic_flora = object_draft_schematic_structure_shared_installation_mining_organic_flora:new {
 
-}
+   groupName = "craftInstallationGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 8, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "plant_handling_mechanism", "bio_storage_tank", "boreing_mechanism_buffers_and_bushings", "power_supply_unit", "bio_storage_unit", "resource_handling_system"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 2, 2},
+   resourceTypes = {"steel", "metal", "ore", "metal", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_heavy_harvesting_mechanism.iff"},
+   resourceQuantities = {200, 300, 150, 100, 1, 200, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 2, 1},
+   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+   experimentalMin = {0, 0, 2, 50000, 1000},
+   experimentalMax = {0, 0, 6, 75000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 2906486018, -- Script: 'object/tangible/deed/harvester_deed/harvester_flora_deed_medium.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_organic_flora, "object/draft_schematic/structure/installation_mining_organic_flora.iff")

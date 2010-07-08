@@ -43,6 +43,35 @@
 
 object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_instrument_shared_instrument_kloo_horn:new {
 
-}
+   groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "music", 
+   xp = 110, 
+
+   assemblySkill = "instrument_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "valving"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"wood", "metal"},
+   resourceQuantities = {40, 15},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3599959175, -- Script: 'object/tangible/instrument/kloo_horn.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_kloo_horn, "object/draft_schematic/instrument/instrument_kloo_horn.iff")

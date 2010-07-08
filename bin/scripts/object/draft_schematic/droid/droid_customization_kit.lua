@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_droid_shared_droid_customization_kit:new {
 
-}
+   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 40, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "mineral", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
+   resourceQuantities = {16, 6, 3, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "charges"},
+   experimentalMin = {0, 0, 5, 1000, 1},
+   experimentalMax = {0, 0, 15, 1000, 10},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3780648213, -- Script: 'object/tangible/item/droid_customization.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_customization_kit, "object/draft_schematic/droid/droid_customization_kit.iff")

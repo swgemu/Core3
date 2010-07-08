@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_rations = object_draft_schematic_food_shared_dish_rations:new {
 
-}
+   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 50, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"protein_source", "fruit_additive", "preservative_wrap", "additive"},
+   ingredientSlotType = {0, 0, 0, 4},
+   resourceTypes = {"meat", "fruit", "hide", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {15, 5, 5, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 993643963, -- Script: 'object/tangible/food/crafted/dish_rations.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_rations, "object/draft_schematic/food/dish_rations.iff")

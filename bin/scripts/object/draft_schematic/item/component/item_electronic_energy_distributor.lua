@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_component_item_electronic_energy_distributor = object_draft_schematic_item_component_shared_item_electronic_energy_distributor:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 3, 
+
+   xpType = "crafting_general", 
+   xp = 55, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_frame", "charge_neutralization_barrier", "module_brackets", "micro_switching_mechanism_contacts", "switching_and_routing_mechanism", "thermal_barrier"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "gas_inert", "steel", "metal", "petrochem_inert_polymer", "ore"},
+   resourceQuantities = {12, 4, 4, 2, 2, 3},
+   combineTypes = {0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -5},
+   experimentalMax = {0, 0, 150, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 178069991, -- Script: 'object/tangible/component/item/electronic_energy_distributor.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_electronic_energy_distributor, "object/draft_schematic/item/component/item_electronic_energy_distributor.iff")

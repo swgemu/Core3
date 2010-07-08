@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_plants_potted_large = object_draft_schematic_furniture_shared_furniture_plants_potted_large:new {
 
-}
+   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 160, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"pot", "tree", "greenery"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"mineral", "wood", "chemical"},
+   resourceQuantities = {30, 30, 20},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2514690538, -- Script: 'object/tangible/furniture/all/frn_all_plant_potted_lg_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_plants_potted_large, "object/draft_schematic/furniture/furniture_plants_potted_large.iff")

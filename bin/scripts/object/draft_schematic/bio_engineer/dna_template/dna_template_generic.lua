@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic:new {
 
-}
+   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8192, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 50, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
+   ingredientTitleNames = {"physique_profile", "prowess_profile", "mental_profile", "psychological_profile", "aggression_profile"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff"},
+   resourceQuantities = {1, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "CR", "CD", "DR", "HR", "FL", "MA", "PE", "OQ", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expPhysiqueProfile", "expPhysiqueProfile", "expProwessProfile", "expProwessProfile", "expMentalProfile", "expMentalProfile", "expPsychologicalProfile", "expPsychologicalProfile", "expAggressionProfile", "expAggressionProfile"},
+   experimentalSubGroupTitles = {"null", "null", "hardiness", "fortitude", "dexterity", "endurance", "intellect", "cleverness", "dependability", "courage", "fierceness", "power"},
+   experimentalMin = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalMax = {0, 0, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3537593180, -- Script: 'object/tangible/component/dna/dna_template_generic.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_dna_template_generic, "object/draft_schematic/bio_engineer/dna_template/dna_template_generic.iff")

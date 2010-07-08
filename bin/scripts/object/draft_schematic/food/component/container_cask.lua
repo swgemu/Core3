@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_component_container_cask = object_draft_schematic_food_component_shared_container_cask:new {
 
-}
+   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 450, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"crystal", "cask_trim"},
+   ingredientSlotType = {0, 2},
+   resourceTypes = {"gemstone_crystalline", "object/tangible/component/clothing/shared_trim.iff"},
+   resourceQuantities = {150, 1},
+   combineTypes = {0, 1},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
+   experimentalMin = {0, 0, 4},
+   experimentalMax = {0, 0, 4},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3552621287, -- Script: 'object/tangible/component/food/container_cask.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_cask, "object/draft_schematic/food/component/container_cask.iff")

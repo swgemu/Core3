@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_schematic_droid_component_shared_capacitor_high_discharge:new {
 
-}
+   groupName = "craftDroidRepairCompB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 100, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"conductive_surface", "core_plates", "resistor_material"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"aluminum_agrinium", "fuel_petrochem_solid_known", "ore_extrusive_pholokite"},
+   resourceQuantities = {10, 10, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "energy", "hitpoints"},
+   experimentalMin = {0, 0, 30, 1000},
+   experimentalMax = {0, 0, 150, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2701467545, -- Script: 'object/tangible/component/droid/repair/capacitor_high_discharge.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_capacitor_high_discharge, "object/draft_schematic/droid/component/capacitor_high_discharge.iff")

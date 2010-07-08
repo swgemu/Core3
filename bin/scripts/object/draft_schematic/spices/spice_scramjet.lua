@@ -43,6 +43,35 @@
 
 object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_shared_spice_scramjet:new {
 
-}
+   groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_spice", 
+   xp = 80, 
+
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"protein_base", "reactant_additive"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"meat", "gas_reactive"},
+   resourceQuantities = {10, 10},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 3},
+   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+   experimentalWeights = {1, 1, 4, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1577598037, -- Script: 'object/tangible/food/spice/spice_scramjet.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_scramjet, "object/draft_schematic/spices/spice_scramjet.iff")

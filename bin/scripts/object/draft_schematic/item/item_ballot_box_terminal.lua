@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_item_shared_item_ballot_box_terminal:new {
 
-}
+   groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 60, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"terminal_stand_mount", "terminal_stand_base", "basic_logic_unit", "basic_data_unit", "electronics_casing", "interface_pad", "power_unit"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
+   resourceTypes = {"mineral", "chemical", "metal", "chemical", "steel", "chemical", "copper"},
+   resourceQuantities = {8, 4, 2, 6, 5, 5, 5},
+   combineTypes = {0, 0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 1000, -15},
+   experimentalMax = {0, 0, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2743027205, -- Script: 'object/tangible/terminal/terminal_ballot_box.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_ballot_box_terminal, "object/draft_schematic/item/item_ballot_box_terminal.iff")

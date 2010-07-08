@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_city_garden_large = object_draft_schematic_structure_city_shared_garden_large:new {
 
-}
+   groupName = "craftPlayerCityD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 12, 
+
+   xpType = "crafting_structure_general", 
+   xp = 9000, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"flora_resources", "ore", "object/tangible/component/structure/shared_wall_module.iff"},
+   resourceQuantities = {5000, 2000, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 35000},
+   experimentalMax = {0, 0, 75000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2617432418, -- Script: 'object/tangible/deed/city_deed/garden_corellia_lrg_01_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_garden_large, "object/draft_schematic/structure/city/garden_large.iff")

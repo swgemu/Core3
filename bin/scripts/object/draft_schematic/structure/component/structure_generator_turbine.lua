@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_generator_turbine = object_draft_schematic_structure_component_shared_structure_generator_turbine:new {
 
-}
+   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 16, 
+   size = 8, 
+
+   xpType = "crafting_structure_general", 
+   xp = 2900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"energy_gathering_array", "turbine_cradle", "magnetic_reaction_mass", "cradle_fittings", "charge_leakage_insulation_material", "turbine_rotor", "reaction_mass"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
+   resourceTypes = {"copper", "steel", "ore_carbonate", "metal_nonferrous", "chemical", "aluminum", "gas_reactive"},
+   resourceQuantities = {250, 50, 250, 150, 50, 500, 200},
+   combineTypes = {0, 0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 5000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3265938450, -- Script: 'object/tangible/component/structure/generator_turbine.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_generator_turbine, "object/draft_schematic/structure/component/structure_generator_turbine.iff")

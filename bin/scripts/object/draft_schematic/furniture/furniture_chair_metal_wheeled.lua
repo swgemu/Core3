@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_schematic_furniture_shared_furniture_chair_metal_wheeled:new {
 
-}
+   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 320, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "seat", "roller_mechanism"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "steel"},
+   resourceQuantities = {100, 45, 15},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1461870291, -- Script: 'object/tangible/furniture/all/frn_all_chair_meatal_wheeled_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_metal_wheeled, "object/draft_schematic/furniture/furniture_chair_metal_wheeled.iff")

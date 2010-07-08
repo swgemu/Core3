@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schematic_furniture_city_shared_furniture_streetlamp:new {
 
-}
+   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 570, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "light_housing", "lighting_module"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"metal", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
+   resourceQuantities = {200, 100, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 206484018, -- Script: 'object/tangible/furniture/city/streetlamp_large_01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_streetlamp, "object/draft_schematic/furniture/city/furniture_streetlamp.iff")

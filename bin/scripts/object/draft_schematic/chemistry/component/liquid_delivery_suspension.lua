@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_liquid_delivery_suspension = object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension:new {
 
-}
+   groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 2, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 35, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"purified_organic_suspension", "suspension_base"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "water"},
+   resourceQuantities = {6, 6},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 5, 0, 1000},
+   experimentalMax = {0, 0, 60, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3216390038, -- Script: 'object/tangible/component/chemistry/liquid_delivery_suspension.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_liquid_delivery_suspension, "object/draft_schematic/chemistry/component/liquid_delivery_suspension.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_ith_pants_casual_17 = object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17:new {
 
-}
+   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 3, 
+
+   xpType = "crafting_general", 
+   xp = 60, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "liner"},
+   ingredientSlotType = {0, 0, 2, 2},
+   resourceTypes = {"fiberplast", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
+   resourceQuantities = {20, 10, 1, 1},
+   combineTypes = {0, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1336684309, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s17.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_pants_casual_17, "object/draft_schematic/clothing/clothing_ith_pants_casual_17.iff")

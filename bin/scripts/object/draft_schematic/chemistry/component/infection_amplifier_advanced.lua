@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_infection_amplifier_advanced = object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced:new {
 
-}
+   groupName = "craftMedicineComponentGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 115, 
+
+   assemblySkill = "combat_medicine_assembly", 
+   experimentingSkill = "combat_medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"delivery_medium", "body_shell"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"gas_reactive_eleton", "aluminum_titanium"},
+   resourceQuantities = {28, 28},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "DR", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 3, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
+   experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 1000},
+   experimentalMax = {0, 0, 75, 0, 0, 0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 962251265, -- Script: 'object/tangible/component/chemistry/infection_amplifier_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_infection_amplifier_advanced, "object/draft_schematic/chemistry/component/infection_amplifier_advanced.iff")

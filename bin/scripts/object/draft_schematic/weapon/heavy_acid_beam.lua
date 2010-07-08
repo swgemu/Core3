@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_heavy_acid_beam = object_draft_schematic_weapon_shared_heavy_acid_beam:new {
 
-}
+   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 50, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 550, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 4},
+   resourceTypes = {"steel", "iron", "metal", "gemstone_crystalline", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
+   resourceQuantities = {150, 40, 20, 45, 1, 20, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "charges", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 833, 1500, 8.7, 19, 30, 750, 0, -125, 16, 20, 25, 78, 78, 20},
+   experimentalMax = {0, 0, 1057, 3700, 4.4, 35, 65, 1500, 10, -95, 16, 30, 50, 42, 42, 10},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 100102071, -- Script: 'object/weapon/ranged/heavy/heavy_acid_beam.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_heavy_acid_beam, "object/draft_schematic/weapon/heavy_acid_beam.iff")

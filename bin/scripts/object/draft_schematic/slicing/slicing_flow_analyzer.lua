@@ -43,6 +43,35 @@
 
 object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_slicing_shared_slicing_flow_analyzer:new {
 
-}
+   groupName = "craftSmugglerToolsB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 7, 
+   size = 1, 
+
+   xpType = "crafting_spice", 
+   xp = 80, 
+
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "controller", "scanner_assembly"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "copper", "metal"},
+   resourceQuantities = {10, 20, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 1000, -15},
+   experimentalMax = {0, 0, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3083691712, -- Script: 'object/tangible/slicing/slicing_flow_analyzer.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_flow_analyzer, "object/draft_schematic/slicing/slicing_flow_analyzer.iff")

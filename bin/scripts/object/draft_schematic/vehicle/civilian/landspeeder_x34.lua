@@ -43,6 +43,35 @@
 
 object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic_vehicle_civilian_shared_landspeeder_x34:new {
 
-}
+   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 1800, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
+   ingredientTitleNames = {"vehicle_body", "structural_frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal_nonferrous", "metal_ferrous"},
+   resourceQuantities = {1125, 3125},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points"},
+   experimentalMin = {0, 0, 1500},
+   experimentalMax = {0, 0, 3000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3267740067, -- Script: 'object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_landspeeder_x34, "object/draft_schematic/vehicle/civilian/landspeeder_x34.iff")

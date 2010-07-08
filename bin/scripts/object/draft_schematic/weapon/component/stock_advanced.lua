@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_weapon_component_shared_stock_advanced:new {
 
-}
+   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 40, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"stock_unit", "butt_cap_and_receiver_attachment_point"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"wood_deciduous_corellia", "aluminum_linksteel"},
+   resourceQuantities = {28, 8},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 1, 1, 1, 0, 10, 0, 35, 35, 35},
+   experimentalMax = {0, 0, 40, 40, 0, 15, 100, 60, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2723582498, -- Script: 'object/tangible/component/weapon/stock_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_stock_advanced, "object/draft_schematic/weapon/component/stock_advanced.iff")

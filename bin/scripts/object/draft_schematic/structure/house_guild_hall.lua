@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_house_guild_hall = object_draft_schematic_structure_shared_house_guild_hall:new {
 
-}
+   groupName = "craftStructureGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 36, 
+   size = 14, 
+
+   xpType = "crafting_structure_general", 
+   xp = 7800, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2},
+   resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structural_module.iff"},
+   resourceQuantities = {1250, 2250, 400, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "DR"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 50000},
+   experimentalMax = {0, 0, 100000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3502677060, -- Script: 'object/tangible/deed/guild_deed/tatooine_guild_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_house_guild_hall, "object/draft_schematic/structure/house_guild_hall.iff")

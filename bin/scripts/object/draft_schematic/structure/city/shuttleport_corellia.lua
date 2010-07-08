@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_city_shuttleport_corellia = object_draft_schematic_structure_city_shared_shuttleport_corellia:new {
 
-}
+   groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 8000, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space", "ticket_droid_chassis"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2, 2},
+   resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/droid/shared_advanced_droid_frame.iff"},
+   resourceQuantities = {1550, 2350, 350, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "DR"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 35000},
+   experimentalMax = {0, 0, 75000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3949590424, -- Script: 'object/tangible/deed/city_deed/shuttleport_corellia_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shuttleport_corellia, "object/draft_schematic/structure/city/shuttleport_corellia.iff")

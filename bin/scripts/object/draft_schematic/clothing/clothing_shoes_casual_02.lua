@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_shoes_casual_02 = object_draft_schematic_clothing_shared_clothing_shoes_casual_02:new {
 
-}
+   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 4, 
+   size = 3, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "binding_and_hardware", "inner_sole"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"fiberplast", "petrochem_inert", "hide"},
+   resourceQuantities = {8, 4, 8},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1735484596, -- Script: 'object/tangible/wearables/shoes/shoes_s02.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_shoes_casual_02, "object/draft_schematic/clothing/clothing_shoes_casual_02.iff")

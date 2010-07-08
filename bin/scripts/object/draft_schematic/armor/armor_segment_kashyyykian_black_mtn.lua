@@ -43,6 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn = object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn:new {
 
-}
+   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 50, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+   ingredientTitleNames = {"armor_segment_kashyyykian_black_mtn", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "segment_enhancement"},
+   ingredientSlotType = {0, 0, 0, 4, 4, 4},
+   resourceTypes = {"hide_leathery", "wood_deciduous", "softwood", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+   resourceQuantities = {15, 10, 5, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+   experimentalMin = {0, 0, 1000, 1, 100, 9, 12, 6, 1, 1, 1, 100},
+   experimentalMax = {0, 0, 1000, 8, 1000, 1, 1, 1, 1, 1, 15, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 775748867, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_black_mtn.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn, "object/draft_schematic/armor/armor_segment_kashyyykian_black_mtn.iff")

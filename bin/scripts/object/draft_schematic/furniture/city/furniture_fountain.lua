@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_city_furniture_fountain = object_draft_schematic_furniture_city_shared_furniture_fountain:new {
 
-}
+   groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 3300, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"fountain", "water_pump", "water"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"ore", "metal", "water"},
+   resourceQuantities = {1000, 300, 500},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1159824029, -- Script: 'object/tangible/furniture/city/fountain_generic.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_fountain, "object/draft_schematic/furniture/city/furniture_fountain.iff")

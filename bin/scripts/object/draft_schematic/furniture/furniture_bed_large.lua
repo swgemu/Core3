@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_furniture_shared_furniture_bed_large:new {
 
-}
+   groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 28, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 800, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "mattress"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "hide_wooly"},
+   resourceQuantities = {150, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3640258591, -- Script: 'object/tangible/furniture/all/frn_all_bed_lg_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bed_large, "object/draft_schematic/furniture/furniture_bed_large.iff")

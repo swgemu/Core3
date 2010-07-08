@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_dress_casual_12 = object_draft_schematic_clothing_shared_clothing_dress_casual_12:new {
 
-}
+   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 3, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "trim_and_binding", "binding_and_hardware"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"fiberplast", "hide", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
+   resourceQuantities = {15, 5, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 688705340, -- Script: 'object/tangible/wearables/dress/dress_s12.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_dress_casual_12, "object/draft_schematic/clothing/clothing_dress_casual_12.iff")

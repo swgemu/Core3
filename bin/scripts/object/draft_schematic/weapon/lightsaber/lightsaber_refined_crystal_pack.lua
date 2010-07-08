@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack:new {
 
-}
+   groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "jedi_general", 
+   xp = 0, 
+
+   assemblySkill = "jedi_saber_assembly", 
+   experimentingSkill = "jedi_saber_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "lightsaber_module_atkspd", "lightsaber_module_damage", "lightsaber_module_forcecost", "lightsaber_module_woundchance"},
+   ingredientSlotType = {0, 0, 0, 4, 4, 4, 4},
+   resourceTypes = {"steel", "gemstone", "copper", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"},
+   resourceQuantities = {10, 20, 6, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1},
+   experimentalProperties = {"XX", "XX"},
+   experimentalWeights = {1, 1},
+   experimentalGroupTitles = {"null", "null"},
+   experimentalSubGroupTitles = {"null", "null"},
+   experimentalMin = {0, 0},
+   experimentalMax = {0, 0},
+   experimentalPrecision = {0, 0},
+
+   tanoCRC = 855539713, -- Script: 'object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack, "object/draft_schematic/weapon/lightsaber/lightsaber_refined_crystal_pack.iff")

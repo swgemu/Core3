@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_furniture_shared_furniture_tiki_torch:new {
 
-}
+   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 80, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "lighting_module", "torch_module"},
+   ingredientSlotType = {0, 2, 0},
+   resourceTypes = {"metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "metal"},
+   resourceQuantities = {20, 1, 20},
+   combineTypes = {0, 1, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3927885786, -- Script: 'object/tangible/furniture/all/frn_all_tiki_torch_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_tiki_torch, "object/draft_schematic/furniture/furniture_tiki_torch.iff")

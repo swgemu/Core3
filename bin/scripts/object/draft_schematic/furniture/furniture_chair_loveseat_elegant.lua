@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_loveseat_elegant = object_draft_schematic_furniture_shared_furniture_chair_loveseat_elegant:new {
 
-}
+   groupName = "craftFurnitureGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 31, 
+   size = 3, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1250, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "seat", "upholstery"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"aluminum", "hide_leathery_dathomir", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
+   resourceQuantities = {350, 250, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2624894253, -- Script: 'object/tangible/furniture/elegant/love_seat_s01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_loveseat_elegant, "object/draft_schematic/furniture/furniture_chair_loveseat_elegant.iff")

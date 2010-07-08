@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_repair_module = object_draft_schematic_droid_component_shared_repair_module:new {
 
-}
+   groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 85, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "repair_tools", "repair_expert_system"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"metal", "gas_inert", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff"},
+   resourceQuantities = {5, 2, 35, 1},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "repair_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 1},
+   experimentalMax = {0, 0, 15, 1000, 15, 3},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1152198535, -- Script: 'object/tangible/component/droid/repair_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_repair_module, "object/draft_schematic/droid/component/repair_module.iff")

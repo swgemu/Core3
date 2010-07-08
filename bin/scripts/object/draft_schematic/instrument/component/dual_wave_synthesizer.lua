@@ -43,6 +43,35 @@
 
 object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft_schematic_instrument_component_shared_dual_wave_synthesizer:new {
 
-}
+   groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "music", 
+   xp = 100, 
+
+   assemblySkill = "instrument_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"synthesis_data_storage", "wave_translation_head", "io_interface"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"petrochem_inert", "metal_ferrous", "metal_nonferrous"},
+   resourceQuantities = {20, 20, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 89531137, -- Script: 'object/tangible/component/instrument/dual_wave_synthesizer.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_dual_wave_synthesizer, "object/draft_schematic/instrument/component/dual_wave_synthesizer.iff")

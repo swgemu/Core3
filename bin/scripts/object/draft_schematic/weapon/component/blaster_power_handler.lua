@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_component_blaster_power_handler = object_draft_schematic_weapon_component_shared_blaster_power_handler:new {
 
-}
+   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 50, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"module_assembly", "xciter_circuitry", "circuitry_substrate", "gas_containment_unit", "reactant_source", "weapon_enhancement"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 4},
+   resourceTypes = {"petrochem_inert", "copper", "ore", "metal", "gas_reactive", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"},
+   resourceQuantities = {5, 3, 3, 5, 10, 1},
+   combineTypes = {0, 0, 0, 0, 0, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "hitpoints"},
+   experimentalMin = {0, 0, 1, 1, 0, 10},
+   experimentalMax = {0, 0, 10, 20, -0.5, 100},
+   experimentalPrecision = {0, 0, 0, 0, 1, 0},
+
+   tanoCRC = 702649693, -- Script: 'object/tangible/component/weapon/blaster_power_handler.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_blaster_power_handler, "object/draft_schematic/weapon/component/blaster_power_handler.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_detonation_module = object_draft_schematic_droid_component_shared_detonation_module:new {
 
-}
+   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 220, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "data_storage_matrix", "reaction_chamber"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"copper", "gas_inert", "gas_reactive_tolium"},
+   resourceQuantities = {40, 20, 80},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "bomb_level"},
+   experimentalMin = {0, 0, 5, 1000, -10, 1},
+   experimentalMax = {0, 0, 15, 1000, 15, 10},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 508750598, -- Script: 'object/tangible/component/droid/detonation_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_detonation_module, "object/draft_schematic/droid/component/detonation_module.iff")

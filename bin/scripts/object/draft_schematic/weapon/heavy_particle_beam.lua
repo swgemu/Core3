@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapon_shared_heavy_particle_beam:new {
 
-}
+   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 50, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 550, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 4},
+   resourceTypes = {"steel", "iron", "metal", "gemstone_crystalline", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
+   resourceQuantities = {75, 40, 20, 15, 1, 20, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "charges", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 1860, 2100, 9.1, 10, 30, 750, -125, -125, 48, 0, 25, 33, 110, 33},
+   experimentalMax = {0, 0, 2000, 3700, 4, 20, 65, 1500, -95, -95, 48, 60, 50, 17, 59, 17},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 180006972, -- Script: 'object/weapon/ranged/heavy/heavy_particle_beam.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_heavy_particle_beam, "object/draft_schematic/weapon/heavy_particle_beam.iff")

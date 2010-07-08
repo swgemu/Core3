@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_droid_wound_repair_kit_d = object_draft_schematic_droid_shared_droid_wound_repair_kit_d:new {
 
-}
+   groupName = "craftDroidWoundRepairD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 32, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 150, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"reconstructive_rigging", "insulated_cement", "diagnostic_circuit", "backup_power_supply", "unit_casing"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"copper_beyrllius", "armophous_plexite", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"},
+   resourceQuantities = {35, 30, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 80, 8, 1000},
+   experimentalMax = {0, 0, 400, 24, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 3475973239, -- Script: 'object/tangible/medicine/pet/droid_wound_kit_d.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_wound_repair_kit_d, "object/draft_schematic/droid/droid_wound_repair_kit_d.iff")

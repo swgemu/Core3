@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_storage_section = object_draft_schematic_structure_component_shared_structure_storage_section:new {
 
-}
+   groupName = "craftStructureGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 400, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "metal"},
+   resourceQuantities = {50, 200},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 200},
+   experimentalMax = {0, 0, 500},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3198293446, -- Script: 'object/tangible/component/structure/structure_storage_section.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_storage_section, "object/draft_schematic/structure/component/structure_storage_section.iff")

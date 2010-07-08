@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_armor_zam_pants = object_draft_schematic_clothing_shared_clothing_armor_zam_pants:new {
 
-}
+   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 4, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 250, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 2, 2},
+   resourceTypes = {"metal", "hide", "fiberplast", "metal", "petrochem_inert", "fiberplast", "object/tangible/component/armor/shared_armor_segment_zam.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
+   resourceQuantities = {30, 30, 30, 30, 10, 20, 1, 1},
+   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+   experimentalMin = {0, 0, 0, 1000, 1, 11250, 23, 30, 6, 1, 4, 1, 18750},
+   experimentalMax = {0, 0, 0, 1000, 20, 18750, 14, 18, 3, 1, 4, 40, 31250},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 416123005, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_pants.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_zam_pants, "object/draft_schematic/clothing/clothing_armor_zam_pants.iff")

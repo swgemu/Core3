@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_navicomputer_1 = object_draft_schematic_droid_shared_navicomputer_1:new {
 
-}
+   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 140, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "body_shell", "droid_brain", "engine_unit", "sensor_suite"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "chemical", "metal", "metal", "metal"},
+   resourceQuantities = {20, 15, 12, 15, 6},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1},
+   experimentalProperties = {"XX", "XX"},
+   experimentalWeights = {1, 1},
+   experimentalGroupTitles = {"null", "null"},
+   experimentalSubGroupTitles = {"null", "null"},
+   experimentalMin = {0, 0},
+   experimentalMax = {0, 0},
+   experimentalPrecision = {0, 0},
+
+   tanoCRC = 1518760320, -- Script: 'object/tangible/droid/navicomputer_1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_navicomputer_1, "object/draft_schematic/droid/navicomputer_1.iff")

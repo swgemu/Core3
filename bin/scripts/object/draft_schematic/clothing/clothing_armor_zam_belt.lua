@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_armor_zam_belt = object_draft_schematic_clothing_shared_clothing_armor_zam_belt:new {
 
-}
+   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 4, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 40, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"metal", "hide", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
+   resourceQuantities = {15, 4, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+   experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+   experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3902505671, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_belt.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_zam_belt, "object/draft_schematic/clothing/clothing_armor_zam_belt.iff")
