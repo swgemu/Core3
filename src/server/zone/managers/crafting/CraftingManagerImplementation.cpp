@@ -47,7 +47,7 @@
 void CraftingManagerImplementation::initialize() {
 
 	schematicMap = SchematicMap::instance();
-	schematicMap->initialize();
+	//schematicMap->initialize(zoneServer);
 
 }
 
