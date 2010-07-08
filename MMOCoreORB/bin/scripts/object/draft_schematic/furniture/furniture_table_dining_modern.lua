@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_table_dining_modern = object_draft_schematic_furniture_shared_furniture_table_dining_modern:new {
 
-}
+   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 26, 
+   size = 2, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1000, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "table_top"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal_nonferrous", "aluminum"},
+   resourceQuantities = {250, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 4264250679, -- Script: 'object/tangible/furniture/modern/dining_table_modern_style_01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_dining_modern, "object/draft_schematic/furniture/furniture_table_dining_modern.iff")

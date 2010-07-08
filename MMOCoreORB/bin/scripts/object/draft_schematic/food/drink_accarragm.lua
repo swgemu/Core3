@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared_drink_accarragm:new {
 
-}
+   groupName = "craftFoodDrinkGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 120, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"alcohol", "fungus_extract", "glass", "additive"},
+   ingredientSlotType = {2, 0, 2, 4},
+   resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "vegetable_fungi", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
+   resourceQuantities = {1, 30, 1, 1},
+   combineTypes = {1, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
+   experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
+   experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
+   experimentalPrecision = {0, 0, 0, 0, 0, 10, 0, 0, 0},
+
+   tanoCRC = 2228808394, -- Script: 'object/tangible/food/crafted/drink_accarragm.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_accarragm, "object/draft_schematic/food/drink_accarragm.iff")

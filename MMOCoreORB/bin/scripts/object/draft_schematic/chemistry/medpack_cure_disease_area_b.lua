@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_cure_disease_area_b = object_draft_schematic_chemistry_shared_medpack_cure_disease_area_b:new {
 
-}
+   groupName = "craftCureDiseaseGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 1, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 80, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "dispersal_mechanism", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 2, 2, 2},
+   resourceTypes = {"corn", "gas_reactive", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {20, 20, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expRange", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 10, 15, 10, 80, 1000},
+   experimentalMax = {0, 0, 50, 30, 0, 80, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1390049732, -- Script: 'object/tangible/medicine/crafted/medpack_cure_disease_area_b.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_cure_disease_area_b, "object/draft_schematic/chemistry/medpack_cure_disease_area_b.iff")

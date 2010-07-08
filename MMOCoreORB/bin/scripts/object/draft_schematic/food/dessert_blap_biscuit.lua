@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_shared_dessert_blap_biscuit:new {
 
-}
+   groupName = "craftFoodNoviceGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 55, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"first_carbosyrup", "second_carbosyrup", "dough", "berry_mix", "additive"},
+   ingredientSlotType = {2, 2, 2, 0, 4},
+   resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_berries", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {1, 1, 1, 10, 1},
+   combineTypes = {1, 1, 1, 0, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+
+   tanoCRC = 1901385280, -- Script: 'object/tangible/food/crafted/dessert_blap_biscuit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_blap_biscuit, "object/draft_schematic/food/dessert_blap_biscuit.iff")

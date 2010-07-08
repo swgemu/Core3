@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_installation_mining_liquid_vapor_light = object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 8, 
+
+   xpType = "crafting_general", 
+   xp = 425, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "chiller_bar_structure", "vapor_storage_tank"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
+   resourceQuantities = {110, 60, 50, 15, 15},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 3, 2, 1},
+   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
+   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+   experimentalMin = {0, 0, 1, 25000, 1000},
+   experimentalMax = {0, 0, 5, 50000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 4169420687, -- Script: 'object/tangible/deed/harvester_deed/harvester_moisture_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_liquid_vapor_light, "object/draft_schematic/structure/installation_mining_liquid_vapor_light.iff")

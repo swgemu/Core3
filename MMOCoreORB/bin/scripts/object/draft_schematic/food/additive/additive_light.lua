@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_additive_additive_light = object_draft_schematic_food_additive_shared_additive_light:new {
 
-}
+   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 20, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"suspension_agent", "bio_component"},
+   ingredientSlotType = {0, 4},
+   resourceTypes = {"water", "object/tangible/component/bio/shared_bio_component_food_light.iff"},
+   resourceQuantities = {10, 1},
+   combineTypes = {0, 1},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 275310472, -- Script: 'object/tangible/food/crafted/additive/additive_light.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_additive_light, "object/draft_schematic/food/additive/additive_light.iff")

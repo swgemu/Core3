@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_med_stimpack_area_b = object_draft_schematic_chemistry_shared_med_stimpack_area_b:new {
 
-}
+   groupName = "craftStimpackRangeGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 100, 
+
+   assemblySkill = "combat_medicine_assembly", 
+   experimentingSkill = "combat_medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2},
+   resourceTypes = {"metal_nonferrous", "organic", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {16, 16, 16, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "CD", "OQ", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "expCharges", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "range", "area", "hitpoints"},
+   experimentalMin = {0, 0, 100, 15, 45, 15, 30, 1000},
+   experimentalMax = {0, 0, 500, 30, 60, 30, 10, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 330370569, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_area_b.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_area_b, "object/draft_schematic/chemistry/med_stimpack_area_b.iff")

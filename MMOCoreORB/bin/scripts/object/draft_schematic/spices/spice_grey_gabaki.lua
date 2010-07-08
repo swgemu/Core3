@@ -43,6 +43,35 @@
 
 object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_shared_spice_grey_gabaki:new {
 
-}
+   groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_spice", 
+   xp = 80, 
+
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"dried_leaf", "preservative"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"vegetable", "organic"},
+   resourceQuantities = {15, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 649015964, -- Script: 'object/tangible/food/spice/spice_grey_gabaki.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_grey_gabaki, "object/draft_schematic/spices/spice_grey_gabaki.iff")

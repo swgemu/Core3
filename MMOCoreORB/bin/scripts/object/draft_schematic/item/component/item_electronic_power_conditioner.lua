@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_component_item_electronic_power_conditioner = object_draft_schematic_item_component_shared_item_electronic_power_conditioner:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 74, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"module_brackets_and_frame", "circuit_stabilization_medium", "circuit_shielding_and_substrate", "stage_1_energy_filter", "stage_2_energy_filter", "charge_leakage_and_contaminant_arrestor", "charge_filtering_prism"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "copper", "gas_inert", "gemstone_armophous"},
+   resourceQuantities = {12, 6, 5, 2, 2, 3, 2},
+   combineTypes = {0, 0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -5},
+   experimentalMax = {0, 0, 150, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3329911704, -- Script: 'object/tangible/component/item/electronic_power_conditioner.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_electronic_power_conditioner, "object/draft_schematic/item/component/item_electronic_power_conditioner.iff")

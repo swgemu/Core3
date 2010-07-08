@@ -43,6 +43,35 @@
 
 object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_space_repair_shared_booster_repair_kit:new {
 
-}
+   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 32, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast"},
+   resourceQuantities = {60, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 3},
+   experimentalGroupTitles = {"null", "null", "exp_repaircharges"},
+   experimentalSubGroupTitles = {"null", "null", "repaircharges"},
+   experimentalMin = {0, 0, 8000},
+   experimentalMax = {0, 0, 12000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3614661440, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_booster.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_booster_repair_kit, "object/draft_schematic/space/repair/booster_repair_kit.iff")

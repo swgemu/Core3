@@ -43,6 +43,35 @@
 
 object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit:new {
 
-}
+   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 60, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "chemical"},
+   resourceQuantities = {10, 10, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "CD", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness", "0", "0"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier", "0", "0"},
+   experimentalMin = {0, 0, 1000, -15, 0, 0},
+   experimentalMax = {0, 0, 1000, 15, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4280755295, -- Script: 'object/tangible/slicing/slicing_armor_upgrade_kit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/slicing_armor_upgrade_kit.iff")

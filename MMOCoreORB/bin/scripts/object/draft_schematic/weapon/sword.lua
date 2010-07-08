@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_sword = object_draft_schematic_weapon_shared_sword:new {
 
-}
+   groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 45, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
+   ingredientSlotType = {0, 0, 4},
+   resourceTypes = {"metal", "petrochem_inert", "object/tangible/component/weapon/shared_sword_core.iff"},
+   resourceQuantities = {18, 5, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 14, 63, 4.6, 9, 750, 5, 5, 3, 5, 4, 27, 29, 29},
+   experimentalMax = {0, 0, 26, 117, 3.2, 18, 1500, 15, 15, 3, 15, 4, 15, 15, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3621186351, -- Script: 'object/weapon/melee/sword/sword_01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_sword, "object/draft_schematic/weapon/sword.iff")

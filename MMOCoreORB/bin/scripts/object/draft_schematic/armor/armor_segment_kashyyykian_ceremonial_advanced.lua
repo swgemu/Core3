@@ -43,6 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial_advanced = object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced:new {
 
-}
+   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 0, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 60, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+   ingredientTitleNames = {"armor_segment_ceremonial", "segment_mounting_tabs", "segment_enhancement"},
+   ingredientSlotType = {0, 0, 4},
+   resourceTypes = {"hide_leathery_yavin4", "wood_deciduous_endor", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+   resourceQuantities = {8, 25, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+   experimentalMin = {0, 0, 1000, 1, 500, 13, 16, 13, 1, 1, 1, 100},
+   experimentalMax = {0, 0, 1000, 15, 2000, 1, 1, 1, 1, 1, 30, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 901906289, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_ceremonial_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial_advanced, "object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial_advanced.iff")

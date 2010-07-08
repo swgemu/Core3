@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_personality_module_stupid = object_draft_schematic_droid_component_shared_personality_module_stupid:new {
 
-}
+   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_droid_general", 
+   xp = 20, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "primary_phrase_database"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"copper", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {10, 1},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "personality_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 5},
+   experimentalMax = {0, 0, 15, 1000, 15, 5},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 67891909, -- Script: 'object/tangible/component/droid/personality_module_stupid.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_personality_module_stupid, "object/draft_schematic/droid/component/personality_module_stupid.iff")

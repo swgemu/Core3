@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 2, 
+   size = 3, 
+
+   xpType = "crafting_general", 
+   xp = 32, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"staff_shaft"},
+   ingredientSlotType = {0},
+   resourceTypes = {"wood"},
+   resourceQuantities = {16},
+   combineTypes = {0},
+   contribution = {100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 25, 56, 5.8, 3, 750, 14, 14, 3, 14, 5, 20, 49, 20},
+   experimentalMax = {0, 0, 46, 104, 4, 7, 1500, 26, 26, 3, 26, 5, 11, 27, 11},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3576318568, -- Script: 'object/weapon/melee/polearm/lance_staff_wood_s1.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_staff, "object/draft_schematic/weapon/staff.iff")

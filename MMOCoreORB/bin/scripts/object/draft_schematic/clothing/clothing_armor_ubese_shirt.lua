@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_armor_ubese_shirt = object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt:new {
 
-}
+   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 120, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"iron", "steel", "fiberplast"},
+   resourceQuantities = {20, 30, 10},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "UT"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 569575162, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_shirt.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_ubese_shirt, "object/draft_schematic/clothing/clothing_armor_ubese_shirt.iff")

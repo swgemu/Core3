@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_shared_dessert_bantha_butter:new {
 
-}
+   groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 6, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 100, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"bantha_milk", "fruit"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"milk", "fruit_fruits"},
+   resourceQuantities = {20, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3006616343, -- Script: 'object/tangible/food/crafted/dessert_bantha_butter.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_bantha_butter, "object/draft_schematic/food/dessert_bantha_butter.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_release_mechanism_duration = object_draft_schematic_chemistry_component_shared_release_mechanism_duration:new {
 
-}
+   groupName = "craftMedicineComponentGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 4, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 35, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "chemical_element"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "chemical"},
+   resourceQuantities = {8, 8},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 1, 0, 1000},
+   experimentalMax = {0, 0, 20, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 418150404, -- Script: 'object/tangible/component/chemistry/release_mechanism_duration.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_release_mechanism_duration, "object/draft_schematic/chemistry/component/release_mechanism_duration.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_component_resilience_compound = object_draft_schematic_chemistry_component_shared_resilience_compound:new {
 
-}
+   groupName = "craftMedicineComponentGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 45, 
+
+   assemblySkill = "combat_medicine_assembly", 
+   experimentingSkill = "combat_medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"gas_reactive", "radioactive"},
+   resourceQuantities = {12, 12},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "expEaseOfUse", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
+   experimentalMin = {0, 0, 0, 0, 0, 0, 1, 1, 1000},
+   experimentalMax = {0, 0, 0, 0, 0, 0, 30, 60, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3797845095, -- Script: 'object/tangible/component/chemistry/resilience_compound.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_resilience_compound, "object/draft_schematic/chemistry/component/resilience_compound.iff")

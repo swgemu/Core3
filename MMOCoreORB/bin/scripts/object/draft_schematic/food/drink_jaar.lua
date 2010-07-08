@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drink_jaar:new {
 
-}
+   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 70, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"milk", "fruit_flavoring", "glass", "additive"},
+   ingredientSlotType = {0, 0, 2, 4},
+   resourceTypes = {"milk", "fruit", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {15, 10, 1, 1},
+   combineTypes = {0, 0, 1, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 0, 75, 60, 80},
+   experimentalMax = {0, 0, 1000, 0, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1186404816, -- Script: 'object/tangible/food/crafted/drink_jaar.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_jaar, "object/draft_schematic/food/drink_jaar.iff")

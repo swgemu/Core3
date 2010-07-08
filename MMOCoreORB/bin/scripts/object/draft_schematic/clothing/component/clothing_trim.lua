@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic_clothing_component_shared_clothing_trim:new {
 
-}
+   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 60, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "binding_and_reinforcement"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"fiberplast", "petrochem_inert"},
+   resourceQuantities = {20, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1645938657, -- Script: 'object/tangible/component/clothing/trim.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_trim, "object/draft_schematic/clothing/component/clothing_trim.iff")

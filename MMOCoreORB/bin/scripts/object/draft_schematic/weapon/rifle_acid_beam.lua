@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_shared_rifle_acid_beam:new {
 
-}
+   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 24, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 430, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "scope", "stock"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2, 2},
+   resourceTypes = {"iron_kammris", "steel_kiirium", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
+   resourceQuantities = {35, 65, 15, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "null", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "midrange", "midrangemod", "maxrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 200, 470, 7.7, 19, 750, 15, 35, -21, -121, 103, 65, 20},
+   experimentalMax = {0, 0, 330, 770, 5.5, 35, 1500, 25, 35, -5, -90, 62, 35, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4227426203, -- Script: 'object/weapon/ranged/rifle/rifle_acid_beam.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_acid_beam, "object/draft_schematic/weapon/rifle_acid_beam.iff")

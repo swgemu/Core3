@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schematic_droid_component_shared_diagnostic_circuit:new {
 
-}
+   groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 50, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"insulated_board_material", "integrated_circuit"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"ore", "metal"},
+   resourceQuantities = {10, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 3, 3, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "UT", "CD", "MA", "OQ", "CD", "MA", "OQ", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expCharges", "exp_effectiveness", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "charges", "power", "energy", "hitpoints"},
+   experimentalMin = {0, 0, 1, 1, 10, 1000},
+   experimentalMax = {0, 0, 5, 5, 50, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2253051163, -- Script: 'object/tangible/component/droid/repair/diagnostic_circuit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_diagnostic_circuit, "object/draft_schematic/droid/component/diagnostic_circuit.iff")

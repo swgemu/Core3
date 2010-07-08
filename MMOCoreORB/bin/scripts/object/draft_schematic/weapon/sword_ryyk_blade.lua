@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_shared_sword_ryyk_blade:new {
 
-}
+   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 110, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"iron", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_sword_core.iff"},
+   resourceQuantities = {42, 12, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 18, 98, 4.3, 15, 750, -20, -20, 3, -20, 4, 51, 39, 33},
+   experimentalMax = {0, 0, 33, 132, 3, 29, 1500, -10, -10, 3, -10, 4, 27, 21, 18},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2964575136, -- Script: 'object/weapon/melee/sword/sword_blade_ryyk.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_sword_ryyk_blade, "object/draft_schematic/weapon/sword_ryyk_blade.iff")

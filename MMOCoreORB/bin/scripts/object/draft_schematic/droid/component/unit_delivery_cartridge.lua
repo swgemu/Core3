@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_schematic_droid_component_shared_unit_delivery_cartridge:new {
 
-}
+   groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_droid_general", 
+   xp = 50, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"ore", "gemstone"},
+   resourceQuantities = {10, 5},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
+   experimentalWeights = {1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "expCharges", "null"},
+   experimentalSubGroupTitles = {"null", "null", "charges", "hitpoints"},
+   experimentalMin = {0, 0, 1, 1000},
+   experimentalMax = {0, 0, 5, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 1096288591, -- Script: 'object/tangible/component/droid/repair/unit_delivery_cartridge.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_unit_delivery_cartridge, "object/draft_schematic/droid/component/unit_delivery_cartridge.iff")

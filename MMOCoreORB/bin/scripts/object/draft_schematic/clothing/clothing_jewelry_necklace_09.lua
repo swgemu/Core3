@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_jewelry_necklace_09 = object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09:new {
 
-}
+   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 2, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 75, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"clasp", "band", "jewelry_setting"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"steel", "gemstone_armophous", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
+   resourceQuantities = {20, 10, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2046882028, -- Script: 'object/tangible/wearables/necklace/necklace_s09.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_jewelry_necklace_09, "object/draft_schematic/clothing/clothing_jewelry_necklace_09.iff")

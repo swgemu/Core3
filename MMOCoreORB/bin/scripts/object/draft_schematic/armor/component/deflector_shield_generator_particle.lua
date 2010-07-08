@@ -43,6 +43,35 @@
 
 object_draft_schematic_armor_component_deflector_shield_generator_particle = object_draft_schematic_armor_component_shared_deflector_shield_generator_particle:new {
 
-}
+   groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 80, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"assembly_mounting_frame", "field_harmonic_tuning_array", "emitter_module_insulation", "field_generation_pile"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"metal", "copper", "ore", "gemstone_armophous"},
+   resourceQuantities = {15, 10, 10, 5},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3121398711, -- Script: 'object/tangible/component/armor/deflector_shield_generator_particle.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_generator_particle, "object/draft_schematic/armor/component/deflector_shield_generator_particle.iff")

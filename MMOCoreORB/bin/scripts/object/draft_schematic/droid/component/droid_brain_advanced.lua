@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_droid_brain_advanced = object_draft_schematic_droid_component_shared_droid_brain_advanced:new {
 
-}
+   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 8, 
+
+   xpType = "crafting_droid_general", 
+   xp = 115, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "processing_units", "memory_circuits"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 2},
+   resourceTypes = {"copper", "gas_inert", "ore_siliclastic", "chemical", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {25, 10, 10, 12, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
+   experimentalMin = {0, 0, 5, 1000, -10},
+   experimentalMax = {0, 0, 15, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 179959659, -- Script: 'object/tangible/component/droid/droid_brain_advanced.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_brain_advanced, "object/draft_schematic/droid/component/droid_brain_advanced.iff")

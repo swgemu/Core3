@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_data_storage_module_6 = object_draft_schematic_droid_component_shared_data_storage_module_6:new {
 
-}
+   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 28, 
+   size = 8, 
+
+   xpType = "crafting_droid_general", 
+   xp = 110, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "data_management_unit", "memory_circuit"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 2},
+   resourceTypes = {"copper_beyrllius", "gas_inert_dioxis", "ore", "fiberplast", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+   resourceQuantities = {25, 10, 12, 8, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "data_module"},
+   experimentalMin = {0, 0, 5, 1000, -10, 11},
+   experimentalMax = {0, 0, 15, 1000, 15, 13},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4130518646, -- Script: 'object/tangible/component/droid/data_storage_module_6.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_data_storage_module_6, "object/draft_schematic/droid/component/data_storage_module_6.iff")

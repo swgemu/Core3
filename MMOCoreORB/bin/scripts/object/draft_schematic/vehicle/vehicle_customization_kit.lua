@@ -43,6 +43,35 @@
 
 object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schematic_vehicle_shared_vehicle_customization_kit:new {
 
-}
+   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_item_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
+   ingredientSlotType = {0, 0, 0, 2, 2},
+   resourceTypes = {"metal", "mineral", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
+   resourceQuantities = {12, 9, 6, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hit_points", "charges"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 10},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2275981129, -- Script: 'object/tangible/item/vehicle_customization.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_vehicle_customization_kit, "object/draft_schematic/vehicle/vehicle_customization_kit.iff")

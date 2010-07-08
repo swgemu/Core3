@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_ith_shirt_formal_02 = object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02:new {
 
-}
+   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 16, 
+   size = 4, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 60, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "trim", "binding_and_hardware"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_trim.iff", "fiberplast"},
+   resourceQuantities = {20, 1, 5},
+   combineTypes = {0, 1, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+   experimentalMin = {0, 0, 0, 1000},
+   experimentalMax = {0, 0, 0, 1000},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 74841566, -- Script: 'object/tangible/wearables/ithorian/ith_shirt_s02.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_shirt_formal_02, "object/draft_schematic/clothing/clothing_ith_shirt_formal_02.iff")

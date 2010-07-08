@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structural_module = object_draft_schematic_structure_component_shared_structural_module:new {
 
-}
+   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 3, 
+
+   xpType = "crafting_structure_general", 
+   xp = 500, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"reinforcement_rods", "body_material", "insulation"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "ore", "ore"},
+   resourceQuantities = {50, 100, 100},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 200},
+   experimentalMax = {0, 0, 500},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2974425116, -- Script: 'object/tangible/component/structure/structural_module.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structural_module, "object/draft_schematic/structure/component/structural_module.iff")

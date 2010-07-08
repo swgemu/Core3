@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_installation_factory_clothing = object_draft_schematic_structure_shared_installation_factory_clothing:new {
 
-}
+   groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 16, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1900, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"load_bearing_frame_and_reinforcement", "body_shell_and_casing", "structure_foundation", "thermal_noise_and_charge_proof_shielding", "power_supply_unit", "ouput_storage_unit", "semi_automated_assembly_mechanism"},
+   ingredientSlotType = {0, 2, 0, 0, 2, 2, 2},
+   resourceTypes = {"steel", "object/tangible/component/structure/shared_wall_module.iff", "ore", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
+   resourceQuantities = {300, 1, 250, 400, 1, 1, 1},
+   combineTypes = {0, 1, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "UT", "DR", "UT", "DR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 2},
+   experimentalGroupTitles = {"null", "null", "null", "expEffeciency", "expStorage", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "extractrate", "buildrate", "hoppersize", "hitpoints"},
+   experimentalMin = {0, 0, 0, 5, 1500, 5000},
+   experimentalMax = {0, 0, 0, 12, 4000, 7000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 494810594, -- Script: 'object/tangible/deed/factory_deed/factory_clothing_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_factory_clothing, "object/draft_schematic/structure/installation_factory_clothing.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_schematic_food_component_shared_ingredient_ball_of_dough:new {
 
-}
+   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 20, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n"},
+   ingredientTitleNames = {"wheat"},
+   ingredientSlotType = {0},
+   resourceTypes = {"wheat"},
+   resourceQuantities = {10},
+   combineTypes = {0},
+   contribution = {100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2225013790, -- Script: 'object/tangible/component/food/ingredient_ball_of_dough.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_ingredient_ball_of_dough, "object/draft_schematic/food/component/ingredient_ball_of_dough.iff")

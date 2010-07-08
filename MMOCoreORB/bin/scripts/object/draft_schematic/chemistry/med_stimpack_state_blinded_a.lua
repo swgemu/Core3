@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_schematic_chemistry_shared_med_stimpack_state_blinded_a:new {
 
-}
+   groupName = "craftStimpackStateGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 45, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2},
+   resourceTypes = {"metal", "organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {2, 10, 10, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expCharges", "expEaseOfUse", "expRange", "null"},
+   experimentalSubGroupTitles = {"null", "null", "charges", "skillmodmin", "range", "hitpoints"},
+   experimentalMin = {0, 0, 10, 20, 15, 1000},
+   experimentalMax = {0, 0, 30, 40, 20, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 273431060, -- Script: 'object/tangible/medicine/crafted/medpack_blinded_a.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_state_blinded_a, "object/draft_schematic/chemistry/med_stimpack_state_blinded_a.iff")

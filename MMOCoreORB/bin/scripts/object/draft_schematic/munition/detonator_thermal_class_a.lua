@@ -43,6 +43,35 @@
 
 object_draft_schematic_munition_detonator_thermal_class_a = object_draft_schematic_munition_shared_detonator_thermal_class_a:new {
 
-}
+   groupName = "craftMunitionsGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 3, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 96, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"shell", "thumb_trigger", "activation_indicator", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
+   ingredientSlotType = {0, 0, 0, 0, 2, 2, 2, 4},
+   resourceTypes = {"metal", "petrochem_inert_polymer", "steel_thoranium", "ore_siliclastic_crism", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/munition/shared_warhead_stabilizer.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"},
+   resourceQuantities = {10, 1, 15, 3, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "midrange", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 570, 1334, 5.4, 7, 1000, -16, -45, 0, 10, 64, 98, 98, 46},
+   experimentalMax = {0, 0, 870, 1690, 2.4, 13, 1000, 14, 15, 30, 30, 64, 53, 53, 25},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2966006759, -- Script: 'object/weapon/ranged/grenade/grenade_thermal_detonator.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_munition_detonator_thermal_class_a, "object/draft_schematic/munition/detonator_thermal_class_a.iff")

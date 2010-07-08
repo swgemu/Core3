@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_shared_knife_survival:new {
 
-}
+   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 28, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip_cap", "grip"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal", "mineral"},
+   resourceQuantities = {6, 4, 2, 2},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 14, 28, 4.2, 5, 750, 21, 21, 3, 21, 4, 9, 29, 7},
+   experimentalMax = {0, 0, 26, 52, 2.9, 11, 1500, 39, 39, 3, 39, 4, 5, 15, 4},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4162479504, -- Script: 'object/weapon/melee/knife/knife_survival.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_knife_survival, "object/draft_schematic/weapon/knife_survival.iff")

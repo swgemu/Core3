@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_component_structure_light_ore_mining_unit = object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit:new {
 
-}
+   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 6, 
+
+   xpType = "crafting_structure_general", 
+   xp = 650, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"bore_head", "bore_positioning_arm", "ore_transport_auger_and_conveyors", "load_bearing_joints_and_fittings", "charge_and_thermal_regulation_medium"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"steel", "steel", "metal", "steel", "gas_inert"},
+   resourceQuantities = {80, 72, 90, 65, 20},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
+   experimentalWeights = {1, 1, 1, 1, 1, 2},
+   experimentalGroupTitles = {"null", "null", "null", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "extractrate"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 5},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 83506741, -- Script: 'object/tangible/component/structure/light_ore_mining_unit.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_light_ore_mining_unit, "object/draft_schematic/structure/component/structure_light_ore_mining_unit.iff")

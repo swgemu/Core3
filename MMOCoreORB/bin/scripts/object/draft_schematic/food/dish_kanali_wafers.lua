@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_shared_dish_kanali_wafers:new {
 
-}
+   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 4, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 80, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"carbosyrup", "fruit_core", "preservative_wrap", "additive"},
+   ingredientSlotType = {2, 0, 0, 4},
+   resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "fruit", "hide", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {1, 20, 20, 1},
+   combineTypes = {1, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 179201581, -- Script: 'object/tangible/food/crafted/dish_kanali_wafers.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_kanali_wafers, "object/draft_schematic/food/dish_kanali_wafers.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_component_container_barrel = object_draft_schematic_food_component_shared_container_barrel:new {
 
-}
+   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 500, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"barrel_body", "power_conditioner", "coolant_control"},
+   ingredientSlotType = {0, 2, 2},
+   resourceTypes = {"metal_nonferrous", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/item/shared_electronic_control_unit.iff"},
+   resourceQuantities = {300, 1, 1},
+   combineTypes = {0, 1, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
+   experimentalMin = {0, 0, 6},
+   experimentalMax = {0, 0, 6},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3961204086, -- Script: 'object/tangible/component/food/container_barrel.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_barrel, "object/draft_schematic/food/component/container_barrel.iff")

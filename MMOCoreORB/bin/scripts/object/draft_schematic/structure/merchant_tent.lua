@@ -43,6 +43,35 @@
 
 object_draft_schematic_structure_merchant_tent = object_draft_schematic_structure_shared_merchant_tent:new {
 
-}
+   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 10, 
+
+   xpType = "crafting_structure_general", 
+   xp = 2400, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+   ingredientTitleNames = {"tent_frame", "insulation_and_covering", "foundation", "fiberplast_tent_covering", "reinforced_secondary_covering"},
+   ingredientSlotType = {0, 0, 0, 2, 2},
+   resourceTypes = {"metal", "hide", "ore", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
+   resourceQuantities = {400, 600, 200, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "DR"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 21000},
+   experimentalMax = {0, 0, 39000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3260268069, -- Script: 'object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_structure_merchant_tent, "object/draft_schematic/structure/merchant_tent.iff")

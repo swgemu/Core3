@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_cover = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover:new {
 
-}
+   groupName = "craftTissueGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 120, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
+   ingredientTitleNames = {"protein_base", "suspension_compound", "light_reactive_chemicals"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"creature_food", "flora_structural", "meat_reptillian"},
+   resourceQuantities = {20, 20, 20},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mod_idx_four", "mod_val_four"},
+   experimentalMin = {0, 0, 30, 1000, 113, 1},
+   experimentalMax = {0, 0, 50, 1000, 113, 10},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 207537610, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_cover.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_cover.iff")

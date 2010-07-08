@@ -43,6 +43,35 @@
 
 object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_katana:new {
 
-}
+   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 110, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"steel", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_sword_core.iff"},
+   resourceQuantities = {42, 12, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 11, 112, 4.6, 15, 750, -4, -4, 3, -4, 4, 27, 65, 33},
+   experimentalMax = {0, 0, 20, 208, 3.1, 27, 1500, 6, 6, 3, 6, 4, 15, 35, 18},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 653612816, -- Script: 'object/weapon/melee/2h_sword/2h_sword_katana.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_katana, "object/draft_schematic/weapon/katana.iff")

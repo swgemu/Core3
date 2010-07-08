@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_disease_area_mind_c = object_draft_schematic_chemistry_shared_medpack_disease_area_mind_c:new {
 
-}
+   groupName = "craftApplyDiseaseAreaGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 45, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 105, 
+
+   assemblySkill = "combat_medicine_assembly", 
+   experimentingSkill = "combat_medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 0, 2, 2, 2},
+   resourceTypes = {"metal_nonferrous", "meat_insect", "radioactive", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
+   resourceQuantities = {12, 15, 25, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "exp_effectiveness", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "area", "skillmodmin", "potency", "duration", "hitpoints"},
+   experimentalMin = {0, 0, 5, 15, 15, 20, 70, 25, 120, 1000},
+   experimentalMax = {0, 0, 50, 35, 30, 5, 100, 150, 1000, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2722684602, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_mind_c.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_disease_area_mind_c, "object/draft_schematic/chemistry/medpack_disease_area_mind_c.iff")

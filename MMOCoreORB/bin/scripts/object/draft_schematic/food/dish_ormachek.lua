@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_dish_ormachek:new {
 
-}
+   groupName = "craftFoodDishGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 160, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"meat", "dough", "beans", "spiney_wrap"},
+   ingredientSlotType = {0, 2, 0, 0},
+   resourceTypes = {"meat", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "vegetable_beans", "hide_bristley"},
+   resourceQuantities = {10, 1, 20, 10},
+   combineTypes = {0, 1, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "null", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 10, 10, 0, 10},
+
+   tanoCRC = 1599302627, -- Script: 'object/tangible/food/crafted/dish_ormachek.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_ormachek, "object/draft_schematic/food/dish_ormachek.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_shared_item_parrot_cage:new {
 
-}
+   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 6, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 60, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"cage_base", "cage_support", "enclosure_structure", "access_points"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"mineral", "metal", "mineral", "metal"},
+   resourceQuantities = {10, 5, 10, 4},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "UT", "CD"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+   experimentalMin = {0, 0, 100, -15},
+   experimentalMax = {0, 0, 150, 15},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2124499242, -- Script: 'object/tangible/parrot_cage/parrot_cage.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_parrot_cage, "object/draft_schematic/item/item_parrot_cage.iff")

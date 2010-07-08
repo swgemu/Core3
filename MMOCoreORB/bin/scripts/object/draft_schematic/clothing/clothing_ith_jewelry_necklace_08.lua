@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_ith_jewelry_necklace_08 = object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08:new {
 
-}
+   groupName = "craftClothingNoviceGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 2, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 55, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"clasp", "band", "jewelry_setting"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"steel", "steel", "gemstone_crystalline"},
+   resourceQuantities = {5, 15, 5},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 3422090832, -- Script: 'object/tangible/wearables/ithorian/ith_necklace_s08.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_jewelry_necklace_08, "object/draft_schematic/clothing/clothing_ith_jewelry_necklace_08.iff")

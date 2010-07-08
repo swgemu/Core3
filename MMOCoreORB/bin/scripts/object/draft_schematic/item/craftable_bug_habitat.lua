@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_shared_craftable_bug_habitat:new {
 
-}
+   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 14, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 60, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"container", "life_support", "creature_sample"},
+   ingredientSlotType = {0, 0, 2},
+   resourceTypes = {"metal", "chemical", "object/tangible/component/base/shared_base_dna_sample.iff"},
+   resourceQuantities = {20, 10, 1},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+   experimentalMin = {0, 0, 1000},
+   experimentalMax = {0, 0, 1000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 2142449639, -- Script: 'object/tangible/bug_jar/craftable_bug_habitat.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_craftable_bug_habitat, "object/draft_schematic/item/craftable_bug_habitat.iff")

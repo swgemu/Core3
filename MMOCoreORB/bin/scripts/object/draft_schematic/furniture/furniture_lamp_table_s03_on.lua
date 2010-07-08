@@ -43,6 +43,35 @@
 
 object_draft_schematic_furniture_furniture_lamp_table_s03_on = object_draft_schematic_furniture_shared_furniture_lamp_table_s03_on:new {
 
-}
+   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 16, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 140, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "mineral"},
+   resourceQuantities = {35, 15, 20},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2},
+   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "lifespan"},
+   experimentalMin = {0, 0, 1000, 21},
+   experimentalMax = {0, 0, 1000, 42},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2271757755, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_table_s03.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_table_s03_on, "object/draft_schematic/furniture/furniture_lamp_table_s03_on.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_item_item_powerup_weapon_ranged_one = object_draft_schematic_item_shared_item_powerup_weapon_ranged_one:new {
 
-}
+   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 5, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 20, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"resource_one", "resource_two"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"mineral", "chemical"},
+   resourceQuantities = {6, 4},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "effect"},
+   experimentalMin = {0, 0, 1000, 1},
+   experimentalMax = {0, 0, 1000, 100},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 352903310, -- Script: 'object/tangible/powerup/weapon/ranged_barrel.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_ranged_one, "object/draft_schematic/item/item_powerup_weapon_ranged_one.iff")

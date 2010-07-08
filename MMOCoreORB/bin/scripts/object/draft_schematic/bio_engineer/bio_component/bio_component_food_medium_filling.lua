@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_filling = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling:new {
 
-}
+   groupName = "craftTissueGroupC", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 200, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
+   ingredientTitleNames = {"nutrient_base", "matter_reactant", "thinning_substance", "secrets"},
+   ingredientSlotType = {0, 0, 0, 4},
+   resourceTypes = {"seeds", "meat_domesticated", "meat_wild", "object/tangible/component/food/secrets/shared_secret_base.iff"},
+   resourceQuantities = {35, 30, 35, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2},
+   experimentalGroupTitles = {"null", "null", "null", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_filling"},
+   experimentalMin = {0, 0, 1000, 15},
+   experimentalMax = {0, 0, 1000, 30},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 2559234415, -- Script: 'object/tangible/component/bio/bio_component_food_medium_filling.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_filling.iff")

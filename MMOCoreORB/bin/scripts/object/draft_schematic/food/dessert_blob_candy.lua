@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_dessert_blob_candy = object_draft_schematic_food_shared_dessert_blob_candy:new {
 
-}
+   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 10, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"carbosyrup", "fruit_core", "additive"},
+   ingredientSlotType = {2, 0, 4},
+   resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "fruit", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
+   resourceQuantities = {1, 5, 1},
+   combineTypes = {1, 0, 1},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 2255031927, -- Script: 'object/tangible/food/crafted/dessert_blob_candy.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_blob_candy, "object/draft_schematic/food/dessert_blob_candy.iff")

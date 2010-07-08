@@ -43,6 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_enhance_action_a = object_draft_schematic_chemistry_shared_medpack_enhance_action_a:new {
 
-}
+   groupName = "craftMedpackEnhanceGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   complexity = 22, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 60, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+   ingredientSlotType = {0, 0, 2, 2, 2},
+   resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+   resourceQuantities = {15, 15, 1, 1, 1},
+   combineTypes = {0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
+   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
+   experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
+   experimentalMin = {0, 0, 10, 5, 1200, 50, 1000},
+   experimentalMax = {0, 0, 100, 10, 3600, 60, 1000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4255793093, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_action_a.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_action_a, "object/draft_schematic/chemistry/medpack_enhance_action_a.iff")

@@ -43,6 +43,35 @@
 
 object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_leggings = object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leggings:new {
 
-}
+   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 270, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness", "reinforcement"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 0},
+   resourceTypes = {"wood", "hide_leathery", "hide_wooly", "copper", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_padding_segment.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
+   resourceQuantities = {30, 30, 30, 15, 10, 1, 1, 1, 10},
+   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+   experimentalMin = {0, 0, 0, 1000, 5, 15000, 49, 110, 26, 1, 1, 5, 15000},
+   experimentalMax = {0, 0, 0, 1000, 25, 25000, 33, 70, 19, 1, 1, 40, 25000},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 4203702650, -- Script: 'object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_leggings, "object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_leggings.iff")

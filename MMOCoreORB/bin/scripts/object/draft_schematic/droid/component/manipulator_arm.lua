@@ -43,6 +43,35 @@
 
 object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_droid_component_shared_manipulator_arm:new {
 
-}
+   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 4, 
+
+   xpType = "crafting_droid_general", 
+   xp = 110, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+
+   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+   ingredientTitleNames = {"primary_frame", "servo_motors", "attachment_bracket", "shock_buffering", "support_strut"},
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal", "chemical", "ore"},
+   resourceQuantities = {30, 10, 5, 5, 5},
+   combineTypes = {0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "OQ", "XX", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
+   experimentalMin = {0, 0, 5, 1000, -10},
+   experimentalMax = {0, 0, 15, 1000, 15},
+   experimentalPrecision = {0, 0, 0, 0, 0},
+
+   tanoCRC = 962004762, -- Script: 'object/tangible/component/droid/manipulator_arm.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_manipulator_arm, "object/draft_schematic/droid/component/manipulator_arm.iff")

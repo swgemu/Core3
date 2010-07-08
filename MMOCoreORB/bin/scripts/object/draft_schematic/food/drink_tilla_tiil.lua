@@ -43,6 +43,35 @@
 
 object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_shared_drink_tilla_tiil:new {
 
-}
+   groupName = "craftFoodDrinkGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 360, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"alcohol", "first_carbonation", "second_carbonation", "third_carbonation", "glass", "additive"},
+   ingredientSlotType = {2, 0, 0, 0, 2, 4},
+   resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "gas_inert_hurlothrombic", "gas_inert_methanagen", "gas_inert_hydron3", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
+   resourceQuantities = {1, 30, 30, 30, 1, 1},
+   combineTypes = {1, 0, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "XX", "DR", "FL", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 2, 1},
+   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "null", "exp_filling", "null"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
+   experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
+   experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 10, 0},
+
+   tanoCRC = 2812437578, -- Script: 'object/tangible/food/crafted/drink_tilla_tiil.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_tilla_tiil, "object/draft_schematic/food/drink_tilla_tiil.iff")

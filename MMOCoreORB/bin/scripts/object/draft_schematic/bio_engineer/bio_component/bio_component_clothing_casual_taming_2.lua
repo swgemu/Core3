@@ -43,6 +43,35 @@
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_taming_2 = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2:new {
 
-}
+   groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
 
+   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_bio_engineer_creature", 
+   xp = 160, 
+
+   assemblySkill = "bio_engineer_assembly", 
+   experimentingSkill = "bio_engineer_experimentation", 
+
+   ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
+   ingredientTitleNames = {"protein_base", "bioactive_fluid", "resonation_material", "pheromone_enhancers"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"creature_food", "milk", "bone", "meat_reptillian"},
+   resourceQuantities = {20, 25, 25, 10},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
+   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
+   experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
+   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two"},
+   experimentalMin = {0, 0, 30, 1000, 104, 3, 105, 3},
+   experimentalMax = {0, 0, 50, 1000, 104, 20, 105, 20},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 1920792336, -- Script: 'object/tangible/component/bio/bio_component_clothing_casual_taming_2.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_taming_2.iff")
