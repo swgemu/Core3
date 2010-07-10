@@ -65,7 +65,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 			Locker clocker(selectedObject, player);
 
 
-			info("entering radial call " + String::valueOf(selectID), true);
+			selectedObject->info("entering radial call " + String::valueOf(selectID), true);
 			selectedObject->handleObjectMenuSelect(player, selectID);
 
 		} catch (...) {

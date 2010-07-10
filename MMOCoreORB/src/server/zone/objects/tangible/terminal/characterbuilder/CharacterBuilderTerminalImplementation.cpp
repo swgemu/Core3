@@ -26,7 +26,7 @@ void CharacterBuilderTerminalImplementation::initializeTransientMembers() {
 }
 
 int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	//System::out << "entering start terminal radial call" << endl;
+	//info("entering start terminal radial call", true);
 
 	if (selectedID != 20) // not use object
 		return 1;
@@ -37,6 +37,8 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(PlayerCreatur
 }
 
 void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* player) {
+	//info("entering sendInitialChoices", true);
+
 	if (rootNode == NULL) {
 		player->sendSystemMessage("There was an error initializing the menu for this character builder terminal. Sorry for the inconvenience.");
 		return;
