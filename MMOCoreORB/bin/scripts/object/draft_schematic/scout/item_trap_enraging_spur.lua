@@ -43,6 +43,8 @@
 
 object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_scout_shared_item_trap_enraging_spur:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftScoutTrapGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

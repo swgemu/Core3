@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draft_schematic_droid_component_shared_repair_unit_casing_advanced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftDroidRepairCompB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

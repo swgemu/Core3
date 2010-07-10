@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schematic_clothing_shared_clothing_armor_bone_gloves:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

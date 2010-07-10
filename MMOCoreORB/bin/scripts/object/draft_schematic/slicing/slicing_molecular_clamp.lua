@@ -43,6 +43,8 @@
 
 object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_slicing_shared_slicing_molecular_clamp:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSmugglerToolsC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

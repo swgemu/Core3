@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schematic_armor_component_shared_armor_layer_kinetic:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorLightLayersGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

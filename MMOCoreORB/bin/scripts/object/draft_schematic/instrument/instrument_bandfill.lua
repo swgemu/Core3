@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_instrument_shared_instrument_bandfill:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

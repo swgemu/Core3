@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_powerup_weapon_thrown_wiring = object_draft_schematic_item_shared_item_powerup_weapon_thrown_wiring:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

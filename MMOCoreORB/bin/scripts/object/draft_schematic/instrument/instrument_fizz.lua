@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_fizz = object_draft_schematic_instrument_shared_instrument_fizz:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

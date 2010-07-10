@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_item_shared_item_ballot_box_terminal:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

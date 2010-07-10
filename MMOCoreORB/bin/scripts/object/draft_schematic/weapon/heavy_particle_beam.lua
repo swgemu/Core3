@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapon_shared_heavy_particle_beam:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

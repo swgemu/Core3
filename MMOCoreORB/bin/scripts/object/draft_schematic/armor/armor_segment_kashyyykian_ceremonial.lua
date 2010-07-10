@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

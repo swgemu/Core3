@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_component_armor_layer_heat = object_draft_schematic_armor_component_shared_armor_layer_heat:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorLightLayersGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

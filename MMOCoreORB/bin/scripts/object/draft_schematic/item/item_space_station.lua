@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_space_station = object_draft_schematic_item_shared_item_space_station:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn_advanced = object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

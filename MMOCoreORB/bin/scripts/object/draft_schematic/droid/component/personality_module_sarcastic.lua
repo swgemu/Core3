@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_personality_module_sarcastic = object_draft_schematic_droid_component_shared_personality_module_sarcastic:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

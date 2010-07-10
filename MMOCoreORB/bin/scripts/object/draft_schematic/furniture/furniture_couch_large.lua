@@ -43,6 +43,8 @@
 
 object_draft_schematic_furniture_furniture_couch_large = object_draft_schematic_furniture_shared_furniture_couch_large:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

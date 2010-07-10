@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemistry_shared_med_fire_blanket:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedpackBGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

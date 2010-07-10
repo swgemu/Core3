@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_firework_show = object_draft_schematic_item_shared_item_firework_show:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

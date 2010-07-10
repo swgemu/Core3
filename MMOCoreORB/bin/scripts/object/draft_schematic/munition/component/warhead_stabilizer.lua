@@ -43,6 +43,8 @@
 
 object_draft_schematic_munition_component_warhead_stabilizer = object_draft_schematic_munition_component_shared_warhead_stabilizer:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_instrument_shared_instrument_nalargon:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_component_container_large_glass = object_draft_schematic_food_component_shared_container_large_glass:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

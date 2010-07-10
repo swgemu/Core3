@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_shared_craftable_bug_habitat:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

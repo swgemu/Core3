@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draft_schematic_clothing_component_shared_clothing_metal_fasteners:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

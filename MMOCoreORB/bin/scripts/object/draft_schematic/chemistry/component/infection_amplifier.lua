@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_component_infection_amplifier = object_draft_schematic_chemistry_component_shared_infection_amplifier:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedicineComponentGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

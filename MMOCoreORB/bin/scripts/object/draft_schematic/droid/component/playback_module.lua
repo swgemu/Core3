@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_playback_module = object_draft_schematic_droid_component_shared_playback_module:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

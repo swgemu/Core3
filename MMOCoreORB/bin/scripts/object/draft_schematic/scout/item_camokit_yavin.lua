@@ -43,6 +43,8 @@
 
 object_draft_schematic_scout_item_camokit_yavin = object_draft_schematic_scout_shared_item_camokit_yavin:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftRangerCamoGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

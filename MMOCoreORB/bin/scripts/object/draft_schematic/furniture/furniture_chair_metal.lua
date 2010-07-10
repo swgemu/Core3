@@ -43,6 +43,8 @@
 
 object_draft_schematic_furniture_furniture_chair_metal = object_draft_schematic_furniture_shared_furniture_chair_metal:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen3 = object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSaberOneHand3", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

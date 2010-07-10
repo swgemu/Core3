@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_schematic_droid_component_shared_capacitor_high_discharge:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftDroidRepairCompB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

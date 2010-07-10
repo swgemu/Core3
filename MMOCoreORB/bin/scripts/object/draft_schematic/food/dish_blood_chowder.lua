@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_blood_chowder = object_draft_schematic_food_shared_dish_blood_chowder:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDishGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

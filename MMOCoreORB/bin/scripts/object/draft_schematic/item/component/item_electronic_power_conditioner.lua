@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_component_item_electronic_power_conditioner = object_draft_schematic_item_component_shared_item_electronic_power_conditioner:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

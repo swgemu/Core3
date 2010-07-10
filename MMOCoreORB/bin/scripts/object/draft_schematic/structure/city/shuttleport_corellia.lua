@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_shuttleport_corellia = object_draft_schematic_structure_city_shared_shuttleport_corellia:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

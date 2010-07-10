@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_repairkit_clothing = object_draft_schematic_item_shared_item_repairkit_clothing:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

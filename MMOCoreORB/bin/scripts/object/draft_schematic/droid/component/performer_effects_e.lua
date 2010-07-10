@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_performer_effects_e = object_draft_schematic_droid_component_shared_performer_effects_e:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

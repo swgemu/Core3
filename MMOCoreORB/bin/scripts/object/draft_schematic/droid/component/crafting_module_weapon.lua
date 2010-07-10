@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_crafting_module_weapon = object_draft_schematic_droid_component_shared_crafting_module_weapon:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

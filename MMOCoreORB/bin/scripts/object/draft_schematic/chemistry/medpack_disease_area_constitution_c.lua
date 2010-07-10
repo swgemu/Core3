@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_disease_area_constitution_c = object_draft_schematic_chemistry_shared_medpack_disease_area_constitution_c:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftApplyDiseaseAreaGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

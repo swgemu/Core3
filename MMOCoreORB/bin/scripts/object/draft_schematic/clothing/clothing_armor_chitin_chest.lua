@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_armor_chitin_chest = object_draft_schematic_clothing_shared_clothing_armor_chitin_chest:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

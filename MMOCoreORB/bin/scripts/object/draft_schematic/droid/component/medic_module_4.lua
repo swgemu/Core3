@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_medic_module_4 = object_draft_schematic_droid_component_shared_medic_module_4:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_generic_house_player_large = object_draft_schematic_structure_shared_generic_house_player_large:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftStructureGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

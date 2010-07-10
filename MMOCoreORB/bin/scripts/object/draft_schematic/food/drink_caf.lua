@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_drink_caf = object_draft_schematic_food_shared_drink_caf:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

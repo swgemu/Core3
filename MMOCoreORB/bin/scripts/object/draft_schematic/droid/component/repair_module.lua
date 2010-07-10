@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_repair_module = object_draft_schematic_droid_component_shared_repair_module:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

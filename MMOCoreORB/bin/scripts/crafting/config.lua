@@ -1,3 +1,6 @@
+--Copyright (C) 2010 <SWGEmu>
+
+
 --This File is part of Core3.
 
 --This program is free software; you can redistribute 

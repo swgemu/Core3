@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_component_structure_light_ore_mining_unit = object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

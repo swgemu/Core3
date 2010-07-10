@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_food_shared_dessert_cavaellin_creams:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDessertGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

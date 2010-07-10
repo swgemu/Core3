@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_combat_socket_bank = object_draft_schematic_droid_component_shared_combat_socket_bank:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

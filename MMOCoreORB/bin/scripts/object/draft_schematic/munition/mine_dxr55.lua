@@ -43,6 +43,8 @@
 
 object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_shared_mine_dxr55:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

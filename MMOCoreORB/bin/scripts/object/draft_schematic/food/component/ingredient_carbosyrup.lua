@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schematic_food_component_shared_ingredient_carbosyrup:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

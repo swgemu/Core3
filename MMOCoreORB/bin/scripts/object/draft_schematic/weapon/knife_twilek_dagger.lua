@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapon_shared_knife_twilek_dagger:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

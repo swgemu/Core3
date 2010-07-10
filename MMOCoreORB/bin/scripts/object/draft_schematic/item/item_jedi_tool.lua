@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_item_jedi_tool:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
