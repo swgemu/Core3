@@ -82,4 +82,4 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2401779536
 }
 
-ObjectTemplates:addTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")
+ObjectTemplates:addClientTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")

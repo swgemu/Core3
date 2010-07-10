@@ -92,7 +92,7 @@ object_tangible_lair_bol_shared_lair_bol = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 690467171
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bol_shared_lair_bol, "object/tangible/lair/bol/shared_lair_bol.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol, "object/tangible/lair/bol/shared_lair_bol.iff")
 
 object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplat
 	clientObjectCRC = 494138850
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bol_shared_lair_bol_grassland, "object/tangible/lair/bol/shared_lair_bol_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol_grassland, "object/tangible/lair/bol/shared_lair_bol_grassland.iff")

@@ -92,7 +92,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 	clientObjectCRC = 3535581753
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 	clientObjectCRC = 3799137931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 	clientObjectCRC = 3834490330
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")

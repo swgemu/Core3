@@ -82,7 +82,7 @@ object_draft_schematic_space_reactor_shared_basic_reactor = SharedDraftSchematic
 	clientObjectCRC = 366234772
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_basic_reactor, "object/draft_schematic/space/reactor/shared_basic_reactor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_basic_reactor, "object/draft_schematic/space/reactor/shared_basic_reactor.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSche
 	clientObjectCRC = 3664496596
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk1, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk1, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSche
 	clientObjectCRC = 24932163
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk2, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk2, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSche
 	clientObjectCRC = 1215367374
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk3, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk3, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSche
 	clientObjectCRC = 3012699098
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk4, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk4, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSche
 	clientObjectCRC = 4204741719
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk5, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk5, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk5.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSch
 	clientObjectCRC = 3282952808
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk1, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk1, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSch
 	clientObjectCRC = 414862079
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk2, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk2, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSch
 	clientObjectCRC = 1370959218
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk3, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk3, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSch
 	clientObjectCRC = 2857633382
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk4, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk4, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSch
 	clientObjectCRC = 3814285803
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk5, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk5, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk5.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraf
 	clientObjectCRC = 287048772
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraf
 	clientObjectCRC = 3389762771
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraf
 	clientObjectCRC = 2198260574
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraf
 	clientObjectCRC = 2028331082
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,4 +727,4 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraf
 	clientObjectCRC = 837322695
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk5.iff")

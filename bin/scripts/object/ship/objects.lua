@@ -92,7 +92,7 @@ object_ship_shared_assaultship = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3844148531
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_assaultship, "object/ship/shared_assaultship.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_assaultship, "object/ship/shared_assaultship.iff")
 
 object_ship_shared_awing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -145,7 +145,7 @@ object_ship_shared_awing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1006768204
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing, "object/ship/shared_awing.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing, "object/ship/shared_awing.iff")
 
 object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -198,7 +198,7 @@ object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2304550097
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing_tier1, "object/ship/shared_awing_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier1, "object/ship/shared_awing_tier1.iff")
 
 object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -251,7 +251,7 @@ object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1380650054
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing_tier2, "object/ship/shared_awing_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier2, "object/ship/shared_awing_tier2.iff")
 
 object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -304,7 +304,7 @@ object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 457599947
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing_tier3, "object/ship/shared_awing_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier3, "object/ship/shared_awing_tier3.iff")
 
 object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -357,7 +357,7 @@ object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3768926431
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing_tier4, "object/ship/shared_awing_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier4, "object/ship/shared_awing_tier4.iff")
 
 object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
@@ -410,7 +410,7 @@ object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2846369618
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_awing_tier5, "object/ship/shared_awing_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier5, "object/ship/shared_awing_tier5.iff")
 
 object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -463,7 +463,7 @@ object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 	clientObjectCRC = 762962365
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_basic_hutt_light, "object/ship/shared_basic_hutt_light.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_basic_hutt_light, "object/ship/shared_basic_hutt_light.iff")
 
 object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -516,7 +516,7 @@ object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2423388993
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_basic_tiefighter, "object/ship/shared_basic_tiefighter.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_basic_tiefighter, "object/ship/shared_basic_tiefighter.iff")
 
 object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -569,7 +569,7 @@ object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 237307345
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_basic_z95, "object/ship/shared_basic_z95.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_basic_z95, "object/ship/shared_basic_z95.iff")
 
 object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -622,7 +622,7 @@ object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1689683950
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01, "object/ship/shared_blacksun_heavy_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01, "object/ship/shared_blacksun_heavy_s01.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -675,7 +675,7 @@ object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 42858675
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier1, "object/ship/shared_blacksun_heavy_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier1, "object/ship/shared_blacksun_heavy_s01_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -728,7 +728,7 @@ object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3650768932
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier2, "object/ship/shared_blacksun_heavy_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier2, "object/ship/shared_blacksun_heavy_s01_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -781,7 +781,7 @@ object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2425829289
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier3, "object/ship/shared_blacksun_heavy_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier3, "object/ship/shared_blacksun_heavy_s01_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -834,7 +834,7 @@ object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1802771645
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier4, "object/ship/shared_blacksun_heavy_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier4, "object/ship/shared_blacksun_heavy_s01_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -887,7 +887,7 @@ object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 578386736
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier5, "object/ship/shared_blacksun_heavy_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier5, "object/ship/shared_blacksun_heavy_s01_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -940,7 +940,7 @@ object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3215011705
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02, "object/ship/shared_blacksun_heavy_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02, "object/ship/shared_blacksun_heavy_s02.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -993,7 +993,7 @@ object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 213478710
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier1, "object/ship/shared_blacksun_heavy_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier1, "object/ship/shared_blacksun_heavy_s02_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -1046,7 +1046,7 @@ object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3618555297
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier2, "object/ship/shared_blacksun_heavy_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier2, "object/ship/shared_blacksun_heavy_s02_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -1099,7 +1099,7 @@ object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2661524012
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier3, "object/ship/shared_blacksun_heavy_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier3, "object/ship/shared_blacksun_heavy_s02_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -1152,7 +1152,7 @@ object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1698728248
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier4, "object/ship/shared_blacksun_heavy_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier4, "object/ship/shared_blacksun_heavy_s02_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -1205,7 +1205,7 @@ object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 743304885
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier5, "object/ship/shared_blacksun_heavy_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier5, "object/ship/shared_blacksun_heavy_s02_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1258,7 +1258,7 @@ object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4138486004
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03, "object/ship/shared_blacksun_heavy_s03.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03, "object/ship/shared_blacksun_heavy_s03.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1311,7 +1311,7 @@ object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4111854296
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier1, "object/ship/shared_blacksun_heavy_s03_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier1, "object/ship/shared_blacksun_heavy_s03_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1364,7 +1364,7 @@ object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 771899983
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier2, "object/ship/shared_blacksun_heavy_s03_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier2, "object/ship/shared_blacksun_heavy_s03_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1417,7 +1417,7 @@ object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1729045954
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier3, "object/ship/shared_blacksun_heavy_s03_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier3, "object/ship/shared_blacksun_heavy_s03_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1470,7 +1470,7 @@ object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2632715990
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier4, "object/ship/shared_blacksun_heavy_s03_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier4, "object/ship/shared_blacksun_heavy_s03_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1523,7 +1523,7 @@ object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3588319579
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier5, "object/ship/shared_blacksun_heavy_s03_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier5, "object/ship/shared_blacksun_heavy_s03_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1576,7 +1576,7 @@ object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 223306720
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04, "object/ship/shared_blacksun_heavy_s04.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04, "object/ship/shared_blacksun_heavy_s04.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1629,7 +1629,7 @@ object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 282084924
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier1, "object/ship/shared_blacksun_heavy_s04_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier1, "object/ship/shared_blacksun_heavy_s04_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1682,7 +1682,7 @@ object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3418877611
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier2, "object/ship/shared_blacksun_heavy_s04_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier2, "object/ship/shared_blacksun_heavy_s04_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1735,7 +1735,7 @@ object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2194311462
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier3, "object/ship/shared_blacksun_heavy_s04_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier3, "object/ship/shared_blacksun_heavy_s04_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1788,7 +1788,7 @@ object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2032771634
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier4, "object/ship/shared_blacksun_heavy_s04_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier4, "object/ship/shared_blacksun_heavy_s04_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -1841,7 +1841,7 @@ object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 807716287
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier5, "object/ship/shared_blacksun_heavy_s04_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier5, "object/ship/shared_blacksun_heavy_s04_tier5.iff")
 
 object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -1894,7 +1894,7 @@ object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2025920948
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01, "object/ship/shared_blacksun_light_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01, "object/ship/shared_blacksun_light_s01.iff")
 
 object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -1947,7 +1947,7 @@ object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1922069411
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier1, "object/ship/shared_blacksun_light_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier1, "object/ship/shared_blacksun_light_s01_tier1.iff")
 
 object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2000,7 +2000,7 @@ object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2844252980
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier2, "object/ship/shared_blacksun_light_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier2, "object/ship/shared_blacksun_light_s01_tier2.iff")
 
 object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2053,7 +2053,7 @@ object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3767188665
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier3, "object/ship/shared_blacksun_light_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier3, "object/ship/shared_blacksun_light_s01_tier3.iff")
 
 object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2106,7 +2106,7 @@ object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 459904941
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier4, "object/ship/shared_blacksun_light_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier4, "object/ship/shared_blacksun_light_s01_tier4.iff")
 
 object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2159,7 +2159,7 @@ object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1382346784
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier5, "object/ship/shared_blacksun_light_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier5, "object/ship/shared_blacksun_light_s01_tier5.iff")
 
 object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2212,7 +2212,7 @@ object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2748756259
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02, "object/ship/shared_blacksun_light_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02, "object/ship/shared_blacksun_light_s02.iff")
 
 object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2265,7 +2265,7 @@ object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2091181606
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier1, "object/ship/shared_blacksun_light_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier1, "object/ship/shared_blacksun_light_s02_tier1.iff")
 
 object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2318,7 +2318,7 @@ object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2813546161
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier2, "object/ship/shared_blacksun_light_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier2, "object/ship/shared_blacksun_light_s02_tier2.iff")
 
 object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2371,7 +2371,7 @@ object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4005439804
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier3, "object/ship/shared_blacksun_light_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier3, "object/ship/shared_blacksun_light_s02_tier3.iff")
 
 object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2424,7 +2424,7 @@ object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 358416936
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier4, "object/ship/shared_blacksun_light_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier4, "object/ship/shared_blacksun_light_s02_tier4.iff")
 
 object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -2477,7 +2477,7 @@ object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1548772773
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier5, "object/ship/shared_blacksun_light_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier5, "object/ship/shared_blacksun_light_s02_tier5.iff")
 
 object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2530,7 +2530,7 @@ object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3940275886
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03, "object/ship/shared_blacksun_light_s03.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03, "object/ship/shared_blacksun_light_s03.iff")
 
 object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2583,7 +2583,7 @@ object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2231919048
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier1, "object/ship/shared_blacksun_light_s03_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier1, "object/ship/shared_blacksun_light_s03_tier1.iff")
 
 object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2636,7 +2636,7 @@ object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1579141471
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier2, "object/ship/shared_blacksun_light_s03_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier2, "object/ship/shared_blacksun_light_s03_tier2.iff")
 
 object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2689,7 +2689,7 @@ object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 387100370
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier3, "object/ship/shared_blacksun_light_s03_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier3, "object/ship/shared_blacksun_light_s03_tier3.iff")
 
 object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2742,7 +2742,7 @@ object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3975251398
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier4, "object/ship/shared_blacksun_light_s03_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier4, "object/ship/shared_blacksun_light_s03_tier4.iff")
 
 object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2795,7 +2795,7 @@ object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2784813643
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier5, "object/ship/shared_blacksun_light_s03_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier5, "object/ship/shared_blacksun_light_s03_tier5.iff")
 
 object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2848,7 +2848,7 @@ object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 288947642
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04, "object/ship/shared_blacksun_light_s04.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04, "object/ship/shared_blacksun_light_s04.iff")
 
 object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2901,7 +2901,7 @@ object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1624100140
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier1, "object/ship/shared_blacksun_light_s04_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier1, "object/ship/shared_blacksun_light_s04_tier1.iff")
 
 object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -2954,7 +2954,7 @@ object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3151652283
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier2, "object/ship/shared_blacksun_light_s04_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier2, "object/ship/shared_blacksun_light_s04_tier2.iff")
 
 object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -3007,7 +3007,7 @@ object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4074177078
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier3, "object/ship/shared_blacksun_light_s04_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier3, "object/ship/shared_blacksun_light_s04_tier3.iff")
 
 object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -3060,7 +3060,7 @@ object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 154413346
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier4, "object/ship/shared_blacksun_light_s04_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier4, "object/ship/shared_blacksun_light_s04_tier4.iff")
 
 object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -3113,7 +3113,7 @@ object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1077497519
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier5, "object/ship/shared_blacksun_light_s04_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier5, "object/ship/shared_blacksun_light_s04_tier5.iff")
 
 object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3166,7 +3166,7 @@ object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1249737248
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01, "object/ship/shared_blacksun_medium_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01, "object/ship/shared_blacksun_medium_s01.iff")
 
 object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3219,7 +3219,7 @@ object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3687774721
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier1, "object/ship/shared_blacksun_medium_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier1, "object/ship/shared_blacksun_medium_s01_tier1.iff")
 
 object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3272,7 +3272,7 @@ object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 14242454
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier2, "object/ship/shared_blacksun_medium_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier2, "object/ship/shared_blacksun_medium_s01_tier2.iff")
 
 object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3325,7 +3325,7 @@ object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1238643995
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier3, "object/ship/shared_blacksun_medium_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier3, "object/ship/shared_blacksun_medium_s01_tier3.iff")
 
 object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3378,7 +3378,7 @@ object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2989956623
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier4, "object/ship/shared_blacksun_medium_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier4, "object/ship/shared_blacksun_medium_s01_tier4.iff")
 
 object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3431,7 +3431,7 @@ object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4214913410
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier5, "object/ship/shared_blacksun_medium_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier5, "object/ship/shared_blacksun_medium_s01_tier5.iff")
 
 object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3484,7 +3484,7 @@ object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2439697079
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02, "object/ship/shared_blacksun_medium_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02, "object/ship/shared_blacksun_medium_s02.iff")
 
 object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3537,7 +3537,7 @@ object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3589959556
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier1, "object/ship/shared_blacksun_medium_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier1, "object/ship/shared_blacksun_medium_s02_tier1.iff")
 
 object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3590,7 +3590,7 @@ object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 250464019
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier2, "object/ship/shared_blacksun_medium_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier2, "object/ship/shared_blacksun_medium_s02_tier2.iff")
 
 object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3643,7 +3643,7 @@ object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1205903518
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier3, "object/ship/shared_blacksun_medium_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier3, "object/ship/shared_blacksun_medium_s02_tier3.iff")
 
 object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3696,7 +3696,7 @@ object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3154348938
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier4, "object/ship/shared_blacksun_medium_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier4, "object/ship/shared_blacksun_medium_s02_tier4.iff")
 
 object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -3749,7 +3749,7 @@ object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4111395847
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier5, "object/ship/shared_blacksun_medium_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier5, "object/ship/shared_blacksun_medium_s02_tier5.iff")
 
 object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -3802,7 +3802,7 @@ object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3630675258
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03, "object/ship/shared_blacksun_medium_s03.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03, "object/ship/shared_blacksun_medium_s03.iff")
 
 object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -3855,7 +3855,7 @@ object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 743893098
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier1, "object/ship/shared_blacksun_medium_s03_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier1, "object/ship/shared_blacksun_medium_s03_tier1.iff")
 
 object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -3908,7 +3908,7 @@ object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4148248829
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier2, "object/ship/shared_blacksun_medium_s03_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier2, "object/ship/shared_blacksun_medium_s03_tier2.iff")
 
 object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -3961,7 +3961,7 @@ object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3192661872
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier3, "object/ship/shared_blacksun_medium_s03_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier3, "object/ship/shared_blacksun_medium_s03_tier3.iff")
 
 object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4014,7 +4014,7 @@ object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1169099876
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier4, "object/ship/shared_blacksun_medium_s03_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier4, "object/ship/shared_blacksun_medium_s03_tier4.iff")
 
 object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4067,7 +4067,7 @@ object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 211971049
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier5, "object/ship/shared_blacksun_medium_s03_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier5, "object/ship/shared_blacksun_medium_s03_tier5.iff")
 
 object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4120,7 +4120,7 @@ object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 595893806
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04, "object/ship/shared_blacksun_medium_s04.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04, "object/ship/shared_blacksun_medium_s04.iff")
 
 object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4173,7 +4173,7 @@ object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3381871758
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier1, "object/ship/shared_blacksun_medium_s04_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier1, "object/ship/shared_blacksun_medium_s04_tier1.iff")
 
 object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4226,7 +4226,7 @@ object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 310701081
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier2, "object/ship/shared_blacksun_medium_s04_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier2, "object/ship/shared_blacksun_medium_s04_tier2.iff")
 
 object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4279,7 +4279,7 @@ object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1535740820
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier3, "object/ship/shared_blacksun_medium_s04_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier3, "object/ship/shared_blacksun_medium_s04_tier3.iff")
 
 object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4332,7 +4332,7 @@ object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2691342464
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier4, "object/ship/shared_blacksun_medium_s04_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier4, "object/ship/shared_blacksun_medium_s04_tier4.iff")
 
 object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -4385,7 +4385,7 @@ object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3915892493
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier5, "object/ship/shared_blacksun_medium_s04_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier5, "object/ship/shared_blacksun_medium_s04_tier5.iff")
 
 object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4438,7 +4438,7 @@ object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 	clientObjectCRC = 806145873
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport, "object/ship/shared_blacksun_transport.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport, "object/ship/shared_blacksun_transport.iff")
 
 object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4491,7 +4491,7 @@ object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3217548599
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier1, "object/ship/shared_blacksun_transport_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier1, "object/ship/shared_blacksun_transport_tier1.iff")
 
 object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4544,7 +4544,7 @@ object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1691372960
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier2, "object/ship/shared_blacksun_transport_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier2, "object/ship/shared_blacksun_transport_tier2.iff")
 
 object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4597,7 +4597,7 @@ object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 769468973
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier3, "object/ship/shared_blacksun_transport_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier3, "object/ship/shared_blacksun_transport_tier3.iff")
 
 object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4650,7 +4650,7 @@ object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3594387769
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier4, "object/ship/shared_blacksun_transport_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier4, "object/ship/shared_blacksun_transport_tier4.iff")
 
 object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
@@ -4703,7 +4703,7 @@ object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2670945972
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier5, "object/ship/shared_blacksun_transport_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier5, "object/ship/shared_blacksun_transport_tier5.iff")
 
 object_ship_shared_bwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -4756,7 +4756,7 @@ object_ship_shared_bwing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 784528209
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing, "object/ship/shared_bwing.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing, "object/ship/shared_bwing.iff")
 
 object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -4809,7 +4809,7 @@ object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3935148784
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing_tier1, "object/ship/shared_bwing_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier1, "object/ship/shared_bwing_tier1.iff")
 
 object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -4862,7 +4862,7 @@ object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 832189031
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing_tier2, "object/ship/shared_bwing_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier2, "object/ship/shared_bwing_tier2.iff")
 
 object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -4915,7 +4915,7 @@ object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2023183850
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing_tier3, "object/ship/shared_bwing_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier3, "object/ship/shared_bwing_tier3.iff")
 
 object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -4968,7 +4968,7 @@ object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2205449982
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing_tier4, "object/ship/shared_bwing_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier4, "object/ship/shared_bwing_tier4.iff")
 
 object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -5021,7 +5021,7 @@ object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3396934003
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_bwing_tier5, "object/ship/shared_bwing_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier5, "object/ship/shared_bwing_tier5.iff")
 
 object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle.apt",
@@ -5074,7 +5074,7 @@ object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 	clientObjectCRC = 907129698
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_civshuttle, "object/ship/shared_civshuttle.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_civshuttle, "object/ship/shared_civshuttle.iff")
 
 object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_speeder_1.apt",
@@ -5127,7 +5127,7 @@ object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4120399097
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_civspeeder1, "object/ship/shared_civspeeder1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_civspeeder1, "object/ship/shared_civspeeder1.iff")
 
 object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_speeder_2.apt",
@@ -5180,7 +5180,7 @@ object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 781182062
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_civspeeder2, "object/ship/shared_civspeeder2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_civspeeder2, "object/ship/shared_civspeeder2.iff")
 
 object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_taxi.apt",
@@ -5233,7 +5233,7 @@ object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3717426532
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_civtaxi, "object/ship/shared_civtaxi.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_civtaxi, "object/ship/shared_civtaxi.iff")
 
 object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport.apt",
@@ -5286,7 +5286,7 @@ object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 	clientObjectCRC = 952499678
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_civtransport, "object/ship/shared_civtransport.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_civtransport, "object/ship/shared_civtransport.iff")
 
 object_ship_shared_corvette = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
@@ -5339,7 +5339,7 @@ object_ship_shared_corvette = SharedShipObjectTemplate:new {
 	clientObjectCRC = 562522734
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_corvette, "object/ship/shared_corvette.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_corvette, "object/ship/shared_corvette.iff")
 
 object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
@@ -5392,7 +5392,7 @@ object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3035559423
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_corvette_interior, "object/ship/shared_corvette_interior.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_corvette_interior, "object/ship/shared_corvette_interior.iff")
 
 object_ship_shared_decimator = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5445,7 +5445,7 @@ object_ship_shared_decimator = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2362865628
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator, "object/ship/shared_decimator.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator, "object/ship/shared_decimator.iff")
 
 object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5498,7 +5498,7 @@ object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2353591998
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator_tier1, "object/ship/shared_decimator_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier1, "object/ship/shared_decimator_tier1.iff")
 
 object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5551,7 +5551,7 @@ object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1465867817
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator_tier2, "object/ship/shared_decimator_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier2, "object/ship/shared_decimator_tier2.iff")
 
 object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5604,7 +5604,7 @@ object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 508705188
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator_tier3, "object/ship/shared_decimator_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier3, "object/ship/shared_decimator_tier3.iff")
 
 object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5657,7 +5657,7 @@ object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3853587120
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator_tier4, "object/ship/shared_decimator_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier4, "object/ship/shared_decimator_tier4.iff")
 
 object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
@@ -5710,7 +5710,7 @@ object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2898031933
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_decimator_tier5, "object/ship/shared_decimator_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier5, "object/ship/shared_decimator_tier5.iff")
 
 object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -5763,7 +5763,7 @@ object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2308789341
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter, "object/ship/shared_droid_fighter.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter, "object/ship/shared_droid_fighter.iff")
 
 object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -5816,7 +5816,7 @@ object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 14973297
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier1, "object/ship/shared_droid_fighter_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier1, "object/ship/shared_droid_fighter_tier1.iff")
 
 object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -5869,7 +5869,7 @@ object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3690189286
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier2, "object/ship/shared_droid_fighter_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier2, "object/ship/shared_droid_fighter_tier2.iff")
 
 object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -5922,7 +5922,7 @@ object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2466166379
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier3, "object/ship/shared_droid_fighter_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier3, "object/ship/shared_droid_fighter_tier3.iff")
 
 object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -5975,7 +5975,7 @@ object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1763548543
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier4, "object/ship/shared_droid_fighter_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier4, "object/ship/shared_droid_fighter_tier4.iff")
 
 object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
@@ -6028,7 +6028,7 @@ object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 537983730
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier5, "object/ship/shared_droid_fighter_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier5, "object/ship/shared_droid_fighter_tier5.iff")
 
 object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6081,7 +6081,7 @@ object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2997532055
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod, "object/ship/shared_escape_pod.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod, "object/ship/shared_escape_pod.iff")
 
 object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6134,7 +6134,7 @@ object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2280868888
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier1, "object/ship/shared_escape_pod_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier1, "object/ship/shared_escape_pod_tier1.iff")
 
 object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6187,7 +6187,7 @@ object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1558504591
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier2, "object/ship/shared_escape_pod_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier2, "object/ship/shared_escape_pod_tier2.iff")
 
 object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6240,7 +6240,7 @@ object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 367624962
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier3, "object/ship/shared_escape_pod_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier3, "object/ship/shared_escape_pod_tier3.iff")
 
 object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6293,7 +6293,7 @@ object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3993675798
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier4, "object/ship/shared_escape_pod_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier4, "object/ship/shared_escape_pod_tier4.iff")
 
 object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
@@ -6346,7 +6346,7 @@ object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2802306971
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier5, "object/ship/shared_escape_pod_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier5, "object/ship/shared_escape_pod_tier5.iff")
 
 object_ship_shared_firespray = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6399,7 +6399,7 @@ object_ship_shared_firespray = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3319462575
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray, "object/ship/shared_firespray.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray, "object/ship/shared_firespray.iff")
 
 object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6452,7 +6452,7 @@ object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1391589453
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray_tier1, "object/ship/shared_firespray_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier1, "object/ship/shared_firespray_tier1.iff")
 
 object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6505,7 +6505,7 @@ object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2313572570
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray_tier2, "object/ship/shared_firespray_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier2, "object/ship/shared_firespray_tier2.iff")
 
 object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6558,7 +6558,7 @@ object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3236640599
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray_tier3, "object/ship/shared_firespray_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier3, "object/ship/shared_firespray_tier3.iff")
 
 object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6611,7 +6611,7 @@ object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 990387267
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray_tier4, "object/ship/shared_firespray_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier4, "object/ship/shared_firespray_tier4.iff")
 
 object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -6664,7 +6664,7 @@ object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1912961998
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_firespray_tier5, "object/ship/shared_firespray_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier5, "object/ship/shared_firespray_tier5.iff")
 
 object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6717,7 +6717,7 @@ object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2210460492
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy, "object/ship/shared_freighterheavy.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy, "object/ship/shared_freighterheavy.iff")
 
 object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6770,7 +6770,7 @@ object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 237176683
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier1, "object/ship/shared_freighterheavy_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier1, "object/ship/shared_freighterheavy_tier1.iff")
 
 object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6823,7 +6823,7 @@ object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3576999932
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier2, "object/ship/shared_freighterheavy_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier2, "object/ship/shared_freighterheavy_tier2.iff")
 
 object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6876,7 +6876,7 @@ object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2621032561
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier3, "object/ship/shared_freighterheavy_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier3, "object/ship/shared_freighterheavy_tier3.iff")
 
 object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6929,7 +6929,7 @@ object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1742398309
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier4, "object/ship/shared_freighterheavy_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier4, "object/ship/shared_freighterheavy_tier4.iff")
 
 object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -6982,7 +6982,7 @@ object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 785876200
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier5, "object/ship/shared_freighterheavy_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier5, "object/ship/shared_freighterheavy_tier5.iff")
 
 object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7035,7 +7035,7 @@ object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1117310866
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight, "object/ship/shared_freighterlight.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight, "object/ship/shared_freighterlight.iff")
 
 object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7088,7 +7088,7 @@ object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2981606241
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier1, "object/ship/shared_freighterlight_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier1, "object/ship/shared_freighterlight_tier1.iff")
 
 object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7141,7 +7141,7 @@ object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1788877814
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier2, "object/ship/shared_freighterlight_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier2, "object/ship/shared_freighterlight_tier2.iff")
 
 object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7194,7 +7194,7 @@ object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 598572155
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier3, "object/ship/shared_freighterlight_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier3, "object/ship/shared_freighterlight_tier3.iff")
 
 object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7247,7 +7247,7 @@ object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3629012847
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier4, "object/ship/shared_freighterlight_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier4, "object/ship/shared_freighterlight_tier4.iff")
 
 object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7300,7 +7300,7 @@ object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2437099746
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier5, "object/ship/shared_freighterlight_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier5, "object/ship/shared_freighterlight_tier5.iff")
 
 object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7353,7 +7353,7 @@ object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3398686729
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium, "object/ship/shared_freightermedium.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium, "object/ship/shared_freightermedium.iff")
 
 object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7406,7 +7406,7 @@ object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1092912234
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier1, "object/ship/shared_freightermedium_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier1, "object/ship/shared_freightermedium_tier1.iff")
 
 object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7459,7 +7459,7 @@ object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2587045117
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier2, "object/ship/shared_freightermedium_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier2, "object/ship/shared_freightermedium_tier2.iff")
 
 object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7512,7 +7512,7 @@ object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3544075120
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier3, "object/ship/shared_freightermedium_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier3, "object/ship/shared_freightermedium_tier3.iff")
 
 object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7565,7 +7565,7 @@ object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 685596772
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier4, "object/ship/shared_freightermedium_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier4, "object/ship/shared_freightermedium_tier4.iff")
 
 object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
@@ -7618,7 +7618,7 @@ object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1641023465
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier5, "object/ship/shared_freightermedium_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier5, "object/ship/shared_freightermedium_tier5.iff")
 
 object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7671,7 +7671,7 @@ object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1217600546
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01, "object/ship/shared_hutt_heavy_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01, "object/ship/shared_hutt_heavy_s01.iff")
 
 object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7724,7 +7724,7 @@ object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3993388117
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier1, "object/ship/shared_hutt_heavy_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier1, "object/ship/shared_hutt_heavy_s01_tier1.iff")
 
 object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7777,7 +7777,7 @@ object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 890367170
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier2, "object/ship/shared_hutt_heavy_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier2, "object/ship/shared_hutt_heavy_s01_tier2.iff")
 
 object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7830,7 +7830,7 @@ object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2082245455
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier3, "object/ship/shared_hutt_heavy_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier3, "object/ship/shared_hutt_heavy_s01_tier3.iff")
 
 object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7883,7 +7883,7 @@ object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2281676891
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier4, "object/ship/shared_hutt_heavy_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier4, "object/ship/shared_hutt_heavy_s01_tier4.iff")
 
 object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -7936,7 +7936,7 @@ object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3472017366
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier5, "object/ship/shared_hutt_heavy_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier5, "object/ship/shared_hutt_heavy_s01_tier5.iff")
 
 object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -7989,7 +7989,7 @@ object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2474947765
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02, "object/ship/shared_hutt_heavy_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02, "object/ship/shared_hutt_heavy_s02.iff")
 
 object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -8042,7 +8042,7 @@ object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3761426896
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier1, "object/ship/shared_hutt_heavy_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier1, "object/ship/shared_hutt_heavy_s02_tier1.iff")
 
 object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -8095,7 +8095,7 @@ object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 992311623
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier2, "object/ship/shared_hutt_heavy_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier2, "object/ship/shared_hutt_heavy_s02_tier2.iff")
 
 object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -8148,7 +8148,7 @@ object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1915231946
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier3, "object/ship/shared_hutt_heavy_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier3, "object/ship/shared_hutt_heavy_s02_tier3.iff")
 
 object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -8201,7 +8201,7 @@ object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2311796190
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier4, "object/ship/shared_hutt_heavy_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier4, "object/ship/shared_hutt_heavy_s02_tier4.iff")
 
 object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -8254,7 +8254,7 @@ object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3234222675
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier5, "object/ship/shared_hutt_heavy_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier5, "object/ship/shared_hutt_heavy_s02_tier5.iff")
 
 object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8307,7 +8307,7 @@ object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1424261752
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01, "object/ship/shared_hutt_light_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01, "object/ship/shared_hutt_light_s01.iff")
 
 object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8360,7 +8360,7 @@ object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2652622661
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier1, "object/ship/shared_hutt_light_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier1, "object/ship/shared_hutt_light_s01_tier1.iff")
 
 object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8413,7 +8413,7 @@ object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1158440914
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier2, "object/ship/shared_hutt_light_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier2, "object/ship/shared_hutt_light_s01_tier2.iff")
 
 object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8466,7 +8466,7 @@ object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 201392223
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier3, "object/ship/shared_hutt_light_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier3, "object/ship/shared_hutt_light_s01_tier3.iff")
 
 object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8519,7 +8519,7 @@ object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4158794571
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier4, "object/ship/shared_hutt_light_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier4, "object/ship/shared_hutt_light_s01_tier4.iff")
 
 object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -8572,7 +8572,7 @@ object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3203353798
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier5, "object/ship/shared_hutt_light_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier5, "object/ship/shared_hutt_light_s01_tier5.iff")
 
 object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8625,7 +8625,7 @@ object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2415078127
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02, "object/ship/shared_hutt_light_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02, "object/ship/shared_hutt_light_s02.iff")
 
 object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8678,7 +8678,7 @@ object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2419022528
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier1, "object/ship/shared_hutt_light_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier1, "object/ship/shared_hutt_light_s02_tier1.iff")
 
 object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8731,7 +8731,7 @@ object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1262023255
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier2, "object/ship/shared_hutt_light_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier2, "object/ship/shared_hutt_light_s02_tier2.iff")
 
 object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8784,7 +8784,7 @@ object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 37066202
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier3, "object/ship/shared_hutt_light_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier3, "object/ship/shared_hutt_light_s02_tier3.iff")
 
 object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8837,7 +8837,7 @@ object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4191600334
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier4, "object/ship/shared_hutt_light_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier4, "object/ship/shared_hutt_light_s02_tier4.iff")
 
 object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -8890,7 +8890,7 @@ object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2967198019
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier5, "object/ship/shared_hutt_light_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier5, "object/ship/shared_hutt_light_s02_tier5.iff")
 
 object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -8943,7 +8943,7 @@ object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3267992484
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01, "object/ship/shared_hutt_medium_s01.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01, "object/ship/shared_hutt_medium_s01.iff")
 
 object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -8996,7 +8996,7 @@ object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2698486044
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier1, "object/ship/shared_hutt_medium_s01_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier1, "object/ship/shared_hutt_medium_s01_tier1.iff")
 
 object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -9049,7 +9049,7 @@ object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2076182923
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier2, "object/ship/shared_hutt_medium_s01_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier2, "object/ship/shared_hutt_medium_s01_tier2.iff")
 
 object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -9102,7 +9102,7 @@ object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 852323846
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier3, "object/ship/shared_hutt_medium_s01_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier3, "object/ship/shared_hutt_medium_s01_tier3.iff")
 
 object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -9155,7 +9155,7 @@ object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3375252754
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier4, "object/ship/shared_hutt_medium_s01_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier4, "object/ship/shared_hutt_medium_s01_tier4.iff")
 
 object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -9208,7 +9208,7 @@ object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2149786271
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier5, "object/ship/shared_hutt_medium_s01_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier5, "object/ship/shared_hutt_medium_s01_tier5.iff")
 
 object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9261,7 +9261,7 @@ object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 433992499
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02, "object/ship/shared_hutt_medium_s02.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02, "object/ship/shared_hutt_medium_s02.iff")
 
 object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9314,7 +9314,7 @@ object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2934125721
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier1, "object/ship/shared_hutt_medium_s02_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier1, "object/ship/shared_hutt_medium_s02_tier1.iff")
 
 object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9367,7 +9367,7 @@ object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1978965006
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier2, "object/ship/shared_hutt_medium_s02_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier2, "object/ship/shared_hutt_medium_s02_tier2.iff")
 
 object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9420,7 +9420,7 @@ object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1023015811
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier3, "object/ship/shared_hutt_medium_s02_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier3, "object/ship/shared_hutt_medium_s02_tier3.iff")
 
 object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9473,7 +9473,7 @@ object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3340423319
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier4, "object/ship/shared_hutt_medium_s02_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier4, "object/ship/shared_hutt_medium_s02_tier4.iff")
 
 object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -9526,7 +9526,7 @@ object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2383918874
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier5, "object/ship/shared_hutt_medium_s02_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier5, "object/ship/shared_hutt_medium_s02_tier5.iff")
 
 object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9579,7 +9579,7 @@ object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 	clientObjectCRC = 472470685
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport, "object/ship/shared_hutt_transport.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport, "object/ship/shared_hutt_transport.iff")
 
 object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9632,7 +9632,7 @@ object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1397512657
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier1, "object/ship/shared_hutt_transport_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier1, "object/ship/shared_hutt_transport_tier1.iff")
 
 object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9685,7 +9685,7 @@ object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2287726918
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier2, "object/ship/shared_hutt_transport_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier2, "object/ship/shared_hutt_transport_tier2.iff")
 
 object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9738,7 +9738,7 @@ object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3243677387
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier3, "object/ship/shared_hutt_transport_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier3, "object/ship/shared_hutt_transport_tier3.iff")
 
 object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9791,7 +9791,7 @@ object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 984989151
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier4, "object/ship/shared_hutt_transport_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier4, "object/ship/shared_hutt_transport_tier4.iff")
 
 object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
@@ -9844,7 +9844,7 @@ object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1941494354
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier5, "object/ship/shared_hutt_transport_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier5, "object/ship/shared_hutt_transport_tier5.iff")
 
 object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
@@ -9897,7 +9897,7 @@ object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2822462280
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_hutt_turret_ship, "object/ship/shared_hutt_turret_ship.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_hutt_turret_ship, "object/ship/shared_hutt_turret_ship.iff")
 
 object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -9950,7 +9950,7 @@ object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3259306099
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat, "object/ship/shared_imperial_gunboat.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat, "object/ship/shared_imperial_gunboat.iff")
 
 object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -10003,7 +10003,7 @@ object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1910102521
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier1, "object/ship/shared_imperial_gunboat_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier1, "object/ship/shared_imperial_gunboat_tier1.iff")
 
 object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -10056,7 +10056,7 @@ object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2865656174
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier2, "object/ship/shared_imperial_gunboat_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier2, "object/ship/shared_imperial_gunboat_tier2.iff")
 
 object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -10109,7 +10109,7 @@ object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3821213411
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier3, "object/ship/shared_imperial_gunboat_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier3, "object/ship/shared_imperial_gunboat_tier3.iff")
 
 object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -10162,7 +10162,7 @@ object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 404766199
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier4, "object/ship/shared_imperial_gunboat_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier4, "object/ship/shared_imperial_gunboat_tier4.iff")
 
 object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
@@ -10215,7 +10215,7 @@ object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1361926778
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier5, "object/ship/shared_imperial_gunboat_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier5, "object/ship/shared_imperial_gunboat_tier5.iff")
 
 object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10268,7 +10268,7 @@ object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 	clientObjectCRC = 979946526
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle, "object/ship/shared_lambdashuttle.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle, "object/ship/shared_lambdashuttle.iff")
 
 object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10321,7 +10321,7 @@ object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1746838902
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier1, "object/ship/shared_lambdashuttle_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier1, "object/ship/shared_lambdashuttle_tier1.iff")
 
 object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10374,7 +10374,7 @@ object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3003715041
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier2, "object/ship/shared_lambdashuttle_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier2, "object/ship/shared_lambdashuttle_tier2.iff")
 
 object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10427,7 +10427,7 @@ object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4194593388
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier3, "object/ship/shared_lambdashuttle_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier3, "object/ship/shared_lambdashuttle_tier3.iff")
 
 object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10480,7 +10480,7 @@ object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 31932792
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier4, "object/ship/shared_lambdashuttle_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier4, "object/ship/shared_lambdashuttle_tier4.iff")
 
 object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
@@ -10533,7 +10533,7 @@ object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1223304949
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier5, "object/ship/shared_lambdashuttle_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier5, "object/ship/shared_lambdashuttle_tier5.iff")
 
 object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
@@ -10586,7 +10586,7 @@ object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2543011646
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier1, "object/ship/shared_merchant_cruiser_light_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier1, "object/ship/shared_merchant_cruiser_light_tier1.iff")
 
 object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
@@ -10639,7 +10639,7 @@ object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1283780521
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier2, "object/ship/shared_merchant_cruiser_light_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier2, "object/ship/shared_merchant_cruiser_light_tier2.iff")
 
 object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
@@ -10692,7 +10692,7 @@ object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 92899364
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier3, "object/ship/shared_merchant_cruiser_light_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier3, "object/ship/shared_merchant_cruiser_light_tier3.iff")
 
 object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
@@ -10745,7 +10745,7 @@ object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4268401456
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier4, "object/ship/shared_merchant_cruiser_light_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier4, "object/ship/shared_merchant_cruiser_light_tier4.iff")
 
 object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
@@ -10798,7 +10798,7 @@ object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3077031101
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier5, "object/ship/shared_merchant_cruiser_light_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier5, "object/ship/shared_merchant_cruiser_light_tier5.iff")
 
 object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -10851,7 +10851,7 @@ object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4266302506
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium, "object/ship/shared_merchant_cruiser_medium.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium, "object/ship/shared_merchant_cruiser_medium.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -10904,7 +10904,7 @@ object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 3883212856
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier1, "object/ship/shared_merchant_cruiser_medium_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier1, "object/ship/shared_merchant_cruiser_medium_tier1.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -10957,7 +10957,7 @@ object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 1013090479
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier2, "object/ship/shared_merchant_cruiser_medium_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier2, "object/ship/shared_merchant_cruiser_medium_tier2.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -11010,7 +11010,7 @@ object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 1970269986
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier3, "object/ship/shared_merchant_cruiser_medium_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier3, "object/ship/shared_merchant_cruiser_medium_tier3.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -11063,7 +11063,7 @@ object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 2391589942
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier4, "object/ship/shared_merchant_cruiser_medium_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier4, "object/ship/shared_merchant_cruiser_medium_tier4.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
@@ -11116,7 +11116,7 @@ object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 3347162043
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier5, "object/ship/shared_merchant_cruiser_medium_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier5, "object/ship/shared_merchant_cruiser_medium_tier5.iff")
 
 object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/nebulon_frigate.apt",
@@ -11169,7 +11169,7 @@ object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2407618193
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_nebulon, "object/ship/shared_nebulon.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_nebulon, "object/ship/shared_nebulon.iff")
 
 object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11222,7 +11222,7 @@ object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 	clientObjectCRC = 327912933
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod, "object/ship/shared_probe_droid_pod.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod, "object/ship/shared_probe_droid_pod.iff")
 
 object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11275,7 +11275,7 @@ object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2888320846
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier1, "object/ship/shared_probe_droid_pod_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier1, "object/ship/shared_probe_droid_pod_tier1.iff")
 
 object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11328,7 +11328,7 @@ object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2000678873
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier2, "object/ship/shared_probe_droid_pod_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier2, "object/ship/shared_probe_droid_pod_tier2.iff")
 
 object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11381,7 +11381,7 @@ object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1043499092
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier3, "object/ship/shared_probe_droid_pod_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier3, "object/ship/shared_probe_droid_pod_tier3.iff")
 
 object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11434,7 +11434,7 @@ object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3318850368
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier4, "object/ship/shared_probe_droid_pod_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier4, "object/ship/shared_probe_droid_pod_tier4.iff")
 
 object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
@@ -11487,7 +11487,7 @@ object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2363278541
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier5, "object/ship/shared_probe_droid_pod_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier5, "object/ship/shared_probe_droid_pod_tier5.iff")
 
 object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -11540,7 +11540,7 @@ object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1036884978
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_prototype_hutt_light, "object/ship/shared_prototype_hutt_light.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_prototype_hutt_light, "object/ship/shared_prototype_hutt_light.iff")
 
 object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -11593,7 +11593,7 @@ object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2160427278
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_prototype_tiefighter, "object/ship/shared_prototype_tiefighter.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_prototype_tiefighter, "object/ship/shared_prototype_tiefighter.iff")
 
 object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -11646,7 +11646,7 @@ object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1141820662
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_prototype_z95, "object/ship/shared_prototype_z95.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_prototype_z95, "object/ship/shared_prototype_z95.iff")
 
 object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11699,7 +11699,7 @@ object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3542721164
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat, "object/ship/shared_rebel_gunboat.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat, "object/ship/shared_rebel_gunboat.iff")
 
 object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11752,7 +11752,7 @@ object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 137363241
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier1, "object/ship/shared_rebel_gunboat_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier1, "object/ship/shared_rebel_gunboat_tier1.iff")
 
 object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11805,7 +11805,7 @@ object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3543685054
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier2, "object/ship/shared_rebel_gunboat_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier2, "object/ship/shared_rebel_gunboat_tier2.iff")
 
 object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11858,7 +11858,7 @@ object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2587177011
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier3, "object/ship/shared_rebel_gunboat_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier3, "object/ship/shared_rebel_gunboat_tier3.iff")
 
 object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11911,7 +11911,7 @@ object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1641421607
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier4, "object/ship/shared_rebel_gunboat_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier4, "object/ship/shared_rebel_gunboat_tier4.iff")
 
 object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
@@ -11964,7 +11964,7 @@ object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 685472938
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier5, "object/ship/shared_rebel_gunboat_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier5, "object/ship/shared_rebel_gunboat_tier5.iff")
 
 object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
@@ -12017,7 +12017,7 @@ object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 282943774
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier1, "object/ship/shared_rebel_shuttle_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier1, "object/ship/shared_rebel_shuttle_tier1.iff")
 
 object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
@@ -12070,7 +12070,7 @@ object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3419064713
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier2, "object/ship/shared_rebel_shuttle_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier2, "object/ship/shared_rebel_shuttle_tier2.iff")
 
 object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
@@ -12123,7 +12123,7 @@ object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2194124292
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier3, "object/ship/shared_rebel_shuttle_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier3, "object/ship/shared_rebel_shuttle_tier3.iff")
 
 object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
@@ -12176,7 +12176,7 @@ object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2032436496
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier4, "object/ship/shared_rebel_shuttle_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier4, "object/ship/shared_rebel_shuttle_tier4.iff")
 
 object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
@@ -12229,7 +12229,7 @@ object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 808051357
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier5, "object/ship/shared_rebel_shuttle_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier5, "object/ship/shared_rebel_shuttle_tier5.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
@@ -12282,7 +12282,7 @@ object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1243384778
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier1, "object/ship/shared_smuggler_warlord_ship_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier1, "object/ship/shared_smuggler_warlord_ship_tier1.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
@@ -12335,7 +12335,7 @@ object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2433426269
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier2, "object/ship/shared_smuggler_warlord_ship_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier2, "object/ship/shared_smuggler_warlord_ship_tier2.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
@@ -12388,7 +12388,7 @@ object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3624289488
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier3, "object/ship/shared_smuggler_warlord_ship_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier3, "object/ship/shared_smuggler_warlord_ship_tier3.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
@@ -12441,7 +12441,7 @@ object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 602238916
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier4, "object/ship/shared_smuggler_warlord_ship_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier4, "object/ship/shared_smuggler_warlord_ship_tier4.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
@@ -12494,7 +12494,7 @@ object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1793591369
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier5, "object/ship/shared_smuggler_warlord_ship_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier5, "object/ship/shared_smuggler_warlord_ship_tier5.iff")
 
 object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
@@ -12547,7 +12547,7 @@ object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2502364217
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_sorosuub_space_yacht, "object/ship/shared_sorosuub_space_yacht.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_sorosuub_space_yacht, "object/ship/shared_sorosuub_space_yacht.iff")
 
 object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
@@ -12600,7 +12600,7 @@ object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3165332223
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_spacestation_imperial, "object/ship/shared_spacestation_imperial.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_imperial, "object/ship/shared_spacestation_imperial.iff")
 
 object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -12653,7 +12653,7 @@ object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4164831037
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_spacestation_neutral, "object/ship/shared_spacestation_neutral.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_neutral, "object/ship/shared_spacestation_neutral.iff")
 
 object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -12706,7 +12706,7 @@ object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 	clientObjectCRC = 431716433
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_spacestation_rebel, "object/ship/shared_spacestation_rebel.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_rebel, "object/ship/shared_spacestation_rebel.iff")
 
 object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_space.apt",
@@ -12759,7 +12759,7 @@ object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3207599336
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_star_destroyer, "object/ship/shared_star_destroyer.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_star_destroyer, "object/ship/shared_star_destroyer.iff")
 
 object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_supplyship.apt",
@@ -12812,7 +12812,7 @@ object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4043601537
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_supplyship, "object/ship/shared_supplyship.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_supplyship, "object/ship/shared_supplyship.iff")
 
 object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_in.apt",
@@ -12865,7 +12865,7 @@ object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1874889307
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tie_in, "object/ship/shared_tie_in.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tie_in, "object/ship/shared_tie_in.iff")
 
 object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -12918,7 +12918,7 @@ object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1231580532
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tie_light_duty, "object/ship/shared_tie_light_duty.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tie_light_duty, "object/ship/shared_tie_light_duty.iff")
 
 object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -12971,7 +12971,7 @@ object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 	clientObjectCRC = 212073063
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced, "object/ship/shared_tieadvanced.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced, "object/ship/shared_tieadvanced.iff")
 
 object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -13024,7 +13024,7 @@ object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4294368666
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier1, "object/ship/shared_tieadvanced_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier1, "object/ship/shared_tieadvanced_tier1.iff")
 
 object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -13077,7 +13077,7 @@ object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 618755341
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier2, "object/ship/shared_tieadvanced_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier2, "object/ship/shared_tieadvanced_tier2.iff")
 
 object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -13130,7 +13130,7 @@ object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1844187776
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier3, "object/ship/shared_tieadvanced_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier3, "object/ship/shared_tieadvanced_tier3.iff")
 
 object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -13183,7 +13183,7 @@ object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2517580180
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier4, "object/ship/shared_tieadvanced_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier4, "object/ship/shared_tieadvanced_tier4.iff")
 
 object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -13236,7 +13236,7 @@ object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3741474329
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier5, "object/ship/shared_tieadvanced_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier5, "object/ship/shared_tieadvanced_tier5.iff")
 
 object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13289,7 +13289,7 @@ object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3457688983
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor, "object/ship/shared_tieaggressor.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor, "object/ship/shared_tieaggressor.iff")
 
 object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13342,7 +13342,7 @@ object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1918801119
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier1, "object/ship/shared_tieaggressor_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier1, "object/ship/shared_tieaggressor_tier1.iff")
 
 object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13395,7 +13395,7 @@ object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2840149064
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier2, "object/ship/shared_tieaggressor_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier2, "object/ship/shared_tieaggressor_tier2.iff")
 
 object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13448,7 +13448,7 @@ object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3762576325
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier3, "object/ship/shared_tieaggressor_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier3, "object/ship/shared_tieaggressor_tier3.iff")
 
 object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13501,7 +13501,7 @@ object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 463958225
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier4, "object/ship/shared_tieaggressor_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier4, "object/ship/shared_tieaggressor_tier4.iff")
 
 object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -13554,7 +13554,7 @@ object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1386878812
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier5, "object/ship/shared_tieaggressor_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier5, "object/ship/shared_tieaggressor_tier5.iff")
 
 object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13607,7 +13607,7 @@ object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1689489833
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber, "object/ship/shared_tiebomber.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber, "object/ship/shared_tiebomber.iff")
 
 object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13660,7 +13660,7 @@ object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 800011159
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier1, "object/ship/shared_tiebomber_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier1, "object/ship/shared_tiebomber_tier1.iff")
 
 object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13713,7 +13713,7 @@ object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4105739008
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier2, "object/ship/shared_tiebomber_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier2, "object/ship/shared_tiebomber_tier2.iff")
 
 object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13766,7 +13766,7 @@ object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3182820493
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier3, "object/ship/shared_tiebomber_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier3, "object/ship/shared_tiebomber_tier3.iff")
 
 object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13819,7 +13819,7 @@ object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1180096409
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier4, "object/ship/shared_tiebomber_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier4, "object/ship/shared_tiebomber_tier4.iff")
 
 object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -13872,7 +13872,7 @@ object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 257667092
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier5, "object/ship/shared_tiebomber_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier5, "object/ship/shared_tiebomber_tier5.iff")
 
 object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -13925,7 +13925,7 @@ object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2677969389
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter, "object/ship/shared_tiefighter.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter, "object/ship/shared_tiefighter.iff")
 
 object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -13978,7 +13978,7 @@ object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 719737899
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier1, "object/ship/shared_tiefighter_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier1, "object/ship/shared_tiefighter_tier1.iff")
 
 object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -14031,7 +14031,7 @@ object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4059167932
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier2, "object/ship/shared_tiefighter_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier2, "object/ship/shared_tiefighter_tier2.iff")
 
 object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -14084,7 +14084,7 @@ object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3103562545
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier3, "object/ship/shared_tiefighter_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier3, "object/ship/shared_tiefighter_tier3.iff")
 
 object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -14137,7 +14137,7 @@ object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1126150181
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier4, "object/ship/shared_tiefighter_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier4, "object/ship/shared_tiefighter_tier4.iff")
 
 object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -14190,7 +14190,7 @@ object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 169007016
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier5, "object/ship/shared_tiefighter_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier5, "object/ship/shared_tiefighter_tier5.iff")
 
 object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14243,7 +14243,7 @@ object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2986877248
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor, "object/ship/shared_tieinterceptor.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor, "object/ship/shared_tieinterceptor.iff")
 
 object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14296,7 +14296,7 @@ object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3034789135
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier1, "object/ship/shared_tieinterceptor_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier1, "object/ship/shared_tieinterceptor_tier1.iff")
 
 object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14349,7 +14349,7 @@ object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1878302104
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier2, "object/ship/shared_tieinterceptor_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier2, "object/ship/shared_tieinterceptor_tier2.iff")
 
 object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14402,7 +14402,7 @@ object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 653916693
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier3, "object/ship/shared_tieinterceptor_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier3, "object/ship/shared_tieinterceptor_tier3.iff")
 
 object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14455,7 +14455,7 @@ object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3709522177
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier4, "object/ship/shared_tieinterceptor_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier4, "object/ship/shared_tieinterceptor_tier4.iff")
 
 object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -14508,7 +14508,7 @@ object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2484582028
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier5, "object/ship/shared_tieinterceptor_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier5, "object/ship/shared_tieinterceptor_tier5.iff")
 
 object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14561,7 +14561,7 @@ object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3234528257
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor, "object/ship/shared_tieoppressor.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor, "object/ship/shared_tieoppressor.iff")
 
 object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14614,7 +14614,7 @@ object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3138516559
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier1, "object/ship/shared_tieoppressor_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier1, "object/ship/shared_tieoppressor_tier1.iff")
 
 object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14667,7 +14667,7 @@ object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1611030232
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier2, "object/ship/shared_tieoppressor_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier2, "object/ship/shared_tieoppressor_tier2.iff")
 
 object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14720,7 +14720,7 @@ object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 688601429
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier3, "object/ship/shared_tieoppressor_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier3, "object/ship/shared_tieoppressor_tier3.iff")
 
 object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14773,7 +14773,7 @@ object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3538424385
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier4, "object/ship/shared_tieoppressor_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier4, "object/ship/shared_tieoppressor_tier4.iff")
 
 object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -14826,7 +14826,7 @@ object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2615506380
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier5, "object/ship/shared_tieoppressor_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier5, "object/ship/shared_tieoppressor_tier5.iff")
 
 object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -14879,7 +14879,7 @@ object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1879411884
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science, "object/ship/shared_transport_science.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science, "object/ship/shared_transport_science.iff")
 
 object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -14932,7 +14932,7 @@ object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1650455622
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier1, "object/ship/shared_transport_science_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier1, "object/ship/shared_transport_science_tier1.iff")
 
 object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -14985,7 +14985,7 @@ object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3108527313
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier2, "object/ship/shared_transport_science_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier2, "object/ship/shared_transport_science_tier2.iff")
 
 object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -15038,7 +15038,7 @@ object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4031069020
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier3, "object/ship/shared_transport_science_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier3, "object/ship/shared_transport_science_tier3.iff")
 
 object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -15091,7 +15091,7 @@ object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 195432520
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier4, "object/ship/shared_transport_science_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier4, "object/ship/shared_transport_science_tier4.iff")
 
 object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
@@ -15144,7 +15144,7 @@ object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1118533573
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier5, "object/ship/shared_transport_science_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier5, "object/ship/shared_transport_science_tier5.iff")
 
 object_ship_shared_xwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15197,7 +15197,7 @@ object_ship_shared_xwing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1476764354
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing, "object/ship/shared_xwing.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing, "object/ship/shared_xwing.iff")
 
 object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15250,7 +15250,7 @@ object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1201246834
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing_tier1, "object/ship/shared_xwing_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier1, "object/ship/shared_xwing_tier1.iff")
 
 object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15303,7 +15303,7 @@ object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2626566885
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing_tier2, "object/ship/shared_xwing_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier2, "object/ship/shared_xwing_tier2.iff")
 
 object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15356,7 +15356,7 @@ object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3582156136
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing_tier3, "object/ship/shared_xwing_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier3, "object/ship/shared_xwing_tier3.iff")
 
 object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15409,7 +15409,7 @@ object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 778073724
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing_tier4, "object/ship/shared_xwing_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier4, "object/ship/shared_xwing_tier4.iff")
 
 object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -15462,7 +15462,7 @@ object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1735201265
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_xwing_tier5, "object/ship/shared_xwing_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier5, "object/ship/shared_xwing_tier5.iff")
 
 object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15515,7 +15515,7 @@ object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2370729898
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r, "object/ship/shared_ykl37r.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r, "object/ship/shared_ykl37r.iff")
 
 object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15568,7 +15568,7 @@ object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 212362802
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier1, "object/ship/shared_ykl37r_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier1, "object/ship/shared_ykl37r_tier1.iff")
 
 object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15621,7 +15621,7 @@ object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3619671717
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier2, "object/ship/shared_ykl37r_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier2, "object/ship/shared_ykl37r_tier2.iff")
 
 object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15674,7 +15674,7 @@ object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2662508840
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier3, "object/ship/shared_ykl37r_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier3, "object/ship/shared_ykl37r_tier3.iff")
 
 object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15727,7 +15727,7 @@ object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1699840572
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier4, "object/ship/shared_ykl37r_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier4, "object/ship/shared_ykl37r_tier4.iff")
 
 object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
@@ -15780,7 +15780,7 @@ object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 744285617
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier5, "object/ship/shared_ykl37r_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier5, "object/ship/shared_ykl37r_tier5.iff")
 
 object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -15833,7 +15833,7 @@ object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4019421648
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300, "object/ship/shared_yt1300.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300, "object/ship/shared_yt1300.iff")
 
 object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -15886,7 +15886,7 @@ object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1347113891
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_interior, "object/ship/shared_yt1300_interior.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_interior, "object/ship/shared_yt1300_interior.iff")
 
 object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -15939,7 +15939,7 @@ object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3582257391
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier1, "object/ship/shared_yt1300_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier1, "object/ship/shared_yt1300_tier1.iff")
 
 object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -15992,7 +15992,7 @@ object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 244531320
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier2, "object/ship/shared_yt1300_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier2, "object/ship/shared_yt1300_tier2.iff")
 
 object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -16045,7 +16045,7 @@ object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1201547253
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier3, "object/ship/shared_yt1300_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier3, "object/ship/shared_yt1300_tier3.iff")
 
 object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -16098,7 +16098,7 @@ object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3162311905
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier4, "object/ship/shared_yt1300_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier4, "object/ship/shared_yt1300_tier4.iff")
 
 object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
@@ -16151,7 +16151,7 @@ object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4117785452
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier5, "object/ship/shared_yt1300_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier5, "object/ship/shared_yt1300_tier5.iff")
 
 object_ship_shared_ywing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16204,7 +16204,7 @@ object_ship_shared_ywing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2852456612
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing, "object/ship/shared_ywing.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing, "object/ship/shared_ywing.iff")
 
 object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16257,7 +16257,7 @@ object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3553113506
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_longprobe, "object/ship/shared_ywing_longprobe.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_longprobe, "object/ship/shared_ywing_longprobe.iff")
 
 object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16310,7 +16310,7 @@ object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2593551104
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_tier1, "object/ship/shared_ywing_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier1, "object/ship/shared_ywing_tier1.iff")
 
 object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16363,7 +16363,7 @@ object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1099029399
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_tier2, "object/ship/shared_ywing_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier2, "object/ship/shared_ywing_tier2.iff")
 
 object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16416,7 +16416,7 @@ object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 143440922
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_tier3, "object/ship/shared_ywing_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier3, "object/ship/shared_ywing_tier3.iff")
 
 object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16469,7 +16469,7 @@ object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4084176654
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_tier4, "object/ship/shared_ywing_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier4, "object/ship/shared_ywing_tier4.iff")
 
 object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -16522,7 +16522,7 @@ object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3127046275
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_ywing_tier5, "object/ship/shared_ywing_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier5, "object/ship/shared_ywing_tier5.iff")
 
 object_ship_shared_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16575,7 +16575,7 @@ object_ship_shared_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3963433956
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95, "object/ship/shared_z95.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95, "object/ship/shared_z95.iff")
 
 object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16628,7 +16628,7 @@ object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 603334641
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95_tier1, "object/ship/shared_z95_tier1.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier1, "object/ship/shared_z95_tier1.iff")
 
 object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16681,7 +16681,7 @@ object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4175531878
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95_tier2, "object/ship/shared_z95_tier2.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier2, "object/ship/shared_z95_tier2.iff")
 
 object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16734,7 +16734,7 @@ object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2985093355
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95_tier3, "object/ship/shared_z95_tier3.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier3, "object/ship/shared_z95_tier3.iff")
 
 object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16787,7 +16787,7 @@ object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1242547199
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95_tier4, "object/ship/shared_z95_tier4.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier4, "object/ship/shared_z95_tier4.iff")
 
 object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -16840,4 +16840,4 @@ object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 50504818
 }
 
-ObjectTemplates:addTemplate(object_ship_shared_z95_tier5, "object/ship/shared_z95_tier5.iff")
+ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier5, "object/ship/shared_z95_tier5.iff")

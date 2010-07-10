@@ -82,7 +82,7 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1 =
 	clientObjectCRC = 357549043
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2 =
 	clientObjectCRC = 3461901156
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3 =
 	clientObjectCRC = 2270498025
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4 =
 	clientObjectCRC = 2092312573
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5 =
 	clientObjectCRC = 901464176
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_basic_weapon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_space_weapon_shared_basic_weapon = SharedDraftSchematicOb
 	clientObjectCRC = 3535680224
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_basic_weapon, "object/draft_schematic/space/weapon/shared_basic_weapon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_basic_weapon, "object/draft_schematic/space/weapon/shared_basic_weapon.iff")
 
 object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1 = SharedDr
 	clientObjectCRC = 925393883
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2 = SharedDr
 	clientObjectCRC = 3963603788
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3 = SharedDr
 	clientObjectCRC = 2771561665
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4 = SharedDr
 	clientObjectCRC = 1590790101
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5 = SharedDr
 	clientObjectCRC = 400351320
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1 = SharedDr
 	clientObjectCRC = 2276034256
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2 = SharedDr
 	clientObjectCRC = 1555967559
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3 = SharedDr
 	clientObjectCRC = 364071370
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4 = SharedDr
 	clientObjectCRC = 3998245598
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,7 +727,7 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5 = SharedDr
 	clientObjectCRC = 2807891283
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -770,7 +770,7 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1 = SharedDraftS
 	clientObjectCRC = 207458723
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -813,7 +813,7 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2 = SharedDraftS
 	clientObjectCRC = 3611965748
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,7 +856,7 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3 = SharedDraftS
 	clientObjectCRC = 2655477433
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -899,7 +899,7 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4 = SharedDraftS
 	clientObjectCRC = 1705276845
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -942,7 +942,7 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5 = SharedDraftS
 	clientObjectCRC = 749277728
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -985,7 +985,7 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1 
 	clientObjectCRC = 2068760823
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1028,7 +1028,7 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2 
 	clientObjectCRC = 2690211936
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1071,7 +1071,7 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3 
 	clientObjectCRC = 3914598381
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1114,7 +1114,7 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4 
 	clientObjectCRC = 313994489
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1157,7 +1157,7 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5 
 	clientObjectCRC = 1538935668
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1200,7 +1200,7 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1 = SharedDra
 	clientObjectCRC = 1212255047
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk1.iff")
 
 object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1243,7 +1243,7 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2 = SharedDra
 	clientObjectCRC = 2471896016
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk2.iff")
 
 object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1286,7 +1286,7 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3 = SharedDra
 	clientObjectCRC = 3663414365
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk3.iff")
 
 object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1329,7 +1329,7 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4 = SharedDra
 	clientObjectCRC = 565735241
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk4.iff")
 
 object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1372,7 +1372,7 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5 = SharedDra
 	clientObjectCRC = 1756694724
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk5.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_advanced_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1415,7 +1415,7 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster = SharedDraftSch
 	clientObjectCRC = 3740796153
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1458,7 +1458,7 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green = SharedDr
 	clientObjectCRC = 3929052829
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster_green.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster_green.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1501,7 +1501,7 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor = SharedDraftS
 	clientObjectCRC = 1431740762
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor, "object/draft_schematic/space/weapon/shared_wpn_advanced_disruptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor, "object/draft_schematic/space/weapon/shared_wpn_advanced_disruptor.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1544,7 +1544,7 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon = SharedDraftS
 	clientObjectCRC = 90674496
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_advanced_ioncannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_advanced_ioncannon.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_experimental_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1587,7 +1587,7 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster = SharedDraf
 	clientObjectCRC = 749584960
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1630,7 +1630,7 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green = Shar
 	clientObjectCRC = 3909227909
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster_green.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster_green.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1673,7 +1673,7 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor = SharedDr
 	clientObjectCRC = 2943870680
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor, "object/draft_schematic/space/weapon/shared_wpn_experimental_disruptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor, "object/draft_schematic/space/weapon/shared_wpn_experimental_disruptor.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1716,7 +1716,7 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon = SharedDr
 	clientObjectCRC = 4282831554
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_experimental_ioncannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_experimental_ioncannon.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_heavy_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1759,7 +1759,7 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster = SharedDraftSchema
 	clientObjectCRC = 2094697931
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1802,7 +1802,7 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green = SharedDraft
 	clientObjectCRC = 651808748
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster_green.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster_green.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1845,7 +1845,7 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor = SharedDraftSche
 	clientObjectCRC = 1326996581
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor, "object/draft_schematic/space/weapon/shared_wpn_heavy_disruptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor, "object/draft_schematic/space/weapon/shared_wpn_heavy_disruptor.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1888,7 +1888,7 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon = SharedDraftSche
 	clientObjectCRC = 522807423
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_heavy_ioncannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_heavy_ioncannon.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_light_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster = SharedDraftSchema
 	clientObjectCRC = 4046489612
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster, "object/draft_schematic/space/weapon/shared_wpn_light_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster, "object/draft_schematic/space/weapon/shared_wpn_light_blaster.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_light_blaster_green = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1974,7 +1974,7 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster_green = SharedDraft
 	clientObjectCRC = 3388774737
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_light_blaster_green.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_light_blaster_green.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_light_disruptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2017,7 +2017,7 @@ object_draft_schematic_space_weapon_shared_wpn_light_disruptor = SharedDraftSche
 	clientObjectCRC = 1057347445
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_disruptor, "object/draft_schematic/space/weapon/shared_wpn_light_disruptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_disruptor, "object/draft_schematic/space/weapon/shared_wpn_light_disruptor.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_light_ioncannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2060,7 +2060,7 @@ object_draft_schematic_space_weapon_shared_wpn_light_ioncannon = SharedDraftSche
 	clientObjectCRC = 1865737071
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_light_ioncannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_light_ioncannon.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_medium_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2103,7 +2103,7 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster = SharedDraftSchem
 	clientObjectCRC = 3453442561
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2146,7 +2146,7 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green = SharedDraf
 	clientObjectCRC = 1698920791
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster_green.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster_green.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_medium_disruptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2189,7 +2189,7 @@ object_draft_schematic_space_weapon_shared_wpn_medium_disruptor = SharedDraftSch
 	clientObjectCRC = 3380113095
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_disruptor, "object/draft_schematic/space/weapon/shared_wpn_medium_disruptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_disruptor, "object/draft_schematic/space/weapon/shared_wpn_medium_disruptor.iff")
 
 object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2232,4 +2232,4 @@ object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon = SharedDraftSch
 	clientObjectCRC = 2571721437
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_medium_ioncannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_medium_ioncannon.iff")

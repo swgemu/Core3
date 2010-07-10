@@ -82,7 +82,7 @@ object_draft_schematic_space_repair_shared_armor_repair_kit = SharedDraftSchemat
 	clientObjectCRC = 159626494
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_armor_repair_kit, "object/draft_schematic/space/repair/shared_armor_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_armor_repair_kit, "object/draft_schematic/space/repair/shared_armor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchem
 	clientObjectCRC = 2182505796
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_booster_repair_kit, "object/draft_schematic/space/repair/shared_booster_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_booster_repair_kit, "object/draft_schematic/space/repair/shared_booster_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSch
 	clientObjectCRC = 3561061070
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_capacitor_repair_kit, "object/draft_schematic/space/repair/shared_capacitor_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_capacitor_repair_kit, "object/draft_schematic/space/repair/shared_capacitor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchem
 	clientObjectCRC = 2046246395
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_chassis_repair_kit, "object/draft_schematic/space/repair/shared_chassis_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_chassis_repair_kit, "object/draft_schematic/space/repair/shared_chassis_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDr
 	clientObjectCRC = 1979319803
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_droid_interface_repair_kit, "object/draft_schematic/space/repair/shared_droid_interface_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_droid_interface_repair_kit, "object/draft_schematic/space/repair/shared_droid_interface_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchema
 	clientObjectCRC = 2834161708
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_engine_repair_kit, "object/draft_schematic/space/repair/shared_engine_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_engine_repair_kit, "object/draft_schematic/space/repair/shared_engine_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchem
 	clientObjectCRC = 2504809285
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_generic_repair_kit, "object/draft_schematic/space/repair/shared_generic_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_generic_repair_kit, "object/draft_schematic/space/repair/shared_generic_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDra
 	clientObjectCRC = 4277810100
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit, "object/draft_schematic/space/repair/shared_plasma_conduit_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit, "object/draft_schematic/space/repair/shared_plasma_conduit_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchem
 	clientObjectCRC = 383068437
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_reactor_repair_kit, "object/draft_schematic/space/repair/shared_reactor_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_reactor_repair_kit, "object/draft_schematic/space/repair/shared_reactor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchema
 	clientObjectCRC = 2463568618
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_shield_repair_kit, "object/draft_schematic/space/repair/shared_shield_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_shield_repair_kit, "object/draft_schematic/space/repair/shared_shield_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,4 +512,4 @@ object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchema
 	clientObjectCRC = 974874513
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_weapon_repair_kit, "object/draft_schematic/space/repair/shared_weapon_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_weapon_repair_kit, "object/draft_schematic/space/repair/shared_weapon_repair_kit.iff")

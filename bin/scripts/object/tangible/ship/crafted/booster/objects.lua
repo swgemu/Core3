@@ -92,7 +92,7 @@ object_tangible_ship_crafted_booster_shared_base_booster = SharedTangibleObjectT
 	clientObjectCRC = 1020427901
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster, "object/tangible/ship/crafted/booster/shared_base_booster.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster, "object/tangible/ship/crafted/booster/shared_base_booster.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent = SharedTa
 	clientObjectCRC = 1262367016
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1 = Shar
 	clientObjectCRC = 1571131488
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2 = Shar
 	clientObjectCRC = 2259826935
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3 = Shar
 	clientObjectCRC = 3485425530
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -357,7 +357,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4 = Shar
 	clientObjectCRC = 878474350
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -410,7 +410,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5 = Shar
 	clientObjectCRC = 2102465507
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5, "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_basic_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
@@ -463,7 +463,7 @@ object_tangible_ship_crafted_booster_shared_basic_booster = SharedTangibleObject
 	clientObjectCRC = 4241371436
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_basic_booster, "object/tangible/ship/crafted/booster/shared_basic_booster.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_basic_booster, "object/tangible/ship/crafted/booster/shared_basic_booster.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -516,7 +516,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk1 = SharedTangibleObjectTe
 	clientObjectCRC = 1453813442
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_mk1, "object/tangible/ship/crafted/booster/shared_booster_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_mk1, "object/tangible/ship/crafted/booster/shared_booster_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -569,7 +569,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk2 = SharedTangibleObjectTe
 	clientObjectCRC = 2377172565
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_mk2, "object/tangible/ship/crafted/booster/shared_booster_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_mk2, "object/tangible/ship/crafted/booster/shared_booster_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -622,7 +622,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk3 = SharedTangibleObjectTe
 	clientObjectCRC = 3300762072
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_mk3, "object/tangible/ship/crafted/booster/shared_booster_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_mk3, "object/tangible/ship/crafted/booster/shared_booster_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -675,7 +675,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk4 = SharedTangibleObjectTe
 	clientObjectCRC = 1063160524
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_mk4, "object/tangible/ship/crafted/booster/shared_booster_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_mk4, "object/tangible/ship/crafted/booster/shared_booster_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk5 = SharedTangibleObjectTe
 	clientObjectCRC = 1985211713
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_mk5, "object/tangible/ship/crafted/booster/shared_booster_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_mk5, "object/tangible/ship/crafted/booster/shared_booster_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -781,7 +781,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1 = SharedTangi
 	clientObjectCRC = 364252825
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -834,7 +834,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2 = SharedTangi
 	clientObjectCRC = 3466700302
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -887,7 +887,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3 = SharedTangi
 	clientObjectCRC = 2276245891
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -940,7 +940,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4 = SharedTangi
 	clientObjectCRC = 2085612183
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -993,7 +993,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5 = SharedTangi
 	clientObjectCRC = 893553946
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5, "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1046,7 +1046,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1 = Shared
 	clientObjectCRC = 675357004
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1099,7 +1099,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2 = Shared
 	clientObjectCRC = 4082534875
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1152,7 +1152,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3 = Shared
 	clientObjectCRC = 3126586966
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1205,7 +1205,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4 = Shared
 	clientObjectCRC = 1102628162
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1258,7 +1258,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5 = Shared
 	clientObjectCRC = 146121423
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1311,7 +1311,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1 = SharedTa
 	clientObjectCRC = 943059743
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1364,7 +1364,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2 = SharedTa
 	clientObjectCRC = 3810679688
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1417,7 +1417,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3 = SharedTa
 	clientObjectCRC = 2855222277
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1470,7 +1470,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4 = SharedTa
 	clientObjectCRC = 1372329745
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1523,7 +1523,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5 = SharedTa
 	clientObjectCRC = 415330460
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1576,7 +1576,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1 = SharedTangible
 	clientObjectCRC = 771601122
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1629,7 +1629,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2 = SharedTangible
 	clientObjectCRC = 4142537333
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk2.iff")
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1682,7 +1682,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3 = SharedTangible
 	clientObjectCRC = 3219619320
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk3.iff")
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1735,7 +1735,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4 = SharedTangible
 	clientObjectCRC = 1141135084
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk4.iff")
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
@@ -1788,7 +1788,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5 = SharedTangible
 	clientObjectCRC = 218706273
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5, "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk5.iff")
 
 object_tangible_ship_crafted_booster_shared_xwing_booster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
@@ -1841,7 +1841,7 @@ object_tangible_ship_crafted_booster_shared_xwing_booster_mk1 = SharedTangibleOb
 	clientObjectCRC = 1203730256
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_xwing_booster_mk1, "object/tangible/ship/crafted/booster/shared_xwing_booster_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_xwing_booster_mk1, "object/tangible/ship/crafted/booster/shared_xwing_booster_mk1.iff")
 
 object_tangible_ship_crafted_booster_shared_xwing_booster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
@@ -1894,4 +1894,4 @@ object_tangible_ship_crafted_booster_shared_xwing_booster_mk2 = SharedTangibleOb
 	clientObjectCRC = 2628313031
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_shared_xwing_booster_mk2, "object/tangible/ship/crafted/booster/shared_xwing_booster_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_xwing_booster_mk2, "object/tangible/ship/crafted/booster/shared_xwing_booster_mk2.iff")

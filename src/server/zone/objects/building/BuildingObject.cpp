@@ -580,8 +580,8 @@ void BuildingObjectImplementation::createCellObjects() {
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(111):  			SceneObject newCell = getZoneServer().createObject(206832110, 2);
-	SceneObject* newCell = getZoneServer()->createObject(206832110, 2);
+	// server/zone/objects/building/BuildingObject.idl(111):  			SceneObject newCell = getZoneServer().createObject(2906855187, 2);
+	SceneObject* newCell = getZoneServer()->createObject(2906855187, 2);
 	// server/zone/objects/building/BuildingObject.idl(113):  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }

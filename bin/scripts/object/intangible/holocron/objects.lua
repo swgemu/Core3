@@ -82,4 +82,4 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 	clientObjectCRC = 1789110379
 }
 
-ObjectTemplates:addTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")
+ObjectTemplates:addClientTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")

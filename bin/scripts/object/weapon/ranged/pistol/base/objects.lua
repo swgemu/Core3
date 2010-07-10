@@ -96,4 +96,4 @@ object_weapon_ranged_pistol_base_shared_pistol_base = SharedWeaponObjectTemplate
 	clientObjectCRC = 1704683282
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_base_shared_pistol_base, "object/weapon/ranged/pistol/base/shared_pistol_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_base_shared_pistol_base, "object/weapon/ranged/pistol/base/shared_pistol_base.iff")

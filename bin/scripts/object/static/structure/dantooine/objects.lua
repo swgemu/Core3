@@ -82,7 +82,7 @@ object_static_structure_dantooine_shared_dant_boundary_post = SharedStaticObject
 	clientObjectCRC = 2924198126
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_boundary_post, "object/static/structure/dantooine/shared_dant_boundary_post.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_boundary_post, "object/static/structure/dantooine/shared_dant_boundary_post.iff")
 
 object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_cooking_stone.apt",
@@ -125,7 +125,7 @@ object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObject
 	clientObjectCRC = 1600616690
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_cooking_stone, "object/static/structure/dantooine/shared_dant_cooking_stone.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_cooking_stone, "object/static/structure/dantooine/shared_dant_cooking_stone.iff")
 
 object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fence_4m.apt",
@@ -168,7 +168,7 @@ object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTempl
 	clientObjectCRC = 1600034556
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fence_4m, "object/static/structure/dantooine/shared_dant_fence_4m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fence_4m, "object/static/structure/dantooine/shared_dant_fence_4m.iff")
 
 object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fence_8m.apt",
@@ -211,7 +211,7 @@ object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTempl
 	clientObjectCRC = 3938371804
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fence_8m, "object/static/structure/dantooine/shared_dant_fence_8m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fence_8m, "object/static/structure/dantooine/shared_dant_fence_8m.iff")
 
 object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
@@ -254,7 +254,7 @@ object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTempl
 	clientObjectCRC = 4033600287
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fire_pit, "object/static/structure/dantooine/shared_dant_fire_pit.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fire_pit, "object/static/structure/dantooine/shared_dant_fire_pit.iff")
 
 object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fish.apt",
@@ -297,7 +297,7 @@ object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemp
 	clientObjectCRC = 440746262
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fish_rack, "object/static/structure/dantooine/shared_dant_fish_rack.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fish_rack, "object/static/structure/dantooine/shared_dant_fish_rack.iff")
 
 object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_gate.apt",
@@ -340,7 +340,7 @@ object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:
 	clientObjectCRC = 7139239
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_gate, "object/static/structure/dantooine/shared_dant_gate.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_gate, "object/static/structure/dantooine/shared_dant_gate.iff")
 
 object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s01.apt",
@@ -383,7 +383,7 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObj
 	clientObjectCRC = 2151826436
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s01, "object/static/structure/dantooine/shared_dant_hide_tanning_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s01, "object/static/structure/dantooine/shared_dant_hide_tanning_s01.iff")
 
 object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s02.apt",
@@ -426,7 +426,7 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObj
 	clientObjectCRC = 1532357779
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s02, "object/static/structure/dantooine/shared_dant_hide_tanning_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s02, "object/static/structure/dantooine/shared_dant_hide_tanning_s02.iff")
 
 object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -468,7 +468,7 @@ object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStati
 	clientObjectCRC = 2238403752
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01, "object/static/structure/dantooine/shared_dant_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01, "object/static/structure/dantooine/shared_dant_imprv_bannerpole_s01.iff")
 
 object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -510,7 +510,7 @@ object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticO
 	clientObjectCRC = 3453851559
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_imprv_flagpole_s01, "object/static/structure/dantooine/shared_dant_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_imprv_flagpole_s01, "object/static/structure/dantooine/shared_dant_imprv_flagpole_s01.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_main.apt",
@@ -553,7 +553,7 @@ object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStatic
 	clientObjectCRC = 3200541181
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_main_structure, "object/static/structure/dantooine/shared_dant_jedi_main_structure.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_main_structure, "object/static/structure/dantooine/shared_dant_jedi_main_structure.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_altar.apt",
@@ -596,7 +596,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticOb
 	clientObjectCRC = 3549254078
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_altar, "object/static/structure/dantooine/shared_dant_jedi_temple_altar.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_altar, "object/static/structure/dantooine/shared_dant_jedi_temple_altar.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar.apt",
@@ -639,7 +639,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticO
 	clientObjectCRC = 3410738140
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_base.apt",
@@ -682,7 +682,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedSt
 	clientObjectCRC = 3737353832
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_base.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_base.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_fallen.apt",
@@ -725,7 +725,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = Shared
 	clientObjectCRC = 1808475957
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_fallen.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_fallen.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_med.apt",
@@ -768,7 +768,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedSta
 	clientObjectCRC = 4036421930
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_med.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_med.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
@@ -811,7 +811,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStat
 	clientObjectCRC = 1127667832
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_sm.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_sm.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_wall_1.apt",
@@ -854,7 +854,7 @@ object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTe
 	clientObjectCRC = 3556125150
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_1, "object/static/structure/dantooine/shared_dant_jedi_wall_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_1, "object/static/structure/dantooine/shared_dant_jedi_wall_1.iff")
 
 object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_wall_2.apt",
@@ -897,7 +897,7 @@ object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTe
 	clientObjectCRC = 148996425
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_2, "object/static/structure/dantooine/shared_dant_jedi_wall_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_2, "object/static/structure/dantooine/shared_dant_jedi_wall_2.iff")
 
 object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_communal.apt",
@@ -940,7 +940,7 @@ object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjec
 	clientObjectCRC = 2822062306
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal, "object/static/structure/dantooine/shared_dant_large_communal.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal, "object/static/structure/dantooine/shared_dant_large_communal.iff")
 
 object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_communal_dest_s01.apt",
@@ -983,7 +983,7 @@ object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStatic
 	clientObjectCRC = 888416774
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal_dest, "object/static/structure/dantooine/shared_dant_large_communal_dest.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal_dest, "object/static/structure/dantooine/shared_dant_large_communal_dest.iff")
 
 object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_communal.apt",
@@ -1026,7 +1026,7 @@ object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = Shar
 	clientObjectCRC = 5395298
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_communal_no_flora_10m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_communal_no_flora_10m.iff")
 
 object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_hut.apt",
@@ -1069,7 +1069,7 @@ object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemp
 	clientObjectCRC = 3738317565
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_hut, "object/static/structure/dantooine/shared_dant_large_hut.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_hut, "object/static/structure/dantooine/shared_dant_large_hut.iff")
 
 object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_hut.apt",
@@ -1112,7 +1112,7 @@ object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedSta
 	clientObjectCRC = 2953965200
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_hut_no_flora_10m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_hut_no_flora_10m.iff")
 
 object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_mudhut.apt",
@@ -1155,7 +1155,7 @@ object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectT
 	clientObjectCRC = 3375506333
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_mudhut, "object/static/structure/dantooine/shared_dant_large_mudhut.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_mudhut, "object/static/structure/dantooine/shared_dant_large_mudhut.iff")
 
 object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_mudhut.apt",
@@ -1198,7 +1198,7 @@ object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = Shared
 	clientObjectCRC = 3829973531
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_mudhut_no_flora_05m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_mudhut_no_flora_05m.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut.apt",
@@ -1241,7 +1241,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjec
 	clientObjectCRC = 1876585046
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut, "object/static/structure/dantooine/shared_dant_large_rock_hut.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut, "object/static/structure/dantooine/shared_dant_large_rock_hut.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
@@ -1284,7 +1284,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStatic
 	clientObjectCRC = 2097574138
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
@@ -1327,7 +1327,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedSta
 	clientObjectCRC = 2552639748
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_01.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
@@ -1370,7 +1370,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedSta
 	clientObjectCRC = 1127324051
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_02.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
@@ -1413,7 +1413,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedSta
 	clientObjectCRC = 171769374
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_03.iff")
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut.apt",
@@ -1456,7 +1456,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = Shar
 	clientObjectCRC = 1673544289
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_rock_hut_no_flora_05m.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_rock_hut_no_flora_05m.iff")
 
 object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_mud_oven.apt",
@@ -1499,7 +1499,7 @@ object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTempl
 	clientObjectCRC = 2326141197
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_mud_oven, "object/static/structure/dantooine/shared_dant_mud_oven.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_mud_oven, "object/static/structure/dantooine/shared_dant_mud_oven.iff")
 
 object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_rack_spears.apt",
@@ -1542,7 +1542,7 @@ object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTe
 	clientObjectCRC = 2133865913
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_rack_spears, "object/static/structure/dantooine/shared_dant_rack_spears.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_rack_spears, "object/static/structure/dantooine/shared_dant_rack_spears.iff")
 
 object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_bol_skull.apt",
@@ -1585,7 +1585,7 @@ object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemp
 	clientObjectCRC = 3964846407
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_bol, "object/static/structure/dantooine/shared_dant_skull_bol.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_bol, "object/static/structure/dantooine/shared_dant_skull_bol.iff")
 
 object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_lizard_skull.apt",
@@ -1628,7 +1628,7 @@ object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectT
 	clientObjectCRC = 3296364307
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_lizard, "object/static/structure/dantooine/shared_dant_skull_lizard.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_lizard, "object/static/structure/dantooine/shared_dant_skull_lizard.iff")
 
 object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_thune_skull.apt",
@@ -1671,7 +1671,7 @@ object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTe
 	clientObjectCRC = 2732329939
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_thune, "object/static/structure/dantooine/shared_dant_skull_thune.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_thune, "object/static/structure/dantooine/shared_dant_skull_thune.iff")
 
 object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_small_mudhut.apt",
@@ -1714,7 +1714,7 @@ object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectT
 	clientObjectCRC = 4250788493
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_small_mudhut, "object/static/structure/dantooine/shared_dant_small_mudhut.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_small_mudhut, "object/static/structure/dantooine/shared_dant_small_mudhut.iff")
 
 object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
@@ -1757,4 +1757,4 @@ object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTem
 	clientObjectCRC = 880635575
 }
 
-ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_totem_pole, "object/static/structure/dantooine/shared_dant_totem_pole.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_totem_pole, "object/static/structure/dantooine/shared_dant_totem_pole.iff")

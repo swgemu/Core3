@@ -82,4 +82,4 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1100063237
 }
 
-ObjectTemplates:addTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")
+ObjectTemplates:addClientTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")

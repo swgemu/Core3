@@ -92,4 +92,4 @@ object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangib
 	clientObjectCRC = 264284589
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_instrument_shared_dual_wave_synthesizer, "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_instrument_shared_dual_wave_synthesizer, "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff")

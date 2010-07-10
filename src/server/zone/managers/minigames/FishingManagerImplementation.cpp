@@ -397,7 +397,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 					//String resourceString = zone->getZoneID();
 
-					String baitString = "object/tangible/fishing/bait/shared_bait_chum.iff";
+					String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 					ManagedReference<SceneObject*> baitObject = zoneServer->createObject(baitString.hashCode(), 2);
 					// Set Object Count to 2
 
@@ -456,7 +456,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 						lootFishObject->setAttributes(name, zone->getZoneID(), time, (float)System::random(999)/1000 + abs(System::random(10) - fish));
 
 						if (i == 0) {
-							String baitString = "object/tangible/fishing/bait/shared_bait_chum.iff";
+							String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 							ManagedReference<SceneObject*> baitObject = zoneServer->createObject(baitString.hashCode(), 2);
 							// Set Object Count to 2
 
@@ -769,7 +769,7 @@ void FishingManagerImplementation::cheat(PlayerCreature* player, int value) {
 
 void FishingManagerImplementation::freeBait(PlayerCreature* player) {
 	if (player != NULL) {
-		String bait = "object/tangible/fishing/bait/shared_bait_worm.iff";
+		String bait = "object/tangible/fishing/bait/bait_worm.iff";
 		ManagedReference<SceneObject*> baitObject = zoneServer->createObject(bait.hashCode(), 0);
 		baitObject->sendTo(player, true);
 
@@ -938,7 +938,7 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 	if (zone == NULL)
 		return NULL;
 
-	String marker = "object/tangible/fishing/shared_marker.iff";
+	String marker = "object/tangible/fishing/marker.iff";
 	ManagedReference<SceneObject*> markerObject = zoneServer->createObject(marker.hashCode(), 0);
 
 	if (markerObject == NULL)
@@ -955,7 +955,7 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 
 void FishingManagerImplementation::createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player) {
 	if ((player != NULL) && (zone != NULL)) {
-		String splash = "object/tangible/fishing/shared_splash.iff";
+		String splash = "object/tangible/fishing/splash.iff";
 		ManagedReference<SceneObject*> splashObject = zoneServer->createObject(splash.hashCode(), 0);
 
 		if (splashObject != NULL) {

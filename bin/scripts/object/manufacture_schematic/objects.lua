@@ -82,4 +82,4 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 	clientObjectCRC = 941212681
 }
 
-ObjectTemplates:addTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")
+ObjectTemplates:addClientTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")

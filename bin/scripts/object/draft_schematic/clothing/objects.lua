@@ -82,7 +82,7 @@ object_draft_schematic_clothing_shared_clothing_apron_chef_01 = SharedDraftSchem
 	clientObjectCRC = 1709613137
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_chef_01, "object/draft_schematic/clothing/shared_clothing_apron_chef_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_chef_01, "object/draft_schematic/clothing/shared_clothing_apron_chef_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01 = SharedDraftSche
 	clientObjectCRC = 1015992243
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01, "object/draft_schematic/clothing/shared_clothing_apron_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01, "object/draft_schematic/clothing/shared_clothing_apron_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01 = Shared
 	clientObjectCRC = 3196236554
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02 = Shared
 	clientObjectCRC = 1704270749
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03 = Shared
 	clientObjectCRC = 748190736
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04 = Shared
 	clientObjectCRC = 3615184644
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04, "object/draft_schematic/clothing/shared_clothing_apron_field_01_quest_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l = SharedDraft
 	clientObjectCRC = 1272321681
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_bone_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_bone_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r = SharedDraft
 	clientObjectCRC = 990073602
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_bone_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_bone_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_boots = SharedDraftSc
 	clientObjectCRC = 970979898
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_boots, "object/draft_schematic/clothing/shared_clothing_armor_bone_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_boots, "object/draft_schematic/clothing/shared_clothing_armor_bone_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l = SharedDraf
 	clientObjectCRC = 1642323858
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_bone_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_bone_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r = SharedDraf
 	clientObjectCRC = 288791041
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_bone_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_bone_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_chest = SharedDraftSc
 	clientObjectCRC = 450361637
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_chest, "object/draft_schematic/clothing/shared_clothing_armor_bone_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_chest, "object/draft_schematic/clothing/shared_clothing_armor_bone_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_gloves = SharedDraftS
 	clientObjectCRC = 2920088501
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_gloves, "object/draft_schematic/clothing/shared_clothing_armor_bone_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_gloves, "object/draft_schematic/clothing/shared_clothing_armor_bone_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_helmet = SharedDraftS
 	clientObjectCRC = 416146109
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_helmet, "object/draft_schematic/clothing/shared_clothing_armor_bone_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_helmet, "object/draft_schematic/clothing/shared_clothing_armor_bone_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_leggings = SharedDraf
 	clientObjectCRC = 4006019725
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_leggings, "object/draft_schematic/clothing/shared_clothing_armor_bone_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bone_leggings, "object/draft_schematic/clothing/shared_clothing_armor_bone_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,7 +727,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt = Share
 	clientObjectCRC = 2913124016
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_belt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_belt.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -770,7 +770,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l = Sh
 	clientObjectCRC = 3188330078
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -813,7 +813,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r = Sh
 	clientObjectCRC = 3470740429
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,7 +856,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots = Shar
 	clientObjectCRC = 3169440995
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -899,7 +899,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l = S
 	clientObjectCRC = 596018928
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -942,7 +942,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r = S
 	clientObjectCRC = 1397998435
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -985,7 +985,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate 
 	clientObjectCRC = 689554844
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_chest_plate.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1028,7 +1028,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves = Sha
 	clientObjectCRC = 3874115888
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1071,7 +1071,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet = Sha
 	clientObjectCRC = 1344974904
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1114,7 +1114,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings = S
 	clientObjectCRC = 2896321519
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings, "object/draft_schematic/clothing/shared_clothing_armor_bounty_hunter_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1157,7 +1157,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l = SharedDra
 	clientObjectCRC = 3047595124
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1200,7 +1200,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r = SharedDra
 	clientObjectCRC = 3312703975
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1243,7 +1243,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_boots = SharedDraft
 	clientObjectCRC = 1821888750
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_boots, "object/draft_schematic/clothing/shared_clothing_armor_chitin_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_boots, "object/draft_schematic/clothing/shared_clothing_armor_chitin_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1286,7 +1286,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l = SharedDr
 	clientObjectCRC = 2757715857
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1329,7 +1329,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r = SharedDr
 	clientObjectCRC = 3565822466
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_chitin_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1372,7 +1372,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_chest = SharedDraft
 	clientObjectCRC = 1335874545
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_chest, "object/draft_schematic/clothing/shared_clothing_armor_chitin_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_chest, "object/draft_schematic/clothing/shared_clothing_armor_chitin_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1415,7 +1415,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves = SharedDraf
 	clientObjectCRC = 2306152409
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves, "object/draft_schematic/clothing/shared_clothing_armor_chitin_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves, "object/draft_schematic/clothing/shared_clothing_armor_chitin_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1458,7 +1458,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet = SharedDraf
 	clientObjectCRC = 1068889809
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet, "object/draft_schematic/clothing/shared_clothing_armor_chitin_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet, "object/draft_schematic/clothing/shared_clothing_armor_chitin_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1501,7 +1501,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings = SharedDr
 	clientObjectCRC = 729528974
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings, "object/draft_schematic/clothing/shared_clothing_armor_chitin_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings, "object/draft_schematic/clothing/shared_clothing_armor_chitin_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1544,7 +1544,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l = Shared
 	clientObjectCRC = 816015931
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_composite_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_composite_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1587,7 +1587,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r = Shared
 	clientObjectCRC = 1081487272
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_composite_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_composite_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1630,7 +1630,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_boots = SharedDr
 	clientObjectCRC = 1025601885
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_boots, "object/draft_schematic/clothing/shared_clothing_armor_composite_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_boots, "object/draft_schematic/clothing/shared_clothing_armor_composite_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1673,7 +1673,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l = Share
 	clientObjectCRC = 3747652372
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_composite_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_composite_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1716,7 +1716,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r = Share
 	clientObjectCRC = 2947933831
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_composite_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_composite_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1759,7 +1759,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_chest = SharedDr
 	clientObjectCRC = 506032706
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_chest, "object/draft_schematic/clothing/shared_clothing_armor_composite_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_chest, "object/draft_schematic/clothing/shared_clothing_armor_composite_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1802,7 +1802,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_gloves = SharedD
 	clientObjectCRC = 1132597865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_gloves, "object/draft_schematic/clothing/shared_clothing_armor_composite_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_gloves, "object/draft_schematic/clothing/shared_clothing_armor_composite_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1845,7 +1845,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_helmet = SharedD
 	clientObjectCRC = 4114805601
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_helmet, "object/draft_schematic/clothing/shared_clothing_armor_composite_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_helmet, "object/draft_schematic/clothing/shared_clothing_armor_composite_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1888,7 +1888,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_leggings = Share
 	clientObjectCRC = 1346665995
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_leggings, "object/draft_schematic/clothing/shared_clothing_armor_composite_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_composite_leggings, "object/draft_schematic/clothing/shared_clothing_armor_composite_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l 
 	clientObjectCRC = 3077397359
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1974,7 +1974,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r 
 	clientObjectCRC = 3350732540
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2017,7 +2017,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots = 
 	clientObjectCRC = 750129025
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2060,7 +2060,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l
 	clientObjectCRC = 1712998399
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2103,7 +2103,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r
 	clientObjectCRC = 382665324
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2146,7 +2146,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest = 
 	clientObjectCRC = 264113310
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2189,7 +2189,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves =
 	clientObjectCRC = 2620131502
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2232,7 +2232,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet =
 	clientObjectCRC = 720169382
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2275,7 +2275,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings
 	clientObjectCRC = 3913194208
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_defender_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2318,7 +2318,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l 
 	clientObjectCRC = 4137038776
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2361,7 +2361,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r 
 	clientObjectCRC = 2252568107
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2404,7 +2404,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots = 
 	clientObjectCRC = 3355136251
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2447,7 +2447,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l
 	clientObjectCRC = 2905996607
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2490,7 +2490,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r
 	clientObjectCRC = 3722492076
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2533,7 +2533,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest = 
 	clientObjectCRC = 3841151972
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2576,7 +2576,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves =
 	clientObjectCRC = 1066508214
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2619,7 +2619,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet =
 	clientObjectCRC = 2303819454
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2662,7 +2662,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings
 	clientObjectCRC = 571547680
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_guardian_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2705,7 +2705,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l 
 	clientObjectCRC = 365205610
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2748,7 +2748,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r 
 	clientObjectCRC = 1695669753
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2791,7 +2791,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots = 
 	clientObjectCRC = 3805329247
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2834,7 +2834,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l
 	clientObjectCRC = 930361247
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2877,7 +2877,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r
 	clientObjectCRC = 1201760780
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2920,7 +2920,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest = 
 	clientObjectCRC = 3252204608
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2963,7 +2963,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves =
 	clientObjectCRC = 2609964605
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3006,7 +3006,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet =
 	clientObjectCRC = 760219445
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3049,7 +3049,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings
 	clientObjectCRC = 3092312704
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ithorian_sentinel_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3092,7 +3092,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_brac
 	clientObjectCRC = 2731516736
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3135,7 +3135,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_brac
 	clientObjectCRC = 3524978387
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3178,7 +3178,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_ches
 	clientObjectCRC = 4154804782
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3221,7 +3221,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_legg
 	clientObjectCRC = 770408031
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_black_mtn_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3264,7 +3264,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bra
 	clientObjectCRC = 1982155306
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3307,7 +3307,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bra
 	clientObjectCRC = 116395961
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3350,7 +3350,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_che
 	clientObjectCRC = 2034172347
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3393,7 +3393,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leg
 	clientObjectCRC = 4177631029
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_ceremonial_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3436,7 +3436,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer
 	clientObjectCRC = 611262677
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3479,7 +3479,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer
 	clientObjectCRC = 1421501766
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3522,7 +3522,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest 
 	clientObjectCRC = 592867110
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3565,7 +3565,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggin
 	clientObjectCRC = 2873884106
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggings, "object/draft_schematic/clothing/shared_clothing_armor_kashyyykian_hunting_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3608,7 +3608,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt = SharedD
 	clientObjectCRC = 2802855714
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_belt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_belt.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3651,7 +3651,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l = Shar
 	clientObjectCRC = 305069795
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3694,7 +3694,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r = Shar
 	clientObjectCRC = 1660664688
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3737,7 +3737,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots = Shared
 	clientObjectCRC = 569544757
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3780,7 +3780,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l = Sha
 	clientObjectCRC = 3277190810
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3823,7 +3823,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r = Sha
 	clientObjectCRC = 3011556105
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3866,7 +3866,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate = 
 	clientObjectCRC = 2746571471
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_chest_plate.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3909,7 +3909,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves = Share
 	clientObjectCRC = 3917363837
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3952,7 +3952,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet = Share
 	clientObjectCRC = 1606343541
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3995,7 +3995,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings = Sha
 	clientObjectCRC = 1282485125
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings, "object/draft_schematic/clothing/shared_clothing_armor_mandalorian_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4038,7 +4038,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_belt = SharedDraftS
 	clientObjectCRC = 1238463430
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_belt, "object/draft_schematic/clothing/shared_clothing_armor_padded_belt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_belt, "object/draft_schematic/clothing/shared_clothing_armor_padded_belt.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4081,7 +4081,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l = SharedDra
 	clientObjectCRC = 18400770
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_padded_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_padded_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4124,7 +4124,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r = SharedDra
 	clientObjectCRC = 1909293969
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_padded_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_padded_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4167,7 +4167,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_boots = SharedDraft
 	clientObjectCRC = 428470854
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_boots, "object/draft_schematic/clothing/shared_clothing_armor_padded_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_boots, "object/draft_schematic/clothing/shared_clothing_armor_padded_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4210,7 +4210,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l = SharedDr
 	clientObjectCRC = 3024087603
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_padded_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_padded_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4253,7 +4253,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r = SharedDr
 	clientObjectCRC = 3303714720
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_padded_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_padded_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4296,7 +4296,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_chest = SharedDraft
 	clientObjectCRC = 981594457
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_chest, "object/draft_schematic/clothing/shared_clothing_armor_padded_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_chest, "object/draft_schematic/clothing/shared_clothing_armor_padded_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4339,7 +4339,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_gloves = SharedDraf
 	clientObjectCRC = 1613154645
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_gloves, "object/draft_schematic/clothing/shared_clothing_armor_padded_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_gloves, "object/draft_schematic/clothing/shared_clothing_armor_padded_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4382,7 +4382,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_helmet = SharedDraf
 	clientObjectCRC = 3605407837
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_helmet, "object/draft_schematic/clothing/shared_clothing_armor_padded_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_helmet, "object/draft_schematic/clothing/shared_clothing_armor_padded_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4425,7 +4425,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_leggings = SharedDr
 	clientObjectCRC = 991639340
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_leggings, "object/draft_schematic/clothing/shared_clothing_armor_padded_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_padded_leggings, "object/draft_schematic/clothing/shared_clothing_armor_padded_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4468,7 +4468,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l = SharedDraftS
 	clientObjectCRC = 1855767107
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ris_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l, "object/draft_schematic/clothing/shared_clothing_armor_ris_bicep_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4511,7 +4511,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r = SharedDraftS
 	clientObjectCRC = 508135376
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ris_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r, "object/draft_schematic/clothing/shared_clothing_armor_ris_bicep_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4554,7 +4554,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_boots = SharedDraftSch
 	clientObjectCRC = 93979565
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_boots, "object/draft_schematic/clothing/shared_clothing_armor_ris_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_boots, "object/draft_schematic/clothing/shared_clothing_armor_ris_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4597,7 +4597,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l = SharedDraft
 	clientObjectCRC = 2765213721
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ris_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ris_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4640,7 +4640,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r = SharedDraft
 	clientObjectCRC = 3557070218
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ris_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ris_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4683,7 +4683,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate = SharedDr
 	clientObjectCRC = 764259865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_ris_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate, "object/draft_schematic/clothing/shared_clothing_armor_ris_chest_plate.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4726,7 +4726,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_gloves = SharedDraftSc
 	clientObjectCRC = 181035585
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ris_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ris_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4769,7 +4769,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_helmet = SharedDraftSc
 	clientObjectCRC = 3154805577
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ris_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ris_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4812,7 +4812,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_leggings = SharedDraft
 	clientObjectCRC = 737479942
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ris_leggings.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ris_leggings, "object/draft_schematic/clothing/shared_clothing_armor_ris_leggings.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4855,7 +4855,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_boots = SharedDraft
 	clientObjectCRC = 2070704485
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_boots, "object/draft_schematic/clothing/shared_clothing_armor_tantel_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_boots, "object/draft_schematic/clothing/shared_clothing_armor_tantel_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4898,7 +4898,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_chest = SharedDraft
 	clientObjectCRC = 1482977914
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_chest, "object/draft_schematic/clothing/shared_clothing_armor_tantel_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_chest, "object/draft_schematic/clothing/shared_clothing_armor_tantel_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4941,7 +4941,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet = SharedDraf
 	clientObjectCRC = 2520970916
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet, "object/draft_schematic/clothing/shared_clothing_armor_tantel_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet, "object/draft_schematic/clothing/shared_clothing_armor_tantel_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -4984,7 +4984,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier = SharedDr
 	clientObjectCRC = 1802019036
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bandolier.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5027,7 +5027,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_boots = SharedDraftS
 	clientObjectCRC = 1268014346
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_boots, "object/draft_schematic/clothing/shared_clothing_armor_ubese_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_boots, "object/draft_schematic/clothing/shared_clothing_armor_ubese_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5070,7 +5070,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l = SharedDra
 	clientObjectCRC = 1416333578
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bracer_l.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5113,7 +5113,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r = SharedDra
 	clientObjectCRC = 616483993
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r, "object/draft_schematic/clothing/shared_clothing_armor_ubese_bracer_r.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5156,7 +5156,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves = SharedDraft
 	clientObjectCRC = 211555644
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ubese_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves, "object/draft_schematic/clothing/shared_clothing_armor_ubese_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5199,7 +5199,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet = SharedDraft
 	clientObjectCRC = 3126654004
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ubese_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet, "object/draft_schematic/clothing/shared_clothing_armor_ubese_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5242,7 +5242,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket = SharedDraft
 	clientObjectCRC = 2414320930
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket, "object/draft_schematic/clothing/shared_clothing_armor_ubese_jacket.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket, "object/draft_schematic/clothing/shared_clothing_armor_ubese_jacket.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_pants = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5285,7 +5285,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_pants = SharedDraftS
 	clientObjectCRC = 4124011912
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_pants, "object/draft_schematic/clothing/shared_clothing_armor_ubese_pants.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_pants, "object/draft_schematic/clothing/shared_clothing_armor_ubese_pants.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5328,7 +5328,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt = SharedDraftS
 	clientObjectCRC = 559189669
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt, "object/draft_schematic/clothing/shared_clothing_armor_ubese_shirt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt, "object/draft_schematic/clothing/shared_clothing_armor_ubese_shirt.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5371,7 +5371,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_belt = SharedDraftSche
 	clientObjectCRC = 344794469
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_belt, "object/draft_schematic/clothing/shared_clothing_armor_zam_belt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_belt, "object/draft_schematic/clothing/shared_clothing_armor_zam_belt.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5414,7 +5414,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_boots = SharedDraftSch
 	clientObjectCRC = 210074770
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_boots, "object/draft_schematic/clothing/shared_clothing_armor_zam_boots.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_boots, "object/draft_schematic/clothing/shared_clothing_armor_zam_boots.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5457,7 +5457,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_chest = SharedDraftSch
 	clientObjectCRC = 797802381
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_chest, "object/draft_schematic/clothing/shared_clothing_armor_zam_chest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_chest, "object/draft_schematic/clothing/shared_clothing_armor_zam_chest.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5500,7 +5500,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_gloves = SharedDraftSc
 	clientObjectCRC = 930917710
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_gloves, "object/draft_schematic/clothing/shared_clothing_armor_zam_gloves.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_gloves, "object/draft_schematic/clothing/shared_clothing_armor_zam_gloves.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5543,7 +5543,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_helmet = SharedDraftSc
 	clientObjectCRC = 2176601158
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_helmet, "object/draft_schematic/clothing/shared_clothing_armor_zam_helmet.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_helmet, "object/draft_schematic/clothing/shared_clothing_armor_zam_helmet.iff")
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_pants = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5586,7 +5586,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_pants = SharedDraftSch
 	clientObjectCRC = 3000912912
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_pants, "object/draft_schematic/clothing/shared_clothing_armor_zam_pants.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_armor_zam_pants, "object/draft_schematic/clothing/shared_clothing_armor_zam_pants.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5629,7 +5629,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_01 = SharedDraftS
 	clientObjectCRC = 2065293376
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_01, "object/draft_schematic/clothing/shared_clothing_backpack_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_01, "object/draft_schematic/clothing/shared_clothing_backpack_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5672,7 +5672,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_03 = SharedDraftS
 	clientObjectCRC = 3909300058
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_03, "object/draft_schematic/clothing/shared_clothing_backpack_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_03, "object/draft_schematic/clothing/shared_clothing_backpack_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5715,7 +5715,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest = Shared
 	clientObjectCRC = 3310546342
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest, "object/draft_schematic/clothing/shared_clothing_backpack_field_03_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest, "object/draft_schematic/clothing/shared_clothing_backpack_field_03_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5758,7 +5758,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_04 = SharedDraftS
 	clientObjectCRC = 316671054
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_04, "object/draft_schematic/clothing/shared_clothing_backpack_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_04, "object/draft_schematic/clothing/shared_clothing_backpack_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5801,7 +5801,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_05 = SharedDraftS
 	clientObjectCRC = 1542284227
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_05, "object/draft_schematic/clothing/shared_clothing_backpack_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_05, "object/draft_schematic/clothing/shared_clothing_backpack_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5844,7 +5844,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_06 = SharedDraftS
 	clientObjectCRC = 2163919700
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_06, "object/draft_schematic/clothing/shared_clothing_backpack_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_06, "object/draft_schematic/clothing/shared_clothing_backpack_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5887,7 +5887,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest = Shared
 	clientObjectCRC = 3608105769
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest, "object/draft_schematic/clothing/shared_clothing_backpack_field_06_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest, "object/draft_schematic/clothing/shared_clothing_backpack_field_06_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5930,7 +5930,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_02 = SharedDraft
 	clientObjectCRC = 1358780911
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_02, "object/draft_schematic/clothing/shared_clothing_bandolier_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_02, "object/draft_schematic/clothing/shared_clothing_bandolier_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -5973,7 +5973,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest = Share
 	clientObjectCRC = 3295553965
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest, "object/draft_schematic/clothing/shared_clothing_bandolier_field_02_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest, "object/draft_schematic/clothing/shared_clothing_bandolier_field_02_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6016,7 +6016,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_03 = SharedDraft
 	clientObjectCRC = 435175010
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_03, "object/draft_schematic/clothing/shared_clothing_bandolier_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_03, "object/draft_schematic/clothing/shared_clothing_bandolier_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6059,7 +6059,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_04 = SharedDraft
 	clientObjectCRC = 3792901494
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_04, "object/draft_schematic/clothing/shared_clothing_bandolier_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_04, "object/draft_schematic/clothing/shared_clothing_bandolier_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6102,7 +6102,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest = Share
 	clientObjectCRC = 3624338087
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest, "object/draft_schematic/clothing/shared_clothing_bandolier_field_04_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest, "object/draft_schematic/clothing/shared_clothing_bandolier_field_04_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6145,7 +6145,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_05 = SharedDraft
 	clientObjectCRC = 2870899451
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_05, "object/draft_schematic/clothing/shared_clothing_bandolier_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_05, "object/draft_schematic/clothing/shared_clothing_bandolier_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6188,7 +6188,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_06 = SharedDraft
 	clientObjectCRC = 1879693932
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_06, "object/draft_schematic/clothing/shared_clothing_bandolier_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_06, "object/draft_schematic/clothing/shared_clothing_bandolier_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6231,7 +6231,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_07 = SharedDraft
 	clientObjectCRC = 956612065
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_07, "object/draft_schematic/clothing/shared_clothing_bandolier_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_07, "object/draft_schematic/clothing/shared_clothing_bandolier_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6274,7 +6274,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_08 = SharedDraft
 	clientObjectCRC = 2198770163
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_08, "object/draft_schematic/clothing/shared_clothing_bandolier_field_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bandolier_field_08, "object/draft_schematic/clothing/shared_clothing_bandolier_field_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6317,7 +6317,7 @@ object_draft_schematic_clothing_shared_clothing_base = SharedDraftSchematicObjec
 	clientObjectCRC = 825555419
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_base, "object/draft_schematic/clothing/shared_clothing_base.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_base, "object/draft_schematic/clothing/shared_clothing_base.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6360,7 +6360,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_01 = SharedDraftSchem
 	clientObjectCRC = 2241263026
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_01, "object/draft_schematic/clothing/shared_clothing_belt_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_01, "object/draft_schematic/clothing/shared_clothing_belt_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6403,7 +6403,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_02 = SharedDraftSchem
 	clientObjectCRC = 1585536293
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_02, "object/draft_schematic/clothing/shared_clothing_belt_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_02, "object/draft_schematic/clothing/shared_clothing_belt_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6446,7 +6446,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_03 = SharedDraftSchem
 	clientObjectCRC = 395066024
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_03, "object/draft_schematic/clothing/shared_clothing_belt_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_03, "object/draft_schematic/clothing/shared_clothing_belt_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6489,7 +6489,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_04 = SharedDraftSchem
 	clientObjectCRC = 3966702012
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_04, "object/draft_schematic/clothing/shared_clothing_belt_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_04, "object/draft_schematic/clothing/shared_clothing_belt_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6532,7 +6532,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_05 = SharedDraftSchem
 	clientObjectCRC = 2774693425
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_05, "object/draft_schematic/clothing/shared_clothing_belt_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_05, "object/draft_schematic/clothing/shared_clothing_belt_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_05_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6575,7 +6575,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_05_quest = SharedDraf
 	clientObjectCRC = 2928106130
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_05_quest, "object/draft_schematic/clothing/shared_clothing_belt_field_05_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_05_quest, "object/draft_schematic/clothing/shared_clothing_belt_field_05_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6618,7 +6618,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_07 = SharedDraftSchem
 	clientObjectCRC = 930658603
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_07, "object/draft_schematic/clothing/shared_clothing_belt_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_07, "object/draft_schematic/clothing/shared_clothing_belt_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6661,7 +6661,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_09 = SharedDraftSchem
 	clientObjectCRC = 3296719540
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_09, "object/draft_schematic/clothing/shared_clothing_belt_field_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_09, "object/draft_schematic/clothing/shared_clothing_belt_field_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6704,7 +6704,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_11 = SharedDraftSchem
 	clientObjectCRC = 2663315658
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_11, "object/draft_schematic/clothing/shared_clothing_belt_field_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_field_11, "object/draft_schematic/clothing/shared_clothing_belt_field_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6747,7 +6747,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_12 = SharedDraftSche
 	clientObjectCRC = 4066865224
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_12, "object/draft_schematic/clothing/shared_clothing_belt_formal_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_12, "object/draft_schematic/clothing/shared_clothing_belt_formal_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6790,7 +6790,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_13 = SharedDraftSche
 	clientObjectCRC = 3144292293
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_13, "object/draft_schematic/clothing/shared_clothing_belt_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_13, "object/draft_schematic/clothing/shared_clothing_belt_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6833,7 +6833,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_14 = SharedDraftSche
 	clientObjectCRC = 1082735825
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_14, "object/draft_schematic/clothing/shared_clothing_belt_formal_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_14, "object/draft_schematic/clothing/shared_clothing_belt_formal_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6876,7 +6876,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_15 = SharedDraftSche
 	clientObjectCRC = 159669084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_15, "object/draft_schematic/clothing/shared_clothing_belt_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_15, "object/draft_schematic/clothing/shared_clothing_belt_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6919,7 +6919,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_16 = SharedDraftSche
 	clientObjectCRC = 3532911563
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_16, "object/draft_schematic/clothing/shared_clothing_belt_formal_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_16, "object/draft_schematic/clothing/shared_clothing_belt_formal_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -6962,7 +6962,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_17 = SharedDraftSche
 	clientObjectCRC = 2610861126
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_17, "object/draft_schematic/clothing/shared_clothing_belt_formal_17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_17, "object/draft_schematic/clothing/shared_clothing_belt_formal_17.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7005,7 +7005,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_18 = SharedDraftSche
 	clientObjectCRC = 563394644
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_18, "object/draft_schematic/clothing/shared_clothing_belt_formal_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_18, "object/draft_schematic/clothing/shared_clothing_belt_formal_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7048,7 +7048,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_19 = SharedDraftSche
 	clientObjectCRC = 1754914777
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_19, "object/draft_schematic/clothing/shared_clothing_belt_formal_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_19, "object/draft_schematic/clothing/shared_clothing_belt_formal_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7091,7 +7091,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_20 = SharedDraftSche
 	clientObjectCRC = 1292216538
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_20, "object/draft_schematic/clothing/shared_clothing_belt_formal_20.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_belt_formal_20, "object/draft_schematic/clothing/shared_clothing_belt_formal_20.iff")
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7134,7 +7134,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_01 = SharedDraftSc
 	clientObjectCRC = 764549397
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_01, "object/draft_schematic/clothing/shared_clothing_bikini_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_01, "object/draft_schematic/clothing/shared_clothing_bikini_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7177,7 +7177,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_02 = SharedDraftSc
 	clientObjectCRC = 4135956866
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_02, "object/draft_schematic/clothing/shared_clothing_bikini_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_02, "object/draft_schematic/clothing/shared_clothing_bikini_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7220,7 +7220,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_03 = SharedDraftSc
 	clientObjectCRC = 3213415951
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_03, "object/draft_schematic/clothing/shared_clothing_bikini_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_03, "object/draft_schematic/clothing/shared_clothing_bikini_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7263,7 +7263,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_04 = SharedDraftSc
 	clientObjectCRC = 1147927835
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_04, "object/draft_schematic/clothing/shared_clothing_bikini_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bikini_casual_04, "object/draft_schematic/clothing/shared_clothing_bikini_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7306,7 +7306,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01 = Shar
 	clientObjectCRC = 3560259623
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01, "object/draft_schematic/clothing/shared_clothing_bikini_leggings_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01, "object/draft_schematic/clothing/shared_clothing_bikini_leggings_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7349,7 +7349,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08 = SharedDraft
 	clientObjectCRC = 3174599388
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08, "object/draft_schematic/clothing/shared_clothing_bodysuit_casual_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08, "object/draft_schematic/clothing/shared_clothing_bodysuit_casual_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7392,7 +7392,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12 = SharedDraft
 	clientObjectCRC = 1977831352
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12, "object/draft_schematic/clothing/shared_clothing_bodysuit_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12, "object/draft_schematic/clothing/shared_clothing_bodysuit_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7435,7 +7435,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_01 = SharedDraftS
 	clientObjectCRC = 3603791203
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_01, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_01, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7478,7 +7478,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_13 = SharedDraftS
 	clientObjectCRC = 1610596097
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_13, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_13, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7521,7 +7521,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_14 = SharedDraftS
 	clientObjectCRC = 2753336341
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_14, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_14, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7564,7 +7564,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_15 = SharedDraftS
 	clientObjectCRC = 3977376664
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_15, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_15, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7607,7 +7607,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_16 = SharedDraftS
 	clientObjectCRC = 906386191
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_16, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_field_16, "object/draft_schematic/clothing/shared_clothing_bodysuit_field_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7650,7 +7650,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06 = SharedDraft
 	clientObjectCRC = 3890717293
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06, "object/draft_schematic/clothing/shared_clothing_bodysuit_formal_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06, "object/draft_schematic/clothing/shared_clothing_bodysuit_formal_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7693,7 +7693,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_04 = SharedDraftSch
 	clientObjectCRC = 196342496
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_04, "object/draft_schematic/clothing/shared_clothing_boots_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_04, "object/draft_schematic/clothing/shared_clothing_boots_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7736,7 +7736,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_12 = SharedDraftSch
 	clientObjectCRC = 2725622529
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_12, "object/draft_schematic/clothing/shared_clothing_boots_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_12, "object/draft_schematic/clothing/shared_clothing_boots_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7779,7 +7779,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_15 = SharedDraftSch
 	clientObjectCRC = 1503041557
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_15, "object/draft_schematic/clothing/shared_clothing_boots_casual_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_15, "object/draft_schematic/clothing/shared_clothing_boots_casual_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7822,7 +7822,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_19 = SharedDraftSch
 	clientObjectCRC = 948640912
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_19, "object/draft_schematic/clothing/shared_clothing_boots_casual_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_19, "object/draft_schematic/clothing/shared_clothing_boots_casual_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7865,7 +7865,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_21 = SharedDraftSch
 	clientObjectCRC = 1410993182
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_21, "object/draft_schematic/clothing/shared_clothing_boots_casual_21.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_casual_21, "object/draft_schematic/clothing/shared_clothing_boots_casual_21.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7908,7 +7908,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_03 = SharedDraftSche
 	clientObjectCRC = 3858090702
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_03, "object/draft_schematic/clothing/shared_clothing_boots_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_03, "object/draft_schematic/clothing/shared_clothing_boots_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7951,7 +7951,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_05 = SharedDraftSche
 	clientObjectCRC = 1461421655
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_05, "object/draft_schematic/clothing/shared_clothing_boots_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_05, "object/draft_schematic/clothing/shared_clothing_boots_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -7994,7 +7994,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_14 = SharedDraftSche
 	clientObjectCRC = 88009890
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_14, "object/draft_schematic/clothing/shared_clothing_boots_field_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_14, "object/draft_schematic/clothing/shared_clothing_boots_field_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_field_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8037,7 +8037,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_22 = SharedDraftSche
 	clientObjectCRC = 2594748339
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_22, "object/draft_schematic/clothing/shared_clothing_boots_field_22.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_22, "object/draft_schematic/clothing/shared_clothing_boots_field_22.iff")
 
 object_draft_schematic_clothing_shared_clothing_boots_field_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8080,7 +8080,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_34 = SharedDraftSche
 	clientObjectCRC = 862910034
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_34, "object/draft_schematic/clothing/shared_clothing_boots_field_34.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_boots_field_34, "object/draft_schematic/clothing/shared_clothing_boots_field_34.iff")
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8123,7 +8123,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_01 = SharedDraftS
 	clientObjectCRC = 3782064495
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_01, "object/draft_schematic/clothing/shared_clothing_bustier_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_01, "object/draft_schematic/clothing/shared_clothing_bustier_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8166,7 +8166,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_02 = SharedDraftS
 	clientObjectCRC = 981078520
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_02, "object/draft_schematic/clothing/shared_clothing_bustier_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_02, "object/draft_schematic/clothing/shared_clothing_bustier_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8209,7 +8209,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_03 = SharedDraftS
 	clientObjectCRC = 1937208949
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_03, "object/draft_schematic/clothing/shared_clothing_bustier_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_bustier_casual_03, "object/draft_schematic/clothing/shared_clothing_bustier_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8252,7 +8252,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_05 = SharedDraftSch
 	clientObjectCRC = 2230028828
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_05, "object/draft_schematic/clothing/shared_clothing_dress_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_05, "object/draft_schematic/clothing/shared_clothing_dress_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8295,7 +8295,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_06 = SharedDraftSch
 	clientObjectCRC = 1610359435
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_06, "object/draft_schematic/clothing/shared_clothing_dress_casual_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_06, "object/draft_schematic/clothing/shared_clothing_dress_casual_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8338,7 +8338,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_07 = SharedDraftSch
 	clientObjectCRC = 384910598
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_07, "object/draft_schematic/clothing/shared_clothing_dress_casual_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_07, "object/draft_schematic/clothing/shared_clothing_dress_casual_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8381,7 +8381,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_09 = SharedDraftSch
 	clientObjectCRC = 3858108057
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_09, "object/draft_schematic/clothing/shared_clothing_dress_casual_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_09, "object/draft_schematic/clothing/shared_clothing_dress_casual_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8424,7 +8424,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_10 = SharedDraftSch
 	clientObjectCRC = 4131021674
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_10, "object/draft_schematic/clothing/shared_clothing_dress_casual_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_10, "object/draft_schematic/clothing/shared_clothing_dress_casual_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8467,7 +8467,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_12 = SharedDraftSch
 	clientObjectCRC = 1679862896
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_12, "object/draft_schematic/clothing/shared_clothing_dress_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_casual_12, "object/draft_schematic/clothing/shared_clothing_dress_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8510,7 +8510,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_08 = SharedDraftSch
 	clientObjectCRC = 86182458
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_08, "object/draft_schematic/clothing/shared_clothing_dress_formal_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_08, "object/draft_schematic/clothing/shared_clothing_dress_formal_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8553,7 +8553,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest = SharedDr
 	clientObjectCRC = 1771320306
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest, "object/draft_schematic/clothing/shared_clothing_dress_formal_08_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest, "object/draft_schematic/clothing/shared_clothing_dress_formal_08_quest.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8596,7 +8596,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_11 = SharedDraftSch
 	clientObjectCRC = 384788425
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_11, "object/draft_schematic/clothing/shared_clothing_dress_formal_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_11, "object/draft_schematic/clothing/shared_clothing_dress_formal_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8639,7 +8639,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_13 = SharedDraftSch
 	clientObjectCRC = 2230692051
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_13, "object/draft_schematic/clothing/shared_clothing_dress_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_13, "object/draft_schematic/clothing/shared_clothing_dress_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8682,7 +8682,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_14 = SharedDraftSch
 	clientObjectCRC = 2132181959
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_14, "object/draft_schematic/clothing/shared_clothing_dress_formal_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_14, "object/draft_schematic/clothing/shared_clothing_dress_formal_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8725,7 +8725,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_15 = SharedDraftSch
 	clientObjectCRC = 907797578
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_15, "object/draft_schematic/clothing/shared_clothing_dress_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_15, "object/draft_schematic/clothing/shared_clothing_dress_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8768,7 +8768,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_16 = SharedDraftSch
 	clientObjectCRC = 3977006301
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_16, "object/draft_schematic/clothing/shared_clothing_dress_formal_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_16, "object/draft_schematic/clothing/shared_clothing_dress_formal_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8811,7 +8811,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_18 = SharedDraftSch
 	clientObjectCRC = 504039234
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_18, "object/draft_schematic/clothing/shared_clothing_dress_formal_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_18, "object/draft_schematic/clothing/shared_clothing_dress_formal_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8854,7 +8854,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_19 = SharedDraftSch
 	clientObjectCRC = 1460035791
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_19, "object/draft_schematic/clothing/shared_clothing_dress_formal_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_19, "object/draft_schematic/clothing/shared_clothing_dress_formal_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_23 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8897,7 +8897,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_23 = SharedDraftSch
 	clientObjectCRC = 2844639067
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_23, "object/draft_schematic/clothing/shared_clothing_dress_formal_23.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_23, "object/draft_schematic/clothing/shared_clothing_dress_formal_23.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8940,7 +8940,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_26 = SharedDraftSch
 	clientObjectCRC = 3228851029
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_26, "object/draft_schematic/clothing/shared_clothing_dress_formal_26.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_26, "object/draft_schematic/clothing/shared_clothing_dress_formal_26.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -8983,7 +8983,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_27 = SharedDraftSch
 	clientObjectCRC = 2306424024
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_27, "object/draft_schematic/clothing/shared_clothing_dress_formal_27.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_27, "object/draft_schematic/clothing/shared_clothing_dress_formal_27.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_29 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9026,7 +9026,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_29 = SharedDraftSch
 	clientObjectCRC = 2055108423
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_29, "object/draft_schematic/clothing/shared_clothing_dress_formal_29.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_29, "object/draft_schematic/clothing/shared_clothing_dress_formal_29.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9069,7 +9069,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_30 = SharedDraftSch
 	clientObjectCRC = 1773279924
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_30, "object/draft_schematic/clothing/shared_clothing_dress_formal_30.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_30, "object/draft_schematic/clothing/shared_clothing_dress_formal_30.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_31 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9112,7 +9112,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_31 = SharedDraftSch
 	clientObjectCRC = 549420345
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_31, "object/draft_schematic/clothing/shared_clothing_dress_formal_31.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_31, "object/draft_schematic/clothing/shared_clothing_dress_formal_31.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9155,7 +9155,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_32 = SharedDraftSch
 	clientObjectCRC = 4222145966
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_32, "object/draft_schematic/clothing/shared_clothing_dress_formal_32.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_32, "object/draft_schematic/clothing/shared_clothing_dress_formal_32.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_33 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9198,7 +9198,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_33 = SharedDraftSch
 	clientObjectCRC = 2997203491
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_33, "object/draft_schematic/clothing/shared_clothing_dress_formal_33.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_33, "object/draft_schematic/clothing/shared_clothing_dress_formal_33.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9241,7 +9241,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_34 = SharedDraftSch
 	clientObjectCRC = 1229363511
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_34, "object/draft_schematic/clothing/shared_clothing_dress_formal_34.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_34, "object/draft_schematic/clothing/shared_clothing_dress_formal_34.iff")
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_35 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9284,7 +9284,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_35 = SharedDraftSch
 	clientObjectCRC = 4980410
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_35, "object/draft_schematic/clothing/shared_clothing_dress_formal_35.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_dress_formal_35, "object/draft_schematic/clothing/shared_clothing_dress_formal_35.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9327,7 +9327,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_casual_03 = SharedDraftSc
 	clientObjectCRC = 1896518833
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_casual_03, "object/draft_schematic/clothing/shared_clothing_gloves_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_casual_03, "object/draft_schematic/clothing/shared_clothing_gloves_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9370,7 +9370,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_casual_06 = SharedDraftSc
 	clientObjectCRC = 418607295
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_casual_06, "object/draft_schematic/clothing/shared_clothing_gloves_casual_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_casual_06, "object/draft_schematic/clothing/shared_clothing_gloves_casual_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9413,7 +9413,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_02 = SharedDraftSch
 	clientObjectCRC = 1748466152
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_02, "object/draft_schematic/clothing/shared_clothing_gloves_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_02, "object/draft_schematic/clothing/shared_clothing_gloves_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9456,7 +9456,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_07 = SharedDraftSch
 	clientObjectCRC = 30318054
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_07, "object/draft_schematic/clothing/shared_clothing_gloves_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_07, "object/draft_schematic/clothing/shared_clothing_gloves_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9499,7 +9499,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_10 = SharedDraftSch
 	clientObjectCRC = 3775249290
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_10, "object/draft_schematic/clothing/shared_clothing_gloves_field_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_10, "object/draft_schematic/clothing/shared_clothing_gloves_field_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9542,7 +9542,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_11 = SharedDraftSch
 	clientObjectCRC = 2819152903
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_11, "object/draft_schematic/clothing/shared_clothing_gloves_field_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_11, "object/draft_schematic/clothing/shared_clothing_gloves_field_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9585,7 +9585,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_12 = SharedDraftSch
 	clientObjectCRC = 1931441296
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_12, "object/draft_schematic/clothing/shared_clothing_gloves_field_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_12, "object/draft_schematic/clothing/shared_clothing_gloves_field_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9628,7 +9628,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_13 = SharedDraftSch
 	clientObjectCRC = 974263069
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_13, "object/draft_schematic/clothing/shared_clothing_gloves_field_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_13, "object/draft_schematic/clothing/shared_clothing_gloves_field_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9671,7 +9671,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_14 = SharedDraftSch
 	clientObjectCRC = 3253811209
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_14, "object/draft_schematic/clothing/shared_clothing_gloves_field_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_gloves_field_14, "object/draft_schematic/clothing/shared_clothing_gloves_field_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9714,7 +9714,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_02 = SharedDraftSchem
 	clientObjectCRC = 3156505087
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_02, "object/draft_schematic/clothing/shared_clothing_hat_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_02, "object/draft_schematic/clothing/shared_clothing_hat_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9757,7 +9757,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_10 = SharedDraftSchem
 	clientObjectCRC = 890680221
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_10, "object/draft_schematic/clothing/shared_clothing_hat_casual_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_10, "object/draft_schematic/clothing/shared_clothing_hat_casual_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9800,7 +9800,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_12 = SharedDraftSchem
 	clientObjectCRC = 2802613383
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_12, "object/draft_schematic/clothing/shared_clothing_hat_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_12, "object/draft_schematic/clothing/shared_clothing_hat_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9843,7 +9843,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_14 = SharedDraftSchem
 	clientObjectCRC = 367144990
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_14, "object/draft_schematic/clothing/shared_clothing_hat_casual_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_casual_14, "object/draft_schematic/clothing/shared_clothing_hat_casual_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9886,7 +9886,7 @@ object_draft_schematic_clothing_shared_clothing_hat_chef_01 = SharedDraftSchemat
 	clientObjectCRC = 3580572048
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_chef_01, "object/draft_schematic/clothing/shared_clothing_hat_chef_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_chef_01, "object/draft_schematic/clothing/shared_clothing_hat_chef_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_chef_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9929,7 +9929,7 @@ object_draft_schematic_clothing_shared_clothing_hat_chef_02 = SharedDraftSchemat
 	clientObjectCRC = 243046663
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_chef_02, "object/draft_schematic/clothing/shared_clothing_hat_chef_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_chef_02, "object/draft_schematic/clothing/shared_clothing_hat_chef_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -9972,7 +9972,7 @@ object_draft_schematic_clothing_shared_clothing_hat_field_04 = SharedDraftSchema
 	clientObjectCRC = 1708681155
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_field_04, "object/draft_schematic/clothing/shared_clothing_hat_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_field_04, "object/draft_schematic/clothing/shared_clothing_hat_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10015,7 +10015,7 @@ object_draft_schematic_clothing_shared_clothing_hat_formal_13 = SharedDraftSchem
 	clientObjectCRC = 1205434404
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_formal_13, "object/draft_schematic/clothing/shared_clothing_hat_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_formal_13, "object/draft_schematic/clothing/shared_clothing_hat_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10058,7 +10058,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01 = SharedDra
 	clientObjectCRC = 2563353264
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01, "object/draft_schematic/clothing/shared_clothing_hat_twilek_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01, "object/draft_schematic/clothing/shared_clothing_hat_twilek_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10101,7 +10101,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02 = SharedDra
 	clientObjectCRC = 1138623015
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02, "object/draft_schematic/clothing/shared_clothing_hat_twilek_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02, "object/draft_schematic/clothing/shared_clothing_hat_twilek_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10144,7 +10144,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03 = SharedDra
 	clientObjectCRC = 2735408772
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10187,7 +10187,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04 = SharedDra
 	clientObjectCRC = 1491611024
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10230,7 +10230,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05 = SharedDra
 	clientObjectCRC = 300239389
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05, "object/draft_schematic/clothing/shared_clothing_hat_twilek_formal_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10273,7 +10273,7 @@ object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01 = SharedDraftS
 	clientObjectCRC = 3567680505
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01, "object/draft_schematic/clothing/shared_clothing_ith_apron_chef_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01, "object/draft_schematic/clothing/shared_clothing_ith_apron_chef_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10316,7 +10316,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01 = SharedDr
 	clientObjectCRC = 2522580360
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10359,7 +10359,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03 = SharedDr
 	clientObjectCRC = 71387794
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10402,7 +10402,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05 = SharedDr
 	clientObjectCRC = 3064923659
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10445,7 +10445,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06 = SharedDr
 	clientObjectCRC = 1840819868
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06, "object/draft_schematic/clothing/shared_clothing_ith_backpack_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10488,7 +10488,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02 = SharedD
 	clientObjectCRC = 3875287365
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10531,7 +10531,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03 = SharedD
 	clientObjectCRC = 2951829192
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10574,7 +10574,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04 = SharedD
 	clientObjectCRC = 1410498012
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10617,7 +10617,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05 = SharedD
 	clientObjectCRC = 488577617
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10660,7 +10660,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06 = SharedD
 	clientObjectCRC = 3322458822
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10703,7 +10703,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07 = SharedD
 	clientObjectCRC = 2399524171
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10746,7 +10746,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08 = SharedD
 	clientObjectCRC = 890239321
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08, "object/draft_schematic/clothing/shared_clothing_ith_bandolier_field_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10789,7 +10789,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_01 = SharedDraftS
 	clientObjectCRC = 886451738
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_01, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_01, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10832,7 +10832,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_02 = SharedDraftS
 	clientObjectCRC = 4022437517
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_02, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_02, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10875,7 +10875,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_03 = SharedDraftS
 	clientObjectCRC = 2798444800
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_03, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_03, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10918,7 +10918,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_04 = SharedDraftS
 	clientObjectCRC = 1563413012
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_04, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_04, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -10961,7 +10961,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_05 = SharedDraftS
 	clientObjectCRC = 337816985
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_05, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_05, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11004,7 +11004,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_07 = SharedDraftS
 	clientObjectCRC = 2251842179
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_07, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_07, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11047,7 +11047,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_09 = SharedDraftS
 	clientObjectCRC = 1967073564
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_09, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_09, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11090,7 +11090,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_11 = SharedDraftS
 	clientObjectCRC = 805184354
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_11, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_field_11, "object/draft_schematic/clothing/shared_clothing_ith_belt_field_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11133,7 +11133,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12 = SharedDraft
 	clientObjectCRC = 188958849
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11176,7 +11176,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13 = SharedDraft
 	clientObjectCRC = 1112420108
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11219,7 +11219,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14 = SharedDraft
 	clientObjectCRC = 3115123736
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11262,7 +11262,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15 = SharedDraft
 	clientObjectCRC = 4037043093
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11305,7 +11305,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16 = SharedDraft
 	clientObjectCRC = 733465346
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11348,7 +11348,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17 = SharedDraft
 	clientObjectCRC = 1656401039
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_17.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11391,7 +11391,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18 = SharedDraft
 	clientObjectCRC = 3635445917
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11434,7 +11434,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19 = SharedDraft
 	clientObjectCRC = 2445141776
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11477,7 +11477,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20 = SharedDraft
 	clientObjectCRC = 3022098451
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_20.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20, "object/draft_schematic/clothing/shared_clothing_ith_belt_formal_20.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11520,7 +11520,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01 = SharedD
 	clientObjectCRC = 64848637
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11563,7 +11563,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03 = SharedD
 	clientObjectCRC = 2445757927
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11606,7 +11606,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04 = SharedD
 	clientObjectCRC = 1780770547
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11649,7 +11649,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05 = SharedD
 	clientObjectCRC = 589889918
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11692,7 +11692,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02 = SharedDr
 	clientObjectCRC = 3768102972
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11735,7 +11735,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06 = SharedD
 	clientObjectCRC = 1374079687
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_formal_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06, "object/draft_schematic/clothing/shared_clothing_ith_bodysuit_formal_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11778,7 +11778,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02 = SharedDraf
 	clientObjectCRC = 4030817550
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02, "object/draft_schematic/clothing/shared_clothing_ith_dress_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02, "object/draft_schematic/clothing/shared_clothing_ith_dress_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11821,7 +11821,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03 = SharedDraf
 	clientObjectCRC = 278159789
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03, "object/draft_schematic/clothing/shared_clothing_ith_dress_formal_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03, "object/draft_schematic/clothing/shared_clothing_ith_dress_formal_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11864,7 +11864,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04 = SharedDraf
 	clientObjectCRC = 3950463673
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_dress_formal_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_dress_formal_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11907,7 +11907,7 @@ object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02 = SharedDraf
 	clientObjectCRC = 3883843054
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02, "object/draft_schematic/clothing/shared_clothing_ith_gloves_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02, "object/draft_schematic/clothing/shared_clothing_ith_gloves_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11950,7 +11950,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01 = SharedDraftS
 	clientObjectCRC = 3597861568
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_hat_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_hat_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -11993,7 +11993,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03 = SharedDraftS
 	clientObjectCRC = 1147784666
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_hat_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_hat_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12036,7 +12036,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01 = SharedDraftSch
 	clientObjectCRC = 1471257791
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01, "object/draft_schematic/clothing/shared_clothing_ith_hat_chef_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01, "object/draft_schematic/clothing/shared_clothing_ith_hat_chef_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12079,7 +12079,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02 = SharedDraftSch
 	clientObjectCRC = 2359702568
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02, "object/draft_schematic/clothing/shared_clothing_ith_hat_chef_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02, "object/draft_schematic/clothing/shared_clothing_ith_hat_chef_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12122,7 +12122,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02 = SharedDraftS
 	clientObjectCRC = 2763835769
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_hat_formal_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_hat_formal_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12165,7 +12165,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04 = SharedDraftS
 	clientObjectCRC = 374506976
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_hat_formal_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_hat_formal_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12208,7 +12208,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01 = SharedDra
 	clientObjectCRC = 1218278620
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12251,7 +12251,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03 = SharedDra
 	clientObjectCRC = 3666328518
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12294,7 +12294,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06 = SharedDra
 	clientObjectCRC = 3011403720
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12337,7 +12337,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09 = SharedDra
 	clientObjectCRC = 158626778
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12380,7 +12380,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12 = SharedDra
 	clientObjectCRC = 2292371763
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12423,7 +12423,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14 = SharedDra
 	clientObjectCRC = 978099626
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14, "object/draft_schematic/clothing/shared_clothing_ith_jacket_casual_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12466,7 +12466,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02 = SharedDraf
 	clientObjectCRC = 682128055
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12509,7 +12509,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05 = SharedDraf
 	clientObjectCRC = 3544930723
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12552,7 +12552,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07 = SharedDraf
 	clientObjectCRC = 1095866041
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12595,7 +12595,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11 = SharedDraf
 	clientObjectCRC = 3902265176
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12638,7 +12638,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13 = SharedDraf
 	clientObjectCRC = 2056067138
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13, "object/draft_schematic/clothing/shared_clothing_ith_jacket_field_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12681,7 +12681,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04 = SharedDra
 	clientObjectCRC = 2294084604
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12724,7 +12724,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08 = SharedDra
 	clientObjectCRC = 3919673209
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12767,7 +12767,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10 = SharedDra
 	clientObjectCRC = 3009445127
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12810,7 +12810,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15 = SharedDra
 	clientObjectCRC = 3667499273
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15, "object/draft_schematic/clothing/shared_clothing_ith_jacket_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12853,7 +12853,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01 = Shared
 	clientObjectCRC = 3694343430
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12896,7 +12896,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02 = Shared
 	clientObjectCRC = 119840145
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12939,7 +12939,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03 = Shared
 	clientObjectCRC = 1311373852
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -12982,7 +12982,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04 = Shared
 	clientObjectCRC = 3049967880
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13025,7 +13025,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05 = Shared
 	clientObjectCRC = 4240946821
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13068,7 +13068,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06 = Shared
 	clientObjectCRC = 667950610
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13111,7 +13111,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07 = Shared
 	clientObjectCRC = 1860008351
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13154,7 +13154,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08 = Shared
 	clientObjectCRC = 3570881933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13197,7 +13197,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09 = Shared
 	clientObjectCRC = 2648322560
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13240,7 +13240,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10 = Shared
 	clientObjectCRC = 2383831027
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13283,7 +13283,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11 = Shared
 	clientObjectCRC = 3340449918
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13326,7 +13326,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12 = Shared
 	clientObjectCRC = 470585577
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12, "object/draft_schematic/clothing/shared_clothing_ith_jewelry_necklace_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13369,7 +13369,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01 = SharedDraf
 	clientObjectCRC = 1568038916
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13412,7 +13412,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02 = SharedDraf
 	clientObjectCRC = 2254555283
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13455,7 +13455,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03 = SharedDraf
 	clientObjectCRC = 3480006430
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13498,7 +13498,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08 = SharedDraf
 	clientObjectCRC = 1435631759
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13541,7 +13541,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09 = SharedDraf
 	clientObjectCRC = 480208642
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13584,7 +13584,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16 = SharedDraf
 	clientObjectCRC = 3183298152
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13627,7 +13627,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17 = SharedDraf
 	clientObjectCRC = 4105183717
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_17.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13670,7 +13670,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18 = SharedDraf
 	clientObjectCRC = 1320816119
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13713,7 +13713,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21 = SharedDraf
 	clientObjectCRC = 1797683956
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_21.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21, "object/draft_schematic/clothing/shared_clothing_ith_pants_casual_21.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13756,7 +13756,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_04 = SharedDraft
 	clientObjectCRC = 814575802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_04, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_04, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13799,7 +13799,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_05 = SharedDraft
 	clientObjectCRC = 2038437687
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_05, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_05, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13842,7 +13842,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_06 = SharedDraft
 	clientObjectCRC = 2727853984
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_06, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_06, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13885,7 +13885,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_07 = SharedDraft
 	clientObjectCRC = 3952793645
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_07, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_07, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13928,7 +13928,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_12 = SharedDraft
 	clientObjectCRC = 2571841883
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_12, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_12, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -13971,7 +13971,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_13 = SharedDraft
 	clientObjectCRC = 3494270678
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_13, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_13, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14014,7 +14014,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_15 = SharedDraft
 	clientObjectCRC = 1655183951
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_15, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_15, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14057,7 +14057,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_19 = SharedDraft
 	clientObjectCRC = 62234314
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_19, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_19, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14100,7 +14100,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_20 = SharedDraft
 	clientObjectCRC = 640281033
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_20, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_20.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_field_20, "object/draft_schematic/clothing/shared_clothing_ith_pants_field_20.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14143,7 +14143,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10 = SharedDraf
 	clientObjectCRC = 2794154463
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14186,7 +14186,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11 = SharedDraf
 	clientObjectCRC = 4018540114
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14229,7 +14229,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14 = SharedDraf
 	clientObjectCRC = 2256530012
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14, "object/draft_schematic/clothing/shared_clothing_ith_pants_formal_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14272,7 +14272,7 @@ object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01 = SharedDraft
 	clientObjectCRC = 3469187502
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01, "object/draft_schematic/clothing/shared_clothing_ith_robe_formal_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01, "object/draft_schematic/clothing/shared_clothing_ith_robe_formal_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14315,7 +14315,7 @@ object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02 = SharedDraft
 	clientObjectCRC = 365965625
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_robe_formal_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_robe_formal_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14358,7 +14358,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01 = SharedDraf
 	clientObjectCRC = 1176658641
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14401,7 +14401,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03 = SharedDraf
 	clientObjectCRC = 3560484299
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14444,7 +14444,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04 = SharedDraf
 	clientObjectCRC = 802916063
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14487,7 +14487,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06 = SharedDraf
 	clientObjectCRC = 3183561157
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14530,7 +14530,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07 = SharedDraf
 	clientObjectCRC = 4107021896
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14573,7 +14573,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08 = SharedDraf
 	clientObjectCRC = 1321599578
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14616,7 +14616,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09 = SharedDraf
 	clientObjectCRC = 130770391
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14659,7 +14659,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12 = SharedDraf
 	clientObjectCRC = 2250098494
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14702,7 +14702,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13 = SharedDraf
 	clientObjectCRC = 3473973427
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14745,7 +14745,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14 = SharedDraf
 	clientObjectCRC = 888376231
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14, "object/draft_schematic/clothing/shared_clothing_ith_shirt_casual_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14788,7 +14788,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05 = SharedDraft
 	clientObjectCRC = 2365718462
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05, "object/draft_schematic/clothing/shared_clothing_ith_shirt_field_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05, "object/draft_schematic/clothing/shared_clothing_ith_shirt_field_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14831,7 +14831,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11 = SharedDraft
 	clientObjectCRC = 3067965765
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11, "object/draft_schematic/clothing/shared_clothing_ith_shirt_field_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11, "object/draft_schematic/clothing/shared_clothing_ith_shirt_field_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14874,7 +14874,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02 = SharedDraf
 	clientObjectCRC = 887990632
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_shirt_formal_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_shirt_formal_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14917,7 +14917,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10 = SharedDraf
 	clientObjectCRC = 3185535754
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_shirt_formal_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10, "object/draft_schematic/clothing/shared_clothing_ith_shirt_formal_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -14960,7 +14960,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01 = SharedDraf
 	clientObjectCRC = 1754490583
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15003,7 +15003,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02 = SharedDraf
 	clientObjectCRC = 3011825216
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15046,7 +15046,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03 = SharedDraf
 	clientObjectCRC = 4203325901
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03, "object/draft_schematic/clothing/shared_clothing_ith_skirt_formal_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_ith_vest_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15089,7 +15089,7 @@ object_draft_schematic_clothing_shared_clothing_ith_vest_field_01 = SharedDraftS
 	clientObjectCRC = 454011368
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_vest_field_01, "object/draft_schematic/clothing/shared_clothing_ith_vest_field_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_ith_vest_field_01, "object/draft_schematic/clothing/shared_clothing_ith_vest_field_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15132,7 +15132,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_02 = SharedDraftSc
 	clientObjectCRC = 2332919576
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_02, "object/draft_schematic/clothing/shared_clothing_jacket_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_02, "object/draft_schematic/clothing/shared_clothing_jacket_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15175,7 +15175,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_05 = SharedDraftSc
 	clientObjectCRC = 1894689804
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_05, "object/draft_schematic/clothing/shared_clothing_jacket_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_05, "object/draft_schematic/clothing/shared_clothing_jacket_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15218,7 +15218,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_07 = SharedDraftSc
 	clientObjectCRC = 3807666966
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_07, "object/draft_schematic/clothing/shared_clothing_jacket_casual_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_07, "object/draft_schematic/clothing/shared_clothing_jacket_casual_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15261,7 +15261,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_12 = SharedDraftSc
 	clientObjectCRC = 2418379360
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_12, "object/draft_schematic/clothing/shared_clothing_jacket_casual_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_12, "object/draft_schematic/clothing/shared_clothing_jacket_casual_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15304,7 +15304,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_14 = SharedDraftSc
 	clientObjectCRC = 583780089
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_14, "object/draft_schematic/clothing/shared_clothing_jacket_casual_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_14, "object/draft_schematic/clothing/shared_clothing_jacket_casual_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15347,7 +15347,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_17 = SharedDraftSc
 	clientObjectCRC = 4191972974
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_17, "object/draft_schematic/clothing/shared_clothing_jacket_casual_17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_17, "object/draft_schematic/clothing/shared_clothing_jacket_casual_17.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15390,7 +15390,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_18 = SharedDraftSc
 	clientObjectCRC = 1138115196
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_18, "object/draft_schematic/clothing/shared_clothing_jacket_casual_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_18, "object/draft_schematic/clothing/shared_clothing_jacket_casual_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15433,7 +15433,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_19 = SharedDraftSc
 	clientObjectCRC = 182134257
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_19, "object/draft_schematic/clothing/shared_clothing_jacket_casual_19.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_19, "object/draft_schematic/clothing/shared_clothing_jacket_casual_19.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15476,7 +15476,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_24 = SharedDraftSc
 	clientObjectCRC = 263442801
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_24, "object/draft_schematic/clothing/shared_clothing_jacket_casual_24.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_24, "object/draft_schematic/clothing/shared_clothing_jacket_casual_24.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_36 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15519,7 +15519,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_36 = SharedDraftSc
 	clientObjectCRC = 2256605971
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_36, "object/draft_schematic/clothing/shared_clothing_jacket_casual_36.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_casual_36, "object/draft_schematic/clothing/shared_clothing_jacket_casual_36.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15562,7 +15562,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_08 = SharedDraftSch
 	clientObjectCRC = 1947369133
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_08, "object/draft_schematic/clothing/shared_clothing_jacket_field_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_08, "object/draft_schematic/clothing/shared_clothing_jacket_field_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15605,7 +15605,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_10 = SharedDraftSch
 	clientObjectCRC = 785609939
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_10, "object/draft_schematic/clothing/shared_clothing_jacket_field_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_10, "object/draft_schematic/clothing/shared_clothing_jacket_field_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15648,7 +15648,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_13 = SharedDraftSch
 	clientObjectCRC = 4123319364
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_13, "object/draft_schematic/clothing/shared_clothing_jacket_field_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_13, "object/draft_schematic/clothing/shared_clothing_jacket_field_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15691,7 +15691,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_15 = SharedDraftSch
 	clientObjectCRC = 1193971933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_15, "object/draft_schematic/clothing/shared_clothing_jacket_field_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_15, "object/draft_schematic/clothing/shared_clothing_jacket_field_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15734,7 +15734,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_16 = SharedDraftSch
 	clientObjectCRC = 2621257802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_16, "object/draft_schematic/clothing/shared_clothing_jacket_field_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_16, "object/draft_schematic/clothing/shared_clothing_jacket_field_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15777,7 +15777,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_18 = SharedDraftSch
 	clientObjectCRC = 1866101717
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_18, "object/draft_schematic/clothing/shared_clothing_jacket_field_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_18, "object/draft_schematic/clothing/shared_clothing_jacket_field_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15820,7 +15820,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_21 = SharedDraftSch
 	clientObjectCRC = 1252394198
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_21, "object/draft_schematic/clothing/shared_clothing_jacket_field_21.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_21, "object/draft_schematic/clothing/shared_clothing_jacket_field_21.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_35 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15863,7 +15863,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_35 = SharedDraftSch
 	clientObjectCRC = 1903856173
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_35, "object/draft_schematic/clothing/shared_clothing_jacket_field_35.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_field_35, "object/draft_schematic/clothing/shared_clothing_jacket_field_35.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15906,7 +15906,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_03 = SharedDraftSc
 	clientObjectCRC = 1809351611
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_03, "object/draft_schematic/clothing/shared_clothing_jacket_formal_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_03, "object/draft_schematic/clothing/shared_clothing_jacket_formal_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15949,7 +15949,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_06 = SharedDraftSc
 	clientObjectCRC = 35743669
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_06, "object/draft_schematic/clothing/shared_clothing_jacket_formal_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_06, "object/draft_schematic/clothing/shared_clothing_jacket_formal_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -15992,7 +15992,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_11 = SharedDraftSc
 	clientObjectCRC = 3807003097
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_11, "object/draft_schematic/clothing/shared_clothing_jacket_formal_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_11, "object/draft_schematic/clothing/shared_clothing_jacket_formal_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16035,7 +16035,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_22 = SharedDraftSc
 	clientObjectCRC = 344325830
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_22, "object/draft_schematic/clothing/shared_clothing_jacket_formal_22.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_22, "object/draft_schematic/clothing/shared_clothing_jacket_formal_22.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_25 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16078,7 +16078,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_25 = SharedDraftSc
 	clientObjectCRC = 4016494034
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_25, "object/draft_schematic/clothing/shared_clothing_jacket_formal_25.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_25, "object/draft_schematic/clothing/shared_clothing_jacket_formal_25.iff")
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16121,7 +16121,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_26 = SharedDraftSc
 	clientObjectCRC = 879852869
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_26, "object/draft_schematic/clothing/shared_clothing_jacket_formal_26.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jacket_formal_26, "object/draft_schematic/clothing/shared_clothing_jacket_formal_26.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16164,7 +16164,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02 = SharedDraf
 	clientObjectCRC = 446131726
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16207,7 +16207,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03 = SharedDraf
 	clientObjectCRC = 1402603907
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16250,7 +16250,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04 = SharedDraf
 	clientObjectCRC = 2826510999
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16293,7 +16293,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05 = SharedDraf
 	clientObjectCRC = 3782493466
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16336,7 +16336,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06 = SharedDraf
 	clientObjectCRC = 979627405
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06, "object/draft_schematic/clothing/shared_clothing_jewelry_bracelet_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16379,7 +16379,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01 = SharedDraf
 	clientObjectCRC = 2061721546
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16422,7 +16422,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02 = SharedDraf
 	clientObjectCRC = 2717185885
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16465,7 +16465,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03 = SharedDraf
 	clientObjectCRC = 3908669648
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16508,7 +16508,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04 = SharedDraf
 	clientObjectCRC = 320519108
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16551,7 +16551,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05 = SharedDraf
 	clientObjectCRC = 1511513161
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16594,7 +16594,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06 = SharedDraf
 	clientObjectCRC = 2164290782
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16637,7 +16637,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07 = SharedDraf
 	clientObjectCRC = 3356300115
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16680,7 +16680,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08 = SharedDraf
 	clientObjectCRC = 1913077569
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16723,7 +16723,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09 = SharedDraf
 	clientObjectCRC = 990533836
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16766,7 +16766,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10 = SharedDraf
 	clientObjectCRC = 684078399
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16809,7 +16809,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11 = SharedDraf
 	clientObjectCRC = 1640714930
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16852,7 +16852,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12 = SharedDraf
 	clientObjectCRC = 3135044133
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12, "object/draft_schematic/clothing/shared_clothing_jewelry_necklace_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16895,7 +16895,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_01 = SharedDraftSch
 	clientObjectCRC = 2962417774
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_01, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_01, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16938,7 +16938,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_02 = SharedDraftSch
 	clientObjectCRC = 1803895033
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_02, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_02, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -16981,7 +16981,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_03 = SharedDraftSch
 	clientObjectCRC = 579348340
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_03, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_03, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17024,7 +17024,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_04 = SharedDraftSch
 	clientObjectCRC = 3647671392
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_04, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_jewelry_ring_04, "object/draft_schematic/clothing/shared_clothing_jewelry_ring_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17067,7 +17067,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_01 = SharedDraftSch
 	clientObjectCRC = 3527386114
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_01, "object/draft_schematic/clothing/shared_clothing_pants_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_01, "object/draft_schematic/clothing/shared_clothing_pants_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17110,7 +17110,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_02 = SharedDraftSch
 	clientObjectCRC = 153619605
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_02, "object/draft_schematic/clothing/shared_clothing_pants_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_02, "object/draft_schematic/clothing/shared_clothing_pants_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17153,7 +17153,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_05 = SharedDraftSch
 	clientObjectCRC = 4073400193
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_05, "object/draft_schematic/clothing/shared_clothing_pants_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_05, "object/draft_schematic/clothing/shared_clothing_pants_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17196,7 +17196,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_06 = SharedDraftSch
 	clientObjectCRC = 702320406
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_06, "object/draft_schematic/clothing/shared_clothing_pants_casual_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_06, "object/draft_schematic/clothing/shared_clothing_pants_casual_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17239,7 +17239,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_08 = SharedDraftSch
 	clientObjectCRC = 3671835785
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_08, "object/draft_schematic/clothing/shared_clothing_pants_casual_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_08, "object/draft_schematic/clothing/shared_clothing_pants_casual_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17282,7 +17282,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_09 = SharedDraftSch
 	clientObjectCRC = 2480317188
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_09, "object/draft_schematic/clothing/shared_clothing_pants_casual_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_09, "object/draft_schematic/clothing/shared_clothing_pants_casual_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17325,7 +17325,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_10 = SharedDraftSch
 	clientObjectCRC = 2149240567
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_10, "object/draft_schematic/clothing/shared_clothing_pants_casual_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_10, "object/draft_schematic/clothing/shared_clothing_pants_casual_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17368,7 +17368,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_11 = SharedDraftSch
 	clientObjectCRC = 3373771130
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_11, "object/draft_schematic/clothing/shared_clothing_pants_casual_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_11, "object/draft_schematic/clothing/shared_clothing_pants_casual_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17411,7 +17411,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_17 = SharedDraftSch
 	clientObjectCRC = 2079974883
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_17, "object/draft_schematic/clothing/shared_clothing_pants_casual_17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_17, "object/draft_schematic/clothing/shared_clothing_pants_casual_17.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17454,7 +17454,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_18 = SharedDraftSch
 	clientObjectCRC = 3253979633
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_18, "object/draft_schematic/clothing/shared_clothing_pants_casual_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_18, "object/draft_schematic/clothing/shared_clothing_pants_casual_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17497,7 +17497,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_24 = SharedDraftSch
 	clientObjectCRC = 2375441148
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_24, "object/draft_schematic/clothing/shared_clothing_pants_casual_24.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_24, "object/draft_schematic/clothing/shared_clothing_pants_casual_24.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_25 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17540,7 +17540,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_25 = SharedDraftSch
 	clientObjectCRC = 3298508145
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_25, "object/draft_schematic/clothing/shared_clothing_pants_casual_25.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_25, "object/draft_schematic/clothing/shared_clothing_pants_casual_25.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -17583,7 +17583,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_26 = SharedDraftSch
 	clientObjectCRC = 529307110
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_26, "object/draft_schematic/clothing/shared_clothing_pants_casual_26.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_casual_26, "object/draft_schematic/clothing/shared_clothing_pants_casual_26.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17626,7 +17626,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_04 = SharedDraftSche
 	clientObjectCRC = 3383314547
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_04, "object/draft_schematic/clothing/shared_clothing_pants_field_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_04, "object/draft_schematic/clothing/shared_clothing_pants_field_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
@@ -17669,7 +17669,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_07 = SharedDraftSche
 	clientObjectCRC = 314499300
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_07, "object/draft_schematic/clothing/shared_clothing_pants_field_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_07, "object/draft_schematic/clothing/shared_clothing_pants_field_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17712,7 +17712,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_12 = SharedDraftSche
 	clientObjectCRC = 1617889682
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_12, "object/draft_schematic/clothing/shared_clothing_pants_field_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_12, "object/draft_schematic/clothing/shared_clothing_pants_field_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17755,7 +17755,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_14 = SharedDraftSche
 	clientObjectCRC = 3531687179
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_14, "object/draft_schematic/clothing/shared_clothing_pants_field_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_14, "object/draft_schematic/clothing/shared_clothing_pants_field_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17798,7 +17798,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_21 = SharedDraftSche
 	clientObjectCRC = 2516629133
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_21, "object/draft_schematic/clothing/shared_clothing_pants_field_21.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_21, "object/draft_schematic/clothing/shared_clothing_pants_field_21.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17841,7 +17841,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_22 = SharedDraftSche
 	clientObjectCRC = 1293360666
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_22, "object/draft_schematic/clothing/shared_clothing_pants_field_22.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_22, "object/draft_schematic/clothing/shared_clothing_pants_field_22.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -17884,7 +17884,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_27 = SharedDraftSche
 	clientObjectCRC = 619641364
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_27, "object/draft_schematic/clothing/shared_clothing_pants_field_27.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_27, "object/draft_schematic/clothing/shared_clothing_pants_field_27.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_28 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
@@ -17927,7 +17927,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_28 = SharedDraftSche
 	clientObjectCRC = 2665797126
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_28, "object/draft_schematic/clothing/shared_clothing_pants_field_28.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_28, "object/draft_schematic/clothing/shared_clothing_pants_field_28.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_29 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
@@ -17970,7 +17970,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_29 = SharedDraftSche
 	clientObjectCRC = 3622416779
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_29, "object/draft_schematic/clothing/shared_clothing_pants_field_29.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_29, "object/draft_schematic/clothing/shared_clothing_pants_field_29.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_field_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
@@ -18013,7 +18013,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_30 = SharedDraftSche
 	clientObjectCRC = 3290815608
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_30, "object/draft_schematic/clothing/shared_clothing_pants_field_30.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_field_30, "object/draft_schematic/clothing/shared_clothing_pants_field_30.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18056,7 +18056,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_13 = SharedDraftSch
 	clientObjectCRC = 4074046798
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_13, "object/draft_schematic/clothing/shared_clothing_pants_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_13, "object/draft_schematic/clothing/shared_clothing_pants_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18099,7 +18099,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_15 = SharedDraftSch
 	clientObjectCRC = 1077627351
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_15, "object/draft_schematic/clothing/shared_clothing_pants_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_15, "object/draft_schematic/clothing/shared_clothing_pants_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_31 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18142,7 +18142,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_31 = SharedDraftSch
 	clientObjectCRC = 1453314212
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_31, "object/draft_schematic/clothing/shared_clothing_pants_formal_31.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_31, "object/draft_schematic/clothing/shared_clothing_pants_formal_31.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18185,7 +18185,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_32 = SharedDraftSch
 	clientObjectCRC = 2374531123
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_32, "object/draft_schematic/clothing/shared_clothing_pants_formal_32.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_32, "object/draft_schematic/clothing/shared_clothing_pants_formal_32.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_33 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18228,7 +18228,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_33 = SharedDraftSch
 	clientObjectCRC = 3297058750
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_33, "object/draft_schematic/clothing/shared_clothing_pants_formal_33.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_33, "object/draft_schematic/clothing/shared_clothing_pants_formal_33.iff")
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_38 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18271,7 +18271,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_38 = SharedDraftSch
 	clientObjectCRC = 1585164335
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_38, "object/draft_schematic/clothing/shared_clothing_pants_formal_38.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_pants_formal_38, "object/draft_schematic/clothing/shared_clothing_pants_formal_38.iff")
 
 object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18314,7 +18314,7 @@ object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot = Share
 	clientObjectCRC = 2290443455
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot, "object/draft_schematic/clothing/shared_clothing_quest_jacket_rebel_pilot.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot, "object/draft_schematic/clothing/shared_clothing_quest_jacket_rebel_pilot.iff")
 
 object_draft_schematic_clothing_shared_clothing_quest_robe_imperial = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18357,7 +18357,7 @@ object_draft_schematic_clothing_shared_clothing_quest_robe_imperial = SharedDraf
 	clientObjectCRC = 224341466
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_quest_robe_imperial, "object/draft_schematic/clothing/shared_clothing_quest_robe_imperial.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_quest_robe_imperial, "object/draft_schematic/clothing/shared_clothing_quest_robe_imperial.iff")
 
 object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18400,7 +18400,7 @@ object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot = Shar
 	clientObjectCRC = 1888189585
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot, "object/draft_schematic/clothing/shared_clothing_quest_vest_smuggler_pilot.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot, "object/draft_schematic/clothing/shared_clothing_quest_vest_smuggler_pilot.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
@@ -18443,7 +18443,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_04 = SharedDraftSche
 	clientObjectCRC = 4156696135
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_04, "object/draft_schematic/clothing/shared_clothing_robe_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_04, "object/draft_schematic/clothing/shared_clothing_robe_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
@@ -18486,7 +18486,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_05 = SharedDraftSche
 	clientObjectCRC = 3201253834
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_05, "object/draft_schematic/clothing/shared_clothing_robe_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_05, "object/draft_schematic/clothing/shared_clothing_robe_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_05b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
@@ -18529,7 +18529,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_05b = SharedDraftSch
 	clientObjectCRC = 3903710802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_05b, "object/draft_schematic/clothing/shared_clothing_robe_casual_05b.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_05b, "object/draft_schematic/clothing/shared_clothing_robe_casual_05b.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
@@ -18572,7 +18572,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_18 = SharedDraftSche
 	clientObjectCRC = 2381819834
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_18, "object/draft_schematic/clothing/shared_clothing_robe_casual_18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_casual_18, "object/draft_schematic/clothing/shared_clothing_robe_casual_18.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_field_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18615,7 +18615,7 @@ object_draft_schematic_clothing_shared_clothing_robe_field_27 = SharedDraftSchem
 	clientObjectCRC = 1075666882
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_field_27, "object/draft_schematic/clothing/shared_clothing_robe_field_27.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_field_27, "object/draft_schematic/clothing/shared_clothing_robe_field_27.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18658,7 +18658,7 @@ object_draft_schematic_clothing_shared_clothing_robe_formal_01 = SharedDraftSche
 	clientObjectCRC = 937664871
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_formal_01, "object/draft_schematic/clothing/shared_clothing_robe_formal_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_formal_01, "object/draft_schematic/clothing/shared_clothing_robe_formal_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_robe_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18701,7 +18701,7 @@ object_draft_schematic_clothing_shared_clothing_robe_formal_12 = SharedDraftSche
 	clientObjectCRC = 4158391432
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe_formal_12, "object/draft_schematic/clothing/shared_clothing_robe_formal_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_robe_formal_12, "object/draft_schematic/clothing/shared_clothing_robe_formal_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18744,7 +18744,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_03 = SharedDraftSch
 	clientObjectCRC = 1534159309
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_03, "object/draft_schematic/clothing/shared_clothing_shirt_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_03, "object/draft_schematic/clothing/shared_clothing_shirt_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18787,7 +18787,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_04 = SharedDraftSch
 	clientObjectCRC = 2693939929
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_04, "object/draft_schematic/clothing/shared_clothing_shirt_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_04, "object/draft_schematic/clothing/shared_clothing_shirt_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18830,7 +18830,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_07 = SharedDraftSch
 	clientObjectCRC = 2072373838
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_07, "object/draft_schematic/clothing/shared_clothing_shirt_casual_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_07, "object/draft_schematic/clothing/shared_clothing_shirt_casual_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18873,7 +18873,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_11 = SharedDraftSch
 	clientObjectCRC = 3527650223
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_11, "object/draft_schematic/clothing/shared_clothing_shirt_casual_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_11, "object/draft_schematic/clothing/shared_clothing_shirt_casual_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18916,7 +18916,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_16 = SharedDraftSch
 	clientObjectCRC = 698384571
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_16, "object/draft_schematic/clothing/shared_clothing_shirt_casual_16.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_16, "object/draft_schematic/clothing/shared_clothing_shirt_casual_16.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -18959,7 +18959,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_24 = SharedDraftSch
 	clientObjectCRC = 2529318953
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_24, "object/draft_schematic/clothing/shared_clothing_shirt_casual_24.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_24, "object/draft_schematic/clothing/shared_clothing_shirt_casual_24.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19002,7 +19002,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_27 = SharedDraftSch
 	clientObjectCRC = 1305866430
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_27, "object/draft_schematic/clothing/shared_clothing_shirt_casual_27.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_27, "object/draft_schematic/clothing/shared_clothing_shirt_casual_27.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19045,7 +19045,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_30 = SharedDraftSch
 	clientObjectCRC = 2904479442
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_30, "object/draft_schematic/clothing/shared_clothing_shirt_casual_30.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_30, "object/draft_schematic/clothing/shared_clothing_shirt_casual_30.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19088,7 +19088,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_34 = SharedDraftSch
 	clientObjectCRC = 2380944721
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_34, "object/draft_schematic/clothing/shared_clothing_shirt_casual_34.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_34, "object/draft_schematic/clothing/shared_clothing_shirt_casual_34.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_38 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19131,7 +19131,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_38 = SharedDraftSch
 	clientObjectCRC = 3975664084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_38, "object/draft_schematic/clothing/shared_clothing_shirt_casual_38.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_38, "object/draft_schematic/clothing/shared_clothing_shirt_casual_38.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_42 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19174,7 +19174,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_42 = SharedDraftSch
 	clientObjectCRC = 2128362400
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_42, "object/draft_schematic/clothing/shared_clothing_shirt_casual_42.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_casual_42, "object/draft_schematic/clothing/shared_clothing_shirt_casual_42.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19217,7 +19217,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_09 = SharedDraftSche
 	clientObjectCRC = 356008946
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_09, "object/draft_schematic/clothing/shared_clothing_shirt_field_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_09, "object/draft_schematic/clothing/shared_clothing_shirt_field_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19260,7 +19260,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_10 = SharedDraftSche
 	clientObjectCRC = 116665857
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_10, "object/draft_schematic/clothing/shared_clothing_shirt_field_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_10, "object/draft_schematic/clothing/shared_clothing_shirt_field_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19303,7 +19303,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_14 = SharedDraftSche
 	clientObjectCRC = 637578626
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_14, "object/draft_schematic/clothing/shared_clothing_shirt_field_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_14, "object/draft_schematic/clothing/shared_clothing_shirt_field_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19346,7 +19346,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_26 = SharedDraftSche
 	clientObjectCRC = 2573366544
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_26, "object/draft_schematic/clothing/shared_clothing_shirt_field_26.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_field_26, "object/draft_schematic/clothing/shared_clothing_shirt_field_26.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19389,7 +19389,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_05 = SharedDraftSch
 	clientObjectCRC = 1078412922
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_05, "object/draft_schematic/clothing/shared_clothing_shirt_formal_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_05, "object/draft_schematic/clothing/shared_clothing_shirt_formal_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19432,7 +19432,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_08 = SharedDraftSch
 	clientObjectCRC = 1750574450
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_08, "object/draft_schematic/clothing/shared_clothing_shirt_formal_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_08, "object/draft_schematic/clothing/shared_clothing_shirt_formal_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19475,7 +19475,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_12 = SharedDraftSch
 	clientObjectCRC = 2693554198
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_12, "object/draft_schematic/clothing/shared_clothing_shirt_formal_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_12, "object/draft_schematic/clothing/shared_clothing_shirt_formal_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19518,7 +19518,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_13 = SharedDraftSch
 	clientObjectCRC = 3917547419
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_13, "object/draft_schematic/clothing/shared_clothing_shirt_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_13, "object/draft_schematic/clothing/shared_clothing_shirt_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19561,7 +19561,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_15 = SharedDraftSch
 	clientObjectCRC = 1534020354
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_15, "object/draft_schematic/clothing/shared_clothing_shirt_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_15, "object/draft_schematic/clothing/shared_clothing_shirt_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_28 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19604,7 +19604,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_28 = SharedDraftSch
 	clientObjectCRC = 1577566082
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_28, "object/draft_schematic/clothing/shared_clothing_shirt_formal_28.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_28, "object/draft_schematic/clothing/shared_clothing_shirt_formal_28.iff")
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19647,7 +19647,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_32 = SharedDraftSch
 	clientObjectCRC = 2531031782
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_32, "object/draft_schematic/clothing/shared_clothing_shirt_formal_32.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shirt_formal_32, "object/draft_schematic/clothing/shared_clothing_shirt_formal_32.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19690,7 +19690,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_02 = SharedDraftSch
 	clientObjectCRC = 1153745366
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_02, "object/draft_schematic/clothing/shared_clothing_shoes_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_02, "object/draft_schematic/clothing/shared_clothing_shoes_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19733,7 +19733,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_03 = SharedDraftSch
 	clientObjectCRC = 231319131
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_03, "object/draft_schematic/clothing/shared_clothing_shoes_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_03, "object/draft_schematic/clothing/shared_clothing_shoes_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19776,7 +19776,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_07 = SharedDraftSch
 	clientObjectCRC = 758982104
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_07, "object/draft_schematic/clothing/shared_clothing_shoes_casual_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_07, "object/draft_schematic/clothing/shared_clothing_shoes_casual_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19819,7 +19819,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_08 = SharedDraftSch
 	clientObjectCRC = 2536966602
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_08, "object/draft_schematic/clothing/shared_clothing_shoes_casual_08.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_casual_08, "object/draft_schematic/clothing/shared_clothing_shoes_casual_08.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19862,7 +19862,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_formal_01 = SharedDraftSch
 	clientObjectCRC = 906693231
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_formal_01, "object/draft_schematic/clothing/shared_clothing_shoes_formal_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_formal_01, "object/draft_schematic/clothing/shared_clothing_shoes_formal_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_shoes_formal_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19905,7 +19905,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_formal_09 = SharedDraftSch
 	clientObjectCRC = 2011303273
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoes_formal_09, "object/draft_schematic/clothing/shared_clothing_shoes_formal_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_shoes_formal_09, "object/draft_schematic/clothing/shared_clothing_shoes_formal_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19948,7 +19948,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_03 = SharedDraftSch
 	clientObjectCRC = 3692564197
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_03, "object/draft_schematic/clothing/shared_clothing_skirt_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_03, "object/draft_schematic/clothing/shared_clothing_skirt_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -19991,7 +19991,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_04 = SharedDraftSch
 	clientObjectCRC = 670770673
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_04, "object/draft_schematic/clothing/shared_clothing_skirt_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_04, "object/draft_schematic/clothing/shared_clothing_skirt_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20034,7 +20034,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_05 = SharedDraftSch
 	clientObjectCRC = 1861632636
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_05, "object/draft_schematic/clothing/shared_clothing_skirt_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_05, "object/draft_schematic/clothing/shared_clothing_skirt_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20077,7 +20077,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_10 = SharedDraftSch
 	clientObjectCRC = 472361738
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_10, "object/draft_schematic/clothing/shared_clothing_skirt_casual_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_casual_10, "object/draft_schematic/clothing/shared_clothing_skirt_casual_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20120,7 +20120,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_06 = SharedDraftSch
 	clientObjectCRC = 473532869
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_06, "object/draft_schematic/clothing/shared_clothing_skirt_formal_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_06, "object/draft_schematic/clothing/shared_clothing_skirt_formal_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20163,7 +20163,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_07 = SharedDraftSch
 	clientObjectCRC = 1429532232
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_07, "object/draft_schematic/clothing/shared_clothing_skirt_formal_07.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_07, "object/draft_schematic/clothing/shared_clothing_skirt_formal_07.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20206,7 +20206,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_09 = SharedDraftSch
 	clientObjectCRC = 2788402647
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_09, "object/draft_schematic/clothing/shared_clothing_skirt_formal_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_09, "object/draft_schematic/clothing/shared_clothing_skirt_formal_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20249,7 +20249,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_11 = SharedDraftSch
 	clientObjectCRC = 4243763113
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_11, "object/draft_schematic/clothing/shared_clothing_skirt_formal_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_11, "object/draft_schematic/clothing/shared_clothing_skirt_formal_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20292,7 +20292,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_12 = SharedDraftSch
 	clientObjectCRC = 669321022
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_12, "object/draft_schematic/clothing/shared_clothing_skirt_formal_12.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_12, "object/draft_schematic/clothing/shared_clothing_skirt_formal_12.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20335,7 +20335,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_13 = SharedDraftSch
 	clientObjectCRC = 1860722867
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_13, "object/draft_schematic/clothing/shared_clothing_skirt_formal_13.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_13, "object/draft_schematic/clothing/shared_clothing_skirt_formal_13.iff")
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20378,7 +20378,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_14 = SharedDraftSch
 	clientObjectCRC = 2500545447
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_14, "object/draft_schematic/clothing/shared_clothing_skirt_formal_14.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_skirt_formal_14, "object/draft_schematic/clothing/shared_clothing_skirt_formal_14.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20421,7 +20421,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_01 = SharedDraftSche
 	clientObjectCRC = 3798683604
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_01, "object/draft_schematic/clothing/shared_clothing_vest_casual_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_01, "object/draft_schematic/clothing/shared_clothing_vest_casual_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20464,7 +20464,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_02 = SharedDraftSche
 	clientObjectCRC = 964486979
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_02, "object/draft_schematic/clothing/shared_clothing_vest_casual_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_02, "object/draft_schematic/clothing/shared_clothing_vest_casual_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20507,7 +20507,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_03 = SharedDraftSche
 	clientObjectCRC = 1886486734
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_03, "object/draft_schematic/clothing/shared_clothing_vest_casual_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_03, "object/draft_schematic/clothing/shared_clothing_vest_casual_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20550,7 +20550,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_04 = SharedDraftSche
 	clientObjectCRC = 2341645274
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_04, "object/draft_schematic/clothing/shared_clothing_vest_casual_04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_04, "object/draft_schematic/clothing/shared_clothing_vest_casual_04.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20593,7 +20593,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_05 = SharedDraftSche
 	clientObjectCRC = 3265252439
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_05, "object/draft_schematic/clothing/shared_clothing_vest_casual_05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_05, "object/draft_schematic/clothing/shared_clothing_vest_casual_05.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20636,7 +20636,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_10 = SharedDraftSche
 	clientObjectCRC = 2957911329
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_10, "object/draft_schematic/clothing/shared_clothing_vest_casual_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_10, "object/draft_schematic/clothing/shared_clothing_vest_casual_10.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20679,7 +20679,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_11 = SharedDraftSche
 	clientObjectCRC = 4181934764
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_11, "object/draft_schematic/clothing/shared_clothing_vest_casual_11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_casual_11, "object/draft_schematic/clothing/shared_clothing_vest_casual_11.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20722,7 +20722,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_06 = SharedDraftSchem
 	clientObjectCRC = 1370249556
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_06, "object/draft_schematic/clothing/shared_clothing_vest_field_06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_06, "object/draft_schematic/clothing/shared_clothing_vest_field_06.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20765,7 +20765,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_09 = SharedDraftSchem
 	clientObjectCRC = 3953554758
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_09, "object/draft_schematic/clothing/shared_clothing_vest_field_09.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_09, "object/draft_schematic/clothing/shared_clothing_vest_field_09.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20808,7 +20808,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01 = SharedDraft
 	clientObjectCRC = 489581843
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_01.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20851,7 +20851,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02 = SharedDraft
 	clientObjectCRC = 3325674884
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_02.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20894,7 +20894,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03 = SharedDraft
 	clientObjectCRC = 2402591241
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03, "object/draft_schematic/clothing/shared_clothing_vest_field_hutt_03.iff")
 
 object_draft_schematic_clothing_shared_clothing_vest_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20937,7 +20937,7 @@ object_draft_schematic_clothing_shared_clothing_vest_formal_15 = SharedDraftSche
 	clientObjectCRC = 1886364161
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest_formal_15, "object/draft_schematic/clothing/shared_clothing_vest_formal_15.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_vest_formal_15, "object/draft_schematic/clothing/shared_clothing_vest_formal_15.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -20980,7 +20980,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s01 = SharedDraftSche
 	clientObjectCRC = 3557216934
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s01, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s01, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21023,7 +21023,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s02 = SharedDraftSche
 	clientObjectCRC = 252803633
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s02, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s02, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s02.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21066,7 +21066,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s03 = SharedDraftSche
 	clientObjectCRC = 1176247740
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s03, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s03, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s03.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21109,7 +21109,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s04 = SharedDraftSche
 	clientObjectCRC = 3187619496
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s04, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_gloves_s04, "object/draft_schematic/clothing/shared_clothing_wke_gloves_s04.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_hat_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21152,7 +21152,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hat_s01 = SharedDraftSchemat
 	clientObjectCRC = 1693934374
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_hat_s01, "object/draft_schematic/clothing/shared_clothing_wke_hat_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_hat_s01, "object/draft_schematic/clothing/shared_clothing_wke_hat_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21195,7 +21195,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s01 = SharedDraftSchema
 	clientObjectCRC = 3381032072
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s01, "object/draft_schematic/clothing/shared_clothing_wke_hood_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s01, "object/draft_schematic/clothing/shared_clothing_wke_hood_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21238,7 +21238,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s02 = SharedDraftSchema
 	clientObjectCRC = 311548959
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s02, "object/draft_schematic/clothing/shared_clothing_wke_hood_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s02, "object/draft_schematic/clothing/shared_clothing_wke_hood_s02.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21281,7 +21281,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s03 = SharedDraftSchema
 	clientObjectCRC = 1536998290
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s03, "object/draft_schematic/clothing/shared_clothing_wke_hood_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_hood_s03, "object/draft_schematic/clothing/shared_clothing_wke_hood_s03.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21324,7 +21324,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s01 = SharedDraftSchem
 	clientObjectCRC = 3901194065
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s01, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s01, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21367,7 +21367,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s02 = SharedDraftSchem
 	clientObjectCRC = 865130438
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s02, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s02, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s02.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21410,7 +21410,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s03 = SharedDraftSchem
 	clientObjectCRC = 2057154635
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s03, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s03, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s03.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21453,7 +21453,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s04 = SharedDraftSchem
 	clientObjectCRC = 2172558175
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s04, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shirt_s04, "object/draft_schematic/clothing/shared_clothing_wke_shirt_s04.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21496,7 +21496,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01 = SharedDra
 	clientObjectCRC = 1660876305
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01, "object/draft_schematic/clothing/shared_clothing_wke_shoulder_pad_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01, "object/draft_schematic/clothing/shared_clothing_wke_shoulder_pad_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21539,7 +21539,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02 = SharedDra
 	clientObjectCRC = 3119079046
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02, "object/draft_schematic/clothing/shared_clothing_wke_shoulder_pad_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02, "object/draft_schematic/clothing/shared_clothing_wke_shoulder_pad_s02.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21582,7 +21582,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s01 = SharedDraftSchem
 	clientObjectCRC = 3768343131
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s01, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s01, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s01.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -21625,7 +21625,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s02 = SharedDraftSchem
 	clientObjectCRC = 999027404
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s02, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s02, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s02.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -21668,7 +21668,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s03 = SharedDraftSchem
 	clientObjectCRC = 1921422657
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s03, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s03, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s03.iff")
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
@@ -21711,4 +21711,4 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s04 = SharedDraftSchem
 	clientObjectCRC = 2305146453
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s04, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_shared_clothing_wke_skirt_s04, "object/draft_schematic/clothing/shared_clothing_wke_skirt_s04.iff")

@@ -92,7 +92,7 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2348330712
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
 
 object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 	clientObjectCRC = 3030660529
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")

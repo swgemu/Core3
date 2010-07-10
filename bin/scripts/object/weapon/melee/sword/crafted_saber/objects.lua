@@ -96,7 +96,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen1 
 	clientObjectCRC = 225373638
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -153,7 +153,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen2 
 	clientObjectCRC = 3598271825
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -210,7 +210,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen3 
 	clientObjectCRC = 2675188444
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -267,7 +267,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen4 
 	clientObjectCRC = 1687620040
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -324,7 +324,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen5 
 	clientObjectCRC = 765095493
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen5, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen5.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_gen5, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen5.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -381,7 +381,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1 = 
 	clientObjectCRC = 1955018838
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -438,7 +438,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10 =
 	clientObjectCRC = 3319201365
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -495,7 +495,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_g
 	clientObjectCRC = 974526116
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -552,7 +552,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_g
 	clientObjectCRC = 3774987827
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -609,7 +609,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_g
 	clientObjectCRC = 2819414462
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -666,7 +666,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_g
 	clientObjectCRC = 1408234154
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -723,7 +723,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11 =
 	clientObjectCRC = 2363202008
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -780,7 +780,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_g
 	clientObjectCRC = 3129390787
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -837,7 +837,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_g
 	clientObjectCRC = 1636900436
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -894,7 +894,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_g
 	clientObjectCRC = 681343449
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -951,7 +951,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_g
 	clientObjectCRC = 3548336845
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s11_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s11_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleeksilver.lsb",
@@ -1008,7 +1008,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12 =
 	clientObjectCRC = 1472999759
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleeksilver.lsb",
@@ -1065,7 +1065,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_g
 	clientObjectCRC = 1073105885
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleeksilver.lsb",
@@ -1122,7 +1122,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_g
 	clientObjectCRC = 3840009034
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleeksilver.lsb",
@@ -1179,7 +1179,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_g
 	clientObjectCRC = 2917958855
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleeksilver.lsb",
@@ -1236,7 +1236,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_g
 	clientObjectCRC = 1443868627
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s12_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s12_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_vader.lsb",
@@ -1293,7 +1293,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13 =
 	clientObjectCRC = 515987138
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_vader.lsb",
@@ -1350,7 +1350,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_g
 	clientObjectCRC = 3211193274
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_vader.lsb",
@@ -1407,7 +1407,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_g
 	clientObjectCRC = 1685144365
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_vader.lsb",
@@ -1464,7 +1464,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_g
 	clientObjectCRC = 763110560
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_vader.lsb",
@@ -1521,7 +1521,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_g
 	clientObjectCRC = 3600748468
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s13_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s13_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -1578,7 +1578,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_ge
 	clientObjectCRC = 3893856758
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -1635,7 +1635,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_ge
 	clientObjectCRC = 855646561
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -1692,7 +1692,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_ge
 	clientObjectCRC = 2047690476
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -1749,7 +1749,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_ge
 	clientObjectCRC = 2179886584
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s1_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s1_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -1806,7 +1806,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2 = 
 	clientObjectCRC = 2945487041
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -1863,7 +1863,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_ge
 	clientObjectCRC = 1835496680
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -1920,7 +1920,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_ge
 	clientObjectCRC = 3060849791
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -1977,7 +1977,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_ge
 	clientObjectCRC = 4286430194
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -2034,7 +2034,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_ge
 	clientObjectCRC = 77500646
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s2_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s2_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -2091,7 +2091,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3 = 
 	clientObjectCRC = 3869112140
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -2148,7 +2148,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_ge
 	clientObjectCRC = 3992441999
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -2205,7 +2205,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_ge
 	clientObjectCRC = 920681496
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -2262,7 +2262,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_ge
 	clientObjectCRC = 2146245525
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -2319,7 +2319,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_ge
 	clientObjectCRC = 2215522433
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s3_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s3_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -2376,7 +2376,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4 = 
 	clientObjectCRC = 494853208
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -2433,7 +2433,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_ge
 	clientObjectCRC = 1665635171
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -2490,7 +2490,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_ge
 	clientObjectCRC = 3092265972
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -2547,7 +2547,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_ge
 	clientObjectCRC = 4049427577
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -2604,7 +2604,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_ge
 	clientObjectCRC = 180254573
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s4_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -2661,7 +2661,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5 = 
 	clientObjectCRC = 1416870869
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -2718,7 +2718,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_ge
 	clientObjectCRC = 3822531332
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -2775,7 +2775,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_ge
 	clientObjectCRC = 952146835
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -2832,7 +2832,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_ge
 	clientObjectCRC = 1909324830
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -2889,7 +2889,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_ge
 	clientObjectCRC = 2318325514
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s5_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s5_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -2946,7 +2946,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6 = 
 	clientObjectCRC = 2405700418
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -3003,7 +3003,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_ge
 	clientObjectCRC = 1722273306
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -3060,7 +3060,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_ge
 	clientObjectCRC = 3182454413
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -3117,7 +3117,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_ge
 	clientObjectCRC = 4106027264
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -3174,7 +3174,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_ge
 	clientObjectCRC = 257829396
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s6_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s6_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -3231,7 +3231,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7 = 
 	clientObjectCRC = 3328799951
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -3288,7 +3288,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_ge
 	clientObjectCRC = 3862392445
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -3345,7 +3345,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_ge
 	clientObjectCRC = 1025558250
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -3402,7 +3402,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_ge
 	clientObjectCRC = 1949147495
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -3459,7 +3459,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_ge
 	clientObjectCRC = 2412677747
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s7_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s7_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -3516,7 +3516,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8 = 
 	clientObjectCRC = 2086885597
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -3573,7 +3573,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_ge
 	clientObjectCRC = 2131123317
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -3630,7 +3630,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_ge
 	clientObjectCRC = 2752640226
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -3687,7 +3687,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_ge
 	clientObjectCRC = 3978072943
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -3744,7 +3744,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_ge
 	clientObjectCRC = 385857659
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s8_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s8_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -3801,7 +3801,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9 = 
 	clientObjectCRC = 896417616
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -3858,7 +3858,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_ge
 	clientObjectCRC = 4288085010
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen1, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen1.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -3915,7 +3915,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_ge
 	clientObjectCRC = 612455557
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen2, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen2.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -3972,7 +3972,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_ge
 	clientObjectCRC = 1837904648
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen3.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen3, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen3.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -4029,7 +4029,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_ge
 	clientObjectCRC = 2523863068
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen4.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s9_gen4, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s9_gen4.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s10_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_quigon.lsb",
@@ -4086,7 +4086,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s10_training = S
 	clientObjectCRC = 4009691393
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s10_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s10_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s10_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s10_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s11_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_sleekblack.lsb",
@@ -4143,7 +4143,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s11_training = S
 	clientObjectCRC = 2835924928
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s11_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s11_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s11_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s11_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s1_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -4200,7 +4200,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s1_training = Sh
 	clientObjectCRC = 901085030
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s1_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s1_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s1_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s1_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s2_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_andael.lsb",
@@ -4257,7 +4257,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s2_training = Sh
 	clientObjectCRC = 4255982629
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s2_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s2_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s2_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s2_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s3_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_ben.lsb",
@@ -4314,7 +4314,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s3_training = Sh
 	clientObjectCRC = 3126520548
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s3_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s3_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s3_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s3_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s4_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_dugald.lsb",
@@ -4371,7 +4371,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s4_training = Sh
 	clientObjectCRC = 1767677716
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s4_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s4_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s4_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s4_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s5_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_leather.lsb",
@@ -4428,7 +4428,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s5_training = Sh
 	clientObjectCRC = 782979541
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s5_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s5_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s5_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s5_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s6_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_luke.lsb",
@@ -4485,7 +4485,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s6_training = Sh
 	clientObjectCRC = 3870491286
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s6_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s6_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s6_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s6_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s7_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_mace.lsb",
@@ -4542,7 +4542,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s7_training = Sh
 	clientObjectCRC = 2705640535
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s7_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s7_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s7_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s7_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s8_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_nebu.lsb",
@@ -4599,7 +4599,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s8_training = Sh
 	clientObjectCRC = 1149170881
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s8_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s8_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s8_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s8_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s9_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_obi.lsb",
@@ -4656,7 +4656,7 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s9_training = Sh
 	clientObjectCRC = 59324928
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s9_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s9_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s9_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s9_training.iff")
 
 object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_training = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_blade_anakin.lsb",
@@ -4713,4 +4713,4 @@ object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_training = Share
 	clientObjectCRC = 3675065336
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_training.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_training, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_training.iff")

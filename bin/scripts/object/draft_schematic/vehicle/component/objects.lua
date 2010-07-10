@@ -82,7 +82,7 @@ object_draft_schematic_vehicle_component_shared_adv_hvy_blaster_power_handler = 
 	clientObjectCRC = 3478654115
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_hvy_blaster_power_handler, "object/draft_schematic/vehicle/component/shared_adv_hvy_blaster_power_handler.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_adv_hvy_blaster_power_handler, "object/draft_schematic/vehicle/component/shared_adv_hvy_blaster_power_handler.iff")
 
 object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech = S
 	clientObjectCRC = 3820646245
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech, "object/draft_schematic/vehicle/component/shared_adv_hvy_projectile_feed_mech.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech, "object/draft_schematic/vehicle/component/shared_adv_hvy_projectile_feed_mech.iff")
 
 object_draft_schematic_vehicle_component_shared_adv_warhead_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_vehicle_component_shared_adv_warhead_launcher = SharedDra
 	clientObjectCRC = 3831493388
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_warhead_launcher, "object/draft_schematic/vehicle/component/shared_adv_warhead_launcher.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_adv_warhead_launcher, "object/draft_schematic/vehicle/component/shared_adv_warhead_launcher.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_acid = SharedDraftSc
 	clientObjectCRC = 2606958072
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_acid, "object/draft_schematic/vehicle/component/shared_armor_panel_acid.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_acid, "object/draft_schematic/vehicle/component/shared_armor_panel_acid.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_blast = SharedDraftS
 	clientObjectCRC = 1048309015
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_blast, "object/draft_schematic/vehicle/component/shared_armor_panel_blast.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_blast, "object/draft_schematic/vehicle/component/shared_armor_panel_blast.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_cold = SharedDraftSc
 	clientObjectCRC = 286081761
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_cold, "object/draft_schematic/vehicle/component/shared_armor_panel_cold.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_cold, "object/draft_schematic/vehicle/component/shared_armor_panel_cold.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_electrical = SharedD
 	clientObjectCRC = 3167986321
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_electrical, "object/draft_schematic/vehicle/component/shared_armor_panel_electrical.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_electrical, "object/draft_schematic/vehicle/component/shared_armor_panel_electrical.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_energy = SharedDraft
 	clientObjectCRC = 4235833223
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_energy, "object/draft_schematic/vehicle/component/shared_armor_panel_energy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_energy, "object/draft_schematic/vehicle/component/shared_armor_panel_energy.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_heat = SharedDraftSc
 	clientObjectCRC = 3924691985
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_heat, "object/draft_schematic/vehicle/component/shared_armor_panel_heat.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_heat, "object/draft_schematic/vehicle/component/shared_armor_panel_heat.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_panel_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_kinetic = SharedDraf
 	clientObjectCRC = 1568951743
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_kinetic, "object/draft_schematic/vehicle/component/shared_armor_panel_kinetic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_panel_kinetic, "object/draft_schematic/vehicle/component/shared_armor_panel_kinetic.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk1 = SharedDraftS
 	clientObjectCRC = 1710945708
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk1, "object/draft_schematic/vehicle/component/shared_armor_plating_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk1, "object/draft_schematic/vehicle/component/shared_armor_plating_mk1.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk2 = SharedDraftS
 	clientObjectCRC = 3203226939
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk2, "object/draft_schematic/vehicle/component/shared_armor_plating_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk2, "object/draft_schematic/vehicle/component/shared_armor_plating_mk2.iff")
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk3 = SharedDraftS
 	clientObjectCRC = 4158667446
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk3, "object/draft_schematic/vehicle/component/shared_armor_plating_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_armor_plating_mk3, "object/draft_schematic/vehicle/component/shared_armor_plating_mk3.iff")
 
 object_draft_schematic_vehicle_component_shared_auto_blaster_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_vehicle_component_shared_auto_blaster_cannon = SharedDraf
 	clientObjectCRC = 2395664099
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_auto_blaster_cannon, "object/draft_schematic/vehicle/component/shared_auto_blaster_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_auto_blaster_cannon, "object/draft_schematic/vehicle/component/shared_auto_blaster_cannon.iff")
 
 object_draft_schematic_vehicle_component_shared_blaster_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_vehicle_component_shared_blaster_cannon = SharedDraftSche
 	clientObjectCRC = 682698271
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_blaster_cannon, "object/draft_schematic/vehicle/component/shared_blaster_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_blaster_cannon, "object/draft_schematic/vehicle/component/shared_blaster_cannon.iff")
 
 object_draft_schematic_vehicle_component_shared_command_center = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,7 +727,7 @@ object_draft_schematic_vehicle_component_shared_command_center = SharedDraftSche
 	clientObjectCRC = 2022913854
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_command_center, "object/draft_schematic/vehicle/component/shared_command_center.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_command_center, "object/draft_schematic/vehicle/component/shared_command_center.iff")
 
 object_draft_schematic_vehicle_component_shared_disperser = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -770,7 +770,7 @@ object_draft_schematic_vehicle_component_shared_disperser = SharedDraftSchematic
 	clientObjectCRC = 2619881434
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_disperser, "object/draft_schematic/vehicle/component/shared_disperser.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_disperser, "object/draft_schematic/vehicle/component/shared_disperser.iff")
 
 object_draft_schematic_vehicle_component_shared_dx_disruptor_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -813,7 +813,7 @@ object_draft_schematic_vehicle_component_shared_dx_disruptor_array = SharedDraft
 	clientObjectCRC = 2892938786
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_dx_disruptor_array, "object/draft_schematic/vehicle/component/shared_dx_disruptor_array.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_dx_disruptor_array, "object/draft_schematic/vehicle/component/shared_dx_disruptor_array.iff")
 
 object_draft_schematic_vehicle_component_shared_extended_fuel_tank = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,7 +856,7 @@ object_draft_schematic_vehicle_component_shared_extended_fuel_tank = SharedDraft
 	clientObjectCRC = 3771997793
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_extended_fuel_tank, "object/draft_schematic/vehicle/component/shared_extended_fuel_tank.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_extended_fuel_tank, "object/draft_schematic/vehicle/component/shared_extended_fuel_tank.iff")
 
 object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -899,7 +899,7 @@ object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy = Share
 	clientObjectCRC = 808312838
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy, "object/draft_schematic/vehicle/component/shared_extended_fuel_tank_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy, "object/draft_schematic/vehicle/component/shared_extended_fuel_tank_heavy.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -942,7 +942,7 @@ object_draft_schematic_vehicle_component_shared_fuel_a = SharedDraftSchematicObj
 	clientObjectCRC = 4284576256
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_a, "object/draft_schematic/vehicle/component/shared_fuel_a.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_a, "object/draft_schematic/vehicle/component/shared_fuel_a.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -985,7 +985,7 @@ object_draft_schematic_vehicle_component_shared_fuel_b = SharedDraftSchematicObj
 	clientObjectCRC = 611768983
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_b, "object/draft_schematic/vehicle/component/shared_fuel_b.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_b, "object/draft_schematic/vehicle/component/shared_fuel_b.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1028,7 +1028,7 @@ object_draft_schematic_vehicle_component_shared_fuel_c = SharedDraftSchematicObj
 	clientObjectCRC = 1836825882
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_c, "object/draft_schematic/vehicle/component/shared_fuel_c.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_c, "object/draft_schematic/vehicle/component/shared_fuel_c.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1071,7 +1071,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_a = SharedDraftSchemat
 	clientObjectCRC = 3935185074
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_a, "object/draft_schematic/vehicle/component/shared_fuel_cell_a.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_a, "object/draft_schematic/vehicle/component/shared_fuel_cell_a.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1114,7 +1114,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_b = SharedDraftSchemat
 	clientObjectCRC = 832143397
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_b, "object/draft_schematic/vehicle/component/shared_fuel_cell_b.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_b, "object/draft_schematic/vehicle/component/shared_fuel_cell_b.iff")
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1157,7 +1157,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_c = SharedDraftSchemat
 	clientObjectCRC = 2023024552
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_c, "object/draft_schematic/vehicle/component/shared_fuel_cell_c.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_fuel_cell_c, "object/draft_schematic/vehicle/component/shared_fuel_cell_c.iff")
 
 object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1200,7 +1200,7 @@ object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler = Shar
 	clientObjectCRC = 3332814833
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler, "object/draft_schematic/vehicle/component/shared_hvy_blaster_power_handler.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler, "object/draft_schematic/vehicle/component/shared_hvy_blaster_power_handler.iff")
 
 object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1243,7 +1243,7 @@ object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech = Share
 	clientObjectCRC = 3308336165
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech, "object/draft_schematic/vehicle/component/shared_hvy_projectile_feed_mech.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech, "object/draft_schematic/vehicle/component/shared_hvy_projectile_feed_mech.iff")
 
 object_draft_schematic_vehicle_component_shared_laser_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1286,7 +1286,7 @@ object_draft_schematic_vehicle_component_shared_laser_cannon = SharedDraftSchema
 	clientObjectCRC = 3058872493
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_laser_cannon, "object/draft_schematic/vehicle/component/shared_laser_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_laser_cannon, "object/draft_schematic/vehicle/component/shared_laser_cannon.iff")
 
 object_draft_schematic_vehicle_component_shared_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1329,7 +1329,7 @@ object_draft_schematic_vehicle_component_shared_launcher = SharedDraftSchematicO
 	clientObjectCRC = 2177317912
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_launcher, "object/draft_schematic/vehicle/component/shared_launcher.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_launcher, "object/draft_schematic/vehicle/component/shared_launcher.iff")
 
 object_draft_schematic_vehicle_component_shared_mass_driver = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1372,7 +1372,7 @@ object_draft_schematic_vehicle_component_shared_mass_driver = SharedDraftSchemat
 	clientObjectCRC = 2246650067
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_mass_driver, "object/draft_schematic/vehicle/component/shared_mass_driver.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_mass_driver, "object/draft_schematic/vehicle/component/shared_mass_driver.iff")
 
 object_draft_schematic_vehicle_component_shared_mini_launcher_pod = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1415,7 +1415,7 @@ object_draft_schematic_vehicle_component_shared_mini_launcher_pod = SharedDraftS
 	clientObjectCRC = 692221089
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_mini_launcher_pod, "object/draft_schematic/vehicle/component/shared_mini_launcher_pod.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_mini_launcher_pod, "object/draft_schematic/vehicle/component/shared_mini_launcher_pod.iff")
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1458,7 +1458,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk1 = SharedDraftSch
 	clientObjectCRC = 292651205
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk1, "object/draft_schematic/vehicle/component/shared_power_plant_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk1, "object/draft_schematic/vehicle/component/shared_power_plant_mk1.iff")
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1501,7 +1501,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk2 = SharedDraftSch
 	clientObjectCRC = 3395692626
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk2, "object/draft_schematic/vehicle/component/shared_power_plant_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk2, "object/draft_schematic/vehicle/component/shared_power_plant_mk2.iff")
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1544,7 +1544,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk3 = SharedDraftSch
 	clientObjectCRC = 2204848095
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk3, "object/draft_schematic/vehicle/component/shared_power_plant_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_power_plant_mk3, "object/draft_schematic/vehicle/component/shared_power_plant_mk3.iff")
 
 object_draft_schematic_vehicle_component_shared_proton_torpedo_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1587,7 +1587,7 @@ object_draft_schematic_vehicle_component_shared_proton_torpedo_array = SharedDra
 	clientObjectCRC = 3785575259
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_proton_torpedo_array, "object/draft_schematic/vehicle/component/shared_proton_torpedo_array.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_proton_torpedo_array, "object/draft_schematic/vehicle/component/shared_proton_torpedo_array.iff")
 
 object_draft_schematic_vehicle_component_shared_reactor_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1630,7 +1630,7 @@ object_draft_schematic_vehicle_component_shared_reactor_unit = SharedDraftSchema
 	clientObjectCRC = 2085630879
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_reactor_unit, "object/draft_schematic/vehicle/component/shared_reactor_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_reactor_unit, "object/draft_schematic/vehicle/component/shared_reactor_unit.iff")
 
 object_draft_schematic_vehicle_component_shared_starship_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1673,7 +1673,7 @@ object_draft_schematic_vehicle_component_shared_starship_module = SharedDraftSch
 	clientObjectCRC = 3810129002
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_starship_module, "object/draft_schematic/vehicle/component/shared_starship_module.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_starship_module, "object/draft_schematic/vehicle/component/shared_starship_module.iff")
 
 object_draft_schematic_vehicle_component_shared_starship_module_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1716,7 +1716,7 @@ object_draft_schematic_vehicle_component_shared_starship_module_advanced = Share
 	clientObjectCRC = 2723083446
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_starship_module_advanced, "object/draft_schematic/vehicle/component/shared_starship_module_advanced.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_starship_module_advanced, "object/draft_schematic/vehicle/component/shared_starship_module_advanced.iff")
 
 object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1759,7 +1759,7 @@ object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1 = 
 	clientObjectCRC = 2138971548
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1, "object/draft_schematic/vehicle/component/shared_starship_shield_generator_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1, "object/draft_schematic/vehicle/component/shared_starship_shield_generator_mk1.iff")
 
 object_draft_schematic_vehicle_component_shared_storage_bay = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1802,7 +1802,7 @@ object_draft_schematic_vehicle_component_shared_storage_bay = SharedDraftSchemat
 	clientObjectCRC = 1144006749
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_storage_bay, "object/draft_schematic/vehicle/component/shared_storage_bay.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_storage_bay, "object/draft_schematic/vehicle/component/shared_storage_bay.iff")
 
 object_draft_schematic_vehicle_component_shared_structural_frame = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1845,7 +1845,7 @@ object_draft_schematic_vehicle_component_shared_structural_frame = SharedDraftSc
 	clientObjectCRC = 3428251943
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_structural_frame, "object/draft_schematic/vehicle/component/shared_structural_frame.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_structural_frame, "object/draft_schematic/vehicle/component/shared_structural_frame.iff")
 
 object_draft_schematic_vehicle_component_shared_structural_frame_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1888,7 +1888,7 @@ object_draft_schematic_vehicle_component_shared_structural_frame_advanced = Shar
 	clientObjectCRC = 1550856246
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_structural_frame_advanced, "object/draft_schematic/vehicle/component/shared_structural_frame_advanced.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_structural_frame_advanced, "object/draft_schematic/vehicle/component/shared_structural_frame_advanced.iff")
 
 object_draft_schematic_vehicle_component_shared_structural_reinforcement = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_vehicle_component_shared_structural_reinforcement = Share
 	clientObjectCRC = 3188051200
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_structural_reinforcement, "object/draft_schematic/vehicle/component/shared_structural_reinforcement.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_structural_reinforcement, "object/draft_schematic/vehicle/component/shared_structural_reinforcement.iff")
 
 object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1974,7 +1974,7 @@ object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy =
 	clientObjectCRC = 3098033682
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy, "object/draft_schematic/vehicle/component/shared_structural_reinforcement_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy, "object/draft_schematic/vehicle/component/shared_structural_reinforcement_heavy.iff")
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2017,7 +2017,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1 = Share
 	clientObjectCRC = 2988472593
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk1.iff")
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2060,7 +2060,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2 = Share
 	clientObjectCRC = 1765265798
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk2.iff")
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2103,7 +2103,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3 = Share
 	clientObjectCRC = 540718603
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3, "object/draft_schematic/vehicle/component/shared_veh_shield_generator_mk3.iff")
 
 object_draft_schematic_vehicle_component_shared_vehicle_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2146,7 +2146,7 @@ object_draft_schematic_vehicle_component_shared_vehicle_module = SharedDraftSche
 	clientObjectCRC = 12867979
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_vehicle_module, "object/draft_schematic/vehicle/component/shared_vehicle_module.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_vehicle_module, "object/draft_schematic/vehicle/component/shared_vehicle_module.iff")
 
 object_draft_schematic_vehicle_component_shared_vehicle_module_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2189,7 +2189,7 @@ object_draft_schematic_vehicle_component_shared_vehicle_module_advanced = Shared
 	clientObjectCRC = 1246345170
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_vehicle_module_advanced, "object/draft_schematic/vehicle/component/shared_vehicle_module_advanced.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_vehicle_module_advanced, "object/draft_schematic/vehicle/component/shared_vehicle_module_advanced.iff")
 
 object_draft_schematic_vehicle_component_shared_warhead_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2232,7 +2232,7 @@ object_draft_schematic_vehicle_component_shared_warhead_launcher = SharedDraftSc
 	clientObjectCRC = 2784669777
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_warhead_launcher, "object/draft_schematic/vehicle/component/shared_warhead_launcher.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_warhead_launcher, "object/draft_schematic/vehicle/component/shared_warhead_launcher.iff")
 
 object_draft_schematic_vehicle_component_shared_weapon_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2275,7 +2275,7 @@ object_draft_schematic_vehicle_component_shared_weapon_array = SharedDraftSchema
 	clientObjectCRC = 1296711234
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_weapon_array, "object/draft_schematic/vehicle/component/shared_weapon_array.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_weapon_array, "object/draft_schematic/vehicle/component/shared_weapon_array.iff")
 
 object_draft_schematic_vehicle_component_shared_weapon_link = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2318,4 +2318,4 @@ object_draft_schematic_vehicle_component_shared_weapon_link = SharedDraftSchemat
 	clientObjectCRC = 333191706
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_weapon_link, "object/draft_schematic/vehicle/component/shared_weapon_link.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_component_shared_weapon_link, "object/draft_schematic/vehicle/component/shared_weapon_link.iff")

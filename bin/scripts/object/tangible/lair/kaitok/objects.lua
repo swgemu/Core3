@@ -92,7 +92,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2306923855
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 977615987
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 	clientObjectCRC = 3767339902
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")

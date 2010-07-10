@@ -92,7 +92,7 @@ object_tangible_poi_object_shared_droid_body = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2911833522
 }
 
-ObjectTemplates:addTemplate(object_tangible_poi_object_shared_droid_body, "object/tangible/poi/object/shared_droid_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_poi_object_shared_droid_body, "object/tangible/poi/object/shared_droid_body.iff")
 
 object_tangible_poi_object_shared_droid_head = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_protocol_droid_head.apt",
@@ -145,4 +145,4 @@ object_tangible_poi_object_shared_droid_head = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 4288485184
 }
 
-ObjectTemplates:addTemplate(object_tangible_poi_object_shared_droid_head, "object/tangible/poi/object/shared_droid_head.iff")
+ObjectTemplates:addClientTemplate(object_tangible_poi_object_shared_droid_head, "object/tangible/poi/object/shared_droid_head.iff")

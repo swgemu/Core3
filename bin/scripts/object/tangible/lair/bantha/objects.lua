@@ -92,7 +92,7 @@ object_tangible_lair_bantha_shared_lair_bantha = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2351102801
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha, "object/tangible/lair/bantha/shared_lair_bantha.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha, "object/tangible/lair/bantha/shared_lair_bantha.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemp
 	clientObjectCRC = 810600832
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, "object/tangible/lair/bantha/shared_lair_bantha_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, "object/tangible/lair/bantha/shared_lair_bantha_desert.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTempla
 	clientObjectCRC = 3458718751
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, "object/tangible/lair/bantha/shared_lair_bantha_dune.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, "object/tangible/lair/bantha/shared_lair_bantha_dune.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectT
 	clientObjectCRC = 3384005907
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, "object/tangible/lair/bantha/shared_lair_bantha_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, "object/tangible/lair/bantha/shared_lair_bantha_wasteland.iff")

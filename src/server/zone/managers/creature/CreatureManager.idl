@@ -50,6 +50,9 @@ class CreatureManager extends ManagedObject implements Logger {
 	 */
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	
+	
+	public native void loadDynamicSpawnAreas();
+	
 	public native void loadTrainers();
 	
 	private native boolean createCreatureChildrenObjects(CreatureObject creature);

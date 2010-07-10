@@ -92,7 +92,7 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 206631052
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
 
 object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 1495135397
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")

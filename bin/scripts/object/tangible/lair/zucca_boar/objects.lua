@@ -92,7 +92,7 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTem
 	clientObjectCRC = 3052352906
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleOb
 	clientObjectCRC = 415973727
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObje
 	clientObjectCRC = 3550514923
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibl
 	clientObjectCRC = 102331287
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff")

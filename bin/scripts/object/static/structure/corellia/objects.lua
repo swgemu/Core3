@@ -82,7 +82,7 @@ object_static_structure_corellia_shared_corl_banner_govt_angled_s01 = SharedStat
 	clientObjectCRC = 3488732557
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_banner_govt_angled_s01, "object/static/structure/corellia/shared_corl_banner_govt_angled_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_banner_govt_angled_s01, "object/static/structure/corellia/shared_corl_banner_govt_angled_s01.iff")
 
 object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
@@ -125,7 +125,7 @@ object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStatic
 	clientObjectCRC = 662555920
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_banner_govt_tall_s01, "object/static/structure/corellia/shared_corl_banner_govt_tall_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_banner_govt_tall_s01, "object/static/structure/corellia/shared_corl_banner_govt_tall_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_round_s01.apt",
@@ -168,7 +168,7 @@ object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = Shared
 	clientObjectCRC = 3994724911
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_round_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_round_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_round_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_round_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_square_s01.apt",
@@ -211,7 +211,7 @@ object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = Share
 	clientObjectCRC = 632694927
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_square_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_square_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_square_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_square_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_circle_s01.apt",
@@ -254,7 +254,7 @@ object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticO
 	clientObjectCRC = 2676149866
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_circle_s01, "object/static/structure/corellia/shared_corl_fountain_circle_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_circle_s01, "object/static/structure/corellia/shared_corl_fountain_circle_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_rectangle_s01.apt",
@@ -297,7 +297,7 @@ object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStat
 	clientObjectCRC = 1330147903
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_rectangle_s01, "object/static/structure/corellia/shared_corl_fountain_rectangle_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_rectangle_s01, "object/static/structure/corellia/shared_corl_fountain_rectangle_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_contemplate_s01.apt",
@@ -340,7 +340,7 @@ object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = S
 	clientObjectCRC = 2625105516
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01, "object/static/structure/corellia/shared_corl_fountain_statue_contemplate_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01, "object/static/structure/corellia/shared_corl_fountain_statue_contemplate_s01.iff")
 
 object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_heroic_s01.apt",
@@ -383,7 +383,7 @@ object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = Shared
 	clientObjectCRC = 593244797
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01, "object/static/structure/corellia/shared_corl_fountain_statue_heroic_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01, "object/static/structure/corellia/shared_corl_fountain_statue_heroic_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_lg_s01.apt",
@@ -426,7 +426,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObj
 	clientObjectCRC = 3523876965
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s01, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s01, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_lg_s02.apt",
@@ -469,7 +469,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObj
 	clientObjectCRC = 152940786
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s02, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s02, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s01.apt",
@@ -512,7 +512,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObj
 	clientObjectCRC = 180063211
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s01, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s01, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s02.apt",
@@ -555,7 +555,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObj
 	clientObjectCRC = 3517719420
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s02, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s02, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s03.apt",
@@ -598,7 +598,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObj
 	clientObjectCRC = 2560705777
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s03, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s03, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s03.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -640,7 +640,7 @@ object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStatic
 	clientObjectCRC = 4106256117
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bannerpole_s01, "object/static/structure/corellia/shared_corl_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bannerpole_s01, "object/static/structure/corellia/shared_corl_imprv_bannerpole_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_insert_s01.apt",
@@ -683,7 +683,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedSta
 	clientObjectCRC = 3451992127
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_insert_s02.apt",
@@ -726,7 +726,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedSta
 	clientObjectCRC = 383160488
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_lg_s01.apt",
@@ -769,7 +769,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticO
 	clientObjectCRC = 514306461
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_lg_s02.apt",
@@ -812,7 +812,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticO
 	clientObjectCRC = 3316652298
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_sm_s01.apt",
@@ -855,7 +855,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticO
 	clientObjectCRC = 3323339283
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_sm_s02.apt",
@@ -898,7 +898,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticO
 	clientObjectCRC = 486640260
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s01.apt",
@@ -941,7 +941,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObje
 	clientObjectCRC = 2435499985
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s01, "object/static/structure/corellia/shared_corl_imprv_column_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s01, "object/static/structure/corellia/shared_corl_imprv_column_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s02.apt",
@@ -984,7 +984,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObje
 	clientObjectCRC = 1245540166
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s02, "object/static/structure/corellia/shared_corl_imprv_column_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s02, "object/static/structure/corellia/shared_corl_imprv_column_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s03.apt",
@@ -1027,7 +1027,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObje
 	clientObjectCRC = 53479627
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s03, "object/static/structure/corellia/shared_corl_imprv_column_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s03, "object/static/structure/corellia/shared_corl_imprv_column_s03.iff")
 
 object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s04.apt",
@@ -1070,7 +1070,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObje
 	clientObjectCRC = 4174586847
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s04, "object/static/structure/corellia/shared_corl_imprv_column_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s04, "object/static/structure/corellia/shared_corl_imprv_column_s04.iff")
 
 object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -1112,7 +1112,7 @@ object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticOb
 	clientObjectCRC = 92914717
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_flagpole_s01, "object/static/structure/corellia/shared_corl_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_flagpole_s01, "object/static/structure/corellia/shared_corl_imprv_flagpole_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s01.apt",
@@ -1155,7 +1155,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObj
 	clientObjectCRC = 1792479271
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s01, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s01, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s02.apt",
@@ -1198,7 +1198,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObj
 	clientObjectCRC = 2982197424
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s02, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s02, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s03.apt",
@@ -1241,7 +1241,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObj
 	clientObjectCRC = 4174241597
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s03, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s03, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s03.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s01.apt",
@@ -1284,7 +1284,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticO
 	clientObjectCRC = 440351692
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s02.apt",
@@ -1327,7 +1327,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticO
 	clientObjectCRC = 3240661851
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s03.apt",
@@ -1370,7 +1370,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticO
 	clientObjectCRC = 2284188886
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s03.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s04.apt",
@@ -1413,7 +1413,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticO
 	clientObjectCRC = 1942413250
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s04.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s01.apt",
@@ -1456,7 +1456,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticO
 	clientObjectCRC = 3667847668
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s01.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s02.apt",
@@ -1499,7 +1499,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticO
 	clientObjectCRC = 25772387
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s02.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s03.apt",
@@ -1542,7 +1542,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticO
 	clientObjectCRC = 1216620270
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s03.iff")
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s04.apt",
@@ -1585,7 +1585,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticO
 	clientObjectCRC = 3009875450
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s04.iff")
 
 object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_arial_prime.apt",
@@ -1628,7 +1628,7 @@ object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObj
 	clientObjectCRC = 1209853320
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_arial_prime, "object/static/structure/corellia/shared_corl_power_arial_prime.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_arial_prime, "object/static/structure/corellia/shared_corl_power_arial_prime.iff")
 
 object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_arial_thin.apt",
@@ -1671,7 +1671,7 @@ object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObje
 	clientObjectCRC = 3856785881
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_arial_thin, "object/static/structure/corellia/shared_corl_power_arial_thin.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_arial_thin, "object/static/structure/corellia/shared_corl_power_arial_thin.iff")
 
 object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_box_node.apt",
@@ -1714,7 +1714,7 @@ object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObject
 	clientObjectCRC = 4203234536
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_box_node, "object/static/structure/corellia/shared_corl_power_box_node.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_box_node, "object/static/structure/corellia/shared_corl_power_box_node.iff")
 
 object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
@@ -1757,7 +1757,7 @@ object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObj
 	clientObjectCRC = 3942637523
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_bubble_node, "object/static/structure/corellia/shared_corl_power_bubble_node.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_bubble_node, "object/static/structure/corellia/shared_corl_power_bubble_node.iff")
 
 object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_connector.apt",
@@ -1800,7 +1800,7 @@ object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjec
 	clientObjectCRC = 2265922541
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_connector, "object/static/structure/corellia/shared_corl_power_connector.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_connector, "object/static/structure/corellia/shared_corl_power_connector.iff")
 
 object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
@@ -1843,7 +1843,7 @@ object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStati
 	clientObjectCRC = 3364711462
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_transformer_s01, "object/static/structure/corellia/shared_corl_power_transformer_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_transformer_s01, "object/static/structure/corellia/shared_corl_power_transformer_s01.iff")
 
 object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
@@ -1886,7 +1886,7 @@ object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStati
 	clientObjectCRC = 328910001
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_transformer_s02, "object/static/structure/corellia/shared_corl_power_transformer_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_transformer_s02, "object/static/structure/corellia/shared_corl_power_transformer_s02.iff")
 
 object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_large_s01.apt",
@@ -1929,7 +1929,7 @@ object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjec
 	clientObjectCRC = 2489724749
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_large_s01, "object/static/structure/corellia/shared_corl_stair_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_large_s01, "object/static/structure/corellia/shared_corl_stair_large_s01.iff")
 
 object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_medium_s01.apt",
@@ -1972,7 +1972,7 @@ object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObje
 	clientObjectCRC = 3099330896
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_medium_s01, "object/static/structure/corellia/shared_corl_stair_medium_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_medium_s01, "object/static/structure/corellia/shared_corl_stair_medium_s01.iff")
 
 object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_small_s01.apt",
@@ -2015,7 +2015,7 @@ object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjec
 	clientObjectCRC = 2304472342
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_small_s01, "object/static/structure/corellia/shared_corl_stair_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_small_s01, "object/static/structure/corellia/shared_corl_stair_small_s01.iff")
 
 object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_hut_s01.apt",
@@ -2058,7 +2058,7 @@ object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTe
 	clientObjectCRC = 1857626571
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_hut_s01, "object/static/structure/corellia/shared_corl_tent_hut_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_hut_s01, "object/static/structure/corellia/shared_corl_tent_hut_s01.iff")
 
 object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_large.apt",
@@ -2101,7 +2101,7 @@ object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemp
 	clientObjectCRC = 2517417479
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_large, "object/static/structure/corellia/shared_corl_tent_large.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_large, "object/static/structure/corellia/shared_corl_tent_large.iff")
 
 object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_med.apt",
@@ -2144,7 +2144,7 @@ object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTempla
 	clientObjectCRC = 962796496
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_med, "object/static/structure/corellia/shared_corl_tent_med.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_med, "object/static/structure/corellia/shared_corl_tent_med.iff")
 
 object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_small.apt",
@@ -2187,4 +2187,4 @@ object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemp
 	clientObjectCRC = 2719427118
 }
 
-ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_small, "object/static/structure/corellia/shared_corl_tent_small.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_small, "object/static/structure/corellia/shared_corl_tent_small.iff")

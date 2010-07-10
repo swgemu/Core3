@@ -92,7 +92,7 @@ object_tangible_space_story_loot_shared_loot_all_freighter = SharedTangibleObjec
 	clientObjectCRC = 3579895697
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_all_freighter, "object/tangible/space/story_loot/shared_loot_all_freighter.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_all_freighter, "object/tangible/space/story_loot/shared_loot_all_freighter.iff")
 
 object_tangible_space_story_loot_shared_loot_all_freighter_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s02.apt",
@@ -145,7 +145,7 @@ object_tangible_space_story_loot_shared_loot_all_freighter_2 = SharedTangibleObj
 	clientObjectCRC = 3551864923
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_all_freighter_2, "object/tangible/space/story_loot/shared_loot_all_freighter_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_all_freighter_2, "object/tangible/space/story_loot/shared_loot_all_freighter_2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_anthro = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -198,7 +198,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_anthro = SharedTangibleOb
 	clientObjectCRC = 1723215073
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro, "object/tangible/space/story_loot/shared_loot_dantooine_anthro.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro, "object/tangible/space/story_loot/shared_loot_dantooine_anthro.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_anthro2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -251,7 +251,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_anthro2 = SharedTangibleO
 	clientObjectCRC = 592143953
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro2, "object/tangible/space/story_loot/shared_loot_dantooine_anthro2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro2, "object/tangible/space/story_loot/shared_loot_dantooine_anthro2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_blacksun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -304,7 +304,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_blacksun = SharedTangible
 	clientObjectCRC = 3245065394
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun, "object/tangible/space/story_loot/shared_loot_dantooine_blacksun.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun, "object/tangible/space/story_loot/shared_loot_dantooine_blacksun.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_blacksun2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -357,7 +357,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_blacksun2 = SharedTangibl
 	clientObjectCRC = 298529626
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun2, "object/tangible/space/story_loot/shared_loot_dantooine_blacksun2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun2, "object/tangible/space/story_loot/shared_loot_dantooine_blacksun2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_force = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -410,7 +410,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_force = SharedTangibleObj
 	clientObjectCRC = 4024561732
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_force, "object/tangible/space/story_loot/shared_loot_dantooine_force.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_force, "object/tangible/space/story_loot/shared_loot_dantooine_force.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_imp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
@@ -463,7 +463,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_imp = SharedTangibleObjec
 	clientObjectCRC = 2359349823
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp, "object/tangible/space/story_loot/shared_loot_dantooine_imp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp, "object/tangible/space/story_loot/shared_loot_dantooine_imp.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_imp2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -516,7 +516,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_imp2 = SharedTangibleObje
 	clientObjectCRC = 3751168254
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp2, "object/tangible/space/story_loot/shared_loot_dantooine_imp2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp2, "object/tangible/space/story_loot/shared_loot_dantooine_imp2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_junk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -569,7 +569,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk = SharedTangibleObje
 	clientObjectCRC = 506610356
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk, "object/tangible/space/story_loot/shared_loot_dantooine_junk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk, "object/tangible/space/story_loot/shared_loot_dantooine_junk.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_junk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -622,7 +622,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk2 = SharedTangibleObj
 	clientObjectCRC = 1637466894
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk2, "object/tangible/space/story_loot/shared_loot_dantooine_junk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk2, "object/tangible/space/story_loot/shared_loot_dantooine_junk2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_junk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -675,7 +675,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk3 = SharedTangibleObj
 	clientObjectCRC = 680830083
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk3, "object/tangible/space/story_loot/shared_loot_dantooine_junk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk3, "object/tangible/space/story_loot/shared_loot_dantooine_junk3.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_mining = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -728,7 +728,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_mining = SharedTangibleOb
 	clientObjectCRC = 1853798346
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining, "object/tangible/space/story_loot/shared_loot_dantooine_mining.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining, "object/tangible/space/story_loot/shared_loot_dantooine_mining.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_mining2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -781,7 +781,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_mining2 = SharedTangibleO
 	clientObjectCRC = 3453526249
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining2, "object/tangible/space/story_loot/shared_loot_dantooine_mining2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining2, "object/tangible/space/story_loot/shared_loot_dantooine_mining2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -834,7 +834,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_rebel = SharedTangibleObj
 	clientObjectCRC = 3847010341
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel, "object/tangible/space/story_loot/shared_loot_dantooine_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel, "object/tangible/space/story_loot/shared_loot_dantooine_rebel.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_rebel2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -887,7 +887,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_rebel2 = SharedTangibleOb
 	clientObjectCRC = 3180356710
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel2, "object/tangible/space/story_loot/shared_loot_dantooine_rebel2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel2, "object/tangible/space/story_loot/shared_loot_dantooine_rebel2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_scavengers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -940,7 +940,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers = SharedTangib
 	clientObjectCRC = 1838597503
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_scavengers2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -993,7 +993,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers2 = SharedTangi
 	clientObjectCRC = 686371632
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers2, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers2, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers2.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_scavengers3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -1046,7 +1046,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers3 = SharedTangi
 	clientObjectCRC = 1642353853
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers3, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers3, "object/tangible/space/story_loot/shared_loot_dantooine_scavengers3.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_slave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -1099,7 +1099,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_slave = SharedTangibleObj
 	clientObjectCRC = 3661960880
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_slave, "object/tangible/space/story_loot/shared_loot_dantooine_slave.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_slave, "object/tangible/space/story_loot/shared_loot_dantooine_slave.iff")
 
 object_tangible_space_story_loot_shared_loot_dantooine_warren = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1152,7 +1152,7 @@ object_tangible_space_story_loot_shared_loot_dantooine_warren = SharedTangibleOb
 	clientObjectCRC = 1982024474
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_warren, "object/tangible/space/story_loot/shared_loot_dantooine_warren.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_dantooine_warren, "object/tangible/space/story_loot/shared_loot_dantooine_warren.iff")
 
 object_tangible_space_story_loot_shared_loot_endor_artisan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1205,7 +1205,7 @@ object_tangible_space_story_loot_shared_loot_endor_artisan = SharedTangibleObjec
 	clientObjectCRC = 843112558
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan, "object/tangible/space/story_loot/shared_loot_endor_artisan.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan, "object/tangible/space/story_loot/shared_loot_endor_artisan.iff")
 
 object_tangible_space_story_loot_shared_loot_endor_artisan2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1258,7 +1258,7 @@ object_tangible_space_story_loot_shared_loot_endor_artisan2 = SharedTangibleObje
 	clientObjectCRC = 3188995210
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan2, "object/tangible/space/story_loot/shared_loot_endor_artisan2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan2, "object/tangible/space/story_loot/shared_loot_endor_artisan2.iff")
 
 object_tangible_space_story_loot_shared_loot_endor_series_tinrilo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -1311,7 +1311,7 @@ object_tangible_space_story_loot_shared_loot_endor_series_tinrilo = SharedTangib
 	clientObjectCRC = 4247652196
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_series_tinrilo, "object/tangible/space/story_loot/shared_loot_endor_series_tinrilo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_endor_series_tinrilo, "object/tangible/space/story_loot/shared_loot_endor_series_tinrilo.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_borvo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -1364,7 +1364,7 @@ object_tangible_space_story_loot_shared_loot_naboo_borvo = SharedTangibleObjectT
 	clientObjectCRC = 1520410243
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_borvo, "object/tangible/space/story_loot/shared_loot_naboo_borvo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_borvo, "object/tangible/space/story_loot/shared_loot_naboo_borvo.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_civspeeder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1417,7 +1417,7 @@ object_tangible_space_story_loot_shared_loot_naboo_civspeeder = SharedTangibleOb
 	clientObjectCRC = 2417494884
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_civspeeder, "object/tangible/space/story_loot/shared_loot_naboo_civspeeder.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_civspeeder, "object/tangible/space/story_loot/shared_loot_naboo_civspeeder.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1470,7 +1470,7 @@ object_tangible_space_story_loot_shared_loot_naboo_droid = SharedTangibleObjectT
 	clientObjectCRC = 1611326943
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_droid, "object/tangible/space/story_loot/shared_loot_naboo_droid.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_droid, "object/tangible/space/story_loot/shared_loot_naboo_droid.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
@@ -1523,7 +1523,7 @@ object_tangible_space_story_loot_shared_loot_naboo_imperial = SharedTangibleObje
 	clientObjectCRC = 854700506
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_imperial, "object/tangible/space/story_loot/shared_loot_naboo_imperial.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_imperial, "object/tangible/space/story_loot/shared_loot_naboo_imperial.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_miner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
@@ -1576,7 +1576,7 @@ object_tangible_space_story_loot_shared_loot_naboo_miner = SharedTangibleObjectT
 	clientObjectCRC = 1114974083
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_miner, "object/tangible/space/story_loot/shared_loot_naboo_miner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_miner, "object/tangible/space/story_loot/shared_loot_naboo_miner.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_rsf = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s02.apt",
@@ -1629,7 +1629,7 @@ object_tangible_space_story_loot_shared_loot_naboo_rsf = SharedTangibleObjectTem
 	clientObjectCRC = 355997813
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_rsf, "object/tangible/space/story_loot/shared_loot_naboo_rsf.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_rsf, "object/tangible/space/story_loot/shared_loot_naboo_rsf.iff")
 
 object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -1682,7 +1682,7 @@ object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo = SharedTangib
 	clientObjectCRC = 3063834510
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo, "object/tangible/space/story_loot/shared_loot_naboo_series_tinrilo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo, "object/tangible/space/story_loot/shared_loot_naboo_series_tinrilo.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1735,7 +1735,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates = SharedTa
 	clientObjectCRC = 3042526533
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates, "object/tangible/space/story_loot/shared_loot_tatooine_bestine_pirates.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates, "object/tangible/space/story_loot/shared_loot_tatooine_bestine_pirates.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_blacksun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1788,7 +1788,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_blacksun = SharedTangibleO
 	clientObjectCRC = 2091210633
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun, "object/tangible/space/story_loot/shared_loot_tatooine_blacksun.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun, "object/tangible/space/story_loot/shared_loot_tatooine_blacksun.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_blacksun2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -1841,7 +1841,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_blacksun2 = SharedTangible
 	clientObjectCRC = 1403716599
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun2, "object/tangible/space/story_loot/shared_loot_tatooine_blacksun2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun2, "object/tangible/space/story_loot/shared_loot_tatooine_blacksun2.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_hutt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -1894,7 +1894,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_hutt = SharedTangibleObjec
 	clientObjectCRC = 1733541614
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_hutt, "object/tangible/space/story_loot/shared_loot_tatooine_hutt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_hutt, "object/tangible/space/story_loot/shared_loot_tatooine_hutt.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_imp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
@@ -1947,7 +1947,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_imp = SharedTangibleObject
 	clientObjectCRC = 804394387
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_imp, "object/tangible/space/story_loot/shared_loot_tatooine_imp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_imp, "object/tangible/space/story_loot/shared_loot_tatooine_imp.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_mining = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2000,7 +2000,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_mining = SharedTangibleObj
 	clientObjectCRC = 2776381679
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_mining, "object/tangible/space/story_loot/shared_loot_tatooine_mining.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_mining, "object/tangible/space/story_loot/shared_loot_tatooine_mining.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -2053,7 +2053,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_rebel = SharedTangibleObje
 	clientObjectCRC = 2201065761
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_rebel, "object/tangible/space/story_loot/shared_loot_tatooine_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_rebel, "object/tangible/space/story_loot/shared_loot_tatooine_rebel.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -2106,7 +2106,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo = SharedTan
 	clientObjectCRC = 1420399460
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo, "object/tangible/space/story_loot/shared_loot_tatooine_series_tinrilo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo, "object/tangible/space/story_loot/shared_loot_tatooine_series_tinrilo.iff")
 
 object_tangible_space_story_loot_shared_loot_tatooine_valarian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2159,7 +2159,7 @@ object_tangible_space_story_loot_shared_loot_tatooine_valarian = SharedTangibleO
 	clientObjectCRC = 1385044449
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_valarian, "object/tangible/space/story_loot/shared_loot_tatooine_valarian.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_tatooine_valarian, "object/tangible/space/story_loot/shared_loot_tatooine_valarian.iff")
 
 object_tangible_space_story_loot_shared_loot_template = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
@@ -2212,4 +2212,4 @@ object_tangible_space_story_loot_shared_loot_template = SharedTangibleObjectTemp
 	clientObjectCRC = 4061585871
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_template, "object/tangible/space/story_loot/shared_loot_template.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_story_loot_shared_loot_template, "object/tangible/space/story_loot/shared_loot_template.iff")

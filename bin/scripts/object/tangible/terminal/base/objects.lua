@@ -92,4 +92,4 @@ object_tangible_terminal_base_shared_base_terminal = SharedTangibleObjectTemplat
 	clientObjectCRC = 88218105
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_base_shared_base_terminal, "object/tangible/terminal/base/shared_base_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_base_shared_base_terminal, "object/tangible/terminal/base/shared_base_terminal.iff")

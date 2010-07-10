@@ -92,7 +92,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 	clientObjectCRC = 3995926996
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 	clientObjectCRC = 883847742
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 	clientObjectCRC = 524661947
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 	clientObjectCRC = 2373765729
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")

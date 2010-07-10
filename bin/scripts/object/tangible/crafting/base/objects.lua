@@ -92,7 +92,7 @@ object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectT
 	clientObjectCRC = 405889283
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_public_station, "object/tangible/crafting/base/shared_base_public_station.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_public_station, "object/tangible/crafting/base/shared_base_public_station.iff")
 
 object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -145,7 +145,7 @@ object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4267815739
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_repair, "object/tangible/crafting/base/shared_base_repair.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_repair, "object/tangible/crafting/base/shared_base_repair.iff")
 
 object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,7 +198,7 @@ object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate
 	clientObjectCRC = 722014891
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_station, "object/tangible/crafting/base/shared_base_station.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_station, "object/tangible/crafting/base/shared_base_station.iff")
 
 object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -251,4 +251,4 @@ object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 589813491
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_tool, "object/tangible/crafting/base/shared_base_tool.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_tool, "object/tangible/crafting/base/shared_base_tool.iff")

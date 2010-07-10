@@ -92,7 +92,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = Share
 	clientObjectCRC = 3008925530
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest 
 	clientObjectCRC = 1882452150
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountai
 	clientObjectCRC = 4011982198
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff")

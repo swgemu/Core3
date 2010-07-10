@@ -92,7 +92,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 	clientObjectCRC = 1027555264
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 	clientObjectCRC = 3923122581
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 	clientObjectCRC = 518156641
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")

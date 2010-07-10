@@ -92,7 +92,7 @@ object_tangible_medicine_pet_shared_droid_damage_kit_a = SharedTangibleObjectTem
 	clientObjectCRC = 2350997777
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_a, "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_a, "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
@@ -145,7 +145,7 @@ object_tangible_medicine_pet_shared_droid_damage_kit_b = SharedTangibleObjectTem
 	clientObjectCRC = 1463208326
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_b, "object/tangible/medicine/pet/shared_droid_damage_kit_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_b, "object/tangible/medicine/pet/shared_droid_damage_kit_b.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
@@ -198,7 +198,7 @@ object_tangible_medicine_pet_shared_droid_damage_kit_c = SharedTangibleObjectTem
 	clientObjectCRC = 507227659
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_c, "object/tangible/medicine/pet/shared_droid_damage_kit_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_c, "object/tangible/medicine/pet/shared_droid_damage_kit_c.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
@@ -251,7 +251,7 @@ object_tangible_medicine_pet_shared_droid_damage_kit_d = SharedTangibleObjectTem
 	clientObjectCRC = 3856172319
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_d, "object/tangible/medicine/pet/shared_droid_damage_kit_d.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_d, "object/tangible/medicine/pet/shared_droid_damage_kit_d.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -304,7 +304,7 @@ object_tangible_medicine_pet_shared_droid_stimpack_a = SharedTangibleObjectTempl
 	clientObjectCRC = 3944772347
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_a, "object/tangible/medicine/pet/shared_droid_stimpack_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_a, "object/tangible/medicine/pet/shared_droid_stimpack_a.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -357,7 +357,7 @@ object_tangible_medicine_pet_shared_droid_stimpack_b = SharedTangibleObjectTempl
 	clientObjectCRC = 808966764
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_b, "object/tangible/medicine/pet/shared_droid_stimpack_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_b, "object/tangible/medicine/pet/shared_droid_stimpack_b.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -410,7 +410,7 @@ object_tangible_medicine_pet_shared_droid_stimpack_c = SharedTangibleObjectTempl
 	clientObjectCRC = 2033892833
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_c, "object/tangible/medicine/pet/shared_droid_stimpack_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_c, "object/tangible/medicine/pet/shared_droid_stimpack_c.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -463,7 +463,7 @@ object_tangible_medicine_pet_shared_droid_stimpack_d = SharedTangibleObjectTempl
 	clientObjectCRC = 2195298037
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_d, "object/tangible/medicine/pet/shared_droid_stimpack_d.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_d, "object/tangible/medicine/pet/shared_droid_stimpack_d.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
@@ -516,7 +516,7 @@ object_tangible_medicine_pet_shared_droid_vitapack_a = SharedTangibleObjectTempl
 	clientObjectCRC = 2100790124
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_a, "object/tangible/medicine/pet/shared_droid_vitapack_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_a, "object/tangible/medicine/pet/shared_droid_vitapack_a.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
@@ -569,7 +569,7 @@ object_tangible_medicine_pet_shared_droid_vitapack_b = SharedTangibleObjectTempl
 	clientObjectCRC = 2787126267
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_b, "object/tangible/medicine/pet/shared_droid_vitapack_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_b, "object/tangible/medicine/pet/shared_droid_vitapack_b.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
@@ -622,7 +622,7 @@ object_tangible_medicine_pet_shared_droid_vitapack_c = SharedTangibleObjectTempl
 	clientObjectCRC = 4012723318
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_c, "object/tangible/medicine/pet/shared_droid_vitapack_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_c, "object/tangible/medicine/pet/shared_droid_vitapack_c.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -675,7 +675,7 @@ object_tangible_medicine_pet_shared_droid_wound_kit_a = SharedTangibleObjectTemp
 	clientObjectCRC = 1025129359
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_a, "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_a, "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -728,7 +728,7 @@ object_tangible_medicine_pet_shared_droid_wound_kit_b = SharedTangibleObjectTemp
 	clientObjectCRC = 3859649304
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_b, "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_b, "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
@@ -781,7 +781,7 @@ object_tangible_medicine_pet_shared_droid_wound_kit_c = SharedTangibleObjectTemp
 	clientObjectCRC = 2936075413
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_c, "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_c, "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
@@ -834,7 +834,7 @@ object_tangible_medicine_pet_shared_droid_wound_kit_d = SharedTangibleObjectTemp
 	clientObjectCRC = 1424220033
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_d, "object/tangible/medicine/pet/shared_droid_wound_kit_d.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_d, "object/tangible/medicine/pet/shared_droid_wound_kit_d.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -887,7 +887,7 @@ object_tangible_medicine_pet_shared_pet_stimpack_a = SharedTangibleObjectTemplat
 	clientObjectCRC = 1789607514
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_a, "object/tangible/medicine/pet/shared_pet_stimpack_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_a, "object/tangible/medicine/pet/shared_pet_stimpack_a.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -940,7 +940,7 @@ object_tangible_medicine_pet_shared_pet_stimpack_b = SharedTangibleObjectTemplat
 	clientObjectCRC = 2981926605
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_b, "object/tangible/medicine/pet/shared_pet_stimpack_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_b, "object/tangible/medicine/pet/shared_pet_stimpack_b.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -993,7 +993,7 @@ object_tangible_medicine_pet_shared_pet_stimpack_c = SharedTangibleObjectTemplat
 	clientObjectCRC = 4172411200
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_c, "object/tangible/medicine/pet/shared_pet_stimpack_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_c, "object/tangible/medicine/pet/shared_pet_stimpack_c.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -1046,7 +1046,7 @@ object_tangible_medicine_pet_shared_pet_stimpack_d = SharedTangibleObjectTemplat
 	clientObjectCRC = 55761492
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_d, "object/tangible/medicine/pet/shared_pet_stimpack_d.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_d, "object/tangible/medicine/pet/shared_pet_stimpack_d.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
@@ -1099,7 +1099,7 @@ object_tangible_medicine_pet_shared_pet_vitapack_a = SharedTangibleObjectTemplat
 	clientObjectCRC = 4240232397
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_a, "object/tangible/medicine/pet/shared_pet_vitapack_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_a, "object/tangible/medicine/pet/shared_pet_vitapack_a.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
@@ -1152,7 +1152,7 @@ object_tangible_medicine_pet_shared_pet_vitapack_b = SharedTangibleObjectTemplat
 	clientObjectCRC = 665544538
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_b, "object/tangible/medicine/pet/shared_pet_vitapack_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_b, "object/tangible/medicine/pet/shared_pet_vitapack_b.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
@@ -1205,4 +1205,4 @@ object_tangible_medicine_pet_shared_pet_vitapack_c = SharedTangibleObjectTemplat
 	clientObjectCRC = 1856372951
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_c, "object/tangible/medicine/pet/shared_pet_vitapack_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_c, "object/tangible/medicine/pet/shared_pet_vitapack_c.iff")

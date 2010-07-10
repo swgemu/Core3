@@ -92,7 +92,7 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 	clientObjectCRC = 4003827328
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
 
 object_building_player_shared_player_garage_corellia_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garage_s01.apt",
@@ -145,7 +145,7 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 	clientObjectCRC = 3533693421
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
 
 object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garage_s01.apt",
@@ -198,7 +198,7 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 	clientObjectCRC = 2162635930
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
 
 object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garage_s01.apt",
@@ -251,7 +251,7 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 	clientObjectCRC = 2075679353
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -307,7 +307,7 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	clientObjectCRC = 1038468412
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
 
 object_building_player_shared_player_guildhall_generic_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -363,7 +363,7 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	clientObjectCRC = 1861851362
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
 
 object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -419,7 +419,7 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	clientObjectCRC = 3197026082
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -475,7 +475,7 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	clientObjectCRC = 2495774376
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -531,7 +531,7 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	clientObjectCRC = 1339414079
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
 
 object_building_player_shared_player_house_corellia_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -587,7 +587,7 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	clientObjectCRC = 2427663942
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
 
 object_building_player_shared_player_house_corellia_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -643,7 +643,7 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	clientObjectCRC = 1269079761
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	clientObjectCRC = 4245590836
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -755,7 +755,7 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	clientObjectCRC = 639187875
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -811,7 +811,7 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	clientObjectCRC = 2963259888
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -867,7 +867,7 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	clientObjectCRC = 4102677864
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -923,7 +923,7 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	clientObjectCRC = 1804101991
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -979,7 +979,7 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	clientObjectCRC = 1944093248
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1035,7 +1035,7 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	clientObjectCRC = 2966981875
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
 
 object_building_player_shared_player_house_generic_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1091,7 +1091,7 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	clientObjectCRC = 1808737380
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
 
 object_building_player_shared_player_house_generic_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1147,7 +1147,7 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	clientObjectCRC = 244814036
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
 
 object_building_player_shared_player_house_generic_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1203,7 +1203,7 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	clientObjectCRC = 3581950019
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1259,7 +1259,7 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	clientObjectCRC = 2431941445
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
 
 object_building_player_shared_player_house_generic_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1315,7 +1315,7 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	clientObjectCRC = 4015966289
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1371,7 +1371,7 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	clientObjectCRC = 1273222098
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1427,7 +1427,7 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	clientObjectCRC = 1748479865
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_naboo_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1483,7 +1483,7 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	clientObjectCRC = 1926074883
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
 
 object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1539,7 +1539,7 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	clientObjectCRC = 1333906211
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1595,7 +1595,7 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	clientObjectCRC = 1390503349
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1651,7 +1651,7 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	clientObjectCRC = 2314652962
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
 
 object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1707,7 +1707,7 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	clientObjectCRC = 3018624136
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1763,7 +1763,7 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	clientObjectCRC = 936693005
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1819,7 +1819,7 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	clientObjectCRC = 2478865214
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1878,7 +1878,7 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	clientObjectCRC = 1222103977
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1934,7 +1934,7 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	clientObjectCRC = 2671747310
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
 
 object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1993,7 +1993,7 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	clientObjectCRC = 1143474297
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2052,4 +2052,4 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	clientObjectCRC = 220557300
 }
 
-ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")
+ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")

@@ -92,7 +92,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_belt = SharedTang
 	clientObjectCRC = 4150080953
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_belt, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_belt, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_bicep_l_f.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l = SharedT
 	clientObjectCRC = 3710375326
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_bicep_r_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r = SharedT
 	clientObjectCRC = 2918354957
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_boots_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots = SharedTan
 	clientObjectCRC = 343908402
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_boots.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_bracer_l_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l = Shared
 	clientObjectCRC = 2948310718
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_bracer_r_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r = Shared
 	clientObjectCRC = 3748586285
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_chest_plate_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate = Sha
 	clientObjectCRC = 927787210
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_gloves_f.sat",
@@ -463,7 +463,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves = SharedTa
 	clientObjectCRC = 2813934470
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_gloves.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_gloves.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_helmet_f.sat",
@@ -516,7 +516,7 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet = SharedTa
 	clientObjectCRC = 293198478
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_helmet.iff")
 
 object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_leggings_f.sat",
@@ -569,4 +569,4 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings = Shared
 	clientObjectCRC = 547322785
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_leggings.iff")

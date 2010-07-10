@@ -92,4 +92,4 @@ object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObj
 	clientObjectCRC = 60452333
 }
 
-ObjectTemplates:addTemplate(object_tangible_planet_map_location_shared_map_location_base, "object/tangible/planet_map_location/shared_map_location_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_planet_map_location_shared_map_location_base, "object/tangible/planet_map_location/shared_map_location_base.iff")

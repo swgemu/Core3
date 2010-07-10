@@ -92,7 +92,7 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3742650204
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
 
 object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -145,7 +145,7 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3237805620
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
 
 object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -198,4 +198,4 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 330070250
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")

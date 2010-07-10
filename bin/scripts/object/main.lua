@@ -58,6 +58,14 @@ function ObjectTemplates:addTemplate(obj, file)
 	--end
 end
 
+function ObjectTemplates:addClientTemplate(obj, file)
+	if (obj == nil) then
+		print("null template object for " .. file)
+	else
+		addClientTemplate(file, obj)
+	end
+end
+
 function getTemplate(crc)
 	return ObjectTemplates[crc]
 end

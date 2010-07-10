@@ -142,6 +142,7 @@ void TemplateManager::registerFunctions() {
 	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
 	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
 	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+	lua_register(luaTemplatesInstance->getLuaState(), "addClientTemplate", addClientTemplate);
 }
 
 void TemplateManager::registerGlobals() {
@@ -268,6 +269,16 @@ int TemplateManager::addTemplateCRC(lua_State* L) {
 	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
 
 	//System::out << ascii << endl;
+
+	return 0;
+}
+
+int TemplateManager::addClientTemplate(lua_State* L) {
+	String ascii = lua_tostring(L, -2);
+
+	uint32 crc = (uint32) ascii.hashCode();
+
+	TemplateManager::instance()->clientTemplateCRCMap.put(crc, ascii);
 
 	return 0;
 }

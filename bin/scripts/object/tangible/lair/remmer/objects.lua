@@ -92,7 +92,7 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1568679889
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 	clientObjectCRC = 1785284401
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 3159632907
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")

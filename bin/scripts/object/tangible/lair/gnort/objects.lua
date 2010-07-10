@@ -92,7 +92,7 @@ object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3151166549
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort, "object/tangible/lair/gnort/shared_lair_gnort.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort, "object/tangible/lair/gnort/shared_lair_gnort.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 622467939
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 2282996299
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff")

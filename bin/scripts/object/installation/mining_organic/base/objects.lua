@@ -92,4 +92,4 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 	clientObjectCRC = 1780958356
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")

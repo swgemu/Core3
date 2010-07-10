@@ -92,4 +92,4 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 	clientObjectCRC = 867105366
 }
 
-ObjectTemplates:addTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")
+ObjectTemplates:addClientTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")

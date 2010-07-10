@@ -23,5 +23,16 @@ public:
 	}
 };
 
+class ClientTemplateCRCMap : public HashTable<uint32, String> {
+	int hash(const uint32& k) {
+		return k;
+	}
+
+public:
+	ClientTemplateCRCMap() : HashTable<uint32, String>(16000) {
+		setNullValue("");
+	}
+};
+
 
 #endif /* TEMPLATECRCMAP_H_ */

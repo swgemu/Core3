@@ -92,7 +92,7 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3190753462
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
 
 object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 	clientObjectCRC = 1664191883
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")

@@ -82,4 +82,4 @@ object_static_structure_base_shared_static_structure_base = SharedStaticObjectTe
 	clientObjectCRC = 161765900
 }
 
-ObjectTemplates:addTemplate(object_static_structure_base_shared_static_structure_base, "object/static/structure/base/shared_static_structure_base.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_base_shared_static_structure_base, "object/static/structure/base/shared_static_structure_base.iff")

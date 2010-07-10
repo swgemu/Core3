@@ -92,7 +92,7 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird = SharedTangibleObjec
 	clientObjectCRC = 3672751802
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird.iff")
 
 object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangib
 	clientObjectCRC = 615980885
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird_forest.iff")

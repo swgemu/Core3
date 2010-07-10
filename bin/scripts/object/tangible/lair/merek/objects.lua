@@ -92,7 +92,7 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 150449973
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
 
 object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 	clientObjectCRC = 1521427454
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
 
 object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 	clientObjectCRC = 4083623500
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")

@@ -92,7 +92,7 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 	clientObjectCRC = 2037216595
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
 
 object_installation_manufacture_shared_food_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
@@ -145,7 +145,7 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 	clientObjectCRC = 2484565682
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
 
 object_installation_manufacture_shared_structure_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
@@ -198,7 +198,7 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 	clientObjectCRC = 1556571915
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
 
 object_installation_manufacture_shared_weapon_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
@@ -251,7 +251,7 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 	clientObjectCRC = 1304272380
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
 
 object_installation_manufacture_shared_weapon_installation = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
@@ -304,4 +304,4 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 	clientObjectCRC = 415547091
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")

@@ -92,7 +92,7 @@ object_tangible_crafting_shared_crafting_components_container = SharedTangibleOb
 	clientObjectCRC = 4203992702
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_shared_crafting_components_container, "object/tangible/crafting/shared_crafting_components_container.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_crafting_components_container, "object/tangible/crafting/shared_crafting_components_container.iff")
 
 object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cef_cryoban_grenade.apt",
@@ -145,7 +145,7 @@ object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTe
 	clientObjectCRC = 13064699
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_shared_default_draft_not_found, "object/tangible/crafting/shared_default_draft_not_found.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_default_draft_not_found, "object/tangible/crafting/shared_default_draft_not_found.iff")
 
 object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -198,4 +198,4 @@ object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObj
 	clientObjectCRC = 1186484366
 }
 
-ObjectTemplates:addTemplate(object_tangible_crafting_shared_missing_schematic_substitute, "object/tangible/crafting/shared_missing_schematic_substitute.iff")
+ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_missing_schematic_substitute, "object/tangible/crafting/shared_missing_schematic_substitute.iff")

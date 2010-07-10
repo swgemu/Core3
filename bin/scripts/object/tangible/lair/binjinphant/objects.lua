@@ -92,7 +92,7 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant = SharedTangibleObjectT
 	clientObjectCRC = 40317031
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, "object/tangible/lair/binjinphant/shared_lair_binjinphant.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, "object/tangible/lair/binjinphant/shared_lair_binjinphant.iff")
 
 object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangible
 	clientObjectCRC = 165640576
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, "object/tangible/lair/binjinphant/shared_lair_binjinphant_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, "object/tangible/lair/binjinphant/shared_lair_binjinphant_forest.iff")

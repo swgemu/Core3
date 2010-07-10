@@ -92,7 +92,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 	clientObjectCRC = 56634783
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 	clientObjectCRC = 1064337645
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 	clientObjectCRC = 2989589042
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")

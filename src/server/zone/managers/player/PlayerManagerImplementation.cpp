@@ -384,10 +384,10 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 		return NULL;
 	}
 
-	String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
+	//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
-	info("trying to create hair object " + sharedHairObjectFile);
-	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode(), 1);
+	info("trying to create hair object " + hairObjectFile);
+	SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
 
 	if (hair == NULL) {
 		info("objectManager returned NULL hair object");
@@ -411,7 +411,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 }
 
 bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player) {
-	SceneObject* inventory = server->createObject(0x3969E83B, 1); // character_inventory
+	SceneObject* inventory = server->createObject(0x77ae7dbb, 1); // character_inventory
 
 	if (inventory == NULL) {
 		error("could not create player inventory");
@@ -420,7 +420,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(inventory, 4);
 
-	SceneObject* datapad = server->createObject(0x73BA5001, 1); //datapad
+	SceneObject* datapad = server->createObject(0x95ae7939, 1); //datapad
 
 	if (datapad == NULL) {
 		error("could not create player datapad");
@@ -438,7 +438,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(playerObject, 4);
 
-	SceneObject* bank = server->createObject(0x70FD1394, 1); //bank
+	SceneObject* bank = server->createObject(0xf5b8caa5, 1); //bank
 
 	if (bank == NULL) {
 		error("could not create bank");
@@ -447,7 +447,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(bank, 4);
 
-	SceneObject* missionBag = server->createObject(0x3D7F6F9F, 1); //mission bag
+	SceneObject* missionBag = server->createObject(0xaa5efb52, 1); //mission bag
 
 	if (missionBag == NULL) {
 		error("could not create mission bag");
@@ -496,11 +496,11 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	vehicleControlDevice->setControlledObject(vehicle);
 	datapad->addObject(vehicleControlDevice, -1);
 
-	String pole = "object/tangible/fishing/shared_fishing_pole.iff";
+	String pole = "object/tangible/fishing/fishing_pole.iff";
 	SceneObject* poleObject = server->createObject(pole.hashCode(), 1);
 	inventory->addObject(poleObject, -1);
 
-	String bait = "object/tangible/fishing/bait/shared_bait_worm.iff";
+	String bait = "object/tangible/fishing/bait/bait_worm.iff";
 	SceneObject* baitObject = server->createObject(bait.hashCode(), 1);
 	inventory->addObject(baitObject, -1);
 
@@ -513,8 +513,8 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
 	Zone* zone = server->getZone(42);
 
-	String tut = "object/building/general/shared_newbie_hall.iff";
-	String cell = "object/cell/shared_cell.iff";
+	String tut = "object/building/general/newbie_hall.iff";
+	String cell = "object/cell/cell.iff";
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
@@ -547,8 +547,8 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* player) {
 	Zone* zone = server->getZone(42);
 
-	String tut = "object/building/general/shared_newbie_hall_skipped.iff";
-	String cell = "object/cell/shared_cell.iff";
+	String tut = "object/building/general/newbie_hall_skipped.iff";
+	String cell = "object/cell/cell.iff";
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();

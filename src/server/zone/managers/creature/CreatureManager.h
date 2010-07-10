@@ -128,6 +128,8 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
+	void loadDynamicSpawnAreas();
+
 	void loadTrainers();
 
 	void addCreatureToMap(CreatureObject* creature);
@@ -172,6 +174,8 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
 
@@ -225,6 +229,8 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
+
+	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
 

@@ -92,7 +92,7 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 	clientObjectCRC = 909741262
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
 
 object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
@@ -145,7 +145,7 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1989986645
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
 
 object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
@@ -198,7 +198,7 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3631323563
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -251,7 +251,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 	clientObjectCRC = 234637781
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -304,7 +304,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 	clientObjectCRC = 3605782850
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -357,7 +357,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 	clientObjectCRC = 2682685135
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
 
 object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -410,7 +410,7 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 	clientObjectCRC = 4023071175
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
 
 object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
@@ -463,7 +463,7 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 	clientObjectCRC = 1444012427
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
 
 object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -516,7 +516,7 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 379393128
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
 
 object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
@@ -569,7 +569,7 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 	clientObjectCRC = 1204497275
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
 
 object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_cloning.apt",
@@ -622,7 +622,7 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3781560082
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
 
 object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
@@ -675,7 +675,7 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 	clientObjectCRC = 245813721
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_djt_voting.apt",
@@ -728,7 +728,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 	clientObjectCRC = 1992103782
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -781,7 +781,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 	clientObjectCRC = 2329382269
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
@@ -834,7 +834,7 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 	clientObjectCRC = 278443635
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
 
 object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_down_s02.apt",
@@ -887,7 +887,7 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 	clientObjectCRC = 3298826986
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
 
 object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_up_s02.apt",
@@ -940,7 +940,7 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 	clientObjectCRC = 115529514
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
 
 object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -993,7 +993,7 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 	clientObjectCRC = 3878794306
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
 
 object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -1046,7 +1046,7 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 724271921
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
 
 object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1099,7 +1099,7 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 489350492
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
 
 object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1152,7 +1152,7 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 	clientObjectCRC = 3161971452
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
 
 object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1205,7 +1205,7 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 	clientObjectCRC = 1176471647
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
 
 object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1258,7 +1258,7 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 	clientObjectCRC = 2229698005
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
 
 object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_image_design.apt",
@@ -1311,7 +1311,7 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 	clientObjectCRC = 2511005752
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
 
 object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -1364,7 +1364,7 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 	clientObjectCRC = 1029213671
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
 
 object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -1417,7 +1417,7 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 	clientObjectCRC = 249891408
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -1470,7 +1470,7 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 	clientObjectCRC = 2945424908
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -1523,7 +1523,7 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 	clientObjectCRC = 1384984494
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -1576,7 +1576,7 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2907007746
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
 
 object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -1629,7 +1629,7 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 	clientObjectCRC = 3927829015
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
 
 object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1682,7 +1682,7 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 	clientObjectCRC = 3951925654
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
 
 object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1735,7 +1735,7 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 	clientObjectCRC = 2410700040
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
 
 object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1788,7 +1788,7 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 	clientObjectCRC = 4186402280
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
 
 object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -1841,7 +1841,7 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 	clientObjectCRC = 2666426537
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
 
 object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -1894,7 +1894,7 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 	clientObjectCRC = 2082896080
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
 
 object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -1947,7 +1947,7 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 	clientObjectCRC = 581658756
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
 
 object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
@@ -2000,7 +2000,7 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 	clientObjectCRC = 4114889569
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
 
 object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2053,7 +2053,7 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 	clientObjectCRC = 4290085920
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
 
 object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2106,7 +2106,7 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 	clientObjectCRC = 2721518483
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
 
 object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2159,7 +2159,7 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 	clientObjectCRC = 3665675874
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
 
 object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2212,7 +2212,7 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 	clientObjectCRC = 1668873424
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
 
 object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2265,7 +2265,7 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 	clientObjectCRC = 4182051530
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
 
 object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -2318,7 +2318,7 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 	clientObjectCRC = 757402672
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
 
 object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2371,7 +2371,7 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 	clientObjectCRC = 3880062907
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
 
 object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2425,7 +2425,7 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	clientObjectCRC = 4023332994
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2478,7 +2478,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 	clientObjectCRC = 437907033
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -2531,7 +2531,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 	clientObjectCRC = 2775644177
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
 
 object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -2584,7 +2584,7 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 	clientObjectCRC = 1004751674
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
 
 object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2637,7 +2637,7 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 	clientObjectCRC = 3308349953
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
 
 object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
@@ -2690,7 +2690,7 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 	clientObjectCRC = 965433242
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
 
 object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -2743,7 +2743,7 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 	clientObjectCRC = 1225472505
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
 
 object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2796,7 +2796,7 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 328711509
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
 
 object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_spaceterminal.apt",
@@ -2849,7 +2849,7 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1701113915
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
 
 object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2902,7 +2902,7 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1946349820
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
 
 object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2955,7 +2955,7 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 	clientObjectCRC = 4062337637
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
 
 object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
@@ -3008,4 +3008,4 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3876933537
 }
 
-ObjectTemplates:addTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")
+ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")

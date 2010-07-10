@@ -82,7 +82,7 @@ object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new
 	clientObjectCRC = 141305204
 }
 
-ObjectTemplates:addTemplate(object_static_space_ship_shared_cargo_freighter, "object/static/space/ship/shared_cargo_freighter.iff")
+ObjectTemplates:addClientTemplate(object_static_space_ship_shared_cargo_freighter, "object/static/space/ship/shared_cargo_freighter.iff")
 
 object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
@@ -125,7 +125,7 @@ object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:
 	clientObjectCRC = 785804943
 }
 
-ObjectTemplates:addTemplate(object_static_space_ship_shared_corellian_corvette, "object/static/space/ship/shared_corellian_corvette.iff")
+ObjectTemplates:addClientTemplate(object_static_space_ship_shared_corellian_corvette, "object/static/space/ship/shared_corellian_corvette.iff")
 
 object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/nebulon_frigate.apt",
@@ -168,4 +168,4 @@ object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new
 	clientObjectCRC = 4161425774
 }
 
-ObjectTemplates:addTemplate(object_static_space_ship_shared_nebulon_frigate, "object/static/space/ship/shared_nebulon_frigate.iff")
+ObjectTemplates:addClientTemplate(object_static_space_ship_shared_nebulon_frigate, "object/static/space/ship/shared_nebulon_frigate.iff")

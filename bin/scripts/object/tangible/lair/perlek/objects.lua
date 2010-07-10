@@ -92,7 +92,7 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 804817169
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 	clientObjectCRC = 4089303997
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 3319913083
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")

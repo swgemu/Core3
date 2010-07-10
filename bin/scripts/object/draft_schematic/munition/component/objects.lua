@@ -82,7 +82,7 @@ object_draft_schematic_munition_component_shared_ammo_projectile = SharedDraftSc
 	clientObjectCRC = 4036740128
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_ammo_projectile, "object/draft_schematic/munition/component/shared_ammo_projectile.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile, "object/draft_schematic/munition/component/shared_ammo_projectile.iff")
 
 object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = 
 	clientObjectCRC = 443220500
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_ammo_projectile_entanglement, "object/draft_schematic/munition/component/shared_ammo_projectile_entanglement.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile_entanglement, "object/draft_schematic/munition/component/shared_ammo_projectile_entanglement.iff")
 
 object_draft_schematic_munition_component_shared_base_munition_enhancer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_munition_component_shared_base_munition_enhancer = Shared
 	clientObjectCRC = 3506113789
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_base_munition_enhancer, "object/draft_schematic/munition/component/shared_base_munition_enhancer.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_base_munition_enhancer, "object/draft_schematic/munition/component/shared_base_munition_enhancer.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_charge_composition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_munition_component_shared_enhanced_charge_composition = S
 	clientObjectCRC = 3153150043
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_composition, "object/draft_schematic/munition/component/shared_enhanced_charge_composition.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_composition, "object/draft_schematic/munition/component/shared_enhanced_charge_composition.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_charge_shaping = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_munition_component_shared_enhanced_charge_shaping = Share
 	clientObjectCRC = 3158528693
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_shaping, "object/draft_schematic/munition/component/shared_enhanced_charge_shaping.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_shaping, "object/draft_schematic/munition/component/shared_enhanced_charge_shaping.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_chan
 	clientObjectCRC = 2401022295
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling, "object/draft_schematic/munition/component/shared_enhanced_destructive_pulse_channeling.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling, "object/draft_schematic/munition/component/shared_enhanced_destructive_pulse_channeling.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve =
 	clientObjectCRC = 3256653222
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve, "object/draft_schematic/munition/component/shared_enhanced_fragmentation_sleeve.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve, "object/draft_schematic/munition/component/shared_enhanced_fragmentation_sleeve.iff")
 
 object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftS
 	clientObjectCRC = 1156003088
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_chemical, "object/draft_schematic/munition/component/shared_warhead_chemical.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_chemical, "object/draft_schematic/munition/component/shared_warhead_chemical.iff")
 
 object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = Shar
 	clientObjectCRC = 3955180920
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_fusing_mechanism, "object/draft_schematic/munition/component/shared_warhead_fusing_mechanism.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_fusing_mechanism, "object/draft_schematic/munition/component/shared_warhead_fusing_mechanism.iff")
 
 object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSche
 	clientObjectCRC = 2232358950
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_heavy, "object/draft_schematic/munition/component/shared_warhead_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_heavy, "object/draft_schematic/munition/component/shared_warhead_heavy.iff")
 
 object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSche
 	clientObjectCRC = 1146561784
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_light, "object/draft_schematic/munition/component/shared_warhead_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_light, "object/draft_schematic/munition/component/shared_warhead_light.iff")
 
 object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSch
 	clientObjectCRC = 536805307
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_medium, "object/draft_schematic/munition/component/shared_warhead_medium.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_medium, "object/draft_schematic/munition/component/shared_warhead_medium.iff")
 
 object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,4 +598,4 @@ object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraf
 	clientObjectCRC = 4065626322
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_stabilizer, "object/draft_schematic/munition/component/shared_warhead_stabilizer.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_stabilizer, "object/draft_schematic/munition/component/shared_warhead_stabilizer.iff")

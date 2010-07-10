@@ -19,7 +19,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
 
 	while (missionBag->getContainerObjectsSize() < 6) {
-		SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
+		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->addObject(mission, -1, false);
 		mission->sendTo(player, true);
 		missionBag->updateToDatabaseWithoutChildren();
