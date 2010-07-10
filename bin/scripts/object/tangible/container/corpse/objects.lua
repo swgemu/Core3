@@ -92,4 +92,4 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 	clientObjectCRC = 3090831505
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_corpse_shared_player_corpse, "object/tangible/container/corpse/shared_player_corpse.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_corpse_shared_player_corpse, "object/tangible/container/corpse/shared_player_corpse.iff")

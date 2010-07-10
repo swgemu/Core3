@@ -82,7 +82,7 @@ object_draft_schematic_community_crafting_shared_base_community_crafting = Share
 	clientObjectCRC = 3199067220
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, "object/draft_schematic/community_crafting/shared_base_community_crafting.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, "object/draft_schematic/community_crafting/shared_base_community_crafting.iff")
 
 object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftS
 	clientObjectCRC = 2022784928
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_defenses, "object/draft_schematic/community_crafting/shared_village_defenses.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_village_defenses, "object/draft_schematic/community_crafting/shared_village_defenses.iff")
 
 object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,4 +168,4 @@ object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSc
 	clientObjectCRC = 2318897333
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_shields, "object/draft_schematic/community_crafting/shared_village_shields.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_village_shields, "object/draft_schematic/community_crafting/shared_village_shields.iff")

@@ -92,4 +92,4 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 	clientObjectCRC = 80246849
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")

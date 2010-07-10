@@ -82,7 +82,7 @@ object_static_space_spacestation_shared_corsec_outpost_01 = SharedStaticObjectTe
 	clientObjectCRC = 2081400463
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_corsec_outpost_01, "object/static/space/spacestation/shared_corsec_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_corsec_outpost_01, "object/static/space/spacestation/shared_corsec_outpost_01.iff")
 
 object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_station_destroyed.apt",
@@ -125,7 +125,7 @@ object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = Sha
 	clientObjectCRC = 51631832
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_imperial_spacestation_01, "object/static/space/spacestation/shared_destroyed_imperial_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_imperial_spacestation_01, "object/static/space/spacestation/shared_destroyed_imperial_spacestation_01.iff")
 
 object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/neutral_station_destroyed.apt",
@@ -168,7 +168,7 @@ object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = Shar
 	clientObjectCRC = 1249810321
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_neutral_spacestation_01, "object/static/space/spacestation/shared_destroyed_neutral_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_neutral_spacestation_01, "object/static/space/spacestation/shared_destroyed_neutral_spacestation_01.iff")
 
 object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_station_destroyed.apt",
@@ -211,7 +211,7 @@ object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = Shared
 	clientObjectCRC = 2680136017
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_rebel_spacestation_01, "object/static/space/spacestation/shared_destroyed_rebel_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_rebel_spacestation_01, "object/static/space/spacestation/shared_destroyed_rebel_spacestation_01.iff")
 
 object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
@@ -254,7 +254,7 @@ object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObject
 	clientObjectCRC = 2798221309
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_imperial_outpost_01, "object/static/space/spacestation/shared_imperial_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperial_outpost_01, "object/static/space/spacestation/shared_imperial_outpost_01.iff")
 
 object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_imperial.apt",
@@ -297,7 +297,7 @@ object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticO
 	clientObjectCRC = 1432735117
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_imperial_spacestation_01, "object/static/space/spacestation/shared_imperial_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperial_spacestation_01, "object/static/space/spacestation/shared_imperial_spacestation_01.iff")
 
 object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_mining.apt",
@@ -340,7 +340,7 @@ object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTe
 	clientObjectCRC = 2821130357
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_mining_outpost_01, "object/static/space/spacestation/shared_mining_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_mining_outpost_01, "object/static/space/spacestation/shared_mining_outpost_01.iff")
 
 object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
@@ -383,7 +383,7 @@ object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticOb
 	clientObjectCRC = 1020449754
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_neutral_spacestation_01, "object/static/space/spacestation/shared_neutral_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_neutral_spacestation_01, "object/static/space/spacestation/shared_neutral_spacestation_01.iff")
 
 object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_pirate.apt",
@@ -426,7 +426,7 @@ object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTe
 	clientObjectCRC = 1500513199
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_pirate_outpost_01, "object/static/space/spacestation/shared_pirate_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate_outpost_01, "object/static/space/spacestation/shared_pirate_outpost_01.iff")
 
 object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_pirate_asteroid.apt",
@@ -469,7 +469,7 @@ object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticOb
 	clientObjectCRC = 1677357980
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_pirate_outpost_asteroid, "object/static/space/spacestation/shared_pirate_outpost_asteroid.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate_outpost_asteroid, "object/static/space/spacestation/shared_pirate_outpost_asteroid.iff")
 
 object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_rebel_s01.apt",
@@ -512,7 +512,7 @@ object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTem
 	clientObjectCRC = 2870024383
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rebel_outpost_01, "object/static/space/spacestation/shared_rebel_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_outpost_01, "object/static/space/spacestation/shared_rebel_outpost_01.iff")
 
 object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
@@ -555,7 +555,7 @@ object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObje
 	clientObjectCRC = 2738509482
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rebel_spacestation_01, "object/static/space/spacestation/shared_rebel_spacestation_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_spacestation_01, "object/static/space/spacestation/shared_rebel_spacestation_01.iff")
 
 object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rsf.apt",
@@ -598,7 +598,7 @@ object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTem
 	clientObjectCRC = 1595448737
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rsf_spacestation, "object/static/space/spacestation/shared_rsf_spacestation.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rsf_spacestation, "object/static/space/spacestation/shared_rsf_spacestation.iff")
 
 object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_tradefed_destroyed_hulk.apt",
@@ -641,7 +641,7 @@ object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticOb
 	clientObjectCRC = 4274432492
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_tradefed_destroyed_hulk, "object/static/space/spacestation/shared_tradefed_destroyed_hulk.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_tradefed_destroyed_hulk, "object/static/space/spacestation/shared_tradefed_destroyed_hulk.iff")
 
 object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_tradefed.apt",
@@ -684,4 +684,4 @@ object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObject
 	clientObjectCRC = 58780545
 }
 
-ObjectTemplates:addTemplate(object_static_space_spacestation_shared_tradefed_outpost_01, "object/static/space/spacestation/shared_tradefed_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_tradefed_outpost_01, "object/static/space/spacestation/shared_tradefed_outpost_01.iff")

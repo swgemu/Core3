@@ -92,7 +92,7 @@ object_tangible_furniture_all_shared_bestine_quest_imp_banner = SharedTangibleOb
 	clientObjectCRC = 1531961782
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_bestine_quest_imp_banner, "object/tangible/furniture/all/shared_bestine_quest_imp_banner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_bestine_quest_imp_banner, "object/tangible/furniture/all/shared_bestine_quest_imp_banner.iff")
 
 object_tangible_furniture_all_shared_bestine_quest_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_lg_s1.apt",
@@ -145,7 +145,7 @@ object_tangible_furniture_all_shared_bestine_quest_statue = SharedTangibleObject
 	clientObjectCRC = 382776042
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_bestine_quest_statue, "object/tangible/furniture/all/shared_bestine_quest_statue.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_bestine_quest_statue, "object/tangible/furniture/all/shared_bestine_quest_statue.iff")
 
 object_tangible_furniture_all_shared_event_flag_game_imp_banner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_furniture_all_shared_event_flag_game_imp_banner = SharedTangible
 	clientObjectCRC = 3069965117
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_imp_banner, "object/tangible/furniture/all/shared_event_flag_game_imp_banner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_event_flag_game_imp_banner, "object/tangible/furniture/all/shared_event_flag_game_imp_banner.iff")
 
 object_tangible_furniture_all_shared_event_flag_game_neut_banner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_furniture_all_shared_event_flag_game_neut_banner = SharedTangibl
 	clientObjectCRC = 1888446421
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_neut_banner, "object/tangible/furniture/all/shared_event_flag_game_neut_banner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_event_flag_game_neut_banner, "object/tangible/furniture/all/shared_event_flag_game_neut_banner.iff")
 
 object_tangible_furniture_all_shared_event_flag_game_reb_banner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_furniture_all_shared_event_flag_game_reb_banner = SharedTangible
 	clientObjectCRC = 255943061
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_reb_banner, "object/tangible/furniture/all/shared_event_flag_game_reb_banner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_event_flag_game_reb_banner, "object/tangible/furniture/all/shared_event_flag_game_reb_banner.iff")
 
 object_tangible_furniture_all_shared_frn_all_banner_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s02.apt",
@@ -357,7 +357,7 @@ object_tangible_furniture_all_shared_frn_all_banner_rebel = SharedTangibleObject
 	clientObjectCRC = 1081367784
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_banner_rebel, "object/tangible/furniture/all/shared_frn_all_banner_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_banner_rebel, "object/tangible/furniture/all/shared_frn_all_banner_rebel.iff")
 
 object_tangible_furniture_all_shared_frn_all_bed_lg_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_bed_lg_s1.apt",
@@ -410,7 +410,7 @@ object_tangible_furniture_all_shared_frn_all_bed_lg_s1 = SharedTangibleObjectTem
 	clientObjectCRC = 2766782450
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s1, "object/tangible/furniture/all/shared_frn_all_bed_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s1, "object/tangible/furniture/all/shared_frn_all_bed_lg_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_bed_lg_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_bed_lg_s2.apt",
@@ -463,7 +463,7 @@ object_tangible_furniture_all_shared_frn_all_bed_lg_s2 = SharedTangibleObjectTem
 	clientObjectCRC = 2147358565
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s2, "object/tangible/furniture/all/shared_frn_all_bed_lg_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s2, "object/tangible/furniture/all/shared_frn_all_bed_lg_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_bed_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_bed_sm_s1.apt",
@@ -516,7 +516,7 @@ object_tangible_furniture_all_shared_frn_all_bed_sm_s1 = SharedTangibleObjectTem
 	clientObjectCRC = 2258677740
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s1, "object/tangible/furniture/all/shared_frn_all_bed_sm_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s1, "object/tangible/furniture/all/shared_frn_all_bed_sm_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_bed_sm_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_bed_sm_s2.apt",
@@ -569,7 +569,7 @@ object_tangible_furniture_all_shared_frn_all_bed_sm_s2 = SharedTangibleObjectTem
 	clientObjectCRC = 1572276091
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s2, "object/tangible/furniture/all/shared_frn_all_bed_sm_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s2, "object/tangible/furniture/all/shared_frn_all_bed_sm_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_kitchen_s1.apt",
@@ -622,7 +622,7 @@ object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1 = SharedTangibleOb
 	clientObjectCRC = 3227489016
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1, "object/tangible/furniture/all/shared_frn_all_chair_kitchen_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1, "object/tangible/furniture/all/shared_frn_all_chair_kitchen_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_kitchen_s2.apt",
@@ -675,7 +675,7 @@ object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2 = SharedTangibleOb
 	clientObjectCRC = 457718383
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2, "object/tangible/furniture/all/shared_frn_all_chair_kitchen_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2, "object/tangible/furniture/all/shared_frn_all_chair_kitchen_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_wheeled_s1.apt",
@@ -728,7 +728,7 @@ object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1 = SharedTan
 	clientObjectCRC = 481905908
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1, "object/tangible/furniture/all/shared_frn_all_chair_meatal_wheeled_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1, "object/tangible/furniture/all/shared_frn_all_chair_meatal_wheeled_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_metal_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_s1.apt",
@@ -781,7 +781,7 @@ object_tangible_furniture_all_shared_frn_all_chair_metal_s1 = SharedTangibleObje
 	clientObjectCRC = 1199580943
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_metal_s1, "object/tangible/furniture/all/shared_frn_all_chair_metal_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_metal_s1, "object/tangible/furniture/all/shared_frn_all_chair_metal_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_recliner_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_recliner_s1.apt",
@@ -834,7 +834,7 @@ object_tangible_furniture_all_shared_frn_all_chair_recliner_s1 = SharedTangibleO
 	clientObjectCRC = 1014994447
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_recliner_s1, "object/tangible/furniture/all/shared_frn_all_chair_recliner_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_recliner_s1, "object/tangible/furniture/all/shared_frn_all_chair_recliner_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_upholstered_s1.apt",
@@ -887,7 +887,7 @@ object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1 = SharedTangib
 	clientObjectCRC = 3584752217
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1, "object/tangible/furniture/all/shared_frn_all_chair_upholstered_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1, "object/tangible/furniture/all/shared_frn_all_chair_upholstered_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_wooden_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_wooden_s1.apt",
@@ -940,7 +940,7 @@ object_tangible_furniture_all_shared_frn_all_chair_wooden_s1 = SharedTangibleObj
 	clientObjectCRC = 521624148
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s1, "object/tangible/furniture/all/shared_frn_all_chair_wooden_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s1, "object/tangible/furniture/all/shared_frn_all_chair_wooden_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_chair_wooden_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_wooden_s2.apt",
@@ -993,7 +993,7 @@ object_tangible_furniture_all_shared_frn_all_chair_wooden_s2 = SharedTangibleObj
 	clientObjectCRC = 3288396483
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s2, "object/tangible/furniture/all/shared_frn_all_chair_wooden_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s2, "object/tangible/furniture/all/shared_frn_all_chair_wooden_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_command_console = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
@@ -1046,7 +1046,7 @@ object_tangible_furniture_all_shared_frn_all_command_console = SharedTangibleObj
 	clientObjectCRC = 1808903036
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_command_console, "object/tangible/furniture/all/shared_frn_all_command_console.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_command_console, "object/tangible/furniture/all/shared_frn_all_command_console.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_divan_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_divan_s1.apt",
@@ -1099,7 +1099,7 @@ object_tangible_furniture_all_shared_frn_all_couch_divan_s1 = SharedTangibleObje
 	clientObjectCRC = 1193418540
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_divan_s1, "object/tangible/furniture/all/shared_frn_all_couch_divan_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_divan_s1, "object/tangible/furniture/all/shared_frn_all_couch_divan_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_futon_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_futon_s1.apt",
@@ -1152,7 +1152,7 @@ object_tangible_furniture_all_shared_frn_all_couch_futon_s1 = SharedTangibleObje
 	clientObjectCRC = 2092553247
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_futon_s1, "object/tangible/furniture/all/shared_frn_all_couch_futon_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_futon_s1, "object/tangible/furniture/all/shared_frn_all_couch_futon_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_lg_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_lg_s1.apt",
@@ -1205,7 +1205,7 @@ object_tangible_furniture_all_shared_frn_all_couch_lg_s1 = SharedTangibleObjectT
 	clientObjectCRC = 1042763570
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s1, "object/tangible/furniture/all/shared_frn_all_couch_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s1, "object/tangible/furniture/all/shared_frn_all_couch_lg_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_lg_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_lg_s2.apt",
@@ -1258,7 +1258,7 @@ object_tangible_furniture_all_shared_frn_all_couch_lg_s2 = SharedTangibleObjectT
 	clientObjectCRC = 3845187493
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s2, "object/tangible/furniture/all/shared_frn_all_couch_lg_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s2, "object/tangible/furniture/all/shared_frn_all_couch_lg_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_love_seat_s1.apt",
@@ -1311,7 +1311,7 @@ object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1 = SharedTangible
 	clientObjectCRC = 2658048255
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1, "object/tangible/furniture/all/shared_frn_all_couch_love_seat_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1, "object/tangible/furniture/all/shared_frn_all_couch_love_seat_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_love_seat_s2.apt",
@@ -1364,7 +1364,7 @@ object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2 = SharedTangible
 	clientObjectCRC = 1165570152
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2, "object/tangible/furniture/all/shared_frn_all_couch_love_seat_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2, "object/tangible/furniture/all/shared_frn_all_couch_love_seat_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_ottoman_s1.apt",
@@ -1417,7 +1417,7 @@ object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1 = SharedTangibleOb
 	clientObjectCRC = 1218810982
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1, "object/tangible/furniture/all/shared_frn_all_couch_ottoman_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1, "object/tangible/furniture/all/shared_frn_all_couch_ottoman_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_couch_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_sm_s1.apt",
@@ -1470,7 +1470,7 @@ object_tangible_furniture_all_shared_frn_all_couch_sm_s1 = SharedTangibleObjectT
 	clientObjectCRC = 476995372
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_sm_s1, "object/tangible/furniture/all/shared_frn_all_couch_sm_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_couch_sm_s1, "object/tangible/furniture/all/shared_frn_all_couch_sm_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -1523,7 +1523,7 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1 = SharedTangi
 	clientObjectCRC = 2558376117
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1, "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1, "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -1576,7 +1576,7 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2 = SharedTangi
 	clientObjectCRC = 1131024418
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2, "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2, "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
@@ -1629,7 +1629,7 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1 = SharedTangi
 	clientObjectCRC = 2588623479
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -1682,7 +1682,7 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2 = SharedTangi
 	clientObjectCRC = 1096608480
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -1735,7 +1735,7 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3 = SharedTangi
 	clientObjectCRC = 139562349
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3, "object/tangible/furniture/all/shared_frn_all_data_terminal_wall_s3.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_lg_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_lg_s1.apt",
@@ -1788,7 +1788,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_lg_s1 = SharedTangibleOb
 	clientObjectCRC = 3436169521
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s1, "object/tangible/furniture/all/shared_frn_all_decorative_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s1, "object/tangible/furniture/all/shared_frn_all_decorative_lg_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_lg_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_lg_s2.apt",
@@ -1841,7 +1841,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_lg_s2 = SharedTangibleOb
 	clientObjectCRC = 400056742
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s2, "object/tangible/furniture/all/shared_frn_all_decorative_lg_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s2, "object/tangible/furniture/all/shared_frn_all_decorative_lg_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s1.apt",
@@ -1894,7 +1894,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s1 = SharedTangibleOb
 	clientObjectCRC = 4001814831
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s1, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s1, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_sm_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s2.apt",
@@ -1947,7 +1947,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s2 = SharedTangibleOb
 	clientObjectCRC = 898724280
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s2, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s2, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_sm_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s3.apt",
@@ -2000,7 +2000,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s3 = SharedTangibleOb
 	clientObjectCRC = 2090604085
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s3, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s3, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s3.iff")
 
 object_tangible_furniture_all_shared_frn_all_decorative_sm_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s4.apt",
@@ -2053,7 +2053,7 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s4 = SharedTangibleOb
 	clientObjectCRC = 2273262881
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s4, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s4, "object/tangible/furniture/all/shared_frn_all_decorative_sm_s4.iff")
 
 object_tangible_furniture_all_shared_frn_all_desk_map_table = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_war_room_console.apt",
@@ -2106,7 +2106,7 @@ object_tangible_furniture_all_shared_frn_all_desk_map_table = SharedTangibleObje
 	clientObjectCRC = 2805336181
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table, "object/tangible/furniture/all/shared_frn_all_desk_map_table.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table, "object/tangible/furniture/all/shared_frn_all_desk_map_table.iff")
 
 object_tangible_furniture_all_shared_frn_all_desk_map_table_insert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_war_room_console_display.apt",
@@ -2159,7 +2159,7 @@ object_tangible_furniture_all_shared_frn_all_desk_map_table_insert = SharedTangi
 	clientObjectCRC = 1189355734
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table_insert, "object/tangible/furniture/all/shared_frn_all_desk_map_table_insert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table_insert, "object/tangible/furniture/all/shared_frn_all_desk_map_table_insert.iff")
 
 object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_desk_radar_topology_screen.apt",
@@ -2212,7 +2212,7 @@ object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen = Shared
 	clientObjectCRC = 3848687606
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen, "object/tangible/furniture/all/shared_frn_all_desk_radar_topology_screen.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen, "object/tangible/furniture/all/shared_frn_all_desk_radar_topology_screen.iff")
 
 object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_gaming_s01.apt",
@@ -2265,7 +2265,7 @@ object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01 = SharedTangibleOb
 	clientObjectCRC = 1694461731
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01, "object/tangible/furniture/all/shared_frn_all_gaming_kiosk_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01, "object/tangible/furniture/all/shared_frn_all_gaming_kiosk_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_jedi_council_seat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_council_seat_s1.apt",
@@ -2318,7 +2318,7 @@ object_tangible_furniture_all_shared_frn_all_jedi_council_seat = SharedTangibleO
 	clientObjectCRC = 2800172243
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_jedi_council_seat, "object/tangible/furniture/all/shared_frn_all_jedi_council_seat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_jedi_council_seat, "object/tangible/furniture/all/shared_frn_all_jedi_council_seat.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s1.apt",
@@ -2371,7 +2371,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01 = SharedT
 	clientObjectCRC = 3521956956
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s1_lit.apt",
@@ -2424,7 +2424,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit = Sha
 	clientObjectCRC = 3324544895
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s01_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s01_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s2.apt",
@@ -2477,7 +2477,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02 = SharedT
 	clientObjectCRC = 184247499
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s2_lit.apt",
@@ -2530,7 +2530,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit = Sha
 	clientObjectCRC = 3571999842
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s02_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_free_s02_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_lamp_candlestick_tbl_s2.apt",
@@ -2583,7 +2583,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01 = SharedTa
 	clientObjectCRC = 4181620046
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2.apt",
@@ -2636,7 +2636,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02 = SharedTa
 	clientObjectCRC = 573169113
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_lamp_candlestick_tbl_s1.apt",
@@ -2689,7 +2689,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03 = SharedTa
 	clientObjectCRC = 1797569108
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03, "object/tangible/furniture/all/shared_frn_all_lamp_candlestick_tbl_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_desk_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s1.apt",
@@ -2742,7 +2742,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s01 = SharedTangibleObjec
 	clientObjectCRC = 2360472234
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s1_lit.apt",
@@ -2795,7 +2795,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit = SharedTangibleO
 	clientObjectCRC = 382797400
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s01_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s01_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_desk_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s2.apt",
@@ -2848,7 +2848,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s02 = SharedTangibleObjec
 	clientObjectCRC = 1470519869
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s2_lit.apt",
@@ -2901,7 +2901,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit = SharedTangibleO
 	clientObjectCRC = 68281669
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s02_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_desk_s02_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s1.apt",
@@ -2954,7 +2954,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s01 = SharedTangibleObjec
 	clientObjectCRC = 1325371987
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01, "object/tangible/furniture/all/shared_frn_all_lamp_free_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01, "object/tangible/furniture/all/shared_frn_all_lamp_free_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s1_lit.apt",
@@ -3007,7 +3007,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit = SharedTangibleO
 	clientObjectCRC = 1805089359
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s01_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s01_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s2.apt",
@@ -3060,7 +3060,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s02 = SharedTangibleObjec
 	clientObjectCRC = 2515024580
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02, "object/tangible/furniture/all/shared_frn_all_lamp_free_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02, "object/tangible/furniture/all/shared_frn_all_lamp_free_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s2_lit.apt",
@@ -3113,7 +3113,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit = SharedTangibleO
 	clientObjectCRC = 2035784018
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s02_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s02_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s3.apt",
@@ -3166,7 +3166,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s03 = SharedTangibleObjec
 	clientObjectCRC = 3706019145
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03, "object/tangible/furniture/all/shared_frn_all_lamp_free_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03, "object/tangible/furniture/all/shared_frn_all_lamp_free_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s3_lit.apt",
@@ -3219,7 +3219,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit = SharedTangibleO
 	clientObjectCRC = 2337747764
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s03_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s03_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s4.apt",
@@ -3272,7 +3272,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s04 = SharedTangibleObjec
 	clientObjectCRC = 654734941
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04, "object/tangible/furniture/all/shared_frn_all_lamp_free_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04, "object/tangible/furniture/all/shared_frn_all_lamp_free_s04.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s4_lit.apt",
@@ -3325,7 +3325,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit = SharedTangibleO
 	clientObjectCRC = 1557553000
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s04_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit, "object/tangible/furniture/all/shared_frn_all_lamp_free_s04_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s1.apt",
@@ -3378,7 +3378,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s01 = SharedTangibleObje
 	clientObjectCRC = 2424631679
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s01, "object/tangible/furniture/all/shared_frn_all_lamp_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s01, "object/tangible/furniture/all/shared_frn_all_lamp_table_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_table_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s2.apt",
@@ -3431,7 +3431,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s02 = SharedTangibleObje
 	clientObjectCRC = 1267948008
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s02, "object/tangible/furniture/all/shared_frn_all_lamp_table_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s02, "object/tangible/furniture/all/shared_frn_all_lamp_table_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_table_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s3.apt",
@@ -3484,7 +3484,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s03 = SharedTangibleObje
 	clientObjectCRC = 43925093
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s03, "object/tangible/furniture/all/shared_frn_all_lamp_table_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s03, "object/tangible/furniture/all/shared_frn_all_lamp_table_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tatt_lamp_tbl_s1.apt",
@@ -3537,7 +3537,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01 = SharedTangibleObjec
 	clientObjectCRC = 3608725747
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01, "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01, "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tatt_lamp_tbl_s1_lit.apt",
@@ -3590,7 +3590,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit = SharedTangibleO
 	clientObjectCRC = 822321525
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s1.apt",
@@ -3643,7 +3643,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01 = SharedTangibleObject
 	clientObjectCRC = 4035162080
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s1_lit.apt",
@@ -3696,7 +3696,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit = SharedTangibleOb
 	clientObjectCRC = 761322007
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s01_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s01_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s2.apt",
@@ -3749,7 +3749,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02 = SharedTangibleObject
 	clientObjectCRC = 731121527
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s2_lit.apt",
@@ -3802,7 +3802,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit = SharedTangibleOb
 	clientObjectCRC = 1067464970
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s02_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s02_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s3.apt",
@@ -3855,7 +3855,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03 = SharedTangibleObject
 	clientObjectCRC = 1654219002
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s3_lit.apt",
@@ -3908,7 +3908,7 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit = SharedTangibleOb
 	clientObjectCRC = 3449852780
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s03_lit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit, "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s03_lit.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_death_watch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s2.apt",
@@ -3961,7 +3961,7 @@ object_tangible_furniture_all_shared_frn_all_light_death_watch = SharedTangibleO
 	clientObjectCRC = 4031925830
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_death_watch, "object/tangible/furniture/all/shared_frn_all_light_death_watch.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_death_watch, "object/tangible/furniture/all/shared_frn_all_light_death_watch.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s1_lit.apt",
@@ -4014,7 +4014,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01 = S
 	clientObjectCRC = 1579415490
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_free_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_free_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_free_s2_lit.apt",
@@ -4067,7 +4067,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02 = S
 	clientObjectCRC = 2234802005
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_free_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_free_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_lamp_candlestick_tbl_s2_lit.apt",
@@ -4120,7 +4120,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01 = Sh
 	clientObjectCRC = 1771349838
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2_lit.apt",
@@ -4173,7 +4173,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02 = Sh
 	clientObjectCRC = 2994933721
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2_lit.apt",
@@ -4226,7 +4226,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red 
 	clientObjectCRC = 284598381
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s02_red.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s02_red.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_lamp_candlestick_tbl_s1_lit.apt",
@@ -4279,7 +4279,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03 = Sh
 	clientObjectCRC = 4220414036
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s1_lit.apt",
@@ -4332,7 +4332,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01 = SharedTangibl
 	clientObjectCRC = 2383392501
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_desk_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_desk_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_desk_s2_lit.apt",
@@ -4385,7 +4385,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02 = SharedTangibl
 	clientObjectCRC = 1427637858
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_desk_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_desk_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s1_lit.apt",
@@ -4438,7 +4438,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01 = SharedTangibl
 	clientObjectCRC = 1279381004
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s2_lit.apt",
@@ -4491,7 +4491,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02 = SharedTangibl
 	clientObjectCRC = 2539021979
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s3_lit.apt",
@@ -4544,7 +4544,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03 = SharedTangibl
 	clientObjectCRC = 3730506006
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s4_lit.apt",
@@ -4597,7 +4597,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04 = SharedTangibl
 	clientObjectCRC = 632826370
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04, "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s04.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s1_lit.apt",
@@ -4650,7 +4650,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01 = SharedTangib
 	clientObjectCRC = 660247825
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s2_lit.apt",
@@ -4703,7 +4703,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02 = SharedTangib
 	clientObjectCRC = 4232920454
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_tbl_s3_lit.apt",
@@ -4756,7 +4756,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03 = SharedTangib
 	clientObjectCRC = 3040893451
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03, "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tatt_lamp_tbl_s1_lit.apt",
@@ -4809,7 +4809,7 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01 = SharedTangibl
 	clientObjectCRC = 3584464044
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_tatt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_tatt_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_plant_potted_lg_s1.apt",
@@ -4862,7 +4862,7 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1 = SharedTangible
 	clientObjectCRC = 2264087913
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_plant_potted_lg_s2.apt",
@@ -4915,7 +4915,7 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2 = SharedTangible
 	clientObjectCRC = 1575261694
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s2.iff")
 
 object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_plant_potted_lg_s3.apt",
@@ -4968,7 +4968,7 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3 = SharedTangible
 	clientObjectCRC = 350876275
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s3.iff")
 
 object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_plant_potted_lg_s4.apt",
@@ -5021,7 +5021,7 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4 = SharedTangible
 	clientObjectCRC = 4010465639
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4, "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s4.iff")
 
 object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s01.apt",
@@ -5074,7 +5074,7 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01 = SharedTangi
 	clientObjectCRC = 1722056472
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s02.apt",
@@ -5127,7 +5127,7 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02 = SharedTangi
 	clientObjectCRC = 3182679951
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s03.apt",
@@ -5180,7 +5180,7 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03 = SharedTangi
 	clientObjectCRC = 4106137602
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s04.apt",
@@ -5233,7 +5233,7 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04 = SharedTangi
 	clientObjectCRC = 257792790
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s04.iff")
 
 object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s05.apt",
@@ -5286,7 +5286,7 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05 = SharedTangi
 	clientObjectCRC = 1179712667
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05, "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s05.iff")
 
 object_tangible_furniture_all_shared_frn_all_professor_desk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -5339,7 +5339,7 @@ object_tangible_furniture_all_shared_frn_all_professor_desk = SharedTangibleObje
 	clientObjectCRC = 4069121058
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_professor_desk, "object/tangible/furniture/all/shared_frn_all_professor_desk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_professor_desk, "object/tangible/furniture/all/shared_frn_all_professor_desk.iff")
 
 object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_lg_s1.apt",
@@ -5392,7 +5392,7 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01 = Shar
 	clientObjectCRC = 2466207088
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_01.iff")
 
 object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_lg_s02.apt",
@@ -5445,7 +5445,7 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02 = Shar
 	clientObjectCRC = 1240006119
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_02.iff")
 
 object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_lg_s03.apt",
@@ -5498,7 +5498,7 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03 = Shar
 	clientObjectCRC = 15047274
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_03.iff")
 
 object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_lg_s04.apt",
@@ -5551,7 +5551,7 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04 = Shar
 	clientObjectCRC = 4211519870
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_04.iff")
 
 object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_lg_s05.apt",
@@ -5604,7 +5604,7 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05 = Shar
 	clientObjectCRC = 2987120371
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05, "object/tangible/furniture/all/shared_frn_all_rug_rectangle_large_style_05.iff")
 
 object_tangible_furniture_all_shared_frn_all_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s01.apt",
@@ -5657,7 +5657,7 @@ object_tangible_furniture_all_shared_frn_all_table_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 3131467531
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s01, "object/tangible/furniture/all/shared_frn_all_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_table_s01, "object/tangible/furniture/all/shared_frn_all_table_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_table_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s02.apt",
@@ -5710,7 +5710,7 @@ object_tangible_furniture_all_shared_frn_all_table_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 1639042972
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s02, "object/tangible/furniture/all/shared_frn_all_table_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_table_s02, "object/tangible/furniture/all/shared_frn_all_table_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_table_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s03.apt",
@@ -5763,7 +5763,7 @@ object_tangible_furniture_all_shared_frn_all_table_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 683452433
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s03, "object/tangible/furniture/all/shared_frn_all_table_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_table_s03, "object/tangible/furniture/all/shared_frn_all_table_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_technical_console_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_table.apt",
@@ -5816,7 +5816,7 @@ object_tangible_furniture_all_shared_frn_all_technical_console_s01 = SharedTangi
 	clientObjectCRC = 891789876
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s01, "object/tangible/furniture/all/shared_frn_all_technical_console_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s01, "object/tangible/furniture/all/shared_frn_all_technical_console_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_technical_console_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_tableglobe.apt",
@@ -5869,7 +5869,7 @@ object_tangible_furniture_all_shared_frn_all_technical_console_s02 = SharedTangi
 	clientObjectCRC = 3996125859
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s02, "object/tangible/furniture/all/shared_frn_all_technical_console_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s02, "object/tangible/furniture/all/shared_frn_all_technical_console_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_throwpillow_med_s01.apt",
@@ -5922,7 +5922,7 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01 = SharedTangibl
 	clientObjectCRC = 554677542
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_throwpillow_med_s02.apt",
@@ -5975,7 +5975,7 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02 = SharedTangibl
 	clientObjectCRC = 4195884465
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s02.iff")
 
 object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_throwpillow_med_s03.apt",
@@ -6028,7 +6028,7 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03 = SharedTangibl
 	clientObjectCRC = 3004529212
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03, "object/tangible/furniture/all/shared_frn_all_throwpillow_med_s03.iff")
 
 object_tangible_furniture_all_shared_frn_all_tiki_torch_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tiki_torch_s1.apt",
@@ -6081,7 +6081,7 @@ object_tangible_furniture_all_shared_frn_all_tiki_torch_s1 = SharedTangibleObjec
 	clientObjectCRC = 3066089836
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tiki_torch_s1, "object/tangible/furniture/all/shared_frn_all_tiki_torch_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_tiki_torch_s1, "object/tangible/furniture/all/shared_frn_all_tiki_torch_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_toolchest_lg_s01.apt",
@@ -6134,7 +6134,7 @@ object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01 = SharedTangibleOb
 	clientObjectCRC = 4055857984
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01, "object/tangible/furniture/all/shared_frn_all_toolchest_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01, "object/tangible/furniture/all/shared_frn_all_toolchest_lg_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_toolchest_med_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_toolchest_med_s01.apt",
@@ -6187,7 +6187,7 @@ object_tangible_furniture_all_shared_frn_all_toolchest_med_s01 = SharedTangibleO
 	clientObjectCRC = 1035190183
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_med_s01, "object/tangible/furniture/all/shared_frn_all_toolchest_med_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_med_s01, "object/tangible/furniture/all/shared_frn_all_toolchest_med_s01.iff")
 
 object_tangible_furniture_all_shared_frn_all_tree_potted_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tree_potted_s1.apt",
@@ -6240,7 +6240,7 @@ object_tangible_furniture_all_shared_frn_all_tree_potted_s1 = SharedTangibleObje
 	clientObjectCRC = 1995765132
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s1, "object/tangible/furniture/all/shared_frn_all_tree_potted_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s1, "object/tangible/furniture/all/shared_frn_all_tree_potted_s1.iff")
 
 object_tangible_furniture_all_shared_frn_all_tree_potted_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tree_potted_s2.apt",
@@ -6293,7 +6293,7 @@ object_tangible_furniture_all_shared_frn_all_tree_potted_s2 = SharedTangibleObje
 	clientObjectCRC = 2917358875
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s2, "object/tangible/furniture/all/shared_frn_all_tree_potted_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s2, "object/tangible/furniture/all/shared_frn_all_tree_potted_s2.iff")
 
 object_tangible_furniture_all_shared_frn_bench_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_bench.apt",
@@ -6346,4 +6346,4 @@ object_tangible_furniture_all_shared_frn_bench_generic = SharedTangibleObjectTem
 	clientObjectCRC = 1802643293
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_bench_generic, "object/tangible/furniture/all/shared_frn_bench_generic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_bench_generic, "object/tangible/furniture/all/shared_frn_bench_generic.iff")

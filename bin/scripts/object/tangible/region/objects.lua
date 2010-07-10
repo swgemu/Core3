@@ -92,7 +92,7 @@ object_tangible_region_shared_battlefield_marker = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3641759801
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_battlefield_marker, "object/tangible/region/shared_battlefield_marker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_battlefield_marker, "object/tangible/region/shared_battlefield_marker.iff")
 
 object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_10m.apt",
@@ -145,7 +145,7 @@ object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2066164498
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_10, "object/tangible/region/shared_deliver_region_10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_10, "object/tangible/region/shared_deliver_region_10.iff")
 
 object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_15m.apt",
@@ -198,7 +198,7 @@ object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 316591900
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_15, "object/tangible/region/shared_deliver_region_15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_15, "object/tangible/region/shared_deliver_region_15.iff")
 
 object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_20m.apt",
@@ -251,7 +251,7 @@ object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1449082010
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_20, "object/tangible/region/shared_deliver_region_20.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_20, "object/tangible/region/shared_deliver_region_20.iff")
 
 object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_25m.apt",
@@ -304,7 +304,7 @@ object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1067899028
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_25, "object/tangible/region/shared_deliver_region_25.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_25, "object/tangible/region/shared_deliver_region_25.iff")
 
 object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30m.apt",
@@ -357,7 +357,7 @@ object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1299657186
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_30, "object/tangible/region/shared_deliver_region_30.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_30, "object/tangible/region/shared_deliver_region_30.iff")
 
 object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_05m.apt",
@@ -410,4 +410,4 @@ object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3353678877
 }
 
-ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_5, "object/tangible/region/shared_deliver_region_5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_5, "object/tangible/region/shared_deliver_region_5.iff")

@@ -92,4 +92,4 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 	clientObjectCRC = 1937734566
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")

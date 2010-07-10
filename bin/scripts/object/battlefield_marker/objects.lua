@@ -92,7 +92,7 @@ object_battlefield_marker_shared_battlefield_marker = SharedBattlefieldMarkerObj
 	clientObjectCRC = 400647243
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker, "object/battlefield_marker/shared_battlefield_marker.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker, "object/battlefield_marker/shared_battlefield_marker.iff")
 
 object_battlefield_marker_shared_battlefield_marker_128m = SharedBattlefieldMarkerObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -145,7 +145,7 @@ object_battlefield_marker_shared_battlefield_marker_128m = SharedBattlefieldMark
 	clientObjectCRC = 772486765
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_128m, "object/battlefield_marker/shared_battlefield_marker_128m.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_128m, "object/battlefield_marker/shared_battlefield_marker_128m.iff")
 
 object_battlefield_marker_shared_battlefield_marker_192m = SharedBattlefieldMarkerObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -198,7 +198,7 @@ object_battlefield_marker_shared_battlefield_marker_192m = SharedBattlefieldMark
 	clientObjectCRC = 1675330696
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_192m, "object/battlefield_marker/shared_battlefield_marker_192m.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_192m, "object/battlefield_marker/shared_battlefield_marker_192m.iff")
 
 object_battlefield_marker_shared_battlefield_marker_256m = SharedBattlefieldMarkerObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -251,7 +251,7 @@ object_battlefield_marker_shared_battlefield_marker_256m = SharedBattlefieldMark
 	clientObjectCRC = 2839286307
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_256m, "object/battlefield_marker/shared_battlefield_marker_256m.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_256m, "object/battlefield_marker/shared_battlefield_marker_256m.iff")
 
 object_battlefield_marker_shared_battlefield_marker_384m = SharedBattlefieldMarkerObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -304,7 +304,7 @@ object_battlefield_marker_shared_battlefield_marker_384m = SharedBattlefieldMark
 	clientObjectCRC = 3242162717
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_384m, "object/battlefield_marker/shared_battlefield_marker_384m.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_384m, "object/battlefield_marker/shared_battlefield_marker_384m.iff")
 
 object_battlefield_marker_shared_battlefield_marker_512m = SharedBattlefieldMarkerObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -357,4 +357,4 @@ object_battlefield_marker_shared_battlefield_marker_512m = SharedBattlefieldMark
 	clientObjectCRC = 2057605617
 }
 
-ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_512m, "object/battlefield_marker/shared_battlefield_marker_512m.iff")
+ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_512m, "object/battlefield_marker/shared_battlefield_marker_512m.iff")

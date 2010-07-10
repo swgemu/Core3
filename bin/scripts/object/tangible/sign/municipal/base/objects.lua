@@ -92,4 +92,4 @@ object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleO
 	clientObjectCRC = 354971311
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_municipal_base_shared_municipal_sign_base, "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_base_shared_municipal_sign_base, "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff")

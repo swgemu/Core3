@@ -92,7 +92,7 @@ object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2542789035
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt, "object/tangible/lair/flewt/shared_lair_flewt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt, "object/tangible/lair/flewt/shared_lair_flewt.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 1133603735
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, "object/tangible/lair/flewt/shared_lair_flewt_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, "object/tangible/lair/flewt/shared_lair_flewt_forest.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 2897911206
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff")

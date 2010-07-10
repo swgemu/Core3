@@ -92,7 +92,7 @@ object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s01 = SharedTangi
 	clientObjectCRC = 2582989929
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s01, "object/tangible/ship/attachment/weapon/shared_aggressor_weapon_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s01, "object/tangible/ship/attachment/weapon/shared_aggressor_weapon_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor_weapon_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02 = SharedTangi
 	clientObjectCRC = 1122166014
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02, "object/tangible/ship/attachment/weapon/shared_aggressor_weapon_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02, "object/tangible/ship/attachment/weapon/shared_aggressor_weapon_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s01 = SharedTangibleO
 	clientObjectCRC = 3551073047
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s01, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s01, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s02.apt",
@@ -251,7 +251,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s02 = SharedTangibleO
 	clientObjectCRC = 146717568
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s02, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s02, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s03.apt",
@@ -304,7 +304,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s03 = SharedTangibleO
 	clientObjectCRC = 1102306317
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s03, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s03, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s04.apt",
@@ -357,7 +357,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s04 = SharedTangibleO
 	clientObjectCRC = 3125868313
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s04, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s04, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s05.apt",
@@ -410,7 +410,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s05 = SharedTangibleO
 	clientObjectCRC = 4082995348
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s05, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s05, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s06.apt",
@@ -463,7 +463,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s06 = SharedTangibleO
 	clientObjectCRC = 675952643
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s06, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_awing_weapon_s06, "object/tangible/ship/attachment/weapon/shared_awing_weapon_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_missile_pod_s01.apt",
@@ -516,7 +516,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01 = S
 	clientObjectCRC = 2822706074
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_missile_pod_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_missile_pod_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_missile_pod_s02.apt",
@@ -569,7 +569,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02 = S
 	clientObjectCRC = 1932049165
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_missile_pod_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_missile_pod_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s01.apt",
@@ -622,7 +622,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01 = Share
 	clientObjectCRC = 3725694028
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s02.apt",
@@ -675,7 +675,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02 = Share
 	clientObjectCRC = 84294875
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s03.apt",
@@ -728,7 +728,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03 = Share
 	clientObjectCRC = 1275812694
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s04.apt",
@@ -781,7 +781,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04 = Share
 	clientObjectCRC = 3085463618
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s05.apt",
@@ -834,7 +834,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05 = Share
 	clientObjectCRC = 4276426703
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s06.apt",
@@ -887,7 +887,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06 = Share
 	clientObjectCRC = 636665688
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s01.apt",
@@ -940,7 +940,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01 = Share
 	clientObjectCRC = 3436279633
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s02.apt",
@@ -993,7 +993,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02 = Share
 	clientObjectCRC = 398909382
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s03.apt",
@@ -1046,7 +1046,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03 = Share
 	clientObjectCRC = 1590409291
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s04.apt",
@@ -1099,7 +1099,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04 = Share
 	clientObjectCRC = 2770899807
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s05.apt",
@@ -1152,7 +1152,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05 = Share
 	clientObjectCRC = 3961910482
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s06.apt",
@@ -1205,7 +1205,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06 = Share
 	clientObjectCRC = 926047301
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s01.apt",
@@ -1258,7 +1258,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01 = Share
 	clientObjectCRC = 1053941047
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s02.apt",
@@ -1311,7 +1311,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02 = Share
 	clientObjectCRC = 3854988704
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s03.apt",
@@ -1364,7 +1364,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03 = Share
 	clientObjectCRC = 2898989613
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s04.apt",
@@ -1417,7 +1417,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04 = Share
 	clientObjectCRC = 1462253881
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s05.apt",
@@ -1470,7 +1470,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05 = Share
 	clientObjectCRC = 505765556
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s06.apt",
@@ -1523,7 +1523,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06 = Share
 	clientObjectCRC = 3308451363
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_heavy_weapon3_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s01.apt",
@@ -1576,7 +1576,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01 = Shared
 	clientObjectCRC = 3382429692
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s02.apt",
@@ -1629,7 +1629,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02 = Shared
 	clientObjectCRC = 311193451
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s03.apt",
@@ -1682,7 +1682,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03 = Shared
 	clientObjectCRC = 1535183078
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s04.apt",
@@ -1735,7 +1735,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04 = Shared
 	clientObjectCRC = 2690786290
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s05.apt",
@@ -1788,7 +1788,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05 = Shared
 	clientObjectCRC = 3916383359
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s06.apt",
@@ -1841,7 +1841,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06 = Shared
 	clientObjectCRC = 846785768
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_light_weapon_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s01.apt",
@@ -1894,7 +1894,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01 = Shar
 	clientObjectCRC = 88180936
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s02.apt",
@@ -1947,7 +1947,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02 = Shar
 	clientObjectCRC = 3730186335
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s03.apt",
@@ -2000,7 +2000,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03 = Shar
 	clientObjectCRC = 2539341778
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s04.apt",
@@ -2053,7 +2053,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04 = Shar
 	clientObjectCRC = 1824025798
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s01.apt",
@@ -2106,7 +2106,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01 = Shar
 	clientObjectCRC = 394357717
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s02.apt",
@@ -2159,7 +2159,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02 = Shar
 	clientObjectCRC = 3432432450
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s03.apt",
@@ -2212,7 +2212,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03 = Shar
 	clientObjectCRC = 2241569999
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
@@ -2265,7 +2265,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04 = Shar
 	clientObjectCRC = 2121830363
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
@@ -2318,7 +2318,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05 = Shar
 	clientObjectCRC = 930474070
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
@@ -2371,7 +2371,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06 = Shar
 	clientObjectCRC = 3965862081
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_blacksun_medium_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s01.apt",
@@ -2424,7 +2424,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01 = SharedTangible
 	clientObjectCRC = 1110287443
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s02.apt",
@@ -2477,7 +2477,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02 = SharedTangible
 	clientObjectCRC = 2570718404
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s03.apt",
@@ -2530,7 +2530,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03 = SharedTangible
 	clientObjectCRC = 3493292873
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s04.apt",
@@ -2583,7 +2583,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04 = SharedTangible
 	clientObjectCRC = 735330397
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s05.apt",
@@ -2636,7 +2636,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05 = SharedTangible
 	clientObjectCRC = 1658398672
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s06.apt",
@@ -2689,7 +2689,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06 = SharedTangible
 	clientObjectCRC = 3117322055
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s01.apt",
@@ -2742,7 +2742,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01 = SharedTangibl
 	clientObjectCRC = 3899597756
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s02.apt",
@@ -2795,7 +2795,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02 = SharedTangibl
 	clientObjectCRC = 863537963
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s03.apt",
@@ -2848,7 +2848,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03 = SharedTangibl
 	clientObjectCRC = 2054548646
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s04.apt",
@@ -2901,7 +2901,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04 = SharedTangibl
 	clientObjectCRC = 2174142386
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s05.apt",
@@ -2954,7 +2954,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05 = SharedTangibl
 	clientObjectCRC = 3365642303
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s06.apt",
@@ -3007,7 +3007,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06 = SharedTangibl
 	clientObjectCRC = 327944360
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2l_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s01.apt",
@@ -3060,7 +3060,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01 = SharedTangibl
 	clientObjectCRC = 1542061422
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s02.apt",
@@ -3113,7 +3113,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02 = SharedTangibl
 	clientObjectCRC = 2164151801
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s03.apt",
@@ -3166,7 +3166,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03 = SharedTangibl
 	clientObjectCRC = 3388158580
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s04.apt",
@@ -3219,7 +3219,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04 = SharedTangibl
 	clientObjectCRC = 839915872
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s05.apt",
@@ -3272,7 +3272,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05 = SharedTangibl
 	clientObjectCRC = 2065530605
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s06.apt",
@@ -3325,7 +3325,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06 = SharedTangibl
 	clientObjectCRC = 2685064826
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon2r_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s01.apt",
@@ -3378,7 +3378,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01 = SharedTangible
 	clientObjectCRC = 2733501736
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s02.apt",
@@ -3431,7 +3431,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02 = SharedTangible
 	clientObjectCRC = 2046444991
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s03.apt",
@@ -3484,7 +3484,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03 = SharedTangible
 	clientObjectCRC = 821502514
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s04.apt",
@@ -3537,7 +3537,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04 = SharedTangible
 	clientObjectCRC = 3407087910
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s05.apt",
@@ -3590,7 +3590,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05 = SharedTangible
 	clientObjectCRC = 2182704811
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s06.apt",
@@ -3643,7 +3643,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06 = SharedTangible
 	clientObjectCRC = 1494140476
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_bwing_weapon3_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_large_base_s01.apt",
@@ -3696,7 +3696,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_ba
 	clientObjectCRC = 1889933396
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_base_s01, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_large_base_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_base_s01, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_large_base_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_side_l.apt",
@@ -3749,7 +3749,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l =
 	clientObjectCRC = 2900942561
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_side_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_side_l.iff")
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_side_r.apt",
@@ -3802,7 +3802,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r =
 	clientObjectCRC = 3695025010
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_side_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_side_r.iff")
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_small_s01.apt",
@@ -3855,7 +3855,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s0
 	clientObjectCRC = 2014065489
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s01, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s01, "object/tangible/ship/attachment/weapon/shared_corellian_corvette_turret_small_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_decimator_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_turret_base.apt",
@@ -3908,7 +3908,7 @@ object_tangible_ship_attachment_weapon_shared_decimator_turret_base = SharedTang
 	clientObjectCRC = 3839453665
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_decimator_turret_base, "object/tangible/ship/attachment/weapon/shared_decimator_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_decimator_turret_base, "object/tangible/ship/attachment/weapon/shared_decimator_turret_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_missile_pod_s01.apt",
@@ -3961,7 +3961,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01 = Share
 	clientObjectCRC = 2160314161
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_missile_pod_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_missile_pod_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_missile_pod_s02.apt",
@@ -4014,7 +4014,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02 = Share
 	clientObjectCRC = 1540648870
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_missile_pod_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_missile_pod_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s01.apt",
@@ -4067,7 +4067,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01 = SharedTan
 	clientObjectCRC = 2582307984
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s02.apt",
@@ -4120,7 +4120,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02 = SharedTan
 	clientObjectCRC = 1123896327
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s03.apt",
@@ -4173,7 +4173,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03 = SharedTan
 	clientObjectCRC = 200289162
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s04.apt",
@@ -4226,7 +4226,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04 = SharedTan
 	clientObjectCRC = 4027777182
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s05.apt",
@@ -4279,7 +4279,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05 = SharedTan
 	clientObjectCRC = 3105777427
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s06.apt",
@@ -4332,7 +4332,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06 = SharedTan
 	clientObjectCRC = 1644810116
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s01.apt",
@@ -4385,7 +4385,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01 = SharedTan
 	clientObjectCRC = 2334787469
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s02.apt",
@@ -4438,7 +4438,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02 = SharedTan
 	clientObjectCRC = 1346219802
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s03.apt",
@@ -4491,7 +4491,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03 = SharedTan
 	clientObjectCRC = 422627479
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s04.apt",
@@ -4544,7 +4544,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04 = SharedTan
 	clientObjectCRC = 3805537155
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s05.apt",
@@ -4597,7 +4597,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05 = SharedTan
 	clientObjectCRC = 2883486734
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s06.apt",
@@ -4650,7 +4650,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06 = SharedTan
 	clientObjectCRC = 1892232345
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s01.apt",
@@ -4703,7 +4703,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01 = SharedTan
 	clientObjectCRC = 2032840171
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s02.apt",
@@ -4756,7 +4756,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02 = SharedTan
 	clientObjectCRC = 2721908092
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s03.apt",
@@ -4809,7 +4809,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03 = SharedTan
 	clientObjectCRC = 3945816817
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s04.apt",
@@ -4862,7 +4862,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04 = SharedTan
 	clientObjectCRC = 282282469
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s05.apt",
@@ -4915,7 +4915,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05 = SharedTan
 	clientObjectCRC = 1507733096
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s06.apt",
@@ -4968,7 +4968,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06 = SharedTan
 	clientObjectCRC = 2194245375
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06, "object/tangible/ship/attachment/weapon/shared_hutt_heavy_weapon3_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s01.apt",
@@ -5021,7 +5021,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01 = SharedTang
 	clientObjectCRC = 3452909818
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s01.apt",
@@ -5074,7 +5074,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02 = SharedTang
 	clientObjectCRC = 383291501
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s03.apt",
@@ -5127,7 +5127,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03 = SharedTang
 	clientObjectCRC = 1607858144
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s04.apt",
@@ -5180,7 +5180,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04 = SharedTang
 	clientObjectCRC = 2755058932
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s05.apt",
@@ -5233,7 +5233,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05 = SharedTang
 	clientObjectCRC = 3980114809
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s06.apt",
@@ -5286,7 +5286,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06 = SharedTang
 	clientObjectCRC = 908858350
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06, "object/tangible/ship/attachment/weapon/shared_hutt_light_weapon_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s01.apt",
@@ -5339,7 +5339,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01 = SharedTa
 	clientObjectCRC = 3572528314
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s02.apt",
@@ -5392,7 +5392,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02 = SharedTa
 	clientObjectCRC = 266853421
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s03.apt",
@@ -5445,7 +5445,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03 = SharedTa
 	clientObjectCRC = 1189788576
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s04.apt",
@@ -5498,7 +5498,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04 = SharedTa
 	clientObjectCRC = 3171520692
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s05.apt",
@@ -5551,7 +5551,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05 = SharedTa
 	clientObjectCRC = 4093966137
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s06.apt",
@@ -5604,7 +5604,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06 = SharedTa
 	clientObjectCRC = 789798830
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s01.apt",
@@ -5657,7 +5657,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01 = SharedTa
 	clientObjectCRC = 3325073319
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s02.apt",
@@ -5710,7 +5710,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02 = SharedTa
 	clientObjectCRC = 489111344
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s03.apt",
@@ -5763,7 +5763,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03 = SharedTa
 	clientObjectCRC = 1412061373
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s04.apt",
@@ -5816,7 +5816,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04 = SharedTa
 	clientObjectCRC = 2949215145
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s05.apt",
@@ -5869,7 +5869,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05 = SharedTa
 	clientObjectCRC = 3871609892
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s06.apt",
@@ -5922,7 +5922,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06 = SharedTa
 	clientObjectCRC = 1037286579
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_hutt_medium_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turret_ball.apt",
@@ -5975,7 +5975,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball = Sha
 	clientObjectCRC = 1577369987
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turret_ball.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turret_ball.iff")
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turretbase_nose.apt",
@@ -6028,7 +6028,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose =
 	clientObjectCRC = 3326093060
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turretbase_nose.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turretbase_nose.iff")
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turretbase_wing.apt",
@@ -6081,7 +6081,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing =
 	clientObjectCRC = 3373578911
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turretbase_wing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing, "object/tangible/ship/attachment/weapon/shared_imperial_gunboat_turretbase_wing.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s01.apt",
@@ -6134,7 +6134,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01 = Shared
 	clientObjectCRC = 1950093783
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s02.apt",
@@ -6187,7 +6187,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02 = Shared
 	clientObjectCRC = 2938878272
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s03.apt",
@@ -6240,7 +6240,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03 = Shared
 	clientObjectCRC = 3861307085
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s04.apt",
@@ -6293,7 +6293,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04 = Shared
 	clientObjectCRC = 499512793
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s05.apt",
@@ -6346,7 +6346,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05 = Shared
 	clientObjectCRC = 1422430804
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s06.apt",
@@ -6399,7 +6399,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06 = Shared
 	clientObjectCRC = 2413771459
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s01.apt",
@@ -6452,7 +6452,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01 = Shared
 	clientObjectCRC = 1727853258
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s02.apt",
@@ -6505,7 +6505,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02 = Shared
 	clientObjectCRC = 3186317917
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s03.apt",
@@ -6558,7 +6558,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03 = Shared
 	clientObjectCRC = 4108729808
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s04.apt",
@@ -6611,7 +6611,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04 = Shared
 	clientObjectCRC = 251991748
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s05.apt",
@@ -6664,7 +6664,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05 = Shared
 	clientObjectCRC = 1174958409
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s06.apt",
@@ -6717,7 +6717,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06 = Shared
 	clientObjectCRC = 2636110302
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_kse_firespray_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_lambda_turret = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_turret.apt",
@@ -6770,7 +6770,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_turret = SharedTangibleObje
 	clientObjectCRC = 3734921862
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_lambda_turret, "object/tangible/ship/attachment/weapon/shared_lambda_turret.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_lambda_turret, "object/tangible/ship/attachment/weapon/shared_lambda_turret.iff")
 
 object_tangible_ship_attachment_weapon_shared_lambda_weapon1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_weapon1.apt",
@@ -6823,7 +6823,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_weapon1 = SharedTangibleObj
 	clientObjectCRC = 1662183130
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_lambda_weapon1, "object/tangible/ship/attachment/weapon/shared_lambda_weapon1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_lambda_weapon1, "object/tangible/ship/attachment/weapon/shared_lambda_weapon1.iff")
 
 object_tangible_ship_attachment_weapon_shared_lambda_weapon_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_weapon_body.apt",
@@ -6876,7 +6876,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_weapon_body = SharedTangibl
 	clientObjectCRC = 3035694359
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_lambda_weapon_body, "object/tangible/ship/attachment/weapon/shared_lambda_weapon_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_lambda_weapon_body, "object/tangible/ship/attachment/weapon/shared_lambda_weapon_body.iff")
 
 object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium_turretbase_s01.apt",
@@ -6929,7 +6929,7 @@ object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_bas
 	clientObjectCRC = 3760357625
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_base_s01, "object/tangible/ship/attachment/weapon/shared_merchant_cruiser_medium_turret_base_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_base_s01, "object/tangible/ship/attachment/weapon/shared_merchant_cruiser_medium_turret_base_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat_turretbase_s01.apt",
@@ -6982,7 +6982,7 @@ object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01 = Sha
 	clientObjectCRC = 570224584
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01, "object/tangible/ship/attachment/weapon/shared_rebel_gunboat_turretbase_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01, "object/tangible/ship/attachment/weapon/shared_rebel_gunboat_turretbase_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turret_ball.apt",
@@ -7035,7 +7035,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball 
 	clientObjectCRC = 355284595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_ball.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_ball.iff")
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_nose.apt",
@@ -7088,7 +7088,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose 
 	clientObjectCRC = 1506898161
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_nose.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_nose.iff")
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_s01.apt",
@@ -7141,7 +7141,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01 =
 	clientObjectCRC = 915217099
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_s02.apt",
@@ -7194,7 +7194,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02 =
 	clientObjectCRC = 3986338396
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02, "object/tangible/ship/attachment/weapon/shared_smuggler_warlord_ship_turret_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_turret_base_s01.apt",
@@ -7247,7 +7247,7 @@ object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01 = Sha
 	clientObjectCRC = 2674417340
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01, "object/tangible/ship/attachment/weapon/shared_spacestation_turret_base_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01, "object/tangible/ship/attachment/weapon/shared_spacestation_turret_base_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_turret_base_s02.apt",
@@ -7300,7 +7300,7 @@ object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02 = Sha
 	clientObjectCRC = 1149236779
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02, "object/tangible/ship/attachment/weapon/shared_spacestation_turret_base_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02, "object/tangible/ship/attachment/weapon/shared_spacestation_turret_base_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_mini_turret_base.apt",
@@ -7353,7 +7353,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base = 
 	clientObjectCRC = 4094834880
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_mini_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_mini_turret_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_dome_base.apt",
@@ -7406,7 +7406,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base = 
 	clientObjectCRC = 2546418414
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_dome_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_dome_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_dome_body.apt",
@@ -7459,7 +7459,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body = 
 	clientObjectCRC = 1452946959
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_dome_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_dome_body.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_med_base.apt",
@@ -7512,7 +7512,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base = S
 	clientObjectCRC = 3194550652
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_med_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_med_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_med_gun.apt",
@@ -7565,7 +7565,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun = Sh
 	clientObjectCRC = 1688925698
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_med_gun.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_med_gun.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_square_base.apt",
@@ -7618,7 +7618,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base 
 	clientObjectCRC = 1727578906
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_square_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_square_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_square_body.apt",
@@ -7671,7 +7671,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body 
 	clientObjectCRC = 2812655611
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_square_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body, "object/tangible/ship/attachment/weapon/shared_star_destroyer_turret_square_body.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s01.apt",
@@ -7724,7 +7724,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0 = SharedTa
 	clientObjectCRC = 3105944395
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s01.apt",
@@ -7777,7 +7777,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1 = SharedTa
 	clientObjectCRC = 4029519046
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s02.apt",
@@ -7830,7 +7830,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0 = SharedTa
 	clientObjectCRC = 1759071096
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s02.apt",
@@ -7883,7 +7883,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1 = SharedTa
 	clientObjectCRC = 567553269
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s03.apt",
@@ -7936,7 +7936,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0 = SharedTa
 	clientObjectCRC = 663626601
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s03_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s03_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s03.apt",
@@ -7989,7 +7989,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1 = SharedTa
 	clientObjectCRC = 1854096612
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s03_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s03_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
@@ -8042,7 +8042,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0 = SharedTa
 	clientObjectCRC = 3488294569
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s04_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s04_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
@@ -8095,7 +8095,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1 = SharedTa
 	clientObjectCRC = 2263236900
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s04_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s04_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s05.apt",
@@ -8148,7 +8148,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0 = SharedTa
 	clientObjectCRC = 2159824568
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s05_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s05_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s05.apt",
@@ -8201,7 +8201,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1 = SharedTa
 	clientObjectCRC = 3383830837
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s05_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s05_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s06.apt",
@@ -8254,7 +8254,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0 = SharedTa
 	clientObjectCRC = 1363539595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s06_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s06_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s06.apt",
@@ -8307,7 +8307,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1 = SharedTa
 	clientObjectCRC = 407408902
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s06_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_neg_s06_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s01.apt",
@@ -8360,7 +8360,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0 = SharedTa
 	clientObjectCRC = 1475950668
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s01.apt",
@@ -8413,7 +8413,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1 = SharedTa
 	clientObjectCRC = 519331777
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s02.apt",
@@ -8466,7 +8466,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0 = SharedTa
 	clientObjectCRC = 2248179839
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s02.apt",
@@ -8519,7 +8519,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1 = SharedTa
 	clientObjectCRC = 3473795058
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s03.apt",
@@ -8572,7 +8572,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0 = SharedTa
 	clientObjectCRC = 3377981550
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s03_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s03_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s03.apt",
@@ -8625,7 +8625,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1 = SharedTa
 	clientObjectCRC = 2153418723
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s03_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s03_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s04.apt",
@@ -8678,7 +8678,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0 = SharedTa
 	clientObjectCRC = 556985774
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s04_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s04_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s04.apt",
@@ -8731,7 +8731,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1 = SharedTa
 	clientObjectCRC = 1748994595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s04_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s04_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s05.apt",
@@ -8784,7 +8784,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0 = SharedTa
 	clientObjectCRC = 1852147135
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s05_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s05_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s05.apt",
@@ -8837,7 +8837,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1 = SharedTa
 	clientObjectCRC = 661185074
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s05_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s05_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s06.apt",
@@ -8890,7 +8890,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0 = SharedTa
 	clientObjectCRC = 3214687628
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s06_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s06_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s06.apt",
@@ -8943,7 +8943,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1 = SharedTa
 	clientObjectCRC = 4136720897
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s06_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon1_pos_s06_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s01.apt",
@@ -8996,7 +8996,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0 = SharedTa
 	clientObjectCRC = 3673279850
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s01.apt",
@@ -9049,7 +9049,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1 = SharedTa
 	clientObjectCRC = 2482809575
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s02.apt",
@@ -9102,7 +9102,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0 = SharedTa
 	clientObjectCRC = 185103705
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s02.apt",
@@ -9155,7 +9155,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1 = SharedTa
 	clientObjectCRC = 1107628756
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s03.apt",
@@ -9208,7 +9208,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0 = SharedTa
 	clientObjectCRC = 1147084104
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s03_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s03_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s03.apt",
@@ -9261,7 +9261,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1 = SharedTa
 	clientObjectCRC = 223509189
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s03_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s03_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s04.apt",
@@ -9314,7 +9314,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0 = SharedTa
 	clientObjectCRC = 2889488520
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s04_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s04_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s04.apt",
@@ -9367,7 +9367,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1 = SharedTa
 	clientObjectCRC = 3845619461
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s04_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s04_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s05.apt",
@@ -9420,7 +9420,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0 = SharedTa
 	clientObjectCRC = 3815600281
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s05_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s05_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s05.apt",
@@ -9473,7 +9473,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1 = SharedTa
 	clientObjectCRC = 2858424084
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s05_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s05_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
@@ -9526,7 +9526,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0 = SharedTa
 	clientObjectCRC = 848611498
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s06_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s06_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s06.apt",
@@ -9579,7 +9579,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1 = SharedTa
 	clientObjectCRC = 2073669415
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s06_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_neg_s06_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s01.apt",
@@ -9632,7 +9632,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0 = SharedTa
 	clientObjectCRC = 875038317
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s01.apt",
@@ -9685,7 +9685,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1 = SharedTa
 	clientObjectCRC = 2099601888
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s02.apt",
@@ -9738,7 +9738,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0 = SharedTa
 	clientObjectCRC = 3855728222
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s02.apt",
@@ -9791,7 +9791,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1 = SharedTa
 	clientObjectCRC = 2900154835
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s03.apt",
@@ -9844,7 +9844,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0 = SharedTa
 	clientObjectCRC = 2860963407
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s03_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s03_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s03.apt",
@@ -9897,7 +9897,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1 = SharedTa
 	clientObjectCRC = 3817583042
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s03_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s03_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s04.apt",
@@ -9950,7 +9950,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0 = SharedTa
 	clientObjectCRC = 1122227087
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s04_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s04_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s04.apt",
@@ -10003,7 +10003,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1 = SharedTa
 	clientObjectCRC = 200193026
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s04_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s04_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s05.apt",
@@ -10056,7 +10056,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0 = SharedTa
 	clientObjectCRC = 229948318
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s05_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s05_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s05.apt",
@@ -10109,7 +10109,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1 = SharedTa
 	clientObjectCRC = 1153031187
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s05_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s05_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
@@ -10162,7 +10162,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0 = SharedTa
 	clientObjectCRC = 3696034733
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s06_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s06_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
@@ -10215,7 +10215,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1 = SharedTa
 	clientObjectCRC = 2504025120
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s06_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon2_pos_s06_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
@@ -10268,7 +10268,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0 = SharedTan
 	clientObjectCRC = 3659818969
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
@@ -10321,7 +10321,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1 = SharedTan
 	clientObjectCRC = 2468937812
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
@@ -10374,7 +10374,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0 = SharedTan
 	clientObjectCRC = 199090154
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
@@ -10427,7 +10427,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1 = SharedTan
 	clientObjectCRC = 1120974951
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_neg_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s01.apt",
@@ -10480,7 +10480,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0 = SharedTan
 	clientObjectCRC = 889040094
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s01.apt",
@@ -10533,7 +10533,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1 = SharedTan
 	clientObjectCRC = 2112932691
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s01_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s01_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s02.apt",
@@ -10586,7 +10586,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0 = SharedTan
 	clientObjectCRC = 3842249965
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s02_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s02_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s02.apt",
@@ -10639,7 +10639,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1 = SharedTan
 	clientObjectCRC = 2886300512
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s02_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1, "object/tangible/ship/attachment/weapon/shared_xwing_weapon_pos_s02_1.iff")
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_barrel_s01.apt",
@@ -10692,7 +10692,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01 = SharedT
 	clientObjectCRC = 4090999089
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_barrel_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_barrel_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_barrel_s02.apt",
@@ -10745,7 +10745,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02 = SharedT
 	clientObjectCRC = 683678118
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_barrel_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_barrel_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_base.apt",
@@ -10798,7 +10798,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base = SharedTangibl
 	clientObjectCRC = 1208980716
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_base.iff")
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_body_s01.apt",
@@ -10851,7 +10851,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01 = SharedTan
 	clientObjectCRC = 4231136595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_body_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_body_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_body_s02.apt",
@@ -10904,7 +10904,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02 = SharedTan
 	clientObjectCRC = 656780740
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_body_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02, "object/tangible/ship/attachment/weapon/shared_ykl37r_turret_body_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_radar_s01.apt",
@@ -10957,7 +10957,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0 = SharedTangibl
 	clientObjectCRC = 665280141
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0, "object/tangible/ship/attachment/weapon/shared_yt1300_radar_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0, "object/tangible/ship/attachment/weapon/shared_yt1300_radar_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
@@ -11010,7 +11010,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01 = SharedTangible
 	clientObjectCRC = 3561577094
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01, "object/tangible/ship/attachment/weapon/shared_yt1300_turret_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01, "object/tangible/ship/attachment/weapon/shared_yt1300_turret_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
@@ -11063,7 +11063,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02 = SharedTangible
 	clientObjectCRC = 257880593
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02, "object/tangible/ship/attachment/weapon/shared_yt1300_turret_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02, "object/tangible/ship/attachment/weapon/shared_yt1300_turret_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
@@ -11116,7 +11116,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0 = SharedTangib
 	clientObjectCRC = 4197394562
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0, "object/tangible/ship/attachment/weapon/shared_yt1300_weapon_s01_0.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0, "object/tangible/ship/attachment/weapon/shared_yt1300_weapon_s01_0.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s01.apt",
@@ -11169,7 +11169,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01 = SharedTangible
 	clientObjectCRC = 1375635014
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s02.apt",
@@ -11222,7 +11222,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02 = SharedTangible
 	clientObjectCRC = 2330537681
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s03.apt",
@@ -11275,7 +11275,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03 = SharedTangible
 	clientObjectCRC = 3286518108
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s04.apt",
@@ -11328,7 +11328,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04 = SharedTangible
 	clientObjectCRC = 940008008
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s05.apt",
@@ -11381,7 +11381,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05 = SharedTangible
 	clientObjectCRC = 1896482245
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s06.apt",
@@ -11434,7 +11434,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06 = SharedTangible
 	clientObjectCRC = 2854071634
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06, "object/tangible/ship/attachment/weapon/shared_ywing_weapon1_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s01.apt",
@@ -11487,7 +11487,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01 = SharedTangible
 	clientObjectCRC = 1128162651
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s02.apt",
@@ -11540,7 +11540,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02 = SharedTangible
 	clientObjectCRC = 2552876492
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s03.apt",
@@ -11593,7 +11593,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03 = SharedTangible
 	clientObjectCRC = 3508841025
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s04.apt",
@@ -11646,7 +11646,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04 = SharedTangible
 	clientObjectCRC = 717717845
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s05.apt",
@@ -11699,7 +11699,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05 = SharedTangible
 	clientObjectCRC = 1674241752
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s06.apt",
@@ -11752,7 +11752,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06 = SharedTangible
 	clientObjectCRC = 3101511247
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06, "object/tangible/ship/attachment/weapon/shared_ywing_weapon2_s06.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_missile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_missile_pod_s01.apt",
@@ -11805,7 +11805,7 @@ object_tangible_ship_attachment_weapon_shared_z95_missile = SharedTangibleObject
 	clientObjectCRC = 2956556787
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_missile, "object/tangible/ship/attachment/weapon/shared_z95_missile.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_missile, "object/tangible/ship/attachment/weapon/shared_z95_missile.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s01.apt",
@@ -11858,7 +11858,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s01 = SharedTangibleObj
 	clientObjectCRC = 238417246
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s01, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s01, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s01.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s02.apt",
@@ -11911,7 +11911,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s02 = SharedTangibleObj
 	clientObjectCRC = 3575799241
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s02, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s02, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s02.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s03.apt",
@@ -11964,7 +11964,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s03 = SharedTangibleObj
 	clientObjectCRC = 2620340804
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s03, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s03, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s03.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s04.apt",
@@ -12017,7 +12017,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s04 = SharedTangibleObj
 	clientObjectCRC = 1741427024
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s04, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s04, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s04.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s05.apt",
@@ -12070,7 +12070,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s05 = SharedTangibleObj
 	clientObjectCRC = 784430813
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s05, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s05, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s05.iff")
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s06.apt",
@@ -12123,4 +12123,4 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s06 = SharedTangibleObj
 	clientObjectCRC = 4124499530
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s06, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_z95_weapon_s06, "object/tangible/ship/attachment/weapon/shared_z95_weapon_s06.iff")

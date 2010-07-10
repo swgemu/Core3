@@ -92,7 +92,7 @@ object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 970341305
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s01, "object/tangible/wearables/goggles/shared_goggles_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s01, "object/tangible/wearables/goggles/shared_goggles_s01.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s02_f.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTempl
 	clientObjectCRC = 3804336942
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s02, "object/tangible/wearables/goggles/shared_goggles_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s02, "object/tangible/wearables/goggles/shared_goggles_s02.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s03_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTempl
 	clientObjectCRC = 2882335907
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s03, "object/tangible/wearables/goggles/shared_goggles_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s03, "object/tangible/wearables/goggles/shared_goggles_s03.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s04_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTempl
 	clientObjectCRC = 1345314743
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s04, "object/tangible/wearables/goggles/shared_goggles_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s04, "object/tangible/wearables/goggles/shared_goggles_s04.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s05_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTempl
 	clientObjectCRC = 421705786
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s05, "object/tangible/wearables/goggles/shared_goggles_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s05, "object/tangible/wearables/goggles/shared_goggles_s05.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s06_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTempl
 	clientObjectCRC = 3258257581
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s06, "object/tangible/wearables/goggles/shared_goggles_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s06, "object/tangible/wearables/goggles/shared_goggles_s06.iff")
 
 object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_a99_aquata_breather.apt",
@@ -410,4 +410,4 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 	clientObjectCRC = 53819294
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_rebreather, "object/tangible/wearables/goggles/shared_rebreather.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_rebreather, "object/tangible/wearables/goggles/shared_rebreather.iff")

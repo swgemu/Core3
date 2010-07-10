@@ -95,7 +95,7 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1658229769
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
+ObjectTemplates:addClientTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
 
 object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -151,7 +151,7 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 223465819
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
+ObjectTemplates:addClientTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
 
 object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,4 +207,4 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2289463992
 }
 
-ObjectTemplates:addTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")
+ObjectTemplates:addClientTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")

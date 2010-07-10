@@ -82,4 +82,4 @@ object_static_space_base_shared_static_space_base = SharedStaticObjectTemplate:n
 	clientObjectCRC = 4149044600
 }
 
-ObjectTemplates:addTemplate(object_static_space_base_shared_static_space_base, "object/static/space/base/shared_static_space_base.iff")
+ObjectTemplates:addClientTemplate(object_static_space_base_shared_static_space_base, "object/static/space/base/shared_static_space_base.iff")

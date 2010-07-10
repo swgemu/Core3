@@ -92,4 +92,4 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 	clientObjectCRC = 3460199396
 }
 
-ObjectTemplates:addTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")

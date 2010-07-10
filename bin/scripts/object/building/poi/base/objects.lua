@@ -95,7 +95,7 @@ object_building_poi_base_shared_base_poi_building = SharedBuildingObjectTemplate
 	clientObjectCRC = 3227957177
 }
 
-ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_building, "object/building/poi/base/shared_base_poi_building.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_building, "object/building/poi/base/shared_base_poi_building.iff")
 
 object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -151,7 +151,7 @@ object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3975774939
 }
 
-ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_large, "object/building/poi/base/shared_base_poi_large.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_large, "object/building/poi/base/shared_base_poi_large.iff")
 
 object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -207,7 +207,7 @@ object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1110952143
 }
 
-ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_medium, "object/building/poi/base/shared_base_poi_medium.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_medium, "object/building/poi/base/shared_base_poi_medium.iff")
 
 object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -263,4 +263,4 @@ object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3638695666
 }
 
-ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_small, "object/building/poi/base/shared_base_poi_small.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_small, "object/building/poi/base/shared_base_poi_small.iff")

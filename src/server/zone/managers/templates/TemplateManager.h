@@ -17,6 +17,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap templateCRCMap;
 
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;
+	ClientTemplateCRCMap clientTemplateCRCMap;
 
 public:
 	static Lua* luaTemplatesInstance;
@@ -47,8 +48,14 @@ public:
 	String getTemplateFile(uint32 key) {
 		SharedObjectTemplate* templateData = templateCRCMap.get(key);
 
-		if (templateData == NULL)
-			throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));
+		if (templateData == NULL) {
+			String ascii = clientTemplateCRCMap.get(key);
+
+			if (ascii.isEmpty())
+				throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));
+			else
+				return ascii;
+		}
 
 		return templateData->getFullTemplateString();
 	}
@@ -67,6 +74,7 @@ public:
 	static int includeFile(lua_State* L);
 	static int crcString(lua_State* L);
 	static int addTemplateCRC(lua_State* L);
+	static int addClientTemplate(lua_State* L);
 
 };
 

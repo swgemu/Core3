@@ -92,7 +92,7 @@ object_tangible_component_armor_shared_armor_layer = SharedTangibleObjectTemplat
 	clientObjectCRC = 3871435906
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer, "object/tangible/component/armor/shared_armor_layer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer, "object/tangible/component/armor/shared_armor_layer.iff")
 
 object_tangible_component_armor_shared_armor_layer_acid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -145,7 +145,7 @@ object_tangible_component_armor_shared_armor_layer_acid = SharedTangibleObjectTe
 	clientObjectCRC = 3368394489
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_acid, "object/tangible/component/armor/shared_armor_layer_acid.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_acid, "object/tangible/component/armor/shared_armor_layer_acid.iff")
 
 object_tangible_component_armor_shared_armor_layer_blast = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -198,7 +198,7 @@ object_tangible_component_armor_shared_armor_layer_blast = SharedTangibleObjectT
 	clientObjectCRC = 3979633097
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_blast, "object/tangible/component/armor/shared_armor_layer_blast.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_blast, "object/tangible/component/armor/shared_armor_layer_blast.iff")
 
 object_tangible_component_armor_shared_armor_layer_cold = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -251,7 +251,7 @@ object_tangible_component_armor_shared_armor_layer_cold = SharedTangibleObjectTe
 	clientObjectCRC = 1118558688
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_cold, "object/tangible/component/armor/shared_armor_layer_cold.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_cold, "object/tangible/component/armor/shared_armor_layer_cold.iff")
 
 object_tangible_component_armor_shared_armor_layer_electrical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -304,7 +304,7 @@ object_tangible_component_armor_shared_armor_layer_electrical = SharedTangibleOb
 	clientObjectCRC = 2194125131
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_electrical, "object/tangible/component/armor/shared_armor_layer_electrical.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_electrical, "object/tangible/component/armor/shared_armor_layer_electrical.iff")
 
 object_tangible_component_armor_shared_armor_layer_energy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -357,7 +357,7 @@ object_tangible_component_armor_shared_armor_layer_energy = SharedTangibleObject
 	clientObjectCRC = 2938969271
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_energy, "object/tangible/component/armor/shared_armor_layer_energy.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_energy, "object/tangible/component/armor/shared_armor_layer_energy.iff")
 
 object_tangible_component_armor_shared_armor_layer_environmental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -410,7 +410,7 @@ object_tangible_component_armor_shared_armor_layer_environmental = SharedTangibl
 	clientObjectCRC = 2751814176
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_environmental, "object/tangible/component/armor/shared_armor_layer_environmental.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_environmental, "object/tangible/component/armor/shared_armor_layer_environmental.iff")
 
 object_tangible_component_armor_shared_armor_layer_heat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -463,7 +463,7 @@ object_tangible_component_armor_shared_armor_layer_heat = SharedTangibleObjectTe
 	clientObjectCRC = 3125319440
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_heat, "object/tangible/component/armor/shared_armor_layer_heat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_heat, "object/tangible/component/armor/shared_armor_layer_heat.iff")
 
 object_tangible_component_armor_shared_armor_layer_kinetic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -516,7 +516,7 @@ object_tangible_component_armor_shared_armor_layer_kinetic = SharedTangibleObjec
 	clientObjectCRC = 2095312993
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_kinetic, "object/tangible/component/armor/shared_armor_layer_kinetic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_kinetic, "object/tangible/component/armor/shared_armor_layer_kinetic.iff")
 
 object_tangible_component_armor_shared_armor_layer_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -569,7 +569,7 @@ object_tangible_component_armor_shared_armor_layer_nightsister = SharedTangibleO
 	clientObjectCRC = 3536633958
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_nightsister, "object/tangible/component/armor/shared_armor_layer_nightsister.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_nightsister, "object/tangible/component/armor/shared_armor_layer_nightsister.iff")
 
 object_tangible_component_armor_shared_armor_layer_restraint = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -622,7 +622,7 @@ object_tangible_component_armor_shared_armor_layer_restraint = SharedTangibleObj
 	clientObjectCRC = 3874261151
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_restraint, "object/tangible/component/armor/shared_armor_layer_restraint.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_restraint, "object/tangible/component/armor/shared_armor_layer_restraint.iff")
 
 object_tangible_component_armor_shared_armor_layer_ris = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -675,7 +675,7 @@ object_tangible_component_armor_shared_armor_layer_ris = SharedTangibleObjectTem
 	clientObjectCRC = 2996647863
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_ris, "object/tangible/component/armor/shared_armor_layer_ris.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_ris, "object/tangible/component/armor/shared_armor_layer_ris.iff")
 
 object_tangible_component_armor_shared_armor_layer_stun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -728,7 +728,7 @@ object_tangible_component_armor_shared_armor_layer_stun = SharedTangibleObjectTe
 	clientObjectCRC = 203108001
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_stun, "object/tangible/component/armor/shared_armor_layer_stun.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_stun, "object/tangible/component/armor/shared_armor_layer_stun.iff")
 
 object_tangible_component_armor_shared_armor_module_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -781,7 +781,7 @@ object_tangible_component_armor_shared_armor_module_heavy = SharedTangibleObject
 	clientObjectCRC = 1321171754
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_module_heavy, "object/tangible/component/armor/shared_armor_module_heavy.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_module_heavy, "object/tangible/component/armor/shared_armor_module_heavy.iff")
 
 object_tangible_component_armor_shared_armor_module_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -834,7 +834,7 @@ object_tangible_component_armor_shared_armor_module_light = SharedTangibleObject
 	clientObjectCRC = 2414299124
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_module_light, "object/tangible/component/armor/shared_armor_module_light.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_module_light, "object/tangible/component/armor/shared_armor_module_light.iff")
 
 object_tangible_component_armor_shared_armor_segment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -887,7 +887,7 @@ object_tangible_component_armor_shared_armor_segment = SharedTangibleObjectTempl
 	clientObjectCRC = 1357044619
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment, "object/tangible/component/armor/shared_armor_segment.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment, "object/tangible/component/armor/shared_armor_segment.iff")
 
 object_tangible_component_armor_shared_armor_segment_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -940,7 +940,7 @@ object_tangible_component_armor_shared_armor_segment_advanced = SharedTangibleOb
 	clientObjectCRC = 34830358
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_advanced, "object/tangible/component/armor/shared_armor_segment_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_advanced, "object/tangible/component/armor/shared_armor_segment_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -993,7 +993,7 @@ object_tangible_component_armor_shared_armor_segment_bone = SharedTangibleObject
 	clientObjectCRC = 1150752581
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone, "object/tangible/component/armor/shared_armor_segment_bone.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone, "object/tangible/component/armor/shared_armor_segment_bone.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone_acklay = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1046,7 +1046,7 @@ object_tangible_component_armor_shared_armor_segment_bone_acklay = SharedTangibl
 	clientObjectCRC = 1282707003
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_acklay, "object/tangible/component/armor/shared_armor_segment_bone_acklay.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_acklay, "object/tangible/component/armor/shared_armor_segment_bone_acklay.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1099,7 +1099,7 @@ object_tangible_component_armor_shared_armor_segment_bone_advanced = SharedTangi
 	clientObjectCRC = 2814096223
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_advanced, "object/tangible/component/armor/shared_armor_segment_bone_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_advanced, "object/tangible/component/armor/shared_armor_segment_bone_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone_donkuwah = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1152,7 +1152,7 @@ object_tangible_component_armor_shared_armor_segment_bone_donkuwah = SharedTangi
 	clientObjectCRC = 1936004642
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_donkuwah, "object/tangible/component/armor/shared_armor_segment_bone_donkuwah.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_donkuwah, "object/tangible/component/armor/shared_armor_segment_bone_donkuwah.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1205,7 +1205,7 @@ object_tangible_component_armor_shared_armor_segment_bone_kimogila = SharedTangi
 	clientObjectCRC = 2307142178
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_kimogila, "object/tangible/component/armor/shared_armor_segment_bone_kimogila.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_kimogila, "object/tangible/component/armor/shared_armor_segment_bone_kimogila.iff")
 
 object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1258,7 +1258,7 @@ object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard = Share
 	clientObjectCRC = 534961284
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_bone_voritor_lizard.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_bone_voritor_lizard.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1311,7 +1311,7 @@ object_tangible_component_armor_shared_armor_segment_chitin = SharedTangibleObje
 	clientObjectCRC = 3560749582
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin, "object/tangible/component/armor/shared_armor_segment_chitin.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin, "object/tangible/component/armor/shared_armor_segment_chitin.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1364,7 +1364,7 @@ object_tangible_component_armor_shared_armor_segment_chitin_advanced = SharedTan
 	clientObjectCRC = 2809337004
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_advanced, "object/tangible/component/armor/shared_armor_segment_chitin_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_advanced, "object/tangible/component/armor/shared_armor_segment_chitin_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin_brackaset = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1417,7 +1417,7 @@ object_tangible_component_armor_shared_armor_segment_chitin_brackaset = SharedTa
 	clientObjectCRC = 3248573794
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_brackaset, "object/tangible/component/armor/shared_armor_segment_chitin_brackaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_brackaset, "object/tangible/component/armor/shared_armor_segment_chitin_brackaset.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin_kliknick = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1470,7 +1470,7 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick = SharedTan
 	clientObjectCRC = 2446761645
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1523,7 +1523,7 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv = Share
 	clientObjectCRC = 2037172516
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick_adv.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick_adv.iff")
 
 object_tangible_component_armor_shared_armor_segment_chitin_sharnaff = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1576,7 +1576,7 @@ object_tangible_component_armor_shared_armor_segment_chitin_sharnaff = SharedTan
 	clientObjectCRC = 1708779648
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_sharnaff, "object/tangible/component/armor/shared_armor_segment_chitin_sharnaff.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_sharnaff, "object/tangible/component/armor/shared_armor_segment_chitin_sharnaff.iff")
 
 object_tangible_component_armor_shared_armor_segment_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1629,7 +1629,7 @@ object_tangible_component_armor_shared_armor_segment_composite = SharedTangibleO
 	clientObjectCRC = 3596548182
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite, "object/tangible/component/armor/shared_armor_segment_composite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite, "object/tangible/component/armor/shared_armor_segment_composite.iff")
 
 object_tangible_component_armor_shared_armor_segment_composite_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1682,7 +1682,7 @@ object_tangible_component_armor_shared_armor_segment_composite_advanced = Shared
 	clientObjectCRC = 2764212654
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite_advanced, "object/tangible/component/armor/shared_armor_segment_composite_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite_advanced, "object/tangible/component/armor/shared_armor_segment_composite_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_composite_krayt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1735,7 +1735,7 @@ object_tangible_component_armor_shared_armor_segment_composite_krayt = SharedTan
 	clientObjectCRC = 2649372559
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite_krayt, "object/tangible/component/armor/shared_armor_segment_composite_krayt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite_krayt, "object/tangible/component/armor/shared_armor_segment_composite_krayt.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_brackaset = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1788,7 +1788,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_brackaset = Sha
 	clientObjectCRC = 591672738
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_brackaset, "object/tangible/component/armor/shared_armor_segment_enhancement_brackaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_brackaset, "object/tangible/component/armor/shared_armor_segment_enhancement_brackaset.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_dragonet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1841,7 +1841,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_dragonet = Shar
 	clientObjectCRC = 433071916
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_dragonet, "object/tangible/component/armor/shared_armor_segment_enhancement_dragonet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_dragonet, "object/tangible/component/armor/shared_armor_segment_enhancement_dragonet.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_fambaa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -1894,7 +1894,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_fambaa = Shared
 	clientObjectCRC = 409289522
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_fambaa, "object/tangible/component/armor/shared_armor_segment_enhancement_fambaa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_fambaa, "object/tangible/component/armor/shared_armor_segment_enhancement_fambaa.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_janta = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -1947,7 +1947,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_janta = SharedT
 	clientObjectCRC = 184239884
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_janta, "object/tangible/component/armor/shared_armor_segment_enhancement_janta.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_janta, "object/tangible/component/armor/shared_armor_segment_enhancement_janta.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2000,7 +2000,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_kimogila = Shar
 	clientObjectCRC = 3365812164
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_kimogila, "object/tangible/component/armor/shared_armor_segment_enhancement_kimogila.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_kimogila, "object/tangible/component/armor/shared_armor_segment_enhancement_kimogila.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_krayt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -2053,7 +2053,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_krayt = SharedT
 	clientObjectCRC = 1719593091
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_krayt, "object/tangible/component/armor/shared_armor_segment_enhancement_krayt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_krayt, "object/tangible/component/armor/shared_armor_segment_enhancement_krayt.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -2106,7 +2106,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_nightsister = S
 	clientObjectCRC = 2132900638
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_nightsister, "object/tangible/component/armor/shared_armor_segment_enhancement_nightsister.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_nightsister, "object/tangible/component/armor/shared_armor_segment_enhancement_nightsister.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -2159,7 +2159,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_rancor = Shared
 	clientObjectCRC = 1147665676
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_rancor, "object/tangible/component/armor/shared_armor_segment_enhancement_rancor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_rancor, "object/tangible/component/armor/shared_armor_segment_enhancement_rancor.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2212,7 +2212,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff = Shar
 	clientObjectCRC = 604719765
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff, "object/tangible/component/armor/shared_armor_segment_enhancement_sharnaff.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff, "object/tangible/component/armor/shared_armor_segment_enhancement_sharnaff.iff")
 
 object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2265,7 +2265,7 @@ object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard 
 	clientObjectCRC = 2169359198
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_enhancement_voritor_lizard.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_enhancement_voritor_lizard.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2318,7 +2318,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn = Sha
 	clientObjectCRC = 923046063
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2371,7 +2371,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advan
 	clientObjectCRC = 4080254682
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2424,7 +2424,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial = Sh
 	clientObjectCRC = 3045138551
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2477,7 +2477,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_adva
 	clientObjectCRC = 2163584319
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2530,7 +2530,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting = Share
 	clientObjectCRC = 3253647713
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff")
 
 object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2583,7 +2583,7 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advance
 	clientObjectCRC = 2762649224
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2636,7 +2636,7 @@ object_tangible_component_armor_shared_armor_segment_padded = SharedTangibleObje
 	clientObjectCRC = 1728449296
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded, "object/tangible/component/armor/shared_armor_segment_padded.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded, "object/tangible/component/armor/shared_armor_segment_padded.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded_acklay = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2689,7 +2689,7 @@ object_tangible_component_armor_shared_armor_segment_padded_acklay = SharedTangi
 	clientObjectCRC = 962320502
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_acklay, "object/tangible/component/armor/shared_armor_segment_padded_acklay.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_acklay, "object/tangible/component/armor/shared_armor_segment_padded_acklay.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2742,7 +2742,7 @@ object_tangible_component_armor_shared_armor_segment_padded_advanced = SharedTan
 	clientObjectCRC = 3071514894
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_advanced, "object/tangible/component/armor/shared_armor_segment_padded_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_advanced, "object/tangible/component/armor/shared_armor_segment_padded_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded_dune_lizard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2795,7 +2795,7 @@ object_tangible_component_armor_shared_armor_segment_padded_dune_lizard = Shared
 	clientObjectCRC = 2051360405
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_dune_lizard, "object/tangible/component/armor/shared_armor_segment_padded_dune_lizard.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_dune_lizard, "object/tangible/component/armor/shared_armor_segment_padded_dune_lizard.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded_fambaa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2848,7 +2848,7 @@ object_tangible_component_armor_shared_armor_segment_padded_fambaa = SharedTangi
 	clientObjectCRC = 2619219671
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_fambaa, "object/tangible/component/armor/shared_armor_segment_padded_fambaa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_fambaa, "object/tangible/component/armor/shared_armor_segment_padded_fambaa.iff")
 
 object_tangible_component_armor_shared_armor_segment_padded_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2901,7 +2901,7 @@ object_tangible_component_armor_shared_armor_segment_padded_rancor = SharedTangi
 	clientObjectCRC = 3223101673
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_rancor, "object/tangible/component/armor/shared_armor_segment_padded_rancor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_rancor, "object/tangible/component/armor/shared_armor_segment_padded_rancor.iff")
 
 object_tangible_component_armor_shared_armor_segment_ris = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -2954,7 +2954,7 @@ object_tangible_component_armor_shared_armor_segment_ris = SharedTangibleObjectT
 	clientObjectCRC = 1466801045
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ris, "object/tangible/component/armor/shared_armor_segment_ris.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ris, "object/tangible/component/armor/shared_armor_segment_ris.iff")
 
 object_tangible_component_armor_shared_armor_segment_ris_acklay = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3007,7 +3007,7 @@ object_tangible_component_armor_shared_armor_segment_ris_acklay = SharedTangible
 	clientObjectCRC = 3553286313
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ris_acklay, "object/tangible/component/armor/shared_armor_segment_ris_acklay.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ris_acklay, "object/tangible/component/armor/shared_armor_segment_ris_acklay.iff")
 
 object_tangible_component_armor_shared_armor_segment_ubese = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3060,7 +3060,7 @@ object_tangible_component_armor_shared_armor_segment_ubese = SharedTangibleObjec
 	clientObjectCRC = 2314491777
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ubese, "object/tangible/component/armor/shared_armor_segment_ubese.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ubese, "object/tangible/component/armor/shared_armor_segment_ubese.iff")
 
 object_tangible_component_armor_shared_armor_segment_ubese_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3113,7 +3113,7 @@ object_tangible_component_armor_shared_armor_segment_ubese_advanced = SharedTang
 	clientObjectCRC = 1032868484
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ubese_advanced, "object/tangible/component/armor/shared_armor_segment_ubese_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ubese_advanced, "object/tangible/component/armor/shared_armor_segment_ubese_advanced.iff")
 
 object_tangible_component_armor_shared_armor_segment_zam = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3166,7 +3166,7 @@ object_tangible_component_armor_shared_armor_segment_zam = SharedTangibleObjectT
 	clientObjectCRC = 2378288672
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_zam, "object/tangible/component/armor/shared_armor_segment_zam.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_zam, "object/tangible/component/armor/shared_armor_segment_zam.iff")
 
 object_tangible_component_armor_shared_armor_segment_zam_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3219,7 +3219,7 @@ object_tangible_component_armor_shared_armor_segment_zam_advanced = SharedTangib
 	clientObjectCRC = 452144726
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_zam_advanced, "object/tangible/component/armor/shared_armor_segment_zam_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_zam_advanced, "object/tangible/component/armor/shared_armor_segment_zam_advanced.iff")
 
 object_tangible_component_armor_shared_base_armor_segment_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -3272,7 +3272,7 @@ object_tangible_component_armor_shared_base_armor_segment_enhancement = SharedTa
 	clientObjectCRC = 524566894
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_base_armor_segment_enhancement, "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_base_armor_segment_enhancement, "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff")
 
 object_tangible_component_armor_shared_bone_fragment_woolamander_harrower = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -3325,7 +3325,7 @@ object_tangible_component_armor_shared_bone_fragment_woolamander_harrower = Shar
 	clientObjectCRC = 4007249575
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_bone_fragment_woolamander_harrower, "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_bone_fragment_woolamander_harrower, "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff")
 
 object_tangible_component_armor_shared_deflector_shield_emitter_assembly = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3378,7 +3378,7 @@ object_tangible_component_armor_shared_deflector_shield_emitter_assembly = Share
 	clientObjectCRC = 3438496009
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_emitter_assembly, "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_emitter_assembly, "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff")
 
 object_tangible_component_armor_shared_deflector_shield_generator_energy_ray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3431,7 +3431,7 @@ object_tangible_component_armor_shared_deflector_shield_generator_energy_ray = S
 	clientObjectCRC = 1857960052
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_generator_energy_ray, "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_generator_energy_ray, "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff")
 
 object_tangible_component_armor_shared_deflector_shield_generator_particle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3484,7 +3484,7 @@ object_tangible_component_armor_shared_deflector_shield_generator_particle = Sha
 	clientObjectCRC = 2738138651
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_generator_particle, "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_generator_particle, "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff")
 
 object_tangible_component_armor_shared_deflector_shield_ion_feed_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3537,7 +3537,7 @@ object_tangible_component_armor_shared_deflector_shield_ion_feed_unit = SharedTa
 	clientObjectCRC = 2607341358
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_ion_feed_unit, "object/tangible/component/armor/shared_deflector_shield_ion_feed_unit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_ion_feed_unit, "object/tangible/component/armor/shared_deflector_shield_ion_feed_unit.iff")
 
 object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3590,7 +3590,7 @@ object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit 
 	clientObjectCRC = 2649973177
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit, "object/tangible/component/armor/shared_deflector_shield_overload_discharge_unit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit, "object/tangible/component/armor/shared_deflector_shield_overload_discharge_unit.iff")
 
 object_tangible_component_armor_shared_deflector_shield_projector_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3643,7 +3643,7 @@ object_tangible_component_armor_shared_deflector_shield_projector_plate = Shared
 	clientObjectCRC = 2995769746
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_projector_plate, "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_projector_plate, "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff")
 
 object_tangible_component_armor_shared_feather_peko_albatross = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -3696,7 +3696,7 @@ object_tangible_component_armor_shared_feather_peko_albatross = SharedTangibleOb
 	clientObjectCRC = 2381585751
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_feather_peko_albatross, "object/tangible/component/armor/shared_feather_peko_albatross.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_feather_peko_albatross, "object/tangible/component/armor/shared_feather_peko_albatross.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -3749,7 +3749,7 @@ object_tangible_component_armor_shared_heavy_armor_layer = SharedTangibleObjectT
 	clientObjectCRC = 3619749395
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer, "object/tangible/component/armor/shared_heavy_armor_layer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer, "object/tangible/component/armor/shared_heavy_armor_layer.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_acid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -3802,7 +3802,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_acid = SharedTangibleOb
 	clientObjectCRC = 1874541769
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_acid, "object/tangible/component/armor/shared_heavy_armor_layer_acid.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_acid, "object/tangible/component/armor/shared_heavy_armor_layer_acid.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_blast = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -3855,7 +3855,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_blast = SharedTangibleO
 	clientObjectCRC = 2097043394
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_blast, "object/tangible/component/armor/shared_heavy_armor_layer_blast.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_blast, "object/tangible/component/armor/shared_heavy_armor_layer_blast.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_cold = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -3908,7 +3908,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_cold = SharedTangibleOb
 	clientObjectCRC = 3855973328
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_cold, "object/tangible/component/armor/shared_heavy_armor_layer_cold.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_cold, "object/tangible/component/armor/shared_heavy_armor_layer_cold.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_electrical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -3961,7 +3961,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_electrical = SharedTang
 	clientObjectCRC = 2909170926
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_electrical, "object/tangible/component/armor/shared_heavy_armor_layer_electrical.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_electrical, "object/tangible/component/armor/shared_heavy_armor_layer_electrical.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_energy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4014,7 +4014,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_energy = SharedTangible
 	clientObjectCRC = 1153905054
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_energy, "object/tangible/component/armor/shared_heavy_armor_layer_energy.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_energy, "object/tangible/component/armor/shared_heavy_armor_layer_energy.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_environmental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4067,7 +4067,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_environmental = SharedT
 	clientObjectCRC = 1639844661
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_environmental, "object/tangible/component/armor/shared_heavy_armor_layer_environmental.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_environmental, "object/tangible/component/armor/shared_heavy_armor_layer_environmental.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_heat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4120,7 +4120,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_heat = SharedTangibleOb
 	clientObjectCRC = 490091808
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_heat, "object/tangible/component/armor/shared_heavy_armor_layer_heat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_heat, "object/tangible/component/armor/shared_heavy_armor_layer_heat.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_kinetic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4173,7 +4173,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_kinetic = SharedTangibl
 	clientObjectCRC = 2016162937
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_kinetic, "object/tangible/component/armor/shared_heavy_armor_layer_kinetic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_kinetic, "object/tangible/component/armor/shared_heavy_armor_layer_kinetic.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_restraint = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4226,7 +4226,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_restraint = SharedTangi
 	clientObjectCRC = 34964498
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_restraint, "object/tangible/component/armor/shared_heavy_armor_layer_restraint.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_restraint, "object/tangible/component/armor/shared_heavy_armor_layer_restraint.iff")
 
 object_tangible_component_armor_shared_heavy_armor_layer_stun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -4279,7 +4279,7 @@ object_tangible_component_armor_shared_heavy_armor_layer_stun = SharedTangibleOb
 	clientObjectCRC = 2875559057
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_stun, "object/tangible/component/armor/shared_heavy_armor_layer_stun.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_stun, "object/tangible/component/armor/shared_heavy_armor_layer_stun.iff")
 
 object_tangible_component_armor_shared_hide_gurk_king = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4332,7 +4332,7 @@ object_tangible_component_armor_shared_hide_gurk_king = SharedTangibleObjectTemp
 	clientObjectCRC = 605934535
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_hide_gurk_king, "object/tangible/component/armor/shared_hide_gurk_king.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_hide_gurk_king, "object/tangible/component/armor/shared_hide_gurk_king.iff")
 
 object_tangible_component_armor_shared_scale_giant_dune_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4385,7 +4385,7 @@ object_tangible_component_armor_shared_scale_giant_dune_kimogila = SharedTangibl
 	clientObjectCRC = 3177620881
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_scale_giant_dune_kimogila, "object/tangible/component/armor/shared_scale_giant_dune_kimogila.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_scale_giant_dune_kimogila, "object/tangible/component/armor/shared_scale_giant_dune_kimogila.iff")
 
 object_tangible_component_armor_shared_shield_generator_facility = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4438,7 +4438,7 @@ object_tangible_component_armor_shared_shield_generator_facility = SharedTangibl
 	clientObjectCRC = 3129011017
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_facility, "object/tangible/component/armor/shared_shield_generator_facility.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_facility, "object/tangible/component/armor/shared_shield_generator_facility.iff")
 
 object_tangible_component_armor_shared_shield_generator_personal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4491,7 +4491,7 @@ object_tangible_component_armor_shared_shield_generator_personal = SharedTangibl
 	clientObjectCRC = 3357133395
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal, "object/tangible/component/armor/shared_shield_generator_personal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal, "object/tangible/component/armor/shared_shield_generator_personal.iff")
 
 object_tangible_component_armor_shared_shield_generator_personal_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4544,7 +4544,7 @@ object_tangible_component_armor_shared_shield_generator_personal_b = SharedTangi
 	clientObjectCRC = 2352410837
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_b, "object/tangible/component/armor/shared_shield_generator_personal_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_b, "object/tangible/component/armor/shared_shield_generator_personal_b.iff")
 
 object_tangible_component_armor_shared_shield_generator_personal_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4597,7 +4597,7 @@ object_tangible_component_armor_shared_shield_generator_personal_c = SharedTangi
 	clientObjectCRC = 3309016920
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_c, "object/tangible/component/armor/shared_shield_generator_personal_c.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_c, "object/tangible/component/armor/shared_shield_generator_personal_c.iff")
 
 object_tangible_component_armor_shared_shield_generator_personal_imperial_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4650,7 +4650,7 @@ object_tangible_component_armor_shared_shield_generator_personal_imperial_test =
 	clientObjectCRC = 1034696189
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_imperial_test, "object/tangible/component/armor/shared_shield_generator_personal_imperial_test.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_imperial_test, "object/tangible/component/armor/shared_shield_generator_personal_imperial_test.iff")
 
 object_tangible_component_armor_shared_shield_generator_vehicular = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -4703,4 +4703,4 @@ object_tangible_component_armor_shared_shield_generator_vehicular = SharedTangib
 	clientObjectCRC = 4081974766
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_vehicular, "object/tangible/component/armor/shared_shield_generator_vehicular.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_vehicular, "object/tangible/component/armor/shared_shield_generator_vehicular.iff")

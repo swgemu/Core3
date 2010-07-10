@@ -82,4 +82,4 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 	clientObjectCRC = 2022504856
 }
 
-ObjectTemplates:addTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")
+ObjectTemplates:addClientTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")

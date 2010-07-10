@@ -82,7 +82,7 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 	clientObjectCRC = 3381216749
 }
 
-ObjectTemplates:addTemplate(object_cell_base_shared_base_cell, "object/cell/base/shared_base_cell.iff")
+ObjectTemplates:addClientTemplate(object_cell_base_shared_base_cell, "object/cell/base/shared_base_cell.iff")
 
 object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,4 +125,4 @@ object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	clientObjectCRC = 632406981
 }
 
-ObjectTemplates:addTemplate(object_cell_base_shared_cell_default, "object/cell/base/shared_cell_default.iff")
+ObjectTemplates:addClientTemplate(object_cell_base_shared_cell_default, "object/cell/base/shared_cell_default.iff")

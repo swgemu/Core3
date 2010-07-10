@@ -82,7 +82,7 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 956566051
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
+ObjectTemplates:addClientTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
 
 object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bolt_red.prt",
@@ -125,7 +125,7 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1262353977
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
+ObjectTemplates:addClientTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
 
 object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -168,7 +168,7 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4068306658
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
+ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
 
 object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -211,7 +211,7 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 694863477
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
+ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
 
 object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
@@ -254,4 +254,4 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 	clientObjectCRC = 82674764
 }
 
-ObjectTemplates:addTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")
+ObjectTemplates:addClientTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")

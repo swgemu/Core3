@@ -82,4 +82,4 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 	clientObjectCRC = 658217892
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")

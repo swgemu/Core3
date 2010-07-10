@@ -92,7 +92,7 @@ object_tangible_camp_shared_camp_chair_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3093106291
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s1, "object/tangible/camp/shared_camp_chair_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s1, "object/tangible/camp/shared_camp_chair_s1.iff")
 
 object_tangible_camp_shared_camp_chair_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_chair_s2.apt",
@@ -145,7 +145,7 @@ object_tangible_camp_shared_camp_chair_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1665836772
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s2, "object/tangible/camp/shared_camp_chair_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s2, "object/tangible/camp/shared_camp_chair_s2.iff")
 
 object_tangible_camp_shared_camp_chair_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_chair_s3.apt",
@@ -198,7 +198,7 @@ object_tangible_camp_shared_camp_chair_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 709345641
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s3, "object/tangible/camp/shared_camp_chair_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s3, "object/tangible/camp/shared_camp_chair_s3.iff")
 
 object_tangible_camp_shared_camp_control_panel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -251,7 +251,7 @@ object_tangible_camp_shared_camp_control_panel = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1403576504
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_control_panel, "object/tangible/camp/shared_camp_control_panel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_control_panel, "object/tangible/camp/shared_camp_control_panel.iff")
 
 object_tangible_camp_shared_camp_cot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_cot.apt",
@@ -304,7 +304,7 @@ object_tangible_camp_shared_camp_cot = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1118144576
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot, "object/tangible/camp/shared_camp_cot.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot, "object/tangible/camp/shared_camp_cot.iff")
 
 object_tangible_camp_shared_camp_cot_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_cot.apt",
@@ -357,7 +357,7 @@ object_tangible_camp_shared_camp_cot_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2382295007
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s1, "object/tangible/camp/shared_camp_cot_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s1, "object/tangible/camp/shared_camp_cot_s1.iff")
 
 object_tangible_camp_shared_camp_cot_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_cot_s2.apt",
@@ -410,7 +410,7 @@ object_tangible_camp_shared_camp_cot_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1458128712
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s2, "object/tangible/camp/shared_camp_cot_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s2, "object/tangible/camp/shared_camp_cot_s2.iff")
 
 object_tangible_camp_shared_camp_cot_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_cot_s3.apt",
@@ -463,7 +463,7 @@ object_tangible_camp_shared_camp_cot_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 535044293
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s3, "object/tangible/camp/shared_camp_cot_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s3, "object/tangible/camp/shared_camp_cot_s3.iff")
 
 object_tangible_camp_shared_camp_crate_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_crate_s1.apt",
@@ -516,7 +516,7 @@ object_tangible_camp_shared_camp_crate_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3025871349
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_crate_s1, "object/tangible/camp/shared_camp_crate_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_crate_s1, "object/tangible/camp/shared_camp_crate_s1.iff")
 
 object_tangible_camp_shared_camp_lantern_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_lantern.apt",
@@ -569,7 +569,7 @@ object_tangible_camp_shared_camp_lantern_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1758920925
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s1, "object/tangible/camp/shared_camp_lantern_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s1, "object/tangible/camp/shared_camp_lantern_s1.iff")
 
 object_tangible_camp_shared_camp_lantern_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_lantern_s2.apt",
@@ -622,7 +622,7 @@ object_tangible_camp_shared_camp_lantern_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3015747658
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s2, "object/tangible/camp/shared_camp_lantern_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s2, "object/tangible/camp/shared_camp_lantern_s2.iff")
 
 object_tangible_camp_shared_camp_lantern_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_lantern_s3.apt",
@@ -675,7 +675,7 @@ object_tangible_camp_shared_camp_lantern_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 4207792071
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s3, "object/tangible/camp/shared_camp_lantern_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s3, "object/tangible/camp/shared_camp_lantern_s3.iff")
 
 object_tangible_camp_shared_camp_lawn_chair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_chair_s1.apt",
@@ -728,7 +728,7 @@ object_tangible_camp_shared_camp_lawn_chair = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2201158823
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lawn_chair, "object/tangible/camp/shared_camp_lawn_chair.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lawn_chair, "object/tangible/camp/shared_camp_lawn_chair.iff")
 
 object_tangible_camp_shared_camp_light_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_light_s1.apt",
@@ -781,7 +781,7 @@ object_tangible_camp_shared_camp_light_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1218683481
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s1, "object/tangible/camp/shared_camp_light_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s1, "object/tangible/camp/shared_camp_light_s1.iff")
 
 object_tangible_camp_shared_camp_light_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_light_s2.apt",
@@ -834,7 +834,7 @@ object_tangible_camp_shared_camp_light_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2478049998
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s2, "object/tangible/camp/shared_camp_light_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s2, "object/tangible/camp/shared_camp_light_s2.iff")
 
 object_tangible_camp_shared_camp_light_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_glow_light_s3.apt",
@@ -887,7 +887,7 @@ object_tangible_camp_shared_camp_light_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3669585219
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s3, "object/tangible/camp/shared_camp_light_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s3, "object/tangible/camp/shared_camp_light_s3.iff")
 
 object_tangible_camp_shared_camp_pavilion_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_pavilion_s1.apt",
@@ -940,7 +940,7 @@ object_tangible_camp_shared_camp_pavilion_s1 = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3526587554
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_pavilion_s1, "object/tangible/camp/shared_camp_pavilion_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_pavilion_s1, "object/tangible/camp/shared_camp_pavilion_s1.iff")
 
 object_tangible_camp_shared_camp_pavilion_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_pavilion_s2.apt",
@@ -993,7 +993,7 @@ object_tangible_camp_shared_camp_pavilion_s2 = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 153410613
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_pavilion_s2, "object/tangible/camp/shared_camp_pavilion_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_pavilion_s2, "object/tangible/camp/shared_camp_pavilion_s2.iff")
 
 object_tangible_camp_shared_camp_spit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_spit.apt",
@@ -1046,7 +1046,7 @@ object_tangible_camp_shared_camp_spit = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3348365284
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit, "object/tangible/camp/shared_camp_spit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit, "object/tangible/camp/shared_camp_spit.iff")
 
 object_tangible_camp_shared_camp_spit_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_spit.apt",
@@ -1099,7 +1099,7 @@ object_tangible_camp_shared_camp_spit_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3905285557
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s1, "object/tangible/camp/shared_camp_spit_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s1, "object/tangible/camp/shared_camp_spit_s1.iff")
 
 object_tangible_camp_shared_camp_spit_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_spit_s2.apt",
@@ -1152,7 +1152,7 @@ object_tangible_camp_shared_camp_spit_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 869418274
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s2, "object/tangible/camp/shared_camp_spit_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s2, "object/tangible/camp/shared_camp_spit_s2.iff")
 
 object_tangible_camp_shared_camp_spit_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_spit_s3.apt",
@@ -1205,7 +1205,7 @@ object_tangible_camp_shared_camp_spit_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2061443759
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s3, "object/tangible/camp/shared_camp_spit_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s3, "object/tangible/camp/shared_camp_spit_s3.iff")
 
 object_tangible_camp_shared_camp_stool_short = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_stool_short.apt",
@@ -1258,7 +1258,7 @@ object_tangible_camp_shared_camp_stool_short = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1063678177
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_stool_short, "object/tangible/camp/shared_camp_stool_short.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_stool_short, "object/tangible/camp/shared_camp_stool_short.iff")
 
 object_tangible_camp_shared_camp_stool_tall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_stool_tall.apt",
@@ -1311,7 +1311,7 @@ object_tangible_camp_shared_camp_stool_tall = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3243108837
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_stool_tall, "object/tangible/camp/shared_camp_stool_tall.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_stool_tall, "object/tangible/camp/shared_camp_stool_tall.iff")
 
 object_tangible_camp_shared_camp_tent_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
@@ -1364,7 +1364,7 @@ object_tangible_camp_shared_camp_tent_s1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2127813712
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s1, "object/tangible/camp/shared_camp_tent_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s1, "object/tangible/camp/shared_camp_tent_s1.iff")
 
 object_tangible_camp_shared_camp_tent_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s2.apt",
@@ -1417,7 +1417,7 @@ object_tangible_camp_shared_camp_tent_s2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2781115591
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s2, "object/tangible/camp/shared_camp_tent_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s2, "object/tangible/camp/shared_camp_tent_s2.iff")
 
 object_tangible_camp_shared_camp_tent_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s3.apt",
@@ -1470,7 +1470,7 @@ object_tangible_camp_shared_camp_tent_s3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3972600650
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s3, "object/tangible/camp/shared_camp_tent_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s3, "object/tangible/camp/shared_camp_tent_s3.iff")
 
 object_tangible_camp_shared_camp_tent_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s4.apt",
@@ -1523,7 +1523,7 @@ object_tangible_camp_shared_camp_tent_s4 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 388642910
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s4, "object/tangible/camp/shared_camp_tent_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s4, "object/tangible/camp/shared_camp_tent_s4.iff")
 
 object_tangible_camp_shared_camp_tent_s5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s5.apt",
@@ -1576,7 +1576,7 @@ object_tangible_camp_shared_camp_tent_s5 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1579638739
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s5, "object/tangible/camp/shared_camp_tent_s5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s5, "object/tangible/camp/shared_camp_tent_s5.iff")
 
 object_tangible_camp_shared_camp_tent_s6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s6.apt",
@@ -1629,7 +1629,7 @@ object_tangible_camp_shared_camp_tent_s6 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2234578756
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s6, "object/tangible/camp/shared_camp_tent_s6.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s6, "object/tangible/camp/shared_camp_tent_s6.iff")
 
 object_tangible_camp_shared_campfire_logs_ash = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_ash.apt",
@@ -1682,7 +1682,7 @@ object_tangible_camp_shared_campfire_logs_ash = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1850708683
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_ash, "object/tangible/camp/shared_campfire_logs_ash.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_ash, "object/tangible/camp/shared_campfire_logs_ash.iff")
 
 object_tangible_camp_shared_campfire_logs_burnt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_burnt.apt",
@@ -1735,7 +1735,7 @@ object_tangible_camp_shared_campfire_logs_burnt = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3245417317
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_burnt, "object/tangible/camp/shared_campfire_logs_burnt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_burnt, "object/tangible/camp/shared_campfire_logs_burnt.iff")
 
 object_tangible_camp_shared_campfire_logs_fresh = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_fresh.apt",
@@ -1788,7 +1788,7 @@ object_tangible_camp_shared_campfire_logs_fresh = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1992640015
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_fresh, "object/tangible/camp/shared_campfire_logs_fresh.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_fresh, "object/tangible/camp/shared_campfire_logs_fresh.iff")
 
 object_tangible_camp_shared_campfire_logs_smoldering = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_smoldering.apt",
@@ -1841,4 +1841,4 @@ object_tangible_camp_shared_campfire_logs_smoldering = SharedTangibleObjectTempl
 	clientObjectCRC = 343626744
 }
 
-ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_smoldering, "object/tangible/camp/shared_campfire_logs_smoldering.iff")
+ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_smoldering, "object/tangible/camp/shared_campfire_logs_smoldering.iff")

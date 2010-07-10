@@ -92,4 +92,4 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 	clientObjectCRC = 1389700188
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")

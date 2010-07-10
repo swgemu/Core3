@@ -82,7 +82,7 @@ object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObje
 	clientObjectCRC = 2482416832
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_crate_style_01, "object/static/structure/military/shared_bunker_crate_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_crate_style_01, "object/static/structure/military/shared_bunker_crate_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s01.apt",
@@ -125,7 +125,7 @@ object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObj
 	clientObjectCRC = 1580787523
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_01, "object/static/structure/military/shared_bunker_pillar_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_01, "object/static/structure/military/shared_bunker_pillar_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s02.apt",
@@ -168,7 +168,7 @@ object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObj
 	clientObjectCRC = 2234470356
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_02, "object/static/structure/military/shared_bunker_pillar_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_02, "object/static/structure/military/shared_bunker_pillar_style_02.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s03.apt",
@@ -211,7 +211,7 @@ object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObj
 	clientObjectCRC = 3424790617
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_03, "object/static/structure/military/shared_bunker_pillar_style_03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_03, "object/static/structure/military/shared_bunker_pillar_style_03.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s04.apt",
@@ -254,7 +254,7 @@ object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObj
 	clientObjectCRC = 935396173
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_bunker_pillar_style_04, "object/static/structure/military/shared_bunker_pillar_style_04.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_04, "object/static/structure/military/shared_bunker_pillar_style_04.iff")
 
 object_static_structure_military_shared_military_column_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
@@ -297,7 +297,7 @@ object_static_structure_military_shared_military_column_med_imperial_style_01 = 
 	clientObjectCRC = 3131562949
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_imperial_style_01, "object/static/structure/military/shared_military_column_med_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_med_imperial_style_01, "object/static/structure/military/shared_military_column_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_med_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
@@ -340,7 +340,7 @@ object_static_structure_military_shared_military_column_med_rebel_style_01 = Sha
 	clientObjectCRC = 2048366214
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_med_rebel_style_01, "object/static/structure/military/shared_military_column_med_rebel_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_med_rebel_style_01, "object/static/structure/military/shared_military_column_med_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
@@ -383,7 +383,7 @@ object_static_structure_military_shared_military_column_strong_imperial_style_01
 	clientObjectCRC = 2024230445
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_imperial_style_01, "object/static/structure/military/shared_military_column_strong_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_strong_imperial_style_01, "object/static/structure/military/shared_military_column_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
@@ -426,7 +426,7 @@ object_static_structure_military_shared_military_column_strong_rebel_style_01 = 
 	clientObjectCRC = 3057024962
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_strong_rebel_style_01, "object/static/structure/military/shared_military_column_strong_rebel_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_strong_rebel_style_01, "object/static/structure/military/shared_military_column_strong_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
@@ -469,7 +469,7 @@ object_static_structure_military_shared_military_column_weak_imperial_style_01 =
 	clientObjectCRC = 3932437109
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_imperial_style_01, "object/static/structure/military/shared_military_column_weak_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_weak_imperial_style_01, "object/static/structure/military/shared_military_column_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
@@ -512,7 +512,7 @@ object_static_structure_military_shared_military_column_weak_rebel_style_01 = Sh
 	clientObjectCRC = 165391475
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_column_weak_rebel_style_01, "object/static/structure/military/shared_military_column_weak_rebel_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_weak_rebel_style_01, "object/static/structure/military/shared_military_column_weak_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_16_s01.apt",
@@ -555,7 +555,7 @@ object_static_structure_military_shared_military_wall_med_imperial_16_style_01 =
 	clientObjectCRC = 3143955172
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_16_style_01, "object/static/structure/military/shared_military_wall_med_imperial_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_16_style_01, "object/static/structure/military/shared_military_wall_med_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_32_s01.apt",
@@ -598,7 +598,7 @@ object_static_structure_military_shared_military_wall_med_imperial_32_style_01 =
 	clientObjectCRC = 514067204
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_32_style_01, "object/static/structure/military/shared_military_wall_med_imperial_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_32_style_01, "object/static/structure/military/shared_military_wall_med_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
@@ -641,7 +641,7 @@ object_static_structure_military_shared_military_wall_med_imperial_style_01 = Sh
 	clientObjectCRC = 790640751
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_imperial_style_01, "object/static/structure/military/shared_military_wall_med_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_style_01, "object/static/structure/military/shared_military_wall_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_16_s01.apt",
@@ -684,7 +684,7 @@ object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = Sha
 	clientObjectCRC = 3655812348
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_16_style_01, "object/static/structure/military/shared_military_wall_med_rebl_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_16_style_01, "object/static/structure/military/shared_military_wall_med_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_32_s01.apt",
@@ -727,7 +727,7 @@ object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = Sha
 	clientObjectCRC = 2082979100
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_32_style_01, "object/static/structure/military/shared_military_wall_med_rebl_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_32_style_01, "object/static/structure/military/shared_military_wall_med_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
@@ -770,7 +770,7 @@ object_static_structure_military_shared_military_wall_med_rebl_style_01 = Shared
 	clientObjectCRC = 3715555896
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_med_rebl_style_01, "object/static/structure/military/shared_military_wall_med_rebl_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_style_01, "object/static/structure/military/shared_military_wall_med_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_16_s01.apt",
@@ -813,7 +813,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_16_style_0
 	clientObjectCRC = 1838610467
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_16_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_16_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_32_s01.apt",
@@ -856,7 +856,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_32_style_0
 	clientObjectCRC = 3361079747
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_32_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_32_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
@@ -899,7 +899,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_style_01 =
 	clientObjectCRC = 1483242756
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_imperial_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_16_s01.apt",
@@ -942,7 +942,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = 
 	clientObjectCRC = 3699886546
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_16_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_16_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_32_s01.apt",
@@ -985,7 +985,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = 
 	clientObjectCRC = 2034708530
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_32_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_32_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
@@ -1028,7 +1028,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_style_01 = Sha
 	clientObjectCRC = 456208313
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_strong_rebl_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_16_s01.apt",
@@ -1071,7 +1071,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 
 	clientObjectCRC = 1733519188
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_16_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_16_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_32_s01.apt",
@@ -1114,7 +1114,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 
 	clientObjectCRC = 3264454324
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_32_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_32_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
@@ -1157,7 +1157,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_style_01 = S
 	clientObjectCRC = 1600110720
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_imperial_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_16_s01.apt",
@@ -1200,7 +1200,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = Sh
 	clientObjectCRC = 4029534530
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_16_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_16_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_16_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_32_s01.apt",
@@ -1243,7 +1243,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = Sh
 	clientObjectCRC = 1441605794
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_32_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_32_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_32_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
@@ -1286,4 +1286,4 @@ object_static_structure_military_shared_military_wall_weak_rebl_style_01 = Share
 	clientObjectCRC = 1462224892
 }
 
-ObjectTemplates:addTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff")

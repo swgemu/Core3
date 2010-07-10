@@ -92,7 +92,7 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake = SharedTangibleObj
 	clientObjectCRC = 890345407
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTang
 	clientObjectCRC = 348095194
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_jungle.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangi
 	clientObjectCRC = 1011676096
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_swamp.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = Shared
 	clientObjectCRC = 480132823
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_underwater.iff")

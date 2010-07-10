@@ -92,7 +92,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 	clientObjectCRC = 1616221801
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, "object/tangible/wearables/armor/marine/shared_armor_marine_backpack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, "object/tangible/wearables/armor/marine/shared_armor_marine_backpack.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_l_f.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 	clientObjectCRC = 377642897
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_l.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_r_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 	clientObjectCRC = 1716984322
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_r.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_boots_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 	clientObjectCRC = 168220197
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, "object/tangible/wearables/armor/marine/shared_armor_marine_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, "object/tangible/wearables/armor/marine/shared_armor_marine_boots.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 	clientObjectCRC = 2560891493
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_rebel_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 	clientObjectCRC = 3425564515
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate_rebel.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_helmet_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 	clientObjectCRC = 412137204
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, "object/tangible/wearables/armor/marine/shared_armor_marine_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, "object/tangible/wearables/armor/marine/shared_armor_marine_helmet.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_leggings_f.sat",
@@ -463,4 +463,4 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 	clientObjectCRC = 4090769241
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, "object/tangible/wearables/armor/marine/shared_armor_marine_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, "object/tangible/wearables/armor/marine/shared_armor_marine_leggings.iff")

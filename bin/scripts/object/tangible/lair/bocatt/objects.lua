@@ -92,7 +92,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 465155974
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, "object/tangible/lair/bocatt/shared_lair_bocatt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, "object/tangible/lair/bocatt/shared_lair_bocatt.iff")
 
 object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectT
 	clientObjectCRC = 3263722419
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, "object/tangible/lair/bocatt/shared_lair_bocatt_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, "object/tangible/lair/bocatt/shared_lair_bocatt_grassland.iff")
 
 object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTempl
 	clientObjectCRC = 3197548002
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, "object/tangible/lair/bocatt/shared_lair_bocatt_hills.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, "object/tangible/lair/bocatt/shared_lair_bocatt_hills.iff")

@@ -82,4 +82,4 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1637592609
 }
 
-ObjectTemplates:addTemplate(object_player_shared_player, "object/player/shared_player.iff")
+ObjectTemplates:addClientTemplate(object_player_shared_player, "object/player/shared_player.iff")

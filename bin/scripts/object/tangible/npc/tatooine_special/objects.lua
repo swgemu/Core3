@@ -92,4 +92,4 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 	clientObjectCRC = 2943030476
 }
 
-ObjectTemplates:addTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, "object/tangible/npc/tatooine_special/shared_sarlacc.iff")
+ObjectTemplates:addClientTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, "object/tangible/npc/tatooine_special/shared_sarlacc.iff")

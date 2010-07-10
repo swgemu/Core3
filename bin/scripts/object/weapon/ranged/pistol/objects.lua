@@ -96,7 +96,7 @@ object_weapon_ranged_pistol_shared_pistol_cdef = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 937103853
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef, "object/weapon/ranged/pistol/shared_pistol_cdef.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_cdef, "object/weapon/ranged/pistol/shared_pistol_cdef.iff")
 
 object_weapon_ranged_pistol_shared_pistol_cdef_corsec = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_cdef.apt",
@@ -153,7 +153,7 @@ object_weapon_ranged_pistol_shared_pistol_cdef_corsec = SharedWeaponObjectTempla
 	clientObjectCRC = 1753490887
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_corsec, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_corsec, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff")
 
 object_weapon_ranged_pistol_shared_pistol_cdef_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_cdef.apt",
@@ -210,7 +210,7 @@ object_weapon_ranged_pistol_shared_pistol_cdef_noob = SharedWeaponObjectTemplate
 	clientObjectCRC = 3483007032
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_noob, "object/weapon/ranged/pistol/shared_pistol_cdef_noob.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_noob, "object/weapon/ranged/pistol/shared_pistol_cdef_noob.iff")
 
 object_weapon_ranged_pistol_shared_pistol_d18 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_d18.apt",
@@ -267,7 +267,7 @@ object_weapon_ranged_pistol_shared_pistol_d18 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3466260217
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_d18, "object/weapon/ranged/pistol/shared_pistol_d18.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_d18, "object/weapon/ranged/pistol/shared_pistol_d18.iff")
 
 object_weapon_ranged_pistol_shared_pistol_de_10 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_de10.apt",
@@ -324,7 +324,7 @@ object_weapon_ranged_pistol_shared_pistol_de_10 = SharedWeaponObjectTemplate:new
 	clientObjectCRC = 3368548007
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_de_10, "object/weapon/ranged/pistol/shared_pistol_de_10.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_de_10, "object/weapon/ranged/pistol/shared_pistol_de_10.iff")
 
 object_weapon_ranged_pistol_shared_pistol_dh17 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
@@ -381,7 +381,7 @@ object_weapon_ranged_pistol_shared_pistol_dh17 = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 1034640003
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dh17, "object/weapon/ranged/pistol/shared_pistol_dh17.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_dh17, "object/weapon/ranged/pistol/shared_pistol_dh17.iff")
 
 object_weapon_ranged_pistol_shared_pistol_dl44 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44.apt",
@@ -438,7 +438,7 @@ object_weapon_ranged_pistol_shared_pistol_dl44 = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 2829612927
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dl44, "object/weapon/ranged/pistol/shared_pistol_dl44.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_dl44, "object/weapon/ranged/pistol/shared_pistol_dl44.iff")
 
 object_weapon_ranged_pistol_shared_pistol_dl44_metal = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_metal.apt",
@@ -495,7 +495,7 @@ object_weapon_ranged_pistol_shared_pistol_dl44_metal = SharedWeaponObjectTemplat
 	clientObjectCRC = 1831044635
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dl44_metal, "object/weapon/ranged/pistol/shared_pistol_dl44_metal.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_dl44_metal, "object/weapon/ranged/pistol/shared_pistol_dl44_metal.iff")
 
 object_weapon_ranged_pistol_shared_pistol_dx2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dx2.apt",
@@ -552,7 +552,7 @@ object_weapon_ranged_pistol_shared_pistol_dx2 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 260330479
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dx2, "object/weapon/ranged/pistol/shared_pistol_dx2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_dx2, "object/weapon/ranged/pistol/shared_pistol_dx2.iff")
 
 object_weapon_ranged_pistol_shared_pistol_fwg5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_fwg5.apt",
@@ -609,7 +609,7 @@ object_weapon_ranged_pistol_shared_pistol_fwg5 = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 1508397938
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5, "object/weapon/ranged/pistol/shared_pistol_fwg5.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5, "object/weapon/ranged/pistol/shared_pistol_fwg5.iff")
 
 object_weapon_ranged_pistol_shared_pistol_fwg5_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_fwg5.apt",
@@ -666,7 +666,7 @@ object_weapon_ranged_pistol_shared_pistol_fwg5_quest = SharedWeaponObjectTemplat
 	clientObjectCRC = 1350493335
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5_quest, "object/weapon/ranged/pistol/shared_pistol_fwg5_quest.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5_quest, "object/weapon/ranged/pistol/shared_pistol_fwg5_quest.iff")
 
 object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_geonosian.apt",
@@ -723,7 +723,7 @@ object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot = SharedW
 	clientObjectCRC = 2311570538
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot, "object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot, "object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff")
 
 object_weapon_ranged_pistol_shared_pistol_launcher = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_launcher_pistol.apt",
@@ -780,7 +780,7 @@ object_weapon_ranged_pistol_shared_pistol_launcher = SharedWeaponObjectTemplate:
 	clientObjectCRC = 650380647
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_launcher, "object/weapon/ranged/pistol/shared_pistol_launcher.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_launcher, "object/weapon/ranged/pistol/shared_pistol_launcher.iff")
 
 object_weapon_ranged_pistol_shared_pistol_power5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_power5.apt",
@@ -837,7 +837,7 @@ object_weapon_ranged_pistol_shared_pistol_power5 = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 148689854
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_power5, "object/weapon/ranged/pistol/shared_pistol_power5.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_power5, "object/weapon/ranged/pistol/shared_pistol_power5.iff")
 
 object_weapon_ranged_pistol_shared_pistol_republic_blaster = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_republic_blaster.apt",
@@ -894,7 +894,7 @@ object_weapon_ranged_pistol_shared_pistol_republic_blaster = SharedWeaponObjectT
 	clientObjectCRC = 258355020
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster, "object/weapon/ranged/pistol/shared_pistol_republic_blaster.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster, "object/weapon/ranged/pistol/shared_pistol_republic_blaster.iff")
 
 object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_republic_blaster.apt",
@@ -951,7 +951,7 @@ object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest = SharedWeaponO
 	clientObjectCRC = 4154566547
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest, "object/weapon/ranged/pistol/shared_pistol_republic_blaster_quest.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest, "object/weapon/ranged/pistol/shared_pistol_republic_blaster_quest.iff")
 
 object_weapon_ranged_pistol_shared_pistol_scatter = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scatter_pistol.apt",
@@ -1008,7 +1008,7 @@ object_weapon_ranged_pistol_shared_pistol_scatter = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 3345683635
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scatter, "object/weapon/ranged/pistol/shared_pistol_scatter.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_scatter, "object/weapon/ranged/pistol/shared_pistol_scatter.iff")
 
 object_weapon_ranged_pistol_shared_pistol_scout_blaster = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout.apt",
@@ -1065,7 +1065,7 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster = SharedWeaponObjectTemp
 	clientObjectCRC = 3883785442
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster, "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster, "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff")
 
 object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_scoutblaster.apt",
@@ -1122,7 +1122,7 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2 = SharedWeap
 	clientObjectCRC = 1438704896
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2, "object/weapon/ranged/pistol/shared_pistol_scout_blaster_ammo_test_2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2, "object/weapon/ranged/pistol/shared_pistol_scout_blaster_ammo_test_2.iff")
 
 object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout.apt",
@@ -1179,7 +1179,7 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec = SharedWeaponObj
 	clientObjectCRC = 1727125782
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec, "object/weapon/ranged/pistol/shared_pistol_scout_blaster_corsec.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec, "object/weapon/ranged/pistol/shared_pistol_scout_blaster_corsec.iff")
 
 object_weapon_ranged_pistol_shared_pistol_srcombat = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_srcombat.apt",
@@ -1236,7 +1236,7 @@ object_weapon_ranged_pistol_shared_pistol_srcombat = SharedWeaponObjectTemplate:
 	clientObjectCRC = 874294352
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_srcombat, "object/weapon/ranged/pistol/shared_pistol_srcombat.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_srcombat, "object/weapon/ranged/pistol/shared_pistol_srcombat.iff")
 
 object_weapon_ranged_pistol_shared_pistol_striker = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_striker.apt",
@@ -1293,7 +1293,7 @@ object_weapon_ranged_pistol_shared_pistol_striker = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 1505820957
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_striker, "object/weapon/ranged/pistol/shared_pistol_striker.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_striker, "object/weapon/ranged/pistol/shared_pistol_striker.iff")
 
 object_weapon_ranged_pistol_shared_pistol_striker_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_striker.apt",
@@ -1350,7 +1350,7 @@ object_weapon_ranged_pistol_shared_pistol_striker_noob = SharedWeaponObjectTempl
 	clientObjectCRC = 1701084599
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_striker_noob, "object/weapon/ranged/pistol/shared_pistol_striker_noob.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_striker_noob, "object/weapon/ranged/pistol/shared_pistol_striker_noob.iff")
 
 object_weapon_ranged_pistol_shared_pistol_tangle = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_tangle.apt",
@@ -1407,4 +1407,4 @@ object_weapon_ranged_pistol_shared_pistol_tangle = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 2758629867
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_tangle, "object/weapon/ranged/pistol/shared_pistol_tangle.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_tangle, "object/weapon/ranged/pistol/shared_pistol_tangle.iff")

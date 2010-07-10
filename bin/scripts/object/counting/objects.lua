@@ -92,4 +92,4 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	clientObjectCRC = 3842659589
 }
 
-ObjectTemplates:addTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")
+ObjectTemplates:addClientTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")

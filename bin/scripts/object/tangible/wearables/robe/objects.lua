@@ -92,7 +92,7 @@ object_tangible_wearables_robe_shared_aakuan_robe = SharedTangibleObjectTemplate
 	clientObjectCRC = 518208123
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_aakuan_robe, "object/tangible/wearables/robe/shared_aakuan_robe.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_aakuan_robe, "object/tangible/wearables/robe/shared_aakuan_robe.iff")
 
 object_tangible_wearables_robe_shared_robe_inquisitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_inquisitor_m.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_robe_shared_robe_inquisitor = SharedTangibleObjectTemp
 	clientObjectCRC = 3169107890
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_inquisitor, "object/tangible/wearables/robe/shared_robe_inquisitor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_inquisitor, "object/tangible/wearables/robe/shared_robe_inquisitor.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s01_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s01 = SharedTangibleObjectT
 	clientObjectCRC = 3047595977
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s01, "object/tangible/wearables/robe/shared_robe_jedi_dark_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s01, "object/tangible/wearables/robe/shared_robe_jedi_dark_s01.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s02_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s02 = SharedTangibleObjectT
 	clientObjectCRC = 1857107806
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s02, "object/tangible/wearables/robe/shared_robe_jedi_dark_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s02, "object/tangible/wearables/robe/shared_robe_jedi_dark_s02.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s03_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s03 = SharedTangibleObjectT
 	clientObjectCRC = 666652883
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s03, "object/tangible/wearables/robe/shared_robe_jedi_dark_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s03, "object/tangible/wearables/robe/shared_robe_jedi_dark_s03.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s04_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s04 = SharedTangibleObjectT
 	clientObjectCRC = 3697245127
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s04, "object/tangible/wearables/robe/shared_robe_jedi_dark_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s04, "object/tangible/wearables/robe/shared_robe_jedi_dark_s04.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s05_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s05 = SharedTangibleObjectT
 	clientObjectCRC = 2505186378
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s05, "object/tangible/wearables/robe/shared_robe_jedi_dark_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s05, "object/tangible/wearables/robe/shared_robe_jedi_dark_s05.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s01_f.sat",
@@ -463,7 +463,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s01 = SharedTangibleObject
 	clientObjectCRC = 3064236439
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s01, "object/tangible/wearables/robe/shared_robe_jedi_light_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s01, "object/tangible/wearables/robe/shared_robe_jedi_light_s01.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s02_f.sat",
@@ -516,7 +516,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s02 = SharedTangibleObject
 	clientObjectCRC = 1840455936
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s02, "object/tangible/wearables/robe/shared_robe_jedi_light_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s02, "object/tangible/wearables/robe/shared_robe_jedi_light_s02.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s03_f.sat",
@@ -569,7 +569,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s03 = SharedTangibleObject
 	clientObjectCRC = 616449677
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s03, "object/tangible/wearables/robe/shared_robe_jedi_light_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s03, "object/tangible/wearables/robe/shared_robe_jedi_light_s03.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s04_f.sat",
@@ -622,7 +622,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s04 = SharedTangibleObject
 	clientObjectCRC = 3747442073
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s04, "object/tangible/wearables/robe/shared_robe_jedi_light_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s04, "object/tangible/wearables/robe/shared_robe_jedi_light_s04.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s05_f.sat",
@@ -675,7 +675,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s05 = SharedTangibleObject
 	clientObjectCRC = 2521827860
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s05, "object/tangible/wearables/robe/shared_robe_jedi_light_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s05, "object/tangible/wearables/robe/shared_robe_jedi_light_s05.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_padawan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_padawan_f.sat",
@@ -728,7 +728,7 @@ object_tangible_wearables_robe_shared_robe_jedi_padawan = SharedTangibleObjectTe
 	clientObjectCRC = 901202930
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_padawan, "object/tangible/wearables/robe/shared_robe_jedi_padawan.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_padawan, "object/tangible/wearables/robe/shared_robe_jedi_padawan.iff")
 
 object_tangible_wearables_robe_shared_robe_jedi_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h0_f.sat",
@@ -781,7 +781,7 @@ object_tangible_wearables_robe_shared_robe_jedi_test = SharedTangibleObjectTempl
 	clientObjectCRC = 2041848180
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_test, "object/tangible/wearables/robe/shared_robe_jedi_test.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jedi_test, "object/tangible/wearables/robe/shared_robe_jedi_test.iff")
 
 object_tangible_wearables_robe_shared_robe_prefect_talmont = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_prefect_talmont_m.sat",
@@ -834,7 +834,7 @@ object_tangible_wearables_robe_shared_robe_prefect_talmont = SharedTangibleObjec
 	clientObjectCRC = 1197214887
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_prefect_talmont, "object/tangible/wearables/robe/shared_robe_prefect_talmont.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_prefect_talmont, "object/tangible/wearables/robe/shared_robe_prefect_talmont.iff")
 
 object_tangible_wearables_robe_shared_robe_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s01_f.sat",
@@ -887,7 +887,7 @@ object_tangible_wearables_robe_shared_robe_s01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1986706266
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s01, "object/tangible/wearables/robe/shared_robe_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s01, "object/tangible/wearables/robe/shared_robe_s01.iff")
 
 object_tangible_wearables_robe_shared_robe_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
@@ -940,7 +940,7 @@ object_tangible_wearables_robe_shared_robe_s04 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 529751892
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s04, "object/tangible/wearables/robe/shared_robe_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s04, "object/tangible/wearables/robe/shared_robe_s04.iff")
 
 object_tangible_wearables_robe_shared_robe_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h0_f.sat",
@@ -993,7 +993,7 @@ object_tangible_wearables_robe_shared_robe_s05 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1453209817
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s05, "object/tangible/wearables/robe/shared_robe_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s05, "object/tangible/wearables/robe/shared_robe_s05.iff")
 
 object_tangible_wearables_robe_shared_robe_s05_h1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h1_m.sat",
@@ -1046,7 +1046,7 @@ object_tangible_wearables_robe_shared_robe_s05_h1 = SharedTangibleObjectTemplate
 	clientObjectCRC = 956309254
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s05_h1, "object/tangible/wearables/robe/shared_robe_s05_h1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s05_h1, "object/tangible/wearables/robe/shared_robe_s05_h1.iff")
 
 object_tangible_wearables_robe_shared_robe_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s12_f.sat",
@@ -1099,7 +1099,7 @@ object_tangible_wearables_robe_shared_robe_s12 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3059031733
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s12, "object/tangible/wearables/robe/shared_robe_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s12, "object/tangible/wearables/robe/shared_robe_s12.iff")
 
 object_tangible_wearables_robe_shared_robe_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s18_wke_f.sat",
@@ -1152,7 +1152,7 @@ object_tangible_wearables_robe_shared_robe_s18 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1705432745
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s18, "object/tangible/wearables/robe/shared_robe_s18.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s18, "object/tangible/wearables/robe/shared_robe_s18.iff")
 
 object_tangible_wearables_robe_shared_robe_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s27_f.sat",
@@ -1205,7 +1205,7 @@ object_tangible_wearables_robe_shared_robe_s27 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 4074040627
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s27, "object/tangible/wearables/robe/shared_robe_s27.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s27, "object/tangible/wearables/robe/shared_robe_s27.iff")
 
 object_tangible_wearables_robe_shared_robe_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s01_m.sat",
@@ -1258,7 +1258,7 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s01 = SharedTangibleObj
 	clientObjectCRC = 1357876030
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s01, "object/tangible/wearables/robe/shared_robe_tusken_raider_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s01, "object/tangible/wearables/robe/shared_robe_tusken_raider_s01.iff")
 
 object_tangible_wearables_robe_shared_robe_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s02_m.sat",
@@ -1311,4 +1311,4 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s02 = SharedTangibleObj
 	clientObjectCRC = 2348295081
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s02, "object/tangible/wearables/robe/shared_robe_tusken_raider_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s02, "object/tangible/wearables/robe/shared_robe_tusken_raider_s02.iff")

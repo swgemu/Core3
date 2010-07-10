@@ -92,4 +92,4 @@ object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTan
 	clientObjectCRC = 3357840333
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice, "object/tangible/container/quest/hero_of_tatooine/shared_rock_crevice.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice, "object/tangible/container/quest/hero_of_tatooine/shared_rock_crevice.iff")

@@ -92,7 +92,7 @@ object_tangible_test_shared_inventory_filler = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2308658089
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_inventory_filler, "object/tangible/test/shared_inventory_filler.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_inventory_filler, "object/tangible/test/shared_inventory_filler.iff")
 
 object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/test_barrel_a.apt",
@@ -145,7 +145,7 @@ object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3742060699
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_test_barrel_a, "object/tangible/test/shared_test_barrel_a.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_a, "object/tangible/test/shared_test_barrel_a.iff")
 
 object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/test_barrel_b.apt",
@@ -198,7 +198,7 @@ object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 69007372
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_test_barrel_b, "object/tangible/test/shared_test_barrel_b.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_b, "object/tangible/test/shared_test_barrel_b.iff")
 
 object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s20_f.sat",
@@ -251,7 +251,7 @@ object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 4013228996
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_test_jwatson, "object/tangible/test/shared_test_jwatson.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_jwatson, "object/tangible/test/shared_test_jwatson.iff")
 
 object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -304,7 +304,7 @@ object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1611558615
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_test_pastry_01, "object/tangible/test/shared_test_pastry_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_pastry_01, "object/tangible/test/shared_test_pastry_01.iff")
 
 object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -357,4 +357,4 @@ object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1340334223
 }
 
-ObjectTemplates:addTemplate(object_tangible_test_shared_test_terminal, "object/tangible/test/shared_test_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_terminal, "object/tangible/test/shared_test_terminal.iff")

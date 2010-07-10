@@ -92,7 +92,7 @@ object_tangible_ship_crafted_armor_shared_adv_durasteel_plating = SharedTangible
 	clientObjectCRC = 3119994654
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_adv_durasteel_plating, "object/tangible/ship/crafted/armor/shared_adv_durasteel_plating.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_adv_durasteel_plating, "object/tangible/ship/crafted/armor/shared_adv_durasteel_plating.iff")
 
 object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1 = Shared
 	clientObjectCRC = 2997247202
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk1.iff")
 
 object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2 = Shared
 	clientObjectCRC = 1773270133
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk2.iff")
 
 object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3 = Shared
 	clientObjectCRC = 549229560
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk3.iff")
 
 object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4 = Shared
 	clientObjectCRC = 3680483564
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk4.iff")
 
 object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -357,7 +357,7 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5 = Shared
 	clientObjectCRC = 2454904673
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5, "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk5.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_f.sat",
@@ -410,7 +410,7 @@ object_tangible_ship_crafted_armor_shared_base_armor = SharedTangibleObjectTempl
 	clientObjectCRC = 2002100175
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor, "object/tangible/ship/crafted/armor/shared_base_armor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor, "object/tangible/ship/crafted/armor/shared_base_armor.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -463,7 +463,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent = SharedTangib
 	clientObjectCRC = 773618140
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -516,7 +516,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1 = SharedTa
 	clientObjectCRC = 2949774675
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -569,7 +569,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2 = SharedTa
 	clientObjectCRC = 1959155140
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -622,7 +622,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3 = SharedTa
 	clientObjectCRC = 1036726857
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -675,7 +675,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4 = SharedTa
 	clientObjectCRC = 3324516701
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5 = SharedTa
 	clientObjectCRC = 2401599184
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5, "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_armor_shared_durasteel_plating = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -781,7 +781,7 @@ object_tangible_ship_crafted_armor_shared_durasteel_plating = SharedTangibleObje
 	clientObjectCRC = 1660462348
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_durasteel_plating, "object/tangible/ship/crafted/armor/shared_durasteel_plating.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_durasteel_plating, "object/tangible/ship/crafted/armor/shared_durasteel_plating.iff")
 
 object_tangible_ship_crafted_armor_shared_experimental_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -834,7 +834,7 @@ object_tangible_ship_crafted_armor_shared_experimental_armor = SharedTangibleObj
 	clientObjectCRC = 2006663885
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_experimental_armor, "object/tangible/ship/crafted/armor/shared_experimental_armor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_experimental_armor, "object/tangible/ship/crafted/armor/shared_experimental_armor.iff")
 
 object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -887,7 +887,7 @@ object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating = SharedTangib
 	clientObjectCRC = 3716397337
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating, "object/tangible/ship/crafted/armor/shared_heavy_durasteel_plating.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating, "object/tangible/ship/crafted/armor/shared_heavy_durasteel_plating.iff")
 
 object_tangible_ship_crafted_armor_shared_light_durasteel_plating = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -940,7 +940,7 @@ object_tangible_ship_crafted_armor_shared_light_durasteel_plating = SharedTangib
 	clientObjectCRC = 2691365358
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_light_durasteel_plating, "object/tangible/ship/crafted/armor/shared_light_durasteel_plating.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_light_durasteel_plating, "object/tangible/ship/crafted/armor/shared_light_durasteel_plating.iff")
 
 object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -993,7 +993,7 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1 = SharedTangibl
 	clientObjectCRC = 3987898855
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk1.iff")
 
 object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1046,7 +1046,7 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2 = SharedTangibl
 	clientObjectCRC = 916793712
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk2.iff")
 
 object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1099,7 +1099,7 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3 = SharedTangibl
 	clientObjectCRC = 2141736701
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk3.iff")
 
 object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1152,7 +1152,7 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4 = SharedTangibl
 	clientObjectCRC = 2219533801
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk4.iff")
 
 object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
@@ -1205,4 +1205,4 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5 = SharedTangibl
 	clientObjectCRC = 3443917412
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5, "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk5.iff")

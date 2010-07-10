@@ -92,7 +92,7 @@ object_tangible_dungeon_shared_cave_stalagmite_ice_style_01 = SharedTangibleObje
 	clientObjectCRC = 1546847010
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_cave_stalagmite_ice_style_01, "object/tangible/dungeon/shared_cave_stalagmite_ice_style_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_cave_stalagmite_ice_style_01, "object/tangible/dungeon/shared_cave_stalagmite_ice_style_01.iff")
 
 object_tangible_dungeon_shared_chemical_storage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -145,7 +145,7 @@ object_tangible_dungeon_shared_chemical_storage = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2171896668
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_chemical_storage, "object/tangible/dungeon/shared_chemical_storage.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_chemical_storage, "object/tangible/dungeon/shared_chemical_storage.iff")
 
 object_tangible_dungeon_shared_coal_bin_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_bucket_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_dungeon_shared_coal_bin_container = SharedTangibleObjectTemplate
 	clientObjectCRC = 1342811705
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_coal_bin_container, "object/tangible/dungeon/shared_coal_bin_container.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_coal_bin_container, "object/tangible/dungeon/shared_coal_bin_container.iff")
 
 object_tangible_dungeon_shared_computer_desktop = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
@@ -251,7 +251,7 @@ object_tangible_dungeon_shared_computer_desktop = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1483156059
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_computer_desktop, "object/tangible/dungeon/shared_computer_desktop.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_computer_desktop, "object/tangible/dungeon/shared_computer_desktop.iff")
 
 object_tangible_dungeon_shared_computer_mainframe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
@@ -304,7 +304,7 @@ object_tangible_dungeon_shared_computer_mainframe = SharedTangibleObjectTemplate
 	clientObjectCRC = 2299324292
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_computer_mainframe, "object/tangible/dungeon/shared_computer_mainframe.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_computer_mainframe, "object/tangible/dungeon/shared_computer_mainframe.iff")
 
 object_tangible_dungeon_shared_droid_maint_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -357,7 +357,7 @@ object_tangible_dungeon_shared_droid_maint_module = SharedTangibleObjectTemplate
 	clientObjectCRC = 3106365328
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_droid_maint_module, "object/tangible/dungeon/shared_droid_maint_module.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_droid_maint_module, "object/tangible/dungeon/shared_droid_maint_module.iff")
 
 object_tangible_dungeon_shared_keypad_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_keypad_door_s01.apt",
@@ -410,7 +410,7 @@ object_tangible_dungeon_shared_keypad_terminal = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 307119363
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_keypad_terminal, "object/tangible/dungeon/shared_keypad_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_keypad_terminal, "object/tangible/dungeon/shared_keypad_terminal.iff")
 
 object_tangible_dungeon_shared_poison_gas_cloud = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_greenish.prt",
@@ -463,7 +463,7 @@ object_tangible_dungeon_shared_poison_gas_cloud = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1380579021
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_poison_gas_cloud, "object/tangible/dungeon/shared_poison_gas_cloud.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_poison_gas_cloud, "object/tangible/dungeon/shared_poison_gas_cloud.iff")
 
 object_tangible_dungeon_shared_poison_stabilizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -516,7 +516,7 @@ object_tangible_dungeon_shared_poison_stabilizer = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2249389472
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_poison_stabilizer, "object/tangible/dungeon/shared_poison_stabilizer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_poison_stabilizer, "object/tangible/dungeon/shared_poison_stabilizer.iff")
 
 object_tangible_dungeon_shared_terminal_free_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -569,7 +569,7 @@ object_tangible_dungeon_shared_terminal_free_s1 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2707720646
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_terminal_free_s1, "object/tangible/dungeon/shared_terminal_free_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_terminal_free_s1, "object/tangible/dungeon/shared_terminal_free_s1.iff")
 
 object_tangible_dungeon_shared_trash_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -622,7 +622,7 @@ object_tangible_dungeon_shared_trash_container = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1529401041
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_trash_container, "object/tangible/dungeon/shared_trash_container.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_trash_container, "object/tangible/dungeon/shared_trash_container.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
@@ -675,7 +675,7 @@ object_tangible_dungeon_shared_wall_terminal_s1 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4069617127
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s1, "object/tangible/dungeon/shared_wall_terminal_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s1, "object/tangible/dungeon/shared_wall_terminal_s1.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -728,7 +728,7 @@ object_tangible_dungeon_shared_wall_terminal_s2 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 696698224
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s2, "object/tangible/dungeon/shared_wall_terminal_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s2, "object/tangible/dungeon/shared_wall_terminal_s2.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -781,7 +781,7 @@ object_tangible_dungeon_shared_wall_terminal_s3 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1619763965
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s3, "object/tangible/dungeon/shared_wall_terminal_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s3, "object/tangible/dungeon/shared_wall_terminal_s3.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
@@ -834,4 +834,4 @@ object_tangible_dungeon_shared_wall_terminal_s4 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2607319529
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s4, "object/tangible/dungeon/shared_wall_terminal_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s4, "object/tangible/dungeon/shared_wall_terminal_s4.iff")

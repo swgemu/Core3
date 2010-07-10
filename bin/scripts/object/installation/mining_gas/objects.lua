@@ -92,7 +92,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInsta
 	clientObjectCRC = 3446200775
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_1, "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_1, "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff")
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
@@ -145,7 +145,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInsta
 	clientObjectCRC = 377450832
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_2, "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_2, "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff")
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_gas_s01_u0.apt",
@@ -198,4 +198,4 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInsta
 	clientObjectCRC = 1601312477
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_3, "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_3, "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff")

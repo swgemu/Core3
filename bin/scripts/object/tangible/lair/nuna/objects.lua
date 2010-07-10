@@ -92,7 +92,7 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1870027501
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 	clientObjectCRC = 3366083630
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2100068580
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 	clientObjectCRC = 222503390
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")

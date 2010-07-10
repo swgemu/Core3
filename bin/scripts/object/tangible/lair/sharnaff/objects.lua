@@ -92,7 +92,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 	clientObjectCRC = 196553824
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 	clientObjectCRC = 150207939
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 	clientObjectCRC = 2092015518
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")

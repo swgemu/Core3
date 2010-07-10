@@ -92,7 +92,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 982220507
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s02_f.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 3785152076
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s03_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 2828120513
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s04_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 	clientObjectCRC = 1400019669
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hat_s01_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 143220595
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s01_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 773028987
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s02_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 	clientObjectCRC = 4110734572
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s03_f.sat",
@@ -463,7 +463,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 	clientObjectCRC = 3154752353
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
@@ -516,7 +516,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 	clientObjectCRC = 1294873415
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
@@ -569,7 +569,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 	clientObjectCRC = 2316465710
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_m.sat",
@@ -622,7 +622,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 	clientObjectCRC = 283957695
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s01_f.sat",
@@ -675,7 +675,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2791438893
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s02_f.sat",
@@ -728,7 +728,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 2104906426
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s03_f.sat",
@@ -781,7 +781,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 880489783
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s04_f.sat",
@@ -834,7 +834,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 3482852899
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s01_f.sat",
@@ -887,7 +887,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 	clientObjectCRC = 1209883613
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s02_f.sat",
@@ -940,7 +940,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 	clientObjectCRC = 2466968394
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s01_f.sat",
@@ -993,7 +993,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2927288103
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s02_f.sat",
@@ -1046,7 +1046,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 1970108336
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s03_f.sat",
@@ -1099,7 +1099,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 1012928573
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s04_f.sat",
@@ -1152,4 +1152,4 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 3347266345
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff")

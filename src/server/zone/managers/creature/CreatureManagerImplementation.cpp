@@ -87,6 +87,10 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	return true;
 }
 
+void CreatureManagerImplementation::loadDynamicSpawnAreas() {
+	info("loading random spawn regions...", true);
+}
+
 void CreatureManagerImplementation::loadTrainers() {
 	info("loading trainers...", true);
 

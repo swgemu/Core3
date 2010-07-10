@@ -96,4 +96,4 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 482351684
 }
 
-ObjectTemplates:addTemplate(object_weapon_mine_base_shared_mine_base, "object/weapon/mine/base/shared_mine_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_mine_base_shared_mine_base, "object/weapon/mine/base/shared_mine_base.iff")

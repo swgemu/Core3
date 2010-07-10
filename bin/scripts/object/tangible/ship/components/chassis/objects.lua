@@ -92,7 +92,7 @@ object_tangible_ship_components_chassis_shared_awing_chassis_token = SharedTangi
 	clientObjectCRC = 90429842
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_awing_chassis_token, "object/tangible/ship/components/chassis/shared_awing_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_awing_chassis_token, "object/tangible/ship/components/chassis/shared_awing_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_base_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -145,7 +145,7 @@ object_tangible_ship_components_chassis_shared_base_chassis_token = SharedTangib
 	clientObjectCRC = 721690937
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_base_chassis_token, "object/tangible/ship/components/chassis/shared_base_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_base_chassis_token, "object/tangible/ship/components/chassis/shared_base_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -198,7 +198,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token 
 	clientObjectCRC = 467101545
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s01_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s01_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -251,7 +251,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token 
 	clientObjectCRC = 100401026
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -304,7 +304,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token 
 	clientObjectCRC = 266368987
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s03_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s03_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -357,7 +357,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token 
 	clientObjectCRC = 966970964
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s04_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s04_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -410,7 +410,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token 
 	clientObjectCRC = 1715349406
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s01_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s01_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -463,7 +463,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token 
 	clientObjectCRC = 2014494581
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -516,7 +516,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token 
 	clientObjectCRC = 1913206572
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s03_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s03_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -569,7 +569,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token 
 	clientObjectCRC = 1145802403
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s04_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s04_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -622,7 +622,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token
 	clientObjectCRC = 1303791659
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s01_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s01_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -675,7 +675,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token
 	clientObjectCRC = 1402654912
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -728,7 +728,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token
 	clientObjectCRC = 1501649049
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s03_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s03_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -781,7 +781,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token
 	clientObjectCRC = 1875108118
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s04_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s04_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_bwing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -834,7 +834,7 @@ object_tangible_ship_components_chassis_shared_bwing_chassis_token = SharedTangi
 	clientObjectCRC = 263693282
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_bwing_chassis_token, "object/tangible/ship/components/chassis/shared_bwing_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_bwing_chassis_token, "object/tangible/ship/components/chassis/shared_bwing_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_decimator_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -887,7 +887,7 @@ object_tangible_ship_components_chassis_shared_decimator_chassis_token = SharedT
 	clientObjectCRC = 202774630
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_decimator_chassis_token, "object/tangible/ship/components/chassis/shared_decimator_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_decimator_chassis_token, "object/tangible/ship/components/chassis/shared_decimator_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_firespray_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -940,7 +940,7 @@ object_tangible_ship_components_chassis_shared_firespray_chassis_token = SharedT
 	clientObjectCRC = 2197904030
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_firespray_chassis_token, "object/tangible/ship/components/chassis/shared_firespray_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_firespray_chassis_token, "object/tangible/ship/components/chassis/shared_firespray_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -993,7 +993,7 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token = Sh
 	clientObjectCRC = 2891959182
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s01_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s01_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1046,7 +1046,7 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token = Sh
 	clientObjectCRC = 2993902437
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_light_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1099,7 +1099,7 @@ object_tangible_ship_components_chassis_shared_hutt_light_chassis_token = Shared
 	clientObjectCRC = 2409366358
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_light_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_light_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1152,7 +1152,7 @@ object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token = Sh
 	clientObjectCRC = 3482981266
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1205,7 +1205,7 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token = S
 	clientObjectCRC = 1717793360
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s01_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s01_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1258,7 +1258,7 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token = S
 	clientObjectCRC = 2018503355
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s02_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s02_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1311,7 +1311,7 @@ object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token = 
 	clientObjectCRC = 2648461459
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_turret_ship_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_turret_ship_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tie_in_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1364,7 +1364,7 @@ object_tangible_ship_components_chassis_shared_tie_in_chassis_token = SharedTang
 	clientObjectCRC = 2237376595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tie_in_chassis_token, "object/tangible/ship/components/chassis/shared_tie_in_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tie_in_chassis_token, "object/tangible/ship/components/chassis/shared_tie_in_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1417,7 +1417,7 @@ object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token = Sh
 	clientObjectCRC = 1661320674
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token, "object/tangible/ship/components/chassis/shared_tie_light_duty_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token, "object/tangible/ship/components/chassis/shared_tie_light_duty_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1470,7 +1470,7 @@ object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token = Share
 	clientObjectCRC = 2706856449
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token, "object/tangible/ship/components/chassis/shared_tieadvanced_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token, "object/tangible/ship/components/chassis/shared_tieadvanced_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1523,7 +1523,7 @@ object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token = Shar
 	clientObjectCRC = 791634059
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieaggressor_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieaggressor_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tiebomber_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1576,7 +1576,7 @@ object_tangible_ship_components_chassis_shared_tiebomber_chassis_token = SharedT
 	clientObjectCRC = 1457187476
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiebomber_chassis_token, "object/tangible/ship/components/chassis/shared_tiebomber_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tiebomber_chassis_token, "object/tangible/ship/components/chassis/shared_tiebomber_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tiefighter_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1629,7 +1629,7 @@ object_tangible_ship_components_chassis_shared_tiefighter_chassis_token = Shared
 	clientObjectCRC = 1894497795
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiefighter_chassis_token, "object/tangible/ship/components/chassis/shared_tiefighter_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tiefighter_chassis_token, "object/tangible/ship/components/chassis/shared_tiefighter_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1682,7 +1682,7 @@ object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token = Sh
 	clientObjectCRC = 2556036230
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token, "object/tangible/ship/components/chassis/shared_tieinterceptor_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token, "object/tangible/ship/components/chassis/shared_tieinterceptor_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1735,7 +1735,7 @@ object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token = Shar
 	clientObjectCRC = 1760010218
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieoppressor_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieoppressor_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_xwing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1788,7 +1788,7 @@ object_tangible_ship_components_chassis_shared_xwing_chassis_token = SharedTangi
 	clientObjectCRC = 1435247554
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_xwing_chassis_token, "object/tangible/ship/components/chassis/shared_xwing_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_xwing_chassis_token, "object/tangible/ship/components/chassis/shared_xwing_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_ykl37r_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1841,7 +1841,7 @@ object_tangible_ship_components_chassis_shared_ykl37r_chassis_token = SharedTang
 	clientObjectCRC = 3131311830
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ykl37r_chassis_token, "object/tangible/ship/components/chassis/shared_ykl37r_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ykl37r_chassis_token, "object/tangible/ship/components/chassis/shared_ykl37r_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_yt1300_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1894,7 +1894,7 @@ object_tangible_ship_components_chassis_shared_yt1300_chassis_token = SharedTang
 	clientObjectCRC = 1540879175
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_yt1300_chassis_token, "object/tangible/ship/components/chassis/shared_yt1300_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_yt1300_chassis_token, "object/tangible/ship/components/chassis/shared_yt1300_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_ywing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1947,7 +1947,7 @@ object_tangible_ship_components_chassis_shared_ywing_chassis_token = SharedTangi
 	clientObjectCRC = 1405094418
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ywing_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ywing_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -2000,7 +2000,7 @@ object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token = S
 	clientObjectCRC = 2655964271
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_longprobe_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_longprobe_chassis_token.iff")
 
 object_tangible_ship_components_chassis_shared_z95_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -2053,4 +2053,4 @@ object_tangible_ship_components_chassis_shared_z95_chassis_token = SharedTangibl
 	clientObjectCRC = 2126096651
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_z95_chassis_token, "object/tangible/ship/components/chassis/shared_z95_chassis_token.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_z95_chassis_token, "object/tangible/ship/components/chassis/shared_z95_chassis_token.iff")

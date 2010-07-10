@@ -92,7 +92,7 @@ object_factory_base_shared_base_factory = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 2878298230
 }
 
-ObjectTemplates:addTemplate(object_factory_base_shared_base_factory, "object/factory/base/shared_base_factory.iff")
+ObjectTemplates:addClientTemplate(object_factory_base_shared_base_factory, "object/factory/base/shared_base_factory.iff")
 
 object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -145,4 +145,4 @@ object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 4005028874
 }
 
-ObjectTemplates:addTemplate(object_factory_base_shared_factory_default, "object/factory/base/shared_factory_default.iff")
+ObjectTemplates:addClientTemplate(object_factory_base_shared_factory_default, "object/factory/base/shared_factory_default.iff")

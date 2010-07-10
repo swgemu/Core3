@@ -92,7 +92,7 @@ object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure = SharedT
 	clientObjectCRC = 3245525817
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure, "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure, "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -145,7 +145,7 @@ object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObj
 	clientObjectCRC = 1672702928
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_pack, "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_pack, "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -198,7 +198,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher
 	clientObjectCRC = 3047216132
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -251,7 +251,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = S
 	clientObjectCRC = 1564710260
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -304,7 +304,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launc
 	clientObjectCRC = 2635857595
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -357,7 +357,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack 
 	clientObjectCRC = 1375246682
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -410,7 +410,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher
 	clientObjectCRC = 822727721
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -463,7 +463,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = S
 	clientObjectCRC = 17293110
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -516,7 +516,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = 
 	clientObjectCRC = 4142390620
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -569,7 +569,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = Shar
 	clientObjectCRC = 3439723072
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -622,7 +622,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_lau
 	clientObjectCRC = 4217308443
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -675,7 +675,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pac
 	clientObjectCRC = 103083573
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = Share
 	clientObjectCRC = 2943273728
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -781,7 +781,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTan
 	clientObjectCRC = 1453812677
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -834,7 +834,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = Share
 	clientObjectCRC = 2657624858
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_launcher.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_launcher.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
@@ -887,7 +887,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTan
 	clientObjectCRC = 1873034308
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_pack.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -940,7 +940,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 	clientObjectCRC = 2871566567
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -993,7 +993,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 	clientObjectCRC = 1883179120
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -1046,7 +1046,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 	clientObjectCRC = 959606781
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -1099,7 +1099,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 	clientObjectCRC = 190158470
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -1152,7 +1152,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 	clientObjectCRC = 3494002193
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1205,7 +1205,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 	clientObjectCRC = 2721026212
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1258,7 +1258,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 	clientObjectCRC = 2033727539
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1311,7 +1311,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 	clientObjectCRC = 808804286
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1364,7 +1364,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 	clientObjectCRC = 1109435894
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1417,7 +1417,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 	clientObjectCRC = 2570521953
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1470,7 +1470,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 	clientObjectCRC = 2118814960
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1523,7 +1523,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 	clientObjectCRC = 2774344807
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1576,7 +1576,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 	clientObjectCRC = 3964683242
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1629,7 +1629,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 	clientObjectCRC = 397633790
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk4.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1682,7 +1682,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 	clientObjectCRC = 2922914559
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1735,7 +1735,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 	clientObjectCRC = 1966049896
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1788,7 +1788,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 	clientObjectCRC = 1008922085
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1841,7 +1841,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 	clientObjectCRC = 3027823737
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
@@ -1894,7 +1894,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 	clientObjectCRC = 1869563118
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -1947,7 +1947,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 	clientObjectCRC = 1356357630
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2000,7 +2000,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 	clientObjectCRC = 2345662313
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2053,7 +2053,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 	clientObjectCRC = 3267530980
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2106,7 +2106,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 	clientObjectCRC = 958512112
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk4.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2159,7 +2159,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 	clientObjectCRC = 1794422147
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2212,7 +2212,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 	clientObjectCRC = 2984451348
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk2.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2265,7 +2265,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 	clientObjectCRC = 4176378521
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk3.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2318,7 +2318,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 	clientObjectCRC = 3906161899
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk1.iff")
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
@@ -2371,4 +2371,4 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 	clientObjectCRC = 868541564
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk2.iff")

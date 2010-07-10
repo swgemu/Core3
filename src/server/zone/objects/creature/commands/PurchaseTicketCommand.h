@@ -159,7 +159,7 @@ public:
 
 		//
 
-		uint32 crc = String("object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff").hashCode();
+		uint32 crc = String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode();
 
 		// create ticket item
 		ManagedReference<TicketObject*> ticket = (TicketObject*) server->getZoneServer()->createObject(crc, 1);

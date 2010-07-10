@@ -92,7 +92,7 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1829714494
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
 
 object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 	clientObjectCRC = 571906509
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")

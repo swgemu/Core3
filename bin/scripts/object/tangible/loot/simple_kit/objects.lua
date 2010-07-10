@@ -92,7 +92,7 @@ object_tangible_loot_simple_kit_shared_battery_cheap_copper = SharedTangibleObje
 	clientObjectCRC = 1558538770
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_battery_cheap_copper, "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_battery_cheap_copper, "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff")
 
 object_tangible_loot_simple_kit_shared_datadisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -145,7 +145,7 @@ object_tangible_loot_simple_kit_shared_datadisk = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4025688379
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datadisk, "object/tangible/loot/simple_kit/shared_datadisk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datadisk, "object/tangible/loot/simple_kit/shared_datadisk.iff")
 
 object_tangible_loot_simple_kit_shared_datadisk_repair_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -198,7 +198,7 @@ object_tangible_loot_simple_kit_shared_datadisk_repair_kit = SharedTangibleObjec
 	clientObjectCRC = 1751481295
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datadisk_repair_kit, "object/tangible/loot/simple_kit/shared_datadisk_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datadisk_repair_kit, "object/tangible/loot/simple_kit/shared_datadisk_repair_kit.iff")
 
 object_tangible_loot_simple_kit_shared_datapad_backlight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_jewelry_setting.apt",
@@ -251,7 +251,7 @@ object_tangible_loot_simple_kit_shared_datapad_backlight = SharedTangibleObjectT
 	clientObjectCRC = 4084040354
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_backlight, "object/tangible/loot/simple_kit/shared_datapad_backlight.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_backlight, "object/tangible/loot/simple_kit/shared_datapad_backlight.iff")
 
 object_tangible_loot_simple_kit_shared_datapad_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -304,7 +304,7 @@ object_tangible_loot_simple_kit_shared_datapad_battery = SharedTangibleObjectTem
 	clientObjectCRC = 3119448448
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_battery, "object/tangible/loot/simple_kit/shared_datapad_battery.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_battery, "object/tangible/loot/simple_kit/shared_datapad_battery.iff")
 
 object_tangible_loot_simple_kit_shared_datapad_casing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_armor_rpr_kit_s1.apt",
@@ -357,7 +357,7 @@ object_tangible_loot_simple_kit_shared_datapad_casing = SharedTangibleObjectTemp
 	clientObjectCRC = 2404535278
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_casing, "object/tangible/loot/simple_kit/shared_datapad_casing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_casing, "object/tangible/loot/simple_kit/shared_datapad_casing.iff")
 
 object_tangible_loot_simple_kit_shared_datapad_connectors = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_writing_utensils.apt",
@@ -410,7 +410,7 @@ object_tangible_loot_simple_kit_shared_datapad_connectors = SharedTangibleObject
 	clientObjectCRC = 3704114882
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_connectors, "object/tangible/loot/simple_kit/shared_datapad_connectors.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_connectors, "object/tangible/loot/simple_kit/shared_datapad_connectors.iff")
 
 object_tangible_loot_simple_kit_shared_empty_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2_inventory.apt",
@@ -463,7 +463,7 @@ object_tangible_loot_simple_kit_shared_empty_datapad = SharedTangibleObjectTempl
 	clientObjectCRC = 1084051270
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_empty_datapad, "object/tangible/loot/simple_kit/shared_empty_datapad.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_empty_datapad, "object/tangible/loot/simple_kit/shared_empty_datapad.iff")
 
 object_tangible_loot_simple_kit_shared_feed_tubes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_high_power_module.apt",
@@ -516,7 +516,7 @@ object_tangible_loot_simple_kit_shared_feed_tubes = SharedTangibleObjectTemplate
 	clientObjectCRC = 2298400846
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_feed_tubes, "object/tangible/loot/simple_kit/shared_feed_tubes.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_feed_tubes, "object/tangible/loot/simple_kit/shared_feed_tubes.iff")
 
 object_tangible_loot_simple_kit_shared_firework_casing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
@@ -569,7 +569,7 @@ object_tangible_loot_simple_kit_shared_firework_casing = SharedTangibleObjectTem
 	clientObjectCRC = 652853740
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_firework_casing, "object/tangible/loot/simple_kit/shared_firework_casing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_firework_casing, "object/tangible/loot/simple_kit/shared_firework_casing.iff")
 
 object_tangible_loot_simple_kit_shared_firework_fixer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -622,7 +622,7 @@ object_tangible_loot_simple_kit_shared_firework_fixer = SharedTangibleObjectTemp
 	clientObjectCRC = 4181083610
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_firework_fixer, "object/tangible/loot/simple_kit/shared_firework_fixer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_firework_fixer, "object/tangible/loot/simple_kit/shared_firework_fixer.iff")
 
 object_tangible_loot_simple_kit_shared_flat_canvas = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -675,7 +675,7 @@ object_tangible_loot_simple_kit_shared_flat_canvas = SharedTangibleObjectTemplat
 	clientObjectCRC = 164033242
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_flat_canvas, "object/tangible/loot/simple_kit/shared_flat_canvas.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_flat_canvas, "object/tangible/loot/simple_kit/shared_flat_canvas.iff")
 
 object_tangible_loot_simple_kit_shared_heating_element = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_frequency_jammer.apt",
@@ -728,7 +728,7 @@ object_tangible_loot_simple_kit_shared_heating_element = SharedTangibleObjectTem
 	clientObjectCRC = 326778183
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_heating_element, "object/tangible/loot/simple_kit/shared_heating_element.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_heating_element, "object/tangible/loot/simple_kit/shared_heating_element.iff")
 
 object_tangible_loot_simple_kit_shared_magnetic_burner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -781,7 +781,7 @@ object_tangible_loot_simple_kit_shared_magnetic_burner = SharedTangibleObjectTem
 	clientObjectCRC = 2586601937
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_magnetic_burner, "object/tangible/loot/simple_kit/shared_magnetic_burner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_magnetic_burner, "object/tangible/loot/simple_kit/shared_magnetic_burner.iff")
 
 object_tangible_loot_simple_kit_shared_magnetic_reader = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
@@ -834,7 +834,7 @@ object_tangible_loot_simple_kit_shared_magnetic_reader = SharedTangibleObjectTem
 	clientObjectCRC = 29814933
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_magnetic_reader, "object/tangible/loot/simple_kit/shared_magnetic_reader.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_magnetic_reader, "object/tangible/loot/simple_kit/shared_magnetic_reader.iff")
 
 object_tangible_loot_simple_kit_shared_motor_small_blue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_motor_small_s02.apt",
@@ -887,7 +887,7 @@ object_tangible_loot_simple_kit_shared_motor_small_blue = SharedTangibleObjectTe
 	clientObjectCRC = 3144713360
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_motor_small_blue, "object/tangible/loot/simple_kit/shared_motor_small_blue.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_motor_small_blue, "object/tangible/loot/simple_kit/shared_motor_small_blue.iff")
 
 object_tangible_loot_simple_kit_shared_motor_small_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_motor_small_s02.apt",
@@ -940,7 +940,7 @@ object_tangible_loot_simple_kit_shared_motor_small_red = SharedTangibleObjectTem
 	clientObjectCRC = 1519193504
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_motor_small_red, "object/tangible/loot/simple_kit/shared_motor_small_red.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_motor_small_red, "object/tangible/loot/simple_kit/shared_motor_small_red.iff")
 
 object_tangible_loot_simple_kit_shared_paint_cartridge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
@@ -993,7 +993,7 @@ object_tangible_loot_simple_kit_shared_paint_cartridge = SharedTangibleObjectTem
 	clientObjectCRC = 1559578461
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_paint_cartridge, "object/tangible/loot/simple_kit/shared_paint_cartridge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_paint_cartridge, "object/tangible/loot/simple_kit/shared_paint_cartridge.iff")
 
 object_tangible_loot_simple_kit_shared_paint_disperser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_chromatic.apt",
@@ -1046,7 +1046,7 @@ object_tangible_loot_simple_kit_shared_paint_disperser = SharedTangibleObjectTem
 	clientObjectCRC = 433413834
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_paint_disperser, "object/tangible/loot/simple_kit/shared_paint_disperser.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_paint_disperser, "object/tangible/loot/simple_kit/shared_paint_disperser.iff")
 
 object_tangible_loot_simple_kit_shared_picture_printer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
@@ -1099,7 +1099,7 @@ object_tangible_loot_simple_kit_shared_picture_printer = SharedTangibleObjectTem
 	clientObjectCRC = 3918612828
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_picture_printer, "object/tangible/loot/simple_kit/shared_picture_printer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_picture_printer, "object/tangible/loot/simple_kit/shared_picture_printer.iff")
 
 object_tangible_loot_simple_kit_shared_powder_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -1152,7 +1152,7 @@ object_tangible_loot_simple_kit_shared_powder_pack = SharedTangibleObjectTemplat
 	clientObjectCRC = 3790649571
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_powder_pack, "object/tangible/loot/simple_kit/shared_powder_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_powder_pack, "object/tangible/loot/simple_kit/shared_powder_pack.iff")
 
 object_tangible_loot_simple_kit_shared_processor_attachments = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
@@ -1205,7 +1205,7 @@ object_tangible_loot_simple_kit_shared_processor_attachments = SharedTangibleObj
 	clientObjectCRC = 802964254
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_processor_attachments, "object/tangible/loot/simple_kit/shared_processor_attachments.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_processor_attachments, "object/tangible/loot/simple_kit/shared_processor_attachments.iff")
 
 object_tangible_loot_simple_kit_shared_pulverizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_pistol_barrel.apt",
@@ -1258,7 +1258,7 @@ object_tangible_loot_simple_kit_shared_pulverizer = SharedTangibleObjectTemplate
 	clientObjectCRC = 575747803
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_pulverizer, "object/tangible/loot/simple_kit/shared_pulverizer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_pulverizer, "object/tangible/loot/simple_kit/shared_pulverizer.iff")
 
 object_tangible_loot_simple_kit_shared_recovery_software = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -1311,7 +1311,7 @@ object_tangible_loot_simple_kit_shared_recovery_software = SharedTangibleObjectT
 	clientObjectCRC = 3916637406
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_recovery_software, "object/tangible/loot/simple_kit/shared_recovery_software.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_recovery_software, "object/tangible/loot/simple_kit/shared_recovery_software.iff")
 
 object_tangible_loot_simple_kit_shared_spinning_blade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -1364,7 +1364,7 @@ object_tangible_loot_simple_kit_shared_spinning_blade = SharedTangibleObjectTemp
 	clientObjectCRC = 3010431171
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_spinning_blade, "object/tangible/loot/simple_kit/shared_spinning_blade.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_spinning_blade, "object/tangible/loot/simple_kit/shared_spinning_blade.iff")
 
 object_tangible_loot_simple_kit_shared_tumble_blender = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -1417,7 +1417,7 @@ object_tangible_loot_simple_kit_shared_tumble_blender = SharedTangibleObjectTemp
 	clientObjectCRC = 737773540
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_tumble_blender, "object/tangible/loot/simple_kit/shared_tumble_blender.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_tumble_blender, "object/tangible/loot/simple_kit/shared_tumble_blender.iff")
 
 object_tangible_loot_simple_kit_shared_viewscreen_printer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -1470,7 +1470,7 @@ object_tangible_loot_simple_kit_shared_viewscreen_printer = SharedTangibleObject
 	clientObjectCRC = 1346373524
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_viewscreen_printer, "object/tangible/loot/simple_kit/shared_viewscreen_printer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_viewscreen_printer, "object/tangible/loot/simple_kit/shared_viewscreen_printer.iff")
 
 object_tangible_loot_simple_kit_shared_viewscreen_reader = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
@@ -1523,7 +1523,7 @@ object_tangible_loot_simple_kit_shared_viewscreen_reader = SharedTangibleObjectT
 	clientObjectCRC = 3617524157
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_viewscreen_reader, "object/tangible/loot/simple_kit/shared_viewscreen_reader.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_viewscreen_reader, "object/tangible/loot/simple_kit/shared_viewscreen_reader.iff")
 
 object_tangible_loot_simple_kit_shared_wiring = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -1576,7 +1576,7 @@ object_tangible_loot_simple_kit_shared_wiring = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1151739825
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring, "object/tangible/loot/simple_kit/shared_wiring.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring, "object/tangible/loot/simple_kit/shared_wiring.iff")
 
 object_tangible_loot_simple_kit_shared_wiring_blue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_wire_spool_s01.apt",
@@ -1629,7 +1629,7 @@ object_tangible_loot_simple_kit_shared_wiring_blue = SharedTangibleObjectTemplat
 	clientObjectCRC = 1994052682
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring_blue, "object/tangible/loot/simple_kit/shared_wiring_blue.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring_blue, "object/tangible/loot/simple_kit/shared_wiring_blue.iff")
 
 object_tangible_loot_simple_kit_shared_wiring_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_wire_spool_s01.apt",
@@ -1682,4 +1682,4 @@ object_tangible_loot_simple_kit_shared_wiring_red = SharedTangibleObjectTemplate
 	clientObjectCRC = 2818101899
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring_red, "object/tangible/loot/simple_kit/shared_wiring_red.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring_red, "object/tangible/loot/simple_kit/shared_wiring_red.iff")

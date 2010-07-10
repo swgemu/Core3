@@ -82,7 +82,7 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 	clientObjectCRC = 1225468655
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 	clientObjectCRC = 425747428
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
 
 object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 	clientObjectCRC = 1575116633
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
 
 object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 	clientObjectCRC = 2888384407
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
 
 object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,4 +254,4 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 	clientObjectCRC = 2390191987
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")

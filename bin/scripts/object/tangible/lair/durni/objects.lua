@@ -92,7 +92,7 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3048400862
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni, "object/tangible/lair/durni/shared_lair_durni.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni, "object/tangible/lair/durni/shared_lair_durni.iff")
 
 object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 2005132249
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, "object/tangible/lair/durni/shared_lair_durni_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, "object/tangible/lair/durni/shared_lair_durni_grassland.iff")
 
 object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 3607200677
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, "object/tangible/lair/durni/shared_lair_durni_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, "object/tangible/lair/durni/shared_lair_durni_mountain.iff")

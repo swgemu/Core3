@@ -82,7 +82,7 @@ object_draft_schematic_furniture_city_shared_furniture_fountain = SharedDraftSch
 	clientObjectCRC = 1279874804
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_fountain, "object/draft_schematic/furniture/city/shared_furniture_fountain.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_fountain, "object/draft_schematic/furniture/city/shared_furniture_fountain.iff")
 
 object_draft_schematic_furniture_city_shared_furniture_statue = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_furniture_city_shared_furniture_statue = SharedDraftSchem
 	clientObjectCRC = 2671586006
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_statue, "object/draft_schematic/furniture/city/shared_furniture_statue.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_statue, "object/draft_schematic/furniture/city/shared_furniture_statue.iff")
 
 object_draft_schematic_furniture_city_shared_furniture_streetlamp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,4 +168,4 @@ object_draft_schematic_furniture_city_shared_furniture_streetlamp = SharedDraftS
 	clientObjectCRC = 1457349982
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_streetlamp, "object/draft_schematic/furniture/city/shared_furniture_streetlamp.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_streetlamp, "object/draft_schematic/furniture/city/shared_furniture_streetlamp.iff")

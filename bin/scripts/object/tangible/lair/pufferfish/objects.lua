@@ -92,7 +92,7 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish = SharedTangibleObjectTem
 	clientObjectCRC = 2069689133
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, "object/tangible/lair/pufferfish/shared_lair_pufferfish.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, "object/tangible/lair/pufferfish/shared_lair_pufferfish.iff")
 
 object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangib
 	clientObjectCRC = 2279018496
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, "object/tangible/lair/pufferfish/shared_lair_pufferfish_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, "object/tangible/lair/pufferfish/shared_lair_pufferfish_underwater.iff")

@@ -82,4 +82,4 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 	clientObjectCRC = 2524579942
 }
 
-ObjectTemplates:addTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")
+ObjectTemplates:addClientTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")

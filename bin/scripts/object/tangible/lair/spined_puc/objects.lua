@@ -92,7 +92,7 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTem
 	clientObjectCRC = 3786767749
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff")
 
 object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangib
 	clientObjectCRC = 2429481167
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff")

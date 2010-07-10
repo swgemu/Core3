@@ -92,7 +92,7 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf = SharedTangibleObjectTempl
 	clientObjectCRC = 2734437911
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf.iff")
 
 object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleOb
 	clientObjectCRC = 150445531
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf_mountain.iff")

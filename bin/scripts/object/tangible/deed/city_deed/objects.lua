@@ -92,7 +92,7 @@ object_tangible_deed_city_deed_shared_bank_corellia_deed = SharedTangibleObjectT
 	clientObjectCRC = 401261440
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_corellia_deed, "object/tangible/deed/city_deed/shared_bank_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_corellia_deed, "object/tangible/deed/city_deed/shared_bank_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_bank_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -145,7 +145,7 @@ object_tangible_deed_city_deed_shared_bank_naboo_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 3557805385
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_naboo_deed, "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_naboo_deed, "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_bank_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -198,7 +198,7 @@ object_tangible_deed_city_deed_shared_bank_tatooine_deed = SharedTangibleObjectT
 	clientObjectCRC = 613943705
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_tatooine_deed, "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_tatooine_deed, "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -251,7 +251,7 @@ object_tangible_deed_city_deed_shared_cantina_corellia_deed = SharedTangibleObje
 	clientObjectCRC = 2192147369
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_corellia_deed, "object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_corellia_deed, "object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -304,7 +304,7 @@ object_tangible_deed_city_deed_shared_cantina_naboo_deed = SharedTangibleObjectT
 	clientObjectCRC = 1331321297
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_naboo_deed, "object/tangible/deed/city_deed/shared_cantina_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_naboo_deed, "object/tangible/deed/city_deed/shared_cantina_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -357,7 +357,7 @@ object_tangible_deed_city_deed_shared_cantina_tatooine_deed = SharedTangibleObje
 	clientObjectCRC = 2983938480
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_tatooine_deed, "object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_tatooine_deed, "object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -410,7 +410,7 @@ object_tangible_deed_city_deed_shared_cityhall_corellia_deed = SharedTangibleObj
 	clientObjectCRC = 2784919551
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_corellia_deed, "object/tangible/deed/city_deed/shared_cityhall_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_corellia_deed, "object/tangible/deed/city_deed/shared_cityhall_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -463,7 +463,7 @@ object_tangible_deed_city_deed_shared_cityhall_naboo_deed = SharedTangibleObject
 	clientObjectCRC = 3662935696
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_naboo_deed, "object/tangible/deed/city_deed/shared_cityhall_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_naboo_deed, "object/tangible/deed/city_deed/shared_cityhall_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -516,7 +516,7 @@ object_tangible_deed_city_deed_shared_cityhall_tatooine_deed = SharedTangibleObj
 	clientObjectCRC = 2525804006
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_tatooine_deed, "object/tangible/deed/city_deed/shared_cityhall_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_tatooine_deed, "object/tangible/deed/city_deed/shared_cityhall_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -569,7 +569,7 @@ object_tangible_deed_city_deed_shared_cloning_corellia_deed = SharedTangibleObje
 	clientObjectCRC = 1835066567
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_corellia_deed, "object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_corellia_deed, "object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -622,7 +622,7 @@ object_tangible_deed_city_deed_shared_cloning_naboo_deed = SharedTangibleObjectT
 	clientObjectCRC = 2532276742
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_naboo_deed, "object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_naboo_deed, "object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -675,7 +675,7 @@ object_tangible_deed_city_deed_shared_cloning_tatooine_deed = SharedTangibleObje
 	clientObjectCRC = 1578249950
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_tatooine_deed, "object/tangible/deed/city_deed/shared_cloning_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_tatooine_deed, "object/tangible/deed/city_deed/shared_cloning_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -728,7 +728,7 @@ object_tangible_deed_city_deed_shared_garage_corellia_deed = SharedTangibleObjec
 	clientObjectCRC = 2847017824
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_corellia_deed, "object/tangible/deed/city_deed/shared_garage_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_corellia_deed, "object/tangible/deed/city_deed/shared_garage_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -781,7 +781,7 @@ object_tangible_deed_city_deed_shared_garage_naboo_deed = SharedTangibleObjectTe
 	clientObjectCRC = 3208167004
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_naboo_deed, "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_naboo_deed, "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -834,7 +834,7 @@ object_tangible_deed_city_deed_shared_garage_tatooine_deed = SharedTangibleObjec
 	clientObjectCRC = 2596323705
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_tatooine_deed, "object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_tatooine_deed, "object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -887,7 +887,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed = SharedTangib
 	clientObjectCRC = 2592373233
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -940,7 +940,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed = SharedTangib
 	clientObjectCRC = 536118511
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -993,7 +993,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed = SharedTangib
 	clientObjectCRC = 2674140296
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1046,7 +1046,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed = SharedTangib
 	clientObjectCRC = 299131748
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1099,7 +1099,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed = SharedTangib
 	clientObjectCRC = 2437202691
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1152,7 +1152,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed = SharedTangib
 	clientObjectCRC = 3319304199
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1205,7 +1205,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed = SharedTangib
 	clientObjectCRC = 1084779801
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1258,7 +1258,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed = SharedTangib
 	clientObjectCRC = 3224948094
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1311,7 +1311,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed = SharedTangib
 	clientObjectCRC = 1317571218
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1364,7 +1364,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed = SharedTangib
 	clientObjectCRC = 3457690357
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1417,7 +1417,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed = SharedTangib
 	clientObjectCRC = 2095683295
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1470,7 +1470,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed = SharedTangib
 	clientObjectCRC = 4187581377
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1523,7 +1523,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed = SharedTangib
 	clientObjectCRC = 2030685094
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1576,7 +1576,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed = SharedTangib
 	clientObjectCRC = 4156132426
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1629,7 +1629,7 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed = SharedTangib
 	clientObjectCRC = 1999186989
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1682,7 +1682,7 @@ object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed = SharedTangi
 	clientObjectCRC = 1153184823
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1735,7 +1735,7 @@ object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed = SharedTangi
 	clientObjectCRC = 467721665
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1788,7 +1788,7 @@ object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed = SharedTangi
 	clientObjectCRC = 2731662105
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1841,7 +1841,7 @@ object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed = SharedTangib
 	clientObjectCRC = 3330359214
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1894,7 +1894,7 @@ object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed = SharedTangib
 	clientObjectCRC = 2581452376
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1947,7 +1947,7 @@ object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed = SharedTangib
 	clientObjectCRC = 552390784
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2000,7 +2000,7 @@ object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed = SharedTangibleO
 	clientObjectCRC = 4266378949
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2053,7 +2053,7 @@ object_tangible_deed_city_deed_shared_garden_endor_med_01_deed = SharedTangibleO
 	clientObjectCRC = 2702651187
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_med_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_med_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2106,7 +2106,7 @@ object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed = SharedTangibleO
 	clientObjectCRC = 405154283
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2159,7 +2159,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed = SharedTangibleO
 	clientObjectCRC = 410853409
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2212,7 +2212,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed = SharedTangibleO
 	clientObjectCRC = 2634931519
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2265,7 +2265,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed = SharedTangibleO
 	clientObjectCRC = 496860504
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2318,7 +2318,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed = SharedTangibleO
 	clientObjectCRC = 2469214900
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2371,7 +2371,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed = SharedTangibleO
 	clientObjectCRC = 331193043
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2424,7 +2424,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed = SharedTangibleO
 	clientObjectCRC = 1193396695
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2477,7 +2477,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed = SharedTangibleO
 	clientObjectCRC = 3260101833
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2530,7 +2530,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed = SharedTangibleO
 	clientObjectCRC = 1119982766
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2583,7 +2583,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed = SharedTangibleO
 	clientObjectCRC = 3430011714
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2636,7 +2636,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed = SharedTangibleO
 	clientObjectCRC = 1289843493
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2689,7 +2689,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed = SharedTangibleO
 	clientObjectCRC = 4262514447
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2742,7 +2742,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed = SharedTangibleO
 	clientObjectCRC = 2069901841
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2795,7 +2795,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed = SharedTangibleO
 	clientObjectCRC = 4226847350
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2848,7 +2848,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed = SharedTangibleO
 	clientObjectCRC = 1967183258
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2901,7 +2901,7 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed = SharedTangibleO
 	clientObjectCRC = 4124079613
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2954,7 +2954,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed = SharedTangib
 	clientObjectCRC = 1472425069
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3007,7 +3007,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed = SharedTangib
 	clientObjectCRC = 3534983539
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3060,7 +3060,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed = SharedTangib
 	clientObjectCRC = 1378038036
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3113,7 +3113,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed = SharedTangib
 	clientObjectCRC = 3700651768
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3166,7 +3166,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed = SharedTangib
 	clientObjectCRC = 1543755423
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3219,7 +3219,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed = SharedTangib
 	clientObjectCRC = 144672155
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3272,7 +3272,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed = SharedTangib
 	clientObjectCRC = 2381281413
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3325,7 +3325,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed = SharedTangib
 	clientObjectCRC = 226482402
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3378,7 +3378,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed = SharedTangib
 	clientObjectCRC = 2211421966
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3431,7 +3431,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed = SharedTangib
 	clientObjectCRC = 56573801
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3484,7 +3484,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed = SharedTangib
 	clientObjectCRC = 2981004099
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3537,7 +3537,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed = SharedTangib
 	clientObjectCRC = 886996573
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3590,7 +3590,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed = SharedTangib
 	clientObjectCRC = 3025067578
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3643,7 +3643,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed = SharedTangib
 	clientObjectCRC = 989764054
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3696,7 +3696,7 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed = SharedTangib
 	clientObjectCRC = 3127785905
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_05_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3749,7 +3749,7 @@ object_tangible_deed_city_deed_shared_hospital_corellia_deed = SharedTangibleObj
 	clientObjectCRC = 2836026000
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_corellia_deed, "object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_corellia_deed, "object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3802,7 +3802,7 @@ object_tangible_deed_city_deed_shared_hospital_naboo_deed = SharedTangibleObject
 	clientObjectCRC = 1107375302
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_naboo_deed, "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_naboo_deed, "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3855,7 +3855,7 @@ object_tangible_deed_city_deed_shared_hospital_tatooine_deed = SharedTangibleObj
 	clientObjectCRC = 2591594633
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_tatooine_deed, "object/tangible/deed/city_deed/shared_hospital_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_tatooine_deed, "object/tangible/deed/city_deed/shared_hospital_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3908,7 +3908,7 @@ object_tangible_deed_city_deed_shared_shuttleport_corellia_deed = SharedTangible
 	clientObjectCRC = 3681788535
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_corellia_deed, "object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_corellia_deed, "object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3961,7 +3961,7 @@ object_tangible_deed_city_deed_shared_shuttleport_naboo_deed = SharedTangibleObj
 	clientObjectCRC = 1379109301
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_naboo_deed, "object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_naboo_deed, "object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4014,7 +4014,7 @@ object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed = SharedTangible
 	clientObjectCRC = 3892406382
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed, "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed, "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_corellia_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4067,7 +4067,7 @@ object_tangible_deed_city_deed_shared_theater_corellia_deed = SharedTangibleObje
 	clientObjectCRC = 613379311
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_corellia_deed, "object/tangible/deed/city_deed/shared_theater_corellia_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_corellia_deed, "object/tangible/deed/city_deed/shared_theater_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_naboo_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4120,7 +4120,7 @@ object_tangible_deed_city_deed_shared_theater_naboo_deed = SharedTangibleObjectT
 	clientObjectCRC = 3022502254
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_naboo_deed, "object/tangible/deed/city_deed/shared_theater_naboo_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_naboo_deed, "object/tangible/deed/city_deed/shared_theater_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_tatooine_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4173,4 +4173,4 @@ object_tangible_deed_city_deed_shared_theater_tatooine_deed = SharedTangibleObje
 	clientObjectCRC = 402499318
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_tatooine_deed, "object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_tatooine_deed, "object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff")

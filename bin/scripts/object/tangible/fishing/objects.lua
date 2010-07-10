@@ -92,7 +92,7 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1813029717
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
+ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
 
 object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_fishing_float.apt",
@@ -145,7 +145,7 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1763394438
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
 
 object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_splash.prt",
@@ -188,4 +188,4 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1084993175
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")
+ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")

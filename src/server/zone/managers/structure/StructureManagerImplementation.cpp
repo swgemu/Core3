@@ -629,6 +629,8 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 	query << "SELECT * FROM staticobjects WHERE file = 'object/cell/shared_cell.iff'";
 	query << " AND parentid = " << building->getObjectID() << " order by objectid asc";
 
+	uint32 cellCRC = String("object/cell/cell.iff").hashCode();
+
 	try {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
@@ -647,7 +649,7 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 
 			info("loading cell (" + String::valueOf(oid) + ") from mysql db");
 
-			cell = (CellObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
+			cell = (CellObject*) server->getZoneServer()->createStaticObject(cellCRC, oid);
 
 			if (cell == NULL) {
 				error("cannot create static cell " + String::valueOf(oid));

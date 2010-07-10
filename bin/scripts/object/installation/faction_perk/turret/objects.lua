@@ -92,7 +92,7 @@ object_installation_faction_perk_turret_shared_block_lg = SharedInstallationObje
 	clientObjectCRC = 2286796965
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_lg, "object/installation/faction_perk/turret/shared_block_lg.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_lg, "object/installation/faction_perk/turret/shared_block_lg.iff")
 
 object_installation_faction_perk_turret_shared_block_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s01.apt",
@@ -145,7 +145,7 @@ object_installation_faction_perk_turret_shared_block_med = SharedInstallationObj
 	clientObjectCRC = 1869715208
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_med, "object/installation/faction_perk/turret/shared_block_med.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_med, "object/installation/faction_perk/turret/shared_block_med.iff")
 
 object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
@@ -198,7 +198,7 @@ object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObje
 	clientObjectCRC = 1969720102
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_sm, "object/installation/faction_perk/turret/shared_block_sm.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_sm, "object/installation/faction_perk/turret/shared_block_sm.iff")
 
 object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s03.apt",
@@ -251,7 +251,7 @@ object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjec
 	clientObjectCRC = 1581064772
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_lg, "object/installation/faction_perk/turret/shared_dish_lg.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_dish_lg, "object/installation/faction_perk/turret/shared_dish_lg.iff")
 
 object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
@@ -304,7 +304,7 @@ object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjec
 	clientObjectCRC = 2736220615
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_sm, "object/installation/faction_perk/turret/shared_dish_sm.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_dish_sm, "object/installation/faction_perk/turret/shared_dish_sm.iff")
 
 object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s02.apt",
@@ -357,7 +357,7 @@ object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObje
 	clientObjectCRC = 3604402557
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_lg, "object/installation/faction_perk/turret/shared_tower_lg.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_lg, "object/installation/faction_perk/turret/shared_tower_lg.iff")
 
 object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s02.apt",
@@ -410,7 +410,7 @@ object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObj
 	clientObjectCRC = 2960737285
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_med, "object/installation/faction_perk/turret/shared_tower_med.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_med, "object/installation/faction_perk/turret/shared_tower_med.iff")
 
 object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
@@ -463,4 +463,4 @@ object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObje
 	clientObjectCRC = 737975038
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_sm, "object/installation/faction_perk/turret/shared_tower_sm.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_sm, "object/installation/faction_perk/turret/shared_tower_sm.iff")

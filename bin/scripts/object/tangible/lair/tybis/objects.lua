@@ -92,7 +92,7 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 880238924
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
 
 object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 4004634433
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")

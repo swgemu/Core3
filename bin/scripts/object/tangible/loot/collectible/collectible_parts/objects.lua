@@ -92,7 +92,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_adhesive = Sh
 	clientObjectCRC = 1123513366
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_adhesive.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_adhesive.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_dye = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
@@ -145,7 +145,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_dye = SharedT
 	clientObjectCRC = 1357216829
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_dye, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_dye.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_dye, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_dye.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_patches = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -198,7 +198,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_patches = Sha
 	clientObjectCRC = 166272448
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_patches, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_patches.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_patches, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_patches.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -251,7 +251,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_01 = S
 	clientObjectCRC = 2636514827
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_01, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_01, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -304,7 +304,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_02 = S
 	clientObjectCRC = 1177661084
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_02, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_02, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -357,7 +357,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_03 = S
 	clientObjectCRC = 255641873
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_03, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_03, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -410,7 +410,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_04 = S
 	clientObjectCRC = 4108313093
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_04, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_04, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_04.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -463,7 +463,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_05 = S
 	clientObjectCRC = 3184690568
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_05, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_05, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_05.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -516,7 +516,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_06 = S
 	clientObjectCRC = 1724198175
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_06, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_06, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_06.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -569,7 +569,7 @@ object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_07 = S
 	clientObjectCRC = 801655442
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_07, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_blue_rug_thread_07, "object/tangible/loot/collectible/collectible_parts/shared_blue_rug_thread_07.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -622,7 +622,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_ass
 	clientObjectCRC = 2854787907
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_01, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_01, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -675,7 +675,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_ass
 	clientObjectCRC = 1899967444
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_02, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_02, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -728,7 +728,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_ass
 	clientObjectCRC = 942822489
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_03, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_assembly_bracket_03, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_assembly_bracket_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
@@ -781,7 +781,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_cas
 	clientObjectCRC = 3868077869
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_01, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_01, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
@@ -834,7 +834,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_cas
 	clientObjectCRC = 1033471930
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_02, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_02, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
@@ -887,7 +887,7 @@ object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_cas
 	clientObjectCRC = 1955913783
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_03, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_fs_tracking_device_case_03, "object/tangible/loot/collectible/collectible_parts/shared_fs_tracking_device_case_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_adhesive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -940,7 +940,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_adhesive = Shared
 	clientObjectCRC = 2733801121
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_gong_adhesive.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_gong_adhesive.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_skin_back = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -993,7 +993,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_skin_back = Share
 	clientObjectCRC = 2466495662
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_skin_back, "object/tangible/loot/collectible/collectible_parts/shared_gong_skin_back.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_skin_back, "object/tangible/loot/collectible/collectible_parts/shared_gong_skin_back.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_skin_front = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -1046,7 +1046,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_skin_front = Shar
 	clientObjectCRC = 97797037
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_skin_front, "object/tangible/loot/collectible/collectible_parts/shared_gong_skin_front.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_skin_front, "object/tangible/loot/collectible/collectible_parts/shared_gong_skin_front.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1099,7 +1099,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_01 = Sh
 	clientObjectCRC = 191195306
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1152,7 +1152,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_02 = Sh
 	clientObjectCRC = 3497181245
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1205,7 +1205,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_03 = Sh
 	clientObjectCRC = 2575280048
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1258,7 +1258,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_04 = Sh
 	clientObjectCRC = 1654426788
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_04.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1311,7 +1311,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_05 = Sh
 	clientObjectCRC = 730983209
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_05.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1364,7 +1364,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_06 = Sh
 	clientObjectCRC = 4035331006
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_06.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_gong_structure_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1417,7 +1417,7 @@ object_tangible_loot_collectible_collectible_parts_shared_gong_structure_07 = Sh
 	clientObjectCRC = 3112903731
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_gong_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_gong_structure_07.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_adhesive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -1470,7 +1470,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_adhesive =
 	clientObjectCRC = 888771001
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_light_table_adhesive.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_light_table_adhesive.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1523,7 +1523,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_0
 	clientObjectCRC = 1261115821
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_01, "object/tangible/loot/collectible/collectible_parts/shared_light_table_glasstop_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_01, "object/tangible/loot/collectible/collectible_parts/shared_light_table_glasstop_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -1576,7 +1576,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_0
 	clientObjectCRC = 2419896634
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_02, "object/tangible/loot/collectible/collectible_parts/shared_light_table_glasstop_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_glasstop_02, "object/tangible/loot/collectible/collectible_parts/shared_light_table_glasstop_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1629,7 +1629,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 2720203883
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1682,7 +1682,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 2033495292
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1735,7 +1735,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 809094001
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1788,7 +1788,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 3420119141
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_04.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1841,7 +1841,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 2195163112
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_05.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1894,7 +1894,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 1505767295
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_06.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -1947,7 +1947,7 @@ object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_
 	clientObjectCRC = 281889010
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_light_table_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_light_table_structure_07.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_adhesive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -2000,7 +2000,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_adhesive = 
 	clientObjectCRC = 3616535114
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_adhesive.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_adhesive.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_dye = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
@@ -2053,7 +2053,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_dye = Share
 	clientObjectCRC = 3820849787
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_dye, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_dye.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_dye, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_dye.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_patches = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
@@ -2106,7 +2106,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_patches = S
 	clientObjectCRC = 2400186347
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_patches, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_patches.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_patches, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_patches.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2159,7 +2159,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_01 =
 	clientObjectCRC = 3614968574
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_01, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_01, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2212,7 +2212,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_02 =
 	clientObjectCRC = 208642665
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_02, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_02, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2265,7 +2265,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_03 =
 	clientObjectCRC = 1164101092
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_03, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_03, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2318,7 +2318,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_04 =
 	clientObjectCRC = 3196186352
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_04, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_04, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_04.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2371,7 +2371,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_05 =
 	clientObjectCRC = 4153182589
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_05, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_05, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_05.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2424,7 +2424,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_06 =
 	clientObjectCRC = 748364266
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_06, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_06, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_06.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -2477,7 +2477,7 @@ object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_07 =
 	clientObjectCRC = 1704347239
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_07, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_orange_rug_thread_07, "object/tangible/loot/collectible/collectible_parts/shared_orange_rug_thread_07.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_adhesive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -2530,7 +2530,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_adhesive = S
 	clientObjectCRC = 3289712377
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_adhesive.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_adhesive, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_adhesive.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
@@ -2583,7 +2583,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_01
 	clientObjectCRC = 1249132287
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_01, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_goldinlay_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_01, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_goldinlay_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
@@ -2636,7 +2636,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_02
 	clientObjectCRC = 2439222888
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_02, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_goldinlay_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_goldinlay_02, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_goldinlay_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2689,7 +2689,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_01
 	clientObjectCRC = 4050692979
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_01, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_01.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2742,7 +2742,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_02
 	clientObjectCRC = 711394276
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_02, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_02.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2795,7 +2795,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_03
 	clientObjectCRC = 1667916905
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_03, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_03.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2848,7 +2848,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_04
 	clientObjectCRC = 2559135613
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_04, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_04.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2901,7 +2901,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_05
 	clientObjectCRC = 3515099376
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_05, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_05.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -2954,7 +2954,7 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_06
 	clientObjectCRC = 177438823
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_06, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_06.iff")
 
 object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -3007,4 +3007,4 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07
 	clientObjectCRC = 1134487530
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_07.iff")

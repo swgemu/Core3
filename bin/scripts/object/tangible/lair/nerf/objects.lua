@@ -92,7 +92,7 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2431052313
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
 
 object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2861606931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")
