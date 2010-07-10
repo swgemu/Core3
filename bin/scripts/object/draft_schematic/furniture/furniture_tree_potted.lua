@@ -43,6 +43,8 @@
 
 object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_furniture_shared_furniture_tree_potted:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

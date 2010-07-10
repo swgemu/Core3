@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_additive_additive_medium = object_draft_schematic_food_additive_shared_additive_medium:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

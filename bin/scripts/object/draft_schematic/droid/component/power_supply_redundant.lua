@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_power_supply_redundant = object_draft_schematic_droid_component_shared_power_supply_redundant:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

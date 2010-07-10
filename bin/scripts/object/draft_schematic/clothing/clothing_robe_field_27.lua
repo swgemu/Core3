@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_clothing_shared_clothing_robe_field_27:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_droid_shared_droid_customization_kit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

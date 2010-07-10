@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_pistol_blaster_cdef = object_draft_schematic_weapon_shared_pistol_blaster_cdef:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

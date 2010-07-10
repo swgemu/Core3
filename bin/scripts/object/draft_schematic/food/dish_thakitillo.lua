@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared_dish_thakitillo:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

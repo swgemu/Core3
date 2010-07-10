@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_droid_component_shared_manipulator_arm:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

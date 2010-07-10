@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_schematic_droid_component_shared_unit_delivery_cartridge:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

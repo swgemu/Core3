@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_shared_knife_survival:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

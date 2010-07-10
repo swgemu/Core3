@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_garden_exotic_dathomir = object_draft_schematic_structure_city_shared_garden_exotic_dathomir:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

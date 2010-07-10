@@ -43,6 +43,8 @@
 
 object_draft_schematic_munition_grenade_fragmentation_c_12 = object_draft_schematic_munition_shared_grenade_fragmentation_c_12:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMunitionsGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

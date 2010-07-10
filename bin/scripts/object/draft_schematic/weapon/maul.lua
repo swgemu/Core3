@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

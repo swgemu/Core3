@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_item_food_tool:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

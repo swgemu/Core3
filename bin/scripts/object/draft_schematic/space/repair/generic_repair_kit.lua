@@ -43,6 +43,8 @@
 
 object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_space_repair_shared_generic_repair_kit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)

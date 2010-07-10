@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

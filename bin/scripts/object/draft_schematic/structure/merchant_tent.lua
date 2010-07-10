@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_merchant_tent = object_draft_schematic_structure_shared_merchant_tent:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

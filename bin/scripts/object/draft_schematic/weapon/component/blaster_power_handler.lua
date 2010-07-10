@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_component_blaster_power_handler = object_draft_schematic_weapon_component_shared_blaster_power_handler:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

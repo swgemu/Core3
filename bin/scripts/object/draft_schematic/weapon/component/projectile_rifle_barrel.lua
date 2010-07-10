@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_component_projectile_rifle_barrel = object_draft_schematic_weapon_component_shared_projectile_rifle_barrel:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

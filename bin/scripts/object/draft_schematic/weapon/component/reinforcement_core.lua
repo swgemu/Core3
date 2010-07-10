@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_component_reinforcement_core = object_draft_schematic_weapon_component_shared_reinforcement_core:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

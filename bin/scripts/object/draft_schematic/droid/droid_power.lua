@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_droid_power = object_draft_schematic_droid_shared_droid_power:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

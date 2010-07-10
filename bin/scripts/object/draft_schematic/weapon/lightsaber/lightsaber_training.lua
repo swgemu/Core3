@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_schematic_weapon_lightsaber_shared_lightsaber_training:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSaberTraining", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

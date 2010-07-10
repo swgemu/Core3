@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_enhance_health_c = object_draft_schematic_chemistry_shared_medpack_enhance_health_c:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedpackEnhanceGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

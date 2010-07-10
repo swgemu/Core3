@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_dress_formal_34 = object_draft_schematic_clothing_shared_clothing_dress_formal_34:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_droid_wound_repair_kit_b = object_draft_schematic_droid_shared_droid_wound_repair_kit_b:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftDroidWoundRepairB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_armor_zam_belt = object_draft_schematic_clothing_shared_clothing_armor_zam_belt:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

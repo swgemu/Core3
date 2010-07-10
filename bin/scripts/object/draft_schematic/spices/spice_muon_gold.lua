@@ -43,6 +43,8 @@
 
 object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_shared_spice_muon_gold:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

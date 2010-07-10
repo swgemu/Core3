@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_shared_sword_ryyk_blade:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

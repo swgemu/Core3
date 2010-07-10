@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instrument_shared_instrument_traz:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

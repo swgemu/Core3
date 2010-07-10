@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_rifle_blaster_laser_rifle = object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

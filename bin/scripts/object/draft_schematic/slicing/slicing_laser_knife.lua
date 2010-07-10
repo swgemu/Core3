@@ -43,6 +43,8 @@
 
 object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slicing_shared_slicing_laser_knife:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSmugglerToolsA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

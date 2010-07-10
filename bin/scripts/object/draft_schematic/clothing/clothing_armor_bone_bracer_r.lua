@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_armor_bone_bracer_r = object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

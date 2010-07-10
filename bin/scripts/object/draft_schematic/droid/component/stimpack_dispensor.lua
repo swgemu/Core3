@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schematic_droid_component_shared_stimpack_dispensor:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

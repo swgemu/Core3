@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_dessert_pkneb:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

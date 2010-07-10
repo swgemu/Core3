@@ -43,6 +43,8 @@
 
 object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_shared_spice_grey_gabaki:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

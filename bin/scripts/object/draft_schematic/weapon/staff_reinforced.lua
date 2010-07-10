@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_shared_staff_reinforced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

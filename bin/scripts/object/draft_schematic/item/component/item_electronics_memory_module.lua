@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_component_item_electronics_memory_module = object_draft_schematic_item_component_shared_item_electronics_memory_module:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

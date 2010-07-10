@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
