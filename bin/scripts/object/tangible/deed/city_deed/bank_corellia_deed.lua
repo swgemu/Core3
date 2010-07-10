@@ -42,7 +42,10 @@
 
 
 object_tangible_deed_city_deed_bank_corellia_deed = object_tangible_deed_city_deed_shared_bank_corellia_deed:new {
-
+	templateType = DEED,
+	gameObjectType = 8388609,
+	generatedObjectTemplate = "object/building/player/city/bank_corellia.iff",
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_bank_corellia_deed, "object/tangible/deed/city_deed/bank_corellia_deed.iff")

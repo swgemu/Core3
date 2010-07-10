@@ -42,7 +42,10 @@
 
 
 object_tangible_deed_city_deed_shuttleport_corellia_deed = object_tangible_deed_city_deed_shared_shuttleport_corellia_deed:new {
-
+	templateType = DEED,
+	gameObjectType = 8388609,
+	generatedObjectTemplate = "object/building/player/city/shuttleport_corellia.iff",
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shuttleport_corellia_deed, "object/tangible/deed/city_deed/shuttleport_corellia_deed.iff")
