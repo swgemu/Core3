@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
@@ -157,6 +158,7 @@ protected:
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
+	int getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreatureObject* defender, WeaponObject* weapon);
 	int getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender);
 	int getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender);
 	int getMindArmorReduction(CreatureObject* attacker, CreatureObject* defender);

@@ -3,20 +3,20 @@
 
 --This File is part of Core3.
 
---This program is free software; you can redistribute 
+--This program is free software, you can redistribute 
 --it and/or modify it under the terms of the GNU Lesser 
 --General Public License as published by the Free Software
---Foundation; either version 2 of the License, 
+--Foundation, either version 2 of the License, 
 --or (at your option) any later version.
 
 --This program is distributed in the hope that it will be useful, 
---but WITHOUT ANY WARRANTY; without even the implied warranty of 
+--but WITHOUT ANY WARRANTY, without even the implied warranty of 
 --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 --See the GNU Lesser General Public License for
 --more details.
 
 --You should have received a copy of the GNU Lesser General 
---Public License along with this program; if not, write to
+--Public License along with this program, if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 --Linking Engine3 statically or dynamically with other modules 
@@ -35,14 +35,42 @@
 --and as the GNU LGPL requires distribution of source code.
 
 --Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
+--to grant this special exception for their modified versions, 
 --it is their choice whether to do so. The GNU Lesser General Public License 
---gives permission to release a modified version without this exception; 
+--gives permission to release a modified version without this exception, 
 --this exception also makes it possible to release a modified version 
 
 
 object_mobile_boba_fett = object_mobile_shared_boba_fett:new {
+	templateType = NPCCREATURE,
+	
+	armor = 3,
 
+	kinetic = 50,
+	energy = 10,
+	electricity = 10,
+	stun = 10,
+	blast = 10,
+	heat = 10,
+	cold = 10,
+	acid = 10,
+	lightSaber = 10,
+	
+	stalker = 0,
+	killer = 0,
+	
+	tame = 0,
+	
+	meatType = "",
+	boneType = "",
+	hideType = "",
+	
+	milk = 0,
+	hideMax = 0,
+	boneMax = 0,
+	meatMax = 0,
+	
+	ferocity = 0
 }
 
 ObjectTemplates:addTemplate(object_mobile_boba_fett, "object/mobile/boba_fett.iff")

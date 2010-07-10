@@ -531,9 +531,54 @@ int CombatManager::getMindArmorReduction(CreatureObject* attacker, CreatureObjec
 	return 0;
 }
 
+int CombatManager::getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreatureObject* defender, WeaponObject* weapon) {
+	int damageType = weapon->getDamageType();
+
+	int resist = 0;
+
+	switch (damageType) {
+	case WeaponObject::KINETIC:
+		resist = defender->getKinetic();
+		break;
+	case WeaponObject::ENERGY:
+		resist = defender->getEnergy();
+		break;
+	case WeaponObject::ELECTRICITY:
+		resist = defender->getElectricity();
+		break;
+	case WeaponObject::STUN:
+		resist = defender->getStun();
+		break;
+	case WeaponObject::BLAST:
+		resist = defender->getBlast();
+		break;
+	case WeaponObject::HEAT:
+		resist = defender->getHeat();
+		break;
+	case WeaponObject::COLD:
+		resist = defender->getCold();
+		break;
+	case WeaponObject::ACID:
+		resist = defender->getAcid();
+		break;
+	case WeaponObject::LIGHTSABER:
+		resist = defender->getLightSaber();
+		break;
+	case WeaponObject::FORCE:
+		resist = 0;
+		break;
+	}
+
+	return resist;
+}
+
 int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolToDamage) {
 	if (poolToDamage == 0)
 		return 0;
+
+	if (defender->isNonPlayerCreature()) {
+		return getArmorNpcReduction(attacker, (NonPlayerCreatureObject*)defender, weapon);
+	}
 
 	if (poolToDamage & CombatManager::HEALTH) {
 		return getHealthArmorReduction(attacker, defender);

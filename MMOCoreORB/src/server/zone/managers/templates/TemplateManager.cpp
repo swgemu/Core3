@@ -21,6 +21,7 @@
 #include "server/zone/templates/tangible/SharedBattlefieldMarkerObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedCountingObjectTemplate.h"
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedFactoryObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
@@ -135,6 +136,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
 	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
+	templateFactory.registerObject<NonPlayerCreatureObjectTemplate>(SharedObjectTemplate::NPCCREATURE);
 }
 
 
@@ -240,6 +242,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("MISSIONTERMINAL", SharedObjectTemplate::MISSIONTERMINAL);
 	luaTemplatesInstance->setGlobalInt("CLONINGBUILDING", SharedObjectTemplate::CLONINGBUILDING);
 	luaTemplatesInstance->setGlobalInt("DRAFTSCHEMATIC", SharedObjectTemplate::DRAFTSCHEMATIC);
+	luaTemplatesInstance->setGlobalInt("NPCCREATURE", SharedObjectTemplate::NPCCREATURE);
 }
 
 int TemplateManager::includeFile(lua_State* L) {
