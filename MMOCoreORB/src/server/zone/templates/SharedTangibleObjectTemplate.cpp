@@ -7,7 +7,6 @@
 
 #include "SharedTangibleObjectTemplate.h"
 
-
 void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	SharedObjectTemplate::readObject(templateData);
 

@@ -48,6 +48,10 @@ void NonPlayerCreatureObjectImplementation::activateRecovery() {
 		thinkEvent->schedule(2000);
 }
 
+void NonPlayerCreatureObjectImplementation::doMovement() {
+
+}
+
 int NonPlayerCreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	activateRecovery();
 

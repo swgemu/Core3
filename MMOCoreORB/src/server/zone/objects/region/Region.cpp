@@ -168,43 +168,43 @@ void RegionImplementation::_serializationHelperMethod() {
 	addSerializableVariable("bazaars", &bazaars);
 }
 
-RegionImplementation::RegionImplementation() {
+RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(60):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(62):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(61):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(63):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(65):  	}
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(66):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl(67):  	}
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(68):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(70):  	}
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(71):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl(72):  	}
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(73):  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(75):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(77):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(79):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(81):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(83):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(85):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(87):  		return true;
+	// server/zone/objects/region/Region.idl(89):  		return true;
 	return true;
 }
 

@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_fish_generic = object_tangible_fishing_fish_shared_fish_generic:new {
-
+	gameObjectType = 8234
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_fish_generic, "object/tangible/fishing/fish/fish_generic.iff")

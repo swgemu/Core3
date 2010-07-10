@@ -79,14 +79,6 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	notifiedSentObjects.setNoDuplicateInsertPlan();
-	slottedObjects.setNullValue(NULL);
-	slottedObjects.setNoDuplicateInsertPlan();
-	containerObjects.setNullValue(NULL);
-	containerObjects.setNoDuplicateInsertPlan();
-	pendingTasks.setNoDuplicateInsertPlan();
-	pendingTasks.setNullValue(NULL);
-
 	server = ZoneProcessServerImplementation::instance;
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
@@ -97,6 +89,30 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+}
+
+void SceneObjectImplementation::initializePrivateData() {
+	notifiedSentObjects.setNoDuplicateInsertPlan();
+	slottedObjects.setNullValue(NULL);
+	slottedObjects.setNoDuplicateInsertPlan();
+	containerObjects.setNullValue(NULL);
+	containerObjects.setNoDuplicateInsertPlan();
+	pendingTasks.setNoDuplicateInsertPlan();
+	pendingTasks.setNullValue(NULL);
+
+	server = NULL;
+
+	templateObject = NULL;
+
+	movementCounter = 0;
+
+	serverObjectCRC = 0;
+	clientObjectCRC = 0;
+
+	containerType = 0;
+	containerVolumeLimit = 0;
+	gameObjectType = 0;
+	containmentType = 0;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

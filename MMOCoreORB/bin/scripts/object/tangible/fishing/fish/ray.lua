@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_ray = object_tangible_fishing_fish_shared_ray:new {
-
+	gameObjectType = 8234
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_ray, "object/tangible/fishing/fish/ray.iff")
