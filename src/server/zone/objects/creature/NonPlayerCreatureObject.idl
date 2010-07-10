@@ -162,7 +162,7 @@ class NonPlayerCreatureObject extends CreatureObject {
 		return npcTemplate.getStun();
 	}
 	
-	public float getBlast()Ê{
+	public float getBlast() {
 		if (npcTemplate == null)
 			return 0;
 		
