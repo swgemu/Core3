@@ -54,6 +54,9 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.events.CreatureThinkEvent;
 import server.zone.objects.creature.events.CreatureMoveEvent;
 import system.lang.ref.Reference;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
+include server.zone.templates.tangible.NonPlayerCreatureObjectTemplate;
 
 class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
@@ -62,17 +65,46 @@ class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
 	protected Reference<CreatureMoveEvent> moveEvent;
 	
+	@dereferenced
+	protected Vector<string> skillCommands;
+	
+	protected transient NonPlayerCreatureObjectTemplate npcTemplate;
+	
+	protected boolean baby;
+	
 	public NonPlayerCreatureObject() {
 		Logger.setLoggingName("NonPlayerCreatureObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
+		baby = false;
+		
+		npcTemplate = null;
 	}
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
 	
 	public abstract native void activateRecovery();
 	
 	public native void doRecovery();
 	
 	public native void doMovement();
+	
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	/**
 	 * Inflicts damage into the object
@@ -101,4 +133,158 @@ class NonPlayerCreatureObject extends CreatureObject {
 	public boolean isNonPlayerCreature() {
 		return true;
 	}
+	
+	public float getKinetic() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getKinetic();
+	}
+	
+	public float getEnergy() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getEnergy();
+	}
+	
+	public float getElectricity() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getElectricity();
+	}
+	
+	public float getStun() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getStun();
+	}
+	
+	public float getBlast()Ê{
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getBlast();
+	}
+	
+	public float getHeat() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getHeat();
+	}
+	
+	public float getCold() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getCold();
+	}
+	
+	public float getAcid() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getAcid();
+	}
+	
+	public float getLightSaber() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getLightSaber();
+	}
+	
+	public boolean isStalker() {
+		if (npcTemplate == null)
+			return false;
+		
+		return npcTemplate.isStalker();
+	}
+	
+	public boolean isBaby() {
+		return baby;
+	}
+	
+	public boolean isKiller() {
+		if (npcTemplate == null)
+			return false;
+		
+		return npcTemplate.isKiller();
+	}
+	
+	public float getTame() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getTame();
+	}
+	
+	public string getMeatType() {
+		if (npcTemplate == null)
+			return "";
+		
+		return npcTemplate.getMeatType();
+	}
+	
+	public string getBoneType() {
+		if (npcTemplate == null)
+			return "";
+		
+		return npcTemplate.getBoneType();
+	}
+	
+	public string getHideType() {
+		if (npcTemplate == null)
+			return "";
+		
+		return npcTemplate.getHideType();
+	}
+	
+	public float getMilk() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getMilk();
+	}
+	
+	public float getHideMax() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getHideMax();
+	}
+	
+	public float getBoneMax() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getBoneMax();
+	}
+	
+	public float getMeatMax() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getMeatMax();
+	}
+	
+	public unsigned int getFerocity() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getFerocity();
+	}
+	
+	public unsigned int getArmor() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getArmor();
+	}
+
+	public native boolean hasOrganics();
+
 }
