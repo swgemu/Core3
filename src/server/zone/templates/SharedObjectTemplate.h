@@ -94,6 +94,7 @@ public:
 	const static int MISSIONTERMINAL = 0x4000009;
 	const static int CLONINGBUILDING = 0x400000A;
 	const static int DRAFTSCHEMATIC = 0x400000B;
+	const static int NPCCREATURE = 0x400000C;
 
 public:
 	SharedObjectTemplate() {
@@ -373,6 +374,10 @@ public:
 	}
 
 	virtual bool isCloningBuildingObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isNonPlayerCreatureObjectTemplate() {
 		return false;
 	}
 };

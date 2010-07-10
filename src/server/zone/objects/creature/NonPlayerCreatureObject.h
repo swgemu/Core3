@@ -53,6 +53,36 @@ class CreatureMoveEvent;
 
 using namespace server::zone::objects::creature::events;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -76,11 +106,17 @@ class NonPlayerCreatureObject : public CreatureObject {
 public:
 	NonPlayerCreatureObject();
 
+	void initializeTransientMembers();
+
 	void activateRecovery();
 
 	void doRecovery();
 
 	void doMovement();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -88,10 +124,60 @@ public:
 
 	bool isNonPlayerCreature();
 
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isBaby();
+
+	bool isKiller();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	bool hasOrganics();
+
 protected:
 	NonPlayerCreatureObject(DummyConstructorParameter* param);
 
 	virtual ~NonPlayerCreatureObject();
+
+	String _return_getBoneType;
+	String _return_getHideType;
+	String _return_getMeatType;
 
 	friend class NonPlayerCreatureObjectHelper;
 };
@@ -114,10 +200,18 @@ protected:
 
 	Reference<CreatureMoveEvent*> moveEvent;
 
+	Vector<String> skillCommands;
+
+	NonPlayerCreatureObjectTemplate* npcTemplate;
+
+	bool baby;
+
 public:
 	NonPlayerCreatureObjectImplementation();
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	virtual void activateRecovery();
 
@@ -125,11 +219,61 @@ public:
 
 	void doMovement();
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isBaby();
+
+	bool isKiller();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	bool hasOrganics();
 
 	NonPlayerCreatureObject* _this;
 
@@ -170,17 +314,67 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void activateRecovery();
 
 	void doRecovery();
 
 	void doMovement();
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isBaby();
+
+	bool isKiller();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	bool hasOrganics();
 
 };
 
