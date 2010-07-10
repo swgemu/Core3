@@ -43,6 +43,8 @@
 
 object_draft_schematic_furniture_furniture_sofachair_modern = object_draft_schematic_furniture_shared_furniture_sofachair_modern:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

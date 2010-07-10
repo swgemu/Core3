@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared_lance_vibro:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2 = object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSaberPoleArm2", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

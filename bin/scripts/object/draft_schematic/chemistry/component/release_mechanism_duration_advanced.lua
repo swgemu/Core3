@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_component_release_mechanism_duration_advanced = object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_shared_dish_gruuvan_shaal:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDishGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

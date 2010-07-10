@@ -43,6 +43,8 @@
 
 object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_furniture_city_shared_furniture_statue:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

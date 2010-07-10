@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_component_armor_layer_electrical = object_draft_schematic_armor_component_shared_armor_layer_electrical:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorLightLayersGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

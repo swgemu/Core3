@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_garden_small = object_draft_schematic_structure_city_shared_garden_small:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

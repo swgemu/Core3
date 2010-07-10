@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_installation_mining_liquid = object_draft_schematic_structure_shared_installation_mining_liquid:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

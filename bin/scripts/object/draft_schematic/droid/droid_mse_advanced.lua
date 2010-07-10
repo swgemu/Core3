@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_droid_mse_advanced = object_draft_schematic_droid_shared_droid_mse_advanced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

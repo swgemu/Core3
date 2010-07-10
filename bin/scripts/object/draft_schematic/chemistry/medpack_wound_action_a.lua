@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_wound_action_a = object_draft_schematic_chemistry_shared_medpack_wound_action_a:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedpackGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

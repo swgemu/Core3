@@ -43,6 +43,8 @@
 
 object_draft_schematic_munition_component_warhead_chemical = object_draft_schematic_munition_component_shared_warhead_chemical:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

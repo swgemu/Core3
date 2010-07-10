@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_component_container_cask = object_draft_schematic_food_component_shared_container_cask:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

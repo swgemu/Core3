@@ -43,6 +43,8 @@
 
 object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_shared_item_chance_cube:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

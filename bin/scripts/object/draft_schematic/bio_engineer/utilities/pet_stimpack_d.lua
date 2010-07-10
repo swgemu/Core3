@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_utilities_pet_stimpack_d = object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftAdvancedTissueGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_entertainer_2 = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftTissueGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

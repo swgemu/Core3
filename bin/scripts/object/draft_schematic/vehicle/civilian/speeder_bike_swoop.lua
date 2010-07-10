@@ -43,6 +43,8 @@
 
 object_draft_schematic_vehicle_civilian_speeder_bike_swoop = object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_space_repair_shared_booster_repair_kit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)

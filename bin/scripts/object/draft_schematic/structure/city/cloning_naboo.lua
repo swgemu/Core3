@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_cloning_naboo = object_draft_schematic_structure_city_shared_cloning_naboo:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

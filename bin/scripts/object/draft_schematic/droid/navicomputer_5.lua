@@ -43,6 +43,8 @@
 
 object_draft_schematic_droid_navicomputer_5 = object_draft_schematic_droid_shared_navicomputer_5:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_poison_area_mind_b = object_draft_schematic_chemistry_shared_medpack_poison_area_mind_b:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftApplyPoisonAreaGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

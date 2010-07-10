@@ -43,6 +43,8 @@
 
 object_draft_schematic_armor_component_deflector_shield_emitter_assembly = object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

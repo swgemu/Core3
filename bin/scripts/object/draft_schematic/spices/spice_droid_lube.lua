@@ -43,6 +43,8 @@
 
 object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_shared_spice_droid_lube:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

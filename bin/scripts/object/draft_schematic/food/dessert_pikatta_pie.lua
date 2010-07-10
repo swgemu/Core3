@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_shared_dessert_pikatta_pie:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

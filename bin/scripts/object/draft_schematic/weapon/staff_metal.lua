@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared_staff_metal:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

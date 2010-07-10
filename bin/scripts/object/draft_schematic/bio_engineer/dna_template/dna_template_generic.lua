@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8192, -- (See DraftSchemticImplementation.h)

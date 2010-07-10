@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_creature_creature_vir_vur = object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

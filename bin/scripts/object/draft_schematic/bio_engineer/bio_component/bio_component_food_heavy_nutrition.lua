@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_nutrition = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftAdvancedTissueGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_structure_city_shared_bank_naboo:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

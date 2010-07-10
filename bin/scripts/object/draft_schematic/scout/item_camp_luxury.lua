@@ -43,6 +43,8 @@
 
 object_draft_schematic_scout_item_camp_luxury = object_draft_schematic_scout_shared_item_camp_luxury:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftRangerCampGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

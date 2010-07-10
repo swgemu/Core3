@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemistry_shared_medpack_revive:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedpackGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

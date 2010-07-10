@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_component_blade_vibro_unit = object_draft_schematic_weapon_component_shared_blade_vibro_unit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

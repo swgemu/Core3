@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drink_jaar:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft_schematic_instrument_component_shared_dual_wave_synthesizer:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

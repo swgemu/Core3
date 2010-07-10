@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_component_resilience_compound_advanced = object_draft_schematic_chemistry_component_shared_resilience_compound_advanced:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedicineComponentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

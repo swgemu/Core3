@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_installation_generator_solar = object_draft_schematic_structure_shared_installation_generator_solar:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

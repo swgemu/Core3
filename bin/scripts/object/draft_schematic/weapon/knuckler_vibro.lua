@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_shared_knuckler_vibro:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

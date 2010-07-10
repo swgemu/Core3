@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_instrument_shared_instrument_fanfar:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

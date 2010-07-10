@@ -43,6 +43,8 @@
 
 object_draft_schematic_bio_engineer_creature_creature_carrion_spat = object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

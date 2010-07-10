@@ -43,6 +43,8 @@
 
 object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_schematic_munition_shared_detonator_thermal_imperial_issue:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMunitionsGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

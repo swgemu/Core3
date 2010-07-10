@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_medpack_wound_stamina_d = object_draft_schematic_chemistry_shared_medpack_wound_stamina_d:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedpackBGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

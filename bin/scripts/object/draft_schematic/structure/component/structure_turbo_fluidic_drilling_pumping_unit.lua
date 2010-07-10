@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pumping_unit = object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

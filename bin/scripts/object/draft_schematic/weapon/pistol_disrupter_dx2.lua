@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_pistol_disrupter_dx2 = object_draft_schematic_weapon_shared_pistol_disrupter_dx2:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

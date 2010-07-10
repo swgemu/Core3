@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_shared_dish_teltier_noodles:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

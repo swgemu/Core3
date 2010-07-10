@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food_shared_drink_breath_of_heaven:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

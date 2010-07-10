@@ -43,6 +43,8 @@
 
 object_draft_schematic_food_dish_scrimpi = object_draft_schematic_food_shared_dish_scrimpi:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftFoodDishGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

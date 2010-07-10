@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_installation_factory_weapon = object_draft_schematic_structure_shared_installation_factory_weapon:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

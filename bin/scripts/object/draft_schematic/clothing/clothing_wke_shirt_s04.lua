@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_wke_shirt_s04 = object_draft_schematic_clothing_shared_clothing_wke_shirt_s04:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

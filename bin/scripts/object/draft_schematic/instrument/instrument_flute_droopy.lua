@@ -43,6 +43,8 @@
 
 object_draft_schematic_instrument_instrument_flute_droopy = object_draft_schematic_instrument_shared_instrument_flute_droopy:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftInstrumentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

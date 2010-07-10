@@ -43,6 +43,8 @@
 
 object_draft_schematic_clothing_clothing_armor_kashyyykian_hunting_leggings = object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggings:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

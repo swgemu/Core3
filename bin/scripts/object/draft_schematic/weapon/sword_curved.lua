@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_shared_sword_curved:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

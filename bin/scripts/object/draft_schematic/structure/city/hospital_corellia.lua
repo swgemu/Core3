@@ -43,6 +43,8 @@
 
 object_draft_schematic_structure_city_hospital_corellia = object_draft_schematic_structure_city_shared_hospital_corellia:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

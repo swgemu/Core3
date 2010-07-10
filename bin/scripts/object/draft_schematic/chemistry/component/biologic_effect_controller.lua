@@ -43,6 +43,8 @@
 
 object_draft_schematic_chemistry_component_biologic_effect_controller = object_draft_schematic_chemistry_component_shared_biologic_effect_controller:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

@@ -43,6 +43,8 @@
 
 object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft_schematic_weapon_component_shared_projectile_feed_mechanism:new {
 
+   templateType = DRAFTSCHEMATIC,
+
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
